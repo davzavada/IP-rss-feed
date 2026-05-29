@@ -207,9 +207,12 @@ def main():
     except Exception as e:
         print(f"  CHYBA při stahování MUNI RPT: {e}")
 
-    # Drop items older than 2 weeks
+    # Drop MUNI articles older than 2 weeks (ÚPV quarterly issues are always kept)
     cutoff = datetime.now(timezone.utc) - timedelta(weeks=2)
-    all_items = [i for i in all_items if i["pub_date"] >= cutoff]
+    all_items = [
+        i for i in all_items
+        if i["journal_name"] != "Revue pro právo a technologie" or i["pub_date"] >= cutoff
+    ]
 
     # Sort by date desc
     all_items.sort(key=lambda x: x["pub_date"], reverse=True)
