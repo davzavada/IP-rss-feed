@@ -3,7 +3,7 @@
 
 import os
 import re
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from xml.etree.ElementTree import Element, SubElement, ElementTree, indent, parse as ET_parse
 
 import requests
@@ -206,6 +206,10 @@ def main():
         all_items.extend(muni)
     except Exception as e:
         print(f"  CHYBA při stahování MUNI RPT: {e}")
+
+    # Drop items older than 2 weeks
+    cutoff = datetime.now(timezone.utc) - timedelta(weeks=2)
+    all_items = [i for i in all_items if i["pub_date"] >= cutoff]
 
     # Sort by date desc
     all_items.sort(key=lambda x: x["pub_date"], reverse=True)
