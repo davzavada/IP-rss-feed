@@ -1,7 +1,9 @@
 name: Debug Fakulta
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - claude/nice-meitner-glqzjo
 
 jobs:
   debug:
