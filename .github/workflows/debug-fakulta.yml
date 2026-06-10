@@ -14,4 +14,5 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -r requirements.txt
-      - run: python debug_fakulta.py
+      - run: python scraper_fakulta.py
+      - run: cat docs/fakulta_feed.xml

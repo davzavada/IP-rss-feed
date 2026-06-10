@@ -43,6 +43,10 @@
 <a class="feed-link" href="journals_feed.xml">journals_feed.xml</a>
 <div id="feed-journals"><p id="loading">Načítám...</p></div>
 
+<h2>Fakulta – zápisy z kolegia děkana PrF UK</h2>
+<a class="feed-link" href="fakulta_feed.xml">fakulta_feed.xml</a>
+<div id="feed-fakulta"><p id="loading">Načítám...</p></div>
+
 <footer>Automaticky aktualizováno každý den. Přidejte XML odkazy do RSS čtečky (Zotero, NetNewsWire, Feedly aj.).</footer>
 
 <script>
@@ -120,6 +124,11 @@ loadFeed("neprimy_ucinek_feed.xml", "feed-nu", [
 loadFeed("journals_feed.xml", "feed-journals", [
   { label: "Časopis", render: i => '<a href="' + i.querySelector("link").textContent + '">' + i.querySelector("title").textContent + '</a>' },
   { label: "PDF", render: i => '<a href="' + i.querySelector("link").textContent + '">Stáhnout</a>' }
+]);
+
+loadFeed("fakulta_feed.xml", "feed-fakulta", [
+  { label: "Zápis", render: i => '<a href="' + i.querySelector("link").textContent + '">' + i.querySelector("title").textContent + '</a>' },
+  { label: "Datum", render: getDate }
 ]);
 </script>
 </body>
