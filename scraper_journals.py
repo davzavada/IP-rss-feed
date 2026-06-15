@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Scraper for legal journals – generates RSS feed for new journal issues and articles."""
 
+import json
 import os
 import re
 from datetime import datetime, timedelta, timezone
@@ -10,6 +11,26 @@ import requests
 from bs4 import BeautifulSoup
 
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "journals_feed.xml")
+STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "journals_seen.json")
+
+
+def load_seen_guids():
+    """Load dict of {guid: iso_first_seen_date} from state file."""
+    if not os.path.exists(STATE_FILE):
+        return {}
+    with open(STATE_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def save_seen_guids(seen):
+    """Persist seen GUIDs, dropping entries older than 60 days."""
+    cutoff = datetime.now(timezone.utc) - timedelta(days=60)
+    pruned = {
+        guid: ts for guid, ts in seen.items()
+        if datetime.fromisoformat(ts) >= cutoff
+    }
+    with open(STATE_FILE, "w", encoding="utf-8") as f:
+        json.dump(pruned, f, ensure_ascii=False, indent=2)
 USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
@@ -207,12 +228,26 @@ def main():
     except Exception as e:
         print(f"  CHYBA při stahování MUNI RPT: {e}")
 
-    # Drop MUNI articles older than 2 weeks (ÚPV quarterly issues are always kept)
-    cutoff = datetime.now(timezone.utc) - timedelta(weeks=2)
-    all_items = [
-        i for i in all_items
-        if i["journal_name"] != "Revue pro právo a technologie" or i["pub_date"] >= cutoff
-    ]
+    # For MUNI articles: keep only those first seen within the last 2 weeks.
+    # We track first-seen date ourselves so stale articles with refreshed pub_dates don't resurface.
+    seen = load_seen_guids()
+    now = datetime.now(timezone.utc)
+    cutoff = now - timedelta(weeks=2)
+
+    filtered = []
+    for item in all_items:
+        if item["journal_name"] != "Revue pro právo a technologie":
+            filtered.append(item)
+            continue
+        guid = item["guid"]
+        if guid not in seen:
+            seen[guid] = now.isoformat()
+        first_seen = datetime.fromisoformat(seen[guid])
+        if first_seen >= cutoff:
+            filtered.append(item)
+
+    save_seen_guids(seen)
+    all_items = filtered
 
     # Sort by date desc
     all_items.sort(key=lambda x: x["pub_date"], reverse=True)
