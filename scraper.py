@@ -495,6 +495,10 @@ def build_rss(decisions):
         if d.get("heslo"):
             SubElement(item, "category").text = d["heslo"]
 
+        # AI shrnutí jako zvláštní element (čte ho index.html)
+        if d.get("summary"):
+            SubElement(item, "ai-summary").text = d["summary"]
+
         pub_dt = d["pub_dt"]
         SubElement(item, "pubDate").text = pub_dt.strftime("%a, %d %b %Y 12:00:00 +0000")
         SubElement(item, "dc:date").text = pub_dt.strftime("%Y-%m-%d")
