@@ -134,7 +134,9 @@ def fetch_judikatura(days=JUDIKATURA_DAYS):
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "html.parser")
 
-    rows = soup.select("table#tabl tbody tr")
+    # Pozn.: syrová odpověď Domina nemá <tbody>, proto selektujeme řádky přímo
+    # pod tabulkou; hlavičkový řádek (<th>, bez a.odk) se přeskočí níže.
+    rows = soup.select("table#tabl tr")
     if not rows:
         # Diagnostika – proč nejsou výsledky
         text = resp.text
