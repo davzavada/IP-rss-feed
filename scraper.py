@@ -38,9 +38,21 @@ OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "feed.
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feed_seen.json")
 
 
+JUDIKATURA_HOST = "https://rozhodnuti.nsoud.cz"
+
+
 def normalize_case(case_number):
     """Sjednotí mezery ve spisové značce pro porovnání/deduplikaci."""
     return re.sub(r"\s+", " ", case_number).strip()
+
+
+def abs_url(href):
+    """Doplní host k relativní cestě a zakóduje mezery (syrový Domino výstup)."""
+    if not href:
+        return ""
+    if href.startswith("/"):
+        href = JUDIKATURA_HOST + href
+    return href.replace(" ", "%20")
 
 
 # --- Stav: kdy jsme položku poprvé viděli (pro datum u judikatury) ---
@@ -114,21 +126,47 @@ def fetch_judikatura(days=JUDIKATURA_DAYS):
     )
     url = (
         f"{JUDIKATURA_URL}?SearchView&Query={quote(query)}"
-        f"&SearchMax=1000&SearchOrder=4&Start=0&Count=1000&pohled=1"
+        f"&SearchMax=1000&SearchOrder=4&Start=0&Count=200&pohled=1"
     )
 
-    resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=30)
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "cs-CZ,cs;q=0.9,en;q=0.8",
+        "Referer": "https://rozhodnuti.nsoud.cz/",
+    }
+    # Domino může vyžadovat session cookie – nejprve navštívíme úvodní stránku.
+    session = requests.Session()
+    try:
+        session.get("https://rozhodnuti.nsoud.cz/", headers=headers, timeout=30)
+    except Exception:
+        pass
+
+    resp = session.get(url, headers=headers, timeout=30)
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "html.parser")
 
+    # Pozn.: syrová odpověď Domina nemá <tbody>, proto selektujeme řádky přímo
+    # pod tabulkou; hlavičkový řádek (<th>, bez a.odk) se přeskočí níže.
+    rows = soup.select("table#tabl tr")
+    if not rows:
+        # Diagnostika – proč nejsou výsledky
+        text = resp.text
+        print(f"    [diag] HTTP {resp.status_code}, finální URL: {resp.url}")
+        print(f"    [diag] délka odpovědi: {len(text)} B, tabulek: {len(soup.find_all('table'))}")
+        print(f"    [diag] 'id=\"tabl\"' přítomno: {'tabl' in text}; "
+              f"'Výsledky' přítomno: {'Výsledky' in text}")
+        snippet = re.sub(r'\s+', ' ', text[:600])
+        print(f"    [diag] začátek: {snippet}")
+
     decisions = []
-    for row in soup.select("table#tabl tbody tr"):
+    for row in rows:
         link = row.select_one("a.odk")
         if not link:
             continue
 
         case_number = normalize_case(link.get_text(strip=True))
-        detail_url = link.get("href", "")
+        detail_url = abs_url(link.get("href", ""))
 
         pdf_url = ""
         rtf_url = ""
@@ -136,9 +174,9 @@ def fetch_judikatura(days=JUDIKATURA_DAYS):
             href = a["href"]
             low = href.lower()
             if ".pdf?openelement" in low or low.endswith(".pdf"):
-                pdf_url = href
+                pdf_url = abs_url(href)
             elif ".rtf?openelement" in low or low.endswith(".rtf"):
-                rtf_url = href
+                rtf_url = abs_url(href)
 
         cat_el = row.select_one("td.category")
         category = cat_el.get_text(strip=True) if cat_el else ""
