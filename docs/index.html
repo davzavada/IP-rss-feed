@@ -18,6 +18,7 @@
   td a { color: #0366d6; text-decoration: none; }
   td a:hover { text-decoration: underline; }
   .summary { font-size: 0.9em; color: #555; line-height: 1.4; }
+  .new-dot { color: #2da44e; font-size: 0.7em; vertical-align: middle; }
   .tag { display: inline-block; font-size: 0.75em; padding: 1px 6px; border-radius: 3px; font-weight: 600; }
   .tag-ruling { background: #dff0d8; color: #3c763d; }
   .tag-referral { background: #d9edf7; color: #31708f; }
@@ -97,11 +98,17 @@ function getTitle(item) {
   const t = item.querySelector("title").textContent;
   const link = item.querySelector("link").textContent;
   const clean = t.replace(/^\[\w+\]\s*/, "");
-  return '<a href="' + link + '">' + clean + '</a>';
+  return newDot(item) + '<a href="' + link + '">' + clean + '</a>';
+}
+
+function newDot(item) {
+  return item.querySelector("is-new")
+    ? '<span class="new-dot" title="Nové dnes">●</span> '
+    : '';
 }
 
 loadFeed("feed.xml", "feed-nsoud", [
-  { label: "Název", render: i => '<a href="' + i.querySelector("link").textContent + '">' + i.querySelector("title").textContent + '</a>' },
+  { label: "Název", render: i => newDot(i) + '<a href="' + i.querySelector("link").textContent + '">' + i.querySelector("title").textContent + '</a>' },
   { label: "Shrnutí", render: i => {
     const sumEl = i.querySelector("ai-summary");
     const summary = sumEl ? sumEl.textContent.trim() : "";
@@ -118,12 +125,12 @@ loadFeed("ipcuria_feed.xml", "feed-cjeu", [
 ]);
 
 loadFeed("neprimy_ucinek_feed.xml", "feed-nu", [
-  { label: "Název", render: i => '<a href="' + i.querySelector("link").textContent + '">' + i.querySelector("title").textContent + '</a>' },
+  { label: "Název", render: i => newDot(i) + '<a href="' + i.querySelector("link").textContent + '">' + i.querySelector("title").textContent + '</a>' },
   { label: "Datum", render: getDate }
 ]);
 
 loadFeed("journals_feed.xml", "feed-journals", [
-  { label: "Časopis", render: i => '<a href="' + i.querySelector("link").textContent + '">' + i.querySelector("title").textContent + '</a>' },
+  { label: "Časopis", render: i => newDot(i) + '<a href="' + i.querySelector("link").textContent + '">' + i.querySelector("title").textContent + '</a>' },
   { label: "PDF", render: i => '<a href="' + i.querySelector("link").textContent + '">Stáhnout</a>' }
 ]);
 </script>

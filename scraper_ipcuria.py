@@ -9,8 +9,11 @@ from xml.etree.ElementTree import Element, SubElement, ElementTree, indent
 import requests
 from bs4 import BeautifulSoup
 
+from feed_common import filter_by_first_seen
+
 CURIA_BASE = "https://curia.europa.eu/juris/liste.do?num="
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "ipcuria_feed.xml")
+STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ipcuria_seen.json")
 USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
@@ -127,6 +130,9 @@ def build_rss(decisions):
         SubElement(item, "link").text = d["curia_url"]
         SubElement(item, "guid", isPermaLink="false").text = f"{d['category']}-{d['case_ref']}"
 
+        if d.get("is_new"):
+            SubElement(item, "is-new").text = "true"
+
         desc_parts = [
             f"[{d['category']}] {d['date_str']}, {d['case_ref']}",
         ]
@@ -152,6 +158,13 @@ def main():
     print("Stahuji IPcuria – 4 kategorie...")
     decisions = fetch_all()
     print(f"Nalezeno {len(decisions)} položek z posledního měsíce")
+
+    # Okno 2 týdny od prvního výskytu + příznak „nové dnes"
+    decisions = filter_by_first_seen(
+        decisions, lambda d: f"{d['category']}-{d['case_ref']}", STATE_FILE, weeks=2
+    )
+    decisions.sort(key=lambda d: d["date"], reverse=True)
+    print(f"Po okně 2 týdnů: {len(decisions)} položek")
 
     for d in decisions:
         print(f"  [{d['category']}] {d['case_ref']} {d['case_name']} ({d['date_str']})")

@@ -335,16 +335,15 @@ def parse_detail(html):
     }
 
 
-def enrich_judikatura(decisions):
-    """Doplní judikaturním rozhodnutím datum zveřejnění a Heslo z detailu.
+def enrich_metadata(decisions):
+    """Doplní judikaturním rozhodnutím datum zveřejnění, Heslo a typ z detailu.
 
     Metadata se cachují podle UNID, takže detail se stahuje jen u nových.
+    Levné – běží před filtrem na 2 týdny (kvůli datu zveřejnění do pub_dt).
     """
     meta = load_meta()
     session = requests.Session()
     fetched = 0
-    summarized = 0
-    gemini_calls = 0  # počítá pokusy (kvůli RPD limitu, i neúspěšné se počítají)
 
     for d in decisions:
         unid = d.get("unid")
@@ -364,22 +363,6 @@ def enrich_judikatura(decisions):
                 continue  # necachujeme, příště zkusíme znovu
 
         m = meta[unid]
-
-        # Shrnutí přes Gemini – jen pokud chybí, máme PDF a nevyčerpali jsme
-        # denní limit (RPD 20). Zbytek se doplní v dalších bězích (cache).
-        if (GEMINI_API_KEY and not m.get("summary") and d.get("pdf_url")
-                and gemini_calls < GEMINI_DAILY_LIMIT):
-            try:
-                pr = session.get(d["pdf_url"], headers=JUDIKATURA_HEADERS, timeout=60)
-                pr.raise_for_status()
-                gemini_calls += 1
-                summary = summarize_pdf(pr.content)
-                if summary:
-                    m["summary"] = summary
-                    summarized += 1
-            except Exception as e:
-                print(f"    CHYBA stahování PDF {d['case_number']}: {e}")
-
         d["published"] = m.get("published", "")
         d["decided"] = m.get("decided", "")
         d["heslo"] = m.get("heslo", "")
@@ -389,6 +372,44 @@ def enrich_judikatura(decisions):
     save_meta(meta)
     if fetched:
         print(f"    Staženo {fetched} nových detailů (datum zveřejnění + Heslo)")
+    return decisions
+
+
+def enrich_summaries(decisions):
+    """Vygeneruje AI shrnutí přes Gemini – jen pro předané (už filtrované)
+    položky bez shrnutí, do denního limitu RPD. Shrnutí se cachují podle UNID.
+    """
+    if not GEMINI_API_KEY:
+        return decisions
+
+    meta = load_meta()
+    session = requests.Session()
+    summarized = 0
+    gemini_calls = 0  # počítá pokusy (kvůli RPD limitu, i neúspěšné se počítají)
+
+    for d in decisions:
+        unid = d.get("unid")
+        if not unid or unid not in meta:
+            continue
+        m = meta[unid]
+        if m.get("summary") or not d.get("pdf_url"):
+            d["summary"] = m.get("summary", "")
+            continue
+        if gemini_calls >= GEMINI_DAILY_LIMIT:
+            break
+        try:
+            pr = session.get(d["pdf_url"], headers=JUDIKATURA_HEADERS, timeout=60)
+            pr.raise_for_status()
+            gemini_calls += 1
+            summary = summarize_pdf(pr.content)
+            if summary:
+                m["summary"] = summary
+                summarized += 1
+        except Exception as e:
+            print(f"    CHYBA stahování PDF {d['case_number']}: {e}")
+        d["summary"] = m.get("summary", "")
+
+    save_meta(meta)
     if gemini_calls:
         print(f"    Gemini: {summarized}/{gemini_calls} shrnutí ok "
               f"(denní limit RPD {GEMINI_DAILY_LIMIT})")
@@ -426,39 +447,50 @@ def merge_decisions(uredni, judikatura):
     return [merged[k] for k in order]
 
 
-def resolve_dates(decisions):
-    """Doplní každému rozhodnutí pub_dt (datetime). Judikatura bez data → první výskyt."""
+def resolve_dates(decisions, weeks=2):
+    """Doplní pub_dt, zaznamená první výskyt, označí nové a ponechá jen
+    rozhodnutí s prvním výskytem do `weeks` týdnů zpět.
+
+    pub_dt (pro řazení/zobrazení): datum zveřejnění > vyhlášení > první výskyt.
+    Okno (jak dlouho položku držíme) se počítá od prvního výskytu u nás.
+    """
     seen = load_seen()
     now = datetime.now(timezone.utc)
+    cutoff = now - timedelta(weeks=weeks)
+    today = now.date()
 
+    kept = []
     for d in decisions:
-        pub_dt = None
+        ident = d.get("unid") or normalize_case(d["case_number"])
+        if ident not in seen:
+            seen[ident] = now.isoformat()
+        first_seen = datetime.fromisoformat(seen[ident])
 
+        pub_dt = None
         # 1) judikatura: skutečné datum zveřejnění z detailu (ISO)
         if d.get("published"):
             try:
                 pub_dt = datetime.fromisoformat(d["published"]).replace(tzinfo=timezone.utc)
             except ValueError:
                 pub_dt = None
-
         # 2) úřední deska: datum vyhlášení (DD.MM.YYYY)
         if pub_dt is None and d.get("date"):
             try:
                 pub_dt = datetime.strptime(d["date"], "%d.%m.%Y").replace(tzinfo=timezone.utc)
             except ValueError:
                 pub_dt = None
-
         # 3) fallback: první výskyt u nás
         if pub_dt is None:
-            ident = d.get("unid") or normalize_case(d["case_number"])
-            if ident not in seen:
-                seen[ident] = now.isoformat()
-            pub_dt = datetime.fromisoformat(seen[ident])
+            pub_dt = first_seen
 
         d["pub_dt"] = pub_dt
+        d["is_new"] = (first_seen.date() == today)
+
+        if first_seen >= cutoff:
+            kept.append(d)
 
     save_seen(seen)
-    return decisions
+    return kept
 
 
 # --- RSS ---
@@ -518,6 +550,10 @@ def build_rss(decisions):
         if d.get("summary"):
             SubElement(item, "ai-summary").text = d["summary"]
 
+        # Příznak „nové dnes" (čte ho index.html → tečka u názvu)
+        if d.get("is_new"):
+            SubElement(item, "is-new").text = "true"
+
         pub_dt = d["pub_dt"]
         SubElement(item, "pubDate").text = pub_dt.strftime("%a, %d %b %Y 12:00:00 +0000")
         SubElement(item, "dc:date").text = pub_dt.strftime("%Y-%m-%d")
@@ -545,8 +581,9 @@ def main():
         print(f"    CHYBA: {e}")
 
     decisions = merge_decisions(uredni, judikatura)
-    decisions = enrich_judikatura(decisions)
-    decisions = resolve_dates(decisions)
+    decisions = enrich_metadata(decisions)          # datum zveřejnění + Heslo (cache)
+    decisions = resolve_dates(decisions)            # okno 2 týdny + příznak nové
+    decisions = enrich_summaries(decisions)         # Gemini jen na ponechané
     decisions.sort(key=lambda d: d["pub_dt"], reverse=True)
 
     print(f"Celkem {len(decisions)} rozhodnutí senátu {SENAT} po sloučení")

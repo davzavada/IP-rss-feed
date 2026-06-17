@@ -11,9 +11,12 @@ import requests
 from bs4 import BeautifulSoup
 import pdfplumber
 
+from feed_common import filter_by_first_seen
+
 URL = "https://www.nsoud.cz/uredni-deska/obcanskopravni-a-obchodni-kolegium/vyhlasovana-rozhodnuti"
 BASE_URL = "https://www.nsoud.cz"
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "neprimy_ucinek_feed.xml")
+STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "neprimy_seen.json")
 
 # Regex vzory pro nepřímý účinek – pokrývají skloňování
 KEYWORD_PATTERNS = [
@@ -129,6 +132,9 @@ def build_rss(decisions):
         else:
             SubElement(item, "guid", isPermaLink="false").text = d["case_number"]
 
+        if d.get("is_new"):
+            SubElement(item, "is-new").text = "true"
+
         kw_str = ", ".join(d["found_keywords"])
         SubElement(item, "description").text = (
             f"Rozhodnutí {d['case_number']} vyhlášeno {d['date']}\n"
@@ -177,6 +183,12 @@ def main():
             print("nic")
 
     print(f"\nRozhodnutí s nepřímým účinkem: {len(matched)}")
+
+    # Okno 2 týdny od prvního výskytu + příznak „nové dnes"
+    matched = filter_by_first_seen(
+        matched, lambda d: d.get("pdf_url") or d["case_number"], STATE_FILE, weeks=2
+    )
+    print(f"Po okně 2 týdnů: {len(matched)}")
 
     rss = build_rss(matched)
     indent(rss, space="  ")

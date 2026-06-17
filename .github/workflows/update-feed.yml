@@ -36,6 +36,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/ feed_seen.json journals_seen.json feed_meta.json
+          git add docs/ feed_seen.json journals_seen.json feed_meta.json ipcuria_seen.json neprimy_seen.json
           git diff --cached --quiet || git commit -m "Update RSS feeds $(date -u +%Y-%m-%d)"
           git push
