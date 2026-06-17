@@ -63,10 +63,9 @@ GEMINI_PROMPT = (
     "(o co ve sporu šlo a jak soud rozhodl) do nejvýše pěti vět, "
     "v jazyce dokumentu (česky). Piš věcně, bez úvodních frází."
 )
-# Gemma 4 má štědré limity – stačí mírný rozestup; všech ~32 rozhodnutí projde naráz.
-GEMINI_MIN_INTERVAL = 2.5   # s mezi voláními (rezerva proti RPM)
-GEMINI_DAILY_LIMIT = 60     # strop volání za běh (pokryje všechna rozhodnutí)
-GEMINI_MAX_RETRIES = 3      # opakování při 429/503
+# Gemma 4 má štědré limity – jen mírný rozestup mezi voláními (throttling).
+GEMINI_MIN_INTERVAL = 2.5   # s mezi voláními
+GEMINI_MAX_RETRIES = 3      # opakování při 429/500/502/503
 _gemini_last_call = 0.0
 
 
@@ -398,7 +397,7 @@ def enrich_summaries(decisions):
     meta = load_meta()
     session = requests.Session()
     summarized = 0
-    gemini_calls = 0  # počítá pokusy (kvůli RPD limitu, i neúspěšné se počítají)
+    gemini_calls = 0
 
     for d in decisions:
         unid = d.get("unid")
@@ -408,8 +407,6 @@ def enrich_summaries(decisions):
         if m.get("summary") or not d.get("pdf_url"):
             d["summary"] = m.get("summary", "")
             continue
-        if gemini_calls >= GEMINI_DAILY_LIMIT:
-            break
         try:
             pr = session.get(d["pdf_url"], headers=JUDIKATURA_HEADERS, timeout=60)
             pr.raise_for_status()
@@ -424,10 +421,7 @@ def enrich_summaries(decisions):
 
     save_meta(meta)
     if gemini_calls:
-        print(f"    Gemini: {summarized}/{gemini_calls} shrnutí ok "
-              f"(denní limit RPD {GEMINI_DAILY_LIMIT})")
-        if gemini_calls >= GEMINI_DAILY_LIMIT:
-            print("    Dosažen denní limit Gemini – zbytek se doplní v dalším běhu")
+        print(f"    AI: {summarized}/{gemini_calls} shrnutí vygenerováno")
     return decisions
 
 
