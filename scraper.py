@@ -50,9 +50,10 @@ META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feed_meta.
 
 JUDIKATURA_HOST = "https://rozhodnuti.nsoud.cz"
 
-# --- Gemini: shrnutí rozhodnutí (volitelné, jen když je nastaven API klíč) ---
+# --- AI shrnutí rozhodnutí (volitelné, jen když je nastaven API klíč) ---
+# Používáme Gemma 4 31B přes Gemini API – má výrazně štědřejší free-tier limity.
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
-GEMINI_MODEL = "gemini-2.5-flash-lite"
+GEMINI_MODEL = "gemma-4-31b-it"
 GEMINI_URL = (
     f"https://generativelanguage.googleapis.com/v1beta/models/"
     f"{GEMINI_MODEL}:generateContent"
@@ -62,9 +63,9 @@ GEMINI_PROMPT = (
     "(o co ve sporu šlo a jak soud rozhodl) do nejvýše pěti vět, "
     "v jazyce dokumentu (česky). Piš věcně, bez úvodních frází."
 )
-# Skutečné free-tier limity gemini-2.5-flash: RPM 5, RPD 20 (TPM 250K).
-GEMINI_MIN_INTERVAL = 13.0  # s mezi voláními (RPM 5 → 60/5 = 12, rezerva)
-GEMINI_DAILY_LIMIT = 20     # max volání za běh (RPD 20) – zbytek se doplní příště
+# Gemma 4 má štědré limity – stačí mírný rozestup; všech ~32 rozhodnutí projde naráz.
+GEMINI_MIN_INTERVAL = 2.5   # s mezi voláními (rezerva proti RPM)
+GEMINI_DAILY_LIMIT = 60     # strop volání za běh (pokryje všechna rozhodnutí)
 GEMINI_MAX_RETRIES = 3      # opakování při 429/503
 _gemini_last_call = 0.0
 
@@ -88,12 +89,11 @@ def summarize_pdf(pdf_bytes):
                 {"text": GEMINI_PROMPT},
             ]
         }],
+        # Gemma je „thinking" model a thinkingConfig nepodporuje – necháme vyšší
+        # strop tokenů, ať se přemýšlení i odpověď vejdou (jinak MAX_TOKENS).
         "generationConfig": {
             "temperature": 0.2,
-            "maxOutputTokens": 2048,
-            # gemini-2.5-flash je „thinking" model – bez vypnutí spotřebuje
-            # token budget na přemýšlení a shrnutí se usekne (MAX_TOKENS).
-            "thinkingConfig": {"thinkingBudget": 0},
+            "maxOutputTokens": 4096,
         },
     }
 
@@ -110,26 +110,32 @@ def summarize_pdf(pdf_bytes):
                 timeout=60,
             )
             _gemini_last_call = time.monotonic()
-            if r.status_code in (429, 503):
+            if r.status_code in (429, 500, 502, 503):
                 backoff = GEMINI_MIN_INTERVAL * (2 ** attempt)
-                print(f"    Gemini {r.status_code}, čekám {backoff:.0f}s (pokus {attempt+1}/{GEMINI_MAX_RETRIES})")
+                print(f"    AI {r.status_code}, čekám {backoff:.0f}s (pokus {attempt+1}/{GEMINI_MAX_RETRIES})")
                 time.sleep(backoff)
                 continue
             r.raise_for_status()
             data = r.json()
             cand = data["candidates"][0]
             parts = cand.get("content", {}).get("parts", [])
-            text = re.sub(r"\s+", " ", "".join(p.get("text", "") for p in parts).strip())
+            # Gemma vrací „thought" části (přemýšlení) i odpověď – bereme jen odpověď.
+            text = re.sub(
+                r"\s+", " ",
+                "".join(p.get("text", "") for p in parts if not p.get("thought")).strip(),
+            )
             # Useknutá odpověď (MAX_TOKENS) – necachujeme půlku věty.
             if cand.get("finishReason") == "MAX_TOKENS":
-                print(f"    Gemini: useknuto (MAX_TOKENS), necachuji – '{text[:40]}…'")
+                print(f"    AI: useknuto (MAX_TOKENS), necachuji – '{text[:40]}…'")
                 return ""
             return text
         except Exception as e:
             _gemini_last_call = time.monotonic()
-            print(f"    CHYBA Gemini: {e}")
-            return ""
-    print("    Gemini: vyčerpány pokusy (rate limit), zkusím příště")
+            backoff = GEMINI_MIN_INTERVAL * (2 ** attempt)
+            print(f"    CHYBA AI: {e} – čekám {backoff:.0f}s (pokus {attempt+1}/{GEMINI_MAX_RETRIES})")
+            time.sleep(backoff)
+            continue
+    print("    AI: vyčerpány pokusy, zkusím příště")
     return ""
 
 
