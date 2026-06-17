@@ -59,9 +59,13 @@ GEMINI_URL = (
     f"{GEMINI_MODEL}:generateContent"
 )
 GEMINI_PROMPT = (
-    "Toto je rozhodnutí Nejvyššího soudu ČR. Shrň jeho podstatu "
-    "(o co ve sporu šlo a jak soud rozhodl) do nejvýše pěti vět, "
-    "v jazyce dokumentu (česky). Piš věcně, bez úvodních frází."
+    "Toto je rozhodnutí Nejvyššího soudu ČR. Odpověz česky přesně ve dvou "
+    "řádcích, bez úvodních frází a bez dalšího textu:\n"
+    "HESLO: výstižné právní téma sporu o 1–3 slovech (např. Nekalá soutěž, "
+    "Smluvní pokuta, Autorské právo, Rozsudek pro uznání, Promlčení).\n"
+    "SHRNUTÍ: nejvýše dvě věty – kdo se s kým soudil (uveď jména stran, "
+    "ale bez právní formy, tj. bez s.r.o., a.s., spol. apod.), o co šlo "
+    "a jak soud rozhodl."
 )
 # Gemma 4 má štědré limity – throttling na 12 požadavků za minutu (5 s mezi voláními).
 GEMINI_MIN_INTERVAL = 5.0   # s mezi voláními (= 12 req/min)
@@ -69,15 +73,38 @@ GEMINI_MAX_RETRIES = 3      # opakování při 429/500/502/503
 _gemini_last_call = 0.0
 
 
-def summarize_pdf(pdf_bytes):
-    """Pošle PDF rozhodnutí Geminimu a vrátí shrnutí (max ~5 vět) v češtině.
+def parse_ai_response(raw):
+    """Rozparsuje odpověď Gemmy ve tvaru 'HESLO: ...' + 'SHRNUTÍ: ...'.
 
+    Vrací (shrnutí, heslo). Když značky chybí, bere celý text jako shrnutí.
+    """
+    def clean(s):
+        return re.sub(r"\s+", " ", s).strip()
+
+    heslo = ""
+    mh = re.search(r"HESLO:\s*(.*?)\s*(?=SHRNUT[IÍ]:|$)", raw, re.IGNORECASE | re.DOTALL)
+    if mh:
+        heslo = clean(mh.group(1)).rstrip(".")
+    ms = re.search(r"SHRNUT[IÍ]:\s*(.*)", raw, re.IGNORECASE | re.DOTALL)
+    if ms:
+        summary = ms.group(1)
+    elif mh:
+        summary = raw[mh.end():]
+    else:
+        summary = raw
+    return clean(summary), heslo
+
+
+def summarize_pdf(pdf_bytes):
+    """Pošle PDF rozhodnutí Gemmě a vrátí (shrnutí, heslo) v češtině.
+
+    Shrnutí je krátké (max 2 věty) se jmény stran, heslo je právní téma sporu.
     Hlídá rozestup mezi voláními (rate limit free tier) a opakuje při 429/503
-    s exponenciálním backoffem. Vrací '' při neúspěchu nebo bez API klíče.
+    s exponenciálním backoffem. Vrací ('', '') při neúspěchu nebo bez API klíče.
     """
     global _gemini_last_call
     if not GEMINI_API_KEY or not pdf_bytes:
-        return ""
+        return "", ""
     payload = {
         "contents": [{
             "parts": [
@@ -119,15 +146,12 @@ def summarize_pdf(pdf_bytes):
             cand = data["candidates"][0]
             parts = cand.get("content", {}).get("parts", [])
             # Gemma vrací „thought" části (přemýšlení) i odpověď – bereme jen odpověď.
-            text = re.sub(
-                r"\s+", " ",
-                "".join(p.get("text", "") for p in parts if not p.get("thought")).strip(),
-            )
+            raw = "".join(p.get("text", "") for p in parts if not p.get("thought")).strip()
             # Useknutá odpověď (MAX_TOKENS) – necachujeme půlku věty.
             if cand.get("finishReason") == "MAX_TOKENS":
-                print(f"    AI: useknuto (MAX_TOKENS), necachuji – '{text[:40]}…'")
-                return ""
-            return text
+                print(f"    AI: useknuto (MAX_TOKENS), necachuji – '{raw[:40]}…'")
+                return "", ""
+            return parse_ai_response(raw)
         except Exception as e:
             _gemini_last_call = time.monotonic()
             backoff = GEMINI_MIN_INTERVAL * (2 ** attempt)
@@ -135,7 +159,7 @@ def summarize_pdf(pdf_bytes):
             time.sleep(backoff)
             continue
     print("    AI: vyčerpány pokusy, zkusím příště")
-    return ""
+    return "", ""
 
 
 def normalize_case(case_number):
@@ -373,6 +397,7 @@ def enrich_metadata(decisions):
         d["heslo"] = m.get("heslo", "")
         d["typ"] = m.get("typ", "")
         d["summary"] = m.get("summary", "")
+        d["tag"] = m.get("tag", "")
 
     save_meta(meta)
     if fetched:
@@ -391,7 +416,9 @@ def enrich_summaries(decisions):
         meta = load_meta()
         for d in decisions:
             unid = d.get("unid")
-            d["summary"] = meta.get(unid, {}).get("summary", "") if unid else ""
+            m = meta.get(unid, {}) if unid else {}
+            d["summary"] = m.get("summary", "")
+            d["tag"] = m.get("tag", "")
         return decisions
 
     meta = load_meta()
@@ -406,18 +433,21 @@ def enrich_summaries(decisions):
         m = meta[unid]
         if m.get("summary") or not d.get("pdf_url"):
             d["summary"] = m.get("summary", "")
+            d["tag"] = m.get("tag", "")
             continue
         try:
             pr = session.get(d["pdf_url"], headers=JUDIKATURA_HEADERS, timeout=60)
             pr.raise_for_status()
             gemini_calls += 1
-            summary = summarize_pdf(pr.content)
+            summary, tag = summarize_pdf(pr.content)
             if summary:
                 m["summary"] = summary
+                m["tag"] = tag
                 summarized += 1
         except Exception as e:
             print(f"    CHYBA stahování PDF {d['case_number']}: {e}")
         d["summary"] = m.get("summary", "")
+        d["tag"] = m.get("tag", "")
 
     save_meta(meta)
     if gemini_calls:
@@ -556,6 +586,10 @@ def build_rss(decisions):
         # AI shrnutí jako zvláštní element (čte ho index.html)
         if d.get("summary"):
             SubElement(item, "ai-summary").text = d["summary"]
+
+        # AI heslo (právní téma sporu) – samostatný sloupec v index.html
+        if d.get("tag"):
+            SubElement(item, "ai-tag").text = d["tag"]
 
         # Příznak „nové dnes" (čte ho index.html → tečka u názvu)
         if d.get("is_new"):

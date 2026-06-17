@@ -13,11 +13,19 @@
   .feed-link { display: inline-block; background: #f0f0f0; padding: 4px 10px; border-radius: 4px; font-family: monospace; font-size: 0.9em; text-decoration: none; color: #0366d6; }
   .feed-link:hover { background: #e0e0e0; }
   table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9em; }
+  table.fixed { table-layout: fixed; }
+  table.fixed th, table.fixed td { overflow-wrap: anywhere; }
   th { text-align: left; background: #f6f6f6; padding: 6px 8px; border-bottom: 2px solid #ddd; }
-  td { padding: 8px 8px; border-bottom: 1px solid #eee; vertical-align: top; }
+  td { padding: 9px 10px; border-bottom: 1px solid #eee; vertical-align: top; }
   td a { color: #0366d6; text-decoration: none; }
   td a:hover { text-decoration: underline; }
-  .summary { font-size: 0.9em; color: #555; line-height: 1.4; }
+  /* Sloupce feedu rozhodnutí – užší shrnutí kvůli čitelnosti */
+  .col-name { width: 22%; }
+  .col-heslo { width: 17%; }
+  .col-summary { width: 47%; }
+  .col-date { width: 14%; white-space: nowrap; }
+  .summary { font-size: 0.92em; color: #3d3d3d; line-height: 1.55; }
+  .heslo { display: inline-block; background: #eef2ff; color: #3730a3; font-size: 0.8em; font-weight: 600; padding: 2px 9px; border-radius: 11px; line-height: 1.35; }
   .new-dot { color: #2da44e; font-size: 0.7em; vertical-align: middle; }
   .tag { display: inline-block; font-size: 0.75em; padding: 1px 6px; border-radius: 3px; font-weight: 600; }
   .tag-ruling { background: #dff0d8; color: #3c763d; }
@@ -46,7 +54,7 @@
 <footer>Automaticky aktualizováno každý den. Přidejte XML odkazy do RSS čtečky (Zotero, NetNewsWire, Feedly aj.).</footer>
 
 <script>
-function loadFeed(url, containerId, columns) {
+function loadFeed(url, containerId, columns, tableClass) {
   fetch(url)
     .then(r => r.text())
     .then(xml => {
@@ -60,14 +68,14 @@ function loadFeed(url, containerId, columns) {
         return;
       }
 
-      let html = "<table><thead><tr>";
-      columns.forEach(c => { html += "<th>" + c.label + "</th>"; });
+      let html = "<table" + (tableClass ? ' class="' + tableClass + '"' : "") + "><thead><tr>";
+      columns.forEach(c => { html += "<th" + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.label + "</th>"; });
       html += "</tr></thead><tbody>";
 
       items.forEach(item => {
         html += "<tr>";
         columns.forEach(c => {
-          html += "<td>" + c.render(item) + "</td>";
+          html += "<td" + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.render(item) + "</td>";
         });
         html += "</tr>";
       });
@@ -108,15 +116,20 @@ function newDot(item) {
 }
 
 loadFeed("feed.xml", "feed-nsoud", [
-  { label: "Název", render: i => newDot(i) + '<a href="' + i.querySelector("link").textContent + '">' + i.querySelector("title").textContent + '</a>' },
-  { label: "Shrnutí", render: i => {
+  { label: "Název", cls: "col-name", render: i => newDot(i) + '<a href="' + i.querySelector("link").textContent + '">' + i.querySelector("title").textContent + '</a>' },
+  { label: "Heslo", cls: "col-heslo", render: i => {
+    const tagEl = i.querySelector("ai-tag");
+    const tag = tagEl ? tagEl.textContent.trim() : "";
+    return tag ? '<span class="heslo">' + tag + '</span>' : "";
+  } },
+  { label: "Shrnutí", cls: "col-summary", render: i => {
     const sumEl = i.querySelector("ai-summary");
     const summary = sumEl ? sumEl.textContent.trim() : "";
     if (!summary) return "";
     return '<span class="summary">' + summary + '</span>';
   } },
-  { label: "Datum", render: getDate }
-]);
+  { label: "Datum", cls: "col-date", render: getDate }
+], "fixed");
 
 loadFeed("ipcuria_feed.xml", "feed-cjeu", [
   { label: "Typ", render: i => getTag(i.querySelector("title").textContent) },
