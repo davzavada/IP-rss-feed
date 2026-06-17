@@ -87,7 +87,13 @@ def summarize_pdf(pdf_bytes):
                 {"text": GEMINI_PROMPT},
             ]
         }],
-        "generationConfig": {"temperature": 0.2, "maxOutputTokens": 400},
+        "generationConfig": {
+            "temperature": 0.2,
+            "maxOutputTokens": 800,
+            # gemini-2.5-flash je „thinking" model – bez vypnutí spotřebuje
+            # token budget na přemýšlení a shrnutí se usekne (MAX_TOKENS).
+            "thinkingConfig": {"thinkingBudget": 0},
+        },
     }
 
     for attempt in range(GEMINI_MAX_RETRIES):
@@ -110,9 +116,14 @@ def summarize_pdf(pdf_bytes):
                 continue
             r.raise_for_status()
             data = r.json()
-            parts = data["candidates"][0]["content"]["parts"]
-            text = "".join(p.get("text", "") for p in parts).strip()
-            return re.sub(r"\s+", " ", text)
+            cand = data["candidates"][0]
+            parts = cand.get("content", {}).get("parts", [])
+            text = re.sub(r"\s+", " ", "".join(p.get("text", "") for p in parts).strip())
+            # Useknutá odpověď (MAX_TOKENS) – necachujeme půlku věty.
+            if cand.get("finishReason") == "MAX_TOKENS":
+                print(f"    Gemini: useknuto (MAX_TOKENS), necachuji – '{text[:40]}…'")
+                return ""
+            return text
         except Exception as e:
             _gemini_last_call = time.monotonic()
             print(f"    CHYBA Gemini: {e}")
