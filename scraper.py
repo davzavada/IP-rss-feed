@@ -38,9 +38,21 @@ OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "feed.
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feed_seen.json")
 
 
+JUDIKATURA_HOST = "https://rozhodnuti.nsoud.cz"
+
+
 def normalize_case(case_number):
     """Sjednotí mezery ve spisové značce pro porovnání/deduplikaci."""
     return re.sub(r"\s+", " ", case_number).strip()
+
+
+def abs_url(href):
+    """Doplní host k relativní cestě a zakóduje mezery (syrový Domino výstup)."""
+    if not href:
+        return ""
+    if href.startswith("/"):
+        href = JUDIKATURA_HOST + href
+    return href.replace(" ", "%20")
 
 
 # --- Stav: kdy jsme položku poprvé viděli (pro datum u judikatury) ---
@@ -154,7 +166,7 @@ def fetch_judikatura(days=JUDIKATURA_DAYS):
             continue
 
         case_number = normalize_case(link.get_text(strip=True))
-        detail_url = link.get("href", "")
+        detail_url = abs_url(link.get("href", ""))
 
         pdf_url = ""
         rtf_url = ""
@@ -162,9 +174,9 @@ def fetch_judikatura(days=JUDIKATURA_DAYS):
             href = a["href"]
             low = href.lower()
             if ".pdf?openelement" in low or low.endswith(".pdf"):
-                pdf_url = href
+                pdf_url = abs_url(href)
             elif ".rtf?openelement" in low or low.endswith(".rtf"):
-                rtf_url = href
+                rtf_url = abs_url(href)
 
         cat_el = row.select_one("td.category")
         category = cat_el.get_text(strip=True) if cat_el else ""
