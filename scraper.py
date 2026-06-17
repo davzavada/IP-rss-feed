@@ -13,6 +13,7 @@ import base64
 import json
 import os
 import re
+import time
 from datetime import datetime, timedelta, timezone
 from urllib.parse import quote
 from xml.etree.ElementTree import Element, SubElement, ElementTree, indent
@@ -61,13 +62,19 @@ GEMINI_PROMPT = (
     "(o co ve sporu šlo a jak soud rozhodl) do nejvýše pěti vět, "
     "v jazyce dokumentu (česky). Piš věcně, bez úvodních frází."
 )
+# Free tier gemini-2.5-flash má ~10 požadavků/min – udržujeme rozestup mezi voláními.
+GEMINI_MIN_INTERVAL = 7.0  # s mezi voláními
+GEMINI_MAX_RETRIES = 4     # opakování při 429/503
+_gemini_last_call = 0.0
 
 
 def summarize_pdf(pdf_bytes):
     """Pošle PDF rozhodnutí Geminimu a vrátí shrnutí (max ~5 vět) v češtině.
 
-    Vrací '' při jakékoli chybě nebo když není nastaven GEMINI_API_KEY.
+    Hlídá rozestup mezi voláními (rate limit free tier) a opakuje při 429/503
+    s exponenciálním backoffem. Vrací '' při neúspěchu nebo bez API klíče.
     """
+    global _gemini_last_call
     if not GEMINI_API_KEY or not pdf_bytes:
         return ""
     payload = {
@@ -82,21 +89,36 @@ def summarize_pdf(pdf_bytes):
         }],
         "generationConfig": {"temperature": 0.2, "maxOutputTokens": 400},
     }
-    try:
-        r = requests.post(
-            GEMINI_URL,
-            headers={"x-goog-api-key": GEMINI_API_KEY, "Content-Type": "application/json"},
-            json=payload,
-            timeout=60,
-        )
-        r.raise_for_status()
-        data = r.json()
-        parts = data["candidates"][0]["content"]["parts"]
-        text = "".join(p.get("text", "") for p in parts).strip()
-        return re.sub(r"\s+", " ", text)
-    except Exception as e:
-        print(f"    CHYBA Gemini: {e}")
-        return ""
+
+    for attempt in range(GEMINI_MAX_RETRIES):
+        # Throttle – minimální rozestup od posledního volání.
+        wait = GEMINI_MIN_INTERVAL - (time.monotonic() - _gemini_last_call)
+        if wait > 0:
+            time.sleep(wait)
+        try:
+            r = requests.post(
+                GEMINI_URL,
+                headers={"x-goog-api-key": GEMINI_API_KEY, "Content-Type": "application/json"},
+                json=payload,
+                timeout=60,
+            )
+            _gemini_last_call = time.monotonic()
+            if r.status_code in (429, 503):
+                backoff = GEMINI_MIN_INTERVAL * (2 ** attempt)
+                print(f"    Gemini {r.status_code}, čekám {backoff:.0f}s (pokus {attempt+1}/{GEMINI_MAX_RETRIES})")
+                time.sleep(backoff)
+                continue
+            r.raise_for_status()
+            data = r.json()
+            parts = data["candidates"][0]["content"]["parts"]
+            text = "".join(p.get("text", "") for p in parts).strip()
+            return re.sub(r"\s+", " ", text)
+        except Exception as e:
+            _gemini_last_call = time.monotonic()
+            print(f"    CHYBA Gemini: {e}")
+            return ""
+    print("    Gemini: vyčerpány pokusy (rate limit), zkusím příště")
+    return ""
 
 
 def normalize_case(case_number):
