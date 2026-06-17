@@ -103,6 +103,7 @@ function getTitle(item) {
 
 loadFeed("feed.xml", "feed-nsoud", [
   { label: "Název", render: i => '<a href="' + i.querySelector("link").textContent + '">' + i.querySelector("title").textContent + '</a>' },
+  { label: "Heslo", render: i => { const c = i.querySelector("category"); return c ? c.textContent : ""; } },
   { label: "Datum", render: getDate }
 ]);
 

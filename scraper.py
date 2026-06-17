@@ -34,8 +34,16 @@ USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 )
+JUDIKATURA_HEADERS = {
+    "User-Agent": USER_AGENT,
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "cs-CZ,cs;q=0.9,en;q=0.8",
+    "Referer": "https://rozhodnuti.nsoud.cz/",
+}
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "feed.xml")
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feed_seen.json")
+# Cache metadat detailu judikatury podle UNID (datum zveřejnění, heslo, …)
+META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feed_meta.json")
 
 
 JUDIKATURA_HOST = "https://rozhodnuti.nsoud.cz"
@@ -129,20 +137,14 @@ def fetch_judikatura(days=JUDIKATURA_DAYS):
         f"&SearchMax=1000&SearchOrder=4&Start=0&Count=200&pohled=1"
     )
 
-    headers = {
-        "User-Agent": USER_AGENT,
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "Accept-Language": "cs-CZ,cs;q=0.9,en;q=0.8",
-        "Referer": "https://rozhodnuti.nsoud.cz/",
-    }
     # Domino může vyžadovat session cookie – nejprve navštívíme úvodní stránku.
     session = requests.Session()
     try:
-        session.get("https://rozhodnuti.nsoud.cz/", headers=headers, timeout=30)
+        session.get("https://rozhodnuti.nsoud.cz/", headers=JUDIKATURA_HEADERS, timeout=30)
     except Exception:
         pass
 
-    resp = session.get(url, headers=headers, timeout=30)
+    resp = session.get(url, headers=JUDIKATURA_HEADERS, timeout=30)
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "html.parser")
 
@@ -198,6 +200,94 @@ def fetch_judikatura(days=JUDIKATURA_DAYS):
     return decisions
 
 
+# --- Detail rozhodnutí: datum zveřejnění a Heslo ---
+
+def load_meta():
+    """Načte cache metadat detailu {unid: {...}}."""
+    if not os.path.exists(META_FILE):
+        return {}
+    with open(META_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def save_meta(meta):
+    """Uloží cache metadat."""
+    with open(META_FILE, "w", encoding="utf-8") as f:
+        json.dump(meta, f, ensure_ascii=False, indent=2)
+
+
+def _label(text):
+    """Normalizuje popisek z levého sloupce (bez koncové dvojtečky)."""
+    return re.sub(r"\s+", " ", text).strip().rstrip(":").strip()
+
+
+def _cz_date_to_iso(text):
+    """'20. 5. 2026' -> '2026-05-20'. Vrátí '' když se nepodaří."""
+    m = re.search(r"(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})", text)
+    if not m:
+        return ""
+    day, month, year = (int(x) for x in m.groups())
+    return f"{year:04d}-{month:02d}-{day:02d}"
+
+
+def parse_detail(html):
+    """Z detailu rozhodnutí vytáhne metadata z tabulky popisek/hodnota."""
+    soup = BeautifulSoup(html, "html.parser")
+    info = {}
+    for row in soup.select("table#tabl tr"):
+        left = row.select_one("td.left-part")
+        right = row.select_one("td.right-part")
+        if not left or not right:
+            continue
+        label = _label(left.get_text(" ", strip=True))
+        value = re.sub(r"\s+", " ", right.get_text(" ", strip=True)).strip()
+        if label:
+            info[label] = value
+    return {
+        "published": _cz_date_to_iso(info.get("Zveřejněno na webu", "")),
+        "decided": _cz_date_to_iso(info.get("Datum rozhodnutí", "")),
+        "heslo": info.get("Heslo", ""),
+        "typ": info.get("Typ rozhodnutí", ""),
+    }
+
+
+def enrich_judikatura(decisions):
+    """Doplní judikaturním rozhodnutím datum zveřejnění a Heslo z detailu.
+
+    Metadata se cachují podle UNID, takže detail se stahuje jen u nových.
+    """
+    meta = load_meta()
+    session = requests.Session()
+    fetched = 0
+
+    for d in decisions:
+        unid = d.get("unid")
+        if not unid:
+            continue
+        if unid not in meta:
+            detail_url = d.get("detail_url") or (
+                f"{JUDIKATURA_HOST}/Judikatura/judikatura_ns.nsf/WebSearch/{unid}?openDocument"
+            )
+            try:
+                r = session.get(detail_url, headers=JUDIKATURA_HEADERS, timeout=30)
+                r.raise_for_status()
+                meta[unid] = parse_detail(r.text)
+                fetched += 1
+            except Exception as e:
+                print(f"    CHYBA detailu {d['case_number']}: {e}")
+                continue  # necachujeme, příště zkusíme znovu
+        m = meta.get(unid, {})
+        d["published"] = m.get("published", "")
+        d["decided"] = m.get("decided", "")
+        d["heslo"] = m.get("heslo", "")
+        d["typ"] = m.get("typ", "")
+
+    save_meta(meta)
+    if fetched:
+        print(f"    Staženo {fetched} nových detailů (datum zveřejnění + Heslo)")
+    return decisions
+
+
 # --- Sloučení obou zdrojů ---
 
 def merge_decisions(uredni, judikatura):
@@ -234,12 +324,22 @@ def resolve_dates(decisions):
 
     for d in decisions:
         pub_dt = None
-        if d.get("date"):
+
+        # 1) judikatura: skutečné datum zveřejnění z detailu (ISO)
+        if d.get("published"):
+            try:
+                pub_dt = datetime.fromisoformat(d["published"]).replace(tzinfo=timezone.utc)
+            except ValueError:
+                pub_dt = None
+
+        # 2) úřední deska: datum vyhlášení (DD.MM.YYYY)
+        if pub_dt is None and d.get("date"):
             try:
                 pub_dt = datetime.strptime(d["date"], "%d.%m.%Y").replace(tzinfo=timezone.utc)
             except ValueError:
                 pub_dt = None
 
+        # 3) fallback: první výskyt u nás
         if pub_dt is None:
             ident = d.get("unid") or normalize_case(d["case_number"])
             if ident not in seen:
@@ -284,12 +384,21 @@ def build_rss(decisions):
         guid = d.get("unid") or link or d["case_number"]
         SubElement(item, "guid", isPermaLink="false" if d.get("unid") or not link else "true").text = guid
 
-        desc_parts = [f"Rozhodnutí {d['case_number']}"]
+        prefix = (d.get("typ") or "Rozhodnutí").capitalize()
+        desc_parts = [f"{prefix} {d['case_number']}"]
+        if d.get("heslo"):
+            desc_parts.append(f"Heslo: {d['heslo']}")
+        if d.get("decided"):
+            desc_parts.append(f"rozhodnuto {d['decided']}")
         if d.get("date"):
             desc_parts.append(f"vyhlášeno {d['date']}")
         if d.get("category"):
             desc_parts.append(f"kategorie {d['category']}")
         SubElement(item, "description").text = ", ".join(desc_parts)
+
+        # Heslo jako RSS <category> (čte ho index.html do samostatného sloupce)
+        if d.get("heslo"):
+            SubElement(item, "category").text = d["heslo"]
 
         pub_dt = d["pub_dt"]
         SubElement(item, "pubDate").text = pub_dt.strftime("%a, %d %b %Y 12:00:00 +0000")
@@ -318,6 +427,7 @@ def main():
         print(f"    CHYBA: {e}")
 
     decisions = merge_decisions(uredni, judikatura)
+    decisions = enrich_judikatura(decisions)
     decisions = resolve_dates(decisions)
     decisions.sort(key=lambda d: d["pub_dt"], reverse=True)
 
