@@ -9,6 +9,7 @@ Spojuje dva zdroje:
 Položky se deduplikují podle spisové značky.
 """
 
+import base64
 import json
 import os
 import re
@@ -47,6 +48,55 @@ META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feed_meta.
 
 
 JUDIKATURA_HOST = "https://rozhodnuti.nsoud.cz"
+
+# --- Gemini: shrnutí rozhodnutí (volitelné, jen když je nastaven API klíč) ---
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
+GEMINI_MODEL = "gemini-2.5-flash"
+GEMINI_URL = (
+    f"https://generativelanguage.googleapis.com/v1beta/models/"
+    f"{GEMINI_MODEL}:generateContent"
+)
+GEMINI_PROMPT = (
+    "Toto je rozhodnutí Nejvyššího soudu ČR. Shrň jeho podstatu "
+    "(o co ve sporu šlo a jak soud rozhodl) do nejvýše pěti vět, "
+    "v jazyce dokumentu (česky). Piš věcně, bez úvodních frází."
+)
+
+
+def summarize_pdf(pdf_bytes):
+    """Pošle PDF rozhodnutí Geminimu a vrátí shrnutí (max ~5 vět) v češtině.
+
+    Vrací '' při jakékoli chybě nebo když není nastaven GEMINI_API_KEY.
+    """
+    if not GEMINI_API_KEY or not pdf_bytes:
+        return ""
+    payload = {
+        "contents": [{
+            "parts": [
+                {"inline_data": {
+                    "mime_type": "application/pdf",
+                    "data": base64.b64encode(pdf_bytes).decode("ascii"),
+                }},
+                {"text": GEMINI_PROMPT},
+            ]
+        }],
+        "generationConfig": {"temperature": 0.2, "maxOutputTokens": 400},
+    }
+    try:
+        r = requests.post(
+            GEMINI_URL,
+            headers={"x-goog-api-key": GEMINI_API_KEY, "Content-Type": "application/json"},
+            json=payload,
+            timeout=60,
+        )
+        r.raise_for_status()
+        data = r.json()
+        parts = data["candidates"][0]["content"]["parts"]
+        text = "".join(p.get("text", "") for p in parts).strip()
+        return re.sub(r"\s+", " ", text)
+    except Exception as e:
+        print(f"    CHYBA Gemini: {e}")
+        return ""
 
 
 def normalize_case(case_number):
@@ -259,6 +309,7 @@ def enrich_judikatura(decisions):
     meta = load_meta()
     session = requests.Session()
     fetched = 0
+    summarized = 0
 
     for d in decisions:
         unid = d.get("unid")
@@ -276,15 +327,32 @@ def enrich_judikatura(decisions):
             except Exception as e:
                 print(f"    CHYBA detailu {d['case_number']}: {e}")
                 continue  # necachujeme, příště zkusíme znovu
-        m = meta.get(unid, {})
+
+        m = meta[unid]
+
+        # Shrnutí přes Gemini – jen pokud chybí a máme PDF (cachuje se).
+        if GEMINI_API_KEY and not m.get("summary") and d.get("pdf_url"):
+            try:
+                pr = session.get(d["pdf_url"], headers=JUDIKATURA_HEADERS, timeout=60)
+                pr.raise_for_status()
+                summary = summarize_pdf(pr.content)
+                if summary:
+                    m["summary"] = summary
+                    summarized += 1
+            except Exception as e:
+                print(f"    CHYBA stahování PDF {d['case_number']}: {e}")
+
         d["published"] = m.get("published", "")
         d["decided"] = m.get("decided", "")
         d["heslo"] = m.get("heslo", "")
         d["typ"] = m.get("typ", "")
+        d["summary"] = m.get("summary", "")
 
     save_meta(meta)
     if fetched:
         print(f"    Staženo {fetched} nových detailů (datum zveřejnění + Heslo)")
+    if summarized:
+        print(f"    Vygenerováno {summarized} shrnutí (Gemini {GEMINI_MODEL})")
     return decisions
 
 
@@ -385,16 +453,21 @@ def build_rss(decisions):
         SubElement(item, "guid", isPermaLink="false" if d.get("unid") or not link else "true").text = guid
 
         prefix = (d.get("typ") or "Rozhodnutí").capitalize()
-        desc_parts = [f"{prefix} {d['case_number']}"]
+        meta_parts = [f"{prefix} {d['case_number']}"]
         if d.get("heslo"):
-            desc_parts.append(f"Heslo: {d['heslo']}")
+            meta_parts.append(f"Heslo: {d['heslo']}")
         if d.get("decided"):
-            desc_parts.append(f"rozhodnuto {d['decided']}")
+            meta_parts.append(f"rozhodnuto {d['decided']}")
         if d.get("date"):
-            desc_parts.append(f"vyhlášeno {d['date']}")
+            meta_parts.append(f"vyhlášeno {d['date']}")
         if d.get("category"):
-            desc_parts.append(f"kategorie {d['category']}")
-        SubElement(item, "description").text = ", ".join(desc_parts)
+            meta_parts.append(f"kategorie {d['category']}")
+        meta_line = ", ".join(meta_parts)
+        if d.get("summary"):
+            desc = f"{d['summary']}\n\n({meta_line})"
+        else:
+            desc = meta_line
+        SubElement(item, "description").text = desc
 
         # Heslo jako RSS <category> (čte ho index.html do samostatného sloupce)
         if d.get("heslo"):
