@@ -100,13 +100,11 @@ function getTitle(item) {
 }
 
 loadFeed("feed.xml", "feed-nsoud", [
-  { label: "Název", render: i => {
-    const link = i.querySelector("link").textContent;
-    const title = i.querySelector("title").textContent;
+  { label: "Název", render: i => '<a href="' + i.querySelector("link").textContent + '">' + i.querySelector("title").textContent + '</a>' },
+  { label: "Shrnutí", render: i => {
     const desc = i.querySelector("description") ? i.querySelector("description").textContent : "";
     const summary = desc.includes("\n\n") ? desc.split("\n\n")[0].trim() : "";
-    return '<a href="' + link + '">' + title + '</a>' +
-      (summary ? '<br><span style="font-size:0.85em;color:#555;font-style:italic">' + summary + '</span>' : '');
+    return summary ? '<span style="font-size:0.9em;color:#555">' + summary + '</span>' : "";
   } },
   { label: "Heslo", render: i => { const c = i.querySelector("category"); return c ? c.textContent : ""; } },
   { label: "Datum", render: getDate }
