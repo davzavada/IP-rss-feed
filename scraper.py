@@ -114,15 +114,39 @@ def fetch_judikatura(days=JUDIKATURA_DAYS):
     )
     url = (
         f"{JUDIKATURA_URL}?SearchView&Query={quote(query)}"
-        f"&SearchMax=1000&SearchOrder=4&Start=0&Count=1000&pohled=1"
+        f"&SearchMax=1000&SearchOrder=4&Start=0&Count=200&pohled=1"
     )
 
-    resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=30)
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "cs-CZ,cs;q=0.9,en;q=0.8",
+        "Referer": "https://rozhodnuti.nsoud.cz/",
+    }
+    # Domino může vyžadovat session cookie – nejprve navštívíme úvodní stránku.
+    session = requests.Session()
+    try:
+        session.get("https://rozhodnuti.nsoud.cz/", headers=headers, timeout=30)
+    except Exception:
+        pass
+
+    resp = session.get(url, headers=headers, timeout=30)
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "html.parser")
 
+    rows = soup.select("table#tabl tbody tr")
+    if not rows:
+        # Diagnostika – proč nejsou výsledky
+        text = resp.text
+        print(f"    [diag] HTTP {resp.status_code}, finální URL: {resp.url}")
+        print(f"    [diag] délka odpovědi: {len(text)} B, tabulek: {len(soup.find_all('table'))}")
+        print(f"    [diag] 'id=\"tabl\"' přítomno: {'tabl' in text}; "
+              f"'Výsledky' přítomno: {'Výsledky' in text}")
+        snippet = re.sub(r'\s+', ' ', text[:600])
+        print(f"    [diag] začátek: {snippet}")
+
     decisions = []
-    for row in soup.select("table#tabl tbody tr"):
+    for row in rows:
         link = row.select_one("a.odk")
         if not link:
             continue
