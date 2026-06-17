@@ -106,7 +106,6 @@ loadFeed("feed.xml", "feed-nsoud", [
     const summary = desc.includes("\n\n") ? desc.split("\n\n")[0].trim() : "";
     return summary ? '<span style="font-size:0.9em;color:#555">' + summary + '</span>' : "";
   } },
-  { label: "Heslo", render: i => { const c = i.querySelector("category"); return c ? c.textContent : ""; } },
   { label: "Datum", render: getDate }
 ]);
 
