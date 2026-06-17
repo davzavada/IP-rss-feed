@@ -89,7 +89,7 @@ def summarize_pdf(pdf_bytes):
         }],
         "generationConfig": {
             "temperature": 0.2,
-            "maxOutputTokens": 800,
+            "maxOutputTokens": 2048,
             # gemini-2.5-flash je „thinking" model – bez vypnutí spotřebuje
             # token budget na přemýšlení a shrnutí se usekne (MAX_TOKENS).
             "thinkingConfig": {"thinkingBudget": 0},
