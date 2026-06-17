@@ -62,9 +62,10 @@ GEMINI_PROMPT = (
     "(o co ve sporu šlo a jak soud rozhodl) do nejvýše pěti vět, "
     "v jazyce dokumentu (česky). Piš věcně, bez úvodních frází."
 )
-# Free tier gemini-2.5-flash má ~10 požadavků/min – udržujeme rozestup mezi voláními.
-GEMINI_MIN_INTERVAL = 7.0  # s mezi voláními
-GEMINI_MAX_RETRIES = 4     # opakování při 429/503
+# Skutečné free-tier limity gemini-2.5-flash: RPM 5, RPD 20 (TPM 250K).
+GEMINI_MIN_INTERVAL = 13.0  # s mezi voláními (RPM 5 → 60/5 = 12, rezerva)
+GEMINI_DAILY_LIMIT = 20     # max volání za běh (RPD 20) – zbytek se doplní příště
+GEMINI_MAX_RETRIES = 3      # opakování při 429/503
 _gemini_last_call = 0.0
 
 
@@ -343,6 +344,7 @@ def enrich_judikatura(decisions):
     session = requests.Session()
     fetched = 0
     summarized = 0
+    gemini_calls = 0  # počítá pokusy (kvůli RPD limitu, i neúspěšné se počítají)
 
     for d in decisions:
         unid = d.get("unid")
@@ -363,11 +365,14 @@ def enrich_judikatura(decisions):
 
         m = meta[unid]
 
-        # Shrnutí přes Gemini – jen pokud chybí a máme PDF (cachuje se).
-        if GEMINI_API_KEY and not m.get("summary") and d.get("pdf_url"):
+        # Shrnutí přes Gemini – jen pokud chybí, máme PDF a nevyčerpali jsme
+        # denní limit (RPD 20). Zbytek se doplní v dalších bězích (cache).
+        if (GEMINI_API_KEY and not m.get("summary") and d.get("pdf_url")
+                and gemini_calls < GEMINI_DAILY_LIMIT):
             try:
                 pr = session.get(d["pdf_url"], headers=JUDIKATURA_HEADERS, timeout=60)
                 pr.raise_for_status()
+                gemini_calls += 1
                 summary = summarize_pdf(pr.content)
                 if summary:
                     m["summary"] = summary
@@ -384,8 +389,11 @@ def enrich_judikatura(decisions):
     save_meta(meta)
     if fetched:
         print(f"    Staženo {fetched} nových detailů (datum zveřejnění + Heslo)")
-    if summarized:
-        print(f"    Vygenerováno {summarized} shrnutí (Gemini {GEMINI_MODEL})")
+    if gemini_calls:
+        print(f"    Gemini: {summarized}/{gemini_calls} shrnutí ok "
+              f"(denní limit RPD {GEMINI_DAILY_LIMIT})")
+        if gemini_calls >= GEMINI_DAILY_LIMIT:
+            print("    Dosažen denní limit Gemini – zbytek se doplní v dalším běhu")
     return decisions
 
 
