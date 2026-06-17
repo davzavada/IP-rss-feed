@@ -63,8 +63,8 @@ GEMINI_PROMPT = (
     "(o co ve sporu šlo a jak soud rozhodl) do nejvýše pěti vět, "
     "v jazyce dokumentu (česky). Piš věcně, bez úvodních frází."
 )
-# Gemma 4 má štědré limity – jen mírný rozestup mezi voláními (throttling).
-GEMINI_MIN_INTERVAL = 2.5   # s mezi voláními
+# Gemma 4 má štědré limity – throttling na 12 požadavků za minutu (5 s mezi voláními).
+GEMINI_MIN_INTERVAL = 5.0   # s mezi voláními (= 12 req/min)
 GEMINI_MAX_RETRIES = 3      # opakování při 429/500/502/503
 _gemini_last_call = 0.0
 
