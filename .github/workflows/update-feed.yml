@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '0 6 * * *'  # 6:00 UTC = 7:00/8:00 CET/CEST
   workflow_dispatch:       # ruční spuštění
+    inputs:
+      skip_gemini:
+        description: 'Přeskočit generování AI shrnutí (Gemini)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -26,6 +31,7 @@ jobs:
       - name: Run scrapers
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SKIP_GEMINI: ${{ inputs.skip_gemini }}
         run: |
           python scraper.py
           python scraper_ipcuria.py

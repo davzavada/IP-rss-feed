@@ -381,6 +381,13 @@ def enrich_summaries(decisions):
     """
     if not GEMINI_API_KEY:
         return decisions
+    if os.environ.get("SKIP_GEMINI", "").lower() in ("1", "true", "yes"):
+        print("    Gemini přeskočen (SKIP_GEMINI)")
+        meta = load_meta()
+        for d in decisions:
+            unid = d.get("unid")
+            d["summary"] = meta.get(unid, {}).get("summary", "") if unid else ""
+        return decisions
 
     meta = load_meta()
     session = requests.Session()
