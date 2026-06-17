@@ -52,7 +52,7 @@ JUDIKATURA_HOST = "https://rozhodnuti.nsoud.cz"
 
 # --- Gemini: shrnutí rozhodnutí (volitelné, jen když je nastaven API klíč) ---
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
-GEMINI_MODEL = "gemini-2.5-flash"
+GEMINI_MODEL = "gemini-2.5-flash-lite"
 GEMINI_URL = (
     f"https://generativelanguage.googleapis.com/v1beta/models/"
     f"{GEMINI_MODEL}:generateContent"
