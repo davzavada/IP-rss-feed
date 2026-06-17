@@ -17,6 +17,8 @@
   td { padding: 8px 8px; border-bottom: 1px solid #eee; vertical-align: top; }
   td a { color: #0366d6; text-decoration: none; }
   td a:hover { text-decoration: underline; }
+  .summary { max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block; cursor: help; }
+  .summary:hover { text-decoration: underline; }
   .tag { display: inline-block; font-size: 0.75em; padding: 1px 6px; border-radius: 3px; font-weight: 600; }
   .tag-ruling { background: #dff0d8; color: #3c763d; }
   .tag-referral { background: #d9edf7; color: #31708f; }
@@ -104,7 +106,9 @@ loadFeed("feed.xml", "feed-nsoud", [
   { label: "Shrnutí", render: i => {
     const desc = i.querySelector("description") ? i.querySelector("description").textContent : "";
     const summary = desc.includes("\n\n") ? desc.split("\n\n")[0].trim() : "";
-    return summary ? '<span style="font-size:0.9em;color:#555">' + summary + '</span>' : "";
+    if (!summary) return "";
+    const escaped = summary.replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    return '<span class="summary" title="' + escaped + '">📄 ' + escaped + '</span>';
   } },
   { label: "Datum", render: getDate }
 ]);
