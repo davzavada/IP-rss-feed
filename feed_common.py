@@ -128,10 +128,11 @@ NEPRIMY_PROMPT = (
     "Odpověz česky přesně ve dvou částech, bez úvodních frází a bez "
     "dalšího textu:\n"
     "HESLO: výstižné právní téma o 1–3 slovech.\n"
-    "SHRNUTÍ: nejvýše dvě věty – stručně popiš, jak soud nepřímý účinek "
-    "unijního práva použil: které ustanovení českého práva vykládal "
-    "eurokonformně, ve vztahu k jaké směrnici (či unijní úpravě) a s jakým "
-    "závěrem. Drž se stručnosti a nic si nevymýšlej."
+    "SHRNUTÍ: nejvýše tři věty – vysvětli, PROČ soud sáhl k eurokonformnímu "
+    "(směrnicekonformnímu) výkladu (k jaké směrnici či unijní úpravě měl "
+    "vykládané české právo přiblížit a z jakého důvodu) a JAK ho aplikoval "
+    "(které ustanovení českého práva takto vyložil a s jakým konkrétním "
+    "závěrem). Drž se stručnosti a nic si nevymýšlej."
 )
 
 

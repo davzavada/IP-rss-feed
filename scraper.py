@@ -298,8 +298,12 @@ def enrich_metadata(decisions):
 
 
 def enrich_summaries(decisions):
-    """Vygeneruje AI shrnutí přes Gemini – jen pro předané (už filtrované)
-    položky bez shrnutí, do denního limitu RPD. Shrnutí se cachují podle UNID.
+    """Vygeneruje AI shrnutí přes Gemini – pro předané (už filtrované) položky
+    s PDF, které shrnutí ještě nemají.
+
+    Cachuje se podle UNID; když UNID není (čerstvě vyhlášené rozhodnutí jen
+    z úřední desky, které ještě není v databázi judikatury), podle spisové
+    značky – jinak by takové položky shrnutí nikdy nedostaly.
     """
     if not gemini_enabled():
         return decisions
@@ -310,11 +314,11 @@ def enrich_summaries(decisions):
     gemini_calls = 0
 
     for d in decisions:
-        unid = d.get("unid")
-        if not unid or unid not in meta:
+        key = d.get("unid") or normalize_case(d["case_number"])
+        if not key or not d.get("pdf_url"):
             continue
-        m = meta[unid]
-        if m.get("summary") or not d.get("pdf_url"):
+        m = meta.setdefault(key, {})
+        if m.get("summary"):
             d["summary"] = m.get("summary", "")
             d["tag"] = m.get("tag", "")
             continue
