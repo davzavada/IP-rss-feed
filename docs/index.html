@@ -130,7 +130,7 @@ loadFeed("feed.xml", "feed-nsoud", [
     const summary = text(i, "ai-summary");
     return summary ? '<span class="summary">' + summary + '</span>' : "";
   } },
-  { label: "Datum", cls: "col-date", render: getDate }
+  { label: "Datum zveřejnění", cls: "col-date", render: getDate }
 ]);
 
 loadFeed("ipcuria_feed.xml", "feed-cjeu", [
@@ -142,6 +142,10 @@ loadFeed("ipcuria_feed.xml", "feed-cjeu", [
 loadFeed("neprimy_ucinek_feed.xml", "feed-nu", [
   { label: "Název", cls: "col-name", render: nameCell },
   { label: "Klíčová slova", render: i => text(i, "description").split("\n").pop().replace(/^Nalezená klíčová slova:\s*/, "") },
+  { label: "Shrnutí", cls: "col-summary", render: i => {
+    const summary = text(i, "ai-summary");
+    return summary ? '<span class="summary">' + summary + '</span>' : "";
+  } },
   { label: "Datum", cls: "col-date", render: getDate }
 ]);
 

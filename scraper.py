@@ -9,17 +9,17 @@ Spojuje dva zdroje:
 Položky se deduplikují podle spisové značky.
 """
 
-import base64
 import json
 import os
 import re
-import time
 from datetime import datetime, timedelta, timezone
 from urllib.parse import quote
 from xml.etree.ElementTree import Element, SubElement, ElementTree, indent
 
 import requests
 from bs4 import BeautifulSoup
+
+from feed_common import JUDIKATURA_PROMPT, gemini_enabled, gemini_summarize_pdf
 
 # --- Zdroj 1: úřední deska ---
 URL = "https://www.nsoud.cz/uredni-deska/obcanskopravni-a-obchodni-kolegium/vyhlasovana-rozhodnuti"
@@ -50,119 +50,8 @@ META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feed_meta.
 
 JUDIKATURA_HOST = "https://rozhodnuti.nsoud.cz"
 
-# --- AI shrnutí rozhodnutí (volitelné, jen když je nastaven API klíč) ---
-# Používáme Gemma 4 31B přes Gemini API – má výrazně štědřejší free-tier limity.
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
-GEMINI_MODEL = "gemma-4-31b-it"
-GEMINI_URL = (
-    f"https://generativelanguage.googleapis.com/v1beta/models/"
-    f"{GEMINI_MODEL}:generateContent"
-)
-GEMINI_PROMPT = (
-    "Toto je rozhodnutí Nejvyššího soudu ČR. Odpověz česky přesně ve dvou "
-    "částech, bez úvodních frází a bez dalšího textu:\n"
-    "HESLO: výstižné právní téma sporu o 1–3 slovech (např. Nekalá soutěž, "
-    "Smluvní pokuta, Autorské právo, Rozsudek pro uznání, Promlčení).\n"
-    "SHRNUTÍ: nejvýše tři věty. V první větě stručně kdo se s kým soudil "
-    "(uveď jména stran, ale bez právní formy, tj. bez s.r.o., a.s., spol. "
-    "apod.) a o co šlo. Pak uveď, jakou právní otázku soud řešil a jak ji "
-    "vyřešil – konkrétní právní závěr soudu (např. „Podle soudu se právo "
-    "na informace podle § 40 autorského zákona nepromlčuje.“). Drž se "
-    "stručnosti."
-)
-# Gemma 4 má štědré limity – throttling na 12 požadavků za minutu (5 s mezi voláními).
-GEMINI_MIN_INTERVAL = 5.0   # s mezi voláními (= 12 req/min)
-GEMINI_MAX_RETRIES = 3      # opakování při 429/500/502/503
-_gemini_last_call = 0.0
-
-
-def parse_ai_response(raw):
-    """Rozparsuje odpověď Gemmy ve tvaru 'HESLO: ...' + 'SHRNUTÍ: ...'.
-
-    Vrací (shrnutí, heslo). Když značky chybí, bere celý text jako shrnutí.
-    """
-    def clean(s):
-        return re.sub(r"\s+", " ", s).strip()
-
-    heslo = ""
-    mh = re.search(r"HESLO:\s*(.*?)\s*(?=SHRNUT[IÍ]:|$)", raw, re.IGNORECASE | re.DOTALL)
-    if mh:
-        heslo = clean(mh.group(1)).rstrip(".")
-    ms = re.search(r"SHRNUT[IÍ]:\s*(.*)", raw, re.IGNORECASE | re.DOTALL)
-    if ms:
-        summary = ms.group(1)
-    elif mh:
-        summary = raw[mh.end():]
-    else:
-        summary = raw
-    return clean(summary), heslo
-
-
-def summarize_pdf(pdf_bytes):
-    """Pošle PDF rozhodnutí Gemmě a vrátí (shrnutí, heslo) v češtině.
-
-    Shrnutí je krátké (max 2 věty) se jmény stran, heslo je právní téma sporu.
-    Hlídá rozestup mezi voláními (rate limit free tier) a opakuje při 429/503
-    s exponenciálním backoffem. Vrací ('', '') při neúspěchu nebo bez API klíče.
-    """
-    global _gemini_last_call
-    if not GEMINI_API_KEY or not pdf_bytes:
-        return "", ""
-    payload = {
-        "contents": [{
-            "parts": [
-                {"inline_data": {
-                    "mime_type": "application/pdf",
-                    "data": base64.b64encode(pdf_bytes).decode("ascii"),
-                }},
-                {"text": GEMINI_PROMPT},
-            ]
-        }],
-        # Gemma je „thinking" model a thinkingConfig nepodporuje – necháme vyšší
-        # strop tokenů, ať se přemýšlení i odpověď vejdou (jinak MAX_TOKENS).
-        "generationConfig": {
-            "temperature": 0.2,
-            "maxOutputTokens": 4096,
-        },
-    }
-
-    for attempt in range(GEMINI_MAX_RETRIES):
-        # Throttle – minimální rozestup od posledního volání.
-        wait = GEMINI_MIN_INTERVAL - (time.monotonic() - _gemini_last_call)
-        if wait > 0:
-            time.sleep(wait)
-        try:
-            r = requests.post(
-                GEMINI_URL,
-                headers={"x-goog-api-key": GEMINI_API_KEY, "Content-Type": "application/json"},
-                json=payload,
-                timeout=60,
-            )
-            _gemini_last_call = time.monotonic()
-            if r.status_code in (429, 500, 502, 503):
-                backoff = GEMINI_MIN_INTERVAL * (2 ** attempt)
-                print(f"    AI {r.status_code}, čekám {backoff:.0f}s (pokus {attempt+1}/{GEMINI_MAX_RETRIES})")
-                time.sleep(backoff)
-                continue
-            r.raise_for_status()
-            data = r.json()
-            cand = data["candidates"][0]
-            parts = cand.get("content", {}).get("parts", [])
-            # Gemma vrací „thought" části (přemýšlení) i odpověď – bereme jen odpověď.
-            raw = "".join(p.get("text", "") for p in parts if not p.get("thought")).strip()
-            # Useknutá odpověď (MAX_TOKENS) – necachujeme půlku věty.
-            if cand.get("finishReason") == "MAX_TOKENS":
-                print(f"    AI: useknuto (MAX_TOKENS), necachuji – '{raw[:40]}…'")
-                return "", ""
-            return parse_ai_response(raw)
-        except Exception as e:
-            _gemini_last_call = time.monotonic()
-            backoff = GEMINI_MIN_INTERVAL * (2 ** attempt)
-            print(f"    CHYBA AI: {e} – čekám {backoff:.0f}s (pokus {attempt+1}/{GEMINI_MAX_RETRIES})")
-            time.sleep(backoff)
-            continue
-    print("    AI: vyčerpány pokusy, zkusím příště")
-    return "", ""
+# AI shrnutí rozhodnutí používá sdílený Gemma klient z feed_common
+# (JUDIKATURA_PROMPT, gemini_summarize_pdf) – viz feed_common.py.
 
 
 def normalize_case(case_number):
@@ -412,16 +301,7 @@ def enrich_summaries(decisions):
     """Vygeneruje AI shrnutí přes Gemini – jen pro předané (už filtrované)
     položky bez shrnutí, do denního limitu RPD. Shrnutí se cachují podle UNID.
     """
-    if not GEMINI_API_KEY:
-        return decisions
-    if os.environ.get("SKIP_GEMINI", "").lower() in ("1", "true", "yes"):
-        print("    Gemini přeskočen (SKIP_GEMINI)")
-        meta = load_meta()
-        for d in decisions:
-            unid = d.get("unid")
-            m = meta.get(unid, {}) if unid else {}
-            d["summary"] = m.get("summary", "")
-            d["tag"] = m.get("tag", "")
+    if not gemini_enabled():
         return decisions
 
     meta = load_meta()
@@ -442,7 +322,7 @@ def enrich_summaries(decisions):
             pr = session.get(d["pdf_url"], headers=JUDIKATURA_HEADERS, timeout=60)
             pr.raise_for_status()
             gemini_calls += 1
-            summary, tag = summarize_pdf(pr.content)
+            summary, tag = gemini_summarize_pdf(pr.content, JUDIKATURA_PROMPT)
             if summary:
                 m["summary"] = summary
                 m["tag"] = tag
