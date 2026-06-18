@@ -3,58 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RSS Feeds – rss.davidzavada.cz</title>
+<title>RSS - IP / IT – rss.davidzavada.cz</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; width: 70%; max-width: 1400px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #333; }
-  h1 { border-bottom: 2px solid #333; padding-bottom: 8px; }
-  h2 { margin-top: 30px; color: #555; font-size: 1.1em; }
-  h2 a { color: inherit; text-decoration: none; }
-  h2 a:hover { text-decoration: underline; }
-  .feed-link { display: inline-block; background: #f0f0f0; padding: 4px 10px; border-radius: 4px; font-family: monospace; font-size: 0.9em; text-decoration: none; color: #0366d6; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; width: 80%; max-width: 1500px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #333; }
+  .page-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-bottom: 2px solid #333; padding-bottom: 8px; flex-wrap: wrap; }
+  h1 { margin: 0; }
+  .legend { font-size: 0.85em; color: #777; white-space: nowrap; }
+  h2 { margin-top: 34px; color: #555; font-size: 1.15em; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .feed-link { background: #f0f0f0; padding: 3px 9px; border-radius: 4px; font-family: monospace; font-size: 0.78em; font-weight: 400; text-decoration: none; color: #0366d6; }
   .feed-link:hover { background: #e0e0e0; }
-  table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9em; }
-  table.fixed { table-layout: fixed; }
-  table.fixed th, table.fixed td { overflow-wrap: anywhere; }
-  th { text-align: left; background: #f6f6f6; padding: 6px 8px; border-bottom: 2px solid #ddd; }
-  td { padding: 9px 10px; border-bottom: 1px solid #eee; vertical-align: top; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9em; table-layout: auto; }
+  th { text-align: left; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.74em; font-weight: 600; color: #999; padding: 6px 12px 6px 0; border-bottom: 1px solid #ddd; }
+  td { padding: 11px 12px 11px 0; border-bottom: 1px solid #eee; vertical-align: top; }
   td a { color: #0366d6; text-decoration: none; }
   td a:hover { text-decoration: underline; }
-  /* Sloupce feedu rozhodnutí – užší shrnutí kvůli čitelnosti */
-  .col-name { width: 22%; }
-  .col-heslo { width: 17%; }
-  .col-summary { width: 47%; }
-  .col-date { width: 14%; white-space: nowrap; }
-  .summary { font-size: 0.92em; color: #3d3d3d; line-height: 1.55; }
-  .heslo { display: inline-block; background: #eef2ff; color: #3730a3; font-size: 0.8em; font-weight: 600; padding: 2px 9px; border-radius: 11px; line-height: 1.35; }
+  /* Sloupce se zalamují podle obsahu, shrnutí dostane zbytek šířky. */
+  .col-name { white-space: nowrap; }
+  .col-summary { width: 60%; }
+  .col-date { white-space: nowrap; color: #777; }
+  .summary { color: #3d3d3d; line-height: 1.55; }
+  .heslo { display: inline-block; background: #eef2ff; color: #3730a3; font-size: 0.82em; font-weight: 600; padding: 2px 9px; border-radius: 11px; line-height: 1.35; }
   .new-dot { color: #2da44e; font-size: 0.7em; vertical-align: middle; }
-  .tag { display: inline-block; font-size: 0.75em; padding: 1px 6px; border-radius: 3px; font-weight: 600; }
+  .tag { display: inline-block; font-size: 0.78em; padding: 2px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
   .tag-ruling { background: #dff0d8; color: #3c763d; }
   .tag-referral { background: #d9edf7; color: #31708f; }
   .tag-appeal { background: #fcf8e3; color: #8a6d3b; }
   .tag-pending { background: #f2dede; color: #a94442; }
-  footer { margin-top: 40px; font-size: 0.8em; color: #999; border-top: 1px solid #eee; padding-top: 10px; }
+  footer { margin-top: 44px; font-size: 0.8em; color: #999; border-top: 1px solid #eee; padding-top: 10px; }
   #loading { color: #999; font-style: italic; }
 </style>
 </head>
 <body>
-<h1>RSS Feeds</h1>
+<div class="page-head">
+  <h1>RSS - IP / IT</h1>
+  <span class="legend"><span class="new-dot">●</span> nové dnes</span>
+</div>
 
-<h2><a href="feed.xml">Rozhodnutí senátu 23 Cdo – NS ČR</a></h2>
+<h2>Rozhodnutí senátu 23 Cdo <a class="feed-link" href="feed.xml">feed.xml</a></h2>
 <div id="feed-nsoud"><p id="loading">Načítám...</p></div>
 
-<h2><a href="ipcuria_feed.xml">CJEU IP case law</a></h2>
+<h2>Rozhodnutí CJEU k IP / IT <a class="feed-link" href="ipcuria_feed.xml">ipcuria_feed.xml</a></h2>
 <div id="feed-cjeu"><p id="loading">Načítám...</p></div>
 
-<h2><a href="neprimy_ucinek_feed.xml">Nepřímý účinek – NS ČR</a></h2>
+<h2>Nepřímý účinek – NS ČR <a class="feed-link" href="neprimy_ucinek_feed.xml">neprimy_ucinek_feed.xml</a></h2>
 <div id="feed-nu"><p id="loading">Načítám...</p></div>
 
-<h2><a href="journals_feed.xml">Právní časopisy</a></h2>
+<h2>Právní časopisy <a class="feed-link" href="journals_feed.xml">journals_feed.xml</a></h2>
 <div id="feed-journals"><p id="loading">Načítám...</p></div>
 
 <footer>Automaticky aktualizováno každý den. Přidejte XML odkazy do RSS čtečky (Zotero, NetNewsWire, Feedly aj.).</footer>
 
 <script>
-function loadFeed(url, containerId, columns, tableClass) {
+function loadFeed(url, containerId, columns) {
   fetch(url)
     .then(r => r.text())
     .then(xml => {
@@ -68,7 +68,7 @@ function loadFeed(url, containerId, columns, tableClass) {
         return;
       }
 
-      let html = "<table" + (tableClass ? ' class="' + tableClass + '"' : "") + "><thead><tr>";
+      let html = "<table><thead><tr>";
       columns.forEach(c => { html += "<th" + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.label + "</th>"; });
       html += "</tr></thead><tbody>";
 
@@ -88,6 +88,11 @@ function loadFeed(url, containerId, columns, tableClass) {
     });
 }
 
+function text(item, sel) {
+  const el = item.querySelector(sel);
+  return el ? el.textContent.trim() : "";
+}
+
 function getTag(title) {
   const m = title.match(/^\[(\w+)\]/);
   if (!m) return "";
@@ -102,49 +107,47 @@ function getDate(item) {
   return d.toLocaleDateString("cs-CZ");
 }
 
-function getTitle(item) {
-  const t = item.querySelector("title").textContent;
-  const link = item.querySelector("link").textContent;
-  const clean = t.replace(/^\[\w+\]\s*/, "");
-  return newDot(item) + '<a href="' + link + '">' + clean + '</a>';
-}
-
 function newDot(item) {
   return item.querySelector("is-new")
     ? '<span class="new-dot" title="Nové dnes">●</span> '
     : '';
 }
 
+function nameCell(item) {
+  const title = text(item, "title").replace(/^\[\w+\]\s*/, "");
+  const link = text(item, "link");
+  const inner = link ? '<a href="' + link + '">' + title + '</a>' : title;
+  return newDot(item) + inner;
+}
+
 loadFeed("feed.xml", "feed-nsoud", [
-  { label: "Název", cls: "col-name", render: i => newDot(i) + '<a href="' + i.querySelector("link").textContent + '">' + i.querySelector("title").textContent + '</a>' },
+  { label: "Název", cls: "col-name", render: nameCell },
   { label: "Heslo", cls: "col-heslo", render: i => {
-    const tagEl = i.querySelector("ai-tag");
-    const tag = tagEl ? tagEl.textContent.trim() : "";
+    const tag = text(i, "ai-tag");
     return tag ? '<span class="heslo">' + tag + '</span>' : "";
   } },
   { label: "Shrnutí", cls: "col-summary", render: i => {
-    const sumEl = i.querySelector("ai-summary");
-    const summary = sumEl ? sumEl.textContent.trim() : "";
-    if (!summary) return "";
-    return '<span class="summary">' + summary + '</span>';
+    const summary = text(i, "ai-summary");
+    return summary ? '<span class="summary">' + summary + '</span>' : "";
   } },
   { label: "Datum", cls: "col-date", render: getDate }
-], "fixed");
+]);
 
 loadFeed("ipcuria_feed.xml", "feed-cjeu", [
-  { label: "Typ", render: i => getTag(i.querySelector("title").textContent) },
-  { label: "Případ", render: getTitle },
-  { label: "Datum", render: getDate }
+  { label: "Typ", cls: "col-name", render: i => getTag(text(i, "title")) },
+  { label: "Případ", render: nameCell },
+  { label: "Datum", cls: "col-date", render: getDate }
 ]);
 
 loadFeed("neprimy_ucinek_feed.xml", "feed-nu", [
-  { label: "Název", render: i => newDot(i) + '<a href="' + i.querySelector("link").textContent + '">' + i.querySelector("title").textContent + '</a>' },
-  { label: "Datum", render: getDate }
+  { label: "Název", cls: "col-name", render: nameCell },
+  { label: "Klíčová slova", render: i => text(i, "description").split("\n").pop().replace(/^Nalezená klíčová slova:\s*/, "") },
+  { label: "Datum", cls: "col-date", render: getDate }
 ]);
 
 loadFeed("journals_feed.xml", "feed-journals", [
-  { label: "Časopis", render: i => newDot(i) + '<a href="' + i.querySelector("link").textContent + '">' + i.querySelector("title").textContent + '</a>' },
-  { label: "PDF", render: i => '<a href="' + i.querySelector("link").textContent + '">Stáhnout</a>' }
+  { label: "Časopis", cls: "col-name", render: nameCell },
+  { label: "PDF", cls: "col-date", render: i => '<a href="' + text(i, "link") + '">Stáhnout</a>' }
 ]);
 </script>
 </body>

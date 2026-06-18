@@ -60,12 +60,15 @@ GEMINI_URL = (
 )
 GEMINI_PROMPT = (
     "Toto je rozhodnutí Nejvyššího soudu ČR. Odpověz česky přesně ve dvou "
-    "řádcích, bez úvodních frází a bez dalšího textu:\n"
+    "částech, bez úvodních frází a bez dalšího textu:\n"
     "HESLO: výstižné právní téma sporu o 1–3 slovech (např. Nekalá soutěž, "
     "Smluvní pokuta, Autorské právo, Rozsudek pro uznání, Promlčení).\n"
-    "SHRNUTÍ: nejvýše dvě věty – kdo se s kým soudil (uveď jména stran, "
-    "ale bez právní formy, tj. bez s.r.o., a.s., spol. apod.), o co šlo "
-    "a jak soud rozhodl."
+    "SHRNUTÍ: nejvýše tři věty. V první větě stručně kdo se s kým soudil "
+    "(uveď jména stran, ale bez právní formy, tj. bez s.r.o., a.s., spol. "
+    "apod.) a o co šlo. Pak uveď, jakou právní otázku soud řešil a jak ji "
+    "vyřešil – konkrétní právní závěr soudu (např. „Podle soudu se právo "
+    "na informace podle § 40 autorského zákona nepromlčuje.“). Drž se "
+    "stručnosti."
 )
 # Gemma 4 má štědré limity – throttling na 12 požadavků za minutu (5 s mezi voláními).
 GEMINI_MIN_INTERVAL = 5.0   # s mezi voláními (= 12 req/min)
