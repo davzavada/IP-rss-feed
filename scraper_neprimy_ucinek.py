@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 import pdfplumber
 
 from feed_common import (
-    JUDIKATURA_PROMPT,
+    NEPRIMY_PROMPT,
     filter_by_first_seen,
     gemini_enabled,
     gemini_summarize_text,
@@ -53,7 +53,7 @@ def enrich_summaries(decisions):
         m = meta.get(g, {})
         if not m.get("summary") and d.get("text"):
             calls += 1
-            summary, tag = gemini_summarize_text(d["text"], JUDIKATURA_PROMPT)
+            summary, tag = gemini_summarize_text(d["text"], NEPRIMY_PROMPT)
             if summary:
                 m = {"summary": summary, "tag": tag}
                 meta[g] = m

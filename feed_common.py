@@ -120,6 +120,20 @@ JUDIKATURA_PROMPT = (
     "stručnosti."
 )
 
+# Prompt pro feed nepřímého účinku – cílem je popsat, JAK soud nepřímý
+# účinek unijního práva v rozhodnutí použil (ne obecné shrnutí sporu).
+NEPRIMY_PROMPT = (
+    "Toto je rozhodnutí Nejvyššího soudu ČR, které pracuje s nepřímým "
+    "účinkem unijního práva (eurokonformní/směrnicekonformní výklad). "
+    "Odpověz česky přesně ve dvou částech, bez úvodních frází a bez "
+    "dalšího textu:\n"
+    "HESLO: výstižné právní téma o 1–3 slovech.\n"
+    "SHRNUTÍ: nejvýše dvě věty – stručně popiš, jak soud nepřímý účinek "
+    "unijního práva použil: které ustanovení českého práva vykládal "
+    "eurokonformně, ve vztahu k jaké směrnici (či unijní úpravě) a s jakým "
+    "závěrem. Drž se stručnosti a nic si nevymýšlej."
+)
+
 
 def gemini_enabled():
     """True, když je nastaven API klíč a není zapnuté SKIP_GEMINI."""
