@@ -11,12 +11,60 @@ import requests
 from bs4 import BeautifulSoup
 import pdfplumber
 
-from feed_common import filter_by_first_seen
+from feed_common import (
+    JUDIKATURA_PROMPT,
+    filter_by_first_seen,
+    gemini_enabled,
+    gemini_summarize_text,
+    load_json,
+    save_json,
+)
 
 URL = "https://www.nsoud.cz/uredni-deska/obcanskopravni-a-obchodni-kolegium/vyhlasovana-rozhodnuti"
 BASE_URL = "https://www.nsoud.cz"
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "neprimy_ucinek_feed.xml")
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "neprimy_seen.json")
+META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "neprimy_meta.json")
+
+
+def _guid(d):
+    """Stabilní identifikátor rozhodnutí (shodný s oknem prvního výskytu)."""
+    return d.get("pdf_url") or d["case_number"]
+
+
+def enrich_summaries(decisions):
+    """Doplní AI shrnutí (právní otázka a její řešení) přes Gemma; cache podle guid.
+
+    Text rozhodnutí už máme z fáze hledání klíčových slov (d["text"]),
+    takže PDF znovu nestahujeme. Volá se až na ponechané položky.
+    """
+    meta = load_json(META_FILE)
+    if not gemini_enabled():
+        for d in decisions:
+            m = meta.get(_guid(d), {})
+            d["summary"] = m.get("summary", "")
+            d["tag"] = m.get("tag", "")
+        return decisions
+
+    summarized = 0
+    calls = 0
+    for d in decisions:
+        g = _guid(d)
+        m = meta.get(g, {})
+        if not m.get("summary") and d.get("text"):
+            calls += 1
+            summary, tag = gemini_summarize_text(d["text"], JUDIKATURA_PROMPT)
+            if summary:
+                m = {"summary": summary, "tag": tag}
+                meta[g] = m
+                summarized += 1
+        d["summary"] = m.get("summary", "")
+        d["tag"] = m.get("tag", "")
+
+    save_json(META_FILE, meta)
+    if calls:
+        print(f"  AI: {summarized}/{calls} shrnutí vygenerováno")
+    return decisions
 
 # Regex vzory pro nepřímý účinek – pokrývají skloňování
 KEYWORD_PATTERNS = [
@@ -135,11 +183,17 @@ def build_rss(decisions):
         if d.get("is_new"):
             SubElement(item, "is-new").text = "true"
 
+        if d.get("tag"):
+            SubElement(item, "ai-tag").text = d["tag"]
+        if d.get("summary"):
+            SubElement(item, "ai-summary").text = d["summary"]
+
         kw_str = ", ".join(d["found_keywords"])
-        SubElement(item, "description").text = (
-            f"Rozhodnutí {d['case_number']} vyhlášeno {d['date']}\n"
-            f"Nalezená klíčová slova: {kw_str}"
-        )
+        desc = f"Rozhodnutí {d['case_number']} vyhlášeno {d['date']}\n"
+        if d.get("summary"):
+            desc += f"{d['summary']}\n"
+        desc += f"Nalezená klíčová slova: {kw_str}"
+        SubElement(item, "description").text = desc
 
         try:
             dt = datetime.strptime(d["date"], "%d.%m.%Y").replace(tzinfo=timezone.utc)
@@ -178,6 +232,7 @@ def main():
         if found:
             print(f"NALEZENO: {', '.join(found)}")
             d["found_keywords"] = found
+            d["text"] = text  # uschováme pro AI shrnutí (ať PDF nestahujeme znovu)
             matched.append(d)
         else:
             print("nic")
@@ -189,6 +244,8 @@ def main():
         matched, lambda d: d.get("pdf_url") or d["case_number"], STATE_FILE, weeks=2
     )
     print(f"Po okně 2 týdnů: {len(matched)}")
+
+    matched = enrich_summaries(matched)
 
     rss = build_rss(matched)
     indent(rss, space="  ")
