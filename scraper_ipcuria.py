@@ -17,10 +17,12 @@ from feed_common import (
     gemini_summarize_text,
     load_json,
     save_json,
+    update_archive,
 )
 
 CURIA_BASE = "https://curia.europa.eu/juris/liste.do?num="
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "ipcuria_feed.xml")
+ARCHIVE_OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "ipcuria_archive.xml")
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ipcuria_seen.json")
 # Cache AI shrnutí podle guid ({guid: {"summary": ..., "tag": ...}}).
 META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ipcuria_meta.json")
@@ -264,9 +266,12 @@ def main():
         print(f"  [{d['category']}] {d['case_ref']} {d['case_name']} ({d['date_str']})")
 
     rss = build_rss(decisions)
-    indent(rss, space="  ")
 
     os.makedirs(os.path.dirname(OUTPUT), exist_ok=True)
+    archived = update_archive(ARCHIVE_OUTPUT, rss)  # archiv (nemaže staré položky)
+    print(f"Archiv: {archived} položek → {ARCHIVE_OUTPUT}")
+
+    indent(rss, space="  ")
     tree = ElementTree(rss)
     tree.write(OUTPUT, encoding="unicode", xml_declaration=True)
     print(f"RSS feed zapsán do {OUTPUT}")

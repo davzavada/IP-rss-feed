@@ -20,6 +20,7 @@ import os
 import re
 import time
 from datetime import datetime, timedelta, timezone
+from xml.etree.ElementTree import Element, SubElement, ElementTree, indent, parse as ET_parse
 
 import requests
 
@@ -90,6 +91,83 @@ def save_json(path, data):
     """Uloží data jako čitelný JSON (UTF-8)."""
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+# --- Trvalý archiv položek feedu ---
+# Hlavní feedy drží jen položky z posledních ~2 týdnů (okno prvního výskytu).
+# Archiv naopak položky nikdy nemaže – při každém běhu do něj přibydou aktuální
+# položky feedu (dedup podle guid) a starší v něm zůstávají.
+
+def _archive_item_copy(src_item):
+    """Vytvoří čistou kopii <item> pro archiv.
+
+    Vynechá příznak „nové dnes" (is-new) a jmenné prostory (dc:date), aby byl
+    archiv prostý prefixů a dal se opakovaně načítat bez kolizí jmenných prostorů.
+    """
+    new = Element("item")
+    for child in src_item:
+        tag = child.tag
+        if tag == "is-new" or tag.startswith("dc:") or tag.startswith("{"):
+            continue
+        el = SubElement(new, tag, dict(child.attrib))
+        el.text = child.text
+    return new
+
+
+def _archive_pubdate(item):
+    """Datum položky pro řazení archivu (z <pubDate>)."""
+    pd = item.findtext("pubDate") or ""
+    try:
+        return datetime.strptime(pd, "%a, %d %b %Y %H:%M:%S %z")
+    except ValueError:
+        return datetime.min.replace(tzinfo=timezone.utc)
+
+
+def update_archive(archive_file, rss, title_suffix=" – archiv"):
+    """Sloučí položky čerstvého feedu (`rss` Element) do trvalého archivu.
+
+    Existující archiv načte, aktuální položky do něj přidá/aktualizuje podle
+    guid (čerstvá data vyhrávají – doplní se tak i nově vzniklá AI shrnutí),
+    seřadí podle data sestupně a uloží. Vrací počet položek v archivu.
+    """
+    src_channel = rss.find("channel")
+    if src_channel is None:
+        return 0
+
+    items = {}
+    if os.path.exists(archive_file):
+        try:
+            old_channel = ET_parse(archive_file).getroot().find("channel")
+            if old_channel is not None:
+                for it in old_channel.findall("item"):
+                    g = it.findtext("guid")
+                    if g:
+                        items[g] = it
+        except Exception as e:
+            print(f"    CHYBA čtení archivu {archive_file}: {e}")
+
+    for it in src_channel.findall("item"):
+        g = it.findtext("guid")
+        if g:
+            items[g] = _archive_item_copy(it)
+
+    rss_out = Element("rss", version="2.0")
+    channel = SubElement(rss_out, "channel")
+    for tag in ("title", "link", "description", "language"):
+        el = src_channel.find(tag)
+        if el is None:
+            continue
+        text = el.text or ""
+        SubElement(channel, tag).text = (text + title_suffix) if tag == "title" else text
+    SubElement(channel, "lastBuildDate").text = datetime.now(timezone.utc).strftime(
+        "%a, %d %b %Y %H:%M:%S +0000"
+    )
+    for it in sorted(items.values(), key=_archive_pubdate, reverse=True):
+        channel.append(it)
+
+    indent(rss_out, space="  ")
+    ElementTree(rss_out).write(archive_file, encoding="unicode", xml_declaration=True)
+    return len(items)
 
 
 # --- AI shrnutí přes Gemma (Gemini API) ---

@@ -31,6 +31,12 @@
   .tag-pending { background: #f2dede; color: #a94442; }
   footer { margin-top: 44px; font-size: 0.8em; color: #999; border-top: 1px solid #eee; padding-top: 10px; }
   #loading { color: #999; font-style: italic; }
+  .archive { margin-top: 48px; border-top: 2px solid #333; padding-top: 8px; }
+  .archive > h2 { margin-top: 18px; }
+  .archive-note { font-size: 0.85em; color: #777; margin: 4px 0 18px; }
+  .archive details { margin: 8px 0; }
+  .archive summary { cursor: pointer; font-weight: 600; color: #555; padding: 6px 0; }
+  .archive summary:hover { color: #0366d6; }
 </style>
 </head>
 <body>
@@ -51,37 +57,59 @@
 <h2>Právní časopisy <a class="feed-link" href="journals_feed.xml">journals_feed.xml</a></h2>
 <div id="feed-journals"><p id="loading">Načítám...</p></div>
 
+<section class="archive">
+  <h2>Archiv</h2>
+  <p class="archive-note">Historické položky, které už vypadly z hlavních seznamů (okno 2 týdny). Archiv se nikdy nemaže.</p>
+
+  <details>
+    <summary>Rozhodnutí senátu 23 Cdo <a class="feed-link" href="feed_archive.xml">feed_archive.xml</a></summary>
+    <div id="arch-nsoud"><p id="loading">Načítám...</p></div>
+  </details>
+
+  <details>
+    <summary>Rozhodnutí CJEU k IP / IT <a class="feed-link" href="ipcuria_archive.xml">ipcuria_archive.xml</a></summary>
+    <div id="arch-cjeu"><p id="loading">Načítám...</p></div>
+  </details>
+
+  <details>
+    <summary>Nepřímý účinek – NS ČR <a class="feed-link" href="neprimy_ucinek_archive.xml">neprimy_ucinek_archive.xml</a></summary>
+    <div id="arch-nu"><p id="loading">Načítám...</p></div>
+  </details>
+
+  <details>
+    <summary>Právní časopisy <a class="feed-link" href="journals_archive.xml">journals_archive.xml</a></summary>
+    <div id="arch-journals"><p id="loading">Načítám...</p></div>
+  </details>
+</section>
+
 <footer>Automaticky aktualizováno každý den. Přidejte XML odkazy do RSS čtečky (Zotero, NetNewsWire, Feedly aj.).</footer>
 
 <script>
+function renderTable(items, container, columns) {
+  if (items.length === 0) {
+    container.innerHTML = "<p>Žádné položky.</p>";
+    return;
+  }
+  let html = "<table><thead><tr>";
+  columns.forEach(c => { html += "<th" + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.label + "</th>"; });
+  html += "</tr></thead><tbody>";
+  items.forEach(item => {
+    html += "<tr>";
+    columns.forEach(c => {
+      html += "<td" + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.render(item) + "</td>";
+    });
+    html += "</tr>";
+  });
+  html += "</tbody></table>";
+  container.innerHTML = html;
+}
+
 function loadFeed(url, containerId, columns) {
   fetch(url)
     .then(r => r.text())
     .then(xml => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(xml, "text/xml");
-      const items = doc.querySelectorAll("item");
-      const container = document.getElementById(containerId);
-
-      if (items.length === 0) {
-        container.innerHTML = "<p>Žádné položky.</p>";
-        return;
-      }
-
-      let html = "<table><thead><tr>";
-      columns.forEach(c => { html += "<th" + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.label + "</th>"; });
-      html += "</tr></thead><tbody>";
-
-      items.forEach(item => {
-        html += "<tr>";
-        columns.forEach(c => {
-          html += "<td" + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.render(item) + "</td>";
-        });
-        html += "</tr>";
-      });
-
-      html += "</tbody></table>";
-      container.innerHTML = html;
+      const doc = new DOMParser().parseFromString(xml, "text/xml");
+      renderTable(Array.from(doc.querySelectorAll("item")), document.getElementById(containerId), columns);
     })
     .catch(() => {
       document.getElementById(containerId).innerHTML = "<p>Nepodařilo se načíst feed.</p>";
@@ -130,34 +158,46 @@ function summaryCell(item) {
   return summary ? '<span class="summary">' + summary + '</span>' : "";
 }
 
-loadFeed("feed.xml", "feed-nsoud", [
+// Definice sloupců sdílíme mezi živým feedem (nahoře) a archivem (dole).
+const colsNsoud = [
   { label: "Název", cls: "col-name", render: nameCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
   { label: "Shrnutí", cls: "col-summary", render: summaryCell },
   { label: "Datum zveřejnění", cls: "col-date", render: getDate }
-]);
+];
 
-loadFeed("ipcuria_feed.xml", "feed-cjeu", [
+const colsCjeu = [
   { label: "Typ", cls: "col-name", render: i => getTag(text(i, "title")) },
   { label: "Případ", cls: "col-name", render: nameCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
   { label: "Shrnutí", cls: "col-summary", render: summaryCell },
   { label: "Datum", cls: "col-date", render: getDate }
-]);
+];
 
-loadFeed("neprimy_ucinek_feed.xml", "feed-nu", [
+const colsNu = [
   { label: "Název", cls: "col-name", render: nameCell },
   { label: "Klíčová slova", render: i => text(i, "description").split("\n").pop().replace(/^Nalezená klíčová slova:\s*/, "") },
   { label: "Shrnutí", cls: "col-summary", render: summaryCell },
   { label: "Datum", cls: "col-date", render: getDate }
-]);
+];
 
-loadFeed("journals_feed.xml", "feed-journals", [
+const colsJournals = [
   { label: "Časopis", cls: "col-name", render: nameCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
   { label: "Shrnutí", cls: "col-summary", render: summaryCell },
   { label: "PDF", cls: "col-date", render: i => '<a href="' + text(i, "link") + '">Stáhnout</a>' }
-]);
+];
+
+loadFeed("feed.xml", "feed-nsoud", colsNsoud);
+loadFeed("ipcuria_feed.xml", "feed-cjeu", colsCjeu);
+loadFeed("neprimy_ucinek_feed.xml", "feed-nu", colsNu);
+loadFeed("journals_feed.xml", "feed-journals", colsJournals);
+
+// Archiv – stejné sloupce, ale z trvalých *_archive.xml (historické položky).
+loadFeed("feed_archive.xml", "arch-nsoud", colsNsoud);
+loadFeed("ipcuria_archive.xml", "arch-cjeu", colsCjeu);
+loadFeed("neprimy_ucinek_archive.xml", "arch-nu", colsNu);
+loadFeed("journals_archive.xml", "arch-journals", colsJournals);
 </script>
 </body>
 </html>
