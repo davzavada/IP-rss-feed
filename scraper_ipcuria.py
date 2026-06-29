@@ -4,16 +4,26 @@
 import os
 import re
 from datetime import datetime, timezone, timedelta
+from urllib.parse import urljoin
 from xml.etree.ElementTree import Element, SubElement, ElementTree, indent
 
 import requests
 from bs4 import BeautifulSoup
 
-from feed_common import filter_by_first_seen
+from feed_common import (
+    CJEU_PROMPT,
+    filter_by_first_seen,
+    gemini_enabled,
+    gemini_summarize_text,
+    load_json,
+    save_json,
+)
 
 CURIA_BASE = "https://curia.europa.eu/juris/liste.do?num="
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "ipcuria_feed.xml")
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ipcuria_seen.json")
+# Cache AI shrnutí podle guid ({guid: {"summary": ..., "tag": ...}}).
+META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ipcuria_meta.json")
 USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
@@ -23,6 +33,11 @@ SOURCES = [
     ("https://ipcuria.eu/all_preliminary_rulings.php", "Ruling"),
     ("https://ipcuria.eu/all_referrals.php", "Referral"),
 ]
+
+
+def _guid(d):
+    """Stabilní identifikátor položky (shodný s oknem prvního výskytu i RSS guid)."""
+    return f"{d['category']}-{d['case_ref']}"
 
 
 def fetch_all():
@@ -102,6 +117,77 @@ def fetch_all():
     return decisions
 
 
+def fetch_curia_text(curia_url):
+    """Z CURIA (liste.do) najde odkaz na plný dokument a vrátí jeho text.
+
+    Když je k dispozici odkaz na samotný dokument (document.jsf), stáhne ho
+    a vytáhne text rozsudku/žádosti; jinak použije text výpisové stránky.
+    Vrací '' při neúspěchu – pak shrnutí radši nevytváříme.
+    """
+    try:
+        r = requests.get(curia_url, headers={"User-Agent": USER_AGENT}, timeout=60)
+        r.raise_for_status()
+    except Exception as e:
+        print(f"    CHYBA stahování CURIA {curia_url}: {e}")
+        return ""
+
+    soup = BeautifulSoup(r.text, "html.parser")
+    doc_link = soup.find("a", href=re.compile(r"document/document\.jsf"))
+    if doc_link and doc_link.get("href"):
+        doc_url = urljoin(curia_url, doc_link["href"])
+        try:
+            dr = requests.get(doc_url, headers={"User-Agent": USER_AGENT}, timeout=60)
+            dr.raise_for_status()
+            soup = BeautifulSoup(dr.text, "html.parser")
+        except Exception as e:
+            print(f"    CHYBA stahování dokumentu CURIA {doc_url}: {e}")
+
+    for tag in soup(["script", "style", "nav", "header", "footer"]):
+        tag.decompose()
+    return re.sub(r"\s+", " ", soup.get_text(" ", strip=True)).strip()
+
+
+def enrich_summaries(decisions):
+    """Doplní AI shrnutí (HESLO + SHRNUTÍ) přes Gemma; cache podle guid.
+
+    Volá se až na ponechané položky (po okně), aby se neshrnovalo zbytečně.
+    Text bere z CURIA; když ho je příliš málo, shrnutí raději nevytváří
+    (ať si Gemma nic nevymýšlí).
+    """
+    meta = load_json(META_FILE)
+    if not gemini_enabled():
+        for d in decisions:
+            m = meta.get(_guid(d), {})
+            d["summary"] = m.get("summary", "")
+            d["tag"] = m.get("tag", "")
+        return decisions
+
+    summarized = 0
+    calls = 0
+    for d in decisions:
+        g = _guid(d)
+        m = meta.get(g, {})
+        if not m.get("summary"):
+            text = fetch_curia_text(d["curia_url"])
+            # Doplníme kontext, který už máme z výpisu (témata z breadcrumbs).
+            if d.get("categories"):
+                text = "Témata: " + "; ".join(d["categories"]) + "\n\n" + text
+            if len(text.strip()) >= 400:
+                calls += 1
+                summary, tag = gemini_summarize_text(text, CJEU_PROMPT)
+                if summary:
+                    m = {"summary": summary, "tag": tag}
+                    meta[g] = m
+                    summarized += 1
+        d["summary"] = m.get("summary", "")
+        d["tag"] = m.get("tag", "")
+
+    save_json(META_FILE, meta)
+    if calls:
+        print(f"  AI: {summarized}/{calls} shrnutí vygenerováno")
+    return decisions
+
+
 def build_rss(decisions):
     """Vytvoří RSS 2.0 XML z rozhodnutí."""
     rss = Element("rss", version="2.0", attrib={
@@ -133,11 +219,19 @@ def build_rss(decisions):
         if d.get("is_new"):
             SubElement(item, "is-new").text = "true"
 
+        # AI shrnutí + heslo (čte je index.html do samostatných sloupců)
+        if d.get("tag"):
+            SubElement(item, "ai-tag").text = d["tag"]
+        if d.get("summary"):
+            SubElement(item, "ai-summary").text = d["summary"]
+
         desc_parts = [
             f"[{d['category']}] {d['date_str']}, {d['case_ref']}",
         ]
         if d["case_name"]:
             desc_parts[0] += f" ({d['case_name']})"
+        if d.get("summary"):
+            desc_parts.append(d["summary"])
         if d["detail_type"]:
             desc_parts.append(f"Type: {d['detail_type']}")
         for cat in d["categories"]:
@@ -160,11 +254,11 @@ def main():
     print(f"Nalezeno {len(decisions)} položek z posledního měsíce")
 
     # Okno 2 týdny od prvního výskytu + příznak „nové dnes"
-    decisions = filter_by_first_seen(
-        decisions, lambda d: f"{d['category']}-{d['case_ref']}", STATE_FILE, weeks=2
-    )
+    decisions = filter_by_first_seen(decisions, _guid, STATE_FILE, weeks=2)
     decisions.sort(key=lambda d: d["date"], reverse=True)
     print(f"Po okně 2 týdnů: {len(decisions)} položek")
+
+    decisions = enrich_summaries(decisions)  # AI shrnutí jen na ponechané
 
     for d in decisions:
         print(f"  [{d['category']}] {d['case_ref']} {d['case_name']} ({d['date_str']})")

@@ -135,6 +135,40 @@ NEPRIMY_PROMPT = (
     "závěrem). Drž se stručnosti a nic si nevymýšlej."
 )
 
+# Prompt pro judikaturu Soudního dvora EU (CJEU) v oblasti IP/IT – pokrývá
+# rozsudky/stanoviska i žádosti o rozhodnutí o předběžné otázce (referrals).
+CJEU_PROMPT = (
+    "Toto je dokument k řízení před Soudním dvorem EU (rozsudek, stanovisko "
+    "nebo žádost o rozhodnutí o předběžné otázce) v oblasti práva duševního "
+    "vlastnictví nebo IT. Odpověz česky přesně ve dvou částech, bez úvodních "
+    "frází a bez dalšího textu:\n"
+    "HESLO: výstižné právní téma o 1–3 slovech (např. Ochranná známka, "
+    "GDPR, Autorské právo, Doménová jména).\n"
+    "SHRNUTÍ: nejvýše tři věty. Jde-li o rozsudek či stanovisko, uveď, jakou "
+    "právní otázku Soudní dvůr řešil a jak ji zodpověděl (konkrétní závěr). "
+    "Jde-li o žádost o předběžnou otázku (referral), shrň, na co se "
+    "předkládající soud Soudního dvora ptá. Drž se stručnosti a nic si "
+    "nevymýšlej."
+)
+
+# Prompt pro odborný právní článek (z názvu a anotace).
+JOURNAL_ARTICLE_PROMPT = (
+    "Toto je odborný právní článek (název a anotace). Odpověz česky přesně "
+    "ve dvou částech, bez úvodních frází a bez dalšího textu:\n"
+    "HESLO: výstižné téma článku o 1–3 slovech.\n"
+    "SHRNUTÍ: nejvýše tři věty – o čem článek je a k jakým hlavním závěrům "
+    "nebo zjištěním dochází. Drž se stručnosti a nic si nevymýšlej."
+)
+
+# Prompt pro celé číslo právního časopisu (z PDF).
+JOURNAL_ISSUE_PROMPT = (
+    "Toto je celé číslo odborného právního časopisu. Odpověz česky přesně "
+    "ve dvou částech, bez úvodních frází a bez dalšího textu:\n"
+    "HESLO: hlavní oblast tohoto čísla o 1–3 slovech.\n"
+    "SHRNUTÍ: nejvýše tři věty – jaká hlavní témata a příspěvky toto číslo "
+    "obsahuje. Drž se stručnosti a nic si nevymýšlej."
+)
+
 
 def gemini_enabled():
     """True, když je nastaven API klíč a není zapnuté SKIP_GEMINI."""
