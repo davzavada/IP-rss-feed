@@ -104,16 +104,39 @@ function renderTable(items, container, columns) {
   container.innerHTML = html;
 }
 
-function loadFeed(url, containerId, columns) {
-  fetch(url)
+function fetchItems(url) {
+  return fetch(url)
     .then(r => r.text())
-    .then(xml => {
-      const doc = new DOMParser().parseFromString(xml, "text/xml");
-      renderTable(Array.from(doc.querySelectorAll("item")), document.getElementById(containerId), columns);
+    .then(xml => Array.from(
+      new DOMParser().parseFromString(xml, "text/xml").querySelectorAll("item")
+    ));
+}
+
+function guidOf(item) {
+  const g = item.querySelector("guid");
+  return g ? g.textContent.trim() : "";
+}
+
+function failed(containerId) {
+  document.getElementById(containerId).innerHTML = "<p>Nepodařilo se načíst feed.</p>";
+}
+
+function loadFeed(url, containerId, columns) {
+  fetchItems(url)
+    .then(items => renderTable(items, document.getElementById(containerId), columns))
+    .catch(() => failed(containerId));
+}
+
+// Archiv zobrazí jen historické položky – ty, které UŽ NEJSOU v živém feedu
+// (jinak by se na stránce ukazovaly dvakrát). Archivní XML zůstává úplné.
+function loadArchive(liveUrl, archiveUrl, containerId, columns) {
+  Promise.all([fetchItems(liveUrl).catch(() => []), fetchItems(archiveUrl)])
+    .then(([live, archived]) => {
+      const liveGuids = new Set(live.map(guidOf).filter(Boolean));
+      const historical = archived.filter(it => !liveGuids.has(guidOf(it)));
+      renderTable(historical, document.getElementById(containerId), columns);
     })
-    .catch(() => {
-      document.getElementById(containerId).innerHTML = "<p>Nepodařilo se načíst feed.</p>";
-    });
+    .catch(() => failed(containerId));
 }
 
 function text(item, sel) {
@@ -193,11 +216,12 @@ loadFeed("ipcuria_feed.xml", "feed-cjeu", colsCjeu);
 loadFeed("neprimy_ucinek_feed.xml", "feed-nu", colsNu);
 loadFeed("journals_feed.xml", "feed-journals", colsJournals);
 
-// Archiv – stejné sloupce, ale z trvalých *_archive.xml (historické položky).
-loadFeed("feed_archive.xml", "arch-nsoud", colsNsoud);
-loadFeed("ipcuria_archive.xml", "arch-cjeu", colsCjeu);
-loadFeed("neprimy_ucinek_archive.xml", "arch-nu", colsNu);
-loadFeed("journals_archive.xml", "arch-journals", colsJournals);
+// Archiv – stejné sloupce, ale z trvalých *_archive.xml; vynecháme položky,
+// které jsou právě teď v živém feedu (porovnání podle guid).
+loadArchive("feed.xml", "feed_archive.xml", "arch-nsoud", colsNsoud);
+loadArchive("ipcuria_feed.xml", "ipcuria_archive.xml", "arch-cjeu", colsCjeu);
+loadArchive("neprimy_ucinek_feed.xml", "neprimy_ucinek_archive.xml", "arch-nu", colsNu);
+loadArchive("journals_feed.xml", "journals_archive.xml", "arch-journals", colsJournals);
 </script>
 </body>
 </html>
