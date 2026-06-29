@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Scraper IPcuria – generuje RSS feed ze 4 kategorií (rulings, referrals, appeals, pending)."""
+"""Scraper IPcuria – generuje RSS feed ze 2 kategorií (rulings, referrals)."""
 
 import os
 import re
@@ -43,7 +43,7 @@ def _guid(d):
 
 
 def fetch_all():
-    """Stáhne všechny 4 stránky a vrátí rozhodnutí z posledních 31 dnů."""
+    """Stáhne obě stránky a vrátí rozhodnutí z posledních 31 dnů."""
     cutoff = datetime.now(timezone.utc) - timedelta(days=31)
     decisions = []
 
@@ -251,7 +251,7 @@ def build_rss(decisions):
 
 
 def main():
-    print("Stahuji IPcuria – 4 kategorie...")
+    print("Stahuji IPcuria – 2 kategorie...")
     decisions = fetch_all()
     print(f"Nalezeno {len(decisions)} položek z posledního měsíce")
 
@@ -269,7 +269,10 @@ def main():
 
     os.makedirs(os.path.dirname(OUTPUT), exist_ok=True)
     archived = update_archive(ARCHIVE_OUTPUT, rss)  # archiv (nemaže staré položky)
-    print(f"Archiv: {archived} položek → {ARCHIVE_OUTPUT}")
+    if archived < 0:
+        print(f"Archiv: ponechán beze změny (chyba čtení) → {ARCHIVE_OUTPUT}")
+    else:
+        print(f"Archiv: {archived} položek → {ARCHIVE_OUTPUT}")
 
     indent(rss, space="  ")
     tree = ElementTree(rss)

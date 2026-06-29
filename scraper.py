@@ -529,7 +529,10 @@ def main():
 
     os.makedirs(os.path.dirname(OUTPUT), exist_ok=True)
     archived = update_archive(ARCHIVE_OUTPUT, rss)  # archiv (nemaže staré položky)
-    print(f"Archiv: {archived} položek → {ARCHIVE_OUTPUT}")
+    if archived < 0:
+        print(f"Archiv: ponechán beze změny (chyba čtení) → {ARCHIVE_OUTPUT}")
+    else:
+        print(f"Archiv: {archived} položek → {ARCHIVE_OUTPUT}")
 
     indent(rss, space="  ")
     tree = ElementTree(rss)

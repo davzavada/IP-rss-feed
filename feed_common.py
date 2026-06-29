@@ -128,7 +128,8 @@ def update_archive(archive_file, rss, title_suffix=" – archiv"):
 
     Existující archiv načte, aktuální položky do něj přidá/aktualizuje podle
     guid (čerstvá data vyhrávají – doplní se tak i nově vzniklá AI shrnutí),
-    seřadí podle data sestupně a uloží. Vrací počet položek v archivu.
+    seřadí podle data sestupně a uloží. Vrací počet položek v archivu, nebo
+    -1, když stávající archiv nešel přečíst a my ho proto raději nepřepsali.
     """
     src_channel = rss.find("channel")
     if src_channel is None:
@@ -144,7 +145,10 @@ def update_archive(archive_file, rss, title_suffix=" – archiv"):
                     if g:
                         items[g] = it
         except Exception as e:
-            print(f"    CHYBA čtení archivu {archive_file}: {e}")
+            # Nečitelný archiv RADĚJI nepřepisujeme – jinak bychom přišli
+            # o historická data. Necháme soubor být a zkusíme příště.
+            print(f"    CHYBA čtení archivu {archive_file}: {e} – ponechávám beze změny")
+            return -1
 
     for it in src_channel.findall("item"):
         g = it.findtext("guid")
