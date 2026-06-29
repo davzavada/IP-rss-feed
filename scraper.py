@@ -19,7 +19,12 @@ from xml.etree.ElementTree import Element, SubElement, ElementTree, indent
 import requests
 from bs4 import BeautifulSoup
 
-from feed_common import JUDIKATURA_PROMPT, gemini_enabled, gemini_summarize_pdf
+from feed_common import (
+    JUDIKATURA_PROMPT,
+    gemini_enabled,
+    gemini_summarize_pdf,
+    update_archive,
+)
 
 # --- Zdroj 1: úřední deska ---
 URL = "https://www.nsoud.cz/uredni-deska/obcanskopravni-a-obchodni-kolegium/vyhlasovana-rozhodnuti"
@@ -43,6 +48,7 @@ JUDIKATURA_HEADERS = {
     "Referer": "https://rozhodnuti.nsoud.cz/",
 }
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "feed.xml")
+ARCHIVE_OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "feed_archive.xml")
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feed_seen.json")
 # Cache metadat detailu judikatury podle UNID (datum zveřejnění, heslo, …)
 META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feed_meta.json")
@@ -520,9 +526,12 @@ def main():
         print(f"  - {d['case_number']} ({when}) [{d['source']}]")
 
     rss = build_rss(decisions)
-    indent(rss, space="  ")
 
     os.makedirs(os.path.dirname(OUTPUT), exist_ok=True)
+    archived = update_archive(ARCHIVE_OUTPUT, rss)  # archiv (nemaže staré položky)
+    print(f"Archiv: {archived} položek → {ARCHIVE_OUTPUT}")
+
+    indent(rss, space="  ")
     tree = ElementTree(rss)
     tree.write(OUTPUT, encoding="unicode", xml_declaration=True)
     print(f"RSS feed zapsán do {OUTPUT}")

@@ -9,10 +9,23 @@ from xml.etree.ElementTree import Element, SubElement, ElementTree, indent, pars
 import requests
 from bs4 import BeautifulSoup
 
-from feed_common import filter_by_first_seen
+from feed_common import (
+    JOURNAL_ARTICLE_PROMPT,
+    JOURNAL_ISSUE_PROMPT,
+    filter_by_first_seen,
+    gemini_enabled,
+    gemini_summarize_pdf,
+    gemini_summarize_text,
+    load_json,
+    save_json,
+    update_archive,
+)
 
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "journals_feed.xml")
+ARCHIVE_OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "journals_archive.xml")
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "journals_seen.json")
+# Cache AI shrnutí podle guid ({guid: {"summary": ..., "tag": ...}}).
+META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "journals_meta.json")
 USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
@@ -79,6 +92,7 @@ def scrape_upv():
             "guid": f"{journal_name}-{issue_num}-{year}",
             "pub_date": pub_date,
             "sort_key": (year, issue_num),
+            "ai_source": "issue",  # shrnutí se dělá z celého PDF čísla
         })
 
     # Keep only the latest issue per journal name
@@ -135,8 +149,10 @@ def fetch_muni_rss():
                 except ValueError:
                     pub_date = datetime.now(timezone.utc)
 
-        # Clean up description (remove HTML)
-        clean_desc = BeautifulSoup(desc, "html.parser").get_text()
+        # Clean up description (remove HTML). Plnou anotaci si necháme pro AI,
+        # do feedu jde zkrácená verze.
+        full_desc = BeautifulSoup(desc, "html.parser").get_text().strip()
+        clean_desc = full_desc
         if len(clean_desc) > 300:
             clean_desc = clean_desc[:297] + "..."
 
@@ -152,8 +168,57 @@ def fetch_muni_rss():
             "guid": f"RPT-{guid}",
             "pub_date": pub_date or datetime.now(timezone.utc),
             "sort_key": (pub_date.strftime("%Y") if pub_date else "0000", "00"),
+            "ai_source": "article",  # shrnutí se dělá z názvu a anotace
+            "ai_text": f"{title}\n\n{full_desc}".strip(),
         })
 
+    return items
+
+
+# --- AI shrnutí (Gemma) ---
+
+def enrich_summaries(items):
+    """Doplní AI shrnutí (HESLO + SHRNUTÍ) přes Gemma; cache podle guid.
+
+    Volá se až na ponechané položky (po okně). Články (MUNI RPT) shrnuje
+    z názvu a anotace, čísla časopisů (ÚPV) z celého PDF.
+    """
+    meta = load_json(META_FILE)
+    if not gemini_enabled():
+        for it in items:
+            m = meta.get(it["guid"], {})
+            it["summary"] = m.get("summary", "")
+            it["tag"] = m.get("tag", "")
+        return items
+
+    summarized = 0
+    calls = 0
+    for it in items:
+        g = it["guid"]
+        m = meta.get(g, {})
+        if not m.get("summary"):
+            summary, tag = "", ""
+            if it.get("ai_source") == "article" and it.get("ai_text"):
+                calls += 1
+                summary, tag = gemini_summarize_text(it["ai_text"], JOURNAL_ARTICLE_PROMPT)
+            elif it.get("ai_source") == "issue" and it.get("link"):
+                try:
+                    pr = requests.get(it["link"], headers={"User-Agent": USER_AGENT}, timeout=120)
+                    pr.raise_for_status()
+                    calls += 1
+                    summary, tag = gemini_summarize_pdf(pr.content, JOURNAL_ISSUE_PROMPT)
+                except Exception as e:
+                    print(f"  CHYBA stahování PDF {it['title']}: {e}")
+            if summary:
+                m = {"summary": summary, "tag": tag}
+                meta[g] = m
+                summarized += 1
+        it["summary"] = m.get("summary", "")
+        it["tag"] = m.get("tag", "")
+
+    save_json(META_FILE, meta)
+    if calls:
+        print(f"  AI: {summarized}/{calls} shrnutí vygenerováno")
     return items
 
 
@@ -179,9 +244,17 @@ def build_rss(all_items):
         SubElement(el, "title").text = item["title"]
         SubElement(el, "link").text = item["link"]
         SubElement(el, "guid", isPermaLink="false").text = item["guid"]
-        SubElement(el, "description").text = item["description"]
+        desc = item["description"]
+        if item.get("summary"):
+            desc = f"{desc}\n{item['summary']}"
+        SubElement(el, "description").text = desc
         if item.get("is_new"):
             SubElement(el, "is-new").text = "true"
+        # AI shrnutí + heslo (čte je index.html do samostatných sloupců)
+        if item.get("tag"):
+            SubElement(el, "ai-tag").text = item["tag"]
+        if item.get("summary"):
+            SubElement(el, "ai-summary").text = item["summary"]
         SubElement(el, "pubDate").text = item["pub_date"].strftime(
             "%a, %d %b %Y 12:00:00 +0000"
         )
@@ -221,10 +294,15 @@ def main():
     # Sort by date desc
     all_items.sort(key=lambda x: x["pub_date"], reverse=True)
 
+    all_items = enrich_summaries(all_items)  # AI shrnutí jen na ponechané
+
     rss = build_rss(all_items)
-    indent(rss, space="  ")
 
     os.makedirs(os.path.dirname(OUTPUT), exist_ok=True)
+    archived = update_archive(ARCHIVE_OUTPUT, rss)  # archiv (nemaže staré položky)
+    print(f"Archiv: {archived} položek → {ARCHIVE_OUTPUT}")
+
+    indent(rss, space="  ")
     tree = ElementTree(rss)
     tree.write(OUTPUT, encoding="unicode", xml_declaration=True)
     print(f"RSS feed zapsán do {OUTPUT}")

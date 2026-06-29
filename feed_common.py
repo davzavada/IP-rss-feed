@@ -20,6 +20,7 @@ import os
 import re
 import time
 from datetime import datetime, timedelta, timezone
+from xml.etree.ElementTree import Element, SubElement, ElementTree, indent, parse as ET_parse
 
 import requests
 
@@ -92,6 +93,83 @@ def save_json(path, data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
+# --- Trvalý archiv položek feedu ---
+# Hlavní feedy drží jen položky z posledních ~2 týdnů (okno prvního výskytu).
+# Archiv naopak položky nikdy nemaže – při každém běhu do něj přibydou aktuální
+# položky feedu (dedup podle guid) a starší v něm zůstávají.
+
+def _archive_item_copy(src_item):
+    """Vytvoří čistou kopii <item> pro archiv.
+
+    Vynechá příznak „nové dnes" (is-new) a jmenné prostory (dc:date), aby byl
+    archiv prostý prefixů a dal se opakovaně načítat bez kolizí jmenných prostorů.
+    """
+    new = Element("item")
+    for child in src_item:
+        tag = child.tag
+        if tag == "is-new" or tag.startswith("dc:") or tag.startswith("{"):
+            continue
+        el = SubElement(new, tag, dict(child.attrib))
+        el.text = child.text
+    return new
+
+
+def _archive_pubdate(item):
+    """Datum položky pro řazení archivu (z <pubDate>)."""
+    pd = item.findtext("pubDate") or ""
+    try:
+        return datetime.strptime(pd, "%a, %d %b %Y %H:%M:%S %z")
+    except ValueError:
+        return datetime.min.replace(tzinfo=timezone.utc)
+
+
+def update_archive(archive_file, rss, title_suffix=" – archiv"):
+    """Sloučí položky čerstvého feedu (`rss` Element) do trvalého archivu.
+
+    Existující archiv načte, aktuální položky do něj přidá/aktualizuje podle
+    guid (čerstvá data vyhrávají – doplní se tak i nově vzniklá AI shrnutí),
+    seřadí podle data sestupně a uloží. Vrací počet položek v archivu.
+    """
+    src_channel = rss.find("channel")
+    if src_channel is None:
+        return 0
+
+    items = {}
+    if os.path.exists(archive_file):
+        try:
+            old_channel = ET_parse(archive_file).getroot().find("channel")
+            if old_channel is not None:
+                for it in old_channel.findall("item"):
+                    g = it.findtext("guid")
+                    if g:
+                        items[g] = it
+        except Exception as e:
+            print(f"    CHYBA čtení archivu {archive_file}: {e}")
+
+    for it in src_channel.findall("item"):
+        g = it.findtext("guid")
+        if g:
+            items[g] = _archive_item_copy(it)
+
+    rss_out = Element("rss", version="2.0")
+    channel = SubElement(rss_out, "channel")
+    for tag in ("title", "link", "description", "language"):
+        el = src_channel.find(tag)
+        if el is None:
+            continue
+        text = el.text or ""
+        SubElement(channel, tag).text = (text + title_suffix) if tag == "title" else text
+    SubElement(channel, "lastBuildDate").text = datetime.now(timezone.utc).strftime(
+        "%a, %d %b %Y %H:%M:%S +0000"
+    )
+    for it in sorted(items.values(), key=_archive_pubdate, reverse=True):
+        channel.append(it)
+
+    indent(rss_out, space="  ")
+    ElementTree(rss_out).write(archive_file, encoding="unicode", xml_declaration=True)
+    return len(items)
+
+
 # --- AI shrnutí přes Gemma (Gemini API) ---
 # Gemma 4 31B má štědrý free-tier; throttlujeme na 12 požadavků/min (5 s mezi
 # voláními) a opakujeme při 429/500/502/503. Throttle je per-proces – každý
@@ -133,6 +211,40 @@ NEPRIMY_PROMPT = (
     "vykládané české právo přiblížit a z jakého důvodu) a JAK ho aplikoval "
     "(které ustanovení českého práva takto vyložil a s jakým konkrétním "
     "závěrem). Drž se stručnosti a nic si nevymýšlej."
+)
+
+# Prompt pro judikaturu Soudního dvora EU (CJEU) v oblasti IP/IT – pokrývá
+# rozsudky/stanoviska i žádosti o rozhodnutí o předběžné otázce (referrals).
+CJEU_PROMPT = (
+    "Toto je dokument k řízení před Soudním dvorem EU (rozsudek, stanovisko "
+    "nebo žádost o rozhodnutí o předběžné otázce) v oblasti práva duševního "
+    "vlastnictví nebo IT. Odpověz česky přesně ve dvou částech, bez úvodních "
+    "frází a bez dalšího textu:\n"
+    "HESLO: výstižné právní téma o 1–3 slovech (např. Ochranná známka, "
+    "GDPR, Autorské právo, Doménová jména).\n"
+    "SHRNUTÍ: nejvýše tři věty. Jde-li o rozsudek či stanovisko, uveď, jakou "
+    "právní otázku Soudní dvůr řešil a jak ji zodpověděl (konkrétní závěr). "
+    "Jde-li o žádost o předběžnou otázku (referral), shrň, na co se "
+    "předkládající soud Soudního dvora ptá. Drž se stručnosti a nic si "
+    "nevymýšlej."
+)
+
+# Prompt pro odborný právní článek (z názvu a anotace).
+JOURNAL_ARTICLE_PROMPT = (
+    "Toto je odborný právní článek (název a anotace). Odpověz česky přesně "
+    "ve dvou částech, bez úvodních frází a bez dalšího textu:\n"
+    "HESLO: výstižné téma článku o 1–3 slovech.\n"
+    "SHRNUTÍ: nejvýše tři věty – o čem článek je a k jakým hlavním závěrům "
+    "nebo zjištěním dochází. Drž se stručnosti a nic si nevymýšlej."
+)
+
+# Prompt pro celé číslo právního časopisu (z PDF).
+JOURNAL_ISSUE_PROMPT = (
+    "Toto je celé číslo odborného právního časopisu. Odpověz česky přesně "
+    "ve dvou částech, bez úvodních frází a bez dalšího textu:\n"
+    "HESLO: hlavní oblast tohoto čísla o 1–3 slovech.\n"
+    "SHRNUTÍ: nejvýše tři věty – jaká hlavní témata a příspěvky toto číslo "
+    "obsahuje. Drž se stručnosti a nic si nevymýšlej."
 )
 
 

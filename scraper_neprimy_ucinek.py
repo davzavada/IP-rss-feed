@@ -18,11 +18,13 @@ from feed_common import (
     gemini_summarize_text,
     load_json,
     save_json,
+    update_archive,
 )
 
 URL = "https://www.nsoud.cz/uredni-deska/obcanskopravni-a-obchodni-kolegium/vyhlasovana-rozhodnuti"
 BASE_URL = "https://www.nsoud.cz"
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "neprimy_ucinek_feed.xml")
+ARCHIVE_OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "neprimy_ucinek_archive.xml")
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "neprimy_seen.json")
 META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "neprimy_meta.json")
 
@@ -248,9 +250,12 @@ def main():
     matched = enrich_summaries(matched)
 
     rss = build_rss(matched)
-    indent(rss, space="  ")
 
     os.makedirs(os.path.dirname(OUTPUT), exist_ok=True)
+    archived = update_archive(ARCHIVE_OUTPUT, rss)  # archiv (nemaže staré položky)
+    print(f"Archiv: {archived} položek → {ARCHIVE_OUTPUT}")
+
+    indent(rss, space="  ")
     tree = ElementTree(rss)
     tree.write(OUTPUT, encoding="unicode", xml_declaration=True)
     print(f"RSS feed zapsán do {OUTPUT}")
