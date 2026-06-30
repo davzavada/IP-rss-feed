@@ -4,7 +4,6 @@
 import os
 import re
 from datetime import datetime, timezone, timedelta
-from urllib.parse import urljoin
 from xml.etree.ElementTree import Element, SubElement, ElementTree, indent
 
 import requests
@@ -119,50 +118,53 @@ def fetch_all():
     return decisions
 
 
-def fetch_curia_text(curia_url):
-    """Z CURIA (liste.do) najde odkaz na plný dokument a vrátí jeho text.
+# Hláška ipcuria u referralů, jejichž otázky ještě nejsou zveřejněné –
+# takovou stránku nemá smysl shrnovat (žádný obsah k popsání).
+NO_QUESTIONS_MARKER = "questions are not yet available"
 
-    Když je k dispozici odkaz na samotný dokument (document.jsf), stáhne ho
-    a vytáhne text rozsudku/žádosti; jinak použije text výpisové stránky.
-    Vrací '' při neúspěchu – pak shrnutí radši nevytváříme.
+
+def fetch_case_text(ipcuria_url):
+    """Stáhne stránku případu na ipcuria.eu a vrátí její text.
+
+    ipcuria.eu u rozsudků zveřejňuje plný text rozhodnutí (desítky tisíc
+    znaků) i s tématy/hesly v záhlaví; u žádostí o předběžnou otázku buď
+    položené otázky, nebo upozornění, že otázky zatím nejsou k dispozici.
+    CURIA (liste.do) je proti tomu vykreslovaná JavaScriptem a prostý
+    request z ní žádný text rozhodnutí nedostane. Vrací '' při neúspěchu.
     """
     headers = {
         "User-Agent": USER_AGENT,
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "Accept-Language": "en-GB,en;q=0.9",
     }
-    # Sdílená session – CURIA vyžaduje cookie z výpisové stránky, než pustí dokument.
-    session = requests.Session()
     try:
-        r = session.get(curia_url, headers=headers, timeout=60)
+        r = requests.get(ipcuria_url, headers=headers, timeout=60)
         r.raise_for_status()
     except Exception as e:
-        print(f"    CHYBA stahování CURIA {curia_url}: {e}")
+        print(f"    CHYBA stahování ipcuria {ipcuria_url}: {e}")
         return ""
 
     soup = BeautifulSoup(r.text, "html.parser")
-    doc_link = soup.find("a", href=re.compile(r"document/document\.jsf"))
-    if doc_link and doc_link.get("href"):
-        doc_url = urljoin(curia_url, doc_link["href"])
-        try:
-            dr = session.get(doc_url, headers=headers, timeout=60)
-            dr.raise_for_status()
-            soup = BeautifulSoup(dr.text, "html.parser")
-        except Exception as e:
-            print(f"    CHYBA stahování dokumentu CURIA {doc_url}: {e}")
-    else:
-        print(f"    [diag] CURIA bez odkazu na dokument (jen výpis): {curia_url}")
-
-    for tag in soup(["script", "style", "nav", "header", "footer"]):
+    for tag in soup(["script", "style", "noscript", "nav", "header", "footer"]):
         tag.decompose()
     return re.sub(r"\s+", " ", soup.get_text(" ", strip=True)).strip()
+
+
+def _trim_for_summary(text, head=12000, tail=6000):
+    """Dlouhé rozsudky ořízneme na začátek (předmět sporu, právní otázka) a
+    konec (výrok soudu), aby se do shrnutí dostalo obojí, ne jen úvod."""
+    text = text.strip()
+    if len(text) <= head + tail:
+        return text
+    return text[:head] + "\n…\n" + text[-tail:]
 
 
 def enrich_summaries(decisions):
     """Doplní AI shrnutí (HESLO + SHRNUTÍ) přes Gemma; cache podle guid.
 
     Volá se až na ponechané položky (po okně), aby se neshrnovalo zbytečně.
-    Text bere z CURIA; když ho je příliš málo, shrnutí raději nevytváří
+    Text bere ze stránky případu na ipcuria.eu; když ho je příliš málo
+    (např. referral bez zveřejněných otázek), shrnutí raději nevytváří
     (ať si Gemma nic nevymýšlí).
     """
     meta = load_json(META_FILE)
@@ -179,15 +181,15 @@ def enrich_summaries(decisions):
         g = _guid(d)
         m = meta.get(g, {})
         if not m.get("summary"):
-            text = fetch_curia_text(d["curia_url"])
-            # Doplníme kontext, který už máme z výpisu (témata z breadcrumbs).
-            if d.get("categories"):
-                text = "Témata: " + "; ".join(d["categories"]) + "\n\n" + text
+            text = fetch_case_text(d["ipcuria_url"])
             tlen = len(text.strip())
-            print(f"    [diag] {g}: {tlen} znaků textu z CURIA")
-            if tlen >= 400:
+            print(f"    [diag] {g}: {tlen} znaků textu z ipcuria")
+            if NO_QUESTIONS_MARKER in text.lower():
+                # Referral bez zveřejněných otázek – není co shrnout.
+                print(f"    [diag] {g}: otázky zatím nezveřejněny, přeskočeno")
+            elif tlen >= 500:
                 calls += 1
-                summary, tag = gemini_summarize_text(text, CJEU_PROMPT)
+                summary, tag = gemini_summarize_text(_trim_for_summary(text), CJEU_PROMPT)
                 if summary:
                     m = {"summary": summary, "tag": tag}
                     meta[g] = m
@@ -195,7 +197,7 @@ def enrich_summaries(decisions):
                 else:
                     print(f"    [diag] {g}: Gemma nevrátila shrnutí")
             else:
-                print(f"    [diag] {g}: málo textu (<400), shrnutí přeskočeno")
+                print(f"    [diag] {g}: málo textu (<500), shrnutí přeskočeno")
         d["summary"] = m.get("summary", "")
         d["tag"] = m.get("tag", "")
 
