@@ -33,9 +33,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SKIP_GEMINI: ${{ inputs.skip_gemini }}
         run: |
-          python scraper.py
-          python scraper_ipcuria.py
-          python scraper_journals.py
+          python scratch/diag_sources.py
 
       - name: Commit & push feeds
         run: |
