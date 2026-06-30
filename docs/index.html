@@ -51,9 +51,6 @@
 <h2>Rozhodnutí CJEU k IP / IT <a class="feed-link" href="ipcuria_feed.xml">ipcuria_feed.xml</a></h2>
 <div id="feed-cjeu"><p id="loading">Načítám...</p></div>
 
-<h2>Nepřímý účinek – NS ČR <a class="feed-link" href="neprimy_ucinek_feed.xml">neprimy_ucinek_feed.xml</a></h2>
-<div id="feed-nu"><p id="loading">Načítám...</p></div>
-
 <h2>Právní časopisy <a class="feed-link" href="journals_feed.xml">journals_feed.xml</a></h2>
 <div id="feed-journals"><p id="loading">Načítám...</p></div>
 
@@ -69,11 +66,6 @@
   <details>
     <summary>Rozhodnutí CJEU k IP / IT <a class="feed-link" href="ipcuria_archive.xml">ipcuria_archive.xml</a></summary>
     <div id="arch-cjeu"><p id="loading">Načítám...</p></div>
-  </details>
-
-  <details>
-    <summary>Nepřímý účinek – NS ČR <a class="feed-link" href="neprimy_ucinek_archive.xml">neprimy_ucinek_archive.xml</a></summary>
-    <div id="arch-nu"><p id="loading">Načítám...</p></div>
   </details>
 
   <details>
@@ -197,13 +189,6 @@ const colsCjeu = [
   { label: "Datum", cls: "col-date", render: getDate }
 ];
 
-const colsNu = [
-  { label: "Název", cls: "col-name", render: nameCell },
-  { label: "Klíčová slova", render: i => text(i, "description").split("\n").pop().replace(/^Nalezená klíčová slova:\s*/, "") },
-  { label: "Shrnutí", cls: "col-summary", render: summaryCell },
-  { label: "Datum", cls: "col-date", render: getDate }
-];
-
 const colsJournals = [
   { label: "Časopis", cls: "col-name", render: nameCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
@@ -213,14 +198,12 @@ const colsJournals = [
 
 loadFeed("feed.xml", "feed-nsoud", colsNsoud);
 loadFeed("ipcuria_feed.xml", "feed-cjeu", colsCjeu);
-loadFeed("neprimy_ucinek_feed.xml", "feed-nu", colsNu);
 loadFeed("journals_feed.xml", "feed-journals", colsJournals);
 
 // Archiv – stejné sloupce, ale z trvalých *_archive.xml; vynecháme položky,
 // které jsou právě teď v živém feedu (porovnání podle guid).
 loadArchive("feed.xml", "feed_archive.xml", "arch-nsoud", colsNsoud);
 loadArchive("ipcuria_feed.xml", "ipcuria_archive.xml", "arch-cjeu", colsCjeu);
-loadArchive("neprimy_ucinek_feed.xml", "neprimy_ucinek_archive.xml", "arch-nu", colsNu);
 loadArchive("journals_feed.xml", "journals_archive.xml", "arch-journals", colsJournals);
 </script>
 </body>
