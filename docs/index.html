@@ -5,38 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RSS - IP / IT – rss.davidzavada.cz</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; width: 80%; max-width: 1500px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #333; }
-  .page-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-bottom: 2px solid #333; padding-bottom: 8px; flex-wrap: wrap; }
-  h1 { margin: 0; }
-  .legend { font-size: 0.85em; color: #777; white-space: nowrap; }
-  h2 { margin-top: 34px; color: #555; font-size: 1.15em; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .feed-link { background: #f0f0f0; padding: 3px 9px; border-radius: 4px; font-family: monospace; font-size: 0.78em; font-weight: 400; text-decoration: none; color: #0366d6; }
-  .feed-link:hover { background: #e0e0e0; }
-  table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9em; table-layout: auto; }
-  th { text-align: left; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.74em; font-weight: 600; color: #999; padding: 6px 12px 6px 0; border-bottom: 1px solid #ddd; }
-  td { padding: 11px 12px 11px 0; border-bottom: 1px solid #eee; vertical-align: top; }
-  td a { color: #0366d6; text-decoration: none; }
+  :root {
+    --fg: #1f2328; --muted: #656d76; --line: #d0d7de; --line-soft: #eaeef2;
+    --link: #0969da; --accent-bg: #eef2ff; --accent-fg: #3730a3; --row-hover: #f6f8fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    width: 92%; max-width: 1400px; margin: 40px auto; padding: 0 16px;
+    line-height: 1.55; color: var(--fg); background: #fff; -webkit-font-smoothing: antialiased;
+  }
+  .page-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-bottom: 2px solid var(--fg); padding-bottom: 10px; flex-wrap: wrap; }
+  h1 { margin: 0; font-size: 1.55em; letter-spacing: -0.01em; }
+  .legend { font-size: 0.85em; color: var(--muted); white-space: nowrap; }
+  h2 { margin: 40px 0 0; color: var(--fg); font-size: 1.1em; font-weight: 600; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .feed-link { background: var(--line-soft); padding: 3px 9px; border-radius: 6px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.72em; font-weight: 500; text-decoration: none; color: var(--link); }
+  .feed-link:hover { background: #dfe6ee; }
+
+  .table-wrap { overflow-x: auto; margin-top: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9em; table-layout: fixed; min-width: 700px; }
+  th { text-align: left; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.7em; font-weight: 600; color: var(--muted); padding: 0 14px 8px 0; border-bottom: 1px solid var(--line); }
+  td { padding: 12px 14px 12px 0; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+  tbody tr:hover { background: var(--row-hover); }
+  td a { color: var(--link); text-decoration: none; }
   td a:hover { text-decoration: underline; }
-  /* Sloupce se zalamují podle obsahu, shrnutí dostane zbytek šířky. */
-  .col-name { white-space: nowrap; }
-  .col-summary { width: 60%; }
-  .col-date { white-space: nowrap; color: #777; }
-  .summary { color: #3d3d3d; line-height: 1.55; }
-  .heslo { display: inline-block; background: #eef2ff; color: #3730a3; font-size: 0.82em; font-weight: 600; padding: 2px 9px; border-radius: 11px; line-height: 1.35; }
-  .new-dot { color: #2da44e; font-size: 0.7em; vertical-align: middle; }
-  .tag { display: inline-block; font-size: 0.78em; padding: 2px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
-  .tag-ruling { background: #dff0d8; color: #3c763d; }
-  .tag-referral { background: #d9edf7; color: #31708f; }
-  .tag-appeal { background: #fcf8e3; color: #8a6d3b; }
-  .tag-pending { background: #f2dede; color: #a94442; }
-  footer { margin-top: 44px; font-size: 0.8em; color: #999; border-top: 1px solid #eee; padding-top: 10px; }
-  #loading { color: #999; font-style: italic; }
-  .archive { margin-top: 48px; border-top: 2px solid #333; padding-top: 8px; }
-  .archive > h2 { margin-top: 18px; }
-  .archive-note { font-size: 0.85em; color: #777; margin: 4px 0 18px; }
-  .archive details { margin: 8px 0; }
-  .archive summary { cursor: pointer; font-weight: 600; color: #555; padding: 6px 0; }
-  .archive summary:hover { color: #0366d6; }
+
+  /* Šířky sloupců (table-layout: fixed); „Shrnutí" dostane zbytek místa. */
+  .col-type { width: 10%; }
+  .col-name { width: 20%; }
+  .col-heslo { width: 13%; }
+  .col-date { width: 12%; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .col-type, .col-name, .col-heslo, .col-summary { overflow-wrap: anywhere; }
+  .nowrap { white-space: nowrap; }
+
+  .summary { color: #3d3d3d; line-height: 1.5; }
+  .heslo { display: inline-block; background: var(--accent-bg); color: var(--accent-fg); font-size: 0.82em; font-weight: 600; padding: 2px 9px; border-radius: 999px; line-height: 1.35; }
+  .new-dot { color: #1a7f37; font-size: 0.7em; vertical-align: middle; }
+  .tag { display: inline-block; font-size: 0.74em; padding: 2px 8px; border-radius: 5px; font-weight: 600; white-space: nowrap; }
+  .tag-ruling { background: #dafbe1; color: #1a7f37; }
+  .tag-referral { background: #ddf4ff; color: #0969da; }
+  .tag-appeal { background: #fff8c5; color: #7d4e00; }
+  .tag-pending { background: #ffebe9; color: #cf222e; }
+  footer { margin-top: 48px; font-size: 0.8em; color: var(--muted); border-top: 1px solid var(--line-soft); padding-top: 12px; }
+  #loading, .feed-empty { color: var(--muted); font-style: italic; }
+  .archive { margin-top: 52px; border-top: 2px solid var(--fg); padding-top: 10px; }
+  .archive > h2 { margin-top: 16px; }
+  .archive-note { font-size: 0.85em; color: var(--muted); margin: 6px 0 16px; }
+  .archive details { margin: 8px 0; border: 1px solid var(--line-soft); border-radius: 8px; padding: 0 14px; }
+  .archive details[open] { padding-bottom: 10px; }
+  .archive summary { cursor: pointer; font-weight: 600; color: var(--fg); padding: 11px 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .archive summary:hover { color: var(--link); }
+  @media (max-width: 640px) { body { width: auto; margin: 22px 0; padding: 0 12px; } }
 </style>
 </head>
 <body>
@@ -56,7 +75,7 @@
 
 <section class="archive">
   <h2>Archiv</h2>
-  <p class="archive-note">Historické položky, které už vypadly z hlavních seznamů (okno 2 týdny). Archiv se nikdy nemaže.</p>
+  <p class="archive-note">Historické položky, které už vypadly z hlavních seznamů (okno 2 týdny, u CJEU 1 měsíc). Archiv se nikdy nemaže.</p>
 
   <details>
     <summary>Rozhodnutí senátu 23 Cdo <a class="feed-link" href="feed_archive.xml">feed_archive.xml</a></summary>
@@ -79,10 +98,10 @@
 <script>
 function renderTable(items, container, columns) {
   if (items.length === 0) {
-    container.innerHTML = "<p>Žádné položky.</p>";
+    container.innerHTML = '<p class="feed-empty">Žádné položky.</p>';
     return;
   }
-  let html = "<table><thead><tr>";
+  let html = '<div class="table-wrap"><table><thead><tr>';
   columns.forEach(c => { html += "<th" + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.label + "</th>"; });
   html += "</tr></thead><tbody>";
   items.forEach(item => {
@@ -92,7 +111,7 @@ function renderTable(items, container, columns) {
     });
     html += "</tr>";
   });
-  html += "</tbody></table>";
+  html += "</tbody></table></div>";
   container.innerHTML = html;
 }
 
@@ -110,7 +129,7 @@ function guidOf(item) {
 }
 
 function failed(containerId) {
-  document.getElementById(containerId).innerHTML = "<p>Nepodařilo se načíst feed.</p>";
+  document.getElementById(containerId).innerHTML = '<p class="feed-empty">Nepodařilo se načíst feed.</p>';
 }
 
 function loadFeed(url, containerId, columns) {
@@ -147,7 +166,7 @@ function getDate(item) {
   const pd = item.querySelector("pubDate");
   if (!pd) return "";
   const d = new Date(pd.textContent);
-  return d.toLocaleDateString("cs-CZ");
+  return '<span class="nowrap">' + d.toLocaleDateString("cs-CZ") + '</span>';
 }
 
 function newDot(item) {
@@ -182,7 +201,7 @@ const colsNsoud = [
 ];
 
 const colsCjeu = [
-  { label: "Typ", cls: "col-name", render: i => getTag(text(i, "title")) },
+  { label: "Typ", cls: "col-type", render: i => getTag(text(i, "title")) },
   { label: "Případ", cls: "col-name", render: nameCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
   { label: "Shrnutí", cls: "col-summary", render: summaryCell },

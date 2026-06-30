@@ -272,10 +272,10 @@ def main():
     decisions = fetch_all()
     print(f"Nalezeno {len(decisions)} položek z posledního měsíce")
 
-    # Okno 2 týdny od prvního výskytu + příznak „nové dnes"
-    decisions = filter_by_first_seen(decisions, _guid, STATE_FILE, weeks=2)
+    # Okno 1 měsíc (4 týdny) od prvního výskytu + příznak „nové dnes"
+    decisions = filter_by_first_seen(decisions, _guid, STATE_FILE, weeks=4)
     decisions.sort(key=lambda d: d["date"], reverse=True)
-    print(f"Po okně 2 týdnů: {len(decisions)} položek")
+    print(f"Po okně 4 týdnů: {len(decisions)} položek")
 
     decisions = enrich_summaries(decisions)  # AI shrnutí jen na ponechané
 
