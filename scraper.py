@@ -379,10 +379,13 @@ def merge_decisions(uredni, judikatura):
 
 def resolve_dates(decisions, weeks=2):
     """Doplní pub_dt, zaznamená první výskyt, označí nové a ponechá jen
-    rozhodnutí s prvním výskytem do `weeks` týdnů zpět.
+    rozhodnutí zveřejněná do `weeks` týdnů zpět.
 
     pub_dt (pro řazení/zobrazení): datum zveřejnění > vyhlášení > první výskyt.
-    Okno (jak dlouho položku držíme) se počítá od prvního výskytu u nás.
+    Okno (jak dlouho položku držíme) se počítá podle data zveřejnění (pub_dt),
+    ne podle prvního výskytu u nás – jinak by se po resetu sledování v živém
+    seznamu držela i starší rozhodnutí. První výskyt slouží jen k označení
+    „nové dnes". Co z okna vypadne, zůstává v trvalém archivu.
     """
     seen = load_seen()
     now = datetime.now(timezone.utc)
@@ -416,7 +419,7 @@ def resolve_dates(decisions, weeks=2):
         d["pub_dt"] = pub_dt
         d["is_new"] = (first_seen.date() == today)
 
-        if first_seen >= cutoff:
+        if pub_dt >= cutoff:
             kept.append(d)
 
     save_seen(seen)
