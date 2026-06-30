@@ -199,20 +199,28 @@ def enrich_summaries(items):
         if not m.get("summary"):
             summary, tag = "", ""
             if it.get("ai_source") == "article" and it.get("ai_text"):
+                tlen = len(it["ai_text"])
+                print(f"    [diag] {g}: článek, ai_text {tlen} znaků")
                 calls += 1
                 summary, tag = gemini_summarize_text(it["ai_text"], JOURNAL_ARTICLE_PROMPT)
             elif it.get("ai_source") == "issue" and it.get("link"):
                 try:
                     pr = requests.get(it["link"], headers={"User-Agent": USER_AGENT}, timeout=120)
                     pr.raise_for_status()
+                    print(f"    [diag] {g}: číslo, PDF {len(pr.content)} B")
                     calls += 1
                     summary, tag = gemini_summarize_pdf(pr.content, JOURNAL_ISSUE_PROMPT)
                 except Exception as e:
                     print(f"  CHYBA stahování PDF {it['title']}: {e}")
+            else:
+                print(f"    [diag] {g}: PŘESKAKUJI (source={it.get('ai_source')}, "
+                      f"ai_text={bool(it.get('ai_text'))}, link={bool(it.get('link'))})")
             if summary:
                 m = {"summary": summary, "tag": tag}
                 meta[g] = m
                 summarized += 1
+            else:
+                print(f"    [diag] {g}: bez shrnutí")
         it["summary"] = m.get("summary", "")
         it["tag"] = m.get("tag", "")
 

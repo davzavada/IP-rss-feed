@@ -1,6 +1,14 @@
 {
+  "Ruling-C-414/24": {
+    "summary": "Soud řešil, zda může dozorový orgán zamítnout stížnost podanou podle čl. 77 GDPR pouze z důvodu, že subjekt údajů již v souvislosti se stejným předmětem zahájil soudní řízení podle čl. 79 GDPR. Soud rozhodl, že takové zamítnutí je nepřípustné, dokud není soudní řízení pravomocně ukončeno. K předejití rozporuplným rozhodnutím může stát namísto zamítnutí stížnosti zvolit mechanismus jejího přistavení.",
+    "tag": "GDPR"
+  },
   "Ruling-C-484/24": {
-    "summary": "Dokument se týká zákonnosti zpracování osobních údajů, práva na výmaz a principů minimalizace dat a transparentnosti. Řeší soulad s GDPR a Listinou základních práv EU.",
+    "summary": "Soud řešil, zda mohou být v soudním řízení využity osobní údaje získané v rozporu s GDPR, například bez řádného informování subjektu nebo v porušení práva na soukromí. Rozhodl, že národní soud může takové důkazy použít, pokud převažuje zájem na prokázání skutečností, přičemž musí minimalizovat zásahy při následném zveřejnění dat. Neplnění informačních povinností stranou procesu nebrání soudu v užití těchto dat.",
+    "tag": "GDPR"
+  },
+  "Ruling-C-312/24": {
+    "summary": "Soud řešil, zda se GDPR vztahuje na ukládání údajů o statusu podezřelého v personálním spise policisty a zda je takové uložení v případě zastaveného řízení přípustné. Závěr zní, že GDPR se na takovou činnost vztahuje a uložení údajů může být oprávněno právní povinností, pokud je národní právní základ jasný, předvídatelný a proporcionální. Soud rovněž rozhodl, že odmítnutí povýšení z důvodu statusu podezřelého nespadá pod oblast směrnice 2000/78/ES o rovném přístupu k zaměstnání.",
     "tag": "GDPR"
   }
 }
