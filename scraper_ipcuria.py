@@ -126,8 +126,15 @@ def fetch_curia_text(curia_url):
     a vytáhne text rozsudku/žádosti; jinak použije text výpisové stránky.
     Vrací '' při neúspěchu – pak shrnutí radši nevytváříme.
     """
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-GB,en;q=0.9",
+    }
+    # Sdílená session – CURIA vyžaduje cookie z výpisové stránky, než pustí dokument.
+    session = requests.Session()
     try:
-        r = requests.get(curia_url, headers={"User-Agent": USER_AGENT}, timeout=60)
+        r = session.get(curia_url, headers=headers, timeout=60)
         r.raise_for_status()
     except Exception as e:
         print(f"    CHYBA stahování CURIA {curia_url}: {e}")
@@ -138,11 +145,13 @@ def fetch_curia_text(curia_url):
     if doc_link and doc_link.get("href"):
         doc_url = urljoin(curia_url, doc_link["href"])
         try:
-            dr = requests.get(doc_url, headers={"User-Agent": USER_AGENT}, timeout=60)
+            dr = session.get(doc_url, headers=headers, timeout=60)
             dr.raise_for_status()
             soup = BeautifulSoup(dr.text, "html.parser")
         except Exception as e:
             print(f"    CHYBA stahování dokumentu CURIA {doc_url}: {e}")
+    else:
+        print(f"    [diag] CURIA bez odkazu na dokument (jen výpis): {curia_url}")
 
     for tag in soup(["script", "style", "nav", "header", "footer"]):
         tag.decompose()
@@ -174,13 +183,19 @@ def enrich_summaries(decisions):
             # Doplníme kontext, který už máme z výpisu (témata z breadcrumbs).
             if d.get("categories"):
                 text = "Témata: " + "; ".join(d["categories"]) + "\n\n" + text
-            if len(text.strip()) >= 400:
+            tlen = len(text.strip())
+            print(f"    [diag] {g}: {tlen} znaků textu z CURIA")
+            if tlen >= 400:
                 calls += 1
                 summary, tag = gemini_summarize_text(text, CJEU_PROMPT)
                 if summary:
                     m = {"summary": summary, "tag": tag}
                     meta[g] = m
                     summarized += 1
+                else:
+                    print(f"    [diag] {g}: Gemma nevrátila shrnutí")
+            else:
+                print(f"    [diag] {g}: málo textu (<400), shrnutí přeskočeno")
         d["summary"] = m.get("summary", "")
         d["tag"] = m.get("tag", "")
 
