@@ -18,5 +18,9 @@
   "Ruling-C-214/25": {
     "summary": "Předkládající soud se ptal na výklad GDPR a Smlouvy o EU ve vztahu k proporcionalitě italské povinnosti vést „servisní list“ obsahující osobní údaje. Soudní dvůr však žádost prohlásil za zjevně nepřípustnou. Důvodem byl nedostatek informací o faktickém a právním kontextu sporu a chybějící odůvodnění souvislosti mezi vnitrostátním právem a právem EU.",
     "tag": "GDPR"
+  },
+  "Ruling-C-788/24": {
+    "summary": "Soud řešil, zda publikace díla na webu s geo-blockingem představuje „šíření veřejnosti“ v zemi, kde je dílo chráněno, i když je blokování obcházitelné pomocí VPN. Rozhodl, že pokud je geo-blocking „účinný“ (odpovídá stavu techniky), nejde o šíření veřejnosti. V případě neúčinného blokování je za toto šíření odpovědný vydavatel webu, nikoliv poskytovatel VPN.",
+    "tag": "Autorské právo"
   }
 }

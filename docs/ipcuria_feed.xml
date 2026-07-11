@@ -5,7 +5,22 @@
     <link>https://curia.europa.eu/</link>
     <description>Latest CJEU IP case law: preliminary rulings, referrals, appeals</description>
     <language>en</language>
-    <lastBuildDate>Fri, 10 Jul 2026 09:25:52 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 11 Jul 2026 07:47:48 +0000</lastBuildDate>
+    <item>
+      <title>[Ruling] C-788/24 (Anne Frank Fonds)</title>
+      <link>https://curia.europa.eu/juris/liste.do?num=C-788/24</link>
+      <guid isPermaLink="false">Ruling-C-788/24</guid>
+      <is-new>true</is-new>
+      <ai-tag>Autorské právo</ai-tag>
+      <ai-summary>Soud řešil, zda publikace díla na webu s geo-blockingem představuje „šíření veřejnosti“ v zemi, kde je dílo chráněno, i když je blokování obcházitelné pomocí VPN. Rozhodl, že pokud je geo-blocking „účinný“ (odpovídá stavu techniky), nejde o šíření veřejnosti. V případě neúčinného blokování je za toto šíření odpovědný vydavatel webu, nikoliv poskytovatel VPN.</ai-summary>
+      <description>[Ruling] 9 Jul 2026, C-788/24 (Anne Frank Fonds)
+Soud řešil, zda publikace díla na webu s geo-blockingem představuje „šíření veřejnosti“ v zemi, kde je dílo chráněno, i když je blokování obcházitelné pomocí VPN. Rozhodl, že pokud je geo-blocking „účinný“ (odpovídá stavu techniky), nejde o šíření veřejnosti. V případě neúčinného blokování je za toto šíření odpovědný vydavatel webu, nikoliv poskytovatel VPN.
+Type: Judgment
+- Copyright &gt; InfoSoc Directive &gt; Article 3 - Right of communication to the public
+CURIA: https://curia.europa.eu/juris/liste.do?num=C-788/24</description>
+      <pubDate>Thu, 09 Jul 2026 12:00:00 +0000</pubDate>
+      <dc:date>2026-07-09</dc:date>
+    </item>
     <item>
       <title>[Referral] C-723/26 (Verbraucherzentrale Bundesverband)</title>
       <link>https://curia.europa.eu/juris/liste.do?num=C-723/26</link>
@@ -80,20 +95,6 @@ CURIA: https://curia.europa.eu/juris/liste.do?num=C-188/24</description>
 CURIA: https://curia.europa.eu/juris/liste.do?num=C-660/26</description>
       <pubDate>Tue, 16 Jun 2026 12:00:00 +0000</pubDate>
       <dc:date>2026-06-16</dc:date>
-    </item>
-    <item>
-      <title>[Ruling] C-214/25 (Your personal driver – II)</title>
-      <link>https://curia.europa.eu/juris/liste.do?num=C-214/25</link>
-      <guid isPermaLink="false">Ruling-C-214/25</guid>
-      <ai-tag>GDPR</ai-tag>
-      <ai-summary>Předkládající soud se ptal na výklad GDPR a Smlouvy o EU ve vztahu k proporcionalitě italské povinnosti vést „servisní list“ obsahující osobní údaje. Soudní dvůr však žádost prohlásil za zjevně nepřípustnou. Důvodem byl nedostatek informací o faktickém a právním kontextu sporu a chybějící odůvodnění souvislosti mezi vnitrostátním právem a právem EU.</ai-summary>
-      <description>[Ruling] 10 Jun 2026, C-214/25 (Your personal driver – II)
-Předkládající soud se ptal na výklad GDPR a Smlouvy o EU ve vztahu k proporcionalitě italské povinnosti vést „servisní list“ obsahující osobní údaje. Soudní dvůr však žádost prohlásil za zjevně nepřípustnou. Důvodem byl nedostatek informací o faktickém a právním kontextu sporu a chybějící odůvodnění souvislosti mezi vnitrostátním právem a právem EU.
-Type: Order
-- Personal Data Protection &gt; General Data Protection Regulation (GDPR) &gt; Article 5  - Principles relating to processing of personal data &gt; b) purpose limitation
-CURIA: https://curia.europa.eu/juris/liste.do?num=C-214/25</description>
-      <pubDate>Wed, 10 Jun 2026 12:00:00 +0000</pubDate>
-      <dc:date>2026-06-10</dc:date>
     </item>
   </channel>
 </rss>
