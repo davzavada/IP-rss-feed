@@ -22,5 +22,9 @@
   "Ruling-C-788/24": {
     "summary": "Soud řešil, zda publikace díla na webu s geo-blockingem představuje „šíření veřejnosti“ v zemi, kde je dílo chráněno, i když je blokování obcházitelné pomocí VPN. Rozhodl, že pokud je geo-blocking „účinný“ (odpovídá stavu techniky), nejde o šíření veřejnosti. V případě neúčinného blokování je za toto šíření odpovědný vydavatel webu, nikoliv poskytovatel VPN.",
     "tag": "Autorské právo"
+  },
+  "Ruling-C-199/24": {
+    "summary": "Soudní dvůr řešil, zda zpřístupnění veřejných dokumentů o trestních odsouzeních na internetu za platbu lze považovat za zpracování osobních údajů pro „novinářské účely“ podle GDPR. Soud rozhodl, že taková činnost za novinářské účely nespadá, pokud není prováděna v souladu s novinářskou etikou, redakční linií a po ověření faktů. Dále konstatoval, že členské státy nesmí vyjmutí z GDPR aplikovat na jiné než novinářské či akademické účely ani omezovat dostupnou právní nápravu pouze na žaloby za pomluvu.",
+    "tag": "GDPR"
   }
 }
