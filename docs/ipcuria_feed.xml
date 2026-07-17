@@ -5,13 +5,15 @@
     <link>https://curia.europa.eu/</link>
     <description>Latest CJEU IP case law: preliminary rulings, referrals, appeals</description>
     <language>en</language>
-    <lastBuildDate>Thu, 16 Jul 2026 08:04:49 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jul 2026 08:06:32 +0000</lastBuildDate>
     <item>
       <title>[Ruling] C-474/24 (NADA  Austria and Others)</title>
       <link>https://curia.europa.eu/juris/liste.do?num=C-474/24</link>
       <guid isPermaLink="false">Ruling-C-474/24</guid>
-      <is-new>true</is-new>
+      <ai-tag>GDPR</ai-tag>
+      <ai-summary>Soud řešil soulad s GDPR zveřejňování jmen sportovců, kteří porušili antidopingová pravidla, a zda tyto informace představují údaje o zdraví či trestné záznamy. Rozhodl, že takové zveřejňování je přípustné, pokud národní právo umožňuje individuální zvážení oprávněných zájmů, a že se v zásadě nejedná o údaje o zdraví ani o trestné záznamy. Stížnost proti zveřejnění je přípustná i před samotnou publikací, pokud je tato bezprostředně očekávána.</ai-summary>
       <description>[Ruling] 14 Jul 2026, C-474/24 (NADA  Austria and Others)
+Soud řešil soulad s GDPR zveřejňování jmen sportovců, kteří porušili antidopingová pravidla, a zda tyto informace představují údaje o zdraví či trestné záznamy. Rozhodl, že takové zveřejňování je přípustné, pokud národní právo umožňuje individuální zvážení oprávněných zájmů, a že se v zásadě nejedná o údaje o zdraví ani o trestné záznamy. Stížnost proti zveřejnění je přípustná i před samotnou publikací, pokud je tato bezprostředně očekávána.
 Type: Judgment
 - Personal Data Protection &gt; General Data Protection Regulation (GDPR) &gt; Article 2 - Material scope &gt; Wholly or partly by automatic means and filing system
 - Personal Data Protection &gt; General Data Protection Regulation (GDPR) &gt; Article 9  - Processing of special categories of personal data
@@ -102,29 +104,6 @@ Type: Judgment
 CURIA: https://curia.europa.eu/juris/liste.do?num=C-484/24</description>
       <pubDate>Thu, 18 Jun 2026 12:00:00 +0000</pubDate>
       <dc:date>2026-06-18</dc:date>
-    </item>
-    <item>
-      <title>[Ruling] C-188/24 (WebGroup Czech Republic e.a)</title>
-      <link>https://curia.europa.eu/juris/liste.do?num=C-188/24</link>
-      <guid isPermaLink="false">Ruling-C-188/24</guid>
-      <ai-tag>Elektronický obchod</ai-tag>
-      <ai-summary>Soud řešil možnost aplikovat vnitrostátní pravidla na poskytovatele služeb z jiných členských států v oblasti ochrany dětí před pornografií a zamezení vyhýbání se silničním kontrolám, jakož i vliv algoritmů na status hostingu. Rozhodl, že obecné trestní povinnosti k ochraně dětí nelze aplikovat na poskytovatele z jiných států, ale jsou přípustné systémy ověřování věku a zákazy šíření informací o kontrolách z důvodů bezpečnosti. Poskytovatel, který pomocí algoritmu určuje podmínky a prioritu zobrazení obsahu, vykonává nad ním kontrolu a proto není považován za pouhého poskytovatele hostingu.</ai-summary>
-      <description>[Ruling] 16 Jun 2026, C-188/24 (WebGroup Czech Republic e.a)
-Soud řešil možnost aplikovat vnitrostátní pravidla na poskytovatele služeb z jiných členských států v oblasti ochrany dětí před pornografií a zamezení vyhýbání se silničním kontrolám, jakož i vliv algoritmů na status hostingu. Rozhodl, že obecné trestní povinnosti k ochraně dětí nelze aplikovat na poskytovatele z jiných států, ale jsou přípustné systémy ověřování věku a zákazy šíření informací o kontrolách z důvodů bezpečnosti. Poskytovatel, který pomocí algoritmu určuje podmínky a prioritu zobrazení obsahu, vykonává nad ním kontrolu a proto není považován za pouhého poskytovatele hostingu.
-Type: Judgment
-- IP and other instruments &gt; eCommerce Directive
-CURIA: https://curia.europa.eu/juris/liste.do?num=C-188/24</description>
-      <pubDate>Tue, 16 Jun 2026 12:00:00 +0000</pubDate>
-      <dc:date>2026-06-16</dc:date>
-    </item>
-    <item>
-      <title>[Referral] C-660/26 (International Card Services)</title>
-      <link>https://curia.europa.eu/juris/liste.do?num=C-660/26</link>
-      <guid isPermaLink="false">Referral-C-660/26</guid>
-      <description>[Referral] 16 Jun 2026, C-660/26 (International Card Services)
-CURIA: https://curia.europa.eu/juris/liste.do?num=C-660/26</description>
-      <pubDate>Tue, 16 Jun 2026 12:00:00 +0000</pubDate>
-      <dc:date>2026-06-16</dc:date>
     </item>
   </channel>
 </rss>
