@@ -9,232 +9,7 @@
 <link rel="alternate" type="application/rss+xml" title="NS ČR – senát 23 Cdo" href="feed.xml">
 <link rel="alternate" type="application/rss+xml" title="CJEU – IP / IT" href="ipcuria_feed.xml">
 <link rel="alternate" type="application/rss+xml" title="Právní časopisy" href="journals_feed.xml">
-<style>
-  /* Vzhled inspirovaný Zoterem: třípanelová „knihovna" – sbírky | seznam | detail. */
-  :root {
-    color-scheme: light dark;
-    --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    --bg: #ffffff;
-    --fg: #26262b;
-    --muted: #6e6e76;
-    --faint: #97979f;
-    --chrome: #f4f4f2;          /* toolbar, sidebar, statusbar */
-    --chrome-border: #d9d9d5;
-    --line: #ececea;            /* oddělovače řádků seznamu */
-    --stripe: #fafaf8;
-    --hover: #f1f1ef;
-    --sel: #d7e4f6;             /* vybraný řádek */
-    --sel-border: #c3d5ee;
-    --side-sel: #e0e9f5;        /* vybraná sbírka */
-    --link: #1a5dab;
-    --brand: #b02e35;           /* zoterovská červeň */
-    --rss: #e07c1f;
-    --new: #2266d3;             /* „nepřečtené" – modrá tečka jako v RSS čtečkách */
-    --chip-bg: #edf1f7;
-    --chip-fg: #42536e;
-    --btn-bg: #f6f6f4;
-    --shadow: rgba(0, 0, 0, .18);
-    --t-ruling-bg: #d9f0de;   --t-ruling-fg: #166534;
-    --t-referral-bg: #dcecfd; --t-referral-fg: #1055a8;
-    --t-appeal-bg: #fdf2c8;   --t-appeal-fg: #8a5a00;
-    --t-pending-bg: #fde1de;  --t-pending-fg: #b3251e;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #1e1e21;
-      --fg: #e8e8ec;
-      --muted: #a4a4ac;
-      --faint: #7e7e87;
-      --chrome: #27272b;
-      --chrome-border: #3a3a40;
-      --line: #2b2b30;
-      --stripe: #222226;
-      --hover: #2e2e33;
-      --sel: #2c4568;
-      --sel-border: #3a577e;
-      --side-sel: #35425c;
-      --link: #77ace6;
-      --brand: #cf5a60;
-      --rss: #e0913c;
-      --new: #6fa3f0;
-      --chip-bg: #32363e;
-      --chip-fg: #b9c3d4;
-      --btn-bg: #2c2c31;
-      --shadow: rgba(0, 0, 0, .5);
-      --t-ruling-bg: #1d3a28;   --t-ruling-fg: #85d69e;
-      --t-referral-bg: #1e3450; --t-referral-fg: #8dbdf2;
-      --t-appeal-bg: #3d3213;   --t-appeal-fg: #e3bb5e;
-      --t-pending-bg: #46211e;  --t-pending-fg: #f09a92;
-    }
-  }
-
-  * { box-sizing: border-box; }
-  html, body { height: 100%; }
-  body {
-    margin: 0; font: 13px/1.45 var(--font); color: var(--fg); background: var(--bg);
-    display: flex; flex-direction: column; -webkit-font-smoothing: antialiased;
-  }
-  a { color: var(--link); }
-  :focus-visible { outline: 2px solid var(--link); outline-offset: -2px; }
-  .ico { flex: 0 0 auto; display: inline-block; vertical-align: -2px; }
-
-  /* ---------- Toolbar ---------- */
-  #toolbar {
-    flex: 0 0 auto; display: flex; align-items: center; gap: 14px; padding: 0 12px; height: 46px;
-    background: var(--chrome); border-bottom: 1px solid var(--chrome-border);
-  }
-  .brand { display: flex; align-items: center; gap: 9px; min-width: 0; }
-  .brand-mark {
-    width: 22px; height: 22px; border-radius: 5px; background: var(--brand); color: #fff;
-    font: 700 14px/22px Georgia, serif; text-align: center; flex: 0 0 auto;
-  }
-  h1 { margin: 0; font-size: 13px; font-weight: 700; letter-spacing: .01em; white-space: nowrap; }
-  h1 .brand-sub { color: var(--muted); font-weight: 500; }
-  .searchbox { position: relative; margin-left: auto; flex: 0 1 340px; min-width: 130px; }
-  .searchbox .ico { position: absolute; left: 8px; top: 50%; transform: translateY(-50%); color: var(--faint); pointer-events: none; }
-  #search {
-    width: 100%; padding: 4px 24px 4px 27px; border: 1px solid var(--chrome-border); border-radius: 7px;
-    background: var(--bg); color: var(--fg); font: inherit;
-  }
-  #search::placeholder { color: var(--faint); }
-  .legend { flex: 0 0 auto; font-size: 11.5px; color: var(--muted); white-space: nowrap; }
-  .new-dot { color: var(--new); font-size: 8px; vertical-align: 2px; }
-
-  /* ---------- Rozvržení panelů ---------- */
-  #app { flex: 1; display: flex; min-height: 0; }
-
-  /* Sidebar – sbírky */
-  #sidebar {
-    width: 232px; flex: 0 0 auto; display: flex; flex-direction: column; overflow-y: auto;
-    padding: 8px 7px; background: var(--chrome); border-right: 1px solid var(--chrome-border);
-  }
-  .side-title { font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em; color: var(--faint); padding: 8px 9px 3px; }
-  #sidebar ul { list-style: none; margin: 0 0 4px; padding: 0; }
-  #sidebar li { display: flex; align-items: center; gap: 2px; }
-  .side-item {
-    flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; padding: 4px 9px;
-    border-radius: 6px; color: var(--fg); text-decoration: none; cursor: default;
-  }
-  .side-item .ico { color: var(--muted); }
-  .side-item .lbl { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-  .side-item .cnt { color: var(--faint); font-size: 11px; font-variant-numeric: tabular-nums; }
-  .side-item:hover { background: var(--hover); }
-  .side-item.active { background: var(--side-sel); font-weight: 600; }
-  .side-item.active .ico { color: var(--link); }
-  .rss-link { visibility: hidden; display: flex; padding: 4px; border-radius: 5px; color: var(--rss); }
-  #sidebar li:hover .rss-link, .rss-link:focus-visible { visibility: visible; }
-  .rss-link:hover { background: var(--hover); }
-  .side-foot { margin-top: auto; padding: 12px 9px 6px; font-size: 11px; color: var(--faint); line-height: 1.5; }
-  .side-foot p { margin: 0 0 7px; }
-  .rss-inline { color: var(--rss); vertical-align: -1px; }
-
-  /* Prostřední panel – seznam položek */
-  #list-pane { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-  #list-scroll { flex: 1; overflow: auto; }
-  table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-  thead th {
-    position: sticky; top: 0; z-index: 1; background: var(--bg); background-clip: padding-box;
-    text-align: left; font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em;
-    color: var(--muted); padding: 7px 10px; border-bottom: 1px solid var(--chrome-border);
-  }
-  tbody td {
-    padding: 5px 10px; border-bottom: 1px solid var(--line); vertical-align: middle;
-    overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
-  }
-  tbody tr:nth-child(even) { background: var(--stripe); }
-  tbody tr:hover { background: var(--hover); }
-  tbody tr.sel, tbody tr.sel:hover { background: var(--sel); }
-  tbody tr.sel td { border-bottom-color: var(--sel-border); }
-  tr.is-new .rt { font-weight: 600; }
-  .c-heslo { width: 168px; }
-  .c-date { width: 102px; color: var(--muted); font-variant-numeric: tabular-nums; }
-  .row-ico { margin-right: 7px; }
-  .row-new { color: var(--new); font-size: 8px; vertical-align: 2px; margin-right: 5px; }
-  .tdot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
-  .tdot-ruling { background: var(--t-ruling-fg); }
-  .tdot-referral { background: var(--t-referral-fg); }
-  .tdot-appeal { background: var(--t-appeal-fg); }
-  .tdot-pending { background: var(--t-pending-fg); }
-  .chip {
-    display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; vertical-align: middle;
-    background: var(--chip-bg); color: var(--chip-fg); border-radius: 9px; padding: 1px 8px; font-size: 11.5px; line-height: 1.5;
-  }
-  .list-msg { padding: 42px 20px; text-align: center; color: var(--faint); }
-
-  /* Statusbar pod seznamem */
-  #statusbar {
-    flex: 0 0 auto; display: flex; align-items: center; gap: 12px; height: 26px; padding: 0 12px;
-    font-size: 11.5px; color: var(--muted); background: var(--chrome); border-top: 1px solid var(--chrome-border);
-  }
-  #status-note { margin-left: auto; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-
-  /* Pravý panel – detail položky */
-  #detail {
-    width: 365px; flex: 0 0 auto; overflow-y: auto; background: var(--bg);
-    border-left: 1px solid var(--chrome-border);
-  }
-  #detail-close {
-    position: absolute; top: 8px; right: 10px; display: none; align-items: center; justify-content: center;
-    width: 26px; height: 26px; border: 0; border-radius: 6px; background: transparent; color: var(--muted);
-    font-size: 15px; cursor: pointer;
-  }
-  #detail-close:hover { background: var(--hover); }
-  #detail-inner { padding: 16px 16px 24px; }
-  .detail-empty { height: 100%; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--faint); padding: 20px; }
-  .d-kind { font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); }
-  #detail h2 { margin: 3px 0 10px; font-size: 15px; line-height: 1.35; overflow-wrap: anywhere; }
-  .d-badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 13px; }
-  .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 9px; white-space: nowrap; }
-  .tag-ruling { background: var(--t-ruling-bg); color: var(--t-ruling-fg); }
-  .tag-referral { background: var(--t-referral-bg); color: var(--t-referral-fg); }
-  .tag-appeal { background: var(--t-appeal-bg); color: var(--t-appeal-fg); }
-  .tag-pending { background: var(--t-pending-bg); color: var(--t-pending-fg); }
-  .tag-new { background: var(--new); color: #fff; }
-  dl.meta { display: grid; grid-template-columns: auto 1fr; gap: 3px 14px; margin: 0 0 4px; font-size: 12.5px; }
-  dl.meta dt { color: var(--muted); white-space: nowrap; }
-  dl.meta dd { margin: 0; overflow-wrap: anywhere; }
-  .d-sec { font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); margin: 15px 0 5px; }
-  .d-summary { margin: 0; line-height: 1.55; overflow-wrap: anywhere; }
-  .d-tax { margin: 0; padding-left: 17px; font-size: 12px; color: var(--muted); }
-  .d-tax li { margin: 3px 0; }
-  .d-open {
-    display: inline-flex; align-items: center; gap: 7px; margin-top: 17px; padding: 5px 13px;
-    border: 1px solid var(--chrome-border); border-radius: 7px; background: var(--btn-bg);
-    color: var(--link); font-weight: 600; font-size: 12.5px; text-decoration: none;
-  }
-  .d-open:hover { background: var(--hover); }
-
-  #backdrop { display: none; }
-  noscript { display: block; padding: 30px; text-align: center; color: var(--muted); }
-
-  /* ---------- Užší okna: detail jako vysouvací panel ---------- */
-  @media (max-width: 1150px) {
-    #detail {
-      position: fixed; top: 0; right: 0; bottom: 0; z-index: 30; width: min(430px, 100%);
-      transform: translateX(105%); transition: transform .16s ease; box-shadow: -10px 0 28px var(--shadow);
-    }
-    body.detail-open #detail { transform: none; }
-    #detail-close { display: flex; }
-    body.detail-open #backdrop { display: block; position: fixed; inset: 0; z-index: 25; background: rgba(0, 0, 0, .28); }
-  }
-
-  /* ---------- Mobil: sbírky jako vodorovné čipy ---------- */
-  @media (max-width: 720px) {
-    #toolbar { flex-wrap: wrap; height: auto; padding: 8px 10px; gap: 8px 10px; }
-    .searchbox { order: 3; flex: 1 1 100%; }
-    .legend { display: none; }
-    #app { flex-direction: column; }
-    #sidebar {
-      width: auto; flex-direction: row; align-items: center; gap: 5px; overflow-x: auto; overflow-y: hidden;
-      padding: 7px 9px; border-right: 0; border-bottom: 1px solid var(--chrome-border);
-    }
-    .side-title, .side-foot, .rss-link { display: none; }
-    #sidebar ul { display: flex; gap: 5px; margin: 0; }
-    .side-item { white-space: nowrap; border: 1px solid var(--chrome-border); border-radius: 15px; padding: 3px 11px; background: var(--bg); }
-    .side-item.active { background: var(--side-sel); border-color: var(--sel-border); }
-    .c-heslo { display: none; }
-  }
-</style>
+<link rel="stylesheet" href="app.css">
 </head>
 <body>
 
@@ -243,30 +18,65 @@
     <span class="brand-mark" aria-hidden="true">§</span>
     <h1>Právní RSS <span class="brand-sub">· IP / IT</span></h1>
   </div>
+
   <div class="searchbox">
-    <svg class="ico" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="7" r="4.6"/><path d="M10.6 10.6 14 14"/></svg>
+    <svg class="ico" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="M10.6 10.6 14 14"/></svg>
+    <label class="sr-only" for="search">Hledat</label>
     <input id="search" type="search" placeholder="Hledat v názvech, heslech a shrnutích…" autocomplete="off">
   </div>
-  <span class="legend"><span class="new-dot">●</span> tučně = nové dnes</span>
+
+  <div class="tools">
+    <button id="toggle-unread" class="tbtn" type="button" aria-pressed="false" title="Jen nepřečtené (e)">
+      <svg class="ico" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg>
+      <span class="lbl-wide">Nepřečtené</span>
+    </button>
+    <button id="toggle-density" class="tbtn" type="button" aria-pressed="false" title="Zobrazit náhled shrnutí (v)">
+      <svg class="ico" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h8"/></svg>
+      <span class="lbl-wide">Náhled</span>
+    </button>
+    <button id="help-open" class="tbtn" type="button" title="Klávesové zkratky a nápověda (?)" aria-label="Nápověda">
+      <svg class="ico" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><path d="M6.2 6.1a1.9 1.9 0 1 1 2.5 1.8c-.5.2-.7.6-.7 1.1v.4" stroke-linecap="round"/><circle cx="8" cy="11.6" r=".8" fill="currentColor" stroke="none"/></svg>
+    </button>
+  </div>
 </header>
 
 <div id="app">
   <nav id="sidebar" aria-label="Sbírky">
-    <div class="side-title">Knihovna</div>
-    <ul id="side-live"></ul>
-    <div class="side-title">Archiv</div>
-    <ul id="side-arch"></ul>
+    <div id="collections">
+      <ul id="side-smart"></ul>
+      <div class="side-title">Knihovna</div>
+      <ul id="side-live"></ul>
+      <div class="side-title">Archiv</div>
+      <ul id="side-arch"></ul>
+    </div>
+
+    <section id="tagpane" aria-label="Filtr podle hesel">
+      <button id="tagpane-head" type="button" aria-expanded="true" aria-controls="tags">
+        <svg class="ico caret" width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3.5 6 4.5 4.5L12.5 6"/></svg>
+        Hesla <span class="cnt" id="tagpane-cnt"></span>
+      </button>
+      <div id="tags"></div>
+    </section>
+
     <div class="side-foot">
       <p>XML odkazy (ikona <svg class="ico rss-inline" width="10" height="10" viewBox="0 0 16 16" aria-hidden="true"><circle cx="3.6" cy="12.4" r="1.9" fill="currentColor"/><path d="M2 7.3a6.7 6.7 0 0 1 6.7 6.7M2 2.8a11.2 11.2 0 0 1 11.2 11.2" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/></svg>) přidejte do RSS čtečky – Zotero, NetNewsWire, Feedly aj.</p>
-      <p>Aktualizováno automaticky každý den.</p>
       <p id="updated"></p>
     </div>
   </nav>
 
+  <div class="splitter" id="split-sidebar" role="separator" aria-orientation="vertical" aria-label="Šířka panelu sbírek"></div>
+
   <main id="list-pane">
     <div id="list-scroll"></div>
-    <div id="statusbar"><span id="status-count">Načítám…</span><span id="status-note"></span></div>
+    <div id="statusbar">
+      <span id="status-count" aria-live="polite">Načítám…</span>
+      <button id="mark-read" class="tbtn" type="button" title="Označit zobrazené jako přečtené (Shift+A)">Označit vše jako přečtené</button>
+      <button id="export-ris" class="tbtn" type="button" title="Stáhnout zobrazené položky jako RIS pro Zotero">Export RIS</button>
+      <span id="status-note"></span>
+    </div>
   </main>
+
+  <div class="splitter" id="split-detail" role="separator" aria-orientation="vertical" aria-label="Šířka panelu detailu"></div>
 
   <aside id="detail" aria-label="Detail položky">
     <button id="detail-close" type="button" aria-label="Zavřít detail">✕</button>
@@ -275,393 +85,51 @@
 </div>
 
 <div id="backdrop"></div>
-<noscript>Stránka načítá RSS feedy javascriptem – bez něj použijte přímo XML: feed.xml, ipcuria_feed.xml, journals_feed.xml.</noscript>
+<div id="toast" role="status" aria-live="polite"></div>
 
-<script>
-"use strict";
+<dialog id="help" aria-labelledby="help-title">
+  <div class="dlg-head">
+    <h2 id="help-title">Nápověda</h2>
+    <button id="help-close" class="tbtn" type="button">Zavřít</button>
+  </div>
+  <div class="dlg-body">
+    <h3>Co je nové</h3>
+    <p>Stránka se otevírá ve sbírce <strong>Nové</strong> – jsou v ní položky, které jste
+      v tomto prohlížeči ještě neotevřeli. Nepřečtené mají modrou tečku a tučný název;
+      přečtou se, jakmile na ně kliknete. Štítek <strong>nové</strong> znamená, že položka
+      do feedu přibyla dnes.</p>
 
-/* ---------- Konfigurace sbírek ---------- */
-const COLLECTIONS = [
-  { id: "nsoud",    label: "NS ČR · 23 Cdo",    kind: "nsoud",    feed: "feed.xml",          archive: "feed_archive.xml",     kindLabel: "Rozhodnutí NS ČR – senát 23 Cdo" },
-  { id: "cjeu",     label: "CJEU · IP / IT",    kind: "cjeu",     feed: "ipcuria_feed.xml",  archive: "ipcuria_archive.xml",  kindLabel: "Soudní dvůr EU – IP / IT" },
-  { id: "journals", label: "Právní časopisy",   kind: "journals", feed: "journals_feed.xml", archive: "journals_archive.xml", kindLabel: "Právní časopisy" },
-];
-const ARCHIVE_NOTE = "Archiv se nikdy nemaže · hlavní okno 2 týdny (CJEU 1 měsíc)";
+    <h3>Klávesové zkratky</h3>
+    <dl class="keys">
+      <dt><kbd>↓</kbd> <kbd>↑</kbd> / <kbd>j</kbd> <kbd>k</kbd></dt><dd>další / předchozí položka</dd>
+      <dt><kbd>Enter</kbd> / <kbd>o</kbd></dt><dd>otevřít dokument v nové kartě</dd>
+      <dt><kbd>u</kbd></dt><dd>přepnout přečteno / nepřečteno</dd>
+      <dt><kbd>Shift</kbd>+<kbd>A</kbd></dt><dd>označit zobrazené jako přečtené</dd>
+      <dt><kbd>e</kbd></dt><dd>jen nepřečtené</dd>
+      <dt><kbd>v</kbd></dt><dd>náhled shrnutí v seznamu</dd>
+      <dt><kbd>/</kbd> / <kbd>f</kbd></dt><dd>hledat</dd>
+      <dt><kbd>1</kbd>–<kbd>8</kbd></dt><dd>přepnout sbírku</dd>
+      <dt><kbd>Esc</kbd></dt><dd>zrušit filtry / zavřít detail</dd>
+      <dt><kbd>?</kbd></dt><dd>tato nápověda</dd>
+    </dl>
 
-const TYPE_LABELS = { ruling: "Ruling", referral: "Referral", appeal: "Appeal", pending: "Pending" };
-const DOC_TINTS = { nsoud: "#3b6db4", cjeu: "#a5831c", journals: "#2f7d4f" };
+    <h3>Zotero</h3>
+    <p>Tlačítko <strong>Citace</strong> zkopíruje citaci rozhodnutí, <strong>RIS</strong>
+      bibliografický záznam – v Zoteru pak <em>File → Import → Import from Clipboard</em>.
+      <strong>Export RIS</strong> ve stavovém řádku stáhne všechny právě zobrazené položky
+      najednou. U rozhodnutí zůstává v Zoteru doplnit senát a případně upřesnit název.</p>
 
-/* ---------- Stav ---------- */
-let allItems = [];        // normalizované položky (živé + archivní historické)
-let view = "all";
-let query = "";
-let selectedId = null;
-let loadErrors = [];
-let currentRows = [];     // položky právě vykresleného seznamu (pro klávesnici)
+    <h3>Archiv</h3>
+    <p>V hlavním seznamu drží rozhodnutí NS jeden týden, CJEU a časopisy měsíc.
+      Co z okna vypadne, zůstává natrvalo v archivu – ten se nikdy nemaže a dá se
+      prohledávat stejně jako hlavní sbírky.</p>
+  </div>
+</dialog>
 
-/* ---------- Pomocné ---------- */
-const $ = (sel) => document.querySelector(sel);
-const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const collapse = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
+<noscript>Stránka načítá RSS feedy javascriptem – bez něj použijte přímo XML:
+  <a href="feed.xml">feed.xml</a>, <a href="ipcuria_feed.xml">ipcuria_feed.xml</a>,
+  <a href="journals_feed.xml">journals_feed.xml</a>.</noscript>
 
-function icoDoc(kind) {
-  const tint = DOC_TINTS[kind] || "currentColor";
-  if (kind === "journals") {
-    return '<svg class="ico row-ico" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="' + tint + '" stroke-width="1.3" aria-hidden="true"><rect x="3" y="1.7" width="10" height="12.6" rx="1.2"/><path d="M5.7 1.7v12.6M7.6 5h3.4M7.6 7.4h3.4"/></svg>';
-  }
-  return '<svg class="ico row-ico" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="' + tint + '" stroke-width="1.3" aria-hidden="true"><path d="M3.6 1.7h6l2.8 2.8v9.8H3.6z"/><path d="M9.6 1.7v2.8h2.8M5.7 8h4.6M5.7 10.4h4.6"/></svg>';
-}
-const ICO_LIB = '<svg class="ico" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 5.6 8 2l6 3.6M3.4 6.4v6M6.5 6.4v6M9.5 6.4v6M12.6 6.4v6M2.2 13.6h11.6"/></svg>';
-const ICO_FOLDER = '<svg class="ico" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M1.8 4.2c0-.6.4-1 1-1h3.1l1.5 1.6h6c.5 0 .9.4.9 1v6.6c0 .6-.4 1-1 1H2.8c-.6 0-1-.4-1-1z"/></svg>';
-const ICO_BOX = '<svg class="ico" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="1.6" y="2.4" width="12.8" height="2.8" rx=".6"/><path d="M2.6 5.2v7.2c0 .6.4 1 1 1h8.8c.6 0 1-.4 1-1V5.2M6.3 8h3.4"/></svg>';
-const ICO_RSS = '<svg class="ico" width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><circle cx="3.6" cy="12.4" r="1.9" fill="currentColor"/><path d="M2 7.3a6.7 6.7 0 0 1 6.7 6.7M2 2.8a11.2 11.2 0 0 1 11.2 11.2" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/></svg>';
-const ICO_OPEN = '<svg class="ico" width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 3H3.2c-.7 0-1.2.5-1.2 1.2v8.6c0 .7.5 1.2 1.2 1.2h8.6c.7 0 1.2-.5 1.2-1.2V9.5M9.8 2h4.2v4.2M14 2 7.5 8.5"/></svg>';
-
-const txt = (el, sel) => { const c = el.querySelector(sel); return c ? c.textContent.trim() : ""; };
-const fmtDate = (d) => d ? d.toLocaleDateString("cs-CZ") : "";
-const isoToCs = (s) => { const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(s); return m ? `${+m[3]}. ${+m[2]}. ${+m[1]}` : s; };
-
-/* ---------- Normalizace položek ---------- */
-function normalizeItem(el, col, archived) {
-  const it = {
-    col: col.id, kind: col.kind, archived,
-    id: txt(el, "guid") || txt(el, "link"),
-    link: txt(el, "link"),
-    heslo: txt(el, "ai-tag"),
-    summary: txt(el, "ai-summary"),
-    isNew: !archived && !!el.querySelector("is-new"),
-    typeTag: "", typeName: "", nsCategory: txt(el, "category"),
-    taxonomy: [], journal: "", authors: "", form: "", decided: "", announced: "", nsKat: "",
-  };
-  const rawTitle = txt(el, "title");
-  const desc = txt(el, "description");
-  const pd = txt(el, "pubDate");
-  it.date = pd ? new Date(pd) : null;
-  if (it.date && isNaN(it.date)) it.date = null;
-
-  if (!it.summary && desc) it.summary = collapse(desc.split(/\n\s*\n/)[0]);
-
-  if (col.kind === "nsoud") {
-    it.title = collapse(rawTitle).replace(/\s*\/\s*/g, "/");
-    // Metadata v závorce za prázdným řádkem na konci popisu:
-    // „(Usnesení 23 Cdo 308/2026, Heslo: …, rozhodnuto 2026-06-30, kategorie E)".
-    // U starých archivních záznamů je metadatový řádek celým popisem (bez závorek
-    // a bez shrnutí) – pak ho jako shrnutí nezobrazujeme.
-    let tail = null;
-    const mTail = /\n\s*\n\(([\s\S]*)\)\s*$/.exec(desc);
-    if (mTail) tail = mTail[1];
-    else if (/^(Rozsudek|Usnesení|Rozhodnutí|Stanovisko)\b[^\n]*vyhlášeno/i.test(desc.trim())) {
-      tail = desc.trim();
-      it.summary = "";
-    }
-    if (tail) {
-      const form = /^(Rozsudek|Usnesení|Rozhodnutí|Stanovisko)/i.exec(tail);
-      if (form) it.form = form[1];
-      const dec = /rozhodnuto\s+(\d{4}-\d{2}-\d{2})/i.exec(tail);
-      if (dec) it.decided = isoToCs(dec[1]);
-      const ann = /vyhlášeno\s+([\d.\s]+\d)/i.exec(tail);
-      if (ann) it.announced = ann[1].trim();
-      const kat = /kategorie\s+([A-F])/i.exec(tail);
-      if (kat) it.nsKat = kat[1];
-    }
-  } else if (col.kind === "cjeu") {
-    const m = /^\[(\w+)\]\s*/.exec(rawTitle);
-    if (m) it.typeTag = m[1].toLowerCase();
-    it.title = collapse(rawTitle.replace(/^\[\w+\]\s*/, ""));
-    const tn = /^Type:\s*(.+)$/m.exec(desc);
-    if (tn) it.typeName = tn[1].trim();
-    it.taxonomy = desc.split("\n")
-      .filter((l) => l.trim().startsWith("- "))
-      .map((l) => collapse(l).slice(2).replace(/\s*>\s*/g, " › "));
-  } else {
-    it.title = collapse(rawTitle.replace(/^\[\w+\]\s*/, ""));
-    it.journal = it.id.startsWith("RPT-") ? "Revue pro právo a technologie"
-      : it.title.replace(/\s+\d+\/\d{4}$/, "");
-    const au = /(?:^|\n)Autor:\s*([^\n]+)/.exec(desc);
-    if (au) it.authors = collapse(au[1]);
-    // U článků je autor i za pomlčkou v názvu – v seznamu ho necháme, v detailu je zvlášť.
-  }
-  return it;
-}
-
-/* ---------- Načtení feedů ---------- */
-function fetchXml(url) {
-  return fetch(url).then((r) => {
-    if (!r.ok) throw new Error(url + ": HTTP " + r.status);
-    return r.text();
-  }).then((s) => {
-    const doc = new DOMParser().parseFromString(s, "text/xml");
-    if (doc.querySelector("parsererror")) throw new Error(url + ": XML error");
-    return doc;
-  });
-}
-
-function loadAll() {
-  const jobs = COLLECTIONS.flatMap((c) => [
-    fetchXml(c.feed).then((d) => ({ c, d, archived: false })),
-    fetchXml(c.archive).then((d) => ({ c, d, archived: true })),
-  ]);
-  Promise.allSettled(jobs).then((results) => {
-    const items = [];
-    let newest = null;
-    for (const r of results) {
-      if (r.status === "rejected") { loadErrors.push(String(r.reason.message || r.reason)); continue; }
-      const { c, d, archived } = r.value;
-      if (!archived) {
-        const lbd = txt(d, "channel > lastBuildDate");
-        const t = lbd ? new Date(lbd) : null;
-        if (t && !isNaN(t) && (!newest || t > newest)) newest = t;
-      }
-      d.querySelectorAll("item").forEach((el) => items.push(normalizeItem(el, c, archived)));
-    }
-    // Archiv = jen historické položky; co je právě v živém feedu, se v archivu nezobrazuje.
-    const liveIds = new Set(items.filter((i) => !i.archived).map((i) => i.col + "|" + i.id));
-    allItems = items.filter((i) => !i.archived || !liveIds.has(i.col + "|" + i.id));
-    // Starý formát archivu NS měl guid = spisovou značku (bez odkazu). Když táž
-    // věc existuje i v novém formátu (s odkazem), duplicitní stub skryjeme.
-    const linked = new Set(allItems.filter((i) => i.col === "nsoud" && i.link).map((i) => i.title));
-    allItems = allItems.filter((i) => !(i.col === "nsoud" && i.archived && !i.link && linked.has(i.title)));
-    allItems.forEach((i, idx) => { i.ord = idx; });
-
-    if (newest) {
-      $("#updated").textContent = "Poslední aktualizace " +
-        newest.toLocaleString("cs-CZ", { day: "numeric", month: "numeric", year: "numeric", hour: "2-digit", minute: "2-digit" }) + ".";
-    }
-    updateCounts();
-    render();
-  });
-}
-
-/* ---------- Výběr pohledu ---------- */
-function itemsForView(v) {
-  let arr;
-  if (v === "all") arr = allItems.filter((i) => !i.archived);
-  else if (v.startsWith("arch-")) { const c = v.slice(5); arr = allItems.filter((i) => i.archived && i.col === c); }
-  else arr = allItems.filter((i) => !i.archived && i.col === v);
-  arr = arr.slice().sort((a, b) =>
-    ((b.date ? b.date.getTime() : 0) - (a.date ? a.date.getTime() : 0)) || (a.ord - b.ord));
-  if (query) {
-    const q = query.toLowerCase();
-    arr = arr.filter((i) => (i.title + " " + i.heslo + " " + i.summary + " " + i.nsCategory + " " + i.taxonomy.join(" ") + " " + i.journal + " " + i.authors).toLowerCase().includes(q));
-  }
-  return arr;
-}
-
-/* ---------- Sidebar ---------- */
-function sideRow(id, icon, label, rssHref) {
-  const rss = rssHref
-    ? '<a class="rss-link" href="' + esc(rssHref) + '" title="RSS: ' + esc(rssHref) + '">' + ICO_RSS + "</a>"
-    : "";
-  return '<li><a class="side-item" href="#' + esc(id) + '" data-view="' + esc(id) + '">' + icon +
-    '<span class="lbl">' + esc(label) + '</span><span class="cnt" data-cnt="' + esc(id) + '"></span></a>' + rss + "</li>";
-}
-
-function renderSidebar() {
-  $("#side-live").innerHTML =
-    sideRow("all", ICO_LIB, "Vše") +
-    COLLECTIONS.map((c) => sideRow(c.id, ICO_FOLDER, c.label, c.feed)).join("");
-  $("#side-arch").innerHTML =
-    COLLECTIONS.map((c) => sideRow("arch-" + c.id, ICO_BOX, c.label, c.archive)).join("");
-}
-
-function updateCounts() {
-  document.querySelectorAll("[data-cnt]").forEach((el) => {
-    const v = el.getAttribute("data-cnt");
-    const n = (v === "all") ? allItems.filter((i) => !i.archived).length
-      : v.startsWith("arch-") ? allItems.filter((i) => i.archived && i.col === v.slice(5)).length
-      : allItems.filter((i) => !i.archived && i.col === v).length;
-    el.textContent = n || "";
-  });
-}
-
-/* ---------- Seznam ---------- */
-function rowHtml(it) {
-  let t = icoDoc(it.kind);
-  if (it.isNew) t += '<span class="row-new" title="Nové dnes">●</span>';
-  if (it.typeTag) t += '<span class="tdot tdot-' + esc(it.typeTag) + '" title="' + esc(TYPE_LABELS[it.typeTag] || it.typeTag) + '"></span>';
-  t += '<span class="rt">' + esc(it.title) + "</span>";
-  const heslo = it.heslo ? '<span class="chip">' + esc(it.heslo) + "</span>" : "";
-  return '<tr data-id="' + esc(it.col + "|" + it.id) + '"' + (it.isNew ? ' class="is-new"' : "") +
-    ' tabindex="-1" aria-selected="false"><td>' + t + '</td><td class="c-heslo">' + heslo +
-    '</td><td class="c-date">' + esc(fmtDate(it.date)) + "</td></tr>";
-}
-
-function render() {
-  currentRows = itemsForView(view);
-  const scroll = $("#list-scroll");
-
-  if (!allItems.length && !loadErrors.length) {
-    scroll.innerHTML = '<div class="list-msg">Načítám…</div>';
-  } else if (!currentRows.length) {
-    const failedHere = loadErrors.length && view !== "all";
-    scroll.innerHTML = '<div class="list-msg">' +
-      (query ? "Nic nenalezeno." : failedHere ? "Feed se nepodařilo načíst." : "Žádné položky.") + "</div>";
-  } else {
-    scroll.innerHTML =
-      '<table aria-label="Seznam položek"><colgroup><col><col class="c-heslo"><col class="c-date"></colgroup>' +
-      '<thead><tr><th>Název</th><th class="c-heslo">Heslo</th><th class="c-date">Datum</th></tr></thead><tbody>' +
-      currentRows.map(rowHtml).join("") + "</tbody></table>";
-  }
-
-  // Výběr sbírky v sidebaru
-  document.querySelectorAll(".side-item").forEach((el) => {
-    el.classList.toggle("active", el.getAttribute("data-view") === view);
-  });
-
-  // Statusbar
-  const news = currentRows.filter((i) => i.isNew).length;
-  let s = currentRows.length + " " + plural(currentRows.length, "položka", "položky", "položek");
-  if (query) s += " (filtr)";
-  if (news) s += " · " + news + " " + plural(news, "nová", "nové", "nových") + " dnes";
-  $("#status-count").textContent = s;
-  $("#status-note").textContent = view.startsWith("arch-") ? ARCHIVE_NOTE
-    : loadErrors.length ? ("Nenačteno: " + loadErrors.join(", ")) : "";
-
-  // Obnova výběru řádku
-  if (selectedId && currentRows.some((i) => i.col + "|" + i.id === selectedId)) {
-    markSelected(selectedId, false);
-  } else {
-    selectedId = null;
-    $("#detail-inner").className = "detail-empty";
-    $("#detail-inner").textContent = "Vyberte položku ze seznamu";
-    document.body.classList.remove("detail-open");
-  }
-}
-
-function plural(n, one, few, many) { return n === 1 ? one : (n >= 2 && n <= 4 ? few : many); }
-
-/* ---------- Detail ---------- */
-function markSelected(id, openPanel) {
-  document.querySelectorAll("tbody tr").forEach((tr) => {
-    const on = tr.getAttribute("data-id") === id;
-    tr.classList.toggle("sel", on);
-    tr.setAttribute("aria-selected", on ? "true" : "false");
-    if (on) tr.scrollIntoView({ block: "nearest" });
-  });
-}
-
-function selectItem(id, openPanel) {
-  const it = currentRows.find((i) => i.col + "|" + i.id === id);
-  if (!it) return;
-  selectedId = id;
-  markSelected(id, openPanel);
-  renderDetail(it);
-  if (openPanel) document.body.classList.add("detail-open");
-}
-
-function metaRow(dt, dd) { return dd ? "<dt>" + esc(dt) + "</dt><dd>" + esc(dd) + "</dd>" : ""; }
-
-function renderDetail(it) {
-  const col = COLLECTIONS.find((c) => c.id === it.col);
-  let h = '<div class="d-kind">' + esc(col.kindLabel) + (it.archived ? " · archiv" : "") + "</div>";
-  // V detailu autory z konce názvu článku odřízneme – mají vlastní pole níže.
-  let dTitle = it.title;
-  if (it.authors && dTitle.endsWith("– " + it.authors)) {
-    dTitle = dTitle.slice(0, -("– " + it.authors).length).trim();
-  }
-  h += "<h2>" + esc(dTitle) + "</h2>";
-
-  let badges = "";
-  if (it.typeTag) badges += '<span class="tag tag-' + esc(it.typeTag) + '">' + esc(TYPE_LABELS[it.typeTag] || it.typeTag) + "</span>";
-  if (it.heslo) badges += '<span class="chip">' + esc(it.heslo) + "</span>";
-  if (it.isNew) badges += '<span class="tag tag-new">nové dnes</span>';
-  if (badges) h += '<div class="d-badges">' + badges + "</div>";
-
-  let meta = "";
-  if (it.kind === "nsoud") {
-    meta += metaRow("Forma", it.form);
-    meta += metaRow("Rozhodnuto", it.decided);
-    meta += metaRow("Vyhlášeno", it.announced);
-    meta += metaRow("Kategorie", it.nsKat);
-    meta += metaRow("Zveřejněno", fmtDate(it.date));
-  } else if (it.kind === "cjeu") {
-    meta += metaRow("Typ dokumentu", it.typeName);
-    meta += metaRow("Datum", fmtDate(it.date));
-  } else {
-    meta += metaRow("Časopis", it.journal);
-    meta += metaRow("Autoři", it.authors);
-    meta += metaRow("Datum", fmtDate(it.date));
-  }
-  if (meta) h += '<dl class="meta">' + meta + "</dl>";
-
-  if (it.summary) h += '<div class="d-sec">Shrnutí</div><p class="d-summary">' + esc(it.summary) + "</p>";
-  if (it.nsCategory) h += '<div class="d-sec">Hesla NS</div><p class="d-summary">' + esc(it.nsCategory) + "</p>";
-  if (it.taxonomy.length) {
-    h += '<div class="d-sec">Klasifikace CURIA</div><ul class="d-tax">' +
-      it.taxonomy.map((t) => "<li>" + esc(t) + "</li>").join("") + "</ul>";
-  }
-
-  if (it.link) {
-    const label = it.kind === "cjeu" ? "Otevřít na CURIA"
-      : /\.pdf(\?|$)/i.test(it.link) ? "Otevřít PDF"
-      : it.kind === "journals" ? "Otevřít článek" : "Otevřít odkaz";
-    h += '<a class="d-open" href="' + esc(it.link) + '" target="_blank" rel="noopener">' + ICO_OPEN + esc(label) + "</a>";
-  }
-
-  const inner = $("#detail-inner");
-  inner.className = "";
-  inner.innerHTML = h;
-}
-
-function closeDetail() { document.body.classList.remove("detail-open"); }
-
-/* ---------- Události ---------- */
-function setView(v) {
-  if (view === v) return;
-  view = v;
-  if (location.hash !== "#" + v) location.hash = v;
-  render();
-  $("#list-scroll").scrollTop = 0;
-}
-
-document.addEventListener("click", (e) => {
-  const side = e.target.closest(".side-item");
-  if (side) { e.preventDefault(); setView(side.getAttribute("data-view")); return; }
-  const tr = e.target.closest("tbody tr[data-id]");
-  if (tr) selectItem(tr.getAttribute("data-id"), true);
-  if (e.target.closest("#backdrop") || e.target.closest("#detail-close")) closeDetail();
-});
-
-document.addEventListener("dblclick", (e) => {
-  const tr = e.target.closest("tbody tr[data-id]");
-  if (!tr) return;
-  const it = currentRows.find((i) => i.col + "|" + i.id === tr.getAttribute("data-id"));
-  if (it && it.link) window.open(it.link, "_blank", "noopener");
-});
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    if (document.activeElement === $("#search") && $("#search").value) { $("#search").value = ""; query = ""; render(); }
-    else closeDetail();
-    return;
-  }
-  if (e.target.matches("input, textarea")) return;
-  if (e.key === "ArrowDown" || e.key === "ArrowUp") {
-    e.preventDefault();
-    if (!currentRows.length) return;
-    let idx = currentRows.findIndex((i) => i.col + "|" + i.id === selectedId);
-    idx = idx < 0 ? 0 : Math.min(currentRows.length - 1, Math.max(0, idx + (e.key === "ArrowDown" ? 1 : -1)));
-    const it = currentRows[idx];
-    selectItem(it.col + "|" + it.id, window.matchMedia("(max-width: 1150px)").matches === false);
-  } else if (e.key === "Enter" && selectedId) {
-    const it = currentRows.find((i) => i.col + "|" + i.id === selectedId);
-    if (it && it.link) window.open(it.link, "_blank", "noopener");
-  }
-});
-
-$("#search").addEventListener("input", (e) => { query = e.target.value.trim(); render(); });
-
-window.addEventListener("hashchange", () => {
-  const v = location.hash.slice(1);
-  if (v && v !== view && document.querySelector('[data-view="' + CSS.escape(v) + '"]')) setView(v);
-});
-
-/* ---------- Start ---------- */
-renderSidebar();
-const initial = location.hash.slice(1);
-if (initial && ["all"].concat(COLLECTIONS.flatMap((c) => [c.id, "arch-" + c.id])).includes(initial)) view = initial;
-render();
-loadAll();
-</script>
+<script src="app.js" defer></script>
 </body>
 </html>

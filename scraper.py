@@ -377,7 +377,7 @@ def merge_decisions(uredni, judikatura):
     return [merged[k] for k in order]
 
 
-def resolve_dates(decisions, weeks=2):
+def resolve_dates(decisions, weeks=1):
     """Doplní pub_dt, zaznamená první výskyt, označí nové a ponechá jen
     rozhodnutí zveřejněná do `weeks` týdnů zpět.
 
@@ -519,7 +519,7 @@ def main():
 
     decisions = merge_decisions(uredni, judikatura)
     decisions = enrich_metadata(decisions)          # datum zveřejnění + Heslo (cache)
-    decisions = resolve_dates(decisions)            # okno 2 týdny + příznak nové
+    decisions = resolve_dates(decisions)            # okno 1 týden + příznak nové
     decisions = enrich_summaries(decisions)         # Gemini jen na ponechané
     decisions.sort(key=lambda d: d["pub_dt"], reverse=True)
 

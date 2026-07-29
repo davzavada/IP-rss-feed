@@ -293,10 +293,12 @@ def main():
     except Exception as e:
         print(f"  CHYBA při stahování MUNI RPT: {e}")
 
-    # Ponecháme jen položky s prvním výskytem do 2 týdnů zpět (u všech zdrojů).
-    # První výskyt sledujeme sami, aby se staré články s přepsaným datem nevracely.
+    # Ponecháme jen položky s prvním výskytem do měsíce zpět (u všech zdrojů).
+    # Časopisy vycházejí po měsících až čtvrtletích, takže kratší okno by hlavní
+    # seznam většinu času nechávalo prázdný. První výskyt sledujeme sami, aby se
+    # staré články s přepsaným datem nevracely.
     all_items = filter_by_first_seen(
-        all_items, lambda i: i["guid"], STATE_FILE, weeks=2
+        all_items, lambda i: i["guid"], STATE_FILE, weeks=4
     )
 
     # Sort by date desc

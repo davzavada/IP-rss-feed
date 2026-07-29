@@ -47,7 +47,7 @@ def save_seen(state_file, seen, prune_days=90):
         json.dump(pruned, f, ensure_ascii=False, indent=2)
 
 
-def filter_by_first_seen(items, guid_of, state_file, weeks=2):
+def filter_by_first_seen(items, guid_of, state_file, weeks=1):
     """Ponechá jen položky s prvním výskytem do `weeks` týdnů zpět.
 
     Každé ponechané položce nastaví item["is_new"] = True, pokud byla
@@ -94,7 +94,8 @@ def save_json(path, data):
 
 
 # --- Trvalý archiv položek feedu ---
-# Hlavní feedy drží jen položky z posledních ~2 týdnů (okno prvního výskytu).
+# Hlavní feedy drží jen položky z posledního okna prvního výskytu (NS 1 týden,
+# CJEU a časopisy 1 měsíc).
 # Archiv naopak položky nikdy nemaže – při každém běhu do něj přibydou aktuální
 # položky feedu (dedup podle guid) a starší v něm zůstávají.
 

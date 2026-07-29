@@ -1,0 +1,419 @@
+/* Vzhled inspirovaný Zoterem: třípanelová „knihovna" – sbírky | seznam | detail.
+   Struktura souboru:
+     1. Tokeny (barvy, rozměry)   2. Základ a společné prvky
+     3. Toolbar                   4. Sidebar (sbírky + hesla)
+     5. Seznam položek            6. Statusbar
+     7. Detail položky            8. Dialog s nápovědou, toast
+     9. Responzivita              10. Tisk                                   */
+
+/* ---------- 1. Tokeny ---------- */
+:root {
+  color-scheme: light dark;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --bg: #ffffff;
+  --fg: #26262b;
+  --muted: #63636b;
+  --faint: #70707a;
+  --chrome: #f4f4f2;          /* toolbar, sidebar, statusbar */
+  --chrome-border: #d9d9d5;
+  --line: #ececea;            /* oddělovače řádků seznamu */
+  --stripe: #fafaf8;
+  --hover: #f1f1ef;
+  --sel: #d7e4f6;             /* vybraný řádek */
+  --sel-border: #c3d5ee;
+  --side-sel: #e0e9f5;        /* vybraná sbírka */
+  --link: #1a5dab;
+  --brand: #b02e35;           /* zoterovská červeň */
+  --rss: #d1750f;
+  --unread: #1a5dab;          /* nepřečtené – tučně + tečka */
+  --fresh: #1f7a45;           /* „přidáno dnes" */
+  --chip-bg: #edf1f7;
+  --chip-fg: #3d4d67;
+  --chip-on-bg: #1a5dab;      /* aktivní filtr hesla */
+  --chip-on-fg: #ffffff;
+  --btn-bg: #f6f6f4;
+  --shadow: rgba(0, 0, 0, .18);
+
+  --t-ruling-bg: #d9f0de;   --t-ruling-fg: #14602f;
+  --t-referral-bg: #dcecfd; --t-referral-fg: #0f4f9c;
+  --t-appeal-bg: #fdf2c8;   --t-appeal-fg: #7d5100;
+  --t-pending-bg: #fde1de;  --t-pending-fg: #a8211b;
+
+  --ico-nsoud: #3b6db4;
+  --ico-cjeu: #96780f;
+  --ico-journals: #2b7148;
+
+  /* Šířky panelů – přepisuje je tažení za dělítko (uloženo v localStorage). */
+  --w-sidebar: 236px;
+  --w-detail: 380px;
+  --row-h: 27px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1e1e21;
+    --fg: #e8e8ec;
+    --muted: #a8a8b0;
+    --faint: #8b8b94;
+    --chrome: #27272b;
+    --chrome-border: #3a3a40;
+    --line: #2b2b30;
+    --stripe: #222226;
+    --hover: #2e2e33;
+    --sel: #2c4568;
+    --sel-border: #3a577e;
+    --side-sel: #35425c;
+    --link: #7fb1e8;
+    --brand: #cf5a60;
+    --rss: #e0913c;
+    --unread: #7fb1e8;
+    --fresh: #6fc48f;
+    --chip-bg: #32363e;
+    --chip-fg: #bcc6d6;
+    --chip-on-bg: #4f7bb5;
+    --chip-on-fg: #0f1319;
+    --btn-bg: #2c2c31;
+    --shadow: rgba(0, 0, 0, .5);
+
+    --t-ruling-bg: #1d3a28;   --t-ruling-fg: #85d69e;
+    --t-referral-bg: #1e3450; --t-referral-fg: #8dbdf2;
+    --t-appeal-bg: #3d3213;   --t-appeal-fg: #e3bb5e;
+    --t-pending-bg: #46211e;  --t-pending-fg: #f09a92;
+
+    --ico-nsoud: #7ba7dd;
+    --ico-cjeu: #d3b455;
+    --ico-journals: #6cb98a;
+  }
+}
+
+/* ---------- 2. Základ ---------- */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0; font: 13px/1.45 var(--font); color: var(--fg); background: var(--bg);
+  display: flex; flex-direction: column; overflow: hidden;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+
+a { color: var(--link); }
+:focus-visible { outline: 2px solid var(--link); outline-offset: -2px; border-radius: 3px; }
+.ico { flex: 0 0 auto; display: inline-block; vertical-align: -2px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* Ikonové tlačítko v toolbaru / statusbaru */
+.tbtn {
+  display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 9px;
+  border: 1px solid transparent; border-radius: 7px; background: transparent;
+  color: var(--muted); font: inherit; font-size: 12px; cursor: pointer; white-space: nowrap;
+}
+.tbtn:hover:not(:disabled) { background: var(--hover); color: var(--fg); }
+.tbtn[aria-pressed="true"] { background: var(--side-sel); border-color: var(--sel-border); color: var(--fg); }
+.tbtn:disabled { opacity: .45; cursor: default; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* ---------- 3. Toolbar ---------- */
+#toolbar {
+  flex: 0 0 auto; display: flex; align-items: center; gap: 10px; height: 46px; padding: 0 10px 0 12px;
+  background: var(--chrome); border-bottom: 1px solid var(--chrome-border);
+}
+.brand { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.brand-mark {
+  width: 22px; height: 22px; border-radius: 5px; background: var(--brand); color: #fff;
+  font: 700 14px/22px Georgia, serif; text-align: center; flex: 0 0 auto;
+}
+h1 { margin: 0; font-size: 13px; font-weight: 700; letter-spacing: .01em; white-space: nowrap; }
+h1 .brand-sub { color: var(--muted); font-weight: 500; }
+
+.searchbox { position: relative; margin-left: auto; flex: 0 1 320px; min-width: 120px; }
+.searchbox .ico { position: absolute; left: 8px; top: 50%; transform: translateY(-50%); color: var(--faint); pointer-events: none; }
+#search {
+  width: 100%; height: 26px; padding: 0 24px 0 27px; border: 1px solid var(--chrome-border);
+  border-radius: 7px; background: var(--bg); color: var(--fg); font: inherit;
+}
+#search::placeholder { color: var(--faint); }
+.tools { display: flex; align-items: center; gap: 2px; flex: 0 0 auto; }
+
+/* ---------- 4. Rozvržení a sidebar ---------- */
+#app { flex: 1; display: flex; min-height: 0; }
+
+.splitter { flex: 0 0 auto; width: 5px; margin: 0 -2px; cursor: col-resize; background: transparent; z-index: 5; }
+.splitter:hover, .splitter.dragging { background: var(--sel-border); }
+body.resizing { cursor: col-resize; user-select: none; }
+
+#sidebar {
+  width: var(--w-sidebar); flex: 0 0 auto; display: flex; flex-direction: column; min-height: 0;
+  background: var(--chrome); border-right: 1px solid var(--chrome-border);
+}
+#collections { flex: 1 1 auto; overflow-y: auto; padding: 8px 7px 4px; }
+.side-title {
+  font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em; color: var(--faint);
+  padding: 9px 9px 3px;
+}
+#sidebar ul { list-style: none; margin: 0 0 2px; padding: 0; }
+#sidebar li { display: flex; align-items: center; gap: 2px; }
+.side-item {
+  flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; padding: 4px 9px;
+  border-radius: 6px; color: var(--fg); text-decoration: none; cursor: default;
+}
+.side-item .ico { color: var(--muted); }
+.side-item .lbl { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.side-item .cnt { color: var(--faint); font-size: 11px; font-variant-numeric: tabular-nums; }
+.side-item .cnt.unread { color: var(--unread); font-weight: 700; }
+.side-item:hover { background: var(--hover); }
+.side-item.active { background: var(--side-sel); font-weight: 600; }
+.side-item.active .ico { color: var(--link); }
+.side-item.has-unread .lbl { font-weight: 600; }
+
+.rss-link { visibility: hidden; display: flex; padding: 4px; border-radius: 5px; color: var(--rss); }
+#sidebar li:hover .rss-link, .rss-link:focus-visible { visibility: visible; }
+.rss-link:hover { background: var(--hover); }
+
+/* Výběr hesel – obdoba zoterovského tag selectoru */
+#tagpane {
+  flex: 0 0 auto; max-height: 34%; display: flex; flex-direction: column;
+  border-top: 1px solid var(--chrome-border);
+}
+#tagpane.collapsed { max-height: none; }
+#tagpane[hidden] { display: none; }
+#tagpane-head {
+  display: flex; align-items: center; gap: 6px; width: 100%; padding: 7px 10px;
+  border: 0; background: transparent; color: var(--faint); font: inherit; font-size: 10.5px;
+  text-transform: uppercase; letter-spacing: .07em; cursor: pointer; text-align: left;
+}
+#tagpane-head:hover { color: var(--fg); }
+#tagpane-head .caret { transition: transform .12s ease; }
+#tagpane.collapsed #tagpane-head .caret { transform: rotate(-90deg); }
+#tagpane-head .cnt { margin-left: auto; font-size: 10.5px; letter-spacing: 0; }
+#tags { overflow-y: auto; padding: 0 8px 8px; display: flex; flex-wrap: wrap; gap: 4px; align-content: flex-start; }
+#tagpane.collapsed #tags { display: none; }
+.tagbtn {
+  max-width: 100%; padding: 2px 8px; border: 1px solid transparent; border-radius: 9px;
+  background: var(--chip-bg); color: var(--chip-fg); font: inherit; font-size: 11.5px;
+  cursor: pointer; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.tagbtn:hover { border-color: var(--sel-border); }
+.tagbtn[aria-pressed="true"] { background: var(--chip-on-bg); color: var(--chip-on-fg); }
+.tagbtn .n { opacity: .65; font-variant-numeric: tabular-nums; }
+
+.side-foot { padding: 10px 10px 8px; font-size: 11px; color: var(--faint); line-height: 1.5; border-top: 1px solid var(--chrome-border); }
+.side-foot p { margin: 0 0 6px; }
+.side-foot p:last-child { margin-bottom: 0; }
+.rss-inline { color: var(--rss); vertical-align: -1px; }
+
+/* ---------- 5. Seznam položek ---------- */
+/* min-width i min-height na 0: bez nich by seznam přerostl panel a statusbar
+   by vypadl mimo obrazovku (vodorovné rozvržení na desktopu, svislé na mobilu). */
+#list-pane { flex: 1 1 auto; min-width: 0; min-height: 0; display: flex; flex-direction: column; }
+#list-scroll { flex: 1; overflow: auto; }
+
+table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+thead th {
+  position: sticky; top: 0; z-index: 2; background: var(--bg); background-clip: padding-box;
+  text-align: left; font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--muted); padding: 0; border-bottom: 1px solid var(--chrome-border);
+}
+thead button {
+  display: flex; align-items: center; gap: 4px; width: 100%; padding: 7px 10px;
+  border: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; text-align: left;
+}
+thead button:hover { background: var(--hover); color: var(--fg); }
+thead .sort { opacity: 0; font-size: 9px; }
+thead button[aria-sort]:not([aria-sort="none"]) { color: var(--fg); }
+thead th[aria-sort]:not([aria-sort="none"]) .sort { opacity: .8; }
+
+tbody td {
+  height: var(--row-h); padding: 3px 10px; border-bottom: 1px solid var(--line); vertical-align: middle;
+  overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+}
+tbody tr.item:nth-of-type(even) { background: var(--stripe); }
+tbody tr.item:hover { background: var(--hover); }
+tbody tr.sel, tbody tr.sel:hover { background: var(--sel); }
+tbody tr.sel td { border-bottom-color: var(--sel-border); }
+tbody tr:focus-visible { outline: 2px solid var(--link); outline-offset: -2px; }
+tr.unread .rt { font-weight: 700; }
+
+.c-heslo { width: 170px; }
+.c-date { width: 104px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.row-ico { margin-right: 7px; }
+.row-ico.k-nsoud { color: var(--ico-nsoud); }
+.row-ico.k-cjeu { color: var(--ico-cjeu); }
+.row-ico.k-journals { color: var(--ico-journals); }
+.row-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 6px; background: var(--unread); }
+.row-dot.hidden { background: transparent; }
+.tdot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+.tdot-ruling { background: var(--t-ruling-fg); }
+.tdot-referral { background: var(--t-referral-fg); }
+.tdot-appeal { background: var(--t-appeal-fg); }
+.tdot-pending { background: var(--t-pending-fg); }
+.fresh { color: var(--fresh); font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; margin-left: 7px; }
+
+.chip {
+  display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; vertical-align: middle;
+  background: var(--chip-bg); color: var(--chip-fg); border-radius: 9px; padding: 1px 8px;
+  font-size: 11.5px; line-height: 1.5;
+}
+
+/* Skupinové oddělovače podle data */
+tr.grp td {
+  height: auto; padding: 13px 10px 4px; border-bottom: 1px solid var(--chrome-border); background: var(--bg);
+  font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--faint);
+}
+tr.grp:first-child td { padding-top: 7px; }
+tr.grp td .n { font-weight: 400; letter-spacing: 0; text-transform: none; margin-left: 6px; }
+
+/* Režim s náhledem shrnutí */
+body.density-preview tbody td { height: auto; padding-top: 6px; padding-bottom: 7px; }
+body.density-preview tbody td:first-child { white-space: normal; }
+.prev { display: none; }
+body.density-preview .prev {
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+  margin: 2px 0 0 21px; color: var(--muted); font-size: 12px; line-height: 1.4;
+}
+
+.list-msg { padding: 44px 20px; text-align: center; color: var(--faint); }
+.list-msg strong { display: block; color: var(--fg); font-size: 14px; margin-bottom: 6px; }
+.list-msg .tbtn { margin-top: 14px; border-color: var(--chrome-border); background: var(--btn-bg); color: var(--fg); }
+.skeleton { padding: 8px 10px; }
+.skeleton i {
+  display: block; height: 11px; margin: 9px 0; border-radius: 3px; background: var(--line);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+.skeleton i:nth-child(odd) { width: 62%; }
+.skeleton i:nth-child(even) { width: 44%; }
+@keyframes pulse { 50% { opacity: .45; } }
+
+/* ---------- 6. Statusbar ---------- */
+#statusbar {
+  flex: 0 0 auto; display: flex; align-items: center; gap: 10px; height: 27px; padding: 0 6px 0 12px;
+  font-size: 11.5px; color: var(--muted); background: var(--chrome); border-top: 1px solid var(--chrome-border);
+}
+#statusbar .tbtn { height: 21px; font-size: 11.5px; }
+#status-note { margin-left: auto; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+/* ---------- 7. Detail položky ---------- */
+#detail {
+  width: var(--w-detail); flex: 0 0 auto; overflow-y: auto; background: var(--bg);
+  border-left: 1px solid var(--chrome-border); position: relative;
+}
+#detail-close {
+  position: absolute; top: 8px; right: 10px; display: none; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border: 0; border-radius: 6px; background: var(--bg); color: var(--muted);
+  font-size: 15px; cursor: pointer;
+}
+#detail-close:hover { background: var(--hover); }
+#detail-inner { padding: 16px 16px 28px; }
+.detail-empty { height: 100%; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--faint); padding: 24px; }
+
+.d-kind { font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); }
+#detail h2 { margin: 3px 0 10px; font-size: 15px; line-height: 1.35; overflow-wrap: anywhere; }
+.d-badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 13px; }
+.tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 9px; white-space: nowrap; }
+.tag-ruling { background: var(--t-ruling-bg); color: var(--t-ruling-fg); }
+.tag-referral { background: var(--t-referral-bg); color: var(--t-referral-fg); }
+.tag-appeal { background: var(--t-appeal-bg); color: var(--t-appeal-fg); }
+.tag-pending { background: var(--t-pending-bg); color: var(--t-pending-fg); }
+.tag-fresh { background: var(--t-ruling-bg); color: var(--t-ruling-fg); }
+
+dl.meta { display: grid; grid-template-columns: auto 1fr; gap: 3px 14px; margin: 0; font-size: 12.5px; }
+dl.meta dt { color: var(--muted); white-space: nowrap; }
+dl.meta dd { margin: 0; overflow-wrap: anywhere; }
+.d-sec { font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); margin: 15px 0 5px; }
+.d-summary { margin: 0; line-height: 1.55; overflow-wrap: anywhere; }
+.d-tax { margin: 0; padding-left: 17px; font-size: 12px; color: var(--muted); }
+.d-tax li { margin: 3px 0; }
+
+.d-actions { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+.d-btn {
+  display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px;
+  border: 1px solid var(--chrome-border); border-radius: 7px; background: var(--btn-bg);
+  color: var(--fg); font: inherit; font-size: 12.5px; text-decoration: none; cursor: pointer;
+}
+.d-btn:hover { background: var(--hover); }
+.d-btn.primary { color: var(--link); font-weight: 600; }
+
+/* ---------- 8. Nápověda a toast ---------- */
+dialog {
+  padding: 0; border: 1px solid var(--chrome-border); border-radius: 11px; background: var(--bg);
+  color: var(--fg); box-shadow: 0 16px 44px var(--shadow); max-width: 480px; width: calc(100% - 32px);
+}
+dialog::backdrop { background: rgba(0, 0, 0, .34); }
+.dlg-head { display: flex; align-items: center; padding: 13px 16px; border-bottom: 1px solid var(--line); }
+.dlg-head h2 { margin: 0; font-size: 14px; }
+.dlg-head button { margin-left: auto; }
+.dlg-body { padding: 6px 16px 16px; max-height: 70vh; overflow-y: auto; }
+.dlg-body h3 { font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); margin: 14px 0 6px; }
+.keys { display: grid; grid-template-columns: auto 1fr; gap: 5px 14px; align-items: baseline; margin: 0; font-size: 12.5px; }
+.keys dt { text-align: right; }
+.keys dd { margin: 0; color: var(--muted); }
+kbd {
+  display: inline-block; min-width: 17px; padding: 1px 5px; border: 1px solid var(--chrome-border);
+  border-bottom-width: 2px; border-radius: 5px; background: var(--btn-bg); color: var(--fg);
+  font: 11px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; text-align: center;
+}
+.dlg-body p { margin: 6px 0; font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+
+#toast {
+  position: fixed; left: 50%; bottom: 46px; transform: translate(-50%, 10px); z-index: 60;
+  padding: 7px 15px; border-radius: 8px; background: var(--fg); color: var(--bg); font-size: 12.5px;
+  opacity: 0; pointer-events: none; transition: opacity .16s ease, transform .16s ease;
+}
+#toast.show { opacity: .95; transform: translate(-50%, 0); }
+
+noscript { display: block; padding: 30px; text-align: center; color: var(--muted); }
+
+/* ---------- 9. Responzivita ---------- */
+/* Na užších oknech nechají tlačítka v toolbaru jen ikonu. */
+@media (max-width: 980px) {
+  .lbl-wide { display: none; }
+}
+/* Užší okna: detail jako vysouvací panel nad seznamem. */
+@media (max-width: 1100px) {
+  #detail {
+    position: fixed; top: 0; right: 0; bottom: 0; z-index: 30; width: min(430px, 100%);
+    transform: translateX(105%); transition: transform .16s ease; box-shadow: -10px 0 28px var(--shadow);
+  }
+  body.detail-open #detail { transform: none; }
+  #detail-close { display: flex; }
+  #split-detail { display: none; }
+  body.detail-open #backdrop { display: block; position: fixed; inset: 0; z-index: 25; background: rgba(0, 0, 0, .28); }
+}
+
+/* Mobil: sbírky jako vodorovné čipy, hesla schovaná. */
+@media (max-width: 720px) {
+  #toolbar { flex-wrap: wrap; height: auto; padding: 8px 8px; gap: 8px; }
+  .searchbox { order: 3; flex: 1 1 100%; }
+  #app { flex-direction: column; }
+  #split-sidebar { display: none; }
+  #sidebar {
+    width: auto; flex: 0 0 auto; flex-direction: row; align-items: center; gap: 5px;
+    overflow-x: auto; overflow-y: hidden; padding: 7px 9px;
+    border-right: 0; border-bottom: 1px solid var(--chrome-border);
+  }
+  #collections { display: flex; align-items: center; gap: 5px; overflow: visible; padding: 0; }
+  .side-title, .side-foot, .rss-link, #tagpane { display: none; }
+  #sidebar ul { display: flex; gap: 5px; margin: 0; }
+  .side-item {
+    white-space: nowrap; border: 1px solid var(--chrome-border); border-radius: 15px;
+    padding: 3px 11px; background: var(--bg);
+  }
+  .side-item.active { background: var(--side-sel); border-color: var(--sel-border); }
+  #statusbar { padding-left: 10px; }
+}
+
+/* ---------- 10. Tisk ---------- */
+@media print {
+  body { overflow: visible; display: block; }
+  #toolbar, #sidebar, .splitter, #statusbar, #detail-close, #backdrop { display: none; }
+  #app { display: block; }
+  #list-scroll { overflow: visible; }
+  tbody td { white-space: normal; }
+}
