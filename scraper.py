@@ -429,12 +429,18 @@ def resolve_dates(decisions, weeks=2):
 def build_rss(decisions):
     """Vytvoří RSS 2.0 XML z rozhodnutí."""
     rss = Element("rss", version="2.0", attrib={
-        "xmlns:dc": "http://purl.org/dc/elements/1.1/"
+        "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+        "xmlns:atom": "http://www.w3.org/2005/Atom",
     })
     channel = SubElement(rss, "channel")
 
     SubElement(channel, "title").text = "NS ČR – senát 23 Cdo – rozhodnutí"
     SubElement(channel, "link").text = URL
+    # atom:link rel="self" – adresa feedu samotného (vyžaduje RSS best practice)
+    SubElement(channel, "atom:link", attrib={
+        "href": "https://rss.davidzavada.cz/feed.xml",
+        "rel": "self", "type": "application/rss+xml",
+    })
     SubElement(channel, "description").text = (
         "Rozhodnutí senátu 23 Cdo Nejvyššího soudu ČR – úřední deska "
         "i databáze judikatury (včetně usnesení)"

@@ -4,7 +4,7 @@
 import os
 import re
 from datetime import datetime, timezone
-from xml.etree.ElementTree import Element, SubElement, ElementTree, indent, parse as ET_parse
+from xml.etree.ElementTree import Element, SubElement, ElementTree, indent
 
 import requests
 from bs4 import BeautifulSoup
@@ -233,12 +233,18 @@ def enrich_summaries(items):
 def build_rss(all_items):
     """Build RSS 2.0 XML from all journal items."""
     rss = Element("rss", version="2.0", attrib={
-        "xmlns:dc": "http://purl.org/dc/elements/1.1/"
+        "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+        "xmlns:atom": "http://www.w3.org/2005/Atom",
     })
     channel = SubElement(rss, "channel")
 
     SubElement(channel, "title").text = "Právní časopisy"
-    SubElement(channel, "link").text = "https://rss.davidzavada.cz/journals_feed.xml"
+    # <link> kanálu má vést na web, ne na XML samotné (to patří do atom:link self)
+    SubElement(channel, "link").text = "https://rss.davidzavada.cz/"
+    SubElement(channel, "atom:link", attrib={
+        "href": "https://rss.davidzavada.cz/journals_feed.xml",
+        "rel": "self", "type": "application/rss+xml",
+    })
     SubElement(channel, "description").text = "Nová čísla právních časopisů a články"
     SubElement(channel, "language").text = "cs"
     SubElement(channel, "lastBuildDate").text = datetime.now(timezone.utc).strftime(
