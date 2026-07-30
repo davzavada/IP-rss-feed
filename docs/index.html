@@ -24,6 +24,7 @@
   .page-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-bottom: 2px solid var(--fg); padding-bottom: 10px; flex-wrap: wrap; }
   h1 { margin: 0; font-size: 1.55em; letter-spacing: -0.01em; }
   .legend { font-size: 0.85em; color: var(--muted); white-space: nowrap; }
+  #updated:not(:empty)::after { content: "·"; margin: 0 7px; color: var(--line); }
   h2 { margin: 40px 0 0; color: var(--fg); font-size: 1.1em; font-weight: 600; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .feed-link { background: var(--line-soft); padding: 3px 9px; border-radius: 6px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.72em; font-weight: 500; text-decoration: none; color: var(--link); }
   .feed-link:hover { background: #dfe6ee; }
@@ -40,7 +41,8 @@
   .col-type { width: 10%; }
   .col-name { width: 20%; }
   .col-heslo { width: 13%; }
-  .col-src { width: 10%; }
+  .col-src { width: 15%; }
+  .col-src .src, .col-src .tag { margin-bottom: 3px; }
   .col-date { width: 12%; color: var(--muted); font-variant-numeric: tabular-nums; }
   .col-type, .col-name, .col-heslo, .col-summary, .col-src { overflow-wrap: anywhere; }
   .nowrap { white-space: nowrap; }
@@ -59,7 +61,6 @@
   .src-nsoud { background: #eef2ff; color: #3730a3; }
   .src-cjeu { background: #ddf4ff; color: #0969da; }
   .src-journals { background: #fff8c5; color: #7d4e00; }
-  footer { margin-top: 48px; font-size: 0.8em; color: var(--muted); border-top: 1px solid var(--line-soft); padding-top: 12px; }
   .loading, .feed-empty { color: var(--muted); font-style: italic; }
   .section-note { font-size: 0.85em; color: var(--muted); margin: 6px 0 16px; }
   section[id] { scroll-margin-top: 18px; }
@@ -87,7 +88,10 @@
 
 <div class="page-head">
   <h1>RSS - IP / IT</h1>
-  <span class="legend"><span class="new-dot">●</span> nové dnes</span>
+  <span class="legend">
+    <span id="updated"></span>
+    <span class="new-dot">●</span> nové dnes
+  </span>
 </div>
 
 <nav id="sidenav" aria-label="Navigace na stránce">
@@ -117,13 +121,11 @@
   <div id="feed-journals"><p class="loading">Načítám...</p></div>
 </section>
 
-<footer>Automaticky aktualizováno každý den. Přidejte XML odkazy do RSS čtečky (Zotero, NetNewsWire, Feedly aj.).</footer>
-
 <script>
 /* ========== Feedy ========== */
-function renderTable(items, container, columns, emptyMsg) {
+function renderTable(items, container, columns) {
   if (items.length === 0) {
-    container.innerHTML = '<p class="feed-empty">' + (emptyMsg || "Žádné položky.") + '</p>';
+    container.innerHTML = '<p class="feed-empty">Žádné nové položky.</p>';
     return;
   }
   let html = '<div class="table-wrap"><table><thead><tr>';
@@ -140,7 +142,7 @@ function renderTable(items, container, columns, emptyMsg) {
   container.innerHTML = html;
 }
 
-function fetchItems(url) {
+function fetchFeed(url) {
   return fetch(url)
     .then(r => {
       if (!r.ok) throw new Error("HTTP " + r.status);
@@ -150,7 +152,7 @@ function fetchItems(url) {
       const doc = new DOMParser().parseFromString(xml, "text/xml");
       // Chybová stránka (404 aj.) není XML – radši ohlásit chybu než „Žádné položky".
       if (doc.querySelector("parsererror")) throw new Error("neplatné XML");
-      return Array.from(doc.querySelectorAll("item"));
+      return doc;
     });
 }
 
@@ -240,9 +242,11 @@ const colsJournals = [
 ];
 
 // Dnešní shrnutí – kombinovaná tabulka přes všechny tři zdroje.
+// Ve sloupci Zdroj je vedle sebe štítek zdroje a štítek časopisu/typu.
 const colsToday = [
-  { label: "Zdroj", cls: "col-src", render: i => '<span class="src src-' + i._src + '">' + i._srcLabel + '</span>' },
-  { label: "Název", cls: "col-name", render: i => getTag(text(i, "title")) + " " + nameCell(i) },
+  { label: "Zdroj", cls: "col-src", render: i =>
+      '<span class="src src-' + i._src + '">' + i._srcLabel + '</span> ' + getTag(text(i, "title")) },
+  { label: "Název", cls: "col-name", render: nameCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
   { label: "Shrnutí", cls: "col-summary", render: summaryCell },
   { label: "Datum", cls: "col-date", render: getDate }
@@ -311,21 +315,40 @@ function initSidenav() {
   update();
 }
 
+// Datum poslední aktualizace = nejnovější <lastBuildDate> ze všech feedů.
+function showUpdated(docPromises) {
+  Promise.all(docPromises.map(p => p.then(
+    doc => {
+      const d = new Date((doc.querySelector("lastBuildDate") || {}).textContent || "");
+      return isNaN(d) ? null : d;
+    },
+    () => null
+  ))).then(dates => {
+    const latest = dates.filter(Boolean).sort((a, b) => b - a)[0];
+    if (!latest) return;
+    document.getElementById("updated").textContent =
+      "aktualizováno " + latest.toLocaleDateString("cs-CZ") + " " +
+      latest.toLocaleTimeString("cs-CZ", { hour: "2-digit", minute: "2-digit" });
+  });
+}
+
 function initApp() {
   // Každý feed stáhneme jen jednou a sdílíme mezi sekcemi (recentní / dnešní).
-  const feedPromises = FEEDS.map(f => fetchItems(f.url));
+  const feedDocs = FEEDS.map(f => fetchFeed(f.url));
+  const feedPromises = feedDocs.map(
+    p => p.then(doc => Array.from(doc.querySelectorAll("item")))
+  );
   FEEDS.forEach((f, idx) => {
     feedPromises[idx]
-      .then(items => {
-        // Co je v Dnešním shrnutí (is-new), v Recentním neopakujeme.
-        const older = items.filter(it => !it.querySelector("is-new"));
-        const emptyMsg = items.length > older.length
-          ? "Vše nové – viz Dnešní shrnutí." : undefined;
-        renderTable(older, document.getElementById(f.containerId), f.cols, emptyMsg);
-      })
+      // Co je v Dnešním shrnutí (is-new), v Recentním neopakujeme.
+      .then(items => renderTable(
+        items.filter(it => !it.querySelector("is-new")),
+        document.getElementById(f.containerId), f.cols
+      ))
       .catch(() => failed(f.containerId));
   });
   loadToday(feedPromises);
+  showUpdated(feedDocs);
   initSidenav();
 }
 
