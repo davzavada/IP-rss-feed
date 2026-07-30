@@ -48,7 +48,9 @@
   .summary { color: #3d3d3d; line-height: 1.5; }
   .heslo { display: inline-block; background: var(--accent-bg); color: var(--accent-fg); font-size: 0.82em; font-weight: 600; padding: 2px 9px; border-radius: 999px; line-height: 1.35; }
   .new-dot { color: #1a7f37; font-size: 0.7em; vertical-align: middle; }
-  .tag { display: inline-block; font-size: 0.74em; padding: 2px 8px; border-radius: 5px; font-weight: 600; white-space: nowrap; }
+  /* Štítek zdroje/typu – jednotný pro všechny položky; neutrální šedá,
+     jen typy rozhodnutí CJEU mají sémantické barvy. */
+  .tag { display: inline-block; font-size: 0.74em; padding: 2px 8px; border-radius: 5px; font-weight: 600; white-space: nowrap; background: var(--line-soft); color: var(--muted); }
   .tag-ruling { background: #dafbe1; color: #1a7f37; }
   .tag-referral { background: #ddf4ff; color: #0969da; }
   .tag-appeal { background: #fff8c5; color: #7d4e00; }
@@ -119,9 +121,9 @@
 
 <script>
 /* ========== Feedy ========== */
-function renderTable(items, container, columns) {
+function renderTable(items, container, columns, emptyMsg) {
   if (items.length === 0) {
-    container.innerHTML = '<p class="feed-empty">Žádné položky.</p>';
+    container.innerHTML = '<p class="feed-empty">' + (emptyMsg || "Žádné položky.") + '</p>';
     return;
   }
   let html = '<div class="table-wrap"><table><thead><tr>';
@@ -175,10 +177,10 @@ function text(item, sel) {
 }
 
 function getTag(title) {
-  const m = title.match(/^\[(\w+)\]/);
+  const m = title.match(/^\[([^\]]+)\]/);
   if (!m) return "";
-  const t = m[1].toLowerCase();
-  return '<span class="tag tag-' + t + '">' + esc(m[1]) + '</span>';
+  const slug = m[1].toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  return '<span class="tag tag-' + slug + '">' + esc(m[1]) + '</span>';
 }
 
 function getDate(item) {
@@ -195,7 +197,7 @@ function newDot(item) {
 }
 
 function nameCell(item) {
-  const title = esc(text(item, "title").replace(/^\[\w+\]\s*/, ""));
+  const title = esc(text(item, "title").replace(/^\[[^\]]+\]\s*/, ""));
   const href = safeHref(text(item, "link"));
   const inner = href ? '<a href="' + href + '">' + title + '</a>' : title;
   return newDot(item) + inner;
@@ -228,7 +230,8 @@ const colsCjeu = [
 ];
 
 const colsJournals = [
-  { label: "Časopis", cls: "col-name", render: nameCell },
+  { label: "Časopis", cls: "col-type", render: i => getTag(text(i, "title")) },
+  { label: "Název", cls: "col-name", render: nameCell },
   { label: "Shrnutí", cls: "col-summary", render: summaryCell },
   { label: "PDF", cls: "col-date", render: i => {
       const href = safeHref(text(i, "link"));
@@ -313,7 +316,13 @@ function initApp() {
   const feedPromises = FEEDS.map(f => fetchItems(f.url));
   FEEDS.forEach((f, idx) => {
     feedPromises[idx]
-      .then(items => renderTable(items, document.getElementById(f.containerId), f.cols))
+      .then(items => {
+        // Co je v Dnešním shrnutí (is-new), v Recentním neopakujeme.
+        const older = items.filter(it => !it.querySelector("is-new"));
+        const emptyMsg = items.length > older.length
+          ? "Vše nové – viz Dnešní shrnutí." : undefined;
+        renderTable(older, document.getElementById(f.containerId), f.cols, emptyMsg);
+      })
       .catch(() => failed(f.containerId));
   });
   loadToday(feedPromises);

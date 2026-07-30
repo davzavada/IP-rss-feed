@@ -73,9 +73,9 @@ def scrape_upv():
             continue
 
         if "evropske_pravo" in href.lower():
-            journal_name = "Evropské právo"
+            journal_name, label = "Evropské právo", "EP"
         else:
-            journal_name = "Duševní vlastnictví"
+            journal_name, label = "Duševní vlastnictví", "DV"
 
         quarter_months = {"1": "01", "01": "01", "2": "04", "02": "04",
                           "3": "07", "03": "07", "4": "10", "04": "10"}
@@ -83,7 +83,9 @@ def scrape_upv():
         pub_date = datetime.strptime(f"{year}-{month}-01", "%Y-%m-%d").replace(tzinfo=timezone.utc)
 
         items.append({
-            "title": f"{journal_name} {issue_num}/{year}",
+            # Prefix [DV]/[EP] zobrazuje stránka jako štítek – jednotně
+            # se štítky článků ([RPT], [MUJLT], [GRUR Int], …).
+            "title": f"[{label}] {journal_name} {issue_num}/{year}",
             "journal_name": journal_name,
             "link": pdf_url,
             "description": f"{journal_name} {issue_num}/{year}\nPDF: {pdf_url}",
