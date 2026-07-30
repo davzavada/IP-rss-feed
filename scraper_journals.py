@@ -3,8 +3,8 @@
 
 import os
 import re
-from datetime import datetime, timezone
-from xml.etree.ElementTree import Element, SubElement, ElementTree, indent
+from datetime import datetime, timedelta, timezone
+from xml.etree.ElementTree import Element, SubElement, ElementTree, fromstring, indent
 
 import requests
 from bs4 import BeautifulSoup
@@ -104,16 +104,28 @@ def scrape_upv():
     return latest
 
 
-# --- MUNI Revue pro právo a technologie (fetch their RSS) ---
+# --- Časopisy na OJS (Open Journal Systems) – čteme jejich RSS gateway ---
+# Stejný vzor pro všechny instalace OJS (journals.muni.cz, jipitec.eu):
+# <base>/gateway/plugin/WebFeedGatewayPlugin/rss2
 
-def fetch_muni_rss():
-    """Fetch MUNI journal RSS and extract latest articles."""
-    url = "https://journals.muni.cz/revue/gateway/plugin/WebFeedGatewayPlugin/rss2"
-    resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=30)
+OJS_SOURCES = [
+    # (feed_url, zkratka do titulku a guid, plný název časopisu)
+    ("https://journals.muni.cz/revue/gateway/plugin/WebFeedGatewayPlugin/rss2",
+     "RPT", "Revue pro právo a technologie"),
+    ("https://journals.muni.cz/mujlt/gateway/plugin/WebFeedGatewayPlugin/rss2",
+     "MUJLT", "Masaryk University Journal of Law and Technology"),
+    ("https://www.jipitec.eu/jipitec/gateway/plugin/WebFeedGatewayPlugin/rss2",
+     "JIPITEC", "JIPITEC – Journal of Intellectual Property, Information "
+                "Technology and E-Commerce Law"),
+]
+
+
+def fetch_ojs_rss(feed_url, label, journal_name):
+    """Stáhne RSS z OJS gateway a vrátí nejnovější články."""
+    resp = requests.get(feed_url, headers={"User-Agent": USER_AGENT}, timeout=30)
     resp.raise_for_status()
 
-    import xml.etree.ElementTree as ET
-    root = ET.fromstring(resp.text)
+    root = fromstring(resp.content)
     ns = {"dc": "http://purl.org/dc/elements/1.1/"}
     items = []
 
@@ -154,20 +166,116 @@ def fetch_muni_rss():
         if len(clean_desc) > 300:
             clean_desc = clean_desc[:297] + "..."
 
-        full_title = f"[RPT] {title}"
+        full_title = f"[{label}] {title}"
         if creator:
             full_title += f" – {creator}"
 
         items.append({
             "title": full_title,
-            "journal_name": "Revue pro právo a technologie",
+            "journal_name": journal_name,
             "link": link,
             "description": f"{title}\nAutor: {creator}\n{clean_desc}" if creator else f"{title}\n{clean_desc}",
-            "guid": f"RPT-{guid}",
+            "guid": f"{label}-{guid}",
             "pub_date": pub_date or datetime.now(timezone.utc),
             "sort_key": (pub_date.strftime("%Y") if pub_date else "0000", "00"),
             "ai_source": "article",  # shrnutí se dělá z názvu a anotace
             "ai_text": f"{title}\n\n{full_desc}".strip(),
+        })
+
+    return items
+
+
+# --- Časopisy přes Crossref API (OUP, Elgar, Springer) ---
+# Weby těchto vydavatelů (academic.oup.com, elgaronline.com) sedí za
+# Cloudflare bot-ochranou a přímý scraping z GitHub Actions je nespolehlivý.
+# Crossref je jejich oficiální metadatové API: bez ochran, s DOI, autory
+# i abstrakty. Novinky bereme podle data vzniku DOI (≈ online publikace).
+
+CROSSREF_API = "https://api.crossref.org/journals/{issn}/works"
+CROSSREF_LOOKBACK_DAYS = 30  # jak staré DOI záznamy ještě bereme
+# Crossref etiketa: identifikuj se v User-Agent
+CROSSREF_UA = "pravni-rss-feed/1.0 (+https://rss.davidzavada.cz)"
+
+CROSSREF_JOURNALS = [
+    # (online ISSN, zkratka do titulku a guid, plný název časopisu)
+    ("2045-9815", "QMJIP", "Queen Mary Journal of Intellectual Property"),
+    ("2632-8550", "GRUR Int", "GRUR International"),
+    ("1747-1540", "JIPLP", "Journal of Intellectual Property Law & Practice"),
+    ("2195-0237", "IIC", "IIC – International Review of Intellectual Property "
+                         "and Competition Law"),
+]
+
+
+def _strip_jats(text):
+    """Crossref abstrakty jsou JATS XML (<jats:p>…) – vrátí čistý text."""
+    if not text:
+        return ""
+    clean = BeautifulSoup(text, "html.parser").get_text(" ", strip=True)
+    return re.sub(r"^\s*Abstract\s*", "", clean, flags=re.IGNORECASE).strip()
+
+
+def fetch_crossref_journal(issn, label, journal_name):
+    """Vrátí nedávné články časopisu z Crossref (řazené podle vzniku DOI)."""
+    since = (datetime.now(timezone.utc)
+             - timedelta(days=CROSSREF_LOOKBACK_DAYS)).strftime("%Y-%m-%d")
+    resp = requests.get(
+        CROSSREF_API.format(issn=issn),
+        params={
+            "filter": f"from-created-date:{since}",
+            "sort": "created", "order": "desc", "rows": "40",
+            "select": "DOI,title,author,abstract,created",
+        },
+        headers={"User-Agent": CROSSREF_UA},
+        timeout=30,
+    )
+    resp.raise_for_status()
+    works = resp.json().get("message", {}).get("items", [])
+
+    items = []
+    for w in works:
+        doi = (w.get("DOI") or "").strip()
+        titles = w.get("title") or []
+        title = " ".join(titles[0].split()) if titles else ""
+        if not doi or not title:
+            continue
+
+        authors = ", ".join(
+            " ".join(p for p in (a.get("given"), a.get("family")) if p)
+            for a in (w.get("author") or [])
+            if a.get("given") or a.get("family")
+        )
+        abstract = _strip_jats(w.get("abstract"))
+
+        pub_date = datetime.now(timezone.utc)
+        created = (w.get("created") or {}).get("date-time")
+        if created:
+            try:
+                pub_date = datetime.fromisoformat(created.replace("Z", "+00:00"))
+            except ValueError:
+                pass
+
+        clean_desc = abstract if len(abstract) <= 300 else abstract[:297] + "..."
+        desc_parts = [title]
+        if authors:
+            desc_parts.append(f"Autor: {authors}")
+        desc_parts.append(journal_name)
+        if clean_desc:
+            desc_parts.append(clean_desc)
+
+        full_title = f"[{label}] {title}"
+        if authors:
+            full_title += f" – {authors}"
+
+        items.append({
+            "title": full_title,
+            "journal_name": journal_name,
+            "link": f"https://doi.org/{doi}",
+            "description": "\n".join(desc_parts),
+            "guid": f"{label}-{doi}",
+            "pub_date": pub_date,
+            "sort_key": (pub_date.strftime("%Y"), "00"),
+            "ai_source": "article",  # shrnutí se dělá z názvu a abstraktu
+            "ai_text": f"{title}\n\n{abstract}".strip(),
         })
 
     return items
@@ -178,8 +286,8 @@ def fetch_muni_rss():
 def enrich_summaries(items):
     """Doplní AI shrnutí (HESLO + SHRNUTÍ) přes Gemma; cache podle guid.
 
-    Volá se až na ponechané položky (po okně). Články (MUNI RPT) shrnuje
-    z názvu a anotace, čísla časopisů (ÚPV) z celého PDF.
+    Volá se až na ponechané položky (po okně). Články (OJS, Crossref)
+    shrnuje z názvu a anotace/abstraktu, čísla časopisů (ÚPV) z celého PDF.
     """
     meta = load_json(META_FILE)
     if not gemini_enabled():
@@ -279,7 +387,7 @@ def main():
     print("Stahuji právní časopisy...")
     all_items = []
 
-    # 1. ÚPV
+    # 1. ÚPV (HTML + PDF čísla)
     print("  Zdroj: Duševní vlastnictví / Evropské právo (ÚPV)")
     try:
         upv = scrape_upv()
@@ -288,14 +396,25 @@ def main():
     except Exception as e:
         print(f"  CHYBA při stahování ÚPV: {e}")
 
-    # 2. MUNI RPT
-    print("  Zdroj: Revue pro právo a technologie (MUNI)")
-    try:
-        muni = fetch_muni_rss()
-        print(f"  Nalezeno {len(muni)} článků")
-        all_items.extend(muni)
-    except Exception as e:
-        print(f"  CHYBA při stahování MUNI RPT: {e}")
+    # 2. Časopisy na OJS (RPT, MUJLT, JIPITEC)
+    for feed_url, label, journal_name in OJS_SOURCES:
+        print(f"  Zdroj: {journal_name} (OJS RSS)")
+        try:
+            ojs_items = fetch_ojs_rss(feed_url, label, journal_name)
+            print(f"  Nalezeno {len(ojs_items)} článků")
+            all_items.extend(ojs_items)
+        except Exception as e:
+            print(f"  CHYBA při stahování {label}: {e}")
+
+    # 3. Časopisy přes Crossref (QMJIP, GRUR Int, JIPLP, IIC)
+    for issn, label, journal_name in CROSSREF_JOURNALS:
+        print(f"  Zdroj: {journal_name} (Crossref)")
+        try:
+            cr_items = fetch_crossref_journal(issn, label, journal_name)
+            print(f"  Nalezeno {len(cr_items)} článků")
+            all_items.extend(cr_items)
+        except Exception as e:
+            print(f"  CHYBA při stahování {label}: {e}")
 
     # Ponecháme jen položky s prvním výskytem do 2 týdnů zpět (u všech zdrojů).
     # První výskyt sledujeme sami, aby se staré články s přepsaným datem nevracely.
