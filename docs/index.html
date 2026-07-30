@@ -3,13 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RSS - IP / IT – rss.davidzavada.cz</title>
+<meta name="robots" content="noindex, nofollow">
+<title>RSS - IP / IT</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
   :root {
     --fg: #1f2328; --muted: #656d76; --line: #d0d7de; --line-soft: #eaeef2;
     --link: #0969da; --accent-bg: #eef2ff; --accent-fg: #3730a3; --row-hover: #f6f8fa;
   }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     width: 92%; max-width: 1400px; margin: 40px auto; padding: 0 16px;
@@ -34,8 +37,9 @@
   .col-type { width: 10%; }
   .col-name { width: 20%; }
   .col-heslo { width: 13%; }
+  .col-src { width: 10%; }
   .col-date { width: 12%; color: var(--muted); font-variant-numeric: tabular-nums; }
-  .col-type, .col-name, .col-heslo, .col-summary { overflow-wrap: anywhere; }
+  .col-type, .col-name, .col-heslo, .col-summary, .col-src { overflow-wrap: anywhere; }
   .nowrap { white-space: nowrap; }
 
   .summary { color: #3d3d3d; line-height: 1.5; }
@@ -46,36 +50,101 @@
   .tag-referral { background: #ddf4ff; color: #0969da; }
   .tag-appeal { background: #fff8c5; color: #7d4e00; }
   .tag-pending { background: #ffebe9; color: #cf222e; }
+  .src { display: inline-block; font-size: 0.74em; padding: 2px 8px; border-radius: 5px; font-weight: 600; white-space: nowrap; background: var(--line-soft); color: var(--muted); }
+  .src-nsoud { background: #eef2ff; color: #3730a3; }
+  .src-cjeu { background: #ddf4ff; color: #0969da; }
+  .src-journals { background: #fff8c5; color: #7d4e00; }
   footer { margin-top: 48px; font-size: 0.8em; color: var(--muted); border-top: 1px solid var(--line-soft); padding-top: 12px; }
   #loading, .feed-empty { color: var(--muted); font-style: italic; }
-  .archive { margin-top: 52px; border-top: 2px solid var(--fg); padding-top: 10px; }
-  .archive > h2 { margin-top: 16px; }
-  .archive-note { font-size: 0.85em; color: var(--muted); margin: 6px 0 16px; }
+  .section-note { font-size: 0.85em; color: var(--muted); margin: 6px 0 16px; }
+  section[id] { scroll-margin-top: 18px; }
+  h2[id] { scroll-margin-top: 18px; }
+  .major { margin-top: 52px; border-top: 2px solid var(--fg); padding-top: 10px; }
+  .major > h2 { margin-top: 16px; }
+  #dnesni { margin-top: 8px; border-top: 0; padding-top: 0; }
   .archive details { margin: 8px 0; border: 1px solid var(--line-soft); border-radius: 8px; padding: 0 14px; }
   .archive details[open] { padding-bottom: 10px; }
   .archive summary { cursor: pointer; font-weight: 600; color: var(--fg); padding: 11px 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .archive summary:hover { color: var(--link); }
+
+  /* Boční navigace vpravo (jen na širokých obrazovkách) */
+  #sidenav { display: none; position: fixed; top: 120px; right: 18px; width: 168px; flex-direction: column; gap: 2px; font-size: 0.85em; border-left: 2px solid var(--line-soft); }
+  #sidenav a { color: var(--muted); text-decoration: none; padding: 5px 10px; border-left: 2px solid transparent; margin-left: -2px; border-radius: 0 6px 6px 0; line-height: 1.35; }
+  #sidenav a:hover { color: var(--link); background: var(--row-hover); }
+  #sidenav a.active { color: var(--link); border-left-color: var(--link); font-weight: 600; }
+  #sidenav a.sub { padding-left: 24px; font-size: 0.92em; }
+  @media (min-width: 1200px) {
+    body { padding-right: 210px; }
+    #sidenav { display: flex; }
+  }
   @media (max-width: 640px) { body { width: auto; margin: 22px 0; padding: 0 12px; } }
+
+  /* Přihlášení */
+  #login { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; background: #fff; }
+  #login[hidden], #app[hidden] { display: none; }
+  .login-card { width: min(360px, 92vw); border: 1px solid var(--line); border-radius: 12px; padding: 30px 28px; box-shadow: 0 8px 28px rgba(31, 35, 40, 0.08); }
+  .login-card h1 { font-size: 1.25em; margin-bottom: 4px; }
+  .login-card p { margin: 0 0 18px; font-size: 0.85em; color: var(--muted); }
+  .login-card label { display: block; font-size: 0.78em; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin: 14px 0 4px; }
+  .login-card input { width: 100%; padding: 8px 10px; font-size: 0.95em; border: 1px solid var(--line); border-radius: 8px; font-family: inherit; }
+  .login-card input:focus { outline: 2px solid var(--link); outline-offset: -1px; border-color: var(--link); }
+  .login-card button { width: 100%; margin-top: 20px; padding: 9px 0; font-size: 0.95em; font-weight: 600; font-family: inherit; color: #fff; background: var(--accent-fg); border: 0; border-radius: 8px; cursor: pointer; }
+  .login-card button:hover { background: #312a8e; }
+  #login-error { display: none; margin-top: 12px; font-size: 0.85em; color: #cf222e; }
 </style>
 </head>
 <body>
+
+<div id="login" hidden>
+  <form class="login-card" id="login-form">
+    <h1>RSS - IP / IT</h1>
+    <p>Přihlaste se pro zobrazení přehledu.</p>
+    <label for="login-user">Uživatel</label>
+    <input id="login-user" type="text" autocomplete="username" autocapitalize="none" required>
+    <label for="login-pass">Heslo</label>
+    <input id="login-pass" type="password" autocomplete="current-password" required>
+    <button type="submit">Přihlásit</button>
+    <p id="login-error">Nesprávné jméno nebo heslo.</p>
+  </form>
+</div>
+
+<div id="app" hidden>
 <div class="page-head">
   <h1>RSS - IP / IT</h1>
   <span class="legend"><span class="new-dot">●</span> nové dnes</span>
 </div>
 
-<h2>Rozhodnutí senátu 23 Cdo <a class="feed-link" href="feed.xml">feed.xml</a></h2>
-<div id="feed-nsoud"><p id="loading">Načítám...</p></div>
+<nav id="sidenav" aria-label="Navigace na stránce">
+  <a href="#dnesni">Dnešní shrnutí</a>
+  <a href="#recentni">Recentní</a>
+  <a href="#nsoud" class="sub">NS – 23 Cdo</a>
+  <a href="#cjeu" class="sub">CJEU IP / IT</a>
+  <a href="#casopisy" class="sub">Časopisy</a>
+  <a href="#archiv">Archiv</a>
+</nav>
 
-<h2>Rozhodnutí CJEU k IP / IT <a class="feed-link" href="ipcuria_feed.xml">ipcuria_feed.xml</a></h2>
-<div id="feed-cjeu"><p id="loading">Načítám...</p></div>
+<section id="dnesni" class="major">
+  <h2>Dnešní shrnutí</h2>
+  <p class="section-note">Vše nové z dnešního dne – rozhodnutí i články v jednom.</p>
+  <div id="feed-today"><p id="loading">Načítám...</p></div>
+</section>
 
-<h2>Právní časopisy <a class="feed-link" href="journals_feed.xml">journals_feed.xml</a></h2>
-<div id="feed-journals"><p id="loading">Načítám...</p></div>
+<section id="recentni" class="major">
+  <h2>Recentní</h2>
 
-<section class="archive">
+  <h2 id="nsoud">Rozhodnutí senátu 23 Cdo <a class="feed-link" href="feed.xml">feed.xml</a></h2>
+  <div id="feed-nsoud"><p id="loading">Načítám...</p></div>
+
+  <h2 id="cjeu">Rozhodnutí CJEU k IP / IT <a class="feed-link" href="ipcuria_feed.xml">ipcuria_feed.xml</a></h2>
+  <div id="feed-cjeu"><p id="loading">Načítám...</p></div>
+
+  <h2 id="casopisy">Právní časopisy <a class="feed-link" href="journals_feed.xml">journals_feed.xml</a></h2>
+  <div id="feed-journals"><p id="loading">Načítám...</p></div>
+</section>
+
+<section id="archiv" class="major archive">
   <h2>Archiv</h2>
-  <p class="archive-note">Historické položky, které už vypadly z hlavních seznamů (okno 2 týdny, u CJEU 1 měsíc). Archiv se nikdy nemaže.</p>
+  <p class="section-note">Historické položky, které už vypadly z hlavních seznamů (okno 2 týdny, u CJEU 1 měsíc). Archiv se nikdy nemaže.</p>
 
   <details>
     <summary>Rozhodnutí senátu 23 Cdo <a class="feed-link" href="feed_archive.xml">feed_archive.xml</a></summary>
@@ -94,8 +163,123 @@
 </section>
 
 <footer>Automaticky aktualizováno každý den. Přidejte XML odkazy do RSS čtečky (Zotero, NetNewsWire, Feedly aj.).</footer>
+</div>
 
 <script>
+/* ========== Přihlášení ==========
+ * Statická stránka (GitHub Pages) nemá server, takže jde o klientskou bránu:
+ * na stránce je uložen jen SHA-256 hash („secret"), nikdy heslo samotné.
+ * Po úspěšném přihlášení se hash uloží do trvalé cookie (10 let) + localStorage.
+ */
+const AUTH_HASH = "4d7c77070be17721663899ef7e522fc094bf4e05a142a83e2393d3ac0040e18b";
+const AUTH_COOKIE = "rss_auth";
+const AUTH_SALT = "rss-ip-it";
+
+function readAuth() {
+  const row = document.cookie.split("; ").find(r => r.startsWith(AUTH_COOKIE + "="));
+  if (row) return row.slice(AUTH_COOKIE.length + 1);
+  try { return localStorage.getItem(AUTH_COOKIE) || ""; } catch (e) { return ""; }
+}
+
+function storeAuth(hash) {
+  const secure = location.protocol === "https:" ? "; Secure" : "";
+  // max-age 10 let = „permanentní" cookie
+  document.cookie = AUTH_COOKIE + "=" + hash + "; max-age=315360000; path=/; SameSite=Lax" + secure;
+  try { localStorage.setItem(AUTH_COOKIE, hash); } catch (e) {}
+}
+
+// Kompaktní čistě-JS SHA-256 (fallback pro prostředí bez crypto.subtle, např. file://).
+function sha256Fallback(ascii) {
+  function rightRotate(value, amount) { return (value >>> amount) | (value << (32 - amount)); }
+  var maxWord = Math.pow(2, 32);
+  var result = "";
+  var words = [];
+  var asciiBitLength = ascii.length * 8;
+  var hash = sha256Fallback.h = sha256Fallback.h || [];
+  var k = sha256Fallback.k = sha256Fallback.k || [];
+  var primeCounter = k.length;
+  var isComposite = {};
+  for (var candidate = 2; primeCounter < 64; candidate++) {
+    if (!isComposite[candidate]) {
+      for (var i = 0; i < 313; i += candidate) isComposite[i] = candidate;
+      hash[primeCounter] = (Math.pow(candidate, 0.5) * maxWord) | 0;
+      k[primeCounter++] = (Math.pow(candidate, 1 / 3) * maxWord) | 0;
+    }
+  }
+  ascii += "\x80";
+  while (ascii.length % 64 - 56) ascii += "\x00";
+  for (i = 0; i < ascii.length; i++) {
+    var j = ascii.charCodeAt(i);
+    if (j >> 8) return; // jen ASCII
+    words[i >> 2] |= j << ((3 - i) % 4) * 8;
+  }
+  words[words.length] = (asciiBitLength / maxWord) | 0;
+  words[words.length] = asciiBitLength;
+  for (j = 0; j < words.length;) {
+    var w = words.slice(j, j += 16);
+    var oldHash = hash;
+    hash = hash.slice(0, 8);
+    for (i = 0; i < 64; i++) {
+      var w15 = w[i - 15], w2 = w[i - 2];
+      var a = hash[0], e = hash[4];
+      var temp1 = hash[7]
+        + (rightRotate(e, 6) ^ rightRotate(e, 11) ^ rightRotate(e, 25))
+        + ((e & hash[5]) ^ (~e & hash[6]))
+        + k[i]
+        + (w[i] = (i < 16) ? w[i] : (
+            w[i - 16]
+            + (rightRotate(w15, 7) ^ rightRotate(w15, 18) ^ (w15 >>> 3))
+            + w[i - 7]
+            + (rightRotate(w2, 17) ^ rightRotate(w2, 19) ^ (w2 >>> 10))
+          ) | 0);
+      var temp2 = (rightRotate(a, 2) ^ rightRotate(a, 13) ^ rightRotate(a, 22))
+        + ((a & hash[1]) ^ (a & hash[2]) ^ (hash[1] & hash[2]));
+      hash = [(temp1 + temp2) | 0].concat(hash);
+      hash[4] = (hash[4] + temp1) | 0;
+    }
+    for (i = 0; i < 8; i++) hash[i] = (hash[i] + oldHash[i]) | 0;
+  }
+  for (i = 0; i < 8; i++) {
+    for (j = 3; j + 1; j--) {
+      var b = (hash[i] >> (j * 8)) & 255;
+      result += ((b < 16) ? "0" : "") + b.toString(16);
+    }
+  }
+  return result;
+}
+
+async function hashCredentials(user, pass) {
+  const input = AUTH_SALT + "|" + user + "|" + pass;
+  if (window.crypto && crypto.subtle && window.isSecureContext) {
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(input));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+  }
+  return sha256Fallback(input) || "";
+}
+
+let appStarted = false;
+function unlock() {
+  document.getElementById("login").hidden = true;
+  document.getElementById("app").hidden = false;
+  if (!appStarted) { appStarted = true; initApp(); }
+}
+
+document.getElementById("login-form").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const user = document.getElementById("login-user").value.trim();
+  const pass = document.getElementById("login-pass").value;
+  const hash = await hashCredentials(user, pass);
+  if (hash === AUTH_HASH) {
+    storeAuth(hash);
+    unlock();
+  } else {
+    document.getElementById("login-error").style.display = "block";
+    document.getElementById("login-pass").value = "";
+    document.getElementById("login-pass").focus();
+  }
+});
+
+/* ========== Feedy ========== */
 function renderTable(items, container, columns) {
   if (items.length === 0) {
     container.innerHTML = '<p class="feed-empty">Žádné položky.</p>';
@@ -132,16 +316,10 @@ function failed(containerId) {
   document.getElementById(containerId).innerHTML = '<p class="feed-empty">Nepodařilo se načíst feed.</p>';
 }
 
-function loadFeed(url, containerId, columns) {
-  fetchItems(url)
-    .then(items => renderTable(items, document.getElementById(containerId), columns))
-    .catch(() => failed(containerId));
-}
-
 // Archiv zobrazí jen historické položky – ty, které UŽ NEJSOU v živém feedu
 // (jinak by se na stránce ukazovaly dvakrát). Archivní XML zůstává úplné.
-function loadArchive(liveUrl, archiveUrl, containerId, columns) {
-  Promise.all([fetchItems(liveUrl).catch(() => []), fetchItems(archiveUrl)])
+function loadArchive(livePromise, archiveUrl, containerId, columns) {
+  Promise.all([livePromise.catch(() => []), fetchItems(archiveUrl)])
     .then(([live, archived]) => {
       const liveGuids = new Set(live.map(guidOf).filter(Boolean));
       const historical = archived.filter(it => !liveGuids.has(guidOf(it)));
@@ -192,7 +370,7 @@ function summaryCell(item) {
   return summary ? '<span class="summary">' + summary + '</span>' : "";
 }
 
-// Definice sloupců sdílíme mezi živým feedem (nahoře) a archivem (dole).
+// Definice sloupců sdílíme mezi živým feedem, archivem i dnešním shrnutím.
 const colsNsoud = [
   { label: "Název", cls: "col-name", render: nameCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
@@ -214,15 +392,93 @@ const colsJournals = [
   { label: "PDF", cls: "col-date", render: i => '<a href="' + text(i, "link") + '">Stáhnout</a>' }
 ];
 
-loadFeed("feed.xml", "feed-nsoud", colsNsoud);
-loadFeed("ipcuria_feed.xml", "feed-cjeu", colsCjeu);
-loadFeed("journals_feed.xml", "feed-journals", colsJournals);
+// Dnešní shrnutí – kombinovaná tabulka přes všechny tři zdroje.
+const colsToday = [
+  { label: "Zdroj", cls: "col-src", render: i => '<span class="src src-' + i._src + '">' + i._srcLabel + '</span>' },
+  { label: "Název", cls: "col-name", render: i => getTag(text(i, "title")) + " " + nameCell(i) },
+  { label: "Heslo", cls: "col-heslo", render: hesloCell },
+  { label: "Shrnutí", cls: "col-summary", render: summaryCell },
+  { label: "Datum", cls: "col-date", render: getDate }
+];
 
-// Archiv – stejné sloupce, ale z trvalých *_archive.xml; vynecháme položky,
-// které jsou právě teď v živém feedu (porovnání podle guid).
-loadArchive("feed.xml", "feed_archive.xml", "arch-nsoud", colsNsoud);
-loadArchive("ipcuria_feed.xml", "ipcuria_archive.xml", "arch-cjeu", colsCjeu);
-loadArchive("journals_feed.xml", "journals_archive.xml", "arch-journals", colsJournals);
+const FEEDS = [
+  { key: "nsoud",    label: "NS 23 Cdo", url: "feed.xml",          archiveUrl: "feed_archive.xml",     cols: colsNsoud,    containerId: "feed-nsoud",    archId: "arch-nsoud" },
+  { key: "cjeu",     label: "CJEU",      url: "ipcuria_feed.xml",  archiveUrl: "ipcuria_archive.xml",  cols: colsCjeu,     containerId: "feed-cjeu",     archId: "arch-cjeu" },
+  { key: "journals", label: "Časopis",   url: "journals_feed.xml", archiveUrl: "journals_archive.xml", cols: colsJournals, containerId: "feed-journals", archId: "arch-journals" }
+];
+
+function loadToday(feedPromises) {
+  Promise.all(feedPromises.map(p => p.catch(() => [])))
+    .then(perFeed => {
+      const today = [];
+      perFeed.forEach((items, idx) => {
+        items.forEach(item => {
+          if (item.querySelector("is-new")) {
+            item._src = FEEDS[idx].key;
+            item._srcLabel = FEEDS[idx].label;
+            today.push(item);
+          }
+        });
+      });
+      today.sort((a, b) => new Date(text(b, "pubDate")) - new Date(text(a, "pubDate")));
+      const container = document.getElementById("feed-today");
+      if (today.length === 0) {
+        container.innerHTML = '<p class="feed-empty">Dnes zatím nic nového.</p>';
+      } else {
+        renderTable(today, container, colsToday);
+      }
+    });
+}
+
+/* ========== Boční navigace (scroll-spy) ========== */
+function initSidenav() {
+  const links = Array.from(document.querySelectorAll("#sidenav a"));
+  const targets = links
+    .map(a => ({ a, el: document.querySelector(a.getAttribute("href")) }))
+    .filter(t => t.el);
+  function update() {
+    let current = targets[0];
+    targets.forEach(t => {
+      if (t.el.getBoundingClientRect().top <= 140) current = t;
+    });
+    // U konce stránky zvýrazni poslední položku (sekce dole se nemusí
+    // doscrollovat až k hornímu okraji okna).
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+      current = targets[targets.length - 1];
+    }
+    links.forEach(a => a.classList.remove("active"));
+    if (!current) return;
+    current.a.classList.add("active");
+    // Podsekce zvýrazní i rodičovskou položku „Recentní"
+    if (current.a.classList.contains("sub")) {
+      const parent = links.find(a => a.getAttribute("href") === "#recentni");
+      if (parent) parent.classList.add("active");
+    }
+  }
+  document.addEventListener("scroll", update, { passive: true });
+  update();
+}
+
+function initApp() {
+  // Každý feed stáhneme jen jednou a sdílíme mezi sekcemi (recentní / dnešní / archiv).
+  const feedPromises = FEEDS.map(f => fetchItems(f.url));
+  FEEDS.forEach((f, idx) => {
+    feedPromises[idx]
+      .then(items => renderTable(items, document.getElementById(f.containerId), f.cols))
+      .catch(() => failed(f.containerId));
+    loadArchive(feedPromises[idx], f.archiveUrl, f.archId, f.cols);
+  });
+  loadToday(feedPromises);
+  initSidenav();
+}
+
+// Vstupní bod – až po deklaraci všech konstant výše.
+if (readAuth() === AUTH_HASH) {
+  unlock();
+} else {
+  document.getElementById("login").hidden = false;
+  document.getElementById("login-user").focus();
+}
 </script>
 </body>
 </html>
