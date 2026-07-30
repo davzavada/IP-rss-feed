@@ -23,7 +23,6 @@ from feed_common import (
     JUDIKATURA_PROMPT,
     gemini_enabled,
     gemini_summarize_pdf,
-    update_archive,
 )
 
 # --- Zdroj 1: úřední deska ---
@@ -48,7 +47,6 @@ JUDIKATURA_HEADERS = {
     "Referer": "https://rozhodnuti.nsoud.cz/",
 }
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "feed.xml")
-ARCHIVE_OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "feed_archive.xml")
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feed_seen.json")
 # Cache metadat detailu judikatury podle UNID (datum zveřejnění, heslo, …)
 META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feed_meta.json")
@@ -385,7 +383,7 @@ def resolve_dates(decisions, weeks=2):
     Okno (jak dlouho položku držíme) se počítá podle data zveřejnění (pub_dt),
     ne podle prvního výskytu u nás – jinak by se po resetu sledování v živém
     seznamu držela i starší rozhodnutí. První výskyt slouží jen k označení
-    „nové dnes". Co z okna vypadne, zůstává v trvalém archivu.
+    „nové dnes".
     """
     seen = load_seen()
     now = datetime.now(timezone.utc)
@@ -531,12 +529,6 @@ def main():
     rss = build_rss(decisions)
 
     os.makedirs(os.path.dirname(OUTPUT), exist_ok=True)
-    archived = update_archive(ARCHIVE_OUTPUT, rss)  # archiv (nemaže staré položky)
-    if archived < 0:
-        print(f"Archiv: ponechán beze změny (chyba čtení) → {ARCHIVE_OUTPUT}")
-    else:
-        print(f"Archiv: {archived} položek → {ARCHIVE_OUTPUT}")
-
     indent(rss, space="  ")
     tree = ElementTree(rss)
     tree.write(OUTPUT, encoding="unicode", xml_declaration=True)

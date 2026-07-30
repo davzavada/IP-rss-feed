@@ -18,11 +18,9 @@ from feed_common import (
     gemini_summarize_text,
     load_json,
     save_json,
-    update_archive,
 )
 
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "journals_feed.xml")
-ARCHIVE_OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "journals_archive.xml")
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "journals_seen.json")
 # Cache AI shrnutí podle guid ({guid: {"summary": ..., "tag": ...}}).
 META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "journals_meta.json")
@@ -307,12 +305,6 @@ def main():
     rss = build_rss(all_items)
 
     os.makedirs(os.path.dirname(OUTPUT), exist_ok=True)
-    archived = update_archive(ARCHIVE_OUTPUT, rss)  # archiv (nemaže staré položky)
-    if archived < 0:
-        print(f"Archiv: ponechán beze změny (chyba čtení) → {ARCHIVE_OUTPUT}")
-    else:
-        print(f"Archiv: {archived} položek → {ARCHIVE_OUTPUT}")
-
     indent(rss, space="  ")
     tree = ElementTree(rss)
     tree.write(OUTPUT, encoding="unicode", xml_declaration=True)

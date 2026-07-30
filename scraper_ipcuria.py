@@ -16,12 +16,10 @@ from feed_common import (
     gemini_summarize_text,
     load_json,
     save_json,
-    update_archive,
 )
 
 CURIA_BASE = "https://curia.europa.eu/juris/liste.do?num="
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "ipcuria_feed.xml")
-ARCHIVE_OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "ipcuria_archive.xml")
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ipcuria_seen.json")
 # Cache AI shrnutí podle guid ({guid: {"summary": ..., "tag": ...}}).
 META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ipcuria_meta.json")
@@ -272,10 +270,10 @@ def main():
     decisions = fetch_all()
     print(f"Nalezeno {len(decisions)} položek z posledního měsíce")
 
-    # Okno 1 měsíc (4 týdny) od prvního výskytu + příznak „nové dnes"
-    decisions = filter_by_first_seen(decisions, _guid, STATE_FILE, weeks=4)
+    # Okno 2 týdny od prvního výskytu + příznak „nové dnes" (jednotné se zbytkem)
+    decisions = filter_by_first_seen(decisions, _guid, STATE_FILE, weeks=2)
     decisions.sort(key=lambda d: d["date"], reverse=True)
-    print(f"Po okně 4 týdnů: {len(decisions)} položek")
+    print(f"Po okně 2 týdnů: {len(decisions)} položek")
 
     decisions = enrich_summaries(decisions)  # AI shrnutí jen na ponechané
 
@@ -285,12 +283,6 @@ def main():
     rss = build_rss(decisions)
 
     os.makedirs(os.path.dirname(OUTPUT), exist_ok=True)
-    archived = update_archive(ARCHIVE_OUTPUT, rss)  # archiv (nemaže staré položky)
-    if archived < 0:
-        print(f"Archiv: ponechán beze změny (chyba čtení) → {ARCHIVE_OUTPUT}")
-    else:
-        print(f"Archiv: {archived} položek → {ARCHIVE_OUTPUT}")
-
     indent(rss, space="  ")
     tree = ElementTree(rss)
     tree.write(OUTPUT, encoding="unicode", xml_declaration=True)

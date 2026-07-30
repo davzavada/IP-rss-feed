@@ -62,19 +62,16 @@
   .major { margin-top: 52px; border-top: 2px solid var(--fg); padding-top: 10px; }
   .major > h2 { margin-top: 16px; }
   #dnesni { margin-top: 8px; border-top: 0; padding-top: 0; }
-  .archive details { margin: 8px 0; border: 1px solid var(--line-soft); border-radius: 8px; padding: 0 14px; }
-  .archive details[open] { padding-bottom: 10px; }
-  .archive summary { cursor: pointer; font-weight: 600; color: var(--fg); padding: 11px 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .archive summary:hover { color: var(--link); }
-
-  /* Boční navigace vpravo (jen na širokých obrazovkách) */
-  #sidenav { display: none; position: fixed; top: 120px; right: 18px; width: 168px; flex-direction: column; gap: 2px; font-size: 0.85em; border-left: 2px solid var(--line-soft); }
+  /* Boční navigace vlevo (jen na širokých obrazovkách) */
+  #sidenav { display: none; position: fixed; top: 120px; left: 18px; width: 168px; flex-direction: column; gap: 2px; font-size: 0.85em; border-left: 2px solid var(--line-soft); }
   #sidenav a { color: var(--muted); text-decoration: none; padding: 5px 10px; border-left: 2px solid transparent; margin-left: -2px; border-radius: 0 6px 6px 0; line-height: 1.35; }
   #sidenav a:hover { color: var(--link); background: var(--row-hover); }
   #sidenav a.active { color: var(--link); border-left-color: var(--link); font-weight: 600; }
   #sidenav a.sub { padding-left: 24px; font-size: 0.92em; }
   @media (min-width: 1200px) {
-    body { padding-right: 210px; }
+    /* Po obou stranách se symetricky vyhradí místo pro navigaci,
+       takže hlavní obsah zůstává vycentrovaný a nikam se neposouvá. */
+    body { max-width: min(1400px, 100vw - 420px); }
     #sidenav { display: flex; }
   }
   @media (max-width: 640px) { body { width: auto; margin: 22px 0; padding: 0 12px; } }
@@ -120,7 +117,6 @@
   <a href="#nsoud" class="sub">NS – 23 Cdo</a>
   <a href="#cjeu" class="sub">CJEU IP / IT</a>
   <a href="#casopisy" class="sub">Časopisy</a>
-  <a href="#archiv">Archiv</a>
 </nav>
 
 <section id="dnesni" class="major">
@@ -140,26 +136,6 @@
 
   <h2 id="casopisy">Právní časopisy <a class="feed-link" href="journals_feed.xml">journals_feed.xml</a></h2>
   <div id="feed-journals"><p id="loading">Načítám...</p></div>
-</section>
-
-<section id="archiv" class="major archive">
-  <h2>Archiv</h2>
-  <p class="section-note">Historické položky, které už vypadly z hlavních seznamů (okno 2 týdny, u CJEU 1 měsíc). Archiv se nikdy nemaže.</p>
-
-  <details>
-    <summary>Rozhodnutí senátu 23 Cdo <a class="feed-link" href="feed_archive.xml">feed_archive.xml</a></summary>
-    <div id="arch-nsoud"><p id="loading">Načítám...</p></div>
-  </details>
-
-  <details>
-    <summary>Rozhodnutí CJEU k IP / IT <a class="feed-link" href="ipcuria_archive.xml">ipcuria_archive.xml</a></summary>
-    <div id="arch-cjeu"><p id="loading">Načítám...</p></div>
-  </details>
-
-  <details>
-    <summary>Právní časopisy <a class="feed-link" href="journals_archive.xml">journals_archive.xml</a></summary>
-    <div id="arch-journals"><p id="loading">Načítám...</p></div>
-  </details>
 </section>
 
 <footer>Automaticky aktualizováno každý den. Přidejte XML odkazy do RSS čtečky (Zotero, NetNewsWire, Feedly aj.).</footer>
@@ -307,25 +283,8 @@ function fetchItems(url) {
     ));
 }
 
-function guidOf(item) {
-  const g = item.querySelector("guid");
-  return g ? g.textContent.trim() : "";
-}
-
 function failed(containerId) {
   document.getElementById(containerId).innerHTML = '<p class="feed-empty">Nepodařilo se načíst feed.</p>';
-}
-
-// Archiv zobrazí jen historické položky – ty, které UŽ NEJSOU v živém feedu
-// (jinak by se na stránce ukazovaly dvakrát). Archivní XML zůstává úplné.
-function loadArchive(livePromise, archiveUrl, containerId, columns) {
-  Promise.all([livePromise.catch(() => []), fetchItems(archiveUrl)])
-    .then(([live, archived]) => {
-      const liveGuids = new Set(live.map(guidOf).filter(Boolean));
-      const historical = archived.filter(it => !liveGuids.has(guidOf(it)));
-      renderTable(historical, document.getElementById(containerId), columns);
-    })
-    .catch(() => failed(containerId));
 }
 
 function text(item, sel) {
@@ -370,7 +329,7 @@ function summaryCell(item) {
   return summary ? '<span class="summary">' + summary + '</span>' : "";
 }
 
-// Definice sloupců sdílíme mezi živým feedem, archivem i dnešním shrnutím.
+// Definice sloupců sdílíme mezi živým feedem a dnešním shrnutím.
 const colsNsoud = [
   { label: "Název", cls: "col-name", render: nameCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
@@ -402,9 +361,9 @@ const colsToday = [
 ];
 
 const FEEDS = [
-  { key: "nsoud",    label: "NS 23 Cdo", url: "feed.xml",          archiveUrl: "feed_archive.xml",     cols: colsNsoud,    containerId: "feed-nsoud",    archId: "arch-nsoud" },
-  { key: "cjeu",     label: "CJEU",      url: "ipcuria_feed.xml",  archiveUrl: "ipcuria_archive.xml",  cols: colsCjeu,     containerId: "feed-cjeu",     archId: "arch-cjeu" },
-  { key: "journals", label: "Časopis",   url: "journals_feed.xml", archiveUrl: "journals_archive.xml", cols: colsJournals, containerId: "feed-journals", archId: "arch-journals" }
+  { key: "nsoud",    label: "NS 23 Cdo", url: "feed.xml",          cols: colsNsoud,    containerId: "feed-nsoud" },
+  { key: "cjeu",     label: "CJEU",      url: "ipcuria_feed.xml",  cols: colsCjeu,     containerId: "feed-cjeu" },
+  { key: "journals", label: "Časopis",   url: "journals_feed.xml", cols: colsJournals, containerId: "feed-journals" }
 ];
 
 function loadToday(feedPromises) {
@@ -460,13 +419,12 @@ function initSidenav() {
 }
 
 function initApp() {
-  // Každý feed stáhneme jen jednou a sdílíme mezi sekcemi (recentní / dnešní / archiv).
+  // Každý feed stáhneme jen jednou a sdílíme mezi sekcemi (recentní / dnešní).
   const feedPromises = FEEDS.map(f => fetchItems(f.url));
   FEEDS.forEach((f, idx) => {
     feedPromises[idx]
       .then(items => renderTable(items, document.getElementById(f.containerId), f.cols))
       .catch(() => failed(f.containerId));
-    loadArchive(feedPromises[idx], f.archiveUrl, f.archId, f.cols);
   });
   loadToday(feedPromises);
   initSidenav();
