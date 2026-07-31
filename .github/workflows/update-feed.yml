@@ -2,7 +2,15 @@ name: Update RSS Feed
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # 6:00 UTC = 7:00/8:00 CET/CEST
+    # Cron je vždy v UTC. Cílíme na ~6:00 a ~13:00 pražského času (CEST = UTC+2;
+    # v zimě, kdy platí CET = UTC+1, běh vyjde o hodinu dřív).
+    #
+    # Záměrně necelá hodina (:40): GitHub scheduled běhy na celou hodinu staví do
+    # fronty a u '0 6 * * *' nám start reálně klouzal o 2–3 hodiny (běhy startovaly
+    # mezi 07:40 a 09:40 UTC místo 6:00). Mimo špičku na začátku hodiny je zpoždění
+    # řádově minuty.
+    - cron: '40 3 * * *'   # 03:40 UTC = 5:40 CEST -> ranní běh kolem 6:00
+    - cron: '40 10 * * *'  # 10:40 UTC = 12:40 CEST -> odpolední běh kolem 13:00
   workflow_dispatch:       # ruční spuštění
     inputs:
       skip_gemini:
