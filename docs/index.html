@@ -93,15 +93,12 @@
   .card-desc { margin: 4px 0 0; font-size: 0.85rem; color: var(--muted-foreground); flex-basis: 100%; }
   .card-content { padding: 10px 22px 16px; }
 
-  /* Odkaz na XML feed – outline badge */
-  .feed-link {
-    display: inline-flex; align-items: center; border: 1px solid var(--border);
-    border-radius: 6px; padding: 2px 8px;
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 0.7rem; font-weight: 500; color: var(--muted-foreground);
-    text-decoration: none;
-  }
-  .feed-link:hover { background: var(--accent); color: var(--foreground); }
+  /* Název karty jako proklik na XML feed – jen jemná ikonka, žádný viditelný štítek. */
+  .card-title-link { display: inline-flex; align-items: center; gap: 6px; color: inherit; text-decoration: none; }
+  .card-title-link:hover { color: var(--link); }
+  .card-title-link .feed-icon { color: var(--muted-foreground); }
+  .card-title-link:hover .feed-icon { color: var(--link); }
+  .feed-icon { width: 14px; height: 14px; flex: none; }
 
   /* Tabulka (shadcn Table) */
   .table-wrap { overflow-x: auto; }
@@ -166,6 +163,14 @@
 </head>
 <body>
 
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-rss" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9"></path>
+    <path d="M4 4a16 16 0 0 1 16 16"></path>
+    <circle cx="5" cy="19" r="1"></circle>
+  </symbol>
+</svg>
+
 <header class="site-head">
   <div class="container head-row">
     <h1>RSS - IP / IT</h1>
@@ -198,24 +203,36 @@
 
   <div class="card" id="nsoud">
     <div class="card-header">
-      <h2 class="card-title">Rozhodnutí senátu 23 Cdo</h2>
-      <a class="feed-link" href="feed.xml">feed.xml</a>
+      <h2 class="card-title">
+        <a class="card-title-link" href="feed.xml" aria-label="RSS feed: Rozhodnutí senátu 23 Cdo">
+          Rozhodnutí senátu 23 Cdo
+          <svg class="feed-icon" aria-hidden="true"><use href="#icon-rss"></use></svg>
+        </a>
+      </h2>
     </div>
     <div class="card-content" id="feed-nsoud"><p class="loading">Načítám...</p></div>
   </div>
 
   <div class="card" id="cjeu">
     <div class="card-header">
-      <h2 class="card-title">Rozhodnutí CJEU k IP / IT</h2>
-      <a class="feed-link" href="ipcuria_feed.xml">ipcuria_feed.xml</a>
+      <h2 class="card-title">
+        <a class="card-title-link" href="ipcuria_feed.xml" aria-label="RSS feed: Rozhodnutí CJEU k IP / IT">
+          Rozhodnutí CJEU k IP / IT
+          <svg class="feed-icon" aria-hidden="true"><use href="#icon-rss"></use></svg>
+        </a>
+      </h2>
     </div>
     <div class="card-content" id="feed-cjeu"><p class="loading">Načítám...</p></div>
   </div>
 
   <div class="card" id="casopisy">
     <div class="card-header">
-      <h2 class="card-title">Právní časopisy</h2>
-      <a class="feed-link" href="journals_feed.xml">journals_feed.xml</a>
+      <h2 class="card-title">
+        <a class="card-title-link" href="journals_feed.xml" aria-label="RSS feed: Právní časopisy">
+          Právní časopisy
+          <svg class="feed-icon" aria-hidden="true"><use href="#icon-rss"></use></svg>
+        </a>
+      </h2>
     </div>
     <div class="card-content" id="feed-journals"><p class="loading">Načítám...</p></div>
   </div>
@@ -329,11 +346,7 @@ const colsCjeu = [
 const colsJournals = [
   { label: "Časopis", cls: "col-type", render: i => getTag(text(i, "title")) },
   { label: "Název", cls: "col-name", render: nameCell },
-  { label: "Shrnutí", cls: "col-summary", render: summaryCell },
-  { label: "PDF", cls: "col-date", render: i => {
-      const href = safeHref(text(i, "link"));
-      return href ? '<a href="' + href + '">Stáhnout</a>' : "";
-    } }
+  { label: "Shrnutí", cls: "col-summary", render: summaryCell }
 ];
 
 // Dnešní shrnutí – kombinovaná tabulka přes všechny tři zdroje.
