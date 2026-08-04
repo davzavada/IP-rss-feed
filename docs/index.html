@@ -4,36 +4,115 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#09090b">
 <title>RSS - IP / IT</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="alternate" type="application/rss+xml" title="NS ČR – senát 23 Cdo" href="feed.xml">
 <link rel="alternate" type="application/rss+xml" title="CJEU IP case law" href="ipcuria_feed.xml">
 <link rel="alternate" type="application/rss+xml" title="Právní časopisy" href="journals_feed.xml">
 <style>
+  /* Design tokeny podle shadcn/ui (paleta zinc), tmavý režim přes
+     prefers-color-scheme. */
   :root {
-    --fg: #1f2328; --muted: #656d76; --line: #d0d7de; --line-soft: #eaeef2;
-    --link: #0969da; --accent-bg: #eef2ff; --accent-fg: #3730a3; --row-hover: #f6f8fa;
+    color-scheme: light dark;
+    --background: hsl(0 0% 100%);
+    --foreground: hsl(240 10% 3.9%);
+    --card: hsl(0 0% 100%);
+    --muted: hsl(240 4.8% 95.9%);
+    --muted-foreground: hsl(240 3.8% 46.1%);
+    --border: hsl(240 5.9% 90%);
+    --accent: hsl(240 4.8% 95.9%);
+    --link: hsl(221 83% 53%);
+    --radius: 0.625rem;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    /* Odstíny štítků (soft badge) */
+    --badge-green-bg: hsl(142 76% 36% / 0.12);   --badge-green-fg: hsl(142 72% 29%);
+    --badge-blue-bg: hsl(217 91% 60% / 0.12);    --badge-blue-fg: hsl(224 76% 48%);
+    --badge-amber-bg: hsl(38 92% 50% / 0.15);    --badge-amber-fg: hsl(26 90% 37%);
+    --badge-red-bg: hsl(0 84% 60% / 0.12);       --badge-red-fg: hsl(0 74% 42%);
+    --badge-indigo-bg: hsl(239 84% 67% / 0.13);  --badge-indigo-fg: hsl(244 55% 41%);
   }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: hsl(240 10% 3.9%);
+      --foreground: hsl(0 0% 98%);
+      --card: hsl(240 5.9% 7%);
+      --muted: hsl(240 3.7% 15.9%);
+      --muted-foreground: hsl(240 5% 64.9%);
+      --border: hsl(240 3.7% 15.9%);
+      --accent: hsl(240 3.7% 15.9%);
+      --link: hsl(213 94% 68%);
+      --shadow-sm: 0 0 #0000;
+      --badge-green-bg: hsl(142 71% 45% / 0.16);  --badge-green-fg: hsl(142 69% 58%);
+      --badge-blue-bg: hsl(217 91% 60% / 0.16);   --badge-blue-fg: hsl(213 94% 68%);
+      --badge-amber-bg: hsl(38 92% 50% / 0.16);   --badge-amber-fg: hsl(43 96% 56%);
+      --badge-red-bg: hsl(0 84% 60% / 0.16);      --badge-red-fg: hsl(0 91% 71%);
+      --badge-indigo-bg: hsl(234 89% 74% / 0.16); --badge-indigo-fg: hsl(230 94% 82%);
+    }
+  }
+
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    width: 92%; max-width: 1400px; margin: 40px auto; padding: 0 16px;
-    line-height: 1.55; color: var(--fg); background: #fff; -webkit-font-smoothing: antialiased;
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    background: var(--background); color: var(--foreground);
+    line-height: 1.5; -webkit-font-smoothing: antialiased;
   }
-  .page-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-bottom: 2px solid var(--fg); padding-bottom: 10px; flex-wrap: wrap; }
-  h1 { margin: 0; font-size: 1.55em; letter-spacing: -0.01em; }
-  .legend { font-size: 0.85em; color: var(--muted); white-space: nowrap; }
-  h2 { margin: 40px 0 0; color: var(--fg); font-size: 1.1em; font-weight: 600; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .feed-link { background: var(--line-soft); padding: 3px 9px; border-radius: 6px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.72em; font-weight: 500; text-decoration: none; color: var(--link); }
-  .feed-link:hover { background: #dfe6ee; }
+  .container { max-width: 1400px; margin-inline: auto; padding-inline: 24px; }
 
-  .table-wrap { overflow-x: auto; margin-top: 12px; }
-  table { width: 100%; border-collapse: collapse; font-size: 0.9em; table-layout: fixed; min-width: 700px; }
-  th { text-align: left; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.7em; font-weight: 600; color: var(--muted); padding: 0 14px 8px 0; border-bottom: 1px solid var(--line); }
-  td { padding: 12px 14px 12px 0; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
-  tbody tr:hover { background: var(--row-hover); }
-  td a { color: var(--link); text-decoration: none; }
+  /* Lepivá hlavička s rozostřením (shadcn header) */
+  .site-head {
+    position: sticky; top: 0; z-index: 40;
+    border-bottom: 1px solid var(--border); background: var(--background);
+  }
+  @supports (backdrop-filter: blur(8px)) {
+    .site-head {
+      background: color-mix(in srgb, var(--background) 85%, transparent);
+      backdrop-filter: blur(8px);
+    }
+  }
+  .head-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; flex-wrap: wrap; }
+  h1 { margin: 0; font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em; }
+  .legend { font-size: 0.8rem; color: var(--muted-foreground); white-space: nowrap; }
+
+  main.container { padding-block: 28px 72px; display: flex; flex-direction: column; gap: 28px; }
+  #recentni { display: flex; flex-direction: column; gap: 20px; }
+  .group-title { margin: 8px 0 0; font-size: 1.15rem; font-weight: 600; letter-spacing: -0.01em; }
+  section[id], .card[id] { scroll-margin-top: 76px; }
+
+  /* Karta (shadcn Card) */
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: calc(var(--radius) + 2px); box-shadow: var(--shadow-sm);
+  }
+  .card-header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 18px 22px 0; }
+  .card-title { margin: 0; font-size: 0.95rem; font-weight: 600; letter-spacing: -0.01em; }
+  .card-desc { margin: 4px 0 0; font-size: 0.85rem; color: var(--muted-foreground); flex-basis: 100%; }
+  .card-content { padding: 10px 22px 16px; }
+
+  /* Odkaz na XML feed – outline badge */
+  .feed-link {
+    display: inline-flex; align-items: center; border: 1px solid var(--border);
+    border-radius: 6px; padding: 2px 8px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.7rem; font-weight: 500; color: var(--muted-foreground);
+    text-decoration: none;
+  }
+  .feed-link:hover { background: var(--accent); color: var(--foreground); }
+
+  /* Tabulka (shadcn Table) */
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.875rem; table-layout: fixed; min-width: 720px; }
+  th { text-align: left; font-size: 0.8rem; font-weight: 500; color: var(--muted-foreground); padding: 8px 16px 8px 0; border-bottom: 1px solid var(--border); }
+  td { padding: 12px 16px 12px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th:last-child, td:last-child { padding-right: 0; }
+  tbody tr:last-child td { border-bottom: 0; }
+  tbody tr { transition: background-color 0.12s ease; }
+  tbody tr:hover { background: color-mix(in srgb, var(--muted) 55%, transparent); }
+  td a { color: var(--link); text-decoration: none; text-underline-offset: 3px; }
   td a:hover { text-decoration: underline; }
 
   /* Šířky sloupců (table-layout: fixed); „Shrnutí" dostane zbytek místa. */
@@ -42,52 +121,57 @@
   .col-heslo { width: 13%; }
   .col-src { width: 15%; }
   .col-src .src, .col-src .tag { margin-bottom: 3px; }
-  .col-date { width: 12%; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .col-date { width: 12%; color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
   .col-type, .col-name, .col-heslo, .col-summary, .col-src { overflow-wrap: anywhere; }
   .nowrap { white-space: nowrap; }
+  .summary { line-height: 1.55; }
 
-  .summary { color: #3d3d3d; line-height: 1.5; }
-  .heslo { display: inline-block; background: var(--accent-bg); color: var(--accent-fg); font-size: 0.82em; font-weight: 600; padding: 2px 9px; border-radius: 999px; line-height: 1.35; }
-  /* Štítek zdroje/typu – jednotný pro všechny položky; neutrální šedá,
-     jen typy rozhodnutí CJEU mají sémantické barvy. */
-  .tag { display: inline-block; font-size: 0.74em; padding: 2px 8px; border-radius: 5px; font-weight: 600; white-space: nowrap; background: var(--line-soft); color: var(--muted); }
-  .tag-ruling { background: #dafbe1; color: #1a7f37; }
-  .tag-referral { background: #ddf4ff; color: #0969da; }
-  .tag-appeal { background: #fff8c5; color: #7d4e00; }
-  .tag-pending { background: #ffebe9; color: #cf222e; }
-  .src { display: inline-block; font-size: 0.74em; padding: 2px 8px; border-radius: 5px; font-weight: 600; white-space: nowrap; background: var(--line-soft); color: var(--muted); }
-  .src-nsoud { background: #eef2ff; color: #3730a3; }
-  .src-cjeu { background: #ddf4ff; color: #0969da; }
-  .src-journals { background: #fff8c5; color: #7d4e00; }
-  .loading, .feed-empty { color: var(--muted); font-style: italic; }
-  .section-note { font-size: 0.85em; color: var(--muted); margin: 6px 0 16px; }
-  section[id] { scroll-margin-top: 18px; }
-  h2[id] { scroll-margin-top: 18px; }
-  .major { margin-top: 52px; border-top: 2px solid var(--fg); padding-top: 10px; }
-  .major > h2 { margin-top: 16px; }
-  #dnesni { margin-top: 8px; border-top: 0; padding-top: 0; }
-  /* Boční navigace vlevo (jen na širokých obrazovkách) */
-  #sidenav { display: none; position: fixed; top: 120px; left: 18px; width: 168px; flex-direction: column; gap: 2px; font-size: 0.85em; border-left: 2px solid var(--line-soft); }
-  #sidenav a { color: var(--muted); text-decoration: none; padding: 5px 10px; border-left: 2px solid transparent; margin-left: -2px; border-radius: 0 6px 6px 0; line-height: 1.35; }
-  #sidenav a:hover { color: var(--link); background: var(--row-hover); }
-  #sidenav a.active { color: var(--link); border-left-color: var(--link); font-weight: 600; }
-  #sidenav a.sub { padding-left: 24px; font-size: 0.92em; }
+  /* Štítky (shadcn Badge). Heslo = akcent; zdroj/typ mají sémantické odstíny,
+     ostatní neutrální „secondary". */
+  .heslo, .tag, .src {
+    display: inline-block; border-radius: 6px; padding: 2px 8px;
+    font-size: 0.72rem; font-weight: 500; line-height: 1.45;
+  }
+  .heslo { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
+  .tag, .src { background: var(--muted); color: var(--muted-foreground); white-space: nowrap; }
+  .tag-ruling { background: var(--badge-green-bg); color: var(--badge-green-fg); }
+  .tag-referral { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
+  .tag-appeal { background: var(--badge-amber-bg); color: var(--badge-amber-fg); }
+  .tag-pending { background: var(--badge-red-bg); color: var(--badge-red-fg); }
+  .src-nsoud { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
+  .src-cjeu { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
+  .src-journals { background: var(--badge-amber-bg); color: var(--badge-amber-fg); }
+
+  .loading, .feed-empty { color: var(--muted-foreground); font-size: 0.875rem; margin: 6px 0; }
+
+  /* Boční navigace vlevo (jen na širokých obrazovkách; shadcn sidebar) */
+  #sidenav { display: none; position: fixed; top: 96px; left: 20px; width: 176px; flex-direction: column; gap: 2px; font-size: 0.85rem; }
+  #sidenav a { color: var(--muted-foreground); text-decoration: none; padding: 6px 10px; border-radius: 6px; line-height: 1.35; }
+  #sidenav a:hover { color: var(--foreground); background: var(--accent); }
+  #sidenav a.active { color: var(--foreground); background: var(--muted); font-weight: 500; }
+  #sidenav a.sub { padding-left: 22px; font-size: 0.94em; }
   @media (min-width: 1200px) {
     /* Po obou stranách se symetricky vyhradí místo pro navigaci,
        takže hlavní obsah zůstává vycentrovaný a nikam se neposouvá. */
-    body { max-width: min(1400px, 100vw - 420px); }
+    .container { max-width: min(1400px, 100vw - 440px); }
     #sidenav { display: flex; }
   }
-  @media (max-width: 640px) { body { width: auto; margin: 22px 0; padding: 0 12px; } }
-
+  @media (max-width: 640px) {
+    .container { padding-inline: 14px; }
+    main.container { padding-block: 20px 48px; gap: 20px; }
+    .card-header { padding: 14px 16px 0; }
+    .card-content { padding: 8px 16px 12px; }
+  }
 </style>
 </head>
 <body>
 
-<div class="page-head">
-  <h1>RSS - IP / IT</h1>
-  <span class="legend" id="updated"></span>
-</div>
+<header class="site-head">
+  <div class="container head-row">
+    <h1>RSS - IP / IT</h1>
+    <span class="legend" id="updated"></span>
+  </div>
+</header>
 
 <nav id="sidenav" aria-label="Navigace na stránce">
   <a href="#dnesni">Dnešní shrnutí</a>
@@ -97,24 +181,47 @@
   <a href="#casopisy" class="sub">Časopisy</a>
 </nav>
 
-<section id="dnesni" class="major">
-  <h2>Dnešní shrnutí</h2>
-  <p class="section-note">Vše nové z dnešního dne – rozhodnutí i články v jednom.</p>
-  <div id="feed-today"><p class="loading">Načítám...</p></div>
+<main class="container">
+
+<section id="dnesni">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Dnešní shrnutí</h2>
+      <p class="card-desc">Vše nové z dnešního dne – rozhodnutí i články v jednom.</p>
+    </div>
+    <div class="card-content" id="feed-today"><p class="loading">Načítám...</p></div>
+  </div>
 </section>
 
-<section id="recentni" class="major">
-  <h2>Recentní</h2>
+<section id="recentni">
+  <h2 class="group-title">Recentní</h2>
 
-  <h2 id="nsoud">Rozhodnutí senátu 23 Cdo <a class="feed-link" href="feed.xml">feed.xml</a></h2>
-  <div id="feed-nsoud"><p class="loading">Načítám...</p></div>
+  <div class="card" id="nsoud">
+    <div class="card-header">
+      <h2 class="card-title">Rozhodnutí senátu 23 Cdo</h2>
+      <a class="feed-link" href="feed.xml">feed.xml</a>
+    </div>
+    <div class="card-content" id="feed-nsoud"><p class="loading">Načítám...</p></div>
+  </div>
 
-  <h2 id="cjeu">Rozhodnutí CJEU k IP / IT <a class="feed-link" href="ipcuria_feed.xml">ipcuria_feed.xml</a></h2>
-  <div id="feed-cjeu"><p class="loading">Načítám...</p></div>
+  <div class="card" id="cjeu">
+    <div class="card-header">
+      <h2 class="card-title">Rozhodnutí CJEU k IP / IT</h2>
+      <a class="feed-link" href="ipcuria_feed.xml">ipcuria_feed.xml</a>
+    </div>
+    <div class="card-content" id="feed-cjeu"><p class="loading">Načítám...</p></div>
+  </div>
 
-  <h2 id="casopisy">Právní časopisy <a class="feed-link" href="journals_feed.xml">journals_feed.xml</a></h2>
-  <div id="feed-journals"><p class="loading">Načítám...</p></div>
+  <div class="card" id="casopisy">
+    <div class="card-header">
+      <h2 class="card-title">Právní časopisy</h2>
+      <a class="feed-link" href="journals_feed.xml">journals_feed.xml</a>
+    </div>
+    <div class="card-content" id="feed-journals"><p class="loading">Načítám...</p></div>
+  </div>
 </section>
+
+</main>
 
 <script>
 /* ========== Feedy ========== */
@@ -301,6 +408,7 @@ function initSidenav() {
   }
   document.addEventListener("scroll", update, { passive: true });
   update();
+  return update;
 }
 
 // Datum poslední aktualizace = nejnovější <lastBuildDate> ze všech feedů.
@@ -337,7 +445,10 @@ function initApp() {
   });
   loadToday(feedPromises);
   showUpdated(feedDocs);
-  initSidenav();
+  const updateNav = initSidenav();
+  // Tabulky se dorenderují asynchronně a změní výšku stránky – zvýraznění
+  // v navigaci je pak potřeba přepočítat.
+  Promise.allSettled(feedPromises).then(() => setTimeout(updateNav, 0));
 }
 
 initApp();
