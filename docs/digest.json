@@ -1,0 +1,143 @@
+{
+  "generated": "2026-08-04T11:31:06.277663+00:00",
+  "from": "2026-07-21",
+  "to": "2026-08-04",
+  "total": 63,
+  "covered": 18,
+  "intro": "Období bylo zcela ovládomo problematikou implementace EU AI Actu a hledáním rovnováhy mezi technologickým pokrokem a ochranou IP práv. Významný prostor dostala rovněž judikatura k autorskoprávní ochraně v digitálním prostředí a interpretace GDPR.",
+  "blocks": [
+    {
+      "title": "Umělá inteligence a IP",
+      "text": "Diskutuje se o prahu lidského přínosu pro uznání autorství u AI děl a o odpovědnosti za nepravdivé výstupy AI. V kontextu AI Actu je klíčové vyřešení konfliktu mezi povinnostmi transparentnosti a ochranou obchodního tajemství, stejně jako role technických standardů u vysoce rizikových systémů.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "The Machine’s Mind Matters: Using Logic to Disclose Artificial Intelligence Inventions – Fidelice Opany",
+          "link": "https://doi.org/10.1093/grurint/ikag071"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "The Algorithmic Authorship Threshold: identifying human contribution in AI-assisted creativity – Ulaş Göker Bektaş",
+          "link": "https://doi.org/10.1093/jiplp/jpag078"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "The Provider’s Liability for False AI-Generated Summaries",
+          "link": "https://doi.org/10.1093/grurint/ikag072"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "Disclosing Without Divulging: Trade Secrets in the EU AI Act’s Transparency Duties – Muhammed Furkan Akıncı",
+          "link": "https://doi.org/10.1093/grurint/ikag062"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "Copyright liability for AI-outputs: the impact of <i>Mio/konektra</i> on staged photography – Dr Ines Duhanic",
+          "link": "https://doi.org/10.1093/jiplp/jpag076"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "Decision Problems for Regulatees under the EU AI Act: Contested Values, Uncertain Evidence, and the Limits of Standardisation – Alessio Tartaro, Arvin Obnasca, Enrico Panai",
+          "link": "https://www.jipitec.eu/jipitec/article/view/453"
+        }
+      ]
+    },
+    {
+      "title": "Autorské právo a platformy",
+      "text": "Analýzy se zaměřují na roli platforem jako „policie autorského práva“ v rámci směrnice DSM a na striktnější výklad rozpoznatelnosti v módním průmyslu. Judikatura potvrzuje, že pro uznání adaptace díla nestačí pouhý podobný celkový dojem.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "Communicative Fashion under Copyright Threat? Fashion and Copyright’s Scope of Protection in the EU – Heidi Härkönen, Daniel Jongsma",
+          "link": "https://doi.org/10.1007/s40319-026-01750-5"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "The aesthetic turn in intellectual property law: some copyright lessons from Pelham II – Professor Johanna Gibson",
+          "link": "https://doi.org/10.4337/qmjip.2026.02.00"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "Copyright in the Age of Sharing: Platforms, Users, and the Law’s Structural Paradox – Luca Ettore Perriello",
+          "link": "https://doi.org/10.1007/s40319-026-01746-1"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "Similar Overall Impression Is Insufficient to Establish Adaptation",
+          "link": "https://doi.org/10.1093/grurint/ikag068"
+        }
+      ]
+    },
+    {
+      "title": "Ochranné známky a soutěž",
+      "text": "Potvrzeno, že úprava produktů s ochrannou známkou pro osobní potřebu neporušuje práva z známky a že žaloby na deklaraci neplatnosti platné známky nejsou prekluzivní. Praxe se rovněž zabývá neoprávněným ambush marketingem u sportovních akcí.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "The Independence Requirement for Work Title Protection of Fictitious Character Names under Trade Mark Law",
+          "link": "https://doi.org/10.1093/grurint/ikag064"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "No Trade Mark Infringement for Personal Use Refashioning",
+          "link": "https://doi.org/10.1093/grurint/ikag070"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "No Limitation Period for Actions Seeking a Declaration of Invalidity of a Trade Mark in Force",
+          "link": "https://doi.org/10.1093/grurint/ikag063"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "Unlawful Ambush Marketing Through Indirect Linkage with a Sporting Event",
+          "link": "https://doi.org/10.1093/grurint/ikag038"
+        }
+      ]
+    },
+    {
+      "title": "Ochrana dat a digitalizace",
+      "text": "Pro náhradu škody podle GDPR nestačí hypotetické riziko zneužití dat, ale je nutno prokázat skutečnou škodu. V oblasti automatizovaného rozhodování je zdůrazněna nutnost reálného lidského dohledu, zatímco implementace EUDI Wallet přináší nové výzvy v interoperabilitě dat.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "No Compensation Based Solely on a Hypothetical Risk of Misuse of Personal Data",
+          "link": "https://doi.org/10.1093/grurint/ikag067"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "Legal and Regulatory Compliance Challenges for Equity Token Secondary Market Operators in the European Union – Jan Wittlin",
+          "link": "https://journals.muni.cz/mujlt/article/view/40800"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "Another View on Article 22 GDPR: The Future of Automated Decision-Making – Nimrod Mike",
+          "link": "https://journals.muni.cz/mujlt/article/view/41367"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "Embedding a Harmonised EU Identity System into a Mature National E-State: An Estonian Case Study – Yuliia Kravchenko, Thomas Hoffmann, Eric Blake  Jackson",
+          "link": "https://journals.muni.cz/mujlt/article/view/42766"
+        }
+      ]
+    }
+  ],
+  "input_hash": "25cae46f2d005dacacb8c12879676abddcf752678a47913e9f07cc402bd3dfb3"
+}
