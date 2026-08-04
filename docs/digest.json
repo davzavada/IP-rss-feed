@@ -1,14 +1,56 @@
 {
-  "generated": "2026-08-04T11:31:06.277663+00:00",
+  "generated": "2026-08-04T12:29:14.213009+00:00",
   "from": "2026-07-21",
   "to": "2026-08-04",
   "total": 63,
   "covered": 18,
-  "intro": "Období bylo zcela ovládomo problematikou implementace EU AI Actu a hledáním rovnováhy mezi technologickým pokrokem a ochranou IP práv. Významný prostor dostala rovněž judikatura k autorskoprávní ochraně v digitálním prostředí a interpretace GDPR.",
+  "intro": "Období bylo zcela ovládománo analýzami implementace EU AI Actu a otázkami autorství u AI. Významné jsou také nové pohledy na odpovědnost platforem a přísnější přístup k náhradám škody v rámci GDPR.",
   "blocks": [
     {
-      "title": "Umělá inteligence a IP",
-      "text": "Diskutuje se o prahu lidského přínosu pro uznání autorství u AI děl a o odpovědnosti za nepravdivé výstupy AI. V kontextu AI Actu je klíčové vyřešení konfliktu mezi povinnostmi transparentnosti a ochranou obchodního tajemství, stejně jako role technických standardů u vysoce rizikových systémů.",
+      "title": "Regulace AI a standardizace",
+      "text": "Diskuse se soustředí na rizika delegování etiky a ochrany základních práv na soukromé standardizační orgány v rámci AI Actu. Pro praxi je klíčové vyřešení napětí mezi povinnostmi transparentnosti a ochranou obchodního tajemství.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "Disclosing Without Divulging: Trade Secrets in the EU AI Act’s Transparency Duties – Muhammed Furkan Akıncı",
+          "link": "https://doi.org/10.1093/grurint/ikag062"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "Decision Problems for Regulatees under the EU AI Act: Contested Values, Uncertain Evidence, and the Limits of Standardisation – Alessio Tartaro, Arvin Obnasca, Enrico Panai",
+          "link": "https://www.jipitec.eu/jipitec/article/view/453"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "The Politics of Standardising Ethics. The IEEE Initiative and the Governance of AI – Simone Casiraghi ; Niels van Dijk",
+          "link": "https://www.jipitec.eu/jipitec/article/view/455"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "The Role of the European Commission in the Control of Harmonised Standards Under the AI Act and the Challenges of “Opacity” – Mariolina Eliantonio",
+          "link": "https://www.jipitec.eu/jipitec/article/view/456"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "Trustworthy AI Through Standards? The Role and the Implications of Harmonised Standards for Fundamental Rights Protection in the AI Act – Elvira M.R. Oliva",
+          "link": "https://www.jipitec.eu/jipitec/article/view/457"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "title": "Harmonising Consensus: The (Geo)political Economy of Standardisation in the AI Act – Marta Cantero Gamito",
+          "link": "https://www.jipitec.eu/jipitec/article/view/458"
+        }
+      ]
+    },
+    {
+      "title": "AI, autorství a odpovědnost",
+      "text": "Navrhuje se zavedení prahu „algoritmického autorství“ pro identifikaci lidského přínosu v AI dílech. Judikatura potvrzuje, že napodobení pouze nechránitelného motivu pomocí AI nepředstavuje porušení autorských práv.",
       "sources": [
         {
           "src": "journals",
@@ -31,26 +73,14 @@
         {
           "src": "journals",
           "label": "Časopis",
-          "title": "Disclosing Without Divulging: Trade Secrets in the EU AI Act’s Transparency Duties – Muhammed Furkan Akıncı",
-          "link": "https://doi.org/10.1093/grurint/ikag062"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
           "title": "Copyright liability for AI-outputs: the impact of <i>Mio/konektra</i> on staged photography – Dr Ines Duhanic",
           "link": "https://doi.org/10.1093/jiplp/jpag076"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "title": "Decision Problems for Regulatees under the EU AI Act: Contested Values, Uncertain Evidence, and the Limits of Standardisation – Alessio Tartaro, Arvin Obnasca, Enrico Panai",
-          "link": "https://www.jipitec.eu/jipitec/article/view/453"
         }
       ]
     },
     {
       "title": "Autorské právo a platformy",
-      "text": "Analýzy se zaměřují na roli platforem jako „policie autorského práva“ v rámci směrnice DSM a na striktnější výklad rozpoznatelnosti v módním průmyslu. Judikatura potvrzuje, že pro uznání adaptace díla nestačí pouhý podobný celkový dojem.",
+      "text": "Analýzy varují před dominancí soukromých podmínek platforem nad právy uživatelů a nadměrným blokováním obsahu. V módním průmyslu se doporučuje striktní výklad rozpoznatelnosti pro zachování kreativní svobody návrhářů.",
       "sources": [
         {
           "src": "journals",
@@ -79,50 +109,14 @@
       ]
     },
     {
-      "title": "Ochranné známky a soutěž",
-      "text": "Potvrzeno, že úprava produktů s ochrannou známkou pro osobní potřebu neporušuje práva z známky a že žaloby na deklaraci neplatnosti platné známky nejsou prekluzivní. Praxe se rovněž zabývá neoprávněným ambush marketingem u sportovních akcí.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "title": "The Independence Requirement for Work Title Protection of Fictitious Character Names under Trade Mark Law",
-          "link": "https://doi.org/10.1093/grurint/ikag064"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "title": "No Trade Mark Infringement for Personal Use Refashioning",
-          "link": "https://doi.org/10.1093/grurint/ikag070"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "title": "No Limitation Period for Actions Seeking a Declaration of Invalidity of a Trade Mark in Force",
-          "link": "https://doi.org/10.1093/grurint/ikag063"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "title": "Unlawful Ambush Marketing Through Indirect Linkage with a Sporting Event",
-          "link": "https://doi.org/10.1093/grurint/ikag038"
-        }
-      ]
-    },
-    {
-      "title": "Ochrana dat a digitalizace",
-      "text": "Pro náhradu škody podle GDPR nestačí hypotetické riziko zneužití dat, ale je nutno prokázat skutečnou škodu. V oblasti automatizovaného rozhodování je zdůrazněna nutnost reálného lidského dohledu, zatímco implementace EUDI Wallet přináší nové výzvy v interoperabilitě dat.",
+      "title": "Ochrana dat a GDPR",
+      "text": "Pro přiznání náhrady škody v rámci GDPR nestačí hypotetické riziko zneužití dat, ale je nutné prokázat skutečnou škodu. U automatizovaného rozhodování je vyžadován reálný lidský dohled, nikoliv pouze formální kontrola.",
       "sources": [
         {
           "src": "journals",
           "label": "Časopis",
           "title": "No Compensation Based Solely on a Hypothetical Risk of Misuse of Personal Data",
           "link": "https://doi.org/10.1093/grurint/ikag067"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "title": "Legal and Regulatory Compliance Challenges for Equity Token Secondary Market Operators in the European Union – Jan Wittlin",
-          "link": "https://journals.muni.cz/mujlt/article/view/40800"
         },
         {
           "src": "journals",
@@ -137,7 +131,19 @@
           "link": "https://journals.muni.cz/mujlt/article/view/42766"
         }
       ]
+    },
+    {
+      "title": "Smlouva o dílo",
+      "text": "Nejvyšší soud rozhodl, že povinnost sepsat předávací protokol není automaticky hmotněprávní podmínkou pro vznik práva na zaplacení ceny. Takové ujednání musí být vyloženo podle skutečné vůle stran a ekonomického účelu smlouvy.",
+      "sources": [
+        {
+          "src": "nsoud",
+          "label": "NS 23 Cdo",
+          "title": "23 Cdo 2349/2025",
+          "link": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/15749B07C7BA0BF1C1258E3D001BA1CA/$file/23%20Cdo%202349_2025.pdf?openElement"
+        }
+      ]
     }
   ],
-  "input_hash": "25cae46f2d005dacacb8c12879676abddcf752678a47913e9f07cc402bd3dfb3"
+  "input_hash": "c44d3a2aa651519022b9cb676b4de15bb440fc166fbf3e52212e3a58aaf03c7e"
 }
