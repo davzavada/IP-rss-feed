@@ -1,4 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#3730a3"/>
-  <text x="32" y="44" font-family="-apple-system, 'Segoe UI', Arial, sans-serif" font-size="30" font-weight="700" fill="#ffffff" text-anchor="middle">IP</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Sova">
+  <rect width="64" height="64" rx="14" fill="#1d4ed8"/>
+  <g transform="translate(6.7 5.54) scale(0.0988)"
+     fill="none" stroke="#ffffff" stroke-width="38"
+     stroke-linecap="round" stroke-linejoin="miter">
+    <!-- obočí + zobák -->
+    <path d="M22 98C146 86 226 150 237 318L213 372L256 428L299 372L275 318C286 150 366 86 490 98"/>
+    <!-- oči -->
+    <circle cx="129" cy="276" r="104"/>
+    <circle cx="383" cy="276" r="104"/>
+    <!-- zorničky -->
+    <circle cx="129" cy="276" r="44"/>
+    <circle cx="383" cy="276" r="44"/>
+  </g>
 </svg>

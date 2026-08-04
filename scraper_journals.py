@@ -4,6 +4,7 @@
 import os
 import re
 from datetime import datetime, timedelta, timezone
+from urllib.parse import urljoin
 from xml.etree.ElementTree import Element, SubElement, ElementTree, fromstring, indent
 
 import requests
@@ -107,6 +108,72 @@ def scrape_upv():
     return latest
 
 
+# --- Právník (ÚSP AV ČR) – vlastní web, bez RSS i bez API ---
+# Web ÚSP linkuje každý článek přes stabilní ID:
+#   …/casopis-pravnik/hledat-v-archivu/detail-clanku.html?id=<id>
+# Držíme se tedy tvaru odkazu, ne značek šablony – ta se mění častěji.
+# Datum vydání se z výpisu spolehlivě vyčíst nedá; co je nové rozhoduje
+# filter_by_first_seen podle guid, takže pub_date stačí orientační.
+
+PRAVNIK_URL = "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/"
+# Záloha, kdyby titulní stránka obsah aktuálního čísla nevypisovala.
+PRAVNIK_ARCHIVE_URL = PRAVNIK_URL + "archiv/"
+PRAVNIK_DETAIL_RE = re.compile(r"detail-clanku\.html\?.*\bid=(\d+)", re.IGNORECASE)
+PRAVNIK_MAX_ITEMS = 12  # ať první běh nezaplaví feed celým archivem
+
+
+def _pravnik_articles(page_url):
+    """Posbírá odkazy na detaily článků Právníka z jedné stránky webu ÚSP."""
+    resp = requests.get(page_url, headers={"User-Agent": USER_AGENT}, timeout=30)
+    resp.raise_for_status()
+    soup = BeautifulSoup(resp.text, "html.parser")
+
+    items = []
+    seen_ids = set()
+    for a in soup.find_all("a", href=True):
+        match = PRAVNIK_DETAIL_RE.search(a["href"])
+        if not match:
+            continue
+        art_id = match.group(1)
+        if art_id in seen_ids:
+            continue
+
+        title = " ".join(a.get_text(" ", strip=True).split())
+        if not title:
+            continue
+        seen_ids.add(art_id)
+
+        # Odkazy na webu nesou dlouhý ocas z vyhledávacího formuláře
+        # (&r=…&query=…) – necháme jen cestu a id.
+        detail_path = urljoin(page_url, a["href"]).split("?")[0]
+        link = f"{detail_path}?id={art_id}"
+
+        items.append({
+            "title": f"[Právník] {title}",
+            "journal_name": "Právník",
+            "link": link,
+            "description": f"{title}\nPrávník (ÚSP AV ČR)",
+            "guid": f"Pravnik-{art_id}",
+            "pub_date": datetime.now(timezone.utc),
+            "sort_key": int(art_id),
+            # Anotaci má až detail článku – stáhne se lazy, jen když se
+            # pro položku opravdu generuje shrnutí (viz enrich_summaries).
+            "ai_source": "page",
+        })
+
+    items.sort(key=lambda x: x["sort_key"], reverse=True)
+    return items[:PRAVNIK_MAX_ITEMS]
+
+
+def scrape_pravnik():
+    """Vrátí články Právníka z titulní stránky, jinak z archivu."""
+    items = _pravnik_articles(PRAVNIK_URL)
+    if not items:
+        print("    [diag] Právník: titulní stránka bez článků, zkouším archiv")
+        items = _pravnik_articles(PRAVNIK_ARCHIVE_URL)
+    return items
+
+
 # --- Časopisy na OJS (Open Journal Systems) – čteme jejich RSS gateway ---
 # Stejný vzor pro všechny instalace OJS (journals.muni.cz, jipitec.eu):
 # <base>/gateway/plugin/WebFeedGatewayPlugin/rss2
@@ -120,6 +187,8 @@ OJS_SOURCES = [
     ("https://www.jipitec.eu/jipitec/gateway/plugin/WebFeedGatewayPlugin/rss2",
      "JIPITEC", "JIPITEC – Journal of Intellectual Property, Information "
                 "Technology and E-Commerce Law"),
+    ("https://tlq.ilaw.cas.cz/index.php/tlq/gateway/plugin/WebFeedGatewayPlugin/rss2",
+     "TLQ", "The Lawyer Quarterly"),
 ]
 
 
@@ -284,6 +353,16 @@ def fetch_crossref_journal(issn, label, journal_name):
 
 # --- AI shrnutí (Gemma) ---
 
+def fetch_page_text(url, limit=6000):
+    """Čitelný text stránky pro AI shrnutí (bez navigace, skriptů a patičky)."""
+    resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=30)
+    resp.raise_for_status()
+    soup = BeautifulSoup(resp.text, "html.parser")
+    for junk in soup(["script", "style", "nav", "header", "footer", "form"]):
+        junk.decompose()
+    text = re.sub(r"\n{3,}", "\n\n", soup.get_text("\n", strip=True))
+    return text[:limit]
+
 def enrich_summaries(items):
     """Doplní AI shrnutí (HESLO + SHRNUTÍ) přes Gemma; cache podle guid.
 
@@ -310,6 +389,14 @@ def enrich_summaries(items):
                 print(f"    [diag] {g}: článek, ai_text {tlen} znaků")
                 calls += 1
                 summary, tag = gemini_summarize_text(it["ai_text"], JOURNAL_ARTICLE_PROMPT)
+            elif it.get("ai_source") == "page" and it.get("link"):
+                try:
+                    text = fetch_page_text(it["link"])
+                    print(f"    [diag] {g}: stránka článku, {len(text)} znaků")
+                    calls += 1
+                    summary, tag = gemini_summarize_text(text, JOURNAL_ARTICLE_PROMPT)
+                except Exception as e:
+                    print(f"  CHYBA stahování stránky {it['title']}: {e}")
             elif it.get("ai_source") == "issue" and it.get("link"):
                 try:
                     pr = requests.get(it["link"], headers={"User-Agent": USER_AGENT}, timeout=120)
@@ -397,7 +484,16 @@ def main():
     except Exception as e:
         print(f"  CHYBA při stahování ÚPV: {e}")
 
-    # 2. Časopisy na OJS (RPT, MUJLT, JIPITEC)
+    # 2. Právník (HTML web ÚSP AV ČR)
+    print("  Zdroj: Právník (ÚSP AV ČR)")
+    try:
+        pravnik = scrape_pravnik()
+        print(f"  Nalezeno {len(pravnik)} článků")
+        all_items.extend(pravnik)
+    except Exception as e:
+        print(f"  CHYBA při stahování Právníka: {e}")
+
+    # 3. Časopisy na OJS (RPT, MUJLT, JIPITEC, TLQ)
     for feed_url, label, journal_name in OJS_SOURCES:
         print(f"  Zdroj: {journal_name} (OJS RSS)")
         try:
@@ -407,7 +503,7 @@ def main():
         except Exception as e:
             print(f"  CHYBA při stahování {label}: {e}")
 
-    # 3. Časopisy přes Crossref (QMJIP, GRUR Int, JIPLP, IIC)
+    # 4. Časopisy přes Crossref (QMJIP, GRUR Int, JIPLP, IIC)
     for issn, label, journal_name in CROSSREF_JOURNALS:
         print(f"  Zdroj: {journal_name} (Crossref)")
         try:
