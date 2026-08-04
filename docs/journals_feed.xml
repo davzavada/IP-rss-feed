@@ -6,7 +6,7 @@
     <atom:link href="https://rss.davidzavada.cz/journals_feed.xml" rel="self" type="application/rss+xml" />
     <description>Nová čísla právních časopisů a články</description>
     <language>cs</language>
-    <lastBuildDate>Mon, 03 Aug 2026 13:30:55 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2026 06:14:21 +0000</lastBuildDate>
     <item>
       <title>[IIC] Exhaustion of Intellectual Property Rights in Africa – Daniel Opoku Acquah</title>
       <link>https://doi.org/10.1007/s40319-026-01744-3</link>
@@ -16,7 +16,6 @@ Autor: Daniel Opoku Acquah
 IIC – International Review of Intellectual Property and Competition Law
 The exhaustion principle, while a well-known concept in intellectual property (IP) law, has not received much attention in the African context. Until February 2023, when the African Continental Free Trade Area Protocol on Intellectual Property was adopted, the African Union lacked a formal stance...
 Článek analyzuje princip vyčerpání práv duševního vlastnictví v Africe a dopad nového IP protokolu, který zavádí regionální vyčerpání. Autor konstatuje, že tento krok podporuje harmonizaci a obchod, ale pro zajištění přístupu k lékům a knihám by byl optimálnější systém smíšených pravidel.</description>
-      <is-new>true</is-new>
       <ai-tag>Vyčerpání IP práv</ai-tag>
       <ai-summary>Článek analyzuje princip vyčerpání práv duševního vlastnictví v Africe a dopad nového IP protokolu, který zavádí regionální vyčerpání. Autor konstatuje, že tento krok podporuje harmonizaci a obchod, ale pro zajištění přístupu k lékům a knihám by byl optimálnější systém smíšených pravidel.</ai-summary>
       <pubDate>Mon, 03 Aug 2026 12:00:00 +0000</pubDate>
@@ -29,7 +28,6 @@ The exhaustion principle, while a well-known concept in intellectual property (I
       <description>“Anne Frank Fonds”
 IIC – International Review of Intellectual Property and Competition Law
 Předložený text obsahuje pouze název organizace. Chybí odborný právní článek a anotace, proto nelze vyvodit žádná zjištění či závěry.</description>
-      <is-new>true</is-new>
       <ai-tag>Anne Frank Fonds</ai-tag>
       <ai-summary>Předložený text obsahuje pouze název organizace. Chybí odborný právní článek a anotace, proto nelze vyvodit žádná zjištění či závěry.</ai-summary>
       <pubDate>Mon, 03 Aug 2026 12:00:00 +0000</pubDate>
@@ -553,19 +551,6 @@ Autor: Katarzyna Katana
       <dc:date>2026-06-30</dc:date>
     </item>
     <item>
-      <title>[JIPITEC] Editorial – Annalisa Volpato, Mariolina Eliantonio, Michèle Finck</title>
-      <link>https://www.jipitec.eu/jipitec/article/view/452</link>
-      <guid isPermaLink="false">JIPITEC-https://www.jipitec.eu/jipitec/article/view/452</guid>
-      <description>Editorial
-Autor: Annalisa Volpato, Mariolina Eliantonio, Michèle Finck
-Editorial of the JIPITEC 17 (1) - Special Issue on Harmonised Standards in AI Regulation
-Jedná se o úvodní slovo k speciálnímu vydání časopisu JIPITEC. Text se věnuje problematice harmonizovaných norem v rámci regulace umělé inteligence.</description>
-      <ai-tag>Harmonizované normy AI</ai-tag>
-      <ai-summary>Jedná se o úvodní slovo k speciálnímu vydání časopisu JIPITEC. Text se věnuje problematice harmonizovaných norem v rámci regulace umělé inteligence.</ai-summary>
-      <pubDate>Tue, 09 Jun 2026 12:00:00 +0000</pubDate>
-      <dc:date>2026-06-09</dc:date>
-    </item>
-    <item>
       <title>[JIPITEC] Decision Problems for Regulatees under the EU AI Act: Contested Values, Uncertain Evidence, and the Limits of Standardisation – Alessio Tartaro, Arvin Obnasca, Enrico Panai</title>
       <link>https://www.jipitec.eu/jipitec/article/view/453</link>
       <guid isPermaLink="false">JIPITEC-https://www.jipitec.eu/jipitec/article/view/453</guid>
@@ -640,6 +625,19 @@ This paper examines the broader implications of current global (geo)political dy
 Článek analyzuje vliv geopolitických dynamik na standardizaci umělé inteligence se zaměřením na EU AI Act. Autor argumentuje, že spoléhání se na delegované technické normy omezuje schopnost EU prosazovat své normativní vlivy v konfrontaci s přístupy USA a Číny. Závěrem konstatuje existenci propasti mezi regulačními ambicemi EU a realitou globálního ekosystému standardizace, což ohrožuje dlouhodobý vliv AI Actu.</description>
       <ai-tag>Geopolitika standardizace AI</ai-tag>
       <ai-summary>Článek analyzuje vliv geopolitických dynamik na standardizaci umělé inteligence se zaměřením na EU AI Act. Autor argumentuje, že spoléhání se na delegované technické normy omezuje schopnost EU prosazovat své normativní vlivy v konfrontaci s přístupy USA a Číny. Závěrem konstatuje existenci propasti mezi regulačními ambicemi EU a realitou globálního ekosystému standardizace, což ohrožuje dlouhodobý vliv AI Actu.</ai-summary>
+      <pubDate>Tue, 09 Jun 2026 12:00:00 +0000</pubDate>
+      <dc:date>2026-06-09</dc:date>
+    </item>
+    <item>
+      <title>[JIPITEC] Editorial – Annalisa Volpato, Mariolina Eliantonio, Michèle Finck</title>
+      <link>https://www.jipitec.eu/jipitec/article/view/452</link>
+      <guid isPermaLink="false">JIPITEC-https://www.jipitec.eu/jipitec/article/view/452</guid>
+      <description>Editorial
+Autor: Annalisa Volpato, Mariolina Eliantonio, Michèle Finck
+Editorial of the JIPITEC 17 (1) - Special Issue on Harmonised Standards in AI Regulation
+Jedná se o úvodní slovo k speciálnímu vydání časopisu JIPITEC. Text se věnuje problematice harmonizovaných norem v rámci regulace umělé inteligence.</description>
+      <ai-tag>Harmonizované normy AI</ai-tag>
+      <ai-summary>Jedná se o úvodní slovo k speciálnímu vydání časopisu JIPITEC. Text se věnuje problematice harmonizovaných norem v rámci regulace umělé inteligence.</ai-summary>
       <pubDate>Tue, 09 Jun 2026 12:00:00 +0000</pubDate>
       <dc:date>2026-06-09</dc:date>
     </item>
