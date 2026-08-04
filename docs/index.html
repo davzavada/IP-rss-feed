@@ -29,7 +29,6 @@
     /* Rozvržení: šířka obsahu a boční navigace (viz @media min-width: 1200px) */
     --content-w: min(1400px, 100vw - 440px);
     --nav-w: 176px;
-    --nav-gap: 32px;
     /* Odstíny štítků (soft badge) */
     --badge-green-bg: hsl(142 76% 36% / 0.12);   --badge-green-fg: hsl(142 72% 29%);
     --badge-blue-bg: hsl(217 91% 60% / 0.12);    --badge-blue-fg: hsl(224 76% 48%);
@@ -57,7 +56,9 @@
   }
 
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  /* Pozadí patří i na <html>: při skrytém <body> (viz .is-loading) je vidět
+     jen plátno – bez toho by v tmavém režimu problesklo bílé. */
+  html { scroll-behavior: smooth; background: var(--background); }
   body {
     margin: 0;
     font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
@@ -144,11 +145,13 @@
   .src-journals { background: var(--badge-amber-bg); color: var(--badge-amber-fg); }
 
   .loading, .feed-empty { color: var(--muted-foreground); font-size: 0.875rem; margin: 6px 0; }
-  /* Dokud nejsou feedy načtené, obsah vůbec neukazujeme – místo poskakujících
-     placeholderů se objeví rovnou hotová stránka. Třída se sundá v initApp()
-     (a nejpozději po pojistném timeoutu, ať se nezasekneme na prázdnu). */
-  body.is-loading main { visibility: hidden; }
+  /* Dokud nejsou feedy (a fonty) načtené, neukazujeme nic – jinak by nejdřív
+     probliskla hlavička s prázdnou stránkou a teprve pak naskočil obsah.
+     Třídu nasazuje i sundává skript, takže bez JS se stránka zobrazí normálně;
+     sundá se v initApp() nebo nejpozději po pojistném timeoutu. */
+  html.is-loading body { visibility: hidden; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
 
   /* Boční navigace vlevo (jen na širokých obrazovkách; shadcn sidebar) */
   #sidenav { display: none; position: fixed; top: 96px; left: 20px; width: var(--nav-w); flex-direction: column; gap: 2px; font-size: 0.85rem; }
@@ -160,13 +163,13 @@
     /* Po obou stranách se symetricky vyhradí místo pro navigaci,
        takže hlavní obsah zůstává vycentrovaný a nikam se neposouvá. */
     .container { max-width: var(--content-w); }
-    /* Navigaci přisadíme k levé hraně karet, ať se na širokých monitorech
-       neodlepí k okraji okna. `+ 24px` je vnitřní odsazení .container,
-       takže mezera k obsahu vyjde stejná v každé šířce okna.
+    /* Navigaci vycentrujeme do volného pruhu vlevo od obsahu – ani nalepenou
+       na okraj okna, ani na karty. `(100vw - content) / 2 + 24px` je levá
+       hrana karet (24px je vnitřní odsazení .container), zbytek se rozpůlí.
        Pod 20px nikdy nejde (užší okna). */
     #sidenav {
       display: flex;
-      left: max(20px, calc((100vw - var(--content-w)) / 2 + 24px - var(--nav-w) - var(--nav-gap)));
+      left: max(20px, calc(((100vw - var(--content-w)) / 2 + 24px - var(--nav-w)) / 2));
     }
   }
   @media (max-width: 640px) {
@@ -176,6 +179,17 @@
     .card-content { padding: 8px 16px 12px; }
   }
 </style>
+<script>
+  /* Skryjeme stránku ještě před prvním vykreslením – odkryje ji až initApp(),
+     když jsou feedy i fonty hotové. Že třídu nasazuje skript (a ne rovnou
+     atribut v HTML) je schválně: bez JS se stránka zobrazí normálně.
+     Pojistka je tady, ne v hlavním skriptu – kdyby se ten rozbil, ať
+     uživatel nezůstane koukat na prázdno. */
+  document.documentElement.classList.add("is-loading");
+  setTimeout(function () {
+    document.documentElement.classList.remove("is-loading");
+  }, 8000);
+</script>
 </head>
 <body class="is-loading">
 
@@ -472,15 +486,12 @@ function initApp() {
   );
   const updateNav = initSidenav();
 
-  const reveal = () => document.body.classList.remove("is-loading");
-  // Pojistka: kdyby se některý fetch zasekl (fetch sám o sobě timeout nemá),
-  // po 8 s stránku ukážeme i s hláškami o načítání, ať uživatel nekouká na prázdno.
-  const revealFallback = setTimeout(reveal, 8000);
-
   // Vykreslíme až všechny feedy dorazí (stahují se paralelně, jsou ze
   // stejného původu). Jedno překreslení místo tří – stránka při načítání
   // neposkakuje. Selhání jednoho feedu ostatní nezdrží.
-  Promise.allSettled(feedPromises).then(results => {
+  // Čekáme i na fonty, ať text po odkrytí nepřeskočí na jiné písmo.
+  const fontsReady = document.fonts ? document.fonts.ready.catch(() => {}) : Promise.resolve();
+  Promise.all([Promise.allSettled(feedPromises), fontsReady]).then(([results]) => {
     FEEDS.forEach((f, idx) => {
       if (results[idx].status === "rejected") {
         failed(f.containerId);
@@ -493,10 +504,10 @@ function initApp() {
       );
     });
     renderToday(results);
-    clearTimeout(revealFallback);
-    reveal();
-    // Tabulky změnily výšku stránky – zvýraznění v navigaci přepočítáme.
+    // Tabulky změnily výšku stránky – zvýraznění v navigaci přepočítáme
+    // ještě než stránku odkryjeme, ať se aktivní položka nepřepne až po ní.
     updateNav();
+    document.documentElement.classList.remove("is-loading");
   });
 
   showUpdated(feedDocs);
