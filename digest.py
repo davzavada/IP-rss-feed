@@ -37,6 +37,11 @@ WEEKS = 2          # okno přehledu (shodné s oknem feedů)
 MAX_ITEMS = 120    # pojistka proti přerostlému promptu
 MAX_SOURCES = 6    # kolik odkazů maximálně necháme u jednoho tématu
 
+# Verze tvaru výstupu. Vstupuje do otisku, takže když do přehledu přibude
+# další údaj, uložený přehled se tím sám prohlásí za starý a přegeneruje se
+# (jinak by v něm nový údaj chyběl, dokud se nezmění skladba položek).
+FORMAT_VERSION = "2"
+
 # (klíč zdroje, štítek, soubor feedu) – klíče jsou shodné s index.html,
 # aby se štítky obarvily stejně jako v tabulkách.
 SOURCES = [
@@ -142,6 +147,7 @@ def build_prompt_input(items):
 def input_hash(items):
     """Otisk vstupu – když se nezmění, není co přegenerovávat."""
     h = hashlib.sha256()
+    h.update(f"v{FORMAT_VERSION}\n".encode("utf-8"))
     for it in items:
         h.update(f"{it['guid']}|{it['summary']}\n".encode("utf-8"))
     return h.hexdigest()
@@ -203,6 +209,9 @@ def parse_digest(raw, items):
                 sources.append({
                     "src": it["src"],
                     "label": it["src_label"],
+                    # Zkratka časopisu / typu řízení ([JIPLP], [Ruling], …) –
+                    # u článků je hlavní informace, ze kterého časopisu jsou.
+                    "tag": it["tag"],
                     "title": it["title"],
                     "link": it["link"],
                 })

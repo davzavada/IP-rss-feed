@@ -84,7 +84,11 @@
   .legend { font-size: 0.8rem; color: var(--muted-foreground); white-space: nowrap; }
 
   main.container { padding-block: 28px 72px; display: flex; flex-direction: column; gap: 28px; }
-  #recentni { display: flex; flex-direction: column; gap: 20px; }
+  /* Obsah je rozdělený na dvě stránky (přehled / všechno za dva týdny);
+     přepíná se mezi nimi navigací, viditelná je vždy jedna. */
+  .page { display: flex; flex-direction: column; gap: 28px; }
+  .page[hidden] { display: none; }
+  #recentni { gap: 20px; }
   .group-title { margin: 8px 0 0; font-size: 1.15rem; font-weight: 600; letter-spacing: -0.01em; }
   section[id], .card[id] { scroll-margin-top: 76px; }
 
@@ -152,12 +156,12 @@
   .digest-text { margin: 0; font-size: 0.875rem; line-height: 1.55; }
   .digest-sources { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; }
   .digest-source {
-    display: inline-flex; align-items: baseline; gap: 8px;
+    display: inline-flex; align-items: baseline; gap: 6px;
     font-size: 0.8rem; color: var(--link); text-decoration: none;
     overflow-wrap: anywhere;
   }
   .digest-source:hover { text-decoration: underline; }
-  .digest-source .src { flex: none; }
+  .digest-source .src, .digest-source .tag { flex: none; }
   .digest-meta { margin: 14px 0 0; font-size: 0.78rem; color: var(--muted-foreground); }
 
   .loading, .feed-empty { color: var(--muted-foreground); font-size: 0.875rem; margin: 6px 0; }
@@ -168,6 +172,15 @@
   html.is-loading body { visibility: hidden; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
+
+  /* Přepínač stránek (shadcn tabs) – naskočí tam, kde zmizí boční navigace. */
+  .pagetabs { display: flex; gap: 4px; flex-wrap: wrap; }
+  .pagetabs a {
+    padding: 6px 12px; border-radius: 8px; font-size: 0.85rem;
+    color: var(--muted-foreground); text-decoration: none;
+  }
+  .pagetabs a:hover { color: var(--foreground); background: var(--accent); }
+  .pagetabs a.active { color: var(--foreground); background: var(--muted); font-weight: 500; }
 
   /* Boční navigace vlevo (jen na širokých obrazovkách; shadcn sidebar) */
   #sidenav { display: none; position: fixed; top: 96px; left: 20px; width: var(--nav-w); flex-direction: column; gap: 2px; font-size: 0.85rem; }
@@ -187,6 +200,8 @@
       display: flex;
       left: max(20px, calc(((100vw - var(--content-w)) / 2 + 24px - var(--nav-w)) / 2));
     }
+    /* Se zobrazenou boční navigací by byl přepínač nahoře nadbytečný. */
+    .pagetabs { display: none; }
   }
   @media (max-width: 640px) {
     .container { padding-inline: 14px; }
@@ -225,15 +240,24 @@
 </header>
 
 <nav id="sidenav" aria-label="Navigace na stránce">
-  <a href="#dnesni">Dnešní shrnutí</a>
-  <a href="#dvatydny">Dva týdny zpět</a>
-  <a href="#recentni">Recentní</a>
+  <a href="#prehled">Přehled</a>
+  <a href="#dnesni" class="sub">Dnešní shrnutí</a>
+  <a href="#dvatydny" class="sub">Shrnutí dvou týdnů</a>
+  <a href="#recentni">Všechno za dva týdny</a>
   <a href="#nsoud" class="sub">NS – 23 Cdo</a>
   <a href="#cjeu" class="sub">CJEU IP / IT</a>
   <a href="#casopisy" class="sub">Časopisy</a>
 </nav>
 
 <main class="container">
+
+<!-- Přepínač stránek pro úzká okna, kde je boční navigace schovaná. -->
+<nav class="pagetabs" aria-label="Přepínání stránek">
+  <a href="#prehled">Přehled</a>
+  <a href="#recentni">Všechno za dva týdny</a>
+</nav>
+
+<div class="page" id="prehled">
 
 <section id="dnesni">
   <div class="card">
@@ -258,8 +282,10 @@
   </div>
 </section>
 
-<section id="recentni">
-  <h2 class="group-title">Recentní</h2>
+</div><!-- /#prehled -->
+
+<section class="page" id="recentni" hidden>
+  <h2 class="group-title">Všechno za dva týdny</h2>
 
   <div class="card" id="nsoud">
     <div class="card-header">
@@ -360,11 +386,15 @@ function text(item, sel) {
   return el ? el.textContent.trim() : "";
 }
 
+function tagBadge(label) {
+  if (!label) return "";
+  const slug = String(label).toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  return '<span class="tag tag-' + slug + '">' + esc(label) + '</span>';
+}
+
 function getTag(title) {
   const m = title.match(/^\[([^\]]+)\]/);
-  if (!m) return "";
-  const slug = m[1].toLowerCase().replace(/[^a-z0-9]+/g, "-");
-  return '<span class="tag tag-' + slug + '">' + esc(m[1]) + '</span>';
+  return m ? tagBadge(m[1]) : "";
 }
 
 function getDate(item) {
@@ -476,7 +506,8 @@ function czDate(iso) {
 function digestSource(s) {
   const key = SRC_KEYS.indexOf(s.src) >= 0 ? s.src : "";
   const badge = '<span class="src' + (key ? " src-" + key : "") + '">' + esc(s.label || "") + "</span>";
-  const inner = badge + "<span>" + esc(s.title || "") + "</span>";
+  // U článků ještě zkratka časopisu ([JIPLP], [IIC], …), u CJEU typ řízení.
+  const inner = badge + tagBadge(s.tag) + "<span>" + esc(s.title || "") + "</span>";
   const href = safeHref(s.link || "");
   return href
     ? '<a class="digest-source" href="' + href + '">' + inner + "</a>"
@@ -513,13 +544,48 @@ function renderDigest(data) {
   container.innerHTML = html;
 }
 
-/* ========== Boční navigace (scroll-spy) ========== */
-function initSidenav() {
-  const links = Array.from(document.querySelectorAll("#sidenav a"));
-  const targets = links
-    .map(a => ({ a, el: document.querySelector(a.getAttribute("href")) }))
-    .filter(t => t.el);
+/* ========== Stránky a navigace ========== */
+// Obsah je rozdělený na dvě stránky; přepíná se podle adresy (#kotva).
+// Kotvy sekcí zůstávají platné – odkaz na #nsoud otevře druhou stránku.
+const PAGES = [
+  { id: "prehled",  sections: ["dnesni", "dvatydny"] },
+  { id: "recentni", sections: ["nsoud", "cjeu", "casopisy"] }
+];
+
+let currentPage = PAGES[0];
+let updateNav = function () {};
+
+function pageOf(hash) {
+  const id = String(hash || "").replace(/^#/, "");
+  return PAGES.find(p => p.id === id || p.sections.indexOf(id) >= 0) || PAGES[0];
+}
+
+// Přepne na stránku a odscrolluje – buď na sekci, nebo na začátek stránky.
+function navigate(hash, push) {
+  const page = pageOf(hash);
+  const id = String(hash || "").replace(/^#/, "");
+  currentPage = page;
+  PAGES.forEach(p => {
+    const el = document.getElementById(p.id);
+    if (el) el.hidden = (p !== page);
+  });
+
+  const section = page.sections.indexOf(id) >= 0 ? document.getElementById(id) : null;
+  if (section) section.scrollIntoView({ block: "start" });
+  else window.scrollTo(0, 0);
+
+  if (push) history.pushState(null, "", "#" + (id || page.id));
+  updateNav();
+}
+
+function initNav() {
+  const links = Array.from(document.querySelectorAll("#sidenav a, .pagetabs a"));
+
   function update() {
+    // Sekce se hledají až tady – po přepnutí stránky jsou vidět jiné.
+    const targets = currentPage.sections
+      .map(id => ({ id, el: document.getElementById(id) }))
+      .filter(t => t.el);
     let current = targets[0];
     targets.forEach(t => {
       if (t.el.getBoundingClientRect().top <= 140) current = t;
@@ -529,18 +595,22 @@ function initSidenav() {
     if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
       current = targets[targets.length - 1];
     }
-    links.forEach(a => a.classList.remove("active"));
-    if (!current) return;
-    current.a.classList.add("active");
-    // Podsekce zvýrazní i rodičovskou položku „Recentní"
-    if (current.a.classList.contains("sub")) {
-      const parent = links.find(a => a.getAttribute("href") === "#recentni");
-      if (parent) parent.classList.add("active");
-    }
+    const active = current ? current.id : "";
+    links.forEach(a => {
+      const href = String(a.getAttribute("href") || "").replace(/^#/, "");
+      // Zvýrazněná je aktuální sekce a k ní i její stránka.
+      a.classList.toggle("active", href === active || href === currentPage.id);
+    });
   }
+
+  links.forEach(a => a.addEventListener("click", e => {
+    // Skok si řešíme sami – cílová sekce může být na skryté stránce.
+    e.preventDefault();
+    navigate(a.getAttribute("href"), true);
+  }));
+  window.addEventListener("popstate", () => navigate(location.hash, false));
   document.addEventListener("scroll", update, { passive: true });
-  update();
-  return update;
+  updateNav = update;
 }
 
 // Datum poslední aktualizace = nejnovější <lastBuildDate> ze všech feedů.
@@ -574,7 +644,7 @@ function initApp() {
   // Dvoutýdenní přehled se generuje zvlášť (digest.py) – když chybí, jen
   // se nevykreslí; zbytek stránky na něj nečeká déle než na feedy.
   const digestPromise = fetchDigest().catch(() => null);
-  const updateNav = initSidenav();
+  initNav();
 
   // Vykreslíme až všechny feedy dorazí (stahují se paralelně, jsou ze
   // stejného původu). Jedno překreslení místo tří – stránka při načítání
@@ -588,17 +658,15 @@ function initApp() {
           failed(f.containerId);
           return;
         }
-        // Co je v Dnešním shrnutí (is-new), v Recentním neopakujeme.
-        renderTable(
-          results[idx].value.filter(it => !it.querySelector("is-new")),
-          document.getElementById(f.containerId), f.cols
-        );
+        // Druhá stránka je úplný výpis za dva týdny – dnešek z ní
+        // nevynecháváme, na jednu stránku se položky nedostanou dvakrát.
+        renderTable(results[idx].value, document.getElementById(f.containerId), f.cols);
       });
       renderToday(results);
       renderDigest(digest);
-      // Tabulky změnily výšku stránky – zvýraznění v navigaci přepočítáme
-      // ještě než stránku odkryjeme, ať se aktivní položka nepřepne až po ní.
-      updateNav();
+      // Až teď je jasná výška stránky – otevřeme kotvu z adresy (a přepočítáme
+      // zvýraznění) ještě než stránku odkryjeme, ať nic nepřeskočí.
+      navigate(location.hash, false);
       document.documentElement.classList.remove("is-loading");
     });
 
