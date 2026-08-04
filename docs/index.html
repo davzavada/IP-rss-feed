@@ -273,9 +273,11 @@
   <div class="card">
     <div class="card-header">
       <h2 class="card-title">Co se stalo v uplynulých dvou týdnech</h2>
+      <span class="legend" id="digest-updated"></span>
       <p class="card-desc">
         AI přehled napříč všemi feedy – hlavně to, co je relevantní pro IP,
         a k tomu pár dalších zajímavostí. Většina položek se sem nedostane.
+        Aktualizuje se jednou týdně, v pondělí ráno po ranním scraperu.
       </p>
     </div>
     <div class="card-content" id="feed-digest"><p class="loading">Načítám...</p></div>
@@ -516,6 +518,12 @@ function digestSource(s) {
 
 function renderDigest(data) {
   const container = document.getElementById("feed-digest");
+  // Přehled se na rozdíl od feedů generuje jen jednou týdně, takže datum
+  // poslední aktualizace patří k němu – to v hlavičce stránky je z feedů.
+  const stamp = document.getElementById("digest-updated");
+  if (stamp && data && data.generated) {
+    stamp.textContent = "aktualizováno " + czDate(data.generated);
+  }
   if (!data || !Array.isArray(data.blocks) || data.blocks.length === 0) {
     container.innerHTML = '<p class="feed-empty">Přehled zatím není k dispozici.</p>';
     return;
@@ -537,7 +545,6 @@ function renderDigest(data) {
   const meta = [];
   if (data.total) meta.push("vybráno z " + data.total + " položek");
   if (from && to) meta.push("období " + from + " – " + to);
-  if (data.generated) meta.push("přehled z " + czDate(data.generated));
   if (meta.length) {
     html += '<p class="digest-meta">' + esc(meta.join(" · ")) + "</p>";
   }
