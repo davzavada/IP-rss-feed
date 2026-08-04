@@ -144,6 +144,22 @@
   .src-cjeu { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
   .src-journals { background: var(--badge-amber-bg); color: var(--badge-amber-fg); }
 
+  /* Dvoutýdenní přehled (digest.json) – text, ne tabulka. */
+  .digest-intro { margin: 6px 0 4px; font-size: 0.925rem; line-height: 1.6; }
+  .digest-block { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .digest-block:last-of-type { border-bottom: 0; padding-bottom: 4px; }
+  .digest-title { margin: 0 0 4px; font-size: 0.9rem; font-weight: 600; letter-spacing: -0.01em; }
+  .digest-text { margin: 0; font-size: 0.875rem; line-height: 1.55; }
+  .digest-sources { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; }
+  .digest-source {
+    display: inline-flex; align-items: baseline; gap: 8px;
+    font-size: 0.8rem; color: var(--link); text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  .digest-source:hover { text-decoration: underline; }
+  .digest-source .src { flex: none; }
+  .digest-meta { margin: 14px 0 0; font-size: 0.78rem; color: var(--muted-foreground); }
+
   .loading, .feed-empty { color: var(--muted-foreground); font-size: 0.875rem; margin: 6px 0; }
   /* Dokud nejsou feedy (a fonty) načtené, neukazujeme nic – jinak by nejdřív
      probliskla hlavička s prázdnou stránkou a teprve pak naskočil obsah.
@@ -210,6 +226,7 @@
 
 <nav id="sidenav" aria-label="Navigace na stránce">
   <a href="#dnesni">Dnešní shrnutí</a>
+  <a href="#dvatydny">Dva týdny zpět</a>
   <a href="#recentni">Recentní</a>
   <a href="#nsoud" class="sub">NS – 23 Cdo</a>
   <a href="#cjeu" class="sub">CJEU IP / IT</a>
@@ -225,6 +242,19 @@
       <p class="card-desc">Vše nové z dnešního dne – rozhodnutí i články v jednom.</p>
     </div>
     <div class="card-content" id="feed-today"><p class="loading">Načítám...</p></div>
+  </div>
+</section>
+
+<section id="dvatydny">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Co se stalo v uplynulých dvou týdnech</h2>
+      <p class="card-desc">
+        AI přehled napříč všemi feedy – hlavně to, co je relevantní pro IP,
+        a k tomu pár dalších zajímavostí. Většina položek se sem nedostane.
+      </p>
+    </div>
+    <div class="card-content" id="feed-digest"><p class="loading">Načítám...</p></div>
   </div>
 </section>
 
@@ -426,6 +456,63 @@ function renderToday(results) {
   }
 }
 
+/* ========== Dvoutýdenní přehled (digest.json) ========== */
+function fetchDigest() {
+  return fetch("digest.json").then(r => {
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return r.json();
+  });
+}
+
+// Klíč zdroje pouštíme do class jen z uzavřeného seznamu – ať se přes data
+// z JSONu nedá do stránky propašovat cizí třída.
+const SRC_KEYS = FEEDS.map(f => f.key);
+
+function czDate(iso) {
+  const d = new Date(iso);
+  return isNaN(d) ? "" : d.toLocaleDateString("cs-CZ");
+}
+
+function digestSource(s) {
+  const key = SRC_KEYS.indexOf(s.src) >= 0 ? s.src : "";
+  const badge = '<span class="src' + (key ? " src-" + key : "") + '">' + esc(s.label || "") + "</span>";
+  const inner = badge + "<span>" + esc(s.title || "") + "</span>";
+  const href = safeHref(s.link || "");
+  return href
+    ? '<a class="digest-source" href="' + href + '">' + inner + "</a>"
+    : '<span class="digest-source">' + inner + "</span>";
+}
+
+function renderDigest(data) {
+  const container = document.getElementById("feed-digest");
+  if (!data || !Array.isArray(data.blocks) || data.blocks.length === 0) {
+    container.innerHTML = '<p class="feed-empty">Přehled zatím není k dispozici.</p>';
+    return;
+  }
+  let html = "";
+  if (data.intro) html += '<p class="digest-intro">' + esc(data.intro) + "</p>";
+  data.blocks.forEach(b => {
+    html += '<div class="digest-block">';
+    html += '<h3 class="digest-title">' + esc(b.title || "") + "</h3>";
+    html += '<p class="digest-text">' + esc(b.text || "") + "</p>";
+    const sources = Array.isArray(b.sources) ? b.sources : [];
+    if (sources.length) {
+      html += '<div class="digest-sources">' + sources.map(digestSource).join("") + "</div>";
+    }
+    html += "</div>";
+  });
+
+  const from = czDate(data.from), to = czDate(data.to);
+  const meta = [];
+  if (data.total) meta.push("vybráno z " + data.total + " položek");
+  if (from && to) meta.push("období " + from + " – " + to);
+  if (data.generated) meta.push("přehled z " + czDate(data.generated));
+  if (meta.length) {
+    html += '<p class="digest-meta">' + esc(meta.join(" · ")) + "</p>";
+  }
+  container.innerHTML = html;
+}
+
 /* ========== Boční navigace (scroll-spy) ========== */
 function initSidenav() {
   const links = Array.from(document.querySelectorAll("#sidenav a"));
@@ -484,6 +571,9 @@ function initApp() {
   const feedPromises = feedDocs.map(
     p => p.then(doc => Array.from(doc.querySelectorAll("item")))
   );
+  // Dvoutýdenní přehled se generuje zvlášť (digest.py) – když chybí, jen
+  // se nevykreslí; zbytek stránky na něj nečeká déle než na feedy.
+  const digestPromise = fetchDigest().catch(() => null);
   const updateNav = initSidenav();
 
   // Vykreslíme až všechny feedy dorazí (stahují se paralelně, jsou ze
@@ -491,24 +581,26 @@ function initApp() {
   // neposkakuje. Selhání jednoho feedu ostatní nezdrží.
   // Čekáme i na fonty, ať text po odkrytí nepřeskočí na jiné písmo.
   const fontsReady = document.fonts ? document.fonts.ready.catch(() => {}) : Promise.resolve();
-  Promise.all([Promise.allSettled(feedPromises), fontsReady]).then(([results]) => {
-    FEEDS.forEach((f, idx) => {
-      if (results[idx].status === "rejected") {
-        failed(f.containerId);
-        return;
-      }
-      // Co je v Dnešním shrnutí (is-new), v Recentním neopakujeme.
-      renderTable(
-        results[idx].value.filter(it => !it.querySelector("is-new")),
-        document.getElementById(f.containerId), f.cols
-      );
+  Promise.all([Promise.allSettled(feedPromises), digestPromise, fontsReady])
+    .then(([results, digest]) => {
+      FEEDS.forEach((f, idx) => {
+        if (results[idx].status === "rejected") {
+          failed(f.containerId);
+          return;
+        }
+        // Co je v Dnešním shrnutí (is-new), v Recentním neopakujeme.
+        renderTable(
+          results[idx].value.filter(it => !it.querySelector("is-new")),
+          document.getElementById(f.containerId), f.cols
+        );
+      });
+      renderToday(results);
+      renderDigest(digest);
+      // Tabulky změnily výšku stránky – zvýraznění v navigaci přepočítáme
+      // ještě než stránku odkryjeme, ať se aktivní položka nepřepne až po ní.
+      updateNav();
+      document.documentElement.classList.remove("is-loading");
     });
-    renderToday(results);
-    // Tabulky změnily výšku stránky – zvýraznění v navigaci přepočítáme
-    // ještě než stránku odkryjeme, ať se aktivní položka nepřepne až po ní.
-    updateNav();
-    document.documentElement.classList.remove("is-loading");
-  });
 
   showUpdated(feedDocs);
 }

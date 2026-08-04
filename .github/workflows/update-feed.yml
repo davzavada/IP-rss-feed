@@ -50,6 +50,8 @@ jobs:
           python scraper.py
           python scraper_ipcuria.py
           python scraper_journals.py
+          # Dvoutýdenní přehled čte hotové feedy – musí běžet až po scraperech.
+          python digest.py
 
       - name: Commit & push feeds
         run: |

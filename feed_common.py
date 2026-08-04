@@ -182,6 +182,35 @@ JOURNAL_ISSUE_PROMPT = (
     "obsahuje. Drž se stručnosti a nic si nevymýšlej."
 )
 
+# Prompt pro dvoutýdenní přehled – shrnutí shrnutí ze všech feedů dohromady.
+# Vstupem je číslovaný seznam položek (zdroj, název, heslo, shrnutí), výstupem
+# krátký přehled po tématech. Čísla položek v ZDROJE se překládají zpět na
+# odkazy (viz digest.py).
+DIGEST_PROMPT = (
+    "Jsi asistent českého advokáta se specializací na právo duševního "
+    "vlastnictví a IT. Níže je číslovaný seznam položek za poslední dva "
+    "týdny: rozhodnutí Nejvyššího soudu ČR, rozhodnutí a předběžné otázky "
+    "Soudního dvora EU a články z právních časopisů.\n\n"
+    "Napiš česky přehled toho, co se za ty dva týdny stalo. Vybírej: "
+    "především věci relevantní pro praxi v duševním vlastnictví a IT "
+    "(autorské právo, ochranné známky, patenty a užitné vzory, průmyslové "
+    "vzory, nekalá soutěž, know-how a obchodní tajemství, licence, doménová "
+    "jména, ochrana dat, umělá inteligence, platformy), a k tomu pár dalších "
+    "skutečně zajímavých věcí, i když do IP nespadají. Většinu položek "
+    "vynecháš – vynech vše, co je jen obecné, pro praxi nepodstatné nebo se "
+    "týká právních řádů mimo ČR a EU (ledaže jde o věc, která je zajímavá i "
+    "odsud). Nic si nevymýšlej, drž se toho, co je ve shrnutích; u čeho si "
+    "nejsi jistý, raději vynech.\n\n"
+    "Odpověz přesně v tomto formátu, bez úvodních frází a bez dalšího "
+    "textu:\n"
+    "PŘEHLED: dvě až tři věty o tom, čím bylo období jako celek zajímavé.\n"
+    "Pak dva až pět bloků seřazených od nejdůležitějšího, každý přesně "
+    "takto:\n"
+    "TÉMA: nadpis o 2–5 slovech\n"
+    "TEXT: dvě až čtyři věty – co se stalo a co to znamená pro praxi.\n"
+    "ZDROJE: čísla položek z uvedeného seznamu oddělená čárkou (např. 3, 7)"
+)
+
 
 def gemini_enabled():
     """True, když je nastaven API klíč a není zapnuté SKIP_GEMINI."""
@@ -212,7 +241,7 @@ def parse_ai_response(raw):
     return clean(summary), heslo
 
 
-def _gemini_generate(parts):
+def _gemini_generate(parts, max_tokens=4096):
     """Pošle `parts` (text/inline_data) Gemmě a vrátí surový text odpovědi.
 
     Hlídá rozestup mezi voláními a opakuje při 429/5xx s exponenciálním
@@ -225,7 +254,7 @@ def _gemini_generate(parts):
         "contents": [{"parts": parts}],
         # Gemma je „thinking" model – necháme vyšší strop, ať se přemýšlení
         # i odpověď vejdou (jinak finishReason MAX_TOKENS).
-        "generationConfig": {"temperature": 0.2, "maxOutputTokens": 4096},
+        "generationConfig": {"temperature": 0.2, "maxOutputTokens": max_tokens},
     }
     for attempt in range(GEMINI_MAX_RETRIES):
         wait = GEMINI_MIN_INTERVAL - (time.monotonic() - _gemini_last_call)
@@ -288,3 +317,16 @@ def gemini_summarize_text(text, prompt):
         text = text[:20000]
     parts = [{"text": prompt + "\n\n--- TEXT ---\n" + text}]
     return parse_ai_response(_gemini_generate(parts))
+
+
+def gemini_generate_raw(prompt, text, max_tokens=8192):
+    """Pošle prompt + text Gemmě a vrátí surovou odpověď bez parsování.
+
+    Pro delší výstupy, které nemají tvar HESLO/SHRNUTÍ (dvoutýdenní přehled).
+    Vrací '' při neúspěchu nebo vypnutém AI.
+    """
+    text = (text or "").strip()
+    if not text:
+        return ""
+    parts = [{"text": prompt + "\n\n--- POLOŽKY ---\n" + text}]
+    return _gemini_generate(parts, max_tokens=max_tokens).strip()
