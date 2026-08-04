@@ -26,6 +26,10 @@
     --link: hsl(221 83% 53%);
     --radius: 0.625rem;
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    /* Rozvržení: šířka obsahu a boční navigace (viz @media min-width: 1200px) */
+    --content-w: min(1400px, 100vw - 440px);
+    --nav-w: 176px;
+    --nav-gap: 32px;
     /* Odstíny štítků (soft badge) */
     --badge-green-bg: hsl(142 76% 36% / 0.12);   --badge-green-fg: hsl(142 72% 29%);
     --badge-blue-bg: hsl(217 91% 60% / 0.12);    --badge-blue-fg: hsl(224 76% 48%);
@@ -140,9 +144,14 @@
   .src-journals { background: var(--badge-amber-bg); color: var(--badge-amber-fg); }
 
   .loading, .feed-empty { color: var(--muted-foreground); font-size: 0.875rem; margin: 6px 0; }
+  /* Dokud nejsou feedy načtené, obsah vůbec neukazujeme – místo poskakujících
+     placeholderů se objeví rovnou hotová stránka. Třída se sundá v initApp()
+     (a nejpozději po pojistném timeoutu, ať se nezasekneme na prázdnu). */
+  body.is-loading main { visibility: hidden; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
   /* Boční navigace vlevo (jen na širokých obrazovkách; shadcn sidebar) */
-  #sidenav { display: none; position: fixed; top: 96px; left: 20px; width: 176px; flex-direction: column; gap: 2px; font-size: 0.85rem; }
+  #sidenav { display: none; position: fixed; top: 96px; left: 20px; width: var(--nav-w); flex-direction: column; gap: 2px; font-size: 0.85rem; }
   #sidenav a { color: var(--muted-foreground); text-decoration: none; padding: 6px 10px; border-radius: 6px; line-height: 1.35; }
   #sidenav a:hover { color: var(--foreground); background: var(--accent); }
   #sidenav a.active { color: var(--foreground); background: var(--muted); font-weight: 500; }
@@ -150,8 +159,15 @@
   @media (min-width: 1200px) {
     /* Po obou stranách se symetricky vyhradí místo pro navigaci,
        takže hlavní obsah zůstává vycentrovaný a nikam se neposouvá. */
-    .container { max-width: min(1400px, 100vw - 440px); }
-    #sidenav { display: flex; }
+    .container { max-width: var(--content-w); }
+    /* Navigaci přisadíme k levé hraně karet, ať se na širokých monitorech
+       neodlepí k okraji okna. `+ 24px` je vnitřní odsazení .container,
+       takže mezera k obsahu vyjde stejná v každé šířce okna.
+       Pod 20px nikdy nejde (užší okna). */
+    #sidenav {
+      display: flex;
+      left: max(20px, calc((100vw - var(--content-w)) / 2 + 24px - var(--nav-w) - var(--nav-gap)));
+    }
   }
   @media (max-width: 640px) {
     .container { padding-inline: 14px; }
@@ -161,7 +177,7 @@
   }
 </style>
 </head>
-<body>
+<body class="is-loading">
 
 <svg style="display:none" aria-hidden="true">
   <symbol id="icon-rss" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -369,32 +385,31 @@ const FEEDS = [
   { key: "journals", label: "Časopis",   url: "journals_feed.xml", cols: colsJournals, containerId: "feed-journals" }
 ];
 
-function loadToday(feedPromises) {
-  Promise.all(feedPromises.map(p => p.then(items => ({ items }), () => ({ failed: true }))))
-    .then(results => {
-      const container = document.getElementById("feed-today");
-      // Když selžou všechny feedy, není to „nic nového", ale chyba načítání.
-      if (results.every(r => r.failed)) {
-        failed("feed-today");
-        return;
-      }
-      const today = [];
-      results.forEach((r, idx) => {
-        (r.items || []).forEach(item => {
-          if (item.querySelector("is-new")) {
-            item._src = FEEDS[idx].key;
-            item._srcLabel = FEEDS[idx].label;
-            today.push(item);
-          }
-        });
-      });
-      today.sort((a, b) => new Date(text(b, "pubDate")) - new Date(text(a, "pubDate")));
-      if (today.length === 0) {
-        container.innerHTML = '<p class="feed-empty">Dnes zatím nic nového.</p>';
-      } else {
-        renderTable(today, container, colsToday);
+// `results` jsou výsledky Promise.allSettled nad položkami jednotlivých feedů.
+function renderToday(results) {
+  const container = document.getElementById("feed-today");
+  // Když selžou všechny feedy, není to „nic nového", ale chyba načítání.
+  if (results.every(r => r.status === "rejected")) {
+    failed("feed-today");
+    return;
+  }
+  const today = [];
+  results.forEach((r, idx) => {
+    if (r.status !== "fulfilled") return;
+    r.value.forEach(item => {
+      if (item.querySelector("is-new")) {
+        item._src = FEEDS[idx].key;
+        item._srcLabel = FEEDS[idx].label;
+        today.push(item);
       }
     });
+  });
+  today.sort((a, b) => new Date(text(b, "pubDate")) - new Date(text(a, "pubDate")));
+  if (today.length === 0) {
+    container.innerHTML = '<p class="feed-empty">Dnes zatím nic nového.</p>';
+  } else {
+    renderTable(today, container, colsToday);
+  }
 }
 
 /* ========== Boční navigace (scroll-spy) ========== */
@@ -445,26 +460,46 @@ function showUpdated(docPromises) {
 }
 
 function initApp() {
+  // Prohlížeč se po refreshi snaží obnovit pozici scrollu, jenže obsah tu
+  // dorazí až po fetchi – stránka by se pod ním nafoukla a poskočila.
+  // Necháme si scroll pod kontrolou a začínáme nahoře.
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+
   // Každý feed stáhneme jen jednou a sdílíme mezi sekcemi (recentní / dnešní).
   const feedDocs = FEEDS.map(f => fetchFeed(f.url));
   const feedPromises = feedDocs.map(
     p => p.then(doc => Array.from(doc.querySelectorAll("item")))
   );
-  FEEDS.forEach((f, idx) => {
-    feedPromises[idx]
-      // Co je v Dnešním shrnutí (is-new), v Recentním neopakujeme.
-      .then(items => renderTable(
-        items.filter(it => !it.querySelector("is-new")),
-        document.getElementById(f.containerId), f.cols
-      ))
-      .catch(() => failed(f.containerId));
-  });
-  loadToday(feedPromises);
-  showUpdated(feedDocs);
   const updateNav = initSidenav();
-  // Tabulky se dorenderují asynchronně a změní výšku stránky – zvýraznění
-  // v navigaci je pak potřeba přepočítat.
-  Promise.allSettled(feedPromises).then(() => setTimeout(updateNav, 0));
+
+  const reveal = () => document.body.classList.remove("is-loading");
+  // Pojistka: kdyby se některý fetch zasekl (fetch sám o sobě timeout nemá),
+  // po 8 s stránku ukážeme i s hláškami o načítání, ať uživatel nekouká na prázdno.
+  const revealFallback = setTimeout(reveal, 8000);
+
+  // Vykreslíme až všechny feedy dorazí (stahují se paralelně, jsou ze
+  // stejného původu). Jedno překreslení místo tří – stránka při načítání
+  // neposkakuje. Selhání jednoho feedu ostatní nezdrží.
+  Promise.allSettled(feedPromises).then(results => {
+    FEEDS.forEach((f, idx) => {
+      if (results[idx].status === "rejected") {
+        failed(f.containerId);
+        return;
+      }
+      // Co je v Dnešním shrnutí (is-new), v Recentním neopakujeme.
+      renderTable(
+        results[idx].value.filter(it => !it.querySelector("is-new")),
+        document.getElementById(f.containerId), f.cols
+      );
+    });
+    renderToday(results);
+    clearTimeout(revealFallback);
+    reveal();
+    // Tabulky změnily výšku stránky – zvýraznění v navigaci přepočítáme.
+    updateNav();
+  });
+
+  showUpdated(feedDocs);
 }
 
 initApp();
