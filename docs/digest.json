@@ -1,149 +1,132 @@
 {
-  "generated": "2026-08-04T12:29:14.213009+00:00",
+  "generated": "2026-08-04T13:13:36.715621+00:00",
   "from": "2026-07-21",
   "to": "2026-08-04",
   "total": 63,
-  "covered": 18,
-  "intro": "Období bylo zcela ovládománo analýzami implementace EU AI Actu a otázkami autorství u AI. Významné jsou také nové pohledy na odpovědnost platforem a přísnější přístup k náhradám škody v rámci GDPR.",
+  "covered": 13,
+  "intro": "Období bylo zcela ovládománo diskusí o implementaci EU AI Actu, zejména v oblasti standardizace a střetu povinností transparentnosti s ochranou obchodního tajemství. Významná pozornost byla věnována rovněž hranicím autorskoprávní ochrany u AI výstupů a digitálních platforem.",
   "blocks": [
     {
-      "title": "Regulace AI a standardizace",
-      "text": "Diskuse se soustředí na rizika delegování etiky a ochrany základních práv na soukromé standardizační orgány v rámci AI Actu. Pro praxi je klíčové vyřešení napětí mezi povinnostmi transparentnosti a ochranou obchodního tajemství.",
+      "title": "Regulace a standardizace AI",
+      "text": "Diskuse se soustředila na implementaci EU AI Actu a rizika delegování etických a právních úsudků na soukromé standardizační orgány. Klíčovým problémem zůstává napětí mezi povinnostmi transparentnosti a ochranou obchodního tajemství, které vyžaduje precizní procesní řešení.",
       "sources": [
         {
           "src": "journals",
           "label": "Časopis",
+          "tag": "GRUR Int",
           "title": "Disclosing Without Divulging: Trade Secrets in the EU AI Act’s Transparency Duties – Muhammed Furkan Akıncı",
           "link": "https://doi.org/10.1093/grurint/ikag062"
         },
         {
           "src": "journals",
           "label": "Časopis",
+          "tag": "JIPITEC",
           "title": "Decision Problems for Regulatees under the EU AI Act: Contested Values, Uncertain Evidence, and the Limits of Standardisation – Alessio Tartaro, Arvin Obnasca, Enrico Panai",
           "link": "https://www.jipitec.eu/jipitec/article/view/453"
         },
         {
           "src": "journals",
           "label": "Časopis",
-          "title": "The Politics of Standardising Ethics. The IEEE Initiative and the Governance of AI – Simone Casiraghi ; Niels van Dijk",
-          "link": "https://www.jipitec.eu/jipitec/article/view/455"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
+          "tag": "JIPITEC",
           "title": "The Role of the European Commission in the Control of Harmonised Standards Under the AI Act and the Challenges of “Opacity” – Mariolina Eliantonio",
           "link": "https://www.jipitec.eu/jipitec/article/view/456"
         },
         {
           "src": "journals",
           "label": "Časopis",
+          "tag": "JIPITEC",
           "title": "Trustworthy AI Through Standards? The Role and the Implications of Harmonised Standards for Fundamental Rights Protection in the AI Act – Elvira M.R. Oliva",
           "link": "https://www.jipitec.eu/jipitec/article/view/457"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "title": "Harmonising Consensus: The (Geo)political Economy of Standardisation in the AI Act – Marta Cantero Gamito",
-          "link": "https://www.jipitec.eu/jipitec/article/view/458"
         }
       ]
     },
     {
-      "title": "AI, autorství a odpovědnost",
-      "text": "Navrhuje se zavedení prahu „algoritmického autorství“ pro identifikaci lidského přínosu v AI dílech. Judikatura potvrzuje, že napodobení pouze nechránitelného motivu pomocí AI nepředstavuje porušení autorských práv.",
+      "title": "Autorské právo a AI",
+      "text": "Navržován je analytický rámec pro identifikaci lidského tvůrčího přínosu u AI děl a potvrzuje se, že napodobení pouze nechránitelného motivu pomocí AI neporušuje autorská práva. Analýzy zároveň varují před dominancí podmínek platforem nad právy uživatelů v rámci směrnice DSM.",
       "sources": [
         {
           "src": "journals",
           "label": "Časopis",
-          "title": "The Machine’s Mind Matters: Using Logic to Disclose Artificial Intelligence Inventions – Fidelice Opany",
-          "link": "https://doi.org/10.1093/grurint/ikag071"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "title": "The Algorithmic Authorship Threshold: identifying human contribution in AI-assisted creativity – Ulaş Göker Bektaş",
-          "link": "https://doi.org/10.1093/jiplp/jpag078"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "title": "The Provider’s Liability for False AI-Generated Summaries",
-          "link": "https://doi.org/10.1093/grurint/ikag072"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "title": "Copyright liability for AI-outputs: the impact of <i>Mio/konektra</i> on staged photography – Dr Ines Duhanic",
-          "link": "https://doi.org/10.1093/jiplp/jpag076"
-        }
-      ]
-    },
-    {
-      "title": "Autorské právo a platformy",
-      "text": "Analýzy varují před dominancí soukromých podmínek platforem nad právy uživatelů a nadměrným blokováním obsahu. V módním průmyslu se doporučuje striktní výklad rozpoznatelnosti pro zachování kreativní svobody návrhářů.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "title": "Communicative Fashion under Copyright Threat? Fashion and Copyright’s Scope of Protection in the EU – Heidi Härkönen, Daniel Jongsma",
-          "link": "https://doi.org/10.1007/s40319-026-01750-5"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "title": "The aesthetic turn in intellectual property law: some copyright lessons from Pelham II – Professor Johanna Gibson",
-          "link": "https://doi.org/10.4337/qmjip.2026.02.00"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
+          "tag": "IIC",
           "title": "Copyright in the Age of Sharing: Platforms, Users, and the Law’s Structural Paradox – Luca Ettore Perriello",
           "link": "https://doi.org/10.1007/s40319-026-01746-1"
         },
         {
           "src": "journals",
           "label": "Časopis",
-          "title": "Similar Overall Impression Is Insufficient to Establish Adaptation",
-          "link": "https://doi.org/10.1093/grurint/ikag068"
+          "tag": "JIPLP",
+          "title": "The Algorithmic Authorship Threshold: identifying human contribution in AI-assisted creativity – Ulaş Göker Bektaş",
+          "link": "https://doi.org/10.1093/jiplp/jpag078"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JIPLP",
+          "title": "Copyright liability for AI-outputs: the impact of <i>Mio/konektra</i> on staged photography – Dr Ines Duhanic",
+          "link": "https://doi.org/10.1093/jiplp/jpag076"
+        }
+      ]
+    },
+    {
+      "title": "Průmyslové vlastnictví a soutěž",
+      "text": "Potvrzeno bylo, že úprava produktů s ochrannou známkou pro osobní potřebu nepředstavuje její porušení a že pro žaloby na neplatnost známky neexistují prekluzivní lhůty. Dále byla analyzována problematika neoprávněného ambush marketingu u sportovních akcí.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "No Trade Mark Infringement for Personal Use Refashioning",
+          "link": "https://doi.org/10.1093/grurint/ikag070"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "No Limitation Period for Actions Seeking a Declaration of Invalidity of a Trade Mark in Force",
+          "link": "https://doi.org/10.1093/grurint/ikag063"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "Unlawful Ambush Marketing Through Indirect Linkage with a Sporting Event",
+          "link": "https://doi.org/10.1093/grurint/ikag038"
         }
       ]
     },
     {
       "title": "Ochrana dat a GDPR",
-      "text": "Pro přiznání náhrady škody v rámci GDPR nestačí hypotetické riziko zneužití dat, ale je nutné prokázat skutečnou škodu. U automatizovaného rozhodování je vyžadován reálný lidský dohled, nikoliv pouze formální kontrola.",
+      "text": "Pro přiznání náhrady škody v rámci GDPR nestačí samotné hypotetické riziko zneužití dat, ale je nutné prokázat skutečnou škodu. U automatizovaného rozhodování byla zdůrazněna nutnost reálného lidského dohledu, nikoliv pouze formální kontroly.",
       "sources": [
         {
           "src": "journals",
           "label": "Časopis",
+          "tag": "GRUR Int",
           "title": "No Compensation Based Solely on a Hypothetical Risk of Misuse of Personal Data",
           "link": "https://doi.org/10.1093/grurint/ikag067"
         },
         {
           "src": "journals",
           "label": "Časopis",
+          "tag": "MUJLT",
           "title": "Another View on Article 22 GDPR: The Future of Automated Decision-Making – Nimrod Mike",
           "link": "https://journals.muni.cz/mujlt/article/view/41367"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "title": "Embedding a Harmonised EU Identity System into a Mature National E-State: An Estonian Case Study – Yuliia Kravchenko, Thomas Hoffmann, Eric Blake  Jackson",
-          "link": "https://journals.muni.cz/mujlt/article/view/42766"
         }
       ]
     },
     {
-      "title": "Smlouva o dílo",
-      "text": "Nejvyšší soud rozhodl, že povinnost sepsat předávací protokol není automaticky hmotněprávní podmínkou pro vznik práva na zaplacení ceny. Takové ujednání musí být vyloženo podle skutečné vůle stran a ekonomického účelu smlouvy.",
+      "title": "Smlouvy o dílo (NS)",
+      "text": "Nejvyšší soud rozhodl, že povinnost sepsat písemný předávací protokol není automaticky hmotněprávní podmínkou pro vznik práva na zaplacení ceny díla. Takové ujednání musí být vyloženo podle skutečné vůle stran a ekonomického účelu smlouvy.",
       "sources": [
         {
           "src": "nsoud",
           "label": "NS 23 Cdo",
+          "tag": "",
           "title": "23 Cdo 2349/2025",
           "link": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/15749B07C7BA0BF1C1258E3D001BA1CA/$file/23%20Cdo%202349_2025.pdf?openElement"
         }
       ]
     }
   ],
-  "input_hash": "c44d3a2aa651519022b9cb676b4de15bb440fc166fbf3e52212e3a58aaf03c7e"
+  "input_hash": "e07d45a57328895269534c23187676672ba6adac5008607566a432a3a518184c"
 }
