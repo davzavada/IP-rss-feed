@@ -241,11 +241,15 @@ def parse_ai_response(raw):
     return clean(summary), heslo
 
 
-def _gemini_generate(parts, max_tokens=4096):
+def _gemini_generate(parts, max_tokens=4096, timeout=60):
     """Pošle `parts` (text/inline_data) Gemmě a vrátí surový text odpovědi.
 
     Hlídá rozestup mezi voláními a opakuje při 429/5xx s exponenciálním
     backoffem. Vrací '' při neúspěchu, useknuté odpovědi nebo vypnutém AI.
+
+    `timeout` je na jedno volání; u dlouhých vstupů (dvoutýdenní přehled)
+    je potřeba víc než výchozí minuta – opakování s tímtéž stropem by
+    jen třikrát spadlo na stejný timeout.
     """
     global _gemini_last_call
     if not gemini_enabled():
@@ -265,7 +269,7 @@ def _gemini_generate(parts, max_tokens=4096):
                 GEMINI_URL,
                 headers={"x-goog-api-key": GEMINI_API_KEY, "Content-Type": "application/json"},
                 json=payload,
-                timeout=60,
+                timeout=timeout,
             )
             _gemini_last_call = time.monotonic()
             if r.status_code in (429, 500, 502, 503):
@@ -319,14 +323,16 @@ def gemini_summarize_text(text, prompt):
     return parse_ai_response(_gemini_generate(parts))
 
 
-def gemini_generate_raw(prompt, text, max_tokens=8192):
+def gemini_generate_raw(prompt, text, max_tokens=8192, timeout=240):
     """Pošle prompt + text Gemmě a vrátí surovou odpověď bez parsování.
 
     Pro delší výstupy, které nemají tvar HESLO/SHRNUTÍ (dvoutýdenní přehled).
-    Vrací '' při neúspěchu nebo vypnutém AI.
+    Takové volání má o řád delší vstup než shrnutí jedné položky a Gemma nad
+    ním přemýšlí déle – proto štědrý timeout. Vrací '' při neúspěchu nebo
+    vypnutém AI.
     """
     text = (text or "").strip()
     if not text:
         return ""
     parts = [{"text": prompt + "\n\n--- POLOŽKY ---\n" + text}]
-    return _gemini_generate(parts, max_tokens=max_tokens).strip()
+    return _gemini_generate(parts, max_tokens=max_tokens, timeout=timeout).strip()
