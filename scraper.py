@@ -9,7 +9,6 @@ Spojuje dva zdroje:
 Položky se deduplikují podle spisové značky.
 """
 
-import json
 import os
 import re
 from datetime import datetime, timedelta, timezone
@@ -23,6 +22,11 @@ from feed_common import (
     JUDIKATURA_PROMPT,
     gemini_enabled,
     gemini_summarize_pdf,
+    load_json,
+    load_seen,
+    prune_meta,
+    save_json,
+    save_seen,
 )
 
 # --- Zdroj 1: úřední deska ---
@@ -70,27 +74,6 @@ def abs_url(href):
     if href.startswith("/"):
         href = JUDIKATURA_HOST + href
     return href.replace(" ", "%20")
-
-
-# --- Stav: kdy jsme položku poprvé viděli (pro datum u judikatury) ---
-
-def load_seen():
-    """Načte {identifikátor: iso_datum_prvniho_vyskytu}."""
-    if not os.path.exists(STATE_FILE):
-        return {}
-    with open(STATE_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-
-def save_seen(seen):
-    """Uloží stav, vyhodí záznamy starší 120 dní."""
-    cutoff = datetime.now(timezone.utc) - timedelta(days=120)
-    pruned = {
-        ident: ts for ident, ts in seen.items()
-        if datetime.fromisoformat(ts) >= cutoff
-    }
-    with open(STATE_FILE, "w", encoding="utf-8") as f:
-        json.dump(pruned, f, ensure_ascii=False, indent=2)
 
 
 # --- Zdroj 1: úřední deska ---
@@ -180,14 +163,11 @@ def fetch_judikatura(days=JUDIKATURA_DAYS):
         detail_url = abs_url(link.get("href", ""))
 
         pdf_url = ""
-        rtf_url = ""
         for a in row.select("td.icons a[href]"):
             href = a["href"]
             low = href.lower()
             if ".pdf?openelement" in low or low.endswith(".pdf"):
                 pdf_url = abs_url(href)
-            elif ".rtf?openelement" in low or low.endswith(".rtf"):
-                rtf_url = abs_url(href)
 
         cat_el = row.select_one("td.category")
         category = cat_el.get_text(strip=True) if cat_el else ""
@@ -200,7 +180,6 @@ def fetch_judikatura(days=JUDIKATURA_DAYS):
             "date": "",  # výpis datum neobsahuje – řeší se prvním výskytem
             "pdf_url": pdf_url or detail_url,
             "detail_url": detail_url,
-            "rtf_url": rtf_url,
             "category": category,
             "unid": unid,
             "source": "judikatura",
@@ -210,20 +189,6 @@ def fetch_judikatura(days=JUDIKATURA_DAYS):
 
 
 # --- Detail rozhodnutí: datum zveřejnění a Heslo ---
-
-def load_meta():
-    """Načte cache metadat detailu {unid: {...}}."""
-    if not os.path.exists(META_FILE):
-        return {}
-    with open(META_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-
-def save_meta(meta):
-    """Uloží cache metadat."""
-    with open(META_FILE, "w", encoding="utf-8") as f:
-        json.dump(meta, f, ensure_ascii=False, indent=2)
-
 
 def _label(text):
     """Normalizuje popisek z levého sloupce (bez koncové dvojtečky)."""
@@ -266,7 +231,7 @@ def enrich_metadata(decisions):
     Metadata se cachují podle UNID, takže detail se stahuje jen u nových.
     Levné – běží před filtrem na 2 týdny (kvůli datu zveřejnění do pub_dt).
     """
-    meta = load_meta()
+    meta = load_json(META_FILE)
     session = requests.Session()
     fetched = 0
 
@@ -295,7 +260,7 @@ def enrich_metadata(decisions):
         d["summary"] = m.get("summary", "")
         d["tag"] = m.get("tag", "")
 
-    save_meta(meta)
+    save_json(META_FILE, meta)
     if fetched:
         print(f"    Staženo {fetched} nových detailů (datum zveřejnění + Heslo)")
     return decisions
@@ -312,7 +277,7 @@ def enrich_summaries(decisions):
     if not gemini_enabled():
         return decisions
 
-    meta = load_meta()
+    meta = load_json(META_FILE)
     session = requests.Session()
     summarized = 0
     gemini_calls = 0
@@ -340,7 +305,7 @@ def enrich_summaries(decisions):
         d["summary"] = m.get("summary", "")
         d["tag"] = m.get("tag", "")
 
-    save_meta(meta)
+    save_json(META_FILE, meta)
     if gemini_calls:
         print(f"    AI: {summarized}/{gemini_calls} shrnutí vygenerováno")
     return decisions
@@ -385,7 +350,7 @@ def resolve_dates(decisions, weeks=2):
     seznamu držela i starší rozhodnutí. První výskyt slouží jen k označení
     „nové dnes".
     """
-    seen = load_seen()
+    seen = load_seen(STATE_FILE)
     now = datetime.now(timezone.utc)
     cutoff = now - timedelta(weeks=weeks)
     today = now.date()
@@ -404,12 +369,11 @@ def resolve_dates(decisions, weeks=2):
                 pub_dt = datetime.fromisoformat(d["published"]).replace(tzinfo=timezone.utc)
             except ValueError:
                 pub_dt = None
-        # 2) úřední deska: datum vyhlášení (DD.MM.YYYY)
+        # 2) úřední deska: datum vyhlášení („17.06.2026" i „17. 6. 2026")
         if pub_dt is None and d.get("date"):
-            try:
-                pub_dt = datetime.strptime(d["date"], "%d.%m.%Y").replace(tzinfo=timezone.utc)
-            except ValueError:
-                pub_dt = None
+            iso = _cz_date_to_iso(d["date"])
+            if iso:
+                pub_dt = datetime.fromisoformat(iso).replace(tzinfo=timezone.utc)
         # 3) fallback: první výskyt u nás
         if pub_dt is None:
             pub_dt = first_seen
@@ -420,7 +384,7 @@ def resolve_dates(decisions, weeks=2):
         if pub_dt >= cutoff:
             kept.append(d)
 
-    save_seen(seen)
+    save_seen(STATE_FILE, seen, prune_days=120)
     return kept
 
 
@@ -526,6 +490,10 @@ def main():
     decisions = resolve_dates(decisions)            # okno 2 týdny + příznak nové
     decisions = enrich_summaries(decisions)         # Gemini jen na ponechané
     decisions.sort(key=lambda d: d["pub_dt"], reverse=True)
+
+    # Cache metadat prořízneme podle stavu prvního výskytu (120 dní),
+    # jinak by soubor rostl donekonečna.
+    save_json(META_FILE, prune_meta(load_json(META_FILE), STATE_FILE))
 
     print(f"Celkem {len(decisions)} rozhodnutí senátu {SENAT} po sloučení")
     for d in decisions:

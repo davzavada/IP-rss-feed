@@ -92,6 +92,19 @@ def save_json(path, data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
+def prune_meta(meta, state_file):
+    """Ponechá v meta cache jen záznamy, jejichž klíč je i ve stavu prvního
+    výskytu. Stav se prořezává po ~90–120 dnech, takže cache roste s ním
+    a ne donekonečna.
+
+    Když je stav prázdný (čerstvý reset sledování), cache raději nechá být.
+    """
+    seen = load_seen(state_file)
+    if not seen:
+        return meta
+    return {k: v for k, v in meta.items() if k in seen}
+
+
 # --- AI shrnutí přes Gemma (Gemini API) ---
 # Gemma 4 31B má štědrý free-tier; throttlujeme na 12 požadavků/min (5 s mezi
 # voláními) a opakujeme při 429/500/502/503. Throttle je per-proces – každý

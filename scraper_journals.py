@@ -17,6 +17,7 @@ from feed_common import (
     gemini_summarize_pdf,
     gemini_summarize_text,
     load_json,
+    prune_meta,
     save_json,
 )
 
@@ -179,7 +180,6 @@ def fetch_ojs_rss(feed_url, label, journal_name):
             "description": f"{title}\nAutor: {creator}\n{clean_desc}" if creator else f"{title}\n{clean_desc}",
             "guid": f"{label}-{guid}",
             "pub_date": pub_date or datetime.now(timezone.utc),
-            "sort_key": (pub_date.strftime("%Y") if pub_date else "0000", "00"),
             "ai_source": "article",  # shrnutí se dělá z názvu a anotace
             "ai_text": f"{title}\n\n{full_desc}".strip(),
         })
@@ -275,7 +275,6 @@ def fetch_crossref_journal(issn, label, journal_name):
             "description": "\n".join(desc_parts),
             "guid": f"{label}-{doi}",
             "pub_date": pub_date,
-            "sort_key": (pub_date.strftime("%Y"), "00"),
             "ai_source": "article",  # shrnutí se dělá z názvu a abstraktu
             "ai_text": f"{title}\n\n{abstract}".strip(),
         })
@@ -428,6 +427,9 @@ def main():
     all_items.sort(key=lambda x: x["pub_date"], reverse=True)
 
     all_items = enrich_summaries(all_items)  # AI shrnutí jen na ponechané
+
+    # Cache shrnutí prořízneme podle stavu prvního výskytu, ať neroste donekonečna
+    save_json(META_FILE, prune_meta(load_json(META_FILE), STATE_FILE))
 
     rss = build_rss(all_items)
 

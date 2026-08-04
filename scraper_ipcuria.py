@@ -15,6 +15,7 @@ from feed_common import (
     gemini_enabled,
     gemini_summarize_text,
     load_json,
+    prune_meta,
     save_json,
 )
 
@@ -282,6 +283,9 @@ def main():
     print(f"Po okně 2 týdnů: {len(decisions)} položek")
 
     decisions = enrich_summaries(decisions)  # AI shrnutí jen na ponechané
+
+    # Cache shrnutí prořízneme podle stavu prvního výskytu, ať neroste donekonečna
+    save_json(META_FILE, prune_meta(load_json(META_FILE), STATE_FILE))
 
     for d in decisions:
         print(f"  [{d['category']}] {d['case_ref']} {d['case_name']} ({d['date_str']})")
