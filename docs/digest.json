@@ -1,15 +1,22 @@
 {
-  "generated": "2026-08-04T13:13:36.715621+00:00",
-  "from": "2026-07-21",
-  "to": "2026-08-04",
-  "total": 63,
-  "covered": 13,
-  "intro": "Období bylo zcela ovládománo diskusí o implementaci EU AI Actu, zejména v oblasti standardizace a střetu povinností transparentnosti s ochranou obchodního tajemství. Významná pozornost byla věnována rovněž hranicím autorskoprávní ochrany u AI výstupů a digitálních platforem.",
+  "generated": "2026-08-05T07:24:40.960488+00:00",
+  "from": "2026-07-22",
+  "to": "2026-08-05",
+  "total": 69,
+  "covered": 15,
+  "intro": "Období bylo zcela ovládománo analýzami EU AI Actu, zejména v oblasti standardizace a střetu s ochranou obchodního tajemství. Významný prostor dostala rovněž problematika autorství u AI a judikatura k GDPR a ochranným známkám.",
   "blocks": [
     {
-      "title": "Regulace a standardizace AI",
-      "text": "Diskuse se soustředila na implementaci EU AI Actu a rizika delegování etických a právních úsudků na soukromé standardizační orgány. Klíčovým problémem zůstává napětí mezi povinnostmi transparentnosti a ochranou obchodního tajemství, které vyžaduje precizní procesní řešení.",
+      "title": "Implementace EU AI Actu",
+      "text": "Diskuse se soustředí na rizika delegování tvorby harmonizovaných norem na soukromé organizace, což může ohrozit efektivní ochranu základních práv. Praxe bude muset řešit napětí mezi povinnostmi transparentnosti a ochranou obchodního tajemství.",
       "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "TLQ",
+          "title": "THE EU AI ACT AND CRIMINAL JUSTICE: REGULATORY CHALLENGES FOR BIOMETRIC AND IMAGE RECOGNITION TECHNOLOGIES – Alžběta Solarczyk Krausová (Author)",
+          "link": "https://tlq.ilaw.cas.cz/article/view/8"
+        },
         {
           "src": "journals",
           "label": "Časopis",
@@ -37,20 +44,20 @@
           "tag": "JIPITEC",
           "title": "Trustworthy AI Through Standards? The Role and the Implications of Harmonised Standards for Fundamental Rights Protection in the AI Act – Elvira M.R. Oliva",
           "link": "https://www.jipitec.eu/jipitec/article/view/457"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JIPITEC",
+          "title": "Harmonising Consensus: The (Geo)political Economy of Standardisation in the AI Act – Marta Cantero Gamito",
+          "link": "https://www.jipitec.eu/jipitec/article/view/458"
         }
       ]
     },
     {
-      "title": "Autorské právo a AI",
-      "text": "Navržován je analytický rámec pro identifikaci lidského tvůrčího přínosu u AI děl a potvrzuje se, že napodobení pouze nechránitelného motivu pomocí AI neporušuje autorská práva. Analýzy zároveň varují před dominancí podmínek platforem nad právy uživatelů v rámci směrnice DSM.",
+      "title": "AI a autorskoprávní ochrana",
+      "text": "Navrhuje se rámec pro určení lidského tvůrčího přínosu u AI děl skrze záměr a strukturální rozhodování. Judikatura potvrzuje, že napodobení motivu fotografie pomocí AI není porušením, pokud není kopírováno konkrétní kreativní technické provedení autora.",
       "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "Copyright in the Age of Sharing: Platforms, Users, and the Law’s Structural Paradox – Luca Ettore Perriello",
-          "link": "https://doi.org/10.1007/s40319-026-01746-1"
-        },
         {
           "src": "journals",
           "label": "Časopis",
@@ -68,35 +75,8 @@
       ]
     },
     {
-      "title": "Průmyslové vlastnictví a soutěž",
-      "text": "Potvrzeno bylo, že úprava produktů s ochrannou známkou pro osobní potřebu nepředstavuje její porušení a že pro žaloby na neplatnost známky neexistují prekluzivní lhůty. Dále byla analyzována problematika neoprávněného ambush marketingu u sportovních akcí.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "No Trade Mark Infringement for Personal Use Refashioning",
-          "link": "https://doi.org/10.1093/grurint/ikag070"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "No Limitation Period for Actions Seeking a Declaration of Invalidity of a Trade Mark in Force",
-          "link": "https://doi.org/10.1093/grurint/ikag063"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "Unlawful Ambush Marketing Through Indirect Linkage with a Sporting Event",
-          "link": "https://doi.org/10.1093/grurint/ikag038"
-        }
-      ]
-    },
-    {
       "title": "Ochrana dat a GDPR",
-      "text": "Pro přiznání náhrady škody v rámci GDPR nestačí samotné hypotetické riziko zneužití dat, ale je nutné prokázat skutečnou škodu. U automatizovaného rozhodování byla zdůrazněna nutnost reálného lidského dohledu, nikoliv pouze formální kontroly.",
+      "text": "Pro uznání náhrady škody u GDPR nestačí hypotetické riziko zneužití, ale je nutno prokázat skutečnou škodu. U automatizovaného rozhodování je vyžadován skutečný lidský dohled s reálným vlivem, nikoliv pouze formální kontrola.",
       "sources": [
         {
           "src": "journals",
@@ -115,18 +95,52 @@
       ]
     },
     {
-      "title": "Smlouvy o dílo (NS)",
-      "text": "Nejvyšší soud rozhodl, že povinnost sepsat písemný předávací protokol není automaticky hmotněprávní podmínkou pro vznik práva na zaplacení ceny díla. Takové ujednání musí být vyloženo podle skutečné vůle stran a ekonomického účelu smlouvy.",
+      "title": "Praxe v IP a soutěži",
+      "text": "Žaloby na neplatnost ochranné známky nejsou vázány žádnou promlkací ani prekluzivní lhůtou. Úpravy produktů s ochrannou známkou pro osobní potřebu ani vznik licence z konkludentní spolupráce nepředstavují porušení práv.",
       "sources": [
         {
-          "src": "nsoud",
-          "label": "NS 23 Cdo",
-          "tag": "",
-          "title": "23 Cdo 2349/2025",
-          "link": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/15749B07C7BA0BF1C1258E3D001BA1CA/$file/23%20Cdo%202349_2025.pdf?openElement"
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "No Trade Mark Infringement for Personal Use Refashioning",
+          "link": "https://doi.org/10.1093/grurint/ikag070"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "No Limitation Period for Actions Seeking a Declaration of Invalidity of a Trade Mark in Force",
+          "link": "https://doi.org/10.1093/grurint/ikag063"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "“Licence Agreement Through Implied Continued Cooperation”",
+          "link": "https://doi.org/10.1007/s40319-026-01738-1"
+        }
+      ]
+    },
+    {
+      "title": "Digitální identita a tokeny",
+      "text": "Implementace evropské digitální peněženky (EUDI Wallet) přináší výzvy v oblasti minimalizace údajů a přeshraniční interoperability. V EU jsou equity tokeny klasifikovány jako finanční nástroje, což vyžaduje specifický regulatorní compliance.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "MUJLT",
+          "title": "Legal and Regulatory Compliance Challenges for Equity Token Secondary Market Operators in the European Union – Jan Wittlin",
+          "link": "https://journals.muni.cz/mujlt/article/view/40800"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "MUJLT",
+          "title": "Embedding a Harmonised EU Identity System into a Mature National E-State: An Estonian Case Study – Yuliia Kravchenko, Thomas Hoffmann, Eric Blake  Jackson",
+          "link": "https://journals.muni.cz/mujlt/article/view/42766"
         }
       ]
     }
   ],
-  "input_hash": "e07d45a57328895269534c23187676672ba6adac5008607566a432a3a518184c"
+  "input_hash": "c2328e278cd423599da226e27222bce6d58e123f1519c996202f9f41f4680c2b"
 }
