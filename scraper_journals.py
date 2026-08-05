@@ -161,6 +161,17 @@ PRAVNIK_ARTICLE_RE = re.compile(r"/archiv/(\d{4})/([\d-]+)\.html\?a=(\d+)")
 PRAVNIK_MAX_ITEMS = 20  # obsah jednoho čísla, ne celý ročník
 
 
+def _pravnik_issue_label(slug):
+    """Slug čísla (v adrese '2026-8') na obvyklý zápis '8/2026'."""
+    match = re.fullmatch(r"(\d{4})-(\d+)", slug)
+    if match:
+        return f"{match.group(2)}/{match.group(1)}"
+    match = re.fullmatch(r"(\d+)-(\d{4})", slug)
+    if match:
+        return f"{match.group(1)}/{match.group(2)}"
+    return slug
+
+
 def _pravnik_articles(soup, page_url):
     """Posbírá články aktuálního čísla Právníka z titulní stránky ÚSP."""
     # Na jeden článek může vést víc odkazů (název, „detail", ikona) – z textů
@@ -176,7 +187,7 @@ def _pravnik_articles(soup, page_url):
         guid = f"Pravnik-{year}-{issue_slug}-{art_id}"
         title = " ".join(a.get_text(" ", strip=True).split())
         if len(title) > len(found.get(guid, ("", ""))[0]):
-            found[guid] = (title, link, issue_slug.replace("-", "/"))
+            found[guid] = (title, link, _pravnik_issue_label(issue_slug))
 
     items = []
     for guid, (title, link, issue) in found.items():
