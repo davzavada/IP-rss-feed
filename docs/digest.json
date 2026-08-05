@@ -1,35 +1,28 @@
 {
-  "generated": "2026-08-05T07:24:40.960488+00:00",
+  "generated": "2026-08-05T07:38:55.821309+00:00",
   "from": "2026-07-22",
   "to": "2026-08-05",
-  "total": 69,
-  "covered": 15,
-  "intro": "Období bylo zcela ovládománo analýzami EU AI Actu, zejména v oblasti standardizace a střetu s ochranou obchodního tajemství. Významný prostor dostala rovněž problematika autorství u AI a judikatura k GDPR a ochranným známkám.",
+  "total": 77,
+  "covered": 19,
+  "intro": "Období bylo zcela ovládomo analýzami implementace EU AI Actu, zejména v oblasti standardizace a střetu s ochranou obchodního tajemství. Významný prostor dostala rovněž problematika autorství u AI generovaných děl a regulace digitálních platforem v rámci DSA a směrnice DSM.",
   "blocks": [
     {
-      "title": "Implementace EU AI Actu",
-      "text": "Diskuse se soustředí na rizika delegování tvorby harmonizovaných norem na soukromé organizace, což může ohrozit efektivní ochranu základních práv. Praxe bude muset řešit napětí mezi povinnostmi transparentnosti a ochranou obchodního tajemství.",
+      "title": "Implementace a standardizace AI Actu",
+      "text": "Diskuse se soustředí na rizika delegování ochrany základních práv na soukromé standardizační orgány, což může vést k deficitu odpovědnosti. Pro praxi je klíčové, že tradiční standardizace je u AI nedostatečná a je třeba zavést procedurální přístupy k auditovatelnosti rozhodnutí.",
       "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "TLQ",
-          "title": "THE EU AI ACT AND CRIMINAL JUSTICE: REGULATORY CHALLENGES FOR BIOMETRIC AND IMAGE RECOGNITION TECHNOLOGIES – Alžběta Solarczyk Krausová (Author)",
-          "link": "https://tlq.ilaw.cas.cz/article/view/8"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "Disclosing Without Divulging: Trade Secrets in the EU AI Act’s Transparency Duties – Muhammed Furkan Akıncı",
-          "link": "https://doi.org/10.1093/grurint/ikag062"
-        },
         {
           "src": "journals",
           "label": "Časopis",
           "tag": "JIPITEC",
           "title": "Decision Problems for Regulatees under the EU AI Act: Contested Values, Uncertain Evidence, and the Limits of Standardisation – Alessio Tartaro, Arvin Obnasca, Enrico Panai",
           "link": "https://www.jipitec.eu/jipitec/article/view/453"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JIPITEC",
+          "title": "The Politics of Standardising Ethics. The IEEE Initiative and the Governance of AI – Simone Casiraghi ; Niels van Dijk",
+          "link": "https://www.jipitec.eu/jipitec/article/view/455"
         },
         {
           "src": "journals",
@@ -56,8 +49,15 @@
     },
     {
       "title": "AI a autorskoprávní ochrana",
-      "text": "Navrhuje se rámec pro určení lidského tvůrčího přínosu u AI děl skrze záměr a strukturální rozhodování. Judikatura potvrzuje, že napodobení motivu fotografie pomocí AI není porušením, pokud není kopírováno konkrétní kreativní technické provedení autora.",
+      "text": "Navrženy byly nové rámce pro určení lidského tvůrčího přínosu u hybridních děl a rozlišení mezi nechránitelným motivem a konkrétním technickým provedením. V oblasti patentů se u AI vynálezů doporučuje přechod k tzv. funkčnímu zveřejňování založenému na logice systému.",
       "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "The Machine’s Mind Matters: Using Logic to Disclose Artificial Intelligence Inventions – Fidelice Opany",
+          "link": "https://doi.org/10.1093/grurint/ikag071"
+        },
         {
           "src": "journals",
           "label": "Časopis",
@@ -75,9 +75,16 @@
       ]
     },
     {
-      "title": "Ochrana dat a GDPR",
-      "text": "Pro uznání náhrady škody u GDPR nestačí hypotetické riziko zneužití, ale je nutno prokázat skutečnou škodu. U automatizovaného rozhodování je vyžadován skutečný lidský dohled s reálným vlivem, nikoliv pouze formální kontrola.",
+      "title": "Ochrana dat a automatizace",
+      "text": "Judikatura a doktrína zpřísňují podmínky pro odškodnění u GDPR, kde hypotetické riziko zneužití dat pro nárok na náhradu škody nestačí. U automatizovaného rozhodování je zdůrazněno, že formální lidská kontrola bez reálného vlivu neumožňuje objít zákaz plně automatizovaných rozhodnutí.",
       "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "TLQ",
+          "title": "PERSONALIZATION BEYOND CONVENIENCE: NAVIGATING PRIVACY AND PERSONAL DATA PROTECTION ISSUES – Kristýna Akil (Author)",
+          "link": "https://tlq.ilaw.cas.cz/article/view/9"
+        },
         {
           "src": "journals",
           "label": "Časopis",
@@ -95,9 +102,43 @@
       ]
     },
     {
-      "title": "Praxe v IP a soutěži",
-      "text": "Žaloby na neplatnost ochranné známky nejsou vázány žádnou promlkací ani prekluzivní lhůtou. Úpravy produktů s ochrannou známkou pro osobní potřebu ani vznik licence z konkludentní spolupráce nepředstavují porušení práv.",
+      "title": "Regulace digitálních platforem",
+      "text": "Analýzy DSA a směrnice DSM poukazují na konflikt mezi kulturou sdílení a exkluzivitou autorských práv, což zvyšuje rizika nadměrného blokování obsahu. Praxe musí řešit omezenou schopnost národních koordinátorů chránit svobodu projevu před politickým vlivem.",
       "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "TLQ",
+          "title": "NAVIGATING THE DIGITAL FRONTIER: PROTECTING CHILDREN FROM HARMFUL CONTENT IN SOCIAL MEDIA THROUGH PROACTIVE LAWS, IS IT A PROGRESS OR AN OVERREACH? – Elmira Uysal Ljapina (Author)",
+          "link": "https://tlq.ilaw.cas.cz/article/view/13"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "Právník",
+          "title": "Nařízení DSA a role koordinátorů digitálních služeb při ochraně svobody projevu",
+          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-8.html?a=4047"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "Copyright in the Age of Sharing: Platforms, Users, and the Law’s Structural Paradox – Luca Ettore Perriello",
+          "link": "https://doi.org/10.1007/s40319-026-01746-1"
+        }
+      ]
+    },
+    {
+      "title": "Ochrana IP a tajemství",
+      "text": "EU AI Act vytváří napětí mezi povinnostmi transparentnosti a ochranou obchodního tajemství, což vyžaduje pečlivé rozlišení adresátů informací. V oblasti známek bylo potvrzeno, že úprava produktů pro osobní potřebu neporušuje práva z ochranné známky.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "Disclosing Without Divulging: Trade Secrets in the EU AI Act’s Transparency Duties – Muhammed Furkan Akıncı",
+          "link": "https://doi.org/10.1093/grurint/ikag062"
+        },
         {
           "src": "journals",
           "label": "Časopis",
@@ -118,29 +159,16 @@
           "tag": "IIC",
           "title": "“Licence Agreement Through Implied Continued Cooperation”",
           "link": "https://doi.org/10.1007/s40319-026-01738-1"
-        }
-      ]
-    },
-    {
-      "title": "Digitální identita a tokeny",
-      "text": "Implementace evropské digitální peněženky (EUDI Wallet) přináší výzvy v oblasti minimalizace údajů a přeshraniční interoperability. V EU jsou equity tokeny klasifikovány jako finanční nástroje, což vyžaduje specifický regulatorní compliance.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "MUJLT",
-          "title": "Legal and Regulatory Compliance Challenges for Equity Token Secondary Market Operators in the European Union – Jan Wittlin",
-          "link": "https://journals.muni.cz/mujlt/article/view/40800"
         },
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "MUJLT",
-          "title": "Embedding a Harmonised EU Identity System into a Mature National E-State: An Estonian Case Study – Yuliia Kravchenko, Thomas Hoffmann, Eric Blake  Jackson",
-          "link": "https://journals.muni.cz/mujlt/article/view/42766"
+          "tag": "GRUR Int",
+          "title": "Unlawful Ambush Marketing Through Indirect Linkage with a Sporting Event",
+          "link": "https://doi.org/10.1093/grurint/ikag038"
         }
       ]
     }
   ],
-  "input_hash": "c2328e278cd423599da226e27222bce6d58e123f1519c996202f9f41f4680c2b"
+  "input_hash": "4e6a364082a14cf51a2bd6e2395eb28844fb2bf0bc36659305d00c5691330c86"
 }
