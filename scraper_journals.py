@@ -108,6 +108,26 @@ def scrape_upv():
     return latest
 
 
+# --- Časopisy bez použitelného feedu – čteme obsah rovnou z webu ---
+# Zdroj většinou nabízí víc adres, kde obsah aktuálního čísla být může.
+# Bereme první, která nějaké články vydá, ať se natvrdo nedrží jedna cesta.
+
+def first_page_with_items(page_urls, extract, label):
+    """Zkouší adresy po řadě a vrátí články z první, která nějaké má."""
+    for url in page_urls:
+        try:
+            resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=30)
+            resp.raise_for_status()
+        except Exception as e:
+            print(f"    [diag] {label}: {url} nedostupné ({e})")
+            continue
+        items = extract(BeautifulSoup(resp.text, "html.parser"), url)
+        if items:
+            return items
+        print(f"    [diag] {label}: {url} bez článků, zkouším další adresu")
+    return []
+
+
 # --- Právník (ÚSP AV ČR) – vlastní web, bez RSS i bez API ---
 # Web ÚSP linkuje každý článek přes stabilní ID:
 #   …/casopis-pravnik/hledat-v-archivu/detail-clanku.html?id=<id>
@@ -122,12 +142,8 @@ PRAVNIK_DETAIL_RE = re.compile(r"detail-clanku\.html\?.*\bid=(\d+)", re.IGNORECA
 PRAVNIK_MAX_ITEMS = 12  # ať první běh nezaplaví feed celým archivem
 
 
-def _pravnik_articles(page_url):
+def _pravnik_articles(soup, page_url):
     """Posbírá odkazy na detaily článků Právníka z jedné stránky webu ÚSP."""
-    resp = requests.get(page_url, headers={"User-Agent": USER_AGENT}, timeout=30)
-    resp.raise_for_status()
-    soup = BeautifulSoup(resp.text, "html.parser")
-
     items = []
     seen_ids = set()
     for a in soup.find_all("a", href=True):
@@ -167,11 +183,86 @@ def _pravnik_articles(page_url):
 
 def scrape_pravnik():
     """Vrátí články Právníka z titulní stránky, jinak z archivu."""
-    items = _pravnik_articles(PRAVNIK_URL)
-    if not items:
-        print("    [diag] Právník: titulní stránka bez článků, zkouším archiv")
-        items = _pravnik_articles(PRAVNIK_ARCHIVE_URL)
-    return items
+    return first_page_with_items(
+        [PRAVNIK_URL, PRAVNIK_ARCHIVE_URL], _pravnik_articles, "Právník"
+    )
+
+
+# --- The Lawyer Quarterly (ÚSP AV ČR) – OJS, ale s nepoužitelným RSS ---
+# Gateway plugin tady vrací 30 článků seřazených podle interního id, ne podle
+# data vydání. Archiv byl někdy přeimportovaný, takže nejvyšší id nesou čísla
+# z roku 2021 (id 725–761), zatímco ročník 2026 má id kolem 690 – feed proto
+# donekonečna nabízí deset let staré články. Čteme tedy rovnou obsah
+# aktuálního čísla; adresu čísla nikde nedržíme natvrdo, ať nezestárne.
+
+TLQ_PAGES = [
+    "https://tlq.ilaw.cas.cz/issue/current",
+    "https://tlq.ilaw.cas.cz/",
+    "https://tlq.ilaw.cas.cz/index.php/tlq/issue/current",
+]
+# Odkaz na článek, ne na PDF – to má za id ještě číslo galeje.
+TLQ_ARTICLE_RE = re.compile(r"/article/view/(\d+)/?$")
+TLQ_ISSUE_RE = re.compile(r"Vol\.\s*\d+\s*No\.\s*\d+\s*\(\d{4}\)")
+TLQ_GALLEY_LABELS = {"PDF", "HTML", "XML", "EPUB", "FULL TEXT"}
+TLQ_MAX_ITEMS = 25
+
+
+def _tlq_articles(soup, page_url):
+    """Posbírá články z obsahu aktuálního čísla TLQ."""
+    issue_match = TLQ_ISSUE_RE.search(soup.get_text(" ", strip=True))
+    issue = issue_match.group(0) if issue_match else ""
+
+    items = []
+    seen_ids = set()
+    for a in soup.find_all("a", href=True):
+        link = urljoin(page_url, a["href"]).split("?")[0].split("#")[0]
+        match = TLQ_ARTICLE_RE.search(link)
+        if not match:
+            continue
+        art_id = match.group(1)
+        if art_id in seen_ids:
+            continue
+
+        title = " ".join(a.get_text(" ", strip=True).split())
+        if not title or title.upper() in TLQ_GALLEY_LABELS:
+            continue
+        seen_ids.add(art_id)
+
+        # Autoři jsou v OJS vedle názvu ve výpisu čísla; když je šablona
+        # nemá, prostě je neuvedeme.
+        authors = ""
+        summary = a.find_parent(class_="obj_article_summary")
+        if summary is not None:
+            authors_el = summary.find(class_="authors")
+            if authors_el is not None:
+                authors = " ".join(authors_el.get_text(" ", strip=True).split())
+
+        full_title = f"[TLQ] {title}"
+        desc = [title]
+        if authors:
+            full_title += f" – {authors}"
+            desc.append(f"Autor: {authors}")
+        desc.append(f"The Lawyer Quarterly {issue}".strip())
+
+        items.append({
+            "title": full_title,
+            "journal_name": "The Lawyer Quarterly",
+            "link": link,
+            "description": "\n".join(desc),
+            # Stejný tvar guid jako dřív z OJS RSS, ať se články, které už
+            # jednou prošly, neoznačí podruhé jako nové.
+            "guid": f"TLQ-{link}",
+            "pub_date": datetime.now(timezone.utc),
+            # Anotaci má až stránka článku – stáhne se lazy (enrich_summaries).
+            "ai_source": "page",
+        })
+
+    return items[:TLQ_MAX_ITEMS]
+
+
+def scrape_tlq():
+    """Vrátí články z aktuálního čísla The Lawyer Quarterly."""
+    return first_page_with_items(TLQ_PAGES, _tlq_articles, "TLQ")
 
 
 # --- Časopisy na OJS (Open Journal Systems) – čteme jejich RSS gateway ---
@@ -187,9 +278,12 @@ OJS_SOURCES = [
     ("https://www.jipitec.eu/jipitec/gateway/plugin/WebFeedGatewayPlugin/rss2",
      "JIPITEC", "JIPITEC – Journal of Intellectual Property, Information "
                 "Technology and E-Commerce Law"),
-    ("https://tlq.ilaw.cas.cz/index.php/tlq/gateway/plugin/WebFeedGatewayPlugin/rss2",
-     "TLQ", "The Lawyer Quarterly"),
 ]
+
+# Pojistka: gateway plugin u některých instalací neřadí články podle data
+# vydání, ale podle interního id (viz TLQ níž). Co je starší než rok, do
+# feedu nových článků nepatří ani omylem.
+OJS_MAX_AGE_DAYS = 365
 
 
 def fetch_ojs_rss(feed_url, label, journal_name):
@@ -199,7 +293,9 @@ def fetch_ojs_rss(feed_url, label, journal_name):
 
     root = fromstring(resp.content)
     ns = {"dc": "http://purl.org/dc/elements/1.1/"}
+    cutoff = datetime.now(timezone.utc) - timedelta(days=OJS_MAX_AGE_DAYS)
     items = []
+    too_old = 0
 
     for item in root.iter("item"):
         title_el = item.find("title")
@@ -231,6 +327,10 @@ def fetch_ojs_rss(feed_url, label, journal_name):
                 except ValueError:
                     pub_date = datetime.now(timezone.utc)
 
+        if (pub_date or datetime.now(timezone.utc)) < cutoff:
+            too_old += 1
+            continue
+
         # Clean up description (remove HTML). Plnou anotaci si necháme pro AI,
         # do feedu jde zkrácená verze.
         full_desc = BeautifulSoup(desc, "html.parser").get_text().strip()
@@ -253,6 +353,9 @@ def fetch_ojs_rss(feed_url, label, journal_name):
             "ai_text": f"{title}\n\n{full_desc}".strip(),
         })
 
+    if too_old:
+        print(f"    [diag] {label}: {too_old} článků starších než "
+              f"{OJS_MAX_AGE_DAYS} dní přeskočeno")
     return items
 
 
@@ -493,7 +596,16 @@ def main():
     except Exception as e:
         print(f"  CHYBA při stahování Právníka: {e}")
 
-    # 3. Časopisy na OJS (RPT, MUJLT, JIPITEC, TLQ)
+    # 3. The Lawyer Quarterly (OJS, ale obsah čteme z aktuálního čísla)
+    print("  Zdroj: The Lawyer Quarterly (aktuální číslo)")
+    try:
+        tlq = scrape_tlq()
+        print(f"  Nalezeno {len(tlq)} článků")
+        all_items.extend(tlq)
+    except Exception as e:
+        print(f"  CHYBA při stahování TLQ: {e}")
+
+    # 4. Časopisy na OJS (RPT, MUJLT, JIPITEC)
     for feed_url, label, journal_name in OJS_SOURCES:
         print(f"  Zdroj: {journal_name} (OJS RSS)")
         try:
@@ -503,7 +615,7 @@ def main():
         except Exception as e:
             print(f"  CHYBA při stahování {label}: {e}")
 
-    # 4. Časopisy přes Crossref (QMJIP, GRUR Int, JIPLP, IIC)
+    # 5. Časopisy přes Crossref (QMJIP, GRUR Int, JIPLP, IIC)
     for issn, label, journal_name in CROSSREF_JOURNALS:
         print(f"  Zdroj: {journal_name} (Crossref)")
         try:
