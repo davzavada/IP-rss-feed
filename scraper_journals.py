@@ -4,7 +4,8 @@
 import os
 import re
 from datetime import datetime, timedelta, timezone
-from urllib.parse import urljoin
+from collections import Counter
+from urllib.parse import urlencode, urljoin
 from xml.etree.ElementTree import Element, SubElement, ElementTree, fromstring, indent
 
 import requests
@@ -112,6 +113,21 @@ def scrape_upv():
 # Zdroj většinou nabízí víc adres, kde obsah aktuálního čísla být může.
 # Bereme první, která nějaké články vydá, ať se natvrdo nedrží jedna cesta.
 
+def _link_shapes(soup, limit=8):
+    """Nejčastější tvary odkazů na stránce – čísla nahrazená N, z dotazu jen
+    názvy parametrů. Když scraper nic nenajde, je z toho hned vidět, čím se
+    na té stránce vlastně odkazuje."""
+    shapes = Counter()
+    for a in soup.find_all("a", href=True):
+        path, _, query = a["href"].split("#")[0].partition("?")
+        shape = re.sub(r"\d+", "N", path)
+        if query:
+            keys = sorted({p.split("=")[0] for p in query.split("&") if p})
+            shape += "?" + "&".join(keys)
+        shapes[shape] += 1
+    return ", ".join(f"{s} ({n}×)" for s, n in shapes.most_common(limit)) or "(žádné)"
+
+
 def first_page_with_items(page_urls, extract, label):
     """Zkouší adresy po řadě a vrátí články z první, která nějaké má."""
     for url in page_urls:
@@ -121,48 +137,69 @@ def first_page_with_items(page_urls, extract, label):
         except Exception as e:
             print(f"    [diag] {label}: {url} nedostupné ({e})")
             continue
-        items = extract(BeautifulSoup(resp.text, "html.parser"), url)
+        soup = BeautifulSoup(resp.text, "html.parser")
+        items = extract(soup, url)
         if items:
             return items
         print(f"    [diag] {label}: {url} bez článků, zkouším další adresu")
+        print(f"    [diag] {label}: odkazy na stránce – {_link_shapes(soup)}")
     return []
 
 
 # --- Právník (ÚSP AV ČR) – vlastní web, bez RSS i bez API ---
 # Web ÚSP linkuje každý článek přes stabilní ID:
 #   …/casopis-pravnik/hledat-v-archivu/detail-clanku.html?id=<id>
-# Držíme se tedy tvaru odkazu, ne značek šablony – ta se mění častěji.
+# Titulní stránka ani archiv ale takové odkazy nenesou (archiv nabízí PDF
+# celých čísel) – vypisuje je až hledání v archivu. Ptáme se ho proto na
+# letošní ročník a bereme nejvyšší id, což jsou naposled přidané články.
 # Datum vydání se z výpisu spolehlivě vyčíst nedá; co je nové rozhoduje
 # filter_by_first_seen podle guid, takže pub_date stačí orientační.
 
-PRAVNIK_URL = "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/"
-# Záloha, kdyby titulní stránka obsah aktuálního čísla nevypisovala.
-PRAVNIK_ARCHIVE_URL = PRAVNIK_URL + "archiv/"
+PRAVNIK_BASE = "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/"
+PRAVNIK_URL = PRAVNIK_BASE
+PRAVNIK_ARCHIVE_URL = PRAVNIK_BASE + "archiv/"
+PRAVNIK_SEARCH_URL = PRAVNIK_BASE + "hledat-v-archivu.html"
+# Prázdný dotaz + rozsah ročníku = výpis celého ročníku. Zaškrtnutá pole
+# kopírují výchozí stav formuláře na webu.
+PRAVNIK_SEARCH_PARAMS = {
+    "naki_search": "1", "form_state": "", "query": "",
+    "volume": "", "issue": "",
+    "search_article_title": "1", "search_article_annotation": "1",
+    "search_article_content": "1", "search_author": "1",
+    "search_keywords": "1", "search_match_words": "all", "page": "1",
+}
 PRAVNIK_DETAIL_RE = re.compile(r"detail-clanku\.html\?.*\bid=(\d+)", re.IGNORECASE)
-PRAVNIK_MAX_ITEMS = 12  # ať první běh nezaplaví feed celým archivem
+PRAVNIK_MAX_ITEMS = 12  # ať první běh nezaplaví feed celým ročníkem
+
+
+def _pravnik_search_url(year):
+    """Adresa hledání v archivu omezeného na jeden ročník."""
+    params = dict(PRAVNIK_SEARCH_PARAMS, year_start=str(year), year_end=str(year))
+    return f"{PRAVNIK_SEARCH_URL}?{urlencode(params)}"
 
 
 def _pravnik_articles(soup, page_url):
     """Posbírá odkazy na detaily článků Právníka z jedné stránky webu ÚSP."""
-    items = []
-    seen_ids = set()
+    # Na jeden článek může vést víc odkazů (název, „detail", ikona) – z textů
+    # bereme ten nejdelší, což je název článku.
+    titles = {}
     for a in soup.find_all("a", href=True):
         match = PRAVNIK_DETAIL_RE.search(a["href"])
         if not match:
             continue
-        art_id = match.group(1)
-        if art_id in seen_ids:
-            continue
-
         title = " ".join(a.get_text(" ", strip=True).split())
+        art_id = match.group(1)
+        if len(title) > len(titles.get(art_id, "")):
+            titles[art_id] = title
+
+    items = []
+    for art_id, title in titles.items():
         if not title:
             continue
-        seen_ids.add(art_id)
-
-        # Odkazy na webu nesou dlouhý ocas z vyhledávacího formuláře
-        # (&r=…&query=…) – necháme jen cestu a id.
-        detail_path = urljoin(page_url, a["href"]).split("?")[0]
-        link = f"{detail_path}?id={art_id}"
+        # Odkazy ve výpisu nesou dlouhý ocas z vyhledávacího formuláře
+        # (&r=…&query=…) a bývají relativní vůči jiné cestě, než na které
+        # detail leží – adresu proto skládáme z id.
+        link = f"{PRAVNIK_BASE}hledat-v-archivu/detail-clanku.html?id={art_id}"
 
         items.append({
             "title": f"[Právník] {title}",
@@ -182,10 +219,17 @@ def _pravnik_articles(soup, page_url):
 
 
 def scrape_pravnik():
-    """Vrátí články Právníka z titulní stránky, jinak z archivu."""
-    return first_page_with_items(
-        [PRAVNIK_URL, PRAVNIK_ARCHIVE_URL], _pravnik_articles, "Právník"
-    )
+    """Vrátí nejnovější články Právníka z hledání v archivu."""
+    year = datetime.now(timezone.utc).year
+    pages = [
+        _pravnik_search_url(year),
+        # V lednu nemusí být letos ještě nic, a kdyby hledání změnilo tvar,
+        # ať to aspoň zkusí na titulce a v archivu.
+        _pravnik_search_url(year - 1),
+        PRAVNIK_URL,
+        PRAVNIK_ARCHIVE_URL,
+    ]
+    return first_page_with_items(pages, _pravnik_articles, "Právník")
 
 
 # --- The Lawyer Quarterly (ÚSP AV ČR) – OJS, ale s nepoužitelným RSS ---
