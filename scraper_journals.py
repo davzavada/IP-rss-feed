@@ -5,7 +5,7 @@ import os
 import re
 from datetime import datetime, timedelta, timezone
 from collections import Counter
-from urllib.parse import urlencode, urljoin
+from urllib.parse import urljoin
 from xml.etree.ElementTree import Element, SubElement, ElementTree, fromstring, indent
 
 import requests
@@ -147,89 +147,61 @@ def first_page_with_items(page_urls, extract, label):
 
 
 # --- Právník (ÚSP AV ČR) – vlastní web, bez RSS i bez API ---
-# Web ÚSP linkuje každý článek přes stabilní ID:
-#   …/casopis-pravnik/hledat-v-archivu/detail-clanku.html?id=<id>
-# Titulní stránka ani archiv ale takové odkazy nenesou (archiv nabízí PDF
-# celých čísel) – vypisuje je až hledání v archivu. Ptáme se ho proto na
-# letošní ročník a bereme nejvyšší id, což jsou naposled přidané články.
+# Titulní stránka vypisuje obsah aktuálního čísla a každý článek na ní vede
+# do archivu jako …/archiv/<rok>/<číslo>-<rok>.html?a=<id>. Stránka čísla
+# (bez ?a=) je jen obsah, těch je v archivu přes čtyři stovky – bereme proto
+# jen odkazy s ?a=, což jsou samotné články.
 # Datum vydání se z výpisu spolehlivě vyčíst nedá; co je nové rozhoduje
 # filter_by_first_seen podle guid, takže pub_date stačí orientační.
 
 PRAVNIK_BASE = "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/"
 PRAVNIK_URL = PRAVNIK_BASE
 PRAVNIK_ARCHIVE_URL = PRAVNIK_BASE + "archiv/"
-PRAVNIK_SEARCH_URL = PRAVNIK_BASE + "hledat-v-archivu.html"
-# Prázdný dotaz + rozsah ročníku = výpis celého ročníku. Zaškrtnutá pole
-# kopírují výchozí stav formuláře na webu.
-PRAVNIK_SEARCH_PARAMS = {
-    "naki_search": "1", "form_state": "", "query": "",
-    "volume": "", "issue": "",
-    "search_article_title": "1", "search_article_annotation": "1",
-    "search_article_content": "1", "search_author": "1",
-    "search_keywords": "1", "search_match_words": "all", "page": "1",
-}
-PRAVNIK_DETAIL_RE = re.compile(r"detail-clanku\.html\?.*\bid=(\d+)", re.IGNORECASE)
-PRAVNIK_MAX_ITEMS = 12  # ať první běh nezaplaví feed celým ročníkem
-
-
-def _pravnik_search_url(year):
-    """Adresa hledání v archivu omezeného na jeden ročník."""
-    params = dict(PRAVNIK_SEARCH_PARAMS, year_start=str(year), year_end=str(year))
-    return f"{PRAVNIK_SEARCH_URL}?{urlencode(params)}"
+PRAVNIK_ARTICLE_RE = re.compile(r"/archiv/(\d{4})/([\d-]+)\.html\?a=(\d+)")
+PRAVNIK_MAX_ITEMS = 20  # obsah jednoho čísla, ne celý ročník
 
 
 def _pravnik_articles(soup, page_url):
-    """Posbírá odkazy na detaily článků Právníka z jedné stránky webu ÚSP."""
+    """Posbírá články aktuálního čísla Právníka z titulní stránky ÚSP."""
     # Na jeden článek může vést víc odkazů (název, „detail", ikona) – z textů
     # bereme ten nejdelší, což je název článku.
-    titles = {}
+    found = {}
     for a in soup.find_all("a", href=True):
-        match = PRAVNIK_DETAIL_RE.search(a["href"])
+        link = urljoin(page_url, a["href"])
+        match = PRAVNIK_ARTICLE_RE.search(link)
         if not match:
             continue
+        year, issue_slug, art_id = match.groups()
+        # ?a= je pořadí v čísle, unikátní až s ročníkem a číslem
+        guid = f"Pravnik-{year}-{issue_slug}-{art_id}"
         title = " ".join(a.get_text(" ", strip=True).split())
-        art_id = match.group(1)
-        if len(title) > len(titles.get(art_id, "")):
-            titles[art_id] = title
+        if len(title) > len(found.get(guid, ("", ""))[0]):
+            found[guid] = (title, link, issue_slug.replace("-", "/"))
 
     items = []
-    for art_id, title in titles.items():
+    for guid, (title, link, issue) in found.items():
         if not title:
             continue
-        # Odkazy ve výpisu nesou dlouhý ocas z vyhledávacího formuláře
-        # (&r=…&query=…) a bývají relativní vůči jiné cestě, než na které
-        # detail leží – adresu proto skládáme z id.
-        link = f"{PRAVNIK_BASE}hledat-v-archivu/detail-clanku.html?id={art_id}"
-
         items.append({
             "title": f"[Právník] {title}",
             "journal_name": "Právník",
             "link": link,
-            "description": f"{title}\nPrávník (ÚSP AV ČR)",
-            "guid": f"Pravnik-{art_id}",
+            "description": f"{title}\nPrávník {issue} (ÚSP AV ČR)",
+            "guid": guid,
             "pub_date": datetime.now(timezone.utc),
-            "sort_key": int(art_id),
-            # Anotaci má až detail článku – stáhne se lazy, jen když se
+            # Anotaci má až stránka článku – stáhne se lazy, jen když se
             # pro položku opravdu generuje shrnutí (viz enrich_summaries).
             "ai_source": "page",
         })
 
-    items.sort(key=lambda x: x["sort_key"], reverse=True)
     return items[:PRAVNIK_MAX_ITEMS]
 
 
 def scrape_pravnik():
-    """Vrátí nejnovější články Právníka z hledání v archivu."""
-    year = datetime.now(timezone.utc).year
-    pages = [
-        _pravnik_search_url(year),
-        # V lednu nemusí být letos ještě nic, a kdyby hledání změnilo tvar,
-        # ať to aspoň zkusí na titulce a v archivu.
-        _pravnik_search_url(year - 1),
-        PRAVNIK_URL,
-        PRAVNIK_ARCHIVE_URL,
-    ]
-    return first_page_with_items(pages, _pravnik_articles, "Právník")
+    """Vrátí články aktuálního čísla Právníka."""
+    return first_page_with_items(
+        [PRAVNIK_URL, PRAVNIK_ARCHIVE_URL], _pravnik_articles, "Právník"
+    )
 
 
 # --- The Lawyer Quarterly (ÚSP AV ČR) – OJS, ale s nepoužitelným RSS ---
