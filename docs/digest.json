@@ -1,21 +1,35 @@
 {
-  "generated": "2026-08-05T07:38:55.821309+00:00",
-  "from": "2026-07-22",
-  "to": "2026-08-05",
-  "total": 77,
-  "covered": 19,
-  "intro": "Období bylo zcela ovládomo analýzami implementace EU AI Actu, zejména v oblasti standardizace a střetu s ochranou obchodního tajemství. Významný prostor dostala rovněž problematika autorství u AI generovaných děl a regulace digitálních platforem v rámci DSA a směrnice DSM.",
+  "generated": "2026-08-10T05:10:13.113403+00:00",
+  "from": "2026-07-27",
+  "to": "2026-08-10",
+  "total": 82,
+  "covered": 16,
+  "intro": "Období bylo zcela ovládománo analýzami implementace EU AI Actu, zejména v oblasti standardizace a ochrany základních práv. Významný prostor dostala rovněž problematika autorství u AI generovaného obsahu a regulace digitálních platforem.",
   "blocks": [
     {
-      "title": "Implementace a standardizace AI Actu",
-      "text": "Diskuse se soustředí na rizika delegování ochrany základních práv na soukromé standardizační orgány, což může vést k deficitu odpovědnosti. Pro praxi je klíčové, že tradiční standardizace je u AI nedostatečná a je třeba zavést procedurální přístupy k auditovatelnosti rozhodnutí.",
+      "title": "Standardizace v EU AI Actu",
+      "text": "Diskuse se soustředí na rizika delegování hodnotových úsudků a ochrany základních práv na soukromé standardizační organizace. Pro praxi je klíčová role Evropské komise při kontrole norem a potřeba procedurálního přístupu k dokumentaci shody (Compliance Cases) pro zajištění auditovatelnosti.",
       "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JIPITEC",
+          "title": "Editorial – Annalisa Volpato, Mariolina Eliantonio, Michèle Finck",
+          "link": "https://www.jipitec.eu/jipitec/article/view/452"
+        },
         {
           "src": "journals",
           "label": "Časopis",
           "tag": "JIPITEC",
           "title": "Decision Problems for Regulatees under the EU AI Act: Contested Values, Uncertain Evidence, and the Limits of Standardisation – Alessio Tartaro, Arvin Obnasca, Enrico Panai",
           "link": "https://www.jipitec.eu/jipitec/article/view/453"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JIPITEC",
+          "title": "From National to European – And Back Again: Fixing the Flaws of the New Approach – Olia Kanevskaia",
+          "link": "https://www.jipitec.eu/jipitec/article/view/454"
         },
         {
           "src": "journals",
@@ -37,26 +51,19 @@
           "tag": "JIPITEC",
           "title": "Trustworthy AI Through Standards? The Role and the Implications of Harmonised Standards for Fundamental Rights Protection in the AI Act – Elvira M.R. Oliva",
           "link": "https://www.jipitec.eu/jipitec/article/view/457"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JIPITEC",
-          "title": "Harmonising Consensus: The (Geo)political Economy of Standardisation in the AI Act – Marta Cantero Gamito",
-          "link": "https://www.jipitec.eu/jipitec/article/view/458"
         }
       ]
     },
     {
       "title": "AI a autorskoprávní ochrana",
-      "text": "Navrženy byly nové rámce pro určení lidského tvůrčího přínosu u hybridních děl a rozlišení mezi nechránitelným motivem a konkrétním technickým provedením. V oblasti patentů se u AI vynálezů doporučuje přechod k tzv. funkčnímu zveřejňování založenému na logice systému.",
+      "text": "Navrhuje se rámec „Algorithmic Authorship Threshold“ pro určení lidského tvůrčího přínosu u hybridních děl. Judikatura z Düsseldorfu potvrzuje, že napodobení nechránitelného motivu pomocí AI nepředstavuje porušení autorských práv, pokud není kopírováno konkrétní kreativní technické provedení autora.",
       "sources": [
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "The Machine’s Mind Matters: Using Logic to Disclose Artificial Intelligence Inventions – Fidelice Opany",
-          "link": "https://doi.org/10.1093/grurint/ikag071"
+          "tag": "QMJIP",
+          "title": "The aesthetic turn in intellectual property law: some copyright lessons from Pelham II – Professor Johanna Gibson",
+          "link": "https://doi.org/10.4337/qmjip.2026.02.00"
         },
         {
           "src": "journals",
@@ -75,22 +82,22 @@
       ]
     },
     {
-      "title": "Ochrana dat a automatizace",
-      "text": "Judikatura a doktrína zpřísňují podmínky pro odškodnění u GDPR, kde hypotetické riziko zneužití dat pro nárok na náhradu škody nestačí. U automatizovaného rozhodování je zdůrazněno, že formální lidská kontrola bez reálného vlivu neumožňuje objít zákaz plně automatizovaných rozhodnutí.",
+      "title": "Ochrana dat a automatizované rozhodování",
+      "text": "Analýzy zdůrazňují, že formální lidská kontrola u automatizovaného rozhodování (čl. 22 GDPR) bez reálného vlivu na výsledek nestačí. Pozornost je věnována i rizikům personalizačních systémů a regulaci biometrických technologií v trestním řízení.",
       "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "TLQ",
+          "title": "THE EU AI ACT AND CRIMINAL JUSTICE: REGULATORY CHALLENGES FOR BIOMETRIC AND IMAGE RECOGNITION TECHNOLOGIES – Alžběta Solarczyk Krausová (Author)",
+          "link": "https://tlq.ilaw.cas.cz/article/view/8"
+        },
         {
           "src": "journals",
           "label": "Časopis",
           "tag": "TLQ",
           "title": "PERSONALIZATION BEYOND CONVENIENCE: NAVIGATING PRIVACY AND PERSONAL DATA PROTECTION ISSUES – Kristýna Akil (Author)",
           "link": "https://tlq.ilaw.cas.cz/article/view/9"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "No Compensation Based Solely on a Hypothetical Risk of Misuse of Personal Data",
-          "link": "https://doi.org/10.1093/grurint/ikag067"
         },
         {
           "src": "journals",
@@ -102,8 +109,8 @@
       ]
     },
     {
-      "title": "Regulace digitálních platforem",
-      "text": "Analýzy DSA a směrnice DSM poukazují na konflikt mezi kulturou sdílení a exkluzivitou autorských práv, což zvyšuje rizika nadměrného blokování obsahu. Praxe musí řešit omezenou schopnost národních koordinátorů chránit svobodu projevu před politickým vlivem.",
+      "title": "Regulace platforem a DSA",
+      "text": "Rozebírá se napětí mezi exkluzivitou autorského práva a kulturou sdílení na platformách v kontextu směrnice DSM. V oblasti DSA je kritizována omezená pravomoc národních koordinátorů digitálních služeb při ochraně svobody projevu před politickým vlivem.",
       "sources": [
         {
           "src": "journals",
@@ -129,46 +136,18 @@
       ]
     },
     {
-      "title": "Ochrana IP a tajemství",
-      "text": "EU AI Act vytváří napětí mezi povinnostmi transparentnosti a ochranou obchodního tajemství, což vyžaduje pečlivé rozlišení adresátů informací. V oblasti známek bylo potvrzeno, že úprava produktů pro osobní potřebu neporušuje práva z ochranné známky.",
+      "title": "Péče řádného hospodáře",
+      "text": "Empirický výzkum ukazuje, že manažeři korporací v praxi často zanedbávají systematickou dokumentaci rozhodovacích procesů. Pro snížení odpovědnostních rizik je doporučeno posílení interních kontrol a efektivnější využití pravidla podnikatelského úsudku.",
       "sources": [
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "Disclosing Without Divulging: Trade Secrets in the EU AI Act’s Transparency Duties – Muhammed Furkan Akıncı",
-          "link": "https://doi.org/10.1093/grurint/ikag062"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "No Trade Mark Infringement for Personal Use Refashioning",
-          "link": "https://doi.org/10.1093/grurint/ikag070"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "No Limitation Period for Actions Seeking a Declaration of Invalidity of a Trade Mark in Force",
-          "link": "https://doi.org/10.1093/grurint/ikag063"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "“Licence Agreement Through Implied Continued Cooperation”",
-          "link": "https://doi.org/10.1007/s40319-026-01738-1"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "Unlawful Ambush Marketing Through Indirect Linkage with a Sporting Event",
-          "link": "https://doi.org/10.1093/grurint/ikag038"
+          "tag": "Právník",
+          "title": "Péče řádného hospodáře v legislativní a manažersko-ekonomické praxi",
+          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-8.html?a=4050"
         }
       ]
     }
   ],
-  "input_hash": "4e6a364082a14cf51a2bd6e2395eb28844fb2bf0bc36659305d00c5691330c86"
+  "input_hash": "841a1134f74177a3851d7168a6756335299028c59f0315152ecbf3847c6d8d1d"
 }
