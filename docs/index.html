@@ -84,7 +84,7 @@
   .legend { font-size: 0.8rem; color: var(--muted-foreground); white-space: nowrap; }
 
   main.container { padding-block: 28px 72px; display: flex; flex-direction: column; gap: 28px; }
-  /* Obsah je rozdělený na dvě stránky (přehled / všechno za dva týdny);
+  /* Obsah je rozdělený na dvě stránky (přehled / všechno nové);
      přepíná se mezi nimi navigací, viditelná je vždy jedna. */
   .page { display: flex; flex-direction: column; gap: 28px; }
   .page[hidden] { display: none; }
@@ -262,7 +262,7 @@
   <a href="#prehled">Přehled</a>
   <a href="#dnesni" class="sub">Dnešní shrnutí</a>
   <a href="#dvatydny" class="sub">Shrnutí dvou týdnů</a>
-  <a href="#recentni">Všechno za dva týdny</a>
+  <a href="#recentni">Všechno nové</a>
   <a href="#nsoud" class="sub">NS – 23 Cdo</a>
   <a href="#cjeu" class="sub">CJEU IP / IT</a>
   <a href="#casopisy" class="sub">Časopisy</a>
@@ -273,7 +273,7 @@
 <!-- Přepínač stránek pro úzká okna, kde je boční navigace schovaná. -->
 <nav class="pagetabs" aria-label="Přepínání stránek">
   <a href="#prehled">Přehled</a>
-  <a href="#recentni">Všechno za dva týdny</a>
+  <a href="#recentni">Všechno nové</a>
 </nav>
 
 <div class="page" id="prehled">
@@ -306,7 +306,7 @@
 </div><!-- /#prehled -->
 
 <section class="page" id="recentni" hidden>
-  <h2 class="group-title">Všechno za dva týdny</h2>
+  <h2 class="group-title">Všechno nové</h2>
 
   <div class="card" id="nsoud">
     <div class="card-header">
@@ -329,7 +329,7 @@
           <svg class="feed-icon" aria-hidden="true"><use href="#icon-rss"></use></svg>
         </a>
       </h2>
-      <p class="card-desc">Případy za posledních 14 dní.</p>
+      <p class="card-desc">Případy za poslední dva měsíce – u CJEU chodí nového málo.</p>
     </div>
     <div class="card-content" id="feed-cjeu"><p class="loading">Načítám...</p></div>
   </div>
@@ -874,7 +874,7 @@ function initApp() {
           failed(f.containerId);
           return;
         }
-        // Druhá stránka je úplný výpis za dva týdny – dnešek z ní
+        // Druhá stránka je úplný výpis za okno feedu – dnešek z ní
         // nevynecháváme, na jednu stránku se položky nedostanou dvakrát.
         renderTable(results[idx].value, document.getElementById(f.containerId), f.cols, f.key);
       });

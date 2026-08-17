@@ -34,6 +34,14 @@ SOURCES = [
     ("https://ipcuria.eu/all_referrals.php", "Referral"),
 ]
 
+# CJEU chodí po kapkách – zvlášť u referralů se stane, že za dva týdny nepřibude
+# nic a tabulka zůstane prázdná. Okno je proto delší než u ostatních feedů.
+WINDOW_WEEKS = 8    # ~dva měsíce od prvního výskytu položky
+# Stahovací okno musí být delší než to zobrazované: feed se pokaždé staví
+# znovu ze staženého seznamu, takže co sem nedosáhne, ve feedu není – i když
+# to bylo poprvé viděno včas. Pár dnů navíc kryje zpožděné zveřejnění.
+FETCH_DAYS = WINDOW_WEEKS * 7 + 14
+
 
 def _guid(d):
     """Stabilní identifikátor položky (shodný s oknem prvního výskytu i RSS guid)."""
@@ -41,8 +49,8 @@ def _guid(d):
 
 
 def fetch_all():
-    """Stáhne obě stránky a vrátí rozhodnutí z posledních 31 dnů."""
-    cutoff = datetime.now(timezone.utc) - timedelta(days=31)
+    """Stáhne obě stránky a vrátí rozhodnutí z posledních FETCH_DAYS dnů."""
+    cutoff = datetime.now(timezone.utc) - timedelta(days=FETCH_DAYS)
     decisions = []
 
     for url, category in SOURCES:
@@ -275,12 +283,12 @@ def build_rss(decisions):
 def main():
     print("Stahuji IPcuria – 2 kategorie...")
     decisions = fetch_all()
-    print(f"Nalezeno {len(decisions)} položek z posledního měsíce")
+    print(f"Nalezeno {len(decisions)} položek za posledních {FETCH_DAYS} dnů")
 
-    # Okno 2 týdny od prvního výskytu + příznak „nové dnes" (jednotné se zbytkem)
-    decisions = filter_by_first_seen(decisions, _guid, STATE_FILE, weeks=2)
+    # Okno od prvního výskytu + příznak „nové dnes" (jednotné se zbytkem)
+    decisions = filter_by_first_seen(decisions, _guid, STATE_FILE, weeks=WINDOW_WEEKS)
     decisions.sort(key=lambda d: d["date"], reverse=True)
-    print(f"Po okně 2 týdnů: {len(decisions)} položek")
+    print(f"Po okně {WINDOW_WEEKS} týdnů: {len(decisions)} položek")
 
     decisions = enrich_summaries(decisions)  # AI shrnutí jen na ponechané
 
