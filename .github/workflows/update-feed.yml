@@ -10,11 +10,15 @@ on:
     # mezi 07:40 a 09:40 UTC místo 6:00). Mimo špičku na začátku hodiny je zpoždění
     # řádově minuty.
     #
-    # Ranní běh je rozdělený na dva výrazy jen kvůli dvoutýdennímu přehledu:
-    # ten se generuje jednou týdně a podle toho, který cron běh spustil, se
-    # pozná pondělí (v samotném `if:` se den v týdnu zjistit nedá).
-    - cron: '40 3 * * 1'      # pondělí 03:40 UTC = 5:40 CEST -> + přehled
+    # Ranní běh je rozdělený na víc výrazů jen kvůli dvoutýdennímu přehledu:
+    # ten se generuje jednou týdně v pondělí v 6:00 pražského času. Podle toho,
+    # který cron běh spustil, se pozná pondělí (v samotném `if:` se den v týdnu
+    # zjistit nedá) – a protože cron je v UTC a Praha přechází mezi CEST a CET,
+    # je pondělní ranní běh naplánovaný dvakrát. Projde ten, ze kterého 6:00
+    # vychází; ten druhý skončí hned na začátku (viz krok „Naplánovat běh").
+    - cron: '40 3 * * 1'      # pondělí 03:40 UTC = 5:40 CEST -> přehled v létě
     - cron: '40 3 * * 0,2-6'  # zbytek týdne, stejný čas, bez přehledu
+    - cron: '40 4 * * 1'      # pondělí 04:40 UTC = 5:40 CET  -> přehled v zimě
     - cron: '40 10 * * *'     # 10:40 UTC = 12:40 CEST -> odpolední běh kolem 13:00
   workflow_dispatch:       # ruční spuštění
     inputs:
@@ -40,14 +44,49 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      # Který z pondělních ranních cronů teď odpovídá 6:00 v Praze, závisí na
+      # letním čase – rozhodne se to tady, ne v `if:`, kde na časové pásmo není
+      # jak sáhnout. Rozhoduje naplánovaný čas, ne hodiny při běhu: GitHub
+      # scheduled běhy startuje se zpožděním a scrapery pak jedou přes 20 minut.
+      - name: Naplánovat běh
+        id: plan
+        run: |
+          if [ "$(TZ=Europe/Prague date +%z)" = "+0200" ]; then
+            digest_cron='40 3 * * 1'   # CEST: 6:00 Praha = 04:00 UTC
+          else
+            digest_cron='40 4 * * 1'   # CET:  6:00 Praha = 05:00 UTC
+          fi
+          schedule='${{ github.event.schedule }}'
+          if [ '${{ github.event_name }}' = 'workflow_dispatch' ]; then
+            scrape=true; digest=true
+          else
+            case "$schedule" in
+              # Z dvojice pondělních cronů projde jen ten, který teď vychází
+              # na 6:00; ten druhý skončí, ať se v pondělí nescrapuje dvakrát.
+              '40 3 * * 1'|'40 4 * * 1')
+                if [ "$schedule" = "$digest_cron" ]; then
+                  scrape=true; digest=true
+                else
+                  scrape=false; digest=false
+                fi ;;
+              *) scrape=true; digest=false ;;
+            esac
+          fi
+          echo "scrape=$scrape" >> "$GITHUB_OUTPUT"
+          echo "digest=$digest" >> "$GITHUB_OUTPUT"
+          echo "cron '$schedule' -> scrapery: $scrape, přehled: $digest (přehled jede z '$digest_cron')"
+
       - uses: actions/setup-python@v6
+        if: steps.plan.outputs.scrape == 'true'
         with:
           python-version: '3.12'
 
       - name: Install dependencies
+        if: steps.plan.outputs.scrape == 'true'
         run: pip install -r requirements.txt
 
       - name: Run scrapers
+        if: steps.plan.outputs.scrape == 'true'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SKIP_GEMINI: ${{ inputs.skip_gemini }}
@@ -57,16 +96,19 @@ jobs:
           python scraper_journals.py
 
       # Přehled čte hotové feedy, takže běží až po scraperech – jednou týdně,
-      # v pondělí ráno. Ručně spuštěný běh ho udělá taky; když se od minula
-      # nic nezměnilo, digest.py si podle otisku vstupu AI odpustí sám.
-      - name: Dvoutýdenní přehled (pondělí ráno)
-        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '40 3 * * 1'
+      # v pondělí v 6:00. Ručně spuštěný běh ho udělá taky. DIGEST_FORCE říká
+      # digest.py, ať přehled napíše znovu i tehdy, když se vstup od minula
+      # nezměnil – jednou týdně chceme čerstvý text, ne ten čtrnáct dní starý.
+      - name: Dvoutýdenní přehled (pondělí 6:00)
+        if: steps.plan.outputs.digest == 'true'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SKIP_GEMINI: ${{ inputs.skip_gemini }}
+          DIGEST_FORCE: '1'
         run: python digest.py
 
       - name: Commit & push feeds
+        if: steps.plan.outputs.scrape == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

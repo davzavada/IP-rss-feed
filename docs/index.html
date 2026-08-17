@@ -121,16 +121,35 @@
   td a { color: var(--link); text-decoration: none; text-underline-offset: 3px; }
   td a:hover { text-decoration: underline; }
 
-  /* Šířky sloupců (table-layout: fixed); „Shrnutí" dostane zbytek místa. */
-  .col-type { width: 10%; }
-  .col-name { width: 20%; }
-  .col-heslo { width: 13%; }
-  .col-src { width: 15%; }
+  /* Šířky sloupců (table-layout: fixed) řídí <colgroup>, které vykresluje
+     skript – výchozí hodnoty jsou v COL_DEFAULTS, uživatelské v cookie.
+     V CSS proto zůstává jen to, co se šířkou nesouvisí. */
   .col-src .src, .col-src .tag { margin-bottom: 3px; }
-  .col-date { width: 12%; color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
+  .col-date { color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
   .col-type, .col-name, .col-heslo, .col-summary, .col-src { overflow-wrap: anywhere; }
   .nowrap { white-space: nowrap; }
   .summary { line-height: 1.55; }
+
+  /* Táhlo na hranici záhlaví – mění šířku sloupce na úkor toho vpravo.
+     Je o pár pixelů širší než čára a přesahuje do mezery mezi sloupci,
+     aby se trefovalo i myší, která není úplně přesná. */
+  th { position: relative; }
+  .col-resizer {
+    position: absolute; top: 0; right: -5px; z-index: 1;
+    width: 11px; height: 100%;
+    cursor: col-resize; touch-action: none;
+    background: none; border: 0; padding: 0;
+  }
+  .col-resizer::before {
+    content: ""; position: absolute; top: 3px; bottom: 3px; left: 5px;
+    width: 1px; background: transparent; transition: background-color 0.12s ease;
+  }
+  .col-resizer:hover::before,
+  .col-resizer:focus-visible::before,
+  .col-resizer.is-active::before { background: var(--link); }
+  .col-resizer:focus { outline: none; }
+  /* Během tažení ať se neoznačuje text a kurzor drží tvar i mimo táhlo. */
+  body.is-resizing { cursor: col-resize; user-select: none; -webkit-user-select: none; }
 
   /* Štítky (shadcn Badge). Heslo = akcent; zdroj/typ mají sémantické odstíny,
      ostatní neutrální „secondary". */
@@ -277,7 +296,7 @@
       <p class="card-desc">
         AI přehled napříč všemi feedy – hlavně to, co je relevantní pro IP,
         a k tomu pár dalších zajímavostí. Většina položek se sem nedostane.
-        Aktualizuje se jednou týdně, v pondělí ráno po ranním scraperu.
+        Aktualizuje se jednou týdně, v pondělí v 6:00 po ranním scraperu.
       </p>
     </div>
     <div class="card-content" id="feed-digest"><p class="loading">Načítám...</p></div>
@@ -332,14 +351,201 @@
 </main>
 
 <script>
+/* ========== Šířky sloupců (tažení za záhlaví, uložení do cookie) ========== */
+// Výchozí šířky v procentech podle druhu sloupce; sloupec, který tu není
+// (Shrnutí), si rozebere zbytek řádku. Každá tabulka má jinou skladbu
+// sloupců, takže se výchozí hodnoty počítají pro každou zvlášť.
+const COL_DEFAULTS = { type: 10, name: 20, heslo: 13, src: 15, date: 12 };
+const MIN_COL_PCT = 4;          // pod tuhle šířku sloupec nepustíme
+const KEY_STEP_PCT = 2;         // krok při ovládání šipkami
+const COL_COOKIE = "colw";
+const COL_COOKIE_MAX_AGE = 365 * 24 * 60 * 60;
+
+// Skladba sloupců podle klíče tabulky – potřeba při obnovení výchozích šířek.
+const tableColumns = {};
+
+function readCookie(name) {
+  const m = document.cookie.match("(?:^|; )" + name + "=([^;]*)");
+  try {
+    return m ? decodeURIComponent(m[1]) : "";
+  } catch (e) {
+    return "";
+  }
+}
+
+function writeCookie(name, value) {
+  try {
+    document.cookie = name + "=" + encodeURIComponent(value) +
+      ";path=/;max-age=" + COL_COOKIE_MAX_AGE + ";samesite=lax";
+  } catch (e) { /* zakázané cookies – šířky prostě nepřežijí načtení */ }
+}
+
+// Cookie drží { klíč tabulky: [procenta sloupců] }. Poškozený obsah
+// (ruční úprava, starší verze stránky) zahodíme a jedeme na výchozích.
+function loadWidths() {
+  try {
+    const data = JSON.parse(readCookie(COL_COOKIE) || "{}");
+    return data && typeof data === "object" && !Array.isArray(data) ? data : {};
+  } catch (e) {
+    return {};
+  }
+}
+
+const storedWidths = loadWidths();
+
+function colKey(c) {
+  return String(c.cls || "").replace(/^col-/, "");
+}
+
+function defaultWidths(columns) {
+  const fixed = columns.map(c => COL_DEFAULTS[colKey(c)] || 0);
+  const rest = 100 - fixed.reduce((a, b) => a + b, 0);
+  const flexible = fixed.filter(w => !w).length;
+  return fixed.map(w => w || Math.max(MIN_COL_PCT, rest / (flexible || 1)));
+}
+
+// Uložené šířky bereme jen tehdy, když sedí na aktuální skladbu sloupců;
+// součet dorovnáme na 100 %, ať se nesejde tabulka širší nebo užší než řádek.
+function widthsFor(key, columns) {
+  const saved = storedWidths[key];
+  const usable = Array.isArray(saved) && saved.length === columns.length &&
+    saved.every(w => typeof w === "number" && isFinite(w) && w >= 1);
+  if (!usable) return defaultWidths(columns);
+  const sum = saved.reduce((a, b) => a + b, 0);
+  return saved.map(w => (w / sum) * 100);
+}
+
+function saveWidths(key, widths) {
+  if (!key) return;
+  storedWidths[key] = widths.map(w => Math.round(w * 100) / 100);
+  writeCookie(COL_COOKIE, JSON.stringify(storedWidths));
+}
+
+function currentWidths(table) {
+  return Array.from(table.querySelectorAll("col")).map(c => parseFloat(c.style.width) || 0);
+}
+
+function applyWidths(table, widths) {
+  const cols = table.querySelectorAll("col");
+  widths.forEach((w, i) => { if (cols[i]) cols[i].style.width = w.toFixed(2) + "%"; });
+}
+
+// Posun hranice mezi sloupci i a i+1: co jeden získá, druhý ztratí, takže
+// zbytek tabulky zůstane, kde byl. Vrací nové šířky (v procentech).
+function moveBoundary(widths, i, deltaPct) {
+  const pair = widths[i] + widths[i + 1];
+  const next = widths.slice();
+  next[i] = Math.max(MIN_COL_PCT, Math.min(widths[i] + deltaPct, pair - MIN_COL_PCT));
+  next[i + 1] = pair - next[i];
+  return next;
+}
+
+function boundaryOf(handle) {
+  const th = handle.parentElement;
+  const table = th.closest("table");
+  return { table, index: Array.prototype.indexOf.call(th.parentElement.children, th) };
+}
+
+function resetWidths(table) {
+  const key = table.dataset.cols;
+  const columns = tableColumns[key];
+  if (!columns) return;
+  applyWidths(table, defaultWidths(columns));
+  delete storedWidths[key];
+  writeCookie(COL_COOKIE, JSON.stringify(storedWidths));
+}
+
+function initColumnResize() {
+  let drag = null;
+
+  document.addEventListener("pointerdown", e => {
+    const handle = e.target.closest(".col-resizer");
+    if (!handle || (e.pointerType === "mouse" && e.button !== 0)) return;
+    const { table, index } = boundaryOf(handle);
+    // Šířky měříme v pixelech ze skutečně vykreslené tabulky – tažení pak
+    // sedí na pohyb myši i tam, kde tabulka přetéká (min-width: 720px).
+    const cells = handle.parentElement.parentElement.children;
+    drag = {
+      table, index, handle,
+      startX: e.clientX,
+      total: table.getBoundingClientRect().width,
+      a: cells[index].getBoundingClientRect().width,
+      b: cells[index + 1].getBoundingClientRect().width
+    };
+    handle.classList.add("is-active");
+    document.body.classList.add("is-resizing");
+    handle.setPointerCapture(e.pointerId);
+    e.preventDefault();
+  });
+
+  document.addEventListener("pointermove", e => {
+    if (!drag || !drag.total) return;
+    const pct = w => (w / drag.total) * 100;
+    const widths = currentWidths(drag.table);
+    widths[drag.index] = pct(drag.a);
+    widths[drag.index + 1] = pct(drag.b);
+    applyWidths(drag.table, moveBoundary(widths, drag.index, pct(e.clientX - drag.startX)));
+  });
+
+  function endDrag() {
+    if (!drag) return;
+    drag.handle.classList.remove("is-active");
+    document.body.classList.remove("is-resizing");
+    saveWidths(drag.table.dataset.cols, currentWidths(drag.table));
+    drag = null;
+  }
+
+  document.addEventListener("pointerup", endDrag);
+  document.addEventListener("pointercancel", endDrag);
+
+  // Dvojklik na hranici = zpátky na výchozí šířky celé tabulky.
+  document.addEventListener("dblclick", e => {
+    const handle = e.target.closest(".col-resizer");
+    if (!handle) return;
+    e.preventDefault();
+    resetWidths(boundaryOf(handle).table);
+  });
+
+  // Bez myši: táhlo je ve fokusu a šipky s ním hýbou.
+  document.addEventListener("keydown", e => {
+    const handle = e.target.closest && e.target.closest(".col-resizer");
+    if (!handle) return;
+    const step = e.key === "ArrowLeft" ? -KEY_STEP_PCT
+      : e.key === "ArrowRight" ? KEY_STEP_PCT : 0;
+    const { table, index } = boundaryOf(handle);
+    if (step) {
+      e.preventDefault();
+      const widths = moveBoundary(currentWidths(table), index, step);
+      applyWidths(table, widths);
+      saveWidths(table.dataset.cols, widths);
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      resetWidths(table);
+    }
+  });
+}
+
 /* ========== Feedy ========== */
-function renderTable(items, container, columns) {
+function resizerHtml(column) {
+  return '<span class="col-resizer" role="separator" aria-orientation="vertical"' +
+    ' tabindex="0" aria-label="Šířka sloupce ' + esc(column.label) + '"' +
+    ' title="Táhnutím změníte šířku sloupce, dvojklikem obnovíte výchozí"></span>';
+}
+
+function renderTable(items, container, columns, key) {
   if (items.length === 0) {
     container.innerHTML = '<p class="feed-empty">Žádné nové položky.</p>';
     return;
   }
-  let html = '<div class="table-wrap"><table><thead><tr>';
-  columns.forEach(c => { html += "<th" + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.label + "</th>"; });
+  tableColumns[key] = columns;
+  let html = '<div class="table-wrap"><table data-cols="' + esc(key) + '"><colgroup>';
+  widthsFor(key, columns).forEach(w => { html += '<col style="width:' + w.toFixed(2) + '%">'; });
+  html += "</colgroup><thead><tr>";
+  columns.forEach((c, i) => {
+    // Poslední sloupec už nemá kam růst – hranice je vždy mezi dvěma sloupci.
+    html += "<th" + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.label +
+      (i < columns.length - 1 ? resizerHtml(c) : "") + "</th>";
+  });
   html += "</tr></thead><tbody>";
   items.forEach(item => {
     html += "<tr>";
@@ -484,7 +690,7 @@ function renderToday(results) {
   if (today.length === 0) {
     container.innerHTML = '<p class="feed-empty">Dnes zatím nic nového.</p>';
   } else {
-    renderTable(today, container, colsToday);
+    renderTable(today, container, colsToday, "today");
   }
 }
 
@@ -652,6 +858,9 @@ function initApp() {
   // se nevykreslí; zbytek stránky na něj nečeká déle než na feedy.
   const digestPromise = fetchDigest().catch(() => null);
   initNav();
+  // Tažení šířek visí na dokumentu, takže platí i pro tabulky, které
+  // se vykreslí až po dotažení feedů.
+  initColumnResize();
 
   // Vykreslíme až všechny feedy dorazí (stahují se paralelně, jsou ze
   // stejného původu). Jedno překreslení místo tří – stránka při načítání
@@ -667,7 +876,7 @@ function initApp() {
         }
         // Druhá stránka je úplný výpis za dva týdny – dnešek z ní
         // nevynecháváme, na jednu stránku se položky nedostanou dvakrát.
-        renderTable(results[idx].value, document.getElementById(f.containerId), f.cols);
+        renderTable(results[idx].value, document.getElementById(f.containerId), f.cols, f.key);
       });
       renderToday(results);
       renderDigest(digest);

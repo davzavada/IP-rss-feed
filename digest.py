@@ -12,7 +12,8 @@ kterými se model odkazuje na zdroje, se překládají zpět na názvy a odkazy.
 
 Aby se AI nevolala zbytečně, ukládá se otisk vstupu (input_hash). Když se
 seznam položek ani jejich shrnutí od minule nezměnily, přehled se negeneruje
-znovu a zůstane ležet ten předchozí.
+znovu a zůstane ležet ten předchozí. Pravidelný pondělní běh tuhle zkratku
+vypíná přes DIGEST_FORCE=1 – jednou týdně chceme přehled napsat načisto.
 """
 
 import hashlib
@@ -49,6 +50,11 @@ SOURCES = [
     ("cjeu", "CJEU", "ipcuria_feed.xml"),
     ("journals", "Časopis", "journals_feed.xml"),
 ]
+
+
+def force_regenerate():
+    """DIGEST_FORCE=1 -> přegeneruj i beze změny vstupu (pondělní běh)."""
+    return os.environ.get("DIGEST_FORCE", "").strip().lower() in ("1", "true", "yes")
 
 
 def _text(el, tag):
@@ -243,8 +249,10 @@ def main():
         return
 
     if previous.get("input_hash") == ihash and previous.get("blocks"):
-        print("Vstup se nezměnil – přehled ponechávám beze změny")
-        return
+        if not force_regenerate():
+            print("Vstup se nezměnil – přehled ponechávám beze změny")
+            return
+        print("Vstup se nezměnil, ale DIGEST_FORCE=1 – generuji znovu")
 
     if not gemini_enabled():
         print("AI je vypnutá – přehled ponechávám beze změny")
