@@ -1,89 +1,14 @@
 {
-  "generated": "2026-08-10T05:10:13.113403+00:00",
-  "from": "2026-07-27",
-  "to": "2026-08-10",
-  "total": 82,
-  "covered": 16,
-  "intro": "Období bylo zcela ovládománo analýzami implementace EU AI Actu, zejména v oblasti standardizace a ochrany základních práv. Významný prostor dostala rovněž problematika autorství u AI generovaného obsahu a regulace digitálních platforem.",
+  "generated": "2026-08-17T04:24:54.096439+00:00",
+  "from": "2026-08-03",
+  "to": "2026-08-17",
+  "total": 47,
+  "covered": 8,
+  "intro": "Období bylo dominuje analýzami nových evropských digitálních regulací, zejména EU AI Actu a nařízení DSA, a jejich dopady na ochranu dat a svobodu projevu. V oblasti IP práva převážila problematika spravedlivého odměňování autorů a rozhraní mezi ochrannými známkami a autorským právem.",
   "blocks": [
     {
-      "title": "Standardizace v EU AI Actu",
-      "text": "Diskuse se soustředí na rizika delegování hodnotových úsudků a ochrany základních práv na soukromé standardizační organizace. Pro praxi je klíčová role Evropské komise při kontrole norem a potřeba procedurálního přístupu k dokumentaci shody (Compliance Cases) pro zajištění auditovatelnosti.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JIPITEC",
-          "title": "Editorial – Annalisa Volpato, Mariolina Eliantonio, Michèle Finck",
-          "link": "https://www.jipitec.eu/jipitec/article/view/452"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JIPITEC",
-          "title": "Decision Problems for Regulatees under the EU AI Act: Contested Values, Uncertain Evidence, and the Limits of Standardisation – Alessio Tartaro, Arvin Obnasca, Enrico Panai",
-          "link": "https://www.jipitec.eu/jipitec/article/view/453"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JIPITEC",
-          "title": "From National to European – And Back Again: Fixing the Flaws of the New Approach – Olia Kanevskaia",
-          "link": "https://www.jipitec.eu/jipitec/article/view/454"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JIPITEC",
-          "title": "The Politics of Standardising Ethics. The IEEE Initiative and the Governance of AI – Simone Casiraghi ; Niels van Dijk",
-          "link": "https://www.jipitec.eu/jipitec/article/view/455"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JIPITEC",
-          "title": "The Role of the European Commission in the Control of Harmonised Standards Under the AI Act and the Challenges of “Opacity” – Mariolina Eliantonio",
-          "link": "https://www.jipitec.eu/jipitec/article/view/456"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JIPITEC",
-          "title": "Trustworthy AI Through Standards? The Role and the Implications of Harmonised Standards for Fundamental Rights Protection in the AI Act – Elvira M.R. Oliva",
-          "link": "https://www.jipitec.eu/jipitec/article/view/457"
-        }
-      ]
-    },
-    {
-      "title": "AI a autorskoprávní ochrana",
-      "text": "Navrhuje se rámec „Algorithmic Authorship Threshold“ pro určení lidského tvůrčího přínosu u hybridních děl. Judikatura z Düsseldorfu potvrzuje, že napodobení nechránitelného motivu pomocí AI nepředstavuje porušení autorských práv, pokud není kopírováno konkrétní kreativní technické provedení autora.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "QMJIP",
-          "title": "The aesthetic turn in intellectual property law: some copyright lessons from Pelham II – Professor Johanna Gibson",
-          "link": "https://doi.org/10.4337/qmjip.2026.02.00"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JIPLP",
-          "title": "The Algorithmic Authorship Threshold: identifying human contribution in AI-assisted creativity – Ulaş Göker Bektaş",
-          "link": "https://doi.org/10.1093/jiplp/jpag078"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JIPLP",
-          "title": "Copyright liability for AI-outputs: the impact of <i>Mio/konektra</i> on staged photography – Dr Ines Duhanic",
-          "link": "https://doi.org/10.1093/jiplp/jpag076"
-        }
-      ]
-    },
-    {
-      "title": "Ochrana dat a automatizované rozhodování",
-      "text": "Analýzy zdůrazňují, že formální lidská kontrola u automatizovaného rozhodování (čl. 22 GDPR) bez reálného vlivu na výsledek nestačí. Pozornost je věnována i rizikům personalizačních systémů a regulaci biometrických technologií v trestním řízení.",
+      "title": "Regulace AI a ochrana dat",
+      "text": "Analýzy se zaměřily na implementaci EU AI Actu v trestním řízení a rizika personalizačních systémů v kontextu GDPR. Pro praxi je klíčové sledovat limity biometrické identifikace a nedostatečnost současné ochrany u odvozených osobních údajů, které mohou ovlivňovat autonomii uživatelů.",
       "sources": [
         {
           "src": "journals",
@@ -98,19 +23,12 @@
           "tag": "TLQ",
           "title": "PERSONALIZATION BEYOND CONVENIENCE: NAVIGATING PRIVACY AND PERSONAL DATA PROTECTION ISSUES – Kristýna Akil (Author)",
           "link": "https://tlq.ilaw.cas.cz/article/view/9"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "MUJLT",
-          "title": "Another View on Article 22 GDPR: The Future of Automated Decision-Making – Nimrod Mike",
-          "link": "https://journals.muni.cz/mujlt/article/view/41367"
         }
       ]
     },
     {
-      "title": "Regulace platforem a DSA",
-      "text": "Rozebírá se napětí mezi exkluzivitou autorského práva a kulturou sdílení na platformách v kontextu směrnice DSM. V oblasti DSA je kritizována omezená pravomoc národních koordinátorů digitálních služeb při ochraně svobody projevu před politickým vlivem.",
+      "title": "Digitální služby a DSA",
+      "text": "Diskuse se týkají ochrany dětí před škodlivým obsahem a role národních koordinátorů při ochraně svobody projevu v rámci nařízení DSA. Praxe musí počítat s vyvažováním bezpečnosti uživatelů a prevencí politického vlivu na moderaci obsahu platformami.",
       "sources": [
         {
           "src": "journals",
@@ -125,29 +43,55 @@
           "tag": "Právník",
           "title": "Nařízení DSA a role koordinátorů digitálních služeb při ochraně svobody projevu",
           "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-8.html?a=4047"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "Copyright in the Age of Sharing: Platforms, Users, and the Law’s Structural Paradox – Luca Ettore Perriello",
-          "link": "https://doi.org/10.1007/s40319-026-01746-1"
         }
       ]
     },
     {
-      "title": "Péče řádného hospodáře",
-      "text": "Empirický výzkum ukazuje, že manažeři korporací v praxi často zanedbávají systematickou dokumentaci rozhodovacích procesů. Pro snížení odpovědnostních rizik je doporučeno posílení interních kontrol a efektivnější využití pravidla podnikatelského úsudku.",
+      "title": "Autorské právo a známky",
+      "text": "Potvrzena legitimita reziduálních práv na odměnu pro tvůrce v rámci směrnice CDSMD jako nástroje nápravy vyjednávací nerovnováhy. V otázce znaků s kulturním významem převažuje autorské právo nad ochrannou známkou, což slouží jako pojistka proti dysfunkčnímu překryvu práv.",
       "sources": [
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "Právník",
-          "title": "Péče řádného hospodáře v legislativní a manažersko-ekonomické praxi",
-          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-8.html?a=4050"
+          "tag": "IIC",
+          "title": "The Validity of the Residual Right of Remuneration under Articles 17 and 18 CDSMD – Valérie Laure Benabou, Séverine Dusollier, Christophe Geiger, Martin Senftleben",
+          "link": "https://doi.org/10.1007/s40319-026-01751-4"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "Trademarking Signs with Cultural Significance: How to Position Simultaneous and Diachronic Rights Overlap in a Spectrum of Absolute Grounds of Refusal – Cristiana Sappa",
+          "link": "https://doi.org/10.1093/grurint/ikag076"
+        }
+      ]
+    },
+    {
+      "title": "Změny patentových nároků",
+      "text": "Rozbor se věnuje hranici mezi přípustnou úpravou patentového nároku a jeho nepřiměřeným rozšířením. Je to zásadní pro správnou strategii při úpravách nároků v průběhu řízení, aby nedošlo k neplatnosti změny.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "When a Claim Amendment Does Not Constitute an Undue Extension",
+          "link": "https://doi.org/10.1093/grurint/ikag079"
+        }
+      ]
+    },
+    {
+      "title": "Překážka věci rozhodnuté",
+      "text": "Nejvyšší soud rozhodl, že pravomocný rozsudek je závazný i pro právního nástupce účastníka původního řízení. Toto zjištění je relevantní pro stabilitu právních vztahů při corporate změnách a následných sporech.",
+      "sources": [
+        {
+          "src": "nsoud",
+          "label": "NS 23 Cdo",
+          "tag": "",
+          "title": "23 Cdo 1709/2025",
+          "link": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/F5BB7967652CA4E9C1258E4B001B85C2/$file/23%20Cdo%201709_2025.pdf?openElement"
         }
       ]
     }
   ],
-  "input_hash": "841a1134f74177a3851d7168a6756335299028c59f0315152ecbf3847c6d8d1d"
+  "input_hash": "7dc8efe3f9e54e6283dd1bf8b8f5f2d3314b46c443ca23f7fea09106ae68fdf9"
 }
