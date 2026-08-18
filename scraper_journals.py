@@ -33,6 +33,101 @@ USER_AGENT = (
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 )
 
+# --- Názvy a autoři článků ---
+# Každý zdroj píše metadata po svém: OJS (TLQ) vrací názvy verzálkami a
+# k autorům lepí roli („(Author)"). Do feedu chceme jednotný tvar – název
+# běžnou sazbou a autoři v samostatném poli (v RSS jako <dc:creator>),
+# ne přilepení za názvem.
+
+AUTHOR_ROLE_RE = re.compile(
+    r"\s*\((?:authors?|autor(?:ka|ky|i|ři)?|corresponding author|editor|"
+    r"translator|překladatel(?:ka)?)\)",
+    re.IGNORECASE,
+)
+
+# Zkratky, které zůstávají verzálkami i v názvu psaném normálně; hodnota je
+# tvar, jak se má psát (kvůli ECtHR a spol.). Množné číslo („SMEs") se odvodí.
+TITLE_ACRONYMS = {a.upper(): a for a in (
+    "EU", "US", "USA", "UK", "UN", "AI", "IP", "ICT", "IoT", "GDPR", "DSA",
+    "DMA", "DSM", "TRIPS", "WIPO", "WTO", "CJEU", "ECJ", "ECHR", "ECtHR",
+    "CFSP", "TFEU", "TEU", "NATO", "OECD", "PCT", "EPO", "EPC", "UPC", "SPC",
+    "SEP", "FRAND", "ISDS", "NGO", "SME", "NFT", "USPTO", "EUIPO", "ÚPV",
+    "ČR", "SR", "DNA", "AML", "ADR", "ODR", "ESG", "B2B", "B2C", "COVID",
+)}
+
+# Krátká slova, která se v anglickém názvu nepíšou s velkým písmenem
+# (pokud nestojí na začátku).
+TITLE_LOWER_WORDS = {
+    "a", "an", "the", "and", "or", "nor", "but", "as", "at", "by", "for",
+    "from", "in", "into", "of", "on", "onto", "over", "per", "to", "under",
+    "up", "via", "vs", "with", "within", "without",
+}
+
+WORD_RE = re.compile(r"[^\W\d_]+", re.UNICODE)
+# Po těchhle znacích začíná další „věta" – tam se malá slova zase píšou velkým.
+SENTENCE_END = (":", ".", "?", "!", ";", "–", "—")
+
+
+def clean_authors(raw):
+    """Autoři na jednotný tvar: bez rolí z OJS a bez zdvojených mezer."""
+    if not raw:
+        return ""
+    names = [
+        " ".join(AUTHOR_ROLE_RE.sub("", n).split())
+        for n in re.split(r"\s*[;,]\s*|\s+and\s+", raw)
+    ]
+    seen, out = set(), []
+    for name in names:
+        if name and name.lower() not in seen:
+            seen.add(name.lower())
+            out.append(name)
+    return ", ".join(out)
+
+
+def _cased_word(word, sentence_start):
+    """Jedno slovo názvu psaného verzálkami převede na běžnou sazbu."""
+    def fix(match):
+        run = match.group(0)
+        before = word[match.start() - 1] if match.start() else ""
+        first = sentence_start and match.start() == 0
+
+        acronym = TITLE_ACRONYMS.get(run.upper())
+        if acronym:
+            return acronym
+        # Množné číslo zkratky: SMES -> SMEs, NFTS -> NFTs
+        if len(run) > 1 and run.upper().endswith("S"):
+            acronym = TITLE_ACRONYMS.get(run[:-1].upper())
+            if acronym:
+                return acronym + "s"
+        # Přípona za apostrofem („CJEU'S") a koncovka za číslicí („3RD")
+        if before in ("'", "\u2019") or before.isdigit():
+            return run.lower()
+        if not first and run.lower() in TITLE_LOWER_WORDS:
+            return run.lower()
+        return run[0].upper() + run[1:].lower()
+
+    return WORD_RE.sub(fix, word)
+
+
+def normalize_title(title):
+    """Název psaný verzálkami převede na běžnou sazbu, ostatní nechá být.
+
+    Rozhoduje podíl velkých písmen, ne zdroj – ať se to chytne i tam, kde
+    verzálky jsou jen občas. Krátké názvy (zkratky, „AI ACT") neřešíme.
+    """
+    letters = [c for c in title if c.isalpha()]
+    if len(letters) < 12 or sum(c.isupper() for c in letters) / len(letters) < 0.8:
+        return title
+
+    out, sentence_start = [], True
+    for word in title.split(" "):
+        out.append(_cased_word(word, sentence_start))
+        stripped = word.rstrip("\"'\u201d\u2019)")
+        if stripped:
+            sentence_start = stripped.endswith(SENTENCE_END)
+    return " ".join(out)
+
+
 # --- ÚPV journals (scrape HTML) ---
 
 def scrape_upv():
@@ -255,6 +350,8 @@ def _tlq_articles(soup, page_url):
         if not title or title.upper() in TLQ_GALLEY_LABELS:
             continue
         seen_ids.add(art_id)
+        # TLQ sází názvy článků verzálkami – do feedu jdou běžnou sazbou.
+        title = normalize_title(title)
 
         # Autoři jsou v OJS vedle názvu ve výpisu čísla; když je šablona
         # nemá, prostě je neuvedeme.
@@ -263,18 +360,17 @@ def _tlq_articles(soup, page_url):
         if summary is not None:
             authors_el = summary.find(class_="authors")
             if authors_el is not None:
-                authors = " ".join(authors_el.get_text(" ", strip=True).split())
+                authors = clean_authors(authors_el.get_text(" ", strip=True))
 
-        full_title = f"[TLQ] {title}"
         desc = [title]
         if authors:
-            full_title += f" – {authors}"
             desc.append(f"Autor: {authors}")
         desc.append(f"The Lawyer Quarterly {issue}".strip())
 
         items.append({
-            "title": full_title,
+            "title": f"[TLQ] {title}",
             "journal_name": "The Lawyer Quarterly",
+            "authors": authors,
             "link": link,
             "description": "\n".join(desc),
             # Stejný tvar guid jako dřív z OJS RSS, ať se články, které už
@@ -336,8 +432,9 @@ def fetch_ojs_rss(feed_url, label, journal_name):
         title = (title_el.text or "").strip() if title_el is not None else ""
         link = (link_el.text or "").strip() if link_el is not None else ""
         desc = (desc_el.text or "").strip() if desc_el is not None else ""
-        creator = (creator_el.text or "").strip() if creator_el is not None else ""
+        creator = clean_authors(creator_el.text if creator_el is not None else "")
         guid = (guid_el.text or "").strip() if guid_el is not None else link
+        title = normalize_title(title)
 
         # Parse date
         pub_date = None
@@ -366,13 +463,10 @@ def fetch_ojs_rss(feed_url, label, journal_name):
         if len(clean_desc) > 300:
             clean_desc = clean_desc[:297] + "..."
 
-        full_title = f"[{label}] {title}"
-        if creator:
-            full_title += f" – {creator}"
-
         items.append({
-            "title": full_title,
+            "title": f"[{label}] {title}",
             "journal_name": journal_name,
+            "authors": creator,
             "link": link,
             "description": f"{title}\nAutor: {creator}\n{clean_desc}" if creator else f"{title}\n{clean_desc}",
             "guid": f"{label}-{guid}",
@@ -439,15 +533,15 @@ def fetch_crossref_journal(issn, label, journal_name):
     for w in works:
         doi = (w.get("DOI") or "").strip()
         titles = w.get("title") or []
-        title = " ".join(titles[0].split()) if titles else ""
+        title = normalize_title(" ".join(titles[0].split())) if titles else ""
         if not doi or not title:
             continue
 
-        authors = ", ".join(
+        authors = clean_authors("; ".join(
             " ".join(p for p in (a.get("given"), a.get("family")) if p)
             for a in (w.get("author") or [])
             if a.get("given") or a.get("family")
-        )
+        ))
         abstract = _abstract_text(w.get("abstract"))
 
         pub_date = datetime.now(timezone.utc)
@@ -466,13 +560,10 @@ def fetch_crossref_journal(issn, label, journal_name):
         if clean_desc:
             desc_parts.append(clean_desc)
 
-        full_title = f"[{label}] {title}"
-        if authors:
-            full_title += f" – {authors}"
-
         items.append({
-            "title": full_title,
+            "title": f"[{label}] {title}",
             "journal_name": journal_name,
+            "authors": authors,
             "link": f"https://doi.org/{doi}",
             "description": "\n".join(desc_parts),
             "guid": f"{label}-{doi}",
@@ -537,9 +628,9 @@ def fetch_wiley_rss(issn, label, journal_name):
 
     for item in root.iter("item"):
         # Wiley dává do názvu i kurzívu (<i>…</i>) – bereme čistý text.
-        title = " ".join(
+        title = normalize_title(" ".join(
             BeautifulSoup(_item_text(item, "title"), "html.parser").get_text(" ").split()
-        )
+        ))
         if not title:
             continue
 
@@ -548,9 +639,7 @@ def fetch_wiley_rss(issn, label, journal_name):
         if not link:
             continue
 
-        authors = ", ".join(
-            a.strip() for a in _item_text(item, "dc:creator", ns).split(",") if a.strip()
-        )
+        authors = clean_authors(_item_text(item, "dc:creator", ns))
         abstract = _abstract_text(_item_text(item, "description"))
 
         pub_date = datetime.now(timezone.utc)
@@ -574,12 +663,8 @@ def fetch_wiley_rss(issn, label, journal_name):
         if clean_desc:
             desc_parts.append(clean_desc)
 
-        full_title = f"[{label}] {title}"
-        if authors:
-            full_title += f" – {authors}"
-
         items.append({
-            "title": full_title,
+            "title": f"[{label}] {title}",
             "journal_name": journal_name,
             "authors": authors,
             "link": link,
@@ -711,6 +796,10 @@ def build_rss(all_items):
         el = SubElement(channel, "item")
         SubElement(el, "title").text = item["title"]
         SubElement(el, "link").text = item["link"]
+        # Autoři samostatně, ne přilepení za názvem – stránka i čtečky si je
+        # zobrazí ve vlastním sloupci.
+        if item.get("authors"):
+            SubElement(el, "dc:creator").text = item["authors"]
         SubElement(el, "guid", isPermaLink="false").text = item["guid"]
         desc = item["description"]
         if item.get("summary"):

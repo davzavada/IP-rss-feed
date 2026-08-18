@@ -126,7 +126,10 @@
      V CSS proto zůstává jen to, co se šířkou nesouvisí. */
   .col-src .src, .col-src .tag { margin-bottom: 3px; }
   .col-date { color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
-  .col-type, .col-name, .col-heslo, .col-summary, .col-src { overflow-wrap: anywhere; }
+  .col-type, .col-name, .col-heslo, .col-summary, .col-src, .col-author
+    { overflow-wrap: anywhere; }
+  .author { color: var(--muted-foreground); }
+  .col-name .author { display: block; margin-top: 2px; font-size: 13px; }
   .nowrap { white-space: nowrap; }
   .summary { line-height: 1.55; }
 
@@ -355,7 +358,7 @@
 // Výchozí šířky v procentech podle druhu sloupce; sloupec, který tu není
 // (Shrnutí), si rozebere zbytek řádku. Každá tabulka má jinou skladbu
 // sloupců, takže se výchozí hodnoty počítají pro každou zvlášť.
-const COL_DEFAULTS = { type: 10, name: 20, heslo: 13, src: 15, date: 12 };
+const COL_DEFAULTS = { type: 10, name: 20, heslo: 13, src: 15, date: 12, author: 14 };
 const MIN_COL_PCT = 4;          // pod tuhle šířku sloupec nepustíme
 const KEY_STEP_PCT = 2;         // krok při ovládání šipkami
 const COL_COOKIE = "colw";
@@ -398,7 +401,9 @@ function colKey(c) {
 }
 
 function defaultWidths(columns) {
-  const fixed = columns.map(c => COL_DEFAULTS[colKey(c)] || 0);
+  // Výchozí šířka je podle typu sloupce; tabulka si ji může přebít (`width`),
+  // když má sloupců míň a je kam růst.
+  const fixed = columns.map(c => c.width || COL_DEFAULTS[colKey(c)] || 0);
   const rest = 100 - fixed.reduce((a, b) => a + b, 0);
   const flexible = fixed.filter(w => !w).length;
   return fixed.map(w => w || Math.max(MIN_COL_PCT, rest / (flexible || 1)));
@@ -618,6 +623,28 @@ function nameCell(item) {
   return href ? '<a href="' + href + '">' + title + '</a>' : title;
 }
 
+// Autoři jsou ve feedu v <dc:creator> – čteme je přes jmenný prostor,
+// se záložním hledáním podle celého názvu značky (starší prohlížeče).
+const DC_NS = "http://purl.org/dc/elements/1.1/";
+
+function authorText(item) {
+  const el = item.getElementsByTagNameNS(DC_NS, "creator")[0] ||
+    item.getElementsByTagName("dc:creator")[0];
+  return el ? el.textContent.trim() : "";
+}
+
+function authorCell(item) {
+  const authors = authorText(item);
+  return authors ? '<span class="author">' + esc(authors) + '</span>' : "";
+}
+
+// V přehledu přes všechny zdroje samostatný sloupec nedává smysl (autory má
+// jen část položek) – autoři jdou pod název.
+function nameAuthorCell(item) {
+  const authors = authorText(item);
+  return nameCell(item) + (authors ? '<span class="author">' + esc(authors) + '</span>' : "");
+}
+
 function hesloCell(item) {
   const tag = text(item, "ai-tag");
   return tag ? '<span class="heslo">' + esc(tag) + '</span>' : "";
@@ -646,7 +673,8 @@ const colsCjeu = [
 
 const colsJournals = [
   { label: "Časopis", cls: "col-type", render: i => getTag(text(i, "title")) },
-  { label: "Název", cls: "col-name", render: nameCell },
+  { label: "Název", cls: "col-name", render: nameCell, width: 32 },
+  { label: "Autor", cls: "col-author", render: authorCell },
   { label: "Shrnutí", cls: "col-summary", render: summaryCell }
 ];
 
@@ -655,7 +683,7 @@ const colsJournals = [
 const colsToday = [
   { label: "Zdroj", cls: "col-src", render: i =>
       '<span class="src src-' + i._src + '">' + i._srcLabel + '</span> ' + getTag(text(i, "title")) },
-  { label: "Název", cls: "col-name", render: nameCell },
+  { label: "Název", cls: "col-name", render: nameAuthorCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
   { label: "Shrnutí", cls: "col-summary", render: summaryCell },
   { label: "Datum", cls: "col-date", render: getDate }
