@@ -4,6 +4,7 @@
 import os
 import re
 from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 from collections import Counter
 from urllib.parse import urljoin
 from xml.etree.ElementTree import Element, SubElement, ElementTree, fromstring, indent
@@ -386,7 +387,7 @@ def fetch_ojs_rss(feed_url, label, journal_name):
     return items
 
 
-# --- Časopisy přes Crossref API (OUP, Elgar, Springer, Wiley) ---
+# --- Časopisy přes Crossref API (OUP, Elgar, Springer) ---
 # Weby těchto vydavatelů (academic.oup.com, elgaronline.com) sedí za
 # Cloudflare bot-ochranou a přímý scraping z GitHub Actions je nespolehlivý.
 # Crossref je jejich oficiální metadatové API: bez ochran, s DOI, autory
@@ -404,12 +405,13 @@ CROSSREF_JOURNALS = [
     ("1747-1540", "JIPLP", "Journal of Intellectual Property Law & Practice"),
     ("2195-0237", "IIC", "IIC – International Review of Intellectual Property "
                          "and Competition Law"),
-    ("1747-1796", "JWIP", "The Journal of World Intellectual Property"),
 ]
 
 
-def _strip_jats(text):
-    """Crossref abstrakty jsou JATS XML (<jats:p>…) – vrátí čistý text."""
+def _abstract_text(text):
+    """Abstrakt na čistý text – Crossref ho dává jako JATS XML (<jats:p>…),
+    Wiley jako HTML. Obojí projde stejným parserem, oběma se zahazuje úvodní
+    slovo „Abstract“, které v textu není k ničemu."""
     if not text:
         return ""
     clean = BeautifulSoup(text, "html.parser").get_text(" ", strip=True)
@@ -446,7 +448,7 @@ def fetch_crossref_journal(issn, label, journal_name):
             for a in (w.get("author") or [])
             if a.get("given") or a.get("family")
         )
-        abstract = _strip_jats(w.get("abstract"))
+        abstract = _abstract_text(w.get("abstract"))
 
         pub_date = datetime.now(timezone.utc)
         created = (w.get("created") or {}).get("date-time")
@@ -480,6 +482,133 @@ def fetch_crossref_journal(issn, label, journal_name):
         })
 
     return items
+
+
+# --- Wiley (JWIP) – vlastní RSS, se zálohou v Crossref ---
+# Wiley Online Library nabízí pro každý časopis feed nejnovějších článků
+# (/feed/<issn bez pomlčky>/most-recent) včetně abstraktu, který Wiley do
+# Crossref často nedeponuje. Feed ale sedí za Cloudflare a z GitHub Actions
+# nemusí projít – když se nestáhne nebo je prázdný, sáhneme po Crossref.
+# Guid se v obou případech skládá z DOI, takže se článek při přepnutí zdroje
+# neoznačí podruhé jako nový.
+
+WILEY_FEED = "https://onlinelibrary.wiley.com/feed/{issn}/most-recent"
+DOI_RE = re.compile(r"10\.\d{4,9}/[^\s?&#\"<>]+")
+# Feed vypisuje i starší články ročníku – co je starší než rok, do novinek nepatří
+WILEY_MAX_AGE_DAYS = 365
+
+JWIP_ISSN = "1747-1796"
+JWIP_LABEL = "JWIP"
+JWIP_NAME = "The Journal of World Intellectual Property"
+
+
+def _item_text(item, tag, ns=None):
+    """Text potomka <item>, nebo prázdný řetězec."""
+    el = item.find(tag, ns) if ns else item.find(tag)
+    return (el.text or "").strip() if el is not None and el.text else ""
+
+
+def _wiley_doi(item, ns):
+    """DOI článku – z <prism:doi>, jinak z guid nebo odkazu."""
+    doi = _item_text(item, "prism:doi", ns)
+    if not doi:
+        for field in ("guid", "link"):
+            match = DOI_RE.search(_item_text(item, field))
+            if match:
+                doi = match.group(0)
+                break
+    return doi.strip().rstrip(".").lower()
+
+
+def fetch_wiley_rss(issn, label, journal_name):
+    """Vrátí nedávné články časopisu z RSS Wiley Online Library."""
+    feed_url = WILEY_FEED.format(issn=issn.replace("-", ""))
+    resp = requests.get(feed_url, headers={"User-Agent": USER_AGENT}, timeout=30)
+    resp.raise_for_status()
+
+    root = fromstring(resp.content)
+    ns = {
+        "dc": "http://purl.org/dc/elements/1.1/",
+        "prism": "http://prismstandard.org/namespaces/basic/2.0/",
+    }
+    cutoff = datetime.now(timezone.utc) - timedelta(days=WILEY_MAX_AGE_DAYS)
+    items = []
+    too_old = 0
+
+    for item in root.iter("item"):
+        # Wiley dává do názvu i kurzívu (<i>…</i>) – bereme čistý text.
+        title = " ".join(
+            BeautifulSoup(_item_text(item, "title"), "html.parser").get_text(" ").split()
+        )
+        if not title:
+            continue
+
+        doi = _wiley_doi(item, ns)
+        link = f"https://doi.org/{doi}" if doi else _item_text(item, "link")
+        if not link:
+            continue
+
+        authors = ", ".join(
+            a.strip() for a in _item_text(item, "dc:creator", ns).split(",") if a.strip()
+        )
+        abstract = _abstract_text(_item_text(item, "description"))
+
+        pub_date = datetime.now(timezone.utc)
+        raw_date = _item_text(item, "pubDate")
+        if raw_date:
+            try:
+                pub_date = parsedate_to_datetime(raw_date)
+                if pub_date.tzinfo is None:
+                    pub_date = pub_date.replace(tzinfo=timezone.utc)
+            except (TypeError, ValueError):
+                pass
+        if pub_date < cutoff:
+            too_old += 1
+            continue
+
+        clean_desc = abstract if len(abstract) <= 300 else abstract[:297] + "..."
+        desc_parts = [title]
+        if authors:
+            desc_parts.append(f"Autor: {authors}")
+        desc_parts.append(journal_name)
+        if clean_desc:
+            desc_parts.append(clean_desc)
+
+        full_title = f"[{label}] {title}"
+        if authors:
+            full_title += f" – {authors}"
+
+        items.append({
+            "title": full_title,
+            "journal_name": journal_name,
+            "authors": authors,
+            "link": link,
+            "description": "\n".join(desc_parts),
+            # Stejný tvar guid jako u Crossref, ať se článek po přepnutí zdroje
+            # neoznačí podruhé jako nový.
+            "guid": f"{label}-{doi}" if doi else f"{label}-{link}",
+            "pub_date": pub_date,
+            "ai_source": "article",
+            "ai_text": f"{title}\n\n{abstract}".strip(),
+        })
+
+    if too_old:
+        print(f"    [diag] {label}: {too_old} článků starších než "
+              f"{WILEY_MAX_AGE_DAYS} dní přeskočeno")
+    return items
+
+
+def scrape_jwip():
+    """Články JWIP – přednostně z RSS Wiley, při potížích z Crossref."""
+    try:
+        items = fetch_wiley_rss(JWIP_ISSN, JWIP_LABEL, JWIP_NAME)
+        if items:
+            return items
+        reason = "feed bez článků"
+    except Exception as e:
+        reason = f"feed nedostupný ({e})"
+    print(f"    [diag] {JWIP_LABEL}: RSS Wiley – {reason}, beru Crossref")
+    return fetch_crossref_journal(JWIP_ISSN, JWIP_LABEL, JWIP_NAME)
 
 
 # --- AI shrnutí (Gemma) ---
@@ -643,7 +772,7 @@ def main():
         except Exception as e:
             print(f"  CHYBA při stahování {label}: {e}")
 
-    # 5. Časopisy přes Crossref (QMJIP, GRUR Int, JIPLP, IIC, JWIP)
+    # 5. Časopisy přes Crossref (QMJIP, GRUR Int, JIPLP, IIC)
     for issn, label, journal_name in CROSSREF_JOURNALS:
         print(f"  Zdroj: {journal_name} (Crossref)")
         try:
@@ -652,6 +781,15 @@ def main():
             all_items.extend(cr_items)
         except Exception as e:
             print(f"  CHYBA při stahování {label}: {e}")
+
+    # 6. JWIP (RSS Wiley, se zálohou v Crossref)
+    print(f"  Zdroj: {JWIP_NAME} (Wiley RSS)")
+    try:
+        jwip = scrape_jwip()
+        print(f"  Nalezeno {len(jwip)} článků")
+        all_items.extend(jwip)
+    except Exception as e:
+        print(f"  CHYBA při stahování {JWIP_LABEL}: {e}")
 
     # Ponecháme jen položky s prvním výskytem do 2 týdnů zpět (u všech zdrojů).
     # První výskyt sledujeme sami, aby se staré články s přepsaným datem nevracely.
