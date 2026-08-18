@@ -133,6 +133,11 @@
   .nowrap { white-space: nowrap; }
   .summary { line-height: 1.55; }
   .note { color: var(--muted-foreground); font-style: italic; }
+  .doc-link {
+    font-size: 11px; font-weight: 600; letter-spacing: .04em; white-space: nowrap;
+    padding: 1px 5px; border: 1px solid currentColor; border-radius: 4px;
+    text-decoration: none; vertical-align: 1px;
+  }
 
   /* Táhlo na hranici záhlaví – mění šířku sloupce na úkor toho vpravo.
      Je o pár pixelů širší než čára a přesahuje do mezery mezi sloupci,
@@ -621,7 +626,12 @@ function getDate(item) {
 function nameCell(item) {
   const title = esc(text(item, "title").replace(/^\[[^\]]+\]\s*/, ""));
   const href = safeHref(text(item, "link"));
-  return href ? '<a href="' + href + '">' + title + '</a>' : title;
+  let html = href ? '<a href="' + href + '">' + title + '</a>' : title;
+  // U žádostí o předběžnou otázku ještě odkaz na samotný dokument – shrnutí
+  // je jen shrnutí, znění otázek je v něm.
+  const doc = safeHref(text(item, "document-url"));
+  if (doc) html += ' <a class="doc-link" href="' + doc + '">PDF</a>';
+  return html;
 }
 
 // Autoři jsou ve feedu v <dc:creator> – čteme je přes jmenný prostor,

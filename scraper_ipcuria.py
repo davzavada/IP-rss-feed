@@ -177,6 +177,113 @@ def fetch_eurlex_notice(case_ref):
     return re.sub(r"\s+", " ", soup.get_text(" ", strip=True)).strip()
 
 
+# --- Dokumenty ze samotné InfoCurie ---
+# Web Soudního dvora je Angular aplikace, ze které prostý request dostane jen
+# prázdnou slupku, takže dlouho vypadal jako nedostupný. Data ale bere z API
+# na vlastním hostu (infocuriaws), a to na obyčejný POST odpovídá i z GitHub
+# Actions. V odpovědi je u každého dokumentu věci i jeho text (contentML),
+# takže žádost o předběžnou otázku jde shrnout dřív, než vyjde oznámení v ÚV
+# – a rovnou z ní, ne z upoutávky.
+# Odkaz na PDF se skládá z polí dokumentu: z idProcedure (lomítka na pomlčky),
+# z logicDocId bez předpony „id_" a z pořadí části. Do feedu ho dáváme proto,
+# že shrnutí je jen shrnutí – kdo chce znění otázek, klikne na dokument.
+
+CURIA_APP = "https://infocuria.curia.europa.eu"
+CURIA_SEARCH_URL = "https://infocuriaws.curia.europa.eu/elastic-connector/search"
+CURIA_HEADERS = {
+    "User-Agent": "pravni-rss-feed/1.0 (+https://rss.davidzavada.cz)",
+    "Accept": "application/json, text/plain, */*",
+    "Content-Type": "application/json",
+    "Origin": CURIA_APP,
+    "Referer": CURIA_APP + "/",
+}
+# DDP = žádost o předběžnou otázku, DDP_COMM = oznámení o ní v Úředním věstníku.
+# Ostatní typy (rozsudek, stanovisko) u referralu nečekáme, ale kdyby přišly,
+# ať se sáhne po tom nejbližším k položeným otázkám.
+CURIA_DOC_ORDER = ("DDP", "DDP_COMM", "RES", "CONCL")
+CURIA_PDF_LANGS = ("CS", "EN")
+
+
+def _curia_doc_text(doc):
+    """Text dokumentu z contentML – česky, jinak anglicky, jinak nejdelší."""
+    langs = {k: v for d in (doc.get("contentML") or []) if isinstance(d, dict)
+             for k, v in d.items() if v}
+    text = langs.get("cs") or langs.get("en") or max(langs.values(), key=len, default="")
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def _curia_pdf_url(doc, lang):
+    """Adresa PDF dokumentu, nebo '' když z polí nejde složit."""
+    parts = (doc.get("idProcedure") or "").split("/")
+    logic = (doc.get("logicDocId") or "").replace("id_", "")
+    if len(parts) < 4 or not logic.isdigit():
+        return ""
+    jur, order, year = parts[0], parts[1], parts[2]
+    rest = "-".join(parts[3:])
+    return (f"{CURIA_APP}/document/{jur}-{order}-20{year}-{year}-{rest}"
+            f"-{logic}-{doc.get('docNoPart', 1)}-{lang}.pdf")
+
+
+def _first_real_pdf(urls):
+    """První adresa, která opravdu vrátí PDF (aplikace jinak vrací svou slupku)."""
+    for url in urls:
+        if not url:
+            continue
+        try:
+            r = requests.get(url, headers={"User-Agent": CURIA_HEADERS["User-Agent"]},
+                             timeout=45, stream=True)
+            head = next(r.iter_content(8), b"")
+            r.close()
+            if r.ok and head.startswith(b"%PDF"):
+                return url
+        except Exception:
+            continue
+    return ""
+
+
+def fetch_curia_request(case_ref):
+    """Text a PDF žádosti o předběžnou otázku z InfoCurie: (text, pdf_url).
+
+    Vrací ('', '') i tehdy, když věc v InfoCurii je, ale dokument k ní zatím
+    zveřejněný není – to je u čerstvě podaných žádostí obvyklý stav.
+    """
+    payload = {
+        "searchTerm": f'"{case_ref}"', "multiSearchTerms": [],
+        "sortTermList": [{"sortDirection": "DESC", "sortTerm": "SCORE"}],
+        "pagination": {"pageNumber": 0, "pageSize": 20, "from": 1, "to": 20},
+        "language": "EN", "tabName": "affair", "isAllTabsRequest": True, "ecli": "",
+        "publishedId": case_ref, "usualName": "", "logicDocId": "", "repJurExpand": True,
+        "advancedFiltersValue": [], "isSearchExact": True,
+        "searchSources": ["document", "metadata"],
+    }
+    try:
+        r = requests.post(CURIA_SEARCH_URL, headers=CURIA_HEADERS, json=payload, timeout=60)
+        r.raise_for_status()
+        hits = r.json().get("searchHits") or []
+    except Exception as e:
+        print(f"    [diag] {case_ref}: CHYBA dotazu na InfoCurii: {e}")
+        return "", ""
+    if not hits:
+        return "", ""
+
+    docs = [h.get("content") or {} for h in
+            hits[0].get("innerHits", {}).get("document", {}).get("searchHits") or []]
+    docs = [d for d in docs if _curia_doc_text(d)]
+    if not docs:
+        return "", ""
+
+    def rank(doc):
+        code = doc.get("docTypeCode") or ""
+        order = CURIA_DOC_ORDER.index(code) if code in CURIA_DOC_ORDER else len(CURIA_DOC_ORDER)
+        return (order, -len(_curia_doc_text(doc)))
+
+    doc = min(docs, key=rank)
+    pdf = ""
+    if "PDF" in (doc.get("docFormats") or []):
+        pdf = _first_real_pdf([_curia_pdf_url(doc, lang) for lang in CURIA_PDF_LANGS])
+    return _curia_doc_text(doc), pdf
+
+
 def fetch_case_text(ipcuria_url):
     """Stáhne stránku případu na ipcuria.eu a vrátí její text.
 
@@ -217,27 +324,34 @@ MIN_TEXT_FOR_SUMMARY = 500  # pod to už není co shrnovat (ať si Gemma nevymý
 
 
 def case_text_for_summary(d):
-    """Text k shrnutí a jeho zdroj – ipcuria, jinak oznámení v ÚV.
+    """Text k shrnutí, jeho zdroj a případný odkaz na dokument.
 
     U rozsudků má ipcuria plný text rozhodnutí. U žádostí o předběžnou otázku
     tam ale často stojí jen „questions are not yet available“; tehdy zkusíme
-    oznámení o věci v Úředním věstníku, které otázky obsahuje. Než oznámení
-    vyjde, není k dispozici ani jedno – vrací se ('', '').
+    postupně samotnou InfoCurii (text žádosti i s odkazem na PDF) a oznámení
+    o věci v Úředním věstníku. Než se objeví aspoň jedno, vrací se ('', '', '').
     """
+    guid = _guid(d)
     text = fetch_case_text(d["ipcuria_url"])
     pending = NO_QUESTIONS_MARKER in text.lower()
-    print(f"    [diag] {_guid(d)}: {len(text.strip())} znaků textu z ipcuria"
+    print(f"    [diag] {guid}: {len(text.strip())} znaků textu z ipcuria"
           + (" (otázky nezveřejněny)" if pending else ""))
     if not pending and len(text.strip()) >= MIN_TEXT_FOR_SUMMARY:
-        return text, "ipcuria"
+        return text, "ipcuria", ""
+
+    request_text, pdf_url = fetch_curia_request(d["case_ref"])
+    if len(request_text) >= MIN_TEXT_FOR_SUMMARY:
+        print(f"    [diag] {guid}: {len(request_text)} znaků ze samotné žádosti "
+              f"(InfoCuria){', PDF ' + pdf_url if pdf_url else ''}")
+        return request_text, "infocuria", pdf_url
 
     notice = fetch_eurlex_notice(d["case_ref"])
     if len(notice) >= MIN_TEXT_FOR_SUMMARY:
-        print(f"    [diag] {_guid(d)}: {len(notice)} znaků z oznámení v ÚV (EUR-Lex)")
-        return notice, "eur-lex"
+        print(f"    [diag] {guid}: {len(notice)} znaků z oznámení v ÚV (EUR-Lex)")
+        return notice, "eur-lex", ""
     if pending:
-        print(f"    [diag] {_guid(d)}: oznámení v ÚV zatím nevyšlo")
-    return "", ""
+        print(f"    [diag] {guid}: dokument ani oznámení zatím nezveřejněny")
+    return "", "", ""
 
 
 def enrich_summaries(decisions):
@@ -255,6 +369,7 @@ def enrich_summaries(decisions):
         d["summary"] = m.get("summary", "")
         d["tag"] = m.get("tag", "")
         d["note"] = "" if m.get("summary") else m.get("note", "")
+        d["doc_url"] = m.get("doc_url", "")
 
     if not gemini_enabled():
         for d in decisions:
@@ -267,12 +382,14 @@ def enrich_summaries(decisions):
         g = _guid(d)
         m = meta.get(g, {})
         if not m.get("summary"):
-            text, source = case_text_for_summary(d)
+            text, source, doc_url = case_text_for_summary(d)
             if text:
                 calls += 1
                 summary, tag = gemini_summarize_text(_trim_for_summary(text), CJEU_PROMPT)
                 if summary:
                     m = {"summary": summary, "tag": tag, "source": source}
+                    if doc_url:
+                        m["doc_url"] = doc_url
                     meta[g] = m
                     summarized += 1
                 else:
@@ -333,6 +450,9 @@ def build_rss(decisions):
         # Místo shrnutí poznámka, proč tam žádné není (čte ji i index.html).
         if d.get("note"):
             SubElement(item, "note").text = d["note"]
+        # Odkaz na samotný dokument (PDF žádosti) – shrnutí je jen shrnutí.
+        if d.get("doc_url"):
+            SubElement(item, "document-url").text = d["doc_url"]
 
         desc_parts = [
             f"[{d['category']}] {d['date_str']}, {d['case_ref']}",
@@ -343,6 +463,8 @@ def build_rss(decisions):
             desc_parts.append(d["summary"])
         elif d.get("note"):
             desc_parts.append(d["note"])
+        if d.get("doc_url"):
+            desc_parts.append(f"Žádost (PDF): {d['doc_url']}")
         if d["detail_type"]:
             desc_parts.append(f"Type: {d['detail_type']}")
         for cat in d["categories"]:
