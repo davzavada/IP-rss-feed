@@ -128,6 +128,16 @@ def normalize_title(title):
     return " ".join(out)
 
 
+def clean_title(raw):
+    """Název na čistý text: bez vloženého HTML a bez verzálek.
+
+    Crossref i Wiley posílají v názvech kurzívu (<i>…</i>) a další značky –
+    do feedu i do podkladu pro AI patří samotný text.
+    """
+    text = BeautifulSoup(raw or "", "html.parser").get_text(" ")
+    return normalize_title(" ".join(text.split()))
+
+
 # --- ÚPV journals (scrape HTML) ---
 
 def scrape_upv():
@@ -351,7 +361,7 @@ def _tlq_articles(soup, page_url):
             continue
         seen_ids.add(art_id)
         # TLQ sází názvy článků verzálkami – do feedu jdou běžnou sazbou.
-        title = normalize_title(title)
+        title = clean_title(title)
 
         # Autoři jsou v OJS vedle názvu ve výpisu čísla; když je šablona
         # nemá, prostě je neuvedeme.
@@ -533,7 +543,7 @@ def fetch_crossref_journal(issn, label, journal_name):
     for w in works:
         doi = (w.get("DOI") or "").strip()
         titles = w.get("title") or []
-        title = normalize_title(" ".join(titles[0].split())) if titles else ""
+        title = clean_title(titles[0]) if titles else ""
         if not doi or not title:
             continue
 
@@ -627,10 +637,7 @@ def fetch_wiley_rss(issn, label, journal_name):
     too_old = 0
 
     for item in root.iter("item"):
-        # Wiley dává do názvu i kurzívu (<i>…</i>) – bereme čistý text.
-        title = normalize_title(" ".join(
-            BeautifulSoup(_item_text(item, "title"), "html.parser").get_text(" ").split()
-        ))
+        title = clean_title(_item_text(item, "title"))
         if not title:
             continue
 
