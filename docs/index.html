@@ -132,6 +132,7 @@
   .col-name .author { display: block; margin-top: 2px; font-size: 13px; }
   .nowrap { white-space: nowrap; }
   .summary { line-height: 1.55; }
+  .note { color: var(--muted-foreground); font-style: italic; }
 
   /* Táhlo na hranici záhlaví – mění šířku sloupce na úkor toho vpravo.
      Je o pár pixelů širší než čára a přesahuje do mezery mezi sloupci,
@@ -652,7 +653,11 @@ function hesloCell(item) {
 
 function summaryCell(item) {
   const summary = text(item, "ai-summary");
-  return summary ? '<span class="summary">' + esc(summary) + '</span>' : "";
+  if (summary) return '<span class="summary">' + esc(summary) + '</span>';
+  // Bez shrnutí ještě může být poznámka, proč žádné není – třeba že u žádosti
+  // o předběžnou otázku zatím nejsou zveřejněné otázky.
+  const note = text(item, "note");
+  return note ? '<span class="summary note">' + esc(note) + '</span>' : "";
 }
 
 // Definice sloupců sdílíme mezi živým feedem a dnešním shrnutím.
