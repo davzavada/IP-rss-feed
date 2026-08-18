@@ -1,14 +1,14 @@
 {
-  "generated": "2026-08-18T11:11:32.817277+00:00",
+  "generated": "2026-08-18T12:17:53.330297+00:00",
   "from": "2026-08-04",
   "to": "2026-08-18",
   "total": 57,
-  "covered": 13,
-  "intro": "Období bylo velmi intenzivní v oblasti digitální regulace a ochrany dat. Dominovaly rozsudky Soudního dvora EU k hranicím odpovědnosti poskytovatelů hostingu a interpretaci GDPR, spolu s analýzami dopadů AI Actu a DSA.",
+  "covered": 20,
+  "intro": "Období bylo velmi intenzivní v oblasti digitální regulace, zejména v souvislosti s AI, GDPR a zodpovědností platforem. Dominovaly otázky hranic mezi poskytovatelem hostingu a aktivním správcem obsahu a dopady generativní AI na autorské právo.",
   "blocks": [
     {
       "title": "AI a digitální platformy",
-      "text": "Soudní dvůr rozhodl, že poskytovatel, který pomocí algoritmů určuje podmínky a prioritu zobrazení obsahu, vykonává nad ním kontrolu a ztrácí status pouhého poskytovatele hostingu. Aktuálně jsou diskutovány dopady AI Actu na biometrii a vliv generativní AI na autorská práva, kde trénink LLM může být kryt výjimkou pro text a data mining.",
+      "text": "Soudní dvůr EU rozhodl, že poskytovatel, který pomocí algoritmů určuje podmínky a prioritu zobrazení obsahu, vykonává nad ním kontrolu a není považován za pouhého poskytovatele hostingu. V oblasti generativní AI se diskutuje, že trénink LLM nemusí být reprodukcí a RAG-shrnutí krátkých úryvků neporušují autorská práva.",
       "sources": [
         {
           "src": "journals",
@@ -16,6 +16,13 @@
           "tag": "TLQ",
           "title": "The EU AI Act and Criminal Justice: Regulatory Challenges for Biometric and Image Recognition Technologies",
           "link": "https://tlq.ilaw.cas.cz/article/view/8"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "TLQ",
+          "title": "Navigating the Digital Frontier: Protecting Children from Harmful Content in Social Media Through Proactive Laws, Is It a Progress or an Overreach?",
+          "link": "https://tlq.ilaw.cas.cz/article/view/13"
         },
         {
           "src": "journals",
@@ -42,7 +49,7 @@
     },
     {
       "title": "Autorské právo a známky",
-      "text": "Soudní dvůr potvrdil, že účinný geo-blocking zabraňuje uznání „šíření veřejnosti“ v zemi, kde je dílo chráněno. V oblasti značek bylo zdůrazněno, že komerční prodej výrazně zrekonstruovaného luxusního zboží může být zneužitím ochranné známky, a že v konfliktu mezi autorským právem a známkami převažuje autorské právo.",
+      "text": "SdV EU potvrdil, že účinný geo-blocking zabraňuje uznání „šíření veřejnosti“ v zemi, kde je dílo chráněno. V oblasti módních značek může komerční prodej výrazně změněného luxusního zboží vést k odpovědnosti za zneužití ochranných známek.",
       "sources": [
         {
           "src": "journals",
@@ -76,8 +83,15 @@
     },
     {
       "title": "Ochrana osobních údajů (GDPR)",
-      "text": "Soudní dvůr připustil užití osobních údajů získaných v rozporu s GDPR jako důkazů v soudním řízení, pokud převažuje zájem na prokázání skutečností. Zároveň upřesnil, že zpřístupnění trestních záznamů za platbu nespadá pod novinářské účely, pokud není dodržena novinářská etika a redakční linie.",
+      "text": "SdV EU připustil užití osobních údajů získaných v rozporu s GDPR jako důkazů v soudním řízení, pokud převažuje zájem na prokázání skutečností. Zpracování veřejných dokumentů o trestních odsouzeních za platbu nespadá pod novinářské účely, pokud chybí redakční linie a etika.",
       "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "TLQ",
+          "title": "Personalization Beyond Convenience: Navigating Privacy and Personal Data Protection Issues",
+          "link": "https://tlq.ilaw.cas.cz/article/view/9"
+        },
         {
           "src": "cjeu",
           "label": "CJEU",
@@ -109,18 +123,59 @@
       ]
     },
     {
-      "title": "Řízení obchodních korporací",
-      "text": "Analýza praxe ukazuje, že manažeři často zanedbávají systematickou dokumentaci rozhodovacích procesů, což zvyšuje jejich odpovědnostní rizika. Doporučuje se posílení interních kontrol pro efektivnější využití pravidla podnikatelského úsudku.",
+      "title": "Patenty a genetické zdroje",
+      "text": "Analýzy ukazují riziko, že patenty na rostlinné genetické zdroje mohou omezit další šlechtění a výzkum. Smlouva WIPO o genetických zdrojích sice byla přijata, ale její vágní formulace mohou ohrozit jednotnou implementaci.",
       "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JWIP",
+          "title": "Patent landscape analysis of inventions based on plant genetic resources for food and agriculture and related digital sequence information",
+          "link": "https://doi.org/10.1111/jwip.70033"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "When a Claim Amendment Does Not Constitute an Undue Extension",
+          "link": "https://doi.org/10.1093/grurint/ikag079"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "Of Ceilings and Flaws: Negotiating Disclosure in the WIPO Genetic Resources and Traditional Knowledge Treaty",
+          "link": "https://doi.org/10.1093/grurint/ikag080"
+        }
+      ]
+    },
+    {
+      "title": "Korporátní a procesní právo",
+      "text": "Nejvyšší soud potvrdil, že pravomocný rozsudek je závazný i pro právního nástupce účastníka původního řízení. V oblasti obchodních korporací se doporučuje restriktivní výklad paralýzy valné hromady jako důvodu pro zrušení společnosti soudem.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "Právník",
+          "title": "Paralýza valné hromady jako důvod pro zrušení kapitálové společnosti s likvidací soudem",
+          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-8.html?a=4049"
+        },
         {
           "src": "journals",
           "label": "Časopis",
           "tag": "Právník",
           "title": "Péče řádného hospodáře v legislativní a manažersko-ekonomické praxi",
           "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-8.html?a=4050"
+        },
+        {
+          "src": "nsoud",
+          "label": "NS 23 Cdo",
+          "tag": "",
+          "title": "23 Cdo 1709/2025",
+          "link": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/F5BB7967652CA4E9C1258E4B001B85C2/$file/23%20Cdo%201709_2025.pdf?openElement"
         }
       ]
     }
   ],
-  "input_hash": "2d1e363dc43c6da3dc98d5ede35ea4902960b67292b8fd0aa80e48fce909e933"
+  "input_hash": "8bfae71c907dc7a9558140891781406d0acfb0b17788e76a38184086a0f889d1"
 }

@@ -6,7 +6,7 @@
     <atom:link href="https://rss.davidzavada.cz/journals_feed.xml" rel="self" type="application/rss+xml" />
     <description>Nová čísla právních časopisů a články</description>
     <language>cs</language>
-    <lastBuildDate>Tue, 18 Aug 2026 11:11:32 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 18 Aug 2026 12:17:53 +0000</lastBuildDate>
     <item>
       <title>[TLQ] Report from the International Conference “3rd Czecho-Slovak Symposium on Challenges of AI for Administrative Law: A Fleet of Autonomous Vehicles on the Horizon!” 11th March 2026, Villa Lanna, Prague</title>
       <link>https://tlq.ilaw.cas.cz/article/view/2</link>
@@ -238,18 +238,6 @@ Právník 8/2026 (ÚSP AV ČR)
       <dc:date>2026-08-18</dc:date>
     </item>
     <item>
-      <title>[Právník] Péče řádného hospodáře v legislativní a manažersko-ekonomické praxi</title>
-      <link>https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-8.html?a=4050</link>
-      <guid isPermaLink="false">Pravnik-2026-2026-8-4050</guid>
-      <description>Péče řádného hospodáře v legislativní a manažersko-ekonomické praxi
-Právník 8/2026 (ÚSP AV ČR)
-Článek analyzuje právní standard péče řádného hospodáře v řízení obchodních korporací z teoretického i empirického hlediska. Výzkum ukazuje, že manažeři v praxi často postrádají plné povědomí o důkazních požadavcích a zanedbávají systematickou dokumentaci rozhodovacích procesů i preventivní finanční testy. Autoři doporučují posílení interních kontrol a dokumentace pro snížení odpovědnostních rizik a efektivnější využití pravidla podnikatelského úsudku.</description>
-      <ai-tag>Péče řádného hospodáře</ai-tag>
-      <ai-summary>Článek analyzuje právní standard péče řádného hospodáře v řízení obchodních korporací z teoretického i empirického hlediska. Výzkum ukazuje, že manažeři v praxi často postrádají plné povědomí o důkazních požadavcích a zanedbávají systematickou dokumentaci rozhodovacích procesů i preventivní finanční testy. Autoři doporučují posílení interních kontrol a dokumentace pro snížení odpovědnostních rizik a efektivnější využití pravidla podnikatelského úsudku.</ai-summary>
-      <pubDate>Tue, 18 Aug 2026 12:00:00 +0000</pubDate>
-      <dc:date>2026-08-18</dc:date>
-    </item>
-    <item>
       <title>[Právník] Paralýza valné hromady jako důvod pro zrušení kapitálové společnosti s likvidací soudem</title>
       <link>https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-8.html?a=4049</link>
       <guid isPermaLink="false">Pravnik-2026-2026-8-4049</guid>
@@ -258,6 +246,18 @@ Právník 8/2026 (ÚSP AV ČR)
 Článek analyzuje interpretaci § 93 písm. c) zákona o obchodních korporacích ve vztahu k rozporům mezi společníky. Autor argumentuje za restriktivní výklad tohoto ustanovení s využitím teleologického přístupu a Law &amp; Economics. Závěrem je, že zrušení společnosti soudem by mělo nastat až při plné paralýze valné hromady, která znemožňuje další výkon činnosti společnosti.</description>
       <ai-tag>Paralýza valné hromady</ai-tag>
       <ai-summary>Článek analyzuje interpretaci § 93 písm. c) zákona o obchodních korporacích ve vztahu k rozporům mezi společníky. Autor argumentuje za restriktivní výklad tohoto ustanovení s využitím teleologického přístupu a Law &amp; Economics. Závěrem je, že zrušení společnosti soudem by mělo nastat až při plné paralýze valné hromady, která znemožňuje další výkon činnosti společnosti.</ai-summary>
+      <pubDate>Tue, 18 Aug 2026 12:00:00 +0000</pubDate>
+      <dc:date>2026-08-18</dc:date>
+    </item>
+    <item>
+      <title>[Právník] Péče řádného hospodáře v legislativní a manažersko-ekonomické praxi</title>
+      <link>https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-8.html?a=4050</link>
+      <guid isPermaLink="false">Pravnik-2026-2026-8-4050</guid>
+      <description>Péče řádného hospodáře v legislativní a manažersko-ekonomické praxi
+Právník 8/2026 (ÚSP AV ČR)
+Článek analyzuje právní standard péče řádného hospodáře v řízení obchodních korporací z teoretického i empirického hlediska. Výzkum ukazuje, že manažeři v praxi často postrádají plné povědomí o důkazních požadavcích a zanedbávají systematickou dokumentaci rozhodovacích procesů i preventivní finanční testy. Autoři doporučují posílení interních kontrol a dokumentace pro snížení odpovědnostních rizik a efektivnější využití pravidla podnikatelského úsudku.</description>
+      <ai-tag>Péče řádného hospodáře</ai-tag>
+      <ai-summary>Článek analyzuje právní standard péče řádného hospodáře v řízení obchodních korporací z teoretického i empirického hlediska. Výzkum ukazuje, že manažeři v praxi často postrádají plné povědomí o důkazních požadavcích a zanedbávají systematickou dokumentaci rozhodovacích procesů i preventivní finanční testy. Autoři doporučují posílení interních kontrol a dokumentace pro snížení odpovědnostních rizik a efektivnější využití pravidla podnikatelského úsudku.</ai-summary>
       <pubDate>Tue, 18 Aug 2026 12:00:00 +0000</pubDate>
       <dc:date>2026-08-18</dc:date>
     </item>
@@ -373,16 +373,20 @@ Předložený text obsahuje pouze název subjektu. Chybí samotný článek či 
       <dc:date>2026-08-06</dc:date>
     </item>
     <item>
-      <title>[IIC] “Pacte Law”</title>
-      <link>https://doi.org/10.1007/s40319-026-01756-z</link>
-      <guid isPermaLink="false">IIC-10.1007/s40319-026-01756-z</guid>
-      <description>“Pacte Law”
-IIC – International Review of Intellectual Property and Competition Law
-Předložený text obsahuje pouze název „Pacte Law“. Neobsahuje žádnou anotaci ani konkrétní závěry.</description>
-      <ai-tag>Pakt o migraci</ai-tag>
-      <ai-summary>Předložený text obsahuje pouze název „Pacte Law“. Neobsahuje žádnou anotaci ani konkrétní závěry.</ai-summary>
-      <pubDate>Tue, 04 Aug 2026 12:00:00 +0000</pubDate>
-      <dc:date>2026-08-04</dc:date>
+      <title>[GRUR Int] Of Ceilings and Flaws: Negotiating Disclosure in the WIPO Genetic Resources and Traditional Knowledge Treaty</title>
+      <link>https://doi.org/10.1093/grurint/ikag080</link>
+      <dc:creator>Wend Wendland</dc:creator>
+      <guid isPermaLink="false">GRUR Int-10.1093/grurint/ikag080</guid>
+      <description>Of Ceilings and Flaws: Negotiating Disclosure in the WIPO Genetic Resources and Traditional Knowledge Treaty
+Autor: Wend Wendland
+GRUR International
+The negotiators of the 2024 WIPO Treaty on Intellectual Property, Genetic Resources and Associated Traditional Knowledge navigated the straits of maximum standards (ceilings) and minimum standards (floors), harmonization and flexibility, and clarity and ambiguity. The text as finally adopted by c...
+Článek analyzuje vyjednávání o Smlouvě WIPO z roku 2024 týkající se genetických zdrojů a tradičních znalostí, zejména v oblasti povinnosti zveřejňování. Autor konstatuje, že kompromisní a vágní formulace sice umožnily přijetí smlouvy, ale mohou ohrozit její efektivitu a jednotnou implementaci. K nápravě doporučuje koordinaci interpretace a provedení smlouvy mezi smluvními stranami.</description>
+      <is-new>true</is-new>
+      <ai-tag>Zveřejňování genetických zdrojů</ai-tag>
+      <ai-summary>Článek analyzuje vyjednávání o Smlouvě WIPO z roku 2024 týkající se genetických zdrojů a tradičních znalostí, zejména v oblasti povinnosti zveřejňování. Autor konstatuje, že kompromisní a vágní formulace sice umožnily přijetí smlouvy, ale mohou ohrozit její efektivitu a jednotnou implementaci. K nápravě doporučuje koordinaci interpretace a provedení smlouvy mezi smluvními stranami.</ai-summary>
+      <pubDate>Wed, 05 Aug 2026 12:00:00 +0000</pubDate>
+      <dc:date>2026-08-05</dc:date>
     </item>
     <item>
       <title>[GRUR Int] Trademarking Signs with Cultural Significance: How to Position Simultaneous and Diachronic Rights Overlap in a Spectrum of Absolute Grounds of Refusal</title>
