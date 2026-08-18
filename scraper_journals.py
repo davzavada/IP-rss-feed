@@ -386,7 +386,7 @@ def fetch_ojs_rss(feed_url, label, journal_name):
     return items
 
 
-# --- Časopisy přes Crossref API (OUP, Elgar, Springer) ---
+# --- Časopisy přes Crossref API (OUP, Elgar, Springer, Wiley) ---
 # Weby těchto vydavatelů (academic.oup.com, elgaronline.com) sedí za
 # Cloudflare bot-ochranou a přímý scraping z GitHub Actions je nespolehlivý.
 # Crossref je jejich oficiální metadatové API: bez ochran, s DOI, autory
@@ -404,6 +404,7 @@ CROSSREF_JOURNALS = [
     ("1747-1540", "JIPLP", "Journal of Intellectual Property Law & Practice"),
     ("2195-0237", "IIC", "IIC – International Review of Intellectual Property "
                          "and Competition Law"),
+    ("1747-1796", "JWIP", "The Journal of World Intellectual Property"),
 ]
 
 
@@ -642,7 +643,7 @@ def main():
         except Exception as e:
             print(f"  CHYBA při stahování {label}: {e}")
 
-    # 5. Časopisy přes Crossref (QMJIP, GRUR Int, JIPLP, IIC)
+    # 5. Časopisy přes Crossref (QMJIP, GRUR Int, JIPLP, IIC, JWIP)
     for issn, label, journal_name in CROSSREF_JOURNALS:
         print(f"  Zdroj: {journal_name} (Crossref)")
         try:
