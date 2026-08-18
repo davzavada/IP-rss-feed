@@ -1,43 +1,15 @@
 {
-  "generated": "2026-08-18T12:17:53.330297+00:00",
+  "generated": "2026-08-18T14:11:14.188772+00:00",
   "from": "2026-08-04",
   "to": "2026-08-18",
-  "total": 57,
-  "covered": 20,
-  "intro": "Období bylo velmi intenzivní v oblasti digitální regulace, zejména v souvislosti s AI, GDPR a zodpovědností platforem. Dominovaly otázky hranic mezi poskytovatelem hostingu a aktivním správcem obsahu a dopady generativní AI na autorské právo.",
+  "total": 59,
+  "covered": 14,
+  "intro": "Období bylo velmi intenzivní v oblasti digitálního práva, zejména díky klíčovým rozsudkům Soudního dvora EU k odpovědnosti platforem a ochraně dat. Významné jsou také nové analýzy dopadů EU AI Actu a regulace generativní AI na autorské právo.",
   "blocks": [
     {
-      "title": "AI a digitální platformy",
-      "text": "Soudní dvůr EU rozhodl, že poskytovatel, který pomocí algoritmů určuje podmínky a prioritu zobrazení obsahu, vykonává nad ním kontrolu a není považován za pouhého poskytovatele hostingu. V oblasti generativní AI se diskutuje, že trénink LLM nemusí být reprodukcí a RAG-shrnutí krátkých úryvků neporušují autorská práva.",
+      "title": "Odpovědnost platforem a algoritmy",
+      "text": "Soudní dvůr EU rozhodl, že poskytovatel, který pomocí algoritmů určuje podmínky a prioritu zobrazení obsahu, vykonává nad ním kontrolu a není pouhým poskytovatelem hostingu. To zásadně mění posouzení odpovědnosti za obsah v digitálním prostředí.",
       "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "TLQ",
-          "title": "The EU AI Act and Criminal Justice: Regulatory Challenges for Biometric and Image Recognition Technologies",
-          "link": "https://tlq.ilaw.cas.cz/article/view/8"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "TLQ",
-          "title": "Navigating the Digital Frontier: Protecting Children from Harmful Content in Social Media Through Proactive Laws, Is It a Progress or an Overreach?",
-          "link": "https://tlq.ilaw.cas.cz/article/view/13"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "Právník",
-          "title": "Nařízení DSA a role koordinátorů digitálních služeb při ochraně svobody projevu",
-          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-8.html?a=4047"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JWIP",
-          "title": "Preserving balance in the EU digital single market: How Like Company could reframe copyright and innovation in the generative AI era",
-          "link": "https://doi.org/10.1111/jwip.70032"
-        },
         {
           "src": "cjeu",
           "label": "CJEU",
@@ -48,15 +20,22 @@
       ]
     },
     {
-      "title": "Autorské právo a známky",
-      "text": "SdV EU potvrdil, že účinný geo-blocking zabraňuje uznání „šíření veřejnosti“ v zemi, kde je dílo chráněno. V oblasti módních značek může komerční prodej výrazně změněného luxusního zboží vést k odpovědnosti za zneužití ochranných známek.",
+      "title": "Autorské právo a AI",
+      "text": "Soudní dvůr EU potvrdil, že účinný geo-blocking znemožňuje uznání šíření díla veřejnosti. V oblasti AI se diskutuje, zda trénink LLM a RAG-shrnutí porušují autorská práva, přičemž trénink může být kryt výjimkou pro text a data mining.",
       "sources": [
+        {
+          "src": "cjeu",
+          "label": "CJEU",
+          "tag": "Ruling",
+          "title": "C-788/24 (Anne Frank Fonds)",
+          "link": "https://curia.europa.eu/juris/liste.do?num=C-788/24"
+        },
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "IIC",
-          "title": "The Legal Limits of Luxury: Restricting Third-Party Restoration of Luxury Fashion",
-          "link": "https://doi.org/10.1007/s40319-026-01752-3"
+          "tag": "JWIP",
+          "title": "Preserving balance in the EU digital single market: How Like Company could reframe copyright and innovation in the generative AI era",
+          "link": "https://doi.org/10.1111/jwip.70032"
         },
         {
           "src": "journals",
@@ -64,40 +43,19 @@
           "tag": "IIC",
           "title": "The Validity of the Residual Right of Remuneration under Articles 17 and 18 CDSMD",
           "link": "https://doi.org/10.1007/s40319-026-01751-4"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "Trademarking Signs with Cultural Significance: How to Position Simultaneous and Diachronic Rights Overlap in a Spectrum of Absolute Grounds of Refusal",
-          "link": "https://doi.org/10.1093/grurint/ikag076"
-        },
-        {
-          "src": "cjeu",
-          "label": "CJEU",
-          "tag": "Ruling",
-          "title": "C-788/24 (Anne Frank Fonds)",
-          "link": "https://curia.europa.eu/juris/liste.do?num=C-788/24"
         }
       ]
     },
     {
-      "title": "Ochrana osobních údajů (GDPR)",
-      "text": "SdV EU připustil užití osobních údajů získaných v rozporu s GDPR jako důkazů v soudním řízení, pokud převažuje zájem na prokázání skutečností. Zpracování veřejných dokumentů o trestních odsouzeních za platbu nespadá pod novinářské účely, pokud chybí redakční linie a etika.",
+      "title": "Ochrana osobních údajů",
+      "text": "Soudní dvůr EU připustil užití důkazů získaných v rozporu s GDPR, pokud převažuje zájem na prokázání skutečností. Vyjasnil také, že zpřístupnění trestních záznamů za platbu nespadá pod novinářské účely, pokud chybí redakční linie a etika.",
       "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "TLQ",
-          "title": "Personalization Beyond Convenience: Navigating Privacy and Personal Data Protection Issues",
-          "link": "https://tlq.ilaw.cas.cz/article/view/9"
-        },
         {
           "src": "cjeu",
           "label": "CJEU",
           "tag": "Ruling",
-          "title": "C-474/24 (NADA  Austria and Others)",
-          "link": "https://curia.europa.eu/juris/liste.do?num=C-474/24"
+          "title": "C-484/24 (NTH Haustechnik)",
+          "link": "https://curia.europa.eu/juris/liste.do?num=C-484/24"
         },
         {
           "src": "cjeu",
@@ -110,22 +68,36 @@
           "src": "cjeu",
           "label": "CJEU",
           "tag": "Ruling",
-          "title": "C-414/24 (Datenschutzbehörde)",
-          "link": "https://curia.europa.eu/juris/liste.do?num=C-414/24"
+          "title": "C-474/24 (NADA  Austria and Others)",
+          "link": "https://curia.europa.eu/juris/liste.do?num=C-474/24"
         },
         {
           "src": "cjeu",
           "label": "CJEU",
           "tag": "Ruling",
-          "title": "C-484/24 (NTH Haustechnik)",
-          "link": "https://curia.europa.eu/juris/liste.do?num=C-484/24"
+          "title": "C-414/24 (Datenschutzbehörde)",
+          "link": "https://curia.europa.eu/juris/liste.do?num=C-414/24"
         }
       ]
     },
     {
-      "title": "Patenty a genetické zdroje",
-      "text": "Analýzy ukazují riziko, že patenty na rostlinné genetické zdroje mohou omezit další šlechtění a výzkum. Smlouva WIPO o genetických zdrojích sice byla přijata, ale její vágní formulace mohou ohrozit jednotnou implementaci.",
+      "title": "Známky a patenty",
+      "text": "Komerční prodej výrazně změněných luxusních doplňků může být zneužitím ochranné známky. V oblasti patentů se řeší povinnosti zveřejňování genetických zdrojů a podmínky pro změnu patentových nároků bez nepřiměřeného rozšíření ochrany.",
       "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "The Legal Limits of Luxury: Restricting Third-Party Restoration of Luxury Fashion",
+          "link": "https://doi.org/10.1007/s40319-026-01752-3"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "Trademarking Signs with Cultural Significance: How to Position Simultaneous and Diachronic Rights Overlap in a Spectrum of Absolute Grounds of Refusal",
+          "link": "https://doi.org/10.1093/grurint/ikag076"
+        },
         {
           "src": "journals",
           "label": "Časopis",
@@ -137,45 +109,31 @@
           "src": "journals",
           "label": "Časopis",
           "tag": "GRUR Int",
-          "title": "When a Claim Amendment Does Not Constitute an Undue Extension",
-          "link": "https://doi.org/10.1093/grurint/ikag079"
+          "title": "Of Ceilings and Flaws: Negotiating Disclosure in the WIPO Genetic Resources and Traditional Knowledge Treaty",
+          "link": "https://doi.org/10.1093/grurint/ikag080"
         },
         {
           "src": "journals",
           "label": "Časopis",
           "tag": "GRUR Int",
-          "title": "Of Ceilings and Flaws: Negotiating Disclosure in the WIPO Genetic Resources and Traditional Knowledge Treaty",
-          "link": "https://doi.org/10.1093/grurint/ikag080"
+          "title": "When a Claim Amendment Does Not Constitute an Undue Extension",
+          "link": "https://doi.org/10.1093/grurint/ikag079"
         }
       ]
     },
     {
-      "title": "Korporátní a procesní právo",
-      "text": "Nejvyšší soud potvrdil, že pravomocný rozsudek je závazný i pro právního nástupce účastníka původního řízení. V oblasti obchodních korporací se doporučuje restriktivní výklad paralýzy valné hromady jako důvodu pro zrušení společnosti soudem.",
+      "title": "Péče řádného hospodáře",
+      "text": "Analýza praxe ukazuje, že manažeři často zanedbávají dokumentaci rozhodovacích procesů, což zvyšuje jejich odpovědnostní rizika. Doporučuje se posílení interních kontrol pro efektivnější využití pravidla podnikatelského úsudku.",
       "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "Právník",
-          "title": "Paralýza valné hromady jako důvod pro zrušení kapitálové společnosti s likvidací soudem",
-          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-8.html?a=4049"
-        },
         {
           "src": "journals",
           "label": "Časopis",
           "tag": "Právník",
           "title": "Péče řádného hospodáře v legislativní a manažersko-ekonomické praxi",
           "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-8.html?a=4050"
-        },
-        {
-          "src": "nsoud",
-          "label": "NS 23 Cdo",
-          "tag": "",
-          "title": "23 Cdo 1709/2025",
-          "link": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/F5BB7967652CA4E9C1258E4B001B85C2/$file/23%20Cdo%201709_2025.pdf?openElement"
         }
       ]
     }
   ],
-  "input_hash": "8bfae71c907dc7a9558140891781406d0acfb0b17788e76a38184086a0f889d1"
+  "input_hash": "c145f574a08c41371deca98d9fe9ae8f8a39463e584e3bda28bdb89bd6f18668"
 }

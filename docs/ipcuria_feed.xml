@@ -6,7 +6,7 @@
     <atom:link href="https://rss.davidzavada.cz/ipcuria_feed.xml" rel="self" type="application/rss+xml" />
     <description>Latest CJEU IP case law: preliminary rulings, referrals, appeals</description>
     <language>en</language>
-    <lastBuildDate>Tue, 18 Aug 2026 12:17:05 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 18 Aug 2026 14:10:57 +0000</lastBuildDate>
     <item>
       <title>[Referral] C-837/26 (Airwair International)</title>
       <link>https://curia.europa.eu/juris/liste.do?num=C-837/26</link>
@@ -102,9 +102,12 @@ CURIA: https://curia.europa.eu/juris/liste.do?num=C-723/26</description>
       <title>[Referral] C-691/26 (Alphavet)</title>
       <link>https://curia.europa.eu/juris/liste.do?num=C-691/26</link>
       <guid isPermaLink="false">Referral-C-691/26</guid>
-      <note>Otázky zatím nezveřejněny.</note>
+      <ai-tag>Ochranná známka</ai-tag>
+      <ai-summary>Maďarský nejvyšší soud se ptá, zda pětiletá pasivita majitele dřívější ochranné známky brání podání žaloby proti užívání znamene i poté, co vypršela ochrana pozdější ochranné známky. Soud zjišťuje, zda tato překážka trvá i v případě, že znamene používá třetí osoba, o jejím užívání byl majitel dřívější známky před vypršením ochrany informován.</ai-summary>
+      <document-url>https://infocuria.curia.europa.eu/document/C-0691-2026-26-00000000RP-01-P-01-325001-1-CS.pdf</document-url>
       <description>[Referral] 24 Jun 2026, C-691/26 (Alphavet)
-Otázky zatím nezveřejněny.
+Maďarský nejvyšší soud se ptá, zda pětiletá pasivita majitele dřívější ochranné známky brání podání žaloby proti užívání znamene i poté, co vypršela ochrana pozdější ochranné známky. Soud zjišťuje, zda tato překážka trvá i v případě, že znamene používá třetí osoba, o jejím užívání byl majitel dřívější známky před vypršením ochrany informován.
+Žádost (PDF): https://infocuria.curia.europa.eu/document/C-0691-2026-26-00000000RP-01-P-01-325001-1-CS.pdf
 CURIA: https://curia.europa.eu/juris/liste.do?num=C-691/26</description>
       <pubDate>Wed, 24 Jun 2026 12:00:00 +0000</pubDate>
       <dc:date>2026-06-24</dc:date>
@@ -161,9 +164,12 @@ CURIA: https://curia.europa.eu/juris/liste.do?num=C-188/24</description>
       <title>[Referral] C-660/26 (International Card Services)</title>
       <link>https://curia.europa.eu/juris/liste.do?num=C-660/26</link>
       <guid isPermaLink="false">Referral-C-660/26</guid>
-      <note>Otázky zatím nezveřejněny.</note>
+      <ai-tag>GDPR</ai-tag>
+      <ai-summary>Předkládající soud se ptá, zda uchovávání fotografie obličeje za účelem identifikace představuje zpracování biometrických údajů nebo údajů o rasovém či etnickém původu podle GDPR. Zároveň žádá o vyjasnění, zda směrnice o prevenci praní peněz ukládá povinnost uchovávat kopie dokladů totožnosti včetně fotografií.</ai-summary>
+      <document-url>https://infocuria.curia.europa.eu/document/C-0660-2026-26-00000000RP-01-P-01-325441-1-CS.pdf</document-url>
       <description>[Referral] 16 Jun 2026, C-660/26 (International Card Services)
-Otázky zatím nezveřejněny.
+Předkládající soud se ptá, zda uchovávání fotografie obličeje za účelem identifikace představuje zpracování biometrických údajů nebo údajů o rasovém či etnickém původu podle GDPR. Zároveň žádá o vyjasnění, zda směrnice o prevenci praní peněz ukládá povinnost uchovávat kopie dokladů totožnosti včetně fotografií.
+Žádost (PDF): https://infocuria.curia.europa.eu/document/C-0660-2026-26-00000000RP-01-P-01-325441-1-CS.pdf
 CURIA: https://curia.europa.eu/juris/liste.do?num=C-660/26</description>
       <pubDate>Tue, 16 Jun 2026 12:00:00 +0000</pubDate>
       <dc:date>2026-06-16</dc:date>
