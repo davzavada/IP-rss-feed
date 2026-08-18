@@ -1,28 +1,35 @@
 {
-  "generated": "2026-08-18T11:04:13.235087+00:00",
+  "generated": "2026-08-18T11:11:32.817277+00:00",
   "from": "2026-08-04",
   "to": "2026-08-18",
   "total": 57,
-  "covered": 15,
-  "intro": "Období bylo velmi intenzivní v oblasti digitálního práva, zejména s ohledem na judikaturu Soudního dvora EU k GDPR a statusu poskytovatelů hostingu. Významný prostor zaujala rovněž analýza dopadů generativní AI na autorské právo a regulace digitálních platforem.",
+  "covered": 13,
+  "intro": "Období bylo velmi intenzivní v oblasti digitální regulace a ochrany dat. Dominovaly rozsudky Soudního dvora EU k hranicím odpovědnosti poskytovatelů hostingu a interpretaci GDPR, spolu s analýzami dopadů AI Actu a DSA.",
   "blocks": [
     {
-      "title": "AI, autorské právo a platformy",
-      "text": "Soudní dvůr EU rozhodl, že poskytovatel, který pomocí algoritmů určuje prioritu zobrazení obsahu, vykonává nad ním kontrolu a není považován za pouhého poskytovatele hostingu. V oblasti autorského práva bylo vyjasněno, že účinný geo-blocking znemožňuje „šíření veřejnosti“ a trénink LLM nemusí být reprodukcí porušující práva. ZDROJE: 44, 49, 55",
+      "title": "AI a digitální platformy",
+      "text": "Soudní dvůr rozhodl, že poskytovatel, který pomocí algoritmů určuje podmínky a prioritu zobrazení obsahu, vykonává nad ním kontrolu a ztrácí status pouhého poskytovatele hostingu. Aktuálně jsou diskutovány dopady AI Actu na biometrii a vliv generativní AI na autorská práva, kde trénink LLM může být kryt výjimkou pro text a data mining.",
       "sources": [
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "JWIP",
-          "title": "Preserving balance in the EU digital single market: How <i>Like Company</i> could reframe copyright and innovation in the generative AI era",
-          "link": "https://doi.org/10.1111/jwip.70032"
+          "tag": "TLQ",
+          "title": "The EU AI Act and Criminal Justice: Regulatory Challenges for Biometric and Image Recognition Technologies",
+          "link": "https://tlq.ilaw.cas.cz/article/view/8"
         },
         {
-          "src": "cjeu",
-          "label": "CJEU",
-          "tag": "Ruling",
-          "title": "C-788/24 (Anne Frank Fonds)",
-          "link": "https://curia.europa.eu/juris/liste.do?num=C-788/24"
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "Právník",
+          "title": "Nařízení DSA a role koordinátorů digitálních služeb při ochraně svobody projevu",
+          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-8.html?a=4047"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JWIP",
+          "title": "Preserving balance in the EU digital single market: How Like Company could reframe copyright and innovation in the generative AI era",
+          "link": "https://doi.org/10.1111/jwip.70032"
         },
         {
           "src": "cjeu",
@@ -34,8 +41,42 @@
       ]
     },
     {
-      "title": "GDPR a ochrana dat",
-      "text": "CJEU potvrdil, že národní soudy mohou v řízení využít i údaje získané v rozporu s GDPR, pokud převažuje zájem na prokázání skutečností. Dále bylo stanoveno, že komerční zpřístupnění trestních záznamů za platbu nespadá pod novinářskou výjimku a dozorové orgány nesmí zamítat stížnosti jen kvůli probíhajícímu soudnímu řízení. ZDROJE: 48, 50, 53, 54",
+      "title": "Autorské právo a známky",
+      "text": "Soudní dvůr potvrdil, že účinný geo-blocking zabraňuje uznání „šíření veřejnosti“ v zemi, kde je dílo chráněno. V oblasti značek bylo zdůrazněno, že komerční prodej výrazně zrekonstruovaného luxusního zboží může být zneužitím ochranné známky, a že v konfliktu mezi autorským právem a známkami převažuje autorské právo.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "The Legal Limits of Luxury: Restricting Third-Party Restoration of Luxury Fashion",
+          "link": "https://doi.org/10.1007/s40319-026-01752-3"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "The Validity of the Residual Right of Remuneration under Articles 17 and 18 CDSMD",
+          "link": "https://doi.org/10.1007/s40319-026-01751-4"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "Trademarking Signs with Cultural Significance: How to Position Simultaneous and Diachronic Rights Overlap in a Spectrum of Absolute Grounds of Refusal",
+          "link": "https://doi.org/10.1093/grurint/ikag076"
+        },
+        {
+          "src": "cjeu",
+          "label": "CJEU",
+          "tag": "Ruling",
+          "title": "C-788/24 (Anne Frank Fonds)",
+          "link": "https://curia.europa.eu/juris/liste.do?num=C-788/24"
+        }
+      ]
+    },
+    {
+      "title": "Ochrana osobních údajů (GDPR)",
+      "text": "Soudní dvůr připustil užití osobních údajů získaných v rozporu s GDPR jako důkazů v soudním řízení, pokud převažuje zájem na prokázání skutečností. Zároveň upřesnil, že zpřístupnění trestních záznamů za platbu nespadá pod novinářské účely, pokud není dodržena novinářská etika a redakční linie.",
       "sources": [
         {
           "src": "cjeu",
@@ -68,76 +109,15 @@
       ]
     },
     {
-      "title": "AI Act a regulace DSA",
-      "text": "Analýzy se zaměřily na regulaci biometrických systémů v trestním řízení v rámci AI Actu a rizika automatizačního zkreslení. V kontextu DSA byla kritizována omezená pravomoc národních koordinátorů chránit svobodu projevu a diskutována efektivita ochrany dětí před škodlivým obsahem. ZDROJE: 7, 12, 21",
+      "title": "Řízení obchodních korporací",
+      "text": "Analýza praxe ukazuje, že manažeři často zanedbávají systematickou dokumentaci rozhodovacích procesů, což zvyšuje jejich odpovědnostní rizika. Doporučuje se posílení interních kontrol pro efektivnější využití pravidla podnikatelského úsudku.",
       "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "TLQ",
-          "title": "The EU AI Act and Criminal Justice: Regulatory Challenges for Biometric and Image Recognition Technologies",
-          "link": "https://tlq.ilaw.cas.cz/article/view/8"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "TLQ",
-          "title": "Navigating the Digital Frontier: Protecting Children from Harmful Content in Social Media Through Proactive Laws, Is It a Progress or an Overreach?",
-          "link": "https://tlq.ilaw.cas.cz/article/view/13"
-        },
         {
           "src": "journals",
           "label": "Časopis",
           "tag": "Právník",
-          "title": "Nařízení DSA a role koordinátorů digitálních služeb při ochraně svobody projevu",
-          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-8.html?a=4047"
-        }
-      ]
-    },
-    {
-      "title": "Ochranné známky a autorská práva",
-      "text": "Bylo zanalyzováno reziduální právo na odměnu pro tvůrce jako legitimní nástroj nápravy vyjednávací nerovnováhy. V oblasti značek bylo upozorněno, že komerční prodej výrazně změněných luxusních doplňků může být zneužitím ochranné známky a že autorské právo převažuje nad právy z ochranných známek u znaků s kulturním významem. ZDROJE: 22, 27, 43",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "The Legal Limits of Luxury: Restricting Third-Party Restoration of Luxury Fashion",
-          "link": "https://doi.org/10.1007/s40319-026-01752-3"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "The Validity of the Residual Right of Remuneration under Articles 17 and 18 CDSMD",
-          "link": "https://doi.org/10.1007/s40319-026-01751-4"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "Trademarking Signs with Cultural Significance: How to Position Simultaneous and Diachronic Rights Overlap in a Spectrum of Absolute Grounds of Refusal",
-          "link": "https://doi.org/10.1093/grurint/ikag076"
-        }
-      ]
-    },
-    {
-      "title": "Patentové právo",
-      "text": "Práce se zabývaly podmínkami pro změnu patentových nároků, aby nedošlo k nepřiměřenému rozšíření rozsahu ochrany. Dále byla analyzována patentní krajina genetických zdrojů pro zemědělství a rizika omezení dalšího výzkumu a šlechtění. ZDROJE: 23, 25",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JWIP",
-          "title": "Patent landscape analysis of inventions based on plant genetic resources for food and agriculture and related digital sequence information",
-          "link": "https://doi.org/10.1111/jwip.70033"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "When a Claim Amendment Does Not Constitute an Undue Extension",
-          "link": "https://doi.org/10.1093/grurint/ikag079"
+          "title": "Péče řádného hospodáře v legislativní a manažersko-ekonomické praxi",
+          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-8.html?a=4050"
         }
       ]
     }
