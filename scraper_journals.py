@@ -321,6 +321,96 @@ def scrape_pravnik():
     )
 
 
+# --- Jurisprudence (jurisprudence.cz) – vlastní web, bez RSS i bez API ---
+# Archiv vypisuje ročníky (…/casopis/archiv/<rok>) a jednotlivá čísla
+# (…/casopis/archiv/<číslo>-<rok>, např. /archiv/1-2026); stránka čísla je
+# obsah a odkazuje na články (…/casopis/<slug>.m-<id>.html). Číslo se hledá
+# v archivu, ne natvrdo v adrese – jinak by feed zamrzl na jednom ročníku.
+# Kdyby se archiv přestal dát přečíst, radši nevrátíme nic: natvrdo zapsané
+# staré číslo by se jednoho dne vysypalo do feedu jako samé novinky.
+# Datum vydání se z výpisu vyčíst nedá; co je nové, rozhoduje
+# filter_by_first_seen podle guid, takže pub_date stačí orientační.
+
+JURISPRUDENCE_ARCHIVE_URL = "https://www.jurisprudence.cz/cz/casopis/archiv"
+JURISPRUDENCE_ISSUE_RE = re.compile(r"/cz/casopis/archiv/(\d+)-(\d{4})/?$")
+JURISPRUDENCE_ARTICLE_RE = re.compile(r"/cz/casopis/[^/]+\.m-(\d+)\.html")
+JURISPRUDENCE_MAX_ITEMS = 25   # obsah jednoho čísla, ne celý ročník
+JURISPRUDENCE_TRY_ISSUES = 2   # nejnovější číslo a jedno předchozí
+
+
+def _jurisprudence_issue_pages():
+    """Adresy, kde archiv vypisuje čísla – rozcestník a poslední dva ročníky.
+
+    Rozcestník u některých šablon vypisuje rovnou čísla, u jiných jen ročníky;
+    stránky ročníků jsou tu proto jako druhá cesta ke stejnému seznamu.
+    """
+    year = datetime.now(timezone.utc).year
+    return [
+        JURISPRUDENCE_ARCHIVE_URL,
+        f"{JURISPRUDENCE_ARCHIVE_URL}/{year}",
+        f"{JURISPRUDENCE_ARCHIVE_URL}/{year - 1}",
+    ]
+
+
+def _jurisprudence_issue_urls(soup, page_url):
+    """Adresy čísel ze stránky archivu, od nejnovějšího."""
+    issues = {}
+    for a in soup.find_all("a", href=True):
+        link = urljoin(page_url, a["href"]).split("?")[0].split("#")[0]
+        match = JURISPRUDENCE_ISSUE_RE.search(link)
+        if match:
+            issues[(int(match.group(2)), int(match.group(1)))] = link
+    return [issues[key] for key in sorted(issues, reverse=True)]
+
+
+def _jurisprudence_articles(soup, page_url):
+    """Posbírá články z obsahu jednoho čísla Jurisprudence."""
+    issue_match = JURISPRUDENCE_ISSUE_RE.search(page_url)
+    issue = f"{issue_match.group(1)}/{issue_match.group(2)}" if issue_match else ""
+
+    # Na jeden článek vede víc odkazů (název, „detail", ikona) – z textů
+    # bereme ten nejdelší, což je název článku.
+    found = {}
+    for a in soup.find_all("a", href=True):
+        link = urljoin(page_url, a["href"]).split("?")[0].split("#")[0]
+        match = JURISPRUDENCE_ARTICLE_RE.search(link)
+        if not match:
+            continue
+        art_id = match.group(1)
+        title = clean_title(a.get_text(" ", strip=True))
+        if len(title) > len(found.get(art_id, ("", ""))[0]):
+            found[art_id] = (title, link)
+
+    items = []
+    for art_id, (title, link) in found.items():
+        if not title:
+            continue
+        items.append({
+            "title": f"[Jurisprudence] {title}",
+            "journal_name": "Jurisprudence",
+            "link": link,
+            "description": f"{title}\nJurisprudence {issue}".rstrip(),
+            # m-<id> je stabilní přes celý web, číslo do guid netřeba.
+            "guid": f"Jurisprudence-{art_id}",
+            "pub_date": datetime.now(timezone.utc),
+            # Anotaci má až stránka článku – stáhne se lazy, jen když se
+            # pro položku opravdu generuje shrnutí (viz enrich_summaries).
+            "ai_source": "page",
+        })
+
+    return items[:JURISPRUDENCE_MAX_ITEMS]
+
+
+def scrape_jurisprudence():
+    """Vrátí články z nejnovějšího čísla Jurisprudence."""
+    issue_urls = first_page_with_items(
+        _jurisprudence_issue_pages(), _jurisprudence_issue_urls, "Jurisprudence (archiv)"
+    )
+    return first_page_with_items(
+        issue_urls[:JURISPRUDENCE_TRY_ISSUES], _jurisprudence_articles, "Jurisprudence"
+    )
+
+
 # --- The Lawyer Quarterly (ÚSP AV ČR) – OJS, ale s nepoužitelným RSS ---
 # Gateway plugin tady vrací 30 článků seřazených podle interního id, ne podle
 # data vydání. Archiv byl někdy přeimportovaný, takže nejvyšší id nesou čísla
@@ -849,7 +939,16 @@ def main():
     except Exception as e:
         print(f"  CHYBA při stahování Právníka: {e}")
 
-    # 3. The Lawyer Quarterly (OJS, ale obsah čteme z aktuálního čísla)
+    # 3. Jurisprudence (HTML web, nejnovější číslo z archivu)
+    print("  Zdroj: Jurisprudence (nejnovější číslo)")
+    try:
+        jurisprudence = scrape_jurisprudence()
+        print(f"  Nalezeno {len(jurisprudence)} článků")
+        all_items.extend(jurisprudence)
+    except Exception as e:
+        print(f"  CHYBA při stahování Jurisprudence: {e}")
+
+    # 4. The Lawyer Quarterly (OJS, ale obsah čteme z aktuálního čísla)
     print("  Zdroj: The Lawyer Quarterly (aktuální číslo)")
     try:
         tlq = scrape_tlq()
@@ -858,7 +957,7 @@ def main():
     except Exception as e:
         print(f"  CHYBA při stahování TLQ: {e}")
 
-    # 4. Časopisy na OJS (RPT, MUJLT, JIPITEC)
+    # 5. Časopisy na OJS (RPT, MUJLT, JIPITEC)
     for feed_url, label, journal_name in OJS_SOURCES:
         print(f"  Zdroj: {journal_name} (OJS RSS)")
         try:
@@ -868,7 +967,7 @@ def main():
         except Exception as e:
             print(f"  CHYBA při stahování {label}: {e}")
 
-    # 5. Časopisy přes Crossref (QMJIP, GRUR Int, JIPLP, IIC)
+    # 6. Časopisy přes Crossref (QMJIP, GRUR Int, JIPLP, IIC)
     for issn, label, journal_name in CROSSREF_JOURNALS:
         print(f"  Zdroj: {journal_name} (Crossref)")
         try:
