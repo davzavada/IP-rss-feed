@@ -1,14 +1,17 @@
-name: Denní e-mail
+name: Týdenní newsletter
 
 on:
   schedule:
-    # Cron je vždy v UTC; míříme na 8:30 pražského času. Startujeme o deset
-    # minut dřív – GitHub scheduled běhy pouští se zpožděním (proč zrovna
-    # necelá hodina, viz update-feed.yml). Praha přechází mezi CEST (UTC+2)
-    # a CET (UTC+1), takže jsou tu dva výrazy a projde ten, ze kterého 8:30
-    # vychází; ten druhý skončí hned na začátku.
-    - cron: '20 6 * * *'   # 06:20 UTC = 8:20 CEST
-    - cron: '20 7 * * *'   # 07:20 UTC = 8:20 CET
+    # Cron je vždy v UTC; míříme na pondělí 8:30 pražského času. Startujeme
+    # o deset minut dřív – GitHub scheduled běhy pouští se zpožděním (proč
+    # zrovna necelá hodina, viz update-feed.yml). Praha přechází mezi CEST
+    # (UTC+2) a CET (UTC+1), takže jsou tu dva výrazy a projde ten, ze
+    # kterého 8:30 vychází; ten druhý skončí hned na začátku.
+    #
+    # Dvoutýdenní přehled se generuje v pondělí v 6:00 (update-feed.yml),
+    # takže je v tuhle dobu dávno hotový a stačí ho přečíst.
+    - cron: '20 6 * * 1'   # 06:20 UTC = 8:20 CEST
+    - cron: '20 7 * * 1'   # 07:20 UTC = 8:20 CET
   workflow_dispatch:       # ruční spuštění
     inputs:
       dry_run:
@@ -16,12 +19,12 @@ on:
         type: boolean
         default: false
 
-# Jen čteme hotové feedy z repozitáře, nic se necommituje.
+# Jen čteme hotový přehled z repozitáře, nic se necommituje.
 permissions:
   contents: read
 
 concurrency:
-  group: daily-email
+  group: newsletter
   cancel-in-progress: false
 
 jobs:
@@ -34,9 +37,9 @@ jobs:
         id: plan
         run: |
           if [ "$(TZ=Europe/Prague date +%z)" = "+0200" ]; then
-            want='20 6 * * *'   # CEST: 8:30 Praha = 06:30 UTC
+            want='20 6 * * 1'   # CEST: 8:30 Praha = 06:30 UTC
           else
-            want='20 7 * * *'   # CET:  8:30 Praha = 07:30 UTC
+            want='20 7 * * 1'   # CET:  8:30 Praha = 07:30 UTC
           fi
           schedule='${{ github.event.schedule }}'
           if [ '${{ github.event_name }}' = 'workflow_dispatch' ] || [ "$schedule" = "$want" ]; then
@@ -54,7 +57,7 @@ jobs:
 
       # Skript si vystačí se standardní knihovnou, requirements.txt netřeba.
       # Bez nastavených secrets jen vypíše, že nemá kam poslat, a skončí v pořádku.
-      - name: Poslat denní shrnutí
+      - name: Poslat newsletter
         if: steps.plan.outputs.send == 'true'
         env:
           MAIL_SMTP_HOST: ${{ secrets.MAIL_SMTP_HOST }}
@@ -65,14 +68,14 @@ jobs:
           MAIL_TO: ${{ secrets.MAIL_TO }}
           MAIL_UNSUBSCRIBE_URL: ${{ secrets.MAIL_UNSUBSCRIBE_URL }}
           MAIL_DRY_RUN: ${{ inputs.dry_run }}
-        run: python daily_email.py
+        run: python newsletter.py
 
       # Náhled zprávy k nahlédnutí u běhu – ať se dá zkontrolovat, co odešlo.
       - name: Náhled jako artefakt
         if: steps.plan.outputs.send == 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: denni-email
+          name: newsletter
           path: build/
           if-no-files-found: ignore
-          retention-days: 7
+          retention-days: 14
