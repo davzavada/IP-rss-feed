@@ -1,0 +1,78 @@
+name: Denní e-mail
+
+on:
+  schedule:
+    # Cron je vždy v UTC; míříme na 8:30 pražského času. Startujeme o deset
+    # minut dřív – GitHub scheduled běhy pouští se zpožděním (proč zrovna
+    # necelá hodina, viz update-feed.yml). Praha přechází mezi CEST (UTC+2)
+    # a CET (UTC+1), takže jsou tu dva výrazy a projde ten, ze kterého 8:30
+    # vychází; ten druhý skončí hned na začátku.
+    - cron: '20 6 * * *'   # 06:20 UTC = 8:20 CEST
+    - cron: '20 7 * * *'   # 07:20 UTC = 8:20 CET
+  workflow_dispatch:       # ruční spuštění
+    inputs:
+      dry_run:
+        description: 'Jen sestavit náhled, neodesílat'
+        type: boolean
+        default: false
+
+# Jen čteme hotové feedy z repozitáře, nic se necommituje.
+permissions:
+  contents: read
+
+concurrency:
+  group: daily-email
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Naplánovat běh
+        id: plan
+        run: |
+          if [ "$(TZ=Europe/Prague date +%z)" = "+0200" ]; then
+            want='20 6 * * *'   # CEST: 8:30 Praha = 06:30 UTC
+          else
+            want='20 7 * * *'   # CET:  8:30 Praha = 07:30 UTC
+          fi
+          schedule='${{ github.event.schedule }}'
+          if [ '${{ github.event_name }}' = 'workflow_dispatch' ] || [ "$schedule" = "$want" ]; then
+            send=true
+          else
+            send=false
+          fi
+          echo "send=$send" >> "$GITHUB_OUTPUT"
+          echo "cron '$schedule' -> odeslat: $send (v tomhle pololetí jede '$want')"
+
+      - uses: actions/setup-python@v6
+        if: steps.plan.outputs.send == 'true'
+        with:
+          python-version: '3.12'
+
+      # Skript si vystačí se standardní knihovnou, requirements.txt netřeba.
+      # Bez nastavených secrets jen vypíše, že nemá kam poslat, a skončí v pořádku.
+      - name: Poslat denní shrnutí
+        if: steps.plan.outputs.send == 'true'
+        env:
+          MAIL_SMTP_HOST: ${{ secrets.MAIL_SMTP_HOST }}
+          MAIL_SMTP_PORT: ${{ secrets.MAIL_SMTP_PORT }}
+          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          MAIL_UNSUBSCRIBE_URL: ${{ secrets.MAIL_UNSUBSCRIBE_URL }}
+          MAIL_DRY_RUN: ${{ inputs.dry_run }}
+        run: python daily_email.py
+
+      # Náhled zprávy k nahlédnutí u běhu – ať se dá zkontrolovat, co odešlo.
+      - name: Náhled jako artefakt
+        if: steps.plan.outputs.send == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: denni-email
+          path: build/
+          if-no-files-found: ignore
+          retention-days: 7
