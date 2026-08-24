@@ -1,15 +1,22 @@
 {
-  "generated": "2026-08-18T14:11:14.188772+00:00",
-  "from": "2026-08-04",
-  "to": "2026-08-18",
-  "total": 59,
-  "covered": 14,
-  "intro": "Období bylo velmi intenzivní v oblasti digitálního práva, zejména díky klíčovým rozsudkům Soudního dvora EU k odpovědnosti platforem a ochraně dat. Významné jsou také nové analýzy dopadů EU AI Actu a regulace generativní AI na autorské právo.",
+  "generated": "2026-08-24T04:27:52.497586+00:00",
+  "from": "2026-08-10",
+  "to": "2026-08-24",
+  "total": 37,
+  "covered": 10,
+  "intro": "Období bylo velmi intenzivní v oblasti digitálního práva, zejména v souvislosti s generativní AI, zodpovědností platforem a interpretací GDPR. Významná jsou rovněž rozhodnutí SDEU k autorskému právu v digitálním prostředí a k ochraně známek.",
   "blocks": [
     {
-      "title": "Odpovědnost platforem a algoritmy",
-      "text": "Soudní dvůr EU rozhodl, že poskytovatel, který pomocí algoritmů určuje podmínky a prioritu zobrazení obsahu, vykonává nad ním kontrolu a není pouhým poskytovatelem hostingu. To zásadně mění posouzení odpovědnosti za obsah v digitálním prostředí.",
+      "title": "AI a zodpovědnost platforem",
+      "text": "SDEU rozhodl, že poskytovatel, který pomocí algoritmů určuje podmínky a prioritu zobrazení obsahu, vykonává nad ním kontrolu a není považován za pouhého poskytovatele hostingu. V oblasti generativní AI se diskutuje, že trénink LLM a RAG-shrnutí krátkých úryvků nemusí porušovat autorská práva.",
       "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JWIP",
+          "title": "Preserving balance in the EU digital single market: How Like Company could reframe copyright and innovation in the generative AI era",
+          "link": "https://doi.org/10.1111/jwip.70032"
+        },
         {
           "src": "cjeu",
           "label": "CJEU",
@@ -20,50 +27,29 @@
       ]
     },
     {
-      "title": "Autorské právo a AI",
-      "text": "Soudní dvůr EU potvrdil, že účinný geo-blocking znemožňuje uznání šíření díla veřejnosti. V oblasti AI se diskutuje, zda trénink LLM a RAG-shrnutí porušují autorská práva, přičemž trénink může být kryt výjimkou pro text a data mining.",
+      "title": "Autorské právo v digitálu",
+      "text": "SDEU potvrdil, že účinný geo-blocking znemožňuje „šíření veřejnosti“ v zemi, kde je dílo chráněno, i když je blokování obcházitelné pomocí VPN. Zároveň byla potvrzena legitimita reziduálních práv na odměnu pro tvůrce v souladu se směrnicí CDSMD.",
       "sources": [
-        {
-          "src": "cjeu",
-          "label": "CJEU",
-          "tag": "Ruling",
-          "title": "C-788/24 (Anne Frank Fonds)",
-          "link": "https://curia.europa.eu/juris/liste.do?num=C-788/24"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JWIP",
-          "title": "Preserving balance in the EU digital single market: How Like Company could reframe copyright and innovation in the generative AI era",
-          "link": "https://doi.org/10.1111/jwip.70032"
-        },
         {
           "src": "journals",
           "label": "Časopis",
           "tag": "IIC",
           "title": "The Validity of the Residual Right of Remuneration under Articles 17 and 18 CDSMD",
           "link": "https://doi.org/10.1007/s40319-026-01751-4"
+        },
+        {
+          "src": "cjeu",
+          "label": "CJEU",
+          "tag": "Ruling",
+          "title": "C-788/24 (Anne Frank Fonds)",
+          "link": "https://curia.europa.eu/juris/liste.do?num=C-788/24"
         }
       ]
     },
     {
       "title": "Ochrana osobních údajů",
-      "text": "Soudní dvůr EU připustil užití důkazů získaných v rozporu s GDPR, pokud převažuje zájem na prokázání skutečností. Vyjasnil také, že zpřístupnění trestních záznamů za platbu nespadá pod novinářské účely, pokud chybí redakční linie a etika.",
+      "text": "SDEU upřesnil, že zveřejňování jmen sportovců porušujících antidopingová pravidla je přípustné a nejde o údaje o zdraví či trestné záznamy. Zpracování dat za novinářské účely vyžaduje striktní dodržení etiky a redakční linie, jinak vyjmutí z GDPR neplatí.",
       "sources": [
-        {
-          "src": "cjeu",
-          "label": "CJEU",
-          "tag": "Ruling",
-          "title": "C-484/24 (NTH Haustechnik)",
-          "link": "https://curia.europa.eu/juris/liste.do?num=C-484/24"
-        },
-        {
-          "src": "cjeu",
-          "label": "CJEU",
-          "tag": "Ruling",
-          "title": "C-199/24 (Legal Newsdesk Sweden)",
-          "link": "https://curia.europa.eu/juris/liste.do?num=C-199/24"
-        },
         {
           "src": "cjeu",
           "label": "CJEU",
@@ -75,14 +61,14 @@
           "src": "cjeu",
           "label": "CJEU",
           "tag": "Ruling",
-          "title": "C-414/24 (Datenschutzbehörde)",
-          "link": "https://curia.europa.eu/juris/liste.do?num=C-414/24"
+          "title": "C-199/24 (Legal Newsdesk Sweden)",
+          "link": "https://curia.europa.eu/juris/liste.do?num=C-199/24"
         }
       ]
     },
     {
-      "title": "Známky a patenty",
-      "text": "Komerční prodej výrazně změněných luxusních doplňků může být zneužitím ochranné známky. V oblasti patentů se řeší povinnosti zveřejňování genetických zdrojů a podmínky pro změnu patentových nároků bez nepřiměřeného rozšíření ochrany.",
+      "title": "Průmyslová vlastnictví",
+      "text": "Analýzy upozorňují na prioritu autorského práva před známkami u znaků s kulturním významem a rizika zneužití známek při komerčním prodeji výrazně restaurované luxusní módy. SDEU řeší otázku, zda pětiletá pasivita majitele známky brání žalobě po vypršení ochrany konkurenční známky.",
       "sources": [
         {
           "src": "journals",
@@ -99,41 +85,27 @@
           "link": "https://doi.org/10.1093/grurint/ikag076"
         },
         {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JWIP",
-          "title": "Patent landscape analysis of inventions based on plant genetic resources for food and agriculture and related digital sequence information",
-          "link": "https://doi.org/10.1111/jwip.70033"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "Of Ceilings and Flaws: Negotiating Disclosure in the WIPO Genetic Resources and Traditional Knowledge Treaty",
-          "link": "https://doi.org/10.1093/grurint/ikag080"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "When a Claim Amendment Does Not Constitute an Undue Extension",
-          "link": "https://doi.org/10.1093/grurint/ikag079"
+          "src": "cjeu",
+          "label": "CJEU",
+          "tag": "Referral",
+          "title": "C-691/26 (Alphavet)",
+          "link": "https://curia.europa.eu/juris/liste.do?num=C-691/26"
         }
       ]
     },
     {
-      "title": "Péče řádného hospodáře",
-      "text": "Analýza praxe ukazuje, že manažeři často zanedbávají dokumentaci rozhodovacích procesů, což zvyšuje jejich odpovědnostní rizika. Doporučuje se posílení interních kontrol pro efektivnější využití pravidla podnikatelského úsudku.",
+      "title": "Nekalá soutěž a judikatura",
+      "text": "Nejvyšší soud ČR v judikatuře k nekalé soutěži potvrdil, že dovolání je nepřípustné, pokud je založeno na skutkovém stavu v rozporu se zjištěním soudů nižších stupňů. To zdůrazňuje limitované možnosti přezkumu skutkových zjištění v těchto sporech.",
       "sources": [
         {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "Právník",
-          "title": "Péče řádného hospodáře v legislativní a manažersko-ekonomické praxi",
-          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-8.html?a=4050"
+          "src": "nsoud",
+          "label": "NS 23 Cdo",
+          "tag": "",
+          "title": "23 Cdo 1578/2026",
+          "link": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/366FE7BF05F96D13C1258E5A001BB41D/$file/23%20Cdo%201578_2026.pdf?openElement"
         }
       ]
     }
   ],
-  "input_hash": "c145f574a08c41371deca98d9fe9ae8f8a39463e584e3bda28bdb89bd6f18668"
+  "input_hash": "0f42cefe8e0bb01d0065bed0f9ea778ee77b2169685ac574ee11db176056754f"
 }
