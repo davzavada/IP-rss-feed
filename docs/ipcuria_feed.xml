@@ -6,7 +6,7 @@
     <atom:link href="https://rss.davidzavada.cz/ipcuria_feed.xml" rel="self" type="application/rss+xml" />
     <description>Latest CJEU IP case law: preliminary rulings, referrals, appeals</description>
     <language>en</language>
-    <lastBuildDate>Mon, 24 Aug 2026 11:06:03 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2026 04:21:19 +0000</lastBuildDate>
     <item>
       <title>[Referral] C-837/26 (Airwair International)</title>
       <link>https://curia.europa.eu/juris/liste.do?num=C-837/26</link>
@@ -111,20 +111,6 @@ Maďarský nejvyšší soud se ptá, zda pětiletá pasivita majitele dřívěj�
 CURIA: https://curia.europa.eu/juris/liste.do?num=C-691/26</description>
       <pubDate>Wed, 24 Jun 2026 12:00:00 +0000</pubDate>
       <dc:date>2026-06-24</dc:date>
-    </item>
-    <item>
-      <title>[Ruling] C-188/24 (WebGroup Czech Republic e.a)</title>
-      <link>https://curia.europa.eu/juris/liste.do?num=C-188/24</link>
-      <guid isPermaLink="false">Ruling-C-188/24</guid>
-      <ai-tag>Elektronický obchod</ai-tag>
-      <ai-summary>Soud řešil možnost aplikovat vnitrostátní pravidla na poskytovatele služeb z jiných členských států v oblasti ochrany dětí před pornografií a zamezení vyhýbání se silničním kontrolám, jakož i vliv algoritmů na status hostingu. Rozhodl, že obecné trestní povinnosti k ochraně dětí nelze aplikovat na poskytovatele z jiných států, ale jsou přípustné systémy ověřování věku a zákazy šíření informací o kontrolách z důvodů bezpečnosti. Poskytovatel, který pomocí algoritmu určuje podmínky a prioritu zobrazení obsahu, vykonává nad ním kontrolu a proto není považován za pouhého poskytovatele hostingu.</ai-summary>
-      <description>[Ruling] 16 Jun 2026, C-188/24 (WebGroup Czech Republic e.a)
-Soud řešil možnost aplikovat vnitrostátní pravidla na poskytovatele služeb z jiných členských států v oblasti ochrany dětí před pornografií a zamezení vyhýbání se silničním kontrolám, jakož i vliv algoritmů na status hostingu. Rozhodl, že obecné trestní povinnosti k ochraně dětí nelze aplikovat na poskytovatele z jiných států, ale jsou přípustné systémy ověřování věku a zákazy šíření informací o kontrolách z důvodů bezpečnosti. Poskytovatel, který pomocí algoritmu určuje podmínky a prioritu zobrazení obsahu, vykonává nad ním kontrolu a proto není považován za pouhého poskytovatele hostingu.
-Type: Judgment
-- IP and other instruments &gt; eCommerce Directive
-CURIA: https://curia.europa.eu/juris/liste.do?num=C-188/24</description>
-      <pubDate>Tue, 16 Jun 2026 12:00:00 +0000</pubDate>
-      <dc:date>2026-06-16</dc:date>
     </item>
   </channel>
 </rss>
