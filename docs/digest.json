@@ -1,42 +1,15 @@
 {
-  "generated": "2026-08-24T04:27:52.497586+00:00",
-  "from": "2026-08-10",
-  "to": "2026-08-24",
-  "total": 37,
-  "covered": 10,
-  "intro": "Období bylo velmi intenzivní v oblasti digitálního práva, zejména v souvislosti s generativní AI, zodpovědností platforem a interpretací GDPR. Významná jsou rovněž rozhodnutí SDEU k autorskému právu v digitálním prostředí a k ochraně známek.",
+  "generated": "2026-08-27T07:47:42.238551+00:00",
+  "from": "2026-08-13",
+  "to": "2026-08-27",
+  "total": 36,
+  "covered": 11,
+  "intro": "Období bylo charakteristické rozsudky SDEU k hranicím autorského práva v digitálním prostředí a interpretaci GDPR. Významná pozornost byla věnována rovněž patentové litigaci v oblasti standardů a střetu ochranných známek s trendy udržitelnosti.",
   "blocks": [
     {
-      "title": "AI a zodpovědnost platforem",
-      "text": "SDEU rozhodl, že poskytovatel, který pomocí algoritmů určuje podmínky a prioritu zobrazení obsahu, vykonává nad ním kontrolu a není považován za pouhého poskytovatele hostingu. V oblasti generativní AI se diskutuje, že trénink LLM a RAG-shrnutí krátkých úryvků nemusí porušovat autorská práva.",
+      "title": "Autorské právo a geo-blocking",
+      "text": "SDEU rozhodl, že účinný geo-blocking zabraňuje uznání „šíření veřejnosti“ v zemi, kde je dílo chráněno. V případě neúčinného blokování je za toto šíření odpovědný vydavatel webu, nikoliv poskytovatel VPN.",
       "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JWIP",
-          "title": "Preserving balance in the EU digital single market: How Like Company could reframe copyright and innovation in the generative AI era",
-          "link": "https://doi.org/10.1111/jwip.70032"
-        },
-        {
-          "src": "cjeu",
-          "label": "CJEU",
-          "tag": "Ruling",
-          "title": "C-188/24 (WebGroup Czech Republic e.a)",
-          "link": "https://curia.europa.eu/juris/liste.do?num=C-188/24"
-        }
-      ]
-    },
-    {
-      "title": "Autorské právo v digitálu",
-      "text": "SDEU potvrdil, že účinný geo-blocking znemožňuje „šíření veřejnosti“ v zemi, kde je dílo chráněno, i když je blokování obcházitelné pomocí VPN. Zároveň byla potvrzena legitimita reziduálních práv na odměnu pro tvůrce v souladu se směrnicí CDSMD.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "The Validity of the Residual Right of Remuneration under Articles 17 and 18 CDSMD",
-          "link": "https://doi.org/10.1007/s40319-026-01751-4"
-        },
         {
           "src": "cjeu",
           "label": "CJEU",
@@ -47,8 +20,8 @@
       ]
     },
     {
-      "title": "Ochrana osobních údajů",
-      "text": "SDEU upřesnil, že zveřejňování jmen sportovců porušujících antidopingová pravidla je přípustné a nejde o údaje o zdraví či trestné záznamy. Zpracování dat za novinářské účely vyžaduje striktní dodržení etiky a redakční linie, jinak vyjmutí z GDPR neplatí.",
+      "title": "Ochrana dat a GDPR",
+      "text": "SDEU upřesnil, že zpřístupnění trestních záznamů za platbu nespadá pod novinářské účely, pokud chybí redakční linie a etika. Zároveň potvrdil přípustnost zveřejňování jmen sportovců porušujících antidopingová pravidla za podmínek individuálního zvážení zájmů.",
       "sources": [
         {
           "src": "cjeu",
@@ -67,8 +40,35 @@
       ]
     },
     {
-      "title": "Průmyslová vlastnictví",
-      "text": "Analýzy upozorňují na prioritu autorského práva před známkami u znaků s kulturním významem a rizika zneužití známek při komerčním prodeji výrazně restaurované luxusní módy. SDEU řeší otázku, zda pětiletá pasivita majitele známky brání žalobě po vypršení ochrany konkurenční známky.",
+      "title": "Patentové právo a standardy",
+      "text": "Judikatura se dále rozvíjí v oblasti standardně esenciálních patentů (FRAND) a podmínek změny patentových nároků. V EU se rovněž analyzuje aplikace výjimky z doplňkového ochranného certifikátu (SPC waiver) v lékárnictví.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "Developing Jurisprudence by Taking Tiny Steps – The FRAND Defence III Decision of the German Federal Court of Justice",
+          "link": "https://doi.org/10.1007/s40319-026-01767-w"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "When a Claim Amendment Does Not Constitute an Undue Extension",
+          "link": "https://doi.org/10.1093/grurint/ikag079"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "Interpretation and Assessment of the SPC Waiver in the European Pharmaceutical Landscape",
+          "link": "https://doi.org/10.1093/grurint/ikag081"
+        }
+      ]
+    },
+    {
+      "title": "Ochranné známky a udržitelnost",
+      "text": "Komerční prodej výrazně zrekonstruovaného luxusního zboží může být považován za zneužití ochranné známky. SDEU zároveň řeší, zda dlouhodobá pasivita majitele známky brání žalobě proti třetí osobě po vypršení jiné ochrany.",
       "sources": [
         {
           "src": "journals",
@@ -76,13 +76,6 @@
           "tag": "IIC",
           "title": "The Legal Limits of Luxury: Restricting Third-Party Restoration of Luxury Fashion",
           "link": "https://doi.org/10.1007/s40319-026-01752-3"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "Trademarking Signs with Cultural Significance: How to Position Simultaneous and Diachronic Rights Overlap in a Spectrum of Absolute Grounds of Refusal",
-          "link": "https://doi.org/10.1093/grurint/ikag076"
         },
         {
           "src": "cjeu",
@@ -94,18 +87,32 @@
       ]
     },
     {
-      "title": "Nekalá soutěž a judikatura",
-      "text": "Nejvyšší soud ČR v judikatuře k nekalé soutěži potvrdil, že dovolání je nepřípustné, pokud je založeno na skutkovém stavu v rozporu se zjištěním soudů nižších stupňů. To zdůrazňuje limitované možnosti přezkumu skutkových zjištění v těchto sporech.",
+      "title": "Soutěž a obecné IP",
+      "text": "Právní analýzy se zaměřily na vztah mezi antitrustem a IP právem u omezení podle účelu, legitimitu upcyklace a práh autorskoprávní ochrany modulárního nábytku.",
       "sources": [
         {
-          "src": "nsoud",
-          "label": "NS 23 Cdo",
-          "tag": "",
-          "title": "23 Cdo 1578/2026",
-          "link": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/366FE7BF05F96D13C1258E5A001BB41D/$file/23%20Cdo%201578_2026.pdf?openElement"
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "The Threshold of Copyright Protection for a Modular Furniture System",
+          "link": "https://doi.org/10.1093/grurint/ikag086"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "“Great Balls of Fire, They’re My Portieres Now!” Unpacking the Legal Arguments in Favor of Upcycling",
+          "link": "https://doi.org/10.1007/s40319-026-01757-y"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "Revisiting Restrictions By Object in CJEU Case Law: The Legalistic Approach to Art. 101(1) TFEU within and Beyond the Antitrust-IP Interface",
+          "link": "https://doi.org/10.1093/grurint/ikag077"
         }
       ]
     }
   ],
-  "input_hash": "0f42cefe8e0bb01d0065bed0f9ea778ee77b2169685ac574ee11db176056754f"
+  "input_hash": "4a88c3b5ec0e3d8e6461b1e8cee7d9396842e6b2bd2ce0666d2d29e38641ed65"
 }
