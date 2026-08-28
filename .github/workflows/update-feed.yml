@@ -20,6 +20,14 @@ on:
     - cron: '40 3 * * 0,2-6'  # zbytek týdne, stejný čas, bez přehledu
     - cron: '40 4 * * 1'      # pondělí 04:40 UTC = 5:40 CET  -> přehled v zimě
     - cron: '40 10 * * *'     # 10:40 UTC = 12:40 CEST -> odpolední běh kolem 13:00
+    #
+    # Záložní sloty: scheduled běhy jsou u GitHubu jen best-effort a občas celý
+    # slot bez náhrady vypadne (27. 8. 2026 takhle vypadly oba denní běhy).
+    # Záložní běh startuje ~2 hodiny po řádném a v kroku „Naplánovat běh" se
+    # podívá, kdy naposledy vznikl commit s feedy: když je čerstvý, řádný běh
+    # proběhl a záskok hned skončí; když ne, převezme jeho práci.
+    - cron: '10 6 * * *'      # záskok za ranní běh (řádný startuje do ~05:25 UTC)
+    - cron: '10 13 * * *'     # záskok za odpolední běh (řádný startuje do ~11:10 UTC)
   workflow_dispatch:       # ruční spuštění
     inputs:
       skip_gemini:
@@ -43,6 +51,9 @@ jobs:
       - uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          # Záložní sloty poznávají vypadlý řádný běh podle stáří posledního
+          # commitu s feedy – na to je potřeba kus historie, ne jen HEAD.
+          fetch-depth: 50
 
       # Který z pondělních ranních cronů teď odpovídá 6:00 v Praze, závisí na
       # letním čase – rozhodne se to tady, ne v `if:`, kde na časové pásmo není
@@ -68,6 +79,25 @@ jobs:
                   scrape=true; digest=true
                 else
                   scrape=false; digest=false
+                fi ;;
+              # Záskok: běží jen tehdy, když řádný slot vypadl. Pozná se to
+              # podle stáří posledního commitu s feedy – řádný běh commitne
+              # nejvýš ~2 hodiny před záskokem, takže hranice 3 hodiny stačí.
+              # (Když řádný běh proběhl, ale nic nezměnil, commit nevznikl
+              # a záskok jede zbytečně ještě jednou – to nevadí, scrapery
+              # jsou díky *_seen.json idempotentní.) Pondělní ranní záskok
+              # vezme i dvoutýdenní přehled, o ten by se jinak přišlo.
+              '10 6 * * *'|'10 13 * * *')
+                last=$(git log --grep='^Update RSS feeds' -1 --format=%ct)
+                if [ $(( $(date +%s) - ${last:-0} )) -gt 10800 ]; then
+                  scrape=true
+                else
+                  scrape=false
+                fi
+                digest=false
+                if [ "$scrape" = true ] && [ "$schedule" = '10 6 * * *' ] \
+                   && [ "$(TZ=Europe/Prague date +%u)" = "1" ]; then
+                  digest=true
                 fi ;;
               *) scrape=true; digest=false ;;
             esac
