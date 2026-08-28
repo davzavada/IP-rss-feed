@@ -1,14 +1,14 @@
 {
-  "generated": "2026-08-27T07:47:42.238551+00:00",
-  "from": "2026-08-13",
-  "to": "2026-08-27",
-  "total": 36,
-  "covered": 11,
-  "intro": "Období bylo charakteristické rozsudky SDEU k hranicím autorského práva v digitálním prostředí a interpretaci GDPR. Významná pozornost byla věnována rovněž patentové litigaci v oblasti standardů a střetu ochranných známek s trendy udržitelnosti.",
+  "generated": "2026-08-28T11:28:01.060550+00:00",
+  "from": "2026-08-14",
+  "to": "2026-08-28",
+  "total": 35,
+  "covered": 9,
+  "intro": "Období bylo velmi produktivní zejména v oblasti digitálního autorského práva a ochrany osobních údajů díky klíčovým rozhodnutím SDEU. Významná je rovněž judikatura a odborná diskuse k ochranným známkám a patentům v kontextu soutěžního práva.",
   "blocks": [
     {
       "title": "Autorské právo a geo-blocking",
-      "text": "SDEU rozhodl, že účinný geo-blocking zabraňuje uznání „šíření veřejnosti“ v zemi, kde je dílo chráněno. V případě neúčinného blokování je za toto šíření odpovědný vydavatel webu, nikoliv poskytovatel VPN.",
+      "text": "SDEU rozhodl, že účinný geo-blocking zabraňuje uznání „šíření veřejnosti“ v zemi, kde je dílo chráněno. Pokud je blokování neúčinné, za toto šíření odpovídá vydavatel webu, nikoliv poskytovatel VPN.",
       "sources": [
         {
           "src": "cjeu",
@@ -20,8 +20,8 @@
       ]
     },
     {
-      "title": "Ochrana dat a GDPR",
-      "text": "SDEU upřesnil, že zpřístupnění trestních záznamů za platbu nespadá pod novinářské účely, pokud chybí redakční linie a etika. Zároveň potvrdil přípustnost zveřejňování jmen sportovců porušujících antidopingová pravidla za podmínek individuálního zvážení zájmů.",
+      "title": "Ochrana osobních údajů",
+      "text": "SDEU upřesnil, že zveřejňování jmen sportovců porušujících antidopingová pravidla je v zásadě přípustné. Zároveň rozhodl, že zpřístupnění trestních záznamů za platbu nespadá pod novinářskou výjimku GDPR, pokud není činnost prováděna v souladu s novinářskou etikou.",
       "sources": [
         {
           "src": "cjeu",
@@ -40,8 +40,28 @@
       ]
     },
     {
-      "title": "Patentové právo a standardy",
-      "text": "Judikatura se dále rozvíjí v oblasti standardně esenciálních patentů (FRAND) a podmínek změny patentových nároků. V EU se rovněž analyzuje aplikace výjimky z doplňkového ochranného certifikátu (SPC waiver) v lékárnictví.",
+      "title": "Ochranné známky a pasivita",
+      "text": "SDEU řeší, zda pětiletá pasivita majitele známky brání žalobě i po vypršení ochrany pozdější známky. V oblasti luxusní módy pak platí, že komerční prodej výrazně změněného zboží může být považován za zneužití ochranné známky.",
+      "sources": [
+        {
+          "src": "cjeu",
+          "label": "CJEU",
+          "tag": "Referral",
+          "title": "C-691/26 (Alphavet)",
+          "link": "https://curia.europa.eu/juris/liste.do?num=C-691/26"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "The Legal Limits of Luxury: Restricting Third-Party Restoration of Luxury Fashion",
+          "link": "https://doi.org/10.1007/s40319-026-01752-3"
+        }
+      ]
+    },
+    {
+      "title": "Patenty a soutěžní právo",
+      "text": "Judikatura se rozvíjí v oblasti standardně esenciálních patentů (FRAND) a interpretace výjimek z doplňkových certifikátů ochrany (SPC). Analýzy dále upozorňují na nekonzistenci v rozlišování omezení podle účelu a efektu v rozhraní antitrustu a IP práva.",
       "sources": [
         {
           "src": "journals",
@@ -54,55 +74,8 @@
           "src": "journals",
           "label": "Časopis",
           "tag": "GRUR Int",
-          "title": "When a Claim Amendment Does Not Constitute an Undue Extension",
-          "link": "https://doi.org/10.1093/grurint/ikag079"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
           "title": "Interpretation and Assessment of the SPC Waiver in the European Pharmaceutical Landscape",
           "link": "https://doi.org/10.1093/grurint/ikag081"
-        }
-      ]
-    },
-    {
-      "title": "Ochranné známky a udržitelnost",
-      "text": "Komerční prodej výrazně zrekonstruovaného luxusního zboží může být považován za zneužití ochranné známky. SDEU zároveň řeší, zda dlouhodobá pasivita majitele známky brání žalobě proti třetí osobě po vypršení jiné ochrany.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "The Legal Limits of Luxury: Restricting Third-Party Restoration of Luxury Fashion",
-          "link": "https://doi.org/10.1007/s40319-026-01752-3"
-        },
-        {
-          "src": "cjeu",
-          "label": "CJEU",
-          "tag": "Referral",
-          "title": "C-691/26 (Alphavet)",
-          "link": "https://curia.europa.eu/juris/liste.do?num=C-691/26"
-        }
-      ]
-    },
-    {
-      "title": "Soutěž a obecné IP",
-      "text": "Právní analýzy se zaměřily na vztah mezi antitrustem a IP právem u omezení podle účelu, legitimitu upcyklace a práh autorskoprávní ochrany modulárního nábytku.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "The Threshold of Copyright Protection for a Modular Furniture System",
-          "link": "https://doi.org/10.1093/grurint/ikag086"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "“Great Balls of Fire, They’re My Portieres Now!” Unpacking the Legal Arguments in Favor of Upcycling",
-          "link": "https://doi.org/10.1007/s40319-026-01757-y"
         },
         {
           "src": "journals",
@@ -112,7 +85,20 @@
           "link": "https://doi.org/10.1093/grurint/ikag077"
         }
       ]
+    },
+    {
+      "title": "Nekalá soutěž",
+      "text": "Nejvyšší soud ČR potvrdil, že dovolání v otázkách náhrady škody z nekalosoutěžního jednání je nepřípustné, pokud je argumentace dovolatele založena na skutkovém stavu v rozporu se zjištěním soudů nižších stupňů.",
+      "sources": [
+        {
+          "src": "nsoud",
+          "label": "NS 23 Cdo",
+          "tag": "",
+          "title": "23 Cdo 1578/2026",
+          "link": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/366FE7BF05F96D13C1258E5A001BB41D/$file/23%20Cdo%201578_2026.pdf?openElement"
+        }
+      ]
     }
   ],
-  "input_hash": "4a88c3b5ec0e3d8e6461b1e8cee7d9396842e6b2bd2ce0666d2d29e38641ed65"
+  "input_hash": "3e499b33f3394d922a54eb310dcd82ba5d442a261aefc7f04270fda2a3ccc506"
 }
