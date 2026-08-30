@@ -6,7 +6,7 @@
     <atom:link href="https://rss.davidzavada.cz/ipcuria_feed.xml" rel="self" type="application/rss+xml" />
     <description>Latest CJEU IP case law: preliminary rulings, referrals, appeals</description>
     <language>en</language>
-    <lastBuildDate>Sat, 29 Aug 2026 15:19:16 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 30 Aug 2026 09:28:10 +0000</lastBuildDate>
     <item>
       <title>[Referral] C-837/26 (Airwair International)</title>
       <link>https://curia.europa.eu/juris/liste.do?num=C-837/26</link>
@@ -33,9 +33,12 @@ CURIA: https://curia.europa.eu/juris/liste.do?num=C-806/26</description>
       <title>[Referral] C-801/26 (Jurcki)</title>
       <link>https://curia.europa.eu/juris/liste.do?num=C-801/26</link>
       <guid isPermaLink="false">Referral-C-801/26</guid>
-      <note>Otázky zatím nezveřejněny.</note>
+      <ai-tag>GDPR</ai-tag>
+      <ai-summary>Předkládající soud se ptá, zda GDPR vylučuje interpretaci vnitrostátního práva, která umožňuje úřadu uchovávat a využívat údaje o cestách po dálnici i po vypršení konkrétní lhůty pro uchovávání dat, pouze s odkazem na delší obecnou lhůtu pro promlčení povinnosti zaplatit poplatek. Dále zjišťuje, zda je pro posouzení zákonnosti rozhodující původní technický zdroj dat nebo jejich následná integrace do systému výběru mýta. Ptá se rovněž, zda musí soud odmítnout taková data jako základ pro uložení sankce, pokud jejich uchovávání odporuje GDPR.</ai-summary>
+      <document-url>https://infocuria.curia.europa.eu/document/C-0801-2026-26-00000000RP-01-P-01-325743-1-CS.pdf</document-url>
       <description>[Referral] 17 Jul 2026, C-801/26 (Jurcki)
-Otázky zatím nezveřejněny.
+Předkládající soud se ptá, zda GDPR vylučuje interpretaci vnitrostátního práva, která umožňuje úřadu uchovávat a využívat údaje o cestách po dálnici i po vypršení konkrétní lhůty pro uchovávání dat, pouze s odkazem na delší obecnou lhůtu pro promlčení povinnosti zaplatit poplatek. Dále zjišťuje, zda je pro posouzení zákonnosti rozhodující původní technický zdroj dat nebo jejich následná integrace do systému výběru mýta. Ptá se rovněž, zda musí soud odmítnout taková data jako základ pro uložení sankce, pokud jejich uchovávání odporuje GDPR.
+Žádost (PDF): https://infocuria.curia.europa.eu/document/C-0801-2026-26-00000000RP-01-P-01-325743-1-CS.pdf
 CURIA: https://curia.europa.eu/juris/liste.do?num=C-801/26</description>
       <pubDate>Fri, 17 Jul 2026 12:00:00 +0000</pubDate>
       <dc:date>2026-07-17</dc:date>
