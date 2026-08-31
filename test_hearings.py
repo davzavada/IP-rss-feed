@@ -376,82 +376,63 @@ check("rejstřík jde do odkazu malými písmeny i u víceznakových",
 
 
 # =====================================================================
-print("\n8) Stav řízení z InfoSoudu")
+print("\n8) Změny proti minulému přehledu")
 # =====================================================================
-# Podobu stránky InfoSoudu neznáme dopředu a může se změnit, proto se
-# tabulky přebírají tak, jak jsou. Testy hlídají, že se vybere ta správná
-# a že se stránka bez dat pozná, místo aby se uložil kus rozvržení.
-
-INFOSOUD_HTML = """<html><body>
-<table><tr><td>
-  <table><tr><td><a href="/">Úvod</a></td><td><a href="/n">Nápověda</a></td></tr></table>
-  <h2>Informace o řízení</h2>
-  <table>
-    <tr><th>Soud</th><td>Vrchní soud v Praze</td></tr>
-    <tr><th>Spisová značka</th><td>3 Co 24/2025</td></tr>
-  </table>
-  <h2>Průběh řízení</h2>
-  <table>
-    <tr><th>Datum</th><th>Úkon</th><th>Poznámka</th></tr>
-    <tr><td>14. 1. 2025</td><td>Nápad věci</td>
-        <td>Věc byla soudu doručena<span class="popis"> – zapsáno do rejstříku</span></td></tr>
-    <tr><td>3. 3. 2025</td><td>Nařízeno jednání</td><td></td></tr>
-    <tr><td>12. 5. 2025</td><td>Rozhodnuto</td><td>Rozsudek</td></tr>
-  </table>
-</td></tr></table>
-</body></html>"""
-
-tab = s.parse_infosoud(INFOSOUD_HTML)
-check("z detailu řízení se vytáhnou tabulky", tab and len(tab) == 2, str(tab and len(tab)))
-prubeh = tab[0] if tab else {}
-check("první je tabulka s průběhem řízení (nejvíc dat)",
-      prubeh.get("hlavicka") == ["Datum", "Úkon", "Poznámka"], str(prubeh.get("hlavicka")))
-check("řádky průběhu sedí", len(prubeh.get("radky", [])) == 3,
-      str(len(prubeh.get("radky", []))))
-check("popis schovaný za proklikem se přebírá taky",
-      "zapsáno do rejstříku" in " ".join(prubeh.get("radky", [[]])[0]))
-check("nadpis nad tabulkou se uloží", prubeh.get("nadpis") == "Průběh řízení",
-      str(prubeh.get("nadpis")))
-check("tabulka rozvržení stránky se nebere",
-      all("Nápověda" not in " ".join(sum(t["radky"], [])) for t in tab))
-
-# Bez <th> se za hlavičku vezme první řádek, pokud v něm není datum.
-BEZ_TH = """<html><body><table>
-<tr><td>Datum</td><td>Úkon</td></tr>
-<tr><td>1. 2. 2026</td><td>Nápad věci</td></tr>
-<tr><td>2. 3. 2026</td><td>Nařízeno jednání</td></tr>
-</table></body></html>"""
-bez_th = s.parse_infosoud(BEZ_TH)
-check("hlavička se pozná i bez <th>", bez_th[0]["hlavicka"] == ["Datum", "Úkon"],
-      str(bez_th[0]["hlavicka"]))
-check("řádek s datem se za hlavičku nevezme", len(bez_th[0]["radky"]) == 2,
-      str(len(bez_th[0]["radky"])))
-
-# Když InfoSoud vrátí stránku bez dat (chyba, změna formátu), nesmí se uložit nic.
-check("stránka bez tabulek nevrátí nic",
-      s.parse_infosoud("<html><body><p>Řízení nebylo nalezeno.</p></body></html>") is None)
-check("jednosloupcová tabulka se nebere",
-      s.parse_infosoud("<html><body><table><tr><td>a</td></tr>"
-                       "<tr><td>b</td></tr></table></body></html>") is None)
-
-# Které jednání se má obnovovat.
+# InfoSoud je slupka vykreslená javascriptem, stav řízení z něj vytáhnout
+# nejde. Co se s jednáním stalo, se proto pozná porovnáním dvou po sobě
+# jdoucích přehledů téhož období.
 from datetime import date as _date, timedelta as _td
 dnes = _date(2026, 8, 31)
-zaklad = {"cislo_senatu": 3, "rejstrik": "Co", "bc": 24, "rocnik": 2025}
-check("nadcházející jednání bez stavu se stáhne",
-      s.potrebuje_stav(dict(zaklad, datum="2026-09-10"), dnes))
-check("dávno proběhlé jednání se už nesleduje",
-      not s.potrebuje_stav(dict(zaklad, datum="2026-01-10"), dnes))
-check("čerstvý stav se znovu nestahuje",
-      not s.potrebuje_stav(
-          dict(zaklad, datum="2026-09-10",
-               stav={"stazeno": (dnes - _td(days=2)).isoformat()}), dnes))
-check("starý stav se obnoví",
-      s.potrebuje_stav(
-          dict(zaklad, datum="2026-09-10",
-               stav={"stazeno": (dnes - _td(days=40)).isoformat()}), dnes))
-check("bez spisové značky se na InfoSoud nechodí",
-      not s.potrebuje_stav({"datum": "2026-09-10"}, dnes))
+
+
+def jed(spz, datum, hodina="9:00", sin="101"):
+    return {"spz": spz, "datum": datum, "hodina": hodina, "sin": sin}
+
+
+stare_j = [jed("12 C 1/2026", "2026-09-02"), jed("12 C 2/2026", "2026-09-03"),
+           jed("12 C 3/2026", "2026-09-04"), jed("12 C 4/2026", "2026-09-07")]
+nove_j = [jed("12 C 1/2026", "2026-09-02"),            # beze změny
+          jed("12 C 2/2026", "2026-09-10"),            # přeloženo
+          jed("12 C 4/2026", "2026-09-07", hodina="11:30"),   # jiný čas
+          jed("12 C 9/2026", "2026-09-11")]            # nové
+# 12 C 3/2026 v novém dokumentu není vůbec – soud ho odvolal.
+v_prehledu = {(j["spz"], j["datum"]) for j in nove_j}
+zmeny = s.porovnej_prehled(stare_j, nove_j, v_prehledu, "MS", "civilni", dnes)
+dle_znacky = {z["spz"]: z for z in zmeny}
+
+check("najdou se všechny čtyři změny", len(zmeny) == 4, str(zmeny))
+check("nové jednání se pozná", dle_znacky.get("12 C 9/2026", {}).get("typ") == "nove")
+check("přeložené jednání se pozná i s oběma daty",
+      dle_znacky.get("12 C 2/2026") == {
+          "soud": "MS", "usek": "civilni", "spz": "12 C 2/2026", "typ": "presun",
+          "datum": "2026-09-10", "z": "2026-09-03", "na": "2026-09-10",
+          "kdy": "2026-08-31"},
+      str(dle_znacky.get("12 C 2/2026")))
+check("odvolané jednání se pozná",
+      dle_znacky.get("12 C 3/2026", {}).get("typ") == "zruseno")
+check("posunutá hodina se pozná",
+      dle_znacky.get("12 C 4/2026", {}).get("typ") == "cas"
+      and dle_znacky["12 C 4/2026"]["na"] == "11:30",
+      str(dle_znacky.get("12 C 4/2026")))
+check("beze změny se nic nehlásí", "12 C 1/2026" not in dle_znacky)
+
+# Věc, kterou soud v dokumentu vypsal, jen už není v IP agendě (změna
+# rozvrhu práce), se neodvolala – z archivu vypadne, ale změna to není.
+zmeny_neip = s.porovnej_prehled(
+    [jed("12 C 3/2026", "2026-09-04")], [],
+    {("12 C 3/2026", "2026-09-04")}, "MS", "civilni", dnes)
+check("jednání vypsané v dokumentu se nehlásí jako odvolané", zmeny_neip == [],
+      str(zmeny_neip))
+
+# Stejnou změnu najde každý další běh znovu; ukládá se jen jednou a jen měsíc.
+opakovana = dict(dle_znacky["12 C 9/2026"])
+starsi = dict(opakovana, kdy=(dnes - _td(days=40)).isoformat(), spz="12 C 8/2026")
+orezane = s.orez_zmeny([opakovana, dict(opakovana, kdy="2026-08-25"), starsi])
+check("stejná změna se neuloží dvakrát", len(orezane) == 1, str(orezane))
+check("uloží se datum prvního výskytu", orezane[0]["kdy"] == "2026-08-25",
+      str(orezane[0]["kdy"]))
+check("změny starší než měsíc odpadnou",
+      not [z for z in orezane if z["spz"] == "12 C 8/2026"])
 
 # =====================================================================
 failed = [n for n, ok, _ in results if not ok]

@@ -337,7 +337,6 @@
   }
   .cal-pop[hidden] { display: none; }
   /* S rozbalenou tabulkou průběhu řízení potřebuje bublina víc místa. */
-  .cal-pop.is-wide { width: min(560px, calc(100% - 12px)); }
   /* Rolování je až uvnitř – na .cal-pop by ořízlo šipku, která z bubliny
      vyčnívá ven. */
   .cal-pop-body {
@@ -376,29 +375,28 @@
   .cal-event-links { display: flex; gap: 14px; flex-wrap: wrap; }
   .cal-event-links a { color: var(--link); text-decoration: none; font-size: var(--fs-sm); }
   .cal-event-links a:hover { text-decoration: underline; }
-  /* Průběh řízení opsaný z InfoSoudu – zabalený, ať bublina zůstane malá. */
-  .cal-stav > summary {
-    cursor: pointer; font-size: var(--fs-sm); color: var(--link);
-    list-style: none; padding: 2px 0;
+  /* Změna proti minulému přehledu – u jednání v bublině i v seznamu pod mřížkou. */
+  .cal-zmena {
+    display: inline-block; border-radius: 6px; padding: 1px 7px;
+    font-size: var(--fs-sm); font-weight: 500;
+    background: var(--badge-amber-bg); color: var(--badge-amber-fg);
   }
-  .cal-stav > summary::-webkit-details-marker { display: none; }
-  .cal-stav > summary::before { content: "▸ "; font-size: 0.75em; }
-  .cal-stav[open] > summary::before { content: "▾ "; }
-  .cal-stav-wrap { margin-top: 6px; }
-  /* Pevné rozvržení: kolik má tabulka z InfoSoudu sloupců nevíme dopředu,
-     takže se rozdělí rovným dílem a text se zalomí, místo aby přetekl. */
-  .cal-stav-table {
-    border-collapse: collapse; font-size: var(--fs-sm);
-    /* min-width: 0 přebíjí 780px, které mají široké tabulky feedů výš. */
-    width: 100%; min-width: 0; table-layout: fixed;
+  .cal-zmeny { margin-top: 18px; border-top: 1px solid var(--border); padding-top: 12px; }
+  .cal-zmeny h3 {
+    margin: 0 0 8px; font-size: var(--fs-md); font-weight: 600;
   }
-  .cal-stav-table th, .cal-stav-table td {
-    border-bottom: 1px solid var(--border); padding: 4px 8px 4px 0;
-    text-align: left; vertical-align: top; overflow-wrap: anywhere;
+  .cal-zmeny ul { margin: 0; padding: 0; list-style: none; }
+  .cal-zmeny li {
+    display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+    padding: 5px 0; border-bottom: 1px solid var(--border);
+    font-size: var(--fs-md);
   }
-  .cal-stav-table th { color: var(--muted-foreground); font-weight: 500; }
-  .cal-stav-head { margin: 10px 0 0; font-size: var(--fs-md); font-weight: 600; }
-  .cal-stav-note { margin: 8px 0 0; font-size: var(--fs-sm); color: var(--muted-foreground); }
+  .cal-zmeny li:last-child { border-bottom: 0; }
+  .cal-zmeny .cal-zmena-kdy {
+    color: var(--muted-foreground); font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .cal-zmeny .cal-zmena-spz { font-weight: 600; }
   .src-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
   .src-vs { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
 
@@ -652,9 +650,9 @@
         Nařízená jednání Městského soudu v Praze a Vrchního soudu v Praze
         (civilní i správní úsek), filtrovaná na senáty s IP agendou podle
         rozvrhů práce obou soudů. Soudy přehledy zveřejňují zhruba na dva
-        týdny dopředu a v průběhu období je neaktualizují – po kliknutí na
-        jednání je u něj opsaný průběh řízení z InfoSoudu a odkaz na jeho
-        detail.
+        týdny dopředu a průběžně je vydávají znovu; každý nový přehled se
+        porovnává s tím minulým a co se změnilo, je pod kalendářem. Aktuální
+        stav řízení je na InfoSoudu, odkaz je u každého jednání.
       </div>
       </span>
     </div>
@@ -1264,29 +1262,46 @@ function renderCalGrid() {
   document.getElementById("cal-title").textContent = calRangeLabel(start, konec);
 }
 
-// Průběh řízení, jak ho scraper opsal z InfoSoudu. Podobu tabulek neznáme
-// dopředu, tak se vykreslují tak, jak přišly – včetně záhlaví od soudu.
-function stavHtml(j) {
-  const tabulky = ((j.stav || {}).tabulky || []).filter(t => t && (t.radky || []).length);
-  if (!tabulky.length) return "";
-  const bunka = (tag, r) => r.map(c => "<" + tag + ">" + esc(c) + "</" + tag + ">").join("");
-  let html = '<details class="cal-stav"><summary>Stav řízení</summary>';
-  tabulky.forEach(t => {
-    if (t.nadpis) html += '<p class="cal-stav-head">' + esc(t.nadpis) + "</p>";
-    html += '<div class="cal-stav-wrap"><table class="cal-stav-table">';
-    if ((t.hlavicka || []).length) {
-      html += "<thead><tr>" + bunka("th", t.hlavicka) + "</tr></thead>";
-    }
-    html += "<tbody>" + t.radky.map(r => "<tr>" + bunka("td", r) + "</tr>").join("") +
-      "</tbody></table></div>";
-  });
-  // Kdy jsme se dívali – InfoSoud se mění a tohle je opis, ne živý pohled.
-  const d = new Date(j.stav.stazeno);
-  if (!isNaN(d)) {
-    html += '<p class="cal-stav-note">opsáno z InfoSoudu ' +
-      d.toLocaleDateString("cs-CZ") + "</p>";
+// Co se s jednáním stalo od minulého přehledu. Scraper porovnává každý
+// nový přehled s tím, co už má, a změny ukládá do hearings.json.
+const ZMENA_POPIS = {
+  nove: "nové jednání",
+  presun: "přeloženo",
+  zruseno: "vypadlo z přehledu",
+  cas: "jiný čas",
+  sin: "jiná síň"
+};
+
+function zmenaText(z) {
+  const popis = ZMENA_POPIS[z.typ] || z.typ;
+  if (z.typ === "presun") return popis + " z " + czFromIso(z.z);
+  if (z.typ === "cas" || z.typ === "sin") return popis + " (dřív " + z.z + ")";
+  return popis;
+}
+
+function zmenyJednani(j) {
+  return (calData.zmeny || []).filter(z =>
+    z.soud === j.soud && z.spz === j.spz && z.datum === j.datum);
+}
+
+// Seznam změn pod mřížkou – kvůli němu se přehledy porovnávají.
+function zmenyHtml() {
+  const zmeny = (calData.zmeny || []).filter(z => z && z.spz && z.typ);
+  let html = '<div class="cal-zmeny"><h3>Změny v přehledech soudů</h3>';
+  if (!zmeny.length) {
+    return html + '<p class="feed-empty">Od minulých přehledů se nic nezměnilo.</p></div>';
   }
-  return html + "</details>";
+  html += "<ul>";
+  zmeny.forEach(z => {
+    html += "<li>" +
+      '<span class="cal-zmena-kdy">' + esc(czFromIso(z.kdy)) + "</span>" +
+      courtBadge(z) +
+      '<span class="cal-zmena-spz">' + esc(z.spz) + "</span>" +
+      '<span class="cal-zmena">' + esc(zmenaText(z)) + "</span>" +
+      '<span class="cal-zmena-kdy">jednání ' + esc(czFromIso(z.datum)) + "</span>" +
+      "</li>";
+  });
+  return html + "</ul></div>";
 }
 
 // Detail jednání do bubliny. `nadpis` je jen u celodenního výpisu –
@@ -1318,10 +1333,14 @@ function calPopHtml(events, nadpis) {
     html += '<dl class="cal-event-rows">' +
       rows.map(r => "<dt>" + r[0] + "</dt><dd>" + r[1] + "</dd>").join("") + "</dl>";
 
+    const zmeny = zmenyJednani(j);
+    if (zmeny.length) {
+      html += '<div class="cal-event-links">' + zmeny.map(z =>
+        '<span class="cal-zmena">' + esc(zmenaText(z)) + "</span>").join("") + "</div>";
+    }
     html += '<div class="cal-event-links">' +
       '<a href="' + esc(infosoudUrl(j)) + '" target="_blank" rel="noopener">' +
       "Otevřít na InfoSoudu ↗</a></div>";
-    html += stavHtml(j);
     html += "</div>";
   });
   return html + "</div>";
@@ -1377,17 +1396,9 @@ function openCalPop(anchor) {
   if (!events.length) return;
   closeCalPop();
   const box = document.getElementById("cal-pop");
-  box.classList.remove("is-wide");
   box.innerHTML = calPopHtml(events, idx < 0 ? "Jednání " + czFromIso(datum) : "");
   box.hidden = false;
   placeCalPop(anchor);
-  // Rozbalený stav řízení bublinu prodlouží – musí se posadit znovu, jinak
-  // by se překlopená bublina rozjela přes štítek.
-  box.querySelectorAll(".cal-stav").forEach(d =>
-    d.addEventListener("toggle", () => {
-      box.classList.toggle("is-wide", !!box.querySelector(".cal-stav[open]"));
-      placeCalPop(anchor);
-    }));
   anchor.classList.add("is-open");
   anchor.setAttribute("aria-expanded", "true");
   calPop = { key: datum + "#" + idx, datum: datum, idx: idx };
@@ -1436,7 +1447,8 @@ function renderKalendar(data) {
     '<div class="cal-shell" id="cal-shell">' +
       '<div class="cal-wrap"><div class="cal-grid" id="cal-grid"></div></div>' +
       '<div class="cal-pop" id="cal-pop" role="dialog" aria-label="Detail jednání" hidden></div>' +
-    "</div>";
+    "</div>" +
+    zmenyHtml();
 
   const info = document.getElementById("cal-info");
   if (info && data.generated) {

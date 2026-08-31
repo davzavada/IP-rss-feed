@@ -34,7 +34,6 @@ import json
 import os
 import re
 import sys
-import time
 import unicodedata
 import zipfile
 from datetime import date, datetime, timedelta, timezone
@@ -673,6 +672,104 @@ def scrape_jednani(court, cfg, prehled, local_file=None):
     return (items or None), period, zdroj
 
 
+# --- Co se v přehledu změnilo od minule ---------------------------------
+
+# Soud přehled jednání průběžně vydává znovu a jednání v něm přibývají,
+# mizí i se stěhují. InfoSoud, kde by šel stav řízení ověřit, je celý
+# vykreslený javascriptem a data z něj vytáhnout nejde, takže jediný
+# spolehlivý zdroj je porovnání dvou po sobě jdoucích přehledů. Změny se
+# ukládají do výstupu, aby bylo v kalendáři vidět, co se pohnulo.
+ZMENY_DNU = 30        # jak dlouho se změny drží ve výstupu
+ZMENY_MAX = 200       # strop, ať soubor neroste donekonečna
+
+
+def porovnej_prehled(stare, nove, v_prehledu, court, usek, dnes):
+    """Změny mezi uloženými jednáními a novým přehledem téhož období.
+
+    `stare` i `nove` jsou jednání v agendě duševního vlastnictví ze stejného
+    soudu, úseku a období. `v_prehledu` je celý nový dokument včetně neIP
+    věcí – jednání, které v něm je, soud neodvolal, i když se nám do archivu
+    neukládá.
+
+    Přesun se pozná tak, že spisová značka zmizela z jednoho dne a objevila
+    se v jiném; když se den nezměnil, hlídá se ještě hodina a jednací síň.
+    """
+    def podle_znacky(jednani):
+        dle = {}
+        for j in jednani:
+            dle.setdefault(j.get("spz"), {})[j.get("datum")] = j
+        return dle
+
+    st, nv = podle_znacky(stare), podle_znacky(nove)
+    zmeny = []
+    for spz in sorted(set(st) | set(nv)):
+        stare_dny, nove_dny = st.get(spz, {}), nv.get(spz, {})
+        # Co soud v dokumentu vypsal (byť jako neIP věc), to neodvolal.
+        zmizely = sorted(d for d in stare_dny if (spz, d) not in v_prehledu)
+        pribyly = sorted(set(nove_dny) - set(stare_dny))
+        for i in range(max(len(zmizely), len(pribyly))):
+            z = zmizely[i] if i < len(zmizely) else None
+            na = pribyly[i] if i < len(pribyly) else None
+            zaznam = {"soud": court, "usek": usek, "spz": spz,
+                      "typ": "presun" if z and na else ("nove" if na else "zruseno"),
+                      "datum": na or z}
+            if z and na:
+                zaznam["z"], zaznam["na"] = z, na
+            zmeny.append(zaznam)
+
+        for den in sorted(set(stare_dny) & set(nove_dny)):
+            a, b = stare_dny[den], nove_dny[den]
+            for pole, typ in (("hodina", "cas"), ("sin", "sin")):
+                if (a.get(pole) or "") != (b.get(pole) or "") and b.get(pole):
+                    zmeny.append({"soud": court, "usek": usek, "spz": spz,
+                                  "typ": typ, "datum": den,
+                                  "z": a.get(pole) or "", "na": b.get(pole)})
+    for z in zmeny:
+        z["kdy"] = dnes.isoformat()
+    return zmeny
+
+
+ZMENA_POPIS = {
+    "nove": "nové jednání",
+    "presun": "přeloženo",
+    "zruseno": "vypadlo z přehledu",
+    "cas": "jiný čas",
+    "sin": "jiná síň",
+}
+
+
+def vypis_zmeny(zmeny, court, usek):
+    """Změny do logu – ať je v běhu vidět, co se v přehledu pohnulo."""
+    if not zmeny:
+        print(f"  [{court}/{usek}] proti minulému přehledu beze změn")
+        return
+    print(f"  [{court}/{usek}] změn proti minulému přehledu: {len(zmeny)}")
+    for z in zmeny:
+        detail = f" {z['z']} → {z['na']}" if z.get("na") and z.get("z") else ""
+        print(f"    {z['spz']} ({z['datum']}): {ZMENA_POPIS[z['typ']]}{detail}")
+
+
+def orez_zmeny(zmeny):
+    """Nechá jen změny za poslední měsíc, od nejnovější, bez duplicit.
+
+    Stejná změna se najde znovu pokaždé, co soud přehled vydá – ukládá se
+    proto jen jednou, s datem, kdy se objevila poprvé.
+    """
+    hranice = (date.today() - timedelta(days=ZMENY_DNU)).isoformat()
+    videne, ponechane = set(), []
+    # Od nejstarší, ať z duplicit zůstane ta s datem prvního výskytu.
+    for z in sorted(zmeny, key=lambda z: z.get("kdy") or ""):
+        klic = (z.get("soud"), z.get("spz"), z.get("typ"), z.get("datum"),
+                z.get("z"), z.get("na"))
+        if klic in videne or (z.get("kdy") or "") < hranice:
+            continue
+        videne.add(klic)
+        ponechane.append(z)
+    ponechane.sort(key=lambda z: (z.get("kdy") or "", z.get("datum") or ""),
+                   reverse=True)
+    return ponechane[:ZMENY_MAX]
+
+
 def merge_output(existing, court, items, period, zdroj_url, cfg):
     """Zanese nový přehled do výstupu.
 
@@ -695,6 +792,17 @@ def merge_output(existing, court, items, period, zdroj_url, cfg):
     v_prehledu = {(j.get("spz"), j.get("datum")) for j in items}
     items = [it for it in items if it.get("ip")]
     od, do = period if period else (None, None)
+
+    # Změny se hledají jen v období, které nový přehled pokrývá – mimo něj
+    # o jednání nic neříká a jeho nepřítomnost nic neznamená.
+    if period:
+        v_obdobi = [j for j in jednani
+                    if j.get("soud") == court and j.get("usek", "") == usek
+                    and od <= (j.get("datum") or "") <= do]
+        zmeny = porovnej_prehled(v_obdobi, items, v_prehledu, court, usek,
+                                 date.today())
+        vypis_zmeny(zmeny, court, usek)
+        existing.setdefault("zmeny", []).extend(zmeny)
 
     zachovane = []
     for j in jednani:
@@ -802,210 +910,6 @@ def infosoud_url(j, courts):
         f"&bcVec={j.get('bc')}&rocnik={j.get('rocnik')}"
     )
 
-
-
-# --- Stav řízení z InfoSoudu ------------------------------------------
-
-# InfoSoud je veřejná služba justice, ale je to jeden server – chodíme na něj
-# po jednom a jen kvůli jednáním, u kterých se stav ještě může měnit.
-INFOSOUD_PAUZA = 1.0          # vteřin mezi dotazy
-INFOSOUD_MAX_DOTAZU = 40      # kolik řízení nejvýš obnovit v jednom běhu
-INFOSOUD_OBNOVA_DNU = 21      # jak starý stav se bere jako čerstvý
-INFOSOUD_OKNO_DNU = 60        # jak dlouho po jednání stav ještě sledovat
-INFOSOUD_MAX_RADKU = 60       # strop na velikost uložené tabulky
-INFOSOUD_MAX_BUNKA = 400      # strop na délku textu v buňce
-
-DATUM_V_TEXTU_RE = re.compile(r"\b\d{1,2}\.\s*\d{1,2}\.\s*\d{4}\b")
-
-
-def cell_text(el):
-    """Text buňky včetně částí, které stránka schovává za proklik – právě
-    v nich InfoSoud drží popisy úkonů."""
-    t = " ".join(el.get_text(" ", strip=True).split())
-    return t[:INFOSOUD_MAX_BUNKA]
-
-
-def table_heading(table):
-    """Nadpis nad tabulkou – nejbližší předchozí nadpis nebo <caption>."""
-    caption = table.find("caption")
-    if caption:
-        return cell_text(caption)
-    el = table
-    for _ in range(6):
-        el = el.find_previous(["h1", "h2", "h3", "h4", "h5", "legend", "caption"])
-        if el is None:
-            return ""
-        text = cell_text(el)
-        if text:
-            return text[:120]
-    return ""
-
-
-def read_table(table):
-    """Tabulku převede na {nadpis, hlavicka, radky}. Vrací None, když to
-    není tabulka s daty (rozvržení stránky, prázdná, jednosloupcová)."""
-    if table.find("table"):
-        return None                       # obal rozvržení, ne data
-    radky = []
-    for tr in table.find_all("tr"):
-        bunky = [cell_text(td) for td in tr.find_all(["td", "th"])]
-        if any(b for b in bunky):
-            radky.append(bunky)
-    if len(radky) < 2 or max(len(r) for r in radky) < 2:
-        return None
-    # Záhlaví: buď <th>, nebo první řádek, ve kterém není datum.
-    prvni = table.find("tr")
-    ma_th = bool(prvni and prvni.find("th"))
-    hlavicka = []
-    if ma_th or not DATUM_V_TEXTU_RE.search(" ".join(radky[0])):
-        hlavicka = radky[0]
-        radky = radky[1:]
-    if not radky:
-        return None
-    sirka = max(len(r) for r in radky + ([hlavicka] if hlavicka else []))
-    dorovnat = lambda r: r + [""] * (sirka - len(r))
-    return {
-        "nadpis": table_heading(table),
-        "hlavicka": dorovnat(hlavicka) if hlavicka else [],
-        "radky": [dorovnat(r) for r in radky[:INFOSOUD_MAX_RADKU]],
-    }
-
-
-def parse_infosoud(html):
-    """Vytáhne z detailu řízení tabulky tak, jak jsou – jejich podobu
-    neznáme dopředu a InfoSoud ji může změnit, tak se nic nepřejmenovává.
-    Nejdřív jdou tabulky s daty (průběh řízení), pak zbytek."""
-    soup = BeautifulSoup(html, "html.parser")
-    for tag in soup(["script", "style", "noscript"]):
-        tag.decompose()
-    tabulky = [t for t in (read_table(t) for t in soup.find_all("table")) if t]
-    if not tabulky:
-        return None
-    def datumu(t):
-        return sum(1 for r in t["radky"] if DATUM_V_TEXTU_RE.search(" ".join(r)))
-    tabulky.sort(key=datumu, reverse=True)
-    return tabulky[:3]
-
-
-def popis_stranky(j, url, html):
-    """Když se z odpovědi nedá nic vytáhnout, popiš, co vlastně přišlo –
-    na InfoSoud se z vývojového prostředí nedá dosáhnout, tak je log
-    jediná cesta, jak zjistit, čím se liší od očekávání."""
-    soup = BeautifulSoup(html, "html.parser")
-    titulek = cell_text(soup.title) if soup.title else ""
-    telo = cell_text(soup.body) if soup.body else cell_text(soup)
-    tabulek = len(soup.find_all("table"))
-    radku = len(soup.find_all("tr"))
-    print(f"  [diag] {j.get('spz')} – {url}")
-    print(f"  [diag] {len(html)} znaků, titulek: {titulek!r}, "
-          f"tabulek: {tabulek}, řádků: {radku}, "
-          f"divů s class: {len(soup.select('div[class]'))}")
-    print(f"  [diag] text: {telo[:400]!r}")
-    # Prázdná stránka s nulou tabulek = slupka javascriptové aplikace.
-    # Data si dotahuje odjinud, tak vypíšeme, co v té slupce je.
-    skripty = [s.get("src") for s in soup.find_all("script") if s.get("src")]
-    print(f"  [diag] skripty: {skripty[:10]}")
-    inline = " ".join(s.get_text() for s in soup.find_all("script") if not s.get("src"))
-    adresy = sorted(set(re.findall(
-        r"""['"](https?://[^'"\s]{6,}|/[A-Za-z0-9_\-./]{4,})['"]""", inline)))
-    print(f"  [diag] adresy v kódu: {adresy[:20]}")
-    popis_bundlu(url, skripty)
-
-
-# Adresy služby jsou zabalené uvnitř javascriptového balíku aplikace –
-# vypíšeme je jen jednou za běh, ať log nenaroste o celý balík.
-_bundl_popsan = False
-
-
-def popis_bundlu(url, skripty):
-    """Vytáhne z balíku aplikace adresy, na které si sama chodí pro data."""
-    global _bundl_popsan
-    if _bundl_popsan:
-        return
-    _bundl_popsan = True
-    for src in skripty:
-        if "main" not in src:
-            continue
-        adresa = urljoin(url, src)
-        try:
-            resp = requests.get(adresa, headers=HEADERS, timeout=30)
-            resp.raise_for_status()
-        except requests.RequestException as e:
-            print(f"  [diag] balík {adresa} se nestáhl: {e}")
-            return
-        kod = resp.text
-        nalezene = sorted(set(re.findall(
-            r"""['"`]((?:https?://[^'"`\s]{6,})|(?:/[A-Za-z0-9_\-./]*"""
-            r"""(?:api|rest|service|detail|rizeni|json)[A-Za-z0-9_\-./]*))['"`]""",
-            kod, re.IGNORECASE)))
-        print(f"  [diag] balík {adresa}: {len(kod)} znaků, "
-              f"{len(nalezene)} adres")
-        for a in nalezene[:30]:
-            print(f"  [diag]   {a}")
-        return
-
-
-def potrebuje_stav(j, dnes):
-    """Stav řízení obnovujeme jen u jednání, kde se ještě může měnit."""
-    if not (j.get("cislo_senatu") and j.get("rejstrik") and j.get("bc") and j.get("rocnik")):
-        return False
-    try:
-        stari_jednani = (dnes - date.fromisoformat(j["datum"])).days
-    except (TypeError, ValueError):
-        return False
-    if stari_jednani > INFOSOUD_OKNO_DNU:
-        return False
-    stav = j.get("stav") or {}
-    try:
-        stazeno = datetime.fromisoformat(stav["stazeno"]).date()
-    except (KeyError, TypeError, ValueError):
-        return True
-    return (dnes - stazeno).days >= INFOSOUD_OBNOVA_DNU
-
-
-def update_stav(output):
-    """Doplní k jednáním tabulku průběhu řízení z InfoSoudu."""
-    courts = output.get("courts", {})
-    dnes = date.today()
-    fronta = [j for j in output.get("jednani", []) if potrebuje_stav(j, dnes)]
-    # Napřed ta, která stav ještě nemají, pak podle stáří jednání.
-    fronta.sort(key=lambda j: (bool(j.get("stav")), j.get("datum") or ""))
-    fronta = fronta[:INFOSOUD_MAX_DOTAZU]
-    if not fronta:
-        print("InfoSoud: stav řízení je aktuální, nic se nestahuje")
-        return
-    print(f"InfoSoud: stav řízení u {len(fronta)} jednání…")
-    ok = chyby = 0
-    diag = 2                     # u prvních dvou neúspěchů popíšeme stránku
-    for i, j in enumerate(fronta):
-        url = infosoud_url(j, courts)
-        try:
-            html = http_get(url, timeout=30).text
-            tabulky = parse_infosoud(html)
-            if not tabulky and diag:
-                diag -= 1
-                popis_stranky(j, url, html)
-        except requests.RequestException as e:
-            chyby += 1
-            print(f"  [{j.get('spz')}] nedostupné: {e}")
-            tabulky = None
-        except Exception as e:                       # rozbitá stránka
-            chyby += 1
-            print(f"  [{j.get('spz')}] nepřečteno: {type(e).__name__}: {e}")
-            tabulky = None
-        if tabulky:
-            ok += 1
-            j["stav"] = {
-                "stazeno": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-                "url": url,
-                "tabulky": tabulky,
-            }
-        if i + 1 < len(fronta):
-            time.sleep(INFOSOUD_PAUZA)
-    print(f"InfoSoud: staženo {ok}, nepovedlo se {chyby}")
-    if fronta and not ok:
-        print("::warning::InfoSoud nevrátil ani jednu tabulku – "
-              "nejspíš změnil podobu stránky")
 
 
 def write_ics(output, path=None):
@@ -1171,6 +1075,7 @@ def main():
                          if j.get("ip") and not j.get("zruseno")]
     for j in output["jednani"]:
         j.pop("zruseno", None)      # pozůstatek po dřívějším přeškrtávání
+        j.pop("stav", None)         # opis z InfoSoudu, který se přestal stahovat
     if len(output["jednani"]) != len(ulozena):
         print(f"Z archivu odebráno {len(ulozena) - len(output['jednani'])} "
               f"jednání mimo IP agendu.")
@@ -1192,8 +1097,8 @@ def main():
     if not ok and not output.get("jednani"):
         sys.exit("Nepodařilo se získat žádná jednání.")
 
-    # 3) Stav řízení z InfoSoudu k jednáním, u kterých se ještě může měnit.
-    update_stav(output)
+    # 3) Změny proti minulým přehledům držíme jen měsíc zpět.
+    output["zmeny"] = orez_zmeny(output.get("zmeny", []))
 
     # Seznam senátů a soudců do výstupu – kalendář je ukazuje u filtru.
     output["senaty"] = {c: cfg.get("senaty", []) for c, cfg in config["courts"].items()}
