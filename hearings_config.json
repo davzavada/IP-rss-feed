@@ -1,12 +1,26 @@
 {
   "updated": "2026-08-31T00:00:00+00:00",
-  "note": "IP senáty civilních úseků MSPH a VS Praha podle rozvrhů práce. Senát = číslo soudního oddělení + rejstřík, jak se objevuje ve spisové značce. Aktualizuje scraper_hearings.py (AI extrakce z rozvrhů práce); lze upravit i ručně.",
+  "note": "IP senáty MSPH a VS Praha podle rozvrhů práce. Senát = číslo soudního oddělení + rejstřík, jak se objevuje ve spisové značce. Aktualizuje scraper_hearings.py (AI extrakce z rozvrhů práce); lze upravit i ručně. Předběžná opatření (rejstřík Nc) se nepoznávají podle čísla senátu – to je u Nc číslo rejstříku, ne oddělení – ale podle předsedy senátu ze seznamu `soudci`. Senáty v `senaty_ucastnik` soudí i běžnou agendu, takže se u nich navíc hledá `ucastnici_ip` mezi stranami.",
   "courts": {
     "MS": {
       "nazev": "Městský soud v Praze",
       "infosoud_org": "MSPHAAB",
       "jednani_url": "https://msp.gov.cz/web/mestsky-soud-v-praze/zakladni-informace/-/clanek/prehledy-narizenych-jednani",
       "rozvrh_url": "https://msp.gov.cz/web/mestsky-soud-v-praze/rozvrh-prace-2026",
+      "prehledy": [
+        {
+          "usek": "civilni",
+          "nazev": "Civilní úsek",
+          "prefer": ["civiln", "civil", " cu", "cu.", "cu_", "_cu"],
+          "keywords": ["jednani", "prehled"]
+        },
+        {
+          "usek": "spravni",
+          "nazev": "Úsek správního soudnictví",
+          "prefer": ["spravni", "spravn", "spravniho soudnictvi", " su", "su.", "_su"],
+          "keywords": ["jednani", "prehled"]
+        }
+      ],
       "senaty": [
         "1 Cm",
         "2 C", "2 Cm", "2 EC", "2 ECm",
@@ -20,6 +34,11 @@
         "41 C", "41 Cm", "41 EC", "41 ECm",
         "73 C", "73 Cm", "73 EC", "73 ECm"
       ],
+      "senaty_ucastnik": ["15 A", "18 A"],
+      "ucastnici_ip": [
+        "Úřad průmyslového vlastnictví",
+        "Uradu prumysloveho vlastnictvi"
+      ],
       "soudci": [
         "Tomáš Bělohlávek",
         "Petr Košík",
@@ -30,7 +49,7 @@
         "Lucie Vobrová"
       ],
       "rozvrh_zdroj": {
-        "popis": "Rozvrh práce MSPH 2026, Spr 2828/2025, úplné znění s účinností od 17. 8. 2026 (senáty specializací Věci senátní / Nekalá soutěž a pověst / Autorské právo / Kolektivní správci, oddělení 2, 3, 9+32, 10 (+32 C, 37 C), 12 (+1 Cm, 21 Cm), 41 a 73)",
+        "popis": "Rozvrh práce MSPH 2026, Spr 2828/2025, úplné znění s účinností od 17. 8. 2026. Sporné věci: specializace Věci senátní / Nekalá soutěž a pověst / Autorské právo / Kolektivní správci, oddělení 2, 3, 9+32, 10 (+32 C, 37 C), 12 (+1 Cm, 21 Cm), 41 a 73. Předběžná opatření: body XI. 1. A) „PO duševní vlastnictví\" a XII. 1. A) a B) „PO autorské právo\" / „PO kolektivní správci\", týchž oddělení – poznávají se podle předsedy senátu. Žaloby proti ÚPV: úsek správního soudnictví, oddělení 15 A a 18 A (tato oddělení soudí i ostatní správní agendu).",
         "url": null,
         "hash": null
       }
@@ -40,6 +59,14 @@
       "infosoud_org": "VSPHAAB",
       "jednani_url": "https://msp.gov.cz/web/vrchni-soud-v-praze/zakladni-informace/-/clanek/kalendar-soudnich-jednani",
       "rozvrh_url": "https://msp.gov.cz/web/vrchni-soud-v-praze/rozvrh-prace-2026",
+      "prehledy": [
+        {
+          "usek": "civilni",
+          "nazev": "Civilní úsek",
+          "prefer": ["civiln", " cu", "cu.", "cu_", "_cu"],
+          "keywords": ["jednani", "prehled", "kalendar"]
+        }
+      ],
       "senaty": [
         "1 Cmo",
         "1 Co",

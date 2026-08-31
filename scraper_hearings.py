@@ -56,6 +56,8 @@ HEADERS = {"User-Agent": USER_AGENT, "Accept-Language": "cs-CZ,cs;q=0.9,en;q=0.8
 # minulost) a po kolika dnech zkusit obnovit IP senáty z rozvrhu práce.
 KEEP_PAST_DAYS = 60
 ROZVRH_REFRESH_DAYS = 7
+# Kolik řádků z dokumentu se musí naparsovat, aby se výsledek bral jako úplný.
+MIN_PARSE_RATIO = 0.8
 
 W_NS = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
 
@@ -205,10 +207,15 @@ PDF_SKIP_RE = re.compile(
 
 
 def parse_jednani_pdf(data):
+    return parse_jednani_text(pdf_text(data))
+
+
+def parse_jednani_text(text):
     """Přehled VS: text po řádcích; záznam začíná datem, spisová značka
     s hodinou ho dělí na hlavičku (síň, předseda) a účastníky. Účastníci
-    můžou pokračovat na dalších řádcích až do dalšího data."""
-    text = pdf_text(data)
+    můžou pokračovat na dalších řádcích až do dalšího data.
+
+    Oddělené od načtení PDF, ať se dá parsování testovat na textu."""
     period = parse_period(text)
     lines = [ln.strip() for ln in text.splitlines()]
     lines = [ln for ln in lines if ln and not PDF_SKIP_RE.match(ln)]
@@ -530,15 +537,37 @@ def update_rozvrh(config, court, pdf_bytes, source_url):
 # --- Filtr IP ---
 
 def mark_ip(items, cfg):
+    """Označí jednání, která patří do agendy duševního vlastnictví.
+
+    Tři pravidla, protože tři různé situace:
+
+    1. Senát ze spisové značky je v seznamu IP senátů (běžné sporné věci).
+    2. Rejstřík Nc (předběžná opatření, zajištění důkazu): číslo ve značce
+       specializaci nerozlišuje – u obchodního „2 Nc" i civilního „1 Nc" je
+       to číslo rejstříku, ne oddělení – takže rozhoduje předseda senátu.
+       Tím se chytí PO v ochranných známkách i autorskoprávní PO.
+    3. Správní senáty vyřizující žaloby proti Úřadu průmyslového vlastnictví
+       (`senaty_ucastnik`): tyhle senáty soudí i běžnou správní agendu, takže
+       samotné číslo senátu nestačí a hledá se ÚPV mezi účastníky. Když
+       přehled u řádku účastníky neuvádí vůbec, bereme ho radši jako IP –
+       přehlédnout jednání o známce je horší než jeden falešný poplach.
+    """
     # Config se edituje i ručně, takže se na velikost písmen rejstříku
     # nespoléháme („12 ECm" i „12 Ecm" musí platit stejně).
     senaty = {str(s).casefold() for s in cfg.get("senaty", [])}
+    podle_ucastnika = {str(s).casefold() for s in cfg.get("senaty_ucastnik", [])}
+    vzory = [strip_diacritics(str(u)).casefold()
+             for u in cfg.get("ucastnici_ip", []) if str(u).strip()]
     soudci = {normalize_judge(j) for j in cfg.get("soudci", [])}
+
     for it in items:
-        if it["senat"].casefold() in senaty:
+        senat = it["senat"].casefold()
+        if senat in senaty:
             it["ip"] = True
+        elif senat in podle_ucastnika:
+            strany = strip_diacritics(" | ".join(it.get("ucastnici") or [])).casefold()
+            it["ip"] = (not strany) or any(v in strany for v in vzory)
         elif it["rejstrik"] == "Nc":
-            # U Nc číslo senátu specializaci nerozlišuje – rozhoduje předseda.
             it["ip"] = normalize_judge(it["predseda"]) in soudci
         else:
             it["ip"] = False
@@ -547,9 +576,37 @@ def mark_ip(items, cfg):
 
 # --- Hlavní běh ---
 
-def scrape_court_jednani(court, cfg, local_file=None):
-    """Stáhne (nebo načte lokálně) přehled jednání soudu a naparsuje ho.
-    Vrací (items, period, zdroj_url) nebo (None, None, None) při neúspěchu."""
+def raw_text_of(data):
+    """Prostý text dokumentu (pro kontroly kvality a AI zálohu)."""
+    if data[:5] == b"%PDF-":
+        return pdf_text(data)
+    if data[:2] == b"PK":
+        return docx_tables(data)[1]
+    return ""
+
+
+def expected_rows(text):
+    """Kolik jednání dokument nejspíš obsahuje – počítá data ve tvaru
+    DD.MM.RRRR, na kterých každý řádek přehledu začíná. Hlavička uvádí
+    období dvěma daty, ta se odečtou."""
+    n = len(DATE_RE.findall(text or ""))
+    return max(0, n - (2 if parse_period(text or "") else 0))
+
+
+def scrape_jednani(court, cfg, prehled, local_file=None):
+    """Stáhne (nebo načte lokálně) jeden přehled jednání a naparsuje ho.
+
+    Vrací (items, period, zdroj_url); items je None, když se nepodařilo
+    získat vůbec nic – volající pak nechá dosavadní data být.
+
+    Kromě parsování hlídá i jeho úplnost: když se z dokumentu naparsuje
+    výrazně méně řádků, než kolik je v něm dat, jde nejspíš o změnu formátu
+    a nastupuje AI záloha. Bez téhle kontroly by se částečné selhání
+    (např. přejmenovaný sloupec) projevilo jen tak, že by jednání tiše
+    zmizela.
+    """
+    usek = prehled.get("usek", "")
+    tag = f"{court}/{usek}" if usek else court
     data, zdroj = None, None
     if local_file:
         with open(local_file, "rb") as f:
@@ -557,45 +614,60 @@ def scrape_court_jednani(court, cfg, local_file=None):
         # Fixture není zveřejnitelný zdroj – ať se do publikovaných dat
         # nedostane název testovacího souboru místo odkazu na msp.gov.cz.
         zdroj = None
-        print(f"  [{court}] lokální dokument: {local_file}")
+        print(f"  [{tag}] lokální dokument: {local_file}")
     else:
         try:
             links = find_document_links(cfg["jednani_url"])
             href, text = pick_link(
                 links,
-                keywords=("jednani", "prehled"),
-                prefer=("civil", " cu", "cu.", "cu_", "_cu"),
+                keywords=tuple(prehled.get("keywords", ("jednani", "prehled"))),
+                prefer=tuple(prehled.get("prefer", ())),
             )
             if not href:
-                print(f"  [{court}] na stránce nejsou odkazy na dokumenty")
+                print(f"  [{tag}] na stránce nejsou odkazy na dokumenty")
                 return None, None, None
-            print(f"  [{court}] stahuji: {text or href}")
+            print(f"  [{tag}] stahuji: {text or href}")
             data = http_get(href).content
             zdroj = href
         except requests.RequestException as e:
-            print(f"  [{court}] stažení selhalo: {e}")
+            print(f"  [{tag}] stažení selhalo: {e}")
             return None, None, None
 
     is_docx = data[:2] == b"PK"
     is_pdf = data[:5] == b"%PDF-"
+    if not (is_docx or is_pdf):
+        print(f"  [{tag}] neznámý formát dokumentu – přeskočeno")
+        return None, None, None
+
     items, period = [], None
     try:
-        if is_docx:
-            items, period = parse_jednani_docx(data)
-        elif is_pdf:
-            items, period = parse_jednani_pdf(data)
+        items, period = (parse_jednani_docx(data) if is_docx
+                         else parse_jednani_pdf(data))
     except Exception as e:
-        print(f"  [{court}] deterministické parsování spadlo: {e}")
+        print(f"  [{tag}] deterministické parsování spadlo: {e}")
 
-    if not items and gemini_enabled():
-        print(f"  [{court}] zkouším AI parsování")
+    items = [it for it in items if it.get("datum")]
+    text = raw_text_of(data)
+    ocekavano = expected_rows(text)
+    chybi = ocekavano and len(items) < ocekavano * MIN_PARSE_RATIO
+    if chybi:
+        print(f"  [{tag}] POZOR: naparsováno {len(items)} z ~{ocekavano} "
+              f"řádků – dokument nejspíš změnil formát")
+
+    if (not items or chybi) and gemini_enabled():
+        print(f"  [{tag}] zkouším AI parsování")
         try:
-            text = pdf_text(data) if is_pdf else docx_tables(data)[1]
-            items = parse_jednani_ai(text)
+            ai_items = [it for it in parse_jednani_ai(text) if it.get("datum")]
+            if len(ai_items) > len(items):
+                items = ai_items
+                print(f"  [{tag}] AI naparsovala {len(items)} jednání")
         except Exception as e:
-            print(f"  [{court}] AI parsování selhalo: {e}")
-    items = [it for it in items if it["datum"]]
-    print(f"  [{court}] jednání: {len(items)}" + (f", období {period[0]} – {period[1]}" if period else ""))
+            print(f"  [{tag}] AI parsování selhalo: {e}")
+
+    for it in items:
+        it["usek"] = usek
+    print(f"  [{tag}] jednání: {len(items)}/{ocekavano or '?'}"
+          + (f", období {period[0]} – {period[1]}" if period else ""))
     return (items or None), period, zdroj
 
 
@@ -603,13 +675,16 @@ def merge_output(existing, court, items, period, zdroj_url, cfg):
     """Vloží nová jednání do výstupu: uvnitř období dokumentu nahradí vše
     (zrušená jednání z novějšího přehledu zmizí), mimo období ponechá."""
     jednani = [j for j in existing.get("jednani", []) if isinstance(j, dict)]
+    # Nahrazuje se vždy jen jeden úsek jednoho soudu – civilní a správní
+    # přehled pokrývají stejné dny, ale každý jiné senáty.
+    usek = items[0].get("usek", "") if items else ""
     # Dedupe podle (spz, datum) platí vždy – přehled občas nese i řádek s datem
     # mimo deklarované období a ten by se jinak s každým během znovu přidával.
     nove = {(j.get("spz"), j.get("datum")) for j in items}
     od, do = period if period else (None, None)
     jednani = [
         j for j in jednani
-        if j.get("soud") != court
+        if j.get("soud") != court or j.get("usek", "") != usek
         or ((j.get("spz"), j.get("datum")) not in nove
             and not (period and od <= (j.get("datum") or "") <= do))
     ]
@@ -623,9 +698,11 @@ def merge_output(existing, court, items, period, zdroj_url, cfg):
     existing["jednani"] = jednani
 
     courts = existing.setdefault("courts", {})
-    courts[court] = {
-        "nazev": cfg["nazev"],
-        "infosoud_org": cfg["infosoud_org"],
+    meta = courts.setdefault(court, {})
+    meta["nazev"] = cfg["nazev"]
+    meta["infosoud_org"] = cfg["infosoud_org"]
+    # Každý úsek má vlastní dokument, a tedy i vlastní období a čas stažení.
+    meta.setdefault("useky", {})[usek] = {
         "obdobi": {"od": period[0], "do": period[1]} if period else None,
         "stazeno": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "zdroj": zdroj_url,
@@ -705,9 +782,10 @@ def infosoud_url(j, courts):
     )
 
 
-def write_ics(output):
+def write_ics(output, path=None):
     """Zapíše IP jednání jako iCalendar – na tenhle soubor se dá přihlásit
     v Google Kalendáři (Jiné kalendáře → Přidat → Z adresy URL)."""
+    path = path or ICS_FILE
     courts = output.get("courts", {})
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     host = site_host()
@@ -784,26 +862,29 @@ def write_ics(output):
         ]
 
     lines.append("END:VCALENDAR")
-    with open(ICS_FILE, "w", encoding="utf-8", newline="") as f:
+    with open(path, "w", encoding="utf-8", newline="") as f:
         f.write("\r\n".join(ics_fold(x) for x in lines) + "\r\n")
-    print(f"Kalendář: {count} IP jednání -> {ICS_FILE} (https://{host}/hearings.ics)")
+    print(f"Kalendář: {count} IP jednání -> {path} (https://{host}/hearings.ics)")
     return f"https://{host}/hearings.ics"
 
 
 def parse_kv(pairs):
+    """„MS=a.docx" i „MS:spravni=b.pdf" -> {"MS": …, "MS:spravni": …}."""
     out = {}
     for p in pairs or []:
         if "=" not in p:
-            raise SystemExit(f"Čekám SOUD=cesta, dostal jsem: {p}")
+            raise SystemExit(f"Čekám SOUD[:ÚSEK]=cesta, dostal jsem: {p}")
         k, v = p.split("=", 1)
-        out[k.upper()] = v
+        soud, _, usek = k.partition(":")
+        out[soud.upper() + (f":{usek}" if usek else "")] = v
     return out
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--local-jednani", nargs="*", metavar="SOUD=CESTA",
-                    help="místo stahování použít lokální přehled jednání")
+    ap.add_argument("--local-jednani", nargs="*", metavar="SOUD[:ÚSEK]=CESTA",
+                    help="místo stahování použít lokální přehled jednání "
+                         "(např. MS:spravni=prehled.pdf)")
     ap.add_argument("--local-rozvrh", nargs="*", metavar="SOUD=CESTA",
                     help="místo stahování použít lokální rozvrh práce (PDF)")
     ap.add_argument("--force-rozvrh", action="store_true",
@@ -855,18 +936,23 @@ def main():
             config["updated"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
             save_json(CONFIG_FILE, config)
 
-    # 2) Přehledy jednání.
+    # 2) Přehledy jednání – soud jich může zveřejňovat víc (civilní úsek,
+    #    správní úsek s žalobami proti ÚPV), každý jako vlastní dokument.
     output = load_json(OUTPUT_FILE)
     ok = False
     print("Přehledy jednání…")
     for court, cfg in config["courts"].items():
-        items, period, zdroj = scrape_court_jednani(
-            court, cfg, local_jednani.get(court))
-        if items is None:
-            continue
-        mark_ip(items, cfg)
-        merge_output(output, court, items, period, zdroj, cfg)
-        ok = True
+        for prehled in cfg.get("prehledy", [{}]):
+            usek = prehled.get("usek", "")
+            local = local_jednani.get(f"{court}:{usek}") or (
+                local_jednani.get(court) if len(cfg.get("prehledy", [{}])) == 1
+                or usek == cfg.get("prehledy", [{}])[0].get("usek") else None)
+            items, period, zdroj = scrape_jednani(court, cfg, prehled, local)
+            if items is None:
+                continue
+            mark_ip(items, cfg)
+            merge_output(output, court, items, period, zdroj, cfg)
+            ok = True
 
     if not ok and not output.get("jednani"):
         sys.exit("Nepodařilo se získat žádná jednání.")

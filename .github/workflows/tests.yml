@@ -1,0 +1,28 @@
+name: Testy
+
+# Přehledy jednání jsou wordové a pdf dokumenty, které soud může kdykoli
+# přeformátovat. Testy běží nad uloženými originály (tests/fixtures), takže
+# zachytí, když úprava scraperu rozbije parsování nebo filtr IP senátů.
+on:
+  push:
+    paths:
+      - 'scraper_hearings.py'
+      - 'test_hearings.py'
+      - 'hearings_config.json'
+      - 'tests/**'
+      - '.github/workflows/tests.yml'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install -r requirements.txt icalendar
+      - name: Testy scraperu jednání
+        run: python test_hearings.py
