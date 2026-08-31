@@ -234,6 +234,70 @@
       "ip": true,
       "soud": "MS",
       "zruseno": false
+    },
+    {
+      "datum": "2026-09-02",
+      "hodina": "11:00",
+      "sin": "353",
+      "predseda": "Mgr. Lucie Vobrová",
+      "spz": "2 C 11/2025",
+      "nazev": "Gabriela Fárová v. Činoherní klub",
+      "senat": "2 C",
+      "rejstrik": "C",
+      "cislo_senatu": 2,
+      "bc": 11,
+      "rocnik": 2025,
+      "ucastnici": [
+        "Gabriela Fárová",
+        "Činoherní klub z.ú."
+      ],
+      "usek": "civilni",
+      "ip": true,
+      "soud": "MS",
+      "zruseno": false
+    },
+    {
+      "datum": "2026-09-03",
+      "hodina": "13:00",
+      "sin": "265",
+      "predseda": "JUDr. Mgr. Petr Košík, Ph.D.",
+      "spz": "9 C 27/2024",
+      "nazev": "Hospodářská komora České… v. Český telekomunikační klastr a další",
+      "senat": "9 C",
+      "rejstrik": "C",
+      "cislo_senatu": 9,
+      "bc": 27,
+      "rocnik": 2024,
+      "ucastnici": [
+        "Hospodářská komora České republiky",
+        "Český telekomunikační klastr z.s.",
+        "DILIA divadelní literární audiovizuální agentura z.s."
+      ],
+      "usek": "civilni",
+      "ip": true,
+      "soud": "MS",
+      "zruseno": false
+    },
+    {
+      "datum": "2026-09-10",
+      "hodina": "09:30",
+      "sin": "265",
+      "predseda": "JUDr. Mgr. Petr Košík, Ph.D.",
+      "spz": "9 C 4/2025",
+      "nazev": "Lucie Konášová v. Jiří Strach",
+      "senat": "9 C",
+      "rejstrik": "C",
+      "cislo_senatu": 9,
+      "bc": 4,
+      "rocnik": 2025,
+      "ucastnici": [
+        "Mgr. Lucie Konášová",
+        "MgA. Jiří Strach"
+      ],
+      "usek": "civilni",
+      "ip": true,
+      "soud": "MS",
+      "zruseno": false
     }
   ],
   "courts": {
@@ -243,11 +307,19 @@
       "useky": {
         "civilni": {
           "obdobi": {
-            "od": "2026-08-16",
-            "do": "2026-08-31"
+            "od": "2026-09-01",
+            "do": "2026-09-15"
           },
-          "stazeno": "2026-08-31T10:25:46+00:00",
-          "zdroj": null
+          "stazeno": "2026-08-31T11:03:48+00:00",
+          "zdroj": "https://msp.gov.cz/documents/d/mestsky-soud-v-praze/civilni-usek-1-15-9-2026"
+        },
+        "spravni": {
+          "obdobi": {
+            "od": "2026-09-01",
+            "do": "2026-09-15"
+          },
+          "stazeno": "2026-08-31T11:03:49+00:00",
+          "zdroj": "https://msp.gov.cz/documents/d/mestsky-soud-v-praze/spravni-usek-1-15-9-2026"
         }
       }
     },
@@ -260,8 +332,8 @@
             "od": "2026-08-17",
             "do": "2026-08-31"
           },
-          "stazeno": "2026-08-31T10:25:47+00:00",
-          "zdroj": null
+          "stazeno": "2026-08-31T11:03:51+00:00",
+          "zdroj": "https://msp.gov.cz/documents/d/vrchni-soud-v-praze/prehled_jednacky_cu-2"
         }
       }
     }
@@ -324,6 +396,6 @@
       "Roman Horáček"
     ]
   },
-  "generated": "2026-08-31T10:25:47+00:00",
+  "generated": "2026-08-31T11:04:15+00:00",
   "ics": "https://rss.davidzavada.cz/hearings.ics"
 }
