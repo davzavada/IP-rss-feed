@@ -158,7 +158,7 @@
 
   /* Tabulka (shadcn Table) */
   .table-wrap { overflow-x: auto; }
-  table { width: 100%; border-collapse: collapse; font-size: var(--fs-md); table-layout: fixed; min-width: 720px; }
+  table { width: 100%; border-collapse: collapse; font-size: var(--fs-md); table-layout: fixed; min-width: 780px; }
   th { text-align: left; font-size: var(--fs-md); font-weight: 500; color: var(--muted-foreground); padding: 8px 16px 8px 0; border-bottom: 1px solid var(--border); }
   td { padding: 12px 16px 12px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
   th:last-child, td:last-child { padding-right: 0; }
@@ -172,8 +172,14 @@
      skript – výchozí hodnoty jsou v COL_DEFAULTS, uživatelské v cookie.
      V CSS proto zůstává jen to, co se šířkou nesouvisí. */
   .col-src .src, .col-src .tag { margin-bottom: 3px; }
-  .col-date { color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
-  .col-type, .col-name, .col-heslo, .col-summary, .col-src, .col-author
+  .col-date {
+    color: var(--muted-foreground); font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  /* Heslo je štítek, ne věta – na dvou řádcích vypadá jako odstavec.
+     Držíme ho na jednom a delší radši ořízneme (celé je v title). */
+  .col-heslo { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .col-type, .col-name, .col-summary, .col-src, .col-author
     { overflow-wrap: anywhere; }
   .author { color: var(--muted-foreground); }
   .col-name .author { display: block; margin-top: 2px; font-size: var(--fs-sm); }
@@ -383,7 +389,7 @@
      takže se rozdělí rovným dílem a text se zalomí, místo aby přetekl. */
   .cal-stav-table {
     border-collapse: collapse; font-size: var(--fs-sm);
-    /* min-width: 0 přebíjí 720px, které mají široké tabulky feedů výš. */
+    /* min-width: 0 přebíjí 780px, které mají široké tabulky feedů výš. */
     width: 100%; min-width: 0; table-layout: fixed;
   }
   .cal-stav-table th, .cal-stav-table td {
@@ -663,7 +669,7 @@
 // Výchozí šířky v procentech podle druhu sloupce; sloupec, který tu není
 // (Shrnutí), si rozebere zbytek řádku. Každá tabulka má jinou skladbu
 // sloupců, takže se výchozí hodnoty počítají pro každou zvlášť.
-const COL_DEFAULTS = { type: 12, name: 20, heslo: 13, src: 15, date: 12, author: 14 };
+const COL_DEFAULTS = { type: 12, name: 20, heslo: 22, src: 15, date: 10, author: 14 };
 const MIN_COL_PCT = 4;          // pod tuhle šířku sloupec nepustíme
 const KEY_STEP_PCT = 2;         // krok při ovládání šipkami
 const COL_COOKIE = "colw";
@@ -773,7 +779,7 @@ function initColumnResize() {
     if (!handle || (e.pointerType === "mouse" && e.button !== 0)) return;
     const { table, index } = boundaryOf(handle);
     // Šířky měříme v pixelech ze skutečně vykreslené tabulky – tažení pak
-    // sedí na pohyb myši i tam, kde tabulka přetéká (min-width: 720px).
+    // sedí na pohyb myši i tam, kde tabulka přetéká (min-width: 780px).
     const cells = handle.parentElement.parentElement.children;
     drag = {
       table, index, handle,
@@ -957,7 +963,7 @@ function nameAuthorCell(item) {
 
 function hesloCell(item) {
   const tag = text(item, "ai-tag");
-  return tag ? '<span class="heslo">' + esc(tag) + '</span>' : "";
+  return tag ? '<span class="heslo" title="' + esc(tag) + '">' + esc(tag) + '</span>' : "";
 }
 
 function summaryCell(item) {
@@ -974,7 +980,7 @@ const colsNsoud = [
   { label: "Název", cls: "col-name", render: nameCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
   { label: "Shrnutí", cls: "col-summary", render: summaryCell },
-  { label: "Datum zveřejnění", cls: "col-date", render: getDate }
+  { label: "Datum", cls: "col-date", render: getDate }
 ];
 
 const colsCjeu = [
