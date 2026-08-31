@@ -141,7 +141,10 @@
   .help-wrap:hover .card-desc { display: block; }
   .card-desc ul { margin: 4px 0 0; padding-left: 18px; }
   .card-desc li { margin: 1px 0; }
-  .card-content { padding: 10px 22px 16px; }
+  /* Obsah karty je dotazovatelný kontejner: o rozvržení tabulky nerozhoduje
+     šířka okna, ale karty. Mezi 1360 a 1500 px ukrojí boční navigace tolik,
+     že je obsah užší než na telefonu, a přesto by okno hlásilo „široké". */
+  .card-content { padding: 10px 22px 16px; container-type: inline-size; }
 
   /* Název karty jako proklik na XML feed – jen jemná ikonka, žádný viditelný štítek. */
   .card-title-link { display: inline-flex; align-items: center; gap: 6px; color: inherit; text-decoration: none; }
@@ -278,6 +281,15 @@
      bublinu ořízlo. */
   .cal-shell { position: relative; }
   .cal-wrap { overflow-x: auto; }
+  /* Mobilní seznam dnů – na širokých obrazovkách je vidět mřížka. */
+  .cal-agenda { display: none; }
+  .cal-agenda-day { padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .cal-agenda-day:last-child { border-bottom: 0; }
+  .cal-agenda-date {
+    font-size: var(--fs-sm); font-weight: 600; color: var(--muted-foreground);
+    padding: 0 4px 4px;
+  }
+  .cal-agenda .cal-chip { padding: 5px 4px; }
   .cal-grid {
     /* minmax(0, 1fr) je nutné: s holým 1fr má sloupec spodní šířku podle
        obsahu a jeden dlouhý název jednání by mřížku roztáhl přes okno. */
@@ -478,11 +490,48 @@
     /* Se zobrazenou boční navigací by byl přepínač nahoře nadbytečný. */
     .pagetabs { display: none; }
   }
+  /* Tabulka má spodní šířku 780 px; jakmile se do karty nevejde, vodorovné
+     posouvání schová shrnutí a řádky se protáhnou. Místo toho je z každé
+     položky blok: nahoře štítky zdroje a datum, pod nimi název s autorem,
+     heslo a shrnutí. */
+  @container (max-width: 790px) {
+    .table-wrap { overflow-x: visible; }
+    table { display: block; min-width: 0; }
+    table colgroup, table thead { display: none; }
+    tbody { display: block; }
+    tbody tr {
+      display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px;
+      padding: 12px 0; border-bottom: 1px solid var(--border);
+    }
+    tbody tr:hover { background: none; }
+    tbody td { display: block; padding: 0; border: 0; }
+    tbody td:empty { display: none; }
+    .col-src, .col-type { order: 1; }
+    .col-date { order: 2; font-size: var(--fs-sm); }
+    .col-name { order: 3; flex-basis: 100%; font-weight: 500; }
+    .col-author { order: 4; flex-basis: 100%; }
+    /* Heslo se v bloku vejde celé – ořezávat ho je potřeba jen ve sloupci. */
+    .col-heslo { order: 5; max-width: 100%; white-space: normal; overflow: visible; }
+    .col-summary { order: 6; flex-basis: 100%; color: var(--muted-foreground); }
+    .col-src .src, .col-src .tag { margin-bottom: 0; }
+  }
   @media (max-width: 640px) {
     .container { padding-inline: 14px; }
     main.container { padding-block: 20px 48px; gap: 20px; }
     .card-header { padding: 14px 16px 0; }
     .card-content { padding: 8px 16px 12px; }
+    /* Popis za jménem webu zabere na telefonu tři řádky hlavičky. */
+    h1 .tagline { display: none; }
+    /* Ve zdrojích přehledu zbyde na název vedle štítků úzký sloupec –
+       ať se radši zalomí pod ně a využije celou šířku. */
+    .digest-source { flex-wrap: wrap; }
+
+    /* Šest týdnů v mřížce se na telefonu přečíst nedá – místo ní seznam
+       dnů, ve kterých něco je. */
+    .cal-wrap { display: none; }
+    .cal-agenda { display: block; }
+    .cal-toolbar { gap: 10px; }
+    .cal-pop { width: calc(100% - 8px); }
   }
 </style>
 <script>
@@ -1229,6 +1278,43 @@ function courtBadge(j) {
   return '<span class="src src-' + key + '">' + esc(COURT_LABELS[j.soud] || j.soud) + "</span>";
 }
 
+// V mřížce i v mobilním seznamu je vidět čas a jméno sporu; spisová
+// značka až po rozkliknutí.
+function chipHtml(j, iso, idx) {
+  const chip = j.soud === "MS" ? "cal-chip-ms" : "cal-chip-vs";
+  return '<button type="button" class="cal-chip ' + chip +
+    '" data-date="' + iso + '" data-idx="' + idx + '" aria-expanded="false" title="' +
+    esc(caseName(j) + " · " + (j.spz || "")) + '">' +
+    '<span class="cal-dot"></span>' +
+    (j.hodina ? '<span class="cal-chip-time">' + esc(j.hodina) + "</span>" : "") +
+    '<span class="cal-chip-name">' + esc(caseName(j)) + "</span></button>";
+}
+
+// Na telefonu se mřížka šesti týdnů nedá číst – vedle ní se proto vykreslí
+// seznam dnů, ve kterých něco je, a CSS podle šířky ukáže jedno z toho.
+// Obojí se kreslí ze stejných dat, takže bublina funguje v obou.
+function renderCalAgenda(byDay, start) {
+  const dny = Object.keys(byDay).sort();
+  const konec = new Date(start);
+  konec.setDate(start.getDate() + CAL_TYDNU * 7 - 1);
+  const odIso = isoOf(start), doIso = isoOf(konec);
+  const vOkne = dny.filter(d => d >= odIso && d <= doIso);
+  if (!vOkne.length) {
+    return '<p class="feed-empty">V tomhle období nejsou žádná jednání.</p>';
+  }
+  let html = "";
+  vOkne.forEach(iso => {
+    const d = new Date(iso);
+    // Rok je v nadpisu okna nad seznamem, u každého dne by jen překážel.
+    const nadpis = CAL_DOWS[(d.getDay() + 6) % 7] + " " +
+      czFromIso(iso).replace(/ \d{4}$/, "");
+    html += '<div class="cal-agenda-day"><div class="cal-agenda-date">' +
+      esc(nadpis) + "</div>" +
+      byDay[iso].map((j, idx) => chipHtml(j, iso, idx)).join("") + "</div>";
+  });
+  return html;
+}
+
 function renderCalGrid() {
   const byDay = calEventsByDay();
   const start = new Date(calStart);
@@ -1250,14 +1336,7 @@ function renderCalGrid() {
       ? d.getDate() + ". " + (d.getMonth() + 1) + "." : d.getDate();
     html += '<span class="cal-daynum">' + cislo + "</span>";
     events.slice(0, CAL_MAX_CHIPS).forEach((j, idx) => {
-      // V mřížce je vidět čas a jméno sporu; spisová značka až po rozkliknutí.
-      const chip = j.soud === "MS" ? "cal-chip-ms" : "cal-chip-vs";
-      html += '<button type="button" class="cal-chip ' + chip +
-        '" data-date="' + iso + '" data-idx="' + idx + '" aria-expanded="false" title="' +
-        esc(caseName(j) + " · " + (j.spz || "")) + '">' +
-        '<span class="cal-dot"></span>' +
-        (j.hodina ? '<span class="cal-chip-time">' + esc(j.hodina) + "</span>" : "") +
-        '<span class="cal-chip-name">' + esc(caseName(j)) + "</span></button>";
+      html += chipHtml(j, iso, idx);
     });
     // „+2 další" otevře bublinu s celým dnem, ať se ke skrytým jde dostat.
     if (events.length > CAL_MAX_CHIPS) {
@@ -1268,6 +1347,7 @@ function renderCalGrid() {
     html += "</div>";
   }
   document.getElementById("cal-grid").innerHTML = html;
+  document.getElementById("cal-agenda").innerHTML = renderCalAgenda(byDay, start);
   const konec = new Date(start);
   konec.setDate(start.getDate() + CAL_TYDNU * 7 - 1);
   document.getElementById("cal-title").textContent = calRangeLabel(start, konec);
@@ -1457,6 +1537,7 @@ function renderKalendar(data) {
     "</div>" +
     '<div class="cal-shell" id="cal-shell">' +
       '<div class="cal-wrap"><div class="cal-grid" id="cal-grid"></div></div>' +
+      '<div class="cal-agenda" id="cal-agenda"></div>' +
       '<div class="cal-pop" id="cal-pop" role="dialog" aria-label="Detail jednání" hidden></div>' +
     "</div>" +
     zmenyHtml();
@@ -1483,7 +1564,8 @@ function renderKalendar(data) {
       redrawCal();
     });
   });
-  document.getElementById("cal-grid").addEventListener("click", e => {
+  // Posluchač je na celé skořápce, ať obslouží mřížku i mobilní seznam.
+  document.getElementById("cal-shell").addEventListener("click", e => {
     const btn = e.target.closest(".cal-chip, .cal-more");
     if (!btn) return;
     const key = btn.dataset.date + "#" + btn.dataset.idx;
