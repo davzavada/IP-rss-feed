@@ -626,7 +626,16 @@ def fetch_ojs_rss(feed_url, label, journal_name):
 # i abstrakty. Novinky bereme podle data vzniku DOI (≈ online publikace).
 
 CROSSREF_API = "https://api.crossref.org/journals/{issn}/works"
-CROSSREF_LOOKBACK_DAYS = 30  # jak staré DOI záznamy ještě bereme
+CROSSREF_LOOKBACK_DAYS = 30  # jak daleko zpět se ptáme
+# Ptáme se dvakrát, protože ani jedno datum samo o sobě nestačí:
+#   from-created-date  – kdy vznikl DOI záznam. Chytí i staršího „novinku“,
+#                        kterou vydavatel deponoval teprve teď.
+#   from-pub-date      – kdy článek vyšel. Chytí čísla, jejichž DOI vydavatel
+#                        deponoval dopředu (ahead of print) – tak vypadlo
+#                        srpnové číslo QMJIP, deponované o měsíce dřív.
+# Výsledky se slučují podle DOI, okno zůstává u obou 30 dní, takže se
+# nevyhrne archiv.
+CROSSREF_FILTRY = ("from-created-date", "from-pub-date")
 # Crossref etiketa: identifikuj se v User-Agent
 CROSSREF_UA = "pravni-rss-feed/1.0 (+https://rss.davidzavada.cz)"
 
@@ -661,22 +670,56 @@ def _abstract_text(text):
     return re.sub(r"^\s*Abstract\s*", "", clean, flags=re.IGNORECASE).strip()
 
 
-def fetch_crossref_journal(issn, label, journal_name):
-    """Vrátí nedávné články časopisu z Crossref (řazené podle vzniku DOI)."""
-    since = (datetime.now(timezone.utc)
-             - timedelta(days=CROSSREF_LOOKBACK_DAYS)).strftime("%Y-%m-%d")
+def _crossref_dotaz(issn, filtr, since):
+    """Jeden dotaz na Crossref; vrátí položky (list dictů)."""
     resp = requests.get(
         CROSSREF_API.format(issn=issn),
         params={
-            "filter": f"from-created-date:{since}",
+            "filter": f"{filtr}:{since}",
             "sort": "created", "order": "desc", "rows": "40",
-            "select": "DOI,title,subtitle,author,abstract,created",
+            "select": "DOI,title,subtitle,author,abstract,created,"
+                      "published,published-online,issued",
         },
         headers={"User-Agent": CROSSREF_UA},
         timeout=30,
     )
     resp.raise_for_status()
-    works = resp.json().get("message", {}).get("items", [])
+    return resp.json().get("message", {}).get("items", [])
+
+
+def _crossref_datum(w):
+    """Datum vydání článku; teprve když chybí, datum vzniku DOI záznamu."""
+    for pole in ("published-online", "published", "issued", "created"):
+        casti = (w.get(pole) or {}).get("date-parts") or []
+        if casti and casti[0] and casti[0][0]:
+            r, m, d = (list(casti[0]) + [1, 1])[:3]
+            try:
+                return datetime(int(r), int(m or 1), int(d or 1), tzinfo=timezone.utc)
+            except ValueError:
+                continue
+    return None
+
+
+def fetch_crossref_journal(issn, label, journal_name):
+    """Vrátí nedávné články časopisu z Crossref."""
+    since = (datetime.now(timezone.utc)
+             - timedelta(days=CROSSREF_LOOKBACK_DAYS)).strftime("%Y-%m-%d")
+    works, videne = [], set()
+    for filtr in CROSSREF_FILTRY:
+        try:
+            nalezene = _crossref_dotaz(issn, filtr, since)
+        except requests.RequestException as e:
+            print(f"    [diag] {label}: dotaz {filtr} selhal: {e}")
+            continue
+        pridano = 0
+        for w in nalezene:
+            doi = (w.get("DOI") or "").strip().lower()
+            if doi and doi not in videne:
+                videne.add(doi)
+                works.append(w)
+                pridano += 1
+        print(f"    [diag] {label}: {filtr} vrátil {len(nalezene)}, "
+              f"z toho nových {pridano}")
 
     items = []
     for w in works:
@@ -701,13 +744,7 @@ def fetch_crossref_journal(issn, label, journal_name):
         ))
         abstract = _abstract_text(w.get("abstract"))
 
-        pub_date = datetime.now(timezone.utc)
-        created = (w.get("created") or {}).get("date-time")
-        if created:
-            try:
-                pub_date = datetime.fromisoformat(created.replace("Z", "+00:00"))
-            except ValueError:
-                pass
+        pub_date = _crossref_datum(w) or datetime.now(timezone.utc)
 
         clean_desc = abstract if len(abstract) <= 300 else abstract[:297] + "..."
         desc_parts = [title]

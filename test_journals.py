@@ -91,7 +91,53 @@ check("komentář k rozhodnutí se za rozhodnutí nepovažuje",
           "The FRAND Defence III Decision of the German Federal Court of Justice"))
 
 # =====================================================================
-print("\n4) Stránka, která místo obsahu vrátí chybu, nesmí jít do AI")
+print("\n4) Crossref – dvojí dotaz a datum vydání")
+# =====================================================================
+# from-created-date je datum uložení DOI záznamu. Když vydavatel deponuje
+# dopředu (ahead of print), vyjde číslo později a z okna vypadne – tak
+# zmizelo srpnové číslo QMJIP. Druhý dotaz jde na datum vydání.
+_srpnove = {  # DOI z června, vyšlo v srpnu
+    "DOI": "10.4337/qmjip.2026.03.01",
+    "title": ["Trade marks and the metaverse"],
+    "author": [{"given": "Jane", "family": "Doe"}],
+    "created": {"date-time": "2026-06-12T00:00:00Z", "date-parts": [[2026, 6, 12]]},
+    "published-online": {"date-parts": [[2026, 8, 20]]},
+}
+_cerstve = {
+    "DOI": "10.4337/qmjip.2026.03.02",
+    "title": ["Patents and AI"],
+    "author": [{"given": "John", "family": "Roe"}],
+    "created": {"date-time": "2026-08-25T00:00:00Z", "date-parts": [[2026, 8, 25]]},
+    "published-online": {"date-parts": [[2026, 8, 25]]},
+}
+_odpovedi = {"from-created-date": [_cerstve], "from-pub-date": [_srpnove, _cerstve]}
+
+
+class _CrossrefResp:
+    def __init__(self, items):
+        self.items = items
+
+    def raise_for_status(self):
+        pass
+
+    def json(self):
+        return {"message": {"items": self.items}}
+
+
+s.requests.get = lambda url, params=None, **k: _CrossrefResp(
+    _odpovedi[params["filter"].split(":")[0]])
+cr = s.fetch_crossref_journal("2045-9815", "QMJIP", "QMJIP")
+
+check("článek vydaný po deponování DOI se najde", len(cr) == 2, str(len(cr)))
+check("stejný DOI se z obou dotazů nezdvojí",
+      len({i["guid"] for i in cr}) == 2)
+srpnovy = next((i for i in cr if "metaverse" in i["title"]), None)
+check("datum je datum vydání, ne vzniku DOI záznamu",
+      srpnovy and srpnovy["pub_date"].date().isoformat() == "2026-08-20",
+      srpnovy and str(srpnovy["pub_date"]))
+
+# =====================================================================
+print("\n5) Stránka, která místo obsahu vrátí chybu, nesmí jít do AI")
 # =====================================================================
 
 
