@@ -65,7 +65,21 @@ check("stránka bez obsahu čísla nevrátí nic",
           "https://www.jurisprudence.cz/cz/casopis/archiv/1-2026") == [])
 
 # =====================================================================
-print("\n2) IIC – rozhodnutí soudů vedle článků")
+print("\n2) Právník – autor ze stránky článku")
+# =====================================================================
+# Obsah čísla autora nenese, uvádí ho až detail článku. Stránka se stahuje
+# kvůli AI shrnutí, tak se z ní bere i autor.
+clanek = BeautifulSoup(
+    open("tests/fixtures/pravnik_2026-9_clanek.html", encoding="utf-8").read(),
+    "html.parser")
+check("autor ze stránky článku", s.page_author(clanek) == "Jakub Handrlica",
+      repr(s.page_author(clanek)))
+check("stránka bez autora nevrátí nic",
+      s.page_author(BeautifulSoup("<html><body><h1>x</h1></body></html>",
+                                  "html.parser")) == "")
+
+# =====================================================================
+print("\n3) IIC – rozhodnutí soudů vedle článků")
 # =====================================================================
 # Crossref u rozhodnutí nese soud, datum a spisovou značku až v podtitulu.
 check("rozhodnutí se pozná podle podtitulu",
@@ -77,7 +91,7 @@ check("komentář k rozhodnutí se za rozhodnutí nepovažuje",
           "The FRAND Defence III Decision of the German Federal Court of Justice"))
 
 # =====================================================================
-print("\n3) Stránka, která místo obsahu vrátí chybu, nesmí jít do AI")
+print("\n4) Stránka, která místo obsahu vrátí chybu, nesmí jít do AI")
 # =====================================================================
 
 

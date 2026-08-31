@@ -987,9 +987,12 @@ const colsCjeu = [
 
 const colsJournals = [
   { label: "Časopis", cls: "col-type", render: i => getTag(text(i, "title")) },
-  { label: "Název", cls: "col-name", render: nameCell, width: 32 },
+  { label: "Název", cls: "col-name", render: nameCell, width: 26 },
   { label: "Autor", cls: "col-author", render: authorCell },
-  { label: "Shrnutí", cls: "col-summary", render: summaryCell }
+  { label: "Shrnutí", cls: "col-summary", render: summaryCell },
+  // U časopisů, které datum vydání neuvádějí, je to datum, kdy článek
+  // ve feedu přibyl (viz pub_date_odhad ve scraper_journals.py).
+  { label: "Datum", cls: "col-date", render: getDate }
 ];
 
 // Dnešní shrnutí – kombinovaná tabulka přes všechny tři zdroje.

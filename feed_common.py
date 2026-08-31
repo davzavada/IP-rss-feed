@@ -70,6 +70,9 @@ def filter_by_first_seen(items, guid_of, state_file, weeks=2):
         first_seen = datetime.fromisoformat(seen[guid])
         if first_seen >= cutoff:
             item["is_new"] = (first_seen.date() == today)
+            # Zdroje bez data vydání (weby, které ho neuvádějí) si tímhle
+            # můžou doplnit aspoň datum, kdy položka přibyla.
+            item["first_seen"] = first_seen
             kept.append(item)
 
     save_seen(state_file, seen)

@@ -307,6 +307,7 @@ def _pravnik_articles(soup, page_url):
             "description": f"{title}\nPrávník {issue} (ÚSP AV ČR)",
             "guid": guid,
             "pub_date": datetime.now(timezone.utc),
+            "pub_date_odhad": True,
             # Anotaci má až stránka článku – stáhne se lazy, jen když se
             # pro položku opravdu generuje shrnutí (viz enrich_summaries).
             "ai_source": "page",
@@ -421,7 +422,10 @@ def _jurisprudence_articles(soup, page_url):
                 "description": "\n".join(popis),
                 # m-<id> je stabilní přes celý web, číslo do guid netřeba.
                 "guid": f"Jurisprudence-{art_id}",
+                # Obsah čísla datum vydání neuvádí – doplní se datum, kdy
+                # článek ve feedu přibyl (viz pub_date_odhad v main()).
                 "pub_date": datetime.now(timezone.utc),
+                "pub_date_odhad": True,
                 # Anotaci má až stránka článku – stáhne se lazy, jen když se
                 # pro položku opravdu generuje shrnutí (viz enrich_summaries).
                 "ai_source": "page",
@@ -509,6 +513,7 @@ def _tlq_articles(soup, page_url):
             # jednou prošly, neoznačí podruhé jako nové.
             "guid": f"TLQ-{link}",
             "pub_date": datetime.now(timezone.utc),
+            "pub_date_odhad": True,
             # Anotaci má až stránka článku – stáhne se lazy (enrich_summaries).
             "ai_source": "page",
         })
@@ -603,6 +608,7 @@ def fetch_ojs_rss(feed_url, label, journal_name):
             "description": f"{title}\nAutor: {creator}\n{clean_desc}" if creator else f"{title}\n{clean_desc}",
             "guid": f"{label}-{guid}",
             "pub_date": pub_date or datetime.now(timezone.utc),
+            "pub_date_odhad": pub_date is None,
             "ai_source": "article",  # shrnutí se dělá z názvu a anotace
             "ai_text": f"{title}\n\n{full_desc}".strip(),
         })
@@ -874,24 +880,38 @@ PAGE_HEADERS = {
 }
 
 
-def fetch_page_text(url, limit=6000):
-    """Čitelný text stránky pro AI shrnutí (bez navigace, skriptů a patičky).
+def page_author(soup):
+    """Autor ze stránky článku. Právník ho uvádí jen tady (`div.meta.author`),
+    obsah čísla ho nenese – a stránka se stejně stahuje kvůli shrnutí."""
+    el = soup.select_one("article .meta.author, .magazineDetail .meta.author")
+    return clean_authors(el.get_text(" ", strip=True)) if el else ""
 
-    Když stránka obsah nedala – poslala hlášku o JavaScriptu, kontrolu
-    prohlížeče, nebo je podezřele krátká – vrací prázdný řetězec. Žádné
-    shrnutí je lepší než shrnutí chybové stránky.
+
+def fetch_page(url, limit=6000):
+    """Stránku článku vrátí jako (soup, text pro AI).
+
+    Text je prázdný, když stránka obsah nedala – poslala hlášku o vypnutém
+    JavaScriptu, kontrolu prohlížeče, nebo je podezřele krátká. Žádné
+    shrnutí je lepší než shrnutí chybové stránky. Soup se vrací i tak,
+    metadata (autor) v ní být můžou.
     """
     resp = requests.get(url, headers=PAGE_HEADERS, timeout=30)
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "html.parser")
+    cely = BeautifulSoup(resp.text, "html.parser")
     for junk in soup(["script", "style", "nav", "header", "footer", "form"]):
         junk.decompose()
     text = re.sub(r"\n{3,}", "\n\n", soup.get_text("\n", strip=True))
     if len(text) < MIN_TEXT_PRO_AI or BLOKACE_RE.search(text[:2000]):
         print(f"    [diag] {url}: stránka bez obsahu ({len(text)} znaků): "
               f"{text[:150]!r}")
-        return ""
-    return text[:limit]
+        return cely, ""
+    return cely, text[:limit]
+
+
+def fetch_page_text(url, limit=6000):
+    """Jen text stránky – viz fetch_page()."""
+    return fetch_page(url, limit)[1]
 
 def enrich_summaries(items):
     """Doplní AI shrnutí (HESLO + SHRNUTÍ) přes Gemma; cache podle guid.
@@ -905,6 +925,7 @@ def enrich_summaries(items):
             m = meta.get(it["guid"], {})
             it["summary"] = m.get("summary", "")
             it["tag"] = m.get("tag", "")
+            it["authors"] = it.get("authors") or m.get("authors", "")
         return items
 
     summarized = 0
@@ -912,19 +933,26 @@ def enrich_summaries(items):
     for it in items:
         g = it["guid"]
         m = meta.get(g, {})
-        if not m.get("summary"):
+        # Autora nese u některých zdrojů až stránka článku (Právník). Když
+        # ho položka nemá a není ani v cache, stránku si vyžádáme i tehdy,
+        # když už shrnutí máme.
+        chybi_autor = (it.get("ai_source") == "page" and not it.get("authors")
+                       and not m.get("authors"))
+        if not m.get("summary") or chybi_autor:
             summary, tag = "", ""
             # Rozhodnutí otištěné v časopise se shrnuje jinak než článek.
             prompt = it.get("ai_prompt") or JOURNAL_ARTICLE_PROMPT
-            if it.get("ai_source") == "article" and it.get("ai_text"):
+            if it.get("ai_source") == "article" and it.get("ai_text") and not m.get("summary"):
                 tlen = len(it["ai_text"])
                 print(f"    [diag] {g}: článek, ai_text {tlen} znaků")
                 calls += 1
                 summary, tag = gemini_summarize_text(it["ai_text"], prompt)
             elif it.get("ai_source") == "page" and it.get("link"):
                 try:
-                    text = fetch_page_text(it["link"])
-                    if text:
+                    soup, text = fetch_page(it["link"])
+                    if not it.get("authors"):
+                        it["authors"] = page_author(soup)
+                    if text and not m.get("summary"):
                         print(f"    [diag] {g}: stránka článku, {len(text)} znaků")
                         calls += 1
                         summary, tag = gemini_summarize_text(text, prompt)
@@ -943,13 +971,17 @@ def enrich_summaries(items):
                 print(f"    [diag] {g}: PŘESKAKUJI (source={it.get('ai_source')}, "
                       f"ai_text={bool(it.get('ai_text'))}, link={bool(it.get('link'))})")
             if summary:
-                m = {"summary": summary, "tag": tag}
+                m = dict(m, summary=summary, tag=tag)
                 meta[g] = m
                 summarized += 1
-            else:
+            elif not m.get("summary"):
                 print(f"    [diag] {g}: bez shrnutí")
+            if it.get("authors"):
+                m = dict(m, authors=it["authors"])
+                meta[g] = m
         it["summary"] = m.get("summary", "")
         it["tag"] = m.get("tag", "")
+        it["authors"] = it.get("authors") or m.get("authors", "")
         # U rozhodnutí je plný text jen na stránce vydavatele, a ta se ne vždy
         # stáhne. Shrnutí se v takovém případě nevymýšlí – aspoň ať sloupec
         # Heslo řekne, že jde o rozhodnutí; soud, datum i značka jsou v názvu.
@@ -1087,6 +1119,13 @@ def main():
     all_items = filter_by_first_seen(
         all_items, lambda i: i["guid"], STATE_FILE, weeks=4
     )
+
+    # Zdroje, které datum vydání neuvádějí (weby českých časopisů), dostanou
+    # datum prvního výskytu. Bez toho by se jim datum při každém běhu
+    # přepsalo na „dnes" a ve feedu by vypadaly pořád jako čerstvé.
+    for it in all_items:
+        if it.pop("pub_date_odhad", False) and it.get("first_seen"):
+            it["pub_date"] = it["first_seen"]
 
     # Sort by date desc
     all_items.sort(key=lambda x: x["pub_date"], reverse=True)
