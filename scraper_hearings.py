@@ -84,9 +84,20 @@ def strip_diacritics(s):
     )
 
 
+def norm_rejstrik(rejstrik):
+    """Rejstřík s velkým prvním písmenem a NEDOTČENÝM zbytkem.
+
+    Pozor na str.capitalize(): ta zbytek převede na malá písmena, takže by
+    z „EC" udělala „Ec" a z „ECm" „Ecm" – klíč by se pak rozešel s rozvrhem
+    práce (a InfoSoud by dostal druhVec=Ec místo EC).
+    """
+    r = (rejstrik or "").strip()
+    return r[:1].upper() + r[1:]
+
+
 def senat_key(cislo, rejstrik):
-    """Klíč senátu: číslo + rejstřík v jednotné velikosti („12 C", „3 Cmo")."""
-    return f"{int(cislo)} {rejstrik.capitalize()}"
+    """Klíč senátu: číslo + rejstřík („12 C", „3 Cmo", „12 ECm")."""
+    return f"{int(cislo)} {norm_rejstrik(rejstrik)}"
 
 
 # --- Stažení dokumentů z portálu justice ---
@@ -114,11 +125,11 @@ def find_document_links(page_url):
 
 
 def pick_link(links, keywords, prefer=()):
-    """Vybere první odkaz, jehož URL/text obsahuje některé z klíčových slov
-    (bez diakritiky). `prefer` mají přednost."""
-    for kws in (prefer, keywords):
-        if not kws:
-            continue
+    """Vybere odkaz na dokument podle klíčových slov v URL/textu (bez
+    diakritiky). Slova v `prefer` se zkoušejí JEDNO PO DRUHÉM v pořadí, jak
+    jsou zapsaná – stránka rozvrhu nese vedle úplného znění i jednotlivé
+    změny a při společném průchodu by rozhodovalo jen pořadí v DOM."""
+    for kws in ([(p,) for p in prefer] + [tuple(keywords)]):
         for href, text, low in links:
             if any(k in low for k in kws):
                 return href, text
@@ -254,36 +265,121 @@ def czech_date_to_iso(s):
 
 
 def merge_participant_lines(lines):
-    """Slepí zalomené/oddělené kusy jmen účastníků: řádek začínající malým
-    písmenem („s r.o.", „z.ú.", „a.s.") je pokračování předchozího jména.
-    Nepřesnosti u zalomení uprostřed velkých písmen (samotné „GmbH") jsou
-    jen kosmetické."""
+    """Slepí zalomené/oddělené kusy jmen účastníků.
+
+    Pokračováním předchozího jména je řádek začínající malým písmenem
+    („s r.o."), spojkou, nebo známým titulem či právní formou psanou velkými
+    písmeny („Ph.D.", „MBA", „GmbH", „LIMITED") – ty soudy sázejí do vlastního
+    odstavce a bez slepení by se v kalendáři objevily jako samostatné strany
+    sporu. Zalomení bez rozpoznatelné přípony („Zákupy-Brenná") rozlepené
+    zůstane; to je jen kosmetika."""
     out = []
     for ln in lines:
         ln = " ".join(str(ln).split())
         if not ln:
             continue
-        if out and (ln[0].islower() or ln.startswith(("&", "-"))):
+        cont = ln[0].islower() or ln.startswith(("&", "-")) or CONT_RE.match(ln)
+        if out and cont:
             out[-1] += " " + ln
         else:
             out.append(ln)
     return out
 
 
+# Fragmenty, které patří k předchozímu jménu, i když začínají velkým písmenem.
+# Řádek se slepí, jen když se z těchhle kousků skládá CELÝ („Ph.D. MBA" ano,
+# „MBA Consulting" ne – to je samostatná firma).
+CONT_RE = re.compile(
+    r"^(?:(?:Ph\.?\s?D\.?|CSc\.?|DrSc\.?|LL\.?\s?M\.?|M\.?B\.?A\.?|MSc\.?|DiS\.?"
+    r"|GmbH|AG|SE|KG|LIMITED|Ltd\.?|LLC|Inc\.?|N\.V\.|B\.V\.|S\.[A-Z]\.[A-Z]?\.?"
+    r"|a\.?\s?s\.?|s\.?\s?r\.?\s?o\.?|z\.?\s?[sú]\.?)[\s,]*)+$",
+    re.IGNORECASE,
+)
+
+# Právní formy a tituly, které se z názvu strany pro krátký popisek odřezávají.
+FORM_RE = re.compile(
+    r"(?:,?\s*(?:spol\.\s*s\s*r\.?\s*o\.?|s\.?\s*r\.?\s*o\.?|a\.?\s*s\.?|k\.?\s*s\.?"
+    r"|v\.?\s*o\.?\s*s\.?|z\.?\s*s\.?|z\.?\s*ú\.?|o\.?\s*p\.?\s*s\.?|s\.?\s*p\.?"
+    r"|GmbH|AG|SE|KG|LIMITED|Ltd\.?|LLC|Inc\.?|N\.V\.|B\.V\.|S\.L\.U\.|Corp\.?"
+    r"|v\s+likvidaci|příspěvková\s+organizace|státní\s+podnik))+\s*$",
+    re.IGNORECASE,
+)
+LEAD_TITLE_RE = re.compile(
+    r"^(?:(?:JUDr|Mgr|Bc|Ing|MgA|PhDr|MUDr|RNDr|PaedDr|Dr|doc|prof)\.?\s+)+",
+    re.IGNORECASE,
+)
+
+
+MAX_PARTY_LEN = 32
+
+
+def short_party(name):
+    """Zkrátí název strany pro popisek v kalendáři: „OSA z.s." -> „OSA",
+    „Ing. Tomáš Seidl" -> „Tomáš Seidl".
+
+    Kolektivní správci vystupují pod dlouhým názvem z rejstříku („INTERGRAM
+    nezávislá společnost umělců a…"); ten se zkrátí na úvodní zkratku, a když
+    žádná není, ořízne se na hranici slova.
+    """
+    s = LEAD_TITLE_RE.sub("", " ".join(str(name).split()))
+    s = FORM_RE.sub("", s).strip(" ,-–") or " ".join(str(name).split())
+    if len(s) <= MAX_PARTY_LEN:
+        return s
+    first = s.split()[0]
+    if len(first) >= 2 and first.isupper() and first.isalpha():
+        return first
+    short = ""
+    for word in s.split():
+        if len(short) + len(word) + 1 > MAX_PARTY_LEN:
+            break
+        short = f"{short} {word}".strip()
+    return (short or s[:MAX_PARTY_LEN]) + "…"
+
+
+def party_label(ucastnici):
+    """Krátký popisek sporu ve tvaru „Xiaomi v. OSA".
+
+    Přehledy soudů uvádějí účastníky jen jako plochý seznam bez rozlišení
+    stran, takže první jméno bereme jako navrhovatele. Pokud hned následující
+    jména sdílejí první slovo („Bayer AG", „Bayer Intellectual Property
+    GmbH"), jde zjevně o tutéž stranu a spojí se dohromady; první odlišné
+    jméno je protistrana, zbytek se schová do „a další".
+    """
+    parties = [short_party(u) for u in ucastnici if str(u).strip()]
+    parties = [p for p in parties if p]
+    if not parties:
+        return ""
+    if len(parties) == 1:
+        return parties[0]
+
+    def head(p):
+        return p.split()[0].casefold() if p.split() else p.casefold()
+
+    i = 1
+    while i < len(parties) and head(parties[i]) == head(parties[0]):
+        i += 1
+    if i >= len(parties):          # všechna jména jsou jedna strana
+        return parties[0]
+    label = f"{parties[0]} v. {parties[i]}"
+    return label + " a další" if len(parties) > i + 1 else label
+
+
 def make_item(datum, sin, predseda, spz, hodina, ucastnici):
     cislo, rejstrik, bc, rocnik = spz.group(1), spz.group(2), spz.group(3), spz.group(4)
+    strany = merge_participant_lines(ucastnici)
     return {
         "datum": czech_date_to_iso(datum),
         "hodina": hodina or "",
         "sin": sin,
         "predseda": predseda,
-        "spz": f"{int(cislo)} {rejstrik.capitalize()} {int(bc)}/{rocnik}",
+        "spz": f"{int(cislo)} {norm_rejstrik(rejstrik)} {int(bc)}/{rocnik}",
+        "nazev": party_label(strany),
         "senat": senat_key(cislo, rejstrik),
-        "rejstrik": rejstrik.capitalize(),
+        "rejstrik": norm_rejstrik(rejstrik),
         "cislo_senatu": int(cislo),
         "bc": int(bc),
         "rocnik": int(rocnik),
-        "ucastnici": merge_participant_lines(ucastnici),
+        "ucastnici": strany,
     }
 
 
@@ -419,7 +515,9 @@ def update_rozvrh(config, court, pdf_bytes, source_url):
     cfg["senaty"] = senaty
     if soudci_display:
         cfg["soudci"] = soudci_display
+    # `popis` je ruční poznámka, odkud seznam pochází – tu si neseme dál.
     cfg["rozvrh_zdroj"] = {
+        "popis": (cfg.get("rozvrh_zdroj") or {}).get("popis"),
         "url": source_url,
         "hash": digest,
         "aktualizovano": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -432,10 +530,12 @@ def update_rozvrh(config, court, pdf_bytes, source_url):
 # --- Filtr IP ---
 
 def mark_ip(items, cfg):
-    senaty = set(cfg.get("senaty", []))
+    # Config se edituje i ručně, takže se na velikost písmen rejstříku
+    # nespoléháme („12 ECm" i „12 Ecm" musí platit stejně).
+    senaty = {str(s).casefold() for s in cfg.get("senaty", [])}
     soudci = {normalize_judge(j) for j in cfg.get("soudci", [])}
     for it in items:
-        if it["senat"] in senaty:
+        if it["senat"].casefold() in senaty:
             it["ip"] = True
         elif it["rejstrik"] == "Nc":
             # U Nc číslo senátu specializaci nerozlišuje – rozhoduje předseda.
@@ -454,7 +554,9 @@ def scrape_court_jednani(court, cfg, local_file=None):
     if local_file:
         with open(local_file, "rb") as f:
             data = f.read()
-        zdroj = os.path.basename(local_file)
+        # Fixture není zveřejnitelný zdroj – ať se do publikovaných dat
+        # nedostane název testovacího souboru místo odkazu na msp.gov.cz.
+        zdroj = None
         print(f"  [{court}] lokální dokument: {local_file}")
     else:
         try:
@@ -501,18 +603,16 @@ def merge_output(existing, court, items, period, zdroj_url, cfg):
     """Vloží nová jednání do výstupu: uvnitř období dokumentu nahradí vše
     (zrušená jednání z novějšího přehledu zmizí), mimo období ponechá."""
     jednani = [j for j in existing.get("jednani", []) if isinstance(j, dict)]
-    if period:
-        od, do = period
-        jednani = [
-            j for j in jednani
-            if not (j.get("soud") == court and od <= (j.get("datum") or "") <= do)
-        ]
-    else:
-        stare = {(j.get("spz"), j.get("datum")) for j in items}
-        jednani = [
-            j for j in jednani
-            if not (j.get("soud") == court and (j.get("spz"), j.get("datum")) in stare)
-        ]
+    # Dedupe podle (spz, datum) platí vždy – přehled občas nese i řádek s datem
+    # mimo deklarované období a ten by se jinak s každým během znovu přidával.
+    nove = {(j.get("spz"), j.get("datum")) for j in items}
+    od, do = period if period else (None, None)
+    jednani = [
+        j for j in jednani
+        if j.get("soud") != court
+        or ((j.get("spz"), j.get("datum")) not in nove
+            and not (period and od <= (j.get("datum") or "") <= do))
+    ]
     for it in items:
         it["soud"] = court
     jednani.extend(items)
@@ -530,6 +630,164 @@ def merge_output(existing, court, items, period, zdroj_url, cfg):
         "stazeno": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "zdroj": zdroj_url,
     }
+
+
+# --- iCalendar export (přihlášení v Google Kalendáři přes URL) ---
+
+# Google si externí kalendář tahá sám, jednou za několik hodin; proto stačí,
+# že soubor leží vedle stránky na GitHub Pages.
+ICS_FILE = "docs/hearings.ics"
+CNAME_FILE = "docs/CNAME"
+ICS_DEFAULT_HOST = "rss.davidzavada.cz"
+
+# Pražská zóna napsaná ručně – jednání jsou vždy v místním čase a bez VTIMEZONE
+# by je klienti mimo ČR posunuli.
+VTIMEZONE = [
+    "BEGIN:VTIMEZONE",
+    "TZID:Europe/Prague",
+    "BEGIN:STANDARD",
+    "DTSTART:19701025T030000",
+    "RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU",
+    "TZOFFSETFROM:+0200",
+    "TZOFFSETTO:+0100",
+    "TZNAME:CET",
+    "END:STANDARD",
+    "BEGIN:DAYLIGHT",
+    "DTSTART:19700329T020000",
+    "RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU",
+    "TZOFFSETFROM:+0100",
+    "TZOFFSETTO:+0200",
+    "TZNAME:CEST",
+    "END:DAYLIGHT",
+    "END:VTIMEZONE",
+]
+
+
+def ics_escape(s):
+    return (str(s).replace("\\", "\\\\").replace(";", r"\;")
+            .replace(",", r"\,").replace("\n", r"\n"))
+
+
+def ics_fold(line):
+    """RFC 5545: řádek nejvýše 75 oktetů, pokračování začíná mezerou."""
+    raw = line.encode("utf-8")
+    if len(raw) <= 75:
+        return line
+    out, cur = [], b""
+    for ch in line:
+        b = ch.encode("utf-8")
+        if len(cur) + len(b) > (75 if not out else 74):
+            out.append(cur.decode("utf-8"))
+            cur = b""
+        cur += b
+    if cur:
+        out.append(cur.decode("utf-8"))
+    return "\r\n ".join(out)
+
+
+def site_host():
+    try:
+        with open(CNAME_FILE, encoding="utf-8") as f:
+            host = f.read().strip()
+        return host or ICS_DEFAULT_HOST
+    except OSError:
+        return ICS_DEFAULT_HOST
+
+
+def infosoud_url(j, courts):
+    org = (courts.get(j.get("soud"), {}) or {}).get("infosoud_org", "")
+    return (
+        "https://infosoud.gov.cz/InfoSoud/public/search.do?type=spzn&typSoudu=os"
+        f"&krajOrg={org}&org="
+        f"&cisloSenatu={j.get('cislo_senatu')}&druhVec={j.get('rejstrik')}"
+        f"&bcVec={j.get('bc')}&rocnik={j.get('rocnik')}"
+        "&spamQuestion=23&agendaNc=CIVIL"
+    )
+
+
+def write_ics(output):
+    """Zapíše IP jednání jako iCalendar – na tenhle soubor se dá přihlásit
+    v Google Kalendáři (Jiné kalendáře → Přidat → Z adresy URL)."""
+    courts = output.get("courts", {})
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    host = site_host()
+
+    lines = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//IP-rss-feed//Kalendar jednani IP//CS",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        "X-WR-CALNAME:Jednání IP – MS a VS Praha",
+        "X-WR-TIMEZONE:Europe/Prague",
+        "X-WR-CALDESC:Nařízená jednání v agendě duševního vlastnictví "
+        "u Městského a Vrchního soudu v Praze.",
+        # Google se u externích kalendářů stejně řídí vlastním intervalem,
+        # ostatní klienti si vezmou tuhle nápovědu.
+        "REFRESH-INTERVAL;VALUE=DURATION:PT12H",
+        "X-PUBLISHED-TTL:PT12H",
+    ] + VTIMEZONE
+
+    count = 0
+    for j in output.get("jednani", []):
+        if not j.get("ip") or not j.get("datum"):
+            continue
+        count += 1
+        ymd = j["datum"].replace("-", "")
+        uid = hashlib.sha1(
+            f"{j.get('soud')}|{j.get('spz')}|{j['datum']}|{j.get('hodina')}"
+            .encode("utf-8")
+        ).hexdigest()
+        court = (courts.get(j.get("soud"), {}) or {}).get("nazev", j.get("soud", ""))
+
+        lines += ["BEGIN:VEVENT", f"UID:{uid}@{host}", f"DTSTAMP:{stamp}"]
+        m = TIME_RE.match(j.get("hodina") or "")
+        if m:
+            hh, mm = (int(x) for x in m.group(0).split(":"))
+            start = datetime(2000, 1, 1, hh, mm)
+            end = start + timedelta(hours=1)
+            lines += [
+                f"DTSTART;TZID=Europe/Prague:{ymd}T{start:%H%M}00",
+                f"DTEND;TZID=Europe/Prague:{ymd}T{end:%H%M}00",
+            ]
+        else:
+            # Bez hodiny nemá smysl předstírat čas – celodenní záznam.
+            nxt = (date.fromisoformat(j["datum"]) + timedelta(days=1)).isoformat()
+            lines += [
+                f"DTSTART;VALUE=DATE:{ymd}",
+                f"DTEND;VALUE=DATE:{nxt.replace('-', '')}",
+            ]
+
+        summary = j.get("nazev") or j.get("spz") or "Jednání"
+        location = court + (f", jednací síň {j['sin']}" if j.get("sin") else "")
+        desc = [f"Spisová značka: {j.get('spz', '')}"]
+        if j.get("predseda"):
+            desc.append(f"Předseda senátu: {j['predseda']}")
+        if j.get("senat"):
+            desc.append(f"Senát: {j['senat']}")
+        if j.get("ucastnici"):
+            desc.append("Účastníci: " + "; ".join(j["ucastnici"]))
+        desc.append("Stav řízení: " + infosoud_url(j, courts))
+        desc.append(
+            "Údaje jsou platné ke dni zpracování přehledu soudem a v průběhu "
+            "období se neaktualizují."
+        )
+
+        lines += [
+            ics_fold("SUMMARY:" + ics_escape(summary)),
+            ics_fold("LOCATION:" + ics_escape(location)),
+            ics_fold("DESCRIPTION:" + ics_escape("\n".join(desc))),
+            ics_fold("URL:" + infosoud_url(j, courts)),
+            "STATUS:CONFIRMED",
+            "TRANSP:OPAQUE",
+            "END:VEVENT",
+        ]
+
+    lines.append("END:VCALENDAR")
+    with open(ICS_FILE, "w", encoding="utf-8", newline="") as f:
+        f.write("\r\n".join(ics_fold(x) for x in lines) + "\r\n")
+    print(f"Kalendář: {count} IP jednání -> {ICS_FILE} (https://{host}/hearings.ics)")
+    return f"https://{host}/hearings.ics"
 
 
 def parse_kv(pairs):
@@ -588,10 +846,14 @@ def main():
                 changed |= update_rozvrh(config, court, data, href)
             except requests.RequestException as e:
                 print(f"  [{court}] rozvrh nedostupný: {e}")
-        # `updated` posunout i bez změny, ať se rozvrhy nezkouší každý běh.
-        if not local_rozvrh:
+        if local_rozvrh:
+            # Lokální běh je test extrakce – config (včetně ručně sepsaného
+            # seznamu senátů) se z fixture souborů nepřepisuje.
+            print("  (lokální rozvrh: config se neukládá)")
+        else:
+            # `updated` posunout i bez změny, ať se rozvrhy nezkouší každý běh.
             config["updated"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
-        save_json(CONFIG_FILE, config)
+            save_json(CONFIG_FILE, config)
 
     # 2) Přehledy jednání.
     output = load_json(OUTPUT_FILE)
@@ -613,6 +875,7 @@ def main():
     output["senaty"] = {c: cfg.get("senaty", []) for c, cfg in config["courts"].items()}
     output["soudci"] = {c: cfg.get("soudci", []) for c, cfg in config["courts"].items()}
     output["generated"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    output["ics"] = write_ics(output)
     save_json(OUTPUT_FILE, output)
     ip_count = sum(1 for j in output["jednani"] if j.get("ip"))
     print(f"Hotovo: {len(output['jednani'])} jednání, z toho {ip_count} IP -> {OUTPUT_FILE}")
