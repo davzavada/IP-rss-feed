@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#09090b">
-<title>RSS - IP / IT</title>
+<title>Owl – přehled novinek v IP a IT</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="alternate" type="application/rss+xml" title="NS ČR – senát 23 Cdo" href="feed.xml">
 <link rel="alternate" type="application/rss+xml" title="CJEU IP case law" href="ipcuria_feed.xml">
@@ -81,6 +81,8 @@
   }
   .head-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; flex-wrap: wrap; }
   h1 { margin: 0; font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em; }
+  /* Jméno webu nese váhu, popis za ním zůstává potichu. */
+  h1 .tagline { font-weight: 400; color: var(--muted-foreground); }
   .legend { font-size: 0.8rem; color: var(--muted-foreground); white-space: nowrap; }
 
   main.container { padding-block: 28px 72px; display: flex; flex-direction: column; gap: 28px; }
@@ -356,7 +358,7 @@
 
 <header class="site-head">
   <div class="container head-row">
-    <h1>RSS - IP / IT</h1>
+    <h1>Owl <span class="tagline">– přehled novinek v IP a IT doktríně a judikatuře</span></h1>
     <span class="legend" id="updated"></span>
   </div>
 </header>
@@ -365,15 +367,15 @@
   <!-- Jedna skupina = jedna stránka; oddělené linkou, ať je poznat, kam
        která podpoložka patří. -->
   <div class="nav-group">
-    <a href="#prehled">Přehled</a>
+    <a href="#prehled">Přehled nových dokumentů (AI)</a>
     <a href="#dnesni" class="sub">Dnešní shrnutí</a>
-    <a href="#dvatydny" class="sub">Shrnutí dvou týdnů</a>
+    <a href="#dvatydny" class="sub">Shrnutí posledních dvou týdnů</a>
   </div>
   <div class="nav-group">
-    <a href="#recentni">Všechno nové</a>
-    <a href="#nsoud" class="sub">NS – 23 Cdo</a>
-    <a href="#cjeu" class="sub">CJEU IP / IT</a>
-    <a href="#casopisy" class="sub">Časopisy</a>
+    <a href="#recentni">Přehled nových položek</a>
+    <a href="#nsoud" class="sub">Nejvyšší soud – senát 23 Cdo</a>
+    <a href="#cjeu" class="sub">Soudní dvůr EU – IP a IT</a>
+    <a href="#casopisy" class="sub">Právní časopisy</a>
   </div>
   <div class="nav-group">
     <a href="#kalendar">Kalendář jednání</a>
@@ -384,8 +386,8 @@
 
 <!-- Přepínač stránek pro úzká okna, kde je boční navigace schovaná. -->
 <nav class="pagetabs" aria-label="Přepínání stránek">
-  <a href="#prehled">Přehled</a>
-  <a href="#recentni">Všechno nové</a>
+  <a href="#prehled">Přehled nových dokumentů (AI)</a>
+  <a href="#recentni">Přehled nových položek</a>
   <a href="#kalendar">Kalendář jednání</a>
 </nav>
 
@@ -395,7 +397,6 @@
   <div class="card">
     <div class="card-header">
       <h2 class="card-title">Dnešní shrnutí</h2>
-      <p class="card-desc">Vše nové z dnešního dne – rozhodnutí i články v jednom.</p>
     </div>
     <div class="card-content" id="feed-today"><p class="loading">Načítám...</p></div>
   </div>
@@ -406,11 +407,6 @@
     <div class="card-header">
       <h2 class="card-title">Co se stalo v uplynulých dvou týdnech</h2>
       <span class="legend" id="digest-updated"></span>
-      <p class="card-desc">
-        AI přehled napříč všemi feedy – hlavně to, co je relevantní pro IP,
-        a k tomu pár dalších zajímavostí. Většina položek se sem nedostane.
-        Aktualizuje se jednou týdně, v pondělí v 6:00 po ranním scraperu.
-      </p>
     </div>
     <div class="card-content" id="feed-digest"><p class="loading">Načítám...</p></div>
   </div>
@@ -419,7 +415,7 @@
 </div><!-- /#prehled -->
 
 <section class="page" id="recentni" hidden>
-  <h2 class="group-title">Všechno nové</h2>
+  <h2 class="group-title">Přehled nových položek</h2>
 
   <div class="card" id="nsoud">
     <div class="card-header">
