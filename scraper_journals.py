@@ -898,9 +898,10 @@ def doplnit_autory(zaznamy, label):
     doplneno = 0
     for i, z in enumerate(chybi[:CROSSREF_MAX_DOTAZU]):
         try:
+            # Bez parametrů: `select` umí jen výpisový endpoint, na dotaz
+            # na jeden DOI odpoví Crossref 400 Bad Request.
             resp = requests.get(
                 CROSSREF_DILO.format(doi=quote(z["doi"], safe="/")),
-                params={"select": "author"},
                 headers={"User-Agent": CROSSREF_UA}, timeout=30,
             )
             resp.raise_for_status()

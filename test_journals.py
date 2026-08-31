@@ -172,10 +172,10 @@ _hlavicky = {}
 _dotazy_doi = []
 
 
-def _feed_get(url, headers=None, **k):
+def _feed_get(url, headers=None, params=None, **k):
     # Feed autora nemá – u článku s DOI se dotáhne z Crossrefu.
     if url.startswith(s.CROSSREF_DILO.format(doi="")):
-        _dotazy_doi.append(url)
+        _dotazy_doi.append((url, params))
         return _FeedResp(data={"message": {"author": [
             {"given": "Ann", "family": "Smith"}, {"given": "Bo", "family": "Král"}]}})
     _hlavicky.update(headers or {})
@@ -211,6 +211,9 @@ check("dotažený autor je i v popisu",
       "Autor: Ann Smith, Bo Král" in bez_autora["description"], bez_autora["description"])
 check("na Crossref se chodí jen kvůli chybějícím autorům",
       len(_dotazy_doi) == 1, str(_dotazy_doi))
+# Crossref odpoví na `select` u jednoho DOI chybou 400 – posílá se holý dotaz.
+check("dotaz na jeden DOI jde bez parametrů",
+      _dotazy_doi and _dotazy_doi[0][1] is None, str(_dotazy_doi))
 
 check("feed se hlásí jako prohlížeč (Wiley i OUP jinak vracely 403)",
       "application/rss+xml" in _hlavicky.get("Accept", "")
