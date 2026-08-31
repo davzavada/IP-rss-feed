@@ -1,14 +1,14 @@
 {
-  "generated": "2026-08-31T15:38:04.168821+00:00",
+  "generated": "2026-08-31T16:50:23.957526+00:00",
   "from": "2026-08-17",
   "to": "2026-08-31",
   "total": 64,
-  "covered": 24,
-  "intro": "Období bylo velmi intenzivní v oblasti regulace umělé inteligence a ochrany osobních údajů, kde přibyly klíčové judikatury SDEU. Významný prostor dostal rovněž rozvoj patentového práva, zejména v oblasti standardně esenciálních patentů a nových směrnic v Číně.",
+  "covered": 18,
+  "intro": "Období bylo velmi intenzivní v oblasti digitálního práva, zejména v otázkách regulace AI a ochrany osobních údajů. Významné jsou nové rozsudky SDEU k geo-blockingu a novinářské výjimce GDPR, spolu s diskusí o autorskoprávním licencování pro AI.",
   "blocks": [
     {
-      "title": "AI a digitální kontraktace",
-      "text": "Diskutuje se o nutnosti kalibrace autorského práva na AI a roli licencování tréninkových dat. V praxi je důležité, že algoritmy při uzavírání smluv nejsou uznávány jako samostatné subjekty, ale pouze jako technická podpora uživatele.",
+      "title": "AI a digitální právo",
+      "text": "Diskutuje se o nutnosti kalibrace autorského práva a zavedení licencování pro trénink AI. V oblasti smluv bylo zdůrazněno, že algoritmy nemají právní subjektivitu a jsou pouze technickou podporou uživatele, který za ně nese odpovědnost.",
       "sources": [
         {
           "src": "journals",
@@ -16,13 +16,6 @@
           "tag": "Právník",
           "title": "Kontraktace za užití algoritmů",
           "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-9.html?a=4061"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "Právník",
-          "title": "„Technologie, AI a udržitelnost v pracovním právu – aktuální výzvy“ (7. dubna 2026, Právnická fakulta Univerzity Karlovy)",
-          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-9.html?a=4063"
         },
         {
           "src": "journals",
@@ -48,8 +41,8 @@
       ]
     },
     {
-      "title": "Judikatura k GDPR",
-      "text": "SDEU upřesnil podmínky zveřejňování údajů o sportovcích a limity novinářské výjimky, která vyžaduje dodržení etiky a redakční linie. Rozhodla se také otázka, že účinný geo-blocking na webu nepředstavuje šíření díla veřejnosti.",
+      "title": "GDPR a ochrana dat",
+      "text": "SDEU upřesnil, že zpřístupnění trestních záznamů za platbu nemusí být novinářskou činností, pokud chybí etika a redakční linie. Dále bylo potvrzeno, že zveřejňování jmen sportovců porušujících antidopingová pravidla je v zásadě přípustné.",
       "sources": [
         {
           "src": "journals",
@@ -76,21 +69,41 @@
           "src": "cjeu",
           "label": "CJEU",
           "tag": "Ruling",
-          "title": "C-788/24 (Anne Frank Fonds)",
-          "link": "https://curia.europa.eu/juris/liste.do?num=C-788/24"
-        },
-        {
-          "src": "cjeu",
-          "label": "CJEU",
-          "tag": "Ruling",
           "title": "C-199/24 (Legal Newsdesk Sweden)",
           "link": "https://curia.europa.eu/juris/liste.do?num=C-199/24"
         }
       ]
     },
     {
-      "title": "Patenty a FRAND",
-      "text": "Německý spolkový soudní dvůr dále rozvíjí judikaturu k obraně FRAND u standardně esenciálních patentů. Čína aktualizovala směrnice pro projednávání patentů, což přináší nová pravidla pro AI, big data a grafická uživatelská rozhraní.",
+      "title": "Autorské právo a distribuce",
+      "text": "SDEU rozhodl, že účinný geo-blocking zabraňuje uznání „šíření veřejnosti“ v zablokované zemi. Zároveň byl potvrzen legitimní charakter reziduálních práv na odměnu pro tvůrce v rámci směrnice CDSMD.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "The Validity of the Residual Right of Remuneration under Articles 17 and 18 CDSMD – Opinion of the European Copyright Society in Streamz (Case C-663/24)",
+          "link": "https://doi.org/10.1007/s40319-026-01751-4"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JIPLP",
+          "title": "A wolf in sheep’s clothing: the hidden issues in Institutul G. Călinescu",
+          "link": "https://doi.org/10.1093/jiplp/jpag075"
+        },
+        {
+          "src": "cjeu",
+          "label": "CJEU",
+          "tag": "Ruling",
+          "title": "C-788/24 (Anne Frank Fonds)",
+          "link": "https://curia.europa.eu/juris/liste.do?num=C-788/24"
+        }
+      ]
+    },
+    {
+      "title": "Patenty a standardy FRAND",
+      "text": "Německý spolkový soudní dvůr v judikatuře FRAND Defence III postupně rozvíjí přístup k litigaci standardně esenciálních patentů. V EU se rovněž analyzuje aplikace exportní výjimky z doplňkových ochranných certifikátů (SPC).",
       "sources": [
         {
           "src": "journals",
@@ -112,74 +125,12 @@
           "tag": "IIC",
           "title": "Developing Jurisprudence by Taking Tiny Steps – The FRAND Defence III Decision of the German Federal Court of Justice",
           "link": "https://doi.org/10.1007/s40319-026-01767-w"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "The 2025 Amendments to the Chinese Patent Examination Guidelines",
-          "link": "https://doi.org/10.1093/grurint/ikag073"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "When a Claim Amendment Does Not Constitute an Undue Extension",
-          "link": "https://doi.org/10.1093/grurint/ikag079"
         }
       ]
     },
     {
-      "title": "Autorské právo a značky",
-      "text": "Analýzy se zaměřily na reziduální právo na odměnu autorů a problematiku upcyklace či restaurace luxusní módy, kde komerční prodej výrazně změněného zboží může být zneužitím značky. Byly zkoumány i prahy ochrany u modulárního nábytku a kritických edic děl.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "The Threshold of Copyright Protection for a Modular Furniture System",
-          "link": "https://doi.org/10.1093/grurint/ikag086"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "“Great Balls of Fire, They’re My Portieres Now!” Unpacking the Legal Arguments in Favor of Upcycling",
-          "link": "https://doi.org/10.1007/s40319-026-01757-y"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "The Legal Limits of Luxury: Restricting Third-Party Restoration of Luxury Fashion",
-          "link": "https://doi.org/10.1007/s40319-026-01752-3"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "Trademarking Signs with Cultural Significance: How to Position Simultaneous and Diachronic Rights Overlap in a Spectrum of Absolute Grounds of Refusal",
-          "link": "https://doi.org/10.1093/grurint/ikag076"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "The Validity of the Residual Right of Remuneration under Articles 17 and 18 CDSMD – Opinion of the European Copyright Society in Streamz (Case C-663/24)",
-          "link": "https://doi.org/10.1007/s40319-026-01751-4"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JIPLP",
-          "title": "A wolf in sheep’s clothing: the hidden issues in Institutul G. Călinescu",
-          "link": "https://doi.org/10.1093/jiplp/jpag075"
-        }
-      ]
-    },
-    {
-      "title": "Digitální antitrust a soutěž",
-      "text": "Aktuální diskuse se soustředí na ochranu soutěže v éře velkých online platforem a rozlišení omezení podle účelu a efektu v judikatuře SDEU. Za neslučitelné s právem EU byly vyhodnoceny limity provizí pro fotbalové agenty FIFA.",
+      "title": "Známky a hospodářská soutěž",
+      "text": "Analýzy ukazují, že limity provizí FIFA pro agenty jsou neslučitelné s právem EU o konkurenci. V oblasti luxusní módy může komerční prodej výrazně změněného zboží vést k odpovědnosti za zneužití ochranných známek.",
       "sources": [
         {
           "src": "journals",
@@ -201,6 +152,13 @@
           "tag": "GRUR Int",
           "title": "Revisiting Restrictions By Object in CJEU Case Law: The Legalistic Approach to Art. 101(1) TFEU within and Beyond the Antitrust-IP Interface",
           "link": "https://doi.org/10.1093/grurint/ikag077"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "The Legal Limits of Luxury: Restricting Third-Party Restoration of Luxury Fashion",
+          "link": "https://doi.org/10.1007/s40319-026-01752-3"
         }
       ]
     }
