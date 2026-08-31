@@ -209,18 +209,6 @@
   .cal-filters label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
   .cal-filters input { accent-color: var(--link); }
 
-  /* Přihlášení kalendáře (Google / .ics) */
-  .cal-subscribe { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 0.82rem; }
-  .cal-subscribe a {
-    display: inline-flex; align-items: center; gap: 6px;
-    color: var(--foreground); text-decoration: none;
-    border: 1px solid var(--border); border-radius: 8px;
-    padding: 4px 10px; background: var(--card);
-  }
-  .cal-subscribe a:hover { background: var(--accent); border-color: var(--link); color: var(--link); }
-  .cal-subscribe .ics-link { border: 0; padding: 0; background: none; color: var(--muted-foreground); }
-  .cal-subscribe .ics-link:hover { background: none; color: var(--link); text-decoration: underline; }
-
   .cal-wrap { overflow-x: auto; }
   .cal-grid {
     display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;
@@ -253,6 +241,8 @@
   }
   .cal-chip-time { opacity: 0.75; font-variant-numeric: tabular-nums; }
   .cal-chip-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
+  /* Odvolané jednání se nemaže, jen přeškrtne. */
+  .cal-chip-off { text-decoration: line-through; opacity: 0.6; }
   .cal-chip-vs { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
   .cal-chip-other { background: var(--muted); color: var(--muted-foreground); }
   .cal-more { font-size: 0.68rem; color: var(--muted-foreground); padding-left: 5px; }
@@ -277,6 +267,13 @@
   .cal-event-links { display: flex; gap: 14px; flex-wrap: wrap; }
   .cal-event-links a { color: var(--link); text-decoration: none; font-size: 0.82rem; }
   .cal-event-links a:hover { text-decoration: underline; }
+  .cal-event.is-off { opacity: 0.72; }
+  .cal-event.is-off .cal-event-name,
+  .cal-event.is-off .cal-event-time { text-decoration: line-through; }
+  .cal-off-badge {
+    background: var(--badge-red-bg); color: var(--badge-red-fg);
+    border-radius: 6px; padding: 2px 8px; font-size: 0.72rem; font-weight: 500;
+  }
   .src-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
   .src-vs { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
 
@@ -299,11 +296,20 @@
   .pagetabs a.active { color: var(--foreground); background: var(--muted); font-weight: 500; }
 
   /* Boční navigace vlevo (jen na širokých obrazovkách; shadcn sidebar) */
-  #sidenav { display: none; position: fixed; top: 96px; left: 20px; width: var(--nav-w); flex-direction: column; gap: 2px; font-size: 0.85rem; }
+  #sidenav { display: none; position: fixed; top: 96px; left: 20px; width: var(--nav-w); flex-direction: column; font-size: 0.85rem; }
   #sidenav a { color: var(--muted-foreground); text-decoration: none; padding: 6px 10px; border-radius: 6px; line-height: 1.35; }
   #sidenav a:hover { color: var(--foreground); background: var(--accent); }
   #sidenav a.active { color: var(--foreground); background: var(--muted); font-weight: 500; }
-  #sidenav a.sub { padding-left: 22px; font-size: 0.94em; }
+  /* Skupiny stránek oddělené linkou; podpoložky mají svislé vodítko,
+     aby bylo vidět, ke které stránce patří. */
+  .nav-group { display: flex; flex-direction: column; gap: 2px; padding: 8px 0; }
+  .nav-group + .nav-group { border-top: 1px solid var(--border); }
+  #sidenav a:not(.sub) { font-weight: 500; color: var(--foreground); }
+  #sidenav a.sub { position: relative; padding-left: 22px; font-size: 0.94em; }
+  #sidenav a.sub::before {
+    content: ""; position: absolute; left: 11px; top: 3px; bottom: 3px;
+    width: 1px; background: var(--border);
+  }
   @media (min-width: 1200px) {
     /* Po obou stranách se symetricky vyhradí místo pro navigaci,
        takže hlavní obsah zůstává vycentrovaný a nikam se neposouvá. */
@@ -356,14 +362,22 @@
 </header>
 
 <nav id="sidenav" aria-label="Navigace na stránce">
-  <a href="#prehled">Přehled</a>
-  <a href="#dnesni" class="sub">Dnešní shrnutí</a>
-  <a href="#dvatydny" class="sub">Shrnutí dvou týdnů</a>
-  <a href="#recentni">Všechno nové</a>
-  <a href="#nsoud" class="sub">NS – 23 Cdo</a>
-  <a href="#cjeu" class="sub">CJEU IP / IT</a>
-  <a href="#casopisy" class="sub">Časopisy</a>
-  <a href="#kalendar">Kalendář jednání</a>
+  <!-- Jedna skupina = jedna stránka; oddělené linkou, ať je poznat, kam
+       která podpoložka patří. -->
+  <div class="nav-group">
+    <a href="#prehled">Přehled</a>
+    <a href="#dnesni" class="sub">Dnešní shrnutí</a>
+    <a href="#dvatydny" class="sub">Shrnutí dvou týdnů</a>
+  </div>
+  <div class="nav-group">
+    <a href="#recentni">Všechno nové</a>
+    <a href="#nsoud" class="sub">NS – 23 Cdo</a>
+    <a href="#cjeu" class="sub">CJEU IP / IT</a>
+    <a href="#casopisy" class="sub">Časopisy</a>
+  </div>
+  <div class="nav-group">
+    <a href="#kalendar">Kalendář jednání</a>
+  </div>
 </nav>
 
 <main class="container">
@@ -938,7 +952,7 @@ function czFromIso(iso) {
 
 function calFilters() {
   const on = id => { const el = document.getElementById(id); return !el || el.checked; };
-  return { MS: on("flt-ms"), VS: on("flt-vs"), all: !!document.getElementById("flt-all") && document.getElementById("flt-all").checked };
+  return { MS: on("flt-ms"), VS: on("flt-vs") };
 }
 
 // „9:30" vs „10:00" se řetězcově řadí špatně (dokumenty píšou i jednocifernou
@@ -954,7 +968,7 @@ function calEventsByDay() {
   const byDay = {};
   (calData.jednani || []).forEach(j => {
     if (!j || !j.datum || !f[j.soud]) return;
-    if (!j.ip && !f.all) return;
+    if (!j.ip) return;
     (byDay[j.datum] = byDay[j.datum] || []).push(j);
   });
   Object.values(byDay).forEach(list => list.sort(
@@ -972,13 +986,14 @@ function caseName(j) {
 function infosoudUrl(j) {
   const court = (calData.courts || {})[j.soud] || {};
   const org = court.infosoud_org || INFOSOUD_ORGS[j.soud] || "";
-  return "https://infosoud.gov.cz/InfoSoud/public/search.do?type=spzn&typSoudu=os" +
-    "&krajOrg=" + encodeURIComponent(org) + "&org=" +
+  // Rejstřík musí jít malými písmeny (druhVeci=co), jinak InfoSoud řízení
+  // nenajde.
+  return "https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KRAJE" +
+    "&druhOrganizace=" + encodeURIComponent(org) +
     "&cisloSenatu=" + encodeURIComponent(j.cislo_senatu) +
-    "&druhVec=" + encodeURIComponent(j.rejstrik) +
+    "&druhVeci=" + encodeURIComponent(String(j.rejstrik || "").toLowerCase()) +
     "&bcVec=" + encodeURIComponent(j.bc) +
-    "&rocnik=" + encodeURIComponent(j.rocnik) +
-    "&spamQuestion=23&agendaNc=CIVIL";
+    "&rocnik=" + encodeURIComponent(j.rocnik);
 }
 
 function courtBadge(j) {
@@ -1011,10 +1026,12 @@ function renderCalGrid() {
       (events.length ? ' type="button" aria-label="Jednání ' + czFromIso(iso) + '"' : "") + ">";
     html += '<span class="cal-daynum">' + d.getDate() + "</span>";
     events.slice(0, 3).forEach(j => {
-      const chip = j.ip ? (j.soud === "MS" ? "cal-chip-ms" : "cal-chip-vs") : "cal-chip-other";
       // V mřížce je vidět čas a jméno sporu; spisová značka až po rozkliknutí.
+      const chip = (j.soud === "MS" ? "cal-chip-ms" : "cal-chip-vs") +
+        (j.zruseno ? " cal-chip-off" : "");
       html += '<span class="cal-chip ' + chip + '" title="' +
-        esc(caseName(j) + " · " + (j.spz || "")) + '">' +
+        esc(caseName(j) + " · " + (j.spz || "") +
+            (j.zruseno ? " · jednání se nekoná" : "")) + '">' +
         (j.hodina ? '<span class="cal-chip-time">' + esc(j.hodina) + "</span> " : "") +
         esc(caseName(j)) + "</span>";
     });
@@ -1040,12 +1057,14 @@ function renderCalDetail() {
     // „Hudební divadlo v Karlíně v. Jiří Strach".
     const name = esc(caseName(j)).replace(
       / v\. /, ' <span class="cal-event-vs">v.</span> ');
-    html += '<div class="cal-event">';
+    html += '<div class="cal-event' + (j.zruseno ? " is-off" : "") + '">';
     html += '<div class="cal-event-head">' +
       '<span class="cal-event-time">' + esc(j.hodina || "–") + "</span>" +
       courtBadge(j) +
       '<span class="cal-event-name">' + name + "</span>" +
-      (j.ip ? '<span class="heslo">IP</span>' : "") +
+      // Jednání zmizelo z novějšího přehledu – soud ho odvolal nebo přeložil.
+      // Jistotu dá až InfoSoud, proto formulace „podle přehledu".
+      (j.zruseno ? '<span class="cal-off-badge">podle přehledu se nekoná</span>' : "") +
       "</div>";
 
     const rows = [];
@@ -1090,15 +1109,6 @@ function renderKalendar(data) {
   const now = new Date();
   calMonth = new Date(now.getFullYear(), now.getMonth(), 1);
 
-  // Odkaz na .ics dodává scraper (podle domény v docs/CNAME); Google se na něj
-  // přihlašuje přes webcal:// – jinak nabídne jen jednorázový import.
-  const icsUrl = typeof data.ics === "string" && /^https:\/\//.test(data.ics)
-    ? data.ics : "";
-  const gcalUrl = icsUrl
-    ? "https://calendar.google.com/calendar/render?cid=" +
-      encodeURIComponent(icsUrl.replace(/^https:/, "webcal:"))
-    : "";
-
   container.innerHTML =
     '<div class="cal-toolbar">' +
       '<div class="cal-nav">' +
@@ -1110,15 +1120,7 @@ function renderKalendar(data) {
       '<div class="cal-filters">' +
         '<label><input type="checkbox" id="flt-ms" checked> MS Praha</label>' +
         '<label><input type="checkbox" id="flt-vs" checked> VS Praha</label>' +
-        '<label><input type="checkbox" id="flt-all"> i ostatní jednání civilního úseku</label>' +
       "</div>" +
-      (icsUrl
-        ? '<div class="cal-subscribe">' +
-            '<a href="' + esc(gcalUrl) + '" target="_blank" rel="noopener">' +
-            "Přidat do Google Kalendáře ↗</a>" +
-            '<a class="ics-link" href="' + esc(icsUrl) + '">.ics</a>' +
-          "</div>"
-        : "") +
     "</div>" +
     '<div class="cal-wrap"><div class="cal-grid" id="cal-grid"></div></div>' +
     '<div class="cal-detail" id="cal-detail" hidden></div>';
@@ -1136,7 +1138,7 @@ function renderKalendar(data) {
     calMonth = new Date(n.getFullYear(), n.getMonth(), 1);
     redrawCal();
   });
-  ["flt-ms", "flt-vs", "flt-all"].forEach(id =>
+  ["flt-ms", "flt-vs"].forEach(id =>
     document.getElementById(id).addEventListener("change", redrawCal));
   document.getElementById("cal-grid").addEventListener("click", e => {
     const day = e.target.closest(".cal-day.has-events");

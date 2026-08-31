@@ -54,7 +54,7 @@ HEADERS = {"User-Agent": USER_AGENT, "Accept-Language": "cs-CZ,cs;q=0.9,en;q=0.8
 
 # Jak staré termíny v hearings.json ještě držet (kalendář ukazuje i nedávnou
 # minulost) a po kolika dnech zkusit obnovit IP senáty z rozvrhu práce.
-KEEP_PAST_DAYS = 60
+# Proběhlá jednání se nemažou – kalendář slouží i jako archiv.
 ROZVRH_REFRESH_DAYS = 7
 # Kolik řádků z dokumentu se musí naparsovat, aby se výsledek bral jako úplný.
 MIN_PARSE_RATIO = 0.8
@@ -672,28 +672,37 @@ def scrape_jednani(court, cfg, prehled, local_file=None):
 
 
 def merge_output(existing, court, items, period, zdroj_url, cfg):
-    """Vloží nová jednání do výstupu: uvnitř období dokumentu nahradí vše
-    (zrušená jednání z novějšího přehledu zmizí), mimo období ponechá."""
+    """Zanese nový přehled do výstupu.
+
+    Jednání se nikdy nemažou – kalendář je archiv, takže proběhlé termíny
+    zůstávají. Když ale jednání zmizí z nově vydaného přehledu, který jeho
+    den pokrývá, soud ho mezitím odvolal nebo přeložil; takový záznam se
+    označí `zruseno` a v kalendáři se jen přeškrtne. Že jde o odvolání
+    odvozené ze zmizení řádku, ne z InfoSoudu, si uživatel ověří odkazem
+    na detail řízení.
+    """
     jednani = [j for j in existing.get("jednani", []) if isinstance(j, dict)]
     # Nahrazuje se vždy jen jeden úsek jednoho soudu – civilní a správní
     # přehled pokrývají stejné dny, ale každý jiné senáty.
     usek = items[0].get("usek", "") if items else ""
-    # Dedupe podle (spz, datum) platí vždy – přehled občas nese i řádek s datem
-    # mimo deklarované období a ten by se jinak s každým během znovu přidával.
     nove = {(j.get("spz"), j.get("datum")) for j in items}
     od, do = period if period else (None, None)
-    jednani = [
-        j for j in jednani
-        if j.get("soud") != court or j.get("usek", "") != usek
-        or ((j.get("spz"), j.get("datum")) not in nove
-            and not (period and od <= (j.get("datum") or "") <= do))
-    ]
+
+    zachovane = []
+    for j in jednani:
+        stejny_zdroj = j.get("soud") == court and j.get("usek", "") == usek
+        if stejny_zdroj and (j.get("spz"), j.get("datum")) in nove:
+            continue                      # přepíše ho čerstvá verze níže
+        if (stejny_zdroj and period
+                and od <= (j.get("datum") or "") <= do):
+            # Den spadá do nového přehledu, ale jednání v něm není.
+            j["zruseno"] = True
+        zachovane.append(j)
+
     for it in items:
         it["soud"] = court
-    jednani.extend(items)
-
-    cutoff = (date.today() - timedelta(days=KEEP_PAST_DAYS)).isoformat()
-    jednani = [j for j in jednani if (j.get("datum") or "") >= cutoff]
+        it["zruseno"] = False
+    jednani = zachovane + items
     jednani.sort(key=lambda j: (j.get("datum") or "", j.get("hodina") or "", j.get("spz") or ""))
     existing["jednani"] = jednani
 
@@ -772,13 +781,16 @@ def site_host():
 
 
 def infosoud_url(j, courts):
+    """Odkaz na detail řízení v InfoSoudu. Rejstřík se posílá malými písmeny
+    (`druhVeci=co`), jinak řízení nenajde."""
     org = (courts.get(j.get("soud"), {}) or {}).get("infosoud_org", "")
     return (
-        "https://infosoud.gov.cz/InfoSoud/public/search.do?type=spzn&typSoudu=os"
-        f"&krajOrg={org}&org="
-        f"&cisloSenatu={j.get('cislo_senatu')}&druhVec={j.get('rejstrik')}"
+        "https://infosoud.gov.cz/InfoSoud/detail-rizeni"
+        "?typOrganizace=VSECHNY_KRAJE"
+        f"&druhOrganizace={org}"
+        f"&cisloSenatu={j.get('cislo_senatu')}"
+        f"&druhVeci={str(j.get('rejstrik') or '').lower()}"
         f"&bcVec={j.get('bc')}&rocnik={j.get('rocnik')}"
-        "&spamQuestion=23&agendaNc=CIVIL"
     )
 
 
@@ -837,6 +849,8 @@ def write_ics(output, path=None):
             ]
 
         summary = j.get("nazev") or j.get("spz") or "Jednání"
+        if j.get("zruseno"):
+            summary = "ZRUŠENO: " + summary
         location = court + (f", jednací síň {j['sin']}" if j.get("sin") else "")
         desc = [f"Spisová značka: {j.get('spz', '')}"]
         if j.get("predseda"):
@@ -856,8 +870,10 @@ def write_ics(output, path=None):
             ics_fold("LOCATION:" + ics_escape(location)),
             ics_fold("DESCRIPTION:" + ics_escape("\n".join(desc))),
             ics_fold("URL:" + infosoud_url(j, courts)),
-            "STATUS:CONFIRMED",
-            "TRANSP:OPAQUE",
+            # Odvolané jednání se z kalendáře nemaže, jen zešedne –
+            # v Google i Apple Kalendáři je vidět jako zrušené.
+            "STATUS:CANCELLED" if j.get("zruseno") else "STATUS:CONFIRMED",
+            "TRANSP:TRANSPARENT" if j.get("zruseno") else "TRANSP:OPAQUE",
             "END:VEVENT",
         ]
 

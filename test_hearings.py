@@ -272,6 +272,51 @@ for _ in range(3):
 check("opakovaný běh neduplikuje jednání", len(out["jednani"]) == len(ms_items),
       f"{len(out['jednani'])} != {len(ms_items)}")
 
+# Historie a zrušená jednání: jednání, které zmizí z nově vydaného přehledu
+# pokrývajícího jeho den, se nesmaže, jen označí jako zrušené. Termíny mimo
+# období nového přehledu (starší historie) zůstávají nedotčené.
+hist = {}
+prvni = [
+    ["19.08.2026", "265", "Mgr. Jana Přibylová", "12C 1/2026", "09:00", ["A", "B"]],
+    ["20.08.2026", "265", "Mgr. Jana Přibylová", "12C 2/2026", "10:00", ["C", "D"]],
+]
+it, per = s.parse_jednani_docx(build_docx(prvni, od="16.08.2026", do="22.08.2026"))
+for x in it:
+    x["usek"] = "civilni"
+s.mark_ip(it, cfg_ms)
+s.merge_output(hist, "MS", it, per, None, cfg_ms)
+
+# Novější přehled na týž týden už druhé jednání neuvádí.
+druhy = [prvni[0]]
+it, per = s.parse_jednani_docx(build_docx(druhy, od="16.08.2026", do="22.08.2026"))
+for x in it:
+    x["usek"] = "civilni"
+s.mark_ip(it, cfg_ms)
+s.merge_output(hist, "MS", it, per, None, cfg_ms)
+
+check("zmizelé jednání se nesmaže", len(hist["jednani"]) == 2, str(len(hist["jednani"])))
+check("zmizelé jednání se označí jako zrušené",
+      find(hist["jednani"], "12 C 2/2026")["zruseno"] is True)
+check("jednání, které v přehledu zůstalo, zrušené není",
+      find(hist["jednani"], "12 C 1/2026")["zruseno"] is False)
+
+# Starší termín mimo období nového přehledu se zrušit nesmí.
+stary = [["01.07.2026", "265", "Mgr. Jana Přibylová", "12C 99/2025", "09:00", ["E", "F"]]]
+it, _ = s.parse_jednani_docx(build_docx(stary))
+for x in it:
+    x["usek"] = "civilni"
+s.mark_ip(it, cfg_ms)
+s.merge_output(hist, "MS", it, None, None, cfg_ms)
+it, per = s.parse_jednani_docx(build_docx(druhy, od="16.08.2026", do="22.08.2026"))
+for x in it:
+    x["usek"] = "civilni"
+s.mark_ip(it, cfg_ms)
+s.merge_output(hist, "MS", it, per, None, cfg_ms)
+check("historie mimo období nového přehledu zůstává platná",
+      find(hist["jednani"], "12 C 99/2025")["zruseno"] is False)
+check("proběhlá jednání se nepromazávají podle stáří",
+      any(j["datum"] == "2026-07-01" for j in hist["jednani"]))
+
 # Dva úseky téhož soudu se nepřepisují navzájem.
 it2, _ = s.parse_jednani_docx(build_docx(upv_rows))
 for x in it2:
@@ -296,6 +341,21 @@ try:
           all(str(e.get("SUMMARY")) and "infosoud" in str(e.get("URL")) for e in evs))
 except ImportError:
     print("  (přeskočeno: knihovna icalendar není nainstalovaná)")
+
+# =====================================================================
+print("\n7) Odkaz na InfoSoud")
+# =====================================================================
+courts_meta = {"VS": {"infosoud_org": "VSPHAAB"}, "MS": {"infosoud_org": "MSPHAAB"}}
+tv_nova = dict(find(vs_items, "3 Co 24/2025"), soud="VS")
+check("odkaz na detail řízení sedí s ověřenou podobou",
+      s.infosoud_url(tv_nova, courts_meta) ==
+      "https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KRAJE"
+      "&druhOrganizace=VSPHAAB&cisloSenatu=3&druhVeci=co&bcVec=24&rocnik=2025",
+      s.infosoud_url(tv_nova, courts_meta))
+check("rejstřík jde do odkazu malými písmeny i u víceznakových",
+      "&druhVeci=ecm&" in s.infosoud_url(
+          {"soud": "MS", "cislo_senatu": 12, "rejstrik": "ECm", "bc": 4, "rocnik": 2026},
+          courts_meta))
 
 # =====================================================================
 failed = [n for n, ok, _ in results if not ok]
