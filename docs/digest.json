@@ -1,14 +1,14 @@
 {
-  "generated": "2026-08-28T11:28:01.060550+00:00",
-  "from": "2026-08-14",
-  "to": "2026-08-28",
-  "total": 35,
-  "covered": 9,
-  "intro": "Období bylo velmi produktivní zejména v oblasti digitálního autorského práva a ochrany osobních údajů díky klíčovým rozhodnutím SDEU. Významná je rovněž judikatura a odborná diskuse k ochranným známkám a patentům v kontextu soutěžního práva.",
+  "generated": "2026-08-31T07:21:29.849079+00:00",
+  "from": "2026-08-17",
+  "to": "2026-08-31",
+  "total": 33,
+  "covered": 13,
+  "intro": "Období bylo velmi produktivní zejména v oblasti digitálního autorského práva a ochrany osobních údajů díky klíčovým rozhodnutím SDEU. Významná je rovněž diskuse o hranicích ochranných známek u luxusního zboží a rozvoj judikatury k standardně esenciálním patentům.",
   "blocks": [
     {
-      "title": "Autorské právo a geo-blocking",
-      "text": "SDEU rozhodl, že účinný geo-blocking zabraňuje uznání „šíření veřejnosti“ v zemi, kde je dílo chráněno. Pokud je blokování neúčinné, za toto šíření odpovídá vydavatel webu, nikoliv poskytovatel VPN.",
+      "title": "Geo-blocking a autorské právo",
+      "text": "SDEU rozhodl, že účinný geo-blocking zabraňuje „šíření veřejnosti“ v zemi, kde je dílo chráněno. Pokud je blokování neúčinné, za šíření odpovídá vydavatel webu, nikoliv poskytovatel VPN.",
       "sources": [
         {
           "src": "cjeu",
@@ -20,9 +20,16 @@
       ]
     },
     {
-      "title": "Ochrana osobních údajů",
-      "text": "SDEU upřesnil, že zveřejňování jmen sportovců porušujících antidopingová pravidla je v zásadě přípustné. Zároveň rozhodl, že zpřístupnění trestních záznamů za platbu nespadá pod novinářskou výjimku GDPR, pokud není činnost prováděna v souladu s novinářskou etikou.",
+      "title": "Ochrana osobních údajů (GDPR)",
+      "text": "SDEU vyjasnil, že zveřejňování jmen sportovců porušujících antidopingová pravidla je přípustné při zvážení oprávněných zájmů. Zároveň definoval, že placený přístup k trestním záznamům bez dodržení novinářské etiky nespadá pod novinářskou výjimku. V předběžní otázce se zudem řeší zákonnost uchovávání mýtních dat po vypršení lhůty.",
       "sources": [
+        {
+          "src": "cjeu",
+          "label": "CJEU",
+          "tag": "Referral",
+          "title": "C-801/26 (Jurcki)",
+          "link": "https://curia.europa.eu/juris/liste.do?num=C-801/26"
+        },
         {
           "src": "cjeu",
           "label": "CJEU",
@@ -40,28 +47,8 @@
       ]
     },
     {
-      "title": "Ochranné známky a pasivita",
-      "text": "SDEU řeší, zda pětiletá pasivita majitele známky brání žalobě i po vypršení ochrany pozdější známky. V oblasti luxusní módy pak platí, že komerční prodej výrazně změněného zboží může být považován za zneužití ochranné známky.",
-      "sources": [
-        {
-          "src": "cjeu",
-          "label": "CJEU",
-          "tag": "Referral",
-          "title": "C-691/26 (Alphavet)",
-          "link": "https://curia.europa.eu/juris/liste.do?num=C-691/26"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "The Legal Limits of Luxury: Restricting Third-Party Restoration of Luxury Fashion",
-          "link": "https://doi.org/10.1007/s40319-026-01752-3"
-        }
-      ]
-    },
-    {
-      "title": "Patenty a soutěžní právo",
-      "text": "Judikatura se rozvíjí v oblasti standardně esenciálních patentů (FRAND) a interpretace výjimek z doplňkových certifikátů ochrany (SPC). Analýzy dále upozorňují na nekonzistenci v rozlišování omezení podle účelu a efektu v rozhraní antitrustu a IP práva.",
+      "title": "Ochranné známky a patenty",
+      "text": "SDEU řeší v předběžní otázce vliv pasivity majitele známky na následné žaloby. V oblasti patentů se analyzuje aplikace výjimky z SPC v EU a judikatura k standardně esenciálním patentům (FRAND). K luxusní módě byl publikován rozbor, podle kterého komerční prodej výrazně změněného zboží může být zneužitím ochranné známky.",
       "sources": [
         {
           "src": "journals",
@@ -73,32 +60,67 @@
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "Interpretation and Assessment of the SPC Waiver in the European Pharmaceutical Landscape",
-          "link": "https://doi.org/10.1093/grurint/ikag081"
+          "tag": "IIC",
+          "title": "The Legal Limits of Luxury: Restricting Third-Party Restoration of Luxury Fashion",
+          "link": "https://doi.org/10.1007/s40319-026-01752-3"
         },
         {
           "src": "journals",
           "label": "Časopis",
           "tag": "GRUR Int",
-          "title": "Revisiting Restrictions By Object in CJEU Case Law: The Legalistic Approach to Art. 101(1) TFEU within and Beyond the Antitrust-IP Interface",
-          "link": "https://doi.org/10.1093/grurint/ikag077"
+          "title": "Interpretation and Assessment of the SPC Waiver in the European Pharmaceutical Landscape",
+          "link": "https://doi.org/10.1093/grurint/ikag081"
+        },
+        {
+          "src": "cjeu",
+          "label": "CJEU",
+          "tag": "Referral",
+          "title": "C-691/26 (Alphavet)",
+          "link": "https://curia.europa.eu/juris/liste.do?num=C-691/26"
         }
       ]
     },
     {
-      "title": "Nekalá soutěž",
-      "text": "Nejvyšší soud ČR potvrdil, že dovolání v otázkách náhrady škody z nekalosoutěžního jednání je nepřípustné, pokud je argumentace dovolatele založena na skutkovém stavu v rozporu se zjištěním soudů nižších stupňů.",
+      "title": "Další aspekty IP a nekalá soutěž",
+      "text": "Nejvyšší soud ČR potvrdil v judikatuře k nekalé soutěži vázanost civilního soudu na zjištěný skutkový stav. Odborné články se věnovali prahu ochrany modulárního nábytku, legálnosti upcyklace a povinnostem zveřejňování genetických zdrojů v rámci nové smlouvy WIPO.",
       "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "The Threshold of Copyright Protection for a Modular Furniture System",
+          "link": "https://doi.org/10.1093/grurint/ikag086"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "“Great Balls of Fire, They’re My Portieres Now!” Unpacking the Legal Arguments in Favor of Upcycling",
+          "link": "https://doi.org/10.1007/s40319-026-01757-y"
+        },
         {
           "src": "nsoud",
           "label": "NS 23 Cdo",
           "tag": "",
           "title": "23 Cdo 1578/2026",
           "link": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/366FE7BF05F96D13C1258E5A001BB41D/$file/23%20Cdo%201578_2026.pdf?openElement"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JWIP",
+          "title": "Patent landscape analysis of inventions based on plant genetic resources for food and agriculture and related digital sequence information",
+          "link": "https://doi.org/10.1111/jwip.70033"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "Of Ceilings and Flaws: Negotiating Disclosure in the WIPO Genetic Resources and Traditional Knowledge Treaty",
+          "link": "https://doi.org/10.1093/grurint/ikag080"
         }
       ]
     }
   ],
-  "input_hash": "3e499b33f3394d922a54eb310dcd82ba5d442a261aefc7f04270fda2a3ccc506"
+  "input_hash": "c60d78de22c754b19bac99639762247bd82fe03528fbffb45eeda65c715bc1c1"
 }
