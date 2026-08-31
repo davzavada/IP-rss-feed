@@ -1,28 +1,22 @@
 {
-  "generated": "2026-08-31T11:23:40.102704+00:00",
+  "generated": "2026-08-31T13:10:39.770993+00:00",
   "from": "2026-08-17",
   "to": "2026-08-31",
-  "total": 32,
-  "covered": 8,
-  "intro": "Období bylo velmi produktivní v oblasti ochrany osobních údajů a autorského práva v digitálním prostředí. Významná jsou zejména rozhodnutí SDEU k geo-blockingu a interpretaci GDPR, spolučáně s rozvojem judikatury k standardně esenciálním patentům.",
+  "total": 55,
+  "covered": 14,
+  "intro": "Období bylo velmi produktivní zejména v oblasti ochrany osobních údajů a autorského práva díky klíčovým rozsudkům SDEU. Významné jsou také nové pohledy na standardně esenciální patenty a právní aspekty AI v kontraktaci.",
   "blocks": [
     {
-      "title": "Autorské právo a geo-blocking",
-      "text": "SDEU rozhodl, že účinný geo-blocking zabranující přístupu k dílu v určité zemi nepředstavuje šíření veřejnosti. Pokud je však blokování neúčinné, za šíření odpovídá vydavatel webu, nikoliv poskytovatel VPN.",
+      "title": "Ochrana osobních údajů (GDPR)",
+      "text": "SDEU upřesnil podmínky novinářské výjimky, zveřejňování antidopingových výsledků a praktickou vymahatelnost práva být zapomenut. Pro praxi je zásadní, že novinářská výjimka vyžaduje dodržení etiky a redakční linie, a že uchovávání dat mimo lhůty může být v rozporu s GDPR.",
       "sources": [
         {
-          "src": "cjeu",
-          "label": "CJEU",
-          "tag": "Ruling",
-          "title": "C-788/24 (Anne Frank Fonds)",
-          "link": "https://curia.europa.eu/juris/liste.do?num=C-788/24"
-        }
-      ]
-    },
-    {
-      "title": "Ochrana osobních údajů (GDPR)",
-      "text": "SDEU upřesnil, že zveřejňování jmen sportovců porušujících antidopingová pravidla je v zásadě přípustné a že komerční zpřístupnění trestních rozsudků bez dodržení novinářské etiky nespadá pod novinářskou výjimku. Zároveň zpochybnil uchovávání dat o mýtu nad rámec konkrétních lhůt pouze s odkazem na obecné promlčení.",
-      "sources": [
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "Právník",
+          "title": "Soudní dvůr a zviditelnění práva být zapomenut",
+          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-9.html?a=4060"
+        },
         {
           "src": "cjeu",
           "label": "CJEU",
@@ -47,21 +41,82 @@
       ]
     },
     {
-      "title": "Standardně esenciální patenty (SEP)",
-      "text": "Německý spolkový soudní dvůr v rozhodnutí FRAND Defence III postupně rozvíjí judikaturu v oblasti litigace SEP v souladu s rámcem SDEU. Pro praxi to znamená pokračující evoluci přístupu k obraně proti lícencím v oblasti standardů.",
+      "title": "Autorské právo v digitálním prostředí",
+      "text": "SDEU rozhodl, že účinný geo-blocking vylučuje „šíření veřejnosti“, a byla potvrzena legitimita reziduálních práv na odměnu pro tvůrce. To poskytuje právní jistotu vydavatelům při regionálním omezení obsahu a posiluje pozici autorů vůči platformám.",
       "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "The Validity of the Residual Right of Remuneration under Articles 17 and 18 CDSMD – Opinion of the European Copyright Society in Streamz (Case C-663/24)",
+          "link": "https://doi.org/10.1007/s40319-026-01751-4"
+        },
+        {
+          "src": "cjeu",
+          "label": "CJEU",
+          "tag": "Ruling",
+          "title": "C-788/24 (Anne Frank Fonds)",
+          "link": "https://curia.europa.eu/juris/liste.do?num=C-788/24"
+        }
+      ]
+    },
+    {
+      "title": "Patentové právo a FRAND",
+      "text": "Německý spolkový soud rozvíjí judikaturu k standardně esenciálním patentům (FRAND Defence III), a byla analyzována problematika změn patentových nároků a výjimek z SPC. Pro praxi je klíčové sledovat postupný vývoj v SEP litigaci v Německu.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "“FRAND Defence III (FRAND-Einwand III)” – Decision of the Federal Court of Justice of Germany (Bundesgerichtshof) 27 January 2026 – Case No. KZR 10/25",
+          "link": "https://doi.org/10.1007/s40319-026-01768-9"
+        },
         {
           "src": "journals",
           "label": "Časopis",
           "tag": "IIC",
           "title": "Developing Jurisprudence by Taking Tiny Steps – The FRAND Defence III Decision of the German Federal Court of Justice",
           "link": "https://doi.org/10.1007/s40319-026-01767-w"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "When a Claim Amendment Does Not Constitute an Undue Extension",
+          "link": "https://doi.org/10.1093/grurint/ikag079"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "Interpretation and Assessment of the SPC Waiver in the European Pharmaceutical Landscape",
+          "link": "https://doi.org/10.1093/grurint/ikag081"
         }
       ]
     },
     {
-      "title": "Značky a udržitelnost",
-      "text": "Aktuální analýzy upozorňují, že komerční prodej výrazně zrekonstruovaného luxusního zboží může být považován za zneužití ochranné známky. Legality upcyklace a restaurace se tak střetají s právy držitelů značek, což vyžaduje větší transparentnost prodejce.",
+      "title": "AI a digitální regulace",
+      "text": "Zaměřeno na digitální antitrust u velkých platforem a právní povahu algoritmické kontraktace. Pro praxi je klíčové, že algoritmus nemá právní subjektivitu a uživatel nese plnou odpovědnost za výslednou smlouvu.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "TLQ",
+          "title": "Václav Šmejkal, Digitální antitrust: EU a ochrana hospodářské soutěžev éře velkých online platforem (Digital Antitrust: EU Competition Lawin the Era of Large Online Platforms). Prague: Karolinum, 2026, 216 pp.",
+          "link": "https://tlq.ilaw.cas.cz/article/view/1050"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "Právník",
+          "title": "Kontraktace za užití algoritmů",
+          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-9.html?a=4061"
+        }
+      ]
+    },
+    {
+      "title": "IP a udržitelnost",
+      "text": "Analýzy se věnují upcyklaci a komerční restauraci luxusních produktů, což může vést k odpovědnosti za zneužití ochranných známek. Doporučuje se transparentnost, aby byla ochrana značek v souladu s cíli udržitelnosti.",
       "sources": [
         {
           "src": "journals",
@@ -78,20 +133,7 @@
           "link": "https://doi.org/10.1007/s40319-026-01752-3"
         }
       ]
-    },
-    {
-      "title": "Doplňkové ochranné certifikáty (SPC)",
-      "text": "Analýza výjimky z SPC (SPC waiver) v EU ukazuje na praktické nedostatky v implementaci exportní výjimky. Je zde zdůrazněna potřeba rovnováhy mezi podporou konkurence a ochranou farmaceutických inovací.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "Interpretation and Assessment of the SPC Waiver in the European Pharmaceutical Landscape",
-          "link": "https://doi.org/10.1093/grurint/ikag081"
-        }
-      ]
     }
   ],
-  "input_hash": "948b568d763b0a5e275fe871b566969e94d5e01b7d14afce03df9447b7df3d83"
+  "input_hash": "7211c12cb5030e64c6cf8c3377d71c037aa022027de92df025875680db762adb"
 }
