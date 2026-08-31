@@ -889,6 +889,22 @@ def parse_infosoud(html):
     return tabulky[:3]
 
 
+def popis_stranky(j, url, html):
+    """Když se z odpovědi nedá nic vytáhnout, popiš, co vlastně přišlo –
+    na InfoSoud se z vývojového prostředí nedá dosáhnout, tak je log
+    jediná cesta, jak zjistit, čím se liší od očekávání."""
+    soup = BeautifulSoup(html, "html.parser")
+    titulek = cell_text(soup.title) if soup.title else ""
+    telo = cell_text(soup.body) if soup.body else cell_text(soup)
+    tabulek = len(soup.find_all("table"))
+    radku = len(soup.find_all("tr"))
+    print(f"  [diag] {j.get('spz')} – {url}")
+    print(f"  [diag] {len(html)} znaků, titulek: {titulek!r}, "
+          f"tabulek: {tabulek}, řádků: {radku}, "
+          f"divů s class: {len(soup.select('div[class]'))}")
+    print(f"  [diag] text: {telo[:600]!r}")
+
+
 def potrebuje_stav(j, dnes):
     """Stav řízení obnovujeme jen u jednání, kde se ještě může měnit."""
     if not (j.get("cislo_senatu") and j.get("rejstrik") and j.get("bc") and j.get("rocnik")):
@@ -920,11 +936,15 @@ def update_stav(output):
         return
     print(f"InfoSoud: stav řízení u {len(fronta)} jednání…")
     ok = chyby = 0
+    diag = 2                     # u prvních dvou neúspěchů popíšeme stránku
     for i, j in enumerate(fronta):
         url = infosoud_url(j, courts)
         try:
             html = http_get(url, timeout=30).text
             tabulky = parse_infosoud(html)
+            if not tabulky and diag:
+                diag -= 1
+                popis_stranky(j, url, html)
         except requests.RequestException as e:
             chyby += 1
             print(f"  [{j.get('spz')}] nedostupné: {e}")

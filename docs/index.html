@@ -26,9 +26,11 @@
     --link: hsl(221 83% 53%);
     --radius: 0.625rem;
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    /* Rozvržení: šířka obsahu a boční navigace (viz @media min-width: 1200px) */
-    --content-w: min(1400px, 100vw - 440px);
-    --nav-w: 176px;
+    /* Rozvržení: šířka obsahu a boční navigace (viz @media min-width: 1280px).
+       Pruh pro navigaci je tak široký, aby se do něj vešel i nejdelší
+       název stránky na jeden řádek. */
+    --content-w: min(1400px, 100vw - 560px);
+    --nav-w: 248px;
     /* Odstíny štítků (soft badge) */
     --badge-green-bg: hsl(142 76% 36% / 0.12);   --badge-green-fg: hsl(142 72% 29%);
     --badge-blue-bg: hsl(217 91% 60% / 0.12);    --badge-blue-fg: hsl(224 76% 48%);
@@ -376,18 +378,31 @@
   #sidenav { display: none; position: fixed; top: 96px; left: 20px; width: var(--nav-w); flex-direction: column; font-size: 0.85rem; }
   #sidenav a { color: var(--muted-foreground); text-decoration: none; padding: 6px 10px; border-radius: 6px; line-height: 1.35; }
   #sidenav a:hover { color: var(--foreground); background: var(--accent); }
-  #sidenav a.active { color: var(--foreground); background: var(--muted); font-weight: 500; }
+  #sidenav a.active { color: var(--foreground); background: var(--muted); }
+  /* Názvy stránek i sekcí se nezalamují – dvouřádková položka v navigaci
+     se čte hůř než delší pruh. Šířku pruhu drží --nav-w. */
+  #sidenav a { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   /* Skupiny stránek oddělené linkou; podpoložky mají svislé vodítko,
      aby bylo vidět, ke které stránce patří. */
   .nav-group { display: flex; flex-direction: column; gap: 2px; padding: 8px 0; }
   .nav-group + .nav-group { border-top: 1px solid var(--border); }
-  #sidenav a:not(.sub) { font-weight: 500; color: var(--foreground); }
+  .nav-sub { display: flex; flex-direction: column; gap: 2px; }
+  /* Rozbalená je jen stránka, na které zrovna jsi – zbytek je sbalený,
+     takže je pořád vidět celá navigace, ne jen její začátek. */
+  .nav-group:not(.is-open) .nav-sub { display: none; }
+  #sidenav a:not(.sub) { color: var(--foreground); }
+  /* Šipka napovídá, že se stránka rozbaluje. */
+  #sidenav a:not(.sub)::before {
+    content: "▸"; display: inline-block; width: 12px;
+    font-size: 0.7em; color: var(--muted-foreground);
+  }
+  .nav-group.is-open > a:not(.sub)::before { content: "▾"; }
   #sidenav a.sub { position: relative; padding-left: 22px; font-size: 0.94em; }
   #sidenav a.sub::before {
     content: ""; position: absolute; left: 11px; top: 3px; bottom: 3px;
     width: 1px; background: var(--border);
   }
-  @media (min-width: 1200px) {
+  @media (min-width: 1280px) {
     /* Po obou stranách se symetricky vyhradí místo pro navigaci,
        takže hlavní obsah zůstává vycentrovaný a nikam se neposouvá. */
     .container { max-width: var(--content-w); }
@@ -443,14 +458,18 @@
        která podpoložka patří. -->
   <div class="nav-group">
     <a href="#prehled">Přehled nových dokumentů (AI)</a>
-    <a href="#dnesni" class="sub">Dnešní shrnutí</a>
-    <a href="#dvatydny" class="sub">Shrnutí posledních dvou týdnů</a>
+    <div class="nav-sub">
+      <a href="#dnesni" class="sub">Dnešní shrnutí</a>
+      <a href="#dvatydny" class="sub">Shrnutí posledních dvou týdnů</a>
+    </div>
   </div>
   <div class="nav-group">
     <a href="#recentni">Přehled nových položek</a>
-    <a href="#nsoud" class="sub">Nejvyšší soud – senát 23 Cdo</a>
-    <a href="#cjeu" class="sub">Soudní dvůr EU – IP a IT</a>
-    <a href="#casopisy" class="sub">Právní časopisy</a>
+    <div class="nav-sub">
+      <a href="#nsoud" class="sub">Nejvyšší soud – senát 23 Cdo</a>
+      <a href="#cjeu" class="sub">Soudní dvůr EU – IP a IT</a>
+      <a href="#casopisy" class="sub">Právní časopisy</a>
+    </div>
   </div>
   <div class="nav-group">
     <a href="#kalendar">Kalendář jednání</a>
@@ -1409,6 +1428,11 @@ function initNav() {
       const href = String(a.getAttribute("href") || "").replace(/^#/, "");
       // Zvýrazněná je aktuální sekce a k ní i její stránka.
       a.classList.toggle("active", href === active || href === currentPage.id);
+      // Rozbalená je skupina té stránky, na které zrovna jsme.
+      const skupina = a.closest(".nav-group");
+      if (skupina && !a.classList.contains("sub")) {
+        skupina.classList.toggle("is-open", href === currentPage.id);
+      }
     });
   }
 
