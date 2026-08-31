@@ -271,7 +271,7 @@
     background: none; color: var(--muted-foreground); border-color: var(--border);
   }
   .cal-key-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
-  .cal-key-vs { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
+  .cal-key-vs { background: var(--badge-green-bg); color: var(--badge-green-fg); }
 
   /* Bublina s detailem se umisťuje k proklikanému štítku, proto je mřížka
      v pozicovaném obalu. Vodorovné posouvání zůstává na .cal-wrap, jinak by
@@ -279,7 +279,9 @@
   .cal-shell { position: relative; }
   .cal-wrap { overflow-x: auto; }
   .cal-grid {
-    display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;
+    /* minmax(0, 1fr) je nutné: s holým 1fr má sloupec spodní šířku podle
+       obsahu a jeden dlouhý název jednání by mřížku roztáhl přes okno. */
+    display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px;
     min-width: 660px;
   }
   .cal-dow { font-size: var(--fs-sm); font-weight: 500; color: var(--muted-foreground); padding: 2px 6px; }
@@ -303,22 +305,29 @@
     font-variant-numeric: tabular-nums;
   }
   .cal-day.today .cal-daynum { background: var(--link); color: #fff; }
-  /* Štítek dne nese jméno sporu („Xiaomi v. OSA"), takže musí unést dva
-     řádky – v měsíční mřížce se na jeden nevejde. */
+  /* Štítek dne: barevná tečka soudu, čas a jméno sporu na jednom řádku.
+     Zalomené jméno přes tři řádky rozhazovalo výšku buněk a v mřížce se
+     hůř hledalo – co se nevejde, se ořízne, celé je v title a v bublině. */
   .cal-chip {
-    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;
-    border-radius: 5px; padding: 2px 5px;
-    font-size: var(--fs-sm); line-height: 1.35; overflow: hidden;
-    /* Ořez na tři řádky sám o sobě nechá vykouknout kus čtvrtého. */
-    max-height: calc(1.35em * 3);
-    width: 100%; border: 0; font-family: inherit; text-align: left; cursor: pointer;
+    display: flex; align-items: center; gap: 6px;
+    width: 100%; padding: 2px 4px; border: 0; border-radius: 5px;
+    background: none; color: var(--foreground);
+    font-family: inherit; font-size: var(--fs-sm); line-height: 1.5;
+    text-align: left; cursor: pointer;
   }
-  .cal-chip:hover { box-shadow: inset 0 0 0 1px currentColor; }
+  .cal-chip:hover { background: var(--accent); }
+  .cal-chip.is-open { background: var(--accent); }
   .cal-chip.is-open, .cal-more.is-open { box-shadow: 0 0 0 2px var(--link); }
-  .cal-chip-time { opacity: 0.75; font-variant-numeric: tabular-nums; }
-  .cal-chip-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
-  .cal-chip-vs { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
-  .cal-chip-other { background: var(--muted); color: var(--muted-foreground); }
+  .cal-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+  .cal-chip-time {
+    color: var(--muted-foreground); font-variant-numeric: tabular-nums; flex: none;
+  }
+  /* min-width: 0 je nutné, jinak flexový prvek nejde zmenšit pod svůj text
+     a výpustka se nikdy neuplatní. */
+  .cal-chip-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .cal-chip-ms .cal-dot { background: var(--badge-blue-fg); }
+  .cal-chip-vs .cal-dot { background: var(--badge-green-fg); }
+  .cal-chip-other .cal-dot { background: var(--muted-foreground); }
   .cal-more {
     font-size: var(--fs-sm); color: var(--muted-foreground);
     background: none; border: 0; border-radius: 5px; padding: 0 5px;
@@ -398,7 +407,7 @@
   }
   .cal-zmeny .cal-zmena-spz { font-weight: 600; }
   .src-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
-  .src-vs { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
+  .src-vs { background: var(--badge-green-bg); color: var(--badge-green-fg); }
 
   .loading, .feed-empty { color: var(--muted-foreground); font-size: var(--fs-md); margin: 6px 0; }
   /* Dokud nejsou feedy (a fonty) načtené, neukazujeme nic – jinak by nejdřív
@@ -1114,7 +1123,8 @@ const CAL_DOWS = ["Po", "Út", "St", "Čt", "Pá", "So", "Ne"];
 const INFOSOUD_ORGS = { MS: "MSPHAAB", VS: "VSPHAAB" };
 const COURT_LABELS = { MS: "MS Praha", VS: "VS Praha" };
 // Kolik štítků se vejde do dne, než se zbytek schová pod „+N další".
-const CAL_MAX_CHIPS = 3;
+// Štítek je na jeden řádek, takže se jich do buňky vejde víc než dřív.
+const CAL_MAX_CHIPS = 4;
 // Kalendář neukazuje měsíc, ale okno šesti týdnů: dva zpět (čerstvá
 // minulost je pořád zajímavá) a čtyři dopředu, ať se vejde všechno, co
 // soudy stihly vypsat. Šipky posouvají o dva týdny.
@@ -1245,8 +1255,9 @@ function renderCalGrid() {
       html += '<button type="button" class="cal-chip ' + chip +
         '" data-date="' + iso + '" data-idx="' + idx + '" aria-expanded="false" title="' +
         esc(caseName(j) + " · " + (j.spz || "")) + '">' +
-        (j.hodina ? '<span class="cal-chip-time">' + esc(j.hodina) + "</span> " : "") +
-        esc(caseName(j)) + "</button>";
+        '<span class="cal-dot"></span>' +
+        (j.hodina ? '<span class="cal-chip-time">' + esc(j.hodina) + "</span>" : "") +
+        '<span class="cal-chip-name">' + esc(caseName(j)) + "</span></button>";
     });
     // „+2 další" otevře bublinu s celým dnem, ať se ke skrytým jde dostat.
     if (events.length > CAL_MAX_CHIPS) {
