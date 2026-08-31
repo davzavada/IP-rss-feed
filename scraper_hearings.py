@@ -909,6 +909,40 @@ def popis_stranky(j, url, html):
     adresy = sorted(set(re.findall(
         r"""['"](https?://[^'"\s]{6,}|/[A-Za-z0-9_\-./]{4,})['"]""", inline)))
     print(f"  [diag] adresy v kódu: {adresy[:20]}")
+    popis_bundlu(url, skripty)
+
+
+# Adresy služby jsou zabalené uvnitř javascriptového balíku aplikace –
+# vypíšeme je jen jednou za běh, ať log nenaroste o celý balík.
+_bundl_popsan = False
+
+
+def popis_bundlu(url, skripty):
+    """Vytáhne z balíku aplikace adresy, na které si sama chodí pro data."""
+    global _bundl_popsan
+    if _bundl_popsan:
+        return
+    _bundl_popsan = True
+    for src in skripty:
+        if "main" not in src:
+            continue
+        adresa = urljoin(url, src)
+        try:
+            resp = requests.get(adresa, headers=HEADERS, timeout=30)
+            resp.raise_for_status()
+        except requests.RequestException as e:
+            print(f"  [diag] balík {adresa} se nestáhl: {e}")
+            return
+        kod = resp.text
+        nalezene = sorted(set(re.findall(
+            r"""['"`]((?:https?://[^'"`\s]{6,})|(?:/[A-Za-z0-9_\-./]*"""
+            r"""(?:api|rest|service|detail|rizeni|json)[A-Za-z0-9_\-./]*))['"`]""",
+            kod, re.IGNORECASE)))
+        print(f"  [diag] balík {adresa}: {len(kod)} znaků, "
+              f"{len(nalezene)} adres")
+        for a in nalezene[:30]:
+            print(f"  [diag]   {a}")
+        return
 
 
 def potrebuje_stav(j, dnes):
