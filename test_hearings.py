@@ -375,6 +375,85 @@ check("rejstřík jde do odkazu malými písmeny i u víceznakových",
           {"soud": "MS", "cislo_senatu": 12, "rejstrik": "ECm", "bc": 4, "rocnik": 2026},
           courts_meta))
 
+
+# =====================================================================
+print("\n8) Stav řízení z InfoSoudu")
+# =====================================================================
+# Podobu stránky InfoSoudu neznáme dopředu a může se změnit, proto se
+# tabulky přebírají tak, jak jsou. Testy hlídají, že se vybere ta správná
+# a že se stránka bez dat pozná, místo aby se uložil kus rozvržení.
+
+INFOSOUD_HTML = """<html><body>
+<table><tr><td>
+  <table><tr><td><a href="/">Úvod</a></td><td><a href="/n">Nápověda</a></td></tr></table>
+  <h2>Informace o řízení</h2>
+  <table>
+    <tr><th>Soud</th><td>Vrchní soud v Praze</td></tr>
+    <tr><th>Spisová značka</th><td>3 Co 24/2025</td></tr>
+  </table>
+  <h2>Průběh řízení</h2>
+  <table>
+    <tr><th>Datum</th><th>Úkon</th><th>Poznámka</th></tr>
+    <tr><td>14. 1. 2025</td><td>Nápad věci</td>
+        <td>Věc byla soudu doručena<span class="popis"> – zapsáno do rejstříku</span></td></tr>
+    <tr><td>3. 3. 2025</td><td>Nařízeno jednání</td><td></td></tr>
+    <tr><td>12. 5. 2025</td><td>Rozhodnuto</td><td>Rozsudek</td></tr>
+  </table>
+</td></tr></table>
+</body></html>"""
+
+tab = s.parse_infosoud(INFOSOUD_HTML)
+check("z detailu řízení se vytáhnou tabulky", tab and len(tab) == 2, str(tab and len(tab)))
+prubeh = tab[0] if tab else {}
+check("první je tabulka s průběhem řízení (nejvíc dat)",
+      prubeh.get("hlavicka") == ["Datum", "Úkon", "Poznámka"], str(prubeh.get("hlavicka")))
+check("řádky průběhu sedí", len(prubeh.get("radky", [])) == 3,
+      str(len(prubeh.get("radky", []))))
+check("popis schovaný za proklikem se přebírá taky",
+      "zapsáno do rejstříku" in " ".join(prubeh.get("radky", [[]])[0]))
+check("nadpis nad tabulkou se uloží", prubeh.get("nadpis") == "Průběh řízení",
+      str(prubeh.get("nadpis")))
+check("tabulka rozvržení stránky se nebere",
+      all("Nápověda" not in " ".join(sum(t["radky"], [])) for t in tab))
+
+# Bez <th> se za hlavičku vezme první řádek, pokud v něm není datum.
+BEZ_TH = """<html><body><table>
+<tr><td>Datum</td><td>Úkon</td></tr>
+<tr><td>1. 2. 2026</td><td>Nápad věci</td></tr>
+<tr><td>2. 3. 2026</td><td>Nařízeno jednání</td></tr>
+</table></body></html>"""
+bez_th = s.parse_infosoud(BEZ_TH)
+check("hlavička se pozná i bez <th>", bez_th[0]["hlavicka"] == ["Datum", "Úkon"],
+      str(bez_th[0]["hlavicka"]))
+check("řádek s datem se za hlavičku nevezme", len(bez_th[0]["radky"]) == 2,
+      str(len(bez_th[0]["radky"])))
+
+# Když InfoSoud vrátí stránku bez dat (chyba, změna formátu), nesmí se uložit nic.
+check("stránka bez tabulek nevrátí nic",
+      s.parse_infosoud("<html><body><p>Řízení nebylo nalezeno.</p></body></html>") is None)
+check("jednosloupcová tabulka se nebere",
+      s.parse_infosoud("<html><body><table><tr><td>a</td></tr>"
+                       "<tr><td>b</td></tr></table></body></html>") is None)
+
+# Které jednání se má obnovovat.
+from datetime import date as _date, timedelta as _td
+dnes = _date(2026, 8, 31)
+zaklad = {"cislo_senatu": 3, "rejstrik": "Co", "bc": 24, "rocnik": 2025}
+check("nadcházející jednání bez stavu se stáhne",
+      s.potrebuje_stav(dict(zaklad, datum="2026-09-10"), dnes))
+check("dávno proběhlé jednání se už nesleduje",
+      not s.potrebuje_stav(dict(zaklad, datum="2026-01-10"), dnes))
+check("čerstvý stav se znovu nestahuje",
+      not s.potrebuje_stav(
+          dict(zaklad, datum="2026-09-10",
+               stav={"stazeno": (dnes - _td(days=2)).isoformat()}), dnes))
+check("starý stav se obnoví",
+      s.potrebuje_stav(
+          dict(zaklad, datum="2026-09-10",
+               stav={"stazeno": (dnes - _td(days=40)).isoformat()}), dnes))
+check("bez spisové značky se na InfoSoud nechodí",
+      not s.potrebuje_stav({"datum": "2026-09-10"}, dnes))
+
 # =====================================================================
 failed = [n for n, ok, _ in results if not ok]
 print(f"\n{len(results) - len(failed)}/{len(results)} testů prošlo")

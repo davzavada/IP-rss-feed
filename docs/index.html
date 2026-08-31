@@ -269,15 +269,18 @@
      takže se posouvá se stránkou a nemění výšku obsahu pod kalendářem. */
   .cal-pop {
     position: absolute; z-index: 30; width: min(340px, calc(100% - 12px));
+    transition: width 0.12s ease;
     background: var(--card); border: 1px solid var(--border); border-radius: 12px;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16), 0 2px 6px rgba(0, 0, 0, 0.08);
     padding: 12px 14px;
   }
   .cal-pop[hidden] { display: none; }
+  /* S rozbalenou tabulkou průběhu řízení potřebuje bublina víc místa. */
+  .cal-pop.is-wide { width: min(560px, calc(100% - 12px)); }
   /* Rolování je až uvnitř – na .cal-pop by ořízlo šipku, která z bubliny
      vyčnívá ven. */
   .cal-pop-body {
-    max-height: 58vh; overflow-y: auto;
+    overflow-y: auto;
     display: flex; flex-direction: column; gap: 10px;
   }
   .cal-pop-arrow {
@@ -312,6 +315,29 @@
   .cal-event-links { display: flex; gap: 14px; flex-wrap: wrap; }
   .cal-event-links a { color: var(--link); text-decoration: none; font-size: 0.82rem; }
   .cal-event-links a:hover { text-decoration: underline; }
+  /* Průběh řízení opsaný z InfoSoudu – zabalený, ať bublina zůstane malá. */
+  .cal-stav > summary {
+    cursor: pointer; font-size: 0.82rem; color: var(--link);
+    list-style: none; padding: 2px 0;
+  }
+  .cal-stav > summary::-webkit-details-marker { display: none; }
+  .cal-stav > summary::before { content: "▸ "; font-size: 0.75em; }
+  .cal-stav[open] > summary::before { content: "▾ "; }
+  .cal-stav-wrap { margin-top: 6px; }
+  /* Pevné rozvržení: kolik má tabulka z InfoSoudu sloupců nevíme dopředu,
+     takže se rozdělí rovným dílem a text se zalomí, místo aby přetekl. */
+  .cal-stav-table {
+    border-collapse: collapse; font-size: 0.78rem;
+    /* min-width: 0 přebíjí 720px, které mají široké tabulky feedů výš. */
+    width: 100%; min-width: 0; table-layout: fixed;
+  }
+  .cal-stav-table th, .cal-stav-table td {
+    border-bottom: 1px solid var(--border); padding: 4px 8px 4px 0;
+    text-align: left; vertical-align: top; overflow-wrap: anywhere;
+  }
+  .cal-stav-table th { color: var(--muted-foreground); font-weight: 500; }
+  .cal-stav-head { margin: 10px 0 0; font-size: 0.8rem; font-weight: 600; }
+  .cal-stav-note { margin: 8px 0 0; font-size: 0.72rem; color: var(--muted-foreground); }
   .cal-event.is-off { opacity: 0.72; }
   .cal-event.is-off .cal-event-name,
   .cal-event.is-off .cal-event-time { text-decoration: line-through; }
@@ -507,10 +533,11 @@
       <span class="legend" id="cal-info"></span>
       <p class="card-desc">
         Nařízená jednání Městského soudu v Praze a Vrchního soudu v Praze
-        (civilní úsek), filtrovaná na senáty s IP agendou podle rozvrhů práce
-        obou soudů. Soudy přehledy zveřejňují zhruba na dva týdny dopředu a
-        v průběhu období je neaktualizují – aktuální stav jednání ověříte
-        klikem na jednání a odkazem na InfoSoud.
+        (civilní i správní úsek), filtrovaná na senáty s IP agendou podle
+        rozvrhů práce obou soudů. Soudy přehledy zveřejňují zhruba na dva
+        týdny dopředu a v průběhu období je neaktualizují – po kliknutí na
+        jednání je u něj opsaný průběh řízení z InfoSoudu a odkaz na jeho
+        detail.
       </p>
     </div>
     <div class="card-content" id="feed-kalendar"><p class="loading">Načítám...</p></div>
@@ -1086,6 +1113,31 @@ function renderCalGrid() {
     calMonth.toLocaleDateString("cs-CZ", { month: "long", year: "numeric" });
 }
 
+// Průběh řízení, jak ho scraper opsal z InfoSoudu. Podobu tabulek neznáme
+// dopředu, tak se vykreslují tak, jak přišly – včetně záhlaví od soudu.
+function stavHtml(j) {
+  const tabulky = ((j.stav || {}).tabulky || []).filter(t => t && (t.radky || []).length);
+  if (!tabulky.length) return "";
+  const bunka = (tag, r) => r.map(c => "<" + tag + ">" + esc(c) + "</" + tag + ">").join("");
+  let html = '<details class="cal-stav"><summary>Stav řízení</summary>';
+  tabulky.forEach(t => {
+    if (t.nadpis) html += '<p class="cal-stav-head">' + esc(t.nadpis) + "</p>";
+    html += '<div class="cal-stav-wrap"><table class="cal-stav-table">';
+    if ((t.hlavicka || []).length) {
+      html += "<thead><tr>" + bunka("th", t.hlavicka) + "</tr></thead>";
+    }
+    html += "<tbody>" + t.radky.map(r => "<tr>" + bunka("td", r) + "</tr>").join("") +
+      "</tbody></table></div>";
+  });
+  // Kdy jsme se dívali – InfoSoud se mění a tohle je opis, ne živý pohled.
+  const d = new Date(j.stav.stazeno);
+  if (!isNaN(d)) {
+    html += '<p class="cal-stav-note">opsáno z InfoSoudu ' +
+      d.toLocaleDateString("cs-CZ") + "</p>";
+  }
+  return html + "</details>";
+}
+
 // Detail jednání do bubliny. `nadpis` je jen u celodenního výpisu –
 // u jednoho jednání by nad jeho jménem jen zabíral místo.
 function calPopHtml(events, nadpis) {
@@ -1120,7 +1172,8 @@ function calPopHtml(events, nadpis) {
 
     html += '<div class="cal-event-links">' +
       '<a href="' + esc(infosoudUrl(j)) + '" target="_blank" rel="noopener">' +
-      "Stav řízení na InfoSoud ↗</a></div>";
+      "Otevřít na InfoSoudu ↗</a></div>";
+    html += stavHtml(j);
     html += "</div>";
   });
   return html + "</div>";
@@ -1136,26 +1189,35 @@ function closeCalPop() {
   });
 }
 
-// Bublinu posadíme pod proklikaný štítek; když by přetekla pod mřížku a nad
-// štítkem je místo, překlopí se nahoru. Šipka míří na štítek.
+// Bublinu posadíme na tu stranu štítku, kde je v okně víc místa, a obsah
+// omezíme tak, aby se celá vešla na obrazovku – jinak by po rozbalení
+// průběhu řízení utekla pod spodní hranu. Šipka míří na štítek.
 function placeCalPop(anchor) {
   const box = document.getElementById("cal-pop");
+  const telo = box.querySelector(".cal-pop-body");
   const s = document.getElementById("cal-shell").getBoundingClientRect();
   const a = anchor.getBoundingClientRect();
+  const okno = document.documentElement.clientHeight;
+  const podStitkem = okno - a.bottom - 16;
+  const nadStitkem = a.top - 16;
+  const dolu = podStitkem >= nadStitkem;
   box.style.left = "0px";
   box.style.top = "0px";
+  if (telo) {
+    telo.style.maxHeight = "";
+    const ramecek = box.offsetHeight - telo.offsetHeight;   // odsazení + linka
+    telo.style.maxHeight =
+      Math.max(140, (dolu ? podStitkem : nadStitkem) - ramecek) + "px";
+  }
   const w = box.offsetWidth, h = box.offsetHeight;
   const stred = a.left + a.width / 2 - s.left;
   const left = Math.max(6, Math.min(stred - w / 2, s.width - w - 6));
-  const dole = a.bottom - s.top + 8;
-  const nahore = a.top - s.top - h - 8;
-  const preklopit = dole + h > s.height && nahore >= 0;
   box.style.left = left + "px";
-  box.style.top = (preklopit ? nahore : dole) + "px";
+  box.style.top = (dolu ? a.bottom - s.top + 8 : a.top - s.top - h - 8) + "px";
   const arrow = box.querySelector(".cal-pop-arrow");
   if (arrow) {
     arrow.style.left = Math.max(8, Math.min(stred - left - 5, w - 24)) + "px";
-    arrow.classList.toggle("is-below", preklopit);
+    arrow.classList.toggle("is-below", !dolu);
   }
 }
 
@@ -1167,9 +1229,17 @@ function openCalPop(anchor) {
   if (!events.length) return;
   closeCalPop();
   const box = document.getElementById("cal-pop");
+  box.classList.remove("is-wide");
   box.innerHTML = calPopHtml(events, idx < 0 ? "Jednání " + czFromIso(datum) : "");
   box.hidden = false;
   placeCalPop(anchor);
+  // Rozbalený stav řízení bublinu prodlouží – musí se posadit znovu, jinak
+  // by se překlopená bublina rozjela přes štítek.
+  box.querySelectorAll(".cal-stav").forEach(d =>
+    d.addEventListener("toggle", () => {
+      box.classList.toggle("is-wide", !!box.querySelector(".cal-stav[open]"));
+      placeCalPop(anchor);
+    }));
   anchor.classList.add("is-open");
   anchor.setAttribute("aria-expanded", "true");
   calPop = { key: datum + "#" + idx, datum: datum, idx: idx };

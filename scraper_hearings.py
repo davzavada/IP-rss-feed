@@ -34,6 +34,7 @@ import json
 import os
 import re
 import sys
+import time
 import unicodedata
 import zipfile
 from datetime import date, datetime, timedelta, timezone
@@ -804,6 +805,149 @@ def infosoud_url(j, courts):
     )
 
 
+
+# --- Stav řízení z InfoSoudu ------------------------------------------
+
+# InfoSoud je veřejná služba justice, ale je to jeden server – chodíme na něj
+# po jednom a jen kvůli jednáním, u kterých se stav ještě může měnit.
+INFOSOUD_PAUZA = 1.0          # vteřin mezi dotazy
+INFOSOUD_MAX_DOTAZU = 40      # kolik řízení nejvýš obnovit v jednom běhu
+INFOSOUD_OBNOVA_DNU = 21      # jak starý stav se bere jako čerstvý
+INFOSOUD_OKNO_DNU = 60        # jak dlouho po jednání stav ještě sledovat
+INFOSOUD_MAX_RADKU = 60       # strop na velikost uložené tabulky
+INFOSOUD_MAX_BUNKA = 400      # strop na délku textu v buňce
+
+DATUM_V_TEXTU_RE = re.compile(r"\b\d{1,2}\.\s*\d{1,2}\.\s*\d{4}\b")
+
+
+def cell_text(el):
+    """Text buňky včetně částí, které stránka schovává za proklik – právě
+    v nich InfoSoud drží popisy úkonů."""
+    t = " ".join(el.get_text(" ", strip=True).split())
+    return t[:INFOSOUD_MAX_BUNKA]
+
+
+def table_heading(table):
+    """Nadpis nad tabulkou – nejbližší předchozí nadpis nebo <caption>."""
+    caption = table.find("caption")
+    if caption:
+        return cell_text(caption)
+    el = table
+    for _ in range(6):
+        el = el.find_previous(["h1", "h2", "h3", "h4", "h5", "legend", "caption"])
+        if el is None:
+            return ""
+        text = cell_text(el)
+        if text:
+            return text[:120]
+    return ""
+
+
+def read_table(table):
+    """Tabulku převede na {nadpis, hlavicka, radky}. Vrací None, když to
+    není tabulka s daty (rozvržení stránky, prázdná, jednosloupcová)."""
+    if table.find("table"):
+        return None                       # obal rozvržení, ne data
+    radky = []
+    for tr in table.find_all("tr"):
+        bunky = [cell_text(td) for td in tr.find_all(["td", "th"])]
+        if any(b for b in bunky):
+            radky.append(bunky)
+    if len(radky) < 2 or max(len(r) for r in radky) < 2:
+        return None
+    # Záhlaví: buď <th>, nebo první řádek, ve kterém není datum.
+    prvni = table.find("tr")
+    ma_th = bool(prvni and prvni.find("th"))
+    hlavicka = []
+    if ma_th or not DATUM_V_TEXTU_RE.search(" ".join(radky[0])):
+        hlavicka = radky[0]
+        radky = radky[1:]
+    if not radky:
+        return None
+    sirka = max(len(r) for r in radky + ([hlavicka] if hlavicka else []))
+    dorovnat = lambda r: r + [""] * (sirka - len(r))
+    return {
+        "nadpis": table_heading(table),
+        "hlavicka": dorovnat(hlavicka) if hlavicka else [],
+        "radky": [dorovnat(r) for r in radky[:INFOSOUD_MAX_RADKU]],
+    }
+
+
+def parse_infosoud(html):
+    """Vytáhne z detailu řízení tabulky tak, jak jsou – jejich podobu
+    neznáme dopředu a InfoSoud ji může změnit, tak se nic nepřejmenovává.
+    Nejdřív jdou tabulky s daty (průběh řízení), pak zbytek."""
+    soup = BeautifulSoup(html, "html.parser")
+    for tag in soup(["script", "style", "noscript"]):
+        tag.decompose()
+    tabulky = [t for t in (read_table(t) for t in soup.find_all("table")) if t]
+    if not tabulky:
+        return None
+    def datumu(t):
+        return sum(1 for r in t["radky"] if DATUM_V_TEXTU_RE.search(" ".join(r)))
+    tabulky.sort(key=datumu, reverse=True)
+    return tabulky[:3]
+
+
+def potrebuje_stav(j, dnes):
+    """Stav řízení obnovujeme jen u jednání, kde se ještě může měnit."""
+    if not (j.get("cislo_senatu") and j.get("rejstrik") and j.get("bc") and j.get("rocnik")):
+        return False
+    try:
+        stari_jednani = (dnes - date.fromisoformat(j["datum"])).days
+    except (TypeError, ValueError):
+        return False
+    if stari_jednani > INFOSOUD_OKNO_DNU:
+        return False
+    stav = j.get("stav") or {}
+    try:
+        stazeno = datetime.fromisoformat(stav["stazeno"]).date()
+    except (KeyError, TypeError, ValueError):
+        return True
+    return (dnes - stazeno).days >= INFOSOUD_OBNOVA_DNU
+
+
+def update_stav(output):
+    """Doplní k jednáním tabulku průběhu řízení z InfoSoudu."""
+    courts = output.get("courts", {})
+    dnes = date.today()
+    fronta = [j for j in output.get("jednani", []) if potrebuje_stav(j, dnes)]
+    # Napřed ta, která stav ještě nemají, pak podle stáří jednání.
+    fronta.sort(key=lambda j: (bool(j.get("stav")), j.get("datum") or ""))
+    fronta = fronta[:INFOSOUD_MAX_DOTAZU]
+    if not fronta:
+        print("InfoSoud: stav řízení je aktuální, nic se nestahuje")
+        return
+    print(f"InfoSoud: stav řízení u {len(fronta)} jednání…")
+    ok = chyby = 0
+    for i, j in enumerate(fronta):
+        url = infosoud_url(j, courts)
+        try:
+            html = http_get(url, timeout=30).text
+            tabulky = parse_infosoud(html)
+        except requests.RequestException as e:
+            chyby += 1
+            print(f"  [{j.get('spz')}] nedostupné: {e}")
+            tabulky = None
+        except Exception as e:                       # rozbitá stránka
+            chyby += 1
+            print(f"  [{j.get('spz')}] nepřečteno: {type(e).__name__}: {e}")
+            tabulky = None
+        if tabulky:
+            ok += 1
+            j["stav"] = {
+                "stazeno": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                "url": url,
+                "tabulky": tabulky,
+            }
+        if i + 1 < len(fronta):
+            time.sleep(INFOSOUD_PAUZA)
+    print(f"InfoSoud: staženo {ok}, nepovedlo se {chyby}")
+    if fronta and not ok:
+        print("::warning::InfoSoud nevrátil ani jednu tabulku – "
+              "nejspíš změnil podobu stránky")
+
+
 def write_ics(output, path=None):
     """Zapíše IP jednání jako iCalendar – na tenhle soubor se dá přihlásit
     v Google Kalendáři (Jiné kalendáře → Přidat → Z adresy URL)."""
@@ -988,6 +1132,9 @@ def main():
 
     if not ok and not output.get("jednani"):
         sys.exit("Nepodařilo se získat žádná jednání.")
+
+    # 3) Stav řízení z InfoSoudu k jednáním, u kterých se ještě může měnit.
+    update_stav(output)
 
     # Seznam senátů a soudců do výstupu – kalendář je ukazuje u filtru.
     output["senaty"] = {c: cfg.get("senaty", []) for c, cfg in config["courts"].items()}
