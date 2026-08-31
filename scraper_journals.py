@@ -697,6 +697,7 @@ def fetch_crossref_journal(issn, label, journal_name):
             polozka["ai_source"] = "page"
             polozka["ai_prompt"] = JOURNAL_DECISION_PROMPT
             polozka["ai_text"] = ""
+            polozka["ai_fallback_tag"] = "Rozhodnutí"
         items.append(polozka)
 
     return items
@@ -822,14 +823,43 @@ def scrape_jwip():
 
 # --- AI shrnutí (Gemma) ---
 
+# Vydavatelé místo obsahu občas pošlou hlášku o vypnutém JavaScriptu nebo
+# kontrolu prohlížeče. Takový text nesmí jít do AI: model z něj buď udělá
+# nesmysl, nebo (jako Gemma u FRAND Defence III) popíše samotnou chybovou
+# hlášku – a to se pak uloží do cache jako shrnutí článku.
+BLOKACE_RE = re.compile(
+    r"javascript is disabled|enable javascript|just a moment|"
+    r"checking your (browser|connection)|access denied|are you a robot|"
+    r"unusual traffic",
+    re.IGNORECASE,
+)
+MIN_TEXT_PRO_AI = 600      # kratší stránka není článek, ale rozcestník
+
+# Bez hlaviček Accept posílají někteří vydavatelé osekanou verzi stránky.
+PAGE_HEADERS = {
+    "User-Agent": USER_AGENT,
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9,cs;q=0.8",
+}
+
+
 def fetch_page_text(url, limit=6000):
-    """Čitelný text stránky pro AI shrnutí (bez navigace, skriptů a patičky)."""
-    resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=30)
+    """Čitelný text stránky pro AI shrnutí (bez navigace, skriptů a patičky).
+
+    Když stránka obsah nedala – poslala hlášku o JavaScriptu, kontrolu
+    prohlížeče, nebo je podezřele krátká – vrací prázdný řetězec. Žádné
+    shrnutí je lepší než shrnutí chybové stránky.
+    """
+    resp = requests.get(url, headers=PAGE_HEADERS, timeout=30)
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "html.parser")
     for junk in soup(["script", "style", "nav", "header", "footer", "form"]):
         junk.decompose()
     text = re.sub(r"\n{3,}", "\n\n", soup.get_text("\n", strip=True))
+    if len(text) < MIN_TEXT_PRO_AI or BLOKACE_RE.search(text[:2000]):
+        print(f"    [diag] {url}: stránka bez obsahu ({len(text)} znaků): "
+              f"{text[:150]!r}")
+        return ""
     return text[:limit]
 
 def enrich_summaries(items):
@@ -863,9 +893,10 @@ def enrich_summaries(items):
             elif it.get("ai_source") == "page" and it.get("link"):
                 try:
                     text = fetch_page_text(it["link"])
-                    print(f"    [diag] {g}: stránka článku, {len(text)} znaků")
-                    calls += 1
-                    summary, tag = gemini_summarize_text(text, prompt)
+                    if text:
+                        print(f"    [diag] {g}: stránka článku, {len(text)} znaků")
+                        calls += 1
+                        summary, tag = gemini_summarize_text(text, prompt)
                 except Exception as e:
                     print(f"  CHYBA stahování stránky {it['title']}: {e}")
             elif it.get("ai_source") == "issue" and it.get("link"):
@@ -888,6 +919,11 @@ def enrich_summaries(items):
                 print(f"    [diag] {g}: bez shrnutí")
         it["summary"] = m.get("summary", "")
         it["tag"] = m.get("tag", "")
+        # U rozhodnutí je plný text jen na stránce vydavatele, a ta se ne vždy
+        # stáhne. Shrnutí se v takovém případě nevymýšlí – aspoň ať sloupec
+        # Heslo řekne, že jde o rozhodnutí; soud, datum i značka jsou v názvu.
+        if not it["tag"] and it.get("ai_fallback_tag"):
+            it["tag"] = it["ai_fallback_tag"]
 
     save_json(META_FILE, meta)
     if calls:
