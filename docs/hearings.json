@@ -226,6 +226,26 @@
     },
     {
       "datum": "2026-09-02",
+      "hodina": "09:15",
+      "sin": "6",
+      "predseda": "JUDr. PhDr. Filip Havrda",
+      "spz": "1 Cmo 40/2025",
+      "nazev": "MK holding v. STES",
+      "senat": "1 Cmo",
+      "rejstrik": "Cmo",
+      "cislo_senatu": 1,
+      "bc": 40,
+      "rocnik": 2025,
+      "ucastnici": [
+        "MK holding s.r.o.",
+        "STES a.s."
+      ],
+      "usek": "civilni",
+      "ip": true,
+      "soud": "VS"
+    },
+    {
+      "datum": "2026-09-02",
       "hodina": "11:00",
       "sin": "353",
       "predseda": "Mgr. Lucie Vobrová",
@@ -266,6 +286,47 @@
       "soud": "MS"
     },
     {
+      "datum": "2026-09-09",
+      "hodina": "09:15",
+      "sin": "6",
+      "predseda": "JUDr. PhDr. Filip Havrda",
+      "spz": "1 Cmo 40/2026",
+      "nazev": "Yunnan Tobacco v. International Co. a další",
+      "senat": "1 Cmo",
+      "rejstrik": "Cmo",
+      "cislo_senatu": 1,
+      "bc": 40,
+      "rocnik": 2026,
+      "ucastnici": [
+        "Yunnan Tobacco",
+        "International Co. Ltd.",
+        "Philip Morris Products S.A."
+      ],
+      "usek": "civilni",
+      "ip": true,
+      "soud": "VS"
+    },
+    {
+      "datum": "2026-09-09",
+      "hodina": "10:30",
+      "sin": "6",
+      "predseda": "Mgr. Michal Výtisk",
+      "spz": "1 Cmo 79/2025",
+      "nazev": "In Time v. ACOGER",
+      "senat": "1 Cmo",
+      "rejstrik": "Cmo",
+      "cislo_senatu": 1,
+      "bc": 79,
+      "rocnik": 2025,
+      "ucastnici": [
+        "In Time s.r.o.",
+        "ACOGER s.r.o."
+      ],
+      "usek": "civilni",
+      "ip": true,
+      "soud": "VS"
+    },
+    {
       "datum": "2026-09-10",
       "hodina": "09:30",
       "sin": "265",
@@ -284,6 +345,115 @@
       "usek": "civilni",
       "ip": true,
       "soud": "MS"
+    },
+    {
+      "datum": "2026-09-14",
+      "hodina": "09:30",
+      "sin": "6",
+      "predseda": "JUDr. Gabriela Kučerová",
+      "spz": "3 Cmo 33/2026",
+      "nazev": "PREMIUM FINTECH v. SOLUTIONS a další",
+      "senat": "3 Cmo",
+      "rejstrik": "Cmo",
+      "cislo_senatu": 3,
+      "bc": 33,
+      "rocnik": 2026,
+      "ucastnici": [
+        "PREMIUM FINTECH",
+        "SOLUTIONS LTD",
+        "EasyPark Czechia s.r.o."
+      ],
+      "usek": "civilni",
+      "ip": true,
+      "soud": "VS"
+    },
+    {
+      "datum": "2026-09-14",
+      "hodina": "13:30",
+      "sin": "6",
+      "predseda": "Mgr. Jiří Čurda",
+      "spz": "3 Cmo 89/2025",
+      "nazev": "STEPAN - BAUER s.r.o. v. Josef Stepan",
+      "senat": "3 Cmo",
+      "rejstrik": "Cmo",
+      "cislo_senatu": 3,
+      "bc": 89,
+      "rocnik": 2025,
+      "ucastnici": [
+        "STEPAN - BAUER s.r.o. – v likvidaci",
+        "Josef Stepan"
+      ],
+      "usek": "civilni",
+      "ip": true,
+      "soud": "VS"
+    },
+    {
+      "datum": "2026-09-14",
+      "hodina": "14:30",
+      "sin": "6",
+      "predseda": "JUDr. Roman Horáček, Ph.D., MBA",
+      "spz": "1 Cmo 24/2025",
+      "nazev": "SHERI v. LORESA a další",
+      "senat": "1 Cmo",
+      "rejstrik": "Cmo",
+      "cislo_senatu": 1,
+      "bc": 24,
+      "rocnik": 2025,
+      "ucastnici": [
+        "SHERI spol. s r.o.",
+        "LORESA s.r.o.",
+        "Tresher s.r.o.",
+        "PERSEVERAMUS",
+        "INVESTEMENTS LTD",
+        "IČ HE 448529",
+        "Top corner s.r.o.",
+        "Secessio s.r.o."
+      ],
+      "usek": "civilni",
+      "ip": true,
+      "soud": "VS"
+    },
+    {
+      "datum": "2026-09-15",
+      "hodina": "10:30",
+      "sin": "6",
+      "predseda": "Mgr. Jiří Čurda",
+      "spz": "3 Cmo 92/2025",
+      "nazev": "GRUMANT v. KL - TECH a další",
+      "senat": "3 Cmo",
+      "rejstrik": "Cmo",
+      "cislo_senatu": 3,
+      "bc": 92,
+      "rocnik": 2025,
+      "ucastnici": [
+        "GRUMANT s.r.o.",
+        "KL - TECH s.r.o.",
+        "Pavel Kopecký",
+        "Ing. Bc. Martin Lojda"
+      ],
+      "usek": "civilni",
+      "ip": true,
+      "soud": "VS"
+    },
+    {
+      "datum": "2026-09-15",
+      "hodina": "13:30",
+      "sin": "6",
+      "predseda": "JUDr. Gabriela Kučerová",
+      "spz": "3 Cmo 95/2025",
+      "nazev": "Němec v. Prosperplast",
+      "senat": "3 Cmo",
+      "rejstrik": "Cmo",
+      "cislo_senatu": 3,
+      "bc": 95,
+      "rocnik": 2025,
+      "ucastnici": [
+        "Němec s.r.o.",
+        "Prosperplast s.r.o."
+      ],
+      "usek": "civilni",
+      "ip": true,
+      "soud": "VS"
     }
   ],
   "courts": {
@@ -296,7 +466,7 @@
             "od": "2026-09-01",
             "do": "2026-09-15"
           },
-          "stazeno": "2026-08-31T13:55:33+00:00",
+          "stazeno": "2026-08-31T14:16:12+00:00",
           "zdroj": "https://msp.gov.cz/documents/d/mestsky-soud-v-praze/civilni-usek-1-15-9-2026"
         },
         "spravni": {
@@ -304,7 +474,7 @@
             "od": "2026-09-01",
             "do": "2026-09-15"
           },
-          "stazeno": "2026-08-31T13:55:35+00:00",
+          "stazeno": "2026-08-31T14:16:13+00:00",
           "zdroj": "https://msp.gov.cz/documents/d/mestsky-soud-v-praze/spravni-usek-1-15-9-2026"
         }
       }
@@ -315,11 +485,11 @@
       "useky": {
         "civilni": {
           "obdobi": {
-            "od": "2026-08-17",
-            "do": "2026-08-31"
+            "od": "2026-09-01",
+            "do": "2026-09-15"
           },
-          "stazeno": "2026-08-31T13:55:37+00:00",
-          "zdroj": "https://msp.gov.cz/documents/d/vrchni-soud-v-praze/prehled_jednacky_cu-2"
+          "stazeno": "2026-08-31T14:16:16+00:00",
+          "zdroj": "https://msp.gov.cz/documents/d/vrchni-soud-v-praze/prehled_jednacky_cu-1"
         }
       }
     }
@@ -382,6 +552,6 @@
       "Roman Horáček"
     ]
   },
-  "generated": "2026-08-31T13:56:02+00:00",
+  "generated": "2026-08-31T14:16:55+00:00",
   "ics": "https://rss.davidzavada.cz/hearings.ics"
 }
