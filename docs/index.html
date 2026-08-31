@@ -25,20 +25,17 @@
     --accent: hsl(240 4.8% 95.9%);
     --link: hsl(221 83% 53%);
     --radius: 0.625rem;
-    /* Stupnice písma. Šest kroků na celý web – od štítků v kalendáři
-       po nadpis stránky. Nic mimo ni. */
-    --fs-2xs: 0.7rem;    /* štítky, badge, čísla dní */
-    --fs-xs: 0.78rem;    /* legenda, poznámky, hlavičky tabulek */
-    --fs-sm: 0.85rem;    /* ovládání, navigace, popisky karet */
-    --fs-md: 0.9rem;     /* běžný text: tabulky, detaily, přehled */
-    --fs-lg: 1rem;       /* nadpisy karet a webu */
-    --fs-xl: 1.15rem;    /* nadpis stránky */
+    /* Stupnice písma. Tři kroky na celý web – víc jich na jedné obrazovce
+       působí rozháraně. Hierarchii nese tučnost a barva, ne velikost. */
+    --fs-sm: 0.8rem;     /* druhotné: štítky, hlavičky tabulek, legenda, kalendář */
+    --fs-md: 0.9rem;     /* běžný text: tabulky, detaily, navigace, ovládání */
+    --fs-lg: 1rem;       /* nadpisy karet a jméno webu */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     /* Rozvržení: šířka obsahu a boční navigace (viz @media min-width: 1360px).
        Pruh pro navigaci je tak široký, aby se do něj vešel i nejdelší
        název stránky na jeden řádek. */
-    --content-w: min(1400px, 100vw - 600px);
-    --nav-w: 272px;
+    --content-w: min(1400px, 100vw - 660px);
+    --nav-w: 290px;
     /* Odstíny štítků (soft badge) */
     --badge-green-bg: hsl(142 76% 36% / 0.12);   --badge-green-fg: hsl(142 72% 29%);
     --badge-blue-bg: hsl(217 91% 60% / 0.12);    --badge-blue-fg: hsl(224 76% 48%);
@@ -97,7 +94,7 @@
   h1 { margin: 0; font-size: var(--fs-lg); font-weight: 600; letter-spacing: -0.01em; }
   /* Jméno webu nese váhu, popis za ním zůstává potichu. */
   h1 .tagline { font-weight: 400; color: var(--muted-foreground); }
-  .legend { font-size: var(--fs-xs); color: var(--muted-foreground); white-space: nowrap; }
+  .legend { font-size: var(--fs-sm); color: var(--muted-foreground); white-space: nowrap; }
 
   main.container { padding-block: 28px 72px; display: flex; flex-direction: column; gap: 28px; }
   /* Obsah je rozdělený na dvě stránky (přehled / všechno nové);
@@ -105,7 +102,6 @@
   .page { display: flex; flex-direction: column; gap: 28px; }
   .page[hidden] { display: none; }
   #recentni { gap: 20px; }
-  .group-title { margin: 8px 0 0; font-size: var(--fs-xl); font-weight: 600; letter-spacing: -0.01em; }
   section[id], .card[id] { scroll-margin-top: 76px; }
 
   /* Karta (shadcn Card) */
@@ -115,7 +111,7 @@
   }
   .card-header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 18px 22px 0; }
   .card-title { margin: 0; font-size: var(--fs-lg); font-weight: 600; letter-spacing: -0.01em; }
-  .card-desc { margin: 4px 0 0; font-size: var(--fs-sm); color: var(--muted-foreground); flex-basis: 100%; }
+  .card-desc { margin: 4px 0 0; font-size: var(--fs-md); color: var(--muted-foreground); flex-basis: 100%; }
   .card-content { padding: 10px 22px 16px; }
 
   /* Název karty jako proklik na XML feed – jen jemná ikonka, žádný viditelný štítek. */
@@ -134,7 +130,7 @@
   /* Tabulka (shadcn Table) */
   .table-wrap { overflow-x: auto; }
   table { width: 100%; border-collapse: collapse; font-size: var(--fs-md); table-layout: fixed; min-width: 720px; }
-  th { text-align: left; font-size: var(--fs-xs); font-weight: 500; color: var(--muted-foreground); padding: 8px 16px 8px 0; border-bottom: 1px solid var(--border); }
+  th { text-align: left; font-size: var(--fs-sm); font-weight: 500; color: var(--muted-foreground); padding: 8px 16px 8px 0; border-bottom: 1px solid var(--border); }
   td { padding: 12px 16px 12px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
   th:last-child, td:last-child { padding-right: 0; }
   tbody tr:last-child td { border-bottom: 0; }
@@ -151,12 +147,12 @@
   .col-type, .col-name, .col-heslo, .col-summary, .col-src, .col-author
     { overflow-wrap: anywhere; }
   .author { color: var(--muted-foreground); }
-  .col-name .author { display: block; margin-top: 2px; font-size: var(--fs-xs); }
+  .col-name .author { display: block; margin-top: 2px; font-size: var(--fs-sm); }
   .nowrap { white-space: nowrap; }
   .summary { line-height: 1.55; }
   .note { color: var(--muted-foreground); font-style: italic; }
   .doc-link {
-    font-size: var(--fs-2xs); font-weight: 600; letter-spacing: .04em; white-space: nowrap;
+    font-size: var(--fs-sm); font-weight: 600; letter-spacing: .04em; white-space: nowrap;
     padding: 1px 5px; border: 1px solid currentColor; border-radius: 4px;
     text-decoration: none; vertical-align: 1px;
   }
@@ -186,7 +182,7 @@
      ostatní neutrální „secondary". */
   .heslo, .tag, .src {
     display: inline-block; border-radius: 6px; padding: 2px 8px;
-    font-size: var(--fs-2xs); font-weight: 500; line-height: 1.45;
+    font-size: var(--fs-sm); font-weight: 500; line-height: 1.45;
   }
   .heslo { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
   .tag, .src { background: var(--muted); color: var(--muted-foreground); white-space: nowrap; }
@@ -207,12 +203,12 @@
   .digest-sources { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; }
   .digest-source {
     display: inline-flex; align-items: baseline; gap: 6px;
-    font-size: var(--fs-xs); color: var(--link); text-decoration: none;
+    font-size: var(--fs-sm); color: var(--link); text-decoration: none;
     overflow-wrap: anywhere;
   }
   .digest-source:hover { text-decoration: underline; }
   .digest-source .src, .digest-source .tag { flex: none; }
-  .digest-meta { margin: 14px 0 0; font-size: var(--fs-xs); color: var(--muted-foreground); }
+  .digest-meta { margin: 14px 0 0; font-size: var(--fs-sm); color: var(--muted-foreground); }
 
   /* ===== Kalendář jednání (MS + VS, IP senáty) ===== */
   .cal-toolbar {
@@ -223,15 +219,15 @@
   .cal-nav button {
     background: var(--card); color: var(--foreground);
     border: 1px solid var(--border); border-radius: 8px;
-    padding: 4px 10px; font-size: var(--fs-sm); line-height: 1.4; cursor: pointer;
+    padding: 4px 10px; font-size: var(--fs-md); line-height: 1.4; cursor: pointer;
   }
   .cal-nav button:hover { background: var(--accent); }
   .cal-title { min-width: 130px; text-align: center; font-weight: 600; font-size: var(--fs-md); }
-  .cal-filters { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: var(--fs-sm); color: var(--muted-foreground); }
+  .cal-filters { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: var(--fs-md); color: var(--muted-foreground); }
   /* Štítek soudu je zároveň legenda i přepínač – klikne se rovnou na barvu.
      Vypnutý soud barvu ztratí a zůstane z něj jen obrys. */
   .cal-key {
-    border-radius: 5px; padding: 2px 9px; font-size: var(--fs-2xs);
+    border-radius: 5px; padding: 2px 9px; font-size: var(--fs-sm);
     border: 1px solid transparent; font-family: inherit; line-height: 1.5;
   }
   button.cal-key { cursor: pointer; }
@@ -251,18 +247,18 @@
     display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;
     min-width: 660px;
   }
-  .cal-dow { font-size: var(--fs-xs); font-weight: 500; color: var(--muted-foreground); padding: 2px 6px; }
+  .cal-dow { font-size: var(--fs-sm); font-weight: 500; color: var(--muted-foreground); padding: 2px 6px; }
   .cal-day {
     min-height: 96px; padding: 4px 5px;
     border: 1px solid var(--border); border-radius: 8px;
-    background: var(--card); font-size: var(--fs-xs);
+    background: var(--card); font-size: var(--fs-sm);
     display: flex; flex-direction: column; gap: 3px; align-items: stretch;
     text-align: left; cursor: default;
   }
   /* Proběhlé dny jsou potlačené, ale čitelné – kalendář slouží i jako archiv. */
   .cal-day.past { background: color-mix(in srgb, var(--muted) 45%, var(--card)); }
   .cal-day.past .cal-daynum { opacity: 0.7; }
-  .cal-daynum { font-size: var(--fs-2xs); color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
+  .cal-daynum { font-size: var(--fs-sm); color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
   .cal-day.today .cal-daynum {
     display: inline-flex; align-items: center; justify-content: center;
     width: 20px; height: 20px; border-radius: 999px;
@@ -271,9 +267,11 @@
   /* Štítek dne nese jméno sporu („Xiaomi v. OSA"), takže musí unést dva
      řádky – v měsíční mřížce se na jeden nevejde. */
   .cal-chip {
-    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;
     border-radius: 5px; padding: 2px 5px;
-    font-size: var(--fs-2xs); line-height: 1.35; overflow: hidden;
+    font-size: var(--fs-sm); line-height: 1.35; overflow: hidden;
+    /* Ořez na tři řádky sám o sobě nechá vykouknout kus čtvrtého. */
+    max-height: calc(1.35em * 3);
     width: 100%; border: 0; font-family: inherit; text-align: left; cursor: pointer;
   }
   .cal-chip:hover { box-shadow: inset 0 0 0 1px currentColor; }
@@ -285,7 +283,7 @@
   .cal-chip-vs { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
   .cal-chip-other { background: var(--muted); color: var(--muted-foreground); }
   .cal-more {
-    font-size: var(--fs-2xs); color: var(--muted-foreground);
+    font-size: var(--fs-sm); color: var(--muted-foreground);
     background: none; border: 0; border-radius: 5px; padding: 0 5px;
     font-family: inherit; text-align: left; cursor: pointer;
   }
@@ -328,7 +326,7 @@
   .cal-detail-title { margin: 0 26px 0 0; font-size: var(--fs-md); font-weight: 600; }
   .cal-event {
     border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px;
-    display: flex; flex-direction: column; gap: 8px; font-size: var(--fs-sm);
+    display: flex; flex-direction: column; gap: 8px; font-size: var(--fs-md);
   }
   .cal-event-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
   .cal-event-time { font-weight: 600; font-variant-numeric: tabular-nums; }
@@ -339,11 +337,11 @@
   .cal-event-rows dt { color: var(--muted-foreground); }
   .cal-event-rows dd { margin: 0; }
   .cal-event-links { display: flex; gap: 14px; flex-wrap: wrap; }
-  .cal-event-links a { color: var(--link); text-decoration: none; font-size: var(--fs-xs); }
+  .cal-event-links a { color: var(--link); text-decoration: none; font-size: var(--fs-sm); }
   .cal-event-links a:hover { text-decoration: underline; }
   /* Průběh řízení opsaný z InfoSoudu – zabalený, ať bublina zůstane malá. */
   .cal-stav > summary {
-    cursor: pointer; font-size: var(--fs-xs); color: var(--link);
+    cursor: pointer; font-size: var(--fs-sm); color: var(--link);
     list-style: none; padding: 2px 0;
   }
   .cal-stav > summary::-webkit-details-marker { display: none; }
@@ -353,7 +351,7 @@
   /* Pevné rozvržení: kolik má tabulka z InfoSoudu sloupců nevíme dopředu,
      takže se rozdělí rovným dílem a text se zalomí, místo aby přetekl. */
   .cal-stav-table {
-    border-collapse: collapse; font-size: var(--fs-xs);
+    border-collapse: collapse; font-size: var(--fs-sm);
     /* min-width: 0 přebíjí 720px, které mají široké tabulky feedů výš. */
     width: 100%; min-width: 0; table-layout: fixed;
   }
@@ -362,14 +360,14 @@
     text-align: left; vertical-align: top; overflow-wrap: anywhere;
   }
   .cal-stav-table th { color: var(--muted-foreground); font-weight: 500; }
-  .cal-stav-head { margin: 10px 0 0; font-size: var(--fs-sm); font-weight: 600; }
-  .cal-stav-note { margin: 8px 0 0; font-size: var(--fs-2xs); color: var(--muted-foreground); }
+  .cal-stav-head { margin: 10px 0 0; font-size: var(--fs-md); font-weight: 600; }
+  .cal-stav-note { margin: 8px 0 0; font-size: var(--fs-sm); color: var(--muted-foreground); }
   .cal-event.is-off { opacity: 0.72; }
   .cal-event.is-off .cal-event-name,
   .cal-event.is-off .cal-event-time { text-decoration: line-through; }
   .cal-off-badge {
     background: var(--badge-red-bg); color: var(--badge-red-fg);
-    border-radius: 6px; padding: 2px 8px; font-size: var(--fs-2xs); font-weight: 500;
+    border-radius: 6px; padding: 2px 8px; font-size: var(--fs-sm); font-weight: 500;
   }
   .src-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
   .src-vs { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
@@ -386,7 +384,7 @@
   /* Přepínač stránek (shadcn tabs) – naskočí tam, kde zmizí boční navigace. */
   .pagetabs { display: flex; gap: 4px; flex-wrap: wrap; }
   .pagetabs a {
-    padding: 6px 12px; border-radius: 8px; font-size: var(--fs-sm);
+    padding: 6px 12px; border-radius: 8px; font-size: var(--fs-md);
     color: var(--muted-foreground); text-decoration: none;
   }
   .pagetabs a:hover { color: var(--foreground); background: var(--accent); }
@@ -395,7 +393,7 @@
   /* Boční navigace vlevo (jen na širokých obrazovkách) – plovoucí karta. */
   #sidenav {
     display: none; position: fixed; top: 96px; left: 20px;
-    width: var(--nav-w); flex-direction: column; font-size: var(--fs-sm);
+    width: var(--nav-w); flex-direction: column; font-size: var(--fs-md);
     background: var(--card); border: 1px solid var(--border);
     border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 6px;
   }
@@ -560,7 +558,6 @@
 </div><!-- /#prehled -->
 
 <section class="page" id="recentni" hidden>
-  <h2 class="group-title">Přehled nových položek</h2>
 
   <div class="card" id="nsoud">
     <div class="card-header">
