@@ -335,12 +335,6 @@ def scrape_pravnik():
 JURISPRUDENCE_ARCHIVE_URL = "https://www.jurisprudence.cz/cz/casopis/archiv"
 JURISPRUDENCE_ISSUE_RE = re.compile(r"/cz/casopis/archiv/(\d+)-(\d{4})/?$")
 JURISPRUDENCE_ARTICLE_RE = re.compile(r"/cz/casopis/[^/]+\.m-(\d+)\.html")
-# Na stránce čísla je i rozcestník po archivu a odkazy na jiná čísla mají
-# stejný tvar adresy jako články („…m-123.html“). Poznají se podle textu –
-# bez toho se do feedu dostala „Číslo 5/2013“ a „Číslo 6/2013“ jako články
-# a AI z nich pak popisovala seznam ročníků místo odborného textu.
-JURISPRUDENCE_ISSUE_TITLE_RE = re.compile(
-    r"^(číslo|archiv|ročník)\b|^\d+\s*/\s*\d{4}$", re.IGNORECASE)
 JURISPRUDENCE_MAX_ITEMS = 25   # obsah jednoho čísla, ne celý ročník
 JURISPRUDENCE_TRY_ISSUES = 2   # nejnovější číslo a jedno předchozí
 
@@ -371,55 +365,71 @@ def _jurisprudence_issue_urls(soup, page_url):
 
 
 def _jurisprudence_articles(soup, page_url):
-    """Posbírá články z obsahu jednoho čísla Jurisprudence."""
+    """Posbírá články z obsahu jednoho čísla Jurisprudence.
+
+    Stránka archivu vypisuje celý strom ročníků a k němu rozbalený obsah
+    jednoho čísla. Obsah je jediný `ul.plain-list`, a jen v něm se hledá:
+    dvě čísla z roku 2013 mají totiž historicky adresu ve tvaru článku
+    (`/cz/casopis/jurisprudence-5-2013.m-59.html`), takže hledání podle
+    tvaru adresy je vytáhlo mezi články a AI pak místo odborného textu
+    popisovala seznam ročníků.
+
+    V obsahu je u každého článku i autor (`p.article-props`) a nad skupinou
+    článků rubrika (`h4`) – obojí se bere s sebou.
+    """
     issue_match = JURISPRUDENCE_ISSUE_RE.search(page_url)
     issue = f"{issue_match.group(1)}/{issue_match.group(2)}" if issue_match else ""
 
-    # Na jeden článek vede víc odkazů (název, „detail", ikona) – z textů
-    # bereme ten nejdelší, což je název článku.
-    found = {}
-    for a in soup.find_all("a", href=True):
-        link = urljoin(page_url, a["href"]).split("?")[0].split("#")[0]
-        match = JURISPRUDENCE_ARTICLE_RE.search(link)
-        if not match:
-            continue
-        art_id = match.group(1)
-        title = clean_title(a.get_text(" ", strip=True))
-        if len(title) > len(found.get(art_id, ("", "", None))[0]):
-            found[art_id] = (title, link, a)
-
     items = []
-    preskocena = []
-    for art_id, (title, link, odkaz) in found.items():
-        if not title:
-            continue
-        if JURISPRUDENCE_ISSUE_TITLE_RE.match(title):
-            preskocena.append(title)
-            continue
-        items.append({
-            "title": f"[Jurisprudence] {title}",
-            "journal_name": "Jurisprudence",
-            "link": link,
-            "description": f"{title}\nJurisprudence {issue}".rstrip(),
-            # m-<id> je stabilní přes celý web, číslo do guid netřeba.
-            "guid": f"Jurisprudence-{art_id}",
-            "pub_date": datetime.now(timezone.utc),
-            # Anotaci má až stránka článku – stáhne se lazy, jen když se
-            # pro položku opravdu generuje shrnutí (viz enrich_summaries).
-            "ai_source": "page",
-        })
+    videne = set()
+    for obsah in soup.select("ul.plain-list"):
+        rubrika = ""
+        for li in obsah.find_all("li"):
+            nadpis = li.find("h4")
+            if nadpis is not None:
+                rubrika = " ".join(nadpis.get_text(" ", strip=True).split())
+                continue
 
-    if preskocena:
-        print(f"    [diag] Jurisprudence: {len(preskocena)} odkazů mimo obsah "
-              f"čísla přeskočeno: {preskocena[:5]}")
-    # Autora na obsahu čísla zatím nehledáme – nevíme, jestli tam vůbec je.
-    # Tenhle výpis ukáže okolí prvního článku, ať je poznat, kde stojí.
-    for art_id, (title, link, odkaz) in list(found.items())[:2]:
-        blok = odkaz.find_parent(["li", "tr", "article", "div"]) if odkaz else None
-        if blok is not None:
-            okoli = " ".join(blok.get_text(" ", strip=True).split())[:300]
-            print(f"    [diag] Jurisprudence: okolí článku {art_id}: {okoli!r}")
+            odkaz = li.find("a", href=True)
+            if odkaz is None:
+                continue
+            link = urljoin(page_url, odkaz["href"]).split("?")[0].split("#")[0]
+            match = JURISPRUDENCE_ARTICLE_RE.search(link)
+            if not match:
+                continue
+            art_id = match.group(1)
+            title = clean_title(odkaz.get_text(" ", strip=True))
+            if not title or art_id in videne:
+                continue
+            videne.add(art_id)
 
+            props = li.find("p", class_="article-props")
+            authors = clean_authors(props.get_text(" ", strip=True)) if props else ""
+
+            popis = [title]
+            if authors:
+                popis.append(f"Autor: {authors}")
+            popis.append(f"Jurisprudence {issue}".rstrip())
+            if rubrika:
+                popis.append(f"Rubrika: {rubrika}")
+
+            items.append({
+                "title": f"[Jurisprudence] {title}",
+                "journal_name": "Jurisprudence",
+                "authors": authors,
+                "link": link,
+                "description": "\n".join(popis),
+                # m-<id> je stabilní přes celý web, číslo do guid netřeba.
+                "guid": f"Jurisprudence-{art_id}",
+                "pub_date": datetime.now(timezone.utc),
+                # Anotaci má až stránka článku – stáhne se lazy, jen když se
+                # pro položku opravdu generuje shrnutí (viz enrich_summaries).
+                "ai_source": "page",
+            })
+
+    if not items:
+        print("    [diag] Jurisprudence: obsah čísla (ul.plain-list) nenalezen "
+              f"na {page_url}")
     return items[:JURISPRUDENCE_MAX_ITEMS]
 
 

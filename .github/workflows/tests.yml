@@ -7,7 +7,9 @@ on:
   push:
     paths:
       - 'scraper_hearings.py'
+      - 'scraper_journals.py'
       - 'test_hearings.py'
+      - 'test_journals.py'
       - 'hearings_config.json'
       - 'tests/**'
       - '.github/workflows/tests.yml'
@@ -26,3 +28,5 @@ jobs:
         run: pip install -r requirements.txt icalendar
       - name: Testy scraperu jednání
         run: python test_hearings.py
+      - name: Testy scraperu časopisů
+        run: python test_journals.py

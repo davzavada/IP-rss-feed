@@ -115,19 +115,30 @@
   }
   .card-header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 18px 22px 0; }
   .card-title { margin: 0; font-size: var(--fs-lg); font-weight: 600; letter-spacing: -0.01em; }
-  .card-desc { margin: 6px 0 0; font-size: var(--fs-md); color: var(--muted-foreground); flex-basis: 100%; }
-  .card-desc[hidden] { display: none; }
-  /* Popis karty je schovaný pod otazníkem – v hlavičce zabíral víc místa
-     než samotný obsah a čte se stejně jen jednou. */
+  /* Popis karty visí na otazníku vpravo v hlavičce: ukáže se jako bublina
+     nad ním, ne jako pole pod hlavičkou – jinak by při každém otevření
+     posunul obsah karty níž. */
+  .help-wrap { position: relative; margin-left: auto; display: flex; }
   .help {
     width: 18px; height: 18px; flex: none; padding: 0;
     border: 1px solid var(--border); border-radius: 999px; background: none;
     color: var(--muted-foreground); font-size: var(--fs-sm); line-height: 1;
     cursor: pointer;
   }
-  .help:hover, .help[aria-expanded="true"] {
+  .help-wrap:hover .help, .help[aria-expanded="true"] {
     color: var(--foreground); background: var(--accent); border-color: var(--muted-foreground);
   }
+  .card-desc {
+    position: absolute; z-index: 20; top: calc(100% + 8px); right: 0;
+    width: max-content; max-width: min(380px, 80vw);
+    margin: 0; padding: 10px 12px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+    font-size: var(--fs-md); color: var(--muted-foreground);
+    text-align: left; font-weight: 400; letter-spacing: normal;
+  }
+  .card-desc[hidden] { display: none; }
+  .help-wrap:hover .card-desc { display: block; }
   .card-desc ul { margin: 4px 0 0; padding-left: 18px; }
   .card-desc li { margin: 1px 0; }
   .card-content { padding: 10px 22px 16px; }
@@ -580,8 +591,9 @@
           <svg class="feed-icon" aria-hidden="true"><use href="#icon-rss"></use></svg>
         </a>
       </h2>
-      <button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
+      <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
       <div class="card-desc" hidden>Rozhodnutí senátu 23 Cdo Nejvyššího soudu za poslední měsíc.</div>
+      </span>
     </div>
     <div class="card-content" id="feed-nsoud"><p class="loading">Načítám...</p></div>
   </div>
@@ -594,8 +606,9 @@
           <svg class="feed-icon" aria-hidden="true"><use href="#icon-rss"></use></svg>
         </a>
       </h2>
-      <button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
+      <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
       <div class="card-desc" hidden>Rozhodnutí a žádosti o předběžnou otázku k duševnímu vlastnictví a IT za poslední dva měsíce – u Soudního dvora chodí nového málo.</div>
+      </span>
     </div>
     <div class="card-content" id="feed-cjeu"><p class="loading">Načítám...</p></div>
   </div>
@@ -608,7 +621,7 @@
           <svg class="feed-icon" aria-hidden="true"><use href="#icon-rss"></use></svg>
         </a>
       </h2>
-      <button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
+      <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
       <div class="card-desc" hidden>Nová čísla a články za poslední měsíc. Sleduje:
         <ul>
           <li>Duševní vlastnictví a Evropské právo (ÚPV) – celá čísla</li>
@@ -617,6 +630,7 @@
           <li>IIC, GRUR International, JIPLP, QMJIP, JWIP</li>
         </ul>
       </div>
+      </span>
     </div>
     <div class="card-content" id="feed-journals"><p class="loading">Načítám...</p></div>
   </div>
@@ -627,7 +641,7 @@
     <div class="card-header">
       <h2 class="card-title">Kalendář jednání – duševní vlastnictví</h2>
       <span class="legend" id="cal-info"></span>
-      <button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
+      <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
       <div class="card-desc" hidden>
         Nařízená jednání Městského soudu v Praze a Vrchního soudu v Praze
         (civilní i správní úsek), filtrovaná na senáty s IP agendou podle
@@ -636,6 +650,7 @@
         jednání je u něj opsaný průběh řízení z InfoSoudu a odkaz na jeho
         detail.
       </div>
+      </span>
     </div>
     <div class="card-content" id="feed-kalendar"><p class="loading">Načítám...</p></div>
   </div>
@@ -1460,14 +1475,27 @@ function renderKalendar(data) {
   redrawCal();
 }
 
-// Otazník v hlavičce karty ukáže a schová její popis.
+// Popis karty se ukazuje při najetí myší (čistě v CSS). Klik ho připne –
+// na dotykových zařízeních žádné najetí není a na widší text se hodí čas.
+function closeHelp(krome) {
+  document.querySelectorAll(".help[aria-expanded='true']").forEach(b => {
+    if (b === krome) return;
+    b.setAttribute("aria-expanded", "false");
+    const d = b.parentElement.querySelector(".card-desc");
+    if (d) d.hidden = true;
+  });
+}
 document.addEventListener("click", e => {
   const btn = e.target.closest(".help");
-  if (!btn) return;
+  if (!btn) { closeHelp(null); return; }
   const desc = btn.parentElement.querySelector(".card-desc");
   if (!desc) return;
+  closeHelp(btn);
   desc.hidden = !desc.hidden;
   btn.setAttribute("aria-expanded", String(!desc.hidden));
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeHelp(null);
 });
 
 /* ========== Stránky a navigace ========== */
