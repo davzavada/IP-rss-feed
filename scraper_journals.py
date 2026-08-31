@@ -333,7 +333,14 @@ def scrape_pravnik():
 # Datum vydání se z výpisu vyčíst nedá; co je nové, rozhoduje
 # filter_by_first_seen podle guid, takže pub_date stačí orientační.
 
+JURISPRUDENCE_HOME_URL = "https://www.jurisprudence.cz/"
 JURISPRUDENCE_ARCHIVE_URL = "https://www.jurisprudence.cz/cz/casopis/archiv"
+# Obsah čísla web vysází dvěma způsoby: `ul.plain-list` v archivu,
+# `ul.articles-list-t1` na titulní straně. Autor (`p.article-props`)
+# i rubrika (`h4`) jsou v obou na stejném místě, liší se jen obal.
+JURISPRUDENCE_OBSAH = "ul.plain-list, ul.articles-list-t1"
+# „Aktuální číslo 3/2026" na titulní straně – tam v adrese číslo není.
+JURISPRUDENCE_H1_ISSUE_RE = re.compile(r"(\d+(?:-\d+)?)\s*/\s*(\d{4})")
 JURISPRUDENCE_ISSUE_RE = re.compile(r"/cz/casopis/archiv/(\d+)-(\d{4})/?$")
 JURISPRUDENCE_ARTICLE_RE = re.compile(r"/cz/casopis/[^/]+\.m-(\d+)\.html")
 JURISPRUDENCE_MAX_ITEMS = 25   # obsah jednoho čísla, ne celý ročník
@@ -379,11 +386,17 @@ def _jurisprudence_articles(soup, page_url):
     článků rubrika (`h4`) – obojí se bere s sebou.
     """
     issue_match = JURISPRUDENCE_ISSUE_RE.search(page_url)
-    issue = f"{issue_match.group(1)}/{issue_match.group(2)}" if issue_match else ""
+    if issue_match:
+        issue = f"{issue_match.group(1)}/{issue_match.group(2)}"
+    else:
+        # Titulní strana: číslo je v nadpisu „Aktuální číslo 3/2026".
+        nadpis = soup.find("h1")
+        m = JURISPRUDENCE_H1_ISSUE_RE.search(nadpis.get_text(" ", strip=True)) if nadpis else None
+        issue = f"{m.group(1)}/{m.group(2)}" if m else ""
 
     items = []
     videne = set()
-    for obsah in soup.select("ul.plain-list"):
+    for obsah in soup.select(JURISPRUDENCE_OBSAH):
         rubrika = ""
         for li in obsah.find_all("li"):
             nadpis = li.find("h4")
@@ -432,13 +445,23 @@ def _jurisprudence_articles(soup, page_url):
             })
 
     if not items:
-        print("    [diag] Jurisprudence: obsah čísla (ul.plain-list) nenalezen "
-              f"na {page_url}")
+        print(f"    [diag] Jurisprudence: obsah čísla ({JURISPRUDENCE_OBSAH}) "
+              f"nenalezen na {page_url}")
     return items[:JURISPRUDENCE_MAX_ITEMS]
 
 
 def scrape_jurisprudence():
-    """Vrátí články z nejnovějšího čísla Jurisprudence."""
+    """Vrátí články z nejnovějšího čísla Jurisprudence.
+
+    Titulní strana nese obsah aktuálního čísla, takže jde první; přes archiv
+    se chodí, jen když z ní nic nepřijde. Archiv totiž vypisuje i celý strom
+    ročníků a je na něm víc, co se může rozbít.
+    """
+    domu = first_page_with_items(
+        [JURISPRUDENCE_HOME_URL], _jurisprudence_articles, "Jurisprudence (titulní strana)"
+    )
+    if domu:
+        return domu
     issue_urls = first_page_with_items(
         _jurisprudence_issue_pages(), _jurisprudence_issue_urls, "Jurisprudence (archiv)"
     )
@@ -816,7 +839,15 @@ def _wiley_doi(item, ns):
 def fetch_wiley_rss(issn, label, journal_name):
     """Vrátí nedávné články časopisu z RSS Wiley Online Library."""
     feed_url = WILEY_FEED.format(issn=issn.replace("-", ""))
-    resp = requests.get(feed_url, headers={"User-Agent": USER_AGENT}, timeout=30)
+    # Na holý požadavek vracela Wiley 403. Feed je veřejný, jen se chce
+    # ohlásit jako prohlížeč, který o RSS opravdu žádá – proto Accept
+    # a Referer z webu časopisu.
+    resp = requests.get(feed_url, headers={
+        "User-Agent": USER_AGENT,
+        "Accept": "application/rss+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.5",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Referer": "https://onlinelibrary.wiley.com/journal/" + issn.replace("-", ""),
+    }, timeout=30)
     resp.raise_for_status()
 
     root = fromstring(resp.content)

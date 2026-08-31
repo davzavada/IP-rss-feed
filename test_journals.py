@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 import scraper_journals as s
 
 FIX_JURISPRUDENCE = "tests/fixtures/jurisprudence_archiv_1-2026.html"
+FIX_JURISPRUDENCE_HOME = "tests/fixtures/jurisprudence_titulni_3-2026.html"
 
 results = []
 
@@ -65,7 +66,29 @@ check("stránka bez obsahu čísla nevrátí nic",
           "https://www.jurisprudence.cz/cz/casopis/archiv/1-2026") == [])
 
 # =====================================================================
-print("\n2) Právník – autor ze stránky článku")
+print("\n2) Jurisprudence – obsah čísla z titulní strany")
+# =====================================================================
+# Titulní strana nese obsah aktuálního čísla, ale sází ho jinak než archiv:
+# `ul.articles-list-t1` a název v `<h3><a>`. Číslo v adrese není, je až
+# v nadpisu „Aktuální číslo 3/2026".
+home = BeautifulSoup(open(FIX_JURISPRUDENCE_HOME, encoding="utf-8").read(),
+                     "html.parser")
+h_items = s._jurisprudence_articles(home, "https://www.jurisprudence.cz/")
+
+check("z titulní strany se přečte obsah čísla", len(h_items) == 8, str(len(h_items)))
+check("číslo se vezme z nadpisu, ne z adresy",
+      all("Jurisprudence 3/2026" in i["description"] for i in h_items))
+check("autoři jsou i tady",
+      all(i["authors"] for i in h_items),
+      str([i["authors"] for i in h_items]))
+check("rubrika se drží přes celý seznam",
+      h_items[-1]["description"].endswith("Rubrika: Monitoring judikatury"),
+      h_items[-1]["description"].splitlines()[-1])
+check("guid má stejný tvar jako z archivu",
+      h_items[-1]["guid"] == "Jurisprudence-1047", h_items[-1]["guid"])
+
+# =====================================================================
+print("\n3) Právník – autor ze stránky článku")
 # =====================================================================
 # Obsah čísla autora nenese, uvádí ho až detail článku. Stránka se stahuje
 # kvůli AI shrnutí, tak se z ní bere i autor.
@@ -79,7 +102,7 @@ check("stránka bez autora nevrátí nic",
                                   "html.parser")) == "")
 
 # =====================================================================
-print("\n3) IIC – rozhodnutí soudů vedle článků")
+print("\n4) IIC – rozhodnutí soudů vedle článků")
 # =====================================================================
 # Crossref u rozhodnutí nese soud, datum a spisovou značku až v podtitulu.
 check("rozhodnutí se pozná podle podtitulu",
@@ -91,7 +114,7 @@ check("komentář k rozhodnutí se za rozhodnutí nepovažuje",
           "The FRAND Defence III Decision of the German Federal Court of Justice"))
 
 # =====================================================================
-print("\n4) Crossref – dvojí dotaz a datum vydání")
+print("\n5) Crossref – dvojí dotaz a datum vydání")
 # =====================================================================
 # from-created-date je datum uložení DOI záznamu. Když vydavatel deponuje
 # dopředu (ahead of print), vyjde číslo později a z okna vypadne – tak
@@ -137,7 +160,7 @@ check("datum je datum vydání, ne vzniku DOI záznamu",
       srpnovy and str(srpnovy["pub_date"]))
 
 # =====================================================================
-print("\n5) Stránka, která místo obsahu vrátí chybu, nesmí jít do AI")
+print("\n6) Stránka, která místo obsahu vrátí chybu, nesmí jít do AI")
 # =====================================================================
 
 
