@@ -2,32 +2,15 @@ name: Update RSS Feed
 
 on:
   schedule:
-    # Cron je vždy v UTC. Cílíme na ~6:00 a ~13:00 pražského času (CEST = UTC+2;
-    # v zimě, kdy platí CET = UTC+1, běh vyjde o hodinu dřív).
-    #
-    # Záměrně necelá hodina (:40): GitHub scheduled běhy na celou hodinu staví do
-    # fronty a u '0 6 * * *' nám start reálně klouzal o 2–3 hodiny (běhy startovaly
-    # mezi 07:40 a 09:40 UTC místo 6:00). Mimo špičku na začátku hodiny je zpoždění
-    # řádově minuty.
-    #
-    # Ranní běh je rozdělený na víc výrazů jen kvůli dvoutýdennímu přehledu:
-    # ten se generuje jednou týdně v pondělí v 6:00 pražského času. Podle toho,
-    # který cron běh spustil, se pozná pondělí (v samotném `if:` se den v týdnu
-    # zjistit nedá) – a protože cron je v UTC a Praha přechází mezi CEST a CET,
-    # je pondělní ranní běh naplánovaný dvakrát. Projde ten, ze kterého 6:00
-    # vychází; ten druhý skončí hned na začátku (viz krok „Naplánovat běh").
-    - cron: '40 3 * * 1'      # pondělí 03:40 UTC = 5:40 CEST -> přehled v létě
-    - cron: '40 3 * * 0,2-6'  # zbytek týdne, stejný čas, bez přehledu
-    - cron: '40 4 * * 1'      # pondělí 04:40 UTC = 5:40 CET  -> přehled v zimě
-    - cron: '40 10 * * *'     # 10:40 UTC = 12:40 CEST -> odpolední běh kolem 13:00
-    #
-    # Záložní sloty: scheduled běhy jsou u GitHubu jen best-effort a občas celý
-    # slot bez náhrady vypadne (27. 8. 2026 takhle vypadly oba denní běhy).
-    # Záložní běh startuje ~2 hodiny po řádném a v kroku „Naplánovat běh" se
-    # podívá, kdy naposledy vznikl commit s feedy: když je čerstvý, řádný běh
-    # proběhl a záskok hned skončí; když ne, převezme jeho práci.
-    - cron: '10 6 * * *'      # záskok za ranní běh (řádný startuje do ~05:25 UTC)
-    - cron: '10 13 * * *'     # záskok za odpolední běh (řádný startuje do ~11:10 UTC)
+    # Pouštíme se každou hodinu, ale scrapuje se jen dvakrát denně. Zní to
+    # obráceně, tak proč: GitHub scheduled běhy nespouští v naplánovaný čas –
+    # od konce srpna 2026 je doručuje se zpožděním 4 až 7 hodin (a předtím
+    # celé sloty zahazoval). Kdy běh přijde, se tedy naplánovat nedá; dá se
+    # jen zařídit, aby nějaký běh přišel často, a rozhodnutí „scrapovat, nebo
+    # ne" udělat až uvnitř podle skutečného pražského času (viz „Naplánovat
+    # běh"). Minuta 5 je schválně mimo celou hodinu – na začátku hodiny má
+    # fronta špičku.
+    - cron: '5 * * * *'
   workflow_dispatch:       # ruční spuštění
     inputs:
       skip_gemini:
@@ -51,60 +34,66 @@ jobs:
       - uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          # Záložní sloty poznávají vypadlý řádný běh podle stáří posledního
-          # commitu s feedy – na to je potřeba kus historie, ne jen HEAD.
+          # Rozhodnutí, jestli okno už má svůj běh za sebou, se dělá podle data
+          # posledního commitu s feedy – na to je potřeba kus historie, ne HEAD.
           fetch-depth: 50
 
-      # Který z pondělních ranních cronů teď odpovídá 6:00 v Praze, závisí na
-      # letním čase – rozhodne se to tady, ne v `if:`, kde na časové pásmo není
-      # jak sáhnout. Rozhoduje naplánovaný čas, ne hodiny při běhu: GitHub
-      # scheduled běhy startuje se zpožděním a scrapery pak jedou přes 20 minut.
+      # Feed má být hotový v 7:00 a ve 14:00 pražského času. Scrapuje se proto
+      # v oknech, která těmhle časům předcházejí: 4:00–7:00 a 11:00–14:00.
+      # Z hodinových běhů okno vždycky nějaký chytí (i při několikahodinovém
+      # zpoždění fronty jich do tří hodin dorazí několik) a první z nich práci
+      # udělá; ostatní pak vidí čerstvý commit a hned skončí, což trvá deset
+      # sekund. Kdyby okno prošlo úplně bez běhu, zmeškanou práci udělá první
+      # další – v noci se nescrapuje, čeká se na ranní okno.
+      #
+      # Všechno se počítá v Europe/Prague, takže přechod mezi letním a zimním
+      # časem se řeší sám a nejsou kvůli němu potřeba zdvojené cron výrazy.
       - name: Naplánovat běh
         id: plan
         run: |
-          if [ "$(TZ=Europe/Prague date +%z)" = "+0200" ]; then
-            digest_cron='40 3 * * 1'   # CEST: 6:00 Praha = 04:00 UTC
+          hour=$(TZ=Europe/Prague date +%-H)
+          today=$(TZ=Europe/Prague date +%Y-%m-%d)
+          # Poslední commit s feedy = kdy naposled nějaký běh práci opravdu
+          # udělal. Když žádný takový v historii není, ber to jako dávno.
+          last=$(git log --grep='^Update RSS feeds' -1 --format=%ct)
+          last=${last:-0}
+
+          # Do 4:00 se nedělá nic. Pak platí ranní cíl, od 11:00 odpolední:
+          # feed musí být novější než začátek okna. Když v okně žádný běh
+          # nedorazil, splní to první další – proto tu není žádná zvláštní
+          # záchranná větev, dohnání zmeškaného okna je totéž rozhodnutí.
+          if [ "$hour" -lt 4 ]; then
+            window=zadne; start=0
+          elif [ "$hour" -lt 11 ]; then
+            window=ranni;     start=$(TZ=Europe/Prague date -d "$today 04:00" +%s)
           else
-            digest_cron='40 4 * * 1'   # CET:  6:00 Praha = 05:00 UTC
+            window=odpoledni; start=$(TZ=Europe/Prague date -d "$today 11:00" +%s)
           fi
-          schedule='${{ github.event.schedule }}'
+
           if [ '${{ github.event_name }}' = 'workflow_dispatch' ]; then
-            scrape=true; digest=true
+            scrape=true; digest=true; duvod='ruční spuštění'
+          elif [ "$window" = zadne ]; then
+            scrape=false; digest=false; duvod='noc, na řadě je ranní okno'
+          elif [ "$last" -ge "$start" ]; then
+            scrape=false; digest=false; duvod="okno $window už má svůj běh"
+          elif [ $(( $(date +%s) - last )) -lt 3600 ]; then
+            # Ranní okno se dohánělo těsně před 11:00 – ať odpolední hned
+            # nescrapuje znovu to samé.
+            scrape=false; digest=false; duvod='feed je z poslední hodiny'
           else
-            case "$schedule" in
-              # Z dvojice pondělních cronů projde jen ten, který teď vychází
-              # na 6:00; ten druhý skončí, ať se v pondělí nescrapuje dvakrát.
-              '40 3 * * 1'|'40 4 * * 1')
-                if [ "$schedule" = "$digest_cron" ]; then
-                  scrape=true; digest=true
-                else
-                  scrape=false; digest=false
-                fi ;;
-              # Záskok: běží jen tehdy, když řádný slot vypadl. Pozná se to
-              # podle stáří posledního commitu s feedy – řádný běh commitne
-              # nejvýš ~2 hodiny před záskokem, takže hranice 3 hodiny stačí.
-              # (Když řádný běh proběhl, ale nic nezměnil, commit nevznikl
-              # a záskok jede zbytečně ještě jednou – to nevadí, scrapery
-              # jsou díky *_seen.json idempotentní.) Pondělní ranní záskok
-              # vezme i dvoutýdenní přehled, o ten by se jinak přišlo.
-              '10 6 * * *'|'10 13 * * *')
-                last=$(git log --grep='^Update RSS feeds' -1 --format=%ct)
-                if [ $(( $(date +%s) - ${last:-0} )) -gt 10800 ]; then
-                  scrape=true
-                else
-                  scrape=false
-                fi
-                digest=false
-                if [ "$scrape" = true ] && [ "$schedule" = '10 6 * * *' ] \
-                   && [ "$(TZ=Europe/Prague date +%u)" = "1" ]; then
-                  digest=true
-                fi ;;
-              *) scrape=true; digest=false ;;
-            esac
+            scrape=true; digest=false; duvod="okno $window"
           fi
+
+          # Dvoutýdenní přehled jednou týdně: v pondělí s ranním během, ať je
+          # hotový dřív, než si pro něj v 8:30 přijde newsletter.
+          if [ "$scrape" = true ] && [ "$window" = ranni ] \
+             && [ "$(TZ=Europe/Prague date +%u)" = "1" ]; then
+            digest=true
+          fi
+
           echo "scrape=$scrape" >> "$GITHUB_OUTPUT"
           echo "digest=$digest" >> "$GITHUB_OUTPUT"
-          echo "cron '$schedule' -> scrapery: $scrape, přehled: $digest (přehled jede z '$digest_cron')"
+          echo "$(TZ=Europe/Prague date '+%a %H:%M %Z') -> scrapery: $scrape, přehled: $digest ($duvod)"
 
       - uses: actions/setup-python@v6
         if: steps.plan.outputs.scrape == 'true'
@@ -126,10 +115,10 @@ jobs:
           python scraper_journals.py
 
       # Přehled čte hotové feedy, takže běží až po scraperech – jednou týdně,
-      # v pondělí v 6:00. Ručně spuštěný běh ho udělá taky. DIGEST_FORCE říká
+      # v pondělí ráno. Ručně spuštěný běh ho udělá taky. DIGEST_FORCE říká
       # digest.py, ať přehled napíše znovu i tehdy, když se vstup od minula
       # nezměnil – jednou týdně chceme čerstvý text, ne ten čtrnáct dní starý.
-      - name: Dvoutýdenní přehled (pondělí 6:00)
+      - name: Dvoutýdenní přehled (pondělí ráno)
         if: steps.plan.outputs.digest == 'true'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
