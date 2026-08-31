@@ -140,6 +140,13 @@ _OUP_FEED = """<?xml version="1.0" encoding="UTF-8"?>
   <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Designs after the reform</title>
+  <link>https://academic.oup.com/jiplp/article/21/8/590/8215680?rss=1</link>
+  <description>Abstract Nové nařízení…</description>
+  <dc:identifier>doi:10.1093/jiplp/jpaf090</dc:identifier>
+  <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Loňský článek</title>
   <link>https://academic.oup.com/jiplp/article/20/1/1/1?rss=1</link>
   <prism:doi>10.1093/jiplp/jpz001</prism:doi>
@@ -149,28 +156,39 @@ _OUP_FEED = """<?xml version="1.0" encoding="UTF-8"?>
 
 
 class _FeedResp:
-    def __init__(self, content):
+    def __init__(self, content="", data=None):
         self.content = content.encode("utf-8")
+        self._data = data
 
     def raise_for_status(self):
         pass
 
+    def json(self):
+        return self._data
+
 
 _puvodni_get = s.requests.get
 _hlavicky = {}
+_dotazy_doi = []
 
 
 def _feed_get(url, headers=None, **k):
+    # Feed autora nemá – u článku s DOI se dotáhne z Crossrefu.
+    if url.startswith(s.CROSSREF_DILO.format(doi="")):
+        _dotazy_doi.append(url)
+        return _FeedResp(data={"message": {"author": [
+            {"given": "Ann", "family": "Smith"}, {"given": "Bo", "family": "Král"}]}})
     _hlavicky.update(headers or {})
     return _FeedResp(_OUP_FEED)
 
 
+s.time.sleep = lambda *a: None
 s.requests.get = _feed_get
 rss = s.fetch_publisher_rss(s.JIPLP_FEED, s.JIPLP_LABEL, s.JIPLP_NAME,
                             "https://academic.oup.com/jiplp")
 s.requests.get = _puvodni_get
 
-check("z feedu přijdou články aktuálního čísla", len(rss) == 2, str(len(rss)))
+check("z feedu přijdou články aktuálního čísla", len(rss) == 3, str(len(rss)))
 check("loňský článek se do novinek nepočítá",
       not [i for i in rss if "Loňský" in i["title"]])
 check("guid je z DOI, stejný jako z Crossrefu",
@@ -186,6 +204,14 @@ check("úvodní slovo „Abstract“ se z popisu zahodí",
 check("článek bez DOI drží guid na adrese bez ?rss=1",
       rss[1]["guid"] == "JIPLP-https://academic.oup.com/jiplp/article/21/8/585/8215671",
       rss[1]["guid"])
+bez_autora = next(i for i in rss if "Designs" in i["title"])
+check("autor, který ve feedu není, se dotáhne z Crossrefu podle DOI",
+      bez_autora["authors"] == "Ann Smith, Bo Král", bez_autora["authors"])
+check("dotažený autor je i v popisu",
+      "Autor: Ann Smith, Bo Král" in bez_autora["description"], bez_autora["description"])
+check("na Crossref se chodí jen kvůli chybějícím autorům",
+      len(_dotazy_doi) == 1, str(_dotazy_doi))
+
 check("feed se hlásí jako prohlížeč (Wiley i OUP jinak vracely 403)",
       "application/rss+xml" in _hlavicky.get("Accept", "")
       and _hlavicky.get("Referer") == "https://academic.oup.com/jiplp",

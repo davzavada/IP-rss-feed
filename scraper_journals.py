@@ -3,10 +3,11 @@
 
 import os
 import re
+import time
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from collections import Counter
-from urllib.parse import urljoin
+from urllib.parse import quote, urljoin
 from xml.etree.ElementTree import Element, SubElement, ElementTree, fromstring, indent
 
 import requests
@@ -710,6 +711,15 @@ def _crossref_dotaz(issn, filtr, since):
     return resp.json().get("message", {}).get("items", [])
 
 
+def _crossref_autori(w):
+    """Autoři z Crossref záznamu jako „Jan Novák; Eva Malá"."""
+    return clean_authors("; ".join(
+        " ".join(p for p in (a.get("given"), a.get("family")) if p)
+        for a in (w.get("author") or [])
+        if a.get("given") or a.get("family")
+    ))
+
+
 def _crossref_datum(w):
     """Datum vydání článku; teprve když chybí, datum vzniku DOI záznamu."""
     for pole in ("published-online", "published", "issued", "created"):
@@ -760,11 +770,7 @@ def fetch_crossref_journal(issn, label, journal_name):
         if subtitle:
             title = f"{title} – {subtitle.split(';')[0].strip()}"
 
-        authors = clean_authors("; ".join(
-            " ".join(p for p in (a.get("given"), a.get("family")) if p)
-            for a in (w.get("author") or [])
-            if a.get("given") or a.get("family")
-        ))
+        authors = _crossref_autori(w)
         abstract = _abstract_text(w.get("abstract"))
 
         pub_date = _crossref_datum(w) or datetime.now(timezone.utc)
@@ -856,6 +862,60 @@ def _bez_parametru(url):
     return url.split("?", 1)[0].split("#", 1)[0]
 
 
+def _rss_autor(item, ns):
+    """Autoři článku z feedu – vydavatelé je značkují každý jinak.
+
+    Wiley posílá <dc:creator>, OUP u JIPLP autora ve feedu nemá vůbec;
+    zkouší se proto i <author> (RSS), <atom:author><name> a <dc:contributor>.
+    Když ani jedno není, doplní se autor z Crossrefu (viz doplnit_autory).
+    """
+    for tag, jmenny_prostor in (("dc:creator", ns), ("author", None),
+                                ("atom:author/atom:name", ns),
+                                ("dc:contributor", ns)):
+        casti = [(e.text or "").strip()
+                 for e in (item.findall(tag, jmenny_prostor) if jmenny_prostor
+                           else item.findall(tag))]
+        autori = clean_authors(", ".join(c for c in casti if c))
+        if autori:
+            return autori
+    return ""
+
+
+# Crossref umí odpovědět i na jeden DOI. U feedu bez autorů je to jediná
+# cesta, jak se autor dozvědět – stránka článku sedí za Cloudflare.
+CROSSREF_DILO = "https://api.crossref.org/works/{doi}"
+CROSSREF_MAX_DOTAZU = 20      # strop na běh, ať se z toho nestane dávka
+CROSSREF_PAUZA = 0.2          # vteřin mezi dotazy
+
+
+def doplnit_autory(zaznamy, label):
+    """Dopíše chybějící autory z Crossrefu podle DOI (mění zaznamy na místě)."""
+    chybi = [z for z in zaznamy if z["doi"] and not z["authors"]]
+    if not chybi:
+        return
+    print(f"    [diag] {label}: {len(chybi)} článků bez autora ve feedu, "
+          f"doplňuji z Crossrefu")
+    doplneno = 0
+    for i, z in enumerate(chybi[:CROSSREF_MAX_DOTAZU]):
+        try:
+            resp = requests.get(
+                CROSSREF_DILO.format(doi=quote(z["doi"], safe="/")),
+                params={"select": "author"},
+                headers={"User-Agent": CROSSREF_UA}, timeout=30,
+            )
+            resp.raise_for_status()
+            autori = _crossref_autori(resp.json().get("message", {}))
+        except (requests.RequestException, ValueError) as e:
+            print(f"    [diag] {label}: autor k {z['doi']} nepřišel: {e}")
+            continue
+        if autori:
+            z["authors"] = autori
+            doplneno += 1
+        if i + 1 < len(chybi[:CROSSREF_MAX_DOTAZU]):
+            time.sleep(CROSSREF_PAUZA)
+    print(f"    [diag] {label}: autor doplněn u {doplneno} článků")
+
+
 def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
     """Vrátí nedávné články časopisu z RSS vydavatele (Wiley, OUP)."""
     # Na holý požadavek vracela Wiley 403. Feed je veřejný, jen se chce
@@ -875,9 +935,10 @@ def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
     ns = {
         "dc": "http://purl.org/dc/elements/1.1/",
         "prism": "http://prismstandard.org/namespaces/basic/2.0/",
+        "atom": "http://www.w3.org/2005/Atom",
     }
     cutoff = datetime.now(timezone.utc) - timedelta(days=RSS_MAX_AGE_DAYS)
-    items = []
+    zaznamy = []
     too_old = 0
     bez_doi = 0
 
@@ -892,9 +953,6 @@ def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
         link = f"https://doi.org/{doi}" if doi else _bez_parametru(_item_text(item, "link"))
         if not link:
             continue
-
-        authors = clean_authors(_item_text(item, "dc:creator", ns))
-        abstract = _abstract_text(_item_text(item, "description"))
 
         pub_date, odhad = datetime.now(timezone.utc), True
         raw_date = _item_text(item, "pubDate") or _item_text(item, "dc:date", ns)
@@ -912,6 +970,19 @@ def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
             too_old += 1
             continue
 
+        zaznamy.append({
+            "title": title, "doi": doi, "link": link,
+            "authors": _rss_autor(item, ns),
+            "abstract": _abstract_text(_item_text(item, "description")),
+            "pub_date": pub_date, "odhad": odhad,
+        })
+
+    # Autor musí být znám dřív, než se skládá popis položky.
+    doplnit_autory(zaznamy, label)
+
+    items = []
+    for z in zaznamy:
+        abstract, authors, title = z["abstract"], z["authors"], z["title"]
         clean_desc = abstract if len(abstract) <= 300 else abstract[:297] + "..."
         desc_parts = [title]
         if authors:
@@ -924,13 +995,13 @@ def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
             "title": f"[{label}] {title}",
             "journal_name": journal_name,
             "authors": authors,
-            "link": link,
+            "link": z["link"],
             "description": "\n".join(desc_parts),
             # Stejný tvar guid jako u Crossref, ať se článek po přepnutí zdroje
             # neoznačí podruhé jako nový.
-            "guid": f"{label}-{doi}" if doi else f"{label}-{link}",
-            "pub_date": pub_date,
-            "pub_date_odhad": odhad,
+            "guid": f"{label}-{z['doi']}" if z["doi"] else f"{label}-{z['link']}",
+            "pub_date": z["pub_date"],
+            "pub_date_odhad": z["odhad"],
             "ai_source": "article",
             "ai_text": f"{title}\n\n{abstract}".strip(),
         })
