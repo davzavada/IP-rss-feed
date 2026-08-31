@@ -58,7 +58,9 @@
   * { box-sizing: border-box; }
   /* Pozadí patří i na <html>: při skrytém <body> (viz .is-loading) je vidět
      jen plátno – bez toho by v tmavém režimu problesklo bílé. */
-  html { scroll-behavior: smooth; background: var(--background); }
+  /* Místo pro svislý posuvník se drží vždycky, ať obsah neposkakuje
+     do stran, když se stránka po kliknutí prodlouží nebo zkrátí. */
+  html { scroll-behavior: smooth; background: var(--background); scrollbar-gutter: stable; }
   body {
     margin: 0;
     font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
@@ -210,7 +212,16 @@
   .cal-filters { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 0.85rem; color: var(--muted-foreground); }
   .cal-filters label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
   .cal-filters input { accent-color: var(--link); }
+  /* Přepínače soudů slouží zároveň jako legenda – mají barvu svých štítků
+     v mřížce, takže je vidět, který soud je která barva. */
+  .cal-key { border-radius: 5px; padding: 1px 7px; font-size: 0.75rem; }
+  .cal-key-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
+  .cal-key-vs { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
 
+  /* Bublina s detailem se umisťuje k proklikanému štítku, proto je mřížka
+     v pozicovaném obalu. Vodorovné posouvání zůstává na .cal-wrap, jinak by
+     bublinu ořízlo. */
+  .cal-shell { position: relative; }
   .cal-wrap { overflow-x: auto; }
   .cal-grid {
     display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;
@@ -224,10 +235,7 @@
     display: flex; flex-direction: column; gap: 3px; align-items: stretch;
     text-align: left; cursor: default;
   }
-  .cal-day.has-events { cursor: pointer; }
-  .cal-day.has-events:hover { background: color-mix(in srgb, var(--muted) 55%, transparent); }
   .cal-day.other { opacity: 0.42; }
-  .cal-day.selected { border-color: var(--link); box-shadow: 0 0 0 1px var(--link); }
   .cal-daynum { font-size: 0.75rem; color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
   .cal-day.today .cal-daynum {
     display: inline-flex; align-items: center; justify-content: center;
@@ -240,20 +248,55 @@
     display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
     border-radius: 5px; padding: 2px 5px;
     font-size: 0.68rem; line-height: 1.35; overflow: hidden;
+    width: 100%; border: 0; font-family: inherit; text-align: left; cursor: pointer;
   }
+  .cal-chip:hover { box-shadow: inset 0 0 0 1px currentColor; }
+  .cal-chip.is-open, .cal-more.is-open { box-shadow: 0 0 0 2px var(--link); }
   .cal-chip-time { opacity: 0.75; font-variant-numeric: tabular-nums; }
   .cal-chip-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
   /* Odvolané jednání se nemaže, jen přeškrtne. */
   .cal-chip-off { text-decoration: line-through; opacity: 0.6; }
   .cal-chip-vs { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
   .cal-chip-other { background: var(--muted); color: var(--muted-foreground); }
-  .cal-more { font-size: 0.68rem; color: var(--muted-foreground); padding-left: 5px; }
+  .cal-more {
+    font-size: 0.68rem; color: var(--muted-foreground);
+    background: none; border: 0; border-radius: 5px; padding: 0 5px;
+    font-family: inherit; text-align: left; cursor: pointer;
+  }
+  .cal-more:hover { color: var(--foreground); text-decoration: underline; }
 
-  .cal-detail { margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
-  /* Bez tohohle by autorské display: flex přebilo [hidden] z prohlížeče
-     a prázdný panel by pod kalendářem držel místo. */
-  .cal-detail[hidden] { display: none; }
-  .cal-detail-title { margin: 0; font-size: 0.9rem; font-weight: 600; }
+  /* Detail jednání – bublina u proklikaného štítku. Je uvnitř .cal-shell,
+     takže se posouvá se stránkou a nemění výšku obsahu pod kalendářem. */
+  .cal-pop {
+    position: absolute; z-index: 30; width: min(340px, calc(100% - 12px));
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16), 0 2px 6px rgba(0, 0, 0, 0.08);
+    padding: 12px 14px;
+  }
+  .cal-pop[hidden] { display: none; }
+  /* Rolování je až uvnitř – na .cal-pop by ořízlo šipku, která z bubliny
+     vyčnívá ven. */
+  .cal-pop-body {
+    max-height: 58vh; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .cal-pop-arrow {
+    position: absolute; width: 10px; height: 10px; background: var(--card);
+    border-left: 1px solid var(--border); border-top: 1px solid var(--border);
+    transform: rotate(45deg);
+  }
+  .cal-pop-arrow { top: -6px; }
+  .cal-pop-arrow.is-below { top: auto; bottom: -6px; transform: rotate(225deg); }
+  .cal-pop-close {
+    position: absolute; top: 6px; right: 8px; z-index: 1;
+    background: none; border: 0; padding: 4px 6px; border-radius: 6px;
+    color: var(--muted-foreground); font-size: 0.95rem; line-height: 1; cursor: pointer;
+  }
+  .cal-pop-close:hover { background: var(--accent); color: var(--foreground); }
+  /* V bublině nemá smysl rámeček v rámečku; víc jednání odděluje linka. */
+  .cal-pop .cal-event { border: 0; border-radius: 0; padding: 0; }
+  .cal-pop .cal-event + .cal-event { border-top: 1px solid var(--border); padding-top: 10px; }
+  .cal-detail-title { margin: 0 26px 0 0; font-size: 0.9rem; font-weight: 600; }
   .cal-event {
     border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px;
     display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem;
@@ -918,15 +961,18 @@ function renderDigest(data) {
 }
 
 /* ========== Kalendář jednání (hearings.json) ========== */
-// Jednání MS a VS Praha (civilní úsek) s příznakem `ip` – kalendář ukazuje
-// standardně jen IP senáty, přepínačem jde zobrazit i zbytek civilního úseku.
+// Jednání MS a VS Praha v agendě duševního vlastnictví. V mřížce je štítek
+// se jménem sporu; detail se otevře jako bublina u toho štítku, ať kalendář
+// pod sebou nemění výšku a obsah stránky nepodskakuje.
 const CAL_DOWS = ["Po", "Út", "St", "Čt", "Pá", "So", "Ne"];
 const INFOSOUD_ORGS = { MS: "MSPHAAB", VS: "VSPHAAB" };
 const COURT_LABELS = { MS: "MS Praha", VS: "VS Praha" };
+// Kolik štítků se vejde do dne, než se zbytek schová pod „+N další".
+const CAL_MAX_CHIPS = 3;
 
 let calData = null;      // obsah hearings.json
 let calMonth = null;     // první den zobrazeného měsíce (Date)
-let calSelected = "";    // ISO datum rozkliknutého dne
+let calPop = null;       // co je rozkliknuté: { key, datum, idx } (idx -1 = celý den)
 
 function fetchHearings() {
   return fetch("hearings.json").then(r => {
@@ -1014,40 +1060,39 @@ function renderCalGrid() {
     const cls = ["cal-day"];
     if (d.getMonth() !== calMonth.getMonth()) cls.push("other");
     if (iso === todayIso) cls.push("today");
-    if (iso === calSelected) cls.push("selected");
-    if (events.length) cls.push("has-events");
-    // Den s jednáním je tlačítko – první klik rozbalí detail pod kalendářem.
-    const tag = events.length ? "button" : "div";
-    html += "<" + tag + ' class="' + cls.join(" ") + '" data-date="' + iso + '"' +
-      (events.length ? ' type="button" aria-label="Jednání ' + czFromIso(iso) + '"' : "") + ">";
+    html += '<div class="' + cls.join(" ") + '">';
     html += '<span class="cal-daynum">' + d.getDate() + "</span>";
-    events.slice(0, 3).forEach(j => {
+    events.slice(0, CAL_MAX_CHIPS).forEach((j, idx) => {
       // V mřížce je vidět čas a jméno sporu; spisová značka až po rozkliknutí.
       const chip = (j.soud === "MS" ? "cal-chip-ms" : "cal-chip-vs") +
         (j.zruseno ? " cal-chip-off" : "");
-      html += '<span class="cal-chip ' + chip + '" title="' +
+      html += '<button type="button" class="cal-chip ' + chip +
+        '" data-date="' + iso + '" data-idx="' + idx + '" aria-expanded="false" title="' +
         esc(caseName(j) + " · " + (j.spz || "") +
             (j.zruseno ? " · jednání se nekoná" : "")) + '">' +
         (j.hodina ? '<span class="cal-chip-time">' + esc(j.hodina) + "</span> " : "") +
-        esc(caseName(j)) + "</span>";
+        esc(caseName(j)) + "</button>";
     });
-    if (events.length > 3) html += '<span class="cal-more">+' + (events.length - 3) + " další</span>";
-    html += "</" + tag + ">";
+    // „+2 další" otevře bublinu s celým dnem, ať se ke skrytým jde dostat.
+    if (events.length > CAL_MAX_CHIPS) {
+      html += '<button type="button" class="cal-more" data-date="' + iso +
+        '" data-idx="-1" aria-expanded="false">+' +
+        (events.length - CAL_MAX_CHIPS) + " další</button>";
+    }
+    html += "</div>";
   }
   document.getElementById("cal-grid").innerHTML = html;
   document.getElementById("cal-title").textContent =
     calMonth.toLocaleDateString("cs-CZ", { month: "long", year: "numeric" });
 }
 
-function renderCalDetail() {
-  const box = document.getElementById("cal-detail");
-  const events = calSelected ? (calEventsByDay()[calSelected] || []) : [];
-  if (!events.length) {
-    box.hidden = true;
-    box.innerHTML = "";
-    return;
-  }
-  let html = '<h3 class="cal-detail-title">Jednání ' + czFromIso(calSelected) + "</h3>";
+// Detail jednání do bubliny. `nadpis` je jen u celodenního výpisu –
+// u jednoho jednání by nad jeho jménem jen zabíral místo.
+function calPopHtml(events, nadpis) {
+  let html = '<span class="cal-pop-arrow"></span>' +
+    '<button type="button" class="cal-pop-close" aria-label="Zavřít">✕</button>' +
+    '<div class="cal-pop-body">';
+  if (nadpis) html += '<h3 class="cal-detail-title">' + esc(nadpis) + "</h3>";
   events.forEach(j => {
     // Oddělovač „v." zvýrazníme, ať se neztratí v názvech typu
     // „Hudební divadlo v Karlíně v. Jiří Strach".
@@ -1078,16 +1123,62 @@ function renderCalDetail() {
       "Stav řízení na InfoSoud ↗</a></div>";
     html += "</div>";
   });
-  box.innerHTML = html;
+  return html + "</div>";
+}
+
+function closeCalPop() {
+  calPop = null;
+  const box = document.getElementById("cal-pop");
+  if (box) { box.hidden = true; box.innerHTML = ""; }
+  document.querySelectorAll(".cal-chip.is-open, .cal-more.is-open").forEach(el => {
+    el.classList.remove("is-open");
+    el.setAttribute("aria-expanded", "false");
+  });
+}
+
+// Bublinu posadíme pod proklikaný štítek; když by přetekla pod mřížku a nad
+// štítkem je místo, překlopí se nahoru. Šipka míří na štítek.
+function placeCalPop(anchor) {
+  const box = document.getElementById("cal-pop");
+  const s = document.getElementById("cal-shell").getBoundingClientRect();
+  const a = anchor.getBoundingClientRect();
+  box.style.left = "0px";
+  box.style.top = "0px";
+  const w = box.offsetWidth, h = box.offsetHeight;
+  const stred = a.left + a.width / 2 - s.left;
+  const left = Math.max(6, Math.min(stred - w / 2, s.width - w - 6));
+  const dole = a.bottom - s.top + 8;
+  const nahore = a.top - s.top - h - 8;
+  const preklopit = dole + h > s.height && nahore >= 0;
+  box.style.left = left + "px";
+  box.style.top = (preklopit ? nahore : dole) + "px";
+  const arrow = box.querySelector(".cal-pop-arrow");
+  if (arrow) {
+    arrow.style.left = Math.max(8, Math.min(stred - left - 5, w - 24)) + "px";
+    arrow.classList.toggle("is-below", preklopit);
+  }
+}
+
+function openCalPop(anchor) {
+  const datum = anchor.dataset.date;
+  const idx = Number(anchor.dataset.idx);
+  const den = calEventsByDay()[datum] || [];
+  const events = idx >= 0 ? [den[idx]].filter(Boolean) : den;
+  if (!events.length) return;
+  closeCalPop();
+  const box = document.getElementById("cal-pop");
+  box.innerHTML = calPopHtml(events, idx < 0 ? "Jednání " + czFromIso(datum) : "");
   box.hidden = false;
+  placeCalPop(anchor);
+  anchor.classList.add("is-open");
+  anchor.setAttribute("aria-expanded", "true");
+  calPop = { key: datum + "#" + idx, datum: datum, idx: idx };
 }
 
 function redrawCal() {
-  // Po odškrtnutí soudu může vybraný den zůstat prázdný – ať pak nesvítí
-  // rámeček výběru nad dnem, na kterém už nic není.
-  if (calSelected && !(calEventsByDay()[calSelected] || []).length) calSelected = "";
+  // Překreslením zmizí štítek, ke kterému byla bublina přišpendlená.
+  closeCalPop();
   renderCalGrid();
-  renderCalDetail();
 }
 
 function calShiftMonth(delta) {
@@ -1114,12 +1205,19 @@ function renderKalendar(data) {
         '<button type="button" id="cal-today">Dnes</button>' +
       "</div>" +
       '<div class="cal-filters">' +
-        '<label><input type="checkbox" id="flt-ms" checked> MS Praha</label>' +
-        '<label><input type="checkbox" id="flt-vs" checked> VS Praha</label>' +
+        // Barevné štítky u přepínačů zároveň slouží jako legenda mřížky.
+        '<label><input type="checkbox" id="flt-ms" checked>' +
+          '<span class="cal-key cal-key-ms">MS Praha</span></label>' +
+        '<label><input type="checkbox" id="flt-vs" checked>' +
+          '<span class="cal-key cal-key-vs">VS Praha</span></label>' +
+        '<span class="cal-key cal-key-ms cal-chip-off" ' +
+          'title="Jednání, které zmizelo z novějšího přehledu soudu">nekoná se</span>' +
       "</div>" +
     "</div>" +
-    '<div class="cal-wrap"><div class="cal-grid" id="cal-grid"></div></div>' +
-    '<div class="cal-detail" id="cal-detail" hidden></div>';
+    '<div class="cal-shell" id="cal-shell">' +
+      '<div class="cal-wrap"><div class="cal-grid" id="cal-grid"></div></div>' +
+      '<div class="cal-pop" id="cal-pop" role="dialog" aria-label="Detail jednání" hidden></div>' +
+    "</div>";
 
   const info = document.getElementById("cal-info");
   if (info && data.generated) {
@@ -1137,22 +1235,33 @@ function renderKalendar(data) {
   ["flt-ms", "flt-vs"].forEach(id =>
     document.getElementById(id).addEventListener("change", redrawCal));
   document.getElementById("cal-grid").addEventListener("click", e => {
-    const day = e.target.closest(".cal-day.has-events");
-    if (!day) return;
-    calSelected = (calSelected === day.dataset.date) ? "" : day.dataset.date;
-    redrawCal();
+    const btn = e.target.closest(".cal-chip, .cal-more");
+    if (!btn) return;
+    const key = btn.dataset.date + "#" + btn.dataset.idx;
+    // Druhý klik na týž štítek bublinu zavře.
+    if (calPop && calPop.key === key) closeCalPop();
+    else openCalPop(btn);
   });
+  document.getElementById("cal-pop").addEventListener("click", e => {
+    if (e.target.closest(".cal-pop-close")) closeCalPop();
+  });
+  // Klik jinam a Esc bublinu zavřou; při změně velikosti okna by šipka
+  // ukazovala mimo, tak ji taky zavřeme.
+  document.addEventListener("click", e => {
+    if (calPop && !e.target.closest("#cal-pop, .cal-chip, .cal-more")) closeCalPop();
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && calPop) closeCalPop();
+  });
+  window.addEventListener("resize", () => { if (calPop) closeCalPop(); });
 
-  // Rovnou rozklikneme nejbližší den s jednáním – přednostně nadcházející,
-  // a když je celý přehled už za námi, poslední proběhlý. Měsíc se za ním
-  // posune, ať uživatel nekouká na prázdnou mřížku.
+  // Měsíc rovnou posuneme na nejbližší den s jednáním – přednostně
+  // nadcházející, a když je celý přehled už za námi, na poslední proběhlý,
+  // ať uživatel nekouká na prázdnou mřížku.
   const todayIso = isoOf(now);
   const days = Object.keys(calEventsByDay()).sort();
   const pick = days.find(d => d >= todayIso) || days[days.length - 1];
-  if (pick) {
-    calSelected = pick;
-    calMonth = new Date(+pick.slice(0, 4), +pick.slice(5, 7) - 1, 1);
-  }
+  if (pick) calMonth = new Date(+pick.slice(0, 4), +pick.slice(5, 7) - 1, 1);
   redrawCal();
 }
 
