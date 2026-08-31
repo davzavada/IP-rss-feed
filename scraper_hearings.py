@@ -902,7 +902,15 @@ def popis_stranky(j, url, html):
     print(f"  [diag] {len(html)} znaků, titulek: {titulek!r}, "
           f"tabulek: {tabulek}, řádků: {radku}, "
           f"divů s class: {len(soup.select('div[class]'))}")
-    print(f"  [diag] text: {telo[:600]!r}")
+    print(f"  [diag] text: {telo[:400]!r}")
+    # Prázdná stránka s nulou tabulek = slupka javascriptové aplikace.
+    # Data si dotahuje odjinud, tak vypíšeme, co v té slupce je.
+    skripty = [s.get("src") for s in soup.find_all("script") if s.get("src")]
+    print(f"  [diag] skripty: {skripty[:10]}")
+    inline = " ".join(s.get_text() for s in soup.find_all("script") if not s.get("src"))
+    adresy = sorted(set(re.findall(
+        r"""['"](https?://[^'"\s]{6,}|/[A-Za-z0-9_\-./]{4,})['"]""", inline)))
+    print(f"  [diag] adresy v kódu: {adresy[:20]}")
 
 
 def potrebuje_stav(j, dnes):

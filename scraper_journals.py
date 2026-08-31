@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 
 from feed_common import (
     JOURNAL_ARTICLE_PROMPT,
+    JOURNAL_DECISION_PROMPT,
     JOURNAL_ISSUE_PROMPT,
     filter_by_first_seen,
     gemini_enabled,
@@ -602,6 +603,17 @@ CROSSREF_JOURNALS = [
 ]
 
 
+# IIC vedle článků otiskuje i rozhodnutí soudů. Crossref je pozná podle
+# podtitulu, ve kterém je soud, datum a spisová značka – „Decision of the
+# Federal Court of Justice of Germany (Bundesgerichtshof) 27 January 2026 –
+# Case No. KZR 10/25; ECLI:…“. Bez podtitulu z takové položky zbude jen
+# přezdívka věci („FRAND Defence III“), ze které se nedá poznat vůbec nic.
+ROZHODNUTI_RE = re.compile(
+    r"^\s*(decision|judgment|judgement|order|opinion|ruling)\b|case no\.",
+    re.IGNORECASE,
+)
+
+
 def _abstract_text(text):
     """Abstrakt na čistý text – Crossref ho dává jako JATS XML (<jats:p>…),
     Wiley jako HTML. Obojí projde stejným parserem, oběma se zahazuje úvodní
@@ -621,7 +633,7 @@ def fetch_crossref_journal(issn, label, journal_name):
         params={
             "filter": f"from-created-date:{since}",
             "sort": "created", "order": "desc", "rows": "40",
-            "select": "DOI,title,author,abstract,created",
+            "select": "DOI,title,subtitle,author,abstract,created",
         },
         headers={"User-Agent": CROSSREF_UA},
         timeout=30,
@@ -636,6 +648,14 @@ def fetch_crossref_journal(issn, label, journal_name):
         title = clean_title(titles[0]) if titles else ""
         if not doi or not title:
             continue
+
+        # Podtitul nese u rozhodnutí soud, datum i spisovou značku; u článků
+        # druhou půlku názvu. ECLI za středníkem je do názvu už moc dlouhé.
+        subtitles = w.get("subtitle") or []
+        subtitle = clean_title(subtitles[0]) if subtitles else ""
+        je_rozhodnuti = bool(subtitle and ROZHODNUTI_RE.search(subtitle))
+        if subtitle:
+            title = f"{title} – {subtitle.split(';')[0].strip()}"
 
         authors = clean_authors("; ".join(
             " ".join(p for p in (a.get("given"), a.get("family")) if p)
@@ -660,7 +680,7 @@ def fetch_crossref_journal(issn, label, journal_name):
         if clean_desc:
             desc_parts.append(clean_desc)
 
-        items.append({
+        polozka = {
             "title": f"[{label}] {title}",
             "journal_name": journal_name,
             "authors": authors,
@@ -670,7 +690,14 @@ def fetch_crossref_journal(issn, label, journal_name):
             "pub_date": pub_date,
             "ai_source": "article",  # shrnutí se dělá z názvu a abstraktu
             "ai_text": f"{title}\n\n{abstract}".strip(),
-        })
+        }
+        if je_rozhodnuti:
+            # Rozhodnutí nemá abstrakt, zato má na stránce vydavatele právní
+            # věty i odůvodnění – shrnutí se dělá z ní a jiným promptem.
+            polozka["ai_source"] = "page"
+            polozka["ai_prompt"] = JOURNAL_DECISION_PROMPT
+            polozka["ai_text"] = ""
+        items.append(polozka)
 
     return items
 
@@ -826,17 +853,19 @@ def enrich_summaries(items):
         m = meta.get(g, {})
         if not m.get("summary"):
             summary, tag = "", ""
+            # Rozhodnutí otištěné v časopise se shrnuje jinak než článek.
+            prompt = it.get("ai_prompt") or JOURNAL_ARTICLE_PROMPT
             if it.get("ai_source") == "article" and it.get("ai_text"):
                 tlen = len(it["ai_text"])
                 print(f"    [diag] {g}: článek, ai_text {tlen} znaků")
                 calls += 1
-                summary, tag = gemini_summarize_text(it["ai_text"], JOURNAL_ARTICLE_PROMPT)
+                summary, tag = gemini_summarize_text(it["ai_text"], prompt)
             elif it.get("ai_source") == "page" and it.get("link"):
                 try:
                     text = fetch_page_text(it["link"])
                     print(f"    [diag] {g}: stránka článku, {len(text)} znaků")
                     calls += 1
-                    summary, tag = gemini_summarize_text(text, JOURNAL_ARTICLE_PROMPT)
+                    summary, tag = gemini_summarize_text(text, prompt)
                 except Exception as e:
                     print(f"  CHYBA stahování stránky {it['title']}: {e}")
             elif it.get("ai_source") == "issue" and it.get("link"):

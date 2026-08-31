@@ -173,6 +173,20 @@ JOURNAL_ARTICLE_PROMPT = (
     "nebo zjištěním dochází. Drž se stručnosti a nic si nevymýšlej."
 )
 
+# Prompt pro soudní rozhodnutí otištěné v časopise. IIC k rozhodnutím
+# zahraničních soudů tiskne i úřední právní věty, takže je z čeho shrnovat.
+JOURNAL_DECISION_PROMPT = (
+    "Toto je soudní rozhodnutí otištěné v odborném právním časopise – "
+    "zpravidla rozhodnutí zahraničního soudu, často i s úředními právními "
+    "větami. Odpověz česky přesně ve dvou částech, bez úvodních frází "
+    "a bez dalšího textu:\n"
+    "HESLO: výstižné právní téma o 1–3 slovech (např. FRAND, Ochranná "
+    "známka, Patent, Nekalá soutěž).\n"
+    "SHRNUTÍ: nejvýše tři věty. V první uveď, který soud a v jaké věci "
+    "rozhodl. Dál jakou právní otázku řešil a s jakým závěrem. Drž se "
+    "stručnosti a nic si nevymýšlej."
+)
+
 # Prompt pro celé číslo právního časopisu (z PDF).
 JOURNAL_ISSUE_PROMPT = (
     "Toto je celé číslo odborného právního časopisu. Odpověz česky přesně "
