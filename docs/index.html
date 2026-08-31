@@ -209,12 +209,18 @@
   }
   .cal-nav button:hover { background: var(--accent); }
   .cal-title { min-width: 130px; text-align: center; font-weight: 600; font-size: 0.95rem; }
-  .cal-filters { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 0.85rem; color: var(--muted-foreground); }
-  .cal-filters label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
-  .cal-filters input { accent-color: var(--link); }
-  /* Přepínače soudů slouží zároveň jako legenda – mají barvu svých štítků
-     v mřížce, takže je vidět, který soud je která barva. */
-  .cal-key { border-radius: 5px; padding: 1px 7px; font-size: 0.75rem; }
+  .cal-filters { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 0.85rem; color: var(--muted-foreground); }
+  /* Štítek soudu je zároveň legenda i přepínač – klikne se rovnou na barvu.
+     Vypnutý soud barvu ztratí a zůstane z něj jen obrys. */
+  .cal-key {
+    border-radius: 5px; padding: 2px 9px; font-size: 0.75rem;
+    border: 1px solid transparent; font-family: inherit; line-height: 1.5;
+  }
+  button.cal-key { cursor: pointer; }
+  button.cal-key:hover { box-shadow: inset 0 0 0 1px currentColor; }
+  .cal-key[aria-pressed="false"] {
+    background: none; color: var(--muted-foreground); border-color: var(--border);
+  }
   .cal-key-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
   .cal-key-vs { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
 
@@ -1020,7 +1026,10 @@ function czFromIso(iso) {
 }
 
 function calFilters() {
-  const on = id => { const el = document.getElementById(id); return !el || el.checked; };
+  const on = id => {
+    const el = document.getElementById(id);
+    return !el || el.getAttribute("aria-pressed") !== "false";
+  };
   return { MS: on("flt-ms"), VS: on("flt-vs") };
 }
 
@@ -1275,11 +1284,13 @@ function renderKalendar(data) {
         '<button type="button" id="cal-today">Dnes</button>' +
       "</div>" +
       '<div class="cal-filters">' +
-        // Barevné štítky u přepínačů zároveň slouží jako legenda mřížky.
-        '<label><input type="checkbox" id="flt-ms" checked>' +
-          '<span class="cal-key cal-key-ms">MS Praha</span></label>' +
-        '<label><input type="checkbox" id="flt-vs" checked>' +
-          '<span class="cal-key cal-key-vs">VS Praha</span></label>' +
+        // Klikací barevné štítky – legenda mřížky a filtr v jednom.
+        '<button type="button" class="cal-key cal-key-ms" id="flt-ms" ' +
+          'aria-pressed="true" title="Skrýt nebo zobrazit jednání Městského ' +
+          'soudu v Praze">MS Praha</button>' +
+        '<button type="button" class="cal-key cal-key-vs" id="flt-vs" ' +
+          'aria-pressed="true" title="Skrýt nebo zobrazit jednání Vrchního ' +
+          'soudu v Praze">VS Praha</button>' +
         '<span class="cal-key cal-key-ms cal-chip-off" ' +
           'title="Jednání, které zmizelo z novějšího přehledu soudu">nekoná se</span>' +
       "</div>" +
@@ -1302,8 +1313,14 @@ function renderKalendar(data) {
     calMonth = new Date(n.getFullYear(), n.getMonth(), 1);
     redrawCal();
   });
-  ["flt-ms", "flt-vs"].forEach(id =>
-    document.getElementById(id).addEventListener("change", redrawCal));
+  ["flt-ms", "flt-vs"].forEach(id => {
+    const el = document.getElementById(id);
+    el.addEventListener("click", () => {
+      el.setAttribute("aria-pressed",
+        el.getAttribute("aria-pressed") === "false" ? "true" : "false");
+      redrawCal();
+    });
+  });
   document.getElementById("cal-grid").addEventListener("click", e => {
     const btn = e.target.closest(".cal-chip, .cal-more");
     if (!btn) return;
