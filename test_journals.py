@@ -114,7 +114,85 @@ check("komentář k rozhodnutí se za rozhodnutí nepovažuje",
           "The FRAND Defence III Decision of the German Federal Court of Justice"))
 
 # =====================================================================
-print("\n5) Crossref – dvojí dotaz a datum vydání")
+print("\n5) RSS vydavatele – OUP (JIPLP) a Wiley")
+# =====================================================================
+# OUP vydává feed aktuálního čísla. DOI v něm nemusí být ve zvláštním poli –
+# podle časopisu je v <dc:identifier>, nebo jen v adrese článku. Guid musí
+# vyjít stejně jako z Crossrefu, jinak by se článek při přepnutí zdroje
+# označil podruhé jako nový.
+_OUP_FEED = """<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:prism="http://prismstandard.org/namespaces/basic/2.0/">
+<channel>
+<title>Journal of Intellectual Property Law &amp; Practice Current Issue</title>
+<item>
+  <title>Trade mark use in the metaverse</title>
+  <link>https://academic.oup.com/jiplp/article/21/8/588/8215678?rss=1</link>
+  <description>&lt;span class="paragraphSection"&gt;Abstract Soud se zabýval…&lt;/span&gt;</description>
+  <dc:creator>Jane Doe</dc:creator>
+  <dc:identifier>doi:10.1093/jiplp/jpaf089</dc:identifier>
+  <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Editorial</title>
+  <link>https://academic.oup.com/jiplp/article/21/8/585/8215671?rss=1</link>
+  <description>Úvodník čísla.</description>
+  <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Loňský článek</title>
+  <link>https://academic.oup.com/jiplp/article/20/1/1/1?rss=1</link>
+  <prism:doi>10.1093/jiplp/jpz001</prism:doi>
+  <pubDate>Mon, 06 Jan 2020 00:00:00 GMT</pubDate>
+</item>
+</channel></rss>"""
+
+
+class _FeedResp:
+    def __init__(self, content):
+        self.content = content.encode("utf-8")
+
+    def raise_for_status(self):
+        pass
+
+
+_puvodni_get = s.requests.get
+_hlavicky = {}
+
+
+def _feed_get(url, headers=None, **k):
+    _hlavicky.update(headers or {})
+    return _FeedResp(_OUP_FEED)
+
+
+s.requests.get = _feed_get
+rss = s.fetch_publisher_rss(s.JIPLP_FEED, s.JIPLP_LABEL, s.JIPLP_NAME,
+                            "https://academic.oup.com/jiplp")
+s.requests.get = _puvodni_get
+
+check("z feedu přijdou články aktuálního čísla", len(rss) == 2, str(len(rss)))
+check("loňský článek se do novinek nepočítá",
+      not [i for i in rss if "Loňský" in i["title"]])
+check("guid je z DOI, stejný jako z Crossrefu",
+      rss[0]["guid"] == "JIPLP-10.1093/jiplp/jpaf089", rss[0]["guid"])
+check("odkaz míří na DOI", rss[0]["link"] == "https://doi.org/10.1093/jiplp/jpaf089",
+      rss[0]["link"])
+check("autor i abstrakt jsou v popisu",
+      "Autor: Jane Doe" in rss[0]["description"]
+      and "Soud se zabýval" in rss[0]["description"],
+      rss[0]["description"])
+check("úvodní slovo „Abstract“ se z popisu zahodí",
+      "Abstract" not in rss[0]["description"], rss[0]["description"])
+check("článek bez DOI drží guid na adrese bez ?rss=1",
+      rss[1]["guid"] == "JIPLP-https://academic.oup.com/jiplp/article/21/8/585/8215671",
+      rss[1]["guid"])
+check("feed se hlásí jako prohlížeč (Wiley i OUP jinak vracely 403)",
+      "application/rss+xml" in _hlavicky.get("Accept", "")
+      and _hlavicky.get("Referer") == "https://academic.oup.com/jiplp",
+      str(_hlavicky))
+
+# =====================================================================
+print("\n6) Crossref – dvojí dotaz a datum vydání")
 # =====================================================================
 # from-created-date je datum uložení DOI záznamu. Když vydavatel deponuje
 # dopředu (ahead of print), vyjde číslo později a z okna vypadne – tak
@@ -160,7 +238,7 @@ check("datum je datum vydání, ne vzniku DOI záznamu",
       srpnovy and str(srpnovy["pub_date"]))
 
 # =====================================================================
-print("\n6) Stránka, která místo obsahu vrátí chybu, nesmí jít do AI")
+print("\n7) Stránka, která místo obsahu vrátí chybu, nesmí jít do AI")
 # =====================================================================
 
 

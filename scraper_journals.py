@@ -580,6 +580,7 @@ def fetch_ojs_rss(feed_url, label, journal_name):
     cutoff = datetime.now(timezone.utc) - timedelta(days=OJS_MAX_AGE_DAYS)
     items = []
     too_old = 0
+    bez_doi = 0
 
     for item in root.iter("item"):
         title_el = item.find("title")
@@ -666,7 +667,6 @@ CROSSREF_JOURNALS = [
     # (online ISSN, zkratka do titulku a guid, plný název časopisu)
     ("2045-9815", "QMJIP", "Queen Mary Journal of Intellectual Property"),
     ("2632-8550", "GRUR Int", "GRUR International"),
-    ("1747-1540", "JIPLP", "Journal of Intellectual Property Law & Practice"),
     ("2195-0237", "IIC", "IIC – International Review of Intellectual Property "
                          "and Competition Law"),
 ]
@@ -800,22 +800,31 @@ def fetch_crossref_journal(issn, label, journal_name):
     return items
 
 
-# --- Wiley (JWIP) – vlastní RSS, se zálohou v Crossref ---
-# Wiley Online Library nabízí pro každý časopis feed nejnovějších článků
-# (/feed/<issn bez pomlčky>/most-recent) včetně abstraktu, který Wiley do
-# Crossref často nedeponuje. Feed ale sedí za Cloudflare a z GitHub Actions
-# nemusí projít – když se nestáhne nebo je prázdný, sáhneme po Crossref.
+# --- Vlastní RSS vydavatelů (Wiley, OUP), se zálohou v Crossref ---
+# Wiley i OUP nabízejí vlastní feed (Wiley nejnovější články časopisu, OUP
+# obsah aktuálního čísla) včetně abstraktu, který do Crossref často
+# nedeponují, a hlavně bez zpoždění, se kterým se do Crossref dostane číslo
+# deponované dopředu. Oba weby ale sedí za Cloudflare a z GitHub Actions
+# feed nemusí projít – když se nestáhne nebo je prázdný, sáhneme po Crossref.
 # Guid se v obou případech skládá z DOI, takže se článek při přepnutí zdroje
 # neoznačí podruhé jako nový.
 
 WILEY_FEED = "https://onlinelibrary.wiley.com/feed/{issn}/most-recent"
 DOI_RE = re.compile(r"10\.\d{4,9}/[^\s?&#\"<>]+")
 # Feed vypisuje i starší články ročníku – co je starší než rok, do novinek nepatří
-WILEY_MAX_AGE_DAYS = 365
+RSS_MAX_AGE_DAYS = 365
 
 JWIP_ISSN = "1747-1796"
 JWIP_LABEL = "JWIP"
 JWIP_NAME = "The Journal of World Intellectual Property"
+
+# OUP vydává pro každý časopis feed aktuálního čísla. U JIPLP je to
+# jediná cesta, jak číslo poznat včas: DOI deponuje OUP měsíce dopředu,
+# takže z okna Crossrefu čerstvé číslo vypadává.
+JIPLP_FEED = "https://academic.oup.com/rss/site_5200/3065.xml"
+JIPLP_ISSN = "1747-1540"
+JIPLP_LABEL = "JIPLP"
+JIPLP_NAME = "Journal of Intellectual Property Law & Practice"
 
 
 def _item_text(item, tag, ns=None):
@@ -824,30 +833,42 @@ def _item_text(item, tag, ns=None):
     return (el.text or "").strip() if el is not None and el.text else ""
 
 
-def _wiley_doi(item, ns):
-    """DOI článku – z <prism:doi>, jinak z guid nebo odkazu."""
+def _rss_doi(item, ns):
+    """DOI článku – z <prism:doi>, jinak z dalších polí, kde bývá schované.
+
+    Wiley ho dává rovnou v <prism:doi>, OUP ho má podle časopisu buď
+    v <dc:identifier>, nebo jen v adrese článku. Bere se první nález,
+    popis se neprohledává – tam by šlo o DOI citovaného díla.
+    """
     doi = _item_text(item, "prism:doi", ns)
     if not doi:
-        for field in ("guid", "link"):
-            match = DOI_RE.search(_item_text(item, field))
+        for field, jmenny_prostor in (("dc:identifier", ns), ("guid", None),
+                                      ("link", None)):
+            match = DOI_RE.search(_item_text(item, field, jmenny_prostor))
             if match:
                 doi = match.group(0)
                 break
     return doi.strip().rstrip(".").lower()
 
 
-def fetch_wiley_rss(issn, label, journal_name):
-    """Vrátí nedávné články časopisu z RSS Wiley Online Library."""
-    feed_url = WILEY_FEED.format(issn=issn.replace("-", ""))
+def _bez_parametru(url):
+    """Adresa bez dotazu (OUP připojuje ?rss=1), ať guid drží mezi běhy."""
+    return url.split("?", 1)[0].split("#", 1)[0]
+
+
+def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
+    """Vrátí nedávné články časopisu z RSS vydavatele (Wiley, OUP)."""
     # Na holý požadavek vracela Wiley 403. Feed je veřejný, jen se chce
     # ohlásit jako prohlížeč, který o RSS opravdu žádá – proto Accept
     # a Referer z webu časopisu.
-    resp = requests.get(feed_url, headers={
+    headers = {
         "User-Agent": USER_AGENT,
         "Accept": "application/rss+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.5",
         "Accept-Language": "en-US,en;q=0.9",
-        "Referer": "https://onlinelibrary.wiley.com/journal/" + issn.replace("-", ""),
-    }, timeout=30)
+    }
+    if referer:
+        headers["Referer"] = referer
+    resp = requests.get(feed_url, headers=headers, timeout=30)
     resp.raise_for_status()
 
     root = fromstring(resp.content)
@@ -855,33 +876,39 @@ def fetch_wiley_rss(issn, label, journal_name):
         "dc": "http://purl.org/dc/elements/1.1/",
         "prism": "http://prismstandard.org/namespaces/basic/2.0/",
     }
-    cutoff = datetime.now(timezone.utc) - timedelta(days=WILEY_MAX_AGE_DAYS)
+    cutoff = datetime.now(timezone.utc) - timedelta(days=RSS_MAX_AGE_DAYS)
     items = []
     too_old = 0
+    bez_doi = 0
 
     for item in root.iter("item"):
         title = clean_title(_item_text(item, "title"))
         if not title:
             continue
 
-        doi = _wiley_doi(item, ns)
-        link = f"https://doi.org/{doi}" if doi else _item_text(item, "link")
+        doi = _rss_doi(item, ns)
+        if not doi:
+            bez_doi += 1
+        link = f"https://doi.org/{doi}" if doi else _bez_parametru(_item_text(item, "link"))
         if not link:
             continue
 
         authors = clean_authors(_item_text(item, "dc:creator", ns))
         abstract = _abstract_text(_item_text(item, "description"))
 
-        pub_date = datetime.now(timezone.utc)
-        raw_date = _item_text(item, "pubDate")
+        pub_date, odhad = datetime.now(timezone.utc), True
+        raw_date = _item_text(item, "pubDate") or _item_text(item, "dc:date", ns)
         if raw_date:
             try:
                 pub_date = parsedate_to_datetime(raw_date)
                 if pub_date.tzinfo is None:
                     pub_date = pub_date.replace(tzinfo=timezone.utc)
+                odhad = False
             except (TypeError, ValueError):
                 pass
-        if pub_date < cutoff:
+        # Feed bez data se nesmí zahodit jako starý, ale ani vydávat za dnešek –
+        # datum dostane podle prvního výskytu (viz pub_date_odhad v main()).
+        if not odhad and pub_date < cutoff:
             too_old += 1
             continue
 
@@ -903,27 +930,48 @@ def fetch_wiley_rss(issn, label, journal_name):
             # neoznačí podruhé jako nový.
             "guid": f"{label}-{doi}" if doi else f"{label}-{link}",
             "pub_date": pub_date,
+            "pub_date_odhad": odhad,
             "ai_source": "article",
             "ai_text": f"{title}\n\n{abstract}".strip(),
         })
 
     if too_old:
         print(f"    [diag] {label}: {too_old} článků starších než "
-              f"{WILEY_MAX_AGE_DAYS} dní přeskočeno")
+              f"{RSS_MAX_AGE_DAYS} dní přeskočeno")
+    if bez_doi:
+        # Bez DOI se guid skládá z odkazu, takže by se článek při přepnutí
+        # na Crossref označil podruhé jako nový. Ať je to vidět v logu.
+        print(f"    [diag] {label}: {bez_doi} článků bez DOI ve feedu")
     return items
 
 
-def scrape_jwip():
-    """Články JWIP – přednostně z RSS Wiley, při potížích z Crossref."""
+def _rss_nebo_crossref(feed_url, referer, issn, label, journal_name, zdroj):
+    """Feed vydavatele, a když nevyjde, Crossref. Guid je v obou z DOI."""
     try:
-        items = fetch_wiley_rss(JWIP_ISSN, JWIP_LABEL, JWIP_NAME)
+        items = fetch_publisher_rss(feed_url, label, journal_name, referer)
         if items:
             return items
         reason = "feed bez článků"
     except Exception as e:
         reason = f"feed nedostupný ({e})"
-    print(f"    [diag] {JWIP_LABEL}: RSS Wiley – {reason}, beru Crossref")
-    return fetch_crossref_journal(JWIP_ISSN, JWIP_LABEL, JWIP_NAME)
+    print(f"    [diag] {label}: RSS {zdroj} – {reason}, beru Crossref")
+    return fetch_crossref_journal(issn, label, journal_name)
+
+
+def scrape_jwip():
+    """Články JWIP – přednostně z RSS Wiley, při potížích z Crossref."""
+    issn = JWIP_ISSN.replace("-", "")
+    return _rss_nebo_crossref(
+        WILEY_FEED.format(issn=issn),
+        f"https://onlinelibrary.wiley.com/journal/{issn}",
+        JWIP_ISSN, JWIP_LABEL, JWIP_NAME, "Wiley")
+
+
+def scrape_jiplp():
+    """Články JIPLP – přednostně z feedu aktuálního čísla OUP."""
+    return _rss_nebo_crossref(
+        JIPLP_FEED, "https://academic.oup.com/jiplp",
+        JIPLP_ISSN, JIPLP_LABEL, JIPLP_NAME, "OUP")
 
 
 # --- AI shrnutí (Gemma) ---
@@ -1163,7 +1211,7 @@ def main():
         except Exception as e:
             print(f"  CHYBA při stahování {label}: {e}")
 
-    # 6. Časopisy přes Crossref (QMJIP, GRUR Int, JIPLP, IIC)
+    # 6. Časopisy přes Crossref (QMJIP, GRUR Int, IIC)
     for issn, label, journal_name in CROSSREF_JOURNALS:
         print(f"  Zdroj: {journal_name} (Crossref)")
         try:
@@ -1173,14 +1221,18 @@ def main():
         except Exception as e:
             print(f"  CHYBA při stahování {label}: {e}")
 
-    # 6. JWIP (RSS Wiley, se zálohou v Crossref)
-    print(f"  Zdroj: {JWIP_NAME} (Wiley RSS)")
-    try:
-        jwip = scrape_jwip()
-        print(f"  Nalezeno {len(jwip)} článků")
-        all_items.extend(jwip)
-    except Exception as e:
-        print(f"  CHYBA při stahování {JWIP_LABEL}: {e}")
+    # 7. Časopisy s vlastním RSS vydavatele (se zálohou v Crossref)
+    for nazev, zdroj, label, scrape in (
+        (JWIP_NAME, "Wiley RSS", JWIP_LABEL, scrape_jwip),
+        (JIPLP_NAME, "OUP RSS", JIPLP_LABEL, scrape_jiplp),
+    ):
+        print(f"  Zdroj: {nazev} ({zdroj})")
+        try:
+            rss_items = scrape()
+            print(f"  Nalezeno {len(rss_items)} článků")
+            all_items.extend(rss_items)
+        except Exception as e:
+            print(f"  CHYBA při stahování {label}: {e}")
 
     # Ponecháme jen položky s prvním výskytem do 2 týdnů zpět (u všech zdrojů).
     # První výskyt sledujeme sami, aby se staré články s přepsaným datem nevracely.
