@@ -335,6 +335,12 @@ def scrape_pravnik():
 JURISPRUDENCE_ARCHIVE_URL = "https://www.jurisprudence.cz/cz/casopis/archiv"
 JURISPRUDENCE_ISSUE_RE = re.compile(r"/cz/casopis/archiv/(\d+)-(\d{4})/?$")
 JURISPRUDENCE_ARTICLE_RE = re.compile(r"/cz/casopis/[^/]+\.m-(\d+)\.html")
+# Na stránce čísla je i rozcestník po archivu a odkazy na jiná čísla mají
+# stejný tvar adresy jako články („…m-123.html“). Poznají se podle textu –
+# bez toho se do feedu dostala „Číslo 5/2013“ a „Číslo 6/2013“ jako články
+# a AI z nich pak popisovala seznam ročníků místo odborného textu.
+JURISPRUDENCE_ISSUE_TITLE_RE = re.compile(
+    r"^(číslo|archiv|ročník)\b|^\d+\s*/\s*\d{4}$", re.IGNORECASE)
 JURISPRUDENCE_MAX_ITEMS = 25   # obsah jednoho čísla, ne celý ročník
 JURISPRUDENCE_TRY_ISSUES = 2   # nejnovější číslo a jedno předchozí
 
@@ -379,12 +385,16 @@ def _jurisprudence_articles(soup, page_url):
             continue
         art_id = match.group(1)
         title = clean_title(a.get_text(" ", strip=True))
-        if len(title) > len(found.get(art_id, ("", ""))[0]):
-            found[art_id] = (title, link)
+        if len(title) > len(found.get(art_id, ("", "", None))[0]):
+            found[art_id] = (title, link, a)
 
     items = []
-    for art_id, (title, link) in found.items():
+    preskocena = []
+    for art_id, (title, link, odkaz) in found.items():
         if not title:
+            continue
+        if JURISPRUDENCE_ISSUE_TITLE_RE.match(title):
+            preskocena.append(title)
             continue
         items.append({
             "title": f"[Jurisprudence] {title}",
@@ -398,6 +408,17 @@ def _jurisprudence_articles(soup, page_url):
             # pro položku opravdu generuje shrnutí (viz enrich_summaries).
             "ai_source": "page",
         })
+
+    if preskocena:
+        print(f"    [diag] Jurisprudence: {len(preskocena)} odkazů mimo obsah "
+              f"čísla přeskočeno: {preskocena[:5]}")
+    # Autora na obsahu čísla zatím nehledáme – nevíme, jestli tam vůbec je.
+    # Tenhle výpis ukáže okolí prvního článku, ať je poznat, kde stojí.
+    for art_id, (title, link, odkaz) in list(found.items())[:2]:
+        blok = odkaz.find_parent(["li", "tr", "article", "div"]) if odkaz else None
+        if blok is not None:
+            okoli = " ".join(blok.get_text(" ", strip=True).split())[:300]
+            print(f"    [diag] Jurisprudence: okolí článku {art_id}: {okoli!r}")
 
     return items[:JURISPRUDENCE_MAX_ITEMS]
 
@@ -1054,7 +1075,7 @@ def main():
     # Ponecháme jen položky s prvním výskytem do 2 týdnů zpět (u všech zdrojů).
     # První výskyt sledujeme sami, aby se staré články s přepsaným datem nevracely.
     all_items = filter_by_first_seen(
-        all_items, lambda i: i["guid"], STATE_FILE, weeks=2
+        all_items, lambda i: i["guid"], STATE_FILE, weeks=4
     )
 
     # Sort by date desc

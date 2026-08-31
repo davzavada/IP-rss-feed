@@ -277,8 +277,8 @@ check("do archivu jdou jen IP jednání",
       ms_ip < len(ms_items) and all(j["ip"] for j in out["jednani"]),
       f"{ms_ip} z {len(ms_items)}")
 
-# Historie a zrušená jednání: jednání, které zmizí z nově vydaného přehledu
-# pokrývajícího jeho den, se nesmaže, jen označí jako zrušené. Termíny mimo
+# Historie a odvolaná jednání: jednání, které zmizí z nově vydaného přehledu
+# pokrývajícího jeho den, soud odvolal nebo přeložil – smaže se. Termíny mimo
 # období nového přehledu (starší historie) zůstávají nedotčené.
 hist = {}
 prvni = [
@@ -299,11 +299,10 @@ for x in it:
 s.mark_ip(it, cfg_ms)
 s.merge_output(hist, "MS", it, per, None, cfg_ms)
 
-check("zmizelé jednání se nesmaže", len(hist["jednani"]) == 2, str(len(hist["jednani"])))
-check("zmizelé jednání se označí jako zrušené",
-      find(hist["jednani"], "12 C 2/2026")["zruseno"] is True)
-check("jednání, které v přehledu zůstalo, zrušené není",
-      find(hist["jednani"], "12 C 1/2026")["zruseno"] is False)
+check("jednání zmizelé z nového přehledu se smaže",
+      find(hist["jednani"], "12 C 2/2026") is None)
+check("jednání, které v přehledu zůstalo, zůstává",
+      find(hist["jednani"], "12 C 1/2026") is not None)
 
 # Starší termín mimo období nového přehledu se zrušit nesmí.
 stary = [["01.07.2026", "265", "Mgr. Jana Přibylová", "12C 99/2025", "09:00", ["E", "F"]]]
@@ -317,8 +316,8 @@ for x in it:
     x["usek"] = "civilni"
 s.mark_ip(it, cfg_ms)
 s.merge_output(hist, "MS", it, per, None, cfg_ms)
-check("historie mimo období nového přehledu zůstává platná",
-      find(hist["jednani"], "12 C 99/2025")["zruseno"] is False)
+check("historie mimo období nového přehledu zůstává",
+      find(hist["jednani"], "12 C 99/2025") is not None)
 check("proběhlá jednání se nepromazávají podle stáří",
       any(j["datum"] == "2026-07-01" for j in hist["jednani"]))
 

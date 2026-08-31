@@ -680,12 +680,10 @@ def merge_output(existing, court, items, period, zdroj_url, cfg):
     soud v přehledu zveřejňuje také, ale do tohohle archivu nepatří a není
     důvod rozepisovat jejich účastníky.
 
-    Jednání se nikdy nemažou – kalendář je archiv, takže proběhlé termíny
-    zůstávají. Když ale jednání zmizí z nově vydaného přehledu, který jeho
-    den pokrývá, soud ho mezitím odvolal nebo přeložil; takový záznam se
-    označí `zruseno` a v kalendáři se jen přeškrtne. Že jde o odvolání
-    odvozené ze zmizení řádku, ne z InfoSoudu, si uživatel ověří odkazem
-    na detail řízení.
+    Proběhlá jednání zůstávají – kalendář je archiv. Když ale jednání zmizí
+    z nově vydaného přehledu, který jeho den pokrývá, soud ho odvolal nebo
+    přeložil; takový záznam se smaže. Přeložené jednání se vrátí samo pod
+    novým datem, jakmile ho soud v některém přehledu vypíše.
     """
     jednani = [j for j in existing.get("jednani", []) if isinstance(j, dict)]
     # Nahrazuje se vždy jen jeden úsek jednoho soudu – civilní a správní
@@ -706,13 +704,13 @@ def merge_output(existing, court, items, period, zdroj_url, cfg):
             continue
         if (stejny_zdroj and period
                 and od <= (j.get("datum") or "") <= do):
-            # Den spadá do nového přehledu, ale jednání v něm není.
-            j["zruseno"] = True
+            # Den spadá do nového přehledu, ale jednání v něm není – soud
+            # ho odvolal nebo přeložil, takže v kalendáři nemá co dělat.
+            continue
         zachovane.append(j)
 
     for it in items:
         it["soud"] = court
-        it["zruseno"] = False
     jednani = zachovane + items
     jednani.sort(key=lambda j: (j.get("datum") or "", j.get("hodina") or "", j.get("spz") or ""))
     existing["jednani"] = jednani
@@ -1031,8 +1029,6 @@ def write_ics(output, path=None):
             ]
 
         summary = j.get("nazev") or j.get("spz") or "Jednání"
-        if j.get("zruseno"):
-            summary = "ZRUŠENO: " + summary
         location = court + (f", jednací síň {j['sin']}" if j.get("sin") else "")
         desc = [f"Spisová značka: {j.get('spz', '')}"]
         if j.get("predseda"):
@@ -1052,10 +1048,8 @@ def write_ics(output, path=None):
             ics_fold("LOCATION:" + ics_escape(location)),
             ics_fold("DESCRIPTION:" + ics_escape("\n".join(desc))),
             ics_fold("URL:" + infosoud_url(j, courts)),
-            # Odvolané jednání se z kalendáře nemaže, jen zešedne –
-            # v Google i Apple Kalendáři je vidět jako zrušené.
-            "STATUS:CANCELLED" if j.get("zruseno") else "STATUS:CONFIRMED",
-            "TRANSP:TRANSPARENT" if j.get("zruseno") else "TRANSP:OPAQUE",
+            "STATUS:CONFIRMED",
+            "TRANSP:OPAQUE",
             "END:VEVENT",
         ]
 
@@ -1139,7 +1133,10 @@ def main():
     output = load_json(OUTPUT_FILE)
     # Dřívější běhy ukládaly celý přehled; archiv drží jen IP agendu.
     ulozena = [j for j in output.get("jednani", []) if isinstance(j, dict)]
-    output["jednani"] = [j for j in ulozena if j.get("ip")]
+    output["jednani"] = [j for j in ulozena
+                         if j.get("ip") and not j.get("zruseno")]
+    for j in output["jednani"]:
+        j.pop("zruseno", None)      # pozůstatek po dřívějším přeškrtávání
     if len(output["jednani"]) != len(ulozena):
         print(f"Z archivu odebráno {len(ulozena) - len(output['jednani'])} "
               f"jednání mimo IP agendu.")

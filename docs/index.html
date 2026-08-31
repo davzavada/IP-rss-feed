@@ -28,7 +28,7 @@
     /* Stupnice písma. Tři kroky na celý web – víc jich na jedné obrazovce
        působí rozháraně. Hierarchii nese tučnost a barva, ne velikost. */
     --fs-sm: 0.8rem;     /* druhotné: štítky, hlavičky tabulek, legenda, kalendář */
-    --fs-md: 0.9rem;     /* běžný text: tabulky, detaily, navigace, ovládání */
+    --fs-md: 0.85rem;    /* veškerý text: tabulky včetně hlaviček, prosa, ovládání */
     --fs-lg: 1rem;       /* nadpisy karet a jméno webu */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     /* Rozvržení: šířka obsahu a boční navigace (viz @media min-width: 1360px).
@@ -91,7 +91,11 @@
     }
   }
   .head-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; flex-wrap: wrap; }
-  h1 { margin: 0; font-size: var(--fs-lg); font-weight: 600; letter-spacing: -0.01em; }
+  h1 {
+    margin: 0; font-size: var(--fs-lg); font-weight: 600; letter-spacing: -0.01em;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .logo { border-radius: 5px; flex: none; }
   /* Jméno webu nese váhu, popis za ním zůstává potichu. */
   h1 .tagline { font-weight: 400; color: var(--muted-foreground); }
   .legend { font-size: var(--fs-sm); color: var(--muted-foreground); white-space: nowrap; }
@@ -111,7 +115,21 @@
   }
   .card-header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 18px 22px 0; }
   .card-title { margin: 0; font-size: var(--fs-lg); font-weight: 600; letter-spacing: -0.01em; }
-  .card-desc { margin: 4px 0 0; font-size: var(--fs-md); color: var(--muted-foreground); flex-basis: 100%; }
+  .card-desc { margin: 6px 0 0; font-size: var(--fs-md); color: var(--muted-foreground); flex-basis: 100%; }
+  .card-desc[hidden] { display: none; }
+  /* Popis karty je schovaný pod otazníkem – v hlavičce zabíral víc místa
+     než samotný obsah a čte se stejně jen jednou. */
+  .help {
+    width: 18px; height: 18px; flex: none; padding: 0;
+    border: 1px solid var(--border); border-radius: 999px; background: none;
+    color: var(--muted-foreground); font-size: var(--fs-sm); line-height: 1;
+    cursor: pointer;
+  }
+  .help:hover, .help[aria-expanded="true"] {
+    color: var(--foreground); background: var(--accent); border-color: var(--muted-foreground);
+  }
+  .card-desc ul { margin: 4px 0 0; padding-left: 18px; }
+  .card-desc li { margin: 1px 0; }
   .card-content { padding: 10px 22px 16px; }
 
   /* Název karty jako proklik na XML feed – jen jemná ikonka, žádný viditelný štítek. */
@@ -130,7 +148,7 @@
   /* Tabulka (shadcn Table) */
   .table-wrap { overflow-x: auto; }
   table { width: 100%; border-collapse: collapse; font-size: var(--fs-md); table-layout: fixed; min-width: 720px; }
-  th { text-align: left; font-size: var(--fs-sm); font-weight: 500; color: var(--muted-foreground); padding: 8px 16px 8px 0; border-bottom: 1px solid var(--border); }
+  th { text-align: left; font-size: var(--fs-md); font-weight: 500; color: var(--muted-foreground); padding: 8px 16px 8px 0; border-bottom: 1px solid var(--border); }
   td { padding: 12px 16px 12px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
   th:last-child, td:last-child { padding-right: 0; }
   tbody tr:last-child td { border-bottom: 0; }
@@ -249,7 +267,7 @@
   }
   .cal-dow { font-size: var(--fs-sm); font-weight: 500; color: var(--muted-foreground); padding: 2px 6px; }
   .cal-day {
-    min-height: 96px; padding: 4px 5px;
+    min-height: 96px; padding: 4px 7px;
     border: 1px solid var(--border); border-radius: 8px;
     background: var(--card); font-size: var(--fs-sm);
     display: flex; flex-direction: column; gap: 3px; align-items: stretch;
@@ -258,12 +276,16 @@
   /* Proběhlé dny jsou potlačené, ale čitelné – kalendář slouží i jako archiv. */
   .cal-day.past { background: color-mix(in srgb, var(--muted) 45%, var(--card)); }
   .cal-day.past .cal-daynum { opacity: 0.7; }
-  .cal-daynum { font-size: var(--fs-sm); color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
-  .cal-day.today .cal-daynum {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 20px; height: 20px; border-radius: 999px;
-    background: var(--link); color: #fff;
+  /* Číslo dne má u všech dnů stejnou výšku řádku, jinak by dnešek se svou
+     pilulkou posunul obsah buňky níž. Záporný okraj drží číslici zarovnanou
+     s ostatními dny, i když je kolem ní pilulka. */
+  .cal-daynum {
+    align-self: flex-start; display: flex; align-items: center;
+    height: 20px; padding: 0 6px; margin-left: -4px; border-radius: 999px;
+    font-size: var(--fs-sm); color: var(--muted-foreground);
+    font-variant-numeric: tabular-nums;
   }
+  .cal-day.today .cal-daynum { background: var(--link); color: #fff; }
   /* Štítek dne nese jméno sporu („Xiaomi v. OSA"), takže musí unést dva
      řádky – v měsíční mřížce se na jeden nevejde. */
   .cal-chip {
@@ -278,8 +300,6 @@
   .cal-chip.is-open, .cal-more.is-open { box-shadow: 0 0 0 2px var(--link); }
   .cal-chip-time { opacity: 0.75; font-variant-numeric: tabular-nums; }
   .cal-chip-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
-  /* Odvolané jednání se nemaže, jen přeškrtne. */
-  .cal-chip-off { text-decoration: line-through; opacity: 0.6; }
   .cal-chip-vs { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
   .cal-chip-other { background: var(--muted); color: var(--muted-foreground); }
   .cal-more {
@@ -362,13 +382,6 @@
   .cal-stav-table th { color: var(--muted-foreground); font-weight: 500; }
   .cal-stav-head { margin: 10px 0 0; font-size: var(--fs-md); font-weight: 600; }
   .cal-stav-note { margin: 8px 0 0; font-size: var(--fs-sm); color: var(--muted-foreground); }
-  .cal-event.is-off { opacity: 0.72; }
-  .cal-event.is-off .cal-event-name,
-  .cal-event.is-off .cal-event-time { text-decoration: line-through; }
-  .cal-off-badge {
-    background: var(--badge-red-bg); color: var(--badge-red-fg);
-    border-radius: 6px; padding: 2px 8px; font-size: var(--fs-sm); font-weight: 500;
-  }
   .src-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
   .src-vs { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
 
@@ -504,7 +517,7 @@
 
 <header class="site-head">
   <div class="container head-row">
-    <h1>Owl <span class="tagline">– přehled novinek v IP a IT doktríně a judikatuře</span></h1>
+    <h1><img class="logo" src="favicon.svg" alt="" width="22" height="22">Owl <span class="tagline">– přehled novinek v IP a IT doktríně a judikatuře</span></h1>
     <span class="legend" id="updated"></span>
   </div>
 </header>
@@ -567,7 +580,8 @@
           <svg class="feed-icon" aria-hidden="true"><use href="#icon-rss"></use></svg>
         </a>
       </h2>
-      <p class="card-desc">Rozhodnutí za posledních 14 dní.</p>
+      <button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
+      <div class="card-desc" hidden>Rozhodnutí senátu 23 Cdo Nejvyššího soudu za poslední měsíc.</div>
     </div>
     <div class="card-content" id="feed-nsoud"><p class="loading">Načítám...</p></div>
   </div>
@@ -580,7 +594,8 @@
           <svg class="feed-icon" aria-hidden="true"><use href="#icon-rss"></use></svg>
         </a>
       </h2>
-      <p class="card-desc">Případy za poslední dva měsíce – u CJEU chodí nového málo.</p>
+      <button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
+      <div class="card-desc" hidden>Rozhodnutí a žádosti o předběžnou otázku k duševnímu vlastnictví a IT za poslední dva měsíce – u Soudního dvora chodí nového málo.</div>
     </div>
     <div class="card-content" id="feed-cjeu"><p class="loading">Načítám...</p></div>
   </div>
@@ -593,7 +608,15 @@
           <svg class="feed-icon" aria-hidden="true"><use href="#icon-rss"></use></svg>
         </a>
       </h2>
-      <p class="card-desc">Nová čísla a články za posledních 14 dní.</p>
+      <button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
+      <div class="card-desc" hidden>Nová čísla a články za poslední měsíc. Sleduje:
+        <ul>
+          <li>Duševní vlastnictví a Evropské právo (ÚPV) – celá čísla</li>
+          <li>Právník, Jurisprudence, The Lawyer Quarterly</li>
+          <li>Revue pro právo a technologie, MUJLT, JIPITEC</li>
+          <li>IIC, GRUR International, JIPLP, QMJIP, JWIP</li>
+        </ul>
+      </div>
     </div>
     <div class="card-content" id="feed-journals"><p class="loading">Načítám...</p></div>
   </div>
@@ -604,14 +627,15 @@
     <div class="card-header">
       <h2 class="card-title">Kalendář jednání – duševní vlastnictví</h2>
       <span class="legend" id="cal-info"></span>
-      <p class="card-desc">
+      <button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
+      <div class="card-desc" hidden>
         Nařízená jednání Městského soudu v Praze a Vrchního soudu v Praze
         (civilní i správní úsek), filtrovaná na senáty s IP agendou podle
         rozvrhů práce obou soudů. Soudy přehledy zveřejňují zhruba na dva
         týdny dopředu a v průběhu období je neaktualizují – po kliknutí na
         jednání je u něj opsaný průběh řízení z InfoSoudu a odkaz na jeho
         detail.
-      </p>
+      </div>
     </div>
     <div class="card-content" id="feed-kalendar"><p class="loading">Načítám...</p></div>
   </div>
@@ -1069,10 +1093,10 @@ const INFOSOUD_ORGS = { MS: "MSPHAAB", VS: "VSPHAAB" };
 const COURT_LABELS = { MS: "MS Praha", VS: "VS Praha" };
 // Kolik štítků se vejde do dne, než se zbytek schová pod „+N další".
 const CAL_MAX_CHIPS = 3;
-// Kalendář neukazuje měsíc, ale okno dvou týdnů zpět a dvou dopředu –
-// přehledy soudů sahají zhruba čtrnáct dní dopředu a čerstvá minulost je
-// pořád zajímavá. Šipky posouvají o polovinu okna.
-const CAL_TYDNU = 4;
+// Kalendář neukazuje měsíc, ale okno šesti týdnů: dva zpět (čerstvá
+// minulost je pořád zajímavá) a čtyři dopředu, ať se vejde všechno, co
+// soudy stihly vypsat. Šipky posouvají o dva týdny.
+const CAL_TYDNU = 6;
 const CAL_POSUN_DNU = 14;
 
 let calData = null;      // obsah hearings.json
@@ -1195,12 +1219,10 @@ function renderCalGrid() {
     html += '<span class="cal-daynum">' + cislo + "</span>";
     events.slice(0, CAL_MAX_CHIPS).forEach((j, idx) => {
       // V mřížce je vidět čas a jméno sporu; spisová značka až po rozkliknutí.
-      const chip = (j.soud === "MS" ? "cal-chip-ms" : "cal-chip-vs") +
-        (j.zruseno ? " cal-chip-off" : "");
+      const chip = j.soud === "MS" ? "cal-chip-ms" : "cal-chip-vs";
       html += '<button type="button" class="cal-chip ' + chip +
         '" data-date="' + iso + '" data-idx="' + idx + '" aria-expanded="false" title="' +
-        esc(caseName(j) + " · " + (j.spz || "") +
-            (j.zruseno ? " · jednání se nekoná" : "")) + '">' +
+        esc(caseName(j) + " · " + (j.spz || "")) + '">' +
         (j.hodina ? '<span class="cal-chip-time">' + esc(j.hodina) + "</span> " : "") +
         esc(caseName(j)) + "</button>";
     });
@@ -1255,14 +1277,11 @@ function calPopHtml(events, nadpis) {
     // „Hudební divadlo v Karlíně v. Jiří Strach".
     const name = esc(caseName(j)).replace(
       / v\. /, ' <span class="cal-event-vs">v.</span> ');
-    html += '<div class="cal-event' + (j.zruseno ? " is-off" : "") + '">';
+    html += '<div class="cal-event">';
     html += '<div class="cal-event-head">' +
       '<span class="cal-event-time">' + esc(j.hodina || "–") + "</span>" +
       courtBadge(j) +
       '<span class="cal-event-name">' + name + "</span>" +
-      // Jednání zmizelo z novějšího přehledu – soud ho odvolal nebo přeložil.
-      // Jistotu dá až InfoSoud, proto formulace „podle přehledu".
-      (j.zruseno ? '<span class="cal-off-badge">podle přehledu se nekoná</span>' : "") +
       "</div>";
 
     const rows = [];
@@ -1388,8 +1407,6 @@ function renderKalendar(data) {
         '<button type="button" class="cal-key cal-key-vs" id="flt-vs" ' +
           'aria-pressed="true" title="Skrýt nebo zobrazit jednání Vrchního ' +
           'soudu v Praze">VS Praha</button>' +
-        '<span class="cal-key cal-key-ms cal-chip-off" ' +
-          'title="Jednání, které zmizelo z novějšího přehledu soudu">nekoná se</span>' +
       "</div>" +
     "</div>" +
     '<div class="cal-shell" id="cal-shell">' +
@@ -1442,6 +1459,16 @@ function renderKalendar(data) {
 
   redrawCal();
 }
+
+// Otazník v hlavičce karty ukáže a schová její popis.
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".help");
+  if (!btn) return;
+  const desc = btn.parentElement.querySelector(".card-desc");
+  if (!desc) return;
+  desc.hidden = !desc.hidden;
+  btn.setAttribute("aria-expanded", String(!desc.hidden));
+});
 
 /* ========== Stránky a navigace ========== */
 // Obsah je rozdělený na dvě stránky; přepíná se podle adresy (#kotva).
