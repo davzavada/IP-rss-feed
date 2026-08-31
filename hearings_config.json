@@ -1,0 +1,61 @@
+{
+  "updated": "2026-08-31T00:00:00+00:00",
+  "note": "IP senáty civilních úseků MSPH a VS Praha podle rozvrhů práce. Senát = číslo soudního oddělení + rejstřík, jak se objevuje ve spisové značce. Aktualizuje scraper_hearings.py (AI extrakce z rozvrhů práce); lze upravit i ručně.",
+  "courts": {
+    "MS": {
+      "nazev": "Městský soud v Praze",
+      "infosoud_org": "MSPHAAB",
+      "jednani_url": "https://msp.gov.cz/web/mestsky-soud-v-praze/zakladni-informace/-/clanek/prehledy-narizenych-jednani",
+      "rozvrh_url": "https://msp.gov.cz/web/mestsky-soud-v-praze/rozvrh-prace-2026",
+      "senaty": [
+        "1 Cm",
+        "2 C", "2 Cm", "2 EC", "2 ECm",
+        "3 C", "3 Cm", "3 EC", "3 ECm",
+        "9 C", "9 EC", "9 ECm",
+        "10 C", "10 Cm", "10 EC", "10 ECm",
+        "12 C", "12 Cm", "12 EC", "12 ECm",
+        "21 Cm",
+        "32 C", "32 Cm",
+        "37 C",
+        "41 C", "41 Cm", "41 EC", "41 ECm",
+        "73 C", "73 Cm", "73 EC", "73 ECm"
+      ],
+      "soudci": [
+        "Tomáš Bělohlávek",
+        "Petr Košík",
+        "Filip Liška",
+        "Pavel Pražák",
+        "Jana Přibylová",
+        "Martin Valoušek",
+        "Lucie Vobrová"
+      ],
+      "rozvrh_zdroj": {
+        "popis": "Rozvrh práce MSPH 2026, Spr 2828/2025, úplné znění s účinností od 17. 8. 2026 (senáty specializací Věci senátní / Nekalá soutěž a pověst / Autorské právo / Kolektivní správci, oddělení 2, 3, 9+32, 10 (+32 C, 37 C), 12 (+1 Cm, 21 Cm), 41 a 73)",
+        "url": null,
+        "hash": null
+      }
+    },
+    "VS": {
+      "nazev": "Vrchní soud v Praze",
+      "infosoud_org": "VSPHAAB",
+      "jednani_url": "https://msp.gov.cz/web/vrchni-soud-v-praze/zakladni-informace/-/clanek/kalendar-soudnich-jednani",
+      "rozvrh_url": "https://msp.gov.cz/web/vrchni-soud-v-praze/rozvrh-prace-2026",
+      "senaty": [
+        "1 Cmo",
+        "1 Co",
+        "2 Co",
+        "3 Cmo",
+        "3 Co"
+      ],
+      "soudci": [
+        "Jiří Čurda",
+        "Roman Horáček"
+      ],
+      "rozvrh_zdroj": {
+        "popis": "Rozvrh práce VS Praha 2026, S 1/2026, změna od 1. 8. 2026 (1 Cmo a 2 Co – Horáček; 3 Cmo a 3 Co – Čurda; 1 Co – osobní údaje)",
+        "url": null,
+        "hash": null
+      }
+    }
+  }
+}

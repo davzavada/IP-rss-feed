@@ -113,6 +113,9 @@ jobs:
           python scraper.py
           python scraper_ipcuria.py
           python scraper_journals.py
+          # Kalendář jednání závisí na dokumentech na msp.gov.cz – když se
+          # nepovede, ať nezablokuje commit ostatních feedů.
+          python scraper_hearings.py || echo "::warning::scraper_hearings selhal, feedy jedou dál"
 
       # Přehled čte hotové feedy, takže běží až po scraperech – jednou týdně,
       # v pondělí ráno. Ručně spuštěný běh ho udělá taky. DIGEST_FORCE říká
@@ -131,7 +134,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/ feed_seen.json journals_seen.json journals_meta.json feed_meta.json ipcuria_seen.json ipcuria_meta.json
+          git add docs/ feed_seen.json journals_seen.json journals_meta.json feed_meta.json ipcuria_seen.json ipcuria_meta.json hearings_config.json
           git diff --cached --quiet || git commit -m "Update RSS feeds $(date -u +%Y-%m-%d)"
           # Kdyby se main mezitím pohnul (dlouhý běh scraperu), přebasuj a zkus
           # znovu; u konfliktů v generovaných souborech vyhrává naše novější verze.

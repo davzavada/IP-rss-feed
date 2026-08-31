@@ -192,6 +192,74 @@
   .digest-source .src, .digest-source .tag { flex: none; }
   .digest-meta { margin: 14px 0 0; font-size: 0.78rem; color: var(--muted-foreground); }
 
+  /* ===== Kalendář jednání (MS + VS, IP senáty) ===== */
+  .cal-toolbar {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; flex-wrap: wrap; margin: 6px 0 14px;
+  }
+  .cal-nav { display: flex; align-items: center; gap: 6px; }
+  .cal-nav button {
+    background: var(--card); color: var(--foreground);
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 4px 10px; font-size: 0.85rem; line-height: 1.4; cursor: pointer;
+  }
+  .cal-nav button:hover { background: var(--accent); }
+  .cal-title { min-width: 130px; text-align: center; font-weight: 600; font-size: 0.95rem; }
+  .cal-filters { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 0.85rem; color: var(--muted-foreground); }
+  .cal-filters label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+  .cal-filters input { accent-color: var(--link); }
+
+  .cal-wrap { overflow-x: auto; }
+  .cal-grid {
+    display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;
+    min-width: 660px;
+  }
+  .cal-dow { font-size: 0.75rem; font-weight: 500; color: var(--muted-foreground); padding: 2px 6px; }
+  .cal-day {
+    min-height: 74px; padding: 4px 5px;
+    border: 1px solid var(--border); border-radius: 8px;
+    background: var(--card); font-size: 0.8rem;
+    display: flex; flex-direction: column; gap: 3px; align-items: stretch;
+    text-align: left; cursor: default;
+  }
+  .cal-day.has-events { cursor: pointer; }
+  .cal-day.has-events:hover { background: color-mix(in srgb, var(--muted) 55%, transparent); }
+  .cal-day.other { opacity: 0.42; }
+  .cal-day.selected { border-color: var(--link); box-shadow: 0 0 0 1px var(--link); }
+  .cal-daynum { font-size: 0.75rem; color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
+  .cal-day.today .cal-daynum {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px; border-radius: 999px;
+    background: var(--link); color: #fff;
+  }
+  .cal-chip {
+    display: block; border-radius: 5px; padding: 1px 5px;
+    font-size: 0.68rem; line-height: 1.5; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
+  }
+  .cal-chip-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
+  .cal-chip-vs { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
+  .cal-chip-other { background: var(--muted); color: var(--muted-foreground); }
+  .cal-more { font-size: 0.68rem; color: var(--muted-foreground); padding-left: 5px; }
+
+  .cal-detail { margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .cal-detail-title { margin: 0; font-size: 0.9rem; font-weight: 600; }
+  .cal-event {
+    border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px;
+    display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem;
+  }
+  .cal-event-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .cal-event-time { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .cal-event-spz { font-weight: 600; }
+  .cal-event-meta { color: var(--muted-foreground); }
+  .cal-event-parties { line-height: 1.5; }
+  .cal-event-links { display: flex; gap: 14px; flex-wrap: wrap; }
+  .cal-event-links a { color: var(--link); text-decoration: none; font-size: 0.82rem; }
+  .cal-event-links a:hover { text-decoration: underline; }
+  .src-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
+  .src-vs { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
+  .cal-note { margin: 12px 0 0; font-size: 0.78rem; color: var(--muted-foreground); }
+
   .loading, .feed-empty { color: var(--muted-foreground); font-size: 0.875rem; margin: 6px 0; }
   /* Dokud nejsou feedy (a fonty) načtené, neukazujeme nic – jinak by nejdřív
      probliskla hlavička s prázdnou stránkou a teprve pak naskočil obsah.
@@ -275,6 +343,7 @@
   <a href="#nsoud" class="sub">NS – 23 Cdo</a>
   <a href="#cjeu" class="sub">CJEU IP / IT</a>
   <a href="#casopisy" class="sub">Časopisy</a>
+  <a href="#kalendar">Kalendář jednání</a>
 </nav>
 
 <main class="container">
@@ -283,6 +352,7 @@
 <nav class="pagetabs" aria-label="Přepínání stránek">
   <a href="#prehled">Přehled</a>
   <a href="#recentni">Všechno nové</a>
+  <a href="#kalendar">Kalendář jednání</a>
 </nav>
 
 <div class="page" id="prehled">
@@ -354,6 +424,23 @@
       <p class="card-desc">Nová čísla a články za posledních 14 dní.</p>
     </div>
     <div class="card-content" id="feed-journals"><p class="loading">Načítám...</p></div>
+  </div>
+</section>
+
+<section class="page" id="kalendar" hidden>
+  <div class="card" id="jednani">
+    <div class="card-header">
+      <h2 class="card-title">Kalendář jednání – duševní vlastnictví</h2>
+      <span class="legend" id="cal-info"></span>
+      <p class="card-desc">
+        Nařízená jednání Městského soudu v Praze a Vrchního soudu v Praze
+        (civilní úsek), filtrovaná na senáty s IP agendou podle rozvrhů práce
+        obou soudů. Soudy přehledy zveřejňují zhruba na dva týdny dopředu a
+        v průběhu období je neaktualizují – aktuální stav jednání ověříte
+        klikem na jednání a odkazem na InfoSoud.
+      </p>
+    </div>
+    <div class="card-content" id="feed-kalendar"><p class="loading">Načítám...</p></div>
   </div>
 </section>
 
@@ -800,12 +887,232 @@ function renderDigest(data) {
   container.innerHTML = html;
 }
 
+/* ========== Kalendář jednání (hearings.json) ========== */
+// Jednání MS a VS Praha (civilní úsek) s příznakem `ip` – kalendář ukazuje
+// standardně jen IP senáty, přepínačem jde zobrazit i zbytek civilního úseku.
+const CAL_DOWS = ["Po", "Út", "St", "Čt", "Pá", "So", "Ne"];
+const INFOSOUD_ORGS = { MS: "MSPHAAB", VS: "VSPHAAB" };
+const COURT_LABELS = { MS: "MS Praha", VS: "VS Praha" };
+
+let calData = null;      // obsah hearings.json
+let calMonth = null;     // první den zobrazeného měsíce (Date)
+let calSelected = "";    // ISO datum rozkliknutého dne
+
+function fetchHearings() {
+  return fetch("hearings.json").then(r => {
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return r.json();
+  });
+}
+
+// ISO datum z lokálního Date – toISOString by přes UTC ukrajovalo den.
+function isoOf(d) {
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") +
+    "-" + String(d.getDate()).padStart(2, "0");
+}
+
+function czFromIso(iso) {
+  const p = String(iso || "").split("-");
+  return p.length === 3 ? +p[2] + ". " + +p[1] + ". " + p[0] : "";
+}
+
+function calFilters() {
+  const on = id => { const el = document.getElementById(id); return !el || el.checked; };
+  return { MS: on("flt-ms"), VS: on("flt-vs"), all: !!document.getElementById("flt-all") && document.getElementById("flt-all").checked };
+}
+
+// Jednání po aplikaci filtrů, seskupená podle ISO data.
+function calEventsByDay() {
+  const f = calFilters();
+  const byDay = {};
+  (calData.jednani || []).forEach(j => {
+    if (!j || !j.datum || !f[j.soud]) return;
+    if (!j.ip && !f.all) return;
+    (byDay[j.datum] = byDay[j.datum] || []).push(j);
+  });
+  Object.values(byDay).forEach(list =>
+    list.sort((a, b) => (a.hodina || "").localeCompare(b.hodina || "")));
+  return byDay;
+}
+
+function infosoudUrl(j) {
+  const court = (calData.courts || {})[j.soud] || {};
+  const org = court.infosoud_org || INFOSOUD_ORGS[j.soud] || "";
+  return "https://infosoud.gov.cz/InfoSoud/public/search.do?type=spzn&typSoudu=os" +
+    "&krajOrg=" + encodeURIComponent(org) + "&org=" +
+    "&cisloSenatu=" + encodeURIComponent(j.cislo_senatu) +
+    "&druhVec=" + encodeURIComponent(j.rejstrik) +
+    "&bcVec=" + encodeURIComponent(j.bc) +
+    "&rocnik=" + encodeURIComponent(j.rocnik) +
+    "&spamQuestion=23&agendaNc=CIVIL";
+}
+
+function courtBadge(j) {
+  const key = j.soud === "MS" ? "ms" : "vs";
+  return '<span class="src src-' + key + '">' + esc(COURT_LABELS[j.soud] || j.soud) + "</span>";
+}
+
+function renderCalGrid() {
+  const byDay = calEventsByDay();
+  const first = new Date(calMonth.getFullYear(), calMonth.getMonth(), 1);
+  const offset = (first.getDay() + 6) % 7;   // pondělí = 0
+  const start = new Date(first);
+  start.setDate(1 - offset);
+  const todayIso = isoOf(new Date());
+
+  let html = CAL_DOWS.map(d => '<div class="cal-dow">' + d + "</div>").join("");
+  for (let i = 0; i < 42; i++) {
+    const d = new Date(start);
+    d.setDate(start.getDate() + i);
+    const iso = isoOf(d);
+    const events = byDay[iso] || [];
+    const cls = ["cal-day"];
+    if (d.getMonth() !== calMonth.getMonth()) cls.push("other");
+    if (iso === todayIso) cls.push("today");
+    if (iso === calSelected) cls.push("selected");
+    if (events.length) cls.push("has-events");
+    // Den s jednáním je tlačítko – první klik rozbalí detail pod kalendářem.
+    const tag = events.length ? "button" : "div";
+    html += "<" + tag + ' class="' + cls.join(" ") + '" data-date="' + iso + '"' +
+      (events.length ? ' type="button" aria-label="Jednání ' + czFromIso(iso) + '"' : "") + ">";
+    html += '<span class="cal-daynum">' + d.getDate() + "</span>";
+    events.slice(0, 3).forEach(j => {
+      const chip = j.ip ? (j.soud === "MS" ? "cal-chip-ms" : "cal-chip-vs") : "cal-chip-other";
+      html += '<span class="cal-chip ' + chip + '">' +
+        esc((j.hodina ? j.hodina + " " : "") + j.spz) + "</span>";
+    });
+    if (events.length > 3) html += '<span class="cal-more">+' + (events.length - 3) + " další</span>";
+    html += "</" + tag + ">";
+  }
+  document.getElementById("cal-grid").innerHTML = html;
+  document.getElementById("cal-title").textContent =
+    calMonth.toLocaleDateString("cs-CZ", { month: "long", year: "numeric" });
+}
+
+function renderCalDetail() {
+  const box = document.getElementById("cal-detail");
+  const events = calSelected ? (calEventsByDay()[calSelected] || []) : [];
+  if (!events.length) {
+    box.hidden = true;
+    box.innerHTML = "";
+    return;
+  }
+  let html = '<h3 class="cal-detail-title">Jednání ' + czFromIso(calSelected) + "</h3>";
+  events.forEach(j => {
+    html += '<div class="cal-event">';
+    html += '<div class="cal-event-head">' +
+      '<span class="cal-event-time">' + esc(j.hodina || "–") + "</span>" +
+      courtBadge(j) +
+      '<span class="cal-event-spz">' + esc(j.spz) + "</span>" +
+      (j.ip ? '<span class="heslo">IP</span>' : "") +
+      "</div>";
+    const meta = [];
+    if (j.senat) meta.push("senát " + j.senat);
+    if (j.predseda) meta.push(j.predseda);
+    if (j.sin) meta.push("jednací síň " + j.sin);
+    html += '<div class="cal-event-meta">' + esc(meta.join(" · ")) + "</div>";
+    const parties = (j.ucastnici || []).filter(Boolean);
+    if (parties.length) {
+      html += '<div class="cal-event-parties">' + parties.map(esc).join("<br>") + "</div>";
+    }
+    html += '<div class="cal-event-links">' +
+      '<a href="' + esc(infosoudUrl(j)) + '" target="_blank" rel="noopener">' +
+      "Ověřit na InfoSoud ↗</a></div>";
+    html += "</div>";
+  });
+  box.innerHTML = html;
+  box.hidden = false;
+}
+
+function redrawCal() {
+  renderCalGrid();
+  renderCalDetail();
+}
+
+function calShiftMonth(delta) {
+  calMonth = new Date(calMonth.getFullYear(), calMonth.getMonth() + delta, 1);
+  redrawCal();
+}
+
+function renderKalendar(data) {
+  const container = document.getElementById("feed-kalendar");
+  if (!data || !Array.isArray(data.jednani)) {
+    container.innerHTML = '<p class="feed-empty">Kalendář jednání zatím není k dispozici.</p>';
+    return;
+  }
+  calData = data;
+  const now = new Date();
+  calMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+
+  container.innerHTML =
+    '<div class="cal-toolbar">' +
+      '<div class="cal-nav">' +
+        '<button type="button" id="cal-prev" aria-label="Předchozí měsíc">‹</button>' +
+        '<span class="cal-title" id="cal-title"></span>' +
+        '<button type="button" id="cal-next" aria-label="Další měsíc">›</button>' +
+        '<button type="button" id="cal-today">Dnes</button>' +
+      "</div>" +
+      '<div class="cal-filters">' +
+        '<label><input type="checkbox" id="flt-ms" checked> MS Praha</label>' +
+        '<label><input type="checkbox" id="flt-vs" checked> VS Praha</label>' +
+        '<label><input type="checkbox" id="flt-all"> i ostatní jednání civilního úseku</label>' +
+      "</div>" +
+    "</div>" +
+    '<div class="cal-wrap"><div class="cal-grid" id="cal-grid"></div></div>' +
+    '<div class="cal-detail" id="cal-detail" hidden></div>' +
+    '<p class="cal-note" id="cal-note"></p>';
+
+  // Poznámka pod kalendářem: odkud jsou data a jaké senáty se považují za IP.
+  const senMs = ((data.senaty || {}).MS || []).join(", ");
+  const senVs = ((data.senaty || {}).VS || []).join(", ");
+  const periods = Object.values(data.courts || {})
+    .map(c => c && c.obdobi && c.obdobi.do).filter(Boolean).sort();
+  let note = "Údaje jsou platné ke dni zpracování přehledů a v průběhu období se neaktualizují.";
+  if (periods.length) note += " Přehledy pokrývají období do " + czFromIso(periods[periods.length - 1]) + ".";
+  if (senMs) note += " IP senáty MS: " + senMs + ".";
+  if (senVs) note += " IP senáty VS: " + senVs + ".";
+  document.getElementById("cal-note").textContent = note;
+
+  const info = document.getElementById("cal-info");
+  if (info && data.generated) {
+    const d = new Date(data.generated);
+    if (!isNaN(d)) info.textContent = "aktualizováno " + d.toLocaleDateString("cs-CZ");
+  }
+
+  document.getElementById("cal-prev").addEventListener("click", () => calShiftMonth(-1));
+  document.getElementById("cal-next").addEventListener("click", () => calShiftMonth(1));
+  document.getElementById("cal-today").addEventListener("click", () => {
+    const n = new Date();
+    calMonth = new Date(n.getFullYear(), n.getMonth(), 1);
+    redrawCal();
+  });
+  ["flt-ms", "flt-vs", "flt-all"].forEach(id =>
+    document.getElementById(id).addEventListener("change", redrawCal));
+  document.getElementById("cal-grid").addEventListener("click", e => {
+    const day = e.target.closest(".cal-day.has-events");
+    if (!day) return;
+    calSelected = (calSelected === day.dataset.date) ? "" : day.dataset.date;
+    redrawCal();
+  });
+
+  // Rovnou rozklikneme nejbližší den s IP jednáním (dnešek nebo pozdější),
+  // ať je na první pohled vidět, co kalendář umí; měsíc se za ním posune.
+  const todayIso = isoOf(now);
+  const upcoming = Object.keys(calEventsByDay()).filter(d => d >= todayIso).sort()[0];
+  if (upcoming) {
+    calSelected = upcoming;
+    calMonth = new Date(+upcoming.slice(0, 4), +upcoming.slice(5, 7) - 1, 1);
+  }
+  redrawCal();
+}
+
 /* ========== Stránky a navigace ========== */
 // Obsah je rozdělený na dvě stránky; přepíná se podle adresy (#kotva).
 // Kotvy sekcí zůstávají platné – odkaz na #nsoud otevře druhou stránku.
 const PAGES = [
   { id: "prehled",  sections: ["dnesni", "dvatydny"] },
-  { id: "recentni", sections: ["nsoud", "cjeu", "casopisy"] }
+  { id: "recentni", sections: ["nsoud", "cjeu", "casopisy"] },
+  { id: "kalendar", sections: ["jednani"] }
 ];
 
 let currentPage = PAGES[0];
@@ -900,6 +1207,8 @@ function initApp() {
   // Dvoutýdenní přehled se generuje zvlášť (digest.py) – když chybí, jen
   // se nevykreslí; zbytek stránky na něj nečeká déle než na feedy.
   const digestPromise = fetchDigest().catch(() => null);
+  // Kalendář jednání – stejné pravidlo: chybějící soubor stránku nerozbije.
+  const hearingsPromise = fetchHearings().catch(() => null);
   initNav();
   // Tažení šířek visí na dokumentu, takže platí i pro tabulky, které
   // se vykreslí až po dotažení feedů.
@@ -910,8 +1219,8 @@ function initApp() {
   // neposkakuje. Selhání jednoho feedu ostatní nezdrží.
   // Čekáme i na fonty, ať text po odkrytí nepřeskočí na jiné písmo.
   const fontsReady = document.fonts ? document.fonts.ready.catch(() => {}) : Promise.resolve();
-  Promise.all([Promise.allSettled(feedPromises), digestPromise, fontsReady])
-    .then(([results, digest]) => {
+  Promise.all([Promise.allSettled(feedPromises), digestPromise, hearingsPromise, fontsReady])
+    .then(([results, digest, hearings]) => {
       FEEDS.forEach((f, idx) => {
         if (results[idx].status === "rejected") {
           failed(f.containerId);
@@ -923,6 +1232,7 @@ function initApp() {
       });
       renderToday(results);
       renderDigest(digest);
+      renderKalendar(hearings);
       // Až teď je jasná výška stránky – otevřeme kotvu z adresy (a přepočítáme
       // zvýraznění) ještě než stránku odkryjeme, ať nic nepřeskočí.
       navigate(location.hash, false);
