@@ -269,8 +269,13 @@ for _ in range(3):
         x["usek"] = "civilni"
     s.mark_ip(it, cfg_ms)
     s.merge_output(out, "MS", it, per, None, cfg_ms)
-check("opakovaný běh neduplikuje jednání", len(out["jednani"]) == len(ms_items),
-      f"{len(out['jednani'])} != {len(ms_items)}")
+ms_ip = sum(1 for j in s.mark_ip([dict(x) for x in ms_items], cfg_ms)
+            if j["ip"])
+check("opakovaný běh neduplikuje jednání", len(out["jednani"]) == ms_ip,
+      f"{len(out['jednani'])} != {ms_ip}")
+check("do archivu jdou jen IP jednání",
+      ms_ip < len(ms_items) and all(j["ip"] for j in out["jednani"]),
+      f"{ms_ip} z {len(ms_items)}")
 
 # Historie a zrušená jednání: jednání, které zmizí z nově vydaného přehledu
 # pokrývajícího jeho den, se nesmaže, jen označí jako zrušené. Termíny mimo
@@ -317,14 +322,27 @@ check("historie mimo období nového přehledu zůstává platná",
 check("proběhlá jednání se nepromazávají podle stáří",
       any(j["datum"] == "2026-07-01" for j in hist["jednani"]))
 
+# Když oddělení vypadne z rozvrhu ze seznamu IP senátů, jeho jednání z archivu
+# zmizí – nesmí se tvářit jako odvolané, protože soud ho pořád nařizuje.
+uzsi = dict(cfg_ms, senaty=[x for x in cfg_ms["senaty"] if x != "12 C"])
+bez_12c = json.loads(json.dumps(hist))
+it, per = s.parse_jednani_docx(build_docx(druhy, od="16.08.2026", do="22.08.2026"))
+for x in it:
+    x["usek"] = "civilni"
+s.mark_ip(it, uzsi)
+s.merge_output(bez_12c, "MS", it, per, None, uzsi)
+check("senát vyřazený z rozvrhu odejde z archivu",
+      find(bez_12c["jednani"], "12 C 1/2026") is None)
+
 # Dva úseky téhož soudu se nepřepisují navzájem.
 it2, _ = s.parse_jednani_docx(build_docx(upv_rows))
 for x in it2:
     x["usek"] = "spravni"
 s.mark_ip(it2, cfg_ms)
 s.merge_output(out, "MS", it2, ("2026-08-16", "2026-08-31"), None, cfg_ms)
-check("správní úsek nepřepíše civilní", len(out["jednani"]) == len(ms_items) + len(it2),
-      f"{len(out['jednani'])}")
+upv_ip = sum(1 for j in it2 if j["ip"])
+check("správní úsek nepřepíše civilní", len(out["jednani"]) == ms_ip + upv_ip,
+      f"{len(out['jednani'])} != {ms_ip} + {upv_ip}")
 check("v metadatech jsou oba úseky",
       set(out["courts"]["MS"]["useky"]) == {"civilni", "spravni"})
 

@@ -4,8 +4,9 @@ vlastnictví.
 
 Oba soudy zveřejňují přehledy nařízených jednání jako dokumenty (MSPH .docx,
 VS .pdf) na portálu justice. Tenhle scraper je stáhne, vytáhne z nich
-jednotlivá jednání a označí ta, která patří IP senátům. Výstup jde do
-docs/hearings.json, který čte kalendář na webu.
+jednotlivá jednání a nechá si ta, která patří IP senátům. Výstup jde do
+docs/hearings.json, který čte kalendář na webu; ostatní jednání se zahodí,
+ať se veřejně nerozepisují účastníci nesouvisejících sporů.
 
 Které senáty jsou IP se bere z rozvrhů práce obou soudů. Rozvrhy se často
 mění, proto je v hearings_config.json uložený aktuální seznam senátů a soudců
@@ -674,6 +675,10 @@ def scrape_jednani(court, cfg, prehled, local_file=None):
 def merge_output(existing, court, items, period, zdroj_url, cfg):
     """Zanese nový přehled do výstupu.
 
+    Ukládají se jen jednání v agendě duševního vlastnictví. Ostatní věci
+    soud v přehledu zveřejňuje také, ale do tohohle archivu nepatří a není
+    důvod rozepisovat jejich účastníky.
+
     Jednání se nikdy nemažou – kalendář je archiv, takže proběhlé termíny
     zůstávají. Když ale jednání zmizí z nově vydaného přehledu, který jeho
     den pokrývá, soud ho mezitím odvolal nebo přeložil; takový záznam se
@@ -685,14 +690,19 @@ def merge_output(existing, court, items, period, zdroj_url, cfg):
     # Nahrazuje se vždy jen jeden úsek jednoho soudu – civilní a správní
     # přehled pokrývají stejné dny, ale každý jiné senáty.
     usek = items[0].get("usek", "") if items else ""
-    nove = {(j.get("spz"), j.get("datum")) for j in items}
+    # Jestli jednání z přehledu zmizelo, se posuzuje proti celému dokumentu,
+    # ne jen proti jeho IP části: když oddělení vypadne ze seznamu IP senátů,
+    # jeho jednání z archivu odejde, ne že se označí za odvolané.
+    v_prehledu = {(j.get("spz"), j.get("datum")) for j in items}
+    items = [it for it in items if it.get("ip")]
     od, do = period if period else (None, None)
 
     zachovane = []
     for j in jednani:
         stejny_zdroj = j.get("soud") == court and j.get("usek", "") == usek
-        if stejny_zdroj and (j.get("spz"), j.get("datum")) in nove:
-            continue                      # přepíše ho čerstvá verze níže
+        if stejny_zdroj and (j.get("spz"), j.get("datum")) in v_prehledu:
+            # Přepíše ho čerstvá verze níže – a pokud už IP není, vypadne.
+            continue
         if (stejny_zdroj and period
                 and od <= (j.get("datum") or "") <= do):
             # Den spadá do nového přehledu, ale jednání v něm není.
@@ -955,6 +965,12 @@ def main():
     # 2) Přehledy jednání – soud jich může zveřejňovat víc (civilní úsek,
     #    správní úsek s žalobami proti ÚPV), každý jako vlastní dokument.
     output = load_json(OUTPUT_FILE)
+    # Dřívější běhy ukládaly celý přehled; archiv drží jen IP agendu.
+    ulozena = [j for j in output.get("jednani", []) if isinstance(j, dict)]
+    output["jednani"] = [j for j in ulozena if j.get("ip")]
+    if len(output["jednani"]) != len(ulozena):
+        print(f"Z archivu odebráno {len(ulozena) - len(output['jednani'])} "
+              f"jednání mimo IP agendu.")
     ok = False
     print("Přehledy jednání…")
     for court, cfg in config["courts"].items():
@@ -979,8 +995,7 @@ def main():
     output["generated"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     output["ics"] = write_ics(output)
     save_json(OUTPUT_FILE, output)
-    ip_count = sum(1 for j in output["jednani"] if j.get("ip"))
-    print(f"Hotovo: {len(output['jednani'])} jednání, z toho {ip_count} IP -> {OUTPUT_FILE}")
+    print(f"Hotovo: {len(output['jednani'])} IP jednání -> {OUTPUT_FILE}")
 
 
 if __name__ == "__main__":
