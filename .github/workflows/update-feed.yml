@@ -2,14 +2,13 @@ name: Update RSS Feed
 
 on:
   schedule:
-    # Pouštíme se každou hodinu, ale scrapuje se jen dvakrát denně. Zní to
-    # obráceně, tak proč: GitHub scheduled běhy nespouští v naplánovaný čas –
-    # od konce srpna 2026 je doručuje se zpožděním 4 až 7 hodin (a předtím
-    # celé sloty zahazoval). Kdy běh přijde, se tedy naplánovat nedá; dá se
-    # jen zařídit, aby nějaký běh přišel často, a rozhodnutí „scrapovat, nebo
-    # ne" udělat až uvnitř podle skutečného pražského času (viz „Naplánovat
-    # běh"). Minuta 5 je schválně mimo celou hodinu – na začátku hodiny má
-    # fronta špičku.
+    # Cron neurčuje, kdy se scrapuje – jen jak často se workflow ozve. GitHub
+    # totiž scheduled běhy nedoručuje spolehlivě: od konce srpna 2026 chodí
+    # se zpožděním hodin, celé dny mlčí (27. a 31. 8.) a hlavně jich pustí
+    # jen zlomek. Naplánováno je 24 výskytů denně, reálně dorazí zhruba
+    # jeden za tři až pět hodin – zahustit cron víc nepomůže, GitHub ostatní
+    # výskyty zahodí. Kdy se opravdu pracuje, rozhoduje až krok „Naplánovat
+    # běh" podle skutečného pražského času.
     - cron: '5 * * * *'
   workflow_dispatch:       # ruční spuštění
     inputs:
@@ -38,13 +37,12 @@ jobs:
           # posledního commitu s feedy – na to je potřeba kus historie, ne HEAD.
           fetch-depth: 50
 
-      # Feed má být hotový v 7:00 a ve 14:00 pražského času. Scrapuje se proto
-      # v oknech, která těmhle časům předcházejí: 4:00–7:00 a 11:00–14:00.
-      # Z hodinových běhů okno vždycky nějaký chytí (i při několikahodinovém
-      # zpoždění fronty jich do tří hodin dorazí několik) a první z nich práci
-      # udělá; ostatní pak vidí čerstvý commit a hned skončí, což trvá deset
-      # sekund. Kdyby okno prošlo úplně bez běhu, zmeškanou práci udělá první
-      # další – v noci se nescrapuje, čeká se na ranní okno.
+      # Feed má být hotový v 7:00 a ve 14:00 pražského času. Protože běhy chodí
+      # řídce a nepředvídatelně, nestačí čekat na jeden ve správnou chvíli:
+      # okna jsou proto široká (23:00–7:00 a 9:00–14:00) a uvnitř nich se
+      # scrapuje pokaždé, když je feed starší než dvě hodiny. Každý běh, který
+      # do okna spadne, tak posune data blíž k cíli – a ten poslední před 7:00
+      # nebo 14:00 rozhoduje o tom, co uživatel uvidí. Mimo okna se nedělá nic.
       #
       # Všechno se počítá v Europe/Prague, takže přechod mezi letním a zimním
       # časem se řeší sám a nejsou kvůli němu potřeba zdvojené cron výrazy.
@@ -52,48 +50,48 @@ jobs:
         id: plan
         run: |
           hour=$(TZ=Europe/Prague date +%-H)
-          today=$(TZ=Europe/Prague date +%Y-%m-%d)
+          dnes=$(TZ=Europe/Prague date +%F)
           # Poslední commit s feedy = kdy naposled nějaký běh práci opravdu
           # udělal. Když žádný takový v historii není, ber to jako dávno.
           last=$(git log --grep='^Update RSS feeds' -1 --format=%ct)
-          last=${last:-0}
+          stari=$(( $(date +%s) - ${last:-0} ))
 
-          # Do 4:00 se nedělá nic. Pak platí ranní cíl, od 11:00 odpolední:
-          # feed musí být novější než začátek okna. Když v okně žádný běh
-          # nedorazil, splní to první další – proto tu není žádná zvláštní
-          # záchranná větev, dohnání zmeškaného okna je totéž rozhodnutí.
-          if [ "$hour" -lt 4 ]; then
-            window=zadne; start=0
-          elif [ "$hour" -lt 11 ]; then
-            window=ranni;     start=$(TZ=Europe/Prague date -d "$today 04:00" +%s)
+          if [ "$hour" -ge 23 ] || [ "$hour" -lt 7 ]; then
+            window=ranni
+          elif [ "$hour" -ge 9 ] && [ "$hour" -lt 14 ]; then
+            window=odpoledni
           else
-            window=odpoledni; start=$(TZ=Europe/Prague date -d "$today 11:00" +%s)
+            window=zadne
           fi
 
           if [ '${{ github.event_name }}' = 'workflow_dispatch' ]; then
-            scrape=true; digest=true; duvod='ruční spuštění'
+            scrape=true; duvod='ruční spuštění'
           elif [ "$window" = zadne ]; then
-            scrape=false; digest=false; duvod='noc, na řadě je ranní okno'
-          elif [ "$last" -ge "$start" ]; then
-            scrape=false; digest=false; duvod="okno $window už má svůj běh"
-          elif [ $(( $(date +%s) - last )) -lt 3600 ]; then
-            # Ranní okno se dohánělo těsně před 11:00 – ať odpolední hned
-            # nescrapuje znovu to samé.
-            scrape=false; digest=false; duvod='feed je z poslední hodiny'
+            scrape=false; duvod='mimo okna'
+          elif [ "$stari" -lt 7200 ]; then
+            scrape=false; duvod="okno $window, feed je mladší než dvě hodiny"
           else
-            scrape=true; digest=false; duvod="okno $window"
+            scrape=true; duvod="okno $window"
           fi
 
-          # Dvoutýdenní přehled jednou týdně: v pondělí s ranním během, ať je
-          # hotový dřív, než si pro něj v 8:30 přijde newsletter.
-          if [ "$scrape" = true ] && [ "$window" = ranni ] \
-             && [ "$(TZ=Europe/Prague date +%u)" = "1" ]; then
+          # Dvoutýdenní přehled jednou týdně: v pondělí ráno, ať je hotový dřív,
+          # než si pro něj v 8:30 přijde newsletter. Ranní okno začíná už v neděli
+          # ve 23:00, proto se kromě dne hlídá i to, že je po půlnoci. Když už
+          # dnešní přehled existuje, podruhé se negeneruje – během jednoho rána
+          # se do okna vejde víc scrapovacích běhů.
+          digest=false
+          if [ '${{ github.event_name }}' = 'workflow_dispatch' ]; then
             digest=true
+          elif [ "$scrape" = true ] && [ "$window" = ranni ] && [ "$hour" -lt 7 ] \
+               && [ "$(TZ=Europe/Prague date +%u)" = "1" ]; then
+            prehled=$(TZ=Europe/Prague date -d \
+              "$(grep -m1 '"generated"' docs/digest.json | cut -d'"' -f4)" +%F 2>/dev/null || true)
+            [ "$prehled" = "$dnes" ] || digest=true
           fi
 
           echo "scrape=$scrape" >> "$GITHUB_OUTPUT"
           echo "digest=$digest" >> "$GITHUB_OUTPUT"
-          echo "$(TZ=Europe/Prague date '+%a %H:%M %Z') -> scrapery: $scrape, přehled: $digest ($duvod)"
+          echo "$(TZ=Europe/Prague date '+%a %H:%M %Z'), feed starý $(( stari / 60 )) min -> scrapery: $scrape, přehled: $digest ($duvod)"
 
       - uses: actions/setup-python@v6
         if: steps.plan.outputs.scrape == 'true'
