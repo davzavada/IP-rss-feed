@@ -981,11 +981,13 @@ def write_ics(output, path=None):
             "období se neaktualizují."
         )
 
+        # Lámat se bude až při zápisu – kdyby se řádek zalomil i tady,
+        # druhé lámání by počítalo „\r\n " jako obsah a rozsekalo ho podruhé.
         lines += [
-            ics_fold("SUMMARY:" + ics_escape(summary)),
-            ics_fold("LOCATION:" + ics_escape(location)),
-            ics_fold("DESCRIPTION:" + ics_escape("\n".join(desc))),
-            ics_fold("URL:" + infosoud_url(j, courts)),
+            "SUMMARY:" + ics_escape(summary),
+            "LOCATION:" + ics_escape(location),
+            "DESCRIPTION:" + ics_escape("\n".join(desc)),
+            "URL:" + infosoud_url(j, courts),
             "STATUS:CONFIRMED",
             "TRANSP:OPAQUE",
             "END:VEVENT",

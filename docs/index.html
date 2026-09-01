@@ -396,6 +396,13 @@
   .cal-event-links { display: flex; gap: 14px; flex-wrap: wrap; }
   .cal-event-links a { color: var(--link); text-decoration: none; font-size: var(--fs-sm); }
   .cal-event-links a:hover { text-decoration: underline; }
+  /* Stažení .ics je akce, ne odkaz, ale vedle odkazu na InfoSoud má vypadat
+     stejně – tlačítko se tedy zbaví vlastního vzhledu. */
+  .cal-event-links .cal-ics {
+    background: none; border: 0; padding: 0; cursor: pointer;
+    font: inherit; font-size: var(--fs-sm); color: var(--link);
+  }
+  .cal-event-links .cal-ics:hover { text-decoration: underline; }
   /* Změna proti minulému přehledu – u jednání v bublině i v seznamu pod mřížkou. */
   .cal-zmena {
     display: inline-block; border-radius: 6px; padding: 1px 7px;
@@ -1395,14 +1402,165 @@ function zmenyHtml() {
   return html + "</ul></div>";
 }
 
+/* ========== Jedno jednání jako .ics ========== */
+// Celý kalendář se dá přihlásit z hearings.ics; tohle je pro jedno jednání,
+// které si člověk chce prostě jen jednou hodit do svého kalendáře. Soubor
+// skládá prohlížeč ze stejných dat a podle stejných pravidel jako scraper
+// (scraper_hearings.py: write_ics), ať se přihlášený kalendář a stažená
+// událost neliší.
+const ICS_VTIMEZONE = [
+  "BEGIN:VTIMEZONE",
+  "TZID:Europe/Prague",
+  "BEGIN:STANDARD",
+  "DTSTART:19701025T030000",
+  "RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU",
+  "TZOFFSETFROM:+0200",
+  "TZOFFSETTO:+0100",
+  "TZNAME:CET",
+  "END:STANDARD",
+  "BEGIN:DAYLIGHT",
+  "DTSTART:19700329T020000",
+  "RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU",
+  "TZOFFSETFROM:+0100",
+  "TZOFFSETTO:+0200",
+  "TZNAME:CEST",
+  "END:DAYLIGHT",
+  "END:VTIMEZONE"
+];
+
+function icsEscape(s) {
+  return String(s).replace(/\\/g, "\\\\").replace(/;/g, "\\;")
+    .replace(/,/g, "\\,").replace(/\n/g, "\\n");
+}
+
+// RFC 5545: řádek nejvýš 75 oktetů, pokračování začíná mezerou. Měří se
+// bajty v UTF-8, ne znaky – jinak by se diakritika do limitu nevešla.
+function icsFold(line) {
+  const enc = new TextEncoder();
+  if (enc.encode(line).length <= 75) return line;
+  const out = [];
+  let cur = "", delka = 0;
+  for (const ch of line) {
+    const n = enc.encode(ch).length;
+    if (delka + n > (out.length ? 74 : 75)) { out.push(cur); cur = ""; delka = 0; }
+    cur += ch; delka += n;
+  }
+  if (cur) out.push(cur);
+  return out.join("\r\n ");
+}
+
+// UID musí sedět s hearings.ics (SHA-1 z „soud|spz|datum|hodina"), aby se
+// stažená událost tomu, kdo má kalendář přihlášený, nezaložila podruhé.
+// Web Crypto je jen v zabezpečeném kontextu; mimo něj (otevřeno z disku)
+// zbývá čitelná náhrada – o ostrý provoz tam stejně nejde.
+function icsUid(j) {
+  const zaklad = [j.soud, j.spz, j.datum, j.hodina]
+    .map(x => x == null ? "" : x).join("|");
+  const nahrada = zaklad.replace(/[^0-9A-Za-z]+/g, "-").toLowerCase();
+  if (!(window.crypto && crypto.subtle)) return Promise.resolve(nahrada);
+  return crypto.subtle.digest("SHA-1", new TextEncoder().encode(zaklad))
+    .then(buf => Array.from(new Uint8Array(buf),
+      b => b.toString(16).padStart(2, "0")).join(""))
+    .catch(() => nahrada);
+}
+
+// „20260901T071500Z" – DTSTAMP je vždycky v UTC.
+function icsStamp() {
+  return new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d+Z$/, "Z");
+}
+
+function icsForEvent(j) {
+  return icsUid(j).then(uid => {
+    const host = location.hostname || "rss.davidzavada.cz";
+    const courts = (calData && calData.courts) || {};
+    const soud = (courts[j.soud] || {}).nazev || COURT_LABELS[j.soud] || j.soud || "";
+    const ymd = String(j.datum).replace(/-/g, "");
+    let lines = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//IP-rss-feed//Kalendar jednani IP//CS",
+      "CALSCALE:GREGORIAN",
+      "METHOD:PUBLISH",
+      "X-WR-TIMEZONE:Europe/Prague"
+    ].concat(ICS_VTIMEZONE,
+      ["BEGIN:VEVENT", "UID:" + uid + "@" + host, "DTSTAMP:" + icsStamp()]);
+
+    const m = /(\d{1,2}):(\d{2})/.exec(j.hodina || "");
+    if (m) {
+      const dvojcifr = n => String(n).padStart(2, "0");
+      const zacatek = dvojcifr(m[1]) + dvojcifr(m[2]) + "00";
+      const konec = dvojcifr((Number(m[1]) + 1) % 24) + dvojcifr(m[2]) + "00";
+      lines.push("DTSTART;TZID=Europe/Prague:" + ymd + "T" + zacatek);
+      lines.push("DTEND;TZID=Europe/Prague:" + ymd + "T" + konec);
+    } else {
+      // Bez hodiny nemá smysl předstírat čas – celodenní záznam.
+      const d = new Date(j.datum + "T00:00:00");
+      d.setDate(d.getDate() + 1);
+      lines.push("DTSTART;VALUE=DATE:" + ymd);
+      lines.push("DTEND;VALUE=DATE:" + isoOf(d).replace(/-/g, ""));
+    }
+
+    const misto = soud + (j.sin ? ", jednací síň " + j.sin : "");
+    const popis = ["Spisová značka: " + (j.spz || "")];
+    if (j.predseda) popis.push("Předseda senátu: " + j.predseda);
+    if (j.senat) popis.push("Senát: " + j.senat);
+    if (j.ucastnici && j.ucastnici.length) {
+      popis.push("Účastníci: " + j.ucastnici.join("; "));
+    }
+    popis.push("Stav řízení: " + infosoudUrl(j));
+    popis.push("Údaje jsou platné ke dni zpracování přehledu soudem a " +
+      "v průběhu období se neaktualizují.");
+
+    lines = lines.concat([
+      "SUMMARY:" + icsEscape(caseName(j)),
+      "LOCATION:" + icsEscape(misto),
+      "DESCRIPTION:" + icsEscape(popis.join("\n")),
+      "URL:" + infosoudUrl(j),
+      "STATUS:CONFIRMED",
+      "TRANSP:OPAQUE",
+      "END:VEVENT",
+      "END:VCALENDAR"
+    ]);
+    return lines.map(icsFold).join("\r\n") + "\r\n";
+  });
+}
+
+// „jednani-3-cmo-25-2026-2026-08-17.ics" – bez diakritiky a mezer, ať se
+// jméno souboru přenese i tam, kde na ně nejsou zvyklí.
+function icsFileName(j) {
+  const zaklad = (j.spz || caseName(j)) + " " + (j.datum || "");
+  return "jednani-" + zaklad.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^0-9A-Za-z]+/g, "-").replace(/^-+|-+$/g, "").toLowerCase() + ".ics";
+}
+
+function stahniIcs(j) {
+  icsForEvent(j).then(text => {
+    const url = URL.createObjectURL(
+      new Blob([text], { type: "text/calendar;charset=utf-8" }));
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = icsFileName(j);
+    // Kliknutí na pomocný odkaz nesmí probublat na dokument – tam ho čeká
+    // posluchač, který zavírá bublinu s detailem, a ta by po stažení zmizela.
+    a.addEventListener("click", e => e.stopPropagation());
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    // Odkaz na blob se ruší až po kliknutí, jinak by stahování nedoběhlo.
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+  });
+}
+
 // Detail jednání do bubliny. `nadpis` je jen u celodenního výpisu –
 // u jednoho jednání by nad jeho jménem jen zabíral místo.
-function calPopHtml(events, nadpis) {
+// `datum` a `zaklad` (pořadí prvního jednání v tom dni) nese tlačítko na
+// stažení .ics – podle nich si ho posluchač v bublině zase najde.
+function calPopHtml(events, nadpis, datum, zaklad) {
   let html = '<span class="cal-pop-arrow"></span>' +
     '<button type="button" class="cal-pop-close" aria-label="Zavřít">✕</button>' +
     '<div class="cal-pop-body">';
   if (nadpis) html += '<h3 class="cal-detail-title">' + esc(nadpis) + "</h3>";
-  events.forEach(j => {
+  events.forEach((j, poradi) => {
     // Oddělovač „v." zvýrazníme, ať se neztratí v názvech typu
     // „Hudební divadlo v Karlíně v. Jiří Strach".
     const name = esc(caseName(j)).replace(
@@ -1431,7 +1589,11 @@ function calPopHtml(events, nadpis) {
     }
     html += '<div class="cal-event-links">' +
       '<a href="' + esc(infosoudUrl(j)) + '" target="_blank" rel="noopener">' +
-      "Otevřít na InfoSoudu ↗</a></div>";
+      "Otevřít na InfoSoudu ↗</a>" +
+      '<button type="button" class="cal-ics" data-date="' + esc(datum) +
+      '" data-idx="' + (zaklad + poradi) + '" title="Uložit tohle jednání ' +
+      'jako událost do vlastního kalendáře">Stáhnout .ics</button>' +
+      "</div>";
     html += "</div>";
   });
   return html + "</div>";
@@ -1487,7 +1649,8 @@ function openCalPop(anchor) {
   if (!events.length) return;
   closeCalPop();
   const box = document.getElementById("cal-pop");
-  box.innerHTML = calPopHtml(events, idx < 0 ? "Jednání " + czFromIso(datum) : "");
+  box.innerHTML = calPopHtml(events, idx < 0 ? "Jednání " + czFromIso(datum) : "",
+    datum, idx < 0 ? 0 : idx);
   box.hidden = false;
   placeCalPop(anchor);
   anchor.classList.add("is-open");
@@ -1574,7 +1737,12 @@ function renderKalendar(data) {
     else openCalPop(btn);
   });
   document.getElementById("cal-pop").addEventListener("click", e => {
-    if (e.target.closest(".cal-pop-close")) closeCalPop();
+    if (e.target.closest(".cal-pop-close")) { closeCalPop(); return; }
+    const ics = e.target.closest(".cal-ics");
+    if (!ics) return;
+    const den = calEventsByDay()[ics.dataset.date] || [];
+    const j = den[Number(ics.dataset.idx)];
+    if (j) stahniIcs(j);
   });
   // Klik jinam a Esc bublinu zavřou; při změně velikosti okna by šipka
   // ukazovala mimo, tak ji taky zavřeme.
