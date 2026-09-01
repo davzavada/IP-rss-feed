@@ -1,56 +1,15 @@
 {
-  "generated": "2026-08-31T16:50:23.957526+00:00",
-  "from": "2026-08-17",
-  "to": "2026-08-31",
-  "total": 64,
-  "covered": 18,
-  "intro": "Období bylo velmi intenzivní v oblasti digitálního práva, zejména v otázkách regulace AI a ochrany osobních údajů. Významné jsou nové rozsudky SDEU k geo-blockingu a novinářské výjimce GDPR, spolu s diskusí o autorskoprávním licencování pro AI.",
+  "generated": "2026-09-01T05:18:43.127596+00:00",
+  "from": "2026-08-18",
+  "to": "2026-09-01",
+  "total": 62,
+  "covered": 15,
+  "intro": "Období bylo charakteristické významnými rozsudky Soudního dvora EU v oblasti GDPR a autorského práva, zejména v otázkách geo-blockingu a novinářského vyjmutí. Výrazný prostor zaujala problematika umělé inteligence v kontextu licencování a kontraktace, spolu s rozvojem judikatury k standardně esenciálním patentům (FRAND).",
   "blocks": [
     {
-      "title": "AI a digitální právo",
-      "text": "Diskutuje se o nutnosti kalibrace autorského práva a zavedení licencování pro trénink AI. V oblasti smluv bylo zdůrazněno, že algoritmy nemají právní subjektivitu a jsou pouze technickou podporou uživatele, který za ně nese odpovědnost.",
+      "title": "Ochrana dat a GDPR",
+      "text": "Soudní dvůr EU upřesnil, že zveřejňování jmen sportovců porušujících antidopingová pravidla je přípustné a že zpřístupnění trestních rozsudků za platbu nespadá pod novinářské vyjmutí, pokud chybí redakční linie a etika. V předběžní otázce zkoumá, zda vnitrostátní promlčecí lhůty mohou legitimizovat uchovávání dat po vypršení konkrétních lhůt stanovených GDPR.",
       "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "Právník",
-          "title": "Kontraktace za užití algoritmů",
-          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-9.html?a=4061"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "Jurisprudence",
-          "title": "Role technologií v právním vzdělávání",
-          "link": "https://www.jurisprudence.cz/cz/casopis/role-technologii-v-pravnim-vzdelavani.m-1041.html"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JIPLP",
-          "title": "Artificial intelligence—a call to recalibrate copyright law?",
-          "link": "https://doi.org/10.1093/jiplp/jpag067"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JIPLP",
-          "title": "European Parliament and House of Lords publish reports on AI and copyright: policy directions for artificial intelligence and copyright in the EU and the UK",
-          "link": "https://doi.org/10.1093/jiplp/jpag061"
-        }
-      ]
-    },
-    {
-      "title": "GDPR a ochrana dat",
-      "text": "SDEU upřesnil, že zpřístupnění trestních záznamů za platbu nemusí být novinářskou činností, pokud chybí etika a redakční linie. Dále bylo potvrzeno, že zveřejňování jmen sportovců porušujících antidopingová pravidla je v zásadě přípustné.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "Právník",
-          "title": "Soudní dvůr a zviditelnění práva být zapomenut",
-          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-9.html?a=4060"
-        },
         {
           "src": "cjeu",
           "label": "CJEU",
@@ -75,8 +34,8 @@
       ]
     },
     {
-      "title": "Autorské právo a distribuce",
-      "text": "SDEU rozhodl, že účinný geo-blocking zabraňuje uznání „šíření veřejnosti“ v zablokované zemi. Zároveň byl potvrzen legitimní charakter reziduálních práv na odměnu pro tvůrce v rámci směrnice CDSMD.",
+      "title": "Autorské právo a AI",
+      "text": "SDEU rozhodl, že účinný geo-blocking znemožňuje uznání „šíření veřejnosti“ v zemi, kde je dílo chráněno. Souběžně probíhá diskuse o nutnosti licencování tréninkových dat pro AI a o legitimnosti reziduálních práv na odměnu pro tvůrce v rámci směrnice CDSMD.",
       "sources": [
         {
           "src": "journals",
@@ -89,8 +48,8 @@
           "src": "journals",
           "label": "Časopis",
           "tag": "JIPLP",
-          "title": "A wolf in sheep’s clothing: the hidden issues in Institutul G. Călinescu",
-          "link": "https://doi.org/10.1093/jiplp/jpag075"
+          "title": "Artificial intelligence—a call to recalibrate copyright law?",
+          "link": "https://doi.org/10.1093/jiplp/jpag067"
         },
         {
           "src": "cjeu",
@@ -98,12 +57,19 @@
           "tag": "Ruling",
           "title": "C-788/24 (Anne Frank Fonds)",
           "link": "https://curia.europa.eu/juris/liste.do?num=C-788/24"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JIPLP",
+          "title": "European Parliament and House of Lords publish reports on AI and copyright: policy directions for artificial intelligence and copyright in the EU and the UK",
+          "link": "https://doi.org/10.1093/jiplp/jpag061"
         }
       ]
     },
     {
-      "title": "Patenty a standardy FRAND",
-      "text": "Německý spolkový soudní dvůr v judikatuře FRAND Defence III postupně rozvíjí přístup k litigaci standardně esenciálních patentů. V EU se rovněž analyzuje aplikace exportní výjimky z doplňkových ochranných certifikátů (SPC).",
+      "title": "Patenty a FRAND",
+      "text": "Německý spolkový soudní dvůr v judikatuře FRAND Defence III postupně rozvíjí přístup k litigaci standardně esenciálních patentů v souladu s rámcem SDEU. V oblasti farmacie byla analyzována aplikace exportní výjimky z doplňkových ochranných certifikátů (SPC) a její dopad na konkurenci.",
       "sources": [
         {
           "src": "journals",
@@ -129,15 +95,15 @@
       ]
     },
     {
-      "title": "Známky a hospodářská soutěž",
-      "text": "Analýzy ukazují, že limity provizí FIFA pro agenty jsou neslučitelné s právem EU o konkurenci. V oblasti luxusní módy může komerční prodej výrazně změněného zboží vést k odpovědnosti za zneužití ochranných známek.",
+      "title": "Digitální antitrust a kontrakty",
+      "text": "Právní analýzy varují před aplikací analogie zastoupení u algoritmické kontraktace, neboť algoritmus nemá právní subjektivitu a je pouze technickou podporou uživatele. Aktuální publikace se navíc zaměřují na specifika ochrany soutěže v éře velkých online platforem.",
       "sources": [
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "TLQ",
-          "title": "The Ffar’s Service Fee Caps as a Restriction of Competition by Object. Is There a Way to Save Them?",
-          "link": "https://tlq.ilaw.cas.cz/article/view/1048"
+          "tag": "Právník",
+          "title": "Kontraktace za užití algoritmů",
+          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-9.html?a=4061"
         },
         {
           "src": "journals",
@@ -145,13 +111,19 @@
           "tag": "TLQ",
           "title": "Václav Šmejkal, Digitální antitrust: EU a ochrana hospodářské soutěžev éře velkých online platforem (Digital Antitrust: EU Competition Lawin the Era of Large Online Platforms). Prague: Karolinum, 2026, 216 pp.",
           "link": "https://tlq.ilaw.cas.cz/article/view/1050"
-        },
+        }
+      ]
+    },
+    {
+      "title": "Ochranné známky a nekalá soutěž",
+      "text": "Nejvyšší soud ČR potvrdil v konkrétním sporu nároky z nekalosoutěžního jednání. V oblasti značek byla zkoumána problematika komerčního prodeje výrazně restaurované luxusní módy a absolutní důvody pro odmítnutí registrace znaků s kulturním významem.",
+      "sources": [
         {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "Revisiting Restrictions By Object in CJEU Case Law: The Legalistic Approach to Art. 101(1) TFEU within and Beyond the Antitrust-IP Interface",
-          "link": "https://doi.org/10.1093/grurint/ikag077"
+          "src": "nsoud",
+          "label": "NS 23 Cdo",
+          "tag": "",
+          "title": "23 Cdo 1578/2026",
+          "link": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/366FE7BF05F96D13C1258E5A001BB41D/$file/23%20Cdo%201578_2026.pdf?openElement"
         },
         {
           "src": "journals",
@@ -159,9 +131,16 @@
           "tag": "IIC",
           "title": "The Legal Limits of Luxury: Restricting Third-Party Restoration of Luxury Fashion",
           "link": "https://doi.org/10.1007/s40319-026-01752-3"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "Trademarking Signs with Cultural Significance: How to Position Simultaneous and Diachronic Rights Overlap in a Spectrum of Absolute Grounds of Refusal",
+          "link": "https://doi.org/10.1093/grurint/ikag076"
         }
       ]
     }
   ],
-  "input_hash": "c4f40112087f1b2caf39456fdd21e681ce2e202c2d9a258f659083125ef5211e"
+  "input_hash": "7055578cf58ce655e4c1d1602a9f95153c2e246cec622d614b4e0cc99f05d1c9"
 }
