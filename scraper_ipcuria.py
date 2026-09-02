@@ -11,12 +11,11 @@ from bs4 import BeautifulSoup
 
 from feed_common import (
     CJEU_PROMPT,
+    USER_AGENT,
     filter_by_first_seen,
-    gemini_enabled,
     gemini_summarize_text,
-    load_json,
-    prune_meta,
-    save_json,
+    prune_meta_file,
+    summarize_with_cache,
 )
 
 CURIA_BASE = "https://curia.europa.eu/juris/liste.do?num="
@@ -24,10 +23,6 @@ OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "ipcur
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ipcuria_seen.json")
 # Cache AI shrnutí podle guid ({guid: {"summary": ..., "tag": ...}}).
 META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ipcuria_meta.json")
-USER_AGENT = (
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
-)
 
 SOURCES = [
     ("https://ipcuria.eu/all_preliminary_rulings.php", "Ruling"),
@@ -94,7 +89,7 @@ def fetch_all():
             if dt < cutoff:
                 continue
 
-            # Typ rozhodnutí (pro Ruling/Appeal stránky)
+            # Typ rozhodnutí (rozsudek / usnesení) u rulings
             type_match = re.search(r"(Judgement|Judgment|Order)", text)
             detail_type = ""
             if type_match:
@@ -363,45 +358,28 @@ def enrich_summaries(decisions):
     že tam shrnutí nechybí omylem. Poznámka není konečná: dokud položka
     zůstane v okně, zkouší se to při každém běhu znovu.
     """
-    meta = load_json(META_FILE)
+    def summarize(d, cached):
+        text, source, doc_url = case_text_for_summary(d)
+        if text:
+            summary, tag = gemini_summarize_text(_trim_for_summary(text), CJEU_PROMPT)
+            if not summary:
+                print(f"    [diag] {_guid(d)}: Gemma nevrátila shrnutí")
+                return None
+            got = {"summary": summary, "tag": tag, "source": source, "note": ""}
+            if doc_url:
+                got["doc_url"] = doc_url
+            return got
+        if d["category"] == "Referral":
+            return {"note": QUESTIONS_PENDING_NOTE}
+        return None
 
-    def apply(d, m):
-        d["summary"] = m.get("summary", "")
-        d["tag"] = m.get("tag", "")
-        d["note"] = "" if m.get("summary") else m.get("note", "")
-        d["doc_url"] = m.get("doc_url", "")
-
-    if not gemini_enabled():
-        for d in decisions:
-            apply(d, meta.get(_guid(d), {}))
-        return decisions
-
-    summarized = 0
-    calls = 0
+    decisions = summarize_with_cache(
+        decisions, META_FILE, _guid, summarize,
+        fields=("summary", "tag", "note", "doc_url"),
+    )
     for d in decisions:
-        g = _guid(d)
-        m = meta.get(g, {})
-        if not m.get("summary"):
-            text, source, doc_url = case_text_for_summary(d)
-            if text:
-                calls += 1
-                summary, tag = gemini_summarize_text(_trim_for_summary(text), CJEU_PROMPT)
-                if summary:
-                    m = {"summary": summary, "tag": tag, "source": source}
-                    if doc_url:
-                        m["doc_url"] = doc_url
-                    meta[g] = m
-                    summarized += 1
-                else:
-                    print(f"    [diag] {g}: Gemma nevrátila shrnutí")
-            elif d["category"] == "Referral":
-                m = {"note": QUESTIONS_PENDING_NOTE}
-                meta[g] = m
-        apply(d, m)
-
-    save_json(META_FILE, meta)
-    if calls:
-        print(f"  AI: {summarized}/{calls} shrnutí vygenerováno")
+        if d["summary"]:
+            d["note"] = ""
     return decisions
 
 
@@ -421,7 +399,7 @@ def build_rss(decisions):
         "rel": "self", "type": "application/rss+xml",
     })
     SubElement(channel, "description").text = (
-        "Latest CJEU IP case law: preliminary rulings, referrals, appeals"
+        "Latest CJEU IP case law: preliminary rulings and referrals"
     )
     SubElement(channel, "language").text = "en"
     SubElement(channel, "lastBuildDate").text = datetime.now(timezone.utc).strftime(
@@ -437,7 +415,7 @@ def build_rss(decisions):
         SubElement(item, "title").text = title
 
         SubElement(item, "link").text = d["curia_url"]
-        SubElement(item, "guid", isPermaLink="false").text = f"{d['category']}-{d['case_ref']}"
+        SubElement(item, "guid", isPermaLink="false").text = _guid(d)
 
         if d.get("is_new"):
             SubElement(item, "is-new").text = "true"
@@ -494,7 +472,7 @@ def main():
     decisions = enrich_summaries(decisions)  # AI shrnutí jen na ponechané
 
     # Cache shrnutí prořízneme podle stavu prvního výskytu, ať neroste donekonečna
-    save_json(META_FILE, prune_meta(load_json(META_FILE), STATE_FILE))
+    prune_meta_file(META_FILE, STATE_FILE)
 
     for d in decisions:
         print(f"  [{d['category']}] {d['case_ref']} {d['case_name']} ({d['date_str']})")

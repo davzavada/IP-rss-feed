@@ -5,13 +5,15 @@ volitelné AI shrnutí přes Gemma (Gemini API).
 Sledování prvního výskytu: každý feed si drží JSON {guid: ISO datum prvního
 výskytu}. Podle něj:
   - ponecháme jen položky s prvním výskytem do `weeks` týdnů zpět,
-  - označíme položky poprvé viděné dnes (item["is_new"] = True).
+  - označíme položky, které přibyly v posledních 24 hodinách
+    (item["is_new"] = True).
 
 Tím je doba zobrazení stabilní (nezávisí na tom, když zdroj přepíše datum)
 a u všech feedů jednotná.
 
 AI shrnutí: jednotný klient Gemma 4 31B (štědrý free-tier) s throttlingem
-a opakováním při 429/5xx. Sdílí ho hlavní scraper i ostatní feedy.
+a opakováním při 429/5xx. Sdílí ho hlavní scraper i ostatní feedy. Cache
+shrnutí mají všechny feedy stejnou (summarize_with_cache).
 """
 
 import base64
@@ -23,16 +25,30 @@ from datetime import datetime, timedelta, timezone
 
 import requests
 
+# Weby soudů i vydavatelů občas holý requests odmítnou – hlásíme se jako
+# běžný prohlížeč. Sdílí to každý scraper, ať se řetězec neopisuje.
+USER_AGENT = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+)
 
-def load_seen(state_file):
-    """Načte {guid: iso_datum_prvniho_vyskytu}."""
-    if not os.path.exists(state_file):
-        return {}
-    with open(state_file, "r", encoding="utf-8") as f:
-        return json.load(f)
+# Jak dlouho držet záznam o prvním výskytu. Musí být delší než nejdelší
+# zobrazované okno (CJEU 8 týdnů), jinak by se položka po vypadnutí ze stavu
+# označila podruhé jako nová. Cache shrnutí se prořezává podle téhož stavu.
+SEEN_PRUNE_DAYS = 120
+
+# „Nové" = přibylo v posledních 24 hodinách. Kalendářní den se k tomu nehodí:
+# ranní okno běhů (23:00–7:00 Praha) jde přes půlnoc, takže by položky
+# nalezené před půlnocí přišly o příznak dřív, než si je ráno někdo přečte.
+NEW_WINDOW = timedelta(hours=24)
 
 
-def save_seen(state_file, seen, prune_days=90):
+def is_new(first_seen, now=None):
+    """True, když položka přibyla v posledních NEW_WINDOW hodinách."""
+    return first_seen >= (now or datetime.now(timezone.utc)) - NEW_WINDOW
+
+
+def save_seen(state_file, seen, prune_days=SEEN_PRUNE_DAYS):
     """Uloží stav, vyhodí záznamy starší než prune_days."""
     cutoff = datetime.now(timezone.utc) - timedelta(days=prune_days)
     pruned = {}
@@ -49,16 +65,15 @@ def save_seen(state_file, seen, prune_days=90):
 def filter_by_first_seen(items, guid_of, state_file, weeks=2):
     """Ponechá jen položky s prvním výskytem do `weeks` týdnů zpět.
 
-    Každé ponechané položce nastaví item["is_new"] = True, pokud byla
-    poprvé viděna dnes. Stav prvního výskytu zároveň uloží.
+    Každé ponechané položce nastaví item["is_new"] = True, pokud přibyla
+    v posledních 24 hodinách. Stav prvního výskytu zároveň uloží.
 
     items    – seznam dict položek
     guid_of  – funkce item -> stabilní identifikátor (str)
     """
-    seen = load_seen(state_file)
+    seen = load_json(state_file)
     now = datetime.now(timezone.utc)
     cutoff = now - timedelta(weeks=weeks)
-    today = now.date()
 
     kept = []
     for item in items:
@@ -69,7 +84,7 @@ def filter_by_first_seen(items, guid_of, state_file, weeks=2):
             seen[guid] = now.isoformat()
         first_seen = datetime.fromisoformat(seen[guid])
         if first_seen >= cutoff:
-            item["is_new"] = (first_seen.date() == today)
+            item["is_new"] = is_new(first_seen, now)
             # Zdroje bez data vydání (weby, které ho neuvádějí) si tímhle
             # můžou doplnit aspoň datum, kdy položka přibyla.
             item["first_seen"] = first_seen
@@ -97,15 +112,58 @@ def save_json(path, data):
 
 def prune_meta(meta, state_file):
     """Ponechá v meta cache jen záznamy, jejichž klíč je i ve stavu prvního
-    výskytu. Stav se prořezává po ~90–120 dnech, takže cache roste s ním
-    a ne donekonečna.
+    výskytu. Stav se prořezává po SEEN_PRUNE_DAYS dnech, takže cache roste
+    s ním a ne donekonečna.
 
     Když je stav prázdný (čerstvý reset sledování), cache raději nechá být.
     """
-    seen = load_seen(state_file)
+    seen = load_json(state_file)
     if not seen:
         return meta
     return {k: v for k, v in meta.items() if k in seen}
+
+
+def prune_meta_file(meta_file, state_file):
+    """Prořízne cache v souboru podle stavu prvního výskytu (viz prune_meta)."""
+    save_json(meta_file, prune_meta(load_json(meta_file), state_file))
+
+
+def summarize_with_cache(items, meta_file, key_of, summarize, needs_call=None,
+                         fields=("summary", "tag")):
+    """Doplní položkám AI shrnutí z cache; co v ní není, nechá dopočítat.
+
+    Jeden průchod pro všechny feedy: cache je JSON {klíč: {"summary": …,
+    "tag": …, …}}, položka dostane pole `fields` (hodnota, kterou už má,
+    má přednost před cache).
+
+    key_of      – item -> klíč do cache; prázdný klíč = položku přeskočit
+    summarize   – (item, cached) -> dict polí k uložení do cache, nebo None.
+                  Volá se jen se zapnutou AI a jen když je co dělat.
+    needs_call  – (item, cached) -> bool; výchozí „chybí shrnutí".
+    """
+    meta = load_json(meta_file)
+    ai = gemini_enabled()
+    if needs_call is None:
+        def needs_call(item, cached):
+            return not cached.get("summary")
+    calls = done = 0
+    for item in items:
+        key = key_of(item)
+        cached = meta.get(key, {}) if key else {}
+        if key and ai and needs_call(item, cached):
+            calls += 1
+            got = summarize(item, cached) or {}
+            if got:
+                cached = dict(cached, **got)
+                meta[key] = cached
+                if got.get("summary"):
+                    done += 1
+        for field in fields:
+            item[field] = item.get(field) or cached.get(field, "")
+    save_json(meta_file, meta)
+    if calls:
+        print(f"  AI: {done} shrnutí z {calls} pokusů")
+    return items
 
 
 # --- AI shrnutí přes Gemma (Gemini API) ---
@@ -122,7 +180,7 @@ GEMINI_MIN_INTERVAL = 5.0   # s mezi voláními (= 12 req/min)
 GEMINI_MAX_RETRIES = 3      # opakování při 429/500/502/503
 _gemini_last_call = 0.0
 
-# Prompt pro rozhodnutí NS ČR – sdílí ho hlavní feed i feed nepřímého účinku.
+# Prompt pro rozhodnutí NS ČR.
 JUDIKATURA_PROMPT = (
     "Toto je rozhodnutí Nejvyššího soudu ČR. Odpověz česky přesně ve dvou "
     "částech, bez úvodních frází a bez dalšího textu:\n"
@@ -134,21 +192,6 @@ JUDIKATURA_PROMPT = (
     "vyřešil – konkrétní právní závěr soudu (např. „Podle soudu se právo "
     "na informace podle § 40 autorského zákona nepromlčuje.“). Drž se "
     "stručnosti."
-)
-
-# Prompt pro feed nepřímého účinku – cílem je popsat, JAK soud nepřímý
-# účinek unijního práva v rozhodnutí použil (ne obecné shrnutí sporu).
-NEPRIMY_PROMPT = (
-    "Toto je rozhodnutí Nejvyššího soudu ČR, které pracuje s nepřímým "
-    "účinkem unijního práva (eurokonformní/směrnicekonformní výklad). "
-    "Odpověz česky přesně ve dvou částech, bez úvodních frází a bez "
-    "dalšího textu:\n"
-    "HESLO: výstižné právní téma o 1–3 slovech.\n"
-    "SHRNUTÍ: nejvýše tři věty – vysvětli, PROČ soud sáhl k eurokonformnímu "
-    "(směrnicekonformnímu) výkladu (k jaké směrnici či unijní úpravě měl "
-    "vykládané české právo přiblížit a z jakého důvodu) a JAK ho aplikoval "
-    "(které ustanovení českého práva takto vyložil a s jakým konkrétním "
-    "závěrem). Drž se stručnosti a nic si nevymýšlej."
 )
 
 # Prompt pro judikaturu Soudního dvora EU (CJEU) v oblasti IP/IT – pokrývá

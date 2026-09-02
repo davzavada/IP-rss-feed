@@ -281,7 +281,7 @@ class _Resp:
 
 def _page(html):
     s.requests.get = lambda *a, **k: _Resp(html)
-    return s.fetch_page_text("https://example.test/x")
+    return s.fetch_page("https://example.test/x")[1]
 
 
 check("hláška o vypnutém JavaScriptu se zahodí",

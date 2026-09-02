@@ -7,6 +7,11 @@ tématech: hlavně to, co je relevantní pro praxi v IP/IT, plus pár dalších
 zajímavostí. Velká část položek se do přehledu nedostane – obecné věci, věci
 mimo praxi nebo mimo ČR a EU model vynechává (viz DIGEST_PROMPT).
 
+„Poslední dva týdny" se počítají podle toho, kdy položka ve feedu přibyla
+(stav prvního výskytu *_seen.json), ne podle data vydání: článek může vyjít
+se zpožděním a přesto je novinka. Feedy samy drží položky déle (časopisy
+čtyři týdny, CJEU osm), takže bez tohohle filtru by přehled nebyl dvoutýdenní.
+
 Výstup je docs/digest.json, který si vykresluje index.html. Čísla položek,
 kterými se model odkazuje na zdroje, se překládají zpět na názvy a odkazy.
 
@@ -43,12 +48,12 @@ MAX_SOURCES = 6    # kolik odkazů maximálně necháme u jednoho tématu
 # (jinak by v něm nový údaj chyběl, dokud se nezmění skladba položek).
 FORMAT_VERSION = "2"
 
-# (klíč zdroje, štítek, soubor feedu) – klíče jsou shodné s index.html,
-# aby se štítky obarvily stejně jako v tabulkách.
+# (klíč zdroje, štítek, soubor feedu, stav prvního výskytu) – klíče jsou
+# shodné s index.html, aby se štítky obarvily stejně jako v seznamech.
 SOURCES = [
-    ("nsoud", "NS 23 Cdo", "feed.xml"),
-    ("cjeu", "CJEU", "ipcuria_feed.xml"),
-    ("journals", "Časopis", "journals_feed.xml"),
+    ("nsoud", "NS 23 Cdo", "feed.xml", "feed_seen.json"),
+    ("cjeu", "CJEU", "ipcuria_feed.xml", "ipcuria_seen.json"),
+    ("journals", "Časopis", "journals_feed.xml", "journals_seen.json"),
 ]
 
 
@@ -73,16 +78,25 @@ def _parse_pub_date(value):
         return None
 
 
+def _first_seen(seen, guid):
+    """Kdy položka ve feedu přibyla (podle *_seen.json), nebo None."""
+    try:
+        return datetime.fromisoformat(seen[guid])
+    except (KeyError, TypeError, ValueError):
+        return None
+
+
 def collect_items():
-    """Načte položky ze všech feedů, seřazené od nejnovější.
+    """Načte položky ze všech feedů za okno WEEKS, seřazené od nejnovější.
 
     Vrací seznam dictů se zdrojem, názvem, odkazem, datem, heslem a shrnutím.
     Položky bez shrnutí bere taky – model má aspoň název a popis.
     """
     now = datetime.now(timezone.utc)
+    oldest = now - timedelta(weeks=WEEKS)
     items = []
 
-    for key, label, filename in SOURCES:
+    for key, label, filename, seen_file in SOURCES:
         path = os.path.join(DOCS_DIR, filename)
         if not os.path.exists(path):
             print(f"  Feed {filename} chybí, přeskakuji")
@@ -92,17 +106,20 @@ def collect_items():
         except Exception as e:
             print(f"  CHYBA čtení {filename}: {e}")
             continue
+        seen = load_json(os.path.join(BASE_DIR, seen_file))
 
-        found = 0
+        found = skipped = 0
         for el in root.iter("item"):
             title = _text(el, "title")
             if not title:
                 continue
+            guid = _text(el, "guid") or title
             pub_dt = _parse_pub_date(_text(el, "pubDate"))
-            # Datum položky může být starší než okno (články vycházejí se
-            # zpožděním) – ve feedu je proto, že jsme ji poprvé viděli teď.
-            # Ořezáváme jen zjevné výstřelky do budoucna.
-            if pub_dt and pub_dt > now + timedelta(days=1):
+            # Do okna se položka počítá podle toho, kdy přibyla; když o tom
+            # stav nic neví, podle data vydání. Výstřelky do budoucna pryč.
+            since = _first_seen(seen, guid) or pub_dt
+            if (since and since < oldest) or (pub_dt and pub_dt > now + timedelta(days=1)):
+                skipped += 1
                 continue
 
             summary = _text(el, "ai-summary")
@@ -118,16 +135,16 @@ def collect_items():
                 "tag": (re.match(r"^\[([^\]]+)\]", title) or [None, ""])[1],
                 "title": re.sub(r"^\[[^\]]+\]\s*", "", title),
                 "link": _text(el, "link"),
-                "guid": _text(el, "guid") or title,
+                "guid": guid,
                 "heslo": _text(el, "ai-tag"),
                 "summary": summary,
                 "pub_dt": pub_dt,
             })
             found += 1
-        print(f"  {label}: {found} položek")
+        print(f"  {label}: {found} položek"
+              + (f" ({skipped} mimo okno {WEEKS} týdnů)" if skipped else ""))
 
     # Položky bez data (neměly by být) řadíme na konec.
-    oldest = now - timedelta(weeks=WEEKS)
     items.sort(key=lambda i: i["pub_dt"] or oldest, reverse=True)
     return items[:MAX_ITEMS]
 

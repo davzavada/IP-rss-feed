@@ -406,7 +406,7 @@ check("přeložené jednání se pozná i s oběma daty",
       dle_znacky.get("12 C 2/2026") == {
           "soud": "MS", "usek": "civilni", "spz": "12 C 2/2026", "typ": "presun",
           "datum": "2026-09-10", "z": "2026-09-03", "na": "2026-09-10",
-          "kdy": "2026-08-31"},
+          "kdy": "2026-08-31", "popis": "přeloženo"},
       str(dle_znacky.get("12 C 2/2026")))
 check("odvolané jednání se pozná",
       dle_znacky.get("12 C 3/2026", {}).get("typ") == "zruseno")

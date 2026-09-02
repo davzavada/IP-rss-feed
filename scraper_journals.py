@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Scraper for legal journals – generates RSS feed for new journal issues and articles."""
 
+import copy
 import os
 import re
 import time
@@ -17,23 +18,38 @@ from feed_common import (
     JOURNAL_ARTICLE_PROMPT,
     JOURNAL_DECISION_PROMPT,
     JOURNAL_ISSUE_PROMPT,
+    USER_AGENT,
     filter_by_first_seen,
-    gemini_enabled,
     gemini_summarize_pdf,
     gemini_summarize_text,
-    load_json,
-    prune_meta,
-    save_json,
+    prune_meta_file,
+    summarize_with_cache,
 )
 
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "journals_feed.xml")
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "journals_seen.json")
 # Cache AI shrnutí podle guid ({guid: {"summary": ..., "tag": ...}}).
 META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "journals_meta.json")
-USER_AGENT = (
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
-)
+
+# Okno feedu: články vycházejí po číslech, takže se drží déle než rozhodnutí.
+WINDOW_WEEKS = 4
+# Anotace v popisu položky se ořezává; celá jde jen do podkladu pro AI.
+POPIS_MAX = 300
+
+
+def zkratit(text, limit=POPIS_MAX):
+    """Ořízne text na limit znaků s výpustkou."""
+    return text if len(text) <= limit else text[:limit - 3] + "..."
+
+
+def popis_polozky(title, authors="", *radky):
+    """Popis položky do feedu: název, autor a další řádky (časopis, anotace),
+    prázdné řádky se vynechají. Stejný tvar u všech zdrojů."""
+    parts = [title]
+    if authors:
+        parts.append(f"Autor: {authors}")
+    parts += [r for r in radky if r]
+    return "\n".join(parts)
 
 # --- Názvy a autoři článků ---
 # Každý zdroj píše metadata po svém: OJS (TLQ) vrací názvy verzálkami a
@@ -263,7 +279,6 @@ def first_page_with_items(page_urls, extract, label):
 # filter_by_first_seen podle guid, takže pub_date stačí orientační.
 
 PRAVNIK_BASE = "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/"
-PRAVNIK_URL = PRAVNIK_BASE
 PRAVNIK_ARCHIVE_URL = PRAVNIK_BASE + "archiv/"
 PRAVNIK_ARTICLE_RE = re.compile(r"/archiv/(\d{4})/([\d-]+)\.html\?a=(\d+)")
 PRAVNIK_MAX_ITEMS = 20  # obsah jednoho čísla, ne celý ročník
@@ -305,7 +320,7 @@ def _pravnik_articles(soup, page_url):
             "title": f"[Právník] {title}",
             "journal_name": "Právník",
             "link": link,
-            "description": f"{title}\nPrávník {issue} (ÚSP AV ČR)",
+            "description": popis_polozky(title, "", f"Právník {issue} (ÚSP AV ČR)"),
             "guid": guid,
             "pub_date": datetime.now(timezone.utc),
             "pub_date_odhad": True,
@@ -320,7 +335,7 @@ def _pravnik_articles(soup, page_url):
 def scrape_pravnik():
     """Vrátí články aktuálního čísla Právníka."""
     return first_page_with_items(
-        [PRAVNIK_URL, PRAVNIK_ARCHIVE_URL], _pravnik_articles, "Právník"
+        [PRAVNIK_BASE, PRAVNIK_ARCHIVE_URL], _pravnik_articles, "Právník"
     )
 
 
@@ -421,19 +436,14 @@ def _jurisprudence_articles(soup, page_url):
             props = li.find("p", class_="article-props")
             authors = clean_authors(props.get_text(" ", strip=True)) if props else ""
 
-            popis = [title]
-            if authors:
-                popis.append(f"Autor: {authors}")
-            popis.append(f"Jurisprudence {issue}".rstrip())
-            if rubrika:
-                popis.append(f"Rubrika: {rubrika}")
-
             items.append({
                 "title": f"[Jurisprudence] {title}",
                 "journal_name": "Jurisprudence",
                 "authors": authors,
                 "link": link,
-                "description": "\n".join(popis),
+                "description": popis_polozky(
+                    title, authors, f"Jurisprudence {issue}".rstrip(),
+                    f"Rubrika: {rubrika}" if rubrika else ""),
                 # m-<id> je stabilní přes celý web, číslo do guid netřeba.
                 "guid": f"Jurisprudence-{art_id}",
                 # Obsah čísla datum vydání neuvádí – doplní se datum, kdy
@@ -522,17 +532,13 @@ def _tlq_articles(soup, page_url):
             if authors_el is not None:
                 authors = clean_authors(authors_el.get_text(" ", strip=True))
 
-        desc = [title]
-        if authors:
-            desc.append(f"Autor: {authors}")
-        desc.append(f"The Lawyer Quarterly {issue}".strip())
-
         items.append({
             "title": f"[TLQ] {title}",
             "journal_name": "The Lawyer Quarterly",
             "authors": authors,
             "link": link,
-            "description": "\n".join(desc),
+            "description": popis_polozky(
+                title, authors, f"The Lawyer Quarterly {issue}".strip()),
             # Stejný tvar guid jako dřív z OJS RSS, ať se články, které už
             # jednou prošly, neoznačí podruhé jako nové.
             "guid": f"TLQ-{link}",
@@ -581,38 +587,21 @@ def fetch_ojs_rss(feed_url, label, journal_name):
     cutoff = datetime.now(timezone.utc) - timedelta(days=OJS_MAX_AGE_DAYS)
     items = []
     too_old = 0
-    bez_doi = 0
 
     for item in root.iter("item"):
-        title_el = item.find("title")
-        link_el = item.find("link")
-        desc_el = item.find("description")
-        creator_el = item.find("dc:creator", ns)
-        pub_date_el = item.find("pubDate")
-        guid_el = item.find("guid")
+        title = normalize_title(_item_text(item, "title"))
+        link = _item_text(item, "link")
+        desc = _item_text(item, "description")
+        creator = clean_authors(_item_text(item, "dc:creator", ns))
+        guid = _item_text(item, "guid") or link
 
-        title = (title_el.text or "").strip() if title_el is not None else ""
-        link = (link_el.text or "").strip() if link_el is not None else ""
-        desc = (desc_el.text or "").strip() if desc_el is not None else ""
-        creator = clean_authors(creator_el.text if creator_el is not None else "")
-        guid = (guid_el.text or "").strip() if guid_el is not None else link
-        title = normalize_title(title)
-
-        # Parse date
+        # OJS píše den v týdnu i česky („Po, 01 Sep 2026 …"); parsedate ho
+        # jako první slovo s čárkou zahodí. Nečitelné datum = odhad.
         pub_date = None
-        if pub_date_el is not None and pub_date_el.text:
-            try:
-                date_str = pub_date_el.text.strip()
-                # Handle Czech date format from OJS
-                pub_date = datetime.strptime(
-                    re.sub(r"^[A-ZÁ-Žá-ž]+,\s*", "", date_str),
-                    "%d %b %Y %H:%M:%S %z"
-                )
-            except ValueError:
-                try:
-                    pub_date = datetime.strptime(date_str, "%a, %d %b %Y %H:%M:%S %z")
-                except ValueError:
-                    pub_date = datetime.now(timezone.utc)
+        try:
+            pub_date = parsedate_to_datetime(_item_text(item, "pubDate"))
+        except (TypeError, ValueError):
+            pass
 
         if (pub_date or datetime.now(timezone.utc)) < cutoff:
             too_old += 1
@@ -621,16 +610,13 @@ def fetch_ojs_rss(feed_url, label, journal_name):
         # Clean up description (remove HTML). Plnou anotaci si necháme pro AI,
         # do feedu jde zkrácená verze.
         full_desc = BeautifulSoup(desc, "html.parser").get_text().strip()
-        clean_desc = full_desc
-        if len(clean_desc) > 300:
-            clean_desc = clean_desc[:297] + "..."
 
         items.append({
             "title": f"[{label}] {title}",
             "journal_name": journal_name,
             "authors": creator,
             "link": link,
-            "description": f"{title}\nAutor: {creator}\n{clean_desc}" if creator else f"{title}\n{clean_desc}",
+            "description": popis_polozky(title, creator, journal_name, zkratit(full_desc)),
             "guid": f"{label}-{guid}",
             "pub_date": pub_date or datetime.now(timezone.utc),
             "pub_date_odhad": pub_date is None,
@@ -775,20 +761,12 @@ def fetch_crossref_journal(issn, label, journal_name):
 
         pub_date = _crossref_datum(w) or datetime.now(timezone.utc)
 
-        clean_desc = abstract if len(abstract) <= 300 else abstract[:297] + "..."
-        desc_parts = [title]
-        if authors:
-            desc_parts.append(f"Autor: {authors}")
-        desc_parts.append(journal_name)
-        if clean_desc:
-            desc_parts.append(clean_desc)
-
         polozka = {
             "title": f"[{label}] {title}",
             "journal_name": journal_name,
             "authors": authors,
             "link": f"https://doi.org/{doi}",
-            "description": "\n".join(desc_parts),
+            "description": popis_polozky(title, authors, journal_name, zkratit(abstract)),
             "guid": f"{label}-{doi}",
             "pub_date": pub_date,
             "ai_source": "article",  # shrnutí se dělá z názvu a abstraktu
@@ -984,20 +962,12 @@ def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
     items = []
     for z in zaznamy:
         abstract, authors, title = z["abstract"], z["authors"], z["title"]
-        clean_desc = abstract if len(abstract) <= 300 else abstract[:297] + "..."
-        desc_parts = [title]
-        if authors:
-            desc_parts.append(f"Autor: {authors}")
-        desc_parts.append(journal_name)
-        if clean_desc:
-            desc_parts.append(clean_desc)
-
         items.append({
             "title": f"[{label}] {title}",
             "journal_name": journal_name,
             "authors": authors,
             "link": z["link"],
-            "description": "\n".join(desc_parts),
+            "description": popis_polozky(title, authors, journal_name, zkratit(abstract)),
             # Stejný tvar guid jako u Crossref, ať se článek po přepnutí zdroje
             # neoznačí podruhé jako nový.
             "guid": f"{label}-{z['doi']}" if z["doi"] else f"{label}-{z['link']}",
@@ -1085,8 +1055,8 @@ def fetch_page(url, limit=6000):
     """
     resp = requests.get(url, headers=PAGE_HEADERS, timeout=30)
     resp.raise_for_status()
-    soup = BeautifulSoup(resp.text, "html.parser")
     cely = BeautifulSoup(resp.text, "html.parser")
+    soup = copy.copy(cely)
     for junk in soup(["script", "style", "nav", "header", "footer", "form"]):
         junk.decompose()
     text = re.sub(r"\n{3,}", "\n\n", soup.get_text("\n", strip=True))
@@ -1097,88 +1067,70 @@ def fetch_page(url, limit=6000):
     return cely, text[:limit]
 
 
-def fetch_page_text(url, limit=6000):
-    """Jen text stránky – viz fetch_page()."""
-    return fetch_page(url, limit)[1]
-
 def enrich_summaries(items):
     """Doplní AI shrnutí (HESLO + SHRNUTÍ) přes Gemma; cache podle guid.
 
     Volá se až na ponechané položky (po okně). Články (OJS, Crossref)
-    shrnuje z názvu a anotace/abstraktu, čísla časopisů (ÚPV) z celého PDF.
+    shrnuje z názvu a anotace/abstraktu, čísla časopisů (ÚPV) z celého PDF,
+    články bez anotace ve výpisu (Právník, Jurisprudence, TLQ) ze stránky
+    článku – ta nese i autora, který ve výpisu čísla není.
     """
-    meta = load_json(META_FILE)
-    if not gemini_enabled():
-        for it in items:
-            m = meta.get(it["guid"], {})
-            it["summary"] = m.get("summary", "")
-            it["tag"] = m.get("tag", "")
-            it["authors"] = it.get("authors") or m.get("authors", "")
-        return items
-
-    summarized = 0
-    calls = 0
-    for it in items:
-        g = it["guid"]
-        m = meta.get(g, {})
+    def needs_call(it, cached):
         # Autora nese u některých zdrojů až stránka článku (Právník). Když
         # ho položka nemá a není ani v cache, stránku si vyžádáme i tehdy,
         # když už shrnutí máme.
         chybi_autor = (it.get("ai_source") == "page" and not it.get("authors")
-                       and not m.get("authors"))
-        if not m.get("summary") or chybi_autor:
-            summary, tag = "", ""
-            # Rozhodnutí otištěné v časopise se shrnuje jinak než článek.
-            prompt = it.get("ai_prompt") or JOURNAL_ARTICLE_PROMPT
-            if it.get("ai_source") == "article" and it.get("ai_text") and not m.get("summary"):
-                tlen = len(it["ai_text"])
-                print(f"    [diag] {g}: článek, ai_text {tlen} znaků")
-                calls += 1
-                summary, tag = gemini_summarize_text(it["ai_text"], prompt)
-            elif it.get("ai_source") == "page" and it.get("link"):
-                try:
-                    soup, text = fetch_page(it["link"])
-                    if not it.get("authors"):
-                        it["authors"] = page_author(soup)
-                    if text and not m.get("summary"):
-                        print(f"    [diag] {g}: stránka článku, {len(text)} znaků")
-                        calls += 1
-                        summary, tag = gemini_summarize_text(text, prompt)
-                except Exception as e:
-                    print(f"  CHYBA stahování stránky {it['title']}: {e}")
-            elif it.get("ai_source") == "issue" and it.get("link"):
-                try:
-                    pr = requests.get(it["link"], headers={"User-Agent": USER_AGENT}, timeout=120)
-                    pr.raise_for_status()
-                    print(f"    [diag] {g}: číslo, PDF {len(pr.content)} B")
-                    calls += 1
-                    summary, tag = gemini_summarize_pdf(pr.content, JOURNAL_ISSUE_PROMPT)
-                except Exception as e:
-                    print(f"  CHYBA stahování PDF {it['title']}: {e}")
-            else:
-                print(f"    [diag] {g}: PŘESKAKUJI (source={it.get('ai_source')}, "
-                      f"ai_text={bool(it.get('ai_text'))}, link={bool(it.get('link'))})")
-            if summary:
-                m = dict(m, summary=summary, tag=tag)
-                meta[g] = m
-                summarized += 1
-            elif not m.get("summary"):
-                print(f"    [diag] {g}: bez shrnutí")
-            if it.get("authors"):
-                m = dict(m, authors=it["authors"])
-                meta[g] = m
-        it["summary"] = m.get("summary", "")
-        it["tag"] = m.get("tag", "")
-        it["authors"] = it.get("authors") or m.get("authors", "")
+                       and not cached.get("authors"))
+        return not cached.get("summary") or chybi_autor
+
+    def summarize(it, cached):
+        g = it["guid"]
+        got = {}
+        summary, tag = "", ""
+        # Rozhodnutí otištěné v časopise se shrnuje jinak než článek.
+        prompt = it.get("ai_prompt") or JOURNAL_ARTICLE_PROMPT
+        if it.get("ai_source") == "article" and it.get("ai_text") and not cached.get("summary"):
+            print(f"    [diag] {g}: článek, ai_text {len(it['ai_text'])} znaků")
+            summary, tag = gemini_summarize_text(it["ai_text"], prompt)
+        elif it.get("ai_source") == "page" and it.get("link"):
+            try:
+                soup, text = fetch_page(it["link"])
+                if not it.get("authors"):
+                    it["authors"] = page_author(soup)
+                    if it["authors"]:
+                        got["authors"] = it["authors"]
+                if text and not cached.get("summary"):
+                    print(f"    [diag] {g}: stránka článku, {len(text)} znaků")
+                    summary, tag = gemini_summarize_text(text, prompt)
+            except Exception as e:
+                print(f"  CHYBA stahování stránky {it['title']}: {e}")
+        elif it.get("ai_source") == "issue" and it.get("link"):
+            try:
+                pr = requests.get(it["link"], headers={"User-Agent": USER_AGENT}, timeout=120)
+                pr.raise_for_status()
+                print(f"    [diag] {g}: číslo, PDF {len(pr.content)} B")
+                summary, tag = gemini_summarize_pdf(pr.content, JOURNAL_ISSUE_PROMPT)
+            except Exception as e:
+                print(f"  CHYBA stahování PDF {it['title']}: {e}")
+        else:
+            print(f"    [diag] {g}: PŘESKAKUJI (source={it.get('ai_source')}, "
+                  f"ai_text={bool(it.get('ai_text'))}, link={bool(it.get('link'))})")
+        if summary:
+            got.update(summary=summary, tag=tag)
+        elif not cached.get("summary"):
+            print(f"    [diag] {g}: bez shrnutí")
+        return got or None
+
+    items = summarize_with_cache(
+        items, META_FILE, lambda it: it["guid"], summarize, needs_call,
+        fields=("summary", "tag", "authors"),
+    )
+    for it in items:
         # U rozhodnutí je plný text jen na stránce vydavatele, a ta se ne vždy
-        # stáhne. Shrnutí se v takovém případě nevymýšlí – aspoň ať sloupec
-        # Heslo řekne, že jde o rozhodnutí; soud, datum i značka jsou v názvu.
+        # stáhne. Shrnutí se v takovém případě nevymýšlí – aspoň ať Heslo
+        # řekne, že jde o rozhodnutí; soud, datum i značka jsou v názvu.
         if not it["tag"] and it.get("ai_fallback_tag"):
             it["tag"] = it["ai_fallback_tag"]
-
-    save_json(META_FILE, meta)
-    if calls:
-        print(f"  AI: {summarized}/{calls} shrnutí vygenerováno")
     return items
 
 
@@ -1306,10 +1258,11 @@ def main():
         except Exception as e:
             print(f"  CHYBA při stahování {label}: {e}")
 
-    # Ponecháme jen položky s prvním výskytem do 2 týdnů zpět (u všech zdrojů).
-    # První výskyt sledujeme sami, aby se staré články s přepsaným datem nevracely.
+    # Ponecháme jen položky s prvním výskytem do WINDOW_WEEKS zpět (u všech
+    # zdrojů). První výskyt sledujeme sami, aby se staré články s přepsaným
+    # datem nevracely.
     all_items = filter_by_first_seen(
-        all_items, lambda i: i["guid"], STATE_FILE, weeks=4
+        all_items, lambda i: i["guid"], STATE_FILE, weeks=WINDOW_WEEKS
     )
 
     # Zdroje, které datum vydání neuvádějí (weby českých časopisů), dostanou
@@ -1325,7 +1278,7 @@ def main():
     all_items = enrich_summaries(all_items)  # AI shrnutí jen na ponechané
 
     # Cache shrnutí prořízneme podle stavu prvního výskytu, ať neroste donekonečna
-    save_json(META_FILE, prune_meta(load_json(META_FILE), STATE_FILE))
+    prune_meta_file(META_FILE, STATE_FILE)
 
     rss = build_rss(all_items)
 

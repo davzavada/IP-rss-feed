@@ -20,13 +20,14 @@ from bs4 import BeautifulSoup
 
 from feed_common import (
     JUDIKATURA_PROMPT,
-    gemini_enabled,
+    USER_AGENT,
     gemini_summarize_pdf,
+    is_new,
     load_json,
-    load_seen,
-    prune_meta,
+    prune_meta_file,
     save_json,
     save_seen,
+    summarize_with_cache,
 )
 
 # --- Zdroj 1: úřední deska ---
@@ -40,10 +41,6 @@ REJSTRIK = "cdo"      # pole [spzn2] – rejstřík (cdo = civilní dovolání)
 JUDIKATURA_DAYS = 30  # okno [datum_predani_na_web] >= dnes - N dní
 
 SENAT = "23 Cdo"
-USER_AGENT = (
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
-)
 JUDIKATURA_HEADERS = {
     "User-Agent": USER_AGENT,
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -57,9 +54,6 @@ META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feed_meta.
 
 
 JUDIKATURA_HOST = "https://rozhodnuti.nsoud.cz"
-
-# AI shrnutí rozhodnutí používá sdílený Gemma klient z feed_common
-# (JUDIKATURA_PROMPT, gemini_summarize_pdf) – viz feed_common.py.
 
 
 def normalize_case(case_number):
@@ -257,8 +251,6 @@ def enrich_metadata(decisions):
         d["decided"] = m.get("decided", "")
         d["heslo"] = m.get("heslo", "")
         d["typ"] = m.get("typ", "")
-        d["summary"] = m.get("summary", "")
-        d["tag"] = m.get("tag", "")
 
     save_json(META_FILE, meta)
     if fetched:
@@ -266,49 +258,32 @@ def enrich_metadata(decisions):
     return decisions
 
 
+def _cache_key(d):
+    """Klíč do cache: UNID; když ještě není (čerstvě vyhlášené rozhodnutí jen
+    z úřední desky), spisová značka – jinak by takové položky shrnutí nikdy
+    nedostaly. Stejný klíč používá i stav prvního výskytu."""
+    return d.get("unid") or normalize_case(d["case_number"])
+
+
 def enrich_summaries(decisions):
-    """Vygeneruje AI shrnutí přes Gemini – pro předané (už filtrované) položky
-    s PDF, které shrnutí ještě nemají.
-
-    Cachuje se podle UNID; když UNID není (čerstvě vyhlášené rozhodnutí jen
-    z úřední desky, které ještě není v databázi judikatury), podle spisové
-    značky – jinak by takové položky shrnutí nikdy nedostaly.
-    """
-    if not gemini_enabled():
-        return decisions
-
-    meta = load_json(META_FILE)
+    """Doplní AI shrnutí (z PDF rozhodnutí) předaným, už filtrovaným položkám;
+    cache sdílí soubor s metadaty detailu (feed_meta.json)."""
     session = requests.Session()
-    summarized = 0
-    gemini_calls = 0
 
-    for d in decisions:
-        key = d.get("unid") or normalize_case(d["case_number"])
-        if not key or not d.get("pdf_url"):
-            continue
-        m = meta.setdefault(key, {})
-        if m.get("summary"):
-            d["summary"] = m.get("summary", "")
-            d["tag"] = m.get("tag", "")
-            continue
+    def needs_call(d, cached):
+        return bool(d.get("pdf_url")) and not cached.get("summary")
+
+    def summarize(d, cached):
         try:
             pr = session.get(d["pdf_url"], headers=JUDIKATURA_HEADERS, timeout=60)
             pr.raise_for_status()
-            gemini_calls += 1
-            summary, tag = gemini_summarize_pdf(pr.content, JUDIKATURA_PROMPT)
-            if summary:
-                m["summary"] = summary
-                m["tag"] = tag
-                summarized += 1
         except Exception as e:
             print(f"    CHYBA stahování PDF {d['case_number']}: {e}")
-        d["summary"] = m.get("summary", "")
-        d["tag"] = m.get("tag", "")
+            return None
+        summary, tag = gemini_summarize_pdf(pr.content, JUDIKATURA_PROMPT)
+        return {"summary": summary, "tag": tag} if summary else None
 
-    save_json(META_FILE, meta)
-    if gemini_calls:
-        print(f"    AI: {summarized}/{gemini_calls} shrnutí vygenerováno")
-    return decisions
+    return summarize_with_cache(decisions, META_FILE, _cache_key, summarize, needs_call)
 
 
 # --- Sloučení obou zdrojů ---
@@ -348,16 +323,15 @@ def resolve_dates(decisions, weeks=2):
     Okno (jak dlouho položku držíme) se počítá podle data zveřejnění (pub_dt),
     ne podle prvního výskytu u nás – jinak by se po resetu sledování v živém
     seznamu držela i starší rozhodnutí. První výskyt slouží jen k označení
-    „nové dnes".
+    „nové".
     """
-    seen = load_seen(STATE_FILE)
+    seen = load_json(STATE_FILE)
     now = datetime.now(timezone.utc)
     cutoff = now - timedelta(weeks=weeks)
-    today = now.date()
 
     kept = []
     for d in decisions:
-        ident = d.get("unid") or normalize_case(d["case_number"])
+        ident = _cache_key(d)
         if ident not in seen:
             seen[ident] = now.isoformat()
         first_seen = datetime.fromisoformat(seen[ident])
@@ -379,12 +353,12 @@ def resolve_dates(decisions, weeks=2):
             pub_dt = first_seen
 
         d["pub_dt"] = pub_dt
-        d["is_new"] = (first_seen.date() == today)
+        d["is_new"] = is_new(first_seen, now)
 
         if pub_dt >= cutoff:
             kept.append(d)
 
-    save_seen(STATE_FILE, seen, prune_days=120)
+    save_seen(STATE_FILE, seen)
     return kept
 
 
@@ -455,7 +429,7 @@ def build_rss(decisions):
         if d.get("tag"):
             SubElement(item, "ai-tag").text = d["tag"]
 
-        # Příznak „nové dnes" (čte ho index.html → tečka u názvu)
+        # Příznak „nové" (z něj index.html skládá dnešní shrnutí)
         if d.get("is_new"):
             SubElement(item, "is-new").text = "true"
 
@@ -491,9 +465,9 @@ def main():
     decisions = enrich_summaries(decisions)         # Gemini jen na ponechané
     decisions.sort(key=lambda d: d["pub_dt"], reverse=True)
 
-    # Cache metadat prořízneme podle stavu prvního výskytu (120 dní),
-    # jinak by soubor rostl donekonečna.
-    save_json(META_FILE, prune_meta(load_json(META_FILE), STATE_FILE))
+    # Cache metadat prořízneme podle stavu prvního výskytu, jinak by soubor
+    # rostl donekonečna.
+    prune_meta_file(META_FILE, STATE_FILE)
 
     print(f"Celkem {len(decisions)} rozhodnutí senátu {SENAT} po sloučení")
     for d in decisions:

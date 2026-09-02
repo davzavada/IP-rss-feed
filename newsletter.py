@@ -29,7 +29,7 @@ import re
 import smtplib
 import ssl
 import sys
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from email.message import EmailMessage
 from email.utils import formataddr, formatdate, make_msgid
 
@@ -99,15 +99,14 @@ def safe_unsubscribe(url):
     return esc(url) if re.match(r"^(https?://|mailto:)", url or "", re.I) else ""
 
 
+def period_label(data):
+    """„18. 8. 2026 – 1. 9. 2026", nebo '' bez dat."""
+    return " – ".join(p for p in (cz_date(data.get("from")), cz_date(data.get("to"))) if p)
+
+
 def meta_line(data):
-    """Patička přehledu – z kolika položek se vybíralo a za jaké období."""
-    parts = []
-    if data.get("total"):
-        parts.append(f"vybráno z {data['total']} položek")
-    period = " – ".join(p for p in (cz_date(data.get("from")), cz_date(data.get("to"))) if p)
-    if period:
-        parts.append(f"období {period}")
-    return " · ".join(parts)
+    """Patička přehledu – z kolika položek se vybíralo. Období je v záhlaví."""
+    return f"vybráno z {data['total']} položek" if data.get("total") else ""
 
 
 def render_html(data, unsubscribe_url):
@@ -122,7 +121,7 @@ def render_html(data, unsubscribe_url):
         '<p style="margin:0 0 4px;font-size:17px;font-weight:600;">'
         'Co se stalo v uplynulých dvou týdnech</p>',
     ]
-    period = " – ".join(p for p in (cz_date(data.get("from")), cz_date(data.get("to"))) if p)
+    period = period_label(data)
     if period:
         out.append(f'<p style="margin:0 0 20px;color:{C_MUTED};font-size:13px;">'
                    f'{esc(period)}</p>')
@@ -162,16 +161,17 @@ def render_html(data, unsubscribe_url):
         f'color:{C_MUTED};font-size:12px;">'
         f'<a href="{SITE_URL}" style="color:{C_MUTED};">{esc(SITE_URL)}</a>'
     )
-    if safe_unsubscribe(unsubscribe_url):
-        out.append(f' &middot; <a href="{safe_unsubscribe(unsubscribe_url)}" '
-                   f'style="color:{C_MUTED};">odhlásit odběr</a>')
+    odhlaseni = safe_unsubscribe(unsubscribe_url)
+    if odhlaseni:
+        out.append(f' &middot; <a href="{odhlaseni}" style="color:{C_MUTED};">'
+                   f'odhlásit odběr</a>')
     out.append("</p></td></tr></table></div>")
     return "\n".join(out)
 
 
 def render_text(data, unsubscribe_url):
     """Prostá textová verze – povinná alternativa k HTML."""
-    period = " – ".join(p for p in (cz_date(data.get("from")), cz_date(data.get("to"))) if p)
+    period = period_label(data)
     lines = ["Co se stalo v uplynulých dvou týdnech"]
     if period:
         lines.append(period)
@@ -262,7 +262,7 @@ def main():
         print(f"  MAIL_UNSUBSCRIBE_URL {unsubscribe_url!r} není http(s) ani mailto: "
               f"– vynechávám ho")
         unsubscribe_url = ""
-    period = " – ".join(p for p in (cz_date(data.get("from")), cz_date(data.get("to"))) if p)
+    period = period_label(data)
     subject = f"Právní RSS – přehled {period}" if period else "Právní RSS – přehled"
     html = render_html(data, unsubscribe_url)
     text = render_text(data, unsubscribe_url)

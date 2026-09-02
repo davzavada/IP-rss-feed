@@ -6,6 +6,7 @@ name: Testy
 on:
   push:
     paths:
+      - 'feed_common.py'
       - 'scraper_hearings.py'
       - 'scraper_journals.py'
       - 'test_hearings.py'

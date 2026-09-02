@@ -31,7 +31,6 @@ import argparse
 import hashlib
 import io
 import json
-import os
 import re
 import sys
 import unicodedata
@@ -42,20 +41,17 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 
-from feed_common import gemini_enabled, gemini_generate_raw, load_json, save_json
+from feed_common import (
+    USER_AGENT, gemini_enabled, gemini_generate_raw, load_json, save_json,
+)
 
 CONFIG_FILE = "hearings_config.json"
 OUTPUT_FILE = "docs/hearings.json"
 
-USER_AGENT = (
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
-)
 HEADERS = {"User-Agent": USER_AGENT, "Accept-Language": "cs-CZ,cs;q=0.9,en;q=0.8"}
 
-# Jak staré termíny v hearings.json ještě držet (kalendář ukazuje i nedávnou
-# minulost) a po kolika dnech zkusit obnovit IP senáty z rozvrhu práce.
-# Proběhlá jednání se nemažou – kalendář slouží i jako archiv.
+# Po kolika dnech zkusit obnovit IP senáty z rozvrhu práce. Proběhlá jednání
+# se z hearings.json nemažou – kalendář slouží i jako archiv.
 ROZVRH_REFRESH_DAYS = 7
 # Kolik řádků z dokumentu se musí naparsovat, aby se výsledek bral jako úplný.
 MIN_PARSE_RATIO = 0.8
@@ -726,6 +722,8 @@ def porovnej_prehled(stare, nove, v_prehledu, court, usek, dnes):
                                   "z": a.get(pole) or "", "na": b.get(pole)})
     for z in zmeny:
         z["kdy"] = dnes.isoformat()
+        # Slovní popis jde s daty, ať ho stránka nemusí mít opsaný podruhé.
+        z["popis"] = ZMENA_POPIS[z["typ"]]
     return zmeny
 
 
@@ -746,7 +744,7 @@ def vypis_zmeny(zmeny, court, usek):
     print(f"  [{court}/{usek}] změn proti minulému přehledu: {len(zmeny)}")
     for z in zmeny:
         detail = f" {z['z']} → {z['na']}" if z.get("na") and z.get("z") else ""
-        print(f"    {z['spz']} ({z['datum']}): {ZMENA_POPIS[z['typ']]}{detail}")
+        print(f"    {z['spz']} ({z['datum']}): {z['popis']}{detail}")
 
 
 def orez_zmeny(zmeny):
@@ -912,9 +910,20 @@ def infosoud_url(j, courts):
 
 
 
+def ics_uid(j):
+    """Stálý identifikátor události: SHA-1 ze soudu, značky, dne a hodiny.
+    Ukládá se i do hearings.json – stránka podle něj vyřízne jedno jednání
+    z hotového hearings.ics, takže si ho nemusí skládat sama."""
+    return hashlib.sha1(
+        f"{j.get('soud')}|{j.get('spz')}|{j.get('datum')}|{j.get('hodina')}"
+        .encode("utf-8")
+    ).hexdigest()
+
+
 def write_ics(output, path=None):
     """Zapíše IP jednání jako iCalendar – na tenhle soubor se dá přihlásit
-    v Google Kalendáři (Jiné kalendáře → Přidat → Z adresy URL)."""
+    v Google Kalendáři (Jiné kalendáře → Přidat → Z adresy URL). Každému
+    jednání zároveň doplní `uid`."""
     path = path or ICS_FILE
     courts = output.get("courts", {})
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
@@ -942,10 +951,7 @@ def write_ics(output, path=None):
             continue
         count += 1
         ymd = j["datum"].replace("-", "")
-        uid = hashlib.sha1(
-            f"{j.get('soud')}|{j.get('spz')}|{j['datum']}|{j.get('hodina')}"
-            .encode("utf-8")
-        ).hexdigest()
+        uid = j["uid"] = ics_uid(j)
         court = (courts.get(j.get("soud"), {}) or {}).get("nazev", j.get("soud", ""))
 
         lines += ["BEGIN:VEVENT", f"UID:{uid}@{host}", f"DTSTAMP:{stamp}"]
@@ -1071,16 +1077,8 @@ def main():
     # 2) Přehledy jednání – soud jich může zveřejňovat víc (civilní úsek,
     #    správní úsek s žalobami proti ÚPV), každý jako vlastní dokument.
     output = load_json(OUTPUT_FILE)
-    # Dřívější běhy ukládaly celý přehled; archiv drží jen IP agendu.
-    ulozena = [j for j in output.get("jednani", []) if isinstance(j, dict)]
-    output["jednani"] = [j for j in ulozena
-                         if j.get("ip") and not j.get("zruseno")]
-    for j in output["jednani"]:
-        j.pop("zruseno", None)      # pozůstatek po dřívějším přeškrtávání
-        j.pop("stav", None)         # opis z InfoSoudu, který se přestal stahovat
-    if len(output["jednani"]) != len(ulozena):
-        print(f"Z archivu odebráno {len(ulozena) - len(output['jednani'])} "
-              f"jednání mimo IP agendu.")
+    output["jednani"] = [j for j in output.get("jednani", [])
+                         if isinstance(j, dict) and j.get("ip")]
     ok = False
     print("Přehledy jednání…")
     for court, cfg in config["courts"].items():
