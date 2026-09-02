@@ -125,7 +125,10 @@ section[id], .card[id] { scroll-margin-top: 76px; }
 .help-wrap:hover .card-desc { display: block; }
 .card-desc ul { margin: 4px 0 0; padding-left: 18px; }
 .card-desc li { margin: 1px 0; }
-.card-content { padding: 10px 22px 16px; }
+/* Obsah karty je dotazovatelný kontejner: o rozvržení tabulky nerozhoduje
+   šířka okna, ale karty. Mezi 1360 a 1500 px ukrojí boční navigace tolik,
+   že je obsah užší než na telefonu, a přesto by okno hlásilo „široké". */
+.card-content { padding: 10px 22px 16px; container-type: inline-size; }
 
 /* Název karty jako proklik na XML feed – jen jemná ikonka, žádný viditelný štítek. */
 .card-title-link { display: inline-flex; align-items: center; gap: 6px; color: inherit; text-decoration: none; }
@@ -140,41 +143,35 @@ section[id], .card[id] { scroll-margin-top: 76px; }
   stroke-linecap: round; stroke-linejoin: round;
 }
 
-/* ===== Seznam položek feedu =====
-   Každá položka je blok: nahoře štítky zdroje/typu, heslo a datum, pod nimi
-   název s autorem a shrnutí. Stejné rozvržení na všech šířkách – tabulka
-   s pěti sloupci se na užší kartě stejně musela rozpadnout do bloků a na
-   široké ořezávala heslo i shrnutí. */
-.list { display: flex; flex-direction: column; }
-.item {
-  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px;
-  padding: 12px 0; border-bottom: 1px solid var(--border);
-  font-size: var(--fs-md);
-}
-.item:last-child { border-bottom: 0; }
-.item[hidden] { display: none; }
-.item > * { min-width: 0; overflow-wrap: anywhere; }
-.col-src, .col-type { order: 1; }
-/* Heslo je štítek, ne věta: drží se na jednom řádku a delší se ořízne
-   (celé je v title), aby se nerozlévalo přes datum ani přes sousedy. */
-.col-heslo { order: 2; max-width: 100%; }
-.col-heslo .heslo {
-  display: block; max-width: 100%;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-/* Datum na konci prvního řádku – při skenování seznamu je vždy na stejném místě. */
+/* Tabulka (shadcn Table) */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: var(--fs-md); table-layout: fixed; min-width: 780px; }
+th { text-align: left; font-size: var(--fs-md); font-weight: 500; color: var(--muted-foreground); padding: 8px 16px 8px 0; border-bottom: 1px solid var(--border); }
+td { padding: 12px 16px 12px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+th:last-child, td:last-child { padding-right: 0; }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr { transition: background-color 0.12s ease; }
+tbody tr:hover { background: color-mix(in srgb, var(--muted) 55%, transparent); }
+td a { color: var(--link); text-decoration: none; text-underline-offset: 3px; }
+td a:hover { text-decoration: underline; }
+
+/* Šířky sloupců (table-layout: fixed) řídí <colgroup>, které vykresluje
+   skript – výchozí hodnoty jsou v COL_DEFAULTS, uživatelské v cookie.
+   V CSS proto zůstává jen to, co se šířkou nesouvisí. */
+.col-src .src, .col-src .tag { margin-bottom: 3px; }
 .col-date {
-  order: 3; margin-left: auto; color: var(--muted-foreground);
-  font-size: var(--fs-sm); font-variant-numeric: tabular-nums; white-space: nowrap;
+  color: var(--muted-foreground); font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
-.col-name { order: 4; flex-basis: 100%; font-weight: 500; }
-.col-author { order: 5; flex-basis: 100%; }
-/* Delší řádek než ~80 znaků se čte hůř, i když je karta široká. */
-.col-summary { order: 6; flex-basis: 100%; max-width: 80ch; line-height: 1.55; }
-.item a { color: var(--link); text-decoration: none; text-underline-offset: 3px; }
-.item a:hover { text-decoration: underline; }
-.author { color: var(--muted-foreground); font-size: var(--fs-sm); }
-.col-name .author { display: block; margin-top: 2px; font-weight: 400; }
+/* Heslo je štítek, ne věta – na dvou řádcích vypadá jako odstavec.
+   Držíme ho na jednom a delší radši ořízneme (celé je v title). */
+.col-heslo { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.col-type, .col-name, .col-summary, .col-src, .col-author
+  { overflow-wrap: anywhere; }
+.author { color: var(--muted-foreground); }
+.col-name .author { display: block; margin-top: 2px; font-size: var(--fs-sm); }
+.nowrap { white-space: nowrap; }
+.summary { line-height: 1.55; }
 .note { color: var(--muted-foreground); font-style: italic; }
 .doc-link {
   font-size: var(--fs-sm); font-weight: 600; letter-spacing: .04em; white-space: nowrap;
@@ -182,22 +179,32 @@ section[id], .card[id] { scroll-margin-top: 76px; }
   text-decoration: none; vertical-align: 1px;
 }
 
-/* Štítek časopisu / typu řízení je v seznamu zároveň filtr: klik nechá jen
-   položky se stejným štítkem, druhý klik nebo „zrušit" ho zase pustí. */
-.list .tag[data-filter] { cursor: pointer; }
-.list .tag[data-filter]:hover, .list .tag[data-filter]:focus-visible {
-  box-shadow: inset 0 0 0 1px currentColor;
+/* Táhlo na hranici záhlaví – mění šířku sloupce na úkor toho vpravo.
+   Je o pár pixelů širší než čára a přesahuje do mezery mezi sloupci,
+   aby se trefovalo i myší, která není úplně přesná. */
+th { position: relative; }
+.col-resizer {
+  position: absolute; top: 0; right: -5px; z-index: 1;
+  width: 11px; height: 100%;
+  cursor: col-resize; touch-action: none;
+  background: none; border: 0; padding: 0;
 }
-.list-filter {
-  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-  padding: 8px 0 4px; font-size: var(--fs-sm); color: var(--muted-foreground);
+.col-resizer::before {
+  content: ""; position: absolute; top: 3px; bottom: 3px; left: 5px;
+  width: 1px; background: transparent; transition: background-color 0.12s ease;
 }
-.list-filter[hidden] { display: none; }
-.list-filter-clear {
-  background: none; border: 1px solid var(--border); border-radius: 6px;
-  padding: 1px 8px; color: var(--muted-foreground); font-size: var(--fs-sm); cursor: pointer;
+.col-resizer:hover::before,
+.col-resizer:focus-visible::before,
+.col-resizer.is-active::before { background: var(--link); }
+.col-resizer:focus { outline: none; }
+/* Během tažení ať se neoznačuje text a kurzor drží tvar i mimo táhlo. */
+body.is-resizing { cursor: col-resize; user-select: none; -webkit-user-select: none; }
+/* Heslo je štítek, ne věta: drží se na jednom řádku a delší se ořízne
+   uvnitř buňky (celé je v title), aby se nerozlévalo do sloupce shrnutí. */
+.col-heslo .heslo {
+  display: block; max-width: 100%;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.list-filter-clear:hover { color: var(--foreground); background: var(--accent); }
 
 /* Štítky (shadcn Badge). Heslo = akcent; zdroj/typ mají sémantické odstíny,
    ostatní neutrální „secondary". */
@@ -489,6 +496,31 @@ html.is-loading body { visibility: hidden; }
   }
   /* Se zobrazenou boční navigací by byl přepínač nahoře nadbytečný. */
   .pagetabs { display: none; }
+}
+/* Tabulka má spodní šířku 780 px; jakmile se do karty nevejde, vodorovné
+   posouvání schová shrnutí a řádky se protáhnou. Místo toho je z každé
+   položky blok: nahoře štítky zdroje a datum, pod nimi název s autorem,
+   heslo a shrnutí. */
+@container (max-width: 790px) {
+  .table-wrap { overflow-x: visible; }
+  table { display: block; min-width: 0; }
+  table colgroup, table thead { display: none; }
+  tbody { display: block; }
+  tbody tr {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px;
+    padding: 12px 0; border-bottom: 1px solid var(--border);
+  }
+  tbody tr:hover { background: none; }
+  tbody td { display: block; padding: 0; border: 0; }
+  tbody td:empty { display: none; }
+  .col-src, .col-type { order: 1; }
+  .col-date { order: 2; font-size: var(--fs-sm); }
+  .col-name { order: 3; flex-basis: 100%; font-weight: 500; }
+  .col-author { order: 4; flex-basis: 100%; }
+  /* Heslo se v bloku vejde celé – ořezávat ho je potřeba jen ve sloupci. */
+  .col-heslo { order: 5; max-width: 100%; white-space: normal; overflow: visible; }
+  .col-summary { order: 6; flex-basis: 100%; color: var(--muted-foreground); }
+  .col-src .src, .col-src .tag { margin-bottom: 0; }
 }
 @media (max-width: 640px) {
   .container { padding-inline: 14px; }

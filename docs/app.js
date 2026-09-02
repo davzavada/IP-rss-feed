@@ -63,20 +63,192 @@ function tagSlug(label) {
   return String(label).toLowerCase().replace(/[^a-z0-9]+/g, "-");
 }
 
-// Štítek časopisu / typu řízení. V seznamu (`filterable`) je zároveň filtr.
-function tagBadge(label, filterable) {
+// Štítek časopisu / typu řízení.
+function tagBadge(label) {
   if (!label) return "";
-  const slug = tagSlug(label);
-  const attrs = filterable
-    ? ' data-filter="' + slug + '" role="button" tabindex="0" title="Zobrazit jen ' + esc(label) + '"'
-    : "";
-  return '<span class="tag tag-' + slug + '"' + attrs + ">" + esc(label) + "</span>";
+  return '<span class="tag tag-' + tagSlug(label) + '">' + esc(label) + "</span>";
 }
 
 // „[IIC] Název" -> „IIC"
 function tagOf(title) {
   const m = title.match(/^\[([^\]]+)\]/);
   return m ? m[1] : "";
+}
+
+/* ========== Šířky sloupců (tažení za záhlaví, uložení do cookie) ========== */
+// Výchozí šířky v procentech podle druhu sloupce; sloupec, který tu není
+// (Shrnutí), si rozebere zbytek řádku. Každá tabulka má jinou skladbu
+// sloupců, takže se výchozí hodnoty počítají pro každou zvlášť.
+const COL_DEFAULTS = { type: 12, name: 20, heslo: 22, src: 15, date: 10, author: 14 };
+const MIN_COL_PCT = 4;          // pod tuhle šířku sloupec nepustíme
+const KEY_STEP_PCT = 2;         // krok při ovládání šipkami
+const COL_COOKIE = "colw";
+const COL_COOKIE_MAX_AGE = 365 * 24 * 60 * 60;
+
+// Skladba sloupců podle klíče tabulky – potřeba při obnovení výchozích šířek.
+const tableColumns = {};
+
+function readCookie(name) {
+  const m = document.cookie.match("(?:^|; )" + name + "=([^;]*)");
+  try {
+    return m ? decodeURIComponent(m[1]) : "";
+  } catch (e) {
+    return "";
+  }
+}
+
+function writeCookie(name, value) {
+  try {
+    document.cookie = name + "=" + encodeURIComponent(value) +
+      ";path=/;max-age=" + COL_COOKIE_MAX_AGE + ";samesite=lax";
+  } catch (e) { /* zakázané cookies – šířky prostě nepřežijí načtení */ }
+}
+
+// Cookie drží { klíč tabulky: [procenta sloupců] }. Poškozený obsah
+// (ruční úprava, starší verze stránky) zahodíme a jedeme na výchozích.
+function loadWidths() {
+  try {
+    const data = JSON.parse(readCookie(COL_COOKIE) || "{}");
+    return data && typeof data === "object" && !Array.isArray(data) ? data : {};
+  } catch (e) {
+    return {};
+  }
+}
+
+const storedWidths = loadWidths();
+
+function colKey(c) {
+  return String(c.cls || "").replace(/^col-/, "");
+}
+
+function defaultWidths(columns) {
+  // Výchozí šířka je podle typu sloupce; tabulka si ji může přebít (`width`),
+  // když má sloupců míň a je kam růst.
+  const fixed = columns.map(c => c.width || COL_DEFAULTS[colKey(c)] || 0);
+  const rest = 100 - fixed.reduce((a, b) => a + b, 0);
+  const flexible = fixed.filter(w => !w).length;
+  return fixed.map(w => w || Math.max(MIN_COL_PCT, rest / (flexible || 1)));
+}
+
+// Uložené šířky bereme jen tehdy, když sedí na aktuální skladbu sloupců;
+// součet dorovnáme na 100 %, ať se nesejde tabulka širší nebo užší než řádek.
+function widthsFor(key, columns) {
+  const saved = storedWidths[key];
+  const usable = Array.isArray(saved) && saved.length === columns.length &&
+    saved.every(w => typeof w === "number" && isFinite(w) && w >= 1);
+  if (!usable) return defaultWidths(columns);
+  const sum = saved.reduce((a, b) => a + b, 0);
+  return saved.map(w => (w / sum) * 100);
+}
+
+function saveWidths(key, widths) {
+  if (!key) return;
+  storedWidths[key] = widths.map(w => Math.round(w * 100) / 100);
+  writeCookie(COL_COOKIE, JSON.stringify(storedWidths));
+}
+
+function currentWidths(table) {
+  return Array.from(table.querySelectorAll("col")).map(c => parseFloat(c.style.width) || 0);
+}
+
+function applyWidths(table, widths) {
+  const cols = table.querySelectorAll("col");
+  widths.forEach((w, i) => { if (cols[i]) cols[i].style.width = w.toFixed(2) + "%"; });
+}
+
+// Posun hranice mezi sloupci i a i+1: co jeden získá, druhý ztratí, takže
+// zbytek tabulky zůstane, kde byl. Vrací nové šířky (v procentech).
+function moveBoundary(widths, i, deltaPct) {
+  const pair = widths[i] + widths[i + 1];
+  const next = widths.slice();
+  next[i] = Math.max(MIN_COL_PCT, Math.min(widths[i] + deltaPct, pair - MIN_COL_PCT));
+  next[i + 1] = pair - next[i];
+  return next;
+}
+
+function boundaryOf(handle) {
+  const th = handle.parentElement;
+  const table = th.closest("table");
+  return { table, index: Array.prototype.indexOf.call(th.parentElement.children, th) };
+}
+
+function resetWidths(table) {
+  const key = table.dataset.cols;
+  const columns = tableColumns[key];
+  if (!columns) return;
+  applyWidths(table, defaultWidths(columns));
+  delete storedWidths[key];
+  writeCookie(COL_COOKIE, JSON.stringify(storedWidths));
+}
+
+function initColumnResize() {
+  let drag = null;
+
+  document.addEventListener("pointerdown", e => {
+    const handle = e.target.closest(".col-resizer");
+    if (!handle || (e.pointerType === "mouse" && e.button !== 0)) return;
+    const { table, index } = boundaryOf(handle);
+    // Šířky měříme v pixelech ze skutečně vykreslené tabulky – tažení pak
+    // sedí na pohyb myši i tam, kde tabulka přetéká (min-width: 780px).
+    const cells = handle.parentElement.parentElement.children;
+    drag = {
+      table, index, handle,
+      startX: e.clientX,
+      total: table.getBoundingClientRect().width,
+      a: cells[index].getBoundingClientRect().width,
+      b: cells[index + 1].getBoundingClientRect().width
+    };
+    handle.classList.add("is-active");
+    document.body.classList.add("is-resizing");
+    handle.setPointerCapture(e.pointerId);
+    e.preventDefault();
+  });
+
+  document.addEventListener("pointermove", e => {
+    if (!drag || !drag.total) return;
+    const pct = w => (w / drag.total) * 100;
+    const widths = currentWidths(drag.table);
+    widths[drag.index] = pct(drag.a);
+    widths[drag.index + 1] = pct(drag.b);
+    applyWidths(drag.table, moveBoundary(widths, drag.index, pct(e.clientX - drag.startX)));
+  });
+
+  function endDrag() {
+    if (!drag) return;
+    drag.handle.classList.remove("is-active");
+    document.body.classList.remove("is-resizing");
+    saveWidths(drag.table.dataset.cols, currentWidths(drag.table));
+    drag = null;
+  }
+
+  document.addEventListener("pointerup", endDrag);
+  document.addEventListener("pointercancel", endDrag);
+
+  // Dvojklik na hranici = zpátky na výchozí šířky celé tabulky.
+  document.addEventListener("dblclick", e => {
+    const handle = e.target.closest(".col-resizer");
+    if (!handle) return;
+    e.preventDefault();
+    resetWidths(boundaryOf(handle).table);
+  });
+
+  // Bez myši: táhlo je ve fokusu a šipky s ním hýbou.
+  document.addEventListener("keydown", e => {
+    const handle = e.target.closest && e.target.closest(".col-resizer");
+    if (!handle) return;
+    const step = e.key === "ArrowLeft" ? -KEY_STEP_PCT
+      : e.key === "ArrowRight" ? KEY_STEP_PCT : 0;
+    const { table, index } = boundaryOf(handle);
+    if (step) {
+      e.preventDefault();
+      const widths = moveBoundary(currentWidths(table), index, step);
+      applyWidths(table, widths);
+      saveWidths(table.dataset.cols, widths);
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      resetWidths(table);
+    }
+  });
 }
 
 /* ========== Seznamy položek ========== */
@@ -131,45 +303,44 @@ function dateCell(item) {
 }
 
 function typeCell(item) {
-  return tagBadge(tagOf(text(item, "title")), true);
+  return tagBadge(tagOf(text(item, "title")));
 }
 
-// Skladba položky podle feedu: (třída bloku, co do něj vykreslit).
-// Prázdný blok se nevykreslí, ať v položce nezůstávají díry.
+// Definice sloupců sdílíme mezi živým feedem a novými položkami.
 const colsNsoud = [
-  { cls: "col-name", render: nameCell },
-  { cls: "col-heslo", render: hesloCell },
-  { cls: "col-summary", render: summaryCell },
-  { cls: "col-date", render: dateCell }
+  { label: "Název", cls: "col-name", render: nameCell },
+  { label: "Heslo", cls: "col-heslo", render: hesloCell },
+  { label: "Shrnutí", cls: "col-summary", render: summaryCell },
+  { label: "Datum", cls: "col-date", render: dateCell }
 ];
 
 const colsCjeu = [
-  { cls: "col-type", render: typeCell },
-  { cls: "col-name", render: nameCell },
-  { cls: "col-heslo", render: hesloCell },
-  { cls: "col-summary", render: summaryCell },
-  { cls: "col-date", render: dateCell }
+  { label: "Typ", cls: "col-type", render: typeCell },
+  { label: "Případ", cls: "col-name", render: nameCell },
+  { label: "Heslo", cls: "col-heslo", render: hesloCell },
+  { label: "Shrnutí", cls: "col-summary", render: summaryCell },
+  { label: "Datum", cls: "col-date", render: dateCell }
 ];
 
 const colsJournals = [
-  { cls: "col-type", render: typeCell },
-  { cls: "col-name", render: nameCell },
-  { cls: "col-author", render: authorCell },
-  { cls: "col-summary", render: summaryCell },
+  { label: "Časopis", cls: "col-type", render: typeCell },
+  { label: "Název", cls: "col-name", render: nameCell, width: 26 },
+  { label: "Autor", cls: "col-author", render: authorCell },
+  { label: "Shrnutí", cls: "col-summary", render: summaryCell },
   // U časopisů, které datum vydání neuvádějí, je to datum, kdy článek
   // ve feedu přibyl (viz pub_date_odhad ve scraper_journals.py).
-  { cls: "col-date", render: dateCell }
+  { label: "Datum", cls: "col-date", render: dateCell }
 ];
 
-// Nové položky – kombinovaný seznam přes všechny tři zdroje. Vedle štítku
-// zdroje je štítek časopisu/typu.
+// Nové položky – kombinovaná tabulka přes všechny tři zdroje.
+// Ve sloupci Zdroj je vedle sebe štítek zdroje a štítek časopisu/typu.
 const colsToday = [
-  { cls: "col-src", render: i =>
+  { label: "Zdroj", cls: "col-src", render: i =>
       '<span class="src src-' + i._src + '">' + i._srcLabel + "</span> " + typeCell(i) },
-  { cls: "col-name", render: nameAuthorCell },
-  { cls: "col-heslo", render: hesloCell },
-  { cls: "col-summary", render: summaryCell },
-  { cls: "col-date", render: dateCell }
+  { label: "Název", cls: "col-name", render: nameAuthorCell },
+  { label: "Heslo", cls: "col-heslo", render: hesloCell },
+  { label: "Shrnutí", cls: "col-summary", render: summaryCell },
+  { label: "Datum", cls: "col-date", render: dateCell }
 ];
 
 const FEEDS = [
@@ -178,58 +349,36 @@ const FEEDS = [
   { key: "journals", label: "Časopis",   url: "journals_feed.xml", cols: colsJournals, containerId: "feed-journals" }
 ];
 
-function renderList(items, container, columns) {
+function resizerHtml(column) {
+  return '<span class="col-resizer" role="separator" aria-orientation="vertical"' +
+    ' tabindex="0" aria-label="Šířka sloupce ' + esc(column.label) + '"' +
+    ' title="Táhnutím změníte šířku sloupce, dvojklikem obnovíte výchozí"></span>';
+}
+
+function renderTable(items, container, columns, key) {
   if (items.length === 0) {
     container.innerHTML = '<p class="feed-empty">Žádné nové položky.</p>';
     return;
   }
-  let html = '<div class="list"><div class="list-filter" hidden></div>';
+  tableColumns[key] = columns;
+  let html = '<div class="table-wrap"><table data-cols="' + esc(key) + '"><colgroup>';
+  widthsFor(key, columns).forEach(w => { html += '<col style="width:' + w.toFixed(2) + '%">'; });
+  html += "</colgroup><thead><tr>";
+  columns.forEach((c, i) => {
+    // Poslední sloupec už nemá kam růst – hranice je vždy mezi dvěma sloupci.
+    html += "<th" + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.label +
+      (i < columns.length - 1 ? resizerHtml(c) : "") + "</th>";
+  });
+  html += "</tr></thead><tbody>";
   items.forEach(item => {
-    const tag = tagOf(text(item, "title"));
-    html += '<article class="item"' + (tag ? ' data-tag="' + esc(tagSlug(tag)) + '"' : "") + ">";
+    html += "<tr>";
     columns.forEach(c => {
-      const cell = c.render(item);
-      if (cell) html += '<div class="' + c.cls + '">' + cell + "</div>";
+      html += "<td" + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.render(item) + "</td>";
     });
-    html += "</article>";
+    html += "</tr>";
   });
-  container.innerHTML = html + "</div>";
-}
-
-// Filtr seznamu podle štítku: skryje položky s jiným štítkem a nad seznam
-// dá lištu, kterou se filtr zase zruší.
-function applyListFilter(list, slug, label) {
-  list.dataset.filter = slug || "";
-  list.querySelectorAll(".item").forEach(it => {
-    it.hidden = !!slug && it.dataset.tag !== slug;
-  });
-  const bar = list.querySelector(".list-filter");
-  bar.hidden = !slug;
-  bar.innerHTML = slug
-    ? "Jen " + tagBadge(label, false) +
-      ' <button type="button" class="list-filter-clear">zrušit filtr</button>'
-    : "";
-}
-
-function initListFilters() {
-  function toggle(tag) {
-    const list = tag.closest(".list");
-    const slug = tag.dataset.filter;
-    applyListFilter(list, list.dataset.filter === slug ? "" : slug, tag.textContent);
-  }
-  document.addEventListener("click", e => {
-    const clear = e.target.closest(".list-filter-clear");
-    if (clear) { applyListFilter(clear.closest(".list"), ""); return; }
-    const tag = e.target.closest(".list .tag[data-filter]");
-    if (tag) toggle(tag);
-  });
-  document.addEventListener("keydown", e => {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    const tag = e.target.closest && e.target.closest(".list .tag[data-filter]");
-    if (!tag) return;
-    e.preventDefault();
-    toggle(tag);
-  });
+  html += "</tbody></table></div>";
+  container.innerHTML = html;
 }
 
 // `results` jsou výsledky Promise.allSettled nad položkami jednotlivých feedů.
@@ -256,7 +405,7 @@ function renderToday(results) {
     container.innerHTML = '<p class="feed-empty">Za posledních 24 hodin nic nepřibylo. ' +
       "Feedy se obnovují ráno v 7:00 a odpoledne ve 14:00.</p>";
   } else {
-    renderList(today, container, colsToday);
+    renderTable(today, container, colsToday, "today");
   }
 }
 
@@ -270,7 +419,7 @@ function digestSource(s) {
   const key = SRC_KEYS.indexOf(s.src) >= 0 ? s.src : "";
   const badge = '<span class="src' + (key ? " src-" + key : "") + '">' + esc(s.label || "") + "</span>";
   // U článků ještě zkratka časopisu ([JIPLP], [IIC], …), u CJEU typ řízení.
-  const inner = badge + tagBadge(s.tag, false) + "<span>" + esc(s.title || "") + "</span>";
+  const inner = badge + tagBadge(s.tag) + "<span>" + esc(s.title || "") + "</span>";
   const href = safeHref(s.link || "");
   return href
     ? '<a class="digest-source" href="' + href + '">' + inner + "</a>"
@@ -959,7 +1108,9 @@ function initApp() {
   const hearingsPromise = fetchJson("hearings.json").catch(() => null);
   initNav();
   initHelp();
-  initListFilters();
+  // Tažení šířek visí na dokumentu, takže platí i pro tabulky, které
+  // se vykreslí až po dotažení feedů.
+  initColumnResize();
 
   // Vykreslíme až všechny feedy dorazí (stahují se paralelně, jsou ze
   // stejného původu). Jedno překreslení místo tří – stránka při načítání
@@ -975,7 +1126,7 @@ function initApp() {
         }
         // Druhá stránka je úplný výpis za okno feedu – nové položky z ní
         // nevynecháváme, na jednu stránku se položky nedostanou dvakrát.
-        renderList(results[idx].value, document.getElementById(f.containerId), f.cols);
+        renderTable(results[idx].value, document.getElementById(f.containerId), f.cols, f.key);
       });
       renderToday(results);
       renderDigest(digest);
