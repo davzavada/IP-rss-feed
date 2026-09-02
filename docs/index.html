@@ -154,7 +154,7 @@
   .feed-icon { width: 14px; height: 14px; flex: none; }
   /* Ikony jsou kreslené tahem, ne výplní – nastavení je společné, ať to
      nemusí nést každý <symbol>. */
-  .feed-icon, .nav-ico {
+  .feed-icon, .nav-ico, .fold-ico {
     fill: none; stroke: currentColor; stroke-width: 2;
     stroke-linecap: round; stroke-linejoin: round;
   }
@@ -247,6 +247,22 @@
   .digest-source:hover { text-decoration: underline; }
   .digest-source .src, .digest-source .tag { flex: none; }
   .digest-meta { margin: 14px 0 0; font-size: var(--fs-sm); color: var(--muted-foreground); }
+  /* Přehled vzniká jednou týdně. Mimo den, kdy vznikl, je karta sbalená
+     na hlavičku s datem – rozbalí se kliknutím kamkoli do hlavičky. */
+  #dvatydny .card-header { cursor: pointer; user-select: none; }
+  #dvatydny.is-folded .card-header { padding-bottom: 16px; }
+  .fold {
+    margin-left: auto; width: 24px; height: 24px; flex: none; padding: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid var(--border); border-radius: 8px; background: none;
+    color: var(--muted-foreground); cursor: pointer;
+  }
+  #dvatydny .card-header:hover .fold, .fold:focus-visible {
+    color: var(--foreground); background: var(--accent); border-color: var(--muted-foreground);
+  }
+  .fold-ico { width: 14px; height: 14px; transition: transform 0.15s; }
+  .fold[aria-expanded="false"] .fold-ico { transform: rotate(-90deg); }
+  .card-content[hidden] { display: none; }
 
   /* ===== Kalendář jednání (MS + VS, IP senáty) ===== */
   .cal-toolbar {
@@ -589,6 +605,9 @@
     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>
   </symbol>
+  <symbol id="icon-chevron" viewBox="0 0 24 24">
+    <path d="m6 9 6 6 6-6"></path>
+  </symbol>
   <symbol id="icon-calendar" viewBox="0 0 24 24">
     <rect x="3" y="5" width="18" height="16" rx="2"></rect>
     <path d="M16 3v4M8 3v4M3 10h18"></path>
@@ -643,6 +662,7 @@
     <div class="card-header">
       <h2 class="card-title">Co se stalo v uplynulých dvou týdnech</h2>
       <span class="legend" id="digest-updated"></span>
+      <button type="button" class="fold" id="digest-fold" aria-expanded="true" aria-controls="feed-digest" aria-label="Sbalit přehled"><svg class="fold-ico" aria-hidden="true"><use href="#icon-chevron"></use></svg></button>
     </div>
     <div class="card-content" id="feed-digest"><p class="loading">Načítám...</p></div>
   </div>
@@ -1136,6 +1156,28 @@ function digestSource(s) {
     : '<span class="digest-source">' + inner + "</span>";
 }
 
+// Sbalí nebo rozbalí kartu s přehledem; hlavička s datem zůstává vidět vždy.
+function setDigestFolded(folded) {
+  const card = document.getElementById("dvatydny");
+  const btn = document.getElementById("digest-fold");
+  const content = document.getElementById("feed-digest");
+  if (!card || !btn || !content) return;
+  card.classList.toggle("is-folded", folded);
+  content.hidden = folded;
+  btn.setAttribute("aria-expanded", String(!folded));
+  btn.setAttribute("aria-label", folded ? "Rozbalit přehled" : "Sbalit přehled");
+}
+
+function isDigestFolded() {
+  const btn = document.getElementById("digest-fold");
+  return !btn || btn.getAttribute("aria-expanded") !== "true";
+}
+
+function isToday(iso) {
+  const d = new Date(iso);
+  return !isNaN(d) && d.toDateString() === new Date().toDateString();
+}
+
 function renderDigest(data) {
   const container = document.getElementById("feed-digest");
   // Přehled se na rozdíl od feedů generuje jen jednou týdně, takže datum
@@ -1144,6 +1186,9 @@ function renderDigest(data) {
   if (stamp && data && data.generated) {
     stamp.textContent = "aktualizováno " + czDate(data.generated);
   }
+  // Rozbalený je přehled jen v den, kdy vznikl – po zbytek týdne je to
+  // stále stejný text, tak ať neodsouvá zbytek stránky. Bez data je sbalený.
+  setDigestFolded(!(data && data.generated && isToday(data.generated)));
   if (!data || !Array.isArray(data.blocks) || data.blocks.length === 0) {
     container.innerHTML = '<p class="feed-empty">Přehled zatím není k dispozici.</p>';
     return;
@@ -1776,6 +1821,10 @@ document.addEventListener("click", e => {
   desc.hidden = !desc.hidden;
   btn.setAttribute("aria-expanded", String(!desc.hidden));
 });
+const digestHead = document.querySelector("#dvatydny .card-header");
+if (digestHead) {
+  digestHead.addEventListener("click", () => setDigestFolded(!isDigestFolded()));
+}
 document.addEventListener("keydown", e => {
   if (e.key === "Escape") closeHelp(null);
 });
@@ -1808,6 +1857,8 @@ function navigate(hash, push) {
   });
 
   const section = page.sections.indexOf(id) >= 0 ? document.getElementById(id) : null;
+  // Kdo jde přímo na přehled (třeba odkazem z newsletteru), chce ho číst.
+  if (id === "dvatydny") setDigestFolded(false);
   if (section) section.scrollIntoView({ block: "start" });
   else window.scrollTo(0, 0);
 
