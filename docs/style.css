@@ -155,7 +155,13 @@ section[id], .card[id] { scroll-margin-top: 76px; }
 .item[hidden] { display: none; }
 .item > * { min-width: 0; overflow-wrap: anywhere; }
 .col-src, .col-type { order: 1; }
-.col-heslo { order: 2; }
+/* Heslo je štítek, ne věta: drží se na jednom řádku a delší se ořízne
+   (celé je v title), aby se nerozlévalo přes datum ani přes sousedy. */
+.col-heslo { order: 2; max-width: 100%; }
+.col-heslo .heslo {
+  display: block; max-width: 100%;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
 /* Datum na konci prvního řádku – při skenování seznamu je vždy na stejném místě. */
 .col-date {
   order: 3; margin-left: auto; color: var(--muted-foreground);
