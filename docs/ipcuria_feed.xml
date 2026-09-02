@@ -6,7 +6,7 @@
     <atom:link href="https://rss.davidzavada.cz/ipcuria_feed.xml" rel="self" type="application/rss+xml" />
     <description>Latest CJEU IP case law: preliminary rulings, referrals, appeals</description>
     <language>en</language>
-    <lastBuildDate>Wed, 02 Sep 2026 04:05:34 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2026 09:25:50 +0000</lastBuildDate>
     <item>
       <title>[Referral] C-837/26 (Airwair International)</title>
       <link>https://curia.europa.eu/juris/liste.do?num=C-837/26</link>
@@ -17,6 +17,18 @@ Otázky zatím nezveřejněny.
 CURIA: https://curia.europa.eu/juris/liste.do?num=C-837/26</description>
       <pubDate>Wed, 29 Jul 2026 12:00:00 +0000</pubDate>
       <dc:date>2026-07-29</dc:date>
+    </item>
+    <item>
+      <title>[Referral] C-829/26 (Mobilguru)</title>
+      <link>https://curia.europa.eu/juris/liste.do?num=C-829/26</link>
+      <guid isPermaLink="false">Referral-C-829/26</guid>
+      <is-new>true</is-new>
+      <note>Otázky zatím nezveřejněny.</note>
+      <description>[Referral] 28 Jul 2026, C-829/26 (Mobilguru)
+Otázky zatím nezveřejněny.
+CURIA: https://curia.europa.eu/juris/liste.do?num=C-829/26</description>
+      <pubDate>Tue, 28 Jul 2026 12:00:00 +0000</pubDate>
+      <dc:date>2026-07-28</dc:date>
     </item>
     <item>
       <title>[Referral] C-806/26 (Manchester United Fanatics Klub)</title>
@@ -42,6 +54,21 @@ Předkládající soud se ptá, zda GDPR vylučuje interpretaci vnitrostátního
 CURIA: https://curia.europa.eu/juris/liste.do?num=C-801/26</description>
       <pubDate>Fri, 17 Jul 2026 12:00:00 +0000</pubDate>
       <dc:date>2026-07-17</dc:date>
+    </item>
+    <item>
+      <title>[Ruling] C-421/24 (AGCOM (Jeux d’argent en ligne))</title>
+      <link>https://curia.europa.eu/juris/liste.do?num=C-421/24</link>
+      <guid isPermaLink="false">Ruling-C-421/24</guid>
+      <is-new>true</is-new>
+      <ai-tag>Odpovědnost hostingového poskytovatele</ai-tag>
+      <ai-summary>Soud rozhodl, že směrnice o elektronickém obchodě se vztahuje i na hosting videí obsahujících reklamu na hazardní hry. Zároveň konstatoval, že hostingový poskytovatel nemůže uplatnit osvobození od odpovědnosti, pokud uzavřel s tvůrcem obsahu smlouvu o sdílení výnosů a v rámci ní prověřoval hlavní téma nebo metadata kanálu.</ai-summary>
+      <description>[Ruling] 16 Jul 2026, C-421/24 (AGCOM (Jeux d’argent en ligne))
+Soud rozhodl, že směrnice o elektronickém obchodě se vztahuje i na hosting videí obsahujících reklamu na hazardní hry. Zároveň konstatoval, že hostingový poskytovatel nemůže uplatnit osvobození od odpovědnosti, pokud uzavřel s tvůrcem obsahu smlouvu o sdílení výnosů a v rámci ní prověřoval hlavní téma nebo metadata kanálu.
+Type: Judgment
+- IP and other instruments &gt; eCommerce Directive
+CURIA: https://curia.europa.eu/juris/liste.do?num=C-421/24</description>
+      <pubDate>Thu, 16 Jul 2026 12:00:00 +0000</pubDate>
+      <dc:date>2026-07-16</dc:date>
     </item>
     <item>
       <title>[Ruling] C-474/24 (NADA  Austria and Others)</title>
