@@ -3,14 +3,13 @@ name: Týdenní newsletter
 on:
   schedule:
     # Cron je vždy v UTC; míříme na pondělí 8:30 pražského času. Startujeme
-    # o deset minut dřív (8:20) – GitHub scheduled běhy pouští se zpožděním
-    # (proč zrovna necelá hodina, viz update-feed.yml). Praha přechází mezi
-    # CEST (UTC+2) a CET (UTC+1), takže jsou tu dva výrazy a projde ten, ze
-    # kterého 8:20 vychází; ten druhý skončí hned na začátku.
+    # o deset minut dřív – GitHub scheduled běhy pouští se zpožděním (proč
+    # zrovna necelá hodina, viz update-feed.yml). Praha přechází mezi CEST
+    # (UTC+2) a CET (UTC+1), takže jsou tu dva výrazy a projde ten, ze
+    # kterého 8:30 vychází; ten druhý skončí hned na začátku.
     #
-    # Dvoutýdenní přehled se generuje v pondělí ráno (update-feed.yml). Když
-    # se to nestihne, protože GitHub žádný běh v ranním okně nepustil,
-    # dogeneruje si ho tenhle workflow sám (krok „Přehled, když je starý").
+    # Dvoutýdenní přehled se generuje v pondělí v 6:00 (update-feed.yml),
+    # takže je v tuhle dobu dávno hotový a stačí ho přečíst.
     - cron: '20 6 * * 1'   # 06:20 UTC = 8:20 CEST
     - cron: '20 7 * * 1'   # 07:20 UTC = 8:20 CET
   workflow_dispatch:       # ruční spuštění
@@ -20,9 +19,9 @@ on:
         type: boolean
         default: false
 
-# Zápis jen kvůli dogenerovanému přehledu – jinak se nic necommituje.
+# Jen čteme hotový přehled z repozitáře, nic se necommituje.
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: newsletter
@@ -38,9 +37,9 @@ jobs:
         id: plan
         run: |
           if [ "$(TZ=Europe/Prague date +%z)" = "+0200" ]; then
-            want='20 6 * * 1'   # CEST: 8:20 Praha = 06:20 UTC
+            want='20 6 * * 1'   # CEST: 8:30 Praha = 06:30 UTC
           else
-            want='20 7 * * 1'   # CET:  8:20 Praha = 07:20 UTC
+            want='20 7 * * 1'   # CET:  8:30 Praha = 07:30 UTC
           fi
           schedule='${{ github.event.schedule }}'
           if [ '${{ github.event_name }}' = 'workflow_dispatch' ] || [ "$schedule" = "$want" ]; then
@@ -48,45 +47,15 @@ jobs:
           else
             send=false
           fi
-          # Přehled je starý, když nevznikl dnes – pondělní běh update-feed
-          # nejspíš nedorazil. Bez data (soubor chybí) se bere jako starý.
-          dnes=$(TZ=Europe/Prague date +%F)
-          vznik=$(TZ=Europe/Prague date -d \
-            "$(grep -m1 '"generated"' docs/digest.json | cut -d'"' -f4)" +%F 2>/dev/null || true)
-          if [ "$send" = true ] && [ "$vznik" != "$dnes" ]; then stale=true; else stale=false; fi
           echo "send=$send" >> "$GITHUB_OUTPUT"
-          echo "stale=$stale" >> "$GITHUB_OUTPUT"
-          echo "cron '$schedule' -> odeslat: $send (v tomhle pololetí jede '$want'); přehled z '${vznik:-?}', dogenerovat: $stale"
+          echo "cron '$schedule' -> odeslat: $send (v tomhle pololetí jede '$want')"
 
       - uses: actions/setup-python@v6
         if: steps.plan.outputs.send == 'true'
         with:
           python-version: '3.12'
 
-      # Newsletter sám si vystačí se standardní knihovnou; requirements jsou
-      # potřeba jen pro digest.py (requests).
-      - name: Install dependencies
-        if: steps.plan.outputs.stale == 'true'
-        run: pip install -r requirements.txt
-
-      # Záloha za pondělní běh update-feed.yml: přehled se napíše z feedů,
-      # které v repozitáři leží, a uloží se, ať ho vidí i stránka.
-      - name: Přehled, když je starý
-        if: steps.plan.outputs.stale == 'true'
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          DIGEST_FORCE: '1'
-        run: |
-          python digest.py
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/digest.json
-          git diff --cached --quiet || git commit -m "Dvoutýdenní přehled $(date -u +%Y-%m-%d) (záloha z newsletteru)"
-          for i in 1 2 3; do
-            git push && break
-            git pull --rebase -X theirs origin main
-          done
-
+      # Skript si vystačí se standardní knihovnou, requirements.txt netřeba.
       # Bez nastavených secrets jen vypíše, že nemá kam poslat, a skončí v pořádku.
       - name: Poslat newsletter
         if: steps.plan.outputs.send == 'true'

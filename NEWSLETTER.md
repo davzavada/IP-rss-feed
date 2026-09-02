@@ -1,11 +1,9 @@
 # Newsletter e-mailem
 
-Každé pondělí kolem 8:30 pražského času odejde dvoutýdenní přehled – ten samý
+Každé pondělí v 8:30 pražského času odejde dvoutýdenní přehled – ten samý
 text, co je na stránce v sekci „Co se stalo v uplynulých dvou týdnech".
-Přehled sestaví `digest.py` v pondělí ráno (workflow `update-feed.yml`),
-newsletter ho přečte z `docs/digest.json` a rozešle. Když ranní běh nedorazil
-a přehled není z dnešního dne, newsletter si ho před odesláním vygeneruje
-a uloží sám.
+Přehled sestaví `digest.py` v pondělí v 6:00, newsletter ho jen přečte
+z `docs/digest.json` a rozešle.
 
 - workflow: [`.github/workflows/newsletter.yml`](.github/workflows/newsletter.yml)
 - skript: [`newsletter.py`](newsletter.py)
@@ -73,11 +71,10 @@ Podívej se do logu běhu (Actions → Týdenní newsletter → poslední běh):
 
 - **`MAIL_SMTP_HOST není nastavený`** – chybí secrets, vrať se ke kroku 2.
 - **`MAIL_TO je prázdné`** – secret existuje, ale nemá hodnotu.
-- **`Přehled je starší než 3 dne`** – přehled se nepřegeneroval ani v ranním
-  běhu `update-feed.yml`, ani v záložním kroku newsletteru (nejspíš chybí
-  `GEMINI_API_KEY` nebo AI neodpověděla). Radši se nic neposlalo, aby lidem
-  nepřišel týden starý text jako novinka. Spusť ručně `Update RSS Feed`
-  a pak newsletter.
+- **`Přehled je starší než 3 dne`** – pondělní běh `update-feed.yml` spadl
+  a přehled se nepřegeneroval. Radši se nic neposlalo, aby lidem nepřišel
+  týden starý text jako novinka. Spusť ručně `Update RSS Feed` a pak
+  newsletter.
 - **`Přehled není k dispozici nebo je prázdný`** – `docs/digest.json` chybí
   nebo nemá bloky.
 - **`CHYBA odesílání: …`** – server odmítl přihlášení nebo zprávu. U Gmailu
