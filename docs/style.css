@@ -17,7 +17,7 @@
   --fs-md: 0.85rem;    /* veškerý text: seznamy, prosa, ovládání */
   --fs-lg: 1rem;       /* nadpisy karet a jméno webu */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  /* Rozvržení: šířka obsahu a boční navigace (viz @media min-width: 1360px).
+  /* Rozvržení: šířka obsahu a boční navigace (viz @media min-width: 1600px).
      Pruh pro navigaci je tak široký, aby se do něj vešel i nejdelší
      název stránky na jeden řádek. */
   --content-w: min(1400px, 100vw - 660px);
@@ -126,8 +126,11 @@ section[id], .card[id] { scroll-margin-top: 76px; }
 .card-desc ul { margin: 4px 0 0; padding-left: 18px; }
 .card-desc li { margin: 1px 0; }
 /* Obsah karty je dotazovatelný kontejner: o rozvržení tabulky nerozhoduje
-   šířka okna, ale karty. Mezi 1360 a 1500 px ukrojí boční navigace tolik,
-   že je obsah užší než na telefonu, a přesto by okno hlásilo „široké". */
+   šířka okna, ale karty. Boční navigace se proto zapíná až od 1600 px
+   (viz @media min-width: 1600px) – níž by ukrojila tolik, že by obsah
+   zůstal užší, než tabulka potřebuje (viz min-width u table), i na
+   běžném 1920×1080 notebooku se zapnutým škálováním (125–150 %, tedy
+   efektivně ~1280–1536 px). */
 .card-content { padding: 10px 22px 16px; container-type: inline-size; }
 
 /* Název karty jako proklik na XML feed – jen jemná ikonka, žádný viditelný štítek. */
@@ -297,8 +300,8 @@ button.cal-key:hover { box-shadow: inset 0 0 0 1px currentColor; }
 .cal-grid {
   /* minmax(0, 1fr) je nutné: s holým 1fr má sloupec spodní šířku podle
      obsahu a jeden dlouhý název jednání by mřížku roztáhl přes okno. */
-  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px;
-  min-width: 660px;
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px;
+  min-width: 470px;
 }
 .cal-dow { font-size: var(--fs-sm); font-weight: 500; color: var(--muted-foreground); padding: 2px 6px; }
 .cal-day {
@@ -482,7 +485,7 @@ html.is-loading body { visibility: hidden; }
   content: ""; position: absolute; left: -9px; top: 4px; bottom: 4px;
   width: 1px; background: var(--border);
 }
-@media (min-width: 1360px) {
+@media (min-width: 1600px) {
   /* Po obou stranách se symetricky vyhradí místo pro navigaci,
      takže hlavní obsah zůstává vycentrovaný a nikam se neposouvá. */
   .container { max-width: var(--content-w); }

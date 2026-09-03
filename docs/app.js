@@ -623,10 +623,14 @@ function renderCalGrid() {
   const start = new Date(calStart);
   const todayIso = isoOf(new Date());
 
-  let html = CAL_DOWS.map(d => '<div class="cal-dow">' + d + "</div>").join("");
+  // Víkendy soudy nezasedají, tak se v mřížce jen pletou do cesty – bez
+  // nich je na pracovní dny víc místa. CAL_DOWS zůstává celý (používá ho
+  // i agenda níž), tady se vezme jen pracovní část.
+  let html = CAL_DOWS.slice(0, 5).map(d => '<div class="cal-dow">' + d + "</div>").join("");
   for (let i = 0; i < CAL_TYDNU * 7; i++) {
     const d = new Date(start);
     d.setDate(start.getDate() + i);
+    if (d.getDay() === 0 || d.getDay() === 6) continue;
     const iso = isoOf(d);
     const events = byDay[iso] || [];
     const cls = ["cal-day"];
