@@ -414,9 +414,17 @@ button.cal-key:hover { box-shadow: inset 0 0 0 1px currentColor; }
   background: var(--badge-amber-bg); color: var(--badge-amber-fg);
 }
 .cal-zmeny { margin-top: 18px; border-top: 1px solid var(--border); padding-top: 12px; }
-.cal-zmeny h3 {
-  margin: 0 0 8px; font-size: var(--fs-md); font-weight: 600;
+.cal-zmeny-head {
+  display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none;
 }
+.cal-zmeny-head h3 {
+  margin: 0; font-size: var(--fs-md); font-weight: 600;
+}
+.cal-zmeny-head:hover .fold, .cal-zmeny-head:focus-visible .fold {
+  color: var(--foreground); background: var(--accent); border-color: var(--muted-foreground);
+}
+.cal-zmeny-head[aria-expanded="false"] .fold-ico { transform: rotate(-90deg); }
+.cal-zmeny .card-content { margin-top: 8px; }
 .cal-zmeny ul { margin: 0; padding: 0; list-style: none; }
 .cal-zmeny li {
   display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;

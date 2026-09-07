@@ -674,14 +674,22 @@ function zmenyJednani(j) {
     z.soud === j.soud && z.spz === j.spz && z.datum === j.datum);
 }
 
-// Seznam změn pod mřížkou – kvůli němu se přehledy porovnávají.
+// Seznam změn pod mřížkou – kvůli němu se přehledy porovnávají. Sbalený je
+// ve výchozím stavu, ať dlouhý výpis neodsouvá kalendář; rozbalí se kliknutím
+// na hlavičku.
 function zmenyHtml() {
   const zmeny = (calData.zmeny || []).filter(z => z && z.spz && z.typ);
-  let html = '<div class="cal-zmeny"><h3>Změny v přehledech soudů</h3>';
+  let html = '<div class="cal-zmeny">' +
+    '<div class="cal-zmeny-head" id="zmeny-fold" role="button" tabindex="0" ' +
+      'aria-expanded="false" aria-controls="zmeny-content">' +
+      '<h3>Změny v přehledech soudů</h3>' +
+      '<span class="fold" aria-hidden="true"><svg class="fold-ico"><use href="#icon-chevron"></use></svg></span>' +
+    "</div>";
   if (!zmeny.length) {
-    return html + '<p class="feed-empty">Od minulých přehledů se nic nezměnilo.</p></div>';
+    return html + '<div class="card-content" id="zmeny-content" hidden>' +
+      '<p class="feed-empty">Od minulých přehledů se nic nezměnilo.</p></div></div>';
   }
-  html += "<ul>";
+  html += '<div class="card-content" id="zmeny-content" hidden><ul>';
   zmeny.forEach(z => {
     html += "<li>" +
       '<span class="cal-zmena-kdy">' + esc(czDate(z.kdy)) + "</span>" +
@@ -691,7 +699,17 @@ function zmenyHtml() {
       '<span class="cal-zmena-kdy">jednání ' + esc(czDate(z.datum)) + "</span>" +
       "</li>";
   });
-  return html + "</ul></div>";
+  return html + "</ul></div></div>";
+}
+
+// Sbalí/rozbalí seznam změn – stejný vzor jako setDigestFolded() u přehledu.
+function setZmenyFolded(folded) {
+  const head = document.getElementById("zmeny-fold");
+  const content = document.getElementById("zmeny-content");
+  if (!head || !content) return;
+  content.hidden = folded;
+  head.setAttribute("aria-expanded", String(!folded));
+  head.setAttribute("aria-label", folded ? "Rozbalit změny" : "Sbalit změny");
 }
 
 /* ========== Jedno jednání jako .ics ========== */
@@ -927,6 +945,18 @@ function renderKalendar(data) {
   if (info && data.generated) {
     const kdy = czDate(data.generated);
     if (kdy) info.textContent = "aktualizováno " + kdy;
+  }
+
+  const zmenyHead = document.getElementById("zmeny-fold");
+  if (zmenyHead) {
+    setZmenyFolded(true);
+    zmenyHead.addEventListener("click", () =>
+      setZmenyFolded(zmenyHead.getAttribute("aria-expanded") === "true"));
+    zmenyHead.addEventListener("keydown", e => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      e.preventDefault();
+      setZmenyFolded(zmenyHead.getAttribute("aria-expanded") === "true");
+    });
   }
 
   document.getElementById("cal-prev")
