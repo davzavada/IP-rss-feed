@@ -349,13 +349,13 @@ def _gemini_generate(parts, max_tokens=4096, timeout=60):
                 timeout=timeout,
             )
             _gemini_last_call = time.monotonic()
-            if r.status_code in GEMINI_RETRY_STATUSES:
-                back_off(attempt, f"AI {r.status_code}")
-                continue
             if r.status_code >= 400:
-                # Samotný stavový kód nestačí – co je na požadavku špatně,
-                # říká až tělo odpovědi.
+                # Samotný stavový kód nestačí: 429 z vyčerpané kvóty a 500 od
+                # přetíženého modelu se pozná až podle textu v těle odpovědi.
                 detail = re.sub(r"\s+", " ", r.text)[:300]
+                if r.status_code in GEMINI_RETRY_STATUSES:
+                    back_off(attempt, f"AI {r.status_code}: {detail}")
+                    continue
                 print(f"    AI {r.status_code}: {detail}")
                 return ""
             data = r.json()

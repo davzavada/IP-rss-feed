@@ -293,7 +293,13 @@ def enrich_summaries(decisions):
             print(f"    [diag] {d['case_number']}: odpověď není PDF ({ct}), shrnutí příště")
             return None
         summary, tag = gemini_summarize_pdf(pr.content, JUDIKATURA_PROMPT)
-        return {"summary": summary, "tag": tag} if summary else None
+        if not summary:
+            # Ať je vidět, jestli padají pořád tatáž rozhodnutí a jak velký
+            # vstup na to Gemma dostala.
+            print(f"    [diag] {d['case_number']}: bez shrnutí "
+                  f"({len(pr.content) // 1024} kB PDF)")
+            return None
+        return {"summary": summary, "tag": tag}
 
     return summarize_with_cache(decisions, META_FILE, _cache_key, summarize, needs_call)
 
