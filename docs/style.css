@@ -203,9 +203,11 @@ th { position: relative; }
 /* Během tažení ať se neoznačuje text a kurzor drží tvar i mimo táhlo. */
 body.is-resizing { cursor: col-resize; user-select: none; -webkit-user-select: none; }
 /* Heslo je štítek, ne věta: drží se na jednom řádku a delší se ořízne
-   uvnitř buňky (celé je v title), aby se nerozlévalo do sloupce shrnutí. */
+   uvnitř buňky (celé je v title), aby se nerozlévalo do sloupce shrnutí.
+   Inline-block, ne block – barevné pozadí má obepínat text, ne se roztáhnout
+   přes celou šířku sloupce. Ořez funguje díky max-width stejně. */
 .col-heslo .heslo {
-  display: block; max-width: 100%;
+  display: inline-block; max-width: 100%; vertical-align: top;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 
