@@ -1,15 +1,29 @@
 {
-  "generated": "2026-09-06T23:42:35.499393+00:00",
-  "from": "2026-08-23",
-  "to": "2026-09-06",
-  "total": 53,
-  "covered": 10,
-  "intro": "Období bylo charakteristické judikaturou Soudního dvora EU k hranicím odpovědnosti platforem a autorskoprávní ochraně obsahu na sociálních sítích. Významný prostor zaujala problematika AI v kontextu autorského práva a smluvnívolby, rovněž právní aspekty cirkulární ekonomiky a upcyklace.",
+  "generated": "2026-09-09T08:09:30.413065+00:00",
+  "from": "2026-08-26",
+  "to": "2026-09-09",
+  "total": 65,
+  "covered": 14,
+  "intro": "Období bylo velmi produktivní v oblasti digitálního práva a AI, s důrazem na odpovědnost platforem a autorskoprávní ochranu v digitálním prostředí. Soudní dvůr EU i odborné publikace přinesly zásadní odpovědi na otázky liability hostingů a ochrany textů na sociálních sítích.",
   "blocks": [
     {
-      "title": "Odpovědnost hostingových poskytovatelů",
-      "text": "Soudní dvůr EU rozhodl, že hostingový poskytovatel nemůže uplatnit osvobození od odpovědnosti, pokud s tvůrcem obsahu uzavřel smlouvu o sdílení výnosů a prověřoval metadata či hlavní téma kanálu. To v praxi omezuje možnost uplatnit režim \"safe harbor\" u platforem, které aktivně monetizují obsah.",
+      "title": "Odpovědnost a autorská práva platforem",
+      "text": "Soudní dvůr EU potvrdil, že texty na sociálních sítích jsou chráněna jako díla, pokud vyjadřují osobnost autora, a upřesnil limity výjimky pro informování o aktuálních událostech. Zároveň konstatoval, že hostingový poskytovatel ztrácí osvobození od odpovědnosti, pokud s tvůrcem obsahu sdílí výnosy a prověřuje metadata nebo téma kanálu.",
       "sources": [
+        {
+          "src": "cjeu",
+          "label": "CJEU",
+          "tag": "Ruling",
+          "title": "C-598/24 (Gândul Media Network)",
+          "link": "https://curia.europa.eu/juris/liste.do?num=C-598/24"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JIPLP",
+          "title": "A wolf in sheep’s clothing: the hidden issues in Institutul G. Călinescu",
+          "link": "https://doi.org/10.1093/jiplp/jpag075"
+        },
         {
           "src": "cjeu",
           "label": "CJEU",
@@ -20,22 +34,16 @@
       ]
     },
     {
-      "title": "Autorské právo na sociálních sítích",
-      "text": "CJEU potvrdil, že texty na sociálních sítích jsou chráněnými díly, pokud vyjadřují intelektuální tvorbu odrážející osobnost autora. U výjimky pro informování o aktuálních událostech konstatoval, že členské státy mohou užití omezit na krátké úryvky, ale nesmí zakázat z něj utahovat komerční zisk.",
+      "title": "Umělá inteligence a algoritmizace",
+      "text": "Aktuální diskuse se zaměřují na možnost autorskoprávní ochrany promptů a potřebu rekalibrace práva v reakci na AI, včetně návrhů na systém licencování tréninkových dat. V oblasti smluvní práva se varuje před analogií k zastoupení u algoritmické kontraktace, neboť algoritmus nemá právní subjektivitu a je pouze technickou podporou uživatele.",
       "sources": [
         {
-          "src": "cjeu",
-          "label": "CJEU",
-          "tag": "Ruling",
-          "title": "C-598/24 (Gândul Media Network)",
-          "link": "https://curia.europa.eu/juris/liste.do?num=C-598/24"
-        }
-      ]
-    },
-    {
-      "title": "AI a digitální kontraktace",
-      "text": "Aktuální analýzy zdůrazňují potřebu transparentnosti tréninkových dat AI a rekalibrace autorského práva, aby nedošlo k narušení tržních mechanismů. V oblasti smluv bylo potvrzeno, že algoritmy nemají právní subjektivitu a jsou pouze technickou podporou, za kterou nese plnou odpovědnost uživatel.",
-      "sources": [
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "Copyrighting Prompts: A Path to Authentic AI or a Legal Overreach?",
+          "link": "https://doi.org/10.1007/s40319-026-01762-1"
+        },
         {
           "src": "journals",
           "label": "Časopis",
@@ -60,8 +68,8 @@
       ]
     },
     {
-      "title": "Patenty a ochranné známky",
-      "text": "V oblasti patentů probíhá v Německu postupný rozvoj judikatury k FRAND licencování standardně esenciálních patentů. U ochranných známek se řeší legitimita upcyklace a transformace starých produktů, což vyžaduje hledání rovnováhy mezi ochranou značky a podporou udržitelnosti.",
+      "title": "Známky, data a digitální antitrust",
+      "text": "Analýzy upozorňují na právní nejistotu při střetu obchodních značek s geografickými označeními a nerovnováhu v důkazním břemeni před EUIPO. V oblasti ochrany dat byl zdůrazněn dopad judikatury k právu být zapomenut a v soutěžním právu se rozvádí specifika antitrustu u velkých online platforem.",
       "sources": [
         {
           "src": "journals",
@@ -73,30 +81,50 @@
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "IIC",
-          "title": "“FRAND Defence III (FRAND-Einwand III)” – Decision of the Federal Court of Justice of Germany (Bundesgerichtshof) 27 January 2026 – Case No. KZR 10/25",
-          "link": "https://doi.org/10.1007/s40319-026-01768-9"
+          "tag": "Právník",
+          "title": "Soudní dvůr a zviditelnění práva být zapomenut",
+          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-9.html?a=4060"
         },
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "IIC",
-          "title": "Developing Jurisprudence by Taking Tiny Steps – The FRAND Defence III Decision of the German Federal Court of Justice",
-          "link": "https://doi.org/10.1007/s40319-026-01767-w"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "“Great Balls of Fire, They’re My Portieres Now!” Unpacking the Legal Arguments in Favor of Upcycling",
-          "link": "https://doi.org/10.1007/s40319-026-01757-y"
+          "tag": "TLQ",
+          "title": "Václav Šmejkal: Digitální antitrust: EU a ochrana hospodářské soutěže v éře velkých online platforem (Digital Antitrust: EU Competition Law in the Era of Large Online Platforms). Prague: Karolinum, 2026, 216 pp.",
+          "link": "https://tlq.ilaw.cas.cz/article/view/1050"
         }
       ]
     },
     {
-      "title": "Právo v kosmickém prostoru",
-      "text": "Objevují se první vnitrostátní předpisy pro provoz jaderných reaktorů v kosmickém prostoru pro potřeby těžby a obydlení. Autor zdůrazňuje nedostatečnost současných úprav a nezbytnost vytvoření robustního multilaterálního rámce v mezinárodním veřejnoprávním rámci.",
+      "title": "Specifika patentů a vzorů",
+      "text": "Nové čínské směrnice pro projednávání patentů přinášejí upřesnění pro oblasti AI, big data a designy grafických uživatelských rozhraní (GUI). V autorském právu byl zkoumán práh ochrany u modulárních nábytkových systémů.",
       "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "The Threshold of Copyright Protection for a Modular Furniture System",
+          "link": "https://doi.org/10.1093/grurint/ikag086"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "The 2025 Amendments to the Chinese Patent Examination Guidelines",
+          "link": "https://doi.org/10.1093/grurint/ikag073"
+        }
+      ]
+    },
+    {
+      "title": "Právo v extrémních podmínkách",
+      "text": "Právní analýzy se zabývaly regulací jaderných reaktorů v kosmickém prostoru a potřebou multilaterálního rámce. Nejvyšší soud ČR rozhodl, že neschopnost osoby právně jednat (např. u Alzheimerovy choroby) lze založit pouze na znaleckém posudku a zdravotnické dokumentaci.",
+      "sources": [
+        {
+          "src": "nsoud",
+          "label": "NS 23 Cdo",
+          "tag": "",
+          "title": "23 Cdo 618/2026",
+          "link": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/6675EF004C056429C1258E67001C0353/$file/23%20Cdo%20618_2026.pdf?openElement"
+        },
         {
           "src": "journals",
           "label": "Časopis",
@@ -107,5 +135,5 @@
       ]
     }
   ],
-  "input_hash": "ee6ee44d5e86880b5b22cf4339dc6954bb7e343b1a8c02a045515eefc35ae5ca"
+  "input_hash": "344d430da21e051354e5134dac73598f4fe96c5be7c1794042e3130522c93523"
 }
