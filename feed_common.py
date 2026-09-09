@@ -168,7 +168,7 @@ def summarize_with_cache(items, meta_file, key_of, summarize, needs_call=None,
 
 # --- AI shrnutí přes Gemma (Gemini API) ---
 # Gemma 4 31B má štědrý free-tier; throttlujeme na 12 požadavků/min (5 s mezi
-# voláními) a opakujeme při 429/500/502/503. Throttle je per-proces – každý
+# voláními) a opakujeme při dočasných chybách. Throttle je per-proces – každý
 # scraper běží jako vlastní proces, takže si vystačí s vlastním rozestupem.
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 GEMINI_MODEL = "gemma-4-31b-it"
@@ -177,9 +177,12 @@ GEMINI_URL = (
     f"{GEMINI_MODEL}:generateContent"
 )
 GEMINI_MIN_INTERVAL = 5.0   # s mezi voláními (= 12 req/min)
-GEMINI_MAX_RETRIES = 3      # opakování při přetížení, timeoutu a výpadku
+GEMINI_MAX_RETRIES = 4      # opakování při přetížení, timeoutu a výpadku
+# Nad PDF Gemma přemýšlí déle než nad textem a minuta jí občas nestačí –
+# běh smí být delší, shrnutí je cennější než rychlost.
+GEMINI_PDF_TIMEOUT = 150
 # Opakovat má smysl jen u dočasných potíží. Ostatní 4xx (neplatný klíč,
-# vstup, který model nepřijme) vrátí totéž i napotřetí – jen se čeká.
+# vstup, který model nepřijme) vrátí totéž i po dalších pokusech.
 GEMINI_RETRY_STATUSES = (408, 429, 500, 502, 503, 504)
 _gemini_last_call = 0.0
 
@@ -318,6 +321,16 @@ def _gemini_generate(parts, max_tokens=4096, timeout=60):
     global _gemini_last_call
     if not gemini_enabled():
         return ""
+
+    def back_off(attempt, msg):
+        """Ohlásí nezdařený pokus a počká před dalším – po posledním už ne."""
+        if attempt + 1 >= GEMINI_MAX_RETRIES:
+            print(f"    {msg} (pokus {attempt+1}/{GEMINI_MAX_RETRIES})")
+            return
+        backoff = GEMINI_MIN_INTERVAL * (2 ** attempt)
+        print(f"    {msg} – čekám {backoff:.0f}s (pokus {attempt+1}/{GEMINI_MAX_RETRIES})")
+        time.sleep(backoff)
+
     payload = {
         "contents": [{"parts": parts}],
         # Gemma je „thinking" model – necháme vyšší strop, ať se přemýšlení
@@ -337,9 +350,7 @@ def _gemini_generate(parts, max_tokens=4096, timeout=60):
             )
             _gemini_last_call = time.monotonic()
             if r.status_code in GEMINI_RETRY_STATUSES:
-                backoff = GEMINI_MIN_INTERVAL * (2 ** attempt)
-                print(f"    AI {r.status_code}, čekám {backoff:.0f}s (pokus {attempt+1}/{GEMINI_MAX_RETRIES})")
-                time.sleep(backoff)
+                back_off(attempt, f"AI {r.status_code}")
                 continue
             if r.status_code >= 400:
                 # Samotný stavový kód nestačí – co je na požadavku špatně,
@@ -358,9 +369,7 @@ def _gemini_generate(parts, max_tokens=4096, timeout=60):
             return raw
         except Exception as e:
             _gemini_last_call = time.monotonic()
-            backoff = GEMINI_MIN_INTERVAL * (2 ** attempt)
-            print(f"    CHYBA AI: {e} – čekám {backoff:.0f}s (pokus {attempt+1}/{GEMINI_MAX_RETRIES})")
-            time.sleep(backoff)
+            back_off(attempt, f"CHYBA AI: {e}")
             continue
     print("    AI: vyčerpány pokusy, zkusím příště")
     return ""
@@ -377,7 +386,7 @@ def gemini_summarize_pdf(pdf_bytes, prompt):
         }},
         {"text": prompt},
     ]
-    return parse_ai_response(_gemini_generate(parts))
+    return parse_ai_response(_gemini_generate(parts, timeout=GEMINI_PDF_TIMEOUT))
 
 
 def gemini_summarize_text(text, prompt):
