@@ -1,14 +1,14 @@
 {
-  "generated": "2026-09-09T09:10:14.083846+00:00",
+  "generated": "2026-09-09T16:12:37.355560+00:00",
   "from": "2026-08-26",
   "to": "2026-09-09",
-  "total": 67,
-  "covered": 13,
-  "intro": "Období bylo velmi produktivní z hlediska judikatury Soudního dvora EU, který vyjasnil hranice ochrany známek a autorských práv v digitálním prostředí. Významný prostor zaujala rovněž problematika umělé inteligence a její dopad na autorskoprávní ochranu a smluvní vztahy.",
+  "total": 66,
+  "covered": 11,
+  "intro": "Období bylo velmi produktivní z hlediska judikatury Soudního dvora EU, který vyjasnil hranice ochrany známek, autorského práva na sociálních sítích a odpovědnost hostingů. Významná je rovněž diskuse o právním režimu AI a digitální kontraktaci.",
   "blocks": [
     {
       "title": "Judikatura SD EU k IP a platformám",
-      "text": "SD EU potvrdil, že svoboda projevu, včetně politické parodie, může být opravdaným důvodem pro užití známky s renomé. Rozhodl, že texty na sociálních sítích mohou být chráněna autorským právem a že hostingoví poskytovatelé ztrácejí osvobození od odpovědnosti, pokud s tvůrci obsahu sdílejí výnosy a kontrolují metadata kanálu.",
+      "text": "SD EU potvrdil, že svoboda projevu a parodie mohou být opravdněným důvodem pro užití známky s renomé. Rozhodl také, že texty na sociálních sítích mohou být chráněna autorským právem a že hostingoví poskytovatelé ztrácejí osvobození od odpovědnosti, pokud s tvůrci obsahu sdílejí výnosy a kontrolují metadata.",
       "sources": [
         {
           "src": "cjeu",
@@ -34,8 +34,28 @@
       ]
     },
     {
-      "title": "AI a autorské právo",
-      "text": "Aktuální diskuse se zaměřuje na možnost autorskoprávní ochrany promptů pro AI a potřebu rekalibrace práva v reakci na generativní systémy. Evropský parlament i britská Sněmovna lordů navrhují řešení založené na licencování a vyšší transparentnosti tréninkových dat.",
+      "title": "Ochrana osobních údajů a GDPR",
+      "text": "SD EU rozhodl, že plošné zveřejňování údajů o akcionářích akciových společností je nepoměrné a v rozporu s GDPR. V odborné diskuzi byl zdůrazněn dopad rozsudku Google Spain na praktickou vymahatelnost práva být zapomenut.",
+      "sources": [
+        {
+          "src": "cjeu",
+          "label": "CJEU",
+          "tag": "Ruling",
+          "title": "C-798/24 (Jautiva)",
+          "link": "https://curia.europa.eu/juris/liste.do?num=C-798/24"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "Právník",
+          "title": "Soudní dvůr a zviditelnění práva být zapomenut",
+          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-9.html?a=4060"
+        }
+      ]
+    },
+    {
+      "title": "Umělá inteligence a autorské právo",
+      "text": "Aktuální analýzy zkoumají možnost ochrany promptů pro AI a potřebu rekalibrace autorského práva v reakci na generativní systémy. Evropský parlament i britská Sněmovna lordů navrhují řešení založené na licencování a vyšší transparentnosti tréninkových dat.",
       "sources": [
         {
           "src": "journals",
@@ -61,23 +81,29 @@
       ]
     },
     {
-      "title": "Digitální smlouvy a ochrana dat",
-      "text": "Právní analýzy varují před aplikací analogie k zastoupení při uzavírání smluv pomocí algoritmů, za které nese plnou odpovědnost uživatel. V oblasti dat se zdůrazňuje praktická vymahatelnost práva být zapomenut a zákonnost zpracování osobních údajů v rámci GDPR.",
+      "title": "Digitální aspekty v judikatuře NS",
+      "text": "Nejvyšší soud potvrdil, že u žalob na ochranu pověsti z důvodu informací na internetu je místně příslušný i soud v obvodu skutečného sídla žalobce. Dále uznal, že poskytování správných informací v trackovacím systému tvoří smluvní povinnost dopravce.",
       "sources": [
         {
-          "src": "cjeu",
-          "label": "CJEU",
-          "tag": "Ruling",
-          "title": "C-798/24 (Jautiva)",
-          "link": "https://curia.europa.eu/juris/liste.do?num=C-798/24"
+          "src": "nsoud",
+          "label": "NS 23 Cdo",
+          "tag": "",
+          "title": "23 Cdo 1467/2026",
+          "link": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/342C85FE262EBD55C1258E6D001B8EEE/$file/23%20Cdo%201467_2026.pdf?openElement"
         },
         {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "Právník",
-          "title": "Soudní dvůr a zviditelnění práva být zapomenut",
-          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-9.html?a=4060"
-        },
+          "src": "nsoud",
+          "label": "NS 23 Cdo",
+          "tag": "",
+          "title": "23 Cdo 2968/2025",
+          "link": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/A8CDE0868C19770BC1258E6D001BA897/$file/23%20Cdo%202968_2025.pdf?openElement"
+        }
+      ]
+    },
+    {
+      "title": "Algoritmická kontraktace",
+      "text": "Právní analýza kritizuje analogii k zastoupení při uzavírání smluv pomocí algoritmů. Algoritmus je vnímán pouze jako technická podpora bez právní subjektivity, za kterou nese plnou odpovědnost uživatel.",
+      "sources": [
         {
           "src": "journals",
           "label": "Časopis",
@@ -86,41 +112,7 @@
           "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-9.html?a=4061"
         }
       ]
-    },
-    {
-      "title": "Digitální antitrust a známky",
-      "text": "Nové publikace analyzují aplikaci soutěžního práva na velké online platformy a problematický vztah mezi obchodními značkami a geografickými označeními. Diskutuje se rovněž o prahu autorskoprávní ochrany u modulárního nábytku a standardech originality u kritických edic děl.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "Living with “Nero Lifestyle” (or How to Prevent “Delimited” Trade Marks From Burning Geographical Indications Down)",
-          "link": "https://doi.org/10.1007/s40319-026-01765-y"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "TLQ",
-          "title": "Václav Šmejkal: Digitální antitrust: EU a ochrana hospodářské soutěže v éře velkých online platforem (Digital Antitrust: EU Competition Law in the Era of Large Online Platforms). Prague: Karolinum, 2026, 216 pp.",
-          "link": "https://tlq.ilaw.cas.cz/article/view/1050"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "The Threshold of Copyright Protection for a Modular Furniture System",
-          "link": "https://doi.org/10.1093/grurint/ikag086"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JIPLP",
-          "title": "A wolf in sheep’s clothing: the hidden issues in Institutul G. Călinescu",
-          "link": "https://doi.org/10.1093/jiplp/jpag075"
-        }
-      ]
     }
   ],
-  "input_hash": "150fa06cae90ab4227872ebf0c7c930c15447e70946c413014a05995f126c96f"
+  "input_hash": "8d41168026e5e08bc012afb8fdd820dda972918034868f223672af6e87dd58df"
 }

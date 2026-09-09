@@ -6,7 +6,7 @@
     <atom:link href="https://rss.davidzavada.cz/ipcuria_feed.xml" rel="self" type="application/rss+xml" />
     <description>Latest CJEU IP case law: preliminary rulings and referrals</description>
     <language>en</language>
-    <lastBuildDate>Wed, 09 Sep 2026 09:09:45 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Sep 2026 16:11:58 +0000</lastBuildDate>
     <item>
       <title>[Ruling] C-298/23 (Inter IKEA Systems)</title>
       <link>https://curia.europa.eu/juris/liste.do?num=C-298/23</link>
@@ -43,7 +43,10 @@ CURIA: https://curia.europa.eu/juris/liste.do?num=C-598/24</description>
       <link>https://curia.europa.eu/juris/liste.do?num=C-798/24</link>
       <guid isPermaLink="false">Ruling-C-798/24</guid>
       <is-new>true</is-new>
+      <ai-tag>GDPR</ai-tag>
+      <ai-summary>Soud řešil, zda je v souladu s GDPR a právem EU národní legislativa vyžadující veřejné zveřejnění osobních údajů všech akcionářů, včetně minoritních, akciových společností. Rozhodl, že směrnice 2017/1132 takové zveřejnění nevyžaduje a GDPR znemožňuje plošný veřejný přístup k těmto údajům bez podmínek, jako je prokázání legitimního zájmu. Takové opatření je nepoměrné vzhledem k zásadám ochrany osobních údajů a soukromí.</ai-summary>
       <description>[Ruling] 3 Sep 2026, C-798/24 (Jautiva)
+Soud řešil, zda je v souladu s GDPR a právem EU národní legislativa vyžadující veřejné zveřejnění osobních údajů všech akcionářů, včetně minoritních, akciových společností. Rozhodl, že směrnice 2017/1132 takové zveřejnění nevyžaduje a GDPR znemožňuje plošný veřejný přístup k těmto údajům bez podmínek, jako je prokázání legitimního zájmu. Takové opatření je nepoměrné vzhledem k zásadám ochrany osobních údajů a soukromí.
 Type: Judgment
 - Personal Data Protection &gt; General Data Protection Regulation (GDPR) &gt; Article 6  - Lawfulness of processing &gt; d) protecting vital interests
 CURIA: https://curia.europa.eu/juris/liste.do?num=C-798/24</description>
