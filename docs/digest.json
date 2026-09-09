@@ -1,28 +1,28 @@
 {
-  "generated": "2026-09-09T08:09:30.413065+00:00",
+  "generated": "2026-09-09T09:10:14.083846+00:00",
   "from": "2026-08-26",
   "to": "2026-09-09",
-  "total": 65,
-  "covered": 14,
-  "intro": "Období bylo velmi produktivní v oblasti digitálního práva a AI, s důrazem na odpovědnost platforem a autorskoprávní ochranu v digitálním prostředí. Soudní dvůr EU i odborné publikace přinesly zásadní odpovědi na otázky liability hostingů a ochrany textů na sociálních sítích.",
+  "total": 67,
+  "covered": 13,
+  "intro": "Období bylo velmi produktivní z hlediska judikatury Soudního dvora EU, který vyjasnil hranice ochrany známek a autorských práv v digitálním prostředí. Významný prostor zaujala rovněž problematika umělé inteligence a její dopad na autorskoprávní ochranu a smluvní vztahy.",
   "blocks": [
     {
-      "title": "Odpovědnost a autorská práva platforem",
-      "text": "Soudní dvůr EU potvrdil, že texty na sociálních sítích jsou chráněna jako díla, pokud vyjadřují osobnost autora, a upřesnil limity výjimky pro informování o aktuálních událostech. Zároveň konstatoval, že hostingový poskytovatel ztrácí osvobození od odpovědnosti, pokud s tvůrcem obsahu sdílí výnosy a prověřuje metadata nebo téma kanálu.",
+      "title": "Judikatura SD EU k IP a platformám",
+      "text": "SD EU potvrdil, že svoboda projevu, včetně politické parodie, může být opravdaným důvodem pro užití známky s renomé. Rozhodl, že texty na sociálních sítích mohou být chráněna autorským právem a že hostingoví poskytovatelé ztrácejí osvobození od odpovědnosti, pokud s tvůrci obsahu sdílejí výnosy a kontrolují metadata kanálu.",
       "sources": [
+        {
+          "src": "cjeu",
+          "label": "CJEU",
+          "tag": "Ruling",
+          "title": "C-298/23 (Inter IKEA Systems)",
+          "link": "https://curia.europa.eu/juris/liste.do?num=C-298/23"
+        },
         {
           "src": "cjeu",
           "label": "CJEU",
           "tag": "Ruling",
           "title": "C-598/24 (Gândul Media Network)",
           "link": "https://curia.europa.eu/juris/liste.do?num=C-598/24"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JIPLP",
-          "title": "A wolf in sheep’s clothing: the hidden issues in Institutul G. Călinescu",
-          "link": "https://doi.org/10.1093/jiplp/jpag075"
         },
         {
           "src": "cjeu",
@@ -34,8 +34,8 @@
       ]
     },
     {
-      "title": "Umělá inteligence a algoritmizace",
-      "text": "Aktuální diskuse se zaměřují na možnost autorskoprávní ochrany promptů a potřebu rekalibrace práva v reakci na AI, včetně návrhů na systém licencování tréninkových dat. V oblasti smluvní práva se varuje před analogií k zastoupení u algoritmické kontraktace, neboť algoritmus nemá právní subjektivitu a je pouze technickou podporou uživatele.",
+      "title": "AI a autorské právo",
+      "text": "Aktuální diskuse se zaměřuje na možnost autorskoprávní ochrany promptů pro AI a potřebu rekalibrace práva v reakci na generativní systémy. Evropský parlament i britská Sněmovna lordů navrhují řešení založené na licencování a vyšší transparentnosti tréninkových dat.",
       "sources": [
         {
           "src": "journals",
@@ -43,13 +43,6 @@
           "tag": "IIC",
           "title": "Copyrighting Prompts: A Path to Authentic AI or a Legal Overreach?",
           "link": "https://doi.org/10.1007/s40319-026-01762-1"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "Právník",
-          "title": "Kontraktace za užití algoritmů",
-          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-9.html?a=4061"
         },
         {
           "src": "journals",
@@ -68,15 +61,15 @@
       ]
     },
     {
-      "title": "Známky, data a digitální antitrust",
-      "text": "Analýzy upozorňují na právní nejistotu při střetu obchodních značek s geografickými označeními a nerovnováhu v důkazním břemeni před EUIPO. V oblasti ochrany dat byl zdůrazněn dopad judikatury k právu být zapomenut a v soutěžním právu se rozvádí specifika antitrustu u velkých online platforem.",
+      "title": "Digitální smlouvy a ochrana dat",
+      "text": "Právní analýzy varují před aplikací analogie k zastoupení při uzavírání smluv pomocí algoritmů, za které nese plnou odpovědnost uživatel. V oblasti dat se zdůrazňuje praktická vymahatelnost práva být zapomenut a zákonnost zpracování osobních údajů v rámci GDPR.",
       "sources": [
         {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "Living with “Nero Lifestyle” (or How to Prevent “Delimited” Trade Marks From Burning Geographical Indications Down)",
-          "link": "https://doi.org/10.1007/s40319-026-01765-y"
+          "src": "cjeu",
+          "label": "CJEU",
+          "tag": "Ruling",
+          "title": "C-798/24 (Jautiva)",
+          "link": "https://curia.europa.eu/juris/liste.do?num=C-798/24"
         },
         {
           "src": "journals",
@@ -88,16 +81,30 @@
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "TLQ",
-          "title": "Václav Šmejkal: Digitální antitrust: EU a ochrana hospodářské soutěže v éře velkých online platforem (Digital Antitrust: EU Competition Law in the Era of Large Online Platforms). Prague: Karolinum, 2026, 216 pp.",
-          "link": "https://tlq.ilaw.cas.cz/article/view/1050"
+          "tag": "Právník",
+          "title": "Kontraktace za užití algoritmů",
+          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-9.html?a=4061"
         }
       ]
     },
     {
-      "title": "Specifika patentů a vzorů",
-      "text": "Nové čínské směrnice pro projednávání patentů přinášejí upřesnění pro oblasti AI, big data a designy grafických uživatelských rozhraní (GUI). V autorském právu byl zkoumán práh ochrany u modulárních nábytkových systémů.",
+      "title": "Digitální antitrust a známky",
+      "text": "Nové publikace analyzují aplikaci soutěžního práva na velké online platformy a problematický vztah mezi obchodními značkami a geografickými označeními. Diskutuje se rovněž o prahu autorskoprávní ochrany u modulárního nábytku a standardech originality u kritických edic děl.",
       "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "Living with “Nero Lifestyle” (or How to Prevent “Delimited” Trade Marks From Burning Geographical Indications Down)",
+          "link": "https://doi.org/10.1007/s40319-026-01765-y"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "TLQ",
+          "title": "Václav Šmejkal: Digitální antitrust: EU a ochrana hospodářské soutěže v éře velkých online platforem (Digital Antitrust: EU Competition Law in the Era of Large Online Platforms). Prague: Karolinum, 2026, 216 pp.",
+          "link": "https://tlq.ilaw.cas.cz/article/view/1050"
+        },
         {
           "src": "journals",
           "label": "Časopis",
@@ -108,32 +115,12 @@
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "The 2025 Amendments to the Chinese Patent Examination Guidelines",
-          "link": "https://doi.org/10.1093/grurint/ikag073"
-        }
-      ]
-    },
-    {
-      "title": "Právo v extrémních podmínkách",
-      "text": "Právní analýzy se zabývaly regulací jaderných reaktorů v kosmickém prostoru a potřebou multilaterálního rámce. Nejvyšší soud ČR rozhodl, že neschopnost osoby právně jednat (např. u Alzheimerovy choroby) lze založit pouze na znaleckém posudku a zdravotnické dokumentaci.",
-      "sources": [
-        {
-          "src": "nsoud",
-          "label": "NS 23 Cdo",
-          "tag": "",
-          "title": "23 Cdo 618/2026",
-          "link": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/6675EF004C056429C1258E67001C0353/$file/23%20Cdo%20618_2026.pdf?openElement"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "Právník",
-          "title": "Kosmické reaktory a právo",
-          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-9.html?a=4058"
+          "tag": "JIPLP",
+          "title": "A wolf in sheep’s clothing: the hidden issues in Institutul G. Călinescu",
+          "link": "https://doi.org/10.1093/jiplp/jpag075"
         }
       ]
     }
   ],
-  "input_hash": "344d430da21e051354e5134dac73598f4fe96c5be7c1794042e3130522c93523"
+  "input_hash": "150fa06cae90ab4227872ebf0c7c930c15447e70946c413014a05995f126c96f"
 }
