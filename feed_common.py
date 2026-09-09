@@ -177,7 +177,10 @@ GEMINI_URL = (
     f"{GEMINI_MODEL}:generateContent"
 )
 GEMINI_MIN_INTERVAL = 5.0   # s mezi voláními (= 12 req/min)
-GEMINI_MAX_RETRIES = 3      # opakování při 429/500/502/503
+GEMINI_MAX_RETRIES = 3      # opakování při přetížení, timeoutu a výpadku
+# Opakovat má smysl jen u dočasných potíží. Ostatní 4xx (neplatný klíč,
+# vstup, který model nepřijme) vrátí totéž i napotřetí – jen se čeká.
+GEMINI_RETRY_STATUSES = (408, 429, 500, 502, 503, 504)
 _gemini_last_call = 0.0
 
 # Prompt pro rozhodnutí NS ČR.
@@ -304,8 +307,9 @@ def parse_ai_response(raw):
 def _gemini_generate(parts, max_tokens=4096, timeout=60):
     """Pošle `parts` (text/inline_data) Gemmě a vrátí surový text odpovědi.
 
-    Hlídá rozestup mezi voláními a opakuje při 429/5xx s exponenciálním
-    backoffem. Vrací '' při neúspěchu, useknuté odpovědi nebo vypnutém AI.
+    Hlídá rozestup mezi voláními a opakuje při dočasných chybách
+    (GEMINI_RETRY_STATUSES) s exponenciálním backoffem. Vrací '' při
+    neúspěchu, useknuté odpovědi nebo vypnutém AI.
 
     `timeout` je na jedno volání; u dlouhých vstupů (dvoutýdenní přehled)
     je potřeba víc než výchozí minuta – opakování s tímtéž stropem by
@@ -332,12 +336,17 @@ def _gemini_generate(parts, max_tokens=4096, timeout=60):
                 timeout=timeout,
             )
             _gemini_last_call = time.monotonic()
-            if r.status_code in (429, 500, 502, 503):
+            if r.status_code in GEMINI_RETRY_STATUSES:
                 backoff = GEMINI_MIN_INTERVAL * (2 ** attempt)
                 print(f"    AI {r.status_code}, čekám {backoff:.0f}s (pokus {attempt+1}/{GEMINI_MAX_RETRIES})")
                 time.sleep(backoff)
                 continue
-            r.raise_for_status()
+            if r.status_code >= 400:
+                # Samotný stavový kód nestačí – co je na požadavku špatně,
+                # říká až tělo odpovědi.
+                detail = re.sub(r"\s+", " ", r.text)[:300]
+                print(f"    AI {r.status_code}: {detail}")
+                return ""
             data = r.json()
             cand = data["candidates"][0]
             parts_out = cand.get("content", {}).get("parts", [])

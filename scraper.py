@@ -274,11 +274,23 @@ def enrich_summaries(decisions):
         return bool(d.get("pdf_url")) and not cached.get("summary")
 
     def summarize(d, cached):
+        # Rozhodnutí bývá ve výpisu dřív, než k němu NS přiloží PDF – `pdf_url`
+        # do té doby míří na detailní stránku (fallback ve fetch_judikatura).
+        # Ta obsahuje jen metadata, není z čeho shrnovat; počkáme na PDF.
+        if d["pdf_url"] == d.get("detail_url"):
+            print(f"    [diag] {d['case_number']}: PDF zatím nepřiloženo, shrnutí příště")
+            return None
         try:
             pr = session.get(d["pdf_url"], headers=JUDIKATURA_HEADERS, timeout=60)
             pr.raise_for_status()
         except Exception as e:
             print(f"    CHYBA stahování PDF {d['case_number']}: {e}")
+            return None
+        # I na .pdf adrese může přijít chybová stránka; poslat ji jako
+        # application/pdf znamená jen 400 z API.
+        if not pr.content.startswith(b"%PDF"):
+            ct = pr.headers.get("content-type", "?")
+            print(f"    [diag] {d['case_number']}: odpověď není PDF ({ct}), shrnutí příště")
             return None
         summary, tag = gemini_summarize_pdf(pr.content, JUDIKATURA_PROMPT)
         return {"summary": summary, "tag": tag} if summary else None
