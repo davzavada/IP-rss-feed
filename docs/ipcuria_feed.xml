@@ -6,12 +6,11 @@
     <atom:link href="https://rss.davidzavada.cz/ipcuria_feed.xml" rel="self" type="application/rss+xml" />
     <description>Latest CJEU IP case law: preliminary rulings and referrals</description>
     <language>en</language>
-    <lastBuildDate>Thu, 10 Sep 2026 04:24:45 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 10 Sep 2026 09:32:56 +0000</lastBuildDate>
     <item>
       <title>[Ruling] C-298/23 (Inter IKEA Systems)</title>
       <link>https://curia.europa.eu/juris/liste.do?num=C-298/23</link>
       <guid isPermaLink="false">Ruling-C-298/23</guid>
-      <is-new>true</is-new>
       <ai-tag>Ochranná známka</ai-tag>
       <ai-summary>Soud řešil, zda může svoboda projevu, včetně politických názorů a politické parodie, představovat „opravdovaný důvod“ pro použití znamene shodného nebo podobného ochranné známce s renomé. Rozhodl, že taková svoboda může být opravdovaným důvodem, pokud v rámci vyvážení práv převáží nad výhradními právy majitele známky. Při tomto vyvážení musí národní soud zohlednit faktory jako dobrou víru uživatele, přínos k veřejné diskusi a dopady na majitele známky.</ai-summary>
       <description>[Ruling] 8 Sep 2026, C-298/23 (Inter IKEA Systems)
@@ -42,7 +41,6 @@ CURIA: https://curia.europa.eu/juris/liste.do?num=C-598/24</description>
       <title>[Ruling] C-798/24 (Jautiva)</title>
       <link>https://curia.europa.eu/juris/liste.do?num=C-798/24</link>
       <guid isPermaLink="false">Ruling-C-798/24</guid>
-      <is-new>true</is-new>
       <ai-tag>GDPR</ai-tag>
       <ai-summary>Soud řešil, zda je v souladu s GDPR a právem EU národní legislativa vyžadující veřejné zveřejnění osobních údajů všech akcionářů, včetně minoritních, akciových společností. Rozhodl, že směrnice 2017/1132 takové zveřejnění nevyžaduje a GDPR znemožňuje plošný veřejný přístup k těmto údajům bez podmínek, jako je prokázání legitimního zájmu. Takové opatření je nepoměrné vzhledem k zásadám ochrany osobních údajů a soukromí.</ai-summary>
       <description>[Ruling] 3 Sep 2026, C-798/24 (Jautiva)
@@ -113,25 +111,6 @@ Type: Judgment
 CURIA: https://curia.europa.eu/juris/liste.do?num=C-421/24</description>
       <pubDate>Thu, 16 Jul 2026 12:00:00 +0000</pubDate>
       <dc:date>2026-07-16</dc:date>
-    </item>
-    <item>
-      <title>[Ruling] C-474/24 (NADA  Austria and Others)</title>
-      <link>https://curia.europa.eu/juris/liste.do?num=C-474/24</link>
-      <guid isPermaLink="false">Ruling-C-474/24</guid>
-      <ai-tag>GDPR</ai-tag>
-      <ai-summary>Soud řešil soulad s GDPR zveřejňování jmen sportovců, kteří porušili antidopingová pravidla, a zda tyto informace představují údaje o zdraví či trestné záznamy. Rozhodl, že takové zveřejňování je přípustné, pokud národní právo umožňuje individuální zvážení oprávněných zájmů, a že se v zásadě nejedná o údaje o zdraví ani o trestné záznamy. Stížnost proti zveřejnění je přípustná i před samotnou publikací, pokud je tato bezprostředně očekávána.</ai-summary>
-      <description>[Ruling] 14 Jul 2026, C-474/24 (NADA  Austria and Others)
-Soud řešil soulad s GDPR zveřejňování jmen sportovců, kteří porušili antidopingová pravidla, a zda tyto informace představují údaje o zdraví či trestné záznamy. Rozhodl, že takové zveřejňování je přípustné, pokud národní právo umožňuje individuální zvážení oprávněných zájmů, a že se v zásadě nejedná o údaje o zdraví ani o trestné záznamy. Stížnost proti zveřejnění je přípustná i před samotnou publikací, pokud je tato bezprostředně očekávána.
-Type: Judgment
-- Personal Data Protection &gt; General Data Protection Regulation (GDPR) &gt; Article 2 - Material scope &gt; Wholly or partly by automatic means and filing system
-- Personal Data Protection &gt; General Data Protection Regulation (GDPR) &gt; Article 9  - Processing of special categories of personal data
-- Personal Data Protection &gt; General Data Protection Regulation (GDPR) &gt; Article 6  - Lawfulness of processing &gt; c) compliance with a legal obligation
-- Personal Data Protection &gt; General Data Protection Regulation (GDPR) &gt; Article 5  - Principles relating to processing of personal data &gt; a) lawfulness, fairness and transparency
-- Personal Data Protection &gt; General Data Protection Regulation (GDPR) &gt; Article 10  - Processing of personal data relating to criminal convictions and offences
-- Personal Data Protection &gt; General Data Protection Regulation (GDPR) &gt; Article 77 - Right to lodge a complaint with a supervisory authority
-CURIA: https://curia.europa.eu/juris/liste.do?num=C-474/24</description>
-      <pubDate>Tue, 14 Jul 2026 12:00:00 +0000</pubDate>
-      <dc:date>2026-07-14</dc:date>
     </item>
   </channel>
 </rss>
