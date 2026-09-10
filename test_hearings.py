@@ -191,6 +191,24 @@ bez_obdobi = build_docx(
 items, period = s.parse_jednani_docx(bez_obdobi)
 check("chybějící období nezhatí parsování", len(items) == 1 and period is None)
 
+# Dva přehledy na jedné stránce (MSPH): každý se vybírá jen podle vlastních
+# slov, aby se za chybějící správní dokument nevzal civilní a jeho jednání
+# se nezapsala pod cizí úsek. Soud s jediným přehledem si první odkaz vezme
+# i bez shody, ať přejmenovaný dokument nezastaví celý běh.
+odkazy = [
+    ("https://msp.gov.cz/documents/d/ms/civilni-usek-1-15-9-2026", "Občanskoprávní",
+     "https://msp.gov.cz/documents/d/ms/civilni-usek-1-15-9-2026 obcanskopravni"),
+    ("https://msp.gov.cz/documents/d/ms/spravni-usek-1-15-9-2026", "Správní",
+     "https://msp.gov.cz/documents/d/ms/spravni-usek-1-15-9-2026 spravni"),
+]
+obecna = ("jednani", "prehled")
+check("výběr dokumentu: správní přehled se najde podle vlastního slova",
+      s.pick_link(odkazy, obecna, ("spravni",), strict=True)[0] == odkazy[1][0])
+check("výběr dokumentu: chybějící správní přehled nenahradí civilní",
+      s.pick_link(odkazy[:1], obecna, ("spravni",), strict=True) == (None, None))
+check("výběr dokumentu: jediný přehled soudu se vezme i bez shody",
+      s.pick_link(odkazy[:1], obecna, ("kalendar",))[0] == odkazy[0][0])
+
 # =====================================================================
 print("\n3) Předběžná opatření (rejstřík Nc)")
 # =====================================================================
@@ -219,6 +237,10 @@ check("Nc: název sporu se odvodí ze stran",
 # =====================================================================
 print("\n4) Žaloby proti ÚPV (úsek správního soudnictví)")
 # =====================================================================
+# Kritérium je žalovaný, ne senát: správní oddělení soudí všechnu správní
+# agendu, takže rozhoduje, jestli je mezi účastníky ÚPV. Přehled strany
+# nerozlišuje, ale ve správním soudnictví je úřad vždycky žalovaný.
+cfg_vs = json.load(open(s.CONFIG_FILE))["courts"]["VS"]
 upv_rows = [
     ["19.08.2026", "201", "Mgr. Martin Kříž", "15A 12/2026", "09:00",
      ["Xiaomi Inc.", "Úřad průmyslového vlastnictví"]],
@@ -228,17 +250,49 @@ upv_rows = [
      ["Někdo", "Ministerstvo dopravy"]],                      # jiná správní věc
     ["19.08.2026", "201", "Mgr. Martin Kříž", "15A 21/2026", "12:00", [""]],
     ["19.08.2026", "201", "Mgr. Andrea Veselá", "8A 3/2026", "13:00",
-     ["Někdo", "Úřad průmyslového vlastnictví"]],             # senát mimo seznam
+     ["Někdo", "Úřad průmyslového vlastnictví"]],             # senát mimo rozvrh IP
+    ["20.08.2026", "201", "Mgr. Andrea Veselá", "9A 4/2026", "09:00",
+     ["J. N.", "ÚPV"]],                                        # jen zkratka
+    ["20.08.2026", "201", "Mgr. Andrea Veselá", "9A 6/2026", "10:00",
+     ["SUPVOLT s.r.o.", "Energetický regulační úřad"]],       # „upv" uvnitř slova
+    ["20.08.2026", "201", "Mgr. Andrea Veselá", "10A 7/2026", "11:00",
+     ["Firma s.r.o.", "Úřadu průmyslového vlastnictví ČR"]],  # skloněno, s dovětkem
+    ["21.08.2026", "201", "JUDr. Ladislav Hejtmánek", "6A 38/2025", "09:30",
+     ["Kverulant.org o.p.s.", "Úřad pro ochranu osobních údajů"]],  # jiný úřad
 ]
 items, _ = s.parse_jednani_docx(build_docx(upv_rows))
 s.mark_ip(items, cfg_ms)
 check("ÚPV: 15 A s ÚPV mezi účastníky je IP", find(items, "15 A 12/2026")["ip"])
 check("ÚPV: 18 A s ÚPV bez diakritiky je IP", find(items, "18 A 5/2026")["ip"])
 check("ÚPV: 15 A v jiné správní věci není IP", not find(items, "15 A 20/2026")["ip"])
-check("ÚPV: 15 A bez uvedených účastníků se raději vezme jako IP",
-      find(items, "15 A 21/2026")["ip"])
-check("ÚPV: senát mimo seznam se neoznačí ani s ÚPV",
-      not find(items, "8 A 3/2026")["ip"])
+check("ÚPV: řádek bez účastníků není IP (bez senátu není o co se opřít)",
+      not find(items, "15 A 21/2026")["ip"])
+check("ÚPV: rozhoduje žalovaný, ne senát – 8 A s ÚPV je IP",
+      find(items, "8 A 3/2026")["ip"])
+check("ÚPV: stačí zkratka ÚPV", find(items, "9 A 4/2026")["ip"])
+check('ÚPV: „upv" uvnitř jiného jména neplatí', not find(items, "9 A 6/2026")["ip"])
+check("ÚPV: skloněný název s dovětkem platí", find(items, "10 A 7/2026")["ip"])
+check("ÚPV: jiný úřad (ÚOOÚ) není IP", not find(items, "6 A 38/2025")["ip"])
+check("ÚPV: v popisku sporu je zkratka úřadu",
+      find(items, "15 A 12/2026")["nazev"] == "Xiaomi v. ÚPV"
+      and find(items, "10 A 7/2026")["nazev"] == "Firma v. ÚPV",
+      find(items, "15 A 12/2026")["nazev"] + " / " + find(items, "10 A 7/2026")["nazev"])
+check("ÚPV: config nemá správní senáty v seznamu IP senátů (jde jen podle účastníka)",
+      not any(x.split()[-1] == "A" for x in cfg_ms["senaty"])
+      and "senaty_ucastnik" not in cfg_ms and cfg_ms.get("ucastnici_ip"))
+
+# Totéž pravidlo platí u VS Praha, kdyby se ÚPV objevil v jeho přehledu –
+# senát tam o IP nerozhoduje.
+vs_upv = build_pdf_text([
+    ("19.08.2026", "6", "JUDr. Jan Novák", "7Co 12/2026", "09:00",
+     ["Firma s.r.o.", "Úřad průmyslového vlastnictví"]),
+    ("19.08.2026", "6", "JUDr. Jan Novák", "7Co 13/2026", "10:00",
+     ["Firma s.r.o.", "Jiná firma a.s."]),
+])
+items, _ = s.parse_jednani_text(vs_upv)
+s.mark_ip(items, cfg_vs)
+check("VS: ÚPV mezi účastníky je IP i mimo IP senáty", find(items, "7 Co 12/2026")["ip"])
+check("VS: bez ÚPV mimo IP senáty není IP", not find(items, "7 Co 13/2026")["ip"])
 
 # =====================================================================
 print("\n5) Filtr IP senátů v civilních věcech")
@@ -344,6 +398,10 @@ check("správní úsek nepřepíše civilní", len(out["jednani"]) == ms_ip + up
       f"{len(out['jednani'])} != {ms_ip} + {upv_ip}")
 check("v metadatech jsou oba úseky",
       set(out["courts"]["MS"]["useky"]) == {"civilni", "spravni"})
+check("v metadatech je jméno úseku pro stránku a .ics",
+      out["courts"]["MS"]["useky"]["spravni"].get("nazev") == "Úsek správního soudnictví"
+      and out["courts"]["MS"]["useky"]["civilni"].get("nazev") == "Civilní úsek",
+      str({u: m.get("nazev") for u, m in out["courts"]["MS"]["useky"].items()}))
 
 ics_path = tempfile.mkstemp(suffix=".ics")[1]   # ať test nesahá na ostrý výstup
 out["ics"] = s.write_ics(out, ics_path)
@@ -356,6 +414,9 @@ try:
     check("ICS má časovou zónu", len(list(cal.walk("VTIMEZONE"))) == 1)
     check("ICS: události mají jméno sporu a odkaz na InfoSoud",
           all(str(e.get("SUMMARY")) and "infosoud" in str(e.get("URL")) for e in evs))
+    check("ICS: u žaloby proti ÚPV je v popisu úsek, u civilní věci ne",
+          any("Úsek správního soudnictví" in str(e.get("DESCRIPTION")) for e in evs)
+          and not any("Civilní úsek" in str(e.get("DESCRIPTION")) for e in evs))
 except ImportError:
     print("  (přeskočeno: knihovna icalendar není nainstalovaná)")
 

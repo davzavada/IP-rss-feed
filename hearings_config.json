@@ -1,6 +1,6 @@
 {
   "updated": "2026-09-07T04:12:35+00:00",
-  "note": "IP senáty MSPH a VS Praha podle rozvrhů práce. Senát = číslo soudního oddělení + rejstřík, jak se objevuje ve spisové značce. Aktualizuje scraper_hearings.py (AI extrakce z rozvrhů práce); lze upravit i ručně. Předběžná opatření (rejstřík Nc) se nepoznávají podle čísla senátu – to je u Nc číslo rejstříku, ne oddělení – ale podle předsedy senátu ze seznamu `soudci`. Senáty v `senaty_ucastnik` soudí i běžnou agendu, takže se u nich navíc hledá `ucastnici_ip` mezi stranami.",
+  "note": "IP senáty MSPH a VS Praha podle rozvrhů práce. Senát = číslo soudního oddělení + rejstřík, jak se objevuje ve spisové značce. Aktualizuje scraper_hearings.py (AI extrakce z rozvrhů práce); lze upravit i ručně. Předběžná opatření (rejstřík Nc) se nepoznávají podle čísla senátu – to je u Nc číslo rejstříku, ne oddělení – ale podle předsedy senátu ze seznamu `soudci`. Žaloby proti Úřadu průmyslového vlastnictví (úsek správního soudnictví MSPH, vlastní dokument v `prehledy`) se nepoznávají podle senátu vůbec, ale podle žalovaného: jednání, kde je mezi účastníky některý ze vzorů `ucastnici_ip`, je IP v kterémkoli senátu a úseku obou soudů. Vzory se porovnávají bez diakritiky a velikosti písmen, jako celá slova.",
   "courts": {
     "MS": {
       "nazev": "Městský soud v Praze",
@@ -75,13 +75,10 @@
         "73 EC",
         "73 ECm"
       ],
-      "senaty_ucastnik": [
-        "15 A",
-        "18 A"
-      ],
       "ucastnici_ip": [
         "Úřad průmyslového vlastnictví",
-        "Uradu prumysloveho vlastnictvi"
+        "Úřadu průmyslového vlastnictví",
+        "ÚPV"
       ],
       "soudci": [
         "Tomáš Bělohlávek",
@@ -93,7 +90,7 @@
         "Lucie Vobrová"
       ],
       "rozvrh_zdroj": {
-        "popis": "Rozvrh práce MSPH 2026, Spr 2828/2025, úplné znění s účinností od 17. 8. 2026. Sporné věci: specializace Věci senátní / Nekalá soutěž a pověst / Autorské právo / Kolektivní správci, oddělení 2, 3, 9+32, 10 (+32 C, 37 C), 12 (+1 Cm, 21 Cm), 41 a 73. Předběžná opatření: body XI. 1. A) „PO duševní vlastnictví\" a XII. 1. A) a B) „PO autorské právo\" / „PO kolektivní správci\", týchž oddělení – poznávají se podle předsedy senátu. Žaloby proti ÚPV: úsek správního soudnictví, oddělení 15 A a 18 A (tato oddělení soudí i ostatní správní agendu).",
+        "popis": "Rozvrh práce MSPH 2026, Spr 2828/2025, úplné znění s účinností od 17. 8. 2026. Sporné věci: specializace Věci senátní / Nekalá soutěž a pověst / Autorské právo / Kolektivní správci, oddělení 2, 3, 9+32, 10 (+32 C, 37 C), 12 (+1 Cm, 21 Cm), 41 a 73. Předběžná opatření: body XI. 1. A) „PO duševní vlastnictví\" a XII. 1. A) a B) „PO autorské právo\" / „PO kolektivní správci\", týchž oddělení – poznávají se podle předsedy senátu. Žaloby proti ÚPV: úsek správního soudnictví (v rozvrhu oddělení 15 A a 18 A, která soudí i ostatní správní agendu) – filtr proto nejde podle senátu, ale podle žalovaného, viz `ucastnici_ip`.",
         "url": null,
         "hash": null
       }
@@ -131,6 +128,11 @@
         "4 Co",
         "5 Co",
         "11 Cmo"
+      ],
+      "ucastnici_ip": [
+        "Úřad průmyslového vlastnictví",
+        "Úřadu průmyslového vlastnictví",
+        "ÚPV"
       ],
       "soudci": [
         "Jiří Čurda",

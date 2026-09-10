@@ -29,10 +29,13 @@ Tím nezáleží na tom, kdy zdroj položku datuje ani jestli datum později př
 se spolu se stavem prvního výskytu, takže soubory nerostou donekonečna. Bez
 `GEMINI_API_KEY` scrapery běží dál, jen bez nových shrnutí.
 
-**Kalendář jednání** filtruje přehledy soudů na IP senáty podle
-`hearings_config.json` (seznam senátů a soudců z rozvrhů práce; scraper ho
-umí jednou týdně obnovit AI extrakcí z rozvrhu). Každý nový přehled
-porovnává s minulým a změny ukládá vedle jednání.
+**Kalendář jednání** filtruje přehledy soudů podle `hearings_config.json`:
+v civilním úseku na IP senáty (seznam senátů a soudců z rozvrhů práce;
+scraper ho umí jednou týdně obnovit AI extrakcí z rozvrhu), v úseku
+správního soudnictví MSPH (zvláštní dokument na téže stránce) na žaloby
+proti Úřadu průmyslového vlastnictví – podle žalovaného mezi účastníky
+(`ucastnici_ip`), ne podle senátu. Každý nový přehled porovnává s minulým
+a změny ukládá vedle jednání.
 
 ## Workflow
 

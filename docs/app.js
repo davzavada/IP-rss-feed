@@ -786,6 +786,17 @@ function stahniIcs(j) {
   });
 }
 
+// Jméno úseku z metadat soudu (scraper ho ukládá vedle období a zdroje
+// přehledu). Civilní úsek je většina kalendáře a nepopisuje se; správní
+// soudnictví se ukáže, ať je jasné, proč je v IP kalendáři senát „15 A"
+// – je to žaloba proti Úřadu průmyslového vlastnictví.
+function usekNazev(j) {
+  if (!j.usek || j.usek === "civilni") return "";
+  const court = (calData.courts || {})[j.soud] || {};
+  const meta = (court.useky || {})[j.usek] || {};
+  return meta.nazev || j.usek;
+}
+
 // Detail jednání do bubliny. `nadpis` je jen u celodenního výpisu –
 // u jednoho jednání by nad jeho jménem jen zabíral místo.
 // `datum` a `zaklad` (pořadí prvního jednání v tom dni) nese tlačítko na
@@ -811,6 +822,8 @@ function calPopHtml(events, nadpis, datum, zaklad) {
     if (j.spz) rows.push(["Spisová značka", esc(j.spz)]);
     if (j.predseda) rows.push(["Předseda senátu", esc(j.predseda)]);
     if (j.senat) rows.push(["Senát", esc(j.senat)]);
+    const usek = usekNazev(j);
+    if (usek) rows.push(["Úsek", esc(usek)]);
     if (j.sin) rows.push(["Jednací síň", esc(j.sin)]);
     const parties = (j.ucastnici || []).filter(Boolean);
     if (parties.length) rows.push(["Účastníci", parties.map(esc).join("<br>")]);

@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
-"""Kalendář jednání MSPH a VS Praha v civilním úseku – filtr na duševní
-vlastnictví.
+"""Kalendář jednání MSPH a VS Praha – filtr na duševní vlastnictví.
 
 Oba soudy zveřejňují přehledy nařízených jednání jako dokumenty (MSPH .docx,
 VS .pdf) na portálu justice. Tenhle scraper je stáhne, vytáhne z nich
-jednotlivá jednání a nechá si ta, která patří IP senátům. Výstup jde do
-docs/hearings.json, který čte kalendář na webu; ostatní jednání se zahodí,
-ať se veřejně nerozepisují účastníci nesouvisejících sporů.
+jednotlivá jednání a nechá si ta, která patří do agendy duševního
+vlastnictví. Výstup jde do docs/hearings.json, který čte kalendář na webu;
+ostatní jednání se zahodí, ať se veřejně nerozepisují účastníci
+nesouvisejících sporů.
+
+MSPH vedle civilního úseku zveřejňuje zvlášť (jako další dokument) i přehled
+úseku správního soudnictví; z něj se berou žaloby proti Úřadu průmyslového
+vlastnictví. Tam senát nic neříká – správní oddělení soudí všechnu správní
+agendu – a rozhoduje žalovaný: jednání s ÚPV mezi účastníky je IP, ať je
+v kterémkoli senátu a úseku kteréhokoli z obou soudů.
 
 Které senáty jsou IP se bere z rozvrhů práce obou soudů. Rozvrhy se často
 mění, proto je v hearings_config.json uložený aktuální seznam senátů a soudců
@@ -14,16 +20,18 @@ a scraper ho umí obnovit: stáhne rozvrh (PDF o stovkách stran), najde stránk
 o duševním vlastnictví a nechá AI (Gemma) vytáhnout senáty a předsedy.
 Když AI extrakce selže, zůstává v platnosti poslední známý seznam.
 
-Filtr jde primárně přes senát ze spisové značky (např. „12 C" je na MSPH IP,
-ale „12 Co" je odvolací neIP agenda) – samotné jméno soudce nestačí, protože
-titíž soudci soudí i neIP rejstříky (EPR, ICm…). Jméno předsedy se používá
-jen u rejstříku Nc, kde číslo senátu specializaci nerozlišuje.
+V civilním úseku jde filtr primárně přes senát ze spisové značky (např.
+„12 C" je na MSPH IP, ale „12 Co" je odvolací neIP agenda) – samotné jméno
+soudce nestačí, protože titíž soudci soudí i neIP rejstříky (EPR, ICm…).
+Jméno předsedy se používá jen u rejstříku Nc, kde číslo senátu specializaci
+nerozlišuje.
 
 Parsování přehledů je deterministické (tabulka v .docx, regex nad textem
 .pdf); AI nastupuje jako záloha, kdyby soud změnil formát dokumentu.
 
 Lokální testování bez přístupu k msp.gov.cz:
-    python scraper_hearings.py --local-jednani MS=cesta.docx VS=cesta.pdf \
+    python scraper_hearings.py --local-jednani MS=cesta.docx \
+                               MS:spravni=cesta.docx VS=cesta.pdf \
                                --local-rozvrh VS=rozvrh.pdf
 """
 
@@ -123,16 +131,28 @@ def find_document_links(page_url):
     return links
 
 
-def pick_link(links, keywords, prefer=()):
+def pick_link(links, keywords, prefer=(), strict=False):
     """Vybere odkaz na dokument podle klíčových slov v URL/textu (bez
     diakritiky). Slova v `prefer` se zkoušejí JEDNO PO DRUHÉM v pořadí, jak
     jsou zapsaná – stránka rozvrhu nese vedle úplného znění i jednotlivé
-    změny a při společném průchodu by rozhodovalo jen pořadí v DOM."""
-    for kws in ([(p,) for p in prefer] + [tuple(keywords)]):
+    změny a při společném průchodu by rozhodovalo jen pořadí v DOM.
+
+    Když nic nesedí, vrátí první dokument na stránce – ne však při `strict`.
+    Ten platí u soudu s víc přehledy (MSPH: civilní a správní úsek na jedné
+    stránce): obecná slova („prehled", „jednani") ani první odkaz úsek
+    nerozliší a místo chybějícího správního dokumentu by se stáhl civilní
+    a jeho jednání by se zapsala pod cizí úsek. Tam se bere jen shoda
+    s `prefer` (a když žádné není, s `keywords`), jinak nic."""
+    passes = [(p,) for p in prefer]
+    if not strict or not passes:
+        passes.append(tuple(keywords))
+    for kws in passes:
         for href, text, low in links:
             if any(k in low for k in kws):
                 return href, text
-    return (links[0][0], links[0][1]) if links else (None, None)
+    if links and not strict:
+        return links[0][0], links[0][1]
+    return None, None
 
 
 # --- Parsování přehledu jednání (MSPH .docx) ---
@@ -316,10 +336,19 @@ LEAD_TITLE_RE = re.compile(
 
 MAX_PARTY_LEN = 32
 
+# Úřady, které přehled uvádí plným názvem, ale na štítku v kalendáři stačí
+# zkratka („Xiaomi v. ÚPV"). Klíč bez diakritiky a malými písmeny; sedí
+# i na název s dovětkem („… ČR") a na skloněný tvar.
+PARTY_ABBREV = {
+    "urad prumysloveho vlastnictvi": "ÚPV",
+    "uradu prumysloveho vlastnictvi": "ÚPV",
+}
+
 
 def short_party(name):
     """Zkrátí název strany pro popisek v kalendáři: „OSA z.s." -> „OSA",
-    „Ing. Tomáš Seidl" -> „Tomáš Seidl".
+    „Ing. Tomáš Seidl" -> „Tomáš Seidl", „Úřad průmyslového vlastnictví"
+    -> „ÚPV".
 
     Kolektivní správci vystupují pod dlouhým názvem z rejstříku („INTERGRAM
     nezávislá společnost umělců a…"); ten se zkrátí na úvodní zkratku, a když
@@ -327,6 +356,10 @@ def short_party(name):
     """
     s = LEAD_TITLE_RE.sub("", " ".join(str(name).split()))
     s = FORM_RE.sub("", s).strip(" ,-–") or " ".join(str(name).split())
+    klic = strip_diacritics(s).casefold()
+    for plny, zkratka in PARTY_ABBREV.items():
+        if klic.startswith(plny) and not klic[len(plny):][:1].isalnum():
+            return zkratka
     if len(s) <= MAX_PARTY_LEN:
         return s
     first = s.split()[0]
@@ -533,37 +566,54 @@ def update_rozvrh(config, court, pdf_bytes, source_url):
 
 # --- Filtr IP ---
 
+def ucastnik_re(vzory):
+    """Regex na účastníky z configu (`ucastnici_ip`): bez diakritiky
+    a velikosti písmen a jen jako celá slova – „ÚPV" má sedět jako zkratka,
+    ne uvnitř jména typu „SUPVOLT". Text účastníků se před hledáním upraví
+    stejně (viz mark_ip)."""
+    alts = [re.escape(" ".join(strip_diacritics(str(v)).casefold().split()))
+            for v in vzory if str(v).strip()]
+    if not alts:
+        return None
+    return re.compile(r"(?<!\w)(?:" + "|".join(alts) + r")(?!\w)")
+
+
 def mark_ip(items, cfg):
     """Označí jednání, která patří do agendy duševního vlastnictví.
 
     Tři pravidla, protože tři různé situace:
 
-    1. Senát ze spisové značky je v seznamu IP senátů (běžné sporné věci).
-    2. Rejstřík Nc (předběžná opatření, zajištění důkazu): číslo ve značce
+    1. Senát ze spisové značky je v seznamu IP senátů (běžné sporné věci
+       civilního úseku).
+    2. Mezi účastníky je Úřad průmyslového vlastnictví (`ucastnici_ip`).
+       Žaloby proti jeho rozhodnutím (známky, patenty, vzory…) soudí úsek
+       správního soudnictví MSPH a jeho oddělení mají vedle nich všechnu
+       ostatní správní agendu, takže senát nic neříká. Kritérium je, že
+       žalovaným je ÚPV; přehled strany nerozlišuje, ale ve správním
+       soudnictví je úřad vždycky na straně žalované, takže stačí, že je
+       mezi účastníky. Pravidlo platí napříč úseky i soudy – kde se ÚPV
+       jako účastník objeví, je to IP věc. Řádek bez účastníků IP není:
+       bez senátu, o který by se dalo opřít, by se jinak brala celá
+       správní agenda.
+    3. Rejstřík Nc (předběžná opatření, zajištění důkazu): číslo ve značce
        specializaci nerozlišuje – u obchodního „2 Nc" i civilního „1 Nc" je
        to číslo rejstříku, ne oddělení – takže rozhoduje předseda senátu.
        Tím se chytí PO v ochranných známkách i autorskoprávní PO.
-    3. Správní senáty vyřizující žaloby proti Úřadu průmyslového vlastnictví
-       (`senaty_ucastnik`): tyhle senáty soudí i běžnou správní agendu, takže
-       samotné číslo senátu nestačí a hledá se ÚPV mezi účastníky. Když
-       přehled u řádku účastníky neuvádí vůbec, bereme ho radši jako IP –
-       přehlédnout jednání o známce je horší než jeden falešný poplach.
     """
     # Config se edituje i ručně, takže se na velikost písmen rejstříku
     # nespoléháme („12 ECm" i „12 Ecm" musí platit stejně).
     senaty = {str(s).casefold() for s in cfg.get("senaty", [])}
-    podle_ucastnika = {str(s).casefold() for s in cfg.get("senaty_ucastnik", [])}
-    vzory = [strip_diacritics(str(u)).casefold()
-             for u in cfg.get("ucastnici_ip", []) if str(u).strip()]
+    ucastnik = ucastnik_re(cfg.get("ucastnici_ip", []))
     soudci = {normalize_judge(j) for j in cfg.get("soudci", [])}
 
     for it in items:
         senat = it["senat"].casefold()
+        strany = " ".join(strip_diacritics(
+            " | ".join(it.get("ucastnici") or [])).casefold().split())
         if senat in senaty:
             it["ip"] = True
-        elif senat in podle_ucastnika:
-            strany = strip_diacritics(" | ".join(it.get("ucastnici") or [])).casefold()
-            it["ip"] = (not strany) or any(v in strany for v in vzory)
+        elif ucastnik and ucastnik.search(strany):
+            it["ip"] = True
         elif it["rejstrik"] == "Nc":
             it["ip"] = normalize_judge(it["predseda"]) in soudci
         else:
@@ -619,9 +669,13 @@ def scrape_jednani(court, cfg, prehled, local_file=None):
                 links,
                 keywords=tuple(prehled.get("keywords", ("jednani", "prehled"))),
                 prefer=tuple(prehled.get("prefer", ())),
+                # Víc přehledů na jedné stránce: každý jen podle vlastních
+                # slov, ať se za chybějící dokument nevezme ten vedlejší.
+                strict=len(cfg.get("prehledy", [])) > 1,
             )
             if not href:
-                print(f"  [{tag}] na stránce nejsou odkazy na dokumenty")
+                print(f"  [{tag}] na stránce není dokument tohoto úseku" if links
+                      else f"  [{tag}] na stránce nejsou odkazy na dokumenty")
                 return None, None, None
             print(f"  [{tag}] stahuji: {text or href}")
             data = http_get(href).content
@@ -663,8 +717,12 @@ def scrape_jednani(court, cfg, prehled, local_file=None):
 
     for it in items:
         it["usek"] = usek
+    # Řádky bez účastníků do logu – ve správním úseku se filtruje podle
+    # účastníků, takže bez nich by se žaloba proti ÚPV nepoznala.
+    bez_stran = sum(1 for it in items if not it.get("ucastnici"))
     print(f"  [{tag}] jednání: {len(items)}/{ocekavano or '?'}"
-          + (f", období {period[0]} – {period[1]}" if period else ""))
+          + (f", období {period[0]} – {period[1]}" if period else "")
+          + (f", bez účastníků {bez_stran}" if bez_stran else ""))
     return (items or None), period, zdroj
 
 
@@ -768,6 +826,19 @@ def orez_zmeny(zmeny):
     return ponechane[:ZMENY_MAX]
 
 
+# Úsek, který se u jednání nepopisuje – je to většina kalendáře a všude
+# by jen překážel. Ostatní (správní soudnictví) se ukazují jménem.
+VYCHOZI_USEK = "civilni"
+
+
+def usek_nazev(cfg, usek):
+    """Jméno úseku z configu („Úsek správního soudnictví"), None bez něj."""
+    for p in cfg.get("prehledy", []):
+        if p.get("usek", "") == usek and p.get("nazev"):
+            return p["nazev"]
+    return None
+
+
 def merge_output(existing, court, items, period, zdroj_url, cfg):
     """Zanese nový přehled do výstupu.
 
@@ -826,7 +897,10 @@ def merge_output(existing, court, items, period, zdroj_url, cfg):
     meta["nazev"] = cfg["nazev"]
     meta["infosoud_org"] = cfg["infosoud_org"]
     # Každý úsek má vlastní dokument, a tedy i vlastní období a čas stažení.
+    # Jméno úseku jde s sebou, ať ho stránka a .ics můžou ukázat u jednání
+    # (u žaloby proti ÚPV vysvětluje, proč je v IP kalendáři senát „15 A").
     meta.setdefault("useky", {})[usek] = {
+        "nazev": usek_nazev(cfg, usek),
         "obdobi": {"od": period[0], "do": period[1]} if period else None,
         "stazeno": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "zdroj": zdroj_url,
@@ -981,6 +1055,10 @@ def write_ics(output, path=None):
             desc.append(f"Senát: {j['senat']}")
         if j.get("ucastnici"):
             desc.append("Účastníci: " + "; ".join(j["ucastnici"]))
+        usek = j.get("usek") or ""
+        if usek and usek != VYCHOZI_USEK:
+            useky = (courts.get(j.get("soud"), {}) or {}).get("useky", {}) or {}
+            desc.append("Úsek: " + ((useky.get(usek) or {}).get("nazev") or usek))
         desc.append("Stav řízení: " + infosoud_url(j, courts))
         desc.append(
             "Údaje jsou platné ke dni zpracování přehledu soudem a v průběhu "
@@ -1091,6 +1169,9 @@ def main():
             if items is None:
                 continue
             mark_ip(items, cfg)
+            tag = f"{court}/{usek}" if usek else court
+            print(f"  [{tag}] v agendě IP: "
+                  f"{sum(1 for it in items if it.get('ip'))} z {len(items)}")
             merge_output(output, court, items, period, zdroj, cfg)
             ok = True
 
