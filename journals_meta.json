@@ -680,5 +680,9 @@
   "IIC-10.1007/s40319-026-01762-1": {
     "summary": "Článek zkoumá možnost autorskoprávní ochrany promptů pro AI. Rozvádí otázku, zda takový přístup vede k autentické AI, nebo zda představuje právní nadměrnost.",
     "tag": "Autorské právo promptů"
+  },
+  "GRUR Int-10.1093/grurint/ikag085": {
+    "summary": "Článek analyzuje neúčinnost mechanismu „opt-out“ při kontrole dat pro trénink AI v důsledku ztráty sledovatelnosti původu děl. Autor konstatuje, že transparentnost podle AI Actu tento problém plně nevyřeší. Navrhuje proto využít právo nepoctivé konkurence jako doplňkový nástroj k obnovení efektivní kontroly nad vstupy do AI.",
+    "tag": "Kontrola vstupů AI"
   }
 }
