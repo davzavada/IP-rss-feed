@@ -6,7 +6,7 @@
     <atom:link href="https://rss.davidzavada.cz/ipcuria_feed.xml" rel="self" type="application/rss+xml" />
     <description>Latest CJEU IP case law: preliminary rulings and referrals</description>
     <language>en</language>
-    <lastBuildDate>Sun, 13 Sep 2026 00:48:04 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 13 Sep 2026 11:34:51 +0000</lastBuildDate>
     <item>
       <title>[Ruling] C-298/23 (Inter IKEA Systems)</title>
       <link>https://curia.europa.eu/juris/liste.do?num=C-298/23</link>
@@ -55,9 +55,12 @@ CURIA: https://curia.europa.eu/juris/liste.do?num=C-798/24</description>
       <title>[Referral] C-837/26 (Airwair International)</title>
       <link>https://curia.europa.eu/juris/liste.do?num=C-837/26</link>
       <guid isPermaLink="false">Referral-C-837/26</guid>
-      <note>Otázky zatím nezveřejněny.</note>
+      <ai-tag>Ochranná známka</ai-tag>
+      <ai-summary>Předkládající soud se ptá, zda poziční ochranná známka získává rozlišovací charakter použitím pouze tehdy, pokud je to prokázáno u všech variant zboží v dané kategorii, nebo zda stačí prokázání u některých z nich. Dále žádá o vyjádření, zda je v takovém případě možná částečná neplatnost ochranné známky, pokud důvod neplatnosti zasahuje pouze některé varianty zboží.</ai-summary>
+      <document-url>https://infocuria.curia.europa.eu/document/C-0837-2026-26-00000000RP-01-P-01-326497-1-CS.pdf</document-url>
       <description>[Referral] 29 Jul 2026, C-837/26 (Airwair International)
-Otázky zatím nezveřejněny.
+Předkládající soud se ptá, zda poziční ochranná známka získává rozlišovací charakter použitím pouze tehdy, pokud je to prokázáno u všech variant zboží v dané kategorii, nebo zda stačí prokázání u některých z nich. Dále žádá o vyjádření, zda je v takovém případě možná částečná neplatnost ochranné známky, pokud důvod neplatnosti zasahuje pouze některé varianty zboží.
+Žádost (PDF): https://infocuria.curia.europa.eu/document/C-0837-2026-26-00000000RP-01-P-01-326497-1-CS.pdf
 CURIA: https://curia.europa.eu/juris/liste.do?num=C-837/26</description>
       <pubDate>Wed, 29 Jul 2026 12:00:00 +0000</pubDate>
       <dc:date>2026-07-29</dc:date>
