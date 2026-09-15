@@ -773,6 +773,91 @@
       "ip": true,
       "soud": "VS",
       "uid": "350ee80959255dc3cde4429e415149cbc3c6515c"
+    },
+    {
+      "datum": "2026-09-16",
+      "hodina": "10:00",
+      "sin": "061",
+      "predseda": "JUDr. Tomáš Bělohlávek",
+      "spz": "41 C 11/2023",
+      "nazev": "Patmat v. Tomáš Eiselt a další",
+      "senat": "41 C",
+      "rejstrik": "C",
+      "cislo_senatu": 41,
+      "bc": 11,
+      "rocnik": 2023,
+      "ucastnici": [
+        "Patmat s.r.o.",
+        "Tomáš Eiselt",
+        "Slamm s.r.o."
+      ],
+      "usek": "civilni",
+      "ip": true,
+      "soud": "MS",
+      "uid": "fc3b83e737212c7a2a25171f4565ed0ef1970a2d"
+    },
+    {
+      "datum": "2026-09-22",
+      "hodina": "09:30",
+      "sin": "155",
+      "predseda": "JUDr. Martin Valoušek",
+      "spz": "73 C 15/2025",
+      "nazev": "MOVIE v. Clausula rebus",
+      "senat": "73 C",
+      "rejstrik": "C",
+      "cislo_senatu": 73,
+      "bc": 15,
+      "rocnik": 2025,
+      "ucastnici": [
+        "MOVIE s.r.o.",
+        "Clausula rebus s.r.o."
+      ],
+      "usek": "civilni",
+      "ip": true,
+      "soud": "MS",
+      "uid": "2c20292d5d5e2a6c418e3c53458e40ce9e6b1b71"
+    },
+    {
+      "datum": "2026-09-23",
+      "hodina": "13:00",
+      "sin": "061",
+      "predseda": "JUDr. Tomáš Bělohlávek",
+      "spz": "41 C 4/2026",
+      "nazev": "art. Jana Ardanová v. Business Media One",
+      "senat": "41 C",
+      "rejstrik": "C",
+      "cislo_senatu": 41,
+      "bc": 4,
+      "rocnik": 2026,
+      "ucastnici": [
+        "Mgr. art. Jana Ardanová",
+        "Business Media One s.r.o."
+      ],
+      "usek": "civilni",
+      "ip": true,
+      "soud": "MS",
+      "uid": "4ed78d098749bc1ee1f9ca38207f7ec827c09bdb"
+    },
+    {
+      "datum": "2026-09-29",
+      "hodina": "09:00",
+      "sin": "061",
+      "predseda": "Mgr. Jana Přibylová",
+      "spz": "12 C 3/2026",
+      "nazev": "Přírodní Pivní Lázně v. Elena Dschafarow",
+      "senat": "12 C",
+      "rejstrik": "C",
+      "cislo_senatu": 12,
+      "bc": 3,
+      "rocnik": 2026,
+      "ucastnici": [
+        "Přírodní Pivní Lázně s.r.o.",
+        "Elena Dschafarow"
+      ],
+      "usek": "civilni",
+      "ip": true,
+      "soud": "MS",
+      "uid": "8d96a4528b7e19541b9d51825361f0ea6c4662ee"
     }
   ],
   "courts": {
@@ -783,20 +868,17 @@
         "civilni": {
           "nazev": "Civilní úsek",
           "obdobi": {
-            "od": "2026-09-01",
-            "do": "2026-09-15"
+            "od": "2026-09-16",
+            "do": "2026-09-30"
           },
-          "stazeno": "2026-09-15T04:33:34+00:00",
-          "zdroj": "https://msp.gov.cz/documents/d/mestsky-soud-v-praze/civilni-usek-1-15-9-2026"
+          "stazeno": "2026-09-15T09:59:27+00:00",
+          "zdroj": "https://msp.gov.cz/documents/d/mestsky-soud-v-praze/civilni-usek-16-30-9-2026"
         },
         "spravni": {
           "nazev": "Úsek správního soudnictví",
-          "obdobi": {
-            "od": "2026-09-01",
-            "do": "2026-09-15"
-          },
-          "stazeno": "2026-09-15T04:33:35+00:00",
-          "zdroj": "https://msp.gov.cz/documents/d/mestsky-soud-v-praze/spravni-usek-1-15-9-2026"
+          "obdobi": null,
+          "stazeno": "2026-09-15T09:59:28+00:00",
+          "zdroj": "https://msp.gov.cz/documents/d/mestsky-soud-v-praze/spravni-usek-16-30-9-2026"
         }
       }
     },
@@ -810,7 +892,7 @@
             "od": "2026-09-01",
             "do": "2026-09-15"
           },
-          "stazeno": "2026-09-15T04:33:37+00:00",
+          "stazeno": "2026-09-15T09:59:30+00:00",
           "zdroj": "https://msp.gov.cz/documents/d/vrchni-soud-v-praze/prehled_jednacky_cu-1"
         }
       }
@@ -878,9 +960,45 @@
       "Roman Horáček"
     ]
   },
-  "generated": "2026-09-15T04:33:37+00:00",
+  "generated": "2026-09-15T09:59:30+00:00",
   "ics": "https://rss.davidzavada.cz/hearings.ics",
   "zmeny": [
+    {
+      "soud": "MS",
+      "usek": "civilni",
+      "spz": "12 C 3/2026",
+      "typ": "nove",
+      "datum": "2026-09-29",
+      "kdy": "2026-09-15",
+      "popis": "nové jednání"
+    },
+    {
+      "soud": "MS",
+      "usek": "civilni",
+      "spz": "41 C 4/2026",
+      "typ": "nove",
+      "datum": "2026-09-23",
+      "kdy": "2026-09-15",
+      "popis": "nové jednání"
+    },
+    {
+      "soud": "MS",
+      "usek": "civilni",
+      "spz": "73 C 15/2025",
+      "typ": "nove",
+      "datum": "2026-09-22",
+      "kdy": "2026-09-15",
+      "popis": "nové jednání"
+    },
+    {
+      "soud": "MS",
+      "usek": "civilni",
+      "spz": "41 C 11/2023",
+      "typ": "nove",
+      "datum": "2026-09-16",
+      "kdy": "2026-09-15",
+      "popis": "nové jednání"
+    },
     {
       "soud": "VS",
       "usek": "civilni",
