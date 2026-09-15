@@ -6,7 +6,36 @@
     <atom:link href="https://rss.davidzavada.cz/journals_feed.xml" rel="self" type="application/rss+xml" />
     <description>Nová čísla právních časopisů a články</description>
     <language>cs</language>
-    <lastBuildDate>Tue, 15 Sep 2026 09:59:25 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 15 Sep 2026 22:05:27 +0000</lastBuildDate>
+    <item>
+      <title>[GRUR Int] Denying Authorship Status to AI Is Not Unconstitutional</title>
+      <link>https://doi.org/10.1093/grurint/ikag083</link>
+      <guid isPermaLink="false">GRUR Int-10.1093/grurint/ikag083</guid>
+      <description>Denying Authorship Status to AI Is Not Unconstitutional
+GRUR International
+Článek se zabývá otázkou, zda je odmítnutí přiznání statusu autora umělé inteligenci v rozporu s ústavou. Autor dochází k závěru, že takové odmítnutí není neústavní.</description>
+      <is-new>true</is-new>
+      <ai-tag>Autorská práva AI</ai-tag>
+      <ai-summary>Článek se zabývá otázkou, zda je odmítnutí přiznání statusu autora umělé inteligenci v rozporu s ústavou. Autor dochází k závěru, že takové odmítnutí není neústavní.</ai-summary>
+      <pubDate>Tue, 15 Sep 2026 12:00:00 +0000</pubDate>
+      <dc:date>2026-09-15</dc:date>
+    </item>
+    <item>
+      <title>[GRUR Int] Who Owns Printable Life? From Territorial Biopiracy to Informational Control in 3D Bioprinting</title>
+      <link>https://doi.org/10.1093/grurint/ikag088</link>
+      <dc:creator>Riccardo Piselli, Allegra Chiodi</dc:creator>
+      <guid isPermaLink="false">GRUR Int-10.1093/grurint/ikag088</guid>
+      <description>Who Owns Printable Life? From Territorial Biopiracy to Informational Control in 3D Bioprinting
+Autor: Riccardo Piselli, Allegra Chiodi
+GRUR International
+This article identifies three overlapping modes of biological value appropriation: territorial appropriation of physical genetic resources, digital appropriation of genetic information, and informational-to-biological reconstruction through emerging technologies such as 3D bioprinting. By enablin...
+Článek analyzuje problematiku přivlastňování biologických hodnot prostřednictvím 3D bioprintingu, který umožňuje rekonstrukci genetických informací mimo původní území. Autor konstatuje, že stávající teritoriální rámce pro přístup a rozdělení přínosů (ABS) i patentní režimy jsou neúčinné vůči digitální transformaci biologického materiálu. Navrhuje proto přechod k informační a infrastrukturní kontrole, včetně rozšíření povinností zveřejňování bio-CAD souborů a certifikace bioprintingových zařízení.</description>
+      <is-new>true</is-new>
+      <ai-tag>Právní regulace bioprintingu</ai-tag>
+      <ai-summary>Článek analyzuje problematiku přivlastňování biologických hodnot prostřednictvím 3D bioprintingu, který umožňuje rekonstrukci genetických informací mimo původní území. Autor konstatuje, že stávající teritoriální rámce pro přístup a rozdělení přínosů (ABS) i patentní režimy jsou neúčinné vůči digitální transformaci biologického materiálu. Navrhuje proto přechod k informační a infrastrukturní kontrole, včetně rozšíření povinností zveřejňování bio-CAD souborů a certifikace bioprintingových zařízení.</ai-summary>
+      <pubDate>Tue, 15 Sep 2026 12:00:00 +0000</pubDate>
+      <dc:date>2026-09-15</dc:date>
+    </item>
     <item>
       <title>[JWIP] Stacking the deck: Multi‐layer IP strategies in onion breeding</title>
       <link>https://doi.org/10.1111/jwip.70036</link>
@@ -638,21 +667,6 @@ Registries of Indigenous knowledge and centralised Indigenous authorities to ove
       <dc:date>2026-08-19</dc:date>
     </item>
     <item>
-      <title>[GRUR Int] Of Ceilings and Flaws: Negotiating Disclosure in the WIPO Genetic Resources and Traditional Knowledge Treaty</title>
-      <link>https://doi.org/10.1093/grurint/ikag080</link>
-      <dc:creator>Wend Wendland</dc:creator>
-      <guid isPermaLink="false">GRUR Int-10.1093/grurint/ikag080</guid>
-      <description>Of Ceilings and Flaws: Negotiating Disclosure in the WIPO Genetic Resources and Traditional Knowledge Treaty
-Autor: Wend Wendland
-GRUR International
-The negotiators of the 2024 WIPO Treaty on Intellectual Property, Genetic Resources and Associated Traditional Knowledge navigated the straits of maximum standards (ceilings) and minimum standards (floors), harmonization and flexibility, and clarity and ambiguity. The text as finally adopted by c...
-Článek analyzuje vyjednávání o Smlouvě WIPO z roku 2024 týkající se genetických zdrojů a tradičních znalostí, zejména v oblasti povinnosti zveřejňování. Autor konstatuje, že kompromisní a vágní formulace sice umožnily přijetí smlouvy, ale mohou ohrozit její efektivitu a jednotnou implementaci. K nápravě doporučuje koordinaci interpretace a provedení smlouvy mezi smluvními stranami.</description>
-      <ai-tag>Zveřejňování genetických zdrojů</ai-tag>
-      <ai-summary>Článek analyzuje vyjednávání o Smlouvě WIPO z roku 2024 týkající se genetických zdrojů a tradičních znalostí, zejména v oblasti povinnosti zveřejňování. Autor konstatuje, že kompromisní a vágní formulace sice umožnily přijetí smlouvy, ale mohou ohrozit její efektivitu a jednotnou implementaci. K nápravě doporučuje koordinaci interpretace a provedení smlouvy mezi smluvními stranami.</ai-summary>
-      <pubDate>Tue, 18 Aug 2026 12:00:00 +0000</pubDate>
-      <dc:date>2026-08-18</dc:date>
-    </item>
-    <item>
       <title>[GRUR Int] The 2025 Amendments to the Chinese Patent Examination Guidelines</title>
       <link>https://doi.org/10.1093/grurint/ikag073</link>
       <dc:creator>Peter Ganea</dc:creator>
@@ -666,36 +680,6 @@ This report analyzes the amendments to the Chinese Patent Examination Guidelines
       <ai-summary>Článek analyzuje listopadové novely čínských směrnic pro projednávání patentů z roku 2025. Novely přinášejí upřesnění pro oblasti AI, big data, bitstream technologií a biotechnologií, a zvyšují procesní flexibilitu. Zpráva rovněž shrnuje nová pravidla CNIPA pro designy grafických uživatelských rozhraní (GUI).</ai-summary>
       <pubDate>Tue, 18 Aug 2026 12:00:00 +0000</pubDate>
       <dc:date>2026-08-18</dc:date>
-    </item>
-    <item>
-      <title>[IIC] The Legal Limits of Luxury: Restricting Third-Party Restoration of Luxury Fashion</title>
-      <link>https://doi.org/10.1007/s40319-026-01752-3</link>
-      <dc:creator>Annika Bentner, Thomas J. Farkas</dc:creator>
-      <guid isPermaLink="false">IIC-10.1007/s40319-026-01752-3</guid>
-      <description>The Legal Limits of Luxury: Restricting Third-Party Restoration of Luxury Fashion
-Autor: Annika Bentner, Thomas J. Farkas
-IIC – International Review of Intellectual Property and Competition Law
-The growing market for luxury fashion restoration raises complex questions at the intersection of intellectual property law, consumer ownership, and sustainability policy. As the repair, restoration, and recolouring of luxury goods become more prevalent, independent restoration services contribut...
-Článek zkoumá právní aspekty nezávislé restaurace luxusních módních doplňků v kontextu práva EU a Spojeného království. Zjišťuje, že zatímco soukromá restaurace je většinou přípustná, komerční prodej výrazně změněného zboží může vést k odpovědnosti za zneužití ochranných známek. Autor navrhuje zaměřit se na transparentnost, aby bylo možné sladit ochranu značek s cíli udržitelnosti.</description>
-      <ai-tag>Restaurování luxusní módy</ai-tag>
-      <ai-summary>Článek zkoumá právní aspekty nezávislé restaurace luxusních módních doplňků v kontextu práva EU a Spojeného království. Zjišťuje, že zatímco soukromá restaurace je většinou přípustná, komerční prodej výrazně změněného zboží může vést k odpovědnosti za zneužití ochranných známek. Autor navrhuje zaměřit se na transparentnost, aby bylo možné sladit ochranu značek s cíli udržitelnosti.</ai-summary>
-      <pubDate>Tue, 18 Aug 2026 12:00:00 +0000</pubDate>
-      <dc:date>2026-08-18</dc:date>
-    </item>
-    <item>
-      <title>[JWIP] Patent landscape analysis of inventions based on plant genetic resources for food and agriculture and related digital sequence information</title>
-      <link>https://doi.org/10.1111/jwip.70033</link>
-      <dc:creator>Claudio Chiarolla, Michael Andreas Kock, Paul Oldham, Michael Halewood, Isabel López Noriega, Jasmine Kindness</dc:creator>
-      <guid isPermaLink="false">JWIP-10.1111/jwip.70033</guid>
-      <description>Patent landscape analysis of inventions based on plant genetic resources for food and agriculture and related digital sequence information
-Autor: Claudio Chiarolla, Michael Andreas Kock, Paul Oldham, Michael Halewood, Isabel López Noriega, Jasmine Kindness
-The Journal of World Intellectual Property
-This article provides an overview of the patent landscape in relation to PGRFA‐based inventions involving naturally occurring (“native”) traits and related Digital Sequence Information/Genetic Sequence Data (DSI/GSD). In particular, it focuses on the potential of patent claims to limit others' us...
-Článek analyzuje patentní krajinu vynálezů založených na rostlinných genetických zdrojích pro potraviny a zemědělství (PGRFA) a souvisejících digitálních sekvenčních informacích. Autoři identifikovali 399 patentů a 12 typů nároků, které mohou omezit další výzkum a šlechtění těchto zdrojů. Navrhují zlepšení transparentnosti v patentových databázích a vypracování pokynů pro zajištění souladu s mezinárodní smlouvou FAO.</description>
-      <ai-tag>Patenty a genetické zdroje</ai-tag>
-      <ai-summary>Článek analyzuje patentní krajinu vynálezů založených na rostlinných genetických zdrojích pro potraviny a zemědělství (PGRFA) a souvisejících digitálních sekvenčních informacích. Autoři identifikovali 399 patentů a 12 typů nároků, které mohou omezit další výzkum a šlechtění těchto zdrojů. Navrhují zlepšení transparentnosti v patentových databázích a vypracování pokynů pro zajištění souladu s mezinárodní smlouvou FAO.</ai-summary>
-      <pubDate>Mon, 17 Aug 2026 12:00:00 +0000</pubDate>
-      <dc:date>2026-08-17</dc:date>
     </item>
     <item>
       <title>[JIPLP] Plant variety rights: the High Court of England and Wales rules on essentially derived varieties and enforcement against importation of harvested fruit</title>
