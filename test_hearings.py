@@ -496,6 +496,51 @@ check("změny starší než měsíc odpadnou",
       not [z for z in orezane if z["spz"] == "12 C 8/2026"])
 
 # =====================================================================
+print("\n9) Zkrácení fyzických osob mezi účastníky na iniciály")
+# =====================================================================
+# Přehled soudu strany nerozlišuje na firmy a lidi – jistý signál je jen
+# titul před jménem (firma se tak neoznačuje). Bez něj radši jméno zůstane
+# celé, i riskantní („Yunnan Tobacco" má stejný tvar jako osobní jméno).
+check("titul pozná fyzickou osobu", s.ma_osobni_titul("Ing. Tomáš Seidl"))
+check("bez titulu se nehádá", not s.ma_osobni_titul("Karolína Janáčková"))
+check("firma bez titulu se nehádá", not s.ma_osobni_titul("Yunnan Tobacco"))
+check("iniciály jména a příjmení", s.initials("Ing. Tomáš Seidl") == "T. S.",
+      s.initials("Ing. Tomáš Seidl"))
+check("akademický titul za jménem se do iniciál nepočítá",
+      s.initials("Ing. Jan Babák CSc.") == "J. B.", s.initials("Ing. Jan Babák CSc."))
+check("složený titul (Ing. arch.) se ořízne celý",
+      s.initials("Ing. arch. Martin Pálka") == "M. P.",
+      s.initials("Ing. arch. Martin Pálka"))
+
+# redact_osoby zkrátí účastníky s titulem vždycky; bez AI (vypnutá/bez
+# klíče) nechá zbytek beze změny, ať se nikdy nejede jen na hádání.
+polozky = [{"ucastnici": ["Ing. Tomáš Seidl", "Karolína Janáčková", "FLOWBOX s.r.o."]}]
+s.redact_osoby(polozky)
+check("bez AI se zkrátí jen titulovaná osoba",
+      polozky[0]["ucastnici"] == ["T. S.", "Karolína Janáčková", "FLOWBOX s.r.o."],
+      str(polozky[0]["ucastnici"]))
+check("nazev se dopočítá ze zkrácených jmen",
+      polozky[0]["nazev"] == "T. S. v. Karolína Janáčková a další",
+      polozky[0]["nazev"])
+
+# S (nasimulovanou) AI se zkrátí i osoba bez titulu, kterou AI označí za
+# fyzickou; jméno, které AI vrátí, ale v seznamu vůbec nebylo (halucinace),
+# se ignoruje.
+puvodni_enabled, puvodni_generate = s.gemini_enabled, s.gemini_generate_raw
+s.gemini_enabled = lambda: True
+s.gemini_generate_raw = lambda prompt, text, **kw: (
+    '["Karolína Janáčková", "Vymyšlené Jméno"]')
+try:
+    polozky_ai = [{"ucastnici": ["Ing. Tomáš Seidl", "Karolína Janáčková",
+                                  "FLOWBOX s.r.o."]}]
+    s.redact_osoby(polozky_ai)
+finally:
+    s.gemini_enabled, s.gemini_generate_raw = puvodni_enabled, puvodni_generate
+check("AI dozkrátí osobu bez titulu",
+      polozky_ai[0]["ucastnici"] == ["T. S.", "K. J.", "FLOWBOX s.r.o."],
+      str(polozky_ai[0]["ucastnici"]))
+
+# =====================================================================
 failed = [n for n, ok, _ in results if not ok]
 print(f"\n{len(results) - len(failed)}/{len(results)} testů prošlo")
 if failed:
