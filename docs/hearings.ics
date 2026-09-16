@@ -28,18 +28,17 @@ END:DAYLIGHT
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:28d82250dc60f8f3a917f57c6a0c20526c682a8e@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260817T093000
 DTEND;TZID=Europe/Prague:20260817T103000
 SUMMARY:FLOWBOX v. DATEX Control Systems a další
 LOCATION:Vrchní soud v Praze\, jednací síň 6
 DESCRIPTION:Spisová značka: 3 Cmo 25/2026\nPředseda senátu: Mgr. Jiří
   Čurda\nSenát: 3 Cmo\nÚčastníci: FLOWBOX s.r.o.\; DATEX Control Syste
- ms spol. s r.o.\; Ing. Tomáš Seidl\nStav řízení: https://infosoud.gov
- .cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KRAJE&druhOrganizace=VSPH
- AAB&cisloSenatu=3&druhVeci=cmo&bcVec=25&rocnik=2026\nÚdaje jsou platné k
- e dni zpracování přehledu soudem a v průběhu období se neaktualizuj
- í.
+ ms spol. s r.o.\; T. S.\nStav řízení: https://infosoud.gov.cz/InfoSoud/
+ detail-rizeni?typOrganizace=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSena
+ tu=3&druhVeci=cmo&bcVec=25&rocnik=2026\nÚdaje jsou platné ke dni zpracov
+ ání přehledu soudem a v průběhu období se neaktualizují.
 URL:https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KR
  AJE&druhOrganizace=VSPHAAB&cisloSenatu=3&druhVeci=cmo&bcVec=25&rocnik=2026
 STATUS:CONFIRMED
@@ -47,7 +46,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:6b0d5ad1469b10ea7a0672fd32425233c73c6b97@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260817T103000
 DTEND;TZID=Europe/Prague:20260817T113000
 SUMMARY:Therapharm v. KnVnet services
@@ -65,7 +64,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:b32c5ebeef6d4197ea44b795f7cb1cd40d808142@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260817T133000
 DTEND;TZID=Europe/Prague:20260817T143000
 SUMMARY:Synergy Insurance v. Pojišťovna VZP
@@ -83,7 +82,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:e6961e83ee97eef049239be3e0929fa9c3d54306@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260818T093000
 DTEND;TZID=Europe/Prague:20260818T103000
 SUMMARY:TV Nova v. Social Media Insights
@@ -101,7 +100,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:60e1a8e45ce8cb9212fcb6cceb2104c459cf80d5@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260819T090000
 DTEND;TZID=Europe/Prague:20260819T100000
 SUMMARY:Gabriela Fárová v. Činoherní klub
@@ -119,7 +118,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:c7e409bdca17c4df21a6ec95ff35f594f0606bae@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260819T093000
 DTEND;TZID=Europe/Prague:20260819T103000
 SUMMARY:Bayer v. Accord Healtcare a další
@@ -138,7 +137,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:4dbdc0a3ec16f4e4007e3911108d0ad4b5fd82b7@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260820T094000
 DTEND;TZID=Europe/Prague:20260820T104000
 SUMMARY:OSA v. BH Drink
@@ -156,7 +155,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:c27a3326a840b4d95b82c9a61e319f227c99acc1@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260825T093000
 DTEND;TZID=Europe/Prague:20260825T103000
 SUMMARY:AQS v. Bohemia Motion Pictures a další
@@ -174,17 +173,17 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:2dba8d619b6282091a54197f7ca91b4b01018b88@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260826T090000
 DTEND;TZID=Europe/Prague:20260826T100000
-SUMMARY:Hudební divadlo v Karlíně v. Jiří Strach
+SUMMARY:Hudební divadlo v Karlíně v. J. S.
 LOCATION:Městský soud v Praze\, jednací síň 353
 DESCRIPTION:Spisová značka: 10 C 2/2026\nPředseda senátu: Mgr. Lucie Vo
- brová\nSenát: 10 C\nÚčastníci: Hudební divadlo v Karlíně\; MgA. Ji
- ří Strach\nStav řízení: https://infosoud.gov.cz/InfoSoud/detail-rizen
- i?typOrganizace=VSECHNY_KRAJE&druhOrganizace=MSPHAAB&cisloSenatu=10&druhVe
- ci=c&bcVec=2&rocnik=2026\nÚdaje jsou platné ke dni zpracování přehled
- u soudem a v průběhu období se neaktualizují.
+ brová\nSenát: 10 C\nÚčastníci: Hudební divadlo v Karlíně\; J. S.\n
+ Stav řízení: https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganiza
+ ce=VSECHNY_KRAJE&druhOrganizace=MSPHAAB&cisloSenatu=10&druhVeci=c&bcVec=2&
+ rocnik=2026\nÚdaje jsou platné ke dni zpracování přehledu soudem a v 
+ průběhu období se neaktualizují.
 URL:https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KR
  AJE&druhOrganizace=MSPHAAB&cisloSenatu=10&druhVeci=c&bcVec=2&rocnik=2026
 STATUS:CONFIRMED
@@ -192,7 +191,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:2924b22c22bf2a77ac4d0ff7ba366a87378c0f84@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260827T093000
 DTEND;TZID=Europe/Prague:20260827T103000
 SUMMARY:INTERGRAM v. Tesco Stores ČR
@@ -211,7 +210,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:d6dace8d49b1427195a3233961660305cacad212@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260828T090000
 DTEND;TZID=Europe/Prague:20260828T100000
 SUMMARY:Přírodní Pivní Lázně v. Elena Dschafarow
@@ -229,17 +228,17 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:039200bc659501dd9741dcac9500851ff61d52aa@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260901T090000
 DTEND;TZID=Europe/Prague:20260901T100000
-SUMMARY:Pavel Schreiber v. CeWe Color
+SUMMARY:P. S. v. CeWe Color
 LOCATION:Vrchní soud v Praze\, jednací síň 4
 DESCRIPTION:Spisová značka: 4 Cmo 98/2026\nPředseda senátu: JUDr. Monik
- a Vacková\nSenát: 4 Cmo\nÚčastníci: Ing. Pavel Schreiber\; CeWe Color
-  a.s.\nStav řízení: https://infosoud.gov.cz/InfoSoud/detail-rizeni?typO
- rganizace=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSenatu=4&druhVeci=cmo&
- bcVec=98&rocnik=2026\nÚdaje jsou platné ke dni zpracování přehledu so
- udem a v průběhu období se neaktualizují.
+ a Vacková\nSenát: 4 Cmo\nÚčastníci: P. S.\; CeWe Color a.s.\nStav ř
+ ízení: https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSEC
+ HNY_KRAJE&druhOrganizace=VSPHAAB&cisloSenatu=4&druhVeci=cmo&bcVec=98&rocni
+ k=2026\nÚdaje jsou platné ke dni zpracování přehledu soudem a v průb
+ ěhu období se neaktualizují.
 URL:https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KR
  AJE&druhOrganizace=VSPHAAB&cisloSenatu=4&druhVeci=cmo&bcVec=98&rocnik=2026
 STATUS:CONFIRMED
@@ -247,18 +246,17 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:52a9fb1be1a475e701de2f2a66f000e7e8da2467@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260901T103000
 DTEND;TZID=Europe/Prague:20260901T113000
 SUMMARY:Dictio v. Robert Hafner a další
 LOCATION:Vrchní soud v Praze\, jednací síň 4
 DESCRIPTION:Spisová značka: 4 Cmo 57/2026\nPředseda senátu: JUDr. Micha
  l Krenk\, Ph.D.\nSenát: 4 Cmo\nÚčastníci: Dictio a.s.\; Robert Hafner\
- ; Ing. Petr Finch\; Roman Kloud\; Ing. Petr Panoš\nStav řízení: https:
- //infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KRAJE&druhO
- rganizace=VSPHAAB&cisloSenatu=4&druhVeci=cmo&bcVec=57&rocnik=2026\nÚdaje 
- jsou platné ke dni zpracování přehledu soudem a v průběhu období se
-  neaktualizují.
+ ; P. F.\; Roman Kloud\; P. P.\nStav řízení: https://infosoud.gov.cz/Inf
+ oSoud/detail-rizeni?typOrganizace=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cis
+ loSenatu=4&druhVeci=cmo&bcVec=57&rocnik=2026\nÚdaje jsou platné ke dni z
+ pracování přehledu soudem a v průběhu období se neaktualizují.
 URL:https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KR
  AJE&druhOrganizace=VSPHAAB&cisloSenatu=4&druhVeci=cmo&bcVec=57&rocnik=2026
 STATUS:CONFIRMED
@@ -266,17 +264,17 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:aee2d7fdfa404637a3f0d031f50872795f1f7548@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260901T133000
 DTEND;TZID=Europe/Prague:20260901T143000
-SUMMARY:M. M. group Praha v. Jiří Vařil
+SUMMARY:M. M. group Praha v. J. V.
 LOCATION:Vrchní soud v Praze\, jednací síň 4
 DESCRIPTION:Spisová značka: 4 Cmo 225/2024\nPředseda senátu: JUDr. Mich
  al Krenk\, Ph.D.\nSenát: 4 Cmo\nÚčastníci: M. M. group Praha s.r.o.\; 
- Mgr. Jiří Vařil\nStav řízení: https://infosoud.gov.cz/InfoSoud/detai
- l-rizeni?typOrganizace=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSenatu=4&
- druhVeci=cmo&bcVec=225&rocnik=2024\nÚdaje jsou platné ke dni zpracován
- í přehledu soudem a v průběhu období se neaktualizují.
+ J. V.\nStav řízení: https://infosoud.gov.cz/InfoSoud/detail-rizeni?typO
+ rganizace=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSenatu=4&druhVeci=cmo&
+ bcVec=225&rocnik=2024\nÚdaje jsou platné ke dni zpracování přehledu s
+ oudem a v průběhu období se neaktualizují.
 URL:https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KR
  AJE&druhOrganizace=VSPHAAB&cisloSenatu=4&druhVeci=cmo&bcVec=225&rocnik=202
  4
@@ -285,7 +283,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:925596e64b4920dd37548ed972de2bd8dd91e951@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260902T090000
 DTEND;TZID=Europe/Prague:20260902T100000
 SUMMARY:Bytové družstvo Mezivrší v. 1323/40 družstvo a další
@@ -304,7 +302,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:a0f5ef7d5b02d9cc6e66218658d820c197e0b8ad@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260902T091500
 DTEND;TZID=Europe/Prague:20260902T101500
 SUMMARY:MK holding v. STES
@@ -322,7 +320,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:6739c534e3085e42b198124c93a6977dc9e9260d@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260902T103000
 DTEND;TZID=Europe/Prague:20260902T113000
 SUMMARY:servis SOLDÁT v. Pavel Hromádka
@@ -341,7 +339,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:3a3044ec6f867a3adb29670d58cecce288b53421@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260902T110000
 DTEND;TZID=Europe/Prague:20260902T120000
 SUMMARY:Gabriela Fárová v. Činoherní klub
@@ -359,7 +357,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:01a4c230b278218834b9e9bf40d8717dd960321f@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260902T133000
 DTEND;TZID=Europe/Prague:20260902T143000
 SUMMARY:SESTŘIČKA.CZ - DOMÁCÍ v. PÉČE PRAHA a další
@@ -377,19 +375,18 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:0f05846b1dc900d8200c1aebcc69b48c3d8ea4bd@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260903T083000
 DTEND;TZID=Europe/Prague:20260903T093000
-SUMMARY:Kateřina Jírová v. Hana Johnová MSc. MBA a další
+SUMMARY:K. J. v. Hana Johnová MSc. MBA a další
 LOCATION:Vrchní soud v Praze\, jednací síň 4
 DESCRIPTION:Spisová značka: 11 Cmo 35/2025\nPředseda senátu: JUDr. Jiř
- í Švehla\nSenát: 11 Cmo\nÚčastníci: Ing. Kateřina Jírová\; Hana J
- ohnová MSc. MBA\; Irena Konfrštová\; Marta Fučíková\; Společenství
-  vlastníků domu\; Dejvice č.p. 1717\nStav řízení: https://infosoud.g
- ov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KRAJE&druhOrganizace=VS
- PHAAB&cisloSenatu=11&druhVeci=cmo&bcVec=35&rocnik=2025\nÚdaje jsou platn
- é ke dni zpracování přehledu soudem a v průběhu období se neaktuali
- zují.
+ í Švehla\nSenát: 11 Cmo\nÚčastníci: K. J.\; Hana Johnová MSc. MBA\;
+  Irena Konfrštová\; Marta Fučíková\; Společenství vlastníků domu\
+ ; Dejvice č.p. 1717\nStav řízení: https://infosoud.gov.cz/InfoSoud/det
+ ail-rizeni?typOrganizace=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSenatu=
+ 11&druhVeci=cmo&bcVec=35&rocnik=2025\nÚdaje jsou platné ke dni zpracová
+ ní přehledu soudem a v průběhu období se neaktualizují.
 URL:https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KR
  AJE&druhOrganizace=VSPHAAB&cisloSenatu=11&druhVeci=cmo&bcVec=35&rocnik=202
  5
@@ -398,7 +395,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:4475ce08f69333185cd66c770cb94cc6e59337f2@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260903T093000
 DTEND;TZID=Europe/Prague:20260903T103000
 SUMMARY:PROMET DEVELOPMENT v. Odien Real Estate
@@ -416,19 +413,18 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:c7e81cc5a633222f9ed648e2b943e1a402ab9417@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260903T103000
 DTEND;TZID=Europe/Prague:20260903T113000
-SUMMARY:Jan Babák CSc. v. Společenství vlastníků jednotek… a další
+SUMMARY:J. B. v. Společenství vlastníků jednotek… a další
 LOCATION:Vrchní soud v Praze\, jednací síň 4
 DESCRIPTION:Spisová značka: 11 Cmo 33/2025\nPředseda senátu: JUDr. Mich
- al Mědílek\nSenát: 11 Cmo\nÚčastníci: Ing. Jan Babák CSc.\; Společ
- enství vlastníků jednotek pro dům č.p. 848-\; 851\, ul. Pezinská\, M
- ladá\; Boleslav II\; Ing. Andrea Jaroměřská\; _\nStav řízení: https
- ://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KRAJE&druh
- Organizace=VSPHAAB&cisloSenatu=11&druhVeci=cmo&bcVec=33&rocnik=2025\nÚdaj
- e jsou platné ke dni zpracování přehledu soudem a v průběhu období 
- se neaktualizují.
+ al Mědílek\nSenát: 11 Cmo\nÚčastníci: J. B.\; Společenství vlastn
+ íků jednotek pro dům č.p. 848-\; 851\, ul. Pezinská\, Mladá\; Bolesl
+ av II\; A. J.\; _\nStav řízení: https://infosoud.gov.cz/InfoSoud/detail
+ -rizeni?typOrganizace=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSenatu=11&
+ druhVeci=cmo&bcVec=33&rocnik=2025\nÚdaje jsou platné ke dni zpracování
+  přehledu soudem a v průběhu období se neaktualizují.
 URL:https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KR
  AJE&druhOrganizace=VSPHAAB&cisloSenatu=11&druhVeci=cmo&bcVec=33&rocnik=202
  5
@@ -437,18 +433,18 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:df451e065c119295b583eda581a42a476481d3ce@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260903T130000
 DTEND;TZID=Europe/Prague:20260903T140000
-SUMMARY:Ivan Kuželka v. Jaroslava Kuželková a další
+SUMMARY:I. K. v. Jaroslava Kuželková a další
 LOCATION:Vrchní soud v Praze\, jednací síň 4
 DESCRIPTION:Spisová značka: 11 Cmo 30/2025\nPředseda senátu: JUDr. Jiř
- í Švehla\nSenát: 11 Cmo\nÚčastníci: Ing. Ivan Kuželka\; Jaroslava K
- uželková\; Společenství vlastníků bytů\; Havlíčkův Brod\; Rozko
- šská 3009\nStav řízení: https://infosoud.gov.cz/InfoSoud/detail-rizen
- i?typOrganizace=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSenatu=11&druhVe
- ci=cmo&bcVec=30&rocnik=2025\nÚdaje jsou platné ke dni zpracování přeh
- ledu soudem a v průběhu období se neaktualizují.
+ í Švehla\nSenát: 11 Cmo\nÚčastníci: I. K.\; Jaroslava Kuželková\; 
+ Společenství vlastníků bytů\; Havlíčkův Brod\; Rozkošská 3009\nS
+ tav řízení: https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizac
+ e=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSenatu=11&druhVeci=cmo&bcVec=3
+ 0&rocnik=2025\nÚdaje jsou platné ke dni zpracování přehledu soudem a 
+ v průběhu období se neaktualizují.
 URL:https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KR
  AJE&druhOrganizace=VSPHAAB&cisloSenatu=11&druhVeci=cmo&bcVec=30&rocnik=202
  5
@@ -457,7 +453,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:96354ab1a8c9f43a3bebe1ade2b54ae89413d72e@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260903T130000
 DTEND;TZID=Europe/Prague:20260903T140000
 SUMMARY:Hospodářská komora České… v. Český telekomunikační klast
@@ -478,7 +474,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:a42ef14a609e558691f214929f35fb7cb4158f7a@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260909T091500
 DTEND;TZID=Europe/Prague:20260909T101500
 SUMMARY:Yunnan Tobacco v. International Co. a další
@@ -497,7 +493,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:b0940f60305276bb6b02dd56775c12dfc2833d1c@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260909T103000
 DTEND;TZID=Europe/Prague:20260909T113000
 SUMMARY:In Time v. ACOGER
@@ -515,20 +511,19 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:ed8c5ebc6da13d1beab4f90d224303153484ecbd@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260910T083000
 DTEND;TZID=Europe/Prague:20260910T093000
 SUMMARY:Václav Pálka v. Alena Pálková a další
 LOCATION:Vrchní soud v Praze\, jednací síň 4
 DESCRIPTION:Spisová značka: 11 Cmo 24/2025\nPředseda senátu: JUDr. Mich
  al Mědílek\nSenát: 11 Cmo\nÚčastníci: Václav Pálka\; Alena Pálkov
- á\; Bohuslav Kučera\; Ing. Bohuslav Kučera\; Marie Hochmannová\; Ing. 
- arch. Martin Pálka\; Mgr. Andrea Boráková\; Ředitelství silnic a dál
- nic\; České republiky státní přísp.org.\nStav řízení: https://inf
- osoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KRAJE&druhOrgani
- zace=VSPHAAB&cisloSenatu=11&druhVeci=cmo&bcVec=24&rocnik=2025\nÚdaje jsou
-  platné ke dni zpracování přehledu soudem a v průběhu období se nea
- ktualizují.
+ á\; Bohuslav Kučera\; B. K.\; Marie Hochmannová\; M. P.\; A. B.\; Ředi
+ telství silnic a dálnic\; České republiky státní přísp.org.\nStav 
+ řízení: https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VS
+ ECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSenatu=11&druhVeci=cmo&bcVec=24&ro
+ cnik=2025\nÚdaje jsou platné ke dni zpracování přehledu soudem a v pr
+ ůběhu období se neaktualizují.
 URL:https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KR
  AJE&druhOrganizace=VSPHAAB&cisloSenatu=11&druhVeci=cmo&bcVec=24&rocnik=202
  5
@@ -537,7 +532,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:d6e408271e064869f4d45e4e2a176f4f55054ecc@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260910T093000
 DTEND;TZID=Europe/Prague:20260910T103000
 SUMMARY:Karolína Janáčková v. Karla Šolcová a další
@@ -555,17 +550,17 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:bb2e6216acf12109fffbb782d43560dc65fce72d@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260910T093000
 DTEND;TZID=Europe/Prague:20260910T103000
-SUMMARY:Lucie Konášová v. Jiří Strach
+SUMMARY:L. K. v. J. S.
 LOCATION:Městský soud v Praze\, jednací síň 265
 DESCRIPTION:Spisová značka: 9 C 4/2025\nPředseda senátu: JUDr. Mgr. Pet
- r Košík\, Ph.D.\nSenát: 9 C\nÚčastníci: Mgr. Lucie Konášová\; MgA
- . Jiří Strach\nStav řízení: https://infosoud.gov.cz/InfoSoud/detail-r
- izeni?typOrganizace=VSECHNY_KRAJE&druhOrganizace=MSPHAAB&cisloSenatu=9&dru
- hVeci=c&bcVec=4&rocnik=2025\nÚdaje jsou platné ke dni zpracování přeh
- ledu soudem a v průběhu období se neaktualizují.
+ r Košík\, Ph.D.\nSenát: 9 C\nÚčastníci: L. K.\; J. S.\nStav řízen
+ í: https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_K
+ RAJE&druhOrganizace=MSPHAAB&cisloSenatu=9&druhVeci=c&bcVec=4&rocnik=2025\n
+ Údaje jsou platné ke dni zpracování přehledu soudem a v průběhu obd
+ obí se neaktualizují.
 URL:https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KR
  AJE&druhOrganizace=MSPHAAB&cisloSenatu=9&druhVeci=c&bcVec=4&rocnik=2025
 STATUS:CONFIRMED
@@ -573,17 +568,17 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:1f90cf412ce68bbbcd318e43b4ae3297ab2b01a9@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260910T103000
 DTEND;TZID=Europe/Prague:20260910T113000
-SUMMARY:Jana Puhlovská Ph.D. v. Stanislav Gajdoš
+SUMMARY:J. P. v. S. G.
 LOCATION:Vrchní soud v Praze\, jednací síň 4
 DESCRIPTION:Spisová značka: 4 Co 36/2026\nPředseda senátu: JUDr. Jana S
- edlářová\nSenát: 4 Co\nÚčastníci: Ing. Jana Puhlovská Ph.D.\; Ing.
-  Stanislav Gajdoš\nStav řízení: https://infosoud.gov.cz/InfoSoud/detai
- l-rizeni?typOrganizace=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSenatu=4&
- druhVeci=co&bcVec=36&rocnik=2026\nÚdaje jsou platné ke dni zpracování 
- přehledu soudem a v průběhu období se neaktualizují.
+ edlářová\nSenát: 4 Co\nÚčastníci: J. P.\; S. G.\nStav řízení: ht
+ tps://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KRAJE&d
+ ruhOrganizace=VSPHAAB&cisloSenatu=4&druhVeci=co&bcVec=36&rocnik=2026\nÚda
+ je jsou platné ke dni zpracování přehledu soudem a v průběhu období
+  se neaktualizují.
 URL:https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KR
  AJE&druhOrganizace=VSPHAAB&cisloSenatu=4&druhVeci=co&bcVec=36&rocnik=2026
 STATUS:CONFIRMED
@@ -591,7 +586,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:386af4b4de2e840195d23324c192e01dac2be379@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260914T093000
 DTEND;TZID=Europe/Prague:20260914T103000
 SUMMARY:PREMIUM FINTECH v. SOLUTIONS a další
@@ -609,7 +604,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:8db0b9dd5b7a0e9e79288b53cb6e0bfd9e3daaa0@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260914T133000
 DTEND;TZID=Europe/Prague:20260914T143000
 SUMMARY:STEPAN - BAUER s.r.o. v. Josef Stepan
@@ -627,7 +622,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:4686c50e751925d2105959d6dd2b3c3f4e5ebb55@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260914T143000
 DTEND;TZID=Europe/Prague:20260914T153000
 SUMMARY:SHERI v. LORESA a další
@@ -647,18 +642,17 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:9d95d0e64fdaed9614f38cfac0cf64ed55fc4fbc@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260915T103000
 DTEND;TZID=Europe/Prague:20260915T113000
 SUMMARY:GRUMANT v. KL - TECH a další
 LOCATION:Vrchní soud v Praze\, jednací síň 6
 DESCRIPTION:Spisová značka: 3 Cmo 92/2025\nPředseda senátu: Mgr. Jiří
   Čurda\nSenát: 3 Cmo\nÚčastníci: GRUMANT s.r.o.\; KL - TECH s.r.o.\; 
- Pavel Kopecký\; Ing. Bc. Martin Lojda\nStav řízení: https://infosoud.g
- ov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KRAJE&druhOrganizace=VS
- PHAAB&cisloSenatu=3&druhVeci=cmo&bcVec=92&rocnik=2025\nÚdaje jsou platné
-  ke dni zpracování přehledu soudem a v průběhu období se neaktualizu
- jí.
+ Pavel Kopecký\; M. L.\nStav řízení: https://infosoud.gov.cz/InfoSoud/d
+ etail-rizeni?typOrganizace=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSenat
+ u=3&druhVeci=cmo&bcVec=92&rocnik=2025\nÚdaje jsou platné ke dni zpracov
+ ání přehledu soudem a v průběhu období se neaktualizují.
 URL:https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KR
  AJE&druhOrganizace=VSPHAAB&cisloSenatu=3&druhVeci=cmo&bcVec=92&rocnik=2025
 STATUS:CONFIRMED
@@ -666,7 +660,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:350ee80959255dc3cde4429e415149cbc3c6515c@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260915T133000
 DTEND;TZID=Europe/Prague:20260915T143000
 SUMMARY:Němec v. Prosperplast
@@ -684,7 +678,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:28c6150130f46dc250005af013df4faed23f2644@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260916T091500
 DTEND;TZID=Europe/Prague:20260916T101500
 SUMMARY:OSA v. S&P Sales Hou a další
@@ -702,7 +696,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:fc3b83e737212c7a2a25171f4565ed0ef1970a2d@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260916T100000
 DTEND;TZID=Europe/Prague:20260916T110000
 SUMMARY:Patmat v. Tomáš Eiselt a další
@@ -720,7 +714,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:80e4ca37d672aa69b4ae8e24e249123d7e16ca30@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260916T131500
 DTEND;TZID=Europe/Prague:20260916T141500
 SUMMARY:První novinová společnost v. Česká pošta
@@ -738,7 +732,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:c0eee0ea3db73df1682be41be3a3a44ee1805c8c@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260917T090000
 DTEND;TZID=Europe/Prague:20260917T100000
 SUMMARY:Galaxy UAV v. FLYDEO
@@ -756,17 +750,17 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:cb930e92c67f1e9e377f051a61f87a23fbd9dacf@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260917T093000
 DTEND;TZID=Europe/Prague:20260917T103000
-SUMMARY:AVANT investiční společnost v. Richard Čemus
+SUMMARY:AVANT investiční společnost v. R. Č.
 LOCATION:Vrchní soud v Praze\, jednací síň 4
 DESCRIPTION:Spisová značka: 5 Co 79/2025\nPředseda senátu: JUDr. Michal
   Mědílek\nSenát: 5 Co\nÚčastníci: AVANT investiční společnost a.s
- .\; Ing. Richard Čemus\nStav řízení: https://infosoud.gov.cz/InfoSoud/
- detail-rizeni?typOrganizace=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSena
- tu=5&druhVeci=co&bcVec=79&rocnik=2025\nÚdaje jsou platné ke dni zpracov
- ání přehledu soudem a v průběhu období se neaktualizují.
+ .\; R. Č.\nStav řízení: https://infosoud.gov.cz/InfoSoud/detail-rizeni
+ ?typOrganizace=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSenatu=5&druhVeci
+ =co&bcVec=79&rocnik=2025\nÚdaje jsou platné ke dni zpracování přehled
+ u soudem a v průběhu období se neaktualizují.
 URL:https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KR
  AJE&druhOrganizace=VSPHAAB&cisloSenatu=5&druhVeci=co&bcVec=79&rocnik=2025
 STATUS:CONFIRMED
@@ -774,7 +768,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:fab73aa1f5b7b1ed5d318aa324b4324d7f2fc490@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260917T103000
 DTEND;TZID=Europe/Prague:20260917T113000
 SUMMARY:ČEZ Distribuce v. Povodí Vltavy
@@ -792,18 +786,18 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:88f9a9d769259831b7612829e6a2ee15c42650cc@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260917T104500
 DTEND;TZID=Europe/Prague:20260917T114500
-SUMMARY:Jaroslav Brož MJUr v. MR COMMUNICATIONS a další
+SUMMARY:J. B. v. MR COMMUNICATIONS a další
 LOCATION:Vrchní soud v Praze\, jednací síň 6
 DESCRIPTION:Spisová značka: 1 Cmo 66/2025\nPředseda senátu: Mgr. Michal
-  Výtisk\nSenát: 1 Cmo\nÚčastníci: JUDr. Jaroslav Brož MJUr\; MR COMM
- UNICATIONS s.r.o.\; Bohemia Energy Holding B.V.\; Ing. Jiří Písařík\;
-  Hana Písaříková\nStav řízení: https://infosoud.gov.cz/InfoSoud/det
- ail-rizeni?typOrganizace=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSenatu=
- 1&druhVeci=cmo&bcVec=66&rocnik=2025\nÚdaje jsou platné ke dni zpracován
- í přehledu soudem a v průběhu období se neaktualizují.
+  Výtisk\nSenát: 1 Cmo\nÚčastníci: J. B.\; MR COMMUNICATIONS s.r.o.\; 
+ Bohemia Energy Holding B.V.\; J. P.\; Hana Písaříková\nStav řízení:
+  https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KRAJ
+ E&druhOrganizace=VSPHAAB&cisloSenatu=1&druhVeci=cmo&bcVec=66&rocnik=2025\n
+ Údaje jsou platné ke dni zpracování přehledu soudem a v průběhu obd
+ obí se neaktualizují.
 URL:https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KR
  AJE&druhOrganizace=VSPHAAB&cisloSenatu=1&druhVeci=cmo&bcVec=66&rocnik=2025
 STATUS:CONFIRMED
@@ -811,17 +805,17 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:16d4d5bbd195fe9b5d52735f9da2d6df39ea406e@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260922T090000
 DTEND;TZID=Europe/Prague:20260922T100000
-SUMMARY:DANIES Corporation v. Miloš Teč
+SUMMARY:DANIES Corporation v. M. T.
 LOCATION:Vrchní soud v Praze\, jednací síň 4
 DESCRIPTION:Spisová značka: 4 Cmo 122/2026\nPředseda senátu: JUDr. Moni
- ka Vacková\nSenát: 4 Cmo\nÚčastníci: DANIES Corporation a.s.\; Bc. Mi
- loš Teč\nStav řízení: https://infosoud.gov.cz/InfoSoud/detail-rizeni?
- typOrganizace=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSenatu=4&druhVeci=
- cmo&bcVec=122&rocnik=2026\nÚdaje jsou platné ke dni zpracování přehle
- du soudem a v průběhu období se neaktualizují.
+ ka Vacková\nSenát: 4 Cmo\nÚčastníci: DANIES Corporation a.s.\; M. T.\
+ nStav řízení: https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganiz
+ ace=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSenatu=4&druhVeci=cmo&bcVec=
+ 122&rocnik=2026\nÚdaje jsou platné ke dni zpracování přehledu soudem 
+ a v průběhu období se neaktualizují.
 URL:https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KR
  AJE&druhOrganizace=VSPHAAB&cisloSenatu=4&druhVeci=cmo&bcVec=122&rocnik=202
  6
@@ -830,7 +824,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:2c20292d5d5e2a6c418e3c53458e40ce9e6b1b71@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260922T093000
 DTEND;TZID=Europe/Prague:20260922T103000
 SUMMARY:MOVIE v. Clausula rebus
@@ -848,17 +842,17 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:b09afaf130a53f5c327663ee7993482d9bd22a88@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260922T133000
 DTEND;TZID=Europe/Prague:20260922T143000
-SUMMARY:Stradium DC v. Vladimír Vencálek
+SUMMARY:Stradium DC v. V. V.
 LOCATION:Vrchní soud v Praze\, jednací síň 4
 DESCRIPTION:Spisová značka: 4 Cmo 93/2026\nPředseda senátu: JUDr. Monik
  a Vacková\nSenát: 4 Cmo\nÚčastníci: Stradium DC s.r.o. v likvidaci\; 
- Bc. Vladimír Vencálek\nStav řízení: https://infosoud.gov.cz/InfoSoud/
- detail-rizeni?typOrganizace=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSena
- tu=4&druhVeci=cmo&bcVec=93&rocnik=2026\nÚdaje jsou platné ke dni zpracov
- ání přehledu soudem a v průběhu období se neaktualizují.
+ V. V.\nStav řízení: https://infosoud.gov.cz/InfoSoud/detail-rizeni?typO
+ rganizace=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSenatu=4&druhVeci=cmo&
+ bcVec=93&rocnik=2026\nÚdaje jsou platné ke dni zpracování přehledu so
+ udem a v průběhu období se neaktualizují.
 URL:https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KR
  AJE&druhOrganizace=VSPHAAB&cisloSenatu=4&druhVeci=cmo&bcVec=93&rocnik=2026
 STATUS:CONFIRMED
@@ -866,7 +860,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:e87b00e9f00b667d5a395d2a73f4826d754ad6fd@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260923T091500
 DTEND;TZID=Europe/Prague:20260923T101500
 SUMMARY:AUTOBOND GROUP v. Kia Czech
@@ -884,7 +878,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:7bd58a81cfba5354f7d3c2bf402786c6dbc2b9ae@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260923T104500
 DTEND;TZID=Europe/Prague:20260923T114500
 SUMMARY:Hörmann KG Brockhagen v. KRUŽÍK
@@ -902,17 +896,17 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:4ed78d098749bc1ee1f9ca38207f7ec827c09bdb@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260923T130000
 DTEND;TZID=Europe/Prague:20260923T140000
-SUMMARY:art. Jana Ardanová v. Business Media One
+SUMMARY:J. A. v. Business Media One
 LOCATION:Městský soud v Praze\, jednací síň 061
 DESCRIPTION:Spisová značka: 41 C 4/2026\nPředseda senátu: JUDr. Tomáš
-  Bělohlávek\nSenát: 41 C\nÚčastníci: Mgr. art. Jana Ardanová\; Busi
- ness Media One s.r.o.\nStav řízení: https://infosoud.gov.cz/InfoSoud/de
- tail-rizeni?typOrganizace=VSECHNY_KRAJE&druhOrganizace=MSPHAAB&cisloSenatu
- =41&druhVeci=c&bcVec=4&rocnik=2026\nÚdaje jsou platné ke dni zpracován
- í přehledu soudem a v průběhu období se neaktualizují.
+  Bělohlávek\nSenát: 41 C\nÚčastníci: J. A.\; Business Media One s.r.
+ o.\nStav řízení: https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrga
+ nizace=VSECHNY_KRAJE&druhOrganizace=MSPHAAB&cisloSenatu=41&druhVeci=c&bcVe
+ c=4&rocnik=2026\nÚdaje jsou platné ke dni zpracování přehledu soudem 
+ a v průběhu období se neaktualizují.
 URL:https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KR
  AJE&druhOrganizace=MSPHAAB&cisloSenatu=41&druhVeci=c&bcVec=4&rocnik=2026
 STATUS:CONFIRMED
@@ -920,7 +914,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:62a48e2ae506657790d1e9957d94fe87f7d76d47@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260923T133000
 DTEND;TZID=Europe/Prague:20260923T143000
 SUMMARY:AGRA GROUP v. BASF
@@ -938,7 +932,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:f44542ecc03de4544f817e2b091d7bdd9f0974c2@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260923T150000
 DTEND;TZID=Europe/Prague:20260923T160000
 SUMMARY:Bayer v. Gedeon Richter Plc. a další
@@ -957,7 +951,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:4ec45dc2b7bdb8f3241dacbe06ba1f7e935ae414@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260924T091500
 DTEND;TZID=Europe/Prague:20260924T101500
 SUMMARY:Mandant v. Nemocnice s poliklinikou Česká a další
@@ -976,7 +970,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:bc4f3b7a81a859730c2f5fb048b2c34311873c79@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260924T093000
 DTEND;TZID=Europe/Prague:20260924T103000
 SUMMARY:Pavel Vydra v. Společenství vlastníků Hokejka a další
@@ -996,7 +990,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:7543d2fc4025e23ae9c054a840b6e1a689072d39@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260924T100000
 DTEND;TZID=Europe/Prague:20260924T110000
 SUMMARY:UNIBLOCK TRADE v. Ladislav Ayrer
@@ -1014,7 +1008,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:a6a0aa46740943d499af5e7cd468c7c0aa1795b3@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260924T103000
 DTEND;TZID=Europe/Prague:20260924T113000
 SUMMARY:Cisterciácké opatství Vyšší v. Brod a další
@@ -1033,17 +1027,17 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:38c7efed74c72af881d379422de1a84516604f9f@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260924T131500
 DTEND;TZID=Europe/Prague:20260924T141500
-SUMMARY:CQS v. Jiří Klicpera CSc.
+SUMMARY:CQS v. J. K.
 LOCATION:Vrchní soud v Praze\, jednací síň 6
 DESCRIPTION:Spisová značka: 1 Cmo 68/2025\nPředseda senátu: Mgr. Michal
-  Výtisk\nSenát: 1 Cmo\nÚčastníci: CQS z.s.\; Ing. Jiří Klicpera CSc
- .\nStav řízení: https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrgan
- izace=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSenatu=1&druhVeci=cmo&bcVe
- c=68&rocnik=2025\nÚdaje jsou platné ke dni zpracování přehledu soudem
-  a v průběhu období se neaktualizují.
+  Výtisk\nSenát: 1 Cmo\nÚčastníci: CQS z.s.\; J. K.\nStav řízení: h
+ ttps://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KRAJE&
+ druhOrganizace=VSPHAAB&cisloSenatu=1&druhVeci=cmo&bcVec=68&rocnik=2025\nÚ
+ daje jsou platné ke dni zpracování přehledu soudem a v průběhu obdob
+ í se neaktualizují.
 URL:https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KR
  AJE&druhOrganizace=VSPHAAB&cisloSenatu=1&druhVeci=cmo&bcVec=68&rocnik=2025
 STATUS:CONFIRMED
@@ -1051,7 +1045,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:8d96a4528b7e19541b9d51825361f0ea6c4662ee@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260929T090000
 DTEND;TZID=Europe/Prague:20260929T100000
 SUMMARY:Přírodní Pivní Lázně v. Elena Dschafarow
@@ -1069,7 +1063,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:118da6386b05635cc91cc600e7a09bb22e9f3722@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260929T100000
 DTEND;TZID=Europe/Prague:20260929T110000
 SUMMARY:VIAGEM v. Ruce pro pomoc
@@ -1087,7 +1081,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:37c528b99d14a337016e6a2beb2096e466d54ee8@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260929T133000
 DTEND;TZID=Europe/Prague:20260929T143000
 SUMMARY:4 Kavky v. Miroslav Tlamicha
@@ -1105,7 +1099,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:c221af01ac9ff13bb09c06089e3ce28f9f6c68ac@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260930T090000
 DTEND;TZID=Europe/Prague:20260930T100000
 SUMMARY:CARDS Fin v. Daniel Čečetka a další
@@ -1124,7 +1118,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:77f46ca3000a8d2e090c4db46c03aa12c666c42c@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260930T091500
 DTEND;TZID=Europe/Prague:20260930T101500
 SUMMARY:GOLDBERGH v. Lidl Česká republika
@@ -1142,7 +1136,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:0df783cb6f44f9df4d96d6bc8552ce54c45c6610@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260930T103000
 DTEND;TZID=Europe/Prague:20260930T113000
 SUMMARY:Bytové družstvo Tichá v. Oldřich Marel
@@ -1161,7 +1155,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:b35f2d7c3859454197e340fa8113292d510ea817@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260930T104500
 DTEND;TZID=Europe/Prague:20260930T114500
 SUMMARY:Vaillant Group Czech v. DÍLYNAKOTLE
@@ -1179,7 +1173,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:6b8df3fb5d5a6b2e1e04a25fdc75c5d0181b91ab@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260930T130000
 DTEND;TZID=Europe/Prague:20260930T140000
 SUMMARY:XTV v. Tomáš Měcháček
@@ -1197,17 +1191,17 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:7626c6bb18fd16e254c9c36d7ad0cff9f6d64f58@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260930T130000
 DTEND;TZID=Europe/Prague:20260930T140000
-SUMMARY:Zdeňka Pechancová v. Tomáš Kortán
+SUMMARY:Z. P. v. T. K.
 LOCATION:Vrchní soud v Praze\, jednací síň 4
 DESCRIPTION:Spisová značka: 4 Cmo 71/2026\nPředseda senátu: JUDr. Micha
- l Krenk\, Ph.D.\nSenát: 4 Cmo\nÚčastníci: JUDr. Zdeňka Pechancová\; 
- Ing. Tomáš Kortán\nStav řízení: https://infosoud.gov.cz/InfoSoud/det
- ail-rizeni?typOrganizace=VSECHNY_KRAJE&druhOrganizace=VSPHAAB&cisloSenatu=
- 4&druhVeci=cmo&bcVec=71&rocnik=2026\nÚdaje jsou platné ke dni zpracován
- í přehledu soudem a v průběhu období se neaktualizují.
+ l Krenk\, Ph.D.\nSenát: 4 Cmo\nÚčastníci: Z. P.\; T. K.\nStav řízen
+ í: https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_K
+ RAJE&druhOrganizace=VSPHAAB&cisloSenatu=4&druhVeci=cmo&bcVec=71&rocnik=202
+ 6\nÚdaje jsou platné ke dni zpracování přehledu soudem a v průběhu 
+ období se neaktualizují.
 URL:https://infosoud.gov.cz/InfoSoud/detail-rizeni?typOrganizace=VSECHNY_KR
  AJE&druhOrganizace=VSPHAAB&cisloSenatu=4&druhVeci=cmo&bcVec=71&rocnik=2026
 STATUS:CONFIRMED
@@ -1215,7 +1209,7 @@ TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 UID:4cecfaa122f93563657c88e9363eb2dcb8ce4472@rss.davidzavada.cz
-DTSTAMP:20260916T111908Z
+DTSTAMP:20260916T125632Z
 DTSTART;TZID=Europe/Prague:20260930T143000
 DTEND;TZID=Europe/Prague:20260930T153000
 SUMMARY:fotovolty v. Marek Vitásek a další

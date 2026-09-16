@@ -329,7 +329,16 @@ FORM_RE = re.compile(
     re.IGNORECASE,
 )
 LEAD_TITLE_RE = re.compile(
-    r"^(?:(?:JUDr|Mgr|Bc|Ing|MgA|PhDr|MUDr|RNDr|PaedDr|Dr|doc|prof)\.?\s+)+",
+    r"^(?:(?:JUDr|Mgr|Bc|Ing|MgA|PhDr|MUDr|RNDr|PaedDr|Dr|doc|prof|arch|art)\.?\s+)+",
+    re.IGNORECASE,
+)
+
+# Akademické tituly za jménem („Jan Babák CSc.", „Jana Puhlovská Ph.D.") –
+# při zkracování na iniciály se odseknou, ať se nepočítají za další slovo
+# jména.
+TRAILING_DEGREE_RE = re.compile(
+    r"\s+(?:CSc\.?|DrSc\.?|Ph\.?\s?D\.?|LL\.?\s?M\.?|M\.?B\.?A\.?|MSc\.?|DiS\.?"
+    r"|MJUr\.?|MPA\.?)$",
     re.IGNORECASE,
 )
 
@@ -373,6 +382,36 @@ def short_party(name):
     return (short or s[:MAX_PARTY_LEN]) + "…"
 
 
+def ma_osobni_titul(name):
+    """Pozná fyzickou osobu podle akademického/profesního titulu před
+    jménem („Ing.", „JUDr."…) – firma se takhle neoznačuje, takže jde
+    o bezpečný signál. Přehled soudu strany nijak netypuje, takže jinak by
+    šlo hádat jen z tvaru textu; a tam nejde spolehlivě odlišit osobu od
+    firmy bez rizika (dvouslovné jméno bez přípony má stejný tvar jako
+    „Karolína Janáčková", tak i jako „Yunnan Tobacco"). Bez titulu proto
+    jméno zůstává celé – radši nezkrátit, než omylem zkrátit firmu."""
+    return bool(LEAD_TITLE_RE.match(" ".join(str(name).split())))
+
+
+def initials(name):
+    """Zkrátí jméno fyzické osoby na iniciály: „Ing. Tomáš Seidl" ->
+    „T. S." Titul před jménem i akademický titul za jménem se nejdřív
+    odříznou, ať se nepočítají za slovo jména."""
+    s = LEAD_TITLE_RE.sub("", " ".join(str(name).split()))
+    while True:
+        zkraceno = TRAILING_DEGREE_RE.sub("", s)
+        if zkraceno == s:
+            break
+        s = zkraceno
+    words = [w for w in s.split() if w]
+    if not words:
+        return name
+    ini = lambda w: w[0].upper() + "." if w[0].isalpha() else w
+    if len(words) == 1:
+        return ini(words[0])
+    return f"{ini(words[0])} {ini(words[-1])}"
+
+
 def party_label(ucastnici):
     """Krátký popisek sporu ve tvaru „Xiaomi v. OSA".
 
@@ -404,6 +443,10 @@ def party_label(ucastnici):
 def make_item(datum, sin, predseda, spz, hodina, ucastnici):
     cislo, rejstrik, bc, rocnik = spz.group(1), spz.group(2), spz.group(3), spz.group(4)
     strany = merge_participant_lines(ucastnici)
+    # Účastníky, co jsou zjevně fyzická osoba, ukládáme rovnou pod
+    # iniciálami – ať v archivu zbytečně nedržíme jejich celé jméno (viz
+    # ma_osobni_titul).
+    strany = [initials(u) if ma_osobni_titul(u) else u for u in strany]
     return {
         "datum": czech_date_to_iso(datum),
         "hodina": hodina or "",
