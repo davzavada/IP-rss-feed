@@ -492,8 +492,6 @@ function renderDigest(data) {
 // pod sebou nemění výšku a obsah stránky nepodskakuje.
 const CAL_DOWS = ["Po", "Út", "St", "Čt", "Pá", "So", "Ne"];
 const COURT_LABELS = { MS: "MS Praha", VS: "VS Praha" };
-// Kolik štítků se vejde do dne, než se zbytek schová pod „+N další".
-const CAL_MAX_CHIPS = 4;
 // Kalendář neukazuje měsíc, ale okno šesti týdnů: dva zpět (čerstvá
 // minulost je pořád zajímavá) a čtyři dopředu, ať se vejde všechno, co
 // soudy stihly vypsat. Šipky posouvají o dva týdny.
@@ -642,15 +640,9 @@ function renderCalGrid() {
     const cislo = (i === 0 || d.getDate() === 1)
       ? d.getDate() + ". " + (d.getMonth() + 1) + "." : d.getDate();
     html += '<span class="cal-daynum">' + cislo + "</span>";
-    events.slice(0, CAL_MAX_CHIPS).forEach((j, idx) => {
+    events.forEach((j, idx) => {
       html += chipHtml(j, iso, idx);
     });
-    // „+2 další" otevře bublinu s celým dnem, ať se ke skrytým jde dostat.
-    if (events.length > CAL_MAX_CHIPS) {
-      html += '<button type="button" class="cal-more" data-date="' + iso +
-        '" data-idx="-1" aria-expanded="false">+' +
-        (events.length - CAL_MAX_CHIPS) + " další</button>";
-    }
     html += "</div>";
   }
   const konec = new Date(start);
