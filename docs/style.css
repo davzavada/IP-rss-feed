@@ -497,10 +497,14 @@ html.is-loading body { visibility: hidden; }
   width: 1px; background: var(--border);
 }
 @media (min-width: 1600px) {
-  /* Vlevo se vyhradí pruh na navigaci a obsah se od něj roztáhne doprava,
-     dokud nenarazí na svou horní šířku. Vycentrovat ho by znamenalo držet
-     stejně široký pruh i vpravo, a ten by zůstal prázdný. */
-  .container { margin-left: var(--nav-band); margin-right: auto; }
+  /* Vlevo se vyhradí pruh na navigaci a obsah se od něj roztáhne doprava.
+     Vycentrovat ho by znamenalo držet stejně široký pruh i vpravo a ten by
+     zůstal prázdný; nechat ho doběhnout až k hraně okna ale taky ne – vpravo
+     proto zbude půlka toho, co si bere navigace vlevo. */
+  .container {
+    margin-left: var(--nav-band);
+    margin-right: max(24px, calc(var(--nav-band) / 2));
+  }
   /* Navigace sedí uprostřed svého pruhu – ani nalepená na okraj okna,
      ani na karty. */
   #sidenav {
