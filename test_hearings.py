@@ -498,12 +498,6 @@ check("změny starší než měsíc odpadnou",
 # =====================================================================
 print("\n9) Zkrácení fyzických osob mezi účastníky na iniciály")
 # =====================================================================
-# Přehled soudu strany nerozlišuje na firmy a lidi – jistý signál je jen
-# titul před jménem (firma se tak neoznačuje). Bez něj radši jméno zůstane
-# celé, i riskantní („Yunnan Tobacco" má stejný tvar jako osobní jméno).
-check("titul pozná fyzickou osobu", s.ma_osobni_titul("Ing. Tomáš Seidl"))
-check("bez titulu se nehádá", not s.ma_osobni_titul("Karolína Janáčková"))
-check("firma bez titulu se nehádá", not s.ma_osobni_titul("Yunnan Tobacco"))
 check("iniciály jména a příjmení", s.initials("Ing. Tomáš Seidl") == "T. S.",
       s.initials("Ing. Tomáš Seidl"))
 check("akademický titul za jménem se do iniciál nepočítá",
@@ -511,34 +505,82 @@ check("akademický titul za jménem se do iniciál nepočítá",
 check("složený titul (Ing. arch.) se ořízne celý",
       s.initials("Ing. arch. Martin Pálka") == "M. P.",
       s.initials("Ing. arch. Martin Pálka"))
+check("hotové iniciály se dalším během nezmění", s.initials("T. S.") == "T. S.",
+      s.initials("T. S."))
 
-# redact_osoby zkrátí účastníky s titulem vždycky; bez AI (vypnutá/bez
-# klíče) nechá zbytek beze změny, ať se nikdy nejede jen na hádání.
-polozky = [{"ucastnici": ["Ing. Tomáš Seidl", "Karolína Janáčková", "FLOWBOX s.r.o."]}]
-s.redact_osoby(polozky)
-check("bez AI se zkrátí jen titulovaná osoba",
-      polozky[0]["ucastnici"] == ["T. S.", "Karolína Janáčková", "FLOWBOX s.r.o."],
+
+def s_ai(odpoved):
+    """Spustí blok s nasimulovanou odpovědí AI (None = AI vůbec neběží)."""
+    class Sim:
+        def __enter__(self):
+            self.puvodni = (s.gemini_enabled, s.gemini_generate_raw)
+            s.gemini_enabled = lambda: odpoved is not None
+            s.gemini_generate_raw = lambda prompt, text, **kw: odpoved
+
+        def __exit__(self, *e):
+            s.gemini_enabled, s.gemini_generate_raw = self.puvodni
+
+    return Sim()
+
+
+# Kdo je fyzická osoba, rozhoduje jedině AI – z tvaru jména to uhádnout
+# nejde, „Karolína Janáčková" a „Yunnan Tobacco" vypadají stejně. Jméno,
+# které AI vrátí, ale v seznamu nebylo (halucinace), se zahodí.
+strany = ["Ing. Tomáš Seidl", "Karolína Janáčková", "Yunnan Tobacco",
+          "FLOWBOX s.r.o."]
+with s_ai('["Ing. Tomáš Seidl", "Karolína Janáčková", "Vymyšlené Jméno"]'):
+    polozky = [{"ucastnici": list(strany)}]
+    s.redact_osoby(polozky)
+check("AI zkrátí osobu s titulem i bez něj, firmy nechá",
+      polozky[0]["ucastnici"] == ["T. S.", "K. J.", "Yunnan Tobacco",
+                                  "FLOWBOX s.r.o."],
       str(polozky[0]["ucastnici"]))
 check("nazev se dopočítá ze zkrácených jmen",
-      polozky[0]["nazev"] == "T. S. v. Karolína Janáčková a další",
-      polozky[0]["nazev"])
+      polozky[0]["nazev"] == "T. S. v. K. J. a další", polozky[0]["nazev"])
 
-# S (nasimulovanou) AI se zkrátí i osoba bez titulu, kterou AI označí za
-# fyzickou; jméno, které AI vrátí, ale v seznamu vůbec nebylo (halucinace),
-# se ignoruje.
-puvodni_enabled, puvodni_generate = s.gemini_enabled, s.gemini_generate_raw
-s.gemini_enabled = lambda: True
-s.gemini_generate_raw = lambda prompt, text, **kw: (
-    '["Karolína Janáčková", "Vymyšlené Jméno"]')
-try:
-    polozky_ai = [{"ucastnici": ["Ing. Tomáš Seidl", "Karolína Janáčková",
-                                  "FLOWBOX s.r.o."]}]
-    s.redact_osoby(polozky_ai)
-finally:
-    s.gemini_enabled, s.gemini_generate_raw = puvodni_enabled, puvodni_generate
-check("AI dozkrátí osobu bez titulu",
-      polozky_ai[0]["ucastnici"] == ["T. S.", "K. J.", "FLOWBOX s.r.o."],
-      str(polozky_ai[0]["ucastnici"]))
+# Strany se párují z původních jmen, ne z iniciál: „K. J." a „K. Š." mají
+# shodné první slovo, takže by z dvou lidí vyšla jedna strana a popisek by
+# ukázal cizí protistranu. Firmy se přitom spojovat musí dál.
+with s_ai('["Karolína Janáčková", "Karla Šolcová", "Stanislav Janáček"]'):
+    dva_ka = [{"ucastnici": ["Karolína Janáčková", "Karla Šolcová",
+                             "Stanislav Janáček"]}]
+    s.redact_osoby(dva_ka)
+check("dvě osoby se stejným iniciálem zůstanou dvě strany",
+      dva_ka[0]["nazev"] == "K. J. v. K. Š. a další", dva_ka[0]["nazev"])
+check("jedna strana vypsaná víc jmény se pořád spojí",
+      s.party_label(["Bayer AG", "Bayer Intellectual Property GmbH",
+                     "Accord Healtcare S.L.U."]) == "Bayer v. Accord Healtcare",
+      s.party_label(["Bayer AG", "Bayer Intellectual Property GmbH",
+                     "Accord Healtcare S.L.U."]))
+
+# Se stejným voláním se dočistí i archiv – jednání uložená dřív (tenkrát
+# třeba celým jménem) projdou stejnou klasifikací.
+with s_ai('["Karolína Janáčková"]'):
+    nova = [{"ucastnici": ["FLOWBOX s.r.o."]}]
+    stara = [{"ucastnici": ["Karolína Janáčková"], "nazev": "Karolína Janáčková"}]
+    s.redact_osoby(nova, stara)
+check("archiv se dočistí zároveň s novým přehledem",
+      stara[0]["ucastnici"] == ["K. J."] and stara[0]["nazev"] == "K. J.",
+      str(stara[0]))
+
+# Bez AI (vypnutá, bez klíče, nedovolala se) se celé jméno nezveřejní:
+# nová jednání se uloží bez účastníků a příští běh je načte z přehledu
+# znovu. Archiv se nemaže – ten už se z ničeho nedoplní.
+with s_ai(None):
+    nova = [{"ucastnici": ["Karolína Janáčková"], "nazev": "Karolína Janáčková"}]
+    stara = [{"ucastnici": ["T. S."], "nazev": "T. S."}]
+    s.redact_osoby(nova, stara)
+check("bez AI se nové jednání uloží bez účastníků",
+      nova[0]["ucastnici"] == [] and nova[0]["nazev"] == "", str(nova[0]))
+check("bez AI zůstane archiv nedotčený",
+      stara[0]["ucastnici"] == ["T. S."], str(stara[0]))
+
+# Totéž, když se AI dovolá, ale odpoví nesmysl místo JSON pole.
+with s_ai("Promiňte, nerozumím zadání."):
+    nova = [{"ucastnici": ["Karolína Janáčková"], "nazev": "Karolína Janáčková"}]
+    s.redact_osoby(nova)
+check("rozbitá odpověď AI se bere jako nerozhodnuto",
+      nova[0]["ucastnici"] == [], str(nova[0]))
 
 # =====================================================================
 failed = [n for n, ok, _ in results if not ok]
