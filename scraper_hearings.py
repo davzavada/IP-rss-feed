@@ -6,7 +6,8 @@ VS .pdf) na portálu justice. Tenhle scraper je stáhne, vytáhne z nich
 jednotlivá jednání a nechá si ta, která patří do agendy duševního
 vlastnictví. Výstup jde do docs/hearings.json, který čte kalendář na webu;
 ostatní jednání se zahodí, ať se veřejně nerozepisují účastníci
-nesouvisejících sporů.
+nesouvisejících sporů. Účastníky, kteří jsou fyzická osoba, drží archiv
+jen pod iniciálami – kdo je fyzická osoba, rozhoduje AI (viz redact_osoby).
 
 MSPH vedle civilního úseku zveřejňuje zvlášť (jako další dokument) i přehled
 úseku správního soudnictví; z něj se berou žaloby proti Úřadu průmyslového
@@ -382,17 +383,6 @@ def short_party(name):
     return (short or s[:MAX_PARTY_LEN]) + "…"
 
 
-def ma_osobni_titul(name):
-    """Pozná fyzickou osobu podle akademického/profesního titulu před
-    jménem („Ing.", „JUDr."…) – firma se takhle neoznačuje, takže jde
-    o bezpečný signál. Přehled soudu strany nijak netypuje, takže jinak by
-    šlo hádat jen z tvaru textu; a tam nejde spolehlivě odlišit osobu od
-    firmy bez rizika (dvouslovné jméno bez přípony má stejný tvar jako
-    „Karolína Janáčková", tak i jako „Yunnan Tobacco"). Bez titulu proto
-    jméno zůstává celé – radši nezkrátit, než omylem zkrátit firmu."""
-    return bool(LEAD_TITLE_RE.match(" ".join(str(name).split())))
-
-
 def initials(name):
     """Zkrátí jméno fyzické osoby na iniciály: „Ing. Tomáš Seidl" ->
     „T. S." Titul před jménem i akademický titul za jménem se nejdřív
@@ -412,7 +402,7 @@ def initials(name):
     return f"{ini(words[0])} {ini(words[-1])}"
 
 
-def party_label(ucastnici):
+def party_label(ucastnici, zobrazit=None):
     """Krátký popisek sporu ve tvaru „Xiaomi v. OSA".
 
     Přehledy soudů uvádějí účastníky jen jako plochý seznam bez rozlišení
@@ -420,32 +410,38 @@ def party_label(ucastnici):
     jména sdílejí první slovo („Bayer AG", „Bayer Intellectual Property
     GmbH"), jde zjevně o tutéž stranu a spojí se dohromady; první odlišné
     jméno je protistrana, zbytek se schová do „a další".
+
+    `zobrazit` mapuje účastníka na podobu, ve které se má vypsat (iniciály
+    u fyzických osob). Které strany patří k sobě, se pozná pořád z původního
+    jména – z iniciál ne: „K. J." a „K. Š." sdílejí první slovo, takže by
+    ze dvou lidí udělaly jednu stranu a popisek by ukázal cizí protistranu.
     """
-    parties = [short_party(u) for u in ucastnici if str(u).strip()]
-    parties = [p for p in parties if p]
+    zobrazit = zobrazit or {}
+    parties = [(short_party(u), short_party(zobrazit.get(u, u)))
+               for u in ucastnici if str(u).strip()]
+    parties = [p for p in parties if p[0]]
     if not parties:
         return ""
     if len(parties) == 1:
-        return parties[0]
+        return parties[0][1]
 
     def head(p):
         return p.split()[0].casefold() if p.split() else p.casefold()
 
     i = 1
-    while i < len(parties) and head(parties[i]) == head(parties[0]):
+    while i < len(parties) and head(parties[i][0]) == head(parties[0][0]):
         i += 1
     if i >= len(parties):          # všechna jména jsou jedna strana
-        return parties[0]
-    label = f"{parties[0]} v. {parties[i]}"
+        return parties[0][1]
+    label = f"{parties[0][1]} v. {parties[i][1]}"
     return label + " a další" if len(parties) > i + 1 else label
 
 
 def make_item(datum, sin, predseda, spz, hodina, ucastnici):
     cislo, rejstrik, bc, rocnik = spz.group(1), spz.group(2), spz.group(3), spz.group(4)
     strany = merge_participant_lines(ucastnici)
-    # Fyzické osoby mezi účastníky se zkrátí na iniciály až hromadně přes
-    # redact_osoby() – ta je pozná i tam, kde chybí titul (viz AI_OSOBY_PROMPT),
-    # a tady bychom na to jméno měli samotné, bez kontextu ostatních účastníků.
+    # Fyzické osoby mezi účastníky se na iniciály zkrátí až hromadně přes
+    # redact_osoby(), která na to má celý seznam najednou.
     return {
         "datum": czech_date_to_iso(datum),
         "hodina": hodina or "",
@@ -513,53 +509,78 @@ def extract_json(raw):
 
 # --- Zkrácení fyzických osob mezi účastníky na iniciály (AI) ---
 
-# Přehled soudu strany nijak netypuje (firma/osoba), takže je z čistě
-# formálních signálů (titul, právní forma) nejde vždycky spolehlivě
-# rozeznat – „Karolína Janáčková“ a „Yunnan Tobacco“ mají stejný tvar.
-# AI se na celý seznam podívá najednou a s kontextem (zbytek jména, obor
-# sporu) to pozná spolehlivěji. Běží jako doplněk k ma_osobni_titul(), ne
-# místo něj: když AI neběží nebo selže, aspoň jistý titulový signál pořád
-# platí – nikdy se nejede jen na AI.
+# Přehled soudu strany nijak netypuje (firma/osoba) a z tvaru jména se to
+# uhádnout nedá – „Karolína Janáčková" a „Yunnan Tobacco" vypadají stejně.
+# Rozhoduje proto jedině AI, která se na celý seznam podívá najednou.
 OSOBY_AI_PROMPT = (
     "Toto je seznam účastníků soudních řízení (firmy, orgány veřejné moci "
     "i fyzické osoby smíchaně), tak jak je vypsal soud – bez rozlišení, co "
-    "je co. Over každou položku a rozhodni, jestli je to FYZICKÁ OSOBA "
-    "(člověk – jméno a příjmení), nebo právnická osoba či orgán veřejné "
-    "moci. Odpověz POUZE platným JSON polem řetězců bez dalšího textu – "
-    "obsahuje jen ty položky ze seznamu, které jsou fyzická osoba, přesně "
-    "v podobě, v jaké jsou v seznamu (včetně titulu, pokud tam je). Když "
-    "si u položky nejsi jistý, do pole ji nedávej – firmu radši nezkrátit, "
-    "než omylem označit za osobu."
+    "je co. U každé položky rozhodni, jestli je to FYZICKÁ OSOBA (člověk), "
+    "nebo právnická osoba či orgán veřejné moci. Vodítko, ne pravidlo: "
+    "jméno a příjmení člověka (často s titulem jako Ing., JUDr., Mgr.) je "
+    "fyzická osoba; právní forma (s.r.o., a.s., z.s., GmbH, Ltd.), obor "
+    "v názvu, zkratka nebo název úřadu značí právnickou osobu. Vypadá-li "
+    "položka jako jméno člověka a nic nenasvědčuje firmě, ber ji jako "
+    "fyzickou osobu – jde o ochranu osobních údajů, takže je horší "
+    "člověka přehlédnout než zkrátit drobnou firmu.\n"
+    "Odpověz POUZE platným JSON polem řetězců bez dalšího textu – obsahuje "
+    "jen ty položky ze seznamu, které jsou fyzická osoba, přesně v podobě, "
+    "v jaké jsou v seznamu (včetně titulu, pokud tam je)."
 )
 
 
 def ai_osoby(jmena):
-    """Z jmen účastníků vybere přes AI ta, co jsou fyzická osoba. Vrací
-    prázdný seznam, když je AI vypnutá, selže, nebo vrátí něco mimo zadaný
-    seznam (halucinace) – volající se pak spolehne jen na ma_osobni_titul()."""
-    if not jmena or not gemini_enabled():
-        return []
+    """Z jmen účastníků vybere přes AI ta, co jsou fyzická osoba.
+
+    Vrací množinu jmen, nebo None, když AI neběží nebo se nedovolala –
+    to je něco jiného než prázdná množina („nikdo z nich není člověk")
+    a volající se podle toho musí zařídit. Jméno, které AI vrátí, ale
+    v zadání nebylo (halucinace), se zahodí.
+    """
+    if not jmena:
+        return set()
+    if not gemini_enabled():
+        return None
     raw = gemini_generate_raw(OSOBY_AI_PROMPT, "\n".join(f"- {j}" for j in jmena),
                               max_tokens=4096)
     data = extract_json(raw)
     if not isinstance(data, list):
-        return []
+        return None
     platna = set(jmena)
-    return [j for j in data if isinstance(j, str) and j in platna]
+    return {j for j in data if isinstance(j, str) and j in platna}
 
 
-def redact_osoby(items):
-    """Účastníky, co jsou fyzická osoba (titul, nebo to o nich řekla AI),
-    nahradí iniciálami a dopočítá z nich zkrácený název sporu. Mění `items`
-    na místě."""
-    vsechna_jmena = sorted({u for it in items for u in it.get("ucastnici") or []})
-    osoby = set(ai_osoby(vsechna_jmena))
-    osoby.update(j for j in vsechna_jmena if ma_osobni_titul(j))
-    for it in items:
+def redact_osoby(nova, archiv=()):
+    """Účastníky, které AI označí za fyzickou osobu, nahradí iniciálami
+    a dopočítá z nich zkrácený název sporu. Mění položky na místě.
+
+    Do dotazu jdou i jména z archivu, ať se s každým během dočistí
+    i jednání uložená dřív – stojí to stejné jedno volání.
+
+    Když se AI nedovolá, nová jednání se uloží bez účastníků: celé jméno
+    se radši nezveřejní a příští běh ho z přehledu soudu načte znovu.
+    Archivu se to netýká – ten se z ničeho nedoplní, tak zůstane, jak je.
+    """
+    polozky = list(nova) + list(archiv)
+    jmena = sorted({u for it in polozky for u in it.get("ucastnici") or []})
+    osoby = ai_osoby(jmena)
+    if osoby is None:
+        print("    AI nerozhodla, kdo je fyzická osoba – ukládám jednání bez účastníků")
+        for it in nova:
+            it["ucastnici"] = []
+            it["nazev"] = ""
+        return
+    for it in polozky:
         strany = it.get("ucastnici") or []
-        nove = [initials(u) if u in osoby else u for u in strany]
-        it["ucastnici"] = nove
-        it["nazev"] = party_label(nove)
+        zobrazit = {u: initials(u) for u in strany
+                    if u in osoby and initials(u) != u}
+        # Beze změny se popisek nepřepočítává: u jednání, které má jména
+        # zkrácená už z dřívějška, bychom strany párovali z iniciál, a to
+        # nejde (viz party_label).
+        if not zobrazit:
+            continue
+        it["nazev"] = party_label(strany, zobrazit)
+        it["ucastnici"] = [zobrazit.get(u, u) for u in strany]
 
 
 # --- Aktualizace IP senátů z rozvrhu práce (AI) ---
@@ -954,9 +975,9 @@ def merge_output(existing, court, items, period, zdroj_url, cfg):
     v_prehledu = {(j.get("spz"), j.get("datum")) for j in items}
     items = [it for it in items if it.get("ip")]
     # Fyzické osoby mezi účastníky na iniciály až tady – řeší se najednou
-    # pro celý přehled, ať to AI vidí v kontextu (viz redact_osoby), a jen
-    # pro jednání, co se opravdu uloží do archivu.
-    redact_osoby(items)
+    # pro celý přehled i archiv (viz redact_osoby) a jen pro jednání, co se
+    # opravdu uloží.
+    redact_osoby(items, jednani)
     od, do = period if period else (None, None)
 
     # Změny se hledají jen v období, které nový přehled pokrývá – mimo něj
