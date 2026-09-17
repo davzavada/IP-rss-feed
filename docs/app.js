@@ -492,11 +492,12 @@ function renderDigest(data) {
 // pod sebou nemění výšku a obsah stránky nepodskakuje.
 const CAL_DOWS = ["Po", "Út", "St", "Čt", "Pá", "So", "Ne"];
 const COURT_LABELS = { MS: "MS Praha", VS: "VS Praha" };
-// Kalendář neukazuje měsíc, ale okno šesti týdnů: dva zpět (čerstvá
-// minulost je pořád zajímavá) a čtyři dopředu, ať se vejde všechno, co
-// soudy stihly vypsat. Šipky posouvají o dva týdny.
-const CAL_TYDNU = 6;
-const CAL_POSUN_DNU = 14;
+// Kalendář neukazuje měsíc, ale okno tří týdnů, které začíná tímhle
+// týdnem: minulé týdny už si nikdo nevypisuje a soudy stejně vypisují
+// jednání jen zhruba na dva týdny dopředu. Šipky posouvají o týden,
+// takže do minulosti se dá dojít, když je potřeba.
+const CAL_TYDNU = 3;
+const CAL_POSUN_DNU = 7;
 
 let calData = null;      // obsah hearings.json
 let calStart = null;     // pondělí prvního zobrazeného týdne (Date)
@@ -515,11 +516,9 @@ function mondayOf(d) {
   return p;
 }
 
-// Výchozí okno: dva týdny zpět od pondělí tohoto týdne.
+// Výchozí okno: začíná pondělím tohoto týdne.
 function calDefaultStart() {
-  const p = mondayOf(new Date());
-  p.setDate(p.getDate() - 14);
-  return p;
+  return mondayOf(new Date());
 }
 
 // „17. 8. – 13. 9. 2026"; rok u začátku jen tehdy, když se okno láme přes něj.
@@ -594,7 +593,7 @@ function chipHtml(j, iso, idx) {
     '<span class="cal-chip-name">' + esc(caseName(j)) + "</span></button>";
 }
 
-// Na telefonu se mřížka šesti týdnů nedá číst – vedle ní se proto vykreslí
+// Na telefonu se mřížka tří týdnů nedá číst – vedle ní se proto vykreslí
 // seznam dnů, ve kterých něco je, a CSS podle šířky ukáže jedno z toho.
 // Obojí se kreslí ze stejných dat, takže bublina funguje v obou.
 function renderCalAgenda(byDay, start, konec) {
@@ -924,9 +923,9 @@ function renderKalendar(data) {
   container.innerHTML =
     '<div class="cal-toolbar">' +
       '<div class="cal-nav">' +
-        '<button type="button" id="cal-prev" aria-label="O dva týdny zpět">‹</button>' +
+        '<button type="button" id="cal-prev" aria-label="O týden zpět">‹</button>' +
         '<span class="cal-title" id="cal-title"></span>' +
-        '<button type="button" id="cal-next" aria-label="O dva týdny vpřed">›</button>' +
+        '<button type="button" id="cal-next" aria-label="O týden vpřed">›</button>' +
         '<button type="button" id="cal-today">Dnes</button>' +
       "</div>" +
       '<div class="cal-filters">' +
