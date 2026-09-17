@@ -17,11 +17,12 @@
   --fs-md: 0.85rem;    /* veškerý text: seznamy, prosa, ovládání */
   --fs-lg: 1rem;       /* nadpisy karet a jméno webu */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  /* Rozvržení: šířka obsahu a boční navigace (viz @media min-width: 1600px).
-     Pruh pro navigaci je tak široký, aby se do něj vešel i nejdelší
-     název stránky na jeden řádek. */
-  --content-w: min(1400px, 100vw - 660px);
+  /* Rozvržení: boční navigace (viz @media min-width: 1600px). Pruh pro ni
+     je tak široký, aby se do něj vešel i nejdelší název stránky na jeden
+     řádek, a drží se jen vlevo – zrcadlit ho i vpravo kvůli vycentrování
+     obsahu by z pravé třetiny okna udělalo prázdné místo. */
   --nav-w: 290px;
+  --nav-band: 340px;
   /* Odstíny štítků (soft badge) */
   --badge-green-bg: hsl(142 76% 36% / 0.12);   --badge-green-fg: hsl(142 72% 29%);
   --badge-blue-bg: hsl(217 91% 60% / 0.12);    --badge-blue-fg: hsl(224 76% 48%);
@@ -496,16 +497,15 @@ html.is-loading body { visibility: hidden; }
   width: 1px; background: var(--border);
 }
 @media (min-width: 1600px) {
-  /* Po obou stranách se symetricky vyhradí místo pro navigaci,
-     takže hlavní obsah zůstává vycentrovaný a nikam se neposouvá. */
-  .container { max-width: var(--content-w); }
-  /* Navigaci vycentrujeme do volného pruhu vlevo od obsahu – ani nalepenou
-     na okraj okna, ani na karty. `(100vw - content) / 2 + 24px` je levá
-     hrana karet (24px je vnitřní odsazení .container), zbytek se rozpůlí.
-     Pod 20px nikdy nejde (užší okna). */
+  /* Vlevo se vyhradí pruh na navigaci a obsah se od něj roztáhne doprava,
+     dokud nenarazí na svou horní šířku. Vycentrovat ho by znamenalo držet
+     stejně široký pruh i vpravo, a ten by zůstal prázdný. */
+  .container { margin-left: var(--nav-band); margin-right: auto; }
+  /* Navigace sedí uprostřed svého pruhu – ani nalepená na okraj okna,
+     ani na karty. */
   #sidenav {
     display: flex;
-    left: max(20px, calc(((100vw - var(--content-w)) / 2 + 24px - var(--nav-w)) / 2));
+    left: calc((var(--nav-band) - var(--nav-w)) / 2);
   }
   /* Se zobrazenou boční navigací by byl přepínač nahoře nadbytečný. */
   .pagetabs { display: none; }
