@@ -528,26 +528,42 @@ OSOBY_AI_PROMPT = (
     "v jaké jsou v seznamu (včetně titulu, pokud tam je)."
 )
 
+# Kolik jmen jde do jednoho dotazu. Do stropu odpovědi se musí vejít i to,
+# co si Gemma „promyslí"; nad celým archivem najednou se nevejde (odpověď
+# skončí na MAX_TOKENS) a klasifikace spadne celá, včetně jmen z čerstvého
+# přehledu. Po dávkách roste s archivem počet volání, ne délka odpovědi.
+OSOBY_DAVKA = 40
+
 
 def ai_osoby(jmena):
     """Z jmen účastníků vybere přes AI ta, co jsou fyzická osoba.
 
-    Vrací množinu jmen, nebo None, když AI neběží nebo se nedovolala –
-    to je něco jiného než prázdná množina („nikdo z nich není člověk")
-    a volající se podle toho musí zařídit. Jméno, které AI vrátí, ale
-    v zadání nebylo (halucinace), se zahodí.
+    Vrací dvojici (osoby, nerozhodnutá): jména, která AI označila za
+    fyzickou osobu, a jména, o kterých se nedozvěděla nic – protože AI
+    neběží nebo se její dávka nedovolala. Nerozhodnuté jméno je něco jiného
+    než zamítnuté („tohle je firma") a volající se podle toho musí zařídit.
+    Jméno, které AI vrátí, ale v zadání nebylo (halucinace), se zahodí.
+
+    Ptá se po dávkách (`OSOBY_DAVKA`), takže neúspěch jedné dávky zůstane
+    v jejích jménech a ostatní se klasifikují dál.
     """
+    jmena = list(jmena)
     if not jmena:
-        return set()
+        return set(), set()
     if not gemini_enabled():
-        return None
-    raw = gemini_generate_raw(OSOBY_AI_PROMPT, "\n".join(f"- {j}" for j in jmena),
-                              max_tokens=4096)
-    data = extract_json(raw)
-    if not isinstance(data, list):
-        return None
-    platna = set(jmena)
-    return {j for j in data if isinstance(j, str) and j in platna}
+        return set(), set(jmena)
+    osoby, nerozhodnuta = set(), set()
+    for i in range(0, len(jmena), OSOBY_DAVKA):
+        davka = jmena[i:i + OSOBY_DAVKA]
+        raw = gemini_generate_raw(OSOBY_AI_PROMPT,
+                                  "\n".join(f"- {j}" for j in davka))
+        data = extract_json(raw)
+        if not isinstance(data, list):
+            nerozhodnuta.update(davka)
+            continue
+        platna = set(davka)
+        osoby.update(j for j in data if isinstance(j, str) and j in platna)
+    return osoby, nerozhodnuta
 
 
 def redact_osoby(nova, archiv=()):
@@ -555,21 +571,25 @@ def redact_osoby(nova, archiv=()):
     a dopočítá z nich zkrácený název sporu. Mění položky na místě.
 
     Do dotazu jdou i jména z archivu, ať se s každým během dočistí
-    i jednání uložená dřív – stojí to stejné jedno volání.
+    i jednání uložená dřív. Jména uložená už jako iniciály se ale dál
+    zkracovat nedají, tak se na ně AI neptáme – jinak by dotaz s každým
+    dalším přehledem nafukoval archiv.
 
-    Když se AI nedovolá, nová jednání se uloží bez účastníků: celé jméno
-    se radši nezveřejní a příští běh ho z přehledu soudu načte znovu.
+    Když AI u jména nerozhodne, uloží se jeho jednání bez účastníků: celé
+    jméno se radši nezveřejní a příští běh ho z přehledu soudu načte znovu.
     Archivu se to netýká – ten se z ničeho nedoplní, tak zůstane, jak je.
     """
     polozky = list(nova) + list(archiv)
-    jmena = sorted({u for it in polozky for u in it.get("ucastnici") or []})
-    osoby = ai_osoby(jmena)
-    if osoby is None:
-        print("    AI nerozhodla, kdo je fyzická osoba – ukládám jednání bez účastníků")
+    jmena = sorted({u for it in polozky for u in it.get("ucastnici") or []
+                    if initials(u) != u})
+    osoby, nerozhodnuta = ai_osoby(jmena)
+    if nerozhodnuta:
+        print(f"    AI nerozhodla u {len(nerozhodnuta)} z {len(jmena)} jmen, "
+              "kdo je fyzická osoba – jejich jednání ukládám bez účastníků")
         for it in nova:
-            it["ucastnici"] = []
-            it["nazev"] = ""
-        return
+            if any(u in nerozhodnuta for u in it.get("ucastnici") or []):
+                it["ucastnici"] = []
+                it["nazev"] = ""
     for it in polozky:
         strany = it.get("ucastnici") or []
         zobrazit = {u: initials(u) for u in strany

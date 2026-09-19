@@ -21,6 +21,7 @@ from bs4 import BeautifulSoup
 from feed_common import (
     JUDIKATURA_PROMPT,
     USER_AGENT,
+    gemini_enabled,
     gemini_summarize_pdf,
     is_new,
     load_json,
@@ -258,6 +259,11 @@ def enrich_metadata(decisions):
     return decisions
 
 
+# Co se napíše do sloupce Shrnutí, dokud není z čeho shrnovat – rozhodnutí
+# bývá ve výpisu dřív, než k němu NS přiloží PDF.
+PDF_PENDING_NOTE = "Text rozhodnutí zatím nezveřejněn."
+
+
 def _cache_key(d):
     """Klíč do cache: UNID; když ještě není (čerstvě vyhlášené rozhodnutí jen
     z úřední desky), spisová značka – jinak by takové položky shrnutí nikdy
@@ -301,7 +307,17 @@ def enrich_summaries(decisions):
             return None
         return {"summary": summary, "tag": tag}
 
-    return summarize_with_cache(decisions, META_FILE, _cache_key, summarize, needs_call)
+    decisions = summarize_with_cache(decisions, META_FILE, _cache_key,
+                                     summarize, needs_call)
+    for d in decisions:
+        # Místo prázdného políčka ve výpisu radši důvod, proč shrnutí není –
+        # ať je poznat, že tam nechybí omylem. NS přikládá PDF s odstupem
+        # i pár dní, takže tohle je nejčastější případ; poznámka není
+        # konečná, dokud je rozhodnutí v okně, zkouší se to znovu. S vypnutou
+        # AI nechybí podklad, ale shrnování, a o tom poznámka nelže.
+        if gemini_enabled():
+            d["note"] = "" if d.get("summary") else PDF_PENDING_NOTE
+    return decisions
 
 
 # --- Sloučení obou zdrojů ---
@@ -431,6 +447,8 @@ def build_rss(decisions):
         meta_line = ", ".join(meta_parts)
         if d.get("summary"):
             desc = f"{d['summary']}\n\n({meta_line})"
+        elif d.get("note"):
+            desc = f"{d['note']}\n\n({meta_line})"
         else:
             desc = meta_line
         SubElement(item, "description").text = desc
@@ -442,6 +460,8 @@ def build_rss(decisions):
         # AI shrnutí jako zvláštní element (čte ho index.html)
         if d.get("summary"):
             SubElement(item, "ai-summary").text = d["summary"]
+        elif d.get("note"):
+            SubElement(item, "note").text = d["note"]
 
         # AI heslo (právní téma sporu) – samostatný sloupec v index.html
         if d.get("tag"):

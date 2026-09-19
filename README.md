@@ -27,7 +27,10 @@ Tím nezáleží na tom, kdy zdroj položku datuje ani jestli datum později př
 
 **AI shrnutí** se cachují v `*_meta.json` podle stejného klíče a prořezávají
 se spolu se stavem prvního výskytu, takže soubory nerostou donekonečna. Bez
-`GEMINI_API_KEY` scrapery běží dál, jen bez nových shrnutí.
+`GEMINI_API_KEY` scrapery běží dál, jen bez nových shrnutí. Když není z čeho
+shrnovat – NS ještě nepřiložil PDF, vydavatel stránku nepustil – nevymýšlí se
+nic a místo shrnutí jde do feedu poznámka proč; dokud je položka v okně,
+zkouší se to každým během znovu.
 
 **Kalendář jednání** filtruje přehledy soudů podle `hearings_config.json`:
 v civilním úseku na IP senáty (seznam senátů a soudců z rozvrhů práce;
@@ -35,7 +38,11 @@ scraper ho umí jednou týdně obnovit AI extrakcí z rozvrhu), v úseku
 správního soudnictví MSPH (zvláštní dokument na téže stránce) na žaloby
 proti Úřadu průmyslového vlastnictví – podle žalovaného mezi účastníky
 (`ucastnici_ip`), ne podle senátu. Každý nový přehled porovnává s minulým
-a změny ukládá vedle jednání.
+a změny ukládá vedle jednání. Účastníky, kteří jsou fyzická osoba, drží
+archiv jen pod iniciálami; kdo je fyzická osoba, rozhoduje AI, a ptá se jí
+po dávkách, ať se odpověď vejde do stropu i s rostoucím archivem. U jména,
+kde AI nerozhodne, se jednání uloží bez účastníků a příští běh ho z přehledu
+načte znovu.
 
 ## Workflow
 

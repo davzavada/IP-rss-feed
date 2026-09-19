@@ -510,17 +510,33 @@ check("hotové iniciály se dalším během nezmění", s.initials("T. S.") == "
 
 
 def s_ai(odpoved):
-    """Spustí blok s nasimulovanou odpovědí AI (None = AI vůbec neběží)."""
+    """Spustí blok s nasimulovanou odpovědí AI (None = AI vůbec neběží).
+
+    `odpoved` je buď hotová odpověď na každé volání, nebo funkce, která ji
+    spočítá z textu dotazu (na dávku po dávce různě). Texty dotazů se
+    ukládají do `dotazy`, ať se dá zkontrolovat, na co se scraper ptal.
+    """
     class Sim:
+        def odpovez(self, prompt, text, **kw):
+            self.dotazy.append(text)
+            return odpoved(text) if callable(odpoved) else odpoved
+
         def __enter__(self):
+            self.dotazy = []
             self.puvodni = (s.gemini_enabled, s.gemini_generate_raw)
             s.gemini_enabled = lambda: odpoved is not None
-            s.gemini_generate_raw = lambda prompt, text, **kw: odpoved
+            s.gemini_generate_raw = self.odpovez
+            return self
 
         def __exit__(self, *e):
             s.gemini_enabled, s.gemini_generate_raw = self.puvodni
 
     return Sim()
+
+
+def jmena_dotazu(text):
+    """Jména, na která se jedna dávka ptala."""
+    return re.findall(r"^- (.+)$", text, re.M)
 
 
 # Kdo je fyzická osoba, rozhoduje jedině AI – z tvaru jména to uhádnout
@@ -581,6 +597,52 @@ with s_ai("Promiňte, nerozumím zadání."):
     s.redact_osoby(nova)
 check("rozbitá odpověď AI se bere jako nerozhodnuto",
       nova[0]["ucastnici"] == [], str(nova[0]))
+
+# Na jména se AI ptá po dávkách. Do stropu odpovědi se musí vejít i to, co
+# si model promyslí, a nad celým archivem najednou se nevejde – odpověď
+# skončí na MAX_TOKENS a nerozhodnuto je všechno, včetně jmen z čerstvého
+# přehledu. S archivem tak roste počet volání, ne délka jedné odpovědi.
+vsichni = json.dumps  # odpověď „všichni ze seznamu jsou lidé"
+mnoho = [{"ucastnici": [f"Jana Novakova{i:02d}"]}
+         for i in range(s.OSOBY_DAVKA + 5)]
+with s_ai(lambda text: vsichni(jmena_dotazu(text))) as sim:
+    s.redact_osoby(mnoho)
+check("na víc jmen, než je dávka, se AI zeptá víc voláními",
+      len(sim.dotazy) == 2, f"volání: {len(sim.dotazy)}")
+check("jedna dávka nepřesáhne strop",
+      all(len(jmena_dotazu(d)) <= s.OSOBY_DAVKA for d in sim.dotazy),
+      str([len(jmena_dotazu(d)) for d in sim.dotazy]))
+check("zkrátí se jména ze všech dávek",
+      all(it["ucastnici"] == ["J. N."] for it in mnoho),
+      str({it["ucastnici"][0] for it in mnoho}))
+
+# Nepovedená dávka zůstane jen ve svých jménech – ostatní jednání se
+# klasifikují dál, místo aby přehled skončil bez účastníků celý.
+zdenek = {"ucastnici": ["Zdeněk Rozbitý"], "nazev": "Zdeněk Rozbitý"}
+ostatni = [{"ucastnici": [f"Osoba Novakova{i:02d}"]}
+           for i in range(s.OSOBY_DAVKA)]
+
+
+def rozbita_davka(text):
+    jmena = jmena_dotazu(text)
+    # Jména jdou do dávek seřazená, takže „Zdeněk" je sám ve druhé dávce.
+    return "Promiňte, nerozumím zadání." if "Zdeněk Rozbitý" in jmena else vsichni(jmena)
+
+
+with s_ai(rozbita_davka):
+    s.redact_osoby(ostatni + [zdenek])
+check("jméno z nepovedené dávky se nezveřejní",
+      zdenek["ucastnici"] == [] and zdenek["nazev"] == "", str(zdenek))
+check("jednání z povedené dávky se zkrátí i tak",
+      all(it["ucastnici"] == ["O. N."] for it in ostatni),
+      str({it["ucastnici"][0] for it in ostatni}))
+
+# Jméno uložené už jako iniciály se dál zkracovat nedá, tak se na ně AI
+# neptáme – jinak by dotaz s každým dalším přehledem nafukoval archiv.
+with s_ai("[]") as sim:
+    s.redact_osoby([{"ucastnici": ["FLOWBOX s.r.o."]}], [{"ucastnici": ["T. S."]}])
+check("na hotové iniciály se AI už neptá",
+      "T. S." not in " ".join(sim.dotazy), " ".join(sim.dotazy))
 
 # =====================================================================
 failed = [n for n, ok, _ in results if not ok]

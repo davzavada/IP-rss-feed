@@ -20,6 +20,7 @@ from feed_common import (
     JOURNAL_ISSUE_PROMPT,
     USER_AGENT,
     filter_by_first_seen,
+    gemini_enabled,
     gemini_summarize_pdf,
     gemini_summarize_text,
     prune_meta_file,
@@ -773,11 +774,16 @@ def fetch_crossref_journal(issn, label, journal_name):
             "ai_text": f"{title}\n\n{abstract}".strip(),
         }
         if je_rozhodnuti:
-            # Rozhodnutí nemá abstrakt, zato má na stránce vydavatele právní
-            # věty i odůvodnění – shrnutí se dělá z ní a jiným promptem.
+            # Rozhodnutí obvykle nemá abstrakt, zato má na stránce vydavatele
+            # právní věty i odůvodnění – shrnutí se dělá z ní a jiným promptem.
+            # Springer ale stránku z GitHub Actions nepouští (kontrola
+            # prohlížeče); když Crossref přece jen anotaci nese, zůstane
+            # k dispozici jako záloha. Samotný název, ten už ne – soud, datum
+            # i značka z něj jsou i v popisu položky a shrnutí, které je jen
+            # přeříkává, nikomu nepomůže.
             polozka["ai_source"] = "page"
             polozka["ai_prompt"] = JOURNAL_DECISION_PROMPT
-            polozka["ai_text"] = ""
+            polozka["ai_text"] = f"{title}\n\n{abstract}".strip() if abstract else ""
             polozka["ai_fallback_tag"] = "Rozhodnutí"
         items.append(polozka)
 
@@ -1030,6 +1036,10 @@ BLOKACE_RE = re.compile(
 )
 MIN_TEXT_PRO_AI = 600      # kratší stránka není článek, ale rozcestník
 
+# Co se napíše do sloupce Shrnutí, když nebylo z čeho shrnovat: stránka
+# vydavatele nepustila, nebo položka (zpráva ze semináře) anotaci nemá.
+BEZ_PODKLADU_NOTE = "Zdroj zatím nedal text ke shrnutí."
+
 # Bez hlaviček Accept posílají někteří vydavatelé osekanou verzi stránky.
 PAGE_HEADERS = {
     "User-Agent": USER_AGENT,
@@ -1093,17 +1103,25 @@ def enrich_summaries(items):
             print(f"    [diag] {g}: článek, ai_text {len(it['ai_text'])} znaků")
             summary, tag = gemini_summarize_text(it["ai_text"], prompt)
         elif it.get("ai_source") == "page" and it.get("link"):
+            text = ""
             try:
                 soup, text = fetch_page(it["link"])
                 if not it.get("authors"):
                     it["authors"] = page_author(soup)
                     if it["authors"]:
                         got["authors"] = it["authors"]
-                if text and not cached.get("summary"):
-                    print(f"    [diag] {g}: stránka článku, {len(text)} znaků")
-                    summary, tag = gemini_summarize_text(text, prompt)
             except Exception as e:
                 print(f"  CHYBA stahování stránky {it['title']}: {e}")
+            # Stránka nemusí pustit (Springer za kontrolou prohlížeče) ani mít
+            # co nabídnout (zpráva ze semináře anotaci nemá). Co přišlo už
+            # z výpisu, pak poslouží aspoň jako záloha.
+            if not text:
+                text = it.get("ai_text") or ""
+                if text:
+                    print(f"    [diag] {g}: stránka nic nedala, beru anotaci z výpisu")
+            if text and not cached.get("summary"):
+                print(f"    [diag] {g}: stránka článku, {len(text)} znaků")
+                summary, tag = gemini_summarize_text(text, prompt)
         elif it.get("ai_source") == "issue" and it.get("link"):
             try:
                 pr = requests.get(it["link"], headers={"User-Agent": USER_AGENT}, timeout=120)
@@ -1131,6 +1149,12 @@ def enrich_summaries(items):
         # řekne, že jde o rozhodnutí; soud, datum i značka jsou v názvu.
         if not it["tag"] and it.get("ai_fallback_tag"):
             it["tag"] = it["ai_fallback_tag"]
+        # Místo prázdného políčka ve výpisu radši důvod, proč shrnutí není –
+        # ať je poznat, že tam nechybí omylem. Poznámka není konečná: dokud
+        # položka zůstane v okně, zkouší se to při každém běhu znovu. S vypnutou
+        # AI nechybí podklad, ale shrnování, a o tom poznámka nelže.
+        if gemini_enabled():
+            it["note"] = "" if it["summary"] else BEZ_PODKLADU_NOTE
     return items
 
 
@@ -1177,6 +1201,8 @@ def build_rss(all_items):
             SubElement(el, "ai-tag").text = item["tag"]
         if item.get("summary"):
             SubElement(el, "ai-summary").text = item["summary"]
+        elif item.get("note"):
+            SubElement(el, "note").text = item["note"]
         SubElement(el, "pubDate").text = item["pub_date"].strftime(
             "%a, %d %b %Y 12:00:00 +0000"
         )

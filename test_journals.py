@@ -7,10 +7,15 @@ takže se testuje nad uloženými kopiemi stránek (tests/fixtures).
 Spuštění: python test_journals.py
 """
 
+import os
 import sys
+import tempfile
+from datetime import datetime, timezone
+from xml.etree.ElementTree import tostring
 
 from bs4 import BeautifulSoup
 
+import feed_common as fc
 import scraper_journals as s
 
 FIX_JURISPRUDENCE = "tests/fixtures/jurisprudence_archiv_1-2026.html"
@@ -266,6 +271,34 @@ check("datum je datum vydání, ne vzniku DOI záznamu",
       srpnovy and srpnovy["pub_date"].date().isoformat() == "2026-08-20",
       srpnovy and str(srpnovy["pub_date"]))
 
+# U rozhodnutí se shrnuje ze stránky vydavatele, protože ta nese právní věty
+# i odůvodnění. Springer ji z GitHub Actions nepustí, takže anotace, když ji
+# Crossref přece jen nese, zůstane jako záloha. Samotný název zálohou není –
+# soud, datum i značka z něj jsou i v popisu položky.
+_rozhodnuti = {
+    "DOI": "10.1007/s40319-026-01772-z",
+    "title": ["“LUFFMAN”"],
+    "subtitle": ["Decision of the High People’s Court in Hanoi of Vietnam "
+                 "6 June 2025 – Case No. 376/2025/HC-PT"],
+    "created": {"date-time": "2026-09-02T00:00:00Z", "date-parts": [[2026, 9, 2]]},
+    "published-online": {"date-parts": [[2026, 9, 2]]},
+}
+_s_anotaci = dict(_rozhodnuti, DOI="10.1007/s40319-026-01772-y",
+                  abstract="<p>Soud zrušil ochrannou známku LUFFMAN.</p>")
+_odpovedi = {"from-created-date": [_rozhodnuti, _s_anotaci], "from-pub-date": []}
+iic = {i["guid"]: i for i in s.fetch_crossref_journal("0018-9855", "IIC", "IIC")}
+check("rozhodnutí bez anotace nemá pro AI žádnou zálohu",
+      iic["IIC-10.1007/s40319-026-01772-z"]["ai_text"] == "",
+      iic["IIC-10.1007/s40319-026-01772-z"]["ai_text"])
+check("anotace rozhodnutí se pro AI schová jako záloha",
+      "Soud zrušil ochrannou známku LUFFMAN."
+      in iic["IIC-10.1007/s40319-026-01772-y"]["ai_text"],
+      iic["IIC-10.1007/s40319-026-01772-y"]["ai_text"])
+check("záloha nese i název se soudem a značkou",
+      "LUFFMAN" in iic["IIC-10.1007/s40319-026-01772-y"]["ai_text"]
+      and "Hanoi" in iic["IIC-10.1007/s40319-026-01772-y"]["ai_text"],
+      iic["IIC-10.1007/s40319-026-01772-y"]["ai_text"])
+
 # =====================================================================
 print("\n7) Stránka, která místo obsahu vrátí chybu, nesmí jít do AI")
 # =====================================================================
@@ -294,6 +327,71 @@ check("krátká stránka se zahodí", _page("<html><body>Nenalezeno.</body></htm
 check("skutečný text projde",
       len(_page("<html><body><p>" + "Rozhodnutí soudu ve věci FRAND. " * 60
                 + "</p></body></html>")) > 600)
+
+# =====================================================================
+print("\n8) Když není z čeho shrnovat")
+# =====================================================================
+# Springer z GitHub Actions vrací kontrolu prohlížeče, takže u rozhodnutí
+# otištěných v IIC se plný text nestáhne. Anotace z Crossrefu, když tam
+# nějaká je, pak zaskočí – lepší než prázdné políčko ve výpisu.
+# Shrnování obstarává AI, tady nasimulovaná – zapnutá musí být v obou
+# jmenných prostorech, scraper si ji z feed_common importuje jménem.
+fc.gemini_enabled = s.gemini_enabled = lambda: True
+s.requests.get = lambda *a, **k: _Resp(
+    "<html><body>Just a moment... Checking your browser</body></html>")
+poslano = []
+
+
+def _ai(text, prompt):
+    poslano.append(text)
+    return "Soud v Hanoji známku zrušil.", "Ochranná známka"
+
+
+s.gemini_summarize_text = _ai
+meta_dir = tempfile.mkdtemp()
+
+s.META_FILE = os.path.join(meta_dir, "rozhodnuti.json")
+rozhodnuti = {
+    "guid": "IIC-10.1007/x",
+    "title": "[IIC] “LUFFMAN” – Decision of the High People’s Court in Hanoi",
+    "link": "https://doi.org/10.1007/x",
+    "description": "LUFFMAN",
+    "pub_date": datetime(2026, 9, 2, tzinfo=timezone.utc),
+    "ai_source": "page",
+    "ai_prompt": s.JOURNAL_DECISION_PROMPT,
+    "ai_fallback_tag": "Rozhodnutí",
+    "ai_text": "Soud v Hanoji zrušil ochrannou známku LUFFMAN.",
+}
+s.enrich_summaries([rozhodnuti])
+check("za nedostupnou stránku zaskočí anotace z výpisu",
+      poslano == ["Soud v Hanoji zrušil ochrannou známku LUFFMAN."], str(poslano))
+check("shrnutí z anotace se do položky dostane",
+      rozhodnuti["summary"] == "Soud v Hanoji známku zrušil."
+      and not rozhodnuti["note"], str(rozhodnuti))
+
+# Když nedá nic ani stránka, ani výpis (zprávy ze seminářů anotaci nemají),
+# shrnutí se nevymýšlí. Do feedu jde místo něj poznámka, ať je poznat, že
+# tam shrnutí nechybí omylem.
+poslano.clear()
+s.META_FILE = os.path.join(meta_dir, "zprava.json")
+zprava = {
+    "guid": "Pravnik-2026-2026-9-4064",
+    "title": "[Právník] Zpráva ze semináře",
+    "link": "https://www.ilaw.test/2026-9.html?a=4064",
+    "description": "Zpráva ze semináře",
+    "pub_date": datetime(2026, 9, 1, tzinfo=timezone.utc),
+    "ai_source": "page",
+}
+s.enrich_summaries([zprava])
+check("bez podkladu se AI vůbec nevolá", poslano == [], str(poslano))
+check("bez podkladu dostane položka poznámku",
+      zprava["note"] == s.BEZ_PODKLADU_NOTE and not zprava["summary"], str(zprava))
+
+feed = tostring(s.build_rss([zprava, rozhodnuti]), encoding="unicode")
+check("poznámka jde do feedu jako <note>",
+      f"<note>{s.BEZ_PODKLADU_NOTE}</note>" in feed, feed[:400])
+check("položka se shrnutím poznámku nemá",
+      feed.count("<note>") == 1 and "<ai-summary>" in feed, feed[:400])
 
 # =====================================================================
 failed = [n for n, ok, _ in results if not ok]
