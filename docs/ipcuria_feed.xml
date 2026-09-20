@@ -6,7 +6,7 @@
     <atom:link href="https://rss.davidzavada.cz/ipcuria_feed.xml" rel="self" type="application/rss+xml" />
     <description>Latest CJEU IP case law: preliminary rulings and referrals</description>
     <language>en</language>
-    <lastBuildDate>Sun, 20 Sep 2026 11:06:14 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 20 Sep 2026 21:24:14 +0000</lastBuildDate>
     <item>
       <title>[Referral] C-1009/26 (TikTok Information Technologies UK)</title>
       <link>https://curia.europa.eu/juris/liste.do?num=C-1009/26</link>
@@ -91,9 +91,12 @@ CURIA: https://curia.europa.eu/juris/liste.do?num=C-829/26</description>
       <title>[Referral] C-806/26 (Manchester United Fanatics Klub)</title>
       <link>https://curia.europa.eu/juris/liste.do?num=C-806/26</link>
       <guid isPermaLink="false">Referral-C-806/26</guid>
-      <note>Otázky zatím nezveřejněny.</note>
+      <ai-tag>Autorské právo a AI</ai-tag>
+      <ai-summary>Předkládající soud se ptá, zda trénování a provoz chatbotů založených na velkých jazykových modelech (LLM) představuje reprodukci nebo zpřístupnění tiskových publikací ve smyslu práva EU. Zvláště řeší, zda tokenizace dat při trénování a generování syntetizovaného obsahu porušují autorská práva vydavatelů. Dále zjišťuje, zda tyto činnosti spadají pod výjimku pro text a datové těžby nebo zda absence výslovného zákazu znamená souhlas s užitím.</ai-summary>
+      <document-url>https://infocuria.curia.europa.eu/document/C-0806-2026-26-00000000RP-01-P-01-326896-1-CS.pdf</document-url>
       <description>[Referral] 20 Jul 2026, C-806/26 (Manchester United Fanatics Klub)
-Otázky zatím nezveřejněny.
+Předkládající soud se ptá, zda trénování a provoz chatbotů založených na velkých jazykových modelech (LLM) představuje reprodukci nebo zpřístupnění tiskových publikací ve smyslu práva EU. Zvláště řeší, zda tokenizace dat při trénování a generování syntetizovaného obsahu porušují autorská práva vydavatelů. Dále zjišťuje, zda tyto činnosti spadají pod výjimku pro text a datové těžby nebo zda absence výslovného zákazu znamená souhlas s užitím.
+Žádost (PDF): https://infocuria.curia.europa.eu/document/C-0806-2026-26-00000000RP-01-P-01-326896-1-CS.pdf
 CURIA: https://curia.europa.eu/juris/liste.do?num=C-806/26</description>
       <pubDate>Mon, 20 Jul 2026 12:00:00 +0000</pubDate>
       <dc:date>2026-07-20</dc:date>
