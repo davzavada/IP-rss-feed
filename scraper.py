@@ -259,9 +259,12 @@ def enrich_metadata(decisions):
     return decisions
 
 
-# Co se napíše do sloupce Shrnutí, dokud není z čeho shrnovat – rozhodnutí
-# bývá ve výpisu dřív, než k němu NS přiloží PDF.
-PDF_PENDING_NOTE = "Text rozhodnutí zatím nezveřejněn."
+# Co se napíše do sloupce Shrnutí, dokud shrnutí není. Záměrně neříká proč:
+# scraper ví jen to, že se k textu nedostal on – že ho ve výpisu u rozhodnutí
+# nenašel (sloupec s ikonami vede na detail, ne na .pdf), že se nestáhl, nebo
+# že z něj Gemma nic nevrátila. Že ho soud nezveřejnil, z toho neplyne, a
+# tvrdit to čtenáři, který si ho na webu NS otevře, by byla lež.
+BEZ_SHRNUTI_NOTE = "Shrnutí zatím není k dispozici."
 
 
 def _cache_key(d):
@@ -284,7 +287,8 @@ def enrich_summaries(decisions):
         # do té doby míří na detailní stránku (fallback ve fetch_judikatura).
         # Ta obsahuje jen metadata, není z čeho shrnovat; počkáme na PDF.
         if d["pdf_url"] == d.get("detail_url"):
-            print(f"    [diag] {d['case_number']}: PDF zatím nepřiloženo, shrnutí příště")
+            print(f"    [diag] {d['case_number']}: ve výpisu není odkaz na PDF, "
+                  "shrnutí příště")
             return None
         try:
             pr = session.get(d["pdf_url"], headers=JUDIKATURA_HEADERS, timeout=60)
@@ -310,13 +314,12 @@ def enrich_summaries(decisions):
     decisions = summarize_with_cache(decisions, META_FILE, _cache_key,
                                      summarize, needs_call)
     for d in decisions:
-        # Místo prázdného políčka ve výpisu radši důvod, proč shrnutí není –
-        # ať je poznat, že tam nechybí omylem. NS přikládá PDF s odstupem
-        # i pár dní, takže tohle je nejčastější případ; poznámka není
-        # konečná, dokud je rozhodnutí v okně, zkouší se to znovu. S vypnutou
-        # AI nechybí podklad, ale shrnování, a o tom poznámka nelže.
+        # Místo prázdného políčka ve výpisu radši poznámka – ať je poznat, že
+        # tam shrnutí nechybí omylem. Konečná není: dokud je rozhodnutí
+        # v okně, zkouší se to každým během znovu. S vypnutou AI se
+        # nenastavuje, tam se nezkouší nic.
         if gemini_enabled():
-            d["note"] = "" if d.get("summary") else PDF_PENDING_NOTE
+            d["note"] = "" if d.get("summary") else BEZ_SHRNUTI_NOTE
     return decisions
 
 

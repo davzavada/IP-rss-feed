@@ -27,10 +27,12 @@ Tím nezáleží na tom, kdy zdroj položku datuje ani jestli datum později př
 
 **AI shrnutí** se cachují v `*_meta.json` podle stejného klíče a prořezávají
 se spolu se stavem prvního výskytu, takže soubory nerostou donekonečna. Bez
-`GEMINI_API_KEY` scrapery běží dál, jen bez nových shrnutí. Když není z čeho
-shrnovat – NS ještě nepřiložil PDF, vydavatel stránku nepustil – nevymýšlí se
-nic a místo shrnutí jde do feedu poznámka proč; dokud je položka v okně,
-zkouší se to každým během znovu.
+`GEMINI_API_KEY` scrapery běží dál, jen bez nových shrnutí. Když se k textu
+nedostaneme – ve výpisu NS není odkaz na PDF, vydavatel stránku nepustil –
+nevymýšlí se nic a místo shrnutí jde do feedu poznámka; dokud je položka
+v okně, zkouší se to každým během znovu. Poznámka mluví jen za nás („shrnutí
+zatím není"), ne za zdroj: že rozhodnutí nemáme, neznamená, že ho soud
+nezveřejnil.
 
 **Kalendář jednání** filtruje přehledy soudů podle `hearings_config.json`:
 v civilním úseku na IP senáty (seznam senátů a soudců z rozvrhů práce;
@@ -41,8 +43,10 @@ proti Úřadu průmyslového vlastnictví – podle žalovaného mezi účastní
 a změny ukládá vedle jednání. Účastníky, kteří jsou fyzická osoba, drží
 archiv jen pod iniciálami; kdo je fyzická osoba, rozhoduje AI, a ptá se jí
 po dávkách, ať se odpověď vejde do stropu i s rostoucím archivem. U jména,
-kde AI nerozhodne, se jednání uloží bez účastníků a příští běh ho z přehledu
-načte znovu.
+kde AI nerozhodne, se celé jméno neuloží; jednání si v takovém případě nechá
+účastníky, které mu archiv přiřadil dřív, a úplně nové zůstane jen pod
+spisovou značkou, dokud ho některý běh neklasifikuje. Bez toho by jeden
+výpadek AI pokaždé shodil jinou část kalendáře zpátky na holé značky.
 
 ## Workflow
 

@@ -637,6 +637,47 @@ check("jednání z povedené dávky se zkrátí i tak",
       all(it["ucastnici"] == ["O. N."] for it in ostatni),
       str({it["ucastnici"][0] for it in ostatni}))
 
+# Přehled soudu pokrývá pořád stejné období, takže každý běh čte tatáž
+# jednání znovu celými jmény a klasifikuje je od nuly. Když AI zrovna
+# vypadne, nesmí tím jednání přijít o jméno, které už jednou dostalo –
+# jinak se prázdná jednání mezi běhy jen střídají, místo aby ubývala.
+znovu = [{"spz": "1 Cmo 5/2026", "datum": "2026-09-30",
+          "ucastnici": ["Karolína Janáčková"], "nazev": "Karolína Janáčková"}]
+archiv = [{"spz": "1 Cmo 5/2026", "datum": "2026-09-30",
+           "ucastnici": ["K. J."], "nazev": "K. J."}]
+with s_ai(None):
+    s.redact_osoby(znovu, archiv)
+check("bez AI se celé jméno neuloží ani napodruhé",
+      znovu[0]["ucastnici"] == [], str(znovu[0]))
+s.prevzit_z_archivu(znovu, archiv)
+check("jednání si nechá jméno z minulého běhu",
+      znovu[0]["nazev"] == "K. J." and znovu[0]["ucastnici"] == ["K. J."],
+      str(znovu[0]))
+
+# Přebírá se podle značky a dne dohromady – přeložené jednání je pro archiv
+# jiný záznam a cizí účastníky si přitáhnout nesmí.
+jinyden = [{"spz": "1 Cmo 5/2026", "datum": "2026-10-07",
+            "ucastnici": [], "nazev": ""}]
+s.prevzit_z_archivu(jinyden, archiv)
+check("jednání z jiného dne si účastníky nepřitáhne",
+      jinyden[0]["ucastnici"] == [] and jinyden[0]["nazev"] == "",
+      str(jinyden[0]))
+
+# Co archiv nezná (úplně nové jednání), zůstane prázdné – radši holá
+# spisovka než celé jméno, o kterém AI nerozhodla.
+nove = [{"spz": "9 Cmo 1/2026", "datum": "2026-09-30",
+         "ucastnici": [], "nazev": ""}]
+s.prevzit_z_archivu(nove, archiv)
+check("nové jednání bez předlohy zůstane prázdné",
+      nove[0]["ucastnici"] == [], str(nove[0]))
+
+# Úspěšně zkrácené jednání se z archivu nepřepisuje.
+cerstve = [{"spz": "1 Cmo 5/2026", "datum": "2026-09-30",
+            "ucastnici": ["XTV s.r.o.", "T. M."], "nazev": "XTV v. T. M."}]
+s.prevzit_z_archivu(cerstve, archiv)
+check("čerstvě zkrácené jednání se nepřepíše starším",
+      cerstve[0]["nazev"] == "XTV v. T. M.", str(cerstve[0]))
+
 # Jméno uložené už jako iniciály se dál zkracovat nedá, tak se na ně AI
 # neptáme – jinak by dotaz s každým dalším přehledem nafukoval archiv.
 with s_ai("[]") as sim:

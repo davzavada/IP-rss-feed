@@ -603,6 +603,36 @@ def redact_osoby(nova, archiv=()):
         it["ucastnici"] = [zobrazit.get(u, u) for u in strany]
 
 
+def prevzit_z_archivu(nova, archiv):
+    """Jednání, u kterého AI v tomhle běhu nerozhodla, doplní ze záznamu,
+    který o něm archiv už má. Mění položky na místě.
+
+    Přehled soudu pokrývá pořád stejné období, takže každý běh čte tatáž
+    jednání znovu, celými jmény, a klasifikuje je od nuly. Bez tohohle kroku
+    stačí jeden výpadek AI, aby jednání, které už jednou zkrácené bylo,
+    zase vypadlo na holou spisovou značku – a protože padá pokaždé jiná
+    dávka, prázdná jednání se mezi běhy jen střídají, místo aby ubývala.
+
+    Přebírá se jen to, co už jednou zveřejněné bylo (v archivu jsou fyzické
+    osoby pod iniciálami), takže tím nic nového neuniká. Cenou je, že u
+    jednání, kterému soud mezitím změnil účastníky, zůstane do příštího
+    úspěšného rozhodnutí AI stará sestava – pořád lepší než nic.
+    """
+    podle_klice = {(j.get("spz"), j.get("datum")): j for j in archiv}
+    prevzato = 0
+    for it in nova:
+        if it.get("ucastnici") or it.get("nazev"):
+            continue
+        byvale = podle_klice.get((it.get("spz"), it.get("datum")))
+        if not byvale or not byvale.get("ucastnici"):
+            continue
+        it["ucastnici"] = list(byvale["ucastnici"])
+        it["nazev"] = byvale.get("nazev", "")
+        prevzato += 1
+    if prevzato:
+        print(f"    u {prevzato} jednání beru účastníky z minulého běhu")
+
+
 # --- Aktualizace IP senátů z rozvrhu práce (AI) ---
 
 IP_KEYWORDS_RE = re.compile(
@@ -998,6 +1028,7 @@ def merge_output(existing, court, items, period, zdroj_url, cfg):
     # pro celý přehled i archiv (viz redact_osoby) a jen pro jednání, co se
     # opravdu uloží.
     redact_osoby(items, jednani)
+    prevzit_z_archivu(items, jednani)
     od, do = period if period else (None, None)
 
     # Změny se hledají jen v období, které nový přehled pokrývá – mimo něj
