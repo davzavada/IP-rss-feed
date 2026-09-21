@@ -824,16 +824,13 @@
       "sin": "6",
       "predseda": "Mgr. Michal Výtisk",
       "spz": "1 Cmo 62/2025",
-      "nazev": "První novinová společnost v. Česká pošta",
+      "nazev": "",
       "senat": "1 Cmo",
       "rejstrik": "Cmo",
       "cislo_senatu": 1,
       "bc": 62,
       "rocnik": 2025,
-      "ucastnici": [
-        "První novinová společnost a.s.",
-        "Česká pošta s.p."
-      ],
+      "ucastnici": [],
       "usek": "civilni",
       "ip": true,
       "soud": "VS",
@@ -887,16 +884,13 @@
       "sin": "4",
       "predseda": "JUDr. Irena Ondruszová",
       "spz": "5 Co 33/2026",
-      "nazev": "ČEZ Distribuce v. Povodí Vltavy",
+      "nazev": "",
       "senat": "5 Co",
       "rejstrik": "Co",
       "cislo_senatu": 5,
       "bc": 33,
       "rocnik": 2026,
-      "ucastnici": [
-        "ČEZ Distribuce a. s.",
-        "Povodí Vltavy státní podnik"
-      ],
+      "ucastnici": [],
       "usek": "civilni",
       "ip": true,
       "soud": "VS",
@@ -1168,17 +1162,13 @@
       "sin": "4",
       "predseda": "JUDr. Michal Mědílek",
       "spz": "4 Co 169/2018",
-      "nazev": "Cisterciácké opatství Vyšší v. Brod a další",
+      "nazev": "",
       "senat": "4 Co",
       "rejstrik": "Co",
       "cislo_senatu": 4,
       "bc": 169,
       "rocnik": 2018,
-      "ucastnici": [
-        "Cisterciácké opatství Vyšší",
-        "Brod",
-        "ČR - Státní pozemkový úřad"
-      ],
+      "ucastnici": [],
       "usek": "civilni",
       "ip": true,
       "soud": "VS",
@@ -1338,16 +1328,13 @@
       "sin": "6",
       "predseda": "Mgr. Michal Výtisk",
       "spz": "1 Cmo 64/2025",
-      "nazev": "Vaillant Group Czech v. DÍLYNAKOTLE",
+      "nazev": "",
       "senat": "1 Cmo",
       "rejstrik": "Cmo",
       "cislo_senatu": 1,
       "bc": 64,
       "rocnik": 2025,
-      "ucastnici": [
-        "Vaillant Group Czech s.r.o.",
-        "DÍLYNAKOTLE s.r.o."
-      ],
+      "ucastnici": [],
       "usek": "civilni",
       "ip": true,
       "soud": "VS",
@@ -1359,16 +1346,13 @@
       "sin": "6",
       "predseda": "Mgr. Michal Výtisk",
       "spz": "1 Cmo 32/2023",
-      "nazev": "XTV v. T. M.",
+      "nazev": "",
       "senat": "1 Cmo",
       "rejstrik": "Cmo",
       "cislo_senatu": 1,
       "bc": 32,
       "rocnik": 2023,
-      "ucastnici": [
-        "XTV s.r.o.",
-        "T. M."
-      ],
+      "ucastnici": [],
       "usek": "civilni",
       "ip": true,
       "soud": "VS",
@@ -1401,17 +1385,13 @@
       "sin": "6",
       "predseda": "JUDr. PhDr. Filip Havrda",
       "spz": "1 Cmo 51/2025",
-      "nazev": "fotovolty v. M. V. a další",
+      "nazev": "",
       "senat": "1 Cmo",
       "rejstrik": "Cmo",
       "cislo_senatu": 1,
       "bc": 51,
       "rocnik": 2025,
-      "ucastnici": [
-        "fotovolty s.r.o.",
-        "M. V.",
-        "TnG-Air Servis s.r.o."
-      ],
+      "ucastnici": [],
       "usek": "civilni",
       "ip": true,
       "soud": "VS",
@@ -1429,13 +1409,13 @@
             "od": "2026-09-16",
             "do": "2026-09-30"
           },
-          "stazeno": "2026-09-21T00:07:31+00:00",
+          "stazeno": "2026-09-21T04:50:27+00:00",
           "zdroj": "https://msp.gov.cz/documents/d/mestsky-soud-v-praze/civilni-usek-16-30-9-2026"
         },
         "spravni": {
           "nazev": "Úsek správního soudnictví",
           "obdobi": null,
-          "stazeno": "2026-09-21T00:14:02+00:00",
+          "stazeno": "2026-09-21T04:56:13+00:00",
           "zdroj": "https://msp.gov.cz/documents/d/mestsky-soud-v-praze/spravni-usek-16-30-9-2026"
         }
       }
@@ -1450,7 +1430,7 @@
             "od": "2026-09-16",
             "do": "2026-09-30"
           },
-          "stazeno": "2026-09-21T00:18:37+00:00",
+          "stazeno": "2026-09-21T05:01:51+00:00",
           "zdroj": "https://msp.gov.cz/documents/d/vrchni-soud-v-praze/prehled_jednacky_cu"
         }
       }
@@ -1518,7 +1498,7 @@
       "Roman Horáček"
     ]
   },
-  "generated": "2026-09-21T00:18:37+00:00",
+  "generated": "2026-09-21T05:01:51+00:00",
   "ics": "https://rss.davidzavada.cz/hearings.ics",
   "zmeny": [
     {
