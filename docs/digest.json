@@ -1,14 +1,14 @@
 {
-  "generated": "2026-09-14T00:02:45.142184+00:00",
-  "from": "2026-08-31",
-  "to": "2026-09-14",
-  "total": 71,
-  "covered": 18,
-  "intro": "Období bylo velmi intenzivní v oblasti judikatury Soudního dvora EU, která přinesla zásadní vyjasnění k autorskému právu, ochranným známkám a GDPR. Významný prostor zaujala problematika umělé inteligence, zejména v kontextu tréninkových dat a autorskoprávní ochrany.",
+  "generated": "2026-09-21T00:18:37.337284+00:00",
+  "from": "2026-09-07",
+  "to": "2026-09-21",
+  "total": 38,
+  "covered": 8,
+  "intro": "Období bylo velmi produktivní v oblasti práva EU, zejména v otázkách vyvážení ochranných známek se svobodou projevu a ochrany osobních údajů v obchodních rejstřících. Významný prostor zaujala rovněž teoretická diskuse o právní regulaci umělé inteligence a jejího tréninku.",
   "blocks": [
     {
-      "title": "Judikatura Soudního dvora EU",
-      "text": "Soud vyjasnil, že svoboda projevu může být opravdaným důvodem pro užití známky s renomé (parodie) a že texty na sociálních sítích mohou být chráněny autorským právem. V oblasti GDPR zakázal plošné zveřejňování údajů o akcionářích a upřesnil podmínky osvobození od odpovědnosti hostingových poskytovatelů.",
+      "title": "Parodie a známky s renomé",
+      "text": "Soudní dvůr EU rozhodl, že svoboda projevu a politická parodie mohou být „opravdněným důvodem“ pro užití znamene podobného známce s renomé. Národní soudy musí v konkrétních případech vyvážit práva majitele známky s přínosem k veřejné diskusi a dobrou vírou uživatele.",
       "sources": [
         {
           "src": "cjeu",
@@ -16,41 +16,33 @@
           "tag": "Ruling",
           "title": "C-298/23 (Inter IKEA Systems)",
           "link": "https://curia.europa.eu/juris/liste.do?num=C-298/23"
-        },
-        {
-          "src": "cjeu",
-          "label": "CJEU",
-          "tag": "Ruling",
-          "title": "C-598/24 (Gândul Media Network)",
-          "link": "https://curia.europa.eu/juris/liste.do?num=C-598/24"
-        },
+        }
+      ]
+    },
+    {
+      "title": "Ochrana údajů akcionářů",
+      "text": "Soudní dvůr EU potvrdil, že plošné veřejné zveřejňování osobních údajů všech akcionářů akciových společností je v rozporu s GDPR. Přístup k těmto údajům musí být podmíněn prokázáním legitimního zájmu, jinak jde o nepoměrný zásah do soukromí.",
+      "sources": [
         {
           "src": "cjeu",
           "label": "CJEU",
           "tag": "Ruling",
           "title": "C-798/24 (Jautiva)",
           "link": "https://curia.europa.eu/juris/liste.do?num=C-798/24"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JIPLP",
-          "title": "A wolf in sheep’s clothing: the hidden issues in Institutul G. Călinescu",
-          "link": "https://doi.org/10.1093/jiplp/jpag075"
-        },
-        {
-          "src": "cjeu",
-          "label": "CJEU",
-          "tag": "Ruling",
-          "title": "C-421/24 (AGCOM (Jeux d’argent en ligne))",
-          "link": "https://curia.europa.eu/juris/liste.do?num=C-421/24"
         }
       ]
     },
     {
-      "title": "Umělá inteligence a IP",
-      "text": "Aktuální analýzy upozorňují na neúčinnost opt-out mechanismů při tréninku AI a zkoumají možnost ochrany promptů autorským právem. Evropský parlament i britská Sněmovna lordů navrhují řešení založené na licencování a vyšší transparentnosti dat.",
+      "title": "Právní aspekty umělé inteligence",
+      "text": "Aktuální diskuse se zaměřuje na neústavnost odmítnutí statusu autora pro AI, možnost ochrany promptů a neúčinnost mechanismu „opt-out“ při tréninku modelů. Jako řešení kontroly vstupů do AI se navrhuje využití práva nepoctivé konkurence.",
       "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "Denying Authorship Status to AI Is Not Unconstitutional",
+          "link": "https://doi.org/10.1093/grurint/ikag083"
+        },
         {
           "src": "journals",
           "label": "Časopis",
@@ -64,104 +56,42 @@
           "tag": "IIC",
           "title": "Copyrighting Prompts: A Path to Authentic AI or a Legal Overreach?",
           "link": "https://doi.org/10.1007/s40319-026-01762-1"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JIPLP",
-          "title": "Artificial intelligence—a call to recalibrate copyright law?",
-          "link": "https://doi.org/10.1093/jiplp/jpag067"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JIPLP",
-          "title": "European Parliament and House of Lords publish reports on AI and copyright: policy directions for artificial intelligence and copyright in the EU and the UK",
-          "link": "https://doi.org/10.1093/jiplp/jpag061"
         }
       ]
     },
     {
-      "title": "Rozhodnutí Nejvyššího soudu",
-      "text": "Soud potvrdil, že poskytování správných informací v trackovacím systému je smluvní povinností dopravce. Zároveň rozhodl, že u zásahů do pověsti právnické osoby na internetu je místně příslušný i soud v obvodu skutečného sídla žalobce.",
+      "title": "Odpovědnost v IT systémech",
+      "text": "Nejvyšší soud potvrdil, že poskytování správných informací v trackovacím systému tvoří smluvní povinnost dopravce, jejíž porušení zakládá odpovědnost za škodu. Zároveň rozhodl, že částečně předaná, ale nevyužitelná projektová dokumentace nepředstavuje majetkový prospěch pro účely bezdůvodného obohacení.",
       "sources": [
+        {
+          "src": "nsoud",
+          "label": "NS 23 Cdo",
+          "tag": "",
+          "title": "23 Cdo 686/2026",
+          "link": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/A73497E8704F3339C1258E6E004D41FF/$file/23%20Cdo%20686_2026.pdf?openElement"
+        },
         {
           "src": "nsoud",
           "label": "NS 23 Cdo",
           "tag": "",
           "title": "23 Cdo 2968/2025",
           "link": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/A8CDE0868C19770BC1258E6D001BA897/$file/23%20Cdo%202968_2025.pdf?openElement"
-        },
+        }
+      ]
+    },
+    {
+      "title": "Odvolání veřejného příslibu",
+      "text": "Nejvyšší soud judikoval, že pouhé smazání textu veřejného příslibu z webových stránek (např. ze sekce aktuality) nestačí k jeho platnému odvolání. Pro praxi to znamená nutnost explicitnějšího oznámení o zrušení příslibu.",
+      "sources": [
         {
           "src": "nsoud",
           "label": "NS 23 Cdo",
           "tag": "",
-          "title": "23 Cdo 1467/2026",
-          "link": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/342C85FE262EBD55C1258E6D001B8EEE/$file/23%20Cdo%201467_2026.pdf?openElement"
-        }
-      ]
-    },
-    {
-      "title": "Digitální právo a platformy",
-      "text": "Právní diskuse se zaměřují na algoritmickou kontraktaci a praktickou vymahatelnost práva být zapomenut. Důraz je kladen také na transparentnost placené reklamy u influencerů a vývoj digitálního antitrustu v EU.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "Disclosure Requirements for Paid Advertising in Influencer Videos",
-          "link": "https://doi.org/10.1093/grurint/ikag084"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "Právník",
-          "title": "Soudní dvůr a zviditelnění práva být zapomenut",
-          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-9.html?a=4060"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "Právník",
-          "title": "Kontraktace za užití algoritmů",
-          "link": "https://www.ilaw.cas.cz/casopisy-a-knihy/casopisy/casopis-pravnik/archiv/2026/2026-9.html?a=4061"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "TLQ",
-          "title": "Václav Šmejkal: Digitální antitrust: EU a ochrana hospodářské soutěže v éře velkých online platforem (Digital Antitrust: EU Competition Law in the Era of Large Online Platforms). Prague: Karolinum, 2026, 216 pp.",
-          "link": "https://tlq.ilaw.cas.cz/article/view/1050"
-        }
-      ]
-    },
-    {
-      "title": "Patenty a ochranné známky",
-      "text": "Nové čínské směrnice přinášejí upřesnění pro patentování v oblasti AI a big dat. Další trendy zahrnují řešení konfliktů mezi obchodními značkami a geografickými označeními a judikaturu k FRAND podmínkám.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "Living with “Nero Lifestyle” (or How to Prevent “Delimited” Trade Marks From Burning Geographical Indications Down)",
-          "link": "https://doi.org/10.1007/s40319-026-01765-y"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "“FRAND Defence III (FRAND-Einwand III)” – Decision of the Federal Court of Justice of Germany (Bundesgerichtshof) 27 January 2026 – Case No. KZR 10/25",
-          "link": "https://doi.org/10.1007/s40319-026-01768-9"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "The 2025 Amendments to the Chinese Patent Examination Guidelines",
-          "link": "https://doi.org/10.1093/grurint/ikag073"
+          "title": "23 Cdo 2933/2025",
+          "link": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/9E54119BE808FD8EC1258E77001BC007/$file/23%20Cdo%202933_2025.pdf?openElement"
         }
       ]
     }
   ],
-  "input_hash": "ce3e0ea68e163dc710c6ae130067e0c921e1061f9be81691e84cf0daef932b15"
+  "input_hash": "428a2cc12202c73a893966d9a852cef8cd9fb5b1765dfbfcdcc2ded0cbbb3b39"
 }
