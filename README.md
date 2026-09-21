@@ -27,12 +27,15 @@ Tím nezáleží na tom, kdy zdroj položku datuje ani jestli datum později př
 
 **AI shrnutí** se cachují v `*_meta.json` podle stejného klíče a prořezávají
 se spolu se stavem prvního výskytu, takže soubory nerostou donekonečna. Bez
-`GEMINI_API_KEY` scrapery běží dál, jen bez nových shrnutí. Když se k textu
-nedostaneme – ve výpisu NS není odkaz na PDF, vydavatel stránku nepustil –
-nevymýšlí se nic a místo shrnutí jde do feedu poznámka; dokud je položka
-v okně, zkouší se to každým během znovu. Poznámka mluví jen za nás („shrnutí
-zatím není"), ne za zdroj: že rozhodnutí nemáme, neznamená, že ho soud
-nezveřejnil.
+`GEMINI_API_KEY` scrapery běží dál, jen bez nových shrnutí. Rozhodnutí NS se
+shrnuje z přiloženého PDF, a když u něj ve výpisu není, z textu na stránce
+rozhodnutí – PDF přikládá soud s odstupem i pár dní, kdežto text tam bývá
+hned. Odkaz ve feedu proto vede na stránku rozhodnutí a soubor se nabídne
+jako druhý odkaz, jen když opravdu existuje. Když se k textu nedostaneme
+vůbec (ani stránka ho nenese, vydavatel ji nepustil), nevymýšlí se nic
+a místo shrnutí jde do feedu poznámka; dokud je položka v okně, zkouší se
+to každým během znovu. Poznámka mluví jen za nás („shrnutí zatím není"),
+ne za zdroj: že rozhodnutí nemáme, neznamená, že ho soud nezveřejnil.
 
 **Kalendář jednání** filtruje přehledy soudů podle `hearings_config.json`:
 v civilním úseku na IP senáty (seznam senátů a soudců z rozvrhů práce;

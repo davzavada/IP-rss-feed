@@ -23,6 +23,7 @@ from feed_common import (
     USER_AGENT,
     gemini_enabled,
     gemini_summarize_pdf,
+    gemini_summarize_text,
     is_new,
     load_json,
     prune_meta_file,
@@ -173,7 +174,9 @@ def fetch_judikatura(days=JUDIKATURA_DAYS):
         decisions.append({
             "case_number": case_number,
             "date": "",  # výpis datum neobsahuje – řeší se prvním výskytem
-            "pdf_url": pdf_url or detail_url,
+            # Prázdné, když u rozhodnutí ve výpisu PDF není. Nenahrazuje se
+            # detailem – shrnutí i odkaz ve feedu si pak umí vybrat samy.
+            "pdf_url": pdf_url,
             "detail_url": detail_url,
             "category": category,
             "unid": unid,
@@ -274,40 +277,93 @@ def _cache_key(d):
     return d.get("unid") or normalize_case(d["case_number"])
 
 
+# Kolik textu musí ze stránky rozhodnutí zbýt, aby to bylo odůvodnění,
+# a ne jen hlavička a navigace. Rozhodnutí bývají o řád delší.
+MIN_TEXT_ROZHODNUTI = 2000
+# Delší vstup Gemma stejně ořízne; posílat celý spis nemá smysl.
+MAX_TEXT_ROZHODNUTI = 20000
+
+
+def _stahni_pdf(session, d):
+    """Obsah PDF rozhodnutí, nebo b'' když se ho nepovedlo získat."""
+    try:
+        pr = session.get(d["pdf_url"], headers=JUDIKATURA_HEADERS, timeout=60)
+        pr.raise_for_status()
+    except Exception as e:
+        print(f"    CHYBA stahování PDF {d['case_number']}: {e}")
+        return b""
+    # I na .pdf adrese může přijít chybová stránka; poslat ji jako
+    # application/pdf znamená jen 400 z API.
+    if not pr.content.startswith(b"%PDF"):
+        ct = pr.headers.get("content-type", "?")
+        print(f"    [diag] {d['case_number']}: odpověď není PDF ({ct})")
+        return b""
+    return pr.content
+
+
+def _text_rozhodnuti(session, d):
+    """Text rozhodnutí ze stránky detailu, nebo '' když tam není.
+
+    Tabulka `#tabl` na detailu nese metadata (Heslo, data, typ) – ta už máme
+    z enrich_metadata a do shrnutí nepatří, tak jde pryč; co zbude, je text
+    rozhodnutí. Krátký zbytek znamená, že stránka odůvodnění nenese.
+    """
+    url = d.get("detail_url")
+    if not url:
+        return ""
+    try:
+        r = session.get(url, headers=JUDIKATURA_HEADERS, timeout=30)
+        r.raise_for_status()
+    except Exception as e:
+        print(f"    CHYBA stahování detailu {d['case_number']}: {e}")
+        return ""
+    soup = BeautifulSoup(r.text, "html.parser")
+    for junk in soup(["script", "style", "nav", "header", "footer", "form"]):
+        junk.decompose()
+    for tabulka in soup.select("table#tabl"):
+        tabulka.decompose()
+    text = re.sub(r"\n{3,}", "\n\n", soup.get_text("\n", strip=True))
+    if len(text) < MIN_TEXT_ROZHODNUTI:
+        print(f"    [diag] {d['case_number']}: stránka nenese text rozhodnutí "
+              f"({len(text)} znaků): {text[:100]!r}")
+        return ""
+    return text[:MAX_TEXT_ROZHODNUTI]
+
+
 def enrich_summaries(decisions):
-    """Doplní AI shrnutí (z PDF rozhodnutí) předaným, už filtrovaným položkám;
-    cache sdílí soubor s metadaty detailu (feed_meta.json)."""
+    """Doplní AI shrnutí předaným, už filtrovaným položkám; cache sdílí
+    soubor s metadaty detailu (feed_meta.json).
+
+    Shrnuje se z PDF, a když u rozhodnutí ve výpisu není, z textu na stránce
+    rozhodnutí. PDF přikládá NS s odstupem i pár dní, kdežto text tam bývá
+    hned – čekat na PDF by znamenalo nechat čerstvá rozhodnutí bez shrnutí
+    zrovna ve dnech, kdy jsou nová.
+    """
     session = requests.Session()
 
     def needs_call(d, cached):
-        return bool(d.get("pdf_url")) and not cached.get("summary")
+        # Stačí, že vede aspoň jedna cesta k textu.
+        return bool(d.get("pdf_url") or d.get("detail_url")) and not cached.get("summary")
 
     def summarize(d, cached):
-        # Rozhodnutí bývá ve výpisu dřív, než k němu NS přiloží PDF – `pdf_url`
-        # do té doby míří na detailní stránku (fallback ve fetch_judikatura).
-        # Ta obsahuje jen metadata, není z čeho shrnovat; počkáme na PDF.
-        if d["pdf_url"] == d.get("detail_url"):
-            print(f"    [diag] {d['case_number']}: ve výpisu není odkaz na PDF, "
-                  "shrnutí příště")
+        # PDF první: je to samotné rozhodnutí, bez okolí stránky.
+        if d.get("pdf_url"):
+            pdf = _stahni_pdf(session, d)
+            if pdf:
+                summary, tag = gemini_summarize_pdf(pdf, JUDIKATURA_PROMPT)
+                if summary:
+                    return {"summary": summary, "tag": tag}
+                # Ať je vidět, jestli padají pořád tatáž rozhodnutí a jak
+                # velký vstup na to Gemma dostala.
+                print(f"    [diag] {d['case_number']}: z PDF bez shrnutí "
+                      f"({len(pdf) // 1024} kB), zkouším stránku")
+        text = _text_rozhodnuti(session, d)
+        if not text:
             return None
-        try:
-            pr = session.get(d["pdf_url"], headers=JUDIKATURA_HEADERS, timeout=60)
-            pr.raise_for_status()
-        except Exception as e:
-            print(f"    CHYBA stahování PDF {d['case_number']}: {e}")
-            return None
-        # I na .pdf adrese může přijít chybová stránka; poslat ji jako
-        # application/pdf znamená jen 400 z API.
-        if not pr.content.startswith(b"%PDF"):
-            ct = pr.headers.get("content-type", "?")
-            print(f"    [diag] {d['case_number']}: odpověď není PDF ({ct}), shrnutí příště")
-            return None
-        summary, tag = gemini_summarize_pdf(pr.content, JUDIKATURA_PROMPT)
+        summary, tag = gemini_summarize_text(text, JUDIKATURA_PROMPT)
         if not summary:
-            # Ať je vidět, jestli padají pořád tatáž rozhodnutí a jak velký
-            # vstup na to Gemma dostala.
             print(f"    [diag] {d['case_number']}: bez shrnutí "
-                  f"({len(pr.content) // 1024} kB PDF)")
+                  f"({len(text)} znaků ze stránky)")
             return None
         return {"summary": summary, "tag": tag}
 
@@ -429,9 +485,16 @@ def build_rss(decisions):
         item = SubElement(channel, "item")
         SubElement(item, "title").text = d["case_number"]
 
-        link = d.get("pdf_url") or d.get("detail_url") or ""
+        # Odkaz vede na stránku rozhodnutí – ta je hned, kdežto PDF NS
+        # přikládá s odstupem. U rozhodnutí z úřední desky stránka není,
+        # tam odkazuje rovnou přiložený soubor.
+        link = d.get("detail_url") or d.get("pdf_url") or ""
         if link:
             SubElement(item, "link").text = link
+        # PDF vedle odkazu, a jen když je: stránka i čtečky ho ukážou jako
+        # druhý odkaz „PDF" (viz nameCell v docs/app.js).
+        if d.get("pdf_url") and d["pdf_url"] != link:
+            SubElement(item, "document-url").text = d["pdf_url"]
 
         # GUID: UNID (stabilní) > odkaz > spisová značka
         guid = d.get("unid") or link or d["case_number"]

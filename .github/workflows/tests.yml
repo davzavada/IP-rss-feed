@@ -7,10 +7,12 @@ on:
   push:
     paths:
       - 'feed_common.py'
+      - 'scraper.py'
       - 'scraper_hearings.py'
       - 'scraper_journals.py'
       - 'test_hearings.py'
       - 'test_journals.py'
+      - 'test_nsoud.py'
       - 'hearings_config.json'
       - 'tests/**'
       - '.github/workflows/tests.yml'
@@ -31,3 +33,5 @@ jobs:
         run: python test_hearings.py
       - name: Testy scraperu časopisů
         run: python test_journals.py
+      - name: Testy scraperu rozhodnutí NS
+        run: python test_nsoud.py
