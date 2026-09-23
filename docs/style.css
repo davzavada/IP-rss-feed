@@ -501,15 +501,24 @@ html.is-loading body { visibility: hidden; }
      Vycentrovat ho by znamenalo držet stejně široký pruh i vpravo a ten by
      zůstal prázdný; nechat ho doběhnout až k hraně okna ale taky ne – vpravo
      proto zbude půlka toho, co si bere navigace vlevo. */
+  /* Jakmile obsah narazí na max-width, zbylé místo by celé spadlo doprava
+     a na velkém monitoru by vpravo zela díra. Navigace s obsahem se proto
+     posouvají jako jeden celek doprostřed: mezera od okna k navigaci vlevo
+     je stejná jako od karet k oknu vpravo (1576px = 1600px obsahu bez
+     vnitřního odsazení). */
+  :root {
+    --shift: max(0px, calc((100vw - var(--nav-band) - 1576px
+                            - (var(--nav-band) - var(--nav-w)) / 2) / 2));
+  }
   .container {
-    margin-left: var(--nav-band);
+    margin-left: calc(var(--nav-band) + var(--shift));
     margin-right: max(24px, calc(var(--nav-band) / 2));
   }
   /* Navigace sedí uprostřed svého pruhu – ani nalepená na okraj okna,
      ani na karty. */
   #sidenav {
     display: flex;
-    left: calc((var(--nav-band) - var(--nav-w)) / 2);
+    left: calc((var(--nav-band) - var(--nav-w)) / 2 + var(--shift));
   }
   /* Se zobrazenou boční navigací by byl přepínač nahoře nadbytečný. */
   .pagetabs { display: none; }
