@@ -687,7 +687,7 @@ function resizerHtml(column) {
 
 // `prazdno` je HTML hlášky, když nic není (u filtrovaných karet odkaz na výběr).
 // `moznosti.skupina(item)` vrací HTML nadpisu skupiny (Novinky: den) – když
-// se změní, vloží se řádek přes celou šířku; `moznosti.trida(item)` třídu řádku.
+// se změní, vloží se řádek přes celou šířku.
 function renderTable(items, container, columns, key, prazdno, moznosti) {
   const m = moznosti || {};
   if (items.length === 0) {
@@ -714,8 +714,7 @@ function renderTable(items, container, columns, key, prazdno, moznosti) {
       html += '<tr class="den" role="row"><th role="rowheader" colspan="' + columns.length + '" scope="colgroup">' +
         sk + "</th></tr>";
     }
-    const trida = m.trida ? m.trida(item) : "";
-    html += '<tr role="row"' + (trida ? ' class="' + trida + '"' : "") + ">";
+    html += '<tr role="row">';
     columns.forEach(c => {
       html += '<td role="cell"' + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.render(item) + "</td>";
     });
@@ -727,43 +726,6 @@ function renderTable(items, container, columns, key, prazdno, moznosti) {
 }
 
 /* ========== Novinky: posledních 7 dní po dnech ========== */
-// Minulá návštěva: od kdy se novinky značí tečkou. Návštěva končí půl hodiny
-// po posledním pohybu na stránce (zápis při startu, skrytí a odchodu), takže
-// obnovení stránky tečky nesmaže; při další návštěvě se počítá od konce té
-// minulé. Při první návštěvě tečky nejsou.
-const NAVSTEVA_KLIC = "owl:navsteva";
-const NAVSTEVA_OD_KLIC = "owl:navsteva-od";
-const RELACE_MS = 30 * 60 * 1000;
-
-function zapisNavstevu() {
-  try {
-    localStorage.setItem(NAVSTEVA_KLIC, new Date().toISOString());
-  } catch (e) { /* bez úložiště prostě bez teček */ }
-}
-
-const noveOd = (function () {
-  try {
-    const posledni = Date.parse(localStorage.getItem(NAVSTEVA_KLIC) || "");
-    let od = Date.parse(localStorage.getItem(NAVSTEVA_OD_KLIC) || "");
-    if (!isNaN(posledni) && Date.now() - posledni > RELACE_MS) {
-      od = posledni;
-      localStorage.setItem(NAVSTEVA_OD_KLIC, new Date(od).toISOString());
-    }
-    return od;
-  } catch (e) {
-    return NaN;
-  }
-})();
-zapisNavstevu();
-window.addEventListener("pagehide", zapisNavstevu);
-document.addEventListener("visibilitychange", () => {
-  if (document.visibilityState === "hidden") zapisNavstevu();
-});
-
-function jeNoveOdMinula(item) {
-  return !isNaN(noveOd) && item.prvni > noveOd;
-}
-
 // „Dnes", „Včera", „Po 21. 9." – den prvního výskytu v místním čase.
 function nadpisDne(ts) {
   const d = new Date(ts);
@@ -803,18 +765,12 @@ function renderToday(results) {
   }
   const poctyDni = {};
   polozky.forEach(i => { const d = isoOf(new Date(i.prvni)); poctyDni[d] = (poctyDni[d] || 0) + 1; });
-  const odMinula = polozky.filter(jeNoveOdMinula).length;
   renderTable(polozky, container, colsToday, "today", "", {
     skupina: i => {
       const d = isoOf(new Date(i.prvni));
       return esc(nadpisDne(i.prvni)) + ' <span class="den-pocet">' + poctyDni[d] + "</span>";
-    },
-    trida: i => (jeNoveOdMinula(i) ? "nove" : "")
+    }
   });
-  if (odMinula) {
-    container.insertAdjacentHTML("afterbegin", '<p class="nove-souhrn"><span class="tecka" aria-hidden="true">' +
-      "</span>" + tvar(odMinula, "novinka", "novinky", "novinek") + " od vaší minulé návštěvy</p>");
-  }
 }
 
 // Stažené položky zdrojů (výsledky Promise.allSettled). Při změně výběru se

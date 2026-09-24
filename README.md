@@ -8,13 +8,10 @@ dvora EU včetně Tribunálu (AI ji řadí do oblastí práva), články z práv
 a třívěté shrnutí, jednou týdně z toho napíše dvoutýdenní přehled duševního
 vlastnictví a IT.
 
-Web má stránky Novinky (co přibylo za posledních 7 dní, po dnech, s tečkou
-u toho, co je nové od minulé návštěvy), Dva týdny v IP a IT (přehled je
-jeden pro všechny, na výběru nezávisí), každý zdroj zvlášť (NS, NSS, ÚS,
-SDEU, časopisy) a Kalendář jednání; Můj výběr je dialog z nabídky účtu.
-Minulou návštěvu si pamatuje prohlížeč (`owl:navsteva`, `owl:navsteva-od`
-v localStorage); návštěva končí půl hodiny po odchodu, takže obnovení
-stránky tečky nesmaže. V tabulkách je pod značkou datum vydání („ze dne",
+Web má stránky Novinky (co přibylo za posledních 7 dní, po dnech prvního
+výskytu), Dva týdny v IP a IT (přehled je jeden pro všechny, na výběru
+nezávisí), každý zdroj zvlášť (NS, NSS, ÚS, SDEU, časopisy) a Kalendář
+jednání; Můj výběr je dialog z nabídky účtu. V tabulkách je pod značkou datum vydání („ze dne",
 jak se cituje; datum zveřejnění v bublině), shrnutí má řádek nejvýš asi
 95 znaků a barvu nese jen štítek zdroje – heslo i druh u SDEU jsou
 neutrální.

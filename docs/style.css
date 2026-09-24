@@ -169,17 +169,6 @@ tbody tr.den th {
 tbody tr.den:first-child th { padding-top: 8px; }
 tbody tr.den:hover { background: none; }
 .den-pocet { margin-left: 6px; font-weight: 400; color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
-/* Nové od minulé návštěvy: tečka v levém okraji řádku. */
-tbody tr.nove > td:first-child { position: relative; }
-tbody tr.nove > td:first-child::before {
-  content: ""; position: absolute; left: 1px; top: 19px;
-  width: 6px; height: 6px; border-radius: 50%; background: var(--link);
-}
-.nove-souhrn {
-  display: flex; align-items: center; gap: 8px; margin: 2px 0 4px;
-  font-size: var(--fs-sm); color: var(--muted-foreground);
-}
-.tecka { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--link); }
 td a { color: var(--link); text-decoration: none; text-underline-offset: 3px; }
 /* Fokus z klávesnice (i po návratu z PDF v nové kartě) barvou webu, ne
    černým rámečkem prohlížeče. */
@@ -592,9 +581,6 @@ html.is-loading body { visibility: hidden; }
   tbody tr.den { display: block; padding: 18px 0 2px; }
   tbody tr.den:first-child { padding-top: 4px; }
   tbody tr.den th { display: block; padding: 0; }
-  /* Tečka by v bloku překryla štítek – nové značí proužek vlevo. */
-  tbody tr.nove > td:first-child::before { display: none; }
-  tbody tr.nove { box-shadow: inset 3px 0 0 var(--link); padding-left: 10px; }
   tbody td:empty { display: none; }
   .col-src, .col-type { order: 1; }
   .col-date { order: 2; font-size: var(--fs-sm); }
