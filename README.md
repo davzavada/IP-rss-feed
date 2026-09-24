@@ -10,7 +10,7 @@ vlastnictví a IT.
 
 Web má stránky Nové za 24 hodin, Dva týdny v IP a IT (přehled je jeden pro
 všechny, na výběru nezávisí), každý zdroj zvlášť (NS, NSS, ÚS, SDEU,
-časopisy), Kalendář jednání a Můj výběr.
+časopisy) a Kalendář jednání; Můj výběr je dialog z nabídky účtu.
 
 ## Jak to drží pohromadě
 
@@ -181,17 +181,21 @@ vlastnictví a IT, všechny časopisy.
   jeden pro všechny, výběry uživatelů se nikde nečtou).
 - Výběr je u účtu v `user.unsafeMetadata.owl`:
   `{"v":1,"ns":{"oblasti":[…],"senaty":[23]},"nss":{"oblasti":[…]},"us":{…},"sdeu":{…},"skryt_procesni":false,"skryte_casopisy":[]}`.
-  Nastavuje se na stránce `#nastaveni` (Můj výběr): oblasti práva, senáty
-  NS po kolegiích, časopisy a vypínač procesních rozhodnutí. Sekce jsou
-  na začátku sbalené a v hlavičce mají souhrn; vybírá se jedním kliknutím
-  na čip. Oblasti se zatím nastavují všem soudům stejně (výběr po soudech
-  je v datech připravený, na stránce schovaný). Změny platí až po
-  tlačítku Uložit. Neznámé oblasti se zahodí, přejmenované převede `alias`
-  v `docs/data/oblasti.json`; soud, který v uloženém výběru chybí, dostane
-  výchozí oblasti. Výchozí výběr se neukládá.
+  Nastavuje se v dialogu Můj výběr, který se otevírá z nabídky účtu
+  (tlačítko Clerku v hlavičce, první položka) nebo z odkazu „Upravit výběr“
+  u prázdné karty; stará kotva `#nastaveni` ho otevře taky. Sekce oblasti
+  práva, senáty NS a časopisy jsou na začátku sbalené a v hlavičce mají
+  souhrn; vybírá se jedním kliknutím na čip. Oblasti se zatím nastavují
+  všem soudům stejně (výběr po soudech je v datech připravený, na stránce
+  schovaný). Občanskoprávní senáty jsou jednotlivě, trestní kolegium jedním
+  vypínačem. Změny platí až po tlačítku Uložit (pak se dialog zavře);
+  zavřít s neuloženými změnami jde po potvrzení. Neznámé oblasti se zahodí,
+  přejmenované převede `alias` v `docs/data/oblasti.json`; soud, který
+  v uloženém výběru chybí, dostane výchozí oblasti. Výchozí výběr se
+  neukládá. Procesní rozhodnutí se neskrývají (dřívější `skryt_procesni`
+  se ignoruje).
 - Pravidlo: rozhodnutí je vidět, když spadá do některé z oblastí vybraných
-  u jeho soudu; u NS navíc všechna rozhodnutí vybraných senátů. Pak se
-  případně skryjí rutinní procesní.
+  u jeho soudu; u NS navíc všechna rozhodnutí vybraných senátů.
 
 ## Workflow
 

@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#09090b">
-<title>Owl – přehled novinek v IP a IT</title>
+<title>Owl</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="style.css">
 <script>
@@ -61,6 +61,9 @@
     <rect x="3" y="5" width="18" height="16" rx="2"></rect>
     <path d="M16 3v4M8 3v4M3 10h18"></path>
   </symbol>
+  <symbol id="icon-x" viewBox="0 0 24 24">
+    <path d="M18 6 6 18M6 6l12 12"></path>
+  </symbol>
   <symbol id="icon-sliders" viewBox="0 0 24 24">
     <path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"></path>
     <circle cx="16" cy="6" r="2"></circle>
@@ -97,9 +100,6 @@
   <div class="nav-group">
     <a href="#kalendar"><svg class="nav-ico" aria-hidden="true"><use href="#icon-calendar"></use></svg><span>Kalendář jednání</span></a>
   </div>
-  <div class="nav-group">
-    <a href="#nastaveni"><svg class="nav-ico" aria-hidden="true"><use href="#icon-sliders"></use></svg><span>Můj výběr</span></a>
-  </div>
 </nav>
 
 <main class="container">
@@ -116,7 +116,6 @@
   <a href="#casopisy" title="Právní časopisy">Časopisy</a>
   <span class="pagetabs-sep" aria-hidden="true"></span>
   <a href="#kalendar" title="Kalendář jednání">Kalendář</a>
-  <a href="#nastaveni">Můj výběr</a>
 </nav>
 
 <div class="page" id="prehled">
@@ -237,19 +236,17 @@
   </div>
 </section>
 
-<section class="page" id="nastaveni" hidden>
-  <div class="card" id="vyber">
-    <div class="card-header">
-      <h2 class="card-title">Můj výběr</h2>
-      <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
-      <div class="card-desc" hidden>Co z judikatury a časopisů chcete vidět. Výběr se ukládá k účtu; bez přihlášení platí výchozí výběr zaměřený na duševní vlastnictví a IT.</div>
-      </span>
-    </div>
-    <div class="card-content" id="nastaveni-obsah"><p class="loading">Načítám...</p></div>
-  </div>
-</section>
-
 </main>
+
+<!-- Můj výběr: dialog, který se otevírá z nabídky účtu (tlačítko Clerku
+     v hlavičce) a z odkazu „Upravit výběr" u prázdné karty. -->
+<dialog class="dialog" id="vyber-dialog" aria-labelledby="vyber-titulek">
+  <div class="dialog-hlava">
+    <h2 class="card-title" id="vyber-titulek">Můj výběr</h2>
+    <button type="button" class="dialog-zavrit" id="vyber-zavrit" aria-label="Zavřít"><svg class="nav-ico" aria-hidden="true"><use href="#icon-x"></use></svg></button>
+  </div>
+  <div class="dialog-telo" id="nastaveni-obsah"></div>
+</dialog>
 
 <script src="app.js"></script>
 </body>
