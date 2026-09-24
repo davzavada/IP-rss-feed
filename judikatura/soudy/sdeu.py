@@ -18,8 +18,9 @@ v InfoCurii (dokument DDP), oznámení v Cellaru, nebo otázky na ipcuria.eu.
 Název věci a texty dokumentů dává InfoCuria podle čísla věci (česky, když
 překlad už je). Čerstvý rozsudek bývá první dny jen v jazyce řízení
 a francouzsky – pak text vezmeme z Cellaru (XHTML česky, anglicky,
-francouzsky) a AI ho shrne česky i tak. Odkaz pro čtenáře vede na EUR-Lex
-(český text, jakmile vyjde); z Actions je EUR-Lex pro stahování zavřený.
+francouzsky) a AI ho shrne česky i tak. Odkaz pro čtenáře vede na věc na
+webu Soudního dvora (curia.europa.eu – všechny dokumenty věci); z Actions
+je EUR-Lex pro stahování zavřený.
 
 Tvar odpovědí odpovídá tomu, co stáhla sonda (tests/fixtures/sdeu/).
 """
@@ -38,7 +39,6 @@ from judikatura.soudy.web import radky_html
 
 SPARQL = "https://publications.europa.eu/webapi/rdf/sparql"
 CELLAR = "http://publications.europa.eu/resource/celex/{celex}"
-EURLEX = "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:{celex}"
 INFOCURIA_APP = "https://infocuria.curia.europa.eu"
 INFOCURIA = "https://infocuriaws.curia.europa.eu/elastic-connector/search"
 TYP = "http://publications.europa.eu/resource/authority/resource-type/"
@@ -122,7 +122,7 @@ def zaznamy_rozhodnuti(odpoved):
         out[celex] = model.novy_zaznam(
             "sdeu", f"sdeu:{celex}", spz=vec, ecli=r.get("ecli", ""), druh=DRUHY[typ],
             datum=r.get("datum", "")[:10], zverejneno=r.get("datum", "")[:10],
-            url=EURLEX.format(celex=celex), rejstrik=vec[0],
+            url=ipcuria.CURIA.format(vec=vec), rejstrik=vec[0],
             meta={"soud_eu": SOUDY.get(vec[0], ""), "celex": celex},
         )
     return list(out.values())
@@ -152,7 +152,7 @@ def zaznamy_oznameni(odpoved):
         out[celex] = model.novy_zaznam(
             "sdeu", f"sdeu:{celex}", spz=vec, druh=DRUH_OTAZKA, nazev=strany,
             datum=r.get("podano", "")[:10], zverejneno=r.get("vlozeno", "")[:10],
-            url=EURLEX.format(celex=celex), rejstrik=vec[0],
+            url=ipcuria.CURIA.format(vec=vec), rejstrik=vec[0],
             meta={"soud_eu": SOUDY.get(vec[0], ""), "celex": celex, "predkladajici_soud": soud,
                   "nazev_oznameni": nazev},
         )

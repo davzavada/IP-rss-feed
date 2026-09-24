@@ -126,8 +126,8 @@ pro AI.
   dva až tři měsíce po podání, ale s otázkami). Žaloby a kasační opravné
   prostředky se neberou. Název věci a české texty dává InfoCuria podle čísla
   věci; kde český text ještě není (čerstvé rozsudky, Tribunál), bere se
-  z Cellaru česky, anglicky, nebo francouzsky. Odkaz vede na EUR-Lex. Okno
-  webu je měsíc.
+  z Cellaru česky, anglicky, nebo francouzsky. Odkaz vede na věc na webu
+  Soudního dvora (curia.europa.eu). Okno webu je měsíc.
   Doplňkově **ipcuria.eu** (`judikatura/soudy/ipcuria.py`): předběžné otázky
   z duševního vlastnictví a ochrany údajů podané za poslední měsíc, tedy
   dva až tři měsíce před oznámením v ÚV. Záznam `sdeu:ipc:{věc}` má datum
