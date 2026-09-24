@@ -1,0 +1,326 @@
+{
+  "totalHits" : 1,
+  "maxScore" : 21.52446,
+  "maxScoreOthersDocuments" : 0.0,
+  "totalHitsRelation" : "EQUAL_TO",
+  "totalHitsOthersDocs" : 0,
+  "searchHits" : [ {
+    "index" : "index-affair@30-06-2026",
+    "id" : "T/0463/24/00000000RD/01/P/01",
+    "score" : 21.52446,
+    "sortValues" : [ 21.52446, 1725494400000 ],
+    "content" : {
+      "id" : "T/0463/24/00000000RD/01/P/01",
+      "affId" : "T/0463/24/00000000RD/01",
+      "publishedId" : "T-463/24",
+      "publishedAffId" : "T-463/24",
+      "procedureId" : "T/0463/24/00000000RD/01/P/01",
+      "jurisdiction" : "Tribunal",
+      "jurisdictionCode" : "T",
+      "order" : 463,
+      "suiteNumber" : 1,
+      "procType" : "P",
+      "procNumber" : 1,
+      "usualNameML" : [ {
+        "pt" : "Demblon/Parlamento"
+      }, {
+        "el" : "Demblon κατά Κοινοβουλίου"
+      }, {
+        "nl" : "Demblon/Parlement"
+      }, {
+        "sk" : "Demblon/Parlament"
+      }, {
+        "fi" : "Demblon v. parlamentti"
+      }, {
+        "sl" : "Demblon proti Parlament"
+      }, {
+        "da" : "Demblon mod Parlamentet"
+      }, {
+        "lt" : "Demblon prieš Parlamentas"
+      }, {
+        "cs" : "Demblon v. Parlament"
+      }, {
+        "lv" : "Demblon/Parlaments"
+      }, {
+        "de" : "Demblon/ Parlament"
+      }, {
+        "pl" : "Demblon przeciwko Parlamentowi"
+      }, {
+        "et" : "Demblon vs. parlament"
+      }, {
+        "sv" : "Demblon mot parlamentet"
+      }, {
+        "it" : "Demblon/ Parlamento"
+      }, {
+        "hu" : "Demblon kontra Parlament"
+      }, {
+        "fr" : "Demblon / Parlement"
+      }, {
+        "en" : "Demblon v Parliament"
+      }, {
+        "ro" : "Demblon/Parlamentul"
+      }, {
+        "mt" : "Demblon vs Il-Parlament"
+      }, {
+        "bg" : "Demblon/Парламент"
+      }, {
+        "hr" : "Demblon/Parlament"
+      }, {
+        "es" : "Demblon/Parlamento"
+      } ],
+      "introductionDate" : "2024-09-05",
+      "affairState" : "Affaire pendante",
+      "affairStateCode" : "ENC",
+      "joinExist" : 0,
+      "pilot" : 0,
+      "joinAffairs" : [ ],
+      "pourvoiAffIds" : [ ],
+      "originPourvoiIds" : [ ],
+      "reExamenAffIds" : [ ],
+      "originReExamanIds" : [ ],
+      "transfertAffIds" : [ ],
+      "originTransfertIds" : [ ],
+      "oppObsFag" : 0,
+      "contentLength" : 0,
+      "docNoPart" : 0
+    },
+    "highlightFields" : {
+      "publishedId.keyword" : [ "<em class='highlight'>T-463/24</em>" ]
+    },
+    "innerHits" : {
+      "document" : {
+        "totalHits" : 2,
+        "totalHitsRelation" : "EQUAL_TO",
+        "maxScore" : 10.583267,
+        "searchHits" : [ {
+          "index" : "index-affair@30-06-2026",
+          "id" : "T/0463/24/00000000RD/01/P/01-3522116",
+          "score" : 10.583267,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "T/0463/24/00000000RD/01/P/01-3522116",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_327132",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+            "idPublished" : "T-463/24",
+            "docType" : "Arrêt",
+            "docTypeCode" : "ARRET_NP",
+            "docDate" : "2026-09-23",
+            "docFormats" : [ "HTML" ],
+            "contentLength" : 0,
+            "docNoPart" : 1,
+            "celex" : "62024TJ0463",
+            "groupByLogicalId" : [ {
+              "id" : "T/0463/24/00000000RD/01/P/01-3522116",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "HTML" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "",
+            "affairJurisdiction" : "Tribunal",
+            "affairJurisdictionCode" : "T",
+            "routing" : "T/0463/24/00000000RD/01/P/01",
+            "ecli" : "ECLI:EU:T:2026:583"
+          },
+          "highlightFields" : { },
+          "innerHits" : { },
+          "routing" : "T/0463/24/00000000RD/01/P/01",
+          "matchedQueries" : [ ]
+        }, {
+          "index" : "index-affair@30-06-2026",
+          "id" : "T/0463/24/00000000RD/01/P/01-3207316",
+          "score" : 10.583267,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "T/0463/24/00000000RD/01/P/01-3207316",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_291791",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+            "idPublished" : "T-463/24",
+            "docType" : "Requête (JO)",
+            "docTypeCode" : "REQ_COMM",
+            "docDate" : "2024-10-11",
+            "docFormats" : [ "HTML" ],
+            "contentLength" : 0,
+            "contentML" : [ {
+              "en" : "Action brought on 5 September 2024 – Demblon v Parliament (Case T-463/24) Language of the case: French Parties Applicant: Stéphanie Christiane Demblon (Rochefort, Belgium) (represented by: A. Champetier and S. Rodrigues, lawyers) Defendant: European Parliament Form of order sought The applicant claims that the Court should: declare the present action admissible and well founded; annul the contested decision; order the defendant to pay symbolic damages for the non-material loss suffered in an amount of one euro; order the defendant to pay all the costs. Pleas in law and main arguments In support of the action against the decision of the European Parliament of 24 April 2024 by which the European Parliament decided that, from the date of the decision and for a period of five years, the applicant would be denied access to the Parliament’s premises, the applicant relies on four pleas in law. First plea in law, alleging infringement of Article 7 of the Rules on access to the European Parliament and of Article 5(4) and (5) of the Rules governing security and safety in the European Parliament (‘the SAFE Rules’), 1 in view of the lack of competence of the author of the contested decision. Second plea in law, alleging infringement of Article 5(1) of the SAFE Rules, in conjunction with Articles 11 (freedom of expression and information), 12 (freedom of assembly) and 41 (right to good administration) of the Charter of Fundamental Rights of the European Union. Third plea in law, alleging infringement of Article 41(2)(c) of the Charter of Fundamental Rights of the European Union and of Article 296 TFEU. Fourth plea in law, alleging failure to observe the principle of proportionality. ____________ 1 Rules governing security and safety in the European Parliament, Decision of the Bureau of the Parliament of 15 January 2018 (OJ 2018/C 79/04)."
+            } ],
+            "docNoPart" : 1,
+            "celex" : "",
+            "groupByLogicalId" : [ {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207483",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "BG",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207183",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "PL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207334",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "HU",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207448",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "DA",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207148",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "RO",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207316",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "IT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207408",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "ES",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207380",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "GA",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207124",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "SK",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207126",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "SL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207443",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "CS",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207431",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "DE",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207410",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "ET",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207388",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "FI",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207389",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207253",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "LV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207254",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "LT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207103",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "SV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207413",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "EN",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207403",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "EL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207238",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "MT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207232",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "NL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207336",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "HR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0463/24/00000000RD/01/P/01-3207172",
+              "idProcedure" : "T/0463/24/00000000RD/01/P/01",
+              "docLang" : "PT",
+              "formats" : [ "HTML" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "",
+            "affairJurisdiction" : "Tribunal",
+            "affairJurisdictionCode" : "T",
+            "routing" : "T/0463/24/00000000RD/01/P/01",
+            "ecli" : ""
+          },
+          "highlightFields" : {
+            "contentML.en.exact" : [ "Action brought on 5 September 2024 – Demblon v Parliament (Case <em class='highlight'>T-463/24</em>) Language of the case: French Parties Applicant: Stéphanie Christiane Demblon (Rochefort, Belgium) (represented by: A. Champetier and S. Rodrigues, lawyers) Defendant: European Parliament Form of order sought The applicant claims that the Court should: declare the present action admissible and well founded; annul the contested decision; order the defendant to pay symbolic damages for the non-material loss suffered in an amount of one euro; order the defendant to pay all the costs. Pleas in law and main arguments In support of the action against the decision of the European Parliament of 24 April 2024 by which the European Parliament decided that, from the date of the decision and for a period of five years, the applicant would be denied access to the Parliament’s premises, the applicant relies on four pleas in law." ]
+          },
+          "innerHits" : { },
+          "routing" : "T/0463/24/00000000RD/01/P/01",
+          "matchedQueries" : [ ]
+        } ],
+        "empty" : false
+      }
+    },
+    "matchedQueries" : [ ]
+  } ],
+  "aggregatesMap" : {
+    "facet_bucket" : [ {
+      "name" : "procTypesWithoutResults",
+      "aggregateCountValues" : [ ]
+    }, {
+      "name" : "jurisdiction",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "T"
+      } ]
+    }, {
+      "name" : "affairState",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "ENC"
+      } ]
+    }, {
+      "name" : "matCode",
+      "aggregateCountValues" : [ ]
+    }, {
+      "name" : "procType",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "P"
+      } ]
+    } ]
+  }
+}

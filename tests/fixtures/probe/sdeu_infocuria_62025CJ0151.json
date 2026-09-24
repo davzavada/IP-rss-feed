@@ -1,0 +1,672 @@
+{
+  "totalHits" : 1,
+  "maxScore" : 20.907032,
+  "maxScoreOthersDocuments" : 0.0,
+  "totalHitsRelation" : "EQUAL_TO",
+  "totalHitsOthersDocs" : 0,
+  "searchHits" : [ {
+    "index" : "index-affair@30-06-2026",
+    "id" : "C/0151/25/00000000RP/01/P/01",
+    "score" : 20.907032,
+    "sortValues" : [ 20.907032, 1740009600000 ],
+    "content" : {
+      "id" : "C/0151/25/00000000RP/01/P/01",
+      "affId" : "C/0151/25/00000000RP/01",
+      "publishedId" : "C-151/25",
+      "publishedAffId" : "C-151/25",
+      "procedureId" : "C/0151/25/00000000RP/01/P/01",
+      "jurisdiction" : "Cour de justice",
+      "jurisdictionCode" : "C",
+      "order" : 151,
+      "suiteNumber" : 1,
+      "procType" : "P",
+      "procNumber" : 1,
+      "usualNameML" : [ {
+        "el" : "Viaudret"
+      }, {
+        "nl" : "Viaudret"
+      }, {
+        "pt" : "Viaudret"
+      }, {
+        "ro" : "Viaudret"
+      }, {
+        "fi" : "Viaudret"
+      }, {
+        "sk" : "Viaudret"
+      }, {
+        "mt" : "Viaudret"
+      }, {
+        "hu" : "Viaudret"
+      }, {
+        "fr" : "Viaudret"
+      }, {
+        "et" : "Viaudret"
+      }, {
+        "en" : "Viaudret"
+      }, {
+        "sv" : "Viaudret"
+      }, {
+        "pl" : "Viaudret"
+      }, {
+        "sl" : "Viaudret"
+      }, {
+        "da" : "Viaudret"
+      }, {
+        "it" : "Viaudret"
+      }, {
+        "lt" : "Viaudret"
+      }, {
+        "lv" : "Viaudret"
+      }, {
+        "cs" : "Viaudret"
+      }, {
+        "bg" : "Viaudret"
+      }, {
+        "hr" : "Viaudret"
+      }, {
+        "es" : "Viaudret"
+      }, {
+        "de" : "Viaudret"
+      } ],
+      "introductionDate" : "2025-02-20",
+      "affairState" : "Affaire pendante",
+      "affairStateCode" : "ENC",
+      "procState" : "CLOTPUB",
+      "joinExist" : 0,
+      "pilot" : 0,
+      "joinAffairs" : [ ],
+      "pourvoiAffIds" : [ ],
+      "originPourvoiIds" : [ ],
+      "reExamenAffIds" : [ ],
+      "originReExamanIds" : [ ],
+      "transfertAffIds" : [ ],
+      "originTransfertIds" : [ ],
+      "oppObsFag" : 0,
+      "contentLength" : 0,
+      "docNoPart" : 0
+    },
+    "highlightFields" : {
+      "publishedId.keyword" : [ "<em class='highlight'>C-151/25</em>" ]
+    },
+    "innerHits" : {
+      "document" : {
+        "totalHits" : 5,
+        "totalHitsRelation" : "EQUAL_TO",
+        "maxScore" : 10.634396,
+        "searchHits" : [ {
+          "index" : "index-affair@30-06-2026",
+          "id" : "C/0151/25/00000000RP/01/P/01-3276181",
+          "score" : 10.634396,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "C/0151/25/00000000RP/01/P/01-3276181",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_297893",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+            "idPublished" : "C-151/25",
+            "docType" : "Demande de décision préjudicielle",
+            "docTypeCode" : "DDP",
+            "docDate" : "2025-02-20",
+            "docFormats" : [ "PDF" ],
+            "contentLength" : 0,
+            "contentML" : [ {
+              "en" : "  \n \n  \nSummary C-151/25 – 1 \nCase C-151/25 [Viaudret] i \nSummary of the request for a preliminary ruling pursuant to Article 98(1) of \nthe Rules of Procedure of the Court of Justice \nDate lodged: \n20 February 2025 \nReferring court: \nConseil d’État (Belgium) \nDate of the decision to refer: \n12 February 2025 \nApplicant: \nF.B. \nDefendant: \nRégion wallonne \nInterveners: \nSociété anonyme PARC ÉOLIEN DE LEUZE-EN-HAINAUT \nSociété anonyme E-NOSVENTS \nSociété anonyme ELECTRABEL \nSubject matter of the main dispute \nThis administrative dispute concerns a decision to extend a construction and \noperation permit, taken without a prior public consultation. \nSubject matter of the main proceedings \nThe applicant in the main proceedings requests the annulment of a decision by a \ntechnical official on 2 April 2020 extending the validity of the single permit \ngranted to the limited company Parc éolien de Leuze-en-Hainaut (PELZ) for the \n \ni The name of this case is a fictitious name. It does not correspond to the real name of any party to the proceedings. \nEN \nSUMMARY OF THE REQUEST FOR A PRELIMINARY RULING – CASE C-151/25 – 1 \n \n2  \nconstruction and operation of a wind farm comprising ten wind turbines in Leuze-\nen-Hainaut (Belgium) (‘the contested decision’). \nThe wind farm had been granted an initial permit on 28 August 2009, which was \ncancelled on 16 April 2014 by the Conseil d’État (Council of State, Belgium). A \nnew permit, granted on 8 September 2014 after further consultation, was in turn \ncancelled on 25 January 2017. After further examination, a permit was granted on \n6 June 2017 for a period of twenty years from 28 August 2009. The application \nfor annulment made against this permit was dismissed by a decision of the \nCouncil of State on 29 March 2022. \nThe contested decision extended the duration of that latter permit, delaying its \nexpiry date to 28 August 2039. \nThe companies Parc éolien de Leuze-en-Hainaut (PELZ), eNosVents and \nElectrabel were admitted as interveners to the proceedings as the assignees of the \ndecision. \nSubject matter and legal basis of the request \nThe Council of State asks the Court how Article 6(1) and (10) and points 20 and \n22 of Annex I to the Convention on access to information, public participation in \ndecision-making and access to justice in environmental matters, signed in Aarhus \non 25 June 1998 (Aarhus Convention) should be interpreted.  \nQuestion referred for a preliminary ruling \nIn accordance with the applicant’s request, the Council of State refers the \nfollowing question to the Court for a preliminary ruling:  \n‘In a legal system in which the operation of an activity referred to in Annex I to \nthe Aarhus Convention requires an operation permit granted for a maximum \nperiod of 20 years, \n– must Article 6(1) and (10) and points 20 and 22 of Annex I to the Aarhus \nConvention be interpreted as meaning that a decision to extend by 10 years the \noperation of the activity initially authorised for 20 years must be subject to a \npublic participation phase? \n– must Article 6(1) and (10) of the Aarhus Convention be interpreted as \nmeaning that a legal system in which the procedure for extending the operation of \nthe activity by 10 years never involves a public participation phase is not \ncompatible with that article?’ \nVIAUDRET \n \n3 \nProvisions of European Union law relied on \nAarhus Convention \nArticle 1 of the Aarhus Convention states that: \n‘Objective \nIn order to contribute to the protection of the right of every person of present and \nfuture generations to live in an environment adequate to his or her health and well-\nbeing, each Party shall guarantee the rights of access to information, public \nparticipation in decision-making, and access to justice in environmental matters in \naccordance with the provisions of this Convention.’ \nArticle 6 of the Aarhus Convention states, inter alia, the following: \n‘1. Each Party: \n(a) Shall apply the provisions of this article with respect to decisions on whether \nto permit proposed activities listed in Annex I; \n(b) Shall, in accordance with its national law, also apply the provisions of this \narticle to decisions on proposed activities not listed in annex I which may have a \nsignificant effect on the environment. To this end, Parties shall determine whether \nsuch a proposed activity is subject to these provisions; and \n[…] \n10. Each Party shall ensure that, when a public authority reconsiders or updates \nthe operating conditions for an activity referred to in paragraph 1, the provisions \nof paragraphs 2 to 9 of this article are applied mutatis mutandis, and where \nappropriate.’ \nAnnex I to that convention, entitled ‘LIST OF ACTIVITIES REFERRED TO IN \nARTICLE 6, PARAGRAPH 1(a)’, states, inter alia, the following: \n‘20. Any activity not covered by paragraphs 1 to 19 above where public \nparticipation is provided for under an environmental impact assessment procedure \nin accordance with national legislation. \n[…] \n22. Any change to or extension of activities, where such a change or extension in \nitself meets the criteria/thresholds set out in this annex, shall be subject to \nArticle 6, paragraph 1(a) of this Convention. Any other change or extension of \nactivities shall be subject to article 6, paragraph 1(b) of this Convention.’ \nSUMMARY OF THE REQUEST FOR A PRELIMINARY RULING – CASE C-151/25 – 1 \n \n4  \nProvisions of national law relied on \nDécret du 23 juin 2016 modifiant le Code de l’environnement, le Code de l’eau et \ndivers décrets en matière de déchets et de permis d’environnement (Decree of \n23 June 2016 amending the Environmental Code, the Water Code and various \ndecrees on waste and environmental permits; ‘the Decree of 23 June 2016’) \nPursuant to Article 89 of the Decree of 23 June 2016, the maximum duration of \nthe permit granted for a wind turbine is thirty years. \nArticle 109 of that decree provides that permits that were valid before 1 August \n2016 may be extended for a maximum of ten years. \nArrêté du Gouvernement wallon du 20 avril 2017 modifiant l’arrêté du \nGouvernement wallon du 4 juillet 2002 relatif à la procédure et à diverses \nmesures d’exécution du décret du 11 mars 1999 relatif au permis \nd’environnement et portant exécution des articles 108 et 109 du décret du 23 juin \n2016 modifiant le Code de l’environnement, le Code de l’eau et divers décrets en \nmatière de déchets et de permis d’environnement (Decision of the Walloon \nGovernment of 20 April 2017 amending the Decision of the Walloon Government \nof 4 July 2002 on the procedure and various measures implementing the Decree \nof 11 March 1999 on environmental permits and implementing Articles 108 and \n109 of the [Decree of 23 June 2016]; ‘the Decision of 20 April 2017’) \nThis decision does not provide for a new public participation procedure. \nThe arguments of the parties in the main proceedings \nApplication for annulment \n1 The applicant puts forward a plea alleging infringement of Article 6(10) of the \nAarhus Convention, of Articles 2, 50 and 97 of the décret du 11 mars 1999 relatif \nau permis d’environnement (Decree of 11 March 1999 on environmental permits; \n‘Decree of 11 March 1999’), of Article 109 of the Decree of 23 June 2016, of \nArticles D.50 and D.75 of Volume I of the Code de l’environnement \n(Environmental Code) and of Articles 2 and 3 of the loi du 29 juillet 1991 relative \nà la motivation formelle des actes administratifs (Law of 29 July 1991 concerning \nthe giving of formal reasoning for administrative acts; ‘Law of 29 July 1991’). \n2 He claims that the wind farm authorised in this case is a project that is \nautomatically subject to an environmental impact assessment, which entails a \npublic participation phase. He specifies that, having regard to Annex I to the \nAarhus Convention, this wind farm comes under the scope of application of \nArticle 6(1)(a) of that convention. \nVIAUDRET \n \n5 \n3 He maintains that the decision to change the operating conditions for such an \nactivity should be preceded by a public participation phase and that, due to the \nfailure to organise a public consultation, the contested decision is unlawful, as the \npublic consultation is a procedural requirement. \nThe response \n4 The defendant contends that, taking into account the definition of the concepts of \n‘project’ and ‘development consent’ in Article 1(2)(a) and (c), of Directive \n2011/92/EU of the European Parliament and of the Council of 13 December 2011 \non the assessment of the effects of certain public and private projects on the \nenvironment (OJ 2012 L 26, p. 1), the contested decision, which extends the \nvalidity of the environmental permit, is not a decision authorising a project. In \naddition, based on the case-law of the Court and works of legal commentary, it \nsubmits that ‘a decision authorising the continued operation of an activity that \ndoes not authorise any change or extension altering its physical reality does not \nconstitute consent’. \n5 The defendant’s view is that the contested decision is also not a decision renewing \nan environmental permit. It points out that Walloon law does not have a system \nfor renewing environmental permits. \n6 It also considers that the duration of the validity of the permit is not stated in the \nspecific conditions for operating an installation, which are established when the \npermit is issued. Its view is that ‘in the light of the Decree of 11 March 1999, the \nDecree of 23 June 2016 amending it and its implementing decision, the procedure \nfor extending the duration of validity is not linked with the establishment or \namendment of the operating conditions in order for the operator to receive an \nextension’. \n7 In addition, it claims that ‘deciding on an extension logically does not use the \nsame assessment criteria as those used to rule on a single permit application’. \nAccording to the defendant, granting or refusing an environmental permit is based \non criteria relating to compliance with the requirements of legislation and \nregulations, the objectives of the policy of classified establishments and the \ninterests of the operator, as well as the terms of the permit. It maintains, however, \nthat, ‘ensuring that environmental permits for one or more wind turbines continue \nto exist by extending them is in the general interest: the development of renewable \nenergy sources’, specifying that ‘alongside the general interest, businesses must \nalso be able to continue their development under viable technical and economic \nconditions.’ \n8 The defendant considers that the public participation process concerns \ndevelopment consent for a project, and not the extension of the operating period. \nReferring to Article 6(1) of the Aarhus Convention, it claims that the purpose of \nthe extension decision is not to give consent for an activity listed in Annex I to \nthat convention. \nSUMMARY OF THE REQUEST FOR A PRELIMINARY RULING – CASE C-151/25 – 1 \n \n6  \n9 It indicates that the view that the duration of the permit’s validity constitutes one \nof the operating conditions was used by the Council of State in its opinion \nNo 60.433/4 of 14 December 2016 on the preliminary draft decision that resulted \nin the Walloon Government’s Decision of 20 April 2017. \n10 It refers to the note to the Walloon Government for the second reading of the \ndraft, which explains why the decision does not provide for a public participation \nprocess. \n11 The defendant adds that the applicant does not indicate how the effects known at \nthe time the permit was granted for a period of twenty years ending on 28 August \n2029 are different from those that should be found for the period from the \nextension of the permit until 28 August 2039. It points out that the public was able \nto give its view on the draft and on any impact during the public consultation that \ntook place following the various appeals relating to the wind farm project. \nThe statement in intervention \n12 The interveners state that the decision to extend a single permit adopted under \nArticle 109 of the Decree of 23 June 2016 does not constitute consent or a project \nwithin the meaning of Directive 2011/92. They claim that the applicant does not, \ntherefore, have grounds to rely on the direct effect of the Aarhus Convention. \n13 Their view is that the extension of the duration of validity of a single permit under \nArticle 109(2) of the Decree of 23 June 2016 does not constitute an activity that \ncomes within the scope of application of Annex I to the Aarhus Convention. They \nconsider that neither this provision nor its implementation decision of 20 April \n2017 require the extension of the period of validity of wind farm permits granted \nbefore 1 August 2016 to be subject to an environmental impact assessment, which \nmeans that the application of Article 6(10) of the Aarhus Convention must be \nruled out. \nThe reply \n14 The applicant does not consider it relevant to invoke Directive 2011/92, since the \nplea that he puts forward in support of his action does not allege infringement of \nthat directive. \n15 He considers that the scope of application of that directive is more limited than \nthat of the Aarhus Convention, and that the concept of a ‘project’ within the \nmeaning of Article 1(2)(a) of that directive, as interpreted by the Court, refers to \nworks or interventions changing the physical aspect of the site, which excludes \nsimply renewing an existing operating permit. He clarifies that only Directive \n2011/92 associates the concept of a ‘project’ with ‘interventions in the natural \nsurroundings’ and that this is not the case for Council Directive 92/43/EEC of \n21 May 1992 on the conservation of natural habitats and of wild fauna and flora \n(OJ 1992 L 206, p. 7), the Espoo Convention of 25 February 1991 on \nVIAUDRET \n \n7 \nenvironmental impact assessment in a transboundary context (Espoo Convention) \nor the Aarhus Convention. Relying in particular on the findings of the Aarhus \nConvention Compliance Committee (‘the Aarhus Committee’) and on the \ndocuments of the United Nations Economic Commission for Europe, the applicant \nclaims that Article 6 of the Aarhus Convention applies to decisions to extend \noperating permits, without other interventions in the natural surroundings. \n16 The applicant points out that the plea he raises is based on Article 6(1) and (10) of \nthe Aarhus Convention and that it is not contested that consent for a wind farm \nfalls under the scope of application of Article 6(1)(a) of that convention, which \nmeans that Article 6(10) of that convention can be applied. He maintains that, \nwhen the decision-making process for an activity must include a public \nparticipation phase under Article 6(1)(a) of the Aarhus Convention, any procedure \nby which a public authority later re-examines or updates the terms under which \nthe activity is carried out should include such a phase. \n17 The applicant considers that the change in the operating period does constitute a \nchange to the conditions under which the activity concerned is carried out. The \ndetermination of the duration of the permit is, in his view, intrinsically linked to \nthe content of the decision on the application for the environmental permit or \nsingle permit. \n18 In his view, in addition, no legislation allows different assessment criteria to be \nused depending on whether the decision to be adopted is a decision to extend a \npermit or a decision to grant a permit.  \n19 The applicant does not consider it his responsibility to explain how the effects \nknown at the time the permit was granted for a period of twenty years ending on \n28 August 2029 are different from those that should be found for the period from \n28 August 2029 until 28 August 2039. He considers that, firstly, the defendant is \nthus waiving its power of assessment, and that secondly, the decision-making \ncriteria are not in any way limited to the effects of the project concerned, but also \nregard the admissibility of the extension of the duration of a single permit in the \nlight of the requirement to use the best techniques available. \nThe last submission by the applicant \n20 The applicant points out that the decision to extend the operation of an installation \ncan be analysed in two ways in the light of the Aarhus Convention: it can be \nregarded as a decision to grant operating rights within the meaning of Article 6(1) \nof that convention or as a decision to change an activity referred to in Annex I to \nthat convention. He claims that this change can also be understood as a consent \ndecision (for an extended duration) for an activity in Annex I covered by the first \nsentence of point 22 of the annex and to which Article 6(1)(a) of the Aarhus \nConvention applies, or, according to the conclusions and recommendations of the \nAarhus Committee, as a change to the operating conditions of an activity in \nAnnex I governed by Article 6(10) of that convention and to which the \nSUMMARY OF THE REQUEST FOR A PRELIMINARY RULING – CASE C-151/25 – 1 \n \n8  \narrangements for public participation laid down in paragraphs 2 to 9 of that \nArticle apply ‘mutatis mutandis, and where appropriate’. \n21 The applicant, invoking in this respect the interpretation made by the Aarhus \nCommittee of the terms ‘mutatis mutandis’ and ‘where appropriate’, states that, \nwhen reconsidering or updating the operating conditions of an activity in Annex I, \npublic participation is the principle, and the absence of public participation is the \nexception, since the burden of proof falls on the competent authority to prove that \nthe reconsideration or update is insignificant. He also points out that, according to \nthe Aarhus Committee, a legal system that does not provide for any opportunity \nfor the public to participate in such a procedure undermines the requirements of \nArticle 6(10) of the Aarhus Convention, and that particular attention should be \npaid to the decision to extend the operating permit, which is subject to Article 6 of \nthat convention, unless the change in the authorised duration is ‘minimal and \nwould clearly only have negligible or no effects on the environment.’ The Aarhus \nCommittee therefore refused to accept that a change from a fixed period to an \nindeterminate period, an extension of operations from 40 to 60 years or even an \nextension for more than two years had a minimal impact. \n22 The applicant notes that the conclusions and recommendations of the Aarhus \nCommittee do not constitute an interpretation arising from a court with the power \nto interpret the provisions of the Aarhus Convention. \n23 In his view, the case-law of the Court, whether it is based on Directive 2011/92 or \nDirective 2010/75/EU of the European Parliament and of the Council of \n24 November 2010 on industrial emissions (integrated pollution prevention and \ncontrol) (OJ 2010 L 334, p. 17), is not decisive as it does not recognise changes to \na project that do not alter the physical aspect of the site or the extension of the \ninstallation’s operating period as being a ‘project’ subject to the impact \nassessment rules. He also points out that Directive 2010/75 only provides for a \npublic participation phase in the context of a ‘substantial change’ to an activity. \n24 The applicant considers that extending operations for ten years, which is half the \nduration of the initial operation, is not minimal and therefore entails the \napplication of the public participation arrangements laid down in Article 6(2) to \n(9) of the Aarhus Convention. He adds that the continued operation of the ten-\nturbine wind farm would perpetuate the disadvantages associated with the \npresence and operation of the installation and that there is no need for him to give \nfurther details of those effects, it being an activity covered by Annex I to the \nAarhus Convention. It points out that the initial permit application resulted in \nseveral unfavourable opinions and decisions and that dismissal of the appeal \nbefore the Council of State against the permit at issue does not demonstrate its \nlegality or innocuousness. \n25 He concludes that there is no basis for the claim of inadmissibility, given that the \ncontested decision should have given rise to a public consultation, and therefore \nan announcement under Article D.29-22(2) of Volume I of the Environmental \nVIAUDRET \n \n9 \nCode, and that only making that announcement was able to set the time frame for \nbringing an action running. \n26 In the alternative, he asks the Council of State to make a request to the Court of \nJustice for a preliminary ruling on the interpretation of the relevant provisions of \nthe Aarhus Convention. \nThe last submission of the interveners \n27 The interveners claim that the plea raised by the applicant is inadmissible because \nthe extension at issue does not constitute an activity listed in Annex I to the \nAarhus Convention and that Article 6(10) of that convention cannot be \nacknowledged as having a direct effect when it concerns an activity not listed in \nthat annex. \n28 They recall the scope of point 20 of Annex I to the Aarhus Convention, which lists \nall the activities for which national legislation provides for an environmental \nimpact assessment (EIA) involving the public. They point out that neither \nArticle 109(2) of the Decree of 23 June nor the implementing decision of that \ndecree require submitting an extension of the validity period of permits for wind \nfarms authorised before 1 August 2016 to an environmental impact assessment, \nand deduce from this that this extension does not constitute an activity referred to \nin point 20 of Annex I to the Aarhus Convention. \n29 They recall in that regard the case-law of the Court based on Directive 2011/92, \nwhich does not recognise as a ‘project’ a change to a project that does not alter the \nphysical aspect of the site, as well as the case-law based on Directive 2010/75, \naccording to which the extension of an operating permit alone cannot constitute a \n‘substantial change’ to the installation requiring public participation. In their view, \nthat case-law precludes the extension at issue being regarded as an activity \ncovered by point 20 of Annex I to the Aarhus Convention. \n30 They consider that, as it is not covered by that annex, the extension at issue can \nonly be subject to the Aarhus Convention if it is likely to have a significant effect \non the environment. They point out that, in its report of 30 March 2020, the \nAarhus Committee compares the scheme for determining whether or not changes \nto an installation are substantial within the meaning of Directive 2010/75 with the \nscheme for determining activities subject to Article 6(1)(b) of the Aarhus \nConvention, and confirms the need for a prior decision by the competent authority \nas to the classification of the activity in terms of its potential effects on the \nenvironment, as no public participation is necessary if there are no such effects. \nThey infer from this that Article 6(10) of the Aarhus Convention cannot be \nconsidered to have a direct effect on activities not listed in Annex I thereto.  \n31 Supposing, however, that the extension at issue does constitute an activity covered \nby Annex I to the Aarhus Convention or must, in certain cases, give rise to a \npublic participation phase under that convention, the interveners point out, in the \nSUMMARY OF THE REQUEST FOR A PRELIMINARY RULING – CASE C-151/25 – 1 \n \n10  \nalternative, that it follows from the combined reading of points 47 to 49 and 98 of \nthe report of the Aarhus Committee of 30 March 2020, that the expression ‘where \nappropriate’ used in Article 6(10) of the Aarhus Convention gives the States \nparties a degree of discretion as to the need to organise public participation when \nthe operating conditions are changed for an activity covered by the convention, \nincluding an activity referred to in Annex I to that convention. \n32 The view of the interveners is that simply extending the operating period of the \nwind farm does not concern an environmental aspect of the activity and does not \nby its nature cause a significant change in its fundamental parameters, which \nmeans that, in accordance with the judgment of 2 June 2022, FCC Česká \nrepublika (C-43/21, EU:C:2022:425), public participation is not required. \nOpinion of the Council of State and reasoning in the reference for a \npreliminary ruling \n33 In its opinion of 14 December 2016 on the draft decision that resulted in the \ndecision of the Walloon Government of 20 April 2017, the legislation section of \nthe Council of State notes the following: \n‘… it does not appear that the term ‘where appropriate’, used [in Article 6(10) of \nthe Aarhus Convention], can be understood as leaving the Parties the free and \ncomplete choice as to whether or not to apply Article 6(2) to (9) when the \nhypothesis given in Article 6(10) arises. It should instead be understood as \nimposing a public participation procedure prior to the adoption of any decision \nreconsidering or updating the operating conditions for an activity referred to in \nAnnex I to the convention, or that is not listed but is considered to have a \npotentially significant effect on the environment.’ \nIt continues as follows: \n‘A decision to extend the period of validity of a permit granted for an activity \nreferred to in Annex I to the convention or that must be considered to have a \npotentially significant effect on the environment comes within the scope of \napplication of Article 6(10) of the convention: it changes the conditions under \nwhich the activity is carried out. \nTherefore, it must be subject to a public participation procedure in accordance \nwith the provisions of Article 6(2) to (9) of the convention.’ \n34 The Walloon Government did not follow this opinion and did not establish a new \npublic participation procedure prior to the decision to extend the period of validity \nof a permit for the operation of wind turbines. \n35 The note to the Walloon Government for the second reading of the draft decision \nexplains why the decision in question does not provide for a public participation \nprocess as follows: \nVIAUDRET \n \n11 \n‘In addition, it should be noted that the public participation process, including the \nenvironmental impact assessment conducted during the consultation procedure for \nthe permit application, does not take into account the potential duration for which \nthe permit may be granted. \nIndeed, the applicant makes their application, which is then the subject of a public \nparticipation process, including an environmental impact assessment, hoping to \nreceive a permit for the maximum possible duration. The material in the file is \ntherefore provided and set out for the public with that in mind. This means that \nduring the participation process, the public has already given its view on that \nmaterial, and even if there is the possibility of extending the duration, there has \nnot been any change in the operating conditions for the permit compared to the \ninitial conditions on which the public gave its view. \nOn these grounds, based on the fact that imposing an additional public \nparticipation procedure would cause discrimination, and the fact that the public \ngave its view on the initial project regardless of its duration, taking into account \nsolely its potential impact, over an indeterminate period, it is not appropriate to \nestablish a new public participation procedure for this process, the purpose of \nwhich is to resolve certain specific situations. \nIn addition, it should be pointed out that Article 109 establishes the possibility for \npermits for one or more wind turbines that were valid or under examination before \n1 August 2016 to apply for an extension of their duration in order to benefit from \nthe same legal rules as permit applications that were examined after 1 August \n2016. On the same reasons as those set out in relation to Article 108, there is no \nbasis for establishing a new public participation procedure. \nIn both cases, the conditions under which the activity is being carried out are not \naltered. The original conditions will remain in place identically for the duration of \nany extension that may be granted.’ \n36 The defendant therefore justifies not organising a public participation procedure \nby the fact that it is thereby avoiding creating discrimination, that the public has \nalready given its view on the initial project, regardless of its duration, and that the \noriginal conditions under which the activity is carried out have not changed. \n37 International legislation can be regarded as having a direct effect when it contains \nterms that show clear, precise obligations that do not require a subsequent act in \norder to be implemented and take effect. \nBy providing that, ‘when a public authority reconsiders or updates the operating \nconditions for an activity referred to in paragraph 1, the provisions of paragraphs 2 \nto 9 of this article are applied mutatis mutandis, and where appropriate’, \nArticle 6(10) of the Aarhus Convention objectively states the situations envisaged \nand the obligations imposed on the authorities. It does not leave any discretion to \nthe States when an activity referred to in Annex I to that convention is concerned. \nSUMMARY OF THE REQUEST FOR A PRELIMINARY RULING – CASE C-151/25 – 1 \n \n12  \n38 The plea alleging infringement of Article 6(10) of the Aarhus Convention is \nadmissible in so far as the characteristics of this provision result in a direct effect \non the national legal system, at least in relation to the activities referred to in \nAnnex I to that convention. \n39 With regard to the interpretation of the international legislation in question, the \napplicant and the interveners refer to the conclusions and recommendations of the \nAarhus Committee. This body is a consultative body and cannot therefore make a \nlegally binding decision. Those parties also refer to ‘The Aarhus Convention: An \nImplementation Guide’, which is also not legally binding but contains guidelines. \n40 In the present case, it is not contested that authorisation for the wind farm in \nquestion comes within the scope of application of Article 6(1)(a) of the Aarhus \nConvention, as it is referred to in point 20 of Annex I thereto as authorisation \nsubject to an impact assessment involving a public participation phase. \n41 The difficulty arises when it comes to legally characterising the decision to extend \nthe period of validity of the permit to operate the wind farm. This decision comes \nwithin the scope of application of Article 6(2) to (9) of the Aarhus Convention if it \ncan be characterised: \n– as authorisation for an activity covered by Annex I of the Aarhus \nConvention referred to in Article 6(1)(a) thereof, or even as a change \nto or extension of that activity as referred to in point 22 of that annex; \n– as authorisation for an activity not listed in Annex I to the Aarhus \nConvention, but which may have a significant effect on the \nenvironment, within the meaning of Article 6(1)(b) of that convention; \nor \n– as a decision reconsidering or updating the operating conditions for an \nactivity referred to in Article 6(1) of the Aarhus Convention, within the \nmeaning of Article 6(10) of that convention. \nThe Council of State therefore considers, like the applicant, that it is appropriate \nto apply to the Court by means of a request for a preliminary ruling, as the latter is \ncompetent to interpret the provisions of the Aarhus Convention in this respect \n(see, to that effect, judgment of 8 March 2011, Lesoochranárske zoskupenie, \nC-240/09, EU:C:2011:125, paragraphs 29 to 31). \n"
+            } ],
+            "docNoPart" : 1,
+            "celex" : "",
+            "groupByLogicalId" : [ {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276197",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "ES",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276211",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "BG",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276210",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "LT",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276196",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "ET",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276195",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "CS",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276182",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "HR",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276193",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "EN",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276184",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "HU",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276186",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "SK",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276201",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "PL",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276209",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "DE",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276204",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "NL",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276205",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "DA",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276206",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "RO",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276207",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "PT",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276208",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "FI",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276188",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "SL",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276189",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "SV",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276190",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "EL",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276181",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276192",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "IT",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276183",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "LV",
+              "formats" : [ "PDF" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "",
+            "affairJurisdiction" : "Cour de justice",
+            "affairJurisdictionCode" : "C",
+            "routing" : "C/0151/25/00000000RP/01/P/01",
+            "ecli" : ""
+          },
+          "highlightFields" : {
+            "contentML.en.exact" : [ "Summary <em class='highlight'>C-151/25</em> – 1 \nCase <em class='highlight'>C-151/25</em> [Viaudret] i \nSummary of the request for a preliminary ruling pursuant to Article 98(1) of \nthe Rules of Procedure of the Court of Justice \nDate lodged: \n20 February 2025 \nReferring court: \nConseil d’État (Belgium) \nDate of the decision to refer: \n12 February 2025 \nApplicant: \nF.B. \nDefendant: \nRégion wallonne \nInterveners: \nSociété anonyme PARC ÉOLIEN DE LEUZE-EN-HAINAUT \nSociété anonyme E-NOSVENTS \nSociété anonyme ELECTRABEL \nSubject matter of the main dispute \nThis administrative dispute concerns a decision to extend a construction and \noperation permit, taken without a prior public consultation. \nSubject matter of the main proceedings \nThe applicant in the main proceedings requests the annulment of a decision by a \ntechnical official on 2 April 2020 extending the validity of the single permit \ngranted to the limited company Parc éolien de Leuze-en-Hainaut (PELZ) for the \n \ni The name of this case is a fictitious name.", "SUMMARY OF THE REQUEST FOR A PRELIMINARY RULING – CASE <em class='highlight'>C-151/25</em> – 1 \n \n12  \n38 The plea alleging infringement of Article 6(10) of the Aarhus Convention is \nadmissible in so far as the characteristics of this provision result in a direct effect \non the national legal system, at least in relation to the activities referred to in \nAnnex I to that convention. \n39 With regard to the interpretation of the international legislation in question, the \napplicant and the interveners refer to the conclusions and recommendations of the \nAarhus Committee. This body is a consultative body and cannot therefore make a \nlegally binding decision." ]
+          },
+          "innerHits" : { },
+          "routing" : "C/0151/25/00000000RP/01/P/01",
+          "matchedQueries" : [ ]
+        }, {
+          "index" : "index-affair@30-06-2026",
+          "id" : "C/0151/25/00000000RP/01/P/01-3522292",
+          "score" : 10.634396,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "C/0151/25/00000000RP/01/P/01-3522292",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_327190",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+            "idPublished" : "C-151/25",
+            "docType" : "Arrêt",
+            "docTypeCode" : "ARRET",
+            "docDate" : "2026-09-24",
+            "docFormats" : [ "HTML" ],
+            "contentLength" : 0,
+            "docNoPart" : 1,
+            "celex" : "62025CJ0151",
+            "groupByLogicalId" : [ {
+              "id" : "C/0151/25/00000000RP/01/P/01-3522292",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "HTML" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "Convention d&apos;Aarhus sur l&apos;accès à l&apos;information, la participation du public au processus décisionnel et l&apos;accès à la justice en matière d&apos;environnement (25/06/1998), article 6, paragraphes 1 et 10, et points 20 et 22 de l&apos;annexe I",
+            "affairJurisdiction" : "Cour de justice",
+            "affairJurisdictionCode" : "C",
+            "routing" : "C/0151/25/00000000RP/01/P/01",
+            "ecli" : "ECLI:EU:C:2026:789"
+          },
+          "highlightFields" : { },
+          "innerHits" : { },
+          "routing" : "C/0151/25/00000000RP/01/P/01",
+          "matchedQueries" : [ ]
+        }, {
+          "index" : "index-affair@30-06-2026",
+          "id" : "C/0151/25/00000000RP/01/P/01-3522309",
+          "score" : 10.634396,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "C/0151/25/00000000RP/01/P/01-3522309",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_327200",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+            "idPublished" : "C-151/25",
+            "docType" : "Résumé",
+            "docTypeCode" : "RES",
+            "docDate" : "2026-09-24",
+            "docFormats" : [ "HTML" ],
+            "contentLength" : 0,
+            "docNoPart" : 1,
+            "celex" : "",
+            "groupByLogicalId" : [ {
+              "id" : "C/0151/25/00000000RP/01/P/01-3522309",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "HTML" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "",
+            "affairJurisdiction" : "Cour de justice",
+            "affairJurisdictionCode" : "C",
+            "routing" : "C/0151/25/00000000RP/01/P/01",
+            "ecli" : "ECLI:EU:C:2026:789"
+          },
+          "highlightFields" : { },
+          "innerHits" : { },
+          "routing" : "C/0151/25/00000000RP/01/P/01",
+          "matchedQueries" : [ ]
+        }, {
+          "index" : "index-affair@30-06-2026",
+          "id" : "C/0151/25/00000000RP/01/P/01-3400700",
+          "score" : 10.634396,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "C/0151/25/00000000RP/01/P/01-3400700",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_313742",
+            "jpLogicDocId" : "id_307279",
+            "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+            "idPublished" : "C-151/25",
+            "docType" : "Conclusions",
+            "docTypeCode" : "CONCL",
+            "docDate" : "2025-12-18",
+            "docFormats" : [ "HTML" ],
+            "contentLength" : 0,
+            "contentML" : [ {
+              "en" : "OPINION OF ADVOCATE GENERAL MEDINA delivered on 18 December 2025 (1) Case C‑151/25 [Viaudret (i)] F.B. v Région wallonne, joined parties: Parc éolien de Leuze-en-Hainaut SA, e-NosVents SA, Electrabel SA (Request for a preliminary ruling from the Conseil d’État (Council of State, Belgium)) ( Reference for a preliminary ruling – Aarhus Convention – Article 6 – Public participation – Article 6(1) – Paragraphs 20 and 22 of Annex I – Article 6(10) – Reconsideration or update of the operating conditions for an activity – Extension of the duration of a construction and operation permit for a wind farm – Obligation to make that extension subject to a public participation phase ) I. Introduction 1. The Aarhus Convention (2) has been famously praised as ‘the most ambitious venture in the field of environmental democracy under the auspices of the United Nations’. (3) In the Lucca Declaration, adopted at the First Meeting of the Parties to the Aarhus Convention, it is described as ‘a breakthrough in participatory democracy’. (4) 2. The Aarhus Convention stands on three pillars: access to information, public participation in decision-making and access to justice, each implementing one of three environmental procedural rights. (5) Among those three rights, the ‘most overtly democratic’ (6) is the right of the public to participate in environmental decision-making. That right contributes to one of the objectives of the Aarhus Convention, namely, as stated in its tenth recital, to further government accountability and transparency and to strengthen public support for decisions on the environment. (7) 3. The present case raises the issue of whether a decision to extend for 10 years an environmental permit for an activity which comes within the scope of Article 6(1)(a) of the Aarhus Convention requires a public participation phase and whether that article as a whole precludes national legislation which does not provide for public participation for such an extension. The case provides the Court with the opportunity to interpret Article 6(10) of the Aarhus Convention, according to which, the public participation requirements laid down in paragraphs 2 to 9 of Article 6 apply mutatis mutandis, and where appropriate, when a public authority reconsiders or updates the operating conditions for an activity referred to in paragraph 1. More particularly, it will address the issue of whether the extension of the duration of an activity which falls under Article 6(1)(a) must be regarded as a reconsideration or update of the operating conditions for the activity in question and therefore requires public participation as considered appropriate. II. Legal framework A. International law 4. Article 6 of the Aarhus Convention, entitled ‘Public participation in decisions on specific activities’, provides in paragraphs 1 and 10: ‘1. Each Party: (a) shall apply the provisions of this article with respect to decisions on whether to permit proposed activities listed in Annex I; (b) shall, in accordance with its national law, also apply the provisions of this article to decisions on proposed activities not listed in Annex I which may have a significant effect on the environment. To this end, Parties shall determine whether such a proposed activity is subject to these provisions; … … 10. Each Party shall ensure that, when a public authority reconsiders or updates the operating conditions for an activity referred to in paragraph 1, the provisions of paragraphs 2 to 9 of this article are applied mutatis mutandis, and where appropriate.’ 5. Annex I to the Aarhus Convention contains a list of activities referred to in Article 6(1)(a) thereof. Paragraphs 20 and 22 of that annex are worded as follows: ‘20. Any activity not covered by paragraphs 1 to 19 above where public participation is provided for under an environmental impact assessment procedure in accordance with national legislation. … 22. Any change to or extension of activities, where such a change or extension in itself meets the criteria/thresholds set out in this annex, shall be subject to Article 6(1)(a) of this Convention. Any other change or extension of activities shall be subject to Article 6(1)(b) of this Convention.’ B. European Union law 6. Article (2)(1) of Directive 2011/92/EU of the European Parliament and of the Council of 13 December 2011 on the assessment of the effects of certain public and private projects on the environment (OJ 2012 L 26, p. 1) (‘the EIA Directive’) provides: ‘Member States shall adopt all measures necessary to ensure that, before consent is given, projects likely to have significant effects on the environment by virtue, inter alia, of their nature, size or location are made subject to a requirement for development consent and an assessment with regard to their effects. Those projects are defined in Article 4.’ 7. Article 4(1) and (2) of the EIA Directive states: ‘1. Subject to Article 2(4), projects listed in Annex I shall be made subject to an assessment in accordance with Articles 5 to 10. 2. Subject to Article 2(4), for projects listed in Annex II, Member States shall determine whether the project shall be made subject to an assessment in accordance with Articles 5 to 10. … …’ 8. Annex II to the EIA Directive lists the projects referred to in Article 4(2) thereof. Title 3 of that annex, entitled ‘Energy industry’, includes point (i): ‘Installations for the harnessing of wind power for energy production (wind farms);’. C. National law 9. By complementing the first sentence of article 50(1) of the décret relatif au permis d’environnement (Decree on Environmental Permits) of 11 March 1999 (Moniteur belge of 8 June 1999, p. 21114) (‘Decree on Environmental Permits), which provides for a maximum duration of 20 years for an environmental permit, Article 89 of the décret du 23 juin 2016 modifiant le Code de l’Environnement, le Code de l’Eau et divers décrets en matière de déchets et de permis d’environnement (Decree of 23 June 2016 amending the Environmental Code, the Water Code and various decrees on waste and environmental permits) (‘the Decree of 23 June 2016’) states that the maximum duration of a permit for a wind turbine is to be 30 years. 10. According to the first paragraph of Article 109 of the Decree of 23 June 2016, the modification with regard to the 30-year maximum duration of an environmental permit for a wind turbine applies to applications made after the entry into force of that decree, namely after 1 August 2016. With regard to permits that were valid before 1 August 2016, it follows from the second paragraph of Article 109 of that decree that they may be extended once for a maximum period of 10 years. 11. Those provisions are implemented by the arrêté du Gouvernement wallon du 20 avril 2017 modifiant l’arrêté du Gouvernement wallon du 4 juillet 2002 relatif à la procédure et à diverses mesures d’exécution du décret du 11 mars 1999 relatif au permis d’environnement et portant exécution des articles 108 et 109 du décret du 23 juin 2016 modifiant le Code de l’Environnement, le Code de l’Eau et divers décrets en matière de déchets et de permis d’environnement (Decision of the Walloon Government of 20 April 2017 amending the Decision of the Walloon Government of 4 July 2002 on the procedure and on various measures implementing the [Decree on environmental permits] and implementing Articles 108 and 109 of the [Decree of 23 June 2016]) (‘the Decision of 20 April 2017’). 12. The provisions referred to in points 10 and 11 above do not entail public participation in the relevant decision-making process. III. Facts, national proceedings and the questions referred 13. On 28 August 2009, the limited liability company Parc éolien de Leuze-en-Hainaut (PELZ) SA was granted an initial single permit (8) for the construction and operation of a wind farm comprising 10 wind turbines in the commune of Leuze-en-Hainaut (Belgium) (‘the wind farm’). On the basis of that permit, the wind farm was constructed and put into operation. The permit was annulled on 16 April 2014 by the Conseil d’État (Council of State, Belgium) and, after further examination, a new permit was issued on 8 September 2014, which in turn was annulled on 25 January 2017. Finally, after re-examination, a new permit was granted on 6 June 2017 for a period of 20 years, from 28 August 2009 to 28 August 2029. 14. On 2 April 2020, at the request of one of the wind farm operators, a technical officer issued a decision extending the duration of the permit of 6 June 2017 (in respect of the part relating to the environmental permit) for 10 years, that is, until 28 August 2039 (‘the contested decision’). 15. F.B., the applicant in the main proceedings and a resident of the area where the wind farm is located, seeks annulment of the contested decision before the referring court. 16. The defendant in the main proceedings is the Région wallonne (Walloon region). The companies Parc éolien de Leuze-en-Hainaut, e-NosVents SA and Electrabel SA were admitted as interveners in the proceedings. 17. In his application, F.B. raises a plea alleging, inter alia, infringement of Article 6(10) of the Aarhus Convention, claiming that the authorised wind farm falls within the scope of Article 6(1)(a) of that convention. He submits that the decision to change its operating conditions should have been preceded by a public participation phase. The failure to have such a procedure renders the contested decision unlawful. 18. The defendant argues that, in the light of the definition of the terms ‘project’ and ‘development consent’ in Article 1(2)(a) and (c) of the EIA Directive, respectively, the contested decision, which merely extends the duration of the environmental permit, is not a decision authorising a project. 19. The interveners in the main proceedings submit that the extension of the duration of a single permit under the second paragraph of Article 109 of the Decree of 23 June 2016 does not fall within the scope of Annex I to the Aarhus Convention. They argue that neither that provision nor its implementation by the Decision of 20 April 2017 requires that the extension of the duration of wind farm permits granted before 1 August 2016 be subject to an environmental impact assessment (EIA). That circumstance precludes the application of Article 6(10) of the Aarhus Convention. 20. The applicant responded that the EIA Directive is irrelevant because he is not alleging an infringement of that directive. He argued that where the decision-making process for an activity includes a public participation phase under Article 6(1)(a) of the Aarhus Convention, any procedure by which a public authority subsequently reconsiders or updates the operating conditions under which the activity is carried out should include such a phase. By failing to require a public participation phase in the decision-making process, the administration failed to exercise its discretion. 21. The applicant also rejects the plea raised by the defendant and the interveners that his action was lodged out of time, submitting that the contested decision should have given rise to a public consultation, and therefore to notification under Article D.29-22(2) of Book I of the Code de l’Environnement (Environmental Code) for the purposes of determining the time limit for bringing an action. 22. The referring court notes that the Decision of 20 April 2017 was preceded by an opinion of the legislative section of the Conseil d’État (Council of State). According to that opinion, a decision to extend the period of a permit granted for an activity listed in Annex I to the Aarhus Convention – or that is considered to have a potentially significant effect on the environment – changes the conditions under which the activity is carried out and falls within the scope of Article 6(10) of that convention. That opinion therefore concluded that the decision in question must be subject to public participation in accordance with Article 6(2) to (9) of the Aarhus Convention. 23. However, the Walloon Government did not follow that opinion. The absence of a requirement to conduct public participation was, in its view, justified, essentially by the need to avoid discrimination between the old permits (granted for a maximum of 20 years) and the new permits (granted for a maximum of 30 years). Another justification was that the public had already expressed its views on the project, regardless of its duration, and that the conditions under which the activity is carried out had not changed. 24. The referring court points out that it is not disputed that the permit for the wind farm at issue falls within the scope of Article 6(1)(a) of the Aarhus Convention, read together with paragraph 20 of Annex I thereto. The question that arises is rather whether the contested decision, that is, to extend that permit, also requires a public participation phase. 25. That would be the case if the decision is to extend a permit that can be classified as any one of the following: – a permit for an activity covered by Article 6(1)(a) of the Aarhus Convention and paragraph 20 of Annex I thereto, or even a change to or extension of that activity under paragraph 22 of that annex; – a permit for an activity not listed in Annex I to the Aarhus Convention but which may have a significant effect on the environment within the meaning of Article 6(1)(b) of that convention; or – a decision reconsidering or updating the operating conditions for an activity falling within the scope of Article 6(1) of the Aarhus Convention within the meaning of Article 6(10) thereof. 26. In those circumstances, the Conseil d’État (Council of State) decided to stay the proceedings and to refer the following questions to the Court of Justice for a preliminary ruling: ‘In a legal system in which the [exercise] of an activity referred to in Annex I to the Aarhus Convention requires an operation permit granted for a maximum period of 20 years[:] (1) [M]ust Article 6(1) and (10) [of,] and [paragraphs] 20 and 22 of Annex I to[,] the Aarhus Convention be interpreted as meaning that a decision to extend by 10 years the [exercise] of the activity initially authorised for 20 years must be subject to a public participation phase? (2) [M]ust Article 6(1) and (10) of the Aarhus Convention be interpreted as meaning that a legal system in which the procedure for extending the exercise of the activity by 10 years never involves a public participation phase is not compatible with that article?’ 27. F.B., Electrabel, the Belgian Government and the European Commission submitted written observations. IV. Assessment 28. By its questions, the referring court asks, in essence, whether either Article 6(1) of the Aarhus Convention, read together with paragraphs 20 and 22 of Annex I thereto, or Article 6(10) of that convention must be interpreted as meaning that a public participation phase is required before the adoption of a decision to extend by 10 years the operation of a wind farm initially authorised for 20 years. It also asks whether those provisions preclude domestic legislation in which the decision-making process for carrying on the activity in question by 10 years does not involve a public participation phase. 29. The referring court’s questions are raised in the context of an action for annulment of the contested decision brought by F.B., a resident in the area where the wind farm is located and who is criticising the failure to have a public participation phase. 30. As a preliminary point, it should be borne in mind that the provisions of the Aarhus Convention – signed by the Community and subsequently approved by Council Decision 2005/370/EC (9) – form an integral part of the EU legal order. (10) Therefore, as the Commission observes in its written submissions, the European Union and the Member States must comply with the obligations stemming from the Aarhus Convention and, more specifically, with the obligations arising from Article 6 thereof on public participation. 31. It is clear from the order for reference that the initial permit for the activity at issue (the wind farm) requires the organisation of public participation. This activity falls within the scope of Article 6(1)(a) of the Aarhus Convention, read together with paragraph 20 of Annex I to that convention. Indeed, that paragraph 20 extends the public participation requirements laid down in Article 6 of the Aarhus Convention to any activity for which national legislation provides for public participation under an EIA procedure, which is the case for the activity at issue in the main proceedings. (11) 32. That activity, for which an EIA is required under national law, falls within the scope of the EIA Directive. (12) Indeed, point (i) of Title 3 of Annex II of the EIA Directive lists ‘installations for the harnessing of wind power for energy production (wind farms)’ among the projects referred to in Article 4(2) of that directive, according to which Member States are to determine whether the project is to be made subject to an EIA. 33. The contested decision extends the duration of the original permit for an activity for which public participation is required (under the EIA Directive and the Aarhus Convention, which forms an integral part of the EU legal order). 34. However, the applicable legislation, on the basis of which the contested decision extending the duration of the activity at issue was adopted, does not provide for a public participation phase as a necessary condition for the relevant decision-making process. 35. The question is therefore whether there should have been public participation for the extension of the duration of the activity at issue in accordance with the Aarhus Convention. (13) 36. The referring court considers three legal provisions that may apply to the renewal of a permit for an activity authorised under Article 6(1)(a) of the Aarhus Convention. The first is that provision, read together with paragraph 20 or paragraph 22 of Annex I to the Convention; the second is Article 6(1)(b) of the Convention; and the third is Article 6(10) thereof. Each of those provisions determines whether and under what conditions there is a requirement for a public participation phase. 37. Two legal classifications can be applied to a decision to extend the duration of an authorised activity: a new decision to permit a proposed activity pursuant, on the one hand, to Article 6(1)(a) of the Aarhus Convention, read together with paragraph 20 of Annex I thereto or with paragraph 22 of that annex (proposed activity listed in Annex I), or, on the other hand, to Article 6(1)(b) of the Convention (proposed activity not listed in Annex I but having a significant effect on the environment). Under the second classification, that decision is a reconsideration or update of the operating conditions for an activity under Article 6(10) of that convention. A. The renewal of the permit as a decision to permit a proposed activity (Article 6(1)(a) and (b)) 38. Article 6 of the Aarhus Convention sets out the right of public participation in the decision-making process for specific activities. 39. Points (a) and (b) of Article 6(1) together set out the criteria that determine which decisions must be subject to public participation. The two points are linked by the fact that they take account of the potentially significant impact of proposed activities on the environment. (14) Point (a) refers to the activities listed in Annex I, which are presumed to have a potentially significant effect on the environment, and point (b) provides that the public participation provisions also apply, in accordance with domestic legislation, to decisions on proposed activities not listed in Annex I, which may nevertheless have a significant effect on the environment. 40. With regard to the possible application of that provision, F.B. submits, in essence, that the renewal of the permit for the activity at issue must be considered to be a new decision in relation to that activity. Since the original permit was granted under Article 6(1)(a) of the Aarhus Convention, read together with paragraph 20 of Annex I thereto, (15) the renewal of that permit, he argues, should be treated as a new decision and should thus give rise to public participation. Alternatively, the renewal could be regarded as an extension of or a change to that activity under paragraph 22 of that annex or as a decision in relation to an activity not listed therein but which may have a significant effect on the environment. 1. The renewal of the permit as a decision to permit a proposed activity listed in Annex I (Article 6(1)(a) and paragraph 20 of Annex I) 41. Public participation applies, according to Article 6(1)(a) of the Aarhus Convention, to decisions on whether to permit the proposed activities listed in Annex I thereto. (16) 42. As already explained above, (17) paragraph 20 of Annex I to the Aarhus Convention extends Article 6 to any activity not covered by paragraphs 1 to 19 of that annex where, in accordance with national legislation, public participation is provided for under an EIA procedure. (18) 43. The determination of whether an activity falls within the ambit of paragraph 20 of Annex I to the Convention depends on three elements, namely (i) public participation; (ii) an EIA in the context of which public participation takes place; and (iii) domestic legislation providing for an EIA. (19) 44. Accordingly, if national legislation does not require an EIA for the granting or renewal of a permit, paragraph 20 of Annex I alone cannot establish such a requirement. 45. The foregoing is confirmed by the findings of the Aarhus Convention Compliance Committee (the ‘Compliance Committee’) from which it follows that the decision to extend the duration of an activity does not come within the scope of paragraph 20 of Annex I to the Aarhus Convention if an EIA procedure is not required under national law for that renewal. (20) 46. In the case in the main proceedings, it is clear that national legislation provides for an EIA for the granting of the initial permit for a wind farm. However, as the Commission essentially observed in its written submissions, the renewal of that permit does not appear to require such an assessment. 47. Therefore, the renewal of the permit at issue cannot be considered to fall within the scope of Article 6(1)(a) of the Aarhus Convention, read together with paragraph 20 of Annex I thereto. 2. The renewal of the permit as a change to or extension of an activity (Article 6(1)(a) and paragraph 22 of Annex I) 48. Paragraph 22 of Annex I to the Aarhus Convention broadens the scope of Article 6 of the Aarhus Convention to include any change to or extension of activities, where such a change or extension in itself meets the criteria or thresholds set out in that annex. Any other change or extension of activities not meeting the criteria or thresholds set out in the annex is subject to Article 6(1)(b) of the Convention. 49. The issue is whether the term ‘change or extension’ is to be understood as encompassing a mere extension of the duration of an activity. 50. Since the first sentence of paragraph 22 of Annex I to the Aarhus Convention is substantially similar to point 24 of Annex I to the EIA Directive, (21) it must be pointed out that, according to the Court’s case-law, ‘it is evident from the wording and general scheme of that provision that it applies to any change or extension to a project, which by virtue of, inter alia, its nature or scale, presents risks that are similar, in terms of their effects on the environment, to those posed by the project itself’. (22) 51. The Court ruled that national measures which had the effect of extending, by a significant period of 10 years, the industrial production of electricity of nuclear power stations which had until that time been limited to 40 years, combined with major renovation works necessary due to the ageing of those power stations and the obligation to bring them into line with safety standards, were ‘of a scale that is comparable, in terms of the risk of environmental effects, to that when those power stations were first put into service’. (23) 52. On the basis of that case-law, and as the Commission essentially claimed in its written submissions, it can be argued that, in the absence of any works and physical changes, the mere extension of the duration of a permit for an activity already existing, such as that in the main proceedings, does not qualify as a change to or extension of an activity. 53. The Court’s judgment in FCC Česká republika, (24)decided in the context of Directive 2010/75, which implements public participation requirements in the field of industrial emissions, corroborates that interpretation. In the context of that directive, the term ‘extension’ forms part of the definition of ‘substantial change’ set out in Article 3(9) of Directive 2010/75. The grant of a permit for any ‘substantial change’ is subject to public participation pursuant to Article 24(1)(b) of Directive 2010/75. ‘Substantial change’ is defined as a ‘change in the nature or functioning, or an extension, of an installation … which may have significant negative effects on human health or the environment’ (emphasis added). 54. The Court has ruled that ‘the mere extension of the duration of waste disposal at a landfill does not, in itself, change the perimeter of the installation or the storage capacity as provided for in the initial permit, and does not therefore constitute an “extension” of the installation’. (25) 55. The Aarhus Convention Implementation Guide – which, according to the settled case-law of the Court, may be regarded as an explanatory document, capable of being taken into consideration if appropriate among other relevant material for the purpose of interpreting that convention, even if the observations in the guide have no binding force and do not have the normative effect of the provisions of the Convention (26) – confirms the interpretation according to which paragraph 22 of Annex I to the Convention concerns only physical changes or extensions to activities. (27) 56. In the case of subsequent administrative procedures, where they relate to proposed activities covered by Article 6(1) of the Aarhus Convention, it is not that provision that applies, together with paragraph 22 of Annex I thereto, but Article 6(10) thereof. (28) 57. Therefore, the mere renewal of the permit in the case in the main proceedings, which does not involve any physical change or extension to the activity at issue, cannot be qualified as a new decision. However, as I will explain in Part B below, that is so without prejudice to the public’s right to participate on the basis of another provision, namely Article 6(10) of the Aarhus Convention, which governs reconsiderations and updates of activities. 3. The renewal of the permit as a decision relating to an activity having a significant effect on the environment (Article 6(1)(b) of the Aarhus Convention) 58. Article 6(1)(b) of the Aarhus Convention states that the provisions of Article 6 of the Convention concerning public participation in decisions on specific activities are to apply to decisions on proposed activities not listed in Annex I to that convention which may have a significant effect on the environment. 59. It follows from the wording of Article 6(1)(b) that the Parties to the Aarhus Convention determine whether the public participation requirements apply where the proposed activity may have a significant effect on the environment. (29) 60. With regard to the extension in the duration of the activity at issue, as the Commission pointed out in essence in its written submissions, there is insufficient evidence and information in the file before the Court to determine whether that extension can be considered to be a proposed activity which may have a significant effect on the environment. 61. It must also be pointed out that paragraph 22 of Annex I to the Aarhus Convention broadens the scope of Article 6(1)(b) thereof to any change to or extension of activities where such a change or extension does not in itself meet the criteria or thresholds set out in that annex. 62. However, it follows from the analysis in the previous section (30) that the change to or extension of the activity under that paragraph 22 is to be understood as a physical change or extension, so that the mere renewal of a permit – an extension of its duration with no physical alterations or work involved – is not classified as such a change or extension. 63. Under those circumstances, the renewal of the permit at issue does not appear to be a decision falling within the scope of Article 6(1)(b) of the Aarhus Convention, read together with paragraph 22 of Annex I thereto. B. The renewal of the permit as a reconsideration or update of the operating conditions for an activity (Article 6(10)) 64. Article 6(10) of the Aarhus Convention requires the application of the public participation requirements ‘mutatis mutandis, and where appropriate’, when a public authority ‘reconsiders or updates the operating conditions’ for an activity that was permitted under paragraph 1 of that provision. 1. The requirements for the application of Article 6(10) 65. Article 6(10) ‘supplements’ (31) paragraph 22 of Annex I to the Aarhus Convention. While that paragraph 22 concerns physical changes to or extensions of activities, Article 6(10) extends public participation requirements to reconsiderations or updates of the operating conditions for an activity, which includes any administrative reconsideration or update which does not necessarily involve a physical change to the activity. (32) 66. The application of Article 6(10) is triggered by the reconsideration or update of the operating conditions for an activity. As the term itself indicates, ‘operating conditions’ are all those conditions that are required so that an activity can carry on. (33) The term ‘reconsiders or updates’ is broad enough to cover the environmental decision-making subsequent to the initial permit and which brings about a change to the operating conditions. 67. By its broad formulation, Article 6(10) captures the life cycle of the activity, in so far as matters falling within the scope of the Aarhus Convention are concerned. That provision helps to ensure the ongoing achievement of the objective of public participation, which, as stated in the ninth recital of the Aarhus Convention, is to give the public the opportunity to express its concerns and enable public authorities to take due account of those concerns. 68. The foregoing is borne out by the nature of certain activities listed in Annex I to the Aarhus Convention which involve the use of natural resources. As explained in legal doctrine, the relevant permits in most countries ‘are granted only for a limited period of time (usually up to 10 years) and thereafter need to be renewed and/or updated’ due to ‘the fact that the amount of a resource to be used and conditions for this use heavily depend on the state of the natural resource in question’. (34) 69. Article 6(10) of that convention provides for the application of paragraphs 2 to 9 of that article on public participation ‘mutatis mutandis, and where appropriate’. The reference to the ‘mutatis mutandis’ application of the public participation requirements in Article 6(10) simply means ‘with the necessary changes’. (35) With regard to the appropriateness of public participation, although the expression ‘where appropriate’ implies ‘some discretion’, it ‘does not imply complete discretion’. (36) Rather, that clause ‘introduces an objective criterion to be seen in the context of the goals of the Convention’. (37) 70. The appropriateness of public participation, in the event of a reconsideration or update of the operating conditions of the activity, relates to the significance of the effects of that reconsideration or update on the environment. Indeed, when determining whether a proposed activity should be permitted, account is taken of the potentially significant impact on the environment, (38) which remains relevant at the subsequent stages of environmental decision-making. 71. The foregoing is confirmed by the findings of the Compliance Committee, which has emphasised that, when determining whether it will be ‘appropriate’, and thus required, to have a public participation phase, when a public authority reconsiders or updates the operating conditions of an activity subject to Article 6, ‘some kind of significance test’ applies. (39) 72. The expression ‘where appropriate’ must be applied in such a manner as to preserve the meaningful effect of Article 6(10) of the Aarhus Convention. The requirement to have a public participation phase would be deprived of all useful effect if the domestic legislative framework does not envisage any possibility of assessing the appropriateness of having a public participation phase in the event of the reconsideration or update of activities. 73. That was precisely the issue in the case which gave rise to the findings of the Compliance Committee concerning the European Union in relation to Directive 2010/75. (40) The Compliance Committee found that the European Union, in its capacity as a Party to the Aarhus Convention, failed to comply with Article 6(10) thereof ‘by putting in place a legal framework that does not envisage any possibility for public participation in relation to reconsiderations and updates’ under a number of provisions of that directive, as applicable at the time of those findings. (41) 74. It is important to note that in order to comply with the Aarhus Convention, Directive 2010/75 was amended to specify that ‘the members of the public concerned should be given early and effective opportunities to participate in the granting or updating of permit conditions set by the competent authority also when permit conditions are reconsidered …’. (42) 2. The duration of an activity as an operating condition and the renewal of the permit in the case in the main proceedings 75. Article 6(10) of the Aarhus Convention applies in the event of reconsideration or update of the operating conditions of an activity, that is, all the conditions necessary for the ongoing operation of the activity. (43) The permitted duration of an activity is necessary for the ongoing operation of that activity and forms part of those operating conditions. (44) 76. Therefore, a decision which prolongs the duration of an activity modifies its operating conditions and in turn triggers the application of Article 6(10) of the Convention. 77. I cannot agree with the Belgian Government’s submission that Article 6(10) does not apply because there was no modification of the original conditions under which the activity at issue was exercised; that absence does not alter the fact that the initial, total duration of 20 years was extended by half, bringing about a change in the initial operating conditions. (45) 78. With regard to the appropriateness of organising public participation, as already pointed out, the authorities enjoy a margin of discretion which must, however, be exercised in accordance with the objectives of the Aarhus Convention. (46) 79. As regards renewal of the permit, there is no ‘arithmetic’ threshold, fixed by that convention, above which it is appropriate to conduct public participation. That determination has to be made on the basis of substantive criteria. The appropriateness of public participation in the event of the renewal of a permit and the assessment as to the significant effect on the environment may depend, inter alia, on the nature of the activity renewed and on the length of the extension. It is also important to take into account whether, in previous public participation phases, the public was informed of possible future extensions of the permit and therefore had the opportunity to comment on the associated effects on the environment. (47) 80. In any event, a significant extension of the initially permitted duration of an activity strongly indicates that it is appropriate to have a public participation phase. The foregoing is in line with the objective of public participation of providing the public with the opportunity to express its concerns. (48) 81. The Compliance Committee confirms that interpretation. It has repeatedly found that ‘except in cases where a change to the permitted duration is for a minimal time and obviously would have insignificant or no effects on the environment, it is appropriate for extensions of duration to be subject to the provisions of [A]rticle 6’ (emphasis added). (49) The extension of an activity’s duration by five years was found by the Compliance Committee to be ‘by no means minimal’, and therefore to require public participation. (50) 82. In the case in the main proceedings, the permit was extended by 10 years. A 10-year extension of an activity initially authorised for 20 years is an extension by half of its initial duration and cannot be considered to be ‘minimal’. Moreover, at the time the permit was extended (2020), more than 10 years had passed since the activity at issue was first put into operation (2009). 83. Those factors constitute a strong indication that public participation is appropriate. Ultimately, however, it is for the national court to appraise those circumstances. 84. The other issue raised in the order for reference is the absence in the national legislative framework of any possibility of public participation in relation to the renewal of a permit for a given activity. 85. It follows from that order that one of the reasons why the national legislature made no provision for a public participation phase was that, when an operator applies for a permit, there is public participation, including an EIA, regardless of the duration of the permit granted. Another reason was to avoid discriminating between the new permits for wind farms (granted for a maximum duration of 30 years) and the permits granted under the previous regime (granted for a maximum duration of 20 years). 86. I am not persuaded that those reasons justify the legislature excluding the renewal of permits from the scope of Article 6(10) of the Aarhus Convention. First, the application of that provision does not depend on whether the initial permit was preceded by public participation. The provision applies in all situations in which the operating conditions of an activity are ‘reconsidered or updated’ and requires the authority concerned to assess whether public participation is ‘appropriate’. Although the expression ‘where appropriate’ leaves a margin of discretion to public authorities, exercise of that discretion cannot be waived completely merely because public participation took place in the past on matters unrelated to the reconsideration or update of the operating conditions. Were that not to be the case, Article 6(10) would be deprived of meaningful effect. Indeed, all activities for which public participation has taken place (on matters other than the reconsideration or update of the operating conditions for the activity) would be automatically exempted. 87. With regard to the activity at issue in the main proceedings, there have been successive stages of judicial cancellation and re-examination of the permit since the wind farm was put in operation. (51) It is not clear from the file before the Court whether public participation took place at each of those stages. In any event, there is no evidence that the public had the opportunity to express its views specifically on the matter of a possible significant extension of the duration of the permit granted. (52) 88. Second, as regards the argument that public participation leads to discrimination between the holders of old permits and those of new permits, I consider it important to recall that the application of Article 6(10) of the Aarhus Convention is not optional. Where the conditions for it to apply are met, the right to public participation must be safeguarded. (53) The appropriateness of public participation for a given activity must be determined in line with the goals of the Convention. (54) Public participation is not a mere box-ticking exercise or a simple formality; it is a means by which to achieve the environmental democracy goals pursued by that convention. (55) 89. Moreover, Article 6(10) of the Aarhus Convention applies to all operators irrespective of the point in time at which their activity is authorised. Accordingly, for those operators that were granted permits for 30 years, there might also be a public participation phase in further environmental decision-making when there is a change of or update to the operating conditions of their activity. 90. It must also be clarified that the fact that an EIA was carried out when the permit was granted is not in itself decisive for the application of Article 6(10). That article, and the right to public participation in general under the Aarhus Convention, is not synonymous with an EIA. (56) As stated in the Aarhus Convention Implementation Guide, the scope of the second pillar of the Aarhus Convention is ‘different and rather broader than the scope of environmental assessment’. (57) That guide gives as an example precisely the reconsideration or update of the operating conditions of specific activities, which in many countries, unless related to a major change in the activity, is not necessarily subject to an EIA procedure but rather to environmental permitting. (58) 91. For those reasons, I consider that Article 6(10) precludes domestic legislation which does not include the obligation of the public authority to consider the appropriateness of public participation for the 10-year renewal of permits for the operation of wind farms. 92. The case-law of the Court referred to above, (59) on the extension of the duration of the operation of a landfill in the context of Directive 2010/75, cannot lead to a different interpretation. In the judgment in FCC Česká republika, the Court ruled that the mere extension of the duration of waste disposal at a landfill, without any change in the maximum approved dimensions of the installation or its total capacity, does not constitute a ‘substantial change’ within the meaning of Article 3(9) of that directive. As a consequence, the operator of the landfill could not be obliged to apply for a new permit. The Court’s reasoning was based on the term ‘substantial change’, which requires, inter alia, an ‘extension’ of an installation. 93. However, the scope of Article 6(10) of the Aarhus Convention does not depend on a ‘substantial change’ or on any physical extension of an activity; it applies in the event of a reconsideration or update of the operating conditions of an activity. As already pointed out above, (60) while paragraph 22 of Annex I to the Aarhus Convention, applies to physical changes to an activity, Article 6(10) applies to subsequent administrative procedures. (61) 94. In addition, Directive 2010/75 has been amended (62) since the judgment in FCC Česká republikain order to require public participation when a permit is updated at the request of the operator in order to extend the duration of the operation of a waste disposal landfill which reaches the thresholds set out in point 5.4 of Annex I to that directive. 95. Therefore, the judgment in FCC Česká republikashould not be understood, in my view, as an obstacle to the interpretation according to which the renewal for 10 years of the permit for a wind farm is an update of the operating conditions of that activity, which in turn triggers the application of Article 6(10) of the Aarhus Convention. 96. In view of all of the above, Article 6(10) of the Aarhus Convention must be interpreted as requiring public authorities to assess the appropriateness of having a public participation phase in the event of the extension for 10 years of a permit for a wind farm initially authorised for 20 years, and as precluding a legal system in which the procedure for renewal of a permit for such an activity does not include the obligation of the public authority to consider the appropriateness of there being a public participation phase. V. Conclusion 97. In the light of the foregoing, I propose that the Court answer the questions referred by the Conseil d’État (Council of State, Belgium) as follows: Article 6(10) of the Convention on Access to Information, Public Participation in Decision-making and Access to Justice in Environmental Matters must be interpreted as requiring public authorities to assess the appropriateness of having a public participation phase in the event of the extension for 10 years of a permit for a wind farm initially authorised for 20 years, and as precluding a legal system in which the procedure for renewal of a permit for such an activity does not include the obligation of the public authority to consider the appropriateness of there being a public participation phase. 1 Original language: English. i The name of the present case is a fictitious name. It does not correspond to the real name of any party to the proceedings. 2 Convention on Access to Information, Public Participation in Decision-making and Access to Justice in Environmental Matters, concluded at Aarhus (Denmark) on 25 June 1998 and approved on behalf of the Community by Council Decision 2005/370/EC of 17 February 2005 (OJ 2005 L 124, p. 1) (‘the Aarhus Convention’). 3 United Nations Economic Commission for Europe, The Aarhus Convention: An Implementation Guide, 2nd ed., 2014 (‘Aarhus Convention Implementation Guide’), pp. 3 and 253. 4 Lucca Declaration, 21-23 October 2002, Lucca, Italy. 5 Aarhus Convention Implementation Guide, p. 19. 6 Barritt, E., The Foundations of the Aarhus Convention: Environmental Democracy, Rights and Stewardship, Oxford, Hart Publishing, 2020, p. 28. 7 See, in general, Bándi, G. (ed.), Environmental Democracy and Law, Europa Law Publishing, Groningen/Amsterdam, 2014. 8 In the domestic legislation, a ‘single permit’ (permis unique) designates a permit which relates to a ‘mixed project’ (projet mixte) requiring both an environmental permit and a planning permit. See the definition of both terms under Article 1(11) and (12), respectively, and Article 81 of the Decree on Environmental Permits. See also the definition of a ‘permis unique’ available at https://permis-environnement.spw.wallonie.be/home/glossaire.html#permis-unique. 9 Council Decision of 17 February 2005 on the conclusion, on behalf of the European Community, of the Convention on access to information, public participation in decision-making and access to justice in environmental matters (OJ 2005 L 124, p. 1). 10 See, to that effect, judgments of 8 March 2011, Lesoochranárske zoskupenie (C‑240/09, EU:C:2011:125, paragraph 30), and of 8 November 2022, Deutsche Umwelthilfe (Approval of motor vehicles) (C‑873/19, EU:C:2022:857, paragraph 48). 11 In his written observations, F.B. states that wind farms with a total capacity of 3 MW are ‘class 1’ installations whose authorisation requires an EIA and a public enquiry. 12 The EIA Directive implements public participation requirements under the Aarhus Convention with respect to the projects falling within the scope of that directive. See recital 5 of Directive 2003/35/EC of the European Parliament and of the Council of 26 May 2003 providing for public participation in respect of the drawing up of certain plans and programmes relating to the environment and amending with regard to public participation and access to justice Council Directives 85/337/EEC and 96/61/EC (OJ 2003 L 156, p. 17), which states that ‘Community law should be properly aligned with [the Aarhus Convention] with a view to its ratification by the Community.’ 13 The applicant criticises only the absence of public participation; there is no plea in relation to the organisation of an EIA according to the EIA Directive. 14 Aarhus Convention Implementation Guide, p. 131. 15 See above, point 31 of the present Opinion. 16 Aarhus Convention Implementation Guide, p. 126. According to that guide (at p. 131), the term ‘proposed activities’ is broad enough to cover both the terms ‘project’ in the EIA Directive and ‘installation’ used in Directive 2010/75/EU of the European Parliament and of the Council of 24 November 2010 on industrial emissions (integrated pollution prevention and control) (OJ 2010 L 334, p. 17). 17 Point 31 of the present Opinion. 18 See above, point 31 of the present Opinion, and Aarhus Convention Implementation Guide, p. 131. 19 ACCC/C/2008/35 (Georgia), Findings and Recommendations, 18 June 2010, paragraph 43. 20 ACCC/C/2013/107 (Ireland), Findings and Recommendations, 19 August 2019, paragraph 75. 21 Point 24 of Annex I to the EIA Directive includes, among the projects referred to in Article 4(1) of that directive, ‘any change to or extension of projects listed in [Annex I] where such a change or extension in itself meets the thresholds, if any, set out in this [a]nnex.’ 22 Judgment of 29 July 2019, Inter-Environnement Wallonie and Bond Beter Leefmilieu Vlaanderen (C‑411/17, EU:C:2019:622, paragraph 78). 23 Judgment of 29 July 2019, Inter-Environnement Wallonie and Bond Beter Leefmilieu Vlaanderen (C‑411/17, EU:C:2019:622, paragraph 79). The Court found that the measures at issue in that case, together with the upgrading work inextricably linked thereto, constituted in themselves a ‘project’ within the meaning of Article 1(2)(a) of the EIA Directive (see paragraphs 63 to 71, 90 and 94 of that judgment). 24 Judgment of 2 June 2022 (C‑43/21, ‘the judgment in FCC Česká republika’, EU:C:2022:425). 25 The judgment in FCC Česká republika, paragraph 36. 26 Judgment of 8 November 2022, Deutsche Umwelthilfe (Approval of motor vehicles) (C‑873/19, EU:C:2022:857, paragraph 55). 27 Aarhus Convention Implementation Guide, pp. 132 and 158. 28 Ibid. 29 Aarhus Convention Implementation Guide, p. 132. 30 Point 57 of the present Opinion. 31 Aarhus Convention Implementation Guide, p. 158. 32 If it involves a physical change, the relevant change already falls under paragraph 22 of Annex I. See point 55 of the present Opinion. 33 In ACCC/C/2014/122 (Spain), Findings and Recommendations, 17 December 2020, paragraph 73, the Compliance Committee held that the ‘operating conditions’ of an activity include ‘all the conditions in the permit and not just the technical or functioning conditions affecting the production process’. In accordance with those findings and recommendations, the Compliance Committee held, in paragraph 17 of its Advice to the Kingdom of the Netherlands concerning the implementation of paragraph 3(a) of decision VII/8m, of 28 November 2023, that ‘all conditions relating to the permit, whether or not they are contained in the permit itself, are to be considered as operating conditions’. 34 Jendrośka, J., ‘Public participation under Article 6 of the Aarhus Convention’, in Bándi, G., footnote 7, op. cit., p. 136. See also Aarhus Convention Implementation Guide, p. 158. 35 Aarhus Convention Implementation Guide, p. 159. 36 ACCC/C/2009/41 (Slovakia), Findings and Recommendations, 17 December 2010, paragraph 55. 37 Ibid., paragraph 56. 38 See point 39 of the present Opinion. 39 ACCC/C/2014/121 (European Union), Findings and Recommendations, 30 March 2020, paragraph 99. According to those same findings, the significance test concerns whether the reconsideration or update is ‘“capable of” significantly changing the activity’s basic parameters or will “address” significant environmental aspects of the activity’ (paragraph 104, with reference to the ACCC/C/2006/17 (European Community), Findings and Recommendations, 2 May 2008). 40 ACCC/C/2014/121 (European Union), footnote 39, op.cit. 41 Ibid., paragraphs 109 and 120. 42 See recital 37 of Directive (EU) 2024/1785 of the European Parliament and of the Council of 24 April 2024 amending Directive 2010/75 and Council Directive 1999/31/EC on the landfill of waste (OJ L, 2024/1785). 43 See above, point 66 of the present Opinion. 44 ACCC/C/2014/104 (Netherlands), Findings and Recommendations, 18 June 2017, paragraph 65, pointing out that the permitted duration of an activity is ‘clearly an operating condition’. According to the Aarhus Convention Implementation Guide ‘in many countries environmental licences are granted only for a limited period of time (usually up to 10 years) and thereafter need to be renewed and/or updated’ (p. 158). 45 See, to that effect, ACCC/C/2013/107 (Ireland), Findings and Recommendations, 19 August 2019, paragraph 84. 46 See point 67 of the present Opinion. 47 See, to that effect, Opinion of Advocate General Kokott in FCC Česká republika (C‑43/21, EU:C:2022:64, point 67). 48 In the case of wind farms, the public might wish to express its views, for instance, on matters such as the level of noise nuisance or visual nuisance (stroboscopic effect), see, in general, Vandenput, T. and Vermer, D., ‘Éoliennes’, in Delnoy, M. and Born, C.-Hu., Actualités choisies en droit de l’urbanisme et de l’environnement, Limal, Anthemis, Liège, 2021, pp. 218-249, at p. 228. 49 ACCC/C/2014/104 (Netherlands), footnote 44, op.cit., paragraph 71; ACCC/C/2013/107 (Ireland), footnote 45, op.cit., paragraph 83; ACCC/C/2016/143 (Czechia), Findings and Recommendations, 26 July 2021, paragraph 106; and ACCC/C/2014/121 (European Union), footnote 39, op.cit., paragraph 102. 50 ACCC/C/2013/107 (Ireland), footnote 45, op.cit., paragraph 84. 51 See point 13 of the present Opinion. 52 See, to that effect, ACCC/2013/107 (Ireland), footnote 45, op.cit., paragraph 85. 53 See Article 1 of the Aarhus Convention, according to which ‘each Party shall guarantee the rights of … public participation in decision-making … in accordance with the provisions of this Convention’ (emphasis added). 54 See ACCC/C/2014/121 (European Union), footnote 39, op.cit., paragraph 97, and ACCC/C/2016/143 (Czechia), footnote 49, op.cit., paragraph 103. 55 See my introductory observations in the present Opinion. 56 As the Compliance Committee held, ‘the Convention does not make the EIA a mandatory part of public participation; it only requires that when public participation is provided for under an EIA procedure in accordance with national legislation ([paragraph 20 of Annex] I to the Convention), such public participation must apply the provisions of [A]rticle 6’ (ACCC/C/2008/24 (Spain), Findings and Recommendations, 8 February 2011, paragraph 82). 57 Aarhus Convention Implementation Guide, p. 122. 58 Ibid. 59 Point 53 of the present Opinion. 60 Point 65 of the present Opinion. 61 Aarhus Convention Implementation Guide, p. 158. 62 See point 74 of the present Opinion."
+            } ],
+            "docNoPart" : 1,
+            "celex" : "62025CC0151",
+            "groupByLogicalId" : [ {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389977",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "LV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389975",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "MT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389974",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "EL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389976",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "HR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389978",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "EN",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389979",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "PT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389973",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "LT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389970",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389971",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "IT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389972",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "ES",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3400700",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "HU",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3430370",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "DE",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389968",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "CS",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389969",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "ET",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389965",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "RO",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389963",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "PL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389966",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "SK",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389967",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "SL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389964",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "NL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3470780",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "FI",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389980",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "SV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389981",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "BG",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3404886",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "DA",
+              "formats" : [ "HTML" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "Convention d&apos;Aarhus sur l&apos;accès à l&apos;information, la participation du public au processus décisionnel et l&apos;accès à la justice en matière d&apos;environnement (25/06/1998), article 6, paragraphes 1 et 10, et points 20 et 22 de l&apos;annexe I",
+            "affairJurisdiction" : "Cour de justice",
+            "affairJurisdictionCode" : "C",
+            "routing" : "C/0151/25/00000000RP/01/P/01",
+            "ecli" : "ECLI:EU:C:2025:1011"
+          },
+          "highlightFields" : { },
+          "innerHits" : { },
+          "routing" : "C/0151/25/00000000RP/01/P/01",
+          "matchedQueries" : [ ]
+        }, {
+          "index" : "index-affair@30-06-2026",
+          "id" : "C/0151/25/00000000RP/01/P/01-3293369",
+          "score" : 10.634396,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "C/0151/25/00000000RP/01/P/01-3293369",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_299176",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+            "idPublished" : "C-151/25",
+            "docType" : "Demande (JO)",
+            "docTypeCode" : "DDP_COMM",
+            "docDate" : "2025-04-25",
+            "docFormats" : [ "HTML" ],
+            "contentLength" : 0,
+            "contentML" : [ {
+              "en" : "Request for a preliminary ruling from the Conseil d’État (Belgium) lodged on 20 February 2025 – F.B. v Région wallonne (Case C-151/25, Viaudret) 1 Language of the case: French Referring court Conseil d’État Parties to the main proceedings Applicant: F.B. Defendant: Région wallonne Interveners: Parc éolien de Leuze-en-Hainaut SA, e-NosVents SA, Electrabel SA Questions referred In a legal system in which the operation of an activity referred to in Annex I to the Aarhus Convention 1 requires an operation permit granted for a maximum period of 20 years, – must Article 6(1) and (10) [of,] and points 20 and 22 of Annex I to[,] the Aarhus Convention be interpreted as meaning that a decision to extend by 10 years the operation of the activity initially authorised for 20 years must be subject to a public participation phase? – must Article 6(1) and (10) of the Aarhus Convention be interpreted as meaning that a legal system in which the procedure for extending the operation of the activity by 10 years never involves a public participation phase is not compatible with that article? ____________ 1 The name of the present case is a fictitious name. It does not correspond to the real name of any party to the proceedings. 1 Convention on access to information, public participation in decision‐making and access to justice in environmental matters (Aarhus Convention) (OJ 2005 L 124, p. 4)."
+            } ],
+            "docNoPart" : 1,
+            "celex" : "",
+            "groupByLogicalId" : [ {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293819",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "PT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293234",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "HU",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293369",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "BG",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293232",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "IT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293293",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "FI",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293761",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "SL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293762",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "SK",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293744",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "SV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293329",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "DE",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293184",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "LT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293186",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "LV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293809",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "PL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293286",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "GA",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293283",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293301",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "ET",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293302",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "ES",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293262",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "HR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293313",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "EL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293315",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "EN",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293765",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "RO",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293158",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "MT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293322",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "DA",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293337",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "CS",
+              "formats" : [ "HTML" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "",
+            "affairJurisdiction" : "Cour de justice",
+            "affairJurisdictionCode" : "C",
+            "routing" : "C/0151/25/00000000RP/01/P/01",
+            "ecli" : ""
+          },
+          "highlightFields" : {
+            "contentML.en.exact" : [ "Request for a preliminary ruling from the Conseil d’État (Belgium) lodged on 20 February 2025 – F.B. v Région wallonne (Case <em class='highlight'>C-151/25</em>, Viaudret) 1 Language of the case: French Referring court Conseil d’État Parties to the main proceedings Applicant: F.B. Defendant: Région wallonne Interveners: Parc éolien de Leuze-en-Hainaut SA, e-NosVents SA, Electrabel SA Questions referred In a legal system in which the operation of an activity referred to in Annex I to the Aarhus Convention 1 requires an operation permit granted for a maximum period of 20 years, – must Article 6(1) and (10) [of,] and points 20 and 22 of Annex I to[,] the Aarhus Convention be interpreted as meaning that a decision to extend by 10 years the operation of the activity initially authorised for 20 years must be subject to a public participation phase?" ]
+          },
+          "innerHits" : { },
+          "routing" : "C/0151/25/00000000RP/01/P/01",
+          "matchedQueries" : [ ]
+        } ],
+        "empty" : false
+      }
+    },
+    "matchedQueries" : [ ]
+  } ],
+  "aggregatesMap" : {
+    "facet_bucket" : [ {
+      "name" : "procTypesWithoutResults",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "PREJ"
+      } ]
+    }, {
+      "name" : "jurisdiction",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "C"
+      } ]
+    }, {
+      "name" : "affairState",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "ENC"
+      } ]
+    }, {
+      "name" : "matCode",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "ENVI",
+        "childrenAggregate" : {
+          "name" : "matCodeTwo",
+          "aggregateCountValues" : [ ]
+        }
+      } ]
+    }, {
+      "name" : "procType",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "P"
+      } ]
+    } ]
+  }
+}
