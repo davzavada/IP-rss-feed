@@ -323,59 +323,39 @@ def cislo_veci(celex):
 
 
 def sonda_sdeu(s, den):
-    """SDEU přes Cellar: seznam judikatury za 14 dní (i s typy), všechny
-    vlastnosti několika děl a jejich českých vyjádření, obsah v několika
-    jazycích a formátech, EUR-Lex a InfoCuria podle čísla věci."""
-    od = den - timedelta(days=14)
-    r = _sparql(s, "sdeu_sparql", f"""SELECT DISTINCT ?celex ?datum ?typ WHERE {{
-  ?dilo cdm:resource_legal_id_celex ?celex ; cdm:work_date_document ?datum .
-  OPTIONAL {{ ?dilo cdm:work_has_resource-type ?typ }}
-  FILTER(?datum >= "{od.isoformat()}"^^xsd:date) FILTER(STRSTARTS(STR(?celex), "6"))
-}} ORDER BY DESC(?datum) LIMIT 400""")
-    celexy = []
+    """InfoCuria: lazy chunky aplikace (pokročilé hledání, záložky), varianty
+    datových filtrů bez hledaného slova, hledání podle čísla věci česky
+    a SPARQL Cellaru s typy dokumentů."""
+    hlav = {"Content-Type": "application/json", "Accept": "application/json, text/plain, */*",
+            "Origin": CURIA_APP, "Referer": CURIA_APP + "/"}
+    r = s.stahni("sdeu_aplikace", CURIA_APP + "/")
     if r is not None and r.ok:
-        try:
-            celexy = [b["celex"]["value"] for b in r.json()["results"]["bindings"]]
-        except (ValueError, KeyError):
-            pass
-    # Příklady: rozsudek SD, rozsudek Tribunálu, stanovisko GA, usnesení,
-    # oznámení o nové věci (CN).
-    priklady = []
-    for druh in ("CJ", "TJ", "CC", "CO", "TO", "CN"):
-        c = next((c for c in celexy if c[5:7] == druh), None)
-        if c:
-            priklady.append(c)
-    print(f"  příklady: {priklady}")
-    for celex in priklady:
-        _sparql(s, f"sdeu_dilo_{celex}", f"""SELECT ?p ?o WHERE {{
-  ?w cdm:resource_legal_id_celex "{celex}"^^xsd:string . ?w ?p ?o }} LIMIT 500""")
-        _sparql(s, f"sdeu_vyraz_{celex}", f"""SELECT ?e ?p ?o WHERE {{
-  ?w cdm:resource_legal_id_celex "{celex}"^^xsd:string .
-  ?e cdm:expression_belongs_to_work ?w ; cdm:expression_uses_language
-     <http://publications.europa.eu/resource/authority/language/CES> . ?e ?p ?o }} LIMIT 500""")
-    for celex in priklady[:3]:
-        for jazyk in ("ces", "eng", "fra"):
-            s.stahni(f"sdeu_cellar_{celex}_{jazyk}", CELLAR_CELEX.format(celex=celex),
-                     headers={"Accept": "application/xhtml+xml, text/html;q=0.9",
-                              "Accept-Language": jazyk})
-        s.stahni(f"sdeu_cellar_{celex}_pdf", CELLAR_CELEX.format(celex=celex),
-                 headers={"Accept": "application/pdf", "Accept-Language": "eng"})
-        s.stahni(f"sdeu_eurlex_{celex}", EURLEX_HTML.format(jazyk="CS", celex=celex))
-        vec = cislo_veci(celex)
-        if vec:
-            telo = dict(_curia_dotaz(f'"{vec}"', "SCORE", "affair"), publishedId=vec,
-                        isSearchExact=True)
-            s.stahni(f"sdeu_infocuria_{celex}", CURIA_HLEDANI, metoda="POST", json=telo,
-                     headers={"Content-Type": "application/json",
-                              "Accept": "application/json, text/plain, */*",
-                              "Origin": CURIA_APP, "Referer": CURIA_APP + "/"})
-    # Nové předběžné otázky: oznámení (CN) za 60 dní, s číslem věci a zemí.
-    _sparql(s, "sdeu_sparql_cn", f"""SELECT DISTINCT ?celex ?datum ?typ WHERE {{
-  ?dilo cdm:resource_legal_id_celex ?celex ; cdm:work_date_document ?datum .
-  OPTIONAL {{ ?dilo cdm:work_has_resource-type ?typ }}
-  FILTER(?datum >= "{(den - timedelta(days=60)).isoformat()}"^^xsd:date)
-  FILTER(REGEX(STR(?celex), "^6[0-9]{{4}}CN"))
-}} ORDER BY DESC(?datum) LIMIT 200""")
+        for src in re.findall(r'src="(main[^"]*\.js)"', r.text)[:1]:
+            m = s.stahni("sdeu_main", urljoin(CURIA_APP + "/", src))
+            if m is not None and m.ok:
+                # Chunky záložek a pokročilého hledání (tam je tvar filtrů).
+                for i, chunk in enumerate(sorted(set(re.findall(r'import\("\./(chunk-[A-Z0-9]+\.js)"\)',
+                                                              m.text)))[:40]):
+                    s.stahni(f"sdeu_chunk_{chunk[6:-3]}", urljoin(CURIA_APP + "/", chunk))
+
+    od, do = den - timedelta(days=30), den
+    def dotaz(zalozka, filtry, hledat="", razeni="DATE", jazyk="CS"):
+        return dict(_curia_dotaz(hledat, razeni, zalozka), language=jazyk, filtersValue=[],
+                    advancedFiltersValue=filtry)
+    varianty = {
+        "iso": [od.isoformat(), do.isoformat()],
+        "cz": [od.strftime("%d/%m/%Y"), do.strftime("%d/%m/%Y")],
+        "ms": [str(int(datetime(od.year, od.month, od.day).timestamp() * 1000)),
+               str(int(datetime(do.year, do.month, do.day).timestamp() * 1000))],
+    }
+    for nazev, hodnoty in varianty.items():
+        for pole, zalozka in (("introDate_a", "affair"), ("docDate_a", "document")):
+            filtr = [{"field": pole, "values": hodnoty, "valuesWithFullHierarchy": hodnoty}]
+            s.stahni(f"sdeu_filtr_{pole[:-2]}_{nazev}", CURIA_HLEDANI, metoda="POST",
+                     json=dotaz(zalozka, filtr), headers=hlav)
+    s.stahni("sdeu_vec_cs", CURIA_HLEDANI, metoda="POST",
+             json=dict(dotaz("affair", [], hledat='"C-151/25"', razeni="SCORE"),
+                       publishedId="C-151/25", isSearchExact=True), headers=hlav)
 
 
 SONDY = {"ns": sonda_ns, "nss": sonda_nss, "us": sonda_us, "sdeu": sonda_sdeu}
