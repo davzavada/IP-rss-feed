@@ -1,14 +1,14 @@
 {
   "totalHits" : 1,
-  "maxScore" : 21.52446,
+  "maxScore" : 21.524307,
   "maxScoreOthersDocuments" : 0.0,
   "totalHitsRelation" : "EQUAL_TO",
   "totalHitsOthersDocs" : 0,
   "searchHits" : [ {
     "index" : "index-affair@30-06-2026",
     "id" : "T/0463/24/00000000RD/01/P/01",
-    "score" : 21.52446,
-    "sortValues" : [ 21.52446, 1725494400000 ],
+    "score" : 21.524307,
+    "sortValues" : [ 21.524307, 1725494400000 ],
     "content" : {
       "id" : "T/0463/24/00000000RD/01/P/01",
       "affId" : "T/0463/24/00000000RD/01",
@@ -91,11 +91,11 @@
       "document" : {
         "totalHits" : 2,
         "totalHitsRelation" : "EQUAL_TO",
-        "maxScore" : 10.583267,
+        "maxScore" : 10.583115,
         "searchHits" : [ {
           "index" : "index-affair@30-06-2026",
           "id" : "T/0463/24/00000000RD/01/P/01-3522116",
-          "score" : 10.583267,
+          "score" : 10.583115,
           "sortValues" : [ ],
           "content" : {
             "id" : "T/0463/24/00000000RD/01/P/01-3522116",
@@ -134,7 +134,7 @@
         }, {
           "index" : "index-affair@30-06-2026",
           "id" : "T/0463/24/00000000RD/01/P/01-3207316",
-          "score" : 10.583267,
+          "score" : 10.583115,
           "sortValues" : [ ],
           "content" : {
             "id" : "T/0463/24/00000000RD/01/P/01-3207316",
@@ -151,7 +151,7 @@
             "docFormats" : [ "HTML" ],
             "contentLength" : 0,
             "contentML" : [ {
-              "en" : "Action brought on 5 September 2024 – Demblon v Parliament (Case T-463/24) Language of the case: French Parties Applicant: Stéphanie Christiane Demblon (Rochefort, Belgium) (represented by: A. Champetier and S. Rodrigues, lawyers) Defendant: European Parliament Form of order sought The applicant claims that the Court should: declare the present action admissible and well founded; annul the contested decision; order the defendant to pay symbolic damages for the non-material loss suffered in an amount of one euro; order the defendant to pay all the costs. Pleas in law and main arguments In support of the action against the decision of the European Parliament of 24 April 2024 by which the European Parliament decided that, from the date of the decision and for a period of five years, the applicant would be denied access to the Parliament’s premises, the applicant relies on four pleas in law. First plea in law, alleging infringement of Article 7 of the Rules on access to the European Parliament and of Article 5(4) and (5) of the Rules governing security and safety in the European Parliament (‘the SAFE Rules’), 1 in view of the lack of competence of the author of the contested decision. Second plea in law, alleging infringement of Article 5(1) of the SAFE Rules, in conjunction with Articles 11 (freedom of expression and information), 12 (freedom of assembly) and 41 (right to good administration) of the Charter of Fundamental Rights of the European Union. Third plea in law, alleging infringement of Article 41(2)(c) of the Charter of Fundamental Rights of the European Union and of Article 296 TFEU. Fourth plea in law, alleging failure to observe the principle of proportionality. ____________ 1 Rules governing security and safety in the European Parliament, Decision of the Bureau of the Parliament of 15 January 2018 (OJ 2018/C 79/04)."
+              "cs" : "Žaloba podaná dne 5. září 2024 – Demblon v. Parlament (Věc T-463/24) Jednací jazyk: francouzština Účastníci řízení Žalobkyně: Stéphanie Christiane Demblon (Rochefort, Belgie) (zástupci: A. Champetier a S. Rodrigues, advokáti) Žalovaný: Evropský parlament Návrhová žádání Žalobkyně navrhuje, aby Tribunál: určil, že je tato žaloba přípustná a opodstatněná; zrušil napadené rozhodnutí; uložil žalovanému náhradu utrpěné nemajetkové újmy odhadnuté na symbolické jedno euro; uložil žalovanému náhradu veškerých nákladů řízení. Žalobní důvody a hlavní argumenty Žalobkyně se na podporu žaloby proti rozhodnutí Evropského parlamentu ze dne 24. dubna 2024, kterým rozhodl, že žalobkyni bude zakázán přístup do prostor Parlamentu ode dne rozhodnutí po dobu pěti let, dovolává čtyř žalobních důvodů. První žalobní důvod vycházející z porušení článku 7 pravidel týkajících se přístupu do Evropského parlamentu a čl. 5 odst. 4 a 5 pravidel, kterými se řídí bezpečnost v Evropském parlamentu (dále jen „pravidla SAFE »)1 , vzhledem k nedostatku pravomoci autora napadeného rozhodnutí. Druhý žalobní důvod vycházející z porušení čl. 5 odst. 1 pravidel SAFE ve spojení s články 11 (svoboda projevu a informací), 12 (svoboda shromažďování) a 41 (právo na řádnou správu) Listiny základních práv Evropské unie. Třetí žalobní důvod vycházející z porušení čl. 41 odst. 2 písm. c) Listiny základních práv Evropské unie a článku 296 SFEU. Čtvrtý žalobní důvod vycházející z porušení zásady proporcionality. ____________ 1 Pravidla, kterými se řídí bezpečnost v Evropském parlamentu, rozhodnutí předsednictva Parlamentu ze dne 15. ledna 2018 (Úř. věst. 2018/C 79/04)."
             } ],
             "docNoPart" : 1,
             "celex" : "",
@@ -285,7 +285,7 @@
             "ecli" : ""
           },
           "highlightFields" : {
-            "contentML.en.exact" : [ "Action brought on 5 September 2024 – Demblon v Parliament (Case <em class='highlight'>T-463/24</em>) Language of the case: French Parties Applicant: Stéphanie Christiane Demblon (Rochefort, Belgium) (represented by: A. Champetier and S. Rodrigues, lawyers) Defendant: European Parliament Form of order sought The applicant claims that the Court should: declare the present action admissible and well founded; annul the contested decision; order the defendant to pay symbolic damages for the non-material loss suffered in an amount of one euro; order the defendant to pay all the costs. Pleas in law and main arguments In support of the action against the decision of the European Parliament of 24 April 2024 by which the European Parliament decided that, from the date of the decision and for a period of five years, the applicant would be denied access to the Parliament’s premises, the applicant relies on four pleas in law." ]
+            "contentML.cs.exact" : [ "Parlament (Věc <em class='highlight'>T-463/24</em>) Jednací jazyk: francouzština Účastníci řízení Žalobkyně: Stéphanie Christiane Demblon (Rochefort, Belgie) (zástupci: A. Champetier a S. Rodrigues, advokáti) Žalovaný: Evropský parlament Návrhová žádání Žalobkyně navrhuje, aby Tribunál: určil, že je tato žaloba přípustná a opodstatněná; zrušil napadené rozhodnutí; uložil žalovanému náhradu utrpěné nemajetkové újmy odhadnuté na symbolické jedno euro; uložil žalovanému náhradu veškerých nákladů řízení. Žalobní důvody a hlavní argumenty Žalobkyně se na podporu žaloby proti rozhodnutí Evropského parlamentu ze dne 24. dubna 2024, kterým rozhodl, že žalobkyni bude zakázán přístup do prostor Parlamentu ode dne rozhodnutí po dobu pěti let, dovolává čtyř žalobních důvodů." ]
           },
           "innerHits" : { },
           "routing" : "T/0463/24/00000000RD/01/P/01",
