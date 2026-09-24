@@ -176,11 +176,16 @@ function defaultWidths(columns) {
 
 // Uložené šířky bereme jen tehdy, když sedí na aktuální skladbu sloupců;
 // součet dorovnáme na 100 %, ať se nesejde tabulka širší nebo užší než řádek.
-function widthsFor(key, columns) {
+function ulozeneSirky(key, columns) {
   const saved = storedWidths[key];
   const usable = Array.isArray(saved) && saved.length === columns.length &&
     saved.every(w => typeof w === "number" && isFinite(w) && w >= 1);
-  if (!usable) return defaultWidths(columns);
+  return usable ? saved : null;
+}
+
+function widthsFor(key, columns) {
+  const saved = ulozeneSirky(key, columns);
+  if (!saved) return defaultWidths(columns);
   const sum = saved.reduce((a, b) => a + b, 0);
   return saved.map(w => (w / sum) * 100);
 }
@@ -223,7 +228,90 @@ function resetWidths(table) {
   applyWidths(table, defaultWidths(columns));
   delete storedWidths[key];
   writeCookie(COL_COOKIE, JSON.stringify(storedWidths));
+  prizpusobSirky(table);
 }
+
+// Výchozí šířky podle obsahu: sloupce kolem shrnutí (zdroj, značka, heslo,
+// datum…) jsou tak široké, jak potřebuje jejich nejdelší položka, s malou
+// rezervou; shrnutí dostane zbytek. Delší obsah (název článku, populární
+// název, dlouhé heslo) má strop v em a zalomí se. Změřit jde jen viditelnou
+// tabulku – na skryté stránce se to dopočítá při jejím zobrazení, a znovu
+// při změně šířky okna. Kdo si sloupce potáhl, má uložené vlastní šířky
+// a ty platí dál.
+const FIT_MAX_EM = { name: 18, heslo: 16, author: 14, type: 12, oblasti: 14 };
+// Štítky zdroje stojí pod sebou – sloupci stačí nejširší z nich.
+const FIT_MIN_CONTENT = { src: true };
+const FIT_REZERVA_PX = 6;
+const MIN_SHRNUTI_PCT = 38;
+
+// Přirozená šířka obsahu sloupce v px (včetně odsazení buňky); null
+// u shrnutí a u sloupců s pevnou šířkou z definice.
+function zmerObsah(table, columns) {
+  const telo = table.tBodies[0] && table.tBodies[0].rows[0];
+  if (!telo) return columns.map(() => null);
+  const pismo = parseFloat(getComputedStyle(table).fontSize) || 14;
+  const meric = document.createElement("div");
+  // Měrka stojí vedle tabulky, písmo tabulky (menší než okolí) jí dáme ručně.
+  meric.style.fontSize = pismo + "px";
+  table.parentNode.appendChild(meric);
+  const sirky = columns.map((c, j) => {
+    const k = colKey(c);
+    if (c.width || k === "summary") return null;
+    meric.className = "meric " + (c.cls || "");
+    meric.style.width = FIT_MIN_CONTENT[k] ? "min-content" : "max-content";
+    meric.classList.add("meric-th");
+    meric.innerHTML = esc(c.label);
+    const zahlavi = meric.getBoundingClientRect().width;
+    meric.classList.remove("meric-th");
+    const hodnoty = [];
+    Array.from(telo.parentNode.rows).forEach(tr => {
+      // Prázdné buňky (článek bez autora) šířku neurčují.
+      if (!tr.cells[j] || !tr.cells[j].textContent.trim()) return;
+      meric.innerHTML = tr.cells[j].innerHTML;
+      hodnoty.push(meric.getBoundingClientRect().width);
+    });
+    // Sloupec se řídí zhruba devadesátým percentilem, ne nejdelší položkou –
+    // pár výjimek (dlouhé heslo) se radši zalomí, než aby kvůli nim byl
+    // široký celý sloupec. U krátkých tabulek to vyjde na nejdelší.
+    hodnoty.sort((a, b) => a - b);
+    const typicka = hodnoty.length ? hodnoty[Math.ceil(0.9 * (hodnoty.length - 1))] : 0;
+    const strop = FIT_MAX_EM[k] ? FIT_MAX_EM[k] * pismo : Infinity;
+    const cs = getComputedStyle(telo.cells[j]);
+    return Math.max(zahlavi, Math.min(typicka, strop)) + parseFloat(cs.paddingLeft) +
+      parseFloat(cs.paddingRight) + FIT_REZERVA_PX;
+  });
+  meric.remove();
+  return sirky;
+}
+
+function prizpusobSirky(table) {
+  const key = table && table.dataset.cols;
+  const columns = key && tableColumns[key];
+  if (!columns || ulozeneSirky(key, columns) || getComputedStyle(table).display === "block") return;
+  const celkem = table.getBoundingClientRect().width;
+  if (!celkem) return;
+  if (!table._obsah) table._obsah = zmerObsah(table, columns);
+  const px = table._obsah;
+  const pevne = columns.reduce((s, c) => s + (c.width || 0), 0);
+  let obsah = px.map(w => (w == null ? 0 : (w / celkem) * 100));
+  const soucet = obsah.reduce((a, b) => a + b, 0);
+  const smi = Math.max(0, 100 - MIN_SHRNUTI_PCT - pevne);
+  if (soucet > smi) obsah = obsah.map(p => (p * smi) / soucet);
+  const pruzne = columns.filter((c, j) => !c.width && px[j] == null).length || 1;
+  const widths = columns.map((c, j) => c.width || (px[j] == null ? 0 : Math.max(MIN_COL_PCT, obsah[j])));
+  const zbytek = 100 - widths.reduce((a, b) => a + b, 0);
+  applyWidths(table, widths.map((w, j) => (!columns[j].width && px[j] == null ? zbytek / pruzne : w)));
+}
+
+function prizpusobViditelne(koren) {
+  (koren || document).querySelectorAll("table[data-cols]").forEach(prizpusobSirky);
+}
+
+let sirkyRaf = 0;
+window.addEventListener("resize", () => {
+  cancelAnimationFrame(sirkyRaf);
+  sirkyRaf = requestAnimationFrame(() => prizpusobViditelne());
+});
 
 function initColumnResize() {
   let drag = null;
@@ -565,6 +653,7 @@ function renderTable(items, container, columns, key, prazdno) {
   });
   html += "</tbody></table></div>";
   container.innerHTML = html;
+  prizpusobSirky(container.querySelector("table"));
 }
 
 // `results` jsou výsledky Promise.allSettled nad položkami jednotlivých feedů.
@@ -1789,6 +1878,8 @@ function navigate(hash, push) {
     const el = document.getElementById(p.id);
     if (el) el.hidden = (p !== page);
   });
+  // Tabulky na dosud skryté stránce teprve teď mají rozměry.
+  prizpusobViditelne(document.getElementById(page.id));
 
   const section = page.sections.indexOf(id) >= 0 ? document.getElementById(id) : null;
   if (section) section.scrollIntoView({ block: "start" });

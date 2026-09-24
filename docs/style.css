@@ -143,21 +143,35 @@ section[id], .card[id] { scroll-margin-top: 76px; }
   stroke-linecap: round; stroke-linejoin: round;
 }
 
-/* Tabulka (shadcn Table) */
-.table-wrap { overflow-x: auto; }
+/* Tabulka (shadcn Table). Krajní buňky mají vnitřní okraj, aby podbarvení
+   řádku při najetí nezačínalo těsně u štítku; tabulka o něj přesahuje do
+   odsazení karty, takže text dál lícuje s nadpisem karty. */
+.table-wrap { overflow-x: auto; margin-inline: -10px; }
 table { width: 100%; border-collapse: collapse; font-size: var(--fs-md); table-layout: fixed; min-width: 780px; }
-th { text-align: left; font-size: var(--fs-md); font-weight: 500; color: var(--muted-foreground); padding: 8px 16px 8px 0; border-bottom: 1px solid var(--border); }
-td { padding: 12px 16px 12px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
-th:last-child, td:last-child { padding-right: 0; }
+th { text-align: left; font-size: var(--fs-md); font-weight: 500; color: var(--muted-foreground); padding: 8px 20px 8px 0; border-bottom: 1px solid var(--border); }
+td { padding: 12px 20px 12px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+th:first-child, td:first-child { padding-left: 10px; }
+th:last-child, td:last-child { padding-right: 10px; }
 tbody tr:last-child td { border-bottom: 0; }
 tbody tr { transition: background-color 0.12s ease; }
 tbody tr:hover { background: color-mix(in srgb, var(--muted) 55%, transparent); }
 td a { color: var(--link); text-decoration: none; text-underline-offset: 3px; }
+/* Fokus z klávesnice (i po návratu z PDF v nové kartě) barvou webu, ne
+   černým rámečkem prohlížeče. */
+a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 4px; }
+#sidenav a:focus-visible, .pagetabs a:focus-visible { outline-offset: -2px; border-radius: 7px; }
 td a:hover { text-decoration: underline; }
 
 /* Šířky sloupců (table-layout: fixed) řídí <colgroup>, které vykresluje
-   skript – výchozí hodnoty jsou v COL_DEFAULTS, uživatelské v cookie.
+   skript – výchozí podle obsahu (prizpusobSirky), uživatelské v cookie.
    V CSS proto zůstává jen to, co se šířkou nesouvisí. */
+/* Neviditelná měrka, do které skript vkládá obsah buněk, aby zjistil jeho
+   přirozenou šířku; má třídu sloupce, takže platí stejná pravidla. */
+.meric { position: absolute; top: 0; left: -10000px; visibility: hidden; pointer-events: none; }
+.meric-th { font-weight: 500; }
+/* Druhý řádek pod značkou (populární název, autor) se zalomí a šířku
+   sloupce neurčuje. */
+.meric.col-name .vec, .meric.col-name .author { display: none; }
 .col-src .src, .col-src .tag { margin-bottom: 3px; }
 .col-date {
   color: var(--muted-foreground); font-variant-numeric: tabular-nums;
@@ -512,7 +526,7 @@ html.is-loading body { visibility: hidden; }
    položky blok: nahoře štítky zdroje a datum, pod nimi název s autorem,
    heslo a shrnutí. */
 @container (max-width: 790px) {
-  .table-wrap { overflow-x: visible; }
+  .table-wrap { overflow-x: visible; margin-inline: 0; }
   table { display: block; min-width: 0; }
   table colgroup, table thead { display: none; }
   tbody { display: block; }
@@ -521,7 +535,7 @@ html.is-loading body { visibility: hidden; }
     padding: 12px 0; border-bottom: 1px solid var(--border);
   }
   tbody tr:hover { background: none; }
-  tbody td { display: block; padding: 0; border: 0; }
+  tbody td, tbody td:first-child, tbody td:last-child { display: block; padding: 0; border: 0; }
   tbody td:empty { display: none; }
   .col-src, .col-type { order: 1; }
   .col-date { order: 2; font-size: var(--fs-sm); }
