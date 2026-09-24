@@ -1,6 +1,6 @@
 # Owl – přehled novinek v IP a IT
 
-Statická stránka na GitHub Pages ([rss.davidzavada.cz](https://rss.davidzavada.cz/)),
+Statická stránka ([rss.davidzavada.cz](https://rss.davidzavada.cz/)),
 kterou dvakrát denně plní scrapery z GitHub Actions. Sleduje rozhodnutí
 senátu 23 Cdo Nejvyššího soudu, judikaturu Soudního dvora EU k duševnímu
 vlastnictví a IT, články z právních časopisů a nařízená jednání IP senátů
@@ -15,9 +15,9 @@ scraper_ipcuria.py   CJEU (ipcuria.eu, InfoCuria, EUR-Lex)           -> docs/ipc
 scraper_journals.py  časopisy (weby, OJS, Crossref, RSS vydavatelů)  -> docs/journals_feed.xml
 scraper_hearings.py  jednání MSPH a VS Praha (.docx/.pdf na justice) -> docs/hearings.json, hearings.ics
 digest.py            dvoutýdenní přehled ze tří feedů výše           -> docs/digest.json
-newsletter.py        pošle přehled e-mailem (viz NEWSLETTER.md)
 feed_common.py       sdílené: první výskyt položek, AI klient, prompty, cache shrnutí
 docs/                stránka (index.html, style.css, app.js) a všechno, co čte
+tools/probe_zdroje.py sonda: syrové odpovědi webů soudů pro parsery a testy
 ```
 
 Každý feed si vede **stav prvního výskytu** (`*_seen.json`): kdy položku
@@ -56,8 +56,9 @@ výpadek AI pokaždé shodil jinou část kalendáře zpátky na holé značky.
 - `update-feed.yml` – cron se ozývá každou hodinu, ale scrapuje jen v oknech
   před 7:00 a 14:00 pražského času (GitHub scheduled běhy chodí řídce
   a nepravidelně, proto jsou okna široká). V pondělí ráno navíc `digest.py`.
-- `newsletter.yml` – pondělí ráno pošle přehled e-mailem; nastavení
-  v [NEWSLETTER.md](NEWSLETTER.md).
+- `probe.yml` – jen ručně: stáhne odpovědi webů soudů (formuláře, výpisy,
+  detaily, InfoCuria, SPARQL) jako artefakt, s volbou `ulozit` je commitne
+  do vybrané větve jako fixtures. Na weby soudů je vidět jen z Actions.
 - `tests.yml` – `test_hearings.py` a `test_journals.py` nad uloženými
   originály dokumentů v `tests/fixtures`.
 
@@ -73,3 +74,14 @@ python scraper_hearings.py --local-jednani MS=tests/fixtures/msph_civilni_2026-0
 
 Stránku stačí otevřít přes libovolný statický server nad `docs/`
 (`python -m http.server -d docs`), čte soubory vedle sebe.
+
+## Nasazení
+
+Stránku servíruje Vercel: projekt napojený na tohle repo, bez build kroku,
+výstupem je adresář `docs/` (viz `vercel.json`). Nasazuje se jen commit,
+který změní `docs/` nebo `vercel.json` (`ignoreCommand`) – commity se
+stavem scraperů mimo `docs/` deploy nespouštějí. Doménu (`rss.davidzavada.cz`)
+nese záznam CNAME u správce DNS; do přepnutí na Vercel stránku dál servíruje
+GitHub Pages podle `docs/CNAME`. Doména v UID kalendáře `hearings.ics`
+se bere z proměnné `SITE_HOST` (výchozí `rss.davidzavada.cz`), na hostingu
+tedy nezávisí.

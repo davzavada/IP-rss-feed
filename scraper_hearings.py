@@ -40,6 +40,7 @@ import argparse
 import hashlib
 import io
 import json
+import os
 import re
 import sys
 import unicodedata
@@ -1079,9 +1080,10 @@ def merge_output(existing, court, items, period, zdroj_url, cfg):
 # --- iCalendar export (přihlášení v Google Kalendáři přes URL) ---
 
 # Google si externí kalendář tahá sám, jednou za několik hodin; proto stačí,
-# že soubor leží vedle stránky na GitHub Pages.
+# že soubor leží vedle stránky.
 ICS_FILE = "docs/hearings.ics"
-CNAME_FILE = "docs/CNAME"
+# Doména webu jde do UID událostí. Musí zůstat stejná i po přesunu hostingu,
+# jinak by kalendáře, které si soubor stáhly, viděly každé jednání dvakrát.
 ICS_DEFAULT_HOST = "rss.davidzavada.cz"
 
 # Pražská zóna napsaná ručně – jednání jsou vždy v místním čase a bez VTIMEZONE
@@ -1130,12 +1132,11 @@ def ics_fold(line):
 
 
 def site_host():
-    try:
-        with open(CNAME_FILE, encoding="utf-8") as f:
-            host = f.read().strip()
-        return host or ICS_DEFAULT_HOST
-    except OSError:
-        return ICS_DEFAULT_HOST
+    """Doména pro UID v ICS: proměnná SITE_HOST, jinak ICS_DEFAULT_HOST.
+
+    Dřív se brala z docs/CNAME, jenže ten soubor patří GitHub Pages a na
+    Vercelu odpadne – UID se na něm viset nesmí."""
+    return os.environ.get("SITE_HOST", "").strip() or ICS_DEFAULT_HOST
 
 
 def infosoud_url(j, courts):

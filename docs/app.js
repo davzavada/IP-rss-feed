@@ -1068,7 +1068,7 @@ function navigate(hash, push) {
   });
 
   const section = page.sections.indexOf(id) >= 0 ? document.getElementById(id) : null;
-  // Kdo jde přímo na přehled (třeba odkazem z newsletteru), chce ho číst.
+  // Kdo jde přímo na přehled (třeba uloženým odkazem), chce ho číst.
   if (id === "dvatydny") setDigestFolded(false);
   if (section) section.scrollIntoView({ block: "start" });
   else window.scrollTo(0, 0);

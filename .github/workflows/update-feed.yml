@@ -74,8 +74,8 @@ jobs:
             scrape=true; duvod="okno $window"
           fi
 
-          # Dvoutýdenní přehled jednou týdně: v pondělí ráno, ať je hotový dřív,
-          # než si pro něj v 8:30 přijde newsletter. Ranní okno začíná už v neděli
+          # Dvoutýdenní přehled jednou týdně: v pondělí ráno, ať je na stránce
+          # hotový na začátek týdne. Ranní okno začíná už v neděli
           # ve 23:00, proto se kromě dne hlídá i to, že je po půlnoci. Když už
           # dnešní přehled existuje, podruhé se negeneruje – během jednoho rána
           # se do okna vejde víc scrapovacích běhů.
