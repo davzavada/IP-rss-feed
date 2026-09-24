@@ -5,7 +5,12 @@ kterou plní scrapery z GitHub Actions. Sleduje novou judikaturu Nejvyššího
 soudu (všechny senáty), Nejvyššího správního soudu, Ústavního soudu a Soudního
 dvora EU včetně Tribunálu (AI ji řadí do oblastí práva), články z právních
 časopisů a nařízená jednání IP senátů Městského a Vrchního soudu v Praze. Ke všemu dělá AI (Gemini API) heslo
-a třívěté shrnutí, jednou týdně z toho napíše dvoutýdenní přehled.
+a třívěté shrnutí, jednou týdně z toho napíše dvoutýdenní přehled duševního
+vlastnictví a IT.
+
+Web má stránky Nové za 24 hodin, Dva týdny v IP a IT (přehled je jeden pro
+všechny, na výběru nezávisí), každý zdroj zvlášť (NS, NSS, ÚS, SDEU,
+časopisy), Kalendář jednání a Můj výběr.
 
 ## Jak to drží pohromadě
 
@@ -13,7 +18,7 @@ a třívěté shrnutí, jednou týdně z toho napíše dvoutýdenní přehled.
 scraper_judikatura.py judikatura NS, NSS, ÚS a SDEU                 -> data/judikatura/, docs/data/judikatura/
 scraper_journals.py  časopisy (weby, OJS, Crossref, RSS vydavatelů)  -> docs/data/casopisy.json
 scraper_hearings.py  jednání MSPH a VS Praha (.docx/.pdf na justice) -> docs/hearings.json, hearings.ics
-digest.py            dvoutýdenní přehled z judikatury a časopisů     -> docs/digest.json
+digest.py            dvoutýdenní přehled IP a IT (judikatura z oblastí IP/IT, časopisy) -> docs/digest.json
 judikatura/          archiv, oblasti, mapy metadat, AI rozbor, fronta, adaptéry soudů (soudy/), migrace, kontrola
 feed_common.py       sdílené: první výskyt položek, AI klient, prompty, cache shrnutí
 docs/                stránka (index.html, style.css, app.js) a všechno, co čte
@@ -161,8 +166,8 @@ vlastnictví a IT, všechny časopisy.
   Česká lokalizace je v `docs/vendor/clerk-cs-CZ.js`.
 - Publishable key je veřejný a je v `docs/app.js` (`CLERK_KLICE`, podle
   hostitele: produkční instance pro `owl.davidzavada.cz`, jinak vývojová).
-  Tajný klíč do kódu ani na Vercel nepatří. Bude jen v GitHub secretu
-  `CLERK_SECRET_KEY`, až budou přehledy podle výběru.
+  Tajný klíč web nepotřebuje a do kódu ani na Vercel nepatří (přehled je
+  jeden pro všechny, výběry uživatelů se nikde nečtou).
 - Výběr je u účtu v `user.unsafeMetadata.owl`:
   `{"v":1,"ns":{"oblasti":[…],"senaty":[23]},"nss":{"oblasti":[…]},"us":{…},"sdeu":{…},"skryt_procesni":false,"skryte_casopisy":[]}`.
   Nastavuje se na stránce `#nastaveni` (Můj výběr): oblasti práva, senáty

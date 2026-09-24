@@ -244,17 +244,13 @@ body.is-resizing { cursor: col-resize; user-select: none; -webkit-user-select: n
 .digest-source:hover { text-decoration: underline; }
 .digest-source .src, .digest-source .tag { flex: none; }
 .digest-meta { margin: 14px 0 0; font-size: var(--fs-sm); color: var(--muted-foreground); }
-/* Přehled vzniká jednou týdně. Mimo den, kdy vznikl, je karta sbalená
-   na hlavičku s datem – rozbalí se kliknutím kamkoli do hlavičky. */
-#dvatydny .card-header { cursor: pointer; user-select: none; }
-#dvatydny.is-folded .card-header { padding-bottom: 16px; }
 .fold {
   margin-left: auto; width: 24px; height: 24px; flex: none; padding: 0;
   display: inline-flex; align-items: center; justify-content: center;
   border: 1px solid var(--border); border-radius: 8px; background: none;
   color: var(--muted-foreground); cursor: pointer;
 }
-#dvatydny .card-header:hover .fold, .fold:focus-visible {
+.fold:hover, .fold:focus-visible {
   color: var(--foreground); background: var(--accent); border-color: var(--muted-foreground);
 }
 .fold-ico { width: 14px; height: 14px; transition: transform 0.15s; }

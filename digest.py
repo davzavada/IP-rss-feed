@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Dvoutýdenní přehled – AI shrnutí shrnutí ze všech zdrojů dohromady.
+"""Dvoutýdenní přehled duševního vlastnictví a IT – AI shrnutí shrnutí.
 
-Čte hotová okna z docs/data/ (judikatura, časopisy; běží tedy až po nich), pošle AI číslovaný
-seznam položek za poslední dva týdny a nechá si napsat krátký přehled po
-tématech: hlavně to, co je relevantní pro praxi v IP/IT, plus pár dalších
-zajímavostí. Velká část položek se do přehledu nedostane – obecné věci, věci
-mimo praxi nebo mimo ČR a EU model vynechává (viz DIGEST_PROMPT).
+Čte hotová okna z docs/data/ (judikatura, časopisy; běží tedy až po nich),
+pošle AI číslovaný seznam položek za poslední dva týdny a nechá si napsat
+krátký přehled po tématech. Přehled je jen o IP a IT: z judikatury jdou
+rozhodnutí všech soudů zařazená do oblastí duševního vlastnictví a IT
+(výchozí oblasti v docs/data/oblasti.json), z časopisů všechno a článek
+mimo IP a IT model vynechá stejně jako věci obecné nebo mimo ČR a EU (viz
+DIGEST_PROMPT). Přehled je jeden pro všechny, na výběru uživatele nezávisí.
 
 „Poslední dva týdny" se počítají podle toho, kdy položka ve feedu přibyla
 (stav prvního výskytu *_seen.json), ne podle data vydání: článek může vyjít
@@ -45,14 +47,13 @@ MAX_SOURCES = 6    # kolik odkazů maximálně necháme u jednoho tématu
 # Verze tvaru výstupu. Vstupuje do otisku, takže když do přehledu přibude
 # další údaj, uložený přehled se tím sám prohlásí za starý a přegeneruje se
 # (jinak by v něm nový údaj chyběl, dokud se nezmění skladba položek).
-FORMAT_VERSION = "3"
+FORMAT_VERSION = "4"
 
 # Časopisy (docs/data/casopisy.json, píše scraper_journals.py). Klíče zdrojů
 # jsou shodné s index.html, aby se štítky obarvily stejně jako v seznamech.
 CASOPISY_JSON = os.path.join(DOCS_DIR, "data", "casopisy.json")
 
-# Judikatura z oken pro web (docs/data/judikatura/), filtrovaná výchozím
-# výběrem IP/IT – přehled je zatím jeden pro všechny.
+# Judikatura z oken pro web (docs/data/judikatura/), jen z oblastí IP/IT.
 JUDIKATURA = [
     ("nsoud", "NS", "ns"),
     ("nss", "NSS", "nss"),
@@ -74,23 +75,23 @@ def _first_seen(seen, guid):
         return None
 
 
-def _vychozi_vyber():
-    """(senáty NS, oblasti) výchozího výběru – ze stejných souborů jako web."""
+def oblasti_ip_it():
+    """Oblasti duševního vlastnictví a IT – výchozí oblasti ze seznamu,
+    ze kterého čte i web."""
     oblasti = load_json(os.path.join(DOCS_DIR, "data", "oblasti.json")).get("oblasti", [])
-    senaty = load_json(os.path.join(DOCS_DIR, "data", "ns_senaty.json")).get("vychozi", [23])
-    return set(senaty), {o["id"] for o in oblasti if o.get("vychozi")}
+    return {o["id"] for o in oblasti if o.get("vychozi")}
 
 
 def collect_judikatura(now, oldest):
-    """Rozhodnutí z oken judikatury, která spadají do výchozího výběru."""
-    senaty, oblasti = _vychozi_vyber()
+    """Rozhodnutí z oken judikatury zařazená do oblastí IP/IT. Senát 23 Cdo
+    se nebere celý – jeho obchodní věci do přehledu IP a IT nepatří."""
+    oblasti = oblasti_ip_it()
     items = []
     for key, label, soud in JUDIKATURA:
         data = load_json(os.path.join(DOCS_DIR, "data", "judikatura", f"{soud}.json"))
         found = 0
         for r in data.get("polozky", []):
-            vybrano = (soud == "ns" and r.get("senat") in senaty) or \
-                bool(set(r.get("oblasti") or []) & oblasti)
+            vybrano = bool(set(r.get("oblasti") or []) & oblasti)
             since = _first_seen({"x": r.get("first_seen", "").replace("Z", "+00:00")}, "x")
             if not vybrano or (since and since < oldest):
                 continue
@@ -114,7 +115,7 @@ def collect_judikatura(now, oldest):
                 "pub_dt": pub_dt or since,
             })
             found += 1
-        print(f"  {label}: {found} položek z výchozího výběru")
+        print(f"  {label}: {found} rozhodnutí z oblastí IP/IT")
     return items
 
 

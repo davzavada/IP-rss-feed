@@ -29,6 +29,9 @@
     <path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9Z"></path>
     <path d="M18 3v4M20 5h-4"></path>
   </symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+  </symbol>
   <symbol id="icon-list" viewBox="0 0 24 24">
     <path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"></path>
   </symbol>
@@ -80,7 +83,8 @@
 <nav id="sidenav" aria-label="Navigace na stránce">
   <!-- Skupiny stránek; zdroje mají každý svou stránku pod společným popiskem. -->
   <div class="nav-group">
-    <a href="#prehled"><svg class="nav-ico" aria-hidden="true"><use href="#icon-sparkles"></use></svg><span>Shrnutí</span></a>
+    <a href="#prehled"><svg class="nav-ico" aria-hidden="true"><use href="#icon-clock"></use></svg><span>Nové za 24 hodin</span></a>
+    <a href="#dvatydny"><svg class="nav-ico" aria-hidden="true"><use href="#icon-sparkles"></use></svg><span>Dva týdny v IP a IT</span></a>
   </div>
   <div class="nav-group">
     <span class="nav-label">Všechno nové</span>
@@ -102,7 +106,8 @@
 
 <!-- Přepínač stránek pro úzká okna, kde je boční navigace schovaná. -->
 <nav class="pagetabs" aria-label="Přepínání stránek">
-  <a href="#prehled">Shrnutí</a>
+  <a href="#prehled" title="Nové za 24 hodin">24 hodin</a>
+  <a href="#dvatydny" title="Dva týdny v IP a IT">2 týdny</a>
   <span class="pagetabs-sep" aria-hidden="true"></span>
   <a href="#nsoud" title="Nejvyšší soud">NS</a>
   <a href="#nss" title="Nejvyšší správní soud">NSS</a>
@@ -128,18 +133,20 @@
   </div>
 </section>
 
-<section id="dvatydny">
+</div><!-- /#prehled -->
+
+<section class="page" id="dvatydny" hidden>
   <div class="card">
     <div class="card-header">
-      <h2 class="card-title">Co se stalo v uplynulých dvou týdnech</h2>
+      <h2 class="card-title">Co se za dva týdny stalo v IP a IT</h2>
       <span class="legend" id="digest-updated"></span>
-      <button type="button" class="fold" id="digest-fold" aria-expanded="true" aria-controls="feed-digest" aria-label="Sbalit přehled"><svg class="fold-ico" aria-hidden="true"><use href="#icon-chevron"></use></svg></button>
+      <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
+      <div class="card-desc" hidden>Přehled toho podstatného z duševního vlastnictví a IT za poslední dva týdny. Píše ho AI z rozhodnutí všech soudů, která spadají do oblastí duševního vlastnictví a IT, a z článků v časopisech – na vašem výběru nezávisí. Nový vychází každé pondělí ráno.</div>
+      </span>
     </div>
     <div class="card-content" id="feed-digest"><p class="loading">Načítám...</p></div>
   </div>
 </section>
-
-</div><!-- /#prehled -->
 
 <section class="page" id="nsoud" hidden>
   <div class="card">

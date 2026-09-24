@@ -10,6 +10,7 @@ on:
       - 'scraper_hearings.py'
       - 'scraper_journals.py'
       - 'scraper_judikatura.py'
+      - 'digest.py'
       - 'judikatura/**'
       - 'docs/data/oblasti.json'
       - 'docs/data/ns_senaty.json'
@@ -17,6 +18,7 @@ on:
       - 'test_journals.py'
       - 'test_judikatura.py'
       - 'test_ai.py'
+      - 'test_digest.py'
       - 'hearings_config.json'
       - 'tests/**'
       - '.github/workflows/tests.yml'
@@ -41,3 +43,5 @@ jobs:
         run: python test_judikatura.py
       - name: Testy AI klienta
         run: python test_ai.py
+      - name: Testy dvoutýdenního přehledu
+        run: python test_digest.py

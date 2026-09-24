@@ -655,28 +655,6 @@ function digestSource(s) {
     : '<span class="digest-source">' + inner + "</span>";
 }
 
-// Sbalí nebo rozbalí kartu s přehledem; hlavička s datem zůstává vidět vždy.
-function setDigestFolded(folded) {
-  const card = document.getElementById("dvatydny");
-  const btn = document.getElementById("digest-fold");
-  const content = document.getElementById("feed-digest");
-  if (!card || !btn || !content) return;
-  card.classList.toggle("is-folded", folded);
-  content.hidden = folded;
-  btn.setAttribute("aria-expanded", String(!folded));
-  btn.setAttribute("aria-label", folded ? "Rozbalit přehled" : "Sbalit přehled");
-}
-
-function isDigestFolded() {
-  const btn = document.getElementById("digest-fold");
-  return !btn || btn.getAttribute("aria-expanded") !== "true";
-}
-
-function isToday(iso) {
-  const d = new Date(iso);
-  return !isNaN(d) && d.toDateString() === new Date().toDateString();
-}
-
 function renderDigest(data) {
   const container = document.getElementById("feed-digest");
   // Přehled se na rozdíl od feedů generuje jen jednou týdně, takže datum
@@ -685,9 +663,6 @@ function renderDigest(data) {
   if (stamp && data && data.generated) {
     stamp.textContent = "aktualizováno " + czDate(data.generated);
   }
-  // Rozbalený je přehled jen v den, kdy vznikl – po zbytek týdne je to
-  // stále stejný text, tak ať neodsouvá zbytek stránky. Bez data je sbalený.
-  setDigestFolded(!(data && data.generated && isToday(data.generated)));
   if (!data || !Array.isArray(data.blocks) || data.blocks.length === 0) {
     container.innerHTML = '<p class="feed-empty">Přehled zatím není k dispozici.</p>';
     return;
@@ -1399,10 +1374,6 @@ function initHelp() {
   document.addEventListener("keydown", e => {
     if (e.key === "Escape") closeHelp(null);
   });
-  const digestHead = document.querySelector("#dvatydny .card-header");
-  if (digestHead) {
-    digestHead.addEventListener("click", () => setDigestFolded(!isDigestFolded()));
-  }
 }
 
 /* ========== Přihlášení (Clerk) ========== */
@@ -1871,10 +1842,11 @@ function initNastaveni() {
 
 /* ========== Stránky a navigace ========== */
 // Obsah je rozdělený na stránky; přepíná se podle adresy (#kotva).
-// Kotvy sekcí zůstávají platné – odkaz na #dvatydny otevře Shrnutí.
-// Každý zdroj má vlastní stránku.
+// Kotvy sekcí zůstávají platné – odkaz na #dnesni otevře Nové za 24 hodin.
+// Dvoutýdenní přehled i každý zdroj mají vlastní stránku.
 const PAGES = [
-  { id: "prehled",  sections: ["dnesni", "dvatydny"] },
+  { id: "prehled",  sections: ["dnesni"] },
+  { id: "dvatydny", sections: [] },
   { id: "nsoud",    sections: [] },
   { id: "nss",      sections: [] },
   { id: "us",       sections: [] },
@@ -1910,8 +1882,6 @@ function navigate(hash, push) {
   });
 
   const section = page.sections.indexOf(id) >= 0 ? document.getElementById(id) : null;
-  // Kdo jde přímo na přehled (třeba uloženým odkazem), chce ho číst.
-  if (id === "dvatydny") setDigestFolded(false);
   if (section) section.scrollIntoView({ block: "start" });
   else window.scrollTo(0, 0);
 
