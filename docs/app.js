@@ -1450,8 +1450,28 @@ function zmenaUctu(user, vzdy) {
     if (dialog && dialog.open) dialog.close();
     vykresliZdroje();
     vykresliNastaveni();
+    if (user) uvitatNovy(user);
   }
   vykresliUcet();
+}
+
+// Po registraci se Můj výběr otevře sám – jen u čerstvě založeného účtu bez
+// uloženého výběru a jen jednou (příznak v localStorage). Průvodce není
+// potřeba: stačí okno s výchozím výběrem a jednou větou nahoře.
+const UVITANI_MIN = 15;
+
+function uvitatNovy(user) {
+  if ((user.unsafeMetadata || {}).owl) return;
+  const zalozen = user.createdAt ? new Date(user.createdAt).getTime() : NaN;
+  if (!(Date.now() - zalozen < UVITANI_MIN * 60 * 1000)) return;
+  const klic = "owl:uvitani:" + user.id;
+  try {
+    if (localStorage.getItem(klic)) return;
+    localStorage.setItem(klic, "1");
+  } catch (e) { /* bez úložiště se okno otevře, jen si to nezapamatuje */ }
+  uvitani = true;
+  otevreneSekce.add("oblasti");
+  otevriVyber();
 }
 
 function prihlasit(registrace) {
@@ -1531,6 +1551,8 @@ function casopisyKVyberu() {
 // se jedním kliknutím na čip (tlačítko s aria-pressed). Změny se sbírají
 // v konceptu a platí – na webu i v účtu – až po „Uložit".
 let otevreneSekce = new Set();
+let uvitani = false;              // dialog otevřený po registraci – nahoře uvítací věta
+let otevrenoZ = null;             // prvek, na který se po zavření vrátí fokus
 let koncept = null;               // rozpracovaný výběr; null = stejný jako uložený
 let stavUlozeni = "";             // „Ukládám…", „Uloženo", chyba
 let ukladam = false;
@@ -1574,21 +1596,23 @@ function stavOblasti(v, id) {
 }
 
 function oblastiHtml(v) {
-  return '<p class="vyber-popis">Rozhodnutí uvidíte, když ho AI zařadí do některé z vybraných oblastí. ' +
-    "Výběr platí pro všechny soudy.</p>" + skupinyOblasti().map((sk, i) => {
-      const vse = sk.oblasti.every(o => stavOblasti(v, o.id) === "true");
-      return '<div class="vyber-skupina"><div class="skupina-hlava"><span class="skupina-nazev">' +
-        esc(sk.nazev) + '</span><button type="button" class="skupina-vse" data-skupina="' + i + '">' +
-        (vse ? "zrušit vše" : "vybrat vše") + "</button></div>" + '<div class="cipy">' +
-        sk.oblasti.map(o => {
-          const stav = stavOblasti(v, o.id);
-          const title = stav === "mixed"
-            ? "Vybráno jen u některých soudů (" + soudyOblasti(v, o.id).map(s => s.zkratka).join(", ") +
-              "), kliknutím u všech"
-            : o.popis;
-          return cipHtml({ "data-oblast": o.id }, stav, esc(o.nazev), title);
-        }).join("") + "</div></div>";
-    }).join("");
+  return skupinyOblasti().map((sk, i) => {
+    const vybrano = sk.oblasti.filter(o => stavOblasti(v, o.id) === "true").length;
+    const vse = vybrano === sk.oblasti.length;
+    return '<div class="vyber-skupina"><div class="skupina-hlava"><span class="skupina-nazev">' +
+      esc(sk.nazev) + '</span><span class="skupina-pocet">' + vybrano + "/" + sk.oblasti.length + "</span>" +
+      '<button type="button" class="skupina-vse" data-skupina="' + i + '">' +
+      (vse ? "Zrušit vše" : "Vybrat vše") + "</button></div>" + '<div class="cipy">' +
+      sk.oblasti.map(o => {
+        const stav = stavOblasti(v, o.id);
+        const title = stav === "mixed"
+          ? "Vybráno jen u některých soudů (" + soudyOblasti(v, o.id).map(s => s.zkratka).join(", ") +
+            "), kliknutím u všech"
+          : o.popis;
+        return cipHtml({ "data-oblast": o.id }, stav, esc(o.nazev), title);
+      }).join("") + "</div></div>";
+  }).join("") + '<p class="vyber-poznamka">Platí pro všechny soudy. Rozhodnutí se ukáže, když ho AI ' +
+    "zařadí do některé z vybraných oblastí.</p>";
 }
 
 function tvar(n, jeden, dva, pet) {
@@ -1596,13 +1620,10 @@ function tvar(n, jeden, dva, pet) {
 }
 
 function souhrnOblasti(v) {
-  const vse = OBLASTI_SEZNAM.filter(o => stavOblasti(v, o.id) === "true").map(o => o.nazev);
+  const vse = OBLASTI_SEZNAM.filter(o => stavOblasti(v, o.id) === "true").length;
   const cast = OBLASTI_SEZNAM.filter(o => stavOblasti(v, o.id) === "mixed").length;
-  if (!vse.length && !cast) return "Žádná";
-  const casti = [];
-  if (cast) casti.push(tvar(cast, "oblast", "oblasti", "oblastí") + " jen u některých soudů");
-  if (vse.length) casti.push(tvar(vse.length, "oblast", "oblasti", "oblastí") + ": " + vse.join(", "));
-  return casti.join("; ");
+  if (!vse && !cast) return "žádná";
+  return vse + " z " + OBLASTI_SEZNAM.length + (cast ? ", " + cast + " jen u některých soudů" : "");
 }
 
 // Senáty NS. Občanskoprávní jednotlivě, pod sebou (ve sloupcích shora
@@ -1624,16 +1645,18 @@ function seznamCisel(cisla) {
 function senatyHtml(v) {
   const skupiny = {};
   senatyKVyberu(v).forEach(s => { (skupiny[s.kolegium] = skupiny[s.kolegium] || []).push(s); });
-  const skupina = (nazev, obsah) => '<div class="vyber-skupina"><div class="skupina-hlava">' +
-    '<span class="skupina-nazev">' + esc(nazev) + "</span></div>" + obsah + "</div>";
+  const skupina = (nazev, obsah, pocet) => '<div class="vyber-skupina"><div class="skupina-hlava">' +
+    '<span class="skupina-nazev">' + esc(nazev) + "</span>" +
+    (pocet ? '<span class="skupina-pocet">' + pocet + "</span>" : "") + "</div>" + obsah + "</div>";
   const cip = (s, trida) => cipHtml({ "data-senat": s.senat }, String(v.ns.senaty.indexOf(s.senat) >= 0),
     '<span class="senat-cislo">' + s.senat + "</span>" +
     (s.popis ? '<span class="senat-popis">' + esc(s.popis) + "</span>" : ""), "", trida);
-  let html = '<p class="vyber-popis">Z vybraných senátů uvidíte všechna rozhodnutí, ať spadají do kterékoli ' +
-    "oblasti.</p>";
+  let html = "";
   if (skupiny.civilni) {
+    const vybrane = skupiny.civilni.filter(s => v.ns.senaty.indexOf(s.senat) >= 0).length;
     html += skupina(KOLEGIA.civilni, '<div class="seznam-voleb">' +
-      skupiny.civilni.map(s => cip(s, "cip-radek")).join("") + "</div>");
+      skupiny.civilni.map(s => cip(s, "cip-radek")).join("") + "</div>",
+      vybrane + "/" + skupiny.civilni.length);
   }
   const trestni = senatyKolegia("trestni");
   if (trestni.length) {
@@ -1646,35 +1669,29 @@ function senatyHtml(v) {
   if (skupiny.ostatni) {
     html += skupina("Další senáty", '<div class="cipy">' + skupiny.ostatni.map(s => cip(s)).join("") + "</div>");
   }
-  return html;
+  return html + '<p class="vyber-poznamka">Z vybraných senátů se ukáže všechno, bez ohledu na oblast.</p>';
 }
 
 function souhrnSenatu(v) {
   const trestni = celeKolegium(v, "trestni") ? senatyKolegia("trestni") : [];
   const cisla = v.ns.senaty.filter(n => trestni.indexOf(n) < 0).sort((a, b) => a - b);
-  if (!cisla.length && !trestni.length) return "Žádný – z Nejvyššího soudu jen rozhodnutí z vybraných oblastí";
-  if (cisla.length === 1 && !trestni.length) {
-    const x = SENATY_NS.find(z => z.senat === cisla[0]);
-    return "Senát " + cisla[0] + (x && x.popis ? " – " + x.popis : "");
-  }
-  const casti = cisla.length ? [(cisla.length > 1 ? "Senáty " : "Senát ") + seznamCisel(cisla)] : [];
-  if (trestni.length) casti.push(casti.length ? "celé trestní kolegium" : "Celé trestní kolegium");
-  return casti.join(" a ");
+  const casti = [];
+  if (cisla.length) casti.push(seznamCisel(cisla));
+  if (trestni.length) casti.push("trestní kolegium");
+  return casti.length ? casti.join(" + ") : "žádný";
 }
 
 // Časopisy: vybraný se ukazuje.
 function casopisyHtml(v, casopisy) {
-  return '<p class="vyber-popis">Vybrané časopisy se ukazují; kliknutím je skryjete nebo znovu zapnete.</p>' +
-    '<div class="cipy">' + casopisy.map(c => cipHtml({ "data-casopis": c.id },
+  return '<div class="cipy">' + casopisy.map(c => cipHtml({ "data-casopis": c.id },
       String(v.skryte_casopisy.indexOf(c.id) < 0), esc(c.zkratka), c.nazev)).join("") + "</div>";
 }
 
 function souhrnCasopisu(v, casopisy) {
   const skryte = casopisy.filter(c => v.skryte_casopisy.indexOf(c.id) >= 0);
-  if (!skryte.length) return "Všech " + casopisy.length;
-  if (skryte.length === casopisy.length) return "Žádný";
-  return (casopisy.length - skryte.length) + " z " + casopisy.length + ", skryté " +
-    skryte.map(c => c.zkratka).join(", ");
+  if (!skryte.length) return "všech " + casopisy.length;
+  if (skryte.length === casopisy.length) return "žádný";
+  return (casopisy.length - skryte.length) + " z " + casopisy.length;
 }
 
 // Rozbalovací sekce: hlavička s názvem a souhrnem, obsah skrytý, dokud ho
@@ -1683,18 +1700,19 @@ function sekceHtml(klic, nadpis, souhrn, obsah) {
   const otevreno = otevreneSekce.has(klic);
   return '<div class="vyber-sekce">' +
     '<button type="button" class="sekce-hlava" aria-expanded="' + otevreno + '" aria-controls="sekce-' +
-    klic + '" data-sekce="' + klic + '"><span class="sekce-text"><span class="sekce-titul">' + esc(nadpis) +
-    '</span><span class="sekce-souhrn">' + esc(souhrn) + "</span></span>" +
-    '<svg class="fold-ico" aria-hidden="true"><use href="#icon-chevron"></use></svg></button>' +
+    klic + '" data-sekce="' + klic + '">' +
+    '<svg class="fold-ico" aria-hidden="true"><use href="#icon-chevron"></use></svg>' +
+    '<span class="sekce-titul">' + esc(nadpis) + '</span><span class="sekce-souhrn">' + esc(souhrn) +
+    "</span></button>" +
     '<div class="sekce-obsah" id="sekce-' + klic + '"' + (otevreno ? "" : " hidden") + ">" + obsah + "</div></div>";
 }
 
 function akceHtml() {
   const zmeny = rozpracovano();
   return '<div class="vyber-akce" id="vyber-akce">' +
+    '<button type="button" class="ucet-btn" id="vyber-vychozi">Obnovit výchozí</button>' +
     '<span class="vyber-stav" id="vyber-stav" role="status">' +
     esc(stavUlozeni || (zmeny ? "Neuložené změny" : "")) + "</span>" +
-    '<button type="button" class="ucet-btn" id="vyber-vychozi">Obnovit výchozí</button>' +
     '<button type="button" class="ucet-btn" id="vyber-zrusit"' + (zmeny && !ukladam ? "" : " hidden") +
     ">Zrušit změny</button>" +
     '<button type="button" class="ucet-btn ucet-btn-hlavni" id="vyber-ulozit"' +
@@ -1713,19 +1731,39 @@ function vykresliNastaveni() {
   const v = koncept;
   const casopisy = casopisyKVyberu();
   el.innerHTML = '<div class="nastaveni">' +
-    '<p class="nastaveni-uvod">Co z judikatury a časopisů chcete vidět. Platí na webu i na ostatních ' +
-    "zařízeních, jakmile výběr uložíte; na dvoutýdenní přehled nemá vliv, ten je pro všechny o IP a IT.</p>" +
+    (uvitani ? '<p class="nastaveni-uvitani">Vítejte v Owl. Vyberte si, co chcete sledovat – výchozí ' +
+      "je IP a IT. Výběr kdykoli změníte v nabídce účtu.</p>" : "") +
     '<div class="vyber-sekce-seznam">' +
     sekceHtml("oblasti", "Oblasti práva", souhrnOblasti(v), oblastiHtml(v)) +
     sekceHtml("senaty", "Senáty Nejvyššího soudu", souhrnSenatu(v), senatyHtml(v)) +
     (casopisy.length ? sekceHtml("casopisy", "Časopisy", souhrnCasopisu(v, casopisy), casopisyHtml(v, casopisy)) : "") +
     "</div>" + akceHtml() + "</div>";
+  hlidejOdchod();
 }
 
 // Jen lišta s tlačítky (stav ukládání) – zbytek stránky se nemění.
 function obnovAkce() {
   const lista = document.getElementById("vyber-akce");
   if (lista) lista.outerHTML = akceHtml();
+  hlidejOdchod();
+}
+
+// Neuložené změny by zavřením nebo obnovením stránky zmizely. Posluchač
+// beforeunload visí jen, když nějaké jsou – stálý by prohlížeči bránil
+// uložit stránku pro návrat zpět (bfcache).
+let strazAktivni = false;
+
+function strazOdchodu(e) {
+  e.preventDefault();
+  e.returnValue = "";
+}
+
+function hlidejOdchod() {
+  const treba = rozpracovano();
+  if (treba === strazAktivni) return;
+  strazAktivni = treba;
+  if (treba) window.addEventListener("beforeunload", strazOdchodu);
+  else window.removeEventListener("beforeunload", strazOdchodu);
 }
 
 // Seznamy ve výběru drží stálé pořadí (oblasti podle seznamu, senáty podle
@@ -1801,7 +1839,10 @@ function otevriVyber() {
   koncept = null;
   stavUlozeni = "";
   vykresliNastaveni();
-  if (!dialog.open) dialog.showModal();
+  if (!dialog.open) {
+    otevrenoZ = document.activeElement;
+    dialog.showModal();
+  }
 }
 
 function zavriVyber() {
@@ -1830,13 +1871,18 @@ function initNastaveni() {
     dialog.addEventListener("click", e => { if (e.target === dialog) zavriVyber(); });
     const zavrit = document.getElementById("vyber-zavrit");
     if (zavrit) zavrit.addEventListener("click", zavriVyber);
+    // Po zavření fokus tam, odkud se dialog otevřel; položka z nabídky účtu
+    // mezitím zmizí, pak na tlačítko účtu.
+    dialog.addEventListener("close", () => {
+      uvitani = false;
+      hlidejOdchod();
+      const videt = x => x && x.isConnected && x !== document.body && x.getClientRects().length > 0;
+      const cil = videt(otevrenoZ) ? otevrenoZ
+        : document.querySelector("#ucet .cl-userButtonTrigger, #ucet button");
+      otevrenoZ = null;
+      if (cil && typeof cil.focus === "function") cil.focus();
+    });
   }
-  // Neuložené změny by zavřením nebo obnovením stránky zmizely.
-  window.addEventListener("beforeunload", e => {
-    if (!rozpracovano()) return;
-    e.preventDefault();
-    e.returnValue = "";
-  });
   if (!el) return;
   el.addEventListener("click", e => {
     const t = e.target.closest("button");

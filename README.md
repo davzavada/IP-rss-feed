@@ -195,13 +195,17 @@ tabulkami judikatury a nabízí přihlášení (při výpadku Clerku ne).
   `{"v":1,"ns":{"oblasti":[…],"senaty":[23]},"nss":{"oblasti":[…]},"us":{…},"sdeu":{…},"skryt_procesni":false,"skryte_casopisy":[]}`.
   Nastavuje se v dialogu Můj výběr, který se otevírá z nabídky účtu
   (tlačítko Clerku v hlavičce, první položka) nebo z odkazu „Upravit výběr“
-  u prázdné karty; stará kotva `#nastaveni` ho otevře taky. Sekce oblasti
-  práva, senáty NS a časopisy jsou na začátku sbalené a v hlavičce mají
-  souhrn; vybírá se jedním kliknutím na čip. Oblasti se zatím nastavují
+  u prázdné karty; stará kotva `#nastaveni` ho otevře taky. Po registraci
+  se otevře sám (čerstvý účet bez uloženého výběru, jednou – příznak
+  `owl:uvitani:{id}` v localStorage) s jednou uvítací větou nahoře. Sekce
+  oblasti práva, senáty NS a časopisy jsou na začátku sbalené a v hlavičce
+  mají krátký souhrn („6 z 25", „23 a 31", „všech 13"); skupiny ukazují
+  počet vybraných, vybírá se jedním kliknutím na čip (○ / ✓). Oblasti se zatím nastavují
   všem soudům stejně (výběr po soudech je v datech připravený, na stránce
   schovaný). Občanskoprávní senáty jsou jednotlivě, trestní kolegium jedním
   vypínačem. Změny platí až po tlačítku Uložit (pak se dialog zavře);
-  zavřít s neuloženými změnami jde po potvrzení. Neznámé oblasti se zahodí,
+  zavřít s neuloženými změnami jde po potvrzení (a jen tehdy hlídá stránku
+  `beforeunload`). Neznámé oblasti se zahodí,
   přejmenované převede `alias` v `docs/data/oblasti.json`; soud, který
   v uloženém výběru chybí, dostane výchozí oblasti. Výchozí výběr se
   neukládá. Procesní rozhodnutí se neskrývají (dřívější `skryt_procesni`

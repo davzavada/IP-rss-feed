@@ -650,43 +650,56 @@ html:has(.dialog[open]) { overflow: hidden; }
 .ucet-menu-ico { width: 16px; height: 16px; display: block; }
 
 .nastaveni { --vybrano: var(--link); }
-.nastaveni-uvod { font-size: var(--fs-md); color: var(--muted-foreground); max-width: 110ch; margin: 4px 0 10px; }
+/* Jen po registraci: jedna věta nad sekcemi. */
+.nastaveni-uvitani { font-size: var(--fs-md); max-width: 110ch; margin: 4px 0 10px; }
 
 .vyber-sekce-seznam { margin-top: 14px; border-top: 1px solid var(--border); }
 .vyber-sekce { border-bottom: 1px solid var(--border); }
 /* Pod poslední sekcí je čára lišty s Uložit – druhá by byla navíc. */
 .vyber-sekce:last-child { border-bottom: 0; }
+/* Hlavička sekce: šipka, název a vpravo krátký souhrn („6 z 25"). */
 .sekce-hlava {
-  display: flex; align-items: center; gap: 14px; width: 100%;
+  display: flex; align-items: center; gap: 10px; width: 100%;
   padding: 14px 4px; border: 0; background: none; color: inherit;
   font: inherit; text-align: left; cursor: pointer;
 }
 .sekce-hlava:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 6px; }
-.sekce-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
-.sekce-titul { font-size: var(--fs-md); font-weight: 600; }
+.sekce-titul { flex: 1; min-width: 0; font-size: var(--fs-md); font-weight: 600; }
 /* Podtržení jen tam, kde je myš – na dotykovém displeji by po klepnutí zůstalo. */
 @media (hover: hover) {
   .sekce-hlava:hover .sekce-titul { text-decoration: underline; text-underline-offset: 3px; }
 }
 /* Souhrn je v jednom řádku, co se nevejde, skončí třemi tečkami. */
 .sekce-souhrn {
-  font-size: var(--fs-md); color: var(--muted-foreground);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  flex: none; max-width: 55%; font-size: var(--fs-md); color: var(--muted-foreground);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-variant-numeric: tabular-nums;
 }
 .sekce-hlava .fold-ico { flex: none; color: var(--muted-foreground); }
 .sekce-hlava[aria-expanded="false"] .fold-ico { transform: rotate(-90deg); }
-.sekce-obsah { padding: 0 4px 20px; }
+.sekce-obsah { padding: 2px 4px 20px 30px; }
 .sekce-obsah[hidden] { display: none; }
-.vyber-popis { font-size: var(--fs-md); color: var(--muted-foreground); max-width: 72ch; margin: 0 0 14px; }
+/* Jedna drobná poznámka pod obsahem sekce – co výběr znamená. */
+.vyber-poznamka { font-size: var(--fs-sm); color: var(--muted-foreground); max-width: 72ch; margin: 16px 0 0; }
 
 .vyber-skupina + .vyber-skupina { margin-top: 16px; }
-.skupina-hlava { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
-.skupina-nazev { font-size: var(--fs-sm); font-weight: 600; color: var(--muted-foreground); }
-.skupina-vse {
-  padding: 0; border: 0; background: none; cursor: pointer;
-  font: inherit; font-size: var(--fs-sm); color: var(--link);
+/* Skupina: název kapitálkami, počet vybraných a vpravo tlumené „Vybrat vše"
+   – nesoupeří s vybranými čipy. */
+.skupina-hlava { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+.skupina-nazev {
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--muted-foreground);
 }
-.skupina-vse:hover { text-decoration: underline; text-underline-offset: 3px; }
+.skupina-pocet { font-size: var(--fs-sm); color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
+.skupina-vse {
+  margin-left: auto; padding: 0; border: 0; background: none; cursor: pointer;
+  font: inherit; font-size: var(--fs-sm); color: var(--muted-foreground);
+}
+.skupina-vse:hover { color: var(--foreground); text-decoration: underline; text-underline-offset: 3px; }
+.skupina-vse { white-space: nowrap; }
+@media (max-width: 640px) {
+  /* Na telefonu by odsazení pod šipkou jen ubíralo místo čipům. */
+  .sekce-obsah { padding-left: 4px; }
+}
 .skupina-vse:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 4px; }
 
 /* Čip = přepínací tlačítko. Znak vpředu (+ / ✓ / –) má pevnou šířku
@@ -702,7 +715,7 @@ html:has(.dialog[open]) { overflow: hidden; }
 .cip:hover { border-color: var(--muted-foreground); }
 .cip:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 .cip-znak { flex: none; width: 0.9em; text-align: center; color: var(--muted-foreground); }
-.cip-znak::before { content: "+"; }
+.cip-znak::before { content: "○"; }
 .cip[aria-pressed="true"] {
   background: color-mix(in srgb, var(--vybrano) 11%, var(--card));
   border-color: color-mix(in srgb, var(--vybrano) 45%, transparent);
@@ -763,7 +776,9 @@ html:has(.dialog[open]) { overflow: hidden; }
   padding: 14px 0 18px;
   background: var(--card); border-top: 1px solid var(--border);
 }
-.vyber-stav { margin-right: auto; font-size: var(--fs-sm); color: var(--muted-foreground); }
+/* Obnovit výchozí vlevo, stav a tlačítka vpravo. */
+#vyber-vychozi { margin-right: auto; }
+.vyber-stav { font-size: var(--fs-sm); color: var(--muted-foreground); }
 .ucet-btn:disabled { opacity: .45; cursor: default; }
 .ucet-btn[hidden] { display: none; }
 
