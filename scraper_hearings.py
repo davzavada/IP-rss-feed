@@ -650,9 +650,14 @@ ROZVRH_AI_PROMPT = (
     "právnické osoby, spory z práva duševního vlastnictví; u odvolacího soudu "
     "i zpracování osobních údajů. NEpatří sem insolvence, veřejné rejstříky, "
     "cenné papíry, korporace, rozhodčí nálezy, trestní ani správní úsek.\n"
+    "Ber jen senáty, které mají tuto agendu ve vlastním „Obor a vymezení "
+    "působnosti“. Tabulka má u senátu i sloupec „Zastupuje senát“ (zastupující "
+    "senáty či oddělení): ty IP senát jen zastupují, když nemůže jednat, samy "
+    "IP agendu nemají – do výsledku je NEdávej.\n"
     "Odpověz POUZE platným JSON objektem bez dalšího textu ve tvaru:\n"
     '{{"senaty": [{{"senat": "<číslo> <rejstřík>", "predseda": "Jméno Příjmení",\n'
-    '               "clenove": ["Jméno Příjmení", ...], "agenda": "stručně"}}],\n'
+    '               "clenove": ["Jméno Příjmení", ...], "agenda": "stručně",\n'
+    '               "poznamka": "stručně"}}],\n'
     '  "soudci": ["Jméno Příjmení", ...]}}\n'
     "Do „senaty“ dej KAŽDOU kombinaci čísla soudního oddělení a rejstříku "
     "(C, EC, Cm, ECm, Co, Cmo…), pod kterou tato oddělení vedou spisové "
@@ -660,9 +665,49 @@ ROZVRH_AI_PROMPT = (
     "„12 Cm“, „12 ECm“, „12 C“, „12 EC“. Rejstříky Nc a EVCm vynech. "
     "U každé položky uveď předsedu senátu, v „clenove“ další soudce, kteří "
     "v senátu rozhodují (samosoudce = prázdný seznam), a v „agenda“ několika "
-    "slovy, jaké věci senát podle rozvrhu soudí. Všechna jména bez titulů. "
-    "Do „soudci“ dej předsedy těchto senátů. Nic si nevymýšlej."
+    "slovy, jaké věci senát podle rozvrhu soudí. Soudce na stáži nebo se "
+    "zastaveným nápadem do „clenove“ nedávej, jen je zmiň v „poznamka“ "
+    "(např. „na stáži bez nápadu: Jméno Příjmení“); jinak „poznamka“ vynech. "
+    "Všechna jména bez titulů. Do „soudci“ dej předsedy těchto senátů. "
+    "Nic si nevymýšlej."
 )
+
+# Od kdy rozvrh platí – z titulní strany („úplné znění s účinností od
+# 15. 9. 2026", „změna od 1. 9. 2026"). Hledá se v textu bez diakritiky,
+# protože pypdf ji u některých písem rozkládá.
+PLATNOST_RE = re.compile(
+    r"\b(uplne\s+zneni|zmen[ay](?:\s+c\.?\s*\d+)?)[^()]{0,40}?"
+    r"\bod\s+(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})"
+)
+UCINNOST_RE = re.compile(r"ucinnost\w*\s+od\s+(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})")
+
+
+def platnost_rozvrhu(text):
+    """Z titulní strany rozvrhu práce vytáhne, od kdy dokument platí.
+
+    Vrací (popisek, datum ISO), např. („úplné znění od 15. 9. 2026",
+    "2026-09-15"), nebo (None, None). Podle data se pozná, jestli soud
+    vyvěsil novější rozvrh, než je v configu – ten mohl být sepsaný ručně
+    z jiného souboru, takže hash sám nestačí."""
+    t = " ".join(strip_diacritics(text or "").lower().split())
+    m = PLATNOST_RE.search(t)
+    if m:
+        druh = "úplné znění" if m.group(1).startswith("uplne") else "změna"
+        cislo = re.search(r"c\.?\s*(\d+)$", m.group(1))
+        if cislo and druh == "změna":
+            druh += f" č. {cislo.group(1)}"
+        d, mes, rok = (int(x) for x in m.groups()[1:])
+    else:
+        m = UCINNOST_RE.search(t)
+        if not m:
+            return None, None
+        druh = "s účinností"
+        d, mes, rok = (int(x) for x in m.groups())
+    try:
+        iso = date(rok, mes, d).isoformat()
+    except ValueError:
+        return None, None
+    return f"{druh} od {d}. {mes}. {rok}", iso
 
 
 def jmeno_bez_titulu(jmeno):
@@ -682,8 +727,9 @@ def rozvrh_z_odpovedi(data):
 
     `senaty` a `soudci` jsou ploché seznamy jako dřív – podle nich se filtrují
     jednání (mark_ip). `sestavy` drží, kdo kterému senátu předsedá a kdo v něm
-    sedí: senáty se stejným předsedou, členy i agendou se slučují do jedné
-    sestavy („1 Cmo, 2 Co – Horáček"). Kalendář je ukazuje pod mřížkou."""
+    sedí: senáty se stejným předsedou, členy, agendou i poznámkou (stáže,
+    zastavený nápad) se slučují do jedné sestavy („1 Cmo, 2 Co – Horáček").
+    Kalendář je ukazuje pod mřížkou."""
     senaty, soudci, skupiny = [], set(), {}
     if not isinstance(data, dict):
         return [], [], []
@@ -702,23 +748,32 @@ def rozvrh_z_odpovedi(data):
         clenove = tuple(c for c in (jmeno_bez_titulu(c) for c in clenove)
                         if c and c != predseda)
         agenda = " ".join(str(polozka.get("agenda") or "").split())
-        skupiny.setdefault((predseda, clenove, agenda), []).append(klic)
+        pozn = " ".join(str(polozka.get("poznamka") or "").split())
+        skupiny.setdefault((predseda, clenove, agenda, pozn), []).append(klic)
     for j in data.get("soudci", []):
         j = " ".join(str(j).split())
         if j:
             soudci.add(j)
-    sestavy = [
-        {"senaty": sorted(set(klice), key=senat_poradi), "predseda": predseda,
-         "clenove": list(clenove), "agenda": agenda}
-        for (predseda, clenove, agenda), klice in skupiny.items()
-    ]
+    sestavy = []
+    for (predseda, clenove, agenda, pozn), klice in skupiny.items():
+        sestava = {"senaty": sorted(set(klice), key=senat_poradi), "predseda": predseda,
+                   "clenove": list(clenove), "agenda": agenda}
+        if pozn:
+            sestava["pozn"] = pozn
+        sestavy.append(sestava)
     sestavy.sort(key=lambda x: senat_poradi(x["senaty"][0]))
     return sorted(set(senaty), key=senat_poradi), sorted(soudci), sestavy
 
 
 def update_rozvrh(config, court, pdf_bytes, source_url):
     """Z rozvrhu práce (PDF) nechá AI vytáhnout IP senáty a soudce; při
-    neúspěchu nechá dosavadní konfiguraci být."""
+    neúspěchu nechá dosavadní konfiguraci být.
+
+    Rozvrh, který není novější než ten zapsaný v configu, se AI neposílá:
+    buď má stejný hash, nebo podle titulní strany neplatí od pozdějšího dne
+    (`rozvrh_zdroj.platnost_od`). Config tak může být sepsaný ručně podle
+    rozvrhu, který scraper nikdy nestáhl, a týdenní kontrola ho nepřepíše
+    starším ani stejným dokumentem. Přepíše ho až rozvrh s pozdějším datem."""
     cfg = config["courts"][court]
     digest = hashlib.sha256(pdf_bytes).hexdigest()
     zdroj = cfg.get("rozvrh_zdroj") or {}
@@ -727,20 +782,30 @@ def update_rozvrh(config, court, pdf_bytes, source_url):
     if zdroj.get("hash") == digest and "sestavy" in cfg:
         print(f"  [{court}] rozvrh práce beze změny (hash sedí)")
         return False
+
+    from pypdf import PdfReader
+    reader = PdfReader(io.BytesIO(pdf_bytes))
+    texty = []
+    for page in reader.pages:
+        try:
+            texty.append(page.extract_text() or "")
+        except Exception:
+            texty.append("")
+
+    platnost, platnost_od = platnost_rozvrhu("\n".join(texty[:2]))
+    zapsano_od = zdroj.get("platnost_od")
+    if platnost_od and zapsano_od and platnost_od <= zapsano_od and "sestavy" in cfg:
+        print(f"  [{court}] rozvrh {platnost} není novější než zapsaný "
+              f"({zdroj.get('platnost') or zapsano_od}) – nechávám")
+        # Příště ho pozná už podle hashe a nemusí číst PDF.
+        cfg["rozvrh_zdroj"] = {**zdroj, "url": source_url, "hash": digest}
+        return False
     if not gemini_enabled():
         print(f"  [{court}] rozvrh se změnil, ale AI je vypnutá – nechávám starý seznam")
         return False
 
-    from pypdf import PdfReader
-    reader = PdfReader(io.BytesIO(pdf_bytes))
-    pages = []
-    for i, page in enumerate(reader.pages):
-        try:
-            t = page.extract_text() or ""
-        except Exception:
-            continue
-        if IP_KEYWORDS_RE.search(t):
-            pages.append(f"--- strana {i + 1} ---\n{t}")
+    pages = [f"--- strana {i + 1} ---\n{t}" for i, t in enumerate(texty)
+             if IP_KEYWORDS_RE.search(t)]
     if not pages:
         print(f"  [{court}] v rozvrhu nejsou stránky s IP klíčovými slovy – nechávám starý seznam")
         return False
@@ -759,14 +824,40 @@ def update_rozvrh(config, court, pdf_bytes, source_url):
     cfg["sestavy"] = sestavy
     # `popis` je ruční poznámka, odkud seznam pochází – tu si neseme dál.
     cfg["rozvrh_zdroj"] = {
-        "popis": (cfg.get("rozvrh_zdroj") or {}).get("popis"),
+        "popis": zdroj.get("popis"),
+        "platnost": platnost,
+        "platnost_od": platnost_od,
         "url": source_url,
         "hash": digest,
         "aktualizovano": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     }
     config["updated"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
-    print(f"  [{court}] IP senáty z rozvrhu obnoveny: {', '.join(senaty)}")
+    print(f"  [{court}] IP senáty z rozvrhu obnoveny ({platnost or 'platnost neznámá'}): "
+          f"{', '.join(senaty)}")
     return True
+
+
+def zapis_sledovane(output, config):
+    """Zapíše do výstupu, koho kalendář sleduje – z nich web skládá patičku
+    „Koho kalendář sleduje".
+
+    `senaty` a `soudci` jsou seznamy, podle kterých se jednání filtrují,
+    `sestavy` kdo senátům předsedá a kdo v nich sedí. K sestavám se přidají
+    `sestavy_navic`: senáty jen pro přehled, podle kterých se nefiltruje
+    (správní oddělení MSPH, která soudí žaloby proti ÚPV vedle jiné agendy –
+    ty se poznají podle žalovaného). `rozvrhy` je odkaz na stránku rozvrhu
+    práce a verze, podle které je seznam sepsaný."""
+    courts = config.get("courts", {})
+    output["senaty"] = {c: cfg.get("senaty", []) for c, cfg in courts.items()}
+    output["soudci"] = {c: cfg.get("soudci", []) for c, cfg in courts.items()}
+    output["sestavy"] = {c: cfg.get("sestavy", []) + cfg.get("sestavy_navic", [])
+                         for c, cfg in courts.items()}
+    output["rozvrhy"] = {
+        c: {"platnost": (cfg.get("rozvrh_zdroj") or {}).get("platnost"),
+            "url": cfg.get("rozvrh_url")}
+        for c, cfg in courts.items()
+    }
+    return output
 
 
 # --- Filtr IP ---
@@ -1392,11 +1483,7 @@ def main():
     # 3) Změny proti minulým přehledům držíme jen měsíc zpět.
     output["zmeny"] = orez_zmeny(output.get("zmeny", []))
 
-    # Sledované senáty, soudci a sestavy senátů z rozvrhu do výstupu –
-    # kalendář z nich skládá patičku „Koho kalendář sleduje".
-    output["senaty"] = {c: cfg.get("senaty", []) for c, cfg in config["courts"].items()}
-    output["soudci"] = {c: cfg.get("soudci", []) for c, cfg in config["courts"].items()}
-    output["sestavy"] = {c: cfg.get("sestavy", []) for c, cfg in config["courts"].items()}
+    zapis_sledovane(output, config)
     output["generated"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     output["ics"] = write_ics(output)
     save_json(OUTPUT_FILE, output)

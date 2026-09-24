@@ -416,18 +416,21 @@ button.cal-key:hover { box-shadow: inset 0 0 0 1px currentColor; }
   font-size: var(--fs-sm); font-weight: 500;
   background: var(--badge-amber-bg); color: var(--badge-amber-fg);
 }
-.cal-zmeny { margin-top: 18px; border-top: 1px solid var(--border); padding-top: 12px; }
-.cal-zmeny-head {
+.cal-zmeny, .cal-sestavy {
+  margin-top: 18px; border-top: 1px solid var(--border); padding-top: 12px;
+}
+/* Skládací hlavička částí pod mřížkou (změny, koho kalendář sleduje). */
+.cal-fold-head {
   display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none;
 }
-.cal-zmeny-head h3 {
+.cal-fold-head h3 {
   margin: 0; font-size: var(--fs-md); font-weight: 600;
 }
-.cal-zmeny-head:hover .fold, .cal-zmeny-head:focus-visible .fold {
+.cal-fold-head:hover .fold, .cal-fold-head:focus-visible .fold {
   color: var(--foreground); background: var(--accent); border-color: var(--muted-foreground);
 }
-.cal-zmeny-head[aria-expanded="false"] .fold-ico { transform: rotate(-90deg); }
-.cal-zmeny .card-content { margin-top: 8px; }
+.cal-fold-head[aria-expanded="false"] .fold-ico { transform: rotate(-90deg); }
+.cal-zmeny .card-content, .cal-sestavy .card-content { margin-top: 8px; }
 .cal-zmeny ul { margin: 0; padding: 0; list-style: none; }
 .cal-zmeny li {
   display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
@@ -442,24 +445,30 @@ button.cal-key:hover { box-shadow: inset 0 0 0 1px currentColor; }
 .cal-zmeny .cal-zmena-spz { font-weight: 600; }
 
 /* Patička kalendáře: sledované senáty a jejich soudci. */
-.cal-sestavy { margin-top: 18px; border-top: 1px solid var(--border); padding-top: 12px; }
-.cal-sestavy h3 { margin: 0; font-size: var(--fs-md); font-weight: 600; }
 .cal-sestavy h4 {
   margin: 12px 0 4px; font-size: var(--fs-sm); font-weight: 600;
   color: var(--muted-foreground);
 }
+.cal-sestavy-soud:first-child h4 { margin-top: 4px; }
+.cal-sestavy h4 a { color: var(--link); font-weight: 500; text-decoration: none; }
+.cal-sestavy h4 a:hover { text-decoration: underline; }
 .cal-sestavy ul { margin: 0; padding: 0; list-style: none; }
+/* Senát vlevo, kdo v něm sedí vpravo – delší popis se zalomí ve svém
+   sloupci, ne pod číslo senátu. Na telefonu pod sebou. */
 .cal-sestavy li {
-  display: flex; align-items: baseline; gap: 4px 12px; flex-wrap: wrap;
-  padding: 5px 0; border-bottom: 1px solid var(--border);
+  display: grid; grid-template-columns: 12.5em minmax(0, 1fr); gap: 2px 12px;
+  align-items: baseline;
+  padding: 6px 0; border-bottom: 1px solid var(--border);
   font-size: var(--fs-md);
 }
 .cal-sestavy li:last-child { border-bottom: 0; }
 .cal-sestava-senaty {
   font-weight: 600; font-variant-numeric: tabular-nums;
-  min-width: 9.5em;
 }
-.cal-sestava-vedou { color: var(--muted-foreground); }
+@container (max-width: 560px) {
+  .cal-sestavy li { grid-template-columns: minmax(0, 1fr); }
+}
+.cal-sestava-vedou, .cal-sestava-pozn { color: var(--muted-foreground); }
 .cal-sestavy-pozn {
   margin: 10px 0 0; font-size: var(--fs-sm); color: var(--muted-foreground);
 }

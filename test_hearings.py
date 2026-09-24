@@ -771,6 +771,102 @@ check("chybějící sestavy se doplní i z nezměněného rozvrhu",
       str(cfg_stary["courts"]["VS"]))
 
 # =====================================================================
+print("\n11) Verze rozvrhu, ruční sestavy a zápis do výstupu")
+# =====================================================================
+# Sestavy jsou sepsané ručně podle rozvrhu, který scraper nemusel nikdy
+# stáhnout (poslal ho uživatel). Týdenní kontrola je proto nesmí přepsat
+# starším ani stejným dokumentem – pozná ho podle data platnosti na titulní
+# straně – ale novější rozvrh ano.
+
+check("platnost změny VS", s.platnost_rozvrhu(
+    "Vrchní soud v Praze S 1/2026 ROZVRH PRÁCE 2026 změna od 1. 9. 2026 Schválil")
+    == ("změna od 1. 9. 2026", "2026-09-01"))
+check("platnost úplného znění MSPH", s.platnost_rozvrhu(
+    "ROZVRH PRÁCE MĚSTSKÉHO SOUDU V PRAZE PRO ROK 2026\n(úplné znění s účinností "
+    "od 15. 9. 2026)") == ("úplné znění od 15. 9. 2026", "2026-09-15"))
+check("platnost s rozloženou diakritikou",
+      s.platnost_rozvrhu("zme\u030cna od 1. 9. 2026")[1] == "2026-09-01")
+check("bez data platnost není", s.platnost_rozvrhu("Rozvrh práce 2026") == (None, None))
+
+def cfg_rucne():
+    return {"courts": {"VS": {
+        "nazev": "Vrchní soud v Praze", "senaty": ["1 Cmo"], "soudci": ["Roman Horáček"],
+        "sestavy": [{"senaty": ["1 Cmo"], "predseda": "Roman Horáček", "clenove": [],
+                     "agenda": "ručně"}],
+        "rozvrh_zdroj": {"popis": "ručně", "platnost": "změna od 1. 9. 2026",
+                         "platnost_od": "2026-09-01", "url": None, "hash": None}}}}
+
+# Starší dokument (scraper na stránce vidí srpnovou změnu) i ten samý rozvrh
+# z jiného souboru: AI se neptá, ruční sestavy zůstanou, hash se zapamatuje.
+for popis, text in (("starší", "Rozvrh prace 2026 zmena od 1. 8. 2026 Senat 4 Cmo autorske pravo"),
+                    ("stejný", "Rozvrh prace 2026 zmena od 1. 9. 2026 Senat 4 Cmo autorske pravo")):
+    cfg_r = cfg_rucne()
+    pdf = mini_pdf(text)
+    with s_ai(odpoved_rozvrh) as sim:
+        zmena = s.update_rozvrh(cfg_r, "VS", pdf, "https://example.test/rozvrh.pdf")
+    vs = cfg_r["courts"]["VS"]
+    check(f"{popis} rozvrh ruční sestavy nepřepíše", not zmena and not sim.dotazy
+          and vs["sestavy"][0]["agenda"] == "ručně" and vs["senaty"] == ["1 Cmo"],
+          str(vs))
+    check(f"{popis} rozvrh: hash zapsán, platnost zůstává",
+          vs["rozvrh_zdroj"]["hash"] and vs["rozvrh_zdroj"]["platnost_od"] == "2026-09-01",
+          str(vs["rozvrh_zdroj"]))
+
+# Novější rozvrh: AI sestavy obnoví a platnost se vezme z titulní strany.
+cfg_r = cfg_rucne()
+pdf = mini_pdf("Rozvrh prace 2026 zmena od 1. 10. 2026 Senat 1 Cmo autorske pravo")
+with s_ai(odpoved_rozvrh) as sim:
+    zmena = s.update_rozvrh(cfg_r, "VS", pdf, "https://example.test/rozvrh.pdf")
+zdroj = cfg_r["courts"]["VS"]["rozvrh_zdroj"]
+check("novější rozvrh AI obnoví", zmena and sim.dotazy
+      and cfg_r["courts"]["VS"]["sestavy"] == sestavy_r, str(cfg_r["courts"]["VS"]))
+check("platnost nového rozvrhu z titulní strany",
+      (zdroj["platnost"], zdroj["platnost_od"]) == ("změna od 1. 10. 2026", "2026-10-01")
+      and zdroj["popis"] == "ručně", str(zdroj))
+
+# Prompt vylučuje zastupující senáty; stáže jdou do poznámky sestavy.
+check("prompt nebere senáty ze sloupce Zastupuje senát",
+      "Zastupuje senát" in s.ROZVRH_AI_PROMPT and "NEdávej" in s.ROZVRH_AI_PROMPT)
+_, _, sestavy_p = s.rozvrh_z_odpovedi({"senaty": [
+    {"senat": "3 Cmo", "predseda": "Mgr. Jiří Čurda", "clenove": ["JUDr. Gabriela Kučerová"],
+     "agenda": "duševní vlastnictví", "poznamka": "na stáži bez nápadu:  Vladimír Sommer"}]})
+check("poznamka AI -> pozn sestavy",
+      sestavy_p == [{"senaty": ["3 Cmo"], "predseda": "Jiří Čurda",
+                     "clenove": ["Gabriela Kučerová"], "agenda": "duševní vlastnictví",
+                     "pozn": "na stáži bez nápadu: Vladimír Sommer"}], str(sestavy_p))
+
+# Do výstupu jdou i sestavy navíc (jen pro patičku) a odkaz na rozvrh.
+cfg_z = {"courts": {"MS": {
+    "senaty": ["12 C"], "soudci": ["Jana Přibylová"], "rozvrh_url": "https://example.test/rp",
+    "sestavy": [{"senaty": ["12 C"], "predseda": "Jana Přibylová", "clenove": [], "agenda": "IP"}],
+    "sestavy_navic": [{"senaty": ["15 A"], "predseda": "Martin Kříž", "clenove": [],
+                       "agenda": "ÚPV"}],
+    "rozvrh_zdroj": {"platnost": "úplné znění od 15. 9. 2026"}}}}
+vystup = s.zapis_sledovane({}, cfg_z)
+check("sestavy navíc jdou do patičky, ne do filtru",
+      [x["senaty"] for x in vystup["sestavy"]["MS"]] == [["12 C"], ["15 A"]]
+      and vystup["senaty"]["MS"] == ["12 C"], str(vystup))
+check("rozvrh: odkaz a platnost",
+      vystup["rozvrhy"]["MS"] == {"platnost": "úplné znění od 15. 9. 2026",
+                                  "url": "https://example.test/rp"}, str(vystup["rozvrhy"]))
+
+# Skutečný config: sestavy pokrývají přesně sledované senáty (nic navíc,
+# nic chybí, nic dvakrát) a senáty navíc se nefiltrují.
+config_real = s.load_json(s.CONFIG_FILE)
+for soud, cfg in config_real["courts"].items():
+    klice = [k for st in cfg.get("sestavy", []) for k in st["senaty"]]
+    navic = [k for st in cfg.get("sestavy_navic", []) for k in st["senaty"]]
+    check(f"{soud}: sestavy = sledované senáty",
+          sorted(klice) == sorted(cfg["senaty"]) and len(klice) == len(set(klice)),
+          f"chybí {sorted(set(cfg['senaty']) - set(klice))}, navíc {sorted(set(klice) - set(cfg['senaty']))}")
+    check(f"{soud}: sestavy navíc nejsou ve filtru", not set(navic) & set(cfg["senaty"]))
+    check(f"{soud}: platnost rozvrhu zapsaná",
+          s.platnost_rozvrhu((cfg.get("rozvrh_zdroj") or {}).get("platnost", ""))[1]
+          == (cfg.get("rozvrh_zdroj") or {}).get("platnost_od"))
+check("VS nesleduje zastupující senáty",
+      not {"4 Cmo", "4 Co", "5 Co", "11 Cmo"} & set(config_real["courts"]["VS"]["senaty"]))
+
+# =====================================================================
 failed = [n for n, ok, _ in results if not ok]
 print(f"\n{len(results) - len(failed)}/{len(results)} testů prošlo")
 if failed:

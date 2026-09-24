@@ -236,94 +236,6 @@
       "uid": "d6dace8d49b1427195a3233961660305cacad212"
     },
     {
-      "datum": "2026-09-01",
-      "hodina": "09:00",
-      "sin": "4",
-      "predseda": "JUDr. Monika Vacková",
-      "spz": "4 Cmo 98/2026",
-      "nazev": "P. S. v. CeWe Color",
-      "senat": "4 Cmo",
-      "rejstrik": "Cmo",
-      "cislo_senatu": 4,
-      "bc": 98,
-      "rocnik": 2026,
-      "ucastnici": [
-        "P. S.",
-        "CeWe Color a.s."
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "039200bc659501dd9741dcac9500851ff61d52aa"
-    },
-    {
-      "datum": "2026-09-01",
-      "hodina": "10:30",
-      "sin": "4",
-      "predseda": "JUDr. Michal Krenk, Ph.D.",
-      "spz": "4 Cmo 57/2026",
-      "nazev": "Dictio v. R. H. a další",
-      "senat": "4 Cmo",
-      "rejstrik": "Cmo",
-      "cislo_senatu": 4,
-      "bc": 57,
-      "rocnik": 2026,
-      "ucastnici": [
-        "Dictio a.s.",
-        "R. H.",
-        "P. F.",
-        "R. K.",
-        "P. P."
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "52a9fb1be1a475e701de2f2a66f000e7e8da2467"
-    },
-    {
-      "datum": "2026-09-01",
-      "hodina": "13:30",
-      "sin": "4",
-      "predseda": "JUDr. Michal Krenk, Ph.D.",
-      "spz": "4 Cmo 225/2024",
-      "nazev": "M. M. group Praha v. J. V.",
-      "senat": "4 Cmo",
-      "rejstrik": "Cmo",
-      "cislo_senatu": 4,
-      "bc": 225,
-      "rocnik": 2024,
-      "ucastnici": [
-        "M. M. group Praha s.r.o.",
-        "J. V."
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "aee2d7fdfa404637a3f0d031f50872795f1f7548"
-    },
-    {
-      "datum": "2026-09-02",
-      "hodina": "09:00",
-      "sin": "4",
-      "predseda": "JUDr. Michal Krenk, Ph.D.",
-      "spz": "4 Cmo 64/2026",
-      "nazev": "Bytové družstvo Mezivrší v. 1323/40 družstvo a další",
-      "senat": "4 Cmo",
-      "rejstrik": "Cmo",
-      "cislo_senatu": 4,
-      "bc": 64,
-      "rocnik": 2026,
-      "ucastnici": [
-        "Bytové družstvo Mezivrší",
-        "1323/40 družstvo",
-        "M. V."
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "925596e64b4920dd37548ed972de2bd8dd91e951"
-    },
-    {
       "datum": "2026-09-02",
       "hodina": "09:15",
       "sin": "6",
@@ -346,27 +258,6 @@
     },
     {
       "datum": "2026-09-02",
-      "hodina": "10:30",
-      "sin": "4",
-      "predseda": "JUDr. Michal Krenk, Ph.D.",
-      "spz": "4 Cmo 131/2026",
-      "nazev": "servis SOLDÁT v. P. H.",
-      "senat": "4 Cmo",
-      "rejstrik": "Cmo",
-      "cislo_senatu": 4,
-      "bc": 131,
-      "rocnik": 2026,
-      "ucastnici": [
-        "servis SOLDÁT s.r.o.",
-        "P. H."
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "6739c534e3085e42b198124c93a6977dc9e9260d"
-    },
-    {
-      "datum": "2026-09-02",
       "hodina": "11:00",
       "sin": "353",
       "predseda": "Mgr. Lucie Vobrová",
@@ -385,123 +276,6 @@
       "ip": true,
       "soud": "MS",
       "uid": "3a3044ec6f867a3adb29670d58cecce288b53421"
-    },
-    {
-      "datum": "2026-09-02",
-      "hodina": "13:30",
-      "sin": "4",
-      "predseda": "JUDr. Monika Vacková",
-      "spz": "4 Cmo 83/2026",
-      "nazev": "SESTŘIČKA.CZ - DOMÁCÍ v. PÉČE PRAHA a další",
-      "senat": "4 Cmo",
-      "rejstrik": "Cmo",
-      "cislo_senatu": 4,
-      "bc": 83,
-      "rocnik": 2026,
-      "ucastnici": [
-        "SESTŘIČKA.CZ - DOMÁCÍ",
-        "PÉČE PRAHA a.s.",
-        "L. K."
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "01a4c230b278218834b9e9bf40d8717dd960321f"
-    },
-    {
-      "datum": "2026-09-03",
-      "hodina": "08:30",
-      "sin": "4",
-      "predseda": "JUDr. Jiří Švehla",
-      "spz": "11 Cmo 35/2025",
-      "nazev": "K. J. v. H. J. a další",
-      "senat": "11 Cmo",
-      "rejstrik": "Cmo",
-      "cislo_senatu": 11,
-      "bc": 35,
-      "rocnik": 2025,
-      "ucastnici": [
-        "K. J.",
-        "H. J.",
-        "I. K.",
-        "M. F.",
-        "Společenství vlastníků domu",
-        "Dejvice č.p. 1717"
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "0f05846b1dc900d8200c1aebcc69b48c3d8ea4bd"
-    },
-    {
-      "datum": "2026-09-03",
-      "hodina": "09:30",
-      "sin": "4",
-      "predseda": "JUDr. Jana Sedlářová",
-      "spz": "4 Co 104/2025",
-      "nazev": "PROMET DEVELOPMENT v. Odien Real Estate",
-      "senat": "4 Co",
-      "rejstrik": "Co",
-      "cislo_senatu": 4,
-      "bc": 104,
-      "rocnik": 2025,
-      "ucastnici": [
-        "PROMET DEVELOPMENT s.r.o.",
-        "Odien Real Estate a. s."
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "4475ce08f69333185cd66c770cb94cc6e59337f2"
-    },
-    {
-      "datum": "2026-09-03",
-      "hodina": "10:30",
-      "sin": "4",
-      "predseda": "JUDr. Michal Mědílek",
-      "spz": "11 Cmo 33/2025",
-      "nazev": "J. B. v. Společenství vlastníků jednotek… a další",
-      "senat": "11 Cmo",
-      "rejstrik": "Cmo",
-      "cislo_senatu": 11,
-      "bc": 33,
-      "rocnik": 2025,
-      "ucastnici": [
-        "J. B.",
-        "Společenství vlastníků jednotek pro dům č.p. 848-",
-        "851, ul. Pezinská, Mladá",
-        "B. I.",
-        "A. J.",
-        "_"
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "c7e81cc5a633222f9ed648e2b943e1a402ab9417"
-    },
-    {
-      "datum": "2026-09-03",
-      "hodina": "13:00",
-      "sin": "4",
-      "predseda": "JUDr. Jiří Švehla",
-      "spz": "11 Cmo 30/2025",
-      "nazev": "I. K. v. J. K. a další",
-      "senat": "11 Cmo",
-      "rejstrik": "Cmo",
-      "cislo_senatu": 11,
-      "bc": 30,
-      "rocnik": 2025,
-      "ucastnici": [
-        "I. K.",
-        "J. K.",
-        "Společenství vlastníků bytů",
-        "Havlíčkův Brod",
-        "Rozkošská 3009"
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "df451e065c119295b583eda581a42a476481d3ce"
     },
     {
       "datum": "2026-09-03",
@@ -570,56 +344,6 @@
     },
     {
       "datum": "2026-09-10",
-      "hodina": "08:30",
-      "sin": "4",
-      "predseda": "JUDr. Michal Mědílek",
-      "spz": "11 Cmo 24/2025",
-      "nazev": "V. P. v. A. P. a další",
-      "senat": "11 Cmo",
-      "rejstrik": "Cmo",
-      "cislo_senatu": 11,
-      "bc": 24,
-      "rocnik": 2025,
-      "ucastnici": [
-        "V. P.",
-        "A. P.",
-        "B. K.",
-        "B. K.",
-        "M. H.",
-        "M. P.",
-        "A. B.",
-        "Ředitelství silnic a dálnic",
-        "České republiky státní přísp.org."
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "ed8c5ebc6da13d1beab4f90d224303153484ecbd"
-    },
-    {
-      "datum": "2026-09-10",
-      "hodina": "09:30",
-      "sin": "4",
-      "predseda": "JUDr. Jana Sedlářová",
-      "spz": "4 Co 17/2026",
-      "nazev": "K. J. v. K. Š. a další",
-      "senat": "4 Co",
-      "rejstrik": "Co",
-      "cislo_senatu": 4,
-      "bc": 17,
-      "rocnik": 2026,
-      "ucastnici": [
-        "K. J.",
-        "K. Š.",
-        "S. J."
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "d6e408271e064869f4d45e4e2a176f4f55054ecc"
-    },
-    {
-      "datum": "2026-09-10",
       "hodina": "09:30",
       "sin": "265",
       "predseda": "JUDr. Mgr. Petr Košík, Ph.D.",
@@ -638,27 +362,6 @@
       "ip": true,
       "soud": "MS",
       "uid": "bb2e6216acf12109fffbb782d43560dc65fce72d"
-    },
-    {
-      "datum": "2026-09-10",
-      "hodina": "10:30",
-      "sin": "4",
-      "predseda": "JUDr. Jana Sedlářová",
-      "spz": "4 Co 36/2026",
-      "nazev": "J. P. v. S. G.",
-      "senat": "4 Co",
-      "rejstrik": "Co",
-      "cislo_senatu": 4,
-      "bc": 36,
-      "rocnik": 2026,
-      "ucastnici": [
-        "J. P.",
-        "S. G."
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "1f90cf412ce68bbbcd318e43b4ae3297ab2b01a9"
     },
     {
       "datum": "2026-09-14",
@@ -862,48 +565,6 @@
     },
     {
       "datum": "2026-09-17",
-      "hodina": "09:30",
-      "sin": "4",
-      "predseda": "JUDr. Michal Mědílek",
-      "spz": "5 Co 79/2025",
-      "nazev": "AVANT investiční společnost v. R. Č.",
-      "senat": "5 Co",
-      "rejstrik": "Co",
-      "cislo_senatu": 5,
-      "bc": 79,
-      "rocnik": 2025,
-      "ucastnici": [
-        "AVANT investiční společnost a.s.",
-        "R. Č."
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "cb930e92c67f1e9e377f051a61f87a23fbd9dacf"
-    },
-    {
-      "datum": "2026-09-17",
-      "hodina": "10:30",
-      "sin": "4",
-      "predseda": "JUDr. Irena Ondruszová",
-      "spz": "5 Co 33/2026",
-      "nazev": "ČEZ Distribuce v. Povodí Vltavy",
-      "senat": "5 Co",
-      "rejstrik": "Co",
-      "cislo_senatu": 5,
-      "bc": 33,
-      "rocnik": 2026,
-      "ucastnici": [
-        "ČEZ Distribuce a. s.",
-        "Povodí Vltavy státní podnik"
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "fab73aa1f5b7b1ed5d318aa324b4324d7f2fc490"
-    },
-    {
-      "datum": "2026-09-17",
       "hodina": "10:45",
       "sin": "6",
       "predseda": "Mgr. Michal Výtisk",
@@ -928,27 +589,6 @@
     },
     {
       "datum": "2026-09-22",
-      "hodina": "09:00",
-      "sin": "4",
-      "predseda": "JUDr. Monika Vacková",
-      "spz": "4 Cmo 122/2026",
-      "nazev": "DANIES Corporation v. M. T.",
-      "senat": "4 Cmo",
-      "rejstrik": "Cmo",
-      "cislo_senatu": 4,
-      "bc": 122,
-      "rocnik": 2026,
-      "ucastnici": [
-        "DANIES Corporation a.s.",
-        "M. T."
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "16d4d5bbd195fe9b5d52735f9da2d6df39ea406e"
-    },
-    {
-      "datum": "2026-09-22",
       "hodina": "09:30",
       "sin": "155",
       "predseda": "JUDr. Martin Valoušek",
@@ -967,27 +607,6 @@
       "ip": true,
       "soud": "MS",
       "uid": "2c20292d5d5e2a6c418e3c53458e40ce9e6b1b71"
-    },
-    {
-      "datum": "2026-09-22",
-      "hodina": "13:30",
-      "sin": "4",
-      "predseda": "JUDr. Monika Vacková",
-      "spz": "4 Cmo 93/2026",
-      "nazev": "Stradium DC v. V. V.",
-      "senat": "4 Cmo",
-      "rejstrik": "Cmo",
-      "cislo_senatu": 4,
-      "bc": 93,
-      "rocnik": 2026,
-      "ucastnici": [
-        "Stradium DC s.r.o. v likvidaci",
-        "V. V."
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "b09afaf130a53f5c327663ee7993482d9bd22a88"
     },
     {
       "datum": "2026-09-23",
@@ -1120,29 +739,6 @@
     },
     {
       "datum": "2026-09-24",
-      "hodina": "09:30",
-      "sin": "4",
-      "predseda": "JUDr. Jana Sedlářová",
-      "spz": "11 Cmo 36/2025",
-      "nazev": "P. V. v. Společenství vlastníků Hokejka a další",
-      "senat": "11 Cmo",
-      "rejstrik": "Cmo",
-      "cislo_senatu": 11,
-      "bc": 36,
-      "rocnik": 2025,
-      "ucastnici": [
-        "P. V.",
-        "Společenství vlastníků Hokejka",
-        "Na Pískovně 646-666",
-        "Liberec"
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "bc4f3b7a81a859730c2f5fb048b2c34311873c79"
-    },
-    {
-      "datum": "2026-09-24",
       "hodina": "10:00",
       "sin": "6",
       "predseda": "JUDr. Roman Horáček, Ph.D., MBA",
@@ -1161,28 +757,6 @@
       "ip": true,
       "soud": "VS",
       "uid": "7543d2fc4025e23ae9c054a840b6e1a689072d39"
-    },
-    {
-      "datum": "2026-09-24",
-      "hodina": "10:30",
-      "sin": "4",
-      "predseda": "JUDr. Michal Mědílek",
-      "spz": "4 Co 169/2018",
-      "nazev": "Cisterciácké opatství Vyšší v. Brod a další",
-      "senat": "4 Co",
-      "rejstrik": "Co",
-      "cislo_senatu": 4,
-      "bc": 169,
-      "rocnik": 2018,
-      "ucastnici": [
-        "Cisterciácké opatství Vyšší",
-        "Brod",
-        "ČR - Státní pozemkový úřad"
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "a6a0aa46740943d499af5e7cd468c7c0aa1795b3"
     },
     {
       "datum": "2026-09-24",
@@ -1270,28 +844,6 @@
     },
     {
       "datum": "2026-09-30",
-      "hodina": "09:00",
-      "sin": "4",
-      "predseda": "JUDr. Michal Krenk, Ph.D.",
-      "spz": "4 Cmo 109/2026",
-      "nazev": "CARDS Fin v. D. Č. a další",
-      "senat": "4 Cmo",
-      "rejstrik": "Cmo",
-      "cislo_senatu": 4,
-      "bc": 109,
-      "rocnik": 2026,
-      "ucastnici": [
-        "CARDS Fin s.r.o.",
-        "D. Č.",
-        "4 S CZECH SE"
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "c221af01ac9ff13bb09c06089e3ce28f9f6c68ac"
-    },
-    {
-      "datum": "2026-09-30",
       "hodina": "09:15",
       "sin": "6",
       "predseda": "JUDr. PhDr. Filip Havrda",
@@ -1310,27 +862,6 @@
       "ip": true,
       "soud": "VS",
       "uid": "77f46ca3000a8d2e090c4db46c03aa12c666c42c"
-    },
-    {
-      "datum": "2026-09-30",
-      "hodina": "10:30",
-      "sin": "4",
-      "predseda": "JUDr. Monika Vacková",
-      "spz": "4 Cmo 128/2026",
-      "nazev": "Bytové družstvo Tichá v. O. M.",
-      "senat": "4 Cmo",
-      "rejstrik": "Cmo",
-      "cislo_senatu": 4,
-      "bc": 128,
-      "rocnik": 2026,
-      "ucastnici": [
-        "Bytové družstvo Tichá",
-        "O. M."
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "0df783cb6f44f9df4d96d6bc8552ce54c45c6610"
     },
     {
       "datum": "2026-09-30",
@@ -1373,27 +904,6 @@
       "ip": true,
       "soud": "VS",
       "uid": "6b8df3fb5d5a6b2e1e04a25fdc75c5d0181b91ab"
-    },
-    {
-      "datum": "2026-09-30",
-      "hodina": "13:00",
-      "sin": "4",
-      "predseda": "JUDr. Michal Krenk, Ph.D.",
-      "spz": "4 Cmo 71/2026",
-      "nazev": "Z. P. v. T. K.",
-      "senat": "4 Cmo",
-      "rejstrik": "Cmo",
-      "cislo_senatu": 4,
-      "bc": 71,
-      "rocnik": 2026,
-      "ucastnici": [
-        "Z. P.",
-        "T. K."
-      ],
-      "usek": "civilni",
-      "ip": true,
-      "soud": "VS",
-      "uid": "7626c6bb18fd16e254c9c36d7ad0cff9f6d64f58"
     },
     {
       "datum": "2026-09-30",
@@ -1496,11 +1006,7 @@
       "1 Co",
       "2 Co",
       "3 Cmo",
-      "3 Co",
-      "4 Cmo",
-      "4 Co",
-      "5 Co",
-      "11 Cmo"
+      "3 Co"
     ]
   },
   "soudci": {
@@ -1519,7 +1025,7 @@
     ]
   },
   "generated": "2026-09-24T09:51:43+00:00",
-  "ics": "https://rss.davidzavada.cz/hearings.ics",
+  "ics": "https://owl.davidzavada.cz/hearings.ics",
   "zmeny": [
     {
       "soud": "VS",
@@ -1552,33 +1058,6 @@
       "soud": "VS",
       "usek": "civilni",
       "spz": "1 Cmo 64/2025",
-      "typ": "nove",
-      "datum": "2026-09-30",
-      "kdy": "2026-09-16",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "4 Cmo 109/2026",
-      "typ": "nove",
-      "datum": "2026-09-30",
-      "kdy": "2026-09-16",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "4 Cmo 128/2026",
-      "typ": "nove",
-      "datum": "2026-09-30",
-      "kdy": "2026-09-16",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "4 Cmo 71/2026",
       "typ": "nove",
       "datum": "2026-09-30",
       "kdy": "2026-09-16",
@@ -1632,24 +1111,6 @@
     {
       "soud": "VS",
       "usek": "civilni",
-      "spz": "11 Cmo 36/2025",
-      "typ": "nove",
-      "datum": "2026-09-24",
-      "kdy": "2026-09-16",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "4 Co 169/2018",
-      "typ": "nove",
-      "datum": "2026-09-24",
-      "kdy": "2026-09-16",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
       "spz": "1 Cmo 17/2025",
       "typ": "nove",
       "datum": "2026-09-23",
@@ -1686,24 +1147,6 @@
     {
       "soud": "VS",
       "usek": "civilni",
-      "spz": "4 Cmo 122/2026",
-      "typ": "nove",
-      "datum": "2026-09-22",
-      "kdy": "2026-09-16",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "4 Cmo 93/2026",
-      "typ": "nove",
-      "datum": "2026-09-22",
-      "kdy": "2026-09-16",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
       "spz": "1 Cmo 63/2025",
       "typ": "nove",
       "datum": "2026-09-17",
@@ -1714,24 +1157,6 @@
       "soud": "VS",
       "usek": "civilni",
       "spz": "1 Cmo 66/2025",
-      "typ": "nove",
-      "datum": "2026-09-17",
-      "kdy": "2026-09-16",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "5 Co 33/2026",
-      "typ": "nove",
-      "datum": "2026-09-17",
-      "kdy": "2026-09-16",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "5 Co 79/2025",
       "typ": "nove",
       "datum": "2026-09-17",
       "kdy": "2026-09-16",
@@ -1790,123 +1215,222 @@
       "datum": "2026-09-16",
       "kdy": "2026-09-15",
       "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "11 Cmo 24/2025",
-      "typ": "nove",
-      "datum": "2026-09-10",
-      "kdy": "2026-09-07",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "4 Co 17/2026",
-      "typ": "nove",
-      "datum": "2026-09-10",
-      "kdy": "2026-09-07",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "4 Co 36/2026",
-      "typ": "nove",
-      "datum": "2026-09-10",
-      "kdy": "2026-09-07",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "11 Cmo 30/2025",
-      "typ": "nove",
-      "datum": "2026-09-03",
-      "kdy": "2026-09-07",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "11 Cmo 33/2025",
-      "typ": "nove",
-      "datum": "2026-09-03",
-      "kdy": "2026-09-07",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "11 Cmo 35/2025",
-      "typ": "nove",
-      "datum": "2026-09-03",
-      "kdy": "2026-09-07",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "4 Co 104/2025",
-      "typ": "nove",
-      "datum": "2026-09-03",
-      "kdy": "2026-09-07",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "4 Cmo 131/2026",
-      "typ": "nove",
-      "datum": "2026-09-02",
-      "kdy": "2026-09-07",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "4 Cmo 64/2026",
-      "typ": "nove",
-      "datum": "2026-09-02",
-      "kdy": "2026-09-07",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "4 Cmo 83/2026",
-      "typ": "nove",
-      "datum": "2026-09-02",
-      "kdy": "2026-09-07",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "4 Cmo 225/2024",
-      "typ": "nove",
-      "datum": "2026-09-01",
-      "kdy": "2026-09-07",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "4 Cmo 57/2026",
-      "typ": "nove",
-      "datum": "2026-09-01",
-      "kdy": "2026-09-07",
-      "popis": "nové jednání"
-    },
-    {
-      "soud": "VS",
-      "usek": "civilni",
-      "spz": "4 Cmo 98/2026",
-      "typ": "nove",
-      "datum": "2026-09-01",
-      "kdy": "2026-09-07",
-      "popis": "nové jednání"
     }
-  ]
+  ],
+  "sestavy": {
+    "MS": [
+      {
+        "senaty": [
+          "1 Cm",
+          "21 Cm"
+        ],
+        "predseda": "Jana Přibylová",
+        "clenove": [
+          "Vladimíra Čítková",
+          "Martin Valoušek"
+        ],
+        "agenda": "starší věci, bez nápadu"
+      },
+      {
+        "senaty": [
+          "2 C",
+          "2 Cm",
+          "2 EC",
+          "2 ECm"
+        ],
+        "predseda": "Lucie Vobrová",
+        "clenove": [
+          "Petr Košík",
+          "Tomáš Bělohlávek"
+        ],
+        "agenda": "bez nápadu nových věcí"
+      },
+      {
+        "senaty": [
+          "3 C",
+          "3 Cm",
+          "3 EC",
+          "3 ECm"
+        ],
+        "predseda": "Pavel Pražák",
+        "clenove": [
+          "Tomáš Bělohlávek",
+          "Lucie Vobrová"
+        ],
+        "agenda": "30 % nápadu IP věcí, bez předběžných opatření; navíc hromadné žaloby"
+      },
+      {
+        "senaty": [
+          "9 C",
+          "9 EC",
+          "9 ECm",
+          "32 Cm"
+        ],
+        "predseda": "Petr Košík",
+        "clenove": [
+          "Tomáš Bělohlávek",
+          "Lucie Vobrová"
+        ],
+        "agenda": "plný nápad IP věcí i předběžných opatření"
+      },
+      {
+        "senaty": [
+          "10 C",
+          "10 Cm",
+          "10 EC",
+          "10 ECm"
+        ],
+        "predseda": "Filip Liška",
+        "clenove": [
+          "Martin Valoušek",
+          "Jana Přibylová"
+        ],
+        "agenda": "bez nápadu nových věcí",
+        "pozn": "do 15. 11. 2026 na stáži u Vrchního soudu, jeho věci vyřizuje Lucie Vobrová"
+      },
+      {
+        "senaty": [
+          "12 C",
+          "12 Cm",
+          "12 EC",
+          "12 ECm"
+        ],
+        "predseda": "Jana Přibylová",
+        "clenove": [
+          "Vladimíra Čítková",
+          "Martin Valoušek"
+        ],
+        "agenda": "plný nápad IP věcí i předběžných opatření"
+      },
+      {
+        "senaty": [
+          "32 C",
+          "37 C"
+        ],
+        "predseda": "Filip Liška",
+        "clenove": [],
+        "agenda": "starší věci, bez nápadu",
+        "pozn": "vyřizuje Lucie Vobrová"
+      },
+      {
+        "senaty": [
+          "41 C",
+          "41 Cm",
+          "41 EC",
+          "41 ECm"
+        ],
+        "predseda": "Tomáš Bělohlávek",
+        "clenove": [
+          "Lucie Vobrová",
+          "Petr Košík"
+        ],
+        "agenda": "plný nápad IP věcí i předběžných opatření"
+      },
+      {
+        "senaty": [
+          "73 C",
+          "73 Cm",
+          "73 EC",
+          "73 ECm"
+        ],
+        "predseda": "Martin Valoušek",
+        "clenove": [
+          "Jana Přibylová",
+          "Vladimíra Čítková"
+        ],
+        "agenda": "plný nápad IP věcí i předběžných opatření"
+      },
+      {
+        "senaty": [
+          "15 A"
+        ],
+        "predseda": "Martin Kříž",
+        "clenove": [
+          "Věra Jachurová",
+          "Jan Schneeweis"
+        ],
+        "agenda": "žaloby proti Úřadu průmyslového vlastnictví, vedle ostatní správní agendy"
+      },
+      {
+        "senaty": [
+          "18 A"
+        ],
+        "predseda": "Martin Lachmann",
+        "clenove": [
+          "Martin Bobák",
+          "Jan Ferfecký"
+        ],
+        "agenda": "žaloby proti Úřadu průmyslového vlastnictví, vedle ostatní správní agendy"
+      }
+    ],
+    "VS": [
+      {
+        "senaty": [
+          "1 Cmo"
+        ],
+        "predseda": "Roman Horáček",
+        "clenove": [
+          "Michal Výtisk",
+          "Filip Havrda"
+        ],
+        "agenda": "duševní vlastnictví (Cm, Nc), nekalá soutěž, ochrana názvu a pověsti, obchodní zastoupení",
+        "pozn": "na stáži bez nápadu Vladimír Sommer a Filip Liška"
+      },
+      {
+        "senaty": [
+          "1 Co"
+        ],
+        "predseda": "Roman Horáček",
+        "clenove": [
+          "Michal Výtisk",
+          "Aleš Sabol"
+        ],
+        "agenda": "zpracování osobních údajů (§ 39a zákona č. 110/2019 Sb.)"
+      },
+      {
+        "senaty": [
+          "2 Co"
+        ],
+        "predseda": "Roman Horáček",
+        "clenove": [
+          "Michal Výtisk",
+          "Filip Havrda"
+        ],
+        "agenda": "duševní vlastnictví (C, Nc), ochrana osobnosti a média, ostatní spory z rejstříku C",
+        "pozn": "na stáži bez nápadu Vladimír Sommer a Filip Liška"
+      },
+      {
+        "senaty": [
+          "3 Cmo"
+        ],
+        "predseda": "Jiří Čurda",
+        "clenove": [
+          "Gabriela Kučerová"
+        ],
+        "agenda": "duševní vlastnictví (Cm, Nc), nekalá soutěž, ochrana názvu a pověsti, obchodní zastoupení",
+        "pozn": "bez nápadu Michal Výtisk a na stáži Vladimír Sommer"
+      },
+      {
+        "senaty": [
+          "3 Co"
+        ],
+        "predseda": "Jiří Čurda",
+        "clenove": [
+          "Gabriela Kučerová"
+        ],
+        "agenda": "duševní vlastnictví (C, Nc), ochrana osobnosti a média, ostatní spory z rejstříku C",
+        "pozn": "bez nápadu Michal Výtisk a na stáži Vladimír Sommer"
+      }
+    ]
+  },
+  "rozvrhy": {
+    "MS": {
+      "platnost": "úplné znění od 15. 9. 2026",
+      "url": "https://msp.gov.cz/web/mestsky-soud-v-praze/rozvrh-prace-2026"
+    },
+    "VS": {
+      "platnost": "změna od 1. 9. 2026",
+      "url": "https://msp.gov.cz/web/vrchni-soud-v-praze/rozvrh-prace-2026"
+    }
+  }
 }

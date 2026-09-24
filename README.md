@@ -84,8 +84,7 @@ pro AI.
   a `feed_seen.json`) do archivu a oblasti doplnila dávkově.
 
 **Kalendář jednání** filtruje přehledy soudů podle `hearings_config.json`:
-v civilním úseku na IP senáty (seznam senátů a soudců z rozvrhů práce;
-scraper ho umí jednou týdně obnovit AI extrakcí z rozvrhu), v úseku
+v civilním úseku na IP senáty (seznam senátů a soudců z rozvrhů práce), v úseku
 správního soudnictví MSPH (zvláštní dokument na téže stránce) na žaloby
 proti Úřadu průmyslového vlastnictví – podle žalovaného mezi účastníky
 (`ucastnici_ip`), ne podle senátu. Každý nový přehled porovnává s minulým
@@ -96,6 +95,16 @@ kde AI nerozhodne, se celé jméno neuloží; jednání si v takovém případě
 účastníky, které mu archiv přiřadil dřív, a úplně nové zůstane jen pod
 spisovou značkou, dokud ho některý běh neklasifikuje. Bez toho by jeden
 výpadek AI pokaždé shodil jinou část kalendáře zpátky na holé značky.
+
+Senáty a jejich sestavy (předseda, členové, agenda, poznámka ke stážím) jsou
+v configu sepsané ručně podle rozvrhu v `rozvrh_zdroj` (`platnost`,
+`platnost_od`); `sestavy_navic` jsou senáty jen pro patičku kalendáře, podle
+kterých se nefiltruje (správní 15 A a 18 A MSPH). Jednou týdně scraper stáhne
+rozvrh ze stránky soudu a AI extrakcí seznam přepíše jen tehdy, když rozvrh
+podle titulní strany platí od pozdějšího dne než ten zapsaný – starší ani
+stejný dokument ruční seznam nepřepíše. Senáty ze sloupce „Zastupuje senát“
+IP senáty jen zastupují a nesledují se. Patička kalendáře „Koho kalendář
+sleduje“ je ve výchozím stavu sbalená.
 
 ## Přihlášení a vlastní výběr
 
