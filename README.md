@@ -11,10 +11,7 @@ vlastnictví a IT.
 Web má stránky Novinky (co přibylo za posledních 7 dní, po dnech prvního
 výskytu), Dva týdny v IP a IT (přehled je jeden pro všechny, na výběru
 nezávisí), každý zdroj zvlášť (NS, NSS, ÚS, SDEU, časopisy) a Kalendář
-jednání; Můj výběr je dialog z nabídky účtu. V tabulkách je pod značkou datum vydání („ze dne",
-jak se cituje; datum zveřejnění v bublině), shrnutí má řádek nejvýš asi
-95 znaků a barvu nese jen štítek zdroje – heslo i druh u SDEU jsou
-neutrální.
+jednání; Můj výběr je dialog z nabídky účtu.
 
 ## Jak to drží pohromadě
 
