@@ -278,10 +278,9 @@ def _cache_key(d):
 
 
 # Kolik textu musí ze stránky rozhodnutí zbýt, aby to bylo odůvodnění,
-# a ne jen hlavička a navigace. Rozhodnutí bývají o řád delší.
+# a ne jen hlavička a navigace. Rozhodnutí bývají o řád delší. Horní mez
+# není: shrnuje se z celého rozhodnutí, ne z ořezu.
 MIN_TEXT_ROZHODNUTI = 2000
-# Delší vstup Gemma stejně ořízne; posílat celý spis nemá smysl.
-MAX_TEXT_ROZHODNUTI = 20000
 
 
 def _stahni_pdf(session, d):
@@ -327,7 +326,7 @@ def _text_rozhodnuti(session, d):
         print(f"    [diag] {d['case_number']}: stránka nenese text rozhodnutí "
               f"({len(text)} znaků): {text[:100]!r}")
         return ""
-    return text[:MAX_TEXT_ROZHODNUTI]
+    return text
 
 
 def enrich_summaries(decisions):

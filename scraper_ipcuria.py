@@ -306,16 +306,7 @@ def fetch_case_text(ipcuria_url):
     return re.sub(r"\s+", " ", soup.get_text(" ", strip=True)).strip()
 
 
-def _trim_for_summary(text, head=12000, tail=6000):
-    """Dlouhé rozsudky ořízneme na začátek (předmět sporu, právní otázka) a
-    konec (výrok soudu), aby se do shrnutí dostalo obojí, ne jen úvod."""
-    text = text.strip()
-    if len(text) <= head + tail:
-        return text
-    return text[:head] + "\n…\n" + text[-tail:]
-
-
-MIN_TEXT_FOR_SUMMARY = 500  # pod to už není co shrnovat (ať si Gemma nevymýšlí)
+MIN_TEXT_FOR_SUMMARY = 500  # pod to už není co shrnovat (ať si AI nevymýšlí)
 
 
 def case_text_for_summary(d):
@@ -350,7 +341,7 @@ def case_text_for_summary(d):
 
 
 def enrich_summaries(decisions):
-    """Doplní AI shrnutí (HESLO + SHRNUTÍ) přes Gemma; cache podle guid.
+    """Doplní AI shrnutí (HESLO + SHRNUTÍ); cache podle guid.
 
     Volá se až na ponechané položky (po okně), aby se neshrnovalo zbytečně.
     Když není z čeho shrnovat, protože žádost o předběžnou otázku ještě nemá
@@ -361,9 +352,11 @@ def enrich_summaries(decisions):
     def summarize(d, cached):
         text, source, doc_url = case_text_for_summary(d)
         if text:
-            summary, tag = gemini_summarize_text(_trim_for_summary(text), CJEU_PROMPT)
+            # Celý text – modely berou stovky tisíc tokenů a rozsudek se má
+            # shrnovat z celého znění, ne z ořezu.
+            summary, tag = gemini_summarize_text(text.strip(), CJEU_PROMPT)
             if not summary:
-                print(f"    [diag] {_guid(d)}: Gemma nevrátila shrnutí")
+                print(f"    [diag] {_guid(d)}: AI nevrátila shrnutí")
                 return None
             got = {"summary": summary, "tag": tag, "source": source, "note": ""}
             if doc_url:

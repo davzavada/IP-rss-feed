@@ -18,7 +18,7 @@ v kterémkoli senátu a úseku kteréhokoli z obou soudů.
 Které senáty jsou IP se bere z rozvrhů práce obou soudů. Rozvrhy se často
 mění, proto je v hearings_config.json uložený aktuální seznam senátů a soudců
 a scraper ho umí obnovit: stáhne rozvrh (PDF o stovkách stran), najde stránky
-o duševním vlastnictví a nechá AI (Gemma) vytáhnout senáty a předsedy.
+o duševním vlastnictví a nechá AI vytáhnout senáty a předsedy.
 Když AI extrakce selže, zůstává v platnosti poslední známý seznam.
 
 V civilním úseku jde filtr primárně přes senát ze spisové značky (např.
