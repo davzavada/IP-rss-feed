@@ -24,8 +24,9 @@ function safeHref(url) {
      title, link, doc (PDF), heslo, shrnuti, poznamka, datum, nove, autori
    u judikatury navíc oblasti, senat, druh, procesni, u časopisů casopis a tag. */
 
-// „Nové" = poprvé viděné za posledních 24 hodin (stejně jako u feedů).
-const NOVE_MS = 24 * 60 * 60 * 1000;
+// Novinky na úvodní stránce = poprvé viděné za posledních 7 dní.
+const NOVE_DNI = 7;
+const NOVE_MS = NOVE_DNI * 24 * 60 * 60 * 1000;
 
 function zJson(r) {
   const prvni = Date.parse(r.first_seen || "");
@@ -41,6 +42,7 @@ function zJson(r) {
     // Raná předběžná otázka z ipcuria ještě zveřejněná není – datum podání.
     datum: r.zverejneno || r.datum || r.first_seen || "",
     nove: !isNaN(prvni) && Date.now() - prvni < NOVE_MS,
+    prvni: isNaN(prvni) ? 0 : prvni,
     autori: "",
     oblasti: r.oblasti || [],
     sdeu: /^sdeu:/.test(r.id || ""),
@@ -72,6 +74,7 @@ function zCasopisu(r) {
     poznamka: r.poznamka || "",
     datum: r.datum || r.first_seen || "",
     nove: !isNaN(prvni) && Date.now() - prvni < NOVE_MS,
+    prvni: isNaN(prvni) ? 0 : prvni,
     autori: r.autori || "",
     casopis: r.casopis || "",
     tag: zkratkaCasopisu(r.casopis)
@@ -249,7 +252,8 @@ const MIN_SHRNUTI_PCT = 38;
 // Přirozená šířka obsahu sloupce v px (včetně odsazení buňky); null
 // u shrnutí a u sloupců s pevnou šířkou z definice.
 function zmerObsah(table, columns) {
-  const telo = table.tBodies[0] && table.tBodies[0].rows[0];
+  // Řádky dní (Novinky) mají jednu buňku přes celou šířku – neměří se.
+  const telo = table.querySelector("tbody tr:not(.den)");
   if (!telo) return columns.map(() => null);
   const pismo = parseFloat(getComputedStyle(table).fontSize) || 14;
   const meric = document.createElement("div");
@@ -267,8 +271,8 @@ function zmerObsah(table, columns) {
     meric.classList.remove("meric-th");
     const hodnoty = [];
     Array.from(telo.parentNode.rows).forEach(tr => {
-      // Prázdné buňky (článek bez autora) šířku neurčují.
-      if (!tr.cells[j] || !tr.cells[j].textContent.trim()) return;
+      // Prázdné buňky (článek bez autora) šířku neurčují, řádky dní taky ne.
+      if (tr.classList.contains("den") || !tr.cells[j] || !tr.cells[j].textContent.trim()) return;
       meric.innerHTML = tr.cells[j].innerHTML;
       hodnoty.push(meric.getBoundingClientRect().width);
     });
@@ -671,7 +675,10 @@ function resizerHtml(column) {
 }
 
 // `prazdno` je HTML hlášky, když nic není (u filtrovaných karet odkaz na výběr).
-function renderTable(items, container, columns, key, prazdno) {
+// `moznosti.skupina(item)` vrací HTML nadpisu skupiny (Novinky: den) – když
+// se změní, vloží se řádek přes celou šířku; `moznosti.trida(item)` třídu řádku.
+function renderTable(items, container, columns, key, prazdno, moznosti) {
+  const m = moznosti || {};
   if (items.length === 0) {
     container.innerHTML = '<p class="feed-empty">' + (prazdno || "Žádné nové položky.") + "</p>";
     return;
@@ -686,8 +693,15 @@ function renderTable(items, container, columns, key, prazdno) {
       (i < columns.length - 1 ? resizerHtml(c) : "") + "</th>";
   });
   html += "</tr></thead><tbody>";
+  let skupina = null;
   items.forEach(item => {
-    html += "<tr>";
+    const sk = m.skupina ? m.skupina(item) : null;
+    if (sk !== null && sk !== skupina) {
+      skupina = sk;
+      html += '<tr class="den"><th colspan="' + columns.length + '" scope="colgroup">' + sk + "</th></tr>";
+    }
+    const trida = m.trida ? m.trida(item) : "";
+    html += trida ? '<tr class="' + trida + '">' : "<tr>";
     columns.forEach(c => {
       html += "<td" + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.render(item) + "</td>";
     });
@@ -698,6 +712,54 @@ function renderTable(items, container, columns, key, prazdno) {
   prizpusobSirky(container.querySelector("table"));
 }
 
+/* ========== Novinky: posledních 7 dní po dnech ========== */
+// Minulá návštěva: od kdy se novinky značí tečkou. Návštěva končí půl hodiny
+// po posledním pohybu na stránce (zápis při startu, skrytí a odchodu), takže
+// obnovení stránky tečky nesmaže; při další návštěvě se počítá od konce té
+// minulé. Při první návštěvě tečky nejsou.
+const NAVSTEVA_KLIC = "owl:navsteva";
+const NAVSTEVA_OD_KLIC = "owl:navsteva-od";
+const RELACE_MS = 30 * 60 * 1000;
+
+function zapisNavstevu() {
+  try {
+    localStorage.setItem(NAVSTEVA_KLIC, new Date().toISOString());
+  } catch (e) { /* bez úložiště prostě bez teček */ }
+}
+
+const noveOd = (function () {
+  try {
+    const posledni = Date.parse(localStorage.getItem(NAVSTEVA_KLIC) || "");
+    let od = Date.parse(localStorage.getItem(NAVSTEVA_OD_KLIC) || "");
+    if (!isNaN(posledni) && Date.now() - posledni > RELACE_MS) {
+      od = posledni;
+      localStorage.setItem(NAVSTEVA_OD_KLIC, new Date(od).toISOString());
+    }
+    return od;
+  } catch (e) {
+    return NaN;
+  }
+})();
+zapisNavstevu();
+window.addEventListener("pagehide", zapisNavstevu);
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "hidden") zapisNavstevu();
+});
+
+function jeNoveOdMinula(item) {
+  return !isNaN(noveOd) && item.prvni > noveOd;
+}
+
+// „Dnes", „Včera", „Po 21. 9." – den prvního výskytu v místním čase.
+function nadpisDne(ts) {
+  const d = new Date(ts);
+  const dnes = new Date();
+  const vcera = new Date(dnes.getFullYear(), dnes.getMonth(), dnes.getDate() - 1);
+  if (isoOf(d) === isoOf(dnes)) return "Dnes";
+  if (isoOf(d) === isoOf(vcera)) return "Včera";
+  return CAL_DOWS[(d.getDay() + 6) % 7] + " " + d.getDate() + ". " + (d.getMonth() + 1) + ".";
+}
+
 // `results` jsou výsledky Promise.allSettled nad položkami jednotlivých feedů.
 function renderToday(results) {
   const container = document.getElementById("feed-today");
@@ -706,23 +768,38 @@ function renderToday(results) {
     failed("feed-today");
     return;
   }
-  const today = [];
+  const polozky = [];
   results.forEach((r, idx) => {
     if (r.status !== "fulfilled") return;
     r.value.forEach(item => {
       if (item.nove) {
         item._src = FEEDS[idx].key;
         item._srcLabel = FEEDS[idx].label;
-        today.push(item);
+        polozky.push(item);
       }
     });
   });
-  today.sort((a, b) => new Date(b.datum) - new Date(a.datum));
-  if (today.length === 0) {
-    container.innerHTML = '<p class="feed-empty">Za posledních 24 hodin nic nepřibylo. ' +
-      "Sběr běží jednou denně ve 2:00 v noci.</p>";
-  } else {
-    renderTable(today, container, colsToday, "today");
+  // Po dnech prvního výskytu od nejnovějšího, v rámci dne podle data.
+  polozky.sort((a, b) => (isoOf(new Date(b.prvni)) > isoOf(new Date(a.prvni)) ? 1
+    : isoOf(new Date(b.prvni)) < isoOf(new Date(a.prvni)) ? -1 : new Date(b.datum) - new Date(a.datum)));
+  if (polozky.length === 0) {
+    container.innerHTML = '<p class="feed-empty">Za posledních ' + tvar(NOVE_DNI, "den", "dny", "dní") +
+      " nic nepřibylo. Sběr běží jednou denně ve 2:00 v noci.</p>";
+    return;
+  }
+  const poctyDni = {};
+  polozky.forEach(i => { const d = isoOf(new Date(i.prvni)); poctyDni[d] = (poctyDni[d] || 0) + 1; });
+  const odMinula = polozky.filter(jeNoveOdMinula).length;
+  renderTable(polozky, container, colsToday, "today", "", {
+    skupina: i => {
+      const d = isoOf(new Date(i.prvni));
+      return esc(nadpisDne(i.prvni)) + ' <span class="den-pocet">' + poctyDni[d] + "</span>";
+    },
+    trida: i => (jeNoveOdMinula(i) ? "nove" : "")
+  });
+  if (odMinula) {
+    container.insertAdjacentHTML("afterbegin", '<p class="nove-souhrn"><span class="tecka" aria-hidden="true">' +
+      "</span>" + tvar(odMinula, "novinka", "novinky", "novinek") + " od vaší minulé návštěvy</p>");
   }
 }
 
@@ -2006,7 +2083,7 @@ function initNastaveni() {
 
 /* ========== Stránky a navigace ========== */
 // Obsah je rozdělený na stránky; přepíná se podle adresy (#kotva).
-// Kotvy sekcí zůstávají platné – odkaz na #dnesni otevře Nové za 24 hodin.
+// Kotvy sekcí zůstávají platné – odkaz na #dnesni otevře Novinky.
 // Dvoutýdenní přehled i každý zdroj mají vlastní stránku.
 const PAGES = [
   { id: "prehled",  sections: ["dnesni"] },
@@ -2020,7 +2097,7 @@ const PAGES = [
 ];
 // Kotvy z uložených odkazů: dřív byly všechny zdroje na jedné stránce
 // „Všechno nové" a SDEU se jmenoval cjeu. Můj výběr byl stránkou #nastaveni –
-// teď je to dialog, kotva ho otevře nad Novými za 24 hodin.
+// teď je to dialog, kotva ho otevře nad Novinkami.
 const STARE_KOTVY = { recentni: "nsoud", cjeu: "sdeu", nastaveni: "prehled" };
 let vyberZKotvy = false;
 
@@ -2117,7 +2194,7 @@ function initNav() {
     e.preventDefault();
     navigate(a.getAttribute("href"), true);
   }));
-  // Logo vede na Nové za 24 hodin (na začátek stránky); když už tam jsme,
+  // Logo vede na Novinky (na začátek stránky); když už tam jsme,
   // nový záznam do historie nepřidá.
   const znacka = document.querySelector(".znacka");
   if (znacka) znacka.addEventListener("click", e => {

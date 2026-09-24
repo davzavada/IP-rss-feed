@@ -8,9 +8,13 @@ dvora EU včetně Tribunálu (AI ji řadí do oblastí práva), články z práv
 a třívěté shrnutí, jednou týdně z toho napíše dvoutýdenní přehled duševního
 vlastnictví a IT.
 
-Web má stránky Nové za 24 hodin, Dva týdny v IP a IT (přehled je jeden pro
-všechny, na výběru nezávisí), každý zdroj zvlášť (NS, NSS, ÚS, SDEU,
-časopisy) a Kalendář jednání; Můj výběr je dialog z nabídky účtu.
+Web má stránky Novinky (co přibylo za posledních 7 dní, po dnech, s tečkou
+u toho, co je nové od minulé návštěvy), Dva týdny v IP a IT (přehled je
+jeden pro všechny, na výběru nezávisí), každý zdroj zvlášť (NS, NSS, ÚS,
+SDEU, časopisy) a Kalendář jednání; Můj výběr je dialog z nabídky účtu.
+Minulou návštěvu si pamatuje prohlížeč (`owl:navsteva`, `owl:navsteva-od`
+v localStorage); návštěva končí půl hodiny po odchodu, takže obnovení
+stránky tečky nesmaže.
 
 ## Jak to drží pohromadě
 
@@ -27,7 +31,7 @@ tools/probe_zdroje.py sonda: syrové odpovědi webů soudů pro parsery a testy
 
 Časopisy si vedou **stav prvního výskytu** (`journals_seen.json`): kdy
 položku poprvé viděly. Podle něj drží položku v okně (čtyři týdny)
-a označují ji jako novou, když přibyla v posledních 24 hodinách (judikatura
+a web ji ukáže v Novinkách, když přibyla v posledních 7 dnech (judikatura
 totéž dělá přes `first_seen` v archivu). Registr časopisů (`CASOPISY`
 ve `scraper_journals.py`) dává každému stálé id, které se ukládá ve výběru
 uživatele, a zkratku pro štítek; okno `docs/data/casopisy.json` se

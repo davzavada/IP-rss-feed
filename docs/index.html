@@ -74,7 +74,7 @@
 
 <header class="site-head">
   <div class="container head-row">
-    <h1><a class="znacka" href="#prehled" title="Nové za 24 hodin"><img class="logo" src="favicon.svg" alt="" width="22" height="22">Owl <span class="tagline">– přehled novinek v doktríně a judikatuře</span></a></h1>
+    <h1><a class="znacka" href="#prehled" title="Novinky"><img class="logo" src="favicon.svg" alt="" width="22" height="22">Owl <span class="tagline">– přehled novinek v doktríně a judikatuře</span></a></h1>
     <div class="head-right">
       <span class="legend" id="updated"></span>
       <!-- Přihlášení (Clerk) – vyplní app.js, až se Clerk načte. -->
@@ -86,7 +86,7 @@
 <nav id="sidenav" aria-label="Navigace na stránce">
   <!-- Skupiny stránek; zdroje mají každý svou stránku pod společným popiskem. -->
   <div class="nav-group">
-    <a href="#prehled"><svg class="nav-ico" aria-hidden="true"><use href="#icon-clock"></use></svg><span>Nové za 24 hodin</span></a>
+    <a href="#prehled"><svg class="nav-ico" aria-hidden="true"><use href="#icon-clock"></use></svg><span>Novinky</span></a>
     <a href="#dvatydny"><svg class="nav-ico" aria-hidden="true"><use href="#icon-sparkles"></use></svg><span>Dva týdny v IP a IT</span></a>
   </div>
   <div class="nav-group">
@@ -106,7 +106,7 @@
 
 <!-- Přepínač stránek pro úzká okna, kde je boční navigace schovaná. -->
 <nav class="pagetabs" aria-label="Přepínání stránek">
-  <a href="#prehled" title="Nové za 24 hodin">24 hodin</a>
+  <a href="#prehled">Novinky</a>
   <a href="#dvatydny" title="Dva týdny v IP a IT">2 týdny</a>
   <span class="pagetabs-sep" aria-hidden="true"></span>
   <a href="#nsoud" title="Nejvyšší soud">NS</a>
@@ -123,9 +123,10 @@
 <section id="dnesni">
   <div class="card">
     <div class="card-header">
-      <h2 class="card-title">Nové za posledních 24 hodin</h2>
+      <h2 class="card-title">Novinky</h2>
+      <span class="legend">posledních 7 dní</span>
       <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
-      <div class="card-desc" hidden>Co za posledních 24 hodin přibylo u soudů a v časopisech – z judikatury jen to, co odpovídá výběru. Sběr běží jednou denně ve 2:00 v noci, ráno je všechno hotové.</div>
+      <div class="card-desc" hidden>Co za posledních 7 dní přibylo u soudů a v časopisech, po dnech, kdy to Owl našel. Tečkou jsou označené novinky od vaší minulé návštěvy (pamatuje si je tento prohlížeč). Sběr běží jednou denně ve 2:00 v noci, ráno je všechno hotové.</div>
       </span>
     </div>
     <div class="card-filtr" id="filtr-today" hidden></div>
