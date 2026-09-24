@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Dvoutýdenní přehled – AI shrnutí shrnutí ze všech feedů dohromady.
+"""Dvoutýdenní přehled – AI shrnutí shrnutí ze všech zdrojů dohromady.
 
-Čte hotové feedy z docs/ (běží tedy až po scraperech), pošle AI číslovaný
+Čte hotová okna z docs/data/ (judikatura, časopisy; běží tedy až po nich), pošle AI číslovaný
 seznam položek za poslední dva týdny a nechá si napsat krátký přehled po
 tématech: hlavně to, co je relevantní pro praxi v IP/IT, plus pár dalších
 zajímavostí. Velká část položek se do přehledu nedostane – obecné věci, věci
@@ -25,7 +25,6 @@ import hashlib
 import os
 import re
 from datetime import datetime, timedelta, timezone
-from xml.etree.ElementTree import parse as parse_xml
 
 from feed_common import (
     DIGEST_PROMPT,
@@ -46,13 +45,11 @@ MAX_SOURCES = 6    # kolik odkazů maximálně necháme u jednoho tématu
 # Verze tvaru výstupu. Vstupuje do otisku, takže když do přehledu přibude
 # další údaj, uložený přehled se tím sám prohlásí za starý a přegeneruje se
 # (jinak by v něm nový údaj chyběl, dokud se nezmění skladba položek).
-FORMAT_VERSION = "2"
+FORMAT_VERSION = "3"
 
-# (klíč zdroje, štítek, soubor feedu, stav prvního výskytu) – klíče jsou
-# shodné s index.html, aby se štítky obarvily stejně jako v seznamech.
-SOURCES = [
-    ("journals", "Časopis", "journals_feed.xml", "journals_seen.json"),
-]
+# Časopisy (docs/data/casopisy.json, píše scraper_journals.py). Klíče zdrojů
+# jsou shodné s index.html, aby se štítky obarvily stejně jako v seznamech.
+CASOPISY_JSON = os.path.join(DOCS_DIR, "data", "casopisy.json")
 
 # Judikatura z oken pro web (docs/data/judikatura/), filtrovaná výchozím
 # výběrem IP/IT – přehled je zatím jeden pro všechny.
@@ -67,22 +64,6 @@ JUDIKATURA = [
 def force_regenerate():
     """DIGEST_FORCE=1 -> přegeneruj i beze změny vstupu (pondělní běh)."""
     return os.environ.get("DIGEST_FORCE", "").strip().lower() in ("1", "true", "yes")
-
-
-def _text(el, tag):
-    """Text podelementu, nebo '' když chybí."""
-    child = el.find(tag)
-    return (child.text or "").strip() if child is not None and child.text else ""
-
-
-def _parse_pub_date(value):
-    """RFC 822 pubDate -> datetime. Vrací None, když se nepodaří."""
-    if not value:
-        return None
-    try:
-        return datetime.strptime(value, "%a, %d %b %Y %H:%M:%S %z")
-    except ValueError:
-        return None
 
 
 def _first_seen(seen, guid):
@@ -137,6 +118,46 @@ def collect_judikatura(now, oldest):
     return items
 
 
+def collect_casopisy(now, oldest):
+    """Články a čísla časopisů z docs/data/casopisy.json (všechny časopisy –
+    výchozí výběr je nevynechává)."""
+    data = load_json(CASOPISY_JSON)
+    zkratky = {c.get("id"): c.get("zkratka", "") for c in data.get("casopisy", [])}
+    items, skipped = [], 0
+    for r in data.get("polozky", []):
+        if not r.get("nazev"):
+            continue
+        since = _first_seen({"x": (r.get("first_seen") or "").replace("Z", "+00:00")}, "x")
+        pub_dt = None
+        if r.get("datum"):
+            try:
+                pub_dt = datetime.fromisoformat(r["datum"]).replace(hour=12, tzinfo=timezone.utc)
+            except ValueError:
+                pub_dt = None
+        # Do okna se položka počítá podle toho, kdy přibyla; když o tom nic
+        # nevíme, podle data vydání. Výstřelky do budoucna pryč.
+        since = since or pub_dt
+        if (since and since < oldest) or (pub_dt and pub_dt > now + timedelta(days=1)):
+            skipped += 1
+            continue
+        # Bez shrnutí aspoň popis (anotace nebo údaje o čísle).
+        summary = r.get("shrnuti") or re.sub(r"\s+", " ", r.get("popis", ""))[:400]
+        items.append({
+            "src": "journals",
+            "src_label": "Časopis",
+            "tag": zkratky.get(r.get("casopis"), ""),
+            "title": r["nazev"],
+            "link": r.get("url", ""),
+            "guid": r.get("id", r["nazev"]),
+            "heslo": r.get("heslo", ""),
+            "summary": summary,
+            "pub_dt": pub_dt or since,
+        })
+    print(f"  Časopisy: {len(items)} položek"
+          + (f" ({skipped} mimo okno {WEEKS} týdnů)" if skipped else ""))
+    return items
+
+
 def collect_items():
     """Načte položky ze všech feedů za okno WEEKS, seřazené od nejnovější.
 
@@ -147,53 +168,7 @@ def collect_items():
     oldest = now - timedelta(weeks=WEEKS)
     items = collect_judikatura(now, oldest)
 
-    for key, label, filename, seen_file in SOURCES:
-        path = os.path.join(DOCS_DIR, filename)
-        if not os.path.exists(path):
-            print(f"  Feed {filename} chybí, přeskakuji")
-            continue
-        try:
-            root = parse_xml(path).getroot()
-        except Exception as e:
-            print(f"  CHYBA čtení {filename}: {e}")
-            continue
-        seen = load_json(os.path.join(BASE_DIR, seen_file))
-
-        found = skipped = 0
-        for el in root.iter("item"):
-            title = _text(el, "title")
-            if not title:
-                continue
-            guid = _text(el, "guid") or title
-            pub_dt = _parse_pub_date(_text(el, "pubDate"))
-            # Do okna se položka počítá podle toho, kdy přibyla; když o tom
-            # stav nic neví, podle data vydání. Výstřelky do budoucna pryč.
-            since = _first_seen(seen, guid) or pub_dt
-            if (since and since < oldest) or (pub_dt and pub_dt > now + timedelta(days=1)):
-                skipped += 1
-                continue
-
-            summary = _text(el, "ai-summary")
-            if not summary:
-                # Fallback: popis z feedu (obsahuje anotaci nebo metadata).
-                summary = re.sub(r"\s+", " ", _text(el, "description"))[:400]
-
-            items.append({
-                "src": key,
-                "src_label": label,
-                # Štítek typu/časopisu ([DV], [Ruling], …) držíme zvlášť,
-                # ať se název čte stejně jako v tabulkách na stránce.
-                "tag": (re.match(r"^\[([^\]]+)\]", title) or [None, ""])[1],
-                "title": re.sub(r"^\[[^\]]+\]\s*", "", title),
-                "link": _text(el, "link"),
-                "guid": guid,
-                "heslo": _text(el, "ai-tag"),
-                "summary": summary,
-                "pub_dt": pub_dt,
-            })
-            found += 1
-        print(f"  {label}: {found} položek"
-              + (f" ({skipped} mimo okno {WEEKS} týdnů)" if skipped else ""))
+    items += collect_casopisy(now, oldest)
 
     # Položky bez data (neměly by být) řadíme na konec.
     items.sort(key=lambda i: i["pub_dt"] or oldest, reverse=True)

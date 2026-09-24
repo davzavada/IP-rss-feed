@@ -138,15 +138,9 @@ section[id], .card[id] { scroll-margin-top: 76px; }
    efektivně ~1280–1536 px). */
 .card-content { padding: 10px 22px 16px; container-type: inline-size; }
 
-/* Název karty jako proklik na XML feed – jen jemná ikonka, žádný viditelný štítek. */
-.card-title-link { display: inline-flex; align-items: center; gap: 6px; color: inherit; text-decoration: none; }
-.card-title-link:hover { color: var(--link); }
-.card-title-link .feed-icon { color: var(--muted-foreground); }
-.card-title-link:hover .feed-icon { color: var(--link); }
-.feed-icon { width: 14px; height: 14px; flex: none; }
 /* Ikony jsou kreslené tahem, ne výplní – nastavení je společné, ať to
    nemusí nést každý <symbol>. */
-.feed-icon, .nav-ico, .fold-ico {
+.nav-ico, .fold-ico {
   fill: none; stroke: currentColor; stroke-width: 2;
   stroke-linecap: round; stroke-linejoin: round;
 }

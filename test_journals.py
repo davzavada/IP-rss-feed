@@ -7,11 +7,11 @@ takže se testuje nad uloženými kopiemi stránek (tests/fixtures).
 Spuštění: python test_journals.py
 """
 
+import json
 import os
 import sys
 import tempfile
-from datetime import datetime, timezone
-from xml.etree.ElementTree import tostring
+from datetime import datetime, timedelta, timezone
 
 from bs4 import BeautifulSoup
 
@@ -387,11 +387,37 @@ check("bez podkladu se AI vůbec nevolá", poslano == [], str(poslano))
 check("bez podkladu dostane položka poznámku",
       zprava["note"] == s.BEZ_PODKLADU_NOTE and not zprava["summary"], str(zprava))
 
-feed = tostring(s.build_rss([zprava, rozhodnuti]), encoding="unicode")
-check("poznámka jde do feedu jako <note>",
-      f"<note>{s.BEZ_PODKLADU_NOTE}</note>" in feed, feed[:400])
-check("položka se shrnutím poznámku nemá",
-      feed.count("<note>") == 1 and "<ai-summary>" in feed, feed[:400])
+# =====================================================================
+print("\nVýstup pro web (docs/data/casopisy.json)")
+# =====================================================================
+zprava["title"] = "[Právník] Zpráva ze semináře"
+zprava["guid"] = "pravnik-4064"
+zprava["first_seen"] = datetime(2026, 9, 2, 6, 30, tzinfo=timezone.utc)
+rozhodnuti.setdefault("pub_date", datetime(2026, 9, 3, tzinfo=timezone.utc))
+j_zprava, j_rozh = s.polozka_json(zprava), s.polozka_json(rozhodnuti)
+check("časopis podle zkratky v titulku, titulek bez ní",
+      j_zprava["casopis"] == "pravnik" and j_zprava["nazev"] == "Zpráva ze semináře"
+      and j_zprava["first_seen"] == "2026-09-02T06:30:00Z" and j_zprava["datum"] == "2026-09-01", str(j_zprava))
+check("bez shrnutí poznámka a popis pro přehled",
+      j_zprava["poznamka"] == s.BEZ_PODKLADU_NOTE and j_zprava["popis"] == "Zpráva ze semináře"
+      and "shrnuti" not in j_zprava, str(j_zprava))
+check("položka se shrnutím poznámku ani popis nemá",
+      j_rozh.get("shrnuti") and "poznamka" not in j_rozh and "popis" not in j_rozh, str(j_rozh))
+check("každá zkratka ze scraperů je v registru",
+      {c["zkratka"] for c in s.CASOPISY} >= {"DV", "EP", "Právník", "Jurisprudence", "TLQ", "IIC", "GRUR Int",
+                                            "QMJIP", "JWIP", "JIPLP"}
+      | {lab for _, lab, _ in s.OJS_SOURCES} | {lab for _, lab, _ in s.CROSSREF_JOURNALS}
+      and len({c["id"] for c in s.CASOPISY}) == len(s.CASOPISY))
+cesta = os.path.join(tempfile.mkdtemp(prefix="casopisy-"), "casopisy.json")
+t1 = datetime(2026, 9, 24, 5, 0, tzinfo=timezone.utc)
+check("první zápis okna", s.zapis_json([zprava, rozhodnuti], cesta, t1))
+with open(cesta, encoding="utf-8") as f:
+    okno = json.load(f)
+check("okno: čas, dny, registr, položky",
+      okno["generated"] == "2026-09-24T05:00:00Z" and okno["okno_dni"] == 28
+      and okno["casopisy"] == s.CASOPISY and [p["id"] for p in okno["polozky"]] == ["pravnik-4064", rozhodnuti["guid"]])
+check("beze změny obsahu se nepřepisuje (ani čas)",
+      not s.zapis_json([zprava, rozhodnuti], cesta, t1 + timedelta(hours=6)))
 
 # =====================================================================
 failed = [n for n, ok, _ in results if not ok]

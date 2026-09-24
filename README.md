@@ -11,9 +11,9 @@ a třívěté shrnutí, jednou týdně z toho napíše dvoutýdenní přehled.
 
 ```
 scraper_judikatura.py judikatura NS, NSS, ÚS a SDEU                 -> data/judikatura/, docs/data/judikatura/
-scraper_journals.py  časopisy (weby, OJS, Crossref, RSS vydavatelů)  -> docs/journals_feed.xml
+scraper_journals.py  časopisy (weby, OJS, Crossref, RSS vydavatelů)  -> docs/data/casopisy.json
 scraper_hearings.py  jednání MSPH a VS Praha (.docx/.pdf na justice) -> docs/hearings.json, hearings.ics
-digest.py            dvoutýdenní přehled z judikatury a feedů výše   -> docs/digest.json
+digest.py            dvoutýdenní přehled z judikatury a časopisů     -> docs/digest.json
 judikatura/          archiv, oblasti, mapy metadat, AI rozbor, fronta, adaptéry soudů (soudy/), migrace, kontrola
 feed_common.py       sdílené: první výskyt položek, AI klient, prompty, cache shrnutí
 docs/                stránka (index.html, style.css, app.js) a všechno, co čte
@@ -23,7 +23,11 @@ tools/probe_zdroje.py sonda: syrové odpovědi webů soudů pro parsery a testy
 Časopisy si vedou **stav prvního výskytu** (`journals_seen.json`): kdy
 položku poprvé viděly. Podle něj drží položku v okně (čtyři týdny)
 a označují ji jako novou, když přibyla v posledních 24 hodinách (judikatura
-totéž dělá přes `first_seen` v archivu).
+totéž dělá přes `first_seen` v archivu). Registr časopisů (`CASOPISY`
+ve `scraper_journals.py`) dává každému stálé id, které se ukládá ve výběru
+uživatele, a zkratku pro štítek; okno `docs/data/casopisy.json` se
+přepisuje, jen když se obsah změní. RSS feedy web už nevydává – všechno je
+na stránce (kalendář jednání dál i jako `hearings.ics`).
 Tím nezáleží na tom, kdy zdroj položku datuje ani jestli datum později přepíše.
 
 **AI** běží na free tieru Gemini API (klíč z Google AI Studia, projekt bez

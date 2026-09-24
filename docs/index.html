@@ -8,7 +8,6 @@
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#09090b">
 <title>Owl – přehled novinek v IP a IT</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="alternate" type="application/rss+xml" title="Právní časopisy" href="journals_feed.xml">
 <link rel="stylesheet" href="style.css">
 <script>
   /* Skryjeme stránku ještě před prvním vykreslením – odkryje ji až initApp()
@@ -25,11 +24,6 @@
 <body>
 
 <svg style="display:none" aria-hidden="true">
-  <symbol id="icon-rss" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M4 11a9 9 0 0 1 9 9"></path>
-    <path d="M4 4a16 16 0 0 1 16 16"></path>
-    <circle cx="5" cy="19" r="1"></circle>
-  </symbol>
   <!-- Ikony navigace. Společné nastavení tahu je na .nav-ico. -->
   <symbol id="icon-sparkles" viewBox="0 0 24 24">
     <path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9Z"></path>
@@ -189,20 +183,11 @@
 
   <div class="card" id="casopisy">
     <div class="card-header">
-      <h2 class="card-title">
-        <a class="card-title-link" href="journals_feed.xml" aria-label="RSS feed: Právní časopisy">
-          Právní časopisy
-          <svg class="feed-icon" aria-hidden="true"><use href="#icon-rss"></use></svg>
-        </a>
-      </h2>
+      <h2 class="card-title">Právní časopisy</h2>
       <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
       <div class="card-desc" hidden>Nová čísla a články za poslední měsíc. Sleduje:
-        <ul>
-          <li>Duševní vlastnictví a Evropské právo (ÚPV) – celá čísla</li>
-          <li>Právník, Jurisprudence, The Lawyer Quarterly</li>
-          <li>Revue pro právo a technologie, MUJLT, JIPITEC</li>
-          <li>IIC, GRUR International, JIPLP, QMJIP, JWIP</li>
-        </ul>
+        <ul id="casopisy-seznam"></ul>
+        Které časopisy se ukazují, si po přihlášení vyberete v části Můj výběr.
       </div>
       </span>
     </div>

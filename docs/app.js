@@ -1,5 +1,5 @@
 /* Owl – skript stránky. Čte hotové soubory vedle sebe (data/judikatura/*.json,
-   journals_feed.xml, data/oblasti.json, digest.json,
+   data/casopisy.json, data/oblasti.json, digest.json,
    hearings.json, hearings.ics) a vykresluje je; nic nepočítá, co si už
    spočítaly scrapery. Přihlášení (Clerk) slouží jen k vlastnímu výběru –
    bez něj web ukazuje výchozí výběr. */
@@ -19,35 +19,10 @@ function safeHref(url) {
   return /^https?:\/\//i.test(url) ? esc(url) : "";
 }
 
-function text(item, sel) {
-  const el = item.querySelector(sel);
-  return el ? el.textContent.trim() : "";
-}
-
-/* Položky ze všech zdrojů převádíme na obyčejné objekty, ať buňky tabulek
-   nemusí rozlišovat XML feed od JSONu:
+/* Položky ze všech zdrojů (JSON) převádíme na jednotné objekty, ať buňky
+   tabulek nemusí rozlišovat zdroje:
      title, link, doc (PDF), heslo, shrnuti, poznamka, datum, nove, autori
-   a u judikatury navíc oblasti, senat, druh, procesni. */
-
-// Autoři jsou ve feedu v <dc:creator> – čteme je přes jmenný prostor,
-// se záložním hledáním podle celého názvu značky (starší prohlížeče).
-const DC_NS = "http://purl.org/dc/elements/1.1/";
-
-function zXml(el) {
-  const autor = el.getElementsByTagNameNS(DC_NS, "creator")[0] ||
-    el.getElementsByTagName("dc:creator")[0];
-  return {
-    title: text(el, "title"),
-    link: text(el, "link"),
-    doc: text(el, "document-url"),
-    heslo: text(el, "ai-tag"),
-    shrnuti: text(el, "ai-summary"),
-    poznamka: text(el, "note"),
-    datum: text(el, "pubDate"),
-    nove: !!el.querySelector("is-new"),
-    autori: autor ? autor.textContent.trim() : ""
-  };
-}
+   u judikatury navíc oblasti, senat, druh, procesni, u časopisů casopis a tag. */
 
 // „Nové" = poprvé viděné za posledních 24 hodin (stejně jako u feedů).
 const NOVE_MS = 24 * 60 * 60 * 1000;
@@ -75,6 +50,31 @@ function zJson(r) {
   };
 }
 
+// Časopisy (data/casopisy.json): štítek je zkratka časopisu z registru.
+let CASOPISY = [];                // [{id, zkratka, nazev, vydavatel}]
+
+function zkratkaCasopisu(id) {
+  const c = CASOPISY.find(x => x.id === id);
+  return c ? c.zkratka : "";
+}
+
+function zCasopisu(r) {
+  const prvni = Date.parse(r.first_seen || "");
+  return {
+    title: r.nazev || "",
+    link: r.url || "",
+    doc: "",
+    heslo: r.heslo || "",
+    shrnuti: r.shrnuti || "",
+    poznamka: r.poznamka || "",
+    datum: r.datum || r.first_seen || "",
+    nove: !isNaN(prvni) && Date.now() - prvni < NOVE_MS,
+    autori: r.autori || "",
+    casopis: r.casopis || "",
+    tag: zkratkaCasopisu(r.casopis)
+  };
+}
+
 // „1. 9. 2026" – z ISO data (bez posunu přes UTC, který by ukrojil den)
 // i z čehokoli, co přečte Date (pubDate z RSS, časová značka z JSONu).
 function czDate(value) {
@@ -90,20 +90,6 @@ function fetchJson(url) {
     if (!r.ok) throw new Error("HTTP " + r.status);
     return r.json();
   });
-}
-
-function fetchFeed(url) {
-  return fetch(url)
-    .then(r => {
-      if (!r.ok) throw new Error("HTTP " + r.status);
-      return r.text();
-    })
-    .then(xml => {
-      const doc = new DOMParser().parseFromString(xml, "text/xml");
-      // Chybová stránka (404 aj.) není XML – radši ohlásit chybu než „Žádné položky".
-      if (doc.querySelector("parsererror")) throw new Error("neplatné XML");
-      return doc;
-    });
 }
 
 function failed(containerId) {
@@ -352,7 +338,7 @@ function typeCell(item) {
   if (item.sdeu && item.druh) {
     return '<span class="tag ' + (DRUHY_SDEU[item.druh] || "") + '">' + esc(item.druh) + "</span>";
   }
-  return tagBadge(tagOf(item.title));
+  return tagBadge(item.tag || tagOf(item.title));
 }
 
 /* ========== Oblasti a výběr (výchozí, nebo uložený u účtu) ========== */
@@ -421,7 +407,10 @@ function normalizujVyber(ulozeny) {
   }
   v.skryt_procesni = ulozeny.skryt_procesni === true;
   if (Array.isArray(ulozeny.skryte_casopisy)) {
-    v.skryte_casopisy = bezDuplicit(ulozeny.skryte_casopisy.filter(c => typeof c === "string"));
+    // Starší výběry ukládaly zkratku („GRUR Int"), teď se ukládá id z registru.
+    const idCasopisu = c => (CASOPISY.find(x => x.zkratka === c) || {}).id || c;
+    v.skryte_casopisy = bezDuplicit(ulozeny.skryte_casopisy.filter(c => typeof c === "string")
+      .map(idCasopisu));
   }
   return v;
 }
@@ -452,7 +441,7 @@ function vidiPodleOblasti(soud) {
 
 function vidiCasopis(item) {
   const v = vyber || vychoziVyber();
-  return v.skryte_casopisy.indexOf(tagOf(item.title)) < 0;
+  return v.skryte_casopisy.indexOf(item.casopis) < 0;
 }
 
 // Definice sloupců sdílíme mezi živým feedem a novými položkami.
@@ -499,8 +488,8 @@ const colsToday = [
   { label: "Datum", cls: "col-date", render: dateCell }
 ];
 
-// Zdroje stránky. Judikatura je v JSONu s oknem pro web (data/judikatura/),
-// časopisy a SDEU zatím v XML; `filtr` je výběr, co z okna ukázat.
+// Zdroje stránky: okna judikatury (data/judikatura/) a časopisy
+// (data/casopisy.json); `filtr` je výběr, co z okna ukázat.
 const PRAZDNY_VYBER = 'Ve vašem výběru za tu dobu nic nepřibylo. <a href="#nastaveni">Upravit výběr</a>';
 const FEEDS = [
   { key: "nsoud",    label: "NS",      json: "data/judikatura/ns.json", cols: colsNsoud,
@@ -512,22 +501,17 @@ const FEEDS = [
     containerId: "feed-us", filtr: vidiPodleOblasti("us"), prazdno: PRAZDNY_VYBER, stavId: "stav-us" },
   { key: "sdeu",     label: "SDEU",    json: "data/judikatura/sdeu.json", cols: colsSdeu,
     containerId: "feed-sdeu", filtr: vidiPodleOblasti("sdeu"), prazdno: PRAZDNY_VYBER, stavId: "stav-sdeu" },
-  { key: "journals", label: "Časopis", url: "journals_feed.xml", cols: colsJournals, containerId: "feed-journals",
-    filtr: vidiCasopis, prazdno: PRAZDNY_VYBER }
+  { key: "journals", label: "Časopis", json: "data/casopisy.json", prevod: zCasopisu, cols: colsJournals,
+    containerId: "feed-journals", filtr: vidiCasopis, prazdno: PRAZDNY_VYBER }
 ];
 
 // Položky zdroje jako objekty; u zdroje si poznamená, kdy byl aktualizován.
 function nactiZdroj(f) {
-  if (f.json) {
-    return fetchJson(f.json).then(d => {
-      f.aktualizovano = d.generated || "";
-      f.oknoDni = d.okno_dni || 0;
-      return (d.polozky || []).map(zJson);
-    });
-  }
-  return fetchFeed(f.url).then(doc => {
-    f.aktualizovano = (doc.querySelector("lastBuildDate") || {}).textContent || "";
-    return Array.from(doc.querySelectorAll("item")).map(zXml);
+  return fetchJson(f.json).then(d => {
+    f.aktualizovano = d.generated || "";
+    f.oknoDni = d.okno_dni || 0;
+    if (Array.isArray(d.casopisy)) nastavCasopisy(d.casopisy);
+    return (d.polozky || []).map(f.prevod || zJson);
   });
 }
 
@@ -1561,12 +1545,20 @@ function senatyKVyberu() {
   return SENATY_NS.concat(navic);
 }
 
-// Časopisy k výběru: štítky z feedu a navíc skryté, které teď ve feedu nejsou.
+// Registr časopisů z data/casopisy.json: štítky v nastavení a seznam
+// v nápovědě karty.
+function nastavCasopisy(seznam) {
+  CASOPISY = seznam.filter(c => c && c.id && c.zkratka);
+  const ul = document.getElementById("casopisy-seznam");
+  if (ul) {
+    ul.innerHTML = CASOPISY.map(c => "<li>" + esc(c.zkratka === c.nazev ? c.nazev : c.zkratka + " – " + c.nazev) +
+      (c.vydavatel ? ' <span class="legend">(' + esc(c.vydavatel) + ")</span>" : "") + "</li>").join("");
+  }
+}
+
+// Časopisy k výběru: všechny z registru (id, zkratka, název).
 function casopisyKVyberu() {
-  const r = zdrojeVysledky && zdrojeVysledky[FEEDS.findIndex(f => f.key === "journals")];
-  const vDatech = r && r.status === "fulfilled" ? r.value.map(i => tagOf(i.title)) : [];
-  return bezDuplicit(vDatech.concat(vyber.skryte_casopisy)).filter(Boolean)
-    .sort((a, b) => a.localeCompare(b, "cs"));
+  return CASOPISY.slice();
 }
 
 function zaskrtavatko(atributy, zaskrtnuto, popisek, trida) {
@@ -1680,8 +1672,8 @@ function senatyHtml() {
 // Časopisy jako přepínací štítky: zvýrazněný = ukazuje se.
 function casopisyHtml(casopisy) {
   return '<div class="cipy">' + casopisy.map(c =>
-    '<label class="cip"><input type="checkbox" data-casopis="' + esc(c) + '"' +
-    (vyber.skryte_casopisy.indexOf(c) < 0 ? " checked" : "") + "><span>" + esc(c) + "</span></label>"
+    '<label class="cip" title="' + esc(c.nazev) + '"><input type="checkbox" data-casopis="' + esc(c.id) + '"' +
+    (vyber.skryte_casopisy.indexOf(c.id) < 0 ? " checked" : "") + "><span>" + esc(c.zkratka) + "</span></label>"
   ).join("") + "</div>";
 }
 
@@ -1925,7 +1917,7 @@ function initNav() {
 }
 
 // Datum poslední aktualizace = nejnovější aktualizace ze všech zdrojů
-// (<lastBuildDate> u XML feedů, `generated` u JSONu).
+// (`generated` v JSONu).
 function showUpdated() {
   const latest = FEEDS.map(f => new Date(f.aktualizovano || ""))
     .filter(d => !isNaN(d)).sort((a, b) => b - a)[0];

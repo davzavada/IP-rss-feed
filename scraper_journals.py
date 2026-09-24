@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
-"""Scraper for legal journals – generates RSS feed for new journal issues and articles."""
+"""Právní časopisy: nová čísla a články -> docs/data/casopisy.json.
+
+Každý časopis má v registru CASOPISY stálé id (ukládá se ve výběru
+uživatele) a zkratku, pod kterou se ukazuje. Výstup je okno za čtyři týdny
+podle prvního výskytu (journals_seen.json); zapisuje se jen tehdy, když se
+obsah opravdu změní.
+"""
 
 import copy
+import json
 import os
 import re
 import time
@@ -9,7 +16,7 @@ from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from collections import Counter
 from urllib.parse import quote, urljoin
-from xml.etree.ElementTree import Element, SubElement, ElementTree, fromstring, indent
+from xml.etree.ElementTree import fromstring
 
 import requests
 from bs4 import BeautifulSoup
@@ -27,13 +34,42 @@ from feed_common import (
     summarize_with_cache,
 )
 
-OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "journals_feed.xml")
+OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "data", "casopisy.json")
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "journals_seen.json")
 # Cache AI shrnutí podle guid ({guid: {"summary": ..., "tag": ...}}).
 META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "journals_meta.json")
 
-# Okno feedu: články vycházejí po číslech, takže se drží déle než rozhodnutí.
+# Okno: články vycházejí po číslech, takže se drží déle než rozhodnutí.
 WINDOW_WEEKS = 4
+
+# Registr časopisů. `id` je stálé (ukládá se ve výběru uživatele), `zkratka`
+# je štítek na webu a zároveň prefix titulku položky ([IIC] …) ze scraperů.
+CASOPISY = [
+    {"id": "dv", "zkratka": "DV", "nazev": "Duševní vlastnictví", "vydavatel": "ÚPV"},
+    {"id": "ep", "zkratka": "EP", "nazev": "Evropské právo", "vydavatel": "ÚPV"},
+    {"id": "pravnik", "zkratka": "Právník", "nazev": "Právník", "vydavatel": "ÚSP AV ČR"},
+    {"id": "jurisprudence", "zkratka": "Jurisprudence", "nazev": "Jurisprudence",
+     "vydavatel": "Wolters Kluwer"},
+    {"id": "tlq", "zkratka": "TLQ", "nazev": "The Lawyer Quarterly", "vydavatel": "ÚSP AV ČR"},
+    {"id": "rpt", "zkratka": "RPT", "nazev": "Revue pro právo a technologie",
+     "vydavatel": "Masarykova univerzita"},
+    {"id": "mujlt", "zkratka": "MUJLT", "nazev": "Masaryk University Journal of Law and Technology",
+     "vydavatel": "Masarykova univerzita"},
+    {"id": "jipitec", "zkratka": "JIPITEC", "nazev": "Journal of Intellectual Property, "
+     "Information Technology and E-Commerce Law", "vydavatel": "JIPITEC"},
+    {"id": "qmjip", "zkratka": "QMJIP", "nazev": "Queen Mary Journal of Intellectual Property",
+     "vydavatel": "Edward Elgar"},
+    {"id": "grur-int", "zkratka": "GRUR Int", "nazev": "GRUR International",
+     "vydavatel": "Oxford University Press"},
+    {"id": "iic", "zkratka": "IIC", "nazev": "IIC – International Review of Intellectual "
+     "Property and Competition Law", "vydavatel": "Springer"},
+    {"id": "jwip", "zkratka": "JWIP", "nazev": "The Journal of World Intellectual Property",
+     "vydavatel": "Wiley"},
+    {"id": "jiplp", "zkratka": "JIPLP", "nazev": "Journal of Intellectual Property Law & Practice",
+     "vydavatel": "Oxford University Press"},
+]
+CASOPIS_PODLE_ZKRATKY = {c["zkratka"]: c["id"] for c in CASOPISY}
+PREFIX_RE = re.compile(r"^\[([^\]]+)\]\s*")
 # Anotace v popisu položky se ořezává; celá jde jen do podkladu pro AI.
 POPIS_MAX = 300
 
@@ -1158,57 +1194,57 @@ def enrich_summaries(items):
     return items
 
 
-# --- Build combined RSS ---
+# --- Výstup pro web (docs/data/casopisy.json) ---
 
-def build_rss(all_items):
-    """Build RSS 2.0 XML from all journal items."""
-    rss = Element("rss", version="2.0", attrib={
-        "xmlns:dc": "http://purl.org/dc/elements/1.1/",
-        "xmlns:atom": "http://www.w3.org/2005/Atom",
-    })
-    channel = SubElement(rss, "channel")
+def _iso(dt):
+    return dt.astimezone(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
-    SubElement(channel, "title").text = "Právní časopisy"
-    # <link> kanálu má vést na web, ne na XML samotné (to patří do atom:link self)
-    SubElement(channel, "link").text = "https://owl.davidzavada.cz/"
-    SubElement(channel, "atom:link", attrib={
-        "href": "https://owl.davidzavada.cz/journals_feed.xml",
-        "rel": "self", "type": "application/rss+xml",
-    })
-    SubElement(channel, "description").text = "Nová čísla právních časopisů a články"
-    SubElement(channel, "language").text = "cs"
-    SubElement(channel, "lastBuildDate").text = datetime.now(timezone.utc).strftime(
-        "%a, %d %b %Y %H:%M:%S +0000"
-    )
 
-    for item in all_items:
-        el = SubElement(channel, "item")
-        SubElement(el, "title").text = item["title"]
-        SubElement(el, "link").text = item["link"]
-        # Autoři samostatně, ne přilepení za názvem – stránka i čtečky si je
-        # zobrazí ve vlastním sloupci.
-        if item.get("authors"):
-            SubElement(el, "dc:creator").text = item["authors"]
-        SubElement(el, "guid", isPermaLink="false").text = item["guid"]
-        desc = item["description"]
-        if item.get("summary"):
-            desc = f"{desc}\n{item['summary']}"
-        SubElement(el, "description").text = desc
-        if item.get("is_new"):
-            SubElement(el, "is-new").text = "true"
-        # AI shrnutí + heslo (čte je index.html do samostatných sloupců)
-        if item.get("tag"):
-            SubElement(el, "ai-tag").text = item["tag"]
-        if item.get("summary"):
-            SubElement(el, "ai-summary").text = item["summary"]
-        elif item.get("note"):
-            SubElement(el, "note").text = item["note"]
-        SubElement(el, "pubDate").text = item["pub_date"].strftime(
-            "%a, %d %b %Y 12:00:00 +0000"
-        )
-        SubElement(el, "dc:date").text = item["pub_date"].strftime("%Y-%m-%d")
+def polozka_json(it):
+    """Položka pro web: časopis podle zkratky v titulku, titulek bez ní."""
+    m = PREFIX_RE.match(it["title"])
+    zkratka = m.group(1) if m else ""
+    out = {
+        "id": it["guid"],
+        "casopis": CASOPIS_PODLE_ZKRATKY.get(zkratka, ""),
+        "nazev": it["title"][m.end():] if m else it["title"],
+        "url": it["link"],
+        "autori": it.get("authors", ""),
+        "heslo": it.get("tag", ""),
+        "shrnuti": it.get("summary", ""),
+        "datum": it["pub_date"].date().isoformat(),
+    }
+    if it.get("first_seen"):
+        out["first_seen"] = _iso(it["first_seen"])
+    if not out["shrnuti"]:
+        out["poznamka"] = it.get("note", "")
+        # Popis (anotace, číslo, rozsah) – přehled ho vezme, když shrnutí není.
+        out["popis"] = it.get("description", "")
+    return {k: v for k, v in out.items() if v not in ("", None)}
 
-    return rss
+
+def zapis_json(all_items, cesta=None, nyni=None):
+    """Zapíše okno časopisů. Jen když se obsah změnil – jinak by každý běh
+    měnil čas a spouštěl commit i nasazení. Vrací True při zápisu."""
+    cesta = cesta or OUTPUT
+    obsah = {"okno_dni": WINDOW_WEEKS * 7, "casopisy": CASOPISY,
+             "polozky": [polozka_json(it) for it in all_items]}
+    if os.path.exists(cesta):
+        try:
+            with open(cesta, encoding="utf-8") as f:
+                stary = json.load(f)
+            stary.pop("generated", None)
+            if stary == obsah:
+                return False
+        except (ValueError, OSError):
+            pass
+    data = {"generated": _iso(nyni or datetime.now(timezone.utc)), **obsah}
+    os.makedirs(os.path.dirname(cesta), exist_ok=True)
+    tmp = cesta + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        f.write(json.dumps(data, ensure_ascii=False, indent=1) + "\n")
+    os.replace(tmp, cesta)
+    return True
 
 
 def main():
@@ -1306,13 +1342,10 @@ def main():
     # Cache shrnutí prořízneme podle stavu prvního výskytu, ať neroste donekonečna
     prune_meta_file(META_FILE, STATE_FILE)
 
-    rss = build_rss(all_items)
-
-    os.makedirs(os.path.dirname(OUTPUT), exist_ok=True)
-    indent(rss, space="  ")
-    tree = ElementTree(rss)
-    tree.write(OUTPUT, encoding="unicode", xml_declaration=True)
-    print(f"RSS feed zapsán do {OUTPUT}")
+    if zapis_json(all_items):
+        print(f"Časopisy zapsány do {OUTPUT}")
+    else:
+        print("Časopisy beze změny")
 
     for item in all_items[:6]:
         print(f"  {item['title']}")

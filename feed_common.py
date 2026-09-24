@@ -260,8 +260,9 @@ JOURNAL_ISSUE_PROMPT = (
 DIGEST_PROMPT = (
     "Jsi asistent českého advokáta se specializací na právo duševního "
     "vlastnictví a IT. Níže je číslovaný seznam položek za poslední dva "
-    "týdny: rozhodnutí Nejvyššího soudu ČR, rozhodnutí a předběžné otázky "
-    "Soudního dvora EU a články z právních časopisů.\n\n"
+    "týdny: rozhodnutí Nejvyššího soudu, Nejvyššího správního soudu "
+    "a Ústavního soudu, rozhodnutí, stanoviska a předběžné otázky Soudního "
+    "dvora EU a články z právních časopisů.\n\n"
     "Napiš česky přehled toho, co se za ty dva týdny stalo. Vybírej: "
     "především věci relevantní pro praxi v duševním vlastnictví a IT "
     "(autorské právo, ochranné známky, patenty a užitné vzory, průmyslové "
