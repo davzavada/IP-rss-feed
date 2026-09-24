@@ -684,6 +684,8 @@ html:has(.dialog[open]) { overflow: hidden; }
 
 .vyber-sekce-seznam { margin-top: 14px; border-top: 1px solid var(--border); }
 .vyber-sekce { border-bottom: 1px solid var(--border); }
+/* Pod poslední sekcí je čára lišty s Uložit – druhá by byla navíc. */
+.vyber-sekce:last-child { border-bottom: 0; }
 .sekce-hlava {
   display: flex; align-items: center; gap: 14px; width: 100%;
   padding: 14px 4px; border: 0; background: none; color: inherit;
@@ -788,7 +790,7 @@ html:has(.dialog[open]) { overflow: hidden; }
 .vyber-akce {
   position: sticky; bottom: 0; z-index: 2;
   display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex-wrap: wrap;
-  margin-top: 16px; padding: 14px 0 18px;
+  padding: 14px 0 18px;
   background: var(--card); border-top: 1px solid var(--border);
 }
 .vyber-stav { margin-right: auto; font-size: var(--fs-sm); color: var(--muted-foreground); }
