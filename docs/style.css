@@ -162,13 +162,6 @@ th:last-child, td:last-child { padding-right: 10px; }
 tbody tr:last-child td { border-bottom: 0; }
 tbody tr { transition: background-color 0.12s ease; }
 tbody tr:hover { background: color-mix(in srgb, var(--muted) 55%, transparent); }
-/* Novinky: řádek dne přes celou šířku tabulky. */
-tbody tr.den th {
-  padding: 20px 10px 6px; font-size: var(--fs-md); font-weight: 600; color: var(--foreground);
-}
-tbody tr.den:first-child th { padding-top: 8px; }
-tbody tr.den:hover { background: none; }
-.den-pocet { margin-left: 6px; font-weight: 400; color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
 td a { color: var(--link); text-decoration: none; text-underline-offset: 3px; }
 /* Fokus z klávesnice (i po návratu z PDF v nové kartě) barvou webu, ne
    černým rámečkem prohlížeče. */
@@ -571,9 +564,6 @@ html.is-loading body { visibility: hidden; }
   }
   tbody tr:hover { background: none; }
   tbody td, tbody td:first-child, tbody td:last-child { display: block; padding: 0; border: 0; }
-  tbody tr.den { display: block; padding: 18px 0 2px; }
-  tbody tr.den:first-child { padding-top: 4px; }
-  tbody tr.den th { display: block; padding: 0; }
   tbody td:empty { display: none; }
   .col-src, .col-type { order: 1; }
   .col-date { order: 2; font-size: var(--fs-sm); }

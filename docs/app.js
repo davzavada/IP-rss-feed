@@ -24,9 +24,9 @@ function safeHref(url) {
      title, link, doc (PDF), heslo, shrnuti, poznamka, datum, nove, autori
    u judikatury navíc oblasti, senat, druh, procesni, u časopisů casopis a tag. */
 
-// Novinky na úvodní stránce = poprvé viděné za posledních 7 dní.
-const NOVE_DNI = 7;
-const NOVE_MS = NOVE_DNI * 24 * 60 * 60 * 1000;
+// Novinky na úvodní stránce = poprvé viděné za posledních 24 hodin (sběr
+// běží jednou denně, takže je to úlovek posledního nočního běhu).
+const NOVE_MS = 24 * 60 * 60 * 1000;
 
 function zJson(r) {
   const prvni = Date.parse(r.first_seen || "");
@@ -42,7 +42,6 @@ function zJson(r) {
     // Raná předběžná otázka z ipcuria ještě zveřejněná není – datum podání.
     datum: r.zverejneno || r.datum || r.first_seen || "",
     nove: !isNaN(prvni) && Date.now() - prvni < NOVE_MS,
-    prvni: isNaN(prvni) ? 0 : prvni,
     autori: "",
     oblasti: r.oblasti || [],
     sdeu: /^sdeu:/.test(r.id || ""),
@@ -74,7 +73,6 @@ function zCasopisu(r) {
     poznamka: r.poznamka || "",
     datum: r.datum || r.first_seen || "",
     nove: !isNaN(prvni) && Date.now() - prvni < NOVE_MS,
-    prvni: isNaN(prvni) ? 0 : prvni,
     autori: r.autori || "",
     casopis: r.casopis || "",
     tag: zkratkaCasopisu(r.casopis)
@@ -252,8 +250,7 @@ const MIN_SHRNUTI_PCT = 38;
 // Přirozená šířka obsahu sloupce v px (včetně odsazení buňky); null
 // u shrnutí a u sloupců s pevnou šířkou z definice.
 function zmerObsah(table, columns) {
-  // Řádky dní (Novinky) mají jednu buňku přes celou šířku – neměří se.
-  const telo = table.querySelector("tbody tr:not(.den)");
+  const telo = table.tBodies[0] && table.tBodies[0].rows[0];
   if (!telo) return columns.map(() => null);
   const pismo = parseFloat(getComputedStyle(table).fontSize) || 14;
   const meric = document.createElement("div");
@@ -271,8 +268,8 @@ function zmerObsah(table, columns) {
     meric.classList.remove("meric-th");
     const hodnoty = [];
     Array.from(telo.parentNode.rows).forEach(tr => {
-      // Prázdné buňky (článek bez autora) šířku neurčují, řádky dní taky ne.
-      if (tr.classList.contains("den") || !tr.cells[j] || !tr.cells[j].textContent.trim()) return;
+      // Prázdné buňky (článek bez autora) šířku neurčují.
+      if (!tr.cells[j] || !tr.cells[j].textContent.trim()) return;
       meric.innerHTML = tr.cells[j].innerHTML;
       hodnoty.push(meric.getBoundingClientRect().width);
     });
@@ -675,10 +672,7 @@ function resizerHtml(column) {
 }
 
 // `prazdno` je HTML hlášky, když nic není (u filtrovaných karet odkaz na výběr).
-// `moznosti.skupina(item)` vrací HTML nadpisu skupiny (Novinky: den) – když
-// se změní, vloží se řádek přes celou šířku.
-function renderTable(items, container, columns, key, prazdno, moznosti) {
-  const m = moznosti || {};
+function renderTable(items, container, columns, key, prazdno) {
   if (items.length === 0) {
     container.innerHTML = '<p class="feed-empty">' + (prazdno || "Žádné nové položky.") + "</p>";
     return;
@@ -695,14 +689,7 @@ function renderTable(items, container, columns, key, prazdno, moznosti) {
       (i < columns.length - 1 ? resizerHtml(c) : "") + "</th>";
   });
   html += '</tr></thead><tbody role="rowgroup">';
-  let skupina = null;
   items.forEach(item => {
-    const sk = m.skupina ? m.skupina(item) : null;
-    if (sk !== null && sk !== skupina) {
-      skupina = sk;
-      html += '<tr class="den" role="row"><th role="rowheader" colspan="' + columns.length + '" scope="colgroup">' +
-        sk + "</th></tr>";
-    }
     html += '<tr role="row">';
     columns.forEach(c => {
       html += '<td role="cell"' + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.render(item) + "</td>";
@@ -714,16 +701,7 @@ function renderTable(items, container, columns, key, prazdno, moznosti) {
   prizpusobSirky(container.querySelector("table"));
 }
 
-/* ========== Novinky: posledních 7 dní po dnech ========== */
-// „Dnes", „Včera", „Po 21. 9." – den prvního výskytu v místním čase.
-function nadpisDne(ts) {
-  const d = new Date(ts);
-  const dnes = new Date();
-  const vcera = new Date(dnes.getFullYear(), dnes.getMonth(), dnes.getDate() - 1);
-  if (isoOf(d) === isoOf(dnes)) return "Dnes";
-  if (isoOf(d) === isoOf(vcera)) return "Včera";
-  return CAL_DOWS[(d.getDay() + 6) % 7] + " " + d.getDate() + ". " + (d.getMonth() + 1) + ".";
-}
+/* ========== Novinky: posledních 24 hodin ========== */
 
 // `results` jsou výsledky Promise.allSettled nad položkami jednotlivých feedů.
 function renderToday(results) {
@@ -744,22 +722,13 @@ function renderToday(results) {
       }
     });
   });
-  // Po dnech prvního výskytu od nejnovějšího, v rámci dne podle data.
-  polozky.sort((a, b) => (isoOf(new Date(b.prvni)) > isoOf(new Date(a.prvni)) ? 1
-    : isoOf(new Date(b.prvni)) < isoOf(new Date(a.prvni)) ? -1 : new Date(b.datum) - new Date(a.datum)));
+  polozky.sort((a, b) => new Date(b.datum) - new Date(a.datum));
   if (polozky.length === 0) {
-    container.innerHTML = '<p class="feed-empty">Za posledních ' + tvar(NOVE_DNI, "den", "dny", "dní") +
-      " nic nepřibylo. Sběr běží jednou denně ve 2:00 v noci.</p>";
+    container.innerHTML = '<p class="feed-empty">Za posledních 24 hodin nic nepřibylo. ' +
+      "Sběr běží jednou denně ve 2:00 v noci.</p>";
     return;
   }
-  const poctyDni = {};
-  polozky.forEach(i => { const d = isoOf(new Date(i.prvni)); poctyDni[d] = (poctyDni[d] || 0) + 1; });
-  renderTable(polozky, container, colsToday, "today", "", {
-    skupina: i => {
-      const d = isoOf(new Date(i.prvni));
-      return esc(nadpisDne(i.prvni)) + ' <span class="den-pocet">' + poctyDni[d] + "</span>";
-    }
-  });
+  renderTable(polozky, container, colsToday, "today");
 }
 
 // Stažené položky zdrojů (výsledky Promise.allSettled). Při změně výběru se
