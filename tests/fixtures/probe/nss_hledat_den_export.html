@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>NSS Hled&#xE1;n&#xED; - Vyhledávač NSS</title>
+
+    <link rel="icon" type="image/x-icon" href="/favicon-32x32.ico" />
+
+    
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/lib/twitter-bootstrap/css/bootstrap.min.css">
+        <script defer src="/lib/font-awesome/js/all.min.js"></script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="/lib/jquery/jquery.min.js"></script>
+        <script src="/lib/popper.js/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="/lib/twitter-bootstrap/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <!-- TempusDominusBootstrap4 -->
+        <script type="text/javascript" src="/lib/moment.js/moment-with-locales.min.js"></script>
+        <script type="text/javascript" src="/lib/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+        <link rel="stylesheet" href="/lib/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css" />
+    
+    <link href="/css/tree.css" rel="stylesheet" />
+    <script src="/js/comboTreemin.js"></script>
+    <script src="/js/icontains.js"></script>
+    <link rel="stylesheet" href="/css/site.css" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Y5VQ8T8CY"></script>
+        <script>
+            window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date());
+            gtag('config', 'G-3Y5VQ8T8CY');</script>
+</head>
+<body>
+    <div class="wrapper">
+        
+<!-- Sidebar  -->
+<nav id="sidebar" class="activebar">
+    <div class="treeview-header">
+        <div class="input-group">
+            <div class="mr-5">
+                <h5>Přidat podmínku</h5>
+            </div>
+            <div class="input-group-btn">
+                <button id="populbtn" type="button" class="btn btn-sm btn-outline-light mclose" onclick="poptree(this);" title="Rozbalit / zabalit nabídku." data-toggle="tooltip">
+                    <i  class="fas fa-folder-open fa-sm"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <ul id="treeview">
+        
+        <li class="text-truncate" data-toggle="tooltip" title="Z&#xC1;KLADN&#xCD; &#xDA;DAJE">
+            <span class="caret">Z&#xC1;KLADN&#xCD; &#xDA;DAJE</span>
+            <ul class="nested">
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('soudsenat')" title="Soud (sen&#xE1;t)">Soud (sen&#xE1;t)</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('soudcezpravodaj')" title="Soudce zpravodaj">Soudce zpravodaj</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('oznacenivecivcelku')" title="Ozna&#x10D;en&#xED; v&#x11B;ci v celku">Ozna&#x10D;en&#xED; v&#x11B;ci v celku</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('oznacenivecidelenesenat')" title="Ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;">Ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('sbnsspublikovano')" title="Sb NSS publikov&#xE1;no">Sb NSS publikov&#xE1;no</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('nsssesit')" title="Sb NSS d&#x11B;len&#xE9;">Sb NSS d&#x11B;len&#xE9;</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('ecli')" title="ECLI">ECLI</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('pravnivetaanv')" title="Pr&#xE1;vn&#xED; v&#x11B;ta">Pr&#xE1;vn&#xED; v&#x11B;ta</li>
+                
+
+            </ul>
+        </li>
+        <li class="text-truncate" data-toggle="tooltip" title="&#x10C;ASOV&#xC9; &#xDA;DAJE">
+            <span class="caret">&#x10C;ASOV&#xC9; &#xDA;DAJE</span>
+            <ul class="nested">
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('datumzahajenirizeni')" title="Datum zah&#xE1;jen&#xED; &#x159;&#xED;zen&#xED;">Datum zah&#xE1;jen&#xED; &#x159;&#xED;zen&#xED;</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('datumskonceniirizeni')" title="Datum skon&#x10D;en&#xED; &#x159;&#xED;zen&#xED;">Datum skon&#x10D;en&#xED; &#x159;&#xED;zen&#xED;</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('datumvydanirozhodnuti')" title="Datum vyd&#xE1;n&#xED; rozhodnut&#xED;">Datum vyd&#xE1;n&#xED; rozhodnut&#xED;</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('datumvyhotovenirozhodnuti')" title="Datum vyhotoven&#xED; rozhodnut&#xED;">Datum vyhotoven&#xED; rozhodnut&#xED;</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('datumvypravenirozhodnuti')" title="Datum vypraven&#xED; rozhodnut&#xED;">Datum vypraven&#xED; rozhodnut&#xED;</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('datumpravnimoci')" title="Datum pr&#xE1;vn&#xED; moci">Datum pr&#xE1;vn&#xED; moci</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('aktualizovano')" title="Datum zp&#x159;&#xED;stupn&#x11B;n&#xED;">Datum zp&#x159;&#xED;stupn&#x11B;n&#xED;</li>
+                
+
+            </ul>
+        </li>
+        <li class="text-truncate" data-toggle="tooltip" title="PODROBNOSTI O DOKUMENTU A &#x158;&#xCD;ZEN&#xCD;">
+            <span class="caret">PODROBNOSTI O DOKUMENTU A &#x158;&#xCD;ZEN&#xCD;</span>
+            <ul class="nested">
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('druhdokumentuavyrokrozhodnuti')" title="Druh dokumentu">Druh dokumentu</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('typrizeni')" title="Typ &#x159;&#xED;zen&#xED;">Typ &#x159;&#xED;zen&#xED;</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('stavrizeni')" title="Stav &#x159;&#xED;zen&#xED;">Stav &#x159;&#xED;zen&#xED;</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('rozhodnutivevztahukrizeni')" title="Rozhodnut&#xED; ve vztahu k &#x159;&#xED;zen&#xED;">Rozhodnut&#xED; ve vztahu k &#x159;&#xED;zen&#xED;</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('vyrokrozhodnuti')" title="V&#xFD;rok rozhodnut&#xED; NSS">V&#xFD;rok rozhodnut&#xED; NSS</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('karnaopatreni')" title="K&#xE1;rn&#xE1; opat&#x159;en&#xED;">K&#xE1;rn&#xE1; opat&#x159;en&#xED;</li>
+                
+
+            </ul>
+        </li>
+        <li class="text-truncate" data-toggle="tooltip" title="&#xDA;&#x10C;ASTN&#xCD;K &#x158;&#xCD;ZEN&#xCD; A Z&#xC1;STUPCE">
+            <span class="caret">&#xDA;&#x10C;ASTN&#xCD;K &#x158;&#xCD;ZEN&#xCD; A Z&#xC1;STUPCE</span>
+            <ul class="nested">
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('ucastnikrizeni')" title="&#xDA;&#x10D;astn&#xED;k &#x159;&#xED;zen&#xED;">&#xDA;&#x10D;astn&#xED;k &#x159;&#xED;zen&#xED;</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('typucastnika')" title="Typ &#xFA;&#x10D;astn&#xED;ka">Typ &#xFA;&#x10D;astn&#xED;ka</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('zastupce')" title="Z&#xE1;stupce">Z&#xE1;stupce</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('typzastupce')" title="Typ z&#xE1;stupce">Typ z&#xE1;stupce</li>
+                
+
+            </ul>
+        </li>
+        <li class="text-truncate" data-toggle="tooltip" title="PR&#xC1;VN&#xCD; P&#x158;EDPISY">
+            <span class="caret">PR&#xC1;VN&#xCD; P&#x158;EDPISY</span>
+            <ul class="nested">
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('oblastupravy')" title="Oblast &#xFA;pravy">Oblast &#xFA;pravy</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('aplikovanepravnipredpisysbcl')" title="Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.">Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('aplikovanepravnipredpisysbmscl')" title="Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.m.s.">Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.m.s.</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('aplikovanepravnipredpisynarizenieucl')" title="Na&#x159;&#xED;zen&#xED; EU">Na&#x159;&#xED;zen&#xED; EU</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('aplikovanepravnipredpisysmerniceeucl')" title="Sm&#x11B;rnice EU">Sm&#x11B;rnice EU</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('vyhledavanidlehesel')" title="Vyhled&#xE1;v&#xE1;n&#xED; dle hesel">Vyhled&#xE1;v&#xE1;n&#xED; dle hesel</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('popularninazev')" title="Popul&#xE1;rn&#xED; n&#xE1;zev">Popul&#xE1;rn&#xED; n&#xE1;zev</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('aplikovanopravoeu')" title="Aplikov&#xE1;no pr&#xE1;vo EU">Aplikov&#xE1;no pr&#xE1;vo EU</li>
+                
+
+            </ul>
+        </li>
+        <li class="text-truncate" data-toggle="tooltip" title="PREJUDIKATURA">
+            <span class="caret">PREJUDIKATURA</span>
+            <ul class="nested">
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('prejudikaturaoznacenivecivcelku')" title="Prejudikatura ozna&#x10D;en&#xED; v&#x11B;ci v celku">Prejudikatura ozna&#x10D;en&#xED; v&#x11B;ci v celku</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('prejudikaturaoznacenivecidelenesenat')" title="Prejudikatura ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;">Prejudikatura ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('identifikacevesbirkach')" title="Identifikace ve sb&#xED;rk&#xE1;ch">Identifikace ve sb&#xED;rk&#xE1;ch</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('identifikacevesbirkachdelenesesit')" title="Identifikace ve sb&#xED;rk&#xE1;ch d&#x11B;len&#xE9;">Identifikace ve sb&#xED;rk&#xE1;ch d&#x11B;len&#xE9;</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('nazevorganu')" title="N&#xE1;zev org&#xE1;nu">N&#xE1;zev org&#xE1;nu</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('povaha')" title="Povaha">Povaha</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('druh')" title="Druh">Druh</li>
+                
+
+            </ul>
+        </li>
+        <li class="text-truncate" data-toggle="tooltip" title="ROZ&#x160;&#xCD;&#x158;EN&#xDD; SEN&#xC1;T NSS">
+            <span class="caret">ROZ&#x160;&#xCD;&#x158;EN&#xDD; SEN&#xC1;T NSS</span>
+            <ul class="nested">
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('evidencniznackars')" title="Eviden&#x10D;n&#xED; zna&#x10D;ka RS">Eviden&#x10D;n&#xED; zna&#x10D;ka RS</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('spzncjpredkladacirozhodnutinss')" title="Sp. zn./&#x10D;j. p&#x159;edkl&#xE1;dac&#xED; rozhodnut&#xED; NSS">Sp. zn./&#x10D;j. p&#x159;edkl&#xE1;dac&#xED; rozhodnut&#xED; NSS</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('spzncjnapadenarozhodnutinss')" title="Sp. Zn./&#x10D;j. napaden&#xE1; rozhodnut&#xED; NSS">Sp. Zn./&#x10D;j. napaden&#xE1; rozhodnut&#xED; NSS</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('anotace')" title="Anotace">Anotace</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('datumpredlozenirs')" title="Datum p&#x159;edlo&#x17E;en&#xED; RS">Datum p&#x159;edlo&#x17E;en&#xED; RS</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('datumrozhodnutirs')" title="Datum rozhodnut&#xED; RS">Datum rozhodnut&#xED; RS</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('rozhodnutonapursnss')" title="Rozhodnuto">Rozhodnuto</li>
+                
+
+            </ul>
+        </li>
+        <li class="text-truncate" data-toggle="tooltip" title="NAPADEN&#xC9; SPR&#xC1;VN&#xCD; ROZHODNUT&#xCD;">
+            <span class="caret">NAPADEN&#xC9; SPR&#xC1;VN&#xCD; ROZHODNUT&#xCD;</span>
+            <ul class="nested">
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('nazevspravnihoorganu')" title="N&#xE1;zev spr&#xE1;vn&#xED;ho org&#xE1;nu">N&#xE1;zev spr&#xE1;vn&#xED;ho org&#xE1;nu</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('spzncjrozhodnutispravnihoorganu')" title="Sp. zn./&#x10D;j. rozhodnut&#xED; spr&#xE1;vn&#xED;ho org&#xE1;nu ">Sp. zn./&#x10D;j. rozhodnut&#xED; spr&#xE1;vn&#xED;ho org&#xE1;nu </li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('datumnapadenehorozhodnuti')" title="Datum napaden&#xE9;ho rozhodnut&#xED;">Datum napaden&#xE9;ho rozhodnut&#xED;</li>
+                
+
+            </ul>
+        </li>
+        <li class="text-truncate" data-toggle="tooltip" title="NAPADENO KASA&#x10C;N&#xCD; ST&#xCD;&#x17D;NOST&#xCD;">
+            <span class="caret">NAPADENO KASA&#x10C;N&#xCD; ST&#xCD;&#x17D;NOST&#xCD;</span>
+            <ul class="nested">
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('krajskysoud')" title="Krajsk&#xFD; soud">Krajsk&#xFD; soud</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('kasacnistiznostoznacenivecivcelku')" title="Ozna&#x10D;en&#xED; rozhodnut&#xED; KS v celku">Ozna&#x10D;en&#xED; rozhodnut&#xED; KS v celku</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('kasacnistiznostoznacenivecidelenesenat')" title="Ozna&#x10D;en&#xED; rozhodnut&#xED; KS d&#x11B;len&#xE9;">Ozna&#x10D;en&#xED; rozhodnut&#xED; KS d&#x11B;len&#xE9;</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('datumrozhodnutikrajskehosoudu')" title="Datum rozhodnut&#xED; krajsk&#xE9;ho soudu">Datum rozhodnut&#xED; krajsk&#xE9;ho soudu</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('rozhodnutonapkasst')" title="Rozhodnuto NSS">Rozhodnuto NSS</li>
+                
+
+            </ul>
+        </li>
+        <li class="text-truncate" data-toggle="tooltip" title="NAPADENO &#xDA;STAVN&#xCD; ST&#xCD;&#x17D;NOST&#xCD;">
+            <span class="caret">NAPADENO &#xDA;STAVN&#xCD; ST&#xCD;&#x17D;NOST&#xCD;</span>
+            <ul class="nested">
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('spznustavnihosoudunus')" title="Sp. zn. &#xDA;stavn&#xED;ho soudu ">Sp. zn. &#xDA;stavn&#xED;ho soudu </li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('datumrozhodnutiusnus')" title="Datum rozhodnut&#xED; &#xDA;S">Datum rozhodnut&#xED; &#xDA;S</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('spzncjnapadenehorozhodnutinss')" title="Sp. zn./&#x10D;j. napaden&#xE9;ho rozhodnut&#xED; NSS ">Sp. zn./&#x10D;j. napaden&#xE9;ho rozhodnut&#xED; NSS </li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('datumnapadenehorozhodnutinss')" title="Datum napaden&#xE9;ho rozhodnut&#xED; NSS">Datum napaden&#xE9;ho rozhodnut&#xED; NSS</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('rozhodnutonus')" title="Rozhodnuto">Rozhodnuto</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('spzncjvyslednehorozhodnutinss')" title="Sp. zn./&#x10D;j. v&#xFD;sledn&#xE9;ho rozhodnut&#xED; NSS">Sp. zn./&#x10D;j. v&#xFD;sledn&#xE9;ho rozhodnut&#xED; NSS</li>
+                
+
+            </ul>
+        </li>
+        <li class="text-truncate" data-toggle="tooltip" title="N&#xC1;VRH NA ZRU&#x160;EN&#xCD; PR&#xC1;VN&#xCD;HO P&#x158;EDPISU">
+            <span class="caret">N&#xC1;VRH NA ZRU&#x160;EN&#xCD; PR&#xC1;VN&#xCD;HO P&#x158;EDPISU</span>
+            <ul class="nested">
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('spznustavnihosoudu')" title="Sp. zn. &#xDA;stavn&#xED;ho soudu ">Sp. zn. &#xDA;stavn&#xED;ho soudu </li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('datumrozhodnutius')" title="Datum rozhodnut&#xED; &#xDA;S">Datum rozhodnut&#xED; &#xDA;S</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('napadenypravnipredpisdelenecl')" title="Napaden&#xFD; pr&#xE1;vn&#xED; p&#x159;edpis d&#x11B;len&#xE9;">Napaden&#xFD; pr&#xE1;vn&#xED; p&#x159;edpis d&#x11B;len&#xE9;</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('spzncjpredkladacihorozhodnutinsspnnzpp')" title="Sp. zn./&#x10D;j. p&#x159;edkl&#xE1;dac&#xED;ho rozhodnut&#xED; NSS ">Sp. zn./&#x10D;j. p&#x159;edkl&#xE1;dac&#xED;ho rozhodnut&#xED; NSS </li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('datumpredkladacihorozhodnutinsspnnzpp')" title="Datum p&#x159;edkl&#xE1;dac&#xED;ho rozhodnut&#xED; NSS">Datum p&#x159;edkl&#xE1;dac&#xED;ho rozhodnut&#xED; NSS</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('rozhodnutopnnzpp')" title="Rozhodnuto">Rozhodnuto</li>
+                
+
+            </ul>
+        </li>
+        <li class="text-truncate" data-toggle="tooltip" title="P&#x158;EDB&#x11A;&#x17D;N&#xC1; OT&#xC1;ZKA K SDEU">
+            <span class="caret">P&#x158;EDB&#x11A;&#x17D;N&#xC1; OT&#xC1;ZKA K SDEU</span>
+            <ul class="nested">
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('spzncjpredkladacihorozhodnutinss')" title="Sp. zn./&#x10D;j. p&#x159;edkl&#xE1;dac&#xED;ho rozhodnut&#xED; NSS ">Sp. zn./&#x10D;j. p&#x159;edkl&#xE1;dac&#xED;ho rozhodnut&#xED; NSS </li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('datumpredkladacihorozhodnutinss')" title="Datum p&#x159;edkl&#xE1;dac&#xED;ho rozhodnut&#xED; NSS">Datum p&#x159;edkl&#xE1;dac&#xED;ho rozhodnut&#xED; NSS</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('rozhodnuto')" title="Pod&#xE1;na PO">Pod&#xE1;na PO</li>
+                
+
+            </ul>
+        </li>
+        <li class="text-truncate" data-toggle="tooltip" title="HLED&#xC1;N&#xCD; V TEXTU">
+            <span class="caret">HLED&#xC1;N&#xCD; V TEXTU</span>
+            <ul class="nested">
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('textDokumentu')" title="Hledat v textu dokumentu">Hledat v textu dokumentu</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('hvthledanytext')" title="Hledat v &#x10D;&#xE1;sti dokumentu">Hledat v &#x10D;&#xE1;sti dokumentu</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('hvtcasttextu')" title="V&#xFD;b&#x11B;r &#x10D;&#xE1;sti dokumentu">V&#xFD;b&#x11B;r &#x10D;&#xE1;sti dokumentu</li>
+                        <li class="text-truncate handpoint sid" data-toggle="tooltip" onclick="AddCondition('hvtparagrafy')" title="Hledat &#x10D;&#xED;slo paragrafu">Hledat &#x10D;&#xED;slo paragrafu</li>
+                
+
+            </ul>
+        </li>
+
+    </ul>
+</nav>
+<!-- Page Content  -->
+<div id="content">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <button type="button" id="sidebarCollapse" class="btn btn-danger mr-4" title="Skrýt nabídku" data-toggle="tooltip">
+            <i class="fas fa-align-left"></i>
+        </button>
+        <a href="#" class="navbar-brand">
+            Vyhledávač
+            <img src="/nssoud_logo_lev.svg" height="33" class="d-inline-block align-top" alt="Vyhledávač NSS" />
+        </a>
+        <button class="btn btn-dark d-inline-block d-md-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="přepnout navigaci">
+            <i class="fas fa-align-justify"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Formulář
+                    </a>
+                    <input id="Formular" name="Formular" type="hidden" value="1" />
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <div class="dropdown-item active" href="#">Z&#xE1;kladn&#xED;</div>
+<input data-val="true" data-val-required="The Id field is required." id="FormularCiselnik_0__Id" name="FormularCiselnik[0].Id" type="hidden" value="1" /><input id="FormularCiselnik_0__Text" name="FormularCiselnik[0].Text" type="hidden" value="Z&#xE1;kladn&#xED;" /><input data-val="true" data-val-required="The Selected field is required." id="FormularCiselnik_0__Selected" name="FormularCiselnik[0].Selected" type="hidden" value="True" />                                <div class="dropdown-divider"></div>
+<input data-val="true" data-val-required="The Id field is required." id="FormularCiselnik_1__Id" name="FormularCiselnik[1].Id" type="hidden" value="2" /><input id="FormularCiselnik_1__Text" name="FormularCiselnik[1].Text" type="hidden" value="-" /><input data-val="true" data-val-required="The Selected field is required." id="FormularCiselnik_1__Selected" name="FormularCiselnik[1].Selected" type="hidden" value="False" />                                    <a class="dropdown-item" onclick="spinon()" href="/Home/Index?formular=4">Roz&#x161;&#xED;&#x159;en&#xFD;</a>
+<input data-val="true" data-val-required="The Id field is required." id="FormularCiselnik_2__Id" name="FormularCiselnik[2].Id" type="hidden" value="4" /><input id="FormularCiselnik_2__Text" name="FormularCiselnik[2].Text" type="hidden" value="Roz&#x161;&#xED;&#x159;en&#xFD;" /><input data-val="true" data-val-required="The Selected field is required." id="FormularCiselnik_2__Selected" name="FormularCiselnik[2].Selected" type="hidden" value="False" />                    </div>
+                </li>
+                
+    <li class="nav-item">
+        <a class="nav-link" href="/Identity/Account/Login">Přihlásit se</a>
+    </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="/Napoveda">Nápověda</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid no-gutters" id="searchContent">
+        
+<div id="overlay">
+    <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center fixed-top bg-overlay">
+        <div>
+            <div class="spinner-border text-danger" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Pracuji...</span>
+            </div>
+        </div>
+        <div class="w-100">
+            <h2 class="text-center">Pracuji...</h2>
+            <h2 class="text-center">Vyhledání a zobrazení velkého množství dat může trvat déle!</h2>
+        </div>
+    </div>
+</div>
+<form id="findform" method="post">
+        <fieldset>
+        <div class="row">
+            <div class="col-12 mb-1">
+                <div class="card" style="background-color:#0f2757;color:#fff;">
+                    <div class="card-header p-1">
+                        Z&#xC1;KLADN&#xCD; &#xDA;DAJE <input data-val="true" data-val-required="The Id field is required." id="vyhledavaciSekce_0__Id" name="vyhledavaciSekce[0].Id" type="hidden" value="1" /> <input id="vyhledavaciSekce_0__ZobrazovanyNazev" name="vyhledavaciSekce[0].ZobrazovanyNazev" type="hidden" value="Z&#xC1;KLADN&#xCD; &#xDA;DAJE" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+<div class="col-md-12 col-lg-6 col-xl-4 mb-1 col-md-12 col-lg-6 col-xl-4 ccolumn">
+    <input class="isvisible" data-val="true" data-val-required="The Visible field is required." id="vyhledavaciSekce_0__vyhledavaciPodminka_0__Visible" name="vyhledavaciSekce[0].vyhledavaciPodminka[0].Visible" type="hidden" value="True" />
+    <div class="card ccol" id="soudsenat">
+        <div class="card-header p-1">
+            <div class="form-group mb-0">
+                <div>
+                    <div class="input-group">
+                        <span class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-light btn-sm active">
+                                    <input checked="checked" data-val="true" data-val-required="The VazbaKDotazu field is required." id="vyhledavaciSekce_0__vyhledavaciPodminka_0__VazbaKDotazu" name="vyhledavaciSekce[0].vyhledavaciPodminka[0].VazbaKDotazu" type="radio" value="AND" />AND
+                                </label>
+                                <label class="btn btn-light btn-sm">
+                                    <input id="vyhledavaciSekce_0__vyhledavaciPodminka_0__VazbaKDotazu" name="vyhledavaciSekce[0].vyhledavaciPodminka[0].VazbaKDotazu" type="radio" value="OR" />OR
+                                </label>
+                        </span>
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__DatovyTyp" name="vyhledavaciSekce[0].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].DatovyTyp" type="hidden" value="FIELD_DIALTREE" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__TechnickyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].TechnickyNazev" type="hidden" value="soudsenat" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__ZobrazovanyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].ZobrazovanyNazev" type="hidden" value="Soud (sen&#xE1;t)" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__NapovedaNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__NapovedaHtml" name="vyhledavaciSekce[0].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].NapovedaHtml" type="hidden" value="" />
+        <input name="vyhledavaciSekce[0].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].HodnotaCiselnikPolozky" type="search" id="vyhledavaciSekce_0__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__HodnotaCiselnikPolozky" placeholder="Soud (sen&#xE1;t)" class="form-control form-control-sm form-control-fillhilite" title="&lt;h6&gt;Soud (sen&#xE1;t)&lt;/h6&gt;" data-toggle="tooltip" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__ciselnikTreeData" name="vyhledavaciSekce[0].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].ciselnikTreeData" type="hidden" value="[{id:10747,title:&quot;k&#xE1;rn&#xE9; soudy&quot;,subs:[{id:10750,title:&quot;Nejvy&#x161;&#x161;&#xED; soud &#x10C;R&quot;},{id:10749,title:&quot;Vrchn&#xED; soud v Olomouci&quot;},{id:10748,title:&quot;Vrchn&#xED; soud v Praze&quot;}]},{id:8147,title:&quot;krajsk&#xE9; soudy&quot;,subs:[{id:276,title:&quot;Krajsk&#xFD; soud v Brn&#x11B;&quot;,subs:[{id:314,title:&quot;pobo&#x10D;ka Jihlava&quot;}]},{id:274,title:&quot;Krajsk&#xFD; soud v &#x10C;esk&#xFD;ch Bud&#x11B;jovic&#xED;ch&quot;},{id:275,title:&quot;Krajsk&#xFD; soud v Hradci Kr&#xE1;lov&#xE9;&quot;,subs:[{id:315,title:&quot;pobo&#x10D;ka Pardubice&quot;}]},{id:270,title:&quot;Krajsk&#xFD; soud v Ostrav&#x11B;&quot;,subs:[{id:319,title:&quot;pobo&#x10D;ka Olomouc&quot;}]},{id:269,title:&quot;Krajsk&#xFD; soud v Plzni&quot;},{id:264,title:&quot;Krajsk&#xFD; soud v Praze&quot;},{id:271,title:&quot;Krajsk&#xFD; soud v &#xDA;st&#xED; nad Labem&quot;,subs:[{id:318,title:&quot;pobo&#x10D;ka Liberec&quot;}]},{id:280,title:&quot;M&#x11B;stsk&#xFD; soud v Praze&quot;}]},{id:278,title:&quot;Nejvy&#x161;&#x161;&#xED; spr&#xE1;vn&#xED; soud&quot;,subs:[{id:8156,title:&quot;k&#xE1;rn&#xFD; sen&#xE1;t&quot;},{id:8162,title:&quot;kolegium NSS&quot;},{id:8159,title:&quot;kompeten&#x10D;n&#xED; sen&#xE1;t NSS&quot;},{id:193,title:&quot;Odd&#x11B;len&#xED; dokumentace a analytiky&quot;},{id:8160,title:&quot;pl&#xE9;num NSS&quot;},{id:8155,title:&quot;roz&#x161;&#xED;&#x159;en&#xFD; sen&#xE1;t NSS&quot;,subs:[{id:8154,title:&quot;7&#x10D;lenn&#xFD; RS NSS&quot;},{id:8153,title:&quot;9&#x10D;lenn&#xFD; RS NSS&quot;}]},{id:8158,title:&quot;sen&#xE1;t NSS pro ur&#x10D;en&#xED; lh&#x16F;ty&quot;},{id:8152,title:&quot;t&#x159;&#xED;&#x10D;lenn&#xFD; sen&#xE1;t NSS&quot;},{id:8157,title:&quot;volebn&#xED; sen&#xE1;t NSS&quot;},{id:261,title:&quot;zvl&#xE1;&#x161;tn&#xED; sen&#xE1;t podle z. &#x10D;. 131/2002 Sb.&quot;}]}]" />        <script>
+            var vyhledavaciSekce_0__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__HodnotaCiselnikPolozkyData = [{id:10747,title:"kárné soudy",subs:[{id:10750,title:"Nejvyšší soud ČR"},{id:10749,title:"Vrchní soud v Olomouci"},{id:10748,title:"Vrchní soud v Praze"}]},{id:8147,title:"krajské soudy",subs:[{id:276,title:"Krajský soud v Brně",subs:[{id:314,title:"pobočka Jihlava"}]},{id:274,title:"Krajský soud v Českých Budějovicích"},{id:275,title:"Krajský soud v Hradci Králové",subs:[{id:315,title:"pobočka Pardubice"}]},{id:270,title:"Krajský soud v Ostravě",subs:[{id:319,title:"pobočka Olomouc"}]},{id:269,title:"Krajský soud v Plzni"},{id:264,title:"Krajský soud v Praze"},{id:271,title:"Krajský soud v Ústí nad Labem",subs:[{id:318,title:"pobočka Liberec"}]},{id:280,title:"Městský soud v Praze"}]},{id:278,title:"Nejvyšší správní soud",subs:[{id:8156,title:"kárný senát"},{id:8162,title:"kolegium NSS"},{id:8159,title:"kompetenční senát NSS"},{id:193,title:"Oddělení dokumentace a analytiky"},{id:8160,title:"plénum NSS"},{id:8155,title:"rozšířený senát NSS",subs:[{id:8154,title:"7členný RS NSS"},{id:8153,title:"9členný RS NSS"}]},{id:8158,title:"senát NSS pro určení lhůty"},{id:8152,title:"tříčlenný senát NSS"},{id:8157,title:"volební senát NSS"},{id:261,title:"zvláštní senát podle z. č. 131/2002 Sb."}]}];
+            jQuery(document).ready(function ($) {
+                var nssComboTree = $('#vyhledavaciSekce_0__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__HodnotaCiselnikPolozky').comboTree({
+                    source: vyhledavaciSekce_0__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__HodnotaCiselnikPolozkyData,
+                    isMultiple: true,
+                    id: 'vyhledavaciSekce_0__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__HodnotaCiselnikPolozky',
+                    name: 'vyhledavaciSekce[0].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].HodnotaCiselnikPolozky',
+                    selItems: '',
+                    cascadeSelect: true,
+                    collapse: true
+                });
+            });
+        </script>
+
+                        <div class="input-group-btn">
+                            <button type="button" class="close ml-1" aria-label="Close" onclick="hidecard(this);" title="Odstranit podmínku vyhledávání." data-toggle="tooltip">
+                                <span aria-hidden="false">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <input data-val="true" data-val-required="The Id field is required." id="vyhledavaciSekce_0__vyhledavaciPodminka_0__Id" name="vyhledavaciSekce[0].vyhledavaciPodminka[0].Id" type="hidden" value="17" />
+                    <input id="vyhledavaciSekce_0__vyhledavaciPodminka_0__TechnickyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[0].TechnickyNazev" type="hidden" value="soudsenat" />
+                    <input id="vyhledavaciSekce_0__vyhledavaciPodminka_0__ZobrazovanyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[0].ZobrazovanyNazev" type="hidden" value="Soud (sen&#xE1;t)" />
+                    <input id="vyhledavaciSekce_0__vyhledavaciPodminka_0__DatovyTyp" name="vyhledavaciSekce[0].vyhledavaciPodminka[0].DatovyTyp" type="hidden" value="FIELD_DIALTREE" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-lg-6 col-xl-4 mb-1 col-md-12 col-lg-6 col-xl-4 ccolumn">
+    <input class="isvisible" data-val="true" data-val-required="The Visible field is required." id="vyhledavaciSekce_0__vyhledavaciPodminka_1__Visible" name="vyhledavaciSekce[0].vyhledavaciPodminka[1].Visible" type="hidden" value="True" />
+    <div class="card ccol" id="oznacenivecivcelku">
+        <div class="card-header p-1">
+            <div class="form-group mb-0">
+                <div>
+                    <div class="input-group">
+                        <span class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-light btn-sm active">
+                                    <input checked="checked" data-val="true" data-val-required="The VazbaKDotazu field is required." id="vyhledavaciSekce_0__vyhledavaciPodminka_1__VazbaKDotazu" name="vyhledavaciSekce[0].vyhledavaciPodminka[1].VazbaKDotazu" type="radio" value="AND" />AND
+                                </label>
+                                <label class="btn btn-light btn-sm">
+                                    <input id="vyhledavaciSekce_0__vyhledavaciPodminka_1__VazbaKDotazu" name="vyhledavaciSekce[0].vyhledavaciPodminka[1].VazbaKDotazu" type="radio" value="OR" />OR
+                                </label>
+                        </span>
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__DatovyTyp" name="vyhledavaciSekce[0].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0].DatovyTyp" type="hidden" value="FIELD_TEXT" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__TechnickyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0].TechnickyNazev" type="hidden" value="oznacenivecivcelku" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__ZobrazovanyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0].ZobrazovanyNazev" type="hidden" value="Ozna&#x10D;en&#xED; v&#x11B;ci v celku" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__NapovedaNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__NapovedaHtml" name="vyhledavaciSekce[0].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_0__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__HodnotaText" name="vyhledavaciSekce[0].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0].HodnotaText" placeholder="Ozna&#x10D;en&#xED; v&#x11B;ci v celku" Title="&lt;h6&gt;Ozna&#x10D;en&#xED; v&#x11B;ci v celku&lt;/h6&gt;" type="text" value="" />
+                        <div class="input-group-btn">
+                            <button type="button" class="close ml-1" aria-label="Close" onclick="hidecard(this);" title="Odstranit podmínku vyhledávání." data-toggle="tooltip">
+                                <span aria-hidden="false">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <input data-val="true" data-val-required="The Id field is required." id="vyhledavaciSekce_0__vyhledavaciPodminka_1__Id" name="vyhledavaciSekce[0].vyhledavaciPodminka[1].Id" type="hidden" value="9" />
+                    <input id="vyhledavaciSekce_0__vyhledavaciPodminka_1__TechnickyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[1].TechnickyNazev" type="hidden" value="oznacenivecivcelku" />
+                    <input id="vyhledavaciSekce_0__vyhledavaciPodminka_1__ZobrazovanyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[1].ZobrazovanyNazev" type="hidden" value="Ozna&#x10D;en&#xED; v&#x11B;ci v celku" />
+                    <input id="vyhledavaciSekce_0__vyhledavaciPodminka_1__DatovyTyp" name="vyhledavaciSekce[0].vyhledavaciPodminka[1].DatovyTyp" type="hidden" value="FIELD_TEXT" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-lg-6 col-xl-4 mb-1 col-md-12 col-lg-6 col-xl-4 ccolumn">
+    <input class="isvisible" data-val="true" data-val-required="The Visible field is required." id="vyhledavaciSekce_0__vyhledavaciPodminka_2__Visible" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].Visible" type="hidden" value="True" />
+    <div class="card ccol" id="SloucenaVyhledavaciPodminka">
+        <div class="card-header p-1">
+            <div class="form-group mb-0">
+                <div>
+                    <div class="input-group">
+                        <span class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-light btn-sm active">
+                                    <input checked="checked" data-val="true" data-val-required="The VazbaKDotazu field is required." id="vyhledavaciSekce_0__vyhledavaciPodminka_2__VazbaKDotazu" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].VazbaKDotazu" type="radio" value="AND" />AND
+                                </label>
+                                <label class="btn btn-light btn-sm">
+                                    <input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__VazbaKDotazu" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].VazbaKDotazu" type="radio" value="OR" />OR
+                                </label>
+                        </span>
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_0__DatovyTyp" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[0].DatovyTyp" type="hidden" value="FIELD_TEXT" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_0__TechnickyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[0].TechnickyNazev" type="hidden" value="oznacenivecidelenesenat" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_0__ZobrazovanyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[0].ZobrazovanyNazev" type="hidden" value="sen&#xE1;t - Ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_0__NapovedaNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[0].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_0__NapovedaHtml" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[0].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_0__HodnotaText" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[0].HodnotaText" placeholder="sen&#xE1;t - Ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;" Title="&lt;h6&gt;sen&#xE1;t - Ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_1__DatovyTyp" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[1].DatovyTyp" type="hidden" value="FIELD_DIAL" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_1__TechnickyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[1].TechnickyNazev" type="hidden" value="oznacenivecidelenerejstrikovaznacka" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_1__ZobrazovanyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[1].ZobrazovanyNazev" type="hidden" value="rejst&#x159;&#xED;k - Ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_1__NapovedaNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[1].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_1__NapovedaHtml" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[1].NapovedaHtml" type="hidden" value="" />
+        <input name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[1].HodnotaCiselnikPolozky" type="search" id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_1__HodnotaCiselnikPolozky" placeholder="rejst&#x159;&#xED;k - Ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;" class="form-control form-control-sm form-control-fillhilite" title="&lt;h6&gt;rejst&#x159;&#xED;k - Ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;&lt;/h6&gt;" data-toggle="tooltip" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_1__ciselnikTreeData" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[1].ciselnikTreeData" type="hidden" value="[{id:81,title:&quot;A&quot;},{id:45,title:&quot;Ad&quot;},{id:86,title:&quot;Ads&quot;},{id:44,title:&quot;Af&quot;},{id:85,title:&quot;Afs&quot;},{id:83,title:&quot;Ans&quot;},{id:70,title:&quot;Ao&quot;},{id:62,title:&quot;Aos&quot;},{id:71,title:&quot;Aprk&quot;},{id:72,title:&quot;Aprn&quot;},{id:82,title:&quot;Aps&quot;},{id:114,title:&quot;Ars&quot;},{id:84,title:&quot;As&quot;},{id:8356,title:&quot;Av&quot;},{id:67,title:&quot;Az&quot;},{id:12,title:&quot;Azs&quot;},{id:65,title:&quot;Ca&quot;},{id:75,title:&quot;Cad&quot;},{id:10745,title:&quot;Ds&quot;},{id:8380,title:&quot;Dso&quot;},{id:4763,title:&quot;Ej&quot;},{id:4765,title:&quot;Ejk&quot;},{id:4767,title:&quot;Eju&quot;},{id:8366,title:&quot;Koex&quot;},{id:76,title:&quot;Komp&quot;},{id:73,title:&quot;Konf&quot;},{id:8367,title:&quot;Kons&quot;},{id:8368,title:&quot;Koss&quot;},{id:8369,title:&quot;Kosz&quot;},{id:47,title:&quot;Kse&quot;},{id:46,title:&quot;Kseo&quot;},{id:51,title:&quot;Kss&quot;},{id:61,title:&quot;Ksz&quot;},{id:80,title:&quot;Na&quot;},{id:78,title:&quot;Nad&quot;},{id:79,title:&quot;Nao&quot;},{id:77,title:&quot;Obn&quot;},{id:4769,title:&quot;Pej&quot;},{id:4770,title:&quot;Pejk&quot;},{id:87,title:&quot;Pst&quot;},{id:10746,title:&quot;Skno&quot;},{id:8381,title:&quot;Sks&quot;},{id:74,title:&quot;Vol&quot;}]" />        <script>
+            var vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_1__HodnotaCiselnikPolozkyData = [{id:81,title:"A"},{id:45,title:"Ad"},{id:86,title:"Ads"},{id:44,title:"Af"},{id:85,title:"Afs"},{id:83,title:"Ans"},{id:70,title:"Ao"},{id:62,title:"Aos"},{id:71,title:"Aprk"},{id:72,title:"Aprn"},{id:82,title:"Aps"},{id:114,title:"Ars"},{id:84,title:"As"},{id:8356,title:"Av"},{id:67,title:"Az"},{id:12,title:"Azs"},{id:65,title:"Ca"},{id:75,title:"Cad"},{id:10745,title:"Ds"},{id:8380,title:"Dso"},{id:4763,title:"Ej"},{id:4765,title:"Ejk"},{id:4767,title:"Eju"},{id:8366,title:"Koex"},{id:76,title:"Komp"},{id:73,title:"Konf"},{id:8367,title:"Kons"},{id:8368,title:"Koss"},{id:8369,title:"Kosz"},{id:47,title:"Kse"},{id:46,title:"Kseo"},{id:51,title:"Kss"},{id:61,title:"Ksz"},{id:80,title:"Na"},{id:78,title:"Nad"},{id:79,title:"Nao"},{id:77,title:"Obn"},{id:4769,title:"Pej"},{id:4770,title:"Pejk"},{id:87,title:"Pst"},{id:10746,title:"Skno"},{id:8381,title:"Sks"},{id:74,title:"Vol"}];
+            jQuery(document).ready(function ($) {
+                var nssComboTree = $('#vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_1__HodnotaCiselnikPolozky').comboTree({
+                    source: vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_1__HodnotaCiselnikPolozkyData,
+                    isMultiple: true,
+                    id: 'vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_1__HodnotaCiselnikPolozky',
+                    name: 'vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[1].HodnotaCiselnikPolozky',
+                    selItems: '',
+                    cascadeSelect: true,
+                    collapse: true
+                });
+            });
+        </script>
+
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_2__DatovyTyp" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[2].DatovyTyp" type="hidden" value="FIELD_LONGNUMBER" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_2__TechnickyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[2].TechnickyNazev" type="hidden" value="oznacenivecideleneporadovecislo" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_2__ZobrazovanyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[2].ZobrazovanyNazev" type="hidden" value="po&#x159;.&#x10D;. - Ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_2__NapovedaNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[2].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_2__NapovedaHtml" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[2].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_2__HodnotaCislo" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[2].HodnotaCislo" placeholder="po&#x159;.&#x10D;. - Ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;" Title="&lt;h6&gt;po&#x159;.&#x10D;. - Ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_3__DatovyTyp" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[3].DatovyTyp" type="hidden" value="FIELD_LONGNUMBER" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_3__TechnickyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[3].TechnickyNazev" type="hidden" value="oznacenivecidelenerok" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_3__ZobrazovanyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[3].ZobrazovanyNazev" type="hidden" value="rok - Ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_3__NapovedaNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[3].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_3__NapovedaHtml" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[3].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_3__HodnotaCislo" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[3].HodnotaCislo" placeholder="rok - Ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;" Title="&lt;h6&gt;rok - Ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_4__DatovyTyp" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[4].DatovyTyp" type="hidden" value="FIELD_LONGNUMBER" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_4__TechnickyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[4].TechnickyNazev" type="hidden" value="oznacenivecidelenecislojednaci" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_4__ZobrazovanyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[4].ZobrazovanyNazev" type="hidden" value="&#x10D;.listu - Ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_4__NapovedaNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[4].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_4__NapovedaHtml" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[4].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_0__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_4__HodnotaCislo" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[4].HodnotaCislo" placeholder="&#x10D;.listu - Ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;" Title="&lt;h6&gt;&#x10D;.listu - Ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;&lt;/h6&gt;" type="text" value="" />
+                        <div class="input-group-btn">
+                            <button type="button" class="close ml-1" aria-label="Close" onclick="hidecard(this);" title="Odstranit podmínku vyhledávání." data-toggle="tooltip">
+                                <span aria-hidden="false">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <input data-val="true" data-val-required="The Id field is required." id="vyhledavaciSekce_0__vyhledavaciPodminka_2__Id" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].Id" type="hidden" value="11" />
+                    <input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__TechnickyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].TechnickyNazev" type="hidden" value="SloucenaVyhledavaciPodminka" />
+                    <input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__ZobrazovanyNazev" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].ZobrazovanyNazev" type="hidden" value="Ozna&#x10D;en&#xED; v&#x11B;ci d&#x11B;len&#xE9;" />
+                    <input id="vyhledavaciSekce_0__vyhledavaciPodminka_2__DatovyTyp" name="vyhledavaciSekce[0].vyhledavaciPodminka[2].DatovyTyp" type="hidden" value="SloucenyDatovyTyp" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <div class="row">
+            <div class="col-12 mb-1">
+                <div class="card" style="background-color:#0f2757;color:#fff;">
+                    <div class="card-header p-1">
+                        &#x10C;ASOV&#xC9; &#xDA;DAJE <input data-val="true" data-val-required="The Id field is required." id="vyhledavaciSekce_1__Id" name="vyhledavaciSekce[1].Id" type="hidden" value="11" /> <input id="vyhledavaciSekce_1__ZobrazovanyNazev" name="vyhledavaciSekce[1].ZobrazovanyNazev" type="hidden" value="&#x10C;ASOV&#xC9; &#xDA;DAJE" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+<div class="col-md-12 col-lg-6 col-xl-4 mb-1 col-md-12 col-lg-6 col-xl-4 ccolumn">
+    <input class="isvisible" data-val="true" data-val-required="The Visible field is required." id="vyhledavaciSekce_1__vyhledavaciPodminka_0__Visible" name="vyhledavaciSekce[1].vyhledavaciPodminka[0].Visible" type="hidden" value="True" />
+    <div class="card ccol" id="datumvydanirozhodnuti">
+        <div class="card-header p-1">
+            <div class="form-group mb-0">
+                <div>
+                    <div class="input-group">
+                        <span class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-light btn-sm active">
+                                    <input checked="checked" data-val="true" data-val-required="The VazbaKDotazu field is required." id="vyhledavaciSekce_1__vyhledavaciPodminka_0__VazbaKDotazu" name="vyhledavaciSekce[1].vyhledavaciPodminka[0].VazbaKDotazu" type="radio" value="AND" />AND
+                                </label>
+                                <label class="btn btn-light btn-sm">
+                                    <input id="vyhledavaciSekce_1__vyhledavaciPodminka_0__VazbaKDotazu" name="vyhledavaciSekce[1].vyhledavaciPodminka[0].VazbaKDotazu" type="radio" value="OR" />OR
+                                </label>
+                        </span>
+<input id="vyhledavaciSekce_1__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__DatovyTyp" name="vyhledavaciSekce[1].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].DatovyTyp" type="hidden" value="FIELD_DATETIME" />
+<input id="vyhledavaciSekce_1__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__TechnickyNazev" name="vyhledavaciSekce[1].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].TechnickyNazev" type="hidden" value="datumvydanirozhodnuti" />
+<input id="vyhledavaciSekce_1__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__ZobrazovanyNazev" name="vyhledavaciSekce[1].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].ZobrazovanyNazev" type="hidden" value="Datum vyd&#xE1;n&#xED; rozhodnut&#xED;" />
+<input id="vyhledavaciSekce_1__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__NapovedaNazev" name="vyhledavaciSekce[1].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_1__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__NapovedaHtml" name="vyhledavaciSekce[1].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm datetimepicker-input form-control-fillhilite" data-toggle="tooltip" enabled="enabled" id="vyhledavaciSekce_1__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__HodnotaDatumACasOd" name="vyhledavaciSekce[1].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].HodnotaDatumACasOd" placeholder="Datum vyd&#xE1;n&#xED; rozhodnut&#xED; (od)" Title="&lt;h6&gt;Datum vyd&#xE1;n&#xED; rozhodnut&#xED;&lt;/h6&gt; (od)" type="text" value="" />        <div class="input-group-append" data-target="#vyhledavaciSekce_1__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__HodnotaDatumACasOd" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fas fa-calendar"></i></div>
+        </div>
+        <script>
+            $(function () {
+                $('#vyhledavaciSekce_1__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__HodnotaDatumACasOd').datetimepicker({
+                    format: 'DD.MM.YYYY',
+                    allowInputToggle: true,
+                    locale: 'cs'
+                });
+            });
+        </script>
+<input class="form-control form-control-sm datetimepicker-input form-control-fillhilite" data-toggle="tooltip" enabled="enabled" id="vyhledavaciSekce_1__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__HodnotaDatumACasDo" name="vyhledavaciSekce[1].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].HodnotaDatumACasDo" placeholder="Datum vyd&#xE1;n&#xED; rozhodnut&#xED; (do)" Title="&lt;h6&gt;Datum vyd&#xE1;n&#xED; rozhodnut&#xED;&lt;/h6&gt; (do)" type="text" value="" />        <div class="input-group-append" data-target="#vyhledavaciSekce_1__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__HodnotaDatumACasDo" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fas fa-calendar"></i></div>
+        </div>
+        <script>
+            $(function () {
+                $('#vyhledavaciSekce_1__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__HodnotaDatumACasDo').datetimepicker({
+                    format: 'DD.MM.YYYY',
+                    allowInputToggle: true,
+                    locale: 'cs'
+                });
+            });
+        </script>
+
+                        <div class="input-group-btn">
+                            <button type="button" class="close ml-1" aria-label="Close" onclick="hidecard(this);" title="Odstranit podmínku vyhledávání." data-toggle="tooltip">
+                                <span aria-hidden="false">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <input data-val="true" data-val-required="The Id field is required." id="vyhledavaciSekce_1__vyhledavaciPodminka_0__Id" name="vyhledavaciSekce[1].vyhledavaciPodminka[0].Id" type="hidden" value="19" />
+                    <input id="vyhledavaciSekce_1__vyhledavaciPodminka_0__TechnickyNazev" name="vyhledavaciSekce[1].vyhledavaciPodminka[0].TechnickyNazev" type="hidden" value="datumvydanirozhodnuti" />
+                    <input id="vyhledavaciSekce_1__vyhledavaciPodminka_0__ZobrazovanyNazev" name="vyhledavaciSekce[1].vyhledavaciPodminka[0].ZobrazovanyNazev" type="hidden" value="Datum vyd&#xE1;n&#xED; rozhodnut&#xED;" />
+                    <input id="vyhledavaciSekce_1__vyhledavaciPodminka_0__DatovyTyp" name="vyhledavaciSekce[1].vyhledavaciPodminka[0].DatovyTyp" type="hidden" value="FIELD_DATETIME" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-lg-6 col-xl-4 mb-1 col-md-12 col-lg-6 col-xl-4 ccolumn">
+    <input class="isvisible" data-val="true" data-val-required="The Visible field is required." id="vyhledavaciSekce_1__vyhledavaciPodminka_1__Visible" name="vyhledavaciSekce[1].vyhledavaciPodminka[1].Visible" type="hidden" value="True" />
+    <div class="card ccol" id="aktualizovano">
+        <div class="card-header p-1">
+            <div class="form-group mb-0">
+                <div>
+                    <div class="input-group">
+                        <span class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-light btn-sm active">
+                                    <input checked="checked" data-val="true" data-val-required="The VazbaKDotazu field is required." id="vyhledavaciSekce_1__vyhledavaciPodminka_1__VazbaKDotazu" name="vyhledavaciSekce[1].vyhledavaciPodminka[1].VazbaKDotazu" type="radio" value="AND" />AND
+                                </label>
+                                <label class="btn btn-light btn-sm">
+                                    <input id="vyhledavaciSekce_1__vyhledavaciPodminka_1__VazbaKDotazu" name="vyhledavaciSekce[1].vyhledavaciPodminka[1].VazbaKDotazu" type="radio" value="OR" />OR
+                                </label>
+                        </span>
+<input id="vyhledavaciSekce_1__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__DatovyTyp" name="vyhledavaciSekce[1].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0].DatovyTyp" type="hidden" value="FIELD_DATETIME" />
+<input id="vyhledavaciSekce_1__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__TechnickyNazev" name="vyhledavaciSekce[1].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0].TechnickyNazev" type="hidden" value="aktualizovano" />
+<input id="vyhledavaciSekce_1__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__ZobrazovanyNazev" name="vyhledavaciSekce[1].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0].ZobrazovanyNazev" type="hidden" value="Datum zp&#x159;&#xED;stupn&#x11B;n&#xED;" />
+<input id="vyhledavaciSekce_1__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__NapovedaNazev" name="vyhledavaciSekce[1].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_1__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__NapovedaHtml" name="vyhledavaciSekce[1].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm datetimepicker-input form-control-fillhilite" data-toggle="tooltip" enabled="enabled" id="vyhledavaciSekce_1__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__HodnotaDatumACasOd" name="vyhledavaciSekce[1].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0].HodnotaDatumACasOd" placeholder="Datum zp&#x159;&#xED;stupn&#x11B;n&#xED; (od)" Title="&lt;h6&gt;Datum zp&#x159;&#xED;stupn&#x11B;n&#xED;&lt;/h6&gt; (od)" type="text" value="" />        <div class="input-group-append" data-target="#vyhledavaciSekce_1__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__HodnotaDatumACasOd" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fas fa-calendar"></i></div>
+        </div>
+        <script>
+            $(function () {
+                $('#vyhledavaciSekce_1__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__HodnotaDatumACasOd').datetimepicker({
+                    format: 'DD.MM.YYYY',
+                    allowInputToggle: true,
+                    locale: 'cs'
+                });
+            });
+        </script>
+<input class="form-control form-control-sm datetimepicker-input form-control-fillhilite" data-toggle="tooltip" enabled="enabled" id="vyhledavaciSekce_1__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__HodnotaDatumACasDo" name="vyhledavaciSekce[1].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0].HodnotaDatumACasDo" placeholder="Datum zp&#x159;&#xED;stupn&#x11B;n&#xED; (do)" Title="&lt;h6&gt;Datum zp&#x159;&#xED;stupn&#x11B;n&#xED;&lt;/h6&gt; (do)" type="text" value="" />        <div class="input-group-append" data-target="#vyhledavaciSekce_1__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__HodnotaDatumACasDo" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fas fa-calendar"></i></div>
+        </div>
+        <script>
+            $(function () {
+                $('#vyhledavaciSekce_1__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__HodnotaDatumACasDo').datetimepicker({
+                    format: 'DD.MM.YYYY',
+                    allowInputToggle: true,
+                    locale: 'cs'
+                });
+            });
+        </script>
+
+                        <div class="input-group-btn">
+                            <button type="button" class="close ml-1" aria-label="Close" onclick="hidecard(this);" title="Odstranit podmínku vyhledávání." data-toggle="tooltip">
+                                <span aria-hidden="false">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <input data-val="true" data-val-required="The Id field is required." id="vyhledavaciSekce_1__vyhledavaciPodminka_1__Id" name="vyhledavaciSekce[1].vyhledavaciPodminka[1].Id" type="hidden" value="305" />
+                    <input id="vyhledavaciSekce_1__vyhledavaciPodminka_1__TechnickyNazev" name="vyhledavaciSekce[1].vyhledavaciPodminka[1].TechnickyNazev" type="hidden" value="aktualizovano" />
+                    <input id="vyhledavaciSekce_1__vyhledavaciPodminka_1__ZobrazovanyNazev" name="vyhledavaciSekce[1].vyhledavaciPodminka[1].ZobrazovanyNazev" type="hidden" value="Datum zp&#x159;&#xED;stupn&#x11B;n&#xED;" />
+                    <input id="vyhledavaciSekce_1__vyhledavaciPodminka_1__DatovyTyp" name="vyhledavaciSekce[1].vyhledavaciPodminka[1].DatovyTyp" type="hidden" value="FIELD_DATETIME" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <div class="row">
+            <div class="col-12 mb-1">
+                <div class="card" style="background-color:#0f2757;color:#fff;">
+                    <div class="card-header p-1">
+                        PR&#xC1;VN&#xCD; P&#x158;EDPISY <input data-val="true" data-val-required="The Id field is required." id="vyhledavaciSekce_2__Id" name="vyhledavaciSekce[2].Id" type="hidden" value="18" /> <input id="vyhledavaciSekce_2__ZobrazovanyNazev" name="vyhledavaciSekce[2].ZobrazovanyNazev" type="hidden" value="PR&#xC1;VN&#xCD; P&#x158;EDPISY" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+<div class="col-md-12 col-lg-6 col-xl-4 mb-1 col-md-12 col-lg-6 col-xl-4 ccolumn">
+    <input class="isvisible" data-val="true" data-val-required="The Visible field is required." id="vyhledavaciSekce_2__vyhledavaciPodminka_0__Visible" name="vyhledavaciSekce[2].vyhledavaciPodminka[0].Visible" type="hidden" value="True" />
+    <div class="card ccol" id="oblastupravy">
+        <div class="card-header p-1">
+            <div class="form-group mb-0">
+                <div>
+                    <div class="input-group">
+                        <span class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-light btn-sm active">
+                                    <input checked="checked" data-val="true" data-val-required="The VazbaKDotazu field is required." id="vyhledavaciSekce_2__vyhledavaciPodminka_0__VazbaKDotazu" name="vyhledavaciSekce[2].vyhledavaciPodminka[0].VazbaKDotazu" type="radio" value="AND" />AND
+                                </label>
+                                <label class="btn btn-light btn-sm">
+                                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_0__VazbaKDotazu" name="vyhledavaciSekce[2].vyhledavaciPodminka[0].VazbaKDotazu" type="radio" value="OR" />OR
+                                </label>
+                        </span>
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].DatovyTyp" type="hidden" value="FIELD_DIALTREE" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].TechnickyNazev" type="hidden" value="oblastupravy" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].ZobrazovanyNazev" type="hidden" value="Oblast &#xFA;pravy" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].NapovedaHtml" type="hidden" value="" />
+        <input name="vyhledavaciSekce[2].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].HodnotaCiselnikPolozky" type="search" id="vyhledavaciSekce_2__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__HodnotaCiselnikPolozky" placeholder="Oblast &#xFA;pravy" class="form-control form-control-sm form-control-fillhilite" title="&lt;h6&gt;Oblast &#xFA;pravy&lt;/h6&gt;" data-toggle="tooltip" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__ciselnikTreeData" name="vyhledavaciSekce[2].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].ciselnikTreeData" type="hidden" value="[{id:135,title:&quot;Azyl - Mezin&#xE1;rodn&#xED; ochrana a setrv&#xE1;n&#xED; v p&#x159;ij&#xED;mac&#xED;m st&#x159;edisku&quot;},{id:115,title:&quot;Azyl - nepou&#x17E;&#xED;vat&quot;},{id:136,title:&quot;Azyl - Povolen&#xED; vstupu na &#xFA;zem&#xED; &#x10C;R&quot;},{id:170,title:&quot;Bezpe&#x10D;nost&quot;},{id:169,title:&quot;Bezpe&#x10D;nost pr&#xE1;ce&quot;},{id:168,title:&quot;Cenn&#xE9; pap&#xED;ry&quot;},{id:167,title:&quot;Ceny&quot;},{id:166,title:&quot;Cla&quot;},{id:164,title:&quot;Dan&#x11B; - da&#x148; z p&#x159;idan&#xE9; hodnoty&quot;},{id:165,title:&quot;Dan&#x11B; - da&#x148; z p&#x159;&#xED;jm&#x16F;&quot;},{id:171,title:&quot;Dan&#x11B; - ostatn&#xED;&quot;},{id:328,title:&quot;Dotace, rozpo&#x10D;tov&#xE1; pravidla&quot;},{id:161,title:&quot;D&#x16F;chodov&#xE9; poji&#x161;t&#x11B;n&#xED; - invalidn&#xED; d&#x16F;chod&quot;},{id:160,title:&quot;D&#x16F;chodov&#xE9; poji&#x161;t&#x11B;n&#xED; - ostatn&#xED;&quot;},{id:163,title:&quot;D&#x16F;chodov&#xE9; poji&#x161;t&#x11B;n&#xED; - starobn&#xED; d&#x16F;chod&quot;},{id:159,title:&quot;Du&#x161;evn&#xED; vlastnictv&#xED;&quot;},{id:158,title:&quot;Energetika&quot;},{id:157,title:&quot;Finance - kolektivn&#xED; investov&#xE1;n&#xED;&quot;},{id:156,title:&quot;Finance - ostatn&#xED;&quot;},{id:140,title:&quot;K&#xE1;rn&#xE1; odpov&#x11B;dnost - K&#xE1;rn&#xE1; odpov&#x11B;dnost exekutor&#x16F;&quot;},{id:143,title:&quot;K&#xE1;rn&#xE1; odpov&#x11B;dnost - K&#xE1;rn&#xE1; odpov&#x11B;dnost soudc&#x16F;&quot;},{id:141,title:&quot;K&#xE1;rn&#xE1; odpov&#x11B;dnost - K&#xE1;rn&#xE1; odpov&#x11B;dnost st&#xE1;tn&#xED;ch z&#xE1;stupc&#x16F;&quot;},{id:137,title:&quot;K&#xE1;rn&#xE1; odpov&#x11B;dnost - N&#xE1;mitky proti rozhodnut&#xED; o do&#x10D;asn&#xE9;m zpro&#x161;t&#x11B;n&#xED; v&#xFD;konu funkce soudce&quot;},{id:151,title:&quot;Kompeten&#x10D;n&#xED; spor podle &#xA7; 2 z.&#x10D;. 131/2002 Sb.&quot;},{id:155,title:&quot;Kompeten&#x10D;n&#xED; spor podle &#xA7; 97 a n&#xE1;sl. s.&#x159;.s.&quot;},{id:162,title:&quot;Kultura&quot;},{id:173,title:&quot;Loterie a jin&#xE9; podobn&#xE9; hry&quot;},{id:139,title:&quot;Nezp&#x16F;sobilost soudce &#xA7;  91 z.&#x10D;. 6/2002 Sb.&quot;},{id:138,title:&quot;Nezp&#x16F;sobilost st&#xE1;tn&#xED;ho z&#xE1;stupce &#xA7; 32 z.&#x10D;. 283/1993 Sb.&quot;},{id:174,title:&quot;Obyvatelstvo - evidence, doklady&quot;},{id:187,title:&quot;Od&#x161;kodn&#x11B;n&#xED; - ostatn&#xED;&quot;},{id:188,title:&quot;Od&#x161;kodn&#x11B;n&#xED; - z&#xE1;kon &#x10D;. 172/2002 Sb.&quot;},{id:189,title:&quot;Od&#x161;kodn&#x11B;n&#xED; - z&#xE1;kon &#x10D;. 261/2001 Sb.&quot;},{id:190,title:&quot;Od&#x161;kodn&#x11B;n&#xED; - z&#xE1;kon &#x10D;. 39/2000 Sb.&quot;},{id:186,title:&quot;Ochrana hospod&#xE1;&#x159;sk&#xE9; sout&#x11B;&#x17E;e a ve&#x159;ejn&#xE9; zak&#xE1;zky&quot;},{id:185,title:&quot;Ochrana spot&#x159;ebitele&quot;},{id:184,title:&quot;Ostatn&#xED;&quot;},{id:191,title:&quot;Ostatn&#xED; (nekasa&#x10D;n&#xED; agenda)&quot;},{id:183,title:&quot;Pobyt cizinc&#x16F;&quot;},{id:330,title:&quot;Politick&#xE9; strany a hnut&#xED; - dohled nad financov&#xE1;n&#xED;m volebn&#xED;ch kampan&#xED;&quot;},{id:329,title:&quot;Politick&#xE9; strany a hnut&#xED; - dohled nad hospoda&#x159;en&#xED;m&quot;},{id:180,title:&quot;Politick&#xE9; strany a hnut&#xED; - registrace&quot;},{id:179,title:&quot;Politick&#xE9; strany a hnut&#xED; - rozpu&#x161;t&#x11B;n&#xED;, pozastaven&#xED; nebo znovuobnoven&#xED; &#x10D;innosti&quot;},{id:178,title:&quot;Poplatky&quot;},{id:177,title:&quot;Pozemky a zem&#x11B;m&#x11B;&#x159;ictv&#xED;&quot;},{id:176,title:&quot;Pozemn&#xED; komunikace&quot;},{id:175,title:&quot;Pr&#xE1;vo na informace&quot;},{id:192,title:&quot;Procesn&#xED;&quot;},{id:154,title:&quot;P&#x159;estupky&quot;},{id:172,title:&quot;Referendum&quot;},{id:153,title:&quot;Regulace reklamy&quot;},{id:152,title:&quot;Restituce&quot;},{id:142,title:&quot;Shroma&#x17E;&#x10F;ovac&#xED; pr&#xE1;vo&quot;},{id:129,title:&quot;Slu&#x17E;ebn&#xED; pom&#x11B;r&quot;},{id:182,title:&quot;Soci&#xE1;ln&#xED; ochrana &#x2013; Nemocensk&#xE9; poji&#x161;t&#x11B;n&#xED;&quot;},{id:181,title:&quot;Soci&#xE1;ln&#xED; ochrana &#x2013; Pojistn&#xE9; na soci&#xE1;ln&#xED; zabezpe&#x10D;en&#xED; a p&#x159;&#xED;sp&#x11B;vek na st&#xE1;tn&#xED; politiku zam&#x11B;stnanosti&quot;},{id:130,title:&quot;Soci&#xE1;ln&#xED; ochrana &#x2013; Soci&#xE1;ln&#xED; pomoc&quot;},{id:125,title:&quot;Soci&#xE1;ln&#xED; ochrana &#x2013; St&#xE1;tn&#xED; soci&#xE1;ln&#xED; podpora&quot;},{id:150,title:&quot;Soci&#xE1;ln&#xED; ochrana &#x2013; Zdravotn&#xED; poji&#x161;t&#x11B;n&#xED;&quot;},{id:128,title:&quot;Spol&#x10D;ovac&#xED; pr&#xE1;vo&quot;},{id:127,title:&quot;St&#xE1;tn&#xED; a finan&#x10D;n&#xED; kontrola&quot;},{id:126,title:&quot;St&#xE1;tn&#xED; ob&#x10D;anstv&#xED;&quot;},{id:124,title:&quot;Stavebn&#xED; z&#xE1;kon&quot;},{id:123,title:&quot;&#x160;kolstv&#xED; a v&#x11B;da&quot;},{id:122,title:&quot;Telekomunikace, spoje, po&#x161;ta&quot;},{id:121,title:&quot;Tisk, rozhlas, televize&quot;},{id:120,title:&quot;&#xDA;zemn&#xED; samospr&#xE1;va&quot;},{id:119,title:&quot;Vodn&#xED; pr&#xE1;vo&quot;},{id:116,title:&quot;Volby - neplatnost voleb a hlasov&#xE1;n&#xED;&quot;},{id:117,title:&quot;Volby - ochrana ve v&#x11B;cech registrace&quot;},{id:118,title:&quot;Volby - ochrana ve v&#x11B;cech seznam&#x16F; voli&#x10D;&#x16F;&quot;},{id:131,title:&quot;Volby - ochrana ve v&#x11B;cech z&#xE1;niku mand&#xE1;tu&quot;},{id:132,title:&quot;Z&#xE1;jmov&#xE1; a profesn&#xED; samospr&#xE1;va&quot;},{id:133,title:&quot;Zam&#x11B;stnanost&quot;},{id:134,title:&quot;Zbran&#x11B; a st&#x159;elivo&quot;},{id:149,title:&quot;Zdravotnictv&#xED; a hygiena&quot;},{id:148,title:&quot;Zem&#x11B;d&#x11B;lstv&#xED;, myslivost a ryb&#xE1;&#x159;stv&#xED;&quot;},{id:147,title:&quot;&#x17D;ivnostensk&#xE9; pr&#xE1;vo&quot;},{id:146,title:&quot;&#x17D;ivotn&#xED; prost&#x159;ed&#xED; - odpady&quot;},{id:145,title:&quot;&#x17D;ivotn&#xED; prost&#x159;ed&#xED; - ochrana p&#x159;&#xED;rody a krajiny&quot;},{id:144,title:&quot;&#x17D;ivotn&#xED; prost&#x159;ed&#xED; - ostatn&#xED;&quot;}]" />        <script>
+            var vyhledavaciSekce_2__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__HodnotaCiselnikPolozkyData = [{id:135,title:"Azyl - Mezinárodní ochrana a setrvání v přijímacím středisku"},{id:115,title:"Azyl - nepoužívat"},{id:136,title:"Azyl - Povolení vstupu na území ČR"},{id:170,title:"Bezpečnost"},{id:169,title:"Bezpečnost práce"},{id:168,title:"Cenné papíry"},{id:167,title:"Ceny"},{id:166,title:"Cla"},{id:164,title:"Daně - daň z přidané hodnoty"},{id:165,title:"Daně - daň z příjmů"},{id:171,title:"Daně - ostatní"},{id:328,title:"Dotace, rozpočtová pravidla"},{id:161,title:"Důchodové pojištění - invalidní důchod"},{id:160,title:"Důchodové pojištění - ostatní"},{id:163,title:"Důchodové pojištění - starobní důchod"},{id:159,title:"Duševní vlastnictví"},{id:158,title:"Energetika"},{id:157,title:"Finance - kolektivní investování"},{id:156,title:"Finance - ostatní"},{id:140,title:"Kárná odpovědnost - Kárná odpovědnost exekutorů"},{id:143,title:"Kárná odpovědnost - Kárná odpovědnost soudců"},{id:141,title:"Kárná odpovědnost - Kárná odpovědnost státních zástupců"},{id:137,title:"Kárná odpovědnost - Námitky proti rozhodnutí o dočasném zproštění výkonu funkce soudce"},{id:151,title:"Kompetenční spor podle § 2 z.č. 131/2002 Sb."},{id:155,title:"Kompetenční spor podle § 97 a násl. s.ř.s."},{id:162,title:"Kultura"},{id:173,title:"Loterie a jiné podobné hry"},{id:139,title:"Nezpůsobilost soudce §  91 z.č. 6/2002 Sb."},{id:138,title:"Nezpůsobilost státního zástupce § 32 z.č. 283/1993 Sb."},{id:174,title:"Obyvatelstvo - evidence, doklady"},{id:187,title:"Odškodnění - ostatní"},{id:188,title:"Odškodnění - zákon č. 172/2002 Sb."},{id:189,title:"Odškodnění - zákon č. 261/2001 Sb."},{id:190,title:"Odškodnění - zákon č. 39/2000 Sb."},{id:186,title:"Ochrana hospodářské soutěže a veřejné zakázky"},{id:185,title:"Ochrana spotřebitele"},{id:184,title:"Ostatní"},{id:191,title:"Ostatní (nekasační agenda)"},{id:183,title:"Pobyt cizinců"},{id:330,title:"Politické strany a hnutí - dohled nad financováním volebních kampaní"},{id:329,title:"Politické strany a hnutí - dohled nad hospodařením"},{id:180,title:"Politické strany a hnutí - registrace"},{id:179,title:"Politické strany a hnutí - rozpuštění, pozastavení nebo znovuobnovení činnosti"},{id:178,title:"Poplatky"},{id:177,title:"Pozemky a zeměměřictví"},{id:176,title:"Pozemní komunikace"},{id:175,title:"Právo na informace"},{id:192,title:"Procesní"},{id:154,title:"Přestupky"},{id:172,title:"Referendum"},{id:153,title:"Regulace reklamy"},{id:152,title:"Restituce"},{id:142,title:"Shromažďovací právo"},{id:129,title:"Služební poměr"},{id:182,title:"Sociální ochrana – Nemocenské pojištění"},{id:181,title:"Sociální ochrana – Pojistné na sociální zabezpečení a příspěvek na státní politiku zaměstnanosti"},{id:130,title:"Sociální ochrana – Sociální pomoc"},{id:125,title:"Sociální ochrana – Státní sociální podpora"},{id:150,title:"Sociální ochrana – Zdravotní pojištění"},{id:128,title:"Spolčovací právo"},{id:127,title:"Státní a finanční kontrola"},{id:126,title:"Státní občanství"},{id:124,title:"Stavební zákon"},{id:123,title:"Školství a věda"},{id:122,title:"Telekomunikace, spoje, pošta"},{id:121,title:"Tisk, rozhlas, televize"},{id:120,title:"Územní samospráva"},{id:119,title:"Vodní právo"},{id:116,title:"Volby - neplatnost voleb a hlasování"},{id:117,title:"Volby - ochrana ve věcech registrace"},{id:118,title:"Volby - ochrana ve věcech seznamů voličů"},{id:131,title:"Volby - ochrana ve věcech zániku mandátu"},{id:132,title:"Zájmová a profesní samospráva"},{id:133,title:"Zaměstnanost"},{id:134,title:"Zbraně a střelivo"},{id:149,title:"Zdravotnictví a hygiena"},{id:148,title:"Zemědělství, myslivost a rybářství"},{id:147,title:"Živnostenské právo"},{id:146,title:"Životní prostředí - odpady"},{id:145,title:"Životní prostředí - ochrana přírody a krajiny"},{id:144,title:"Životní prostředí - ostatní"}];
+            jQuery(document).ready(function ($) {
+                var nssComboTree = $('#vyhledavaciSekce_2__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__HodnotaCiselnikPolozky').comboTree({
+                    source: vyhledavaciSekce_2__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__HodnotaCiselnikPolozkyData,
+                    isMultiple: true,
+                    id: 'vyhledavaciSekce_2__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__HodnotaCiselnikPolozky',
+                    name: 'vyhledavaciSekce[2].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].HodnotaCiselnikPolozky',
+                    selItems: '',
+                    cascadeSelect: true,
+                    collapse: true
+                });
+            });
+        </script>
+
+                        <div class="input-group-btn">
+                            <button type="button" class="close ml-1" aria-label="Close" onclick="hidecard(this);" title="Odstranit podmínku vyhledávání." data-toggle="tooltip">
+                                <span aria-hidden="false">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <input data-val="true" data-val-required="The Id field is required." id="vyhledavaciSekce_2__vyhledavaciPodminka_0__Id" name="vyhledavaciSekce[2].vyhledavaciPodminka[0].Id" type="hidden" value="31" />
+                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_0__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[0].TechnickyNazev" type="hidden" value="oblastupravy" />
+                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_0__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[0].ZobrazovanyNazev" type="hidden" value="Oblast &#xFA;pravy" />
+                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_0__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[0].DatovyTyp" type="hidden" value="FIELD_DIALTREE" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-lg-6 col-xl-4 mb-1 col-md-12 col-lg-6 col-xl-4 ccolumn">
+    <input class="isvisible" data-val="true" data-val-required="The Visible field is required." id="vyhledavaciSekce_2__vyhledavaciPodminka_1__Visible" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].Visible" type="hidden" value="True" />
+    <div class="card ccol" id="SloucenaVyhledavaciPodminka">
+        <div class="card-header p-1">
+            <div class="form-group mb-0">
+                <div>
+                    <div class="input-group">
+                        <span class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-light btn-sm active">
+                                    <input checked="checked" data-val="true" data-val-required="The VazbaKDotazu field is required." id="vyhledavaciSekce_2__vyhledavaciPodminka_1__VazbaKDotazu" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].VazbaKDotazu" type="radio" value="AND" />AND
+                                </label>
+                                <label class="btn btn-light btn-sm">
+                                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__VazbaKDotazu" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].VazbaKDotazu" type="radio" value="OR" />OR
+                                </label>
+                        </span>
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0].DatovyTyp" type="hidden" value="FIELD_TEXT" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisysbcl" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0].ZobrazovanyNazev" type="hidden" value="&#x10D;l. - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb." />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_0__HodnotaText" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0].HodnotaText" placeholder="&#x10D;l. - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb." Title="&lt;h6&gt;&#x10D;l. - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_1__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[1].DatovyTyp" type="hidden" value="FIELD_TEXT" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_1__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[1].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisysb&#xA7;" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_1__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[1].ZobrazovanyNazev" type="hidden" value="&#xA7; - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb." />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_1__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[1].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_1__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[1].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_1__HodnotaText" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[1].HodnotaText" placeholder="&#xA7; - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb." Title="&lt;h6&gt;&#xA7; - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_2__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[2].DatovyTyp" type="hidden" value="FIELD_TEXT" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_2__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[2].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisysbodst" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_2__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[2].ZobrazovanyNazev" type="hidden" value="odst. - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb." />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_2__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[2].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_2__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[2].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_2__HodnotaText" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[2].HodnotaText" placeholder="odst. - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb." Title="&lt;h6&gt;odst. - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_3__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[3].DatovyTyp" type="hidden" value="FIELD_TEXT" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_3__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[3].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisysbpism" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_3__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[3].ZobrazovanyNazev" type="hidden" value="p&#xED;sm. - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb." />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_3__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[3].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_3__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[3].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_3__HodnotaText" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[3].HodnotaText" placeholder="p&#xED;sm. - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb." Title="&lt;h6&gt;p&#xED;sm. - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_4__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[4].DatovyTyp" type="hidden" value="FIELD_DIAL" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_4__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[4].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisysbpredpis" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_4__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[4].ZobrazovanyNazev" type="hidden" value="p&#x159;edpis - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb." />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_4__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[4].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_4__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[4].NapovedaHtml" type="hidden" value="" />
+        <input name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[4].HodnotaCiselnikPolozky" type="search" id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_4__HodnotaCiselnikPolozky" placeholder="p&#x159;edpis - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb." class="form-control form-control-sm form-control-fillhilite" title="&lt;h6&gt;p&#x159;edpis - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.&lt;/h6&gt;" data-toggle="tooltip" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_4__ciselnikTreeData" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[4].ciselnikTreeData" type="hidden" value="[{id:336,title:&quot;na&#x159;&#xED;zen&#xED;&quot;},{id:337,title:&quot;vyhl&#xE1;&#x161;ky&quot;},{id:335,title:&quot;z&#xE1;kona&quot;}]" />        <script>
+            var vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_4__HodnotaCiselnikPolozkyData = [{id:336,title:"nařízení"},{id:337,title:"vyhlášky"},{id:335,title:"zákona"}];
+            jQuery(document).ready(function ($) {
+                var nssComboTree = $('#vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_4__HodnotaCiselnikPolozky').comboTree({
+                    source: vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_4__HodnotaCiselnikPolozkyData,
+                    isMultiple: true,
+                    id: 'vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_4__HodnotaCiselnikPolozky',
+                    name: 'vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[4].HodnotaCiselnikPolozky',
+                    selItems: '',
+                    cascadeSelect: true,
+                    collapse: true
+                });
+            });
+        </script>
+
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_5__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[5].DatovyTyp" type="hidden" value="FIELD_LONGNUMBER" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_5__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[5].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisysbcislo" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_5__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[5].ZobrazovanyNazev" type="hidden" value="&#x10D;&#xED;slo - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb." />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_5__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[5].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_5__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[5].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_5__HodnotaCislo" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[5].HodnotaCislo" placeholder="&#x10D;&#xED;slo - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb." Title="&lt;h6&gt;&#x10D;&#xED;slo - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_6__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[6].DatovyTyp" type="hidden" value="FIELD_LONGNUMBER" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_6__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[6].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisysbrok" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_6__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[6].ZobrazovanyNazev" type="hidden" value="rok - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb." />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_6__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[6].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_6__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[6].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_1__vyhledavaciPodminkaHodnota_6__HodnotaCislo" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[6].HodnotaCislo" placeholder="rok - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb." Title="&lt;h6&gt;rok - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.&lt;/h6&gt;" type="text" value="" />
+                        <div class="input-group-btn">
+                            <button type="button" class="close ml-1" aria-label="Close" onclick="hidecard(this);" title="Odstranit podmínku vyhledávání." data-toggle="tooltip">
+                                <span aria-hidden="false">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <input data-val="true" data-val-required="The Id field is required." id="vyhledavaciSekce_2__vyhledavaciPodminka_1__Id" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].Id" type="hidden" value="2" />
+                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].TechnickyNazev" type="hidden" value="SloucenaVyhledavaciPodminka" />
+                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].ZobrazovanyNazev" type="hidden" value="Pr&#xE1;vn&#xED; p&#x159;edpisy Sb." />
+                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_1__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[1].DatovyTyp" type="hidden" value="SloucenyDatovyTyp" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-lg-6 col-xl-4 mb-1 col-md-12 col-lg-6 col-xl-4 ccolumn">
+    <input class="isvisible" data-val="true" data-val-required="The Visible field is required." id="vyhledavaciSekce_2__vyhledavaciPodminka_2__Visible" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].Visible" type="hidden" value="True" />
+    <div class="card ccol" id="SloucenaVyhledavaciPodminka">
+        <div class="card-header p-1">
+            <div class="form-group mb-0">
+                <div>
+                    <div class="input-group">
+                        <span class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-light btn-sm active">
+                                    <input checked="checked" data-val="true" data-val-required="The VazbaKDotazu field is required." id="vyhledavaciSekce_2__vyhledavaciPodminka_2__VazbaKDotazu" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].VazbaKDotazu" type="radio" value="AND" />AND
+                                </label>
+                                <label class="btn btn-light btn-sm">
+                                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__VazbaKDotazu" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].VazbaKDotazu" type="radio" value="OR" />OR
+                                </label>
+                        </span>
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_0__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[0].DatovyTyp" type="hidden" value="FIELD_TEXT" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_0__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[0].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisysbmscl" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_0__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[0].ZobrazovanyNazev" type="hidden" value="&#x10D;l. - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.m.s." />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_0__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[0].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_0__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[0].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_0__HodnotaText" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[0].HodnotaText" placeholder="&#x10D;l. - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.m.s." Title="&lt;h6&gt;&#x10D;l. - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.m.s.&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_1__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[1].DatovyTyp" type="hidden" value="FIELD_TEXT" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_1__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[1].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisysbmsodst" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_1__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[1].ZobrazovanyNazev" type="hidden" value="odst. - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.m.s." />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_1__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[1].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_1__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[1].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_1__HodnotaText" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[1].HodnotaText" placeholder="odst. - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.m.s." Title="&lt;h6&gt;odst. - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.m.s.&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_2__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[2].DatovyTyp" type="hidden" value="FIELD_LONGNUMBER" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_2__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[2].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisysbmscislo" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_2__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[2].ZobrazovanyNazev" type="hidden" value="&#x10D;&#xED;slo - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.m.s." />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_2__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[2].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_2__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[2].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_2__HodnotaCislo" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[2].HodnotaCislo" placeholder="&#x10D;&#xED;slo - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.m.s." Title="&lt;h6&gt;&#x10D;&#xED;slo - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.m.s.&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_3__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[3].DatovyTyp" type="hidden" value="FIELD_LONGNUMBER" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_3__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[3].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisysbmsrok" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_3__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[3].ZobrazovanyNazev" type="hidden" value="rok - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.m.s." />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_3__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[3].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_3__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[3].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_2__vyhledavaciPodminkaHodnota_3__HodnotaCislo" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].vyhledavaciPodminkaHodnota[3].HodnotaCislo" placeholder="rok - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.m.s." Title="&lt;h6&gt;rok - Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.m.s.&lt;/h6&gt;" type="text" value="" />
+                        <div class="input-group-btn">
+                            <button type="button" class="close ml-1" aria-label="Close" onclick="hidecard(this);" title="Odstranit podmínku vyhledávání." data-toggle="tooltip">
+                                <span aria-hidden="false">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <input data-val="true" data-val-required="The Id field is required." id="vyhledavaciSekce_2__vyhledavaciPodminka_2__Id" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].Id" type="hidden" value="16" />
+                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].TechnickyNazev" type="hidden" value="SloucenaVyhledavaciPodminka" />
+                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].ZobrazovanyNazev" type="hidden" value="Pr&#xE1;vn&#xED; p&#x159;edpisy Sb.m.s." />
+                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_2__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[2].DatovyTyp" type="hidden" value="SloucenyDatovyTyp" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-lg-6 col-xl-4 mb-1 col-md-12 col-lg-6 col-xl-4 ccolumn">
+    <input class="isvisible" data-val="true" data-val-required="The Visible field is required." id="vyhledavaciSekce_2__vyhledavaciPodminka_3__Visible" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].Visible" type="hidden" value="True" />
+    <div class="card ccol" id="SloucenaVyhledavaciPodminka">
+        <div class="card-header p-1">
+            <div class="form-group mb-0">
+                <div>
+                    <div class="input-group">
+                        <span class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-light btn-sm active">
+                                    <input checked="checked" data-val="true" data-val-required="The VazbaKDotazu field is required." id="vyhledavaciSekce_2__vyhledavaciPodminka_3__VazbaKDotazu" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].VazbaKDotazu" type="radio" value="AND" />AND
+                                </label>
+                                <label class="btn btn-light btn-sm">
+                                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__VazbaKDotazu" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].VazbaKDotazu" type="radio" value="OR" />OR
+                                </label>
+                        </span>
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_0__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[0].DatovyTyp" type="hidden" value="FIELD_TEXT" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_0__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[0].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisynarizenieucl" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_0__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[0].ZobrazovanyNazev" type="hidden" value="&#x10D;l. - Na&#x159;&#xED;zen&#xED; EU" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_0__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[0].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_0__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[0].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_0__HodnotaText" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[0].HodnotaText" placeholder="&#x10D;l. - Na&#x159;&#xED;zen&#xED; EU" Title="&lt;h6&gt;&#x10D;l. - Na&#x159;&#xED;zen&#xED; EU&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_1__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[1].DatovyTyp" type="hidden" value="FIELD_TEXT" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_1__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[1].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisynarizenieuodst" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_1__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[1].ZobrazovanyNazev" type="hidden" value="odst. - Na&#x159;&#xED;zen&#xED; EU" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_1__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[1].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_1__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[1].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_1__HodnotaText" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[1].HodnotaText" placeholder="odst. - Na&#x159;&#xED;zen&#xED; EU" Title="&lt;h6&gt;odst. - Na&#x159;&#xED;zen&#xED; EU&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_2__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[2].DatovyTyp" type="hidden" value="FIELD_TEXT" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_2__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[2].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisynarizenieupism" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_2__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[2].ZobrazovanyNazev" type="hidden" value="p&#xED;sm. - Na&#x159;&#xED;zen&#xED; EU" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_2__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[2].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_2__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[2].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_2__HodnotaText" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[2].HodnotaText" placeholder="p&#xED;sm. - Na&#x159;&#xED;zen&#xED; EU" Title="&lt;h6&gt;p&#xED;sm. - Na&#x159;&#xED;zen&#xED; EU&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_3__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[3].DatovyTyp" type="hidden" value="FIELD_DIAL" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_3__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[3].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisynarizenieudruh" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_3__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[3].ZobrazovanyNazev" type="hidden" value="druh - Na&#x159;&#xED;zen&#xED; EU" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_3__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[3].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_3__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[3].NapovedaHtml" type="hidden" value="" />
+        <input name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[3].HodnotaCiselnikPolozky" type="search" id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_3__HodnotaCiselnikPolozky" placeholder="druh - Na&#x159;&#xED;zen&#xED; EU" class="form-control form-control-sm form-control-fillhilite" title="&lt;h6&gt;druh - Na&#x159;&#xED;zen&#xED; EU&lt;/h6&gt;" data-toggle="tooltip" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_3__ciselnikTreeData" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[3].ciselnikTreeData" type="hidden" value="[{id:339,title:&quot;EHS&quot;},{id:338,title:&quot;ES&quot;},{id:341,title:&quot;EU&quot;},{id:340,title:&quot;EURATOM&quot;}]" />        <script>
+            var vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_3__HodnotaCiselnikPolozkyData = [{id:339,title:"EHS"},{id:338,title:"ES"},{id:341,title:"EU"},{id:340,title:"EURATOM"}];
+            jQuery(document).ready(function ($) {
+                var nssComboTree = $('#vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_3__HodnotaCiselnikPolozky').comboTree({
+                    source: vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_3__HodnotaCiselnikPolozkyData,
+                    isMultiple: true,
+                    id: 'vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_3__HodnotaCiselnikPolozky',
+                    name: 'vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[3].HodnotaCiselnikPolozky',
+                    selItems: '',
+                    cascadeSelect: true,
+                    collapse: true
+                });
+            });
+        </script>
+
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_4__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[4].DatovyTyp" type="hidden" value="FIELD_LONGNUMBER" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_4__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[4].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisynarizenieucislo" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_4__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[4].ZobrazovanyNazev" type="hidden" value="&#x10D;&#xED;slo - Na&#x159;&#xED;zen&#xED; EU" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_4__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[4].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_4__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[4].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_4__HodnotaCislo" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[4].HodnotaCislo" placeholder="&#x10D;&#xED;slo - Na&#x159;&#xED;zen&#xED; EU" Title="&lt;h6&gt;&#x10D;&#xED;slo - Na&#x159;&#xED;zen&#xED; EU&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_5__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[5].DatovyTyp" type="hidden" value="FIELD_LONGNUMBER" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_5__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[5].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisynarizenieurok" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_5__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[5].ZobrazovanyNazev" type="hidden" value="rok - Na&#x159;&#xED;zen&#xED; EU" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_5__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[5].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_5__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[5].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_3__vyhledavaciPodminkaHodnota_5__HodnotaCislo" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].vyhledavaciPodminkaHodnota[5].HodnotaCislo" placeholder="rok - Na&#x159;&#xED;zen&#xED; EU" Title="&lt;h6&gt;rok - Na&#x159;&#xED;zen&#xED; EU&lt;/h6&gt;" type="text" value="" />
+                        <div class="input-group-btn">
+                            <button type="button" class="close ml-1" aria-label="Close" onclick="hidecard(this);" title="Odstranit podmínku vyhledávání." data-toggle="tooltip">
+                                <span aria-hidden="false">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <input data-val="true" data-val-required="The Id field is required." id="vyhledavaciSekce_2__vyhledavaciPodminka_3__Id" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].Id" type="hidden" value="23" />
+                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].TechnickyNazev" type="hidden" value="SloucenaVyhledavaciPodminka" />
+                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].ZobrazovanyNazev" type="hidden" value="Na&#x159;&#xED;zen&#xED; EU" />
+                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_3__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[3].DatovyTyp" type="hidden" value="SloucenyDatovyTyp" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-lg-6 col-xl-4 mb-1 col-md-12 col-lg-6 col-xl-4 ccolumn">
+    <input class="isvisible" data-val="true" data-val-required="The Visible field is required." id="vyhledavaciSekce_2__vyhledavaciPodminka_4__Visible" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].Visible" type="hidden" value="True" />
+    <div class="card ccol" id="SloucenaVyhledavaciPodminka">
+        <div class="card-header p-1">
+            <div class="form-group mb-0">
+                <div>
+                    <div class="input-group">
+                        <span class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-light btn-sm active">
+                                    <input checked="checked" data-val="true" data-val-required="The VazbaKDotazu field is required." id="vyhledavaciSekce_2__vyhledavaciPodminka_4__VazbaKDotazu" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].VazbaKDotazu" type="radio" value="AND" />AND
+                                </label>
+                                <label class="btn btn-light btn-sm">
+                                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__VazbaKDotazu" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].VazbaKDotazu" type="radio" value="OR" />OR
+                                </label>
+                        </span>
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_0__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[0].DatovyTyp" type="hidden" value="FIELD_TEXT" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_0__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[0].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisysmerniceeucl" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_0__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[0].ZobrazovanyNazev" type="hidden" value="&#x10D;l. - Sm&#x11B;rnice EU" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_0__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[0].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_0__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[0].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_0__HodnotaText" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[0].HodnotaText" placeholder="&#x10D;l. - Sm&#x11B;rnice EU" Title="&lt;h6&gt;&#x10D;l. - Sm&#x11B;rnice EU&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_1__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[1].DatovyTyp" type="hidden" value="FIELD_TEXT" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_1__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[1].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisysmerniceeuodst" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_1__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[1].ZobrazovanyNazev" type="hidden" value="odst. - Sm&#x11B;rnice EU" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_1__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[1].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_1__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[1].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_1__HodnotaText" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[1].HodnotaText" placeholder="odst. - Sm&#x11B;rnice EU" Title="&lt;h6&gt;odst. - Sm&#x11B;rnice EU&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_2__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[2].DatovyTyp" type="hidden" value="FIELD_TEXT" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_2__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[2].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisysmerniceeupism" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_2__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[2].ZobrazovanyNazev" type="hidden" value="p&#xED;sm. - Sm&#x11B;rnice EU" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_2__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[2].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_2__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[2].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_2__HodnotaText" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[2].HodnotaText" placeholder="p&#xED;sm. - Sm&#x11B;rnice EU" Title="&lt;h6&gt;p&#xED;sm. - Sm&#x11B;rnice EU&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_3__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[3].DatovyTyp" type="hidden" value="FIELD_LONGNUMBER" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_3__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[3].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisysmerniceeucislo" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_3__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[3].ZobrazovanyNazev" type="hidden" value="&#x10D;&#xED;slo - Sm&#x11B;rnice EU" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_3__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[3].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_3__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[3].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_3__HodnotaCislo" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[3].HodnotaCislo" placeholder="&#x10D;&#xED;slo - Sm&#x11B;rnice EU" Title="&lt;h6&gt;&#x10D;&#xED;slo - Sm&#x11B;rnice EU&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_4__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[4].DatovyTyp" type="hidden" value="FIELD_LONGNUMBER" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_4__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[4].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisysmerniceeurok" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_4__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[4].ZobrazovanyNazev" type="hidden" value="rok - Sm&#x11B;rnice EU" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_4__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[4].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_4__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[4].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_4__HodnotaCislo" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[4].HodnotaCislo" placeholder="rok - Sm&#x11B;rnice EU" Title="&lt;h6&gt;rok - Sm&#x11B;rnice EU&lt;/h6&gt;" type="text" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_5__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[5].DatovyTyp" type="hidden" value="FIELD_DIAL" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_5__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[5].TechnickyNazev" type="hidden" value="aplikovanepravnipredpisysmerniceeudruh" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_5__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[5].ZobrazovanyNazev" type="hidden" value="druh - Sm&#x11B;rnice EU" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_5__NapovedaNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[5].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_5__NapovedaHtml" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[5].NapovedaHtml" type="hidden" value="" />
+        <input name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[5].HodnotaCiselnikPolozky" type="search" id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_5__HodnotaCiselnikPolozky" placeholder="druh - Sm&#x11B;rnice EU" class="form-control form-control-sm form-control-fillhilite" title="&lt;h6&gt;druh - Sm&#x11B;rnice EU&lt;/h6&gt;" data-toggle="tooltip" />
+<input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_5__ciselnikTreeData" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[5].ciselnikTreeData" type="hidden" value="[{id:343,title:&quot;EHS&quot;},{id:342,title:&quot;ES&quot;},{id:345,title:&quot;EU&quot;},{id:344,title:&quot;EURATOM&quot;}]" />        <script>
+            var vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_5__HodnotaCiselnikPolozkyData = [{id:343,title:"EHS"},{id:342,title:"ES"},{id:345,title:"EU"},{id:344,title:"EURATOM"}];
+            jQuery(document).ready(function ($) {
+                var nssComboTree = $('#vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_5__HodnotaCiselnikPolozky').comboTree({
+                    source: vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_5__HodnotaCiselnikPolozkyData,
+                    isMultiple: true,
+                    id: 'vyhledavaciSekce_2__vyhledavaciPodminka_4__vyhledavaciPodminkaHodnota_5__HodnotaCiselnikPolozky',
+                    name: 'vyhledavaciSekce[2].vyhledavaciPodminka[4].vyhledavaciPodminkaHodnota[5].HodnotaCiselnikPolozky',
+                    selItems: '',
+                    cascadeSelect: true,
+                    collapse: true
+                });
+            });
+        </script>
+
+                        <div class="input-group-btn">
+                            <button type="button" class="close ml-1" aria-label="Close" onclick="hidecard(this);" title="Odstranit podmínku vyhledávání." data-toggle="tooltip">
+                                <span aria-hidden="false">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <input data-val="true" data-val-required="The Id field is required." id="vyhledavaciSekce_2__vyhledavaciPodminka_4__Id" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].Id" type="hidden" value="35" />
+                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__TechnickyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].TechnickyNazev" type="hidden" value="SloucenaVyhledavaciPodminka" />
+                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__ZobrazovanyNazev" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].ZobrazovanyNazev" type="hidden" value="Sm&#x11B;rnice EU" />
+                    <input id="vyhledavaciSekce_2__vyhledavaciPodminka_4__DatovyTyp" name="vyhledavaciSekce[2].vyhledavaciPodminka[4].DatovyTyp" type="hidden" value="SloucenyDatovyTyp" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <div class="row">
+            <div class="col-12 mb-1">
+                <div class="card" style="background-color:#0f2757;color:#fff;">
+                    <div class="card-header p-1">
+                        HLED&#xC1;N&#xCD; V TEXTU <input data-val="true" data-val-required="The Id field is required." id="vyhledavaciSekce_3__Id" name="vyhledavaciSekce[3].Id" type="hidden" value="20" /> <input id="vyhledavaciSekce_3__ZobrazovanyNazev" name="vyhledavaciSekce[3].ZobrazovanyNazev" type="hidden" value="HLED&#xC1;N&#xCD; V TEXTU" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+<div class="col-12 mb-1 col-12 ccolumn">
+    <input class="isvisible" data-val="true" data-val-required="The Visible field is required." id="vyhledavaciSekce_3__vyhledavaciPodminka_0__Visible" name="vyhledavaciSekce[3].vyhledavaciPodminka[0].Visible" type="hidden" value="True" />
+    <div class="card ccol" id="textDokumentu">
+        <div class="card-header p-1">
+            <div class="form-group mb-0">
+                <div>
+                    <div class="input-group">
+                        <span class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-light btn-sm active">
+                                    <input checked="checked" data-val="true" data-val-required="The VazbaKDotazu field is required." id="vyhledavaciSekce_3__vyhledavaciPodminka_0__VazbaKDotazu" name="vyhledavaciSekce[3].vyhledavaciPodminka[0].VazbaKDotazu" type="radio" value="AND" />AND
+                                </label>
+                                <label class="btn btn-light btn-sm">
+                                    <input id="vyhledavaciSekce_3__vyhledavaciPodminka_0__VazbaKDotazu" name="vyhledavaciSekce[3].vyhledavaciPodminka[0].VazbaKDotazu" type="radio" value="OR" />OR
+                                </label>
+                        </span>
+<input id="vyhledavaciSekce_3__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__DatovyTyp" name="vyhledavaciSekce[3].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].DatovyTyp" type="hidden" value="FIELD_CONTENT" />
+<input id="vyhledavaciSekce_3__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__TechnickyNazev" name="vyhledavaciSekce[3].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].TechnickyNazev" type="hidden" value="textDokumentu" />
+<input id="vyhledavaciSekce_3__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__ZobrazovanyNazev" name="vyhledavaciSekce[3].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].ZobrazovanyNazev" type="hidden" value="Hledat v textu dokumentu" />
+<input id="vyhledavaciSekce_3__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__NapovedaNazev" name="vyhledavaciSekce[3].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].NapovedaNazev" type="hidden" value="" />
+<input id="vyhledavaciSekce_3__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__NapovedaHtml" name="vyhledavaciSekce[3].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].NapovedaHtml" type="hidden" value="" />
+<input class="form-control form-control-sm form-control-fillhilite" data-toggle="tooltip" id="vyhledavaciSekce_3__vyhledavaciPodminka_0__vyhledavaciPodminkaHodnota_0__HodnotaText" name="vyhledavaciSekce[3].vyhledavaciPodminka[0].vyhledavaciPodminkaHodnota[0].HodnotaText" placeholder="Hledat v textu dokumentu" Title="&lt;h6&gt;Hledat v textu dokumentu&lt;/h6&gt;" type="text" value="" />
+                        <div class="input-group-btn">
+                            <button type="button" class="close ml-1" aria-label="Close" onclick="hidecard(this);" title="Odstranit podmínku vyhledávání." data-toggle="tooltip">
+                                <span aria-hidden="false">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <input data-val="true" data-val-required="The Id field is required." id="vyhledavaciSekce_3__vyhledavaciPodminka_0__Id" name="vyhledavaciSekce[3].vyhledavaciPodminka[0].Id" type="hidden" value="-1" />
+                    <input id="vyhledavaciSekce_3__vyhledavaciPodminka_0__TechnickyNazev" name="vyhledavaciSekce[3].vyhledavaciPodminka[0].TechnickyNazev" type="hidden" value="textDokumentu" />
+                    <input id="vyhledavaciSekce_3__vyhledavaciPodminka_0__ZobrazovanyNazev" name="vyhledavaciSekce[3].vyhledavaciPodminka[0].ZobrazovanyNazev" type="hidden" value="Hledat v textu dokumentu" />
+                    <input id="vyhledavaciSekce_3__vyhledavaciPodminka_0__DatovyTyp" name="vyhledavaciSekce[3].vyhledavaciPodminka[0].DatovyTyp" type="hidden" value="FIELD_CONTENT" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </fieldset>
+
+    <input id="NavColor" name="NavColor" type="hidden" value="btn-danger" />
+    <div class="row">
+        <div class="col-12">
+            <input data-val="true" data-val-required="The DevMenu field is required." id="DevMenu" name="DevMenu" type="hidden" value="False" />
+            <div class="card">
+                <div class="card-header p-1">
+                    <div class="btn-group" role="group">
+                        <button name="btSubmit" type="submit" class="btn btn-danger" onclick="spinon()">Vyhledat</button>
+                        <button name="btNic" type="button" class="btn btn-warning">Pr&#xE1;vn&#xED; v&#x11B;ta A/N</button>
+                        <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Volba zobrazení výsledku</span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <input data-val="true" data-val-required="The ZobrazeniVysledkuId field is required." id="ZobrazeniVysledkuId" name="ZobrazeniVysledkuId" type="hidden" value="1" />
+                                        <div class="dropdown-item active" href="#">Pr&#xE1;vn&#xED; v&#x11B;ta A/N</div>
+<input data-val="true" data-val-required="The Id field is required." id="ZobrazeniVysledku_0__Id" name="ZobrazeniVysledku[0].Id" type="hidden" value="1" /><input id="ZobrazeniVysledku_0__Text" name="ZobrazeniVysledku[0].Text" type="hidden" value="Pr&#xE1;vn&#xED; v&#x11B;ta A/N" /><input data-val="true" data-val-required="The Selected field is required." id="ZobrazeniVysledku_0__Selected" name="ZobrazeniVysledku[0].Selected" type="hidden" value="False" />                                        <button type="submit" class="dropdown-item" onclick="spinon()" formaction="/Home/Index?formular=1&zobrazeniVysledkuVolba=2">Pr&#xE1;vn&#xED; v&#x11B;ta Text</button>
+<input data-val="true" data-val-required="The Id field is required." id="ZobrazeniVysledku_1__Id" name="ZobrazeniVysledku[1].Id" type="hidden" value="2" /><input id="ZobrazeniVysledku_1__Text" name="ZobrazeniVysledku[1].Text" type="hidden" value="Pr&#xE1;vn&#xED; v&#x11B;ta Text" /><input data-val="true" data-val-required="The Selected field is required." id="ZobrazeniVysledku_1__Selected" name="ZobrazeniVysledku[1].Selected" type="hidden" value="False" />                                        <button type="submit" class="dropdown-item" onclick="spinon()" formaction="/Home/Index?formular=1&zobrazeniVysledkuVolba=5">ECLI</button>
+<input data-val="true" data-val-required="The Id field is required." id="ZobrazeniVysledku_2__Id" name="ZobrazeniVysledku[2].Id" type="hidden" value="5" /><input id="ZobrazeniVysledku_2__Text" name="ZobrazeniVysledku[2].Text" type="hidden" value="ECLI" /><input data-val="true" data-val-required="The Selected field is required." id="ZobrazeniVysledku_2__Selected" name="ZobrazeniVysledku[2].Selected" type="hidden" value="False" />                        </div>
+                        <a class="btn btn-light" onclick="spinon()" href="/Home/Index?formular=1">Vyčistit</a>
+                        <button type="submit" class="btn btn-info" formaction="/Home/Export" formtarget="_blank">Export</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<input name="__RequestVerificationToken" type="hidden" value="CfDJ8OQu34NjMs9KmQfG3qxXYpOQENtzmuKJsgCK6M2BASBXHSDBwa3GtDoZuZervo1F_wzeWsDVPHlrmw-GXJC3lNTkyHdtkt2MUZi3tVPSBaioLNVBXMYoEhcjzpSgzLjSsgx6JrVN5NkUJPH_VkgehVc" /></form>
+
+    </div>
+</div>
+
+
+    </div>
+    
+    
+    
+    <script src="/js/site.js?v=8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U"></script>
+
+    
+    <script src="/js/infiniteScroll.js"></script>
+    <script type="text/javascript">
+        var moreRowsUrl = '/Home/MyResTRowsCont';
+        var currParams = '[]';
+        var currViewId = '1';
+        var currSort = ' order by  zvht38.Hodnota NOOR , zvhdt1.Hodnota DESC , zvht2.Hodnota ASC , zvcp7.Nazev NOOR , zvcp8.Nazev NOOR , zvcp9.Nazev NOOR , zvht13.Hodnota NOOR , zvht34.Hodnota NOOR , zvht35.Hodnota NOOR ';
+
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('activebar');
+            });
+            //$('[data-toggle="tooltip"]').tooltip();
+            $('[data-toggle="tooltip"]').tooltip({ delay: { "show": 500, "hide": 100 }, html:true });
+
+            //$('.iyellow').on('input', function () {
+            //    var itext = $.trim(this.value);
+            //    $(this).toggleClass('item-sel', itext.length > 0);
+            //}).trigger('input');
+
+            //$('.iyellows').change(function () {
+            //    var idsel = $(this).find('option:selected').attr("value");
+            //    $(this).find('option').removeClass('bg-warning');
+            //    $(this).find('option:selected').addClass('item-sel');
+            //    $(this).toggleClass('item-sel', idsel.length > 0);
+            //}).trigger('change');
+        });
+        var toggler = document.getElementsByClassName("caret");
+        var i;
+        for (i = 0; i < toggler.length; i++) {
+            toggler[i].addEventListener("click", function () {
+                var tmpl = this.parentElement.querySelector(".nested,.activejf");
+                if ($(tmpl).hasClass("nested")) {
+                    $(tmpl).removeClass("nested").addClass("activejf");
+                } else {
+                    $(tmpl).removeClass("activejf").addClass("nested");
+                }
+                this.classList.toggle("caret-down");
+            });
+        }
+
+        var card_col;
+        function hidecard(obj) {
+            var vis = $(obj).parents('div.ccolumn').find('input.isvisible');
+            var card_col = $(obj).parents('div.ccolumn');
+            $(obj).closest('.ccol').fadeOut('slow', function () {
+                if (card_col) {
+                    $(card_col).removeClass('ccolumn').addClass('d-none');
+                }
+                if (vis) {
+                    $(vis).val("false");
+                }
+            });
+        }
+
+        function poptree(btn) {
+            if ($(btn).hasClass("mclose")) {
+                $(btn).removeClass("mclose").addClass("mopen");
+                var elms = $(".nested");
+                for (i = 0; i < elms.length; i++) {
+                    $(elms[i]).removeClass("nested").addClass("activejf");
+                    if (!$(elms[i].parentElement.firstElementChild).hasClass("caret-down")) {
+                        $(elms[i].parentElement.firstElementChild).toggleClass("caret-down");
+                    }
+                }
+            } else {
+                $(btn).removeClass("mopen").addClass("mclose");
+                var elms = $(".activejf");
+                for (i = 0; i < elms.length; i++) {
+                    $(elms[i]).removeClass("activejf").addClass("nested");
+                    if ($(elms[i].parentElement.firstElementChild).hasClass("caret-down")) {
+                        $(elms[i].parentElement.firstElementChild).toggleClass("caret-down");
+                    }
+                }
+            }
+        }
+
+        function AddCondition(sekce) {
+            var frmdata = $('#findform').serialize();
+            var uri = encodeURI('/Home/SetCondition?sekce=' + sekce);
+
+            spinon();
+            $.ajax({
+                type: "POST",
+                url: uri,
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                data: frmdata,
+                dataType: 'json',
+                success: function (result) {
+                    $('#searchContent').html(result);
+                    $('[data-toggle="tooltip"]').tooltip({ delay: { "show": 500, "hide": 1000 }, html: true });
+                },
+                error: function (xhr, status, error) {
+                    alert("Chyba ajaxu!, " + status + ', ' + error);
+                }
+            })
+        }
+        function spinon() {
+            //var h = document.documentElement.scrollHeight;
+            //$('#overlay').css('height', h + 'px');
+            document.getElementById("overlay").style.display = "flex";
+        }
+
+        function spinoff() {
+            document.getElementById("overlay").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
