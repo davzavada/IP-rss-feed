@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T14:05:55Z",
+ "generated": "2026-09-24T15:56:03Z",
  "soud": "nss",
  "okno_dni": 14,
  "polozky": [
@@ -14,14 +14,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785776",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785776",
    "soudce": "Ondřej Mrákota",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Námitka podjatosti",
+   "shrnuti": "Společnost IVREL INVEST podala námitku podjatosti proti soudkyni Krajského soudu v Hradci Králové v řízení o žalobě proti rozhodnutí Odvolacího finančního ředitelství. Nejvyšší správní soud řešil, zda procesní postup soudkyně a její rozhodování v řízení zakládají důvod pro její vyloučení. Soud dospěl k závěru, že postup v řízení není sám o sobě důvodem k vyloučení soudce, a proto rozhodl, že soudkyně není podjatá.",
    "oblasti": [
+    "civilni_proces",
     "dane"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785775",
@@ -34,14 +33,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785775",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785775",
    "soudce": "Michaela Bejčková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Námitka podjatosti",
+   "shrnuti": "Žalobce namítal podjatost soudkyně Krajského soudu v Hradci Králové v řízení o žalobě proti rozhodnutí Odvolací finanční ředitelství. Nejvyšší správní soud řešil, zda lze postup soudkyně v řízení považovat za důvod k jejímu vyloučení. Dospěl k závěru, že procesní postup soudkyně není důvodem pro vyloučení z projednávání věci.",
    "oblasti": [
-    "dane"
+    "civilni_proces",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785694",
@@ -145,16 +143,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785570",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785570",
    "soudce": "Václav Štencel",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastavení řízení o azylu",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Krajského soudu v Ostravě – pobočky v Olomouci, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Nejvyšší správní soud řešil otázku, zda jsou splněny podmínky pro zastavení řízení podle § 33 písm. c) zákona o azylu z důvodu, že se žalobce nezdržuje v místě posledního hlášeného pobytu v důsledku dobrovolného návratu do země původu. Dospěl k závěru, že žalobce opustil území České republiky na základě vlastní žádosti o pomoc s dobrovolným návratem, a proto řízení o kasační stížnosti zastavil.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
    "procesni": true,
    "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zastaveno"
   },
   {
    "id": "nss:785538",
@@ -169,16 +166,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785538",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785538",
    "soudce": "Radan Malík",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastavení řízení",
+   "shrnuti": "Žalobce podal kasační stížnost proti usnesení krajského soudu o odmítnutí žaloby ve věci daňových exekucí, avšak vzal ji v plném rozsahu zpět. Nejvyšší správní soud proto řízení o kasační stížnosti zastavil. Žádný z účastníků nemá právo na náhradu nákladů řízení a žalobkyni se vrací soudní poplatek.",
    "oblasti": [
-    "dane"
+    "dane",
+    "spravni"
    ],
    "procesni": true,
    "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zastaveno"
   },
   {
    "id": "nss:785462",
@@ -238,16 +234,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785419",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785419",
    "soudce": "Viktor Kučera",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zpětvzetí kasační stížnosti",
+   "shrnuti": "Žalobce se soudil s Ministerstvem vnitra o neudělení mezinárodní ochrany. Soud řešil žádost žalobce o zastavení řízení v důsledku zpětvzetí kasační stížnosti. Soud řízení zastavil, protože žalobce svou stížnost v plném rozsahu vzal zpět.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
    "procesni": true,
    "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zastaveno"
   },
   {
    "id": "nss:785236",
@@ -3090,18 +3085,16 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784858",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784858",
    "soudce": "Jakub Camrda",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Předčasné splacení úvěru",
+   "shrnuti": "Česká národní banka shledala EC Financial Services vinnou ze spáchání přestupku, protože při předčasném splacení spotřebitelských úvěrů poměrně nesnížila celkové náklady o sjednané poplatky. Nejvyšší správní soud potvrdil závěr městského soudu a kasační stížnost zamítl s tím, že právo spotřebitele na snížení celkových nákladů při předčasném splacení se vztahuje na veškeré náklady bez ohledu na to, zda jsou závislé na době trvání úvěru.",
    "oblasti": [
     "spotrebitel",
-    "spravni",
-    "finance"
+    "zavazky",
+    "spravni"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:781616",
@@ -3259,16 +3252,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785412",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785412",
    "soudce": "Lenka Matyášová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Příspěvek na péči",
+   "shrnuti": "Žalobce se soudil s Ministerstvem práce a sociálních věcí o přezkum rozhodnutí o odejmutí příspěvku na péči. Nejvyšší správní soud řešil otázku, zda žalobce má své obvyklé bydliště a střed zájmů v České republice, či v Chorvatsku. Dospěl k závěru, že bydlištěm žalobce je Chorvatsko, a proto je kasační stížnost nedůvodná.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:785411",
@@ -3423,16 +3415,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785316",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785316",
    "soudce": "Veronika Juřičková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odpočet na výzkum a vývoj",
+   "shrnuti": "CS SOFT se žalobou domáhala zrušení rozhodnutí Odvolacího finančního ředitelství, kterým byly zamítnuty její odvolání proti dodatečným platebním výměrům na daň z příjmů právnických osob. Nejvyšší správní soud řešil otázku, zda projektová dokumentace k odpočtu na podporu výzkumu a vývoje splňovala zákonné formální náležitosti ohledně vymezení cílů a způsobu kontroly. Soud dospěl k závěru, že cíle a kontrolní mechanismy byly vymezeny příliš obecně a neurčitě, což brání uznání odpočtu, a kasační stížnost zamítl.",
    "oblasti": [
-    "dane"
+    "dane",
+    "spravni"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:785247",
@@ -3495,17 +3486,16 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785167",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785167",
    "soudce": "Jan Kratochvíl",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zásahová žaloba k odstranění zařízení",
+   "shrnuti": "Žalobce se kasační stížností domáhal zrušení usnesení městského soudu, kterým byla odmítnuta jeho žaloba na ochranu před nezákonným zásahem spojeným s odstraněním reklamního zařízení na jeho pozemku. Nejvyšší správní soud posuzoval, zda se vlastník pozemku může bránit zásahovou žalobou proti způsobu odstranění reklamního zařízení, a dospěl k závěru, že nemůže, neboť újma způsobená na pozemku má soukromoprávní povahu a správce komunikace nevystupuje jako správní orgán.",
    "oblasti": [
-    "vecna_prava",
-    "spravni"
+    "civilni_proces",
+    "spravni",
+    "zavazky"
    ],
-   "procesni": false,
+   "procesni": true,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:785092",
@@ -3544,17 +3534,16 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784827",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784827",
    "soudce": "Michaela Bejčková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Vyvlastnění pozemku",
+   "shrnuti": "Žalobkyně se podanou kasační stížností domáhala zrušení rozsudku krajského soudu, kterým byla zamítnuta její žaloba proti rozhodnutí ministerstva o omezení vlastnického práva zřízením věcného břemene pro účely energetické soustavy. Nejvyšší správní soud řešil otázku přezkoumatelnosti napadeného rozsudku a přípustnosti kasačních námitek, které nebyly uplatněny před krajským soudem. Soud dospěl k závěru, že rozsudek je přezkoumatelný a kasační stížnost zamítl.",
    "oblasti": [
+    "spravni",
     "vecna_prava",
-    "spravni"
+    "civilni_proces"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:784812",
@@ -3641,16 +3630,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784297",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784297",
    "soudce": "Tomáš Foltas",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Ekologická újma",
+   "shrnuti": "Občanský spolek pro ochranu výšky hladiny vody studní podal kasační stížnost proti rozsudku Městského soudu v Praze, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva životního prostředí o zamítnutí žádosti o uložení preventivních opatření podle zákona o předcházení ekologické újmě v souvislosti s hydrogeologickým vrtem. Nejvyšší správní soud řešil otázku, zda byly splněny zákonné podmínky pro uložení preventivních opatření podle § 5 zákona o ekologické újmě. Dospěl k závěru, že podmínky splněny nebyly, neboť stěžovatel netvrdil ani nedoložil vznik či hrozbu ekologické újmy na chráněných druzích či stanovištích a činnost navíc probíhala na základě platného povolení vodoprávního úřadu.",
    "oblasti": [
-    "stavebni_zp"
+    "stavebni_zp",
+    "spravni"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:784025",
@@ -3735,17 +3723,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/783202",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/783202",
    "soudce": "Štěpán Výborný",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zásady 3E",
+   "shrnuti": "Dopravní podnik Karlovy Vary žaloval Ministerstvo pro místní rozvoj kvůli nevyplacení části dotace z důvodu údajného porušení zásad 3E při zadávání veřejné zakázky. Soud řešil, zda byl zadavatel povinen vyzvat vyloučeného účastníka k doplnění nabídky podle zákona o zadávání veřejných zakázek. NSS rozhodl, že povinnost takového postupu nevznikla, protože rozdíl v ceně nebyl výrazný a vady nabídky nebyly pouze formální.",
    "oblasti": [
     "verejne_zakazky",
-    "soutez"
+    "spravni"
    ],
    "procesni": false,
    "vysledek": "zruseno",
-   "vysledek_popis": "zrušeno + zrušení rozhodnutí spr. orgánu",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zrušeno + zrušení rozhodnutí spr. orgánu"
   },
   {
    "id": "nss:748087",
@@ -3758,14 +3744,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/748087",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/748087",
    "soudce": "Michaela Bejčková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Rozpuštění politického hnutí",
+   "shrnuti": "Vláda se soudila s Hnutí PES o rozpuštění tohoto politického hnutí kvůli neodstranění nedostatků po pozastavení činnosti. Nejvyšší správní soud řešil otázku, zda hnutí v zákonné lhůtě jednoho roku napravilo stav spočívající v nepředložení výročních finančních zpráv. Dospěl k závěru, že hnutí vadný stav neodstranilo, a proto rozhodl o jeho rozpuštění a jmenování likvidátora.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "korporace"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785502",
@@ -3916,16 +3901,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785317",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785317",
    "soudce": "Vojtěch Šimíček",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Porušení povinností při kontrole",
+   "shrnuti": "Společnost Czernin AGRO se soudila se Státní zemědělskou a potravinářskou inspekcí kvůli pokutě za porušení potravinového práva a neposkytnutí součinnosti při kontrole. Nejvyšší správní soud řešil otázku zákonnosti průběhu kontroly, vymezení skutku a přiměřenosti pokuty. Dospěl k závěru, že kasační stížnost je nedůvodná, neboť kontrola proběhla v souladu se zákonem a skutkový stav byl řádně zjištěn.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:785313",
@@ -4106,16 +4090,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785135",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785135",
    "soudce": "Radovan Havelec",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Seznámení s důkazy v odvolacím řízení",
+   "shrnuti": "Žalobkyně EF Group se s Odvolacím finančním ředitelstvím soudila ohledně doměření daně z přidané hodnoty a dodržení procesních pravidel. Nejvyšší správní soud řešil otázku, zda je odvolací orgán povinen při seznámení se zjištěnými skutečnostmi podle daňového řádu znovu hodnotit i důkazy provedené již v prvostupňovém řízení. Soud dospěl k závěru, že takovou povinnost odvolací orgán nemá, pokud z těchto dříve provedených důkazů nevyvozuje nová skutková zjištění ani nemění právní názor v neprospěch daňového subjektu.",
    "oblasti": [
-    "dane"
+    "dane",
+    "spravni"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:784825",
@@ -4130,16 +4113,16 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784825",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784825",
    "soudce": "Eva Šonková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Příspěvek na bydlení",
+   "shrnuti": "Ministerstvo práce a sociálních věcí podalo kasační stížnost proti rozsudku Městského soudu v Praze, kterým bylo zrušeno jeho rozhodnutí o nepřiznání příspěvku na bydlení žalobci. Nejvyšší správní soud řešil otázku, zda smlouva o ubytování může založit nájemní vztah pro účely státní sociální podpory a zda je nutné zkoumat definiční znaky bytu. Rozhodl, že smlouva o ubytování zpravidla nájemní vztah nezakládá, ale napadené rozhodnutí ministerstva bylo nepřezkoumatelné pro nedostatečné posouzení obsahu smlouvy, a proto kasační stížnost zamítl.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "zavazky",
+    "spravni"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:784810",
@@ -4154,16 +4137,16 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784810",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784810",
    "soudce": "Jitka Zavřelová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odpočet DPH",
+   "shrnuti": "Reklamní agentura se soudila s Odvolacím finančním ředitelstvím o doměření daně z přidané hodnoty a odepření nároku na odpočet DPH za rok 2019. Nejvyšší správní soud řešil otázku, zda daňové orgány mohly zcela odepřít nárok na odpočet DPH v situaci, kdy žalobkyně neprokázala uskutečnění reklamních služeb v celém deklarovaném rozsahu. Soud dospěl k závěru, že pokud daňový subjekt u paušálně sjednaného plnění neprokáže dílčí plnění a zároveň nevyčíslí jejich cenu, je postup spočívající v neuznání celého nároku na odpočet v souladu se zákonem.",
    "oblasti": [
-    "dane"
+    "dane",
+    "zavazky",
+    "civilni_proces"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:784794",
@@ -4202,16 +4185,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784776",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784776",
    "soudce": "Václav Štencel",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Veřejně přístupná účelová komunikace",
+   "shrnuti": "Žalobkyně se domáhala zrušení rozhodnutí o deklaraci existence veřejně přístupné účelové komunikace na jejích pozemcích. Nejvyšší správní soud řešil otázku naplnění znaků veřejně přístupné účelové komunikace, zejména souhlasu vlastníka a nutné komunikační potřeby při zániku jiné alternativní cesty. Dospěl k závěru, že konkludentní souhlas vlastníka a nutná komunikační potřeba byly naplněny, a proto kasační stížnost zamítl.",
    "oblasti": [
+    "vecna_prava",
     "spravni"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:784560",
@@ -4294,16 +4276,16 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785463",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785463",
    "soudce": "Štěpán Výborný",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přezkum územního plánu",
+   "shrnuti": "České dráhy se domáhaly zrušení částí opatření obecné povahy Územního plánu města Brna, které schválilo Statutární město Brno. Nejvyšší správní soud řešil otázku přezkoumatelnosti územního plánu, proporcionality zásahu do vlastnických práv a vypořádání námitek a dospěl k závěru, že kasační stížnosti navrhovatelky i odpůrce jsou nedůvodné. Obě kasační stížnosti proto zamítl.",
    "oblasti": [
-    "stavebni_zp"
+    "spravni",
+    "vecna_prava",
+    "civilni_proces"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:785461",
@@ -4318,16 +4300,16 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785461",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785461",
    "soudce": "Jakub Camrda",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Stavební povolení",
+   "shrnuti": "Žalobci napadli rozhodnutí žalovaného, kterým bylo potvrzeno územní rozhodnutí a stavební povolení na bytový dům a související infrastrukturu. Nejvyšší správní soud řešil otázku posouzení souladu stavby se stávající zástavbou a územním plánem, jakož i další procesní a hmotněprávní námitky stěžovatelů. Dospěl k závěru, že napadený rozsudek městského soudu je přezkoumatelný a žalobou napadené rozhodnutí je v souladu se zákonem, proto kasační stížnosti zamítl.",
    "oblasti": [
-    "stavebni_zp"
+    "spravni",
+    "vecna_prava",
+    "civilni_proces"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:785457",
@@ -4386,16 +4368,16 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785352",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785352",
    "soudce": "Jitka Zavřelová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Předčasný starobní důchod",
+   "shrnuti": "Žalobce se soudil s Českou správou sociálního zabezpečení o určení data, od kterého mu lze vyplácet předčasný starobní důchod při současném výkonu činnosti jako osoba samostatně výdělečně činná. Nejvyšší správní soud řešil otázku přezkoumatelnosti rozhodnutí žalované a závěrů krajského soudu ohledně trvání účasti na důchodovém pojištění. Soud dospěl k závěru, že rozhodnutí žalované i napadený rozsudek krajského soudu jsou nepřezkoumatelné pro vnitřní rozpory v podkladech a nedostatek důvodů.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni",
+    "civilni_proces"
    ],
    "procesni": false,
    "vysledek": "zruseno_vraceno",
-   "vysledek_popis": "zrušeno a vráceno",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zrušeno a vráceno"
   },
   {
    "id": "nss:785347",
@@ -4410,16 +4392,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785347",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785347",
    "soudce": "Ondřej Mrákota",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Obnova řízení",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Krajského soudu v Praze, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o zamítnutí žádosti o obnovu přestupkového řízení. Nejvyšší správní soud řešil otázku, zda nově uplatněné skutečnosti ohledně trestné činnosti a totožnosti jiných osob splňují zákonné podmínky pro povolení obnovy řízení ve vztahu k odpovědnosti žalobce. Soud dospěl k závěru, že novoty nemají relevanci a nemohou odůvodnit jiné řešení otázky přestupkové odpovědnosti žalobce, a proto kasační stížnost zamítl.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:785323",
@@ -4434,16 +4415,16 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785323",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785323",
    "soudce": "Václav Štencel",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Systémová podjatost",
+   "shrnuti": "Žalobci se soudili s Krajským úřadem Královéhradeckého kraje a dalšími účastníky u Krajského soudu v Hradci Králové proti rozhodnutí o umístění stavby obchodního centra, přičemž krajský soud žalobě vyhověl a napadené rozhodnutí zrušil. Nejvyšší správní soud řešil otázku přezkoumatelnosti závěrů o systémové podjatosti a výkladu neurčitých právních pojmů v územním plánu. Dospěl k závěru, že kasační stížnosti jsou nedůvodné, a potvrdil rozsudek krajského soudu.",
    "oblasti": [
-    "stavebni_zp"
+    "spravni",
+    "vecna_prava",
+    "civilni_proces"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:785310",
@@ -4482,16 +4463,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785301",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785301",
    "soudce": "Ivo Pospíšil",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Daň z nemovitých věcí",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku krajského soudu, kterým byla zamítnuta jeho žaloba proti rozhodnutí Odvolací finanční ředitelství o vyměření daně z nemovitých věcí. Nejvyšší správní soud řešil otázku zákonnosti obecně závazné vyhlášky města Cheb stanovící vyšší koeficient daně pro průmyslové zóny a přípustnosti dodatečného odůvodnění vyhlášky v soudním řízení. Dospěl k závěru, že obec může důvody vyhlášky předestřít až v řízení před soudem a že vymezení vyššího koeficientu pro průmyslové nemovitosti je objektivním a přípustným kritériem.",
    "oblasti": [
-    "dane"
+    "dane",
+    "spravni"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:785300",
@@ -4504,14 +4484,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785300",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785300",
    "soudce": "Sylva Šiškeová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Místní příslušnost",
+   "shrnuti": "Žalobce podal žalobu u Krajského soudu v Praze proti Magistrátu hlavního města Prahy, kterou tento soud postoupil Městskému soudu v Praze. Nejvyšší správní soud řešil otázku, zda je soud oprávněn postoupit věc jinému soudu předtím, než postaví najisto žalobní typ a projednatelnost žaloby. Rozhodl, že takový postup je předčasný, a nesouhlas Městského soudu v Praze s postoupením věci je proto důvodný.",
    "oblasti": [
+    "civilni_proces",
     "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785299",
@@ -4526,16 +4505,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785299",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785299",
    "soudce": "Ivo Pospíšil",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Prekluze daňové povinnosti",
+   "shrnuti": "Žalobce se domáhal zrušení rozhodnutí Odvolacího finančního ředitelství týkajícího se doměření daně z příjmů a penále, přičemž namítal prekluzi práva stanovit daň. Nejvyšší správní soud řešil otázku, zda došlo k prekluzi práva stanovit daň v důsledku případného dřívějšího materiálního zahájení daňové kontroly. Soud dospěl k závěru, že prekluze nenastala, neboť lhůta nebyla uplynutím překročena v žádném z uvažovaných scénářů zahájení kontroly, a kasační stížnost zamítl.",
    "oblasti": [
-    "dane"
+    "dane",
+    "spravni"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:785249",
@@ -4574,16 +4552,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785248",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785248",
    "soudce": "Faisal Husseini",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Propuštění ze služebního poměru",
+   "shrnuti": "Žalobkyně se žalobou domáhala zrušení rozhodnutí žalovaného, kterým bylo potvrzeno její propuštění ze služebního poměru vojáka z povolání. Nejvyšší správní soud posuzoval otázku, zda ztráta bezpečnostní způsobilosti a zrušení osvědčení pro přístup k utajovaným informacím odůvodňují obligatorní propuštění bez nabídkové povinnosti. Soud dospěl k závěru, že při splnění zákonných podmínek nezpůsobilosti a jejího vlastního zavinění nemají služební orgány prostor pro uvážení, a proto kasační stížnost zamítl.",
    "oblasti": [
-    "pracovni"
+    "pracovni",
+    "spravni"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:785235",
@@ -4598,17 +4575,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785235",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785235",
    "soudce": "Veronika Juřičková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Poskytnutí součinnosti při kontrole",
+   "shrnuti": "Společnost KOŤA se soudila se Státním úřadem inspekce práce kvůli uložení pokuty za neposkytnutí součinnosti při inspekci zaměřené na zaměstnávání cizinců. Nejvyšší správní soud řešil otázku, zda kontrolovaná osoba může odmítnout předložení dokladů do doby vyřízení stížnosti na postup kontrolního orgánu. Soud dospěl k závěru, že podání stížnosti nemá odkladný účinek a ignorování výzev k předložení podkladů souvisejících s předmětem kontroly naplňuje skutkovou podstatu přestupku.",
    "oblasti": [
     "spravni",
-    "socialni_cizinci"
+    "pracovni"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:785214",
@@ -4623,16 +4598,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785214",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785214",
    "soudce": "Vojtěch Šimíček",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Změna územního plánu",
+   "shrnuti": "Společnost F.A.Dvořák a další se soudili se statutárním městem Brno o zrušení části územního plánu týkající se jejich pozemků. Nejvyšší správní soud řešil otázku, zda změna funkčního využití pozemků na smíšené obytné plochy představuje nepřípustný zásah do vlastnických práv a zda byla řádně odůvodněna. Soud dospěl k závěru, že změna je v souladu se zákonem, zachovává ochranu vnitrobloků a nezhoršuje kvalitu bydlení.",
    "oblasti": [
-    "stavebni_zp"
+    "stavebni_zp",
+    "vecna_prava"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:785207",
@@ -4671,16 +4645,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785203",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785203",
    "soudce": "Vojtěch Šimíček",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Průzkumné území pro úložiště",
+   "shrnuti": "Obec Chanovice podala kasační stížnost proti rozsudku Městského soudu v Praze, kterým byla zamítnuta žaloba proti rozhodnutí Ministerstva životního prostředí o stanovení průzkumného území Březový potok pro zvláštní zásahy do zemské kůry za účelem vybudování podzemního úložiště radioaktivních odpadů. Nejvyšší správní soud řešil otázku výkladu § 4a odst. 6 geologického zákona a míry zohlednění veřejných zájmů v této fázi průzkumu. Dospěl k závěru, že ustanovení je třeba aplikovat přiměřeně a veřejné zájmy se posuzují z pohledu samotného průzkumu, nikoliv z pohledu zamýšleného využití území, a proto kasační stížnost zamítl.",
    "oblasti": [
+    "spravni",
     "stavebni_zp"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:785202",
@@ -4695,16 +4668,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785202",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785202",
    "soudce": "Veronika Juřičková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Nečinnost správního orgánu",
+   "shrnuti": "Žalobkyně podala kasační stížnost proti usnesení krajského soudu, kterým byla odmítnuta její žaloba na ochranu proti nečinnosti Městského úřadu Bechyně v řízení o odstranění stavby. Soud řešil otázku včasnosti žaloby na ochranu proti nečinnosti podané po mnoha letech od zahájení řízení, v němž lhůta pro podání žaloby počala běžet dnem účinnosti soudního řádu správního (1. 1. 2003). Nejvyšší správní soud dospěl k závěru, že žaloba byla podána po uplynutí roční prekluzivní lhůty, a proto kasační stížnost zamítl.",
    "oblasti": [
+    "spravni",
     "stavebni_zp"
    ],
-   "procesni": false,
+   "procesni": true,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:785201",
@@ -4719,16 +4691,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785201",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785201",
    "soudce": "Veronika Juřičková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Ukončení studia",
+   "shrnuti": "Žalobce se soudil s rektorem Vysoké školy chemicko-technologické v Praze o přezkum rozhodnutí o ukončení studia z důvodu překročení maximální doby studia. Nejvyšší správní soud řešil otázku, zda lze při přezkumu takového rozhodnutí zohledňovat okolnosti související s probíhajícím disciplinárním řízením a zda je maximální doba studia objektivní lhůtou. Soud dospěl k závěru, že maximální doba studia je objektivní nepřekročitelnou lhůtou a okolnosti jiného řízení na tom nic nemění.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:784855",
@@ -4743,16 +4714,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784855",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784855",
    "soudce": "Filip Dienstbier",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Pokračující přestupek",
+   "shrnuti": "Společnost Cellthera podala kasační stížnost proti rozsudku Městského soudu v Praze, kterým byla zamítnuta její žaloba proti rozhodnutí Ministerstva zdravotnictví o přestupku podle zákona o léčivech. Soud řešil otázku naplnění jednotného záměru u pokračujícího přestupku při podávání neregistrovaného léčivého přípravku a určitosti časového vymezení dílčích útoků. Nejvyšší správní soud dospěl k závěru, že správní orgány a městský soud správně dovodily existenci jednotného záměru z dlouhodobé a soustavné povahy jednání žalobkyně, a kasační stížnost zamítl.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "skoda"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:784846",
@@ -4813,16 +4783,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784821",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784821",
    "soudce": "Vojtěch Šimíček",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Záplavové území",
+   "shrnuti": "Navrhovatelé se podali kasační stížnost proti rozsudku krajského soudu, kterým byl částečně zamítnut jejich návrh na zrušení územního plánu. Nejvyšší správní soud řešil otázku, zda obec má pravomoc stanovit územním plánem podmínku nivelety Q100 jako preventivní opatření v záplavové oblasti, či zda tato pravomoc náleží výlučně vodoprávnímu úřadu. Soud dospěl k závěru, že obec takovou pravomoc nemá, a proto zrušil napadenou část územního plánu.",
    "oblasti": [
-    "stavebni_zp"
+    "stavebni_zp",
+    "spravni"
    ],
    "procesni": false,
    "vysledek": "zruseno",
-   "vysledek_popis": "zrušeno + zrušeno opatř. obec. povahy",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zrušeno + zrušeno opatř. obec. povahy"
   },
   {
    "id": "nss:784815",
@@ -4957,16 +4926,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/781157",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/781157",
    "soudce": "Eva Šonková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Dopravní napojení jaderného zdroje",
+   "shrnuti": "Spolek Děti Země – Klub za udržitelnou dopravu se soudil s Ministerstvem průmyslu a obchodu o rozhodnutí ve věci umístění vedlejšího záměru dopravního napojení nového jaderného zdroje v Dukovanech. Nejvyšší správní soud řešil otázku přezkoumatelnosti územního rozhodnutí, zákonnosti podmínek pro kácení dřevin, převzetí podmínek z EIA a způsobu doručování a dospěl k závěru, že kasační stížnost je nedůvodná. Soud potvrdil, že napadené územní rozhodnutí i rozsudek městského soudu jsou zákonné a dostatečně odůvodněné.",
    "oblasti": [
-    "stavebni_zp"
+    "stavebni_zp",
+    "spravni"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   },
   {
    "id": "nss:747796",
@@ -4979,14 +4947,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/747796",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/747796",
    "soudce": "Radan Malík",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Rozpuštění politického hnutí",
+   "shrnuti": "Vláda navrhla rozpuštění politického hnutí PRO! Ústecký kraj kvůli tomu, že hnutí ani po uplynutí lhůty k nápravě neodstranilo nedostatky, pro které mu byla dříve pozastavena činnost. Nejvyšší správní soud řešil otázku, zda nadále trvají důvody pro pozastavení činnosti hnutí, a dospěl k závěru, že hnutí v roční lhůtě nenapravilo protiprávní stav spočívající v nepředložení výročních finančních zpráv. Proto soud rozhodl o rozpuštění hnutí a jmenoval jeho likvidátora.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "korporace"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:747563",
@@ -5001,16 +4968,15 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/747563",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/747563",
    "soudce": "Filip Dienstbier",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Dílčí starobní důchod",
+   "shrnuti": "Žalobkyně se žalobou a následnou kasační stížností domáhala přezkumu rozhodnutí České správy sociálního zabezpečení týkajícího se výpočtu zvýšení procentní výměry starobního důchodu za výchovu dětí (tzv. výchovného) u tzv. dílčího důchodu. Nejvyšší správní soud řešil otázku, zda se na výchovné u dílčího důchodu aplikuje zásada poměrnosti a zda je taková úprava diskriminační. Soud dospěl k závěru, že úprava je správná a nediskriminační, přičemž případné krácení lze řešit žádostí o dorovnávací přídavek.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
    "procesni": false,
    "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "zamítnuto"
   }
  ]
 }

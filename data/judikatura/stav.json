@@ -2,42 +2,42 @@
  "ai": {
   "2026-09-24": {
    "gemini-flash-lite-latest": {
-    "volani": 308,
-    "vstup": 2735234,
-    "vystup": 58813
+    "volani": 401,
+    "vstup": 3886146,
+    "vystup": 78853
    },
    "gemma-4-31b-it": {
-    "volani": 2,
-    "vstup": 5334,
-    "vystup": 2266
+    "volani": 6,
+    "vstup": 58594,
+    "vystup": 8207
    }
   }
  },
- "aktualizovano": "2026-09-24T13:10:19Z",
+ "aktualizovano": "2026-09-24T15:56:03Z",
  "soudy": {
   "ns": {
    "chyba": null,
-   "nalezeno": 171,
-   "nove": 0,
-   "objev": "2026-09-24T12:31:50Z"
+   "nalezeno": 198,
+   "nove": 27,
+   "objev": "2026-09-24T15:56:03Z"
   },
   "nss": {
    "chyba": null,
    "nalezeno": 218,
-   "nove": 80,
-   "objev": "2026-09-24T12:31:50Z"
+   "nove": 0,
+   "objev": "2026-09-24T15:56:03Z"
   },
   "sdeu": {
    "chyba": null,
-   "nalezeno": 43,
-   "nove": 43,
-   "objev": "2026-09-24T13:10:19Z"
+   "nalezeno": 63,
+   "nove": 20,
+   "objev": "2026-09-24T15:56:03Z"
   },
   "us": {
    "chyba": null,
    "nalezeno": 75,
-   "nove": 41,
-   "objev": "2026-09-24T12:31:50Z"
+   "nove": 0,
+   "objev": "2026-09-24T15:56:03Z"
   }
  }
 }

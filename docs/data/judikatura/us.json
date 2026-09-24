@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T12:31:50Z",
+ "generated": "2026-09-24T15:56:03Z",
  "soud": "us",
  "okno_dni": 14,
  "polozky": [
@@ -1461,14 +1461,15 @@
    "first_seen": "2026-09-15T12:00:00Z",
    "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-1941-26_1",
    "soudce": "Dita Řepková",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
+   "heslo": "Odmítnutí stížnosti pro vady",
+   "shrnuti": "Stěžovatel napadal trestní řízení, v němž byl odsouzen, a namítal porušení svých základních práv. Ústavní soud ústavní stížnost odmítl, protože stěžovatel v určené lhůtě neodstranil vady podání, zejména absenci povinného zastoupení advokátem a nepředložení napadených rozhodnutí.",
+   "oblasti": [
+    "trestni",
+    "ustavni"
+   ],
    "procesni": true,
    "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "vysledek_popis": "odmítnuto pro neodstraněné vady"
   },
   {
    "id": "us:1-1827-26_1",
