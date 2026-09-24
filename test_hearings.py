@@ -686,6 +686,88 @@ check("na hotové iniciály se AI už neptá",
       "T. S." not in " ".join(sim.dotazy), " ".join(sim.dotazy))
 
 # =====================================================================
+print("\n10) Sestavy senátů z rozvrhu práce")
+# =====================================================================
+# Kalendář pod mřížkou ukazuje, kdo senátům předsedá a kdo v nich sedí.
+# Dvojice senát → soudci vrací AI z rozvrhu; dřív se zahazovaly a zbyly jen
+# ploché seznamy.
+
+
+def mini_pdf(text):
+    """Jednostránkové PDF s jedním řádkem textu (ASCII) – stačí na to, aby
+    ho pypdf přečetl a aby prošlo filtrem IP klíčových slov."""
+    obsah = f"BT /F1 12 Tf 72 720 Td ({text}) Tj ET".encode("latin-1")
+    objekty = [
+        b"<< /Type /Catalog /Pages 2 0 R >>",
+        b"<< /Type /Pages /Kids [3 0 R] /Count 1 >>",
+        b"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R "
+        b"/Resources << /Font << /F1 5 0 R >> >> >>",
+        b"<< /Length %d >>\nstream\n" % len(obsah) + obsah + b"\nendstream",
+        b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>",
+    ]
+    out, odkazy = b"%PDF-1.4\n", []
+    for i, o in enumerate(objekty, 1):
+        odkazy.append(len(out))
+        out += b"%d 0 obj\n" % i + o + b"\nendobj\n"
+    xref = len(out)
+    out += b"xref\n0 %d\n0000000000 65535 f \n" % (len(objekty) + 1)
+    out += b"".join(b"%010d 00000 n \n" % o for o in odkazy)
+    return out + (b"trailer\n<< /Size %d /Root 1 0 R >>\nstartxref\n%d\n%%%%EOF\n"
+                  % (len(objekty) + 1, xref))
+
+
+odpoved_rozvrh = json.dumps({
+    "senaty": [
+        {"senat": "1 Cmo", "predseda": "JUDr. Roman Horáček, MBA",
+         "clenove": ["JUDr. Filip Havrda", "Mgr. Michal Výtisk"],
+         "agenda": "duševní vlastnictví"},
+        {"senat": "2 Co", "predseda": "JUDr. Roman Horáček, MBA",
+         "clenove": ["JUDr. Filip Havrda", "Mgr. Michal Výtisk"],
+         "agenda": "duševní vlastnictví"},
+        {"senat": "3 Cmo", "predseda": "JUDr. Jiří Čurda", "clenove": [],
+         "agenda": "nekalá soutěž"},
+    ],
+    "soudci": ["Jiří Čurda", "Roman Horáček"],
+}, ensure_ascii=False)
+
+senaty_r, soudci_r, sestavy_r = s.rozvrh_z_odpovedi(json.loads(odpoved_rozvrh))
+check("ploché senáty zůstávají jako dřív", senaty_r == ["1 Cmo", "2 Co", "3 Cmo"],
+      str(senaty_r))
+check("soudci bez titulů", soudci_r == ["Jiří Čurda", "Roman Horáček"], str(soudci_r))
+check("senáty se stejnou sestavou se sloučí",
+      [x["senaty"] for x in sestavy_r] == [["1 Cmo", "2 Co"], ["3 Cmo"]],
+      str(sestavy_r))
+check("sestava nese předsedu, členy a agendu bez titulů",
+      sestavy_r[0] == {"senaty": ["1 Cmo", "2 Co"], "predseda": "Roman Horáček",
+                       "clenove": ["Filip Havrda", "Michal Výtisk"],
+                       "agenda": "duševní vlastnictví"}, str(sestavy_r[0]))
+check("rozbitá odpověď AI nic nevrátí", s.rozvrh_z_odpovedi("nesmysl") == ([], [], []))
+
+pdf_rozvrh = mini_pdf("Senat 1 Cmo: spory z prava autorskeho a prumyslove vlastnictvi")
+cfg_vs = {"courts": {"VS": {"nazev": "Vrchní soud v Praze", "senaty": ["1 Cmo"],
+                            "soudci": ["Roman Horáček"]}}}
+with s_ai(odpoved_rozvrh) as sim:
+    zmena = s.update_rozvrh(cfg_vs, "VS", pdf_rozvrh, "https://example.test/rozvrh.pdf")
+check("rozvrh se sestavami se uloží", zmena and
+      cfg_vs["courts"]["VS"]["sestavy"] == sestavy_r, str(cfg_vs["courts"]["VS"]))
+
+# Stejný rozvrh podruhé: sestavy už jsou, AI se znovu neptá.
+with s_ai(odpoved_rozvrh) as sim:
+    zmena = s.update_rozvrh(cfg_vs, "VS", pdf_rozvrh, "https://example.test/rozvrh.pdf")
+check("nezměněný rozvrh se sestavami se znovu neposílá AI",
+      not zmena and not sim.dotazy, str(sim.dotazy))
+
+# Konfigurace z doby před sestavami (hash sedí, sestavy chybí): AI se jednou
+# zeptá i beze změny rozvrhu, jinak by sestavy čekaly na další změnu rozvrhu.
+cfg_stary = {"courts": {"VS": {"nazev": "Vrchní soud v Praze", "senaty": ["1 Cmo"],
+                               "rozvrh_zdroj": dict(cfg_vs["courts"]["VS"]["rozvrh_zdroj"])}}}
+with s_ai(odpoved_rozvrh) as sim:
+    zmena = s.update_rozvrh(cfg_stary, "VS", pdf_rozvrh, "https://example.test/rozvrh.pdf")
+check("chybějící sestavy se doplní i z nezměněného rozvrhu",
+      zmena and cfg_stary["courts"]["VS"].get("sestavy") == sestavy_r,
+      str(cfg_stary["courts"]["VS"]))
+
+# =====================================================================
 failed = [n for n, ok, _ in results if not ok]
 print(f"\n{len(results) - len(failed)}/{len(results)} testů prošlo")
 if failed:
