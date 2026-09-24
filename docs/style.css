@@ -224,10 +224,12 @@ th { position: relative; }
 body.is-resizing { cursor: col-resize; user-select: none; -webkit-user-select: none; }
 /* Inline-block, ne block – barevné pozadí má obepínat text, ne se roztáhnout
    přes celou šířku sloupce. Delší heslo se zalomí uvnitř štítku. */
-.col-heslo .heslo {
+.col-heslo .heslo, .heslo-u-znacky .heslo {
   display: inline-block; max-width: 100%; vertical-align: top;
   white-space: normal; line-height: 1.35;
 }
+/* Kopie hesla v buňce se značkou – ukáže se jen v blokovém zobrazení. */
+.heslo-u-znacky { display: none; }
 
 /* Štítky (shadcn Badge). Heslo = akcent; zdroj/typ mají sémantické odstíny,
    ostatní neutrální „secondary". */
@@ -544,8 +546,8 @@ html.is-loading body { visibility: hidden; }
 }
 /* Tabulka má spodní šířku 780 px; jakmile se do karty nevejde, vodorovné
    posouvání schová shrnutí a řádky se protáhnou. Místo toho je z každé
-   položky blok: nahoře na jednom řádku štítky (zdroj, druh, heslo) a vpravo
-   datum, pod nimi název s autorem a shrnutí. */
+   položky blok: nahoře štítky zdroje a datum, pod nimi značka s heslem,
+   název věci nebo autor a shrnutí. */
 @container (max-width: 790px) {
   .table-wrap { overflow-x: visible; margin-inline: 0; }
   table { display: block; min-width: 0; }
@@ -560,20 +562,19 @@ html.is-loading body { visibility: hidden; }
   tbody td, tbody td:first-child, tbody td:last-child { display: block; padding: 0; border: 0; }
   tbody td:empty { display: none; }
   .col-src, .col-type { order: 1; }
-  /* Heslo vyplní místo mezi štítky a datem; delší se zalomí uvnitř štítku
-     (jako ve sloupci), ať datum nemusí samo na další řádek. */
-  .col-heslo {
-    order: 2; flex: 1 1 0; min-width: min(7em, 100%); max-width: 100%;
-    white-space: normal; overflow: visible;
-  }
-  .col-date { order: 3; margin-left: auto; font-size: var(--fs-sm); }
-  /* Bez štítku (NS, NSS a ÚS, dokud nemají heslo) by datum viselo samo
-     vpravo – zůstane vlevo. */
-  tbody .col-name:first-child ~ .col-heslo:empty ~ .col-date { margin-left: 0; }
-  .col-name { order: 4; flex-basis: 100%; font-weight: 500; }
-  .col-author { order: 5; flex-basis: 100%; }
+  .col-date { order: 2; font-size: var(--fs-sm); }
+  .col-name { order: 3; flex-basis: 100%; font-weight: 500; }
+  .col-author { order: 4; flex-basis: 100%; }
   .col-summary { order: 6; flex-basis: 100%; color: var(--muted-foreground); }
   .col-src .src, .col-src .tag { margin-bottom: 0; }
+  /* Heslo stojí hned za značkou (a PDF): sloupec Heslo se schová a ukáže se
+     jeho kopie v buňce se značkou. Vyplní zbytek řádku a delší se zalomí
+     uvnitř štítku, ať nemusí samo pod značku; název věci a autor jdou pod
+     ně. */
+  tbody td.col-heslo { display: none; }
+  tbody td.col-name { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 6px; }
+  .heslo-u-znacky { display: block; flex: 1 1 0; min-width: min(7em, 100%); }
+  tbody td.col-name .vec, tbody td.col-name .author { flex-basis: 100%; }
 }
 @media (max-width: 640px) {
   .card-stav { margin-inline: 16px; }

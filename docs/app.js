@@ -402,7 +402,7 @@ function pdfHref(item) {
   return "/pdf/nss/" + nss[1] + "/" + encodeURIComponent(jmeno + ".pdf");
 }
 
-function nameCell(item) {
+function nameCell(item, sHeslem) {
   const title = esc(item.title.replace(/^\[[^\]]+\]\s*/, ""));
   const href = safeHref(item.link);
   let html = href ? '<a href="' + href + '">' + title + "</a>" : title;
@@ -411,8 +411,17 @@ function nameCell(item) {
   // o místo v tabulce.
   const doc = pdfHref(item);
   if (doc) html += ' <a class="doc-link" href="' + doc + '" target="_blank" rel="noopener">PDF</a>';
+  // Na telefonu stojí heslo hned za značkou: tabulka s heslem má jeho kopii
+  // i tady a CSS ukáže vždy jen jedno z nich (v tabulce sloupec Heslo).
+  if (sHeslem && item.heslo) {
+    html += ' <span class="heslo-u-znacky"><span class="heslo">' + esc(item.heslo) + "</span></span>";
+  }
   if (item.vec) html += '<span class="vec">' + esc(item.vec) + "</span>";
   return html;
+}
+
+function nameHesloCell(item) {
+  return nameCell(item, true);
 }
 
 function authorCell(item) {
@@ -421,7 +430,7 @@ function authorCell(item) {
 
 // V přehledu přes všechny zdroje jdou autoři pod název (má je jen část položek).
 function nameAuthorCell(item) {
-  return nameCell(item) + authorCell(item);
+  return nameCell(item, true) + authorCell(item);
 }
 
 function hesloCell(item) {
@@ -554,14 +563,14 @@ function vidiCasopis(item) {
 
 // Definice sloupců sdílíme mezi živým feedem a novými položkami.
 const colsNsoud = [
-  { label: "Spisová značka", cls: "col-name", render: nameCell },
+  { label: "Spisová značka", cls: "col-name", render: nameHesloCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
   { label: "Shrnutí", cls: "col-summary", render: summaryCell },
   { label: "Datum", cls: "col-date", render: dateCell }
 ];
 
 const colsNss = [
-  { label: "Číslo jednací", cls: "col-name", render: nameCell },
+  { label: "Číslo jednací", cls: "col-name", render: nameHesloCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
   { label: "Shrnutí", cls: "col-summary", render: summaryCell },
   { label: "Datum", cls: "col-date", render: dateCell }
@@ -569,7 +578,7 @@ const colsNss = [
 
 const colsSdeu = [
   { label: "Druh", cls: "col-type", render: typeCell },
-  { label: "Věc", cls: "col-name", render: nameCell },
+  { label: "Věc", cls: "col-name", render: nameHesloCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
   { label: "Shrnutí", cls: "col-summary", render: summaryCell },
   { label: "Datum", cls: "col-date", render: dateCell }
