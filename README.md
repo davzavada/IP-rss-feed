@@ -14,7 +14,10 @@ jeden pro všechny, na výběru nezávisí), každý zdroj zvlášť (NS, NSS, �
 SDEU, časopisy) a Kalendář jednání; Můj výběr je dialog z nabídky účtu.
 Minulou návštěvu si pamatuje prohlížeč (`owl:navsteva`, `owl:navsteva-od`
 v localStorage); návštěva končí půl hodiny po odchodu, takže obnovení
-stránky tečky nesmaže.
+stránky tečky nesmaže. V tabulkách je pod značkou datum vydání („ze dne",
+jak se cituje; datum zveřejnění v bublině), shrnutí má řádek nejvýš asi
+95 znaků a barvu nese jen štítek zdroje – heslo i druh u SDEU jsou
+neutrální.
 
 ## Jak to drží pohromadě
 

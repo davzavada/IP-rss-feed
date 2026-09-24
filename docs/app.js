@@ -41,6 +41,8 @@ function zJson(r) {
     poznamka: r.poznamka || "",
     // Raná předběžná otázka z ipcuria ještě zveřejněná není – datum podání.
     datum: r.zverejneno || r.datum || r.first_seen || "",
+    rozhodnuto: r.datum || "",
+    zverejneno: r.zverejneno || "",
     nove: !isNaN(prvni) && Date.now() - prvni < NOVE_MS,
     prvni: isNaN(prvni) ? 0 : prvni,
     autori: "",
@@ -129,9 +131,9 @@ function tagOf(title) {
 const COL_DEFAULTS = { type: 10, name: 15, oblasti: 14, heslo: 13, src: 8, date: 8, author: 12 };
 const MIN_COL_PCT = 4;          // pod tuhle šířku sloupec nepustíme
 const KEY_STEP_PCT = 2;         // krok při ovládání šipkami
-// Ve 2. verzi užší sloupce kolem shrnutí – šířky natažené podle starých
-// výchozích se zahodí (jiný název cookie), ať platí nové.
-const COL_COOKIE = "colw2";
+// Ve 3. verzi bez sloupce Datum – šířky uložené pro starou skladbu sloupců
+// se zahodí (jiný název cookie).
+const COL_COOKIE = "colw3";
 const COL_COOKIE_MAX_AGE = 365 * 24 * 60 * 60;
 
 // Skladba sloupců podle klíče tabulky – potřeba při obnovení výchozích šířek.
@@ -417,7 +419,21 @@ function nameCell(item) {
   const doc = pdfHref(item);
   if (doc) html += ' <a class="doc-link" href="' + doc + '" target="_blank" rel="noopener">PDF</a>';
   if (item.vec) html += '<span class="vec">' + esc(item.vec) + "</span>";
-  return html;
+  return html + datumRadek(item);
+}
+
+// Drobný řádek s datem pod značkou – u rozhodnutí datum vydání („ze dne",
+// jak se cituje), zveřejnění v bublině; u článku datum vydání čísla.
+function datumRadek(item) {
+  if (item.casopis !== undefined) {
+    return item.datum ? '<span class="datum-radek">' + czDate(item.datum) + "</span>" : "";
+  }
+  const d = item.rozhodnuto || item.datum;
+  if (!d) return "";
+  const pred = item.druh === "předběžná otázka" ? "podáno " : "ze dne ";
+  const zv = item.zverejneno && item.zverejneno !== item.rozhodnuto ? item.zverejneno : "";
+  return '<span class="datum-radek"' + (zv ? ' title="Zveřejněno ' + esc(czDate(zv)) + '"' : "") + ">" +
+    pred + czDate(d) + "</span>";
 }
 
 function authorCell(item) {
@@ -426,7 +442,10 @@ function authorCell(item) {
 
 // V přehledu přes všechny zdroje jdou autoři pod název (má je jen část položek).
 function nameAuthorCell(item) {
-  return nameCell(item) + authorCell(item);
+  if (item.casopis === undefined) return nameCell(item) + authorCell(item);
+  // Článek: název, autoři, pak datum.
+  const bezData = Object.assign({}, item, { datum: "" });
+  return nameCell(bezData) + authorCell(item) + datumRadek(item);
 }
 
 function hesloCell(item) {
@@ -462,9 +481,6 @@ function summaryCell(item) {
   return vysledek ? '<span class="summary">' + vysledek + "</span>" : "";
 }
 
-function dateCell(item) {
-  return czDate(item.datum);
-}
 
 // U SDEU druh rozhodnutí (rozsudek, stanovisko GA, předběžná otázka…),
 // u časopisů zkratka časopisu z titulku.
@@ -582,33 +598,29 @@ function vidiCasopis(item) {
 const colsNsoud = [
   { label: "Spisová značka", cls: "col-name", render: nameCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
-  { label: "Shrnutí", cls: "col-summary", render: summaryCell },
-  { label: "Datum", cls: "col-date", render: dateCell }
+  { label: "Shrnutí", cls: "col-summary", render: summaryCell }
 ];
 
 const colsNss = [
   { label: "Číslo jednací", cls: "col-name", render: nameCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
-  { label: "Shrnutí", cls: "col-summary", render: summaryCell },
-  { label: "Datum", cls: "col-date", render: dateCell }
+  { label: "Shrnutí", cls: "col-summary", render: summaryCell }
 ];
 
 const colsSdeu = [
   { label: "Druh", cls: "col-type", render: typeCell },
   { label: "Věc", cls: "col-name", render: nameCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
-  { label: "Shrnutí", cls: "col-summary", render: summaryCell },
-  { label: "Datum", cls: "col-date", render: dateCell }
+  { label: "Shrnutí", cls: "col-summary", render: summaryCell }
 ];
 
 const colsJournals = [
   { label: "Časopis", cls: "col-type", render: typeCell },
   { label: "Název", cls: "col-name", render: nameCell, width: 26 },
   { label: "Autor", cls: "col-author", render: authorCell },
-  { label: "Shrnutí", cls: "col-summary", render: summaryCell },
-  // U časopisů, které datum vydání neuvádějí, je to datum, kdy článek
-  // ve feedu přibyl (viz pub_date_odhad ve scraper_journals.py).
-  { label: "Datum", cls: "col-date", render: dateCell }
+  // U časopisů, které datum vydání neuvádějí, je datum pod názvem to, kdy
+  // článek ve feedu přibyl (viz pub_date_odhad ve scraper_journals.py).
+  { label: "Shrnutí", cls: "col-summary", render: summaryCell }
 ];
 
 // Nové položky – kombinovaná tabulka přes všechny tři zdroje.
@@ -618,8 +630,7 @@ const colsToday = [
       '<span class="src src-' + i._src + '">' + i._srcLabel + "</span> " + typeCell(i) },
   { label: "Název", cls: "col-name", render: nameAuthorCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
-  { label: "Shrnutí", cls: "col-summary", render: summaryCell },
-  { label: "Datum", cls: "col-date", render: dateCell }
+  { label: "Shrnutí", cls: "col-summary", render: summaryCell }
 ];
 
 // Zdroje stránky: okna judikatury (data/judikatura/) a časopisy
