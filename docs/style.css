@@ -550,8 +550,8 @@ html.is-loading body { visibility: hidden; }
 }
 /* Tabulka má spodní šířku 780 px; jakmile se do karty nevejde, vodorovné
    posouvání schová shrnutí a řádky se protáhnou. Místo toho je z každé
-   položky blok: nahoře štítky zdroje a datum, pod nimi název s autorem,
-   heslo a shrnutí. */
+   položky blok: nahoře na jednom řádku štítky (zdroj, druh, heslo) a vpravo
+   datum, pod nimi název s autorem a shrnutí. */
 @container (max-width: 790px) {
   .table-wrap { overflow-x: visible; margin-inline: 0; }
   table { display: block; min-width: 0; }
@@ -566,11 +566,18 @@ html.is-loading body { visibility: hidden; }
   tbody td, tbody td:first-child, tbody td:last-child { display: block; padding: 0; border: 0; }
   tbody td:empty { display: none; }
   .col-src, .col-type { order: 1; }
-  .col-date { order: 2; font-size: var(--fs-sm); }
-  .col-name { order: 3; flex-basis: 100%; font-weight: 500; }
-  .col-author { order: 4; flex-basis: 100%; }
-  /* Heslo se v bloku vejde celé – ořezávat ho je potřeba jen ve sloupci. */
-  .col-heslo { order: 5; max-width: 100%; white-space: normal; overflow: visible; }
+  /* Heslo vyplní místo mezi štítky a datem; delší se zalomí uvnitř štítku
+     (jako ve sloupci), ať datum nemusí samo na další řádek. */
+  .col-heslo {
+    order: 2; flex: 1 1 0; min-width: min(7em, 100%); max-width: 100%;
+    white-space: normal; overflow: visible;
+  }
+  .col-date { order: 3; margin-left: auto; font-size: var(--fs-sm); }
+  /* Bez štítku (NS, NSS a ÚS, dokud nemají heslo) by datum viselo samo
+     vpravo – zůstane vlevo. */
+  tbody .col-name:first-child ~ .col-heslo:empty ~ .col-date { margin-left: 0; }
+  .col-name { order: 4; flex-basis: 100%; font-weight: 500; }
+  .col-author { order: 5; flex-basis: 100%; }
   .col-summary { order: 6; flex-basis: 100%; color: var(--muted-foreground); }
   .col-src .src, .col-src .tag { margin-bottom: 0; }
 }
