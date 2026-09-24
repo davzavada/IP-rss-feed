@@ -333,9 +333,10 @@ def sonda_sdeu(s, den):
     r = s.stahni("ipcuria_referrals", "https://ipcuria.eu/all_referrals.php")
     s.stahni("ipcuria_rulings", "https://ipcuria.eu/all_preliminary_rulings.php")
     if r is not None and r.ok:
-        odkazy = re.findall(r'href="([^"]*case\?reference=[^"]+)"', r.text)
+        # ipcuria píše atributy v apostrofech.
+        odkazy = re.findall(r"""href=['"]([^'"]*case\?reference=[^'"]+)['"]""", r.text)
         for i, href in enumerate(dict.fromkeys(odkazy)):
-            if i >= 3:
+            if i >= 4:
                 break
             s.stahni(f"ipcuria_vec_{i}", urljoin("https://ipcuria.eu/", href.replace("&amp;", "&")))
     od = den - timedelta(days=14)
