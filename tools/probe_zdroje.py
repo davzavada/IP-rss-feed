@@ -240,24 +240,32 @@ def sonda_nss(s, den):
                 nastav(p, ps + "HodnotaCiselnikPolozky", soud)
         return s.stahni(nazev, url, metoda="POST", data=p, headers=hlav)
 
-    vysledky = hledej("nss_hledat_den", den, den)
-    hledej("nss_hledat_tyden", den - timedelta(days=6), den)
-    hledej("nss_hledat_den_soud", den, den, soud="278")
-    hledej("nss_hledat_den_ecli", den, den,
-           url=urljoin(NSS_HOST, "/Home/Index?formular=1&zobrazeniVysledkuVolba=5"))
-    hledej("nss_hledat_den_export", den, den, url=urljoin(NSS_HOST, "/Home/Export"))
-    # Jeden dokument z výsledků (detail i text) – ukáže, jak vypadá čerstvý.
+    # „Do" je půlnoc – den se tak zadává jako od–do+1.
+    vysledky = hledej("nss_hledat_den", den, den + timedelta(days=1))
+    tyden = hledej("nss_hledat_tyden", den - timedelta(days=6), den + timedelta(days=1))
+    # Nekonečné stránkování: další řádky vrací POST na moreRowsUrl s parametry
+    # hledání, které stránka vypíše do skriptu.
+    if tyden is not None and tyden.ok:
+        m_url = re.search(r"var moreRowsUrl = '([^']+)'", tyden.text)
+        m_par = re.search(r"var currParams = '(.*?)';\s*$", tyden.text, re.M)
+        m_view = re.search(r"var currViewId = '([^']*)'", tyden.text)
+        m_sort = re.search(r"var currSort = '([^']*)'", tyden.text)
+        if m_url and m_par:
+            parametry = json.loads('"' + m_par.group(1) + '"')
+            for strana in (1, 2, 50):
+                s.stahni(f"nss_dalsi_{strana}", urljoin(NSS_HOST, m_url.group(1)), metoda="POST",
+                         data={"vyhledavaciPodminky": parametry,
+                               "zobrazeniVysledkuId": m_view.group(1) if m_view else "1",
+                               "pageNum": str(strana),
+                               "resultOrder": m_sort.group(1) if m_sort else ""},
+                         headers=dict(hlav, **{"X-Requested-With": "XMLHttpRequest"}))
+    # Dokumenty z výsledků: prostý text, originál a detaily různých výroků.
+    for id_ in ("785707", "785620", "785703"):
+        s.stahni(f"nss_detail_{id_}", f"{NSS_HOST}/DokumentDetail/Index/{id_}")
+    s.stahni("nss_text_prosty", f"{NSS_HOST}/DokumentOriginal/Text/785707")
+    s.stahni("nss_original", f"{NSS_HOST}/DokumentOriginal/Index/785707")
     if vysledky is not None and vysledky.ok:
-        m = re.search(r"/DokumentDetail/Index/(\d+)", vysledky.text)
-        if m:
-            s.stahni("nss_detail_novy", f"{NSS_HOST}/DokumentDetail/Index/{m.group(1)}")
-            s.stahni("nss_text_novy", f"{NSS_HOST}/DokumentOriginal/Html/{m.group(1)}")
-        # Další stránka výsledků: odkazy nebo adresa pro nekonečné stránkování.
-        for i, href in enumerate(sorted(set(re.findall(
-                r'(?:href|data-url|data-next)="([^"]*(?:[Ss]trank|[Pp]age|[Dd]alsi|[Nn]ext)[^"]*)"',
-                vysledky.text)))[:3]):
-            s.stahni(f"nss_dalsi_{i}", urljoin(NSS_HOST, href.replace("&amp;", "&")),
-                     headers=hlav)
+        print("  " + " ".join(re.findall(r"Počet nalezených záznamů: \d+", vysledky.text)))
 
 
 # --- Ústavní soud ---
@@ -293,29 +301,38 @@ def sonda_us(s, den):
         return uprav
 
     kratke = lambda d: f"{d.day}.{d.month}.{d.year}"     # noqa: E731
-    dlouhe = lambda d: d.strftime("%d.%m.%Y")            # noqa: E731
-    vysledky = hledej("us_hledat_den", rozsah(den, den, kratke))
-    hledej("us_hledat_den_dlouhe", rozsah(den, den, dlouhe))
-    hledej("us_hledat_tyden", rozsah(den - timedelta(days=6), den, kratke))
+    hledej("us_hledat_den", rozsah(den, den, kratke))
 
-    def prirustky(pole):
-        nastav(pole, US_POLE + "dle_data_zpristupneni", "on")
-        nastav(pole, US_POLE + "zpristupneno_pred", "7")
-    hledej("us_hledat_prirustky", prirustky)
-
+    # Stránkování: měsíc po deseti výsledcích.
+    def mesic(pole):
+        rozsah(den - timedelta(days=30), den, kratke)(pole)
+        nastav(pole, US_POLE + "resultsPageSize", "10")
+    vysledky = hledej("us_hledat_mesic", mesic)
     if vysledky is None or not vysledky.ok:
         return
     html = vysledky.text.replace("&amp;", "&")
-    m = re.search(r'(?:href|onclick)="[^"]*?(ResultDetail\.aspx\?[^"\']+)', html)
+    print("  " + " ".join(re.findall(r"Výsledky \d+ - \d+ z celkem \d+", html)[:1]))
+    m = re.search(r"(ResultDetail\.aspx\?[^\"']+)", html)
     if m:
         s.stahni("us_detail", urljoin(US_HOST + "/Search/", m.group(1)))
-    m = re.search(r"GetText\.aspx\?sz=([^\"'&]+)", html)
-    if m:
-        s.stahni("us_text_novy", f"{US_HOST}/Search/GetText.aspx?sz={m.group(1)}")
-    # Stránkování: odkazy na další stránky výsledků.
+    # Odkazy a postbacky, které vypadají jako přechod na další stránku.
     for i, href in enumerate(sorted(set(re.findall(
-            r'href="([^"]*Results\.aspx\?[^"]*)"', html)))[:3]):
-        s.stahni(f"us_stranka_{i}", urljoin(US_HOST + "/Search/", href))
+            r"href=[\"']([^\"']*Results\.aspx\?[^\"']*)[\"']", html)))[:3]):
+        s.stahni(f"us_stranka_odkaz_{i}", urljoin(US_HOST + "/Search/", href))
+    postbacky = [(t, a) for t, a in re.findall(r"__doPostBack\('([^']+)','([^']*)'\)", html)
+                 if re.search(r"[Pp]age|[Nn]ext|[Dd]alsi|[Ss]tr|\$\d|^\d", t + "|" + a)
+                 and not re.search(r"Selected|PrintVersion|Export", t)]
+    print(f"  postbacky stránkování: {postbacky[:6]}")
+    if postbacky:
+        form, pole = formular_pole(vysledky.text, "form")
+        if form is not None:
+            nastav(pole, "__EVENTTARGET", postbacky[0][0])
+            nastav(pole, "__EVENTARGUMENT", postbacky[0][1])
+            s.stahni("us_stranka_postback", urljoin(vysledky.url, form.get("action") or ""),
+                     metoda="POST", data=pole, headers={"Referer": vysledky.url})
+    for zkouska in ("Results.aspx?page=1", "Results.aspx?page=2"):
+        s.stahni("us_" + zkouska.replace(".aspx?", "_").replace("=", ""),
+                 urljoin(US_HOST + "/Search/", zkouska))
 
 
 # --- Soudní dvůr EU ---
