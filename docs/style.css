@@ -196,12 +196,6 @@ td a:hover { text-decoration: underline; }
 .nowrap { white-space: nowrap; }
 .summary { line-height: 1.55; }
 .note { color: var(--muted-foreground); font-style: italic; }
-/* Výsledek rozhodnutí před shrnutím: kapitálky, tlumeně, bez barev. */
-.vysledek {
-  font-variant-caps: all-small-caps; letter-spacing: 0.04em; font-weight: 600;
-  color: var(--muted-foreground); white-space: nowrap;
-}
-.vysledek-odd { color: var(--muted-foreground); }
 .doc-link {
   font-size: var(--fs-sm); font-weight: 600; letter-spacing: .04em; white-space: nowrap;
   padding: 1px 5px; border: 1px solid currentColor; border-radius: 4px;

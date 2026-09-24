@@ -11,7 +11,6 @@ Spuštění: python test_judikatura.py
 """
 
 import base64
-import glob
 import json
 import os
 import re
@@ -22,7 +21,7 @@ from datetime import date, datetime, timedelta, timezone
 from urllib.parse import parse_qs, urlparse
 
 import feed_common as fc
-from judikatura import analyza, fronta, kontrola, mapy, migrace, model, orchestr, vysledky
+from judikatura import analyza, fronta, kontrola, mapy, migrace, model, orchestr
 from judikatura.sklad import Sklad, slim
 from judikatura.soudy import ns
 from judikatura.soudy import ipcuria as soud_ipcuria
@@ -32,8 +31,6 @@ from judikatura.soudy import us as soud_us
 from judikatura.soudy.web import formular_pole
 from judikatura.taxonomie import SOUBOR as OBLASTI_JSON
 from judikatura.taxonomie import Taxonomie
-
-ROOT = os.path.dirname(os.path.abspath(__file__))
 
 results = []
 
@@ -234,68 +231,6 @@ check("značky i bez diakritiky", v and v["procesni"] is True and v["oblasti"] =
 check("krátké shrnutí se nepoužije", analyza.parse('{"heslo": "X", "shrnuti": "Krátké."}', TAX) is None)
 check("prázdná odpověď se nepoužije", analyza.parse("", TAX) is None)
 
-# Výsledek rozhodnutí (odmítnuto, zamítnuto, zrušeno a vráceno…)
-v = analyza.parse('{"heslo": "H", "shrnuti": "' + SHRNUTI + '", "oblasti": ["zavazky"], '
-                  '"procesni": false, "vysledek": "zruseno_vraceno"}', TAX)
-check("výsledek z JSON", v and v["vysledek"] == "zruseno_vraceno", str(v))
-v = analyza.parse(f"HESLO: H\nSHRNUTÍ: {SHRNUTI}\nOBLASTI: zavazky\nPROCESNÍ: ne\nVÝSLEDEK: Zrušeno a vráceno", TAX)
-check("výsledek ze značek, české znění", v and v["vysledek"] == "zruseno_vraceno" and v["procesni"] is False, str(v))
-v = analyza.parse(f"HESLO: H\nSHRNUTI: {SHRNUTI}\nOBLASTI: zavazky\nPROCESNI: ano\nVYSLEDEK: **odmítnuto**", TAX)
-check("výsledek ze značek bez diakritiky", v and v["vysledek"] == "odmitnuto" and v["procesni"] is True, str(v))
-check("neznámý nebo chybějící výsledek = None",
-      analyza.parse(f"HESLO: H\nSHRNUTÍ: {SHRNUTI}\nVÝSLEDEK: nevím", TAX)["vysledek"] is None
-      and analyza.parse(json_odpoved, TAX)["vysledek"] is None)
-check("převod znění na kód",
-      [vysledky.normalizuj(x) for x in ("ZČÁSTI VYHOVĚNO", "Odmítnuto.", "zruseno-vraceno", "jiné", "nic")]
-      == ["castecne", "odmitnuto", "zruseno_vraceno", "jine", None])
-check("prompt i schéma chtějí výsledek",
-      "VÝSLEDEK" in analyza.SYSTEM and analyza.schema(TAX)["properties"]["vysledek"]["enum"] == list(vysledky.KODY))
-
-VYROKY = {
-    "nss": {"zamítnuto": "zamitnuto", "odmítnuto": "odmitnuto", "odmítnuto pro nepřijatelnost": "odmitnuto",
-            "zastaveno": "zastaveno", "řízení: zastavení": "zastaveno", "zrušeno a vráceno": "zruseno_vraceno",
-            "zrušeno + zrušení rozhodnutí spr. orgánu": "zruseno", "zrušeno + odmítnuto": "zruseno",
-            "zrušeno + zamítnuto": "zruseno", "zrušeno + zrušeno opatř. obec. povahy": "zruseno",
-            "odkladný účinek: přiznání": "jine", "nepodjatý soudce": "jine",
-            "rozšířený senát: postoupení": "jine", "- rozpuštění": "jine", "příslušný soud": "jine",
-            "jiný výsledek": "jine"},
-    "us": {"vyhověno": "vyhoveno", "vyhověno; odmítnuto pro nepřípustnost": "castecne",
-           "vyhověno; zastaveno; odmítnuto - pro 2b; procesní - náhrada nákladů řízení - § 62": "castecne",
-           "odmítnuto pro zjevnou neopodstatněnost; procesní - odložení vykonatelnosti": "odmitnuto",
-           "odmítnuto pro neodstraněné vady": "odmitnuto",
-           "zamítnuto; odmítnuto pro nepřípustnost; odmítnuto pro nedodržení lhůty": "zamitnuto",
-           "procesní - spojení věcí": "jine", "zastaveno": "zastaveno"},
-}
-spatne = [(soud, vyrok, vysledky.z_uredniho({"soud": soud, "meta": {"vyrok": vyrok}}), kod)
-          for soud, mapa in VYROKY.items() for vyrok, kod in mapa.items()
-          if vysledky.z_uredniho({"soud": soud, "meta": {"vyrok": vyrok}}) != kod]
-check("úřední výroky NSS a ÚS na kódy", not spatne, str(spatne))
-v_archivu = []
-for soud in ("nss", "us"):
-    for cesta in glob.glob(os.path.join(ROOT, "data", "judikatura", soud, "*.jsonl")):
-        with open(cesta, encoding="utf-8") as f:
-            v_archivu += [dict(json.loads(r), soud=soud) for r in f if r.startswith("{")]
-bez_kodu = sorted({z["meta"].get("vyrok") for z in v_archivu
-                   if z.get("meta", {}).get("vyrok") and vysledky.z_uredniho(z) not in vysledky.KODY})
-check("každý výrok v archivu NSS a ÚS má kód", not bez_kodu, str(bez_kodu))
-
-s = slim(zaznam("nss:V", "2026-09-22T00:00:00Z", soud="nss", meta={"vyrok": "zrušeno a vráceno"},
-                ai={"heslo": "H", "shrnuti": SHRNUTI, "oblasti": ["dane"], "vysledek": "zamitnuto"}))
-check("web: úřední výrok má přednost před AI, jeho znění jde do bubliny",
-      (s.get("vysledek"), s.get("vysledek_popis")) == ("zruseno_vraceno", "zrušeno a vráceno"), str(s))
-s = slim(zaznam("ns:V", "2026-09-22T00:00:00Z", ai={"heslo": "H", "shrnuti": SHRNUTI, "oblasti": ["zavazky"],
-                                                   "vysledek": "zamitnuto"}))
-check("web: výsledek od AI bez úředního znění",
-      s.get("vysledek") == "zamitnuto" and "vysledek_popis" not in s, str(s))
-check("web: „jiné“, chybějící výsledek a stanovisko GA štítek nemají",
-      "vysledek" not in slim(zaznam("ns:J", "2026-09-22T00:00:00Z", ai={"shrnuti": SHRNUTI, "vysledek": "jine"}))
-      and "vysledek" not in slim(zaznam("ns:K", "2026-09-22T00:00:00Z"))
-      and "vysledek" not in slim(zaznam("sdeu:S", "2026-09-22T00:00:00Z", soud="sdeu", druh="stanovisko GA",
-                                        ai={"shrnuti": SHRNUTI, "vysledek": "zruseno"})))
-s = slim(zaznam("us:V", "2026-09-22T00:00:00Z", soud="us", meta={"vyrok": "odmítnuto pro zjevnou neopodstatněnost"}))
-check("web: výsledek z výroku i bez shrnutí (ÚS)",
-      s.get("vysledek") == "odmitnuto" and s.get("poznamka"), str(s))
-
 rozhodnuti = model.novy_zaznam("ns", "ns:T", spz="23 Cdo 5/2026", druh="usnesení",
                                meta={"heslo_ns": "Smluvní pokuta", "kategorie": "C"},
                                oblasti_meta=["zavazky"], procesni_meta=True)
@@ -388,9 +323,6 @@ for z in (
     zaznam("ns:procesni", "2026-09-23T10:00:00Z", spz="30 Nd 3/2026", senat=30, procesni_meta=True),
     zaznam("ns:vecne-starsi", "2026-09-18T10:00:00Z", spz="30 Cdo 4/2026", senat=30),
     zaznam("ns:hotove", "2026-09-23T10:00:00Z", senat=30,
-           ai={"shrnuti": SHRNUTI, "pv": analyza.PROMPT_VERZE, "vysledek": None}),
-    # Shrnutí z doby před výsledkem: rozbor se zopakuje, ale až po nových.
-    zaznam("ns:bez-vysledku", "2026-09-23T12:00:00Z", senat=23,
            ai={"shrnuti": SHRNUTI, "pv": analyza.PROMPT_VERZE}),
     zaznam("ns:pozdeji", "2026-09-23T10:00:00Z", senat=30,
            stav={"pokusy": 1, "dalsi_pokus": "2026-09-24T07:00:00Z", "duvod": "bez-textu"}),
@@ -401,23 +333,14 @@ for z in (
 ):
     ns_sklad.pridej(z)
 for z in (zaznam("nss:1", "2026-09-22T10:00:00Z", soud="nss", spz="", oblasti_meta=["dane"]),
-          zaznam("nss:2", "2026-09-21T10:00:00Z", soud="nss", spz="", oblasti_meta=["gdpr"]),
-          # NSS má výsledek v úředním výroku – kvůli němu se znovu nerozebírá.
-          zaznam("nss:hotove", "2026-09-22T10:00:00Z", soud="nss", spz="", meta={"vyrok": "zamítnuto"},
-                 ai={"shrnuti": SHRNUTI, "pv": analyza.PROMPT_VERZE})):
+          zaznam("nss:2", "2026-09-21T10:00:00Z", soud="nss", spz="", oblasti_meta=["gdpr"])):
     nss_sklad.pridej(z)
 poradi = [z["id"] for z in fronta.sestav({"ns": ns_sklad}, NYNI, TAX)]
-check("výchozí výběr první, pak věcná od nejnovějšího, procesní, doplnění výsledku nakonec",
-      poradi == ["ns:23", "ns:vecne", "ns:vecne-starsi", "ns:procesni", "ns:bez-vysledku"], str(poradi))
+check("výchozí výběr první, pak věcná od nejnovějšího, procesní nakonec",
+      poradi == ["ns:23", "ns:vecne", "ns:vecne-starsi", "ns:procesni"], str(poradi))
 poradi = [z["id"] for z in fronta.sestav({"ns": ns_sklad, "nss": nss_sklad}, NYNI, TAX)]
-check("soudy se střídají, doplnění až po všech nových",
-      poradi == ["ns:23", "nss:2", "ns:vecne", "nss:1", "ns:vecne-starsi", "ns:procesni",
-                 "ns:bez-vysledku"], str(poradi))
-hotove_sdeu = dict(ai={"shrnuti": SHRNUTI, "pv": analyza.PROMPT_VERZE})
-check("SDEU: rozsudek bez výsledku se rozebere znovu, stanovisko GA ne",
-      fronta.potrebuje_ai(zaznam("sdeu:r", "2026-09-22T10:00:00Z", soud="sdeu", druh="rozsudek", **hotove_sdeu), NYNI)
-      and not fronta.potrebuje_ai(zaznam("sdeu:s", "2026-09-22T10:00:00Z", soud="sdeu", druh="stanovisko GA",
-                                         **hotove_sdeu), NYNI))
+check("soudy se střídají", poradi == ["ns:23", "nss:2", "ns:vecne", "nss:1", "ns:vecne-starsi",
+                                      "ns:procesni"], str(poradi))
 check("po odkladu se položka vrátí",
       "ns:pozdeji" in [z["id"] for z in fronta.sestav({"ns": ns_sklad}, NYNI + timedelta(hours=3), TAX)])
 z = zaznam("ns:o", "2026-09-22T10:00:00Z")

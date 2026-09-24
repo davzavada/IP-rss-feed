@@ -9,15 +9,13 @@ Free tier nestihne všechno najednou (úvodní dávka, rušné dny), proto:
   - když text zatím není (PDF přikládají soudy s odstupem, žádost
     o předběžnou otázku vyjde týdny po podání), zkouší se znovu po 1, 2,
     4… hodinách a pak při každém běhu, dokud je rozhodnutí v okně;
-  - když selže AI, zkusí se to nejvýš šestkrát;
-  - hotová shrnutí NS a SDEU z doby, kdy AI ještě neurčovala výsledek
-    rozhodnutí, se rozeberou znovu – ale až po všech nových rozhodnutích.
+  - když selže AI, zkusí se to nejvýš šestkrát.
 """
 
 import time
 from datetime import timedelta
 
-from judikatura import model, vysledky
+from judikatura import model
 from judikatura.analyza import PROMPT_VERZE
 
 MAX_POKUSU = 6
@@ -30,8 +28,7 @@ def potrebuje_ai(z, nyni):
     if z.get("nahrazeno"):
         return False
     ai = z.get("ai") or {}
-    if (ai.get("shrnuti") and int(ai.get("pv") or 0) >= PROMPT_VERZE
-            and not vysledky.chybi_vysledek(z)):
+    if ai.get("shrnuti") and int(ai.get("pv") or 0) >= PROMPT_VERZE:
         return False
     stav = z.get("stav") or {}
     if stav.get("duvod") != "bez-textu" and int(stav.get("pokusy") or 0) >= MAX_POKUSU:
@@ -50,19 +47,13 @@ def trida(z, tax):
 
 
 def sestav(sklady, nyni, tax):
-    """Seřazená fronta přes všechny soudy (střídavě): nejdřív rozhodnutí bez
-    shrnutí, pak ta, u kterých se rozbor opakuje (doplnění výsledku)."""
-    nove, znovu = [], []
+    """Seřazená fronta přes všechny soudy (střídavě)."""
+    podle_soudu = []
     for soud, sklad in sklady.items():
         kandidati = [z for z in sklad.v_okne(nyni, model.OKNA_DNI[soud]) if potrebuje_ai(z, nyni)]
         kandidati.sort(key=lambda z: (trida(z, tax),
                                       _zaporne(z.get("zverejneno") or z.get("first_seen") or "")))
-        nove.append([z for z in kandidati if not (z.get("ai") or {}).get("shrnuti")])
-        znovu.append([z for z in kandidati if (z.get("ai") or {}).get("shrnuti")])
-    return _stridave(nove) + _stridave(znovu)
-
-
-def _stridave(podle_soudu):
+        podle_soudu.append(kandidati)
     fronta = []
     for i in range(max((len(k) for k in podle_soudu), default=0)):
         for kandidati in podle_soudu:

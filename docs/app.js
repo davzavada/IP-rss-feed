@@ -48,9 +48,7 @@ function zJson(r) {
     stav: r.stav_shrnuti || "",
     senat: r.senat,
     druh: r.druh || "",
-    procesni: !!r.procesni,
-    vysledek: r.vysledek || "",
-    vysledekPopis: r.vysledek_popis || ""
+    procesni: !!r.procesni
   };
 }
 
@@ -431,32 +429,11 @@ function hesloCell(item) {
   return tag ? '<span class="heslo" title="' + esc(tag) + '">' + esc(tag) + "</span>" : "";
 }
 
-// Výsledek rozhodnutí před shrnutím – tlumeně, kapitálkami. U NSS a ÚS
-// z úředního výroku (jeho znění je v bublině), u NS a SDEU ho určila AI
-// z textu rozhodnutí (judikatura/vysledky.py).
-const VYSLEDKY = {
-  odmitnuto: "Odmítnuto", zamitnuto: "Zamítnuto", zruseno_vraceno: "Zrušeno a vráceno",
-  zruseno: "Zrušeno", zmeneno: "Změněno", vyhoveno: "Vyhověno", castecne: "Zčásti vyhověno",
-  zastaveno: "Zastaveno"
-};
-
-function vysledekHtml(item) {
-  const nazev = VYSLEDKY[item.vysledek];
-  if (!nazev) return "";
-  const title = item.vysledekPopis ? "Výrok: " + item.vysledekPopis : "Výsledek určila AI z textu rozhodnutí";
-  return '<span class="vysledek" title="' + esc(title) + '">' + nazev + "</span>";
-}
-
 function summaryCell(item) {
-  const vysledek = vysledekHtml(item);
-  const pred = vysledek ? vysledek + '<span class="vysledek-odd"> · </span>' : "";
-  if (item.shrnuti) return '<span class="summary">' + pred + esc(item.shrnuti) + "</span>";
+  if (item.shrnuti) return '<span class="summary">' + esc(item.shrnuti) + "</span>";
   // Bez shrnutí ještě může být poznámka, proč žádné není – třeba že u žádosti
   // o předběžnou otázku zatím nejsou zveřejněné otázky.
-  if (item.poznamka) {
-    return '<span class="summary">' + pred + '<span class="note">' + esc(item.poznamka) + "</span></span>";
-  }
-  return vysledek ? '<span class="summary">' + vysledek + "</span>" : "";
+  return item.poznamka ? '<span class="summary note">' + esc(item.poznamka) + "</span>" : "";
 }
 
 function dateCell(item) {
