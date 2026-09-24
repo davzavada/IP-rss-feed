@@ -354,7 +354,9 @@ def sonda_sdeu(s, den):
         celex = z["meta"]["celex"]
         s.stahni(f"sdeu_infocuria_{celex}", sdeu.INFOCURIA, metoda="POST",
                  json=sdeu.dotaz_infocuria(z["spz"]), headers=sdeu.HLAVICKY_CURIA)
-    for z in priklady[:1] + priklady[-1:]:
+    # Text: čerstvý rozsudek SD a oznámení o předběžné otázce.
+    for z in [z for z in priklady if z["druh"] in ("rozsudek", sdeu.DRUH_OTAZKA)][:1] + \
+            [z for z in priklady if z["druh"] == sdeu.DRUH_OTAZKA]:
         celex = z["meta"]["celex"]
         for jazyk in sdeu.TEXT_JAZYKY:
             r = s.stahni(f"sdeu_cellar_{celex}_{jazyk}", sdeu.CELLAR.format(celex=celex),

@@ -42,7 +42,7 @@ DRUHY = {"JUDG": "rozsudek", "ORDER": "usnesení", "OPIN_AG": "stanovisko GA",
          "VIEW_AG": "stanovisko GA"}
 DRUH_OTAZKA = "předběžná otázka"
 # Název oznámení v ÚV: „Žádost o rozhodnutí o předběžné otázce podaná …"
-OTAZKA_RE = re.compile(r"předběžn\w* otázk|preliminary ruling", re.I)
+OTAZKA_RE = re.compile(r"předběžn\w* otáz|preliminary ruling", re.I)
 SOUDY = {"C": "Soudní dvůr", "T": "Tribunál"}
 TEXT_JAZYKY = ("ces", "eng", "fra")
 MIN_TEXT = 500
@@ -119,13 +119,13 @@ def zaznamy_rozhodnuti(odpoved):
 
 
 def _z_nazvu_oznameni(nazev):
-    """Z názvu oznámení předkládající soud a účastníky:
-    „Věc C-630/26: Žádost o rozhodnutí o předběžné otázce podaná
-    Bundesgerichtshof (Německo) dne 10. června 2026 – X v. Y"."""
+    """Z názvu oznámení účastníka (název věci) a předkládající soud:
+    „Věc C-630/26, Rada Miasta Krakowa: Žádost o rozhodnutí o předběžné
+    otázce, kterou podal Naczelny Sąd Administracyjny (Polsko) dne …"."""
     nazev = " ".join((nazev or "").split())
-    soud = re.search(r"podan\w+\s+(.+?)\s+dne\s+\d", nazev)
-    strany = re.split(r"\s+[–-]\s+", nazev, maxsplit=1)
-    return (soud.group(1) if soud else ""), (strany[1] if len(strany) > 1 else "")
+    vec = re.match(r"^Věc\s+[^,:]+,\s*(.+?):", nazev)
+    soud = re.search(r"(?:kterou|který)\s+podal[ao]?\s+(.+?)\s+dne\s+\d", nazev)
+    return (soud.group(1) if soud else ""), (vec.group(1) if vec else "")
 
 
 def zaznamy_oznameni(odpoved):
@@ -134,7 +134,8 @@ def zaznamy_oznameni(odpoved):
     for r in _hodnoty(odpoved):
         celex = r.get("celex", "")
         vec = cislo_veci(celex)
-        nazev = r.get("nazev_cs") or r.get("nazev_en") or ""
+        # Názvy mají nezlomitelné mezery – split() je srovná na obyčejné.
+        nazev = " ".join((r.get("nazev_cs") or r.get("nazev_en") or "").split())
         if not vec or celex in out or not OTAZKA_RE.search(nazev):
             continue
         soud, strany = _z_nazvu_oznameni(r.get("nazev_cs") or "")
