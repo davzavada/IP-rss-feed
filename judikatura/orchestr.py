@@ -48,32 +48,43 @@ def zapis_nalezene(sklad, nalezene, nyni, bootstrap, adapter=None):
                 print(f"    [diag] {n['id']}: detail nedostupný ({type(e).__name__})")
         n["first_seen"] = model.iso(model.prvni_vyskyt(n.get("zverejneno"), nyni, bootstrap))
         n["bootstrap"] = bootstrap
-        if not _prevezmi_desku(sklad, n):
+        if not _prevezmi_predbezne(sklad, n):
             continue
         sklad.pridej(n)
         nove.append(n)
     return nove
 
 
-def _prevezmi_desku(sklad, n):
-    """Úřední deska NS vs. databáze: jedno rozhodnutí, dva zdroje.
+def _nahrazuje(uredni, predbezny):
+    """Může úřední záznam nahradit předběžný? U SDEU jen oznámení o předběžné
+    otázce – rozsudek nebo stanovisko ve stejné věci ne."""
+    return uredni["soud"] != "sdeu" or uredni.get("druh") == predbezny.get("druh")
 
-    Záznam z databáze převezme od záznamu z desky první výskyt i hotové
-    shrnutí a deska se označí jako nahrazená. Záznam z desky se nepřidá,
-    když už databáze totéž rozhodnutí má. Vrací False, když se `n` nemá
+
+def _prevezmi_predbezne(sklad, n):
+    """Jedno rozhodnutí ze dvou zdrojů: předběžný záznam (deska NS, ipcuria)
+    a úřední (databáze NS, oznámení v ÚV).
+
+    Úřední záznam převezme od předběžného hotové shrnutí a předběžný se
+    označí jako nahrazený. První výskyt převezme u NS vždy (deska a databáze
+    se liší o dny); u SDEU jen se shrnutím – oznámení vyjde za měsíce
+    a bez shrnutí se má ukázat jako nové, i s otázkami. Předběžný záznam se
+    nepřidá, když už úřední existuje. Vrací False, když se `n` nemá
     přidávat."""
-    if n["soud"] != "ns" or not n.get("spz_klic"):
+    prefix = model.PREDBEZNE_ID.get(n["soud"])
+    if not prefix or not n.get("spz_klic"):
         return True
     stejne = [z for z in sklad.podle_klice(n["spz_klic"])
               if z.get("cast", "") == n.get("cast", "") and not z.get("nahrazeno")]
-    if n["id"].startswith("ns:deska:"):
-        return not any(not z["id"].startswith("ns:deska:") for z in stejne)
-    for deska in (z for z in stejne if z["id"].startswith("ns:deska:")):
-        n["first_seen"] = min(n["first_seen"], deska["first_seen"])
-        if deska.get("ai") and not n.get("ai"):
-            n["ai"] = deska["ai"]
-        deska["nahrazeno"] = n["id"]
-        sklad.zmeneno(deska)
+    if n["id"].startswith(prefix):
+        return not any(not z["id"].startswith(prefix) and _nahrazuje(z, n) for z in stejne)
+    for pred in [z for z in stejne if z["id"].startswith(prefix) and _nahrazuje(n, z)]:
+        if n["soud"] == "ns" or (pred.get("ai") or {}).get("shrnuti"):
+            n["first_seen"] = min(n["first_seen"], pred["first_seen"])
+        if pred.get("ai") and not n.get("ai"):
+            n["ai"] = pred["ai"]
+        pred["nahrazeno"] = n["id"]
+        sklad.zmeneno(pred)
     return True
 
 

@@ -47,14 +47,18 @@ STAV_SHRNUTI = {
 }
 
 
+# U předběžné otázky se nečeká na text rozhodnutí, ale na položené otázky.
+CEKA_NA_OTAZKY = "Položené otázky zatím nejsou zveřejněné."
+
+
 def stav_shrnuti(z):
-    """Kód pro rozhodnutí bez shrnutí: vyčerpané pokusy, čekání na text od
-    soudu (PDF přikládají s odstupem), jinak čeká ve frontě na AI."""
+    """Kód pro rozhodnutí bez shrnutí: čekání na text od soudu (zkouší se,
+    dokud je v okně), vyčerpané pokusy AI, jinak čeká ve frontě na AI."""
     stav = z.get("stav") or {}
-    if int(stav.get("pokusy") or 0) >= fronta.MAX_POKUSU:
-        return "nepodarilo"
     if stav.get("duvod") == "bez-textu":
         return "ceka_na_text"
+    if int(stav.get("pokusy") or 0) >= fronta.MAX_POKUSU:
+        return "nepodarilo"
     return "pripravuje"
 
 
@@ -73,6 +77,8 @@ def slim(z):
     if not out["shrnuti"]:
         out["stav_shrnuti"] = stav_shrnuti(z)
         out["poznamka"] = STAV_SHRNUTI[out["stav_shrnuti"]]
+        if out["stav_shrnuti"] == "ceka_na_text" and z.get("druh") == "předběžná otázka":
+            out["poznamka"] = CEKA_NA_OTAZKY
     return out
 
 

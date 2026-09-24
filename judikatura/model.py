@@ -96,6 +96,13 @@ def senat_z_spz(spz):
     return int(m.group(1)), m.group(2)
 
 
+# Předběžné záznamy: rozhodnutí známé z rychlejšího zdroje dřív, než ho
+# vydá ten úřední – úřední deska NS před databází, ipcuria.eu před
+# oznámením v Úředním věstníku. Úřední záznam je převezme
+# (orchestr._prevezmi_predbezne).
+PREDBEZNE_ID = {"ns": "ns:deska:", "sdeu": "sdeu:ipc:"}
+
+
 # --- Záznam ---
 
 def novy_zaznam(soud, id, **pole):

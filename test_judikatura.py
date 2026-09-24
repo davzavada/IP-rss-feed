@@ -24,6 +24,7 @@ import feed_common as fc
 from judikatura import analyza, fronta, kontrola, mapy, migrace, model, orchestr
 from judikatura.sklad import Sklad, slim
 from judikatura.soudy import ns
+from judikatura.soudy import ipcuria as soud_ipcuria
 from judikatura.soudy import nss as soud_nss
 from judikatura.soudy import sdeu as soud_sdeu
 from judikatura.soudy import us as soud_us
@@ -194,9 +195,16 @@ s = slim(zaznam("ns:G", "2026-09-22T00:00:00Z", stav={"pokusy": 1, "duvod": "bez
 check("bez textu: čeká na text od soudu",
       (s["stav_shrnuti"], s["poznamka"]) == ("ceka_na_text", "Čeká na zveřejnění textu rozhodnutí."),
       str(s))
-s = slim(zaznam("ns:H", "2026-09-22T00:00:00Z", stav={"pokusy": 6, "duvod": "bez-textu"}))
-check("vyčerpané pokusy: nepodařilo se",
+s = slim(zaznam("ns:H", "2026-09-22T00:00:00Z", stav={"pokusy": 6, "duvod": "ai-selhani"}))
+check("vyčerpané pokusy AI: nepodařilo se",
       (s["stav_shrnuti"], s["poznamka"]) == ("nepodarilo", "Shrnutí se nepodařilo připravit."),
+      str(s))
+s = slim(zaznam("ns:I", "2026-09-22T00:00:00Z", stav={"pokusy": 9, "duvod": "bez-textu"}))
+check("na text se čeká i po mnoha pokusech", s["stav_shrnuti"] == "ceka_na_text", str(s))
+s = slim(zaznam("sdeu:ipc:C-1/26", "2026-09-22T00:00:00Z", soud="sdeu", spz="C-1/26",
+                druh="předběžná otázka", stav={"pokusy": 2, "duvod": "bez-textu"}))
+check("předběžná otázka bez textu: čeká na otázky",
+      (s["stav_shrnuti"], s["poznamka"]) == ("ceka_na_text", "Položené otázky zatím nejsou zveřejněné."),
       str(s))
 s = slim(zaznam("ns:E", "2026-09-22T00:00:00Z", oblasti_meta=["dane"], procesni_meta=True,
                 ai={"heslo": "H", "shrnuti": SHRNUTI, "oblasti": ["spravni"], "procesni": False}))
@@ -317,8 +325,12 @@ odklady = []
 for _ in range(7):
     fronta.odlozit(z, NYNI, "bez-textu")
     odklady.append(int((dt(z["stav"]["dalsi_pokus"]) - NYNI).total_seconds() // 3600))
-check("odklad 1, 2, 4… hodin, nejvýš den", odklady == [1, 2, 4, 8, 16, 24, 24], str(odklady))
-check("po šesti pokusech se to vzdá", not fronta.potrebuje_ai(z, NYNI + timedelta(days=2)))
+check("odklad 1, 2, 4… hodin, nejvýš 20 (sběr je jednou denně)", odklady == [1, 2, 4, 8, 16, 20, 20],
+      str(odklady))
+check("na text se čeká dál, dokud je v okně", fronta.potrebuje_ai(z, NYNI + timedelta(days=2)))
+for _ in range(fronta.MAX_POKUSU):
+    fronta.odlozit(z, NYNI, "ai-selhani")
+check("po šesti chybách AI se to vzdá", not fronta.potrebuje_ai(z, NYNI + timedelta(days=2)))
 r = fronta.Rozpocet(2, 10)
 r.zapocitej()
 check("rozpočet položek", r.dalsi() and (r.zapocitej() or not r.dalsi()))
@@ -1086,9 +1098,12 @@ check("SDEU: oznámení o předběžné otázce i s otázkami", "Předběžné o
 zaznam_sdeu = []
 
 
-def web_sdeu(cellar=None, oznameni=True, infocuria=None):
-    """cellar: {jazyk: html}; infocuria: {číslo věci: odpověď}."""
+def web_sdeu(cellar=None, oznameni=True, infocuria=None, ipcuria_web=None):
+    """cellar: {jazyk: html}; infocuria: {číslo věci: odpověď};
+    ipcuria_web: {adresa: html} (bez něj ipcuria.eu neodpovídá)."""
     def odp(metoda, url, data):
+        if ipcuria_web is not None and url.startswith(soud_ipcuria.HOST):
+            return Odp(text=ipcuria_web[url]) if url in ipcuria_web else Odp(404, "nic")
         if url == soud_sdeu.SPARQL:
             if "resource_legal_type" in data["query"]:
                 return Odp(text=json.dumps(SPARQL_OZN)) if oznameni else Odp(500, "chyba")
@@ -1150,9 +1165,103 @@ check("SDEU: pokyny AI podle druhu",
       and analyza.pokyn({"soud": "sdeu", "druh": "předběžná otázka"}) == analyza.POKYNY["otazka"]
       and analyza.pokyn({"soud": "sdeu", "druh": "rozsudek"}) == analyza.POKYNY["sdeu"])
 
+# --- ipcuria.eu: rané předběžné otázky z IP ---
+IPC_SEZNAM = fx("sdeu", "ipcuria_referrals.html")
+IPC_VEC = fx("sdeu", "ipcuria_vec_C-1009-26.html")
+seznam = soud_ipcuria.parse_seznam(IPC_SEZNAM)
+podle_veci = {r["vec"]: r for r in seznam}
+check("ipcuria: seznam otázek, věc uvedená dvakrát jen jednou",
+      len(seznam) == 61 and seznam[0] == {"vec": "C-1009/26", "nazev": "TikTok Information Technologies UK",
+                                          "podano": "2026-09-11", "kategorie": []}
+      and len(podle_veci["C-222/25"]["kategorie"]) == 3, str(seznam[:1]))
+check("ipcuria: oblasti podle kategorií, bez kategorie hlavní oblasti IP a údajů",
+      soud_ipcuria.oblasti(podle_veci["C-691/26"]["kategorie"]) == ["prumyslova_prava"]
+      and soud_ipcuria.oblasti(podle_veci["C-660/26"]["kategorie"]) == ["gdpr"]
+      and soud_ipcuria.oblasti(podle_veci["C-517/26"]["kategorie"]) == ["autorske"]
+      and soud_ipcuria.oblasti(podle_veci["C-196/26"]["kategorie"]) == ["prumyslova_prava", "autorske", "mps"]
+      and soud_ipcuria.oblasti([]) == ["prumyslova_prava", "autorske", "gdpr"],
+      str({v: soud_ipcuria.oblasti(podle_veci[v]["kategorie"]) for v in ("C-691/26", "C-196/26")}))
+check("ipcuria: CELEX budoucího oznámení v ÚV",
+      soud_ipcuria.celex_oznameni("C-1009/26") == "62026CN1009"
+      and soud_ipcuria.celex_oznameni("C-5/25") == "62025CN0005" and soud_ipcuria.celex_oznameni("T-1/26") == "")
+check("ipcuria: stránka věci bez otázek nedá text", soud_ipcuria.text_vec(IPC_VEC) == "")
+IPC_WEB = {soud_ipcuria.SEZNAM: IPC_SEZNAM}
+nalezene = soud_sdeu.SDEU(session_factory=relace_sdeu(ipcuria_web=IPC_WEB)).objev(date(2026, 9, 10), date(2026, 9, 24))
+rane = [z for z in nalezene if z["id"].startswith("sdeu:ipc:")]
+check("SDEU: z ipcuria jen otázky podané za poslední měsíc",
+      len(nalezene) == 91 and [z["id"] for z in rane] == ["sdeu:ipc:C-1009/26"], str([z["id"] for z in rane]))
+z = rane[0]
+check("SDEU: rané otázka – druh, datum podání, bez data zveřejnění, odkaz na web Soudního dvora",
+      z["druh"] == "předběžná otázka" and z["datum"] == "2026-09-11" and z["zverejneno"] == ""
+      and z["url"] == "https://curia.europa.eu/juris/liste.jsf?num=C-1009/26&language=cs"
+      and z["meta"]["celex"] == "62026CN1009" and z["meta"]["ipcuria"] == soud_ipcuria.VEC.format(vec="C-1009/26")
+      and z["oblasti_meta"] == ["prumyslova_prava", "autorske", "gdpr"] and z["nazev"] == "TikTok Information Technologies UK",
+      str(z))
+check("SDEU: když ipcuria.eu nejde, zbytek se vezme i tak",
+      len(soud_sdeu.SDEU(session_factory=relace_sdeu(ipcuria_web={})).objev(date(2026, 9, 10), date(2026, 9, 24))) == 90)
+# Text k rané otázce: žádost v InfoCurii (DDP), pak oznámení v Cellaru, pak ipcuria.
+z = soud_sdeu.zaznamy_ipcurie([{"vec": "C-151/25", "nazev": "Viaudret", "podano": "2025-02-20", "kategorie": []}],
+                              date(2025, 1, 1))[0]
+obsah = soud_sdeu.SDEU(session_factory=relace_sdeu(infocuria=INFOCURIA)).text(z)
+check("SDEU: rané otázka – text žádosti z InfoCurie (ne rozsudek ve věci)",
+      obsah.get("zdroj") == "infocuria" and obsah["text"].startswith("Shrnutí C-151/25"), str(obsah)[:120])
+z = rane[0]
+zaznam_sdeu.clear()
+obsah = soud_sdeu.SDEU(session_factory=relace_sdeu(ipcuria_web={soud_ipcuria.VEC.format(vec="C-1009/26"): IPC_VEC})).text(z)
+check("SDEU: bez žádosti a oznámení a s „otázky zatím nejsou“ = bez textu",
+      obsah == {} and [x[1] for x in zaznam_sdeu if x[0] == "GET"]
+      == [soud_sdeu.CELLAR.format(celex="62026CN1009")] * 3 + [soud_ipcuria.VEC.format(vec="C-1009/26")],
+      str(zaznam_sdeu))
+OTAZKY = IPC_VEC.replace("Questions are not yet available on the CJEU website.",
+                         "Questions referred: " + "Must Article 17 of Directive 2019/790 be interpreted so that … " * 12)
+obsah = soud_sdeu.SDEU(session_factory=relace_sdeu(ipcuria_web={soud_ipcuria.VEC.format(vec="C-1009/26"): OTAZKY})).text(z)
+check("SDEU: otázky ze stránky ipcuria, když jinde nic není",
+      obsah.get("zdroj") == "ipcuria" and "Questions referred" in obsah["text"], str(obsah)[:120])
+
+# Oznámení v ÚV převezme ranou otázku z ipcuria.
+PD = tmpdir()
+
+
+def sklad_sdeu(*zaznamy):
+    sk = Sklad("sdeu", data_dir=PD, web_dir=tmpdir()).nacti(NYNI)
+    for x in zaznamy:
+        sk.pridej(x)
+    return sk
+
+
+def rana(**kw):
+    return zaznam("sdeu:ipc:C-1009/26", "2026-09-20T10:00:00Z", soud="sdeu", spz="C-1009/26",
+                  druh="předběžná otázka", zverejneno="", **kw)
+
+
+def oznameni(**kw):
+    return zaznam("sdeu:62026CN1009", "2026-09-24T02:00:00Z", soud="sdeu", spz="C-1009/26",
+                  druh="předběžná otázka", **kw)
+
+
+HOTOVE_AI = {"heslo": "Platformy", "shrnuti": SHRNUTI, "oblasti": ["autorske"], "procesni": False}
+sk = sklad_sdeu(rana(ai=HOTOVE_AI))
+n = oznameni()
+check("oznámení převezme ranou otázku se shrnutím (i s prvním výskytem – už byla vidět)",
+      orchestr._prevezmi_predbezne(sk, n) and n["ai"] == HOTOVE_AI and n["first_seen"] == "2026-09-20T10:00:00Z"
+      and sk.zaznamy["sdeu:ipc:C-1009/26"]["nahrazeno"] == "sdeu:62026CN1009", str(n["first_seen"]))
+sk = sklad_sdeu(rana())
+n = oznameni()
+check("bez shrnutí se oznámení ukáže jako nové (s otázkami)",
+      orchestr._prevezmi_predbezne(sk, n) and n["first_seen"] == "2026-09-24T02:00:00Z" and not n.get("ai")
+      and sk.zaznamy["sdeu:ipc:C-1009/26"]["nahrazeno"] == "sdeu:62026CN1009")
+sk = sklad_sdeu(rana(ai=HOTOVE_AI))
+n = zaznam("sdeu:62026CJ1009", "2026-09-24T02:00:00Z", soud="sdeu", spz="C-1009/26", druh="rozsudek")
+check("rozsudek ve stejné věci ranou otázku nepřevezme",
+      orchestr._prevezmi_predbezne(sk, n) and not n.get("ai") and not sk.zaznamy["sdeu:ipc:C-1009/26"]["nahrazeno"])
+sk = sklad_sdeu(oznameni())
+check("raná otázka se nepřidá, když oznámení už je", not orchestr._prevezmi_predbezne(sk, rana()))
+
 # --- mapy ---
 spatne = [(k, o) for k, v in mapy.nacti("predpisy")["predpisy"].items() for o in v["oblasti"]
           if o not in TAX.ids]
+spatne += [(k, o) for k, v in mapy.nacti("ipcuria")["kategorie"].items() for o in v if o not in TAX.ids]
+spatne += [("bez_kategorie", o) for o in mapy.nacti("ipcuria")["bez_kategorie"] if o not in TAX.ids]
 spatne += [(k, o) for sekce in ("oblast_upravy", "organy") for k, v in mapy.nacti("nss")[sekce].items()
            for o in v if o not in TAX.ids]
 spatne += [(k, o) for k, v in mapy.nacti("us")["rejstrik"].items() for o in v if o not in TAX.ids]

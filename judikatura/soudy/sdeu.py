@@ -10,6 +10,11 @@ Objevování jde přes SPARQL Cellaru (datové API Úřadu pro publikace EU):
     po podání, ale obsahuje položené otázky; datem dokumentu je den podání.
     Žaloby a kasační opravné prostředky se neberou (poznají se podle názvu).
 
+Doplňkově ipcuria.eu (soudy/ipcuria.py): předběžné otázky z duševního
+vlastnictví a ochrany údajů podané za poslední měsíc – dva až tři měsíce
+před oznámením v ÚV. Text k nim je žádost o rozhodnutí o předběžné otázce
+v InfoCurii (dokument DDP), oznámení v Cellaru, nebo otázky na ipcuria.eu.
+
 Název věci a texty dokumentů dává InfoCuria podle čísla věci (česky, když
 překlad už je). Čerstvý rozsudek bývá první dny jen v jazyce řízení
 a francouzsky – pak text vezmeme z Cellaru (XHTML česky, anglicky,
@@ -21,12 +26,14 @@ Tvar odpovědí odpovídá tomu, co stáhla sonda (tests/fixtures/sdeu/).
 
 import re
 import time
+from datetime import timedelta
 
 import requests
 from bs4 import BeautifulSoup
 
 from feed_common import USER_AGENT
 from judikatura import model
+from judikatura.soudy import ipcuria
 from judikatura.soudy.web import radky_html
 
 SPARQL = "https://publications.europa.eu/webapi/rdf/sparql"
@@ -46,6 +53,9 @@ OTAZKA_RE = re.compile(r"předběžn\w* otáz|preliminary ruling", re.I)
 SOUDY = {"C": "Soudní dvůr", "T": "Tribunál"}
 TEXT_JAZYKY = ("ces", "eng", "fra")
 MIN_TEXT = 500
+IPCURIA_DNI = 30     # z ipcuria jen otázky podané za poslední měsíc (okno SDEU)
+# U předběžné otázky z ipcuria: žádost, pak oznámení o ní (dokumenty InfoCurie).
+DOKUMENTY_OTAZKY = ("DDP", "DDP_COMM")
 HLAVICKY = {"User-Agent": USER_AGENT}
 HLAVICKY_CURIA = {
     "User-Agent": USER_AGENT, "Accept": "application/json, text/plain, */*",
@@ -149,6 +159,24 @@ def zaznamy_oznameni(odpoved):
     return list(out.values())
 
 
+def zaznamy_ipcurie(seznam, od):
+    """Předběžné otázky z ipcuria.eu podané od `od`. Datum zveřejnění zůstává
+    prázdné – první výskyt je den, kdy je Owl uviděl."""
+    out = []
+    for r in seznam:
+        if not r["podano"] or r["podano"] < od.isoformat():
+            continue
+        out.append(model.novy_zaznam(
+            "sdeu", ipcuria.PREFIX + r["vec"], spz=r["vec"], druh=DRUH_OTAZKA, nazev=r["nazev"],
+            datum=r["podano"], url=ipcuria.CURIA.format(vec=r["vec"]), rejstrik="C",
+            meta={"soud_eu": SOUDY["C"], "celex": ipcuria.celex_oznameni(r["vec"]),
+                  "ipcuria": ipcuria.VEC.format(vec=r["vec"]),
+                  "kategorie_ipcuria": "; ".join(r["kategorie"])},
+            oblasti_meta=ipcuria.oblasti(r["kategorie"]),
+        ))
+    return out
+
+
 def dotaz_infocuria(vec):
     """Tělo hledání věci v InfoCurii podle čísla (přesně, česky)."""
     return {
@@ -162,26 +190,53 @@ def dotaz_infocuria(vec):
     }
 
 
-def vec_z_infocurie(odpoved, vec):
-    """(název věci, {celex: text dokumentu}) z odpovědi InfoCurie."""
+def _text_dokumentu(dc):
+    """Text dokumentu: česky, anglicky, francouzsky, jinak nejdelší jazyk
+    (čerstvá žádost bývá jen v jazyce řízení – AI ji shrne česky i tak)."""
+    jazyky = {k: v for m in dc.get("contentML") or [] if isinstance(m, dict)
+              for k, v in m.items() if v}
+    text = jazyky.get("cs") or jazyky.get("en") or jazyky.get("fr") or \
+        max(jazyky.values(), key=len, default="")
+    # InfoCuria dává před text někdy doslova „null".
+    return re.sub(r"^\s*null\s+", "", text).strip()
+
+
+def dokumenty_z_infocurie(odpoved, vec):
+    """(název věci, [{typ, celex, text}]) z odpovědi InfoCurie."""
     for hit in (odpoved or {}).get("searchHits") or []:
         c = hit.get("content") or {}
         # „C-1028/26 (PPU)", „C-1036/26 P" – číslo věci je první slovo.
         if vec not in {(c.get(k) or "").split(" ")[0] for k in ("publishedId", "publishedAffId")}:
             continue
         nazvy = {k: v for m in c.get("usualNameML") or [] if isinstance(m, dict) for k, v in m.items() if v}
-        texty = {}
+        dokumenty = []
         for d in ((hit.get("innerHits") or {}).get("document") or {}).get("searchHits") or []:
             dc = d.get("content") or {}
-            jazyky = {k: v for m in dc.get("contentML") or [] if isinstance(m, dict)
-                      for k, v in m.items() if v}
-            text = jazyky.get("cs") or jazyky.get("en") or jazyky.get("fr") or ""
-            # InfoCuria dává před text někdy doslova „null".
-            text = re.sub(r"^\s*null\s+", "", text).strip()
-            if dc.get("celex") and text:
-                texty[dc["celex"]] = text
-        return (nazvy.get("cs") or nazvy.get("en") or nazvy.get("fr") or ""), texty
-    return "", {}
+            text = _text_dokumentu(dc)
+            if text:
+                dokumenty.append({"typ": dc.get("docTypeCode") or "", "celex": dc.get("celex") or "",
+                                  "text": text})
+        return (nazvy.get("cs") or nazvy.get("en") or nazvy.get("fr") or ""), dokumenty
+    return "", []
+
+
+def vec_z_infocurie(odpoved, vec):
+    """(název věci, {celex: text dokumentu}) z odpovědi InfoCurie."""
+    nazev, dokumenty = dokumenty_z_infocurie(odpoved, vec)
+    return nazev, {d["celex"]: d["text"] for d in dokumenty if d["celex"]}
+
+
+def text_zaznamu(z, dokumenty):
+    """Text dokumentu, ke kterému záznam patří: u rozhodnutí podle CELEX,
+    u předběžné otázky z ipcuria žádost (DDP), jinak oznámení o ní."""
+    if z["id"].startswith(ipcuria.PREFIX):
+        for typ in DOKUMENTY_OTAZKY:
+            texty = [d["text"] for d in dokumenty if d["typ"] == typ]
+            if texty:
+                return max(texty, key=len)
+        return ""
+    celex = (z.get("meta") or {}).get("celex", "")
+    return next((d["text"] for d in dokumenty if celex and d["celex"] == celex), "")
 
 
 def text_z_cellaru(html):
@@ -200,7 +255,7 @@ class SDEU:
     def __init__(self, session_factory=requests.Session):
         self._session_factory = session_factory
         self._relace = None
-        self._texty = {}     # celex -> text z InfoCurie (ať se věc nehledá dvakrát)
+        self._texty = {}     # id záznamu -> text z InfoCurie (ať se věc nehledá dvakrát)
 
     def _s(self):
         if self._relace is None:
@@ -215,44 +270,68 @@ class SDEU:
         return r.json()
 
     def objev(self, od, do):
-        """Rozhodnutí s datem od `od` a oznámení o předběžných otázkách, která
-        přibyla od `od`."""
+        """Rozhodnutí s datem od `od`, oznámení o předběžných otázkách, která
+        přibyla od `od`, a z ipcuria otázky podané za poslední měsíc (web je
+        ukazuje až s odstupem, proto delší lhůta než u ostatních)."""
         rozhodnuti = zaznamy_rozhodnuti(self._sparql(dotaz_rozhodnuti(od, do)))
         try:
             otazky = zaznamy_oznameni(self._sparql(dotaz_oznameni(od)))
         except Exception as e:   # oznámení počkají, rozhodnutí ne
             print(f"    [sdeu] oznámení o nových věcech nedostupná ({type(e).__name__})")
             otazky = []
-        return rozhodnuti + otazky
+        try:
+            r = self._s().get(ipcuria.SEZNAM, headers=HLAVICKY, timeout=60)
+            r.raise_for_status()
+            rane = zaznamy_ipcurie(ipcuria.parse_seznam(r.text), do - timedelta(days=IPCURIA_DNI))
+        except Exception as e:   # doplňkový zdroj – bez něj se jede dál
+            print(f"    [sdeu] ipcuria.eu nedostupná ({type(e).__name__})")
+            rane = []
+        return rozhodnuti + otazky + rane
 
     def _infocuria(self, z):
         time.sleep(self.pauza)
         r = self._s().post(INFOCURIA, json=dotaz_infocuria(z["spz"]), headers=HLAVICKY_CURIA,
                            timeout=60)
         r.raise_for_status()
-        return vec_z_infocurie(r.json(), z["spz"])
+        return dokumenty_z_infocurie(r.json(), z["spz"])
 
     def doplnit(self, z):
         """Název věci z InfoCurie; text dokumentu si schová pro AI."""
-        nazev, texty = self._infocuria(z)
+        nazev, dokumenty = self._infocuria(z)
         if nazev and not z.get("nazev"):
             z["nazev"] = nazev
-        celex = (z.get("meta") or {}).get("celex", "")
-        if texty.get(celex):
-            self._texty[celex] = texty[celex]
+        text = text_zaznamu(z, dokumenty)
+        if text:
+            self._texty[z["id"]] = text
 
     def text(self, z):
         """Text: InfoCuria (česky, jinak anglicky či francouzsky), jinak
-        Cellar v češtině, angličtině, francouzštině."""
+        Cellar v češtině, angličtině, francouzštině; u předběžné otázky
+        z ipcuria nakonec otázky z její stránky."""
         celex = (z.get("meta") or {}).get("celex", "")
-        text = self._texty.pop(celex, "")
+        text = self._texty.pop(z["id"], "")
         if not text:
             try:
-                text = self._infocuria(z)[1].get(celex, "")
+                text = text_zaznamu(z, self._infocuria(z)[1])
             except Exception as e:
                 print(f"    [sdeu] {z['spz']}: InfoCuria nedostupná ({type(e).__name__})")
         if len(text) >= MIN_TEXT:
             return {"text": text, "zdroj": "infocuria"}
+        obsah = self._text_cellar(z, celex)
+        if obsah or not z["id"].startswith(ipcuria.PREFIX):
+            return obsah
+        try:
+            r = self._s().get(z["meta"]["ipcuria"], headers=HLAVICKY, timeout=60)
+            r.raise_for_status()
+        except Exception as e:
+            print(f"    [sdeu] {z['spz']}: ipcuria.eu nedostupná ({type(e).__name__})")
+            return {}
+        text = ipcuria.text_vec(r.text)
+        return {"text": text, "zdroj": "ipcuria"} if len(text) >= MIN_TEXT else {}
+
+    def _text_cellar(self, z, celex):
+        if not celex:
+            return {}
         for jazyk in TEXT_JAZYKY:
             try:
                 r = self._s().get(CELLAR.format(celex=celex), timeout=60, headers=dict(

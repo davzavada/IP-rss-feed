@@ -11,6 +11,7 @@ AI rozhodne, a zůstane, když AI žádnou oblast nevrátí.
   nss.json        oblast úpravy (přesně, jinak podle části před pomlčkou)
                   a správní orgány (podle části názvu)
   us.json         části slov z věcného rejstříku a předmětu řízení
+  ipcuria.json    kategorie ipcuria.eu (rané předběžné otázky SDEU z IP)
 """
 
 import functools
@@ -84,3 +85,8 @@ def z_organu(texty):
 def z_rejstriku(texty):
     """Věcný rejstřík a předmět řízení ÚS."""
     return _podle_casti(nacti("us")["rejstrik"], texty)
+
+
+def z_ipcurie(kategorie):
+    """Kategorie předběžné otázky na ipcuria.eu („Trade marks > …")."""
+    return _podle_casti(nacti("ipcuria")["kategorie"], kategorie)

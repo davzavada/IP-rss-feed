@@ -124,6 +124,17 @@ pro AI.
   věci; kde český text ještě není (čerstvé rozsudky, Tribunál), bere se
   z Cellaru česky, anglicky, nebo francouzsky. Odkaz vede na EUR-Lex. Okno
   webu je měsíc.
+  Doplňkově **ipcuria.eu** (`judikatura/soudy/ipcuria.py`): předběžné otázky
+  z duševního vlastnictví a ochrany údajů podané za poslední měsíc, tedy
+  dva až tři měsíce před oznámením v ÚV. Záznam `sdeu:ipc:{věc}` má datum
+  podání, oblasti podle kategorií webu (`data/judikatura/mapy/ipcuria.json`)
+  a odkaz na věc na webu Soudního dvora. Text je žádost o rozhodnutí
+  o předběžné otázce z InfoCurie, pak oznámení v Cellaru, pak otázky ze
+  stránky ipcuria; do té doby „Položené otázky zatím nejsou zveřejněné“.
+  Oznámení v ÚV ranou otázku převezme stejně jako databáze NS úřední desku:
+  hotové shrnutí přejde na oznámení, bez shrnutí se oznámení ukáže jako nové.
+- Na text rozhodnutí se čeká, dokud je rozhodnutí v okně – zkouší se při
+  každém běhu. Šest pokusů mají jen selhání AI.
 - **Stav běhu** (zdraví soudů, spotřeba AI po dnech) je v
   `data/judikatura/stav.json`. `python -m judikatura.kontrola` zkontroluje
   archiv i okna. Workflow bez ní necommituje.

@@ -1,0 +1,30 @@
+{
+  "poznamka": "Kategorie ipcuria.eu (cesta „Trade marks > Concept of 'use'“) -> oblasti. Klíč je část cesty bez ohledu na velikost písmen; oblasti se berou v pořadí klíčů, nejvýš tři. Věc bez kategorie (autor webu ji ještě nezařadil) dostane `bez_kategorie`.",
+  "kategorie": {
+    "Trade mark": ["prumyslova_prava"],
+    "Design": ["prumyslova_prava"],
+    "Patent": ["prumyslova_prava"],
+    "SPC": ["prumyslova_prava"],
+    "Geographical indication": ["prumyslova_prava"],
+    "Plant variet": ["prumyslova_prava"],
+    "Copyright": ["autorske"],
+    "Computer programs": ["autorske"],
+    "Database": ["autorske"],
+    "Collective management": ["autorske"],
+    "Enforcement Directive": ["prumyslova_prava", "autorske"],
+    "Trade secret": ["nekala_soutez"],
+    "Unfair competition": ["nekala_soutez"],
+    "Misleading": ["nekala_soutez"],
+    "Personal Data Protection": ["gdpr"],
+    "General Data Protection Regulation": ["gdpr"],
+    "ePrivacy": ["gdpr"],
+    "Law Enforcement Directive": ["gdpr"],
+    "Digital Services": ["it"],
+    "Digital Markets": ["it"],
+    "E-commerce": ["it"],
+    "Artificial Intelligence": ["it"],
+    "Jurisdiction and enforcement of judgments": ["mps"],
+    "Applicable law": ["mps"]
+  },
+  "bez_kategorie": ["prumyslova_prava", "autorske", "gdpr"]
+}

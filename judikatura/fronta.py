@@ -6,8 +6,10 @@ Free tier nestihne všechno najednou (úvodní dávka, rušné dny), proto:
   - soudy se střídají, ať jeden nevyčerpá běh ostatním;
   - v rámci soudu jde nejdřív, co podle metadat spadá do výchozího výběru,
     pak věcná rozhodnutí a nakonec procesní; v každé skupině od nejnovějšího;
-  - když text zatím není (PDF přikládají soudy s odstupem), zkouší se
-    znovu po 1, 2, 4… hodinách, nejvýš šestkrát.
+  - když text zatím není (PDF přikládají soudy s odstupem, žádost
+    o předběžnou otázku vyjde týdny po podání), zkouší se znovu po 1, 2,
+    4… hodinách a pak při každém běhu, dokud je rozhodnutí v okně;
+  - když selže AI, zkusí se to nejvýš šestkrát.
 """
 
 import time
@@ -17,7 +19,9 @@ from judikatura import model
 from judikatura.analyza import PROMPT_VERZE
 
 MAX_POKUSU = 6
-MAX_ODKLAD_H = 24
+# Sběr běží jednou denně; odklad kratší než den zajistí, že se to zkusí
+# při každém běhu, i když ten další začne o pár minut dřív.
+MAX_ODKLAD_H = 20
 
 
 def potrebuje_ai(z, nyni):
@@ -27,7 +31,7 @@ def potrebuje_ai(z, nyni):
     if ai.get("shrnuti") and int(ai.get("pv") or 0) >= PROMPT_VERZE:
         return False
     stav = z.get("stav") or {}
-    if int(stav.get("pokusy") or 0) >= MAX_POKUSU:
+    if stav.get("duvod") != "bez-textu" and int(stav.get("pokusy") or 0) >= MAX_POKUSU:
         return False
     dalsi = model.z_iso(stav.get("dalsi_pokus"))
     return not dalsi or dalsi <= nyni

@@ -38,7 +38,8 @@ function zJson(r) {
     heslo: r.heslo || "",
     shrnuti: r.shrnuti || "",
     poznamka: r.poznamka || "",
-    datum: r.zverejneno || r.first_seen || "",
+    // Raná předběžná otázka z ipcuria ještě zveřejněná není – datum podání.
+    datum: r.zverejneno || r.datum || r.first_seen || "",
     nove: !isNaN(prvni) && Date.now() - prvni < NOVE_MS,
     autori: "",
     oblasti: r.oblasti || [],
