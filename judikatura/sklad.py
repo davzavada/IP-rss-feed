@@ -14,7 +14,7 @@ import json
 import os
 from datetime import timedelta
 
-from judikatura import model
+from judikatura import fronta, model
 
 KOREN = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(KOREN, "data", "judikatura")
@@ -39,8 +39,28 @@ def radek(zaznam):
     return json.dumps(zaznam, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
 
+# Proč u rozhodnutí na webu ještě není shrnutí (kód -> věta u řádku).
+STAV_SHRNUTI = {
+    "pripravuje": "Shrnutí se připravuje.",
+    "ceka_na_text": "Čeká na zveřejnění textu rozhodnutí.",
+    "nepodarilo": "Shrnutí se nepodařilo připravit.",
+}
+
+
+def stav_shrnuti(z):
+    """Kód pro rozhodnutí bez shrnutí: vyčerpané pokusy, čekání na text od
+    soudu (PDF přikládají s odstupem), jinak čeká ve frontě na AI."""
+    stav = z.get("stav") or {}
+    if int(stav.get("pokusy") or 0) >= fronta.MAX_POKUSU:
+        return "nepodarilo"
+    if stav.get("duvod") == "bez-textu":
+        return "ceka_na_text"
+    return "pripravuje"
+
+
 def slim(z):
-    """Výřez záznamu pro web: metadata, shrnutí, oblasti, příznak procesní."""
+    """Výřez záznamu pro web: metadata, shrnutí, oblasti, příznak procesní;
+    bez shrnutí navíc `stav_shrnuti` a větu k němu v `poznamka`."""
     out = {k: z.get(k) for k in SLIM_POLE if z.get(k) not in (None, "", [])}
     if not out.get("soudce") and (z.get("meta") or {}).get("soudce"):
         out["soudce"] = z["meta"]["soudce"]
@@ -51,7 +71,8 @@ def slim(z):
     procesni = ai.get("procesni")
     out["procesni"] = bool(z.get("procesni_meta") if procesni is None else procesni)
     if not out["shrnuti"]:
-        out["poznamka"] = "Shrnutí zatím není k dispozici."
+        out["stav_shrnuti"] = stav_shrnuti(z)
+        out["poznamka"] = STAV_SHRNUTI[out["stav_shrnuti"]]
     return out
 
 

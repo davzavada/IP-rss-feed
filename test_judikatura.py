@@ -174,10 +174,25 @@ check("nahrazený záznam z okna zmizí",
 s = slim(zaznam("ns:D", "2026-09-22T00:00:00Z", oblasti_meta=["dane"], procesni_meta=True))
 check("bez shrnutí poznámka, oblasti a procesní z metadat",
       s["poznamka"] and s["shrnuti"] == "" and s["oblasti"] == ["dane"] and s["procesni"] is True, str(s))
+# Stav shrnutí: web podle něj píše u řádku, proč shrnutí chybí, a nad
+# kartou, kolik rozhodnutí ještě čeká na AI.
+check("ve frontě: připravuje se",
+      (s["stav_shrnuti"], s["poznamka"]) == ("pripravuje", "Shrnutí se připravuje."), str(s))
+s = slim(zaznam("ns:F", "2026-09-22T00:00:00Z", stav={"pokusy": 2, "duvod": "ai-selhani"}))
+check("po chybě AI se dál připravuje", s["stav_shrnuti"] == "pripravuje", str(s))
+s = slim(zaznam("ns:G", "2026-09-22T00:00:00Z", stav={"pokusy": 1, "duvod": "bez-textu"}))
+check("bez textu: čeká na text od soudu",
+      (s["stav_shrnuti"], s["poznamka"]) == ("ceka_na_text", "Čeká na zveřejnění textu rozhodnutí."),
+      str(s))
+s = slim(zaznam("ns:H", "2026-09-22T00:00:00Z", stav={"pokusy": 6, "duvod": "bez-textu"}))
+check("vyčerpané pokusy: nepodařilo se",
+      (s["stav_shrnuti"], s["poznamka"]) == ("nepodarilo", "Shrnutí se nepodařilo připravit."),
+      str(s))
 s = slim(zaznam("ns:E", "2026-09-22T00:00:00Z", oblasti_meta=["dane"], procesni_meta=True,
                 ai={"heslo": "H", "shrnuti": SHRNUTI, "oblasti": ["spravni"], "procesni": False}))
 check("oblasti a procesní z AI mají přednost",
-      s["oblasti"] == ["spravni"] and s["procesni"] is False and "poznamka" not in s, str(s))
+      s["oblasti"] == ["spravni"] and s["procesni"] is False and "poznamka" not in s
+      and "stav_shrnuti" not in s, str(s))
 
 # =====================================================================
 print("\n4) AI rozbor: dotaz a odpověď")

@@ -68,6 +68,11 @@ pro AI.
   věcná a nakonec procesní rozhodnutí. Když text zatím není, zkouší se znovu
   po 1, 2, 4… hodinách, nejvýš šestkrát. Běh má rozpočet (`AI_MAX_POLOZEK`,
   `AI_MAX_MINUT`) a archiv ukládá po každém rozhodnutí.
+- **Stav shrnutí**: rozhodnutí bez shrnutí má v okně `stav_shrnuti`
+  (`pripravuje` – čeká ve frontě, `ceka_na_text` – soud ještě nezveřejnil
+  text, `nepodarilo` – vyčerpané pokusy) a větu k němu v `poznamka`. Karta
+  nad tabulkou ukazuje, kolik rozhodnutí z celého okna ještě čeká na AI –
+  mimo vybrané senáty se do výběru podle oblastí dostanou až se zařazením.
 - **Nejvyšší soud**: databáze (Lotus Domino) padá na 500, když je dotaz moc
   široký. Hledá se proto po rejstřících (Cdo, NSČR, Tdo…), každý dotaz
   s čerstvou relací; co spadne i napodruhé, rozdělí se po senátech. Text se
@@ -121,12 +126,17 @@ vlastnictví a IT, všechny časopisy.
   Tajný klíč do kódu ani na Vercel nepatří. Bude jen v GitHub secretu
   `CLERK_SECRET_KEY`, až budou přehledy podle výběru.
 - Výběr je u účtu v `user.unsafeMetadata.owl`:
-  `{"v":1,"ns":{"senaty":[23],"oblasti":[…]},"skryt_procesni":false,"skryte_casopisy":[]}`.
-  Nastavuje se na stránce `#nastaveni` (Můj výběr). Neznámé oblasti se
-  zahodí, přejmenované převede `alias` v `docs/data/oblasti.json`. Výchozí
-  výběr se neukládá.
-- Pravidlo: rozhodnutí NS je vidět, když je z vybraného senátu, nebo spadá
-  do některé z vybraných oblastí. Pak se případně skryjí rutinní procesní.
+  `{"v":1,"ns":{"oblasti":[…],"senaty":[23]},"nss":{"oblasti":[…]},"us":{…},"sdeu":{…},"skryt_procesni":false,"skryte_casopisy":[]}`.
+  Nastavuje se na stránce `#nastaveni` (Můj výběr): matice oblastí × soudy
+  (NS, NSS, ÚS, SDEU – u posledních tří se výběr uplatní, až se jejich
+  rozhodnutí začnou sbírat), senáty NS po kolegiích, procesní rozhodnutí
+  a časopisy. Skupiny oblastí a kolegia bez vybraného se sbalí na jeden
+  řádek. Neznámé oblasti se zahodí, přejmenované převede `alias`
+  v `docs/data/oblasti.json`; soud, který v uloženém výběru chybí, dostane
+  výchozí oblasti. Výchozí výběr se neukládá.
+- Pravidlo: rozhodnutí je vidět, když spadá do některé z oblastí vybraných
+  u jeho soudu; u NS navíc všechna rozhodnutí vybraných senátů. Pak se
+  případně skryjí rutinní procesní.
 
 ## Workflow
 
