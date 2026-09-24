@@ -14,6 +14,7 @@ Použití (lokálně i v probe.yml):
     python tools/probe_zdroje.py                   # všechny soudy, den = včera
     python tools/probe_zdroje.py --soudy ns,sdeu --datum 2026-09-22
     python tools/probe_zdroje.py --url https://vyhledavac.nssoud.cz/...
+    python tools/probe_zdroje.py --soudy - --url …    # jen vlastní adresy
 
 Parametry jdou zadat i proměnnými PROBE_SOUDY, PROBE_DATUM a PROBE_URL –
 workflow je tak nemusí vkládat do příkazové řádky.
@@ -40,10 +41,12 @@ SOUDY = ("ns", "nss", "us", "sdeu")
 MAX_TELO = 10 * 1024 * 1024   # větší odpověď se ořízne (hlídá velikost artefaktu)
 TIMEOUT = 60
 
-# Vlastní adresy (--url) jen z hostů zdrojů – sonda nemá sloužit k ničemu jinému.
+# Vlastní adresy (--url) jen z hostů zdrojů a z webu Owl (kvůli kontrole
+# náhledu PDF, api/pdf.js) – sonda nemá sloužit k ničemu jinému.
 POVOLENE_HOSTY = (
     "nsoud.cz", "nssoud.cz", "usoud.cz", "curia.europa.eu",
     "publications.europa.eu", "eur-lex.europa.eu", "justice.cz",
+    "davidzavada.cz",
 )
 
 HLAVICKY = {
@@ -101,14 +104,19 @@ class Sonda:
         soubor = nazev + pripona
         with open(os.path.join(self.vystup, soubor), "wb") as f:
             f.write(telo)
+        # Content-Disposition rozhoduje, jestli prohlížeč PDF ukáže, nebo stáhne.
+        dispozice = r.headers.get("Content-Disposition", "")
         zaznam.update(
             status=r.status_code, konecna_url=r.url, typ=typ, soubor=soubor,
             velikost=len(r.content), orizlo=len(r.content) > MAX_TELO,
-            trvani_s=round(time.monotonic() - start, 1),
+            trvani_s=round(time.monotonic() - start, 1), dispozice=dispozice,
         )
         self.souhrn.append(zaznam)
         print(f"  {nazev:28} {r.status_code}  {len(r.content):>9} B  "
-              f"{zaznam['trvani_s']:>5}s  {typ[:40]}")
+              f"{zaznam['trvani_s']:>5}s  {typ[:40]}"
+              + (f"  [{dispozice[:80]}]" if dispozice else ""))
+        if r.url != url:
+            print(f"  {'':28} -> {r.url[:150]}")
         return r
 
     def uloz_souhrn(self):
@@ -349,7 +357,8 @@ def main():
     args = ap.parse_args()
 
     den = date.fromisoformat(args.datum) if args.datum.strip() else vychozi_den()
-    soudy = [x.strip() for x in args.soudy.split(",") if x.strip()]
+    # „-" = žádný soud, jen adresy z --url.
+    soudy = [x.strip() for x in args.soudy.split(",") if x.strip() not in ("", "-")]
     nezname = [x for x in soudy if x not in SONDY]
     if nezname:
         sys.exit(f"Neznámé zdroje: {', '.join(nezname)} (znám {', '.join(SONDY)})")

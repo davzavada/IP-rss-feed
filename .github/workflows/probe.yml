@@ -12,13 +12,13 @@ on:
   workflow_dispatch:
     inputs:
       soudy:
-        description: 'Zdroje oddělené čárkou (ns,nss,us,sdeu)'
+        description: 'Zdroje oddělené čárkou (ns,nss,us,sdeu; - = žádný, jen adresy)'
         default: 'ns,nss,us,sdeu'
       datum:
         description: 'Den pro dotazy podle data (RRRR-MM-DD, prázdné = včera)'
         default: ''
       url:
-        description: 'Další adresy ke stažení, oddělené mezerou (jen weby zdrojů)'
+        description: 'Další adresy ke stažení, oddělené mezerou (jen weby zdrojů a Owl)'
         default: ''
       ulozit:
         description: 'Commitnout odpovědi do větve jako fixtures (ne do main)'
