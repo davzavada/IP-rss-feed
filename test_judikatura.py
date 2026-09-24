@@ -25,6 +25,7 @@ from judikatura import analyza, fronta, kontrola, mapy, migrace, model, orchestr
 from judikatura.sklad import Sklad, slim
 from judikatura.soudy import ns
 from judikatura.soudy import nss as soud_nss
+from judikatura.soudy import sdeu as soud_sdeu
 from judikatura.soudy import us as soud_us
 from judikatura.soudy.web import formular_pole
 from judikatura.taxonomie import SOUBOR as OBLASTI_JSON
@@ -567,6 +568,9 @@ class Odp:
         if self.status_code >= 400:
             raise OSError(f"HTTP {self.status_code}")
 
+    def json(self):
+        return json.loads(self.text)
+
 
 class Web:
     """Simulovaný web NS. `hledani(dotaz, start)` vrací Odp pro vyhledávání."""
@@ -722,7 +726,7 @@ check("deska nemá detail – nic se nestahuje", web.volani == [])
 check("deska: rovnou PDF", adapter.text(d_z)["zdroj"] == "pdf" and web.volani == [d_z["pdf"]])
 
 # =====================================================================
-print("\n8) NSS a ÚS: stránky, hledání, první zařazení")
+print("\n8) NSS, ÚS a SDEU: stránky, hledání, první zařazení")
 # =====================================================================
 KOREN_FX = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tests", "fixtures")
 
@@ -1011,6 +1015,123 @@ except RuntimeError:
     check("ÚS: formulář místo výsledků je chyba zdroje", True)
 obsah = soud_us.US(session_factory=web_us(US_VYSLEDKY, {})).text(nalezene[0])
 check("ÚS: text z trvalé adresy", obsah["zdroj"] == "html" and obsah["text"].startswith("NÁLEZ"))
+
+
+# --- SDEU: Cellar (SPARQL, XHTML) a InfoCuria ---
+soud_sdeu.SDEU.pauza = 0
+SPARQL_ROZH = json.loads(fx("sdeu", "sparql_rozhodnuti.json"))
+SPARQL_OZN = json.loads(fx("sdeu", "sparql_oznameni.json"))
+check("SDEU: číslo věci z CELEX",
+      soud_sdeu.cislo_veci("62025CJ0151") == "C-151/25" and soud_sdeu.cislo_veci("62024TJ0463") == "T-463/24"
+      and soud_sdeu.cislo_veci("62026CN0630") == "C-630/26" and soud_sdeu.cislo_veci("32016R0679") == "")
+rozh = soud_sdeu.zaznamy_rozhodnuti(SPARQL_ROZH)
+druhy = {}
+for z in rozh:
+    druhy[(z["druh"], z["spz"][0])] = druhy.get((z["druh"], z["spz"][0]), 0) + 1
+check("SDEU: rozsudky, usnesení a stanoviska za 14 dní (bez abstraktů a výtahů)",
+      len(rozh) == 81 and druhy == {("rozsudek", "C"): 33, ("stanovisko GA", "C"): 21, ("rozsudek", "T"): 17,
+                                    ("usnesení", "T"): 9, ("usnesení", "C"): 1}, str(druhy))
+z = next(z for z in rozh if z["id"] == "sdeu:62025CJ0151")
+check("SDEU: záznam rozsudku – věc, druh, data, ECLI, odkaz",
+      z["spz"] == "C-151/25" and z["druh"] == "rozsudek" and z["datum"] == z["zverejneno"] == "2026-09-24"
+      and z["ecli"] == "ECLI:EU:C:2026:789" and z["url"] == "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0151"
+      and z["meta"] == {"soud_eu": "Soudní dvůr", "celex": "62025CJ0151"}, str(z))
+ozn = soud_sdeu.zaznamy_oznameni(SPARQL_OZN)
+z = next(z for z in ozn if z["spz"] == "C-630/26")
+check("SDEU: nové předběžné otázky z oznámení v ÚV, kasační opravné prostředky ne",
+      len(ozn) == 9 and all(z["druh"] == "předběžná otázka" for z in ozn)
+      and not any(x["spz"] in ("C-768/26", "C-656/26") for x in ozn), str([x["spz"] for x in ozn]))
+check("SDEU: oznámení – účastník, předkládající soud, podání a zveřejnění",
+      z["nazev"] == "Rada Miasta Krakowa" and z["meta"]["predkladajici_soud"] == "Naczelny Sąd Administracyjny (Polsko)"
+      and z["datum"] == "2026-06-10" and z["zverejneno"] == "2026-09-21" and z["id"] == "sdeu:62026CN0630", str(z))
+dotaz = soud_sdeu.dotaz_rozhodnuti(date(2026, 9, 10), date(2026, 9, 24))
+check("SDEU: dotazy SPARQL – typy zdroje a data",
+      all(f"resource-type/{t}>" in dotaz for t in ("JUDG", "ORDER", "OPIN_AG"))
+      and '"2026-09-10"^^xsd:date' in dotaz and '"2026-09-24"^^xsd:date' in dotaz
+      and '"2026-09-10T00:00:00"^^xsd:dateTime' in soud_sdeu.dotaz_oznameni(date(2026, 9, 10)))
+nazev, texty = soud_sdeu.vec_z_infocurie(json.loads(fx("sdeu", "infocuria_C-151-25.json")), "C-151/25")
+check("SDEU: InfoCuria – název věci a české texty dokumentů podle CELEX, bez „null“",
+      nazev == "Viaudret" and texty["62025CJ0151"].startswith("ROZSUDEK SOUDNÍHO DVORA")
+      and texty["62025CC0151"].startswith("STANOVISKO GENERÁLNÍ ADVOKÁTKY"), str({k: v[:40] for k, v in texty.items()}))
+check("SDEU: Tribunál zatím bez českého textu, číslo věci s příponou (PPU) se pozná",
+      soud_sdeu.vec_z_infocurie(json.loads(fx("sdeu", "infocuria_T-83-22.json")), "T-83/22")
+      == ("Selimfiber v. EUIPO - Qureshi (SPETRA)", {})
+      and soud_sdeu.vec_z_infocurie({"searchHits": [{"content": {"publishedId": "C-1028/26 (PPU)",
+                                                                 "usualNameML": [{"cs": "Gradijk"}]}}]},
+                                    "C-1028/26") == ("Gradijk", {}))
+text = soud_sdeu.text_z_cellaru(fx("sdeu", "cellar_62025CJ0151_fra.html"))
+check("SDEU: text z Cellaru (čerstvý rozsudek francouzsky)",
+      text.startswith("ARRÊT DE LA COUR (cinquième chambre)") and "Dans l’affaire C‑151/25" in text, text[:60])
+text = soud_sdeu.text_z_cellaru(fx("sdeu", "cellar_62026CN0630_ces.html"))
+check("SDEU: oznámení o předběžné otázce i s otázkami", "Předběžné otázky" in text
+      and "směrnice o službách" in text and len(text) > soud_sdeu.MIN_TEXT, text[:60])
+
+zaznam_sdeu = []
+
+
+def web_sdeu(cellar=None, oznameni=True, infocuria=None):
+    """cellar: {jazyk: html}; infocuria: {číslo věci: odpověď}."""
+    def odp(metoda, url, data):
+        if url == soud_sdeu.SPARQL:
+            if "resource_legal_type" in data["query"]:
+                return Odp(text=json.dumps(SPARQL_OZN)) if oznameni else Odp(500, "chyba")
+            return Odp(text=json.dumps(SPARQL_ROZH))
+        if url == soud_sdeu.INFOCURIA:
+            return Odp(text=json.dumps((infocuria or {}).get(data["publishedId"], {"searchHits": []})))
+        if url.startswith("http://publications.europa.eu/resource/celex/"):
+            html = (cellar or {}).get(zaznam_sdeu[-1][3])
+            return Odp(text=html) if html else Odp(404, "nic")
+        raise OSError(f"neočekávaná adresa {metoda} {url}")
+    return relace(odp, zaznam_sdeu)
+
+
+class RelaceSdeu(Relace):
+    """Jako Relace, jen si u GET poznamená jazyk (Accept-Language) a POST
+    posílá JSON."""
+
+    def get(self, url, headers=None, **kw):
+        self.zaznam.append(("GET", url, None, (headers or {}).get("Accept-Language")))
+        return self.odpovedi("GET", url, None)
+
+    def post(self, url, data=None, json=None, **kw):
+        self.zaznam.append(("POST", url, data if data is not None else json, None))
+        return self.odpovedi("POST", url, data if data is not None else json)
+
+
+def relace_sdeu(**kw):
+    odpovedi = web_sdeu(**kw)().odpovedi
+    return lambda: RelaceSdeu(odpovedi, zaznam_sdeu)
+
+
+nalezene = soud_sdeu.SDEU(session_factory=relace_sdeu()).objev(date(2026, 9, 10), date(2026, 9, 24))
+check("SDEU: objevení – rozhodnutí i předběžné otázky", len(nalezene) == 90
+      and sum(z["druh"] == "předběžná otázka" for z in nalezene) == 9)
+nalezene = soud_sdeu.SDEU(session_factory=relace_sdeu(oznameni=False)).objev(date(2026, 9, 10), date(2026, 9, 24))
+check("SDEU: když oznámení nejdou, rozhodnutí se vezmou i tak", len(nalezene) == 81)
+
+INFOCURIA = {"C-151/25": json.loads(fx("sdeu", "infocuria_C-151-25.json")),
+             "T-83/22": json.loads(fx("sdeu", "infocuria_T-83-22.json"))}
+adapter_sdeu = soud_sdeu.SDEU(session_factory=relace_sdeu(infocuria=INFOCURIA))
+z = next(z for z in soud_sdeu.zaznamy_rozhodnuti(SPARQL_ROZH) if z["id"] == "sdeu:62025CJ0151")
+adapter_sdeu.doplnit(z)
+zaznam_sdeu.clear()
+obsah = adapter_sdeu.text(z)
+check("SDEU: název z InfoCurie, český text se podruhé nestahuje",
+      z["nazev"] == "Viaudret" and obsah["zdroj"] == "infocuria"
+      and obsah["text"].startswith("ROZSUDEK SOUDNÍHO DVORA") and zaznam_sdeu == [])
+z = next(z for z in soud_sdeu.zaznamy_rozhodnuti(SPARQL_ROZH) if z["spz"] == "T-83/22")
+zaznam_sdeu.clear()
+obsah = soud_sdeu.SDEU(session_factory=relace_sdeu(
+    infocuria=INFOCURIA, cellar={"fra": fx("sdeu", "cellar_62025CJ0151_fra.html")})).text(z)
+check("SDEU: bez textu v InfoCurii Cellar česky, anglicky, francouzsky",
+      obsah["zdroj"] == "cellar-fra" and [x[3] for x in zaznam_sdeu if x[0] == "GET"] == ["ces", "eng", "fra"],
+      str(zaznam_sdeu))
+check("SDEU: nikde nic = bez textu",
+      soud_sdeu.SDEU(session_factory=relace_sdeu(infocuria=INFOCURIA)).text(z) == {})
+check("SDEU: pokyny AI podle druhu",
+      analyza.pokyn({"soud": "sdeu", "druh": "stanovisko GA"}) == analyza.POKYNY["stanovisko"]
+      and analyza.pokyn({"soud": "sdeu", "druh": "předběžná otázka"}) == analyza.POKYNY["otazka"]
+      and analyza.pokyn({"soud": "sdeu", "druh": "rozsudek"}) == analyza.POKYNY["sdeu"])
 
 # --- mapy ---
 spatne = [(k, o) for k, v in mapy.nacti("predpisy")["predpisy"].items() for o in v["oblasti"]

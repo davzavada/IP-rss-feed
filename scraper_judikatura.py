@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Sběr judikatury: objeví nová rozhodnutí, AI je shrne a zařadí do oblastí.
 
-Soudy: Nejvyšší soud (všechny senáty), Nejvyšší správní soud a Ústavní
-soud; Soudní dvůr EU přibude. Archiv je v data/judikatura/, okna pro web
-v docs/data/judikatura/ – viz balíček judikatura/ a README.
+Soudy: Nejvyšší soud (všechny senáty), Nejvyšší správní soud, Ústavní soud
+a Soudní dvůr EU (Soudní dvůr i Tribunál). Archiv je v data/judikatura/,
+okna pro web v docs/data/judikatura/ – viz balíček judikatura/ a README.
 
 Použití:
     python scraper_judikatura.py                  # všechny soudy s adaptérem
@@ -21,9 +21,10 @@ import sys
 from judikatura import orchestr
 from judikatura.soudy.ns import NS
 from judikatura.soudy.nss import NSS
+from judikatura.soudy.sdeu import SDEU
 from judikatura.soudy.us import US
 
-ADAPTERY = {"ns": NS, "nss": NSS, "us": US}
+ADAPTERY = {"ns": NS, "nss": NSS, "us": US, "sdeu": SDEU}
 
 
 def main():

@@ -114,17 +114,9 @@ jobs:
         if: steps.plan.outputs.scrape == 'true'
         run: pip install -r requirements.txt
 
-      # Judikaturu NS sbírá judikatura.yml. Každý scraper je samostatný krok:
-      # když jeden spadne, ostatní doběhnou a commit uloží, co se povedlo.
-      - name: SDEU (ipcuria)
-        id: ipcuria
-        if: steps.plan.outputs.scrape == 'true'
-        continue-on-error: true
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          SKIP_GEMINI: ${{ inputs.skip_gemini }}
-        run: python scraper_ipcuria.py
-
+      # Judikaturu (NS, NSS, ÚS, SDEU) sbírá judikatura.yml. Každý scraper je
+      # samostatný krok: když jeden spadne, ostatní doběhnou a commit uloží,
+      # co se povedlo.
       - name: Časopisy
         id: casopisy
         if: steps.plan.outputs.scrape == 'true'
@@ -164,7 +156,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           # docs/data/judikatura patří workflow judikatura.yml.
-          git add docs/ ':!docs/data/judikatura' journals_seen.json journals_meta.json ipcuria_seen.json ipcuria_meta.json hearings_config.json
+          git add docs/ ':!docs/data/judikatura' journals_seen.json journals_meta.json hearings_config.json
           git diff --cached --quiet || git commit -m "Update RSS feeds $(date -u +%Y-%m-%d)"
           # Kdyby se main mezitím pohnul (dlouhý běh scraperu), přebasuj a zkus
           # znovu; u konfliktů v generovaných souborech vyhrává naše novější verze.
@@ -183,7 +175,6 @@ jobs:
             echo "::warning::scraper_hearings selhal, ostatní feedy jsou commitnuté"
           fi
           selhalo=""
-          [ '${{ steps.ipcuria.outcome }}' = failure ] && selhalo="$selhalo SDEU"
           [ '${{ steps.casopisy.outcome }}' = failure ] && selhalo="$selhalo časopisy"
           [ '${{ steps.prehled.outcome }}' = failure ] && selhalo="$selhalo přehled"
           if [ -n "$selhalo" ]; then

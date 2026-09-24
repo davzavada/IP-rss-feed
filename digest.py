@@ -9,8 +9,8 @@ mimo praxi nebo mimo ČR a EU model vynechává (viz DIGEST_PROMPT).
 
 „Poslední dva týdny" se počítají podle toho, kdy položka ve feedu přibyla
 (stav prvního výskytu *_seen.json), ne podle data vydání: článek může vyjít
-se zpožděním a přesto je novinka. Feedy samy drží položky déle (časopisy
-čtyři týdny, CJEU osm), takže bez tohohle filtru by přehled nebyl dvoutýdenní.
+se zpožděním a přesto je novinka. Zdroje samy drží položky déle (časopisy
+čtyři týdny, SDEU měsíc), takže bez tohohle filtru by přehled nebyl dvoutýdenní.
 
 Výstup je docs/digest.json, který si vykresluje index.html. Čísla položek,
 kterými se model odkazuje na zdroje, se překládají zpět na názvy a odkazy.
@@ -51,7 +51,6 @@ FORMAT_VERSION = "2"
 # (klíč zdroje, štítek, soubor feedu, stav prvního výskytu) – klíče jsou
 # shodné s index.html, aby se štítky obarvily stejně jako v seznamech.
 SOURCES = [
-    ("cjeu", "CJEU", "ipcuria_feed.xml", "ipcuria_seen.json"),
     ("journals", "Časopis", "journals_feed.xml", "journals_seen.json"),
 ]
 
@@ -61,6 +60,7 @@ JUDIKATURA = [
     ("nsoud", "NS", "ns"),
     ("nss", "NSS", "nss"),
     ("us", "ÚS", "us"),
+    ("sdeu", "SDEU", "sdeu"),
 ]
 
 

@@ -1,0 +1,331 @@
+{
+  "totalHits" : 1,
+  "maxScore" : 18.718803,
+  "maxScoreOthersDocuments" : 0.0,
+  "totalHitsRelation" : "EQUAL_TO",
+  "totalHitsOthersDocs" : 0,
+  "searchHits" : [ {
+    "index" : "index-affair@30-06-2026",
+    "id" : "T/0083/22/00000000PI/01/P/01",
+    "score" : 18.718803,
+    "sortValues" : [ 18.718803, 1644796800000 ],
+    "content" : {
+      "id" : "T/0083/22/00000000PI/01/P/01",
+      "affId" : "T/0083/22/00000000PI/01",
+      "publishedId" : "T-83/22",
+      "publishedAffId" : "T-83/22",
+      "procedureId" : "T/0083/22/00000000PI/01/P/01",
+      "jurisdiction" : "Tribunal",
+      "jurisdictionCode" : "T",
+      "order" : 83,
+      "suiteNumber" : 1,
+      "procType" : "P",
+      "procNumber" : 1,
+      "usualNameML" : [ {
+        "pl" : "Selimfiber przeciwko EUIPO - Qureshi (SPETRA)"
+      }, {
+        "sl" : "Selimfiber proti EUIPO - Qureshi (SPETRA)"
+      }, {
+        "sv" : "Selimfiber mot EUIPO - Qureshi (SPETRA)"
+      }, {
+        "da" : "Selimfiber mod EUIPO - Qureshi (SPETRA)"
+      }, {
+        "de" : "Selimfiber/ EUIPO - Qureshi (SPETRA)"
+      }, {
+        "el" : "Selimfiber κατά EUIPO - Qureshi (SPETRA)"
+      }, {
+        "lt" : "Selimfiber prieš EUIPO - Qureshi (SPETRA)"
+      }, {
+        "et" : "Selimfiber vs. EUIPO - Qureshi (SPETRA)"
+      }, {
+        "hu" : "Selimfiber kontra EUIPO - Qureshi (SPETRA)"
+      }, {
+        "en" : "Selimfiber v EUIPO - Qureshi (SPETRA)"
+      }, {
+        "nl" : "Selimfiber/EUIPO - Qureshi (SPETRA)"
+      }, {
+        "es" : "Selimfiber/EUIPO - Qureshi (SPETRA)"
+      }, {
+        "fi" : "Selimfiber v. EUIPO - Qureshi (SPETRA)"
+      }, {
+        "fr" : "Selimfiber / EUIPO - Qureshi (SPETRA)"
+      }, {
+        "it" : "Selimfiber/ EUIPO - Qureshi (SPETRA)"
+      }, {
+        "sk" : "Selimfiber/EUIPO - Qureshi (SPETRA)"
+      }, {
+        "cs" : "Selimfiber v. EUIPO - Qureshi (SPETRA)"
+      }, {
+        "lv" : "Selimfiber/EUIPO - Qureshi (SPETRA)"
+      }, {
+        "bg" : "Selimfiber/EUIPO - Qureshi (SPETRA)"
+      }, {
+        "hr" : "Selimfiber / EUIPO - Qureshi (SPETRA)"
+      }, {
+        "mt" : "Selimfiber vs EUIPO - Qureshi (SPETRA)"
+      }, {
+        "pt" : "Selimfiber/EUIPO - Qureshi (SPETRA)"
+      }, {
+        "ro" : "Selimfiber/EUIPO - Qureshi (SPETRA)"
+      } ],
+      "introductionDate" : "2022-02-14",
+      "affairState" : "Affaire pendante",
+      "affairStateCode" : "ENC",
+      "joinExist" : 0,
+      "pilot" : 0,
+      "joinAffairs" : [ ],
+      "pourvoiAffIds" : [ ],
+      "originPourvoiIds" : [ ],
+      "reExamenAffIds" : [ ],
+      "originReExamanIds" : [ ],
+      "transfertAffIds" : [ ],
+      "originTransfertIds" : [ ],
+      "oppObsFag" : 0,
+      "contentLength" : 0,
+      "docNoPart" : 0
+    },
+    "highlightFields" : {
+      "publishedId.keyword" : [ "<em class='highlight'>T-83/22</em>" ]
+    },
+    "innerHits" : {
+      "document" : {
+        "totalHits" : 2,
+        "totalHitsRelation" : "EQUAL_TO",
+        "maxScore" : 9.450382,
+        "searchHits" : [ {
+          "index" : "index-affair@30-06-2026",
+          "id" : "T/0083/22/00000000PI/01/P/01-3518376",
+          "score" : 9.450382,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "T/0083/22/00000000PI/01/P/01-3518376",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_326798",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+            "idPublished" : "T-83/22",
+            "docType" : "Ordonnance",
+            "docTypeCode" : "ORD_NP",
+            "docDate" : "2026-09-16",
+            "docFormats" : [ "HTML" ],
+            "contentLength" : 0,
+            "docNoPart" : 1,
+            "celex" : "62022TO0083",
+            "groupByLogicalId" : [ {
+              "id" : "T/0083/22/00000000PI/01/P/01-3518377",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "EN",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-3518376",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "HTML" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "",
+            "affairJurisdiction" : "Tribunal",
+            "affairJurisdictionCode" : "T",
+            "routing" : "T/0083/22/00000000PI/01/P/01",
+            "ecli" : "ECLI:EU:T:2026:575"
+          },
+          "highlightFields" : { },
+          "innerHits" : { },
+          "routing" : "T/0083/22/00000000PI/01/P/01",
+          "matchedQueries" : [ ]
+        }, {
+          "index" : "index-affair@30-06-2026",
+          "id" : "T/0083/22/00000000PI/01/P/01-2871909",
+          "score" : 9.450382,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "T/0083/22/00000000PI/01/P/01-2871909",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_257391",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+            "idPublished" : "T-83/22",
+            "docType" : "Requête (JO)",
+            "docTypeCode" : "REQ_COMM",
+            "docDate" : "2022-03-18",
+            "docFormats" : [ "HTML" ],
+            "contentLength" : 0,
+            "contentML" : [ {
+              "cs" : "Žaloba podaná dne 14. února 2022 – Selimfiber v. EUIPO - Qureshi (SPETRA) (Věc T-83/22) Jazyk, ve kterém byla podána žaloba: angličtina Účastníci řízení Žalobkyně: Selimfiber Co. Ltd (Gimpo-si, Korejská republika) (zástupci: J. Klaus a M. Odink, advokáti) Žalovaný: Úřad Evropské unie pro duševní vlastnictví (EUIPO) Další účastník řízení před odvolacím senátem: Mohammad Sohail Qureshi (Bradford, Spojené království) Údaje týkající se řízení před EUIPO Přihlašovatel sporné ochranné známky: Další účastník v řízení před odvolacím senátem Sporná ochranná známka: Slovní ochranná známka Evropské unie SPETRA – Přihláška č. 18 271 624 Řízení před EUIPO: Námitkové řízení Napadené rozhodnutí: Rozhodnutí prvního odvolacího senátu EUIPO ze dne 22. listopadu 2021, ve věci R 684/2021-1 Návrhová žádání Žalobkyně navrhuje, aby Tribunál: napadené rozhodnutí zrušil; uložit EUIPO náhradu nákladů řízení, které vznikly v souvislosti s touto žalobou, jakož i náhradu dalších nákladů řízení; podpůrně, v případě přistoupení dalšího účastníka řízení před EUIPO do řízení jako vedlejšího účastníka řízení, uložit tomuto účastníkovi řízení a žalovanému povinnost nahradit tyto náklady společně a nerozdílně. Dovolávaný žalobní důvod Porušení článku 8 odst. 4 nařízení Evropského parlamentu a Rady (EU) 2017/1001. ____________"
+            } ],
+            "docNoPart" : 1,
+            "celex" : "",
+            "groupByLogicalId" : [ {
+              "id" : "T/0083/22/00000000PI/01/P/01-2872211",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "DE",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2871890",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "IT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2871912",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "HU",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2872184",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2872177",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "FI",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2872234",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "ET",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2872208",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "DA",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2872191",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "GA",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2872240",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "EN",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2871934",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "NL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2871969",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "RO",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2871952",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "SL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2871943",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "LT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2871944",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "LV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2871950",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "SK",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2872239",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "EL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2872233",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "ES",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2871955",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "SV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2872133",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "BG",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2871936",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "MT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2871992",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "PL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2871909",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "HR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2871997",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "PT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "T/0083/22/00000000PI/01/P/01-2872150",
+              "idProcedure" : "T/0083/22/00000000PI/01/P/01",
+              "docLang" : "CS",
+              "formats" : [ "HTML" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "",
+            "affairJurisdiction" : "Tribunal",
+            "affairJurisdictionCode" : "T",
+            "routing" : "T/0083/22/00000000PI/01/P/01",
+            "ecli" : ""
+          },
+          "highlightFields" : {
+            "contentML.cs.exact" : [ "EUIPO - Qureshi (SPETRA) (Věc <em class='highlight'>T-83/22</em>) Jazyk, ve kterém byla podána žaloba: angličtina Účastníci řízení Žalobkyně: Selimfiber Co. Ltd (Gimpo-si, Korejská republika) (zástupci: J. Klaus a M." ]
+          },
+          "innerHits" : { },
+          "routing" : "T/0083/22/00000000PI/01/P/01",
+          "matchedQueries" : [ ]
+        } ],
+        "empty" : false
+      }
+    },
+    "matchedQueries" : [ ]
+  } ],
+  "aggregatesMap" : {
+    "facet_bucket" : [ {
+      "name" : "procTypesWithoutResults",
+      "aggregateCountValues" : [ ]
+    }, {
+      "name" : "jurisdiction",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "T"
+      } ]
+    }, {
+      "name" : "affairState",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "ENC"
+      } ]
+    }, {
+      "name" : "matCode",
+      "aggregateCountValues" : [ ]
+    }, {
+      "name" : "procType",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "P"
+      } ]
+    } ]
+  }
+}

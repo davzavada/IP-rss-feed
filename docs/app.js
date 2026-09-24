@@ -1,5 +1,5 @@
 /* Owl – skript stránky. Čte hotové soubory vedle sebe (data/judikatura/*.json,
-   ipcuria_feed.xml, journals_feed.xml, data/oblasti.json, digest.json,
+   journals_feed.xml, data/oblasti.json, digest.json,
    hearings.json, hearings.ics) a vykresluje je; nic nepočítá, co si už
    spočítaly scrapery. Přihlášení (Clerk) slouží jen k vlastnímu výběru –
    bez něj web ukazuje výchozí výběr. */
@@ -67,6 +67,7 @@ function zJson(r) {
     nove: !isNaN(prvni) && Date.now() - prvni < NOVE_MS,
     autori: "",
     oblasti: r.oblasti || [],
+    sdeu: /^sdeu:/.test(r.id || ""),
     stav: r.stav_shrnuti || "",
     senat: r.senat,
     druh: r.druh || "",
@@ -342,7 +343,15 @@ function dateCell(item) {
   return czDate(item.datum);
 }
 
+// U SDEU druh rozhodnutí (rozsudek, stanovisko GA, předběžná otázka…),
+// u časopisů zkratka časopisu z titulku.
+const DRUHY_SDEU = { "rozsudek": "tag-ruling", "předběžná otázka": "tag-referral",
+                     "stanovisko GA": "tag-opinion" };
+
 function typeCell(item) {
+  if (item.sdeu && item.druh) {
+    return '<span class="tag ' + (DRUHY_SDEU[item.druh] || "") + '">' + esc(item.druh) + "</span>";
+  }
   return tagBadge(tagOf(item.title));
 }
 
@@ -366,7 +375,7 @@ const SOUDY_VYBERU = [
   { soud: "ns", zkratka: "NS", nazev: "Nejvyšší soud", nazev2: "Nejvyššího soudu" },
   { soud: "nss", zkratka: "NSS", nazev: "Nejvyšší správní soud", nazev2: "Nejvyššího správního soudu" },
   { soud: "us", zkratka: "ÚS", nazev: "Ústavní soud", nazev2: "Ústavního soudu" },
-  { soud: "sdeu", zkratka: "SDEU", nazev: "Soudní dvůr EU", nazev2: "Soudního dvora EU", brzy: true }
+  { soud: "sdeu", zkratka: "SDEU", nazev: "Soudní dvůr EU", nazev2: "Soudního dvora EU" }
 ];
 
 let vyber = null;                 // platný výběr (výchozí nebo z účtu)
@@ -461,9 +470,9 @@ const colsNss = [
   { label: "Datum", cls: "col-date", render: dateCell }
 ];
 
-const colsCjeu = [
-  { label: "Typ", cls: "col-type", render: typeCell },
-  { label: "Případ", cls: "col-name", render: nameCell },
+const colsSdeu = [
+  { label: "Druh", cls: "col-type", render: typeCell },
+  { label: "Věc", cls: "col-name", render: nameCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
   { label: "Shrnutí", cls: "col-summary", render: summaryCell },
   { label: "Datum", cls: "col-date", render: dateCell }
@@ -501,7 +510,8 @@ const FEEDS = [
   // ÚS: značka a pod ní populární název (nameCell), jinak stejné sloupce jako NS.
   { key: "us",       label: "ÚS",      json: "data/judikatura/us.json", cols: colsNsoud,
     containerId: "feed-us", filtr: vidiPodleOblasti("us"), prazdno: PRAZDNY_VYBER, stavId: "stav-us" },
-  { key: "cjeu",     label: "CJEU",    url: "ipcuria_feed.xml",  cols: colsCjeu,     containerId: "feed-cjeu" },
+  { key: "sdeu",     label: "SDEU",    json: "data/judikatura/sdeu.json", cols: colsSdeu,
+    containerId: "feed-sdeu", filtr: vidiPodleOblasti("sdeu"), prazdno: PRAZDNY_VYBER, stavId: "stav-sdeu" },
   { key: "journals", label: "Časopis", url: "journals_feed.xml", cols: colsJournals, containerId: "feed-journals",
     filtr: vidiCasopis, prazdno: PRAZDNY_VYBER }
 ];
@@ -1846,7 +1856,7 @@ function initNastaveni() {
 // Kotvy sekcí zůstávají platné – odkaz na #nsoud otevře druhou stránku.
 const PAGES = [
   { id: "prehled",  sections: ["dnesni", "dvatydny"] },
-  { id: "recentni", sections: ["nsoud", "nss", "us", "cjeu", "casopisy"] },
+  { id: "recentni", sections: ["nsoud", "nss", "us", "sdeu", "casopisy"] },
   { id: "kalendar", sections: ["jednani"] },
   { id: "nastaveni", sections: ["vyber"] }
 ];

@@ -61,8 +61,6 @@ NS_REJSTRIKY = ("cdo", "icdo", "nscr", "nd", "ncu", "tdo", "tz", "td", "tcu", "n
 
 NSS_HOST = "https://vyhledavac.nssoud.cz"
 US_HOST = "https://nalus.usoud.cz"
-CURIA_APP = "https://infocuria.curia.europa.eu"
-CURIA_HLEDANI = "https://infocuriaws.curia.europa.eu/elastic-connector/search"
 SPARQL = "https://publications.europa.eu/webapi/rdf/sparql"
 
 
@@ -291,53 +289,47 @@ def sonda_us(s, den):
 
 # --- Soudní dvůr EU ---
 
-def _curia_dotaz(hledat, razeni, zalozka):
-    """Tělo dotazu InfoCurie ve tvaru, který dnes posílá scraper_ipcuria."""
-    return {
-        "searchTerm": hledat, "multiSearchTerms": [],
-        "sortTermList": [{"sortDirection": "DESC", "sortTerm": razeni}],
-        "pagination": {"pageNumber": 0, "pageSize": 20, "from": 1, "to": 20},
-        "language": "EN", "tabName": zalozka, "isAllTabsRequest": True, "ecli": "",
-        "publishedId": "", "usualName": "", "logicDocId": "", "repJurExpand": True,
-        "advancedFiltersValue": [], "isSearchExact": False,
-        "searchSources": ["document", "metadata"],
-    }
-
-
 def sonda_sdeu(s, den):
-    """Varianty hledání v InfoCurii bez hledaného slova, SPARQL Cellaru
-    a hlavní skript aplikace InfoCurie (v něm jsou názvy filtrů a řazení)."""
-    hlav = {"Content-Type": "application/json", "Accept": "application/json, text/plain, */*",
-            "Origin": CURIA_APP, "Referer": CURIA_APP + "/"}
-    varianty = {
-        "sdeu_hledat_prazdne_datum": _curia_dotaz("", "DATE", "document"),
-        "sdeu_hledat_hvezda_datum": _curia_dotaz("*", "DATE", "document"),
-        "sdeu_hledat_prazdne_affair": _curia_dotaz("", "DATE", "affair"),
-        "sdeu_hledat_score": _curia_dotaz("*", "SCORE", "document"),
-    }
-    for nazev, telo in varianty.items():
-        s.stahni(nazev, CURIA_HLEDANI, metoda="POST", json=telo, headers=hlav)
-
-    r = s.stahni("sdeu_aplikace", CURIA_APP + "/")
-    if r is not None and r.ok:
-        for i, src in enumerate(re.findall(r'src="(main[^"]*\.js)"', r.text)[:2]):
-            s.stahni(f"sdeu_aplikace_js_{i}", urljoin(CURIA_APP + "/", src))
-
+    """Přesně ty dotazy, které posílá adaptér (judikatura/soudy/sdeu.py):
+    SPARQL rozhodnutí a oznámení za 14 dní, InfoCuria pro rozsudek SD,
+    rozsudek Tribunálu a stanovisko GA, Cellar XHTML pro čerstvý rozsudek
+    a pro oznámení o předběžné otázce."""
+    from judikatura.soudy import sdeu
     od = den - timedelta(days=14)
-    dotaz = (
-        "PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\n"
-        "SELECT DISTINCT ?celex ?datum WHERE {\n"
-        "  ?dilo cdm:resource_legal_id_celex ?celex ;\n"
-        "        cdm:work_date_document ?datum .\n"
-        f'  FILTER(?datum >= "{od.isoformat()}"^^xsd:date)\n'
-        '  FILTER(STRSTARTS(STR(?celex), "6"))\n'
-        "} ORDER BY DESC(?datum) LIMIT 200"
-    )
-    s.stahni("sdeu_sparql", SPARQL, metoda="POST",
-             data={"query": dotaz, "format": "application/sparql-results+json"},
-             headers={"Accept": "application/sparql-results+json"})
-    s.stahni("sdeu_cellar_celex", "http://publications.europa.eu/resource/celex/62025CJ0602",
-             headers={"Accept": "application/xhtml+xml", "Accept-Language": "ces"})
+    hlav = {"Accept": "application/sparql-results+json"}
+    rozh = s.stahni("sdeu_sparql_rozhodnuti", SPARQL, metoda="POST", headers=hlav,
+                    data={"query": sdeu.dotaz_rozhodnuti(od, den),
+                          "format": "application/sparql-results+json"})
+    ozn = s.stahni("sdeu_sparql_oznameni", SPARQL, metoda="POST", headers=hlav,
+                   data={"query": sdeu.dotaz_oznameni(od),
+                         "format": "application/sparql-results+json"})
+    zaznamy = []
+    for r, prevod in ((rozh, sdeu.zaznamy_rozhodnuti), (ozn, sdeu.zaznamy_oznameni)):
+        try:
+            zaznamy += prevod(r.json())
+        except Exception as e:
+            print(f"  převod selhal: {type(e).__name__}: {e}")
+    print(f"  záznamů: {len(zaznamy)}")
+    priklady = []
+    for druh, soud in (("rozsudek", "C"), ("rozsudek", "T"), ("stanovisko GA", "C"),
+                       ("usnesení", "T"), (sdeu.DRUH_OTAZKA, "C")):
+        z = next((z for z in zaznamy if z["druh"] == druh and z["spz"].startswith(soud)), None)
+        if z:
+            priklady.append(z)
+    for z in priklady:
+        celex = z["meta"]["celex"]
+        s.stahni(f"sdeu_infocuria_{celex}", sdeu.INFOCURIA, metoda="POST",
+                 json=sdeu.dotaz_infocuria(z["spz"]), headers=sdeu.HLAVICKY_CURIA)
+    # Text: čerstvý rozsudek SD a oznámení o předběžné otázce.
+    for z in [z for z in priklady if z["druh"] in ("rozsudek", sdeu.DRUH_OTAZKA)][:1] + \
+            [z for z in priklady if z["druh"] == sdeu.DRUH_OTAZKA]:
+        celex = z["meta"]["celex"]
+        for jazyk in sdeu.TEXT_JAZYKY:
+            r = s.stahni(f"sdeu_cellar_{celex}_{jazyk}", sdeu.CELLAR.format(celex=celex),
+                         headers={"Accept": "application/xhtml+xml, text/html;q=0.9",
+                                  "Accept-Language": jazyk})
+            if r is not None and r.ok:
+                break
 
 
 SONDY = {"ns": sonda_ns, "nss": sonda_nss, "us": sonda_us, "sdeu": sonda_sdeu}

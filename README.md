@@ -2,16 +2,15 @@
 
 Statická stránka ([owl.davidzavada.cz](https://owl.davidzavada.cz/)),
 kterou plní scrapery z GitHub Actions. Sleduje novou judikaturu Nejvyššího
-soudu (všechny senáty), Nejvyššího správního soudu a Ústavního soudu (AI ji
-řadí do oblastí práva), judikaturu Soudního dvora EU k duševnímu vlastnictví a IT, články z právních časopisů a nařízená
-jednání IP senátů Městského a Vrchního soudu v Praze. Ke všemu dělá AI (Gemini API) heslo
+soudu (všechny senáty), Nejvyššího správního soudu, Ústavního soudu a Soudního
+dvora EU včetně Tribunálu (AI ji řadí do oblastí práva), články z právních
+časopisů a nařízená jednání IP senátů Městského a Vrchního soudu v Praze. Ke všemu dělá AI (Gemini API) heslo
 a třívěté shrnutí, jednou týdně z toho napíše dvoutýdenní přehled.
 
 ## Jak to drží pohromadě
 
 ```
-scraper_judikatura.py judikatura NS, NSS a ÚS                        -> data/judikatura/, docs/data/judikatura/
-scraper_ipcuria.py   CJEU (ipcuria.eu, InfoCuria, EUR-Lex)           -> docs/ipcuria_feed.xml
+scraper_judikatura.py judikatura NS, NSS, ÚS a SDEU                 -> data/judikatura/, docs/data/judikatura/
 scraper_journals.py  časopisy (weby, OJS, Crossref, RSS vydavatelů)  -> docs/journals_feed.xml
 scraper_hearings.py  jednání MSPH a VS Praha (.docx/.pdf na justice) -> docs/hearings.json, hearings.ics
 digest.py            dvoutýdenní přehled z judikatury a feedů výše   -> docs/digest.json
@@ -21,9 +20,10 @@ docs/                stránka (index.html, style.css, app.js) a všechno, co čt
 tools/probe_zdroje.py sonda: syrové odpovědi webů soudů pro parsery a testy
 ```
 
-Každý feed si vede **stav prvního výskytu** (`*_seen.json`): kdy položku
-poprvé viděl. Podle něj drží položku v okně (časopisy čtyři týdny, CJEU
-osm) a označuje ji jako novou, když přibyla v posledních 24 hodinách.
+Časopisy si vedou **stav prvního výskytu** (`journals_seen.json`): kdy
+položku poprvé viděly. Podle něj drží položku v okně (čtyři týdny)
+a označují ji jako novou, když přibyla v posledních 24 hodinách (judikatura
+totéž dělá přes `first_seen` v archivu).
 Tím nezáleží na tom, kdy zdroj položku datuje ani jestli datum později přepíše.
 
 **AI** běží na free tieru Gemini API (klíč z Google AI Studia, projekt bez
@@ -45,8 +45,8 @@ během znovu. Poznámka mluví jen za nás („shrnutí zatím není"), ne za zd
 ## Judikatura
 
 `scraper_judikatura.py` sbírá nová rozhodnutí soudů přes adaptéry
-v `judikatura/soudy/` (Nejvyšší soud, Nejvyšší správní soud, Ústavní soud;
-SDEU přibude).
+v `judikatura/soudy/` (Nejvyšší soud, Nejvyšší správní soud, Ústavní soud,
+Soudní dvůr EU).
 Adaptér umí tři věci: `objev(od, do)` najde rozhodnutí zveřejněná v tom
 období, `doplnit(z)` přidá metadata z detailu a `text(z)` vrátí celý text
 pro AI.
@@ -106,6 +106,15 @@ pro AI.
   název, data, předpisy, formu, výroky, předmět řízení, věcný rejstřík),
   text je na trvalé adrese `GetText.aspx?sz=…`. Procesní je odmítnutí podle
   § 43 odst. 1 (vady, lhůta, nepřípustnost…), ne pro zjevnou neopodstatněnost.
+- **Soudní dvůr EU** (Soudní dvůr i Tribunál): objevování přes SPARQL
+  Cellaru – rozsudky, usnesení a stanoviska generálních advokátů podle data
+  dokumentu (abstrakty a výtahy ne) a nové předběžné otázky z oznámení
+  v Úředním věstníku (CELEX typ CN, podle dne vložení do Cellaru; vyjdou
+  dva až tři měsíce po podání, ale s otázkami). Žaloby a kasační opravné
+  prostředky se neberou. Název věci a české texty dává InfoCuria podle čísla
+  věci; kde český text ještě není (čerstvé rozsudky, Tribunál), bere se
+  z Cellaru česky, anglicky, nebo francouzsky. Odkaz vede na EUR-Lex. Okno
+  webu je měsíc.
 - **Stav běhu** (zdraví soudů, spotřeba AI po dnech) je v
   `data/judikatura/stav.json`. `python -m judikatura.kontrola` zkontroluje
   archiv i okna. Workflow bez ní necommituje.
@@ -153,8 +162,7 @@ vlastnictví a IT, všechny časopisy.
 - Výběr je u účtu v `user.unsafeMetadata.owl`:
   `{"v":1,"ns":{"oblasti":[…],"senaty":[23]},"nss":{"oblasti":[…]},"us":{…},"sdeu":{…},"skryt_procesni":false,"skryte_casopisy":[]}`.
   Nastavuje se na stránce `#nastaveni` (Můj výběr): matice oblastí × soudy
-  (NS, NSS, ÚS, SDEU – u SDEU se výběr uplatní, až se jeho rozhodnutí
-  začnou sbírat), senáty NS po kolegiích, procesní rozhodnutí
+  (NS, NSS, ÚS, SDEU), senáty NS po kolegiích, procesní rozhodnutí
   a časopisy. Skupiny oblastí a kolegia bez vybraného se sbalí na jeden
   řádek. Neznámé oblasti se zahodí, přejmenované převede `alias`
   v `docs/data/oblasti.json`; soud, který v uloženém výběru chybí, dostane

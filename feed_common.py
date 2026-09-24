@@ -221,22 +221,6 @@ JUDIKATURA_PROMPT = (
     "stručnosti."
 )
 
-# Prompt pro judikaturu Soudního dvora EU (CJEU) v oblasti IP/IT – pokrývá
-# rozsudky/stanoviska i žádosti o rozhodnutí o předběžné otázce (referrals).
-CJEU_PROMPT = (
-    "Toto je dokument k řízení před Soudním dvorem EU (rozsudek, stanovisko "
-    "nebo žádost o rozhodnutí o předběžné otázce) v oblasti práva duševního "
-    "vlastnictví nebo IT. Odpověz česky přesně ve dvou částech, bez úvodních "
-    "frází a bez dalšího textu:\n"
-    "HESLO: výstižné právní téma o 1–3 slovech (např. Ochranná známka, "
-    "GDPR, Autorské právo, Doménová jména).\n"
-    "SHRNUTÍ: nejvýše tři věty. Jde-li o rozsudek či stanovisko, uveď, jakou "
-    "právní otázku Soudní dvůr řešil a jak ji zodpověděl (konkrétní závěr). "
-    "Jde-li o žádost o předběžnou otázku (referral), shrň, na co se "
-    "předkládající soud Soudního dvora ptá. Drž se stručnosti a nic si "
-    "nevymýšlej."
-)
-
 # Prompt pro odborný právní článek (z názvu a anotace).
 JOURNAL_ARTICLE_PROMPT = (
     "Toto je odborný právní článek (název a anotace). Odpověz česky přesně "

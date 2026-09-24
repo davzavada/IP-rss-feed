@@ -228,10 +228,12 @@ body.is-resizing { cursor: col-resize; user-select: none; -webkit-user-select: n
 .tag, .src { background: var(--muted); color: var(--muted-foreground); white-space: nowrap; }
 .tag-ruling { background: var(--badge-green-bg); color: var(--badge-green-fg); }
 .tag-referral { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
+.tag-opinion { background: var(--badge-amber-bg); color: var(--badge-amber-fg); }
 .src-nsoud { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
 .src-nss { background: var(--badge-teal-bg); color: var(--badge-teal-fg); }
 .src-us { background: var(--badge-rose-bg); color: var(--badge-rose-fg); }
-.src-cjeu { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
+/* src-cjeu: starší přehledy (digest.json) ještě mají původní klíč. */
+.src-sdeu, .src-cjeu { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
 .src-journals { background: var(--badge-amber-bg); color: var(--badge-amber-fg); }
 
 /* Dvoutýdenní přehled (digest.json) – text, ne seznam. */
