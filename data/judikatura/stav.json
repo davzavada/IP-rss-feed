@@ -1,14 +1,20 @@
 {
  "ai": {
-  "2026-09-24": {}
+  "2026-09-24": {
+   "gemini-flash-lite-latest": {
+    "volani": 45,
+    "vstup": 297060,
+    "vystup": 8057
+   }
+  }
  },
- "aktualizovano": "2026-09-24T10:03:51Z",
+ "aktualizovano": "2026-09-24T10:19:29Z",
  "soudy": {
   "ns": {
    "chyba": null,
    "nalezeno": 171,
-   "nove": 165,
-   "objev": "2026-09-24T10:03:51Z"
+   "nove": 0,
+   "objev": "2026-09-24T10:19:29Z"
   }
  }
 }
