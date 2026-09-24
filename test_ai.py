@@ -3,7 +3,7 @@
 
 Klient nemá model napevno: bere pořadí Flash-Lite → nejnovější Gemma
 (nebo vnucené GEMINI_MODELS) a podle odpovědí API rozhoduje, kdy čekat,
-kdy přejít na další model a kdy model do konce běhu vyřadit. Testy běží bez sítě – Gemini API i hodiny jsou
+kdy přejít na další model, kdy mu dát pauzu a kdy ho do konce běhu vyřadit. Testy běží bez sítě – Gemini API i hodiny jsou
 nasimulované, takže se dá ověřit i to, kolik se čekalo.
 
 Spuštění: python test_ai.py
@@ -121,6 +121,7 @@ def priprav(scenar=None, modely=VSECHNY, vnucene=None):
     fc._modely.clear()
     fc._spotreba.clear()
     fc._klic_zamitnut = False
+    fc._posledni_pretizeni = False
     fc.GEMINI_API_KEY = "test-klic"
     os.environ.pop("SKIP_GEMINI", None)
     if vnucene is None:
@@ -206,14 +207,41 @@ check("přetížený model: po všech pokusech odpoví další model", dotaz()[0
 check("po jednom nezdaru se model zkouší dál", dotaz()[0] == "pro znovu",
       str(sit.modely_volani()))
 
-sit, _ = priprav({PRVNI: [PRETIZENO()] * (3 * fc.GEMINI_MAX_RETRIES),
-                  DRUHY: [ok("a"), ok("b"), ok("c"), ok("d")]})
+sit, hodiny = priprav({PRVNI: [PRETIZENO()] * (3 * fc.GEMINI_MAX_RETRIES) + [ok("po pauze")],
+                       DRUHY: [ok("a"), ok("b"), ok("c"), ok("d")]})
 for _ in range(4):
     dotaz()
-check("tři položky po sobě bez odpovědi → model do konce běhu pryč",
-      sit.modely_volani().count(PRVNI) == 3 * fc.GEMINI_MAX_RETRIES
-      and fc._stav(PRVNI)["vyrazen"] == "opakovaně nedostupný",
-      str(sit.modely_volani().count(PRVNI)))
+st = fc._stav(PRVNI)
+check("tři položky po sobě bez odpovědi → model má pauzu, mezitím odpovídá další",
+      sit.modely_volani().count(PRVNI) == 3 * fc.GEMINI_MAX_RETRIES and not st["vyrazen"]
+      and st["pauza_do"] > hodiny.t and sit.modely_volani()[-1] == DRUHY, str(sit.modely_volani()))
+hodiny.t = st["pauza_do"] + 1
+check("po pauze se model zkouší znovu", dotaz()[0] == "po pauze")
+
+sit, hodiny = priprav({PRVNI: [PRETIZENO()] * (3 * fc.GEMINI_MAX_RETRIES) + [ok("po čekání")],
+                       DRUHY: [PRETIZENO()] * (3 * fc.GEMINI_MAX_RETRIES)})
+prvni = dotaz()
+pretizena = fc.ai_pretizena()
+dotaz()
+treti = dotaz()
+check("přetížení: prázdná odpověď a ai_pretizena() – pokus se rozhodnutí nepočítá",
+      prvni == ("", "") and pretizena, str(prvni))
+check("když mají pauzu všechny modely, počká se na první a zkusí se znovu",
+      treti[0] == "po čekání" and max(hodiny.spanky) >= fc.GEMINI_PAUZA_S - 60, str(hodiny.spanky[-3:]))
+
+sit, hodiny = priprav({PRVNI: [PRETIZENO()] * (9 * fc.GEMINI_MAX_RETRIES),
+                       DRUHY: [ok(str(i)) for i in range(9)]})
+for _ in range(9):
+    dotaz()
+    if fc._v_pauze(PRVNI):
+        hodiny.t = fc._stav(PRVNI)["pauza_do"] + 1
+check("po třetí pauze je model do konce běhu pryč",
+      fc._stav(PRVNI)["vyrazen"] == "opakovaně nedostupný" and fc._stav(PRVNI)["pauz"] == 3,
+      str(fc._stav(PRVNI)))
+
+sit, _ = priprav({PRVNI: [Odp(200, {"promptFeedback": {"blockReason": "SAFETY"}})],
+                  DRUHY: [PRETIZENO()] * fc.GEMINI_MAX_RETRIES})
+check("zablokovaný dotaz není přetížení (pokus se počítá)", dotaz() == ("", "") and not fc.ai_pretizena())
 
 sit, _ = priprav({PRVNI: [ConnectionError("reset")] * 2 + [ok("po výpadku")]})
 check("síťová chyba se opakuje", dotaz()[0] == "po výpadku", str(sit.modely_volani()))
@@ -260,7 +288,7 @@ sit, _ = priprav({PRVNI: [Odp(200, {"promptFeedback": {"blockReason": "SAFETY"}}
 check("zablokovaný dotaz → další model", dotaz()[0] == "prošlo")
 
 sit, _ = priprav({m: [PRETIZENO()] * fc.GEMINI_MAX_RETRIES for m in PORADI})
-check("když neodpoví nic, vrátí prázdno", dotaz() == ("", ""))
+check("když neodpoví nic, vrátí prázdno (a hlásí přetížení)", dotaz() == ("", "") and fc.ai_pretizena())
 
 sit, _ = priprav({PRVNI: [ok("nemá se volat")]})
 os.environ["SKIP_GEMINI"] = "1"

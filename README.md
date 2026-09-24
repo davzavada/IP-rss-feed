@@ -40,9 +40,12 @@ billingu): nejdřív `gemini-flash-lite-latest`, a když nemůže (limit, výpad
 nejnovější Gemma ze seznamu modelů. Pro a Flash se nepoužívají – Pro má na
 free tieru kvótu vyčerpanou hned a Flash bývá přetížený. Alias `-latest`
 posouvá Google sám, takže nový model se použije bez zásahu. Po vyčerpaném
-denním limitu jde běh na další model. Pořadí jde vnutit proměnnou
-`GEMINI_MODELS` (názvy oddělené čárkou). Modelům jdou celé texty rozhodnutí,
-bez ořezu.
+denním limitu jde běh na další model. Přetížený model (5xx, timeout,
+minutový limit na třech položkách po sobě) dostane desetiminutovou pauzu;
+když ji mají všechny, běh na první z nich počká. Do konce běhu je model
+pryč až po třetí pauze. Rozhodnutí, které nedostalo shrnutí jen kvůli
+přetížení, si pokus nepočítá. Pořadí jde vnutit proměnnou `GEMINI_MODELS`
+(názvy oddělené čárkou). Modelům jdou celé texty rozhodnutí, bez ořezu.
 
 **AI shrnutí** se cachují v `*_meta.json` podle stejného klíče a prořezávají
 se spolu se stavem prvního výskytu, takže soubory nerostou donekonečna. Bez

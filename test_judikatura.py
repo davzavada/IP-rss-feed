@@ -494,6 +494,23 @@ check("když AI neodpoví, zkusí se to za hodinu",
       and arch_nss["nss:1"]["stav"]["dalsi_pokus"] == model.iso(TRETI_DEN + timedelta(hours=1)))
 check("bez textu se AI nevolá",
       arch_nss["nss:2"]["stav"]["duvod"] == "bez-textu" and len(volani) == 1, str(len(volani)))
+
+
+def pretizena_ai(parts, system=None, schema=None, max_tokens=8192, timeout=0):
+    volani.append(parts)
+    fc._posledni_pretizeni = True
+    return "", ""
+
+
+fc.ai_volani = pretizena_ai
+volani.clear()
+pretizene = Adapter("nss", [model.novy_zaznam("nss", "nss:3", zverejneno="2026-09-27")])
+beh({"nss": pretizene}, TRETI_DEN)
+z3 = archiv("nss")["nss:3"]
+check("přetížená AI: pokus se rozhodnutí nepočítá a zkusí se příště",
+      len(volani) == 1 and z3["stav"]["pokusy"] == 0 and not z3["stav"]["dalsi_pokus"] and not z3.get("ai"),
+      str(z3["stav"]))
+fc._posledni_pretizeni = False
 fc.ai_volani = falesna_ai(ai_odpoved)
 fc._klic_zamitnut = True
 souhrn = beh({"nss": nss}, TRETI_DEN + timedelta(hours=2))

@@ -124,6 +124,11 @@ def zpracuj_ai(sklady, adaptery, nyni, tax, rozpocet):
             # pokus se mu nepočítá. Dál to v tomto běhu nemá smysl.
             print("    AI: v tomto běhu už nic neodpoví, zbytek fronty příště")
             break
+        elif fc.ai_pretizena():
+            # Přetížené modely (5xx, limity) – za to rozhodnutí taky nemůže,
+            # pokus se nepočítá a zkusí se to v dalším běhu.
+            print(f"    [diag] {z['id']}: AI přetížená, pokus se nepočítá")
+            continue
         else:
             fronta.odlozit(z, nyni, "ai-selhani")
         sklad.zmeneno(z)

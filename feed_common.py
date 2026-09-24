@@ -193,6 +193,11 @@ GEMINI_MIN_INTERVAL = 5.0   # základ backoffu při výpadku
 # Gemmou: přetížený model (503) je častý a další v pořadí odpoví dřív.
 GEMINI_MAX_RETRIES = 3
 GEMINI_MAX_CEKANI = 90      # nejdéle tolik se čeká na minutový limit
+# Přetížení u Googlu bývá na minuty. Model, který selže na třech položkách
+# po sobě, dostane pauzu; když mají pauzu všechny, počká se na první z nich.
+# Do konce běhu pryč je model až po třetí pauze.
+GEMINI_PAUZA_S = 600
+GEMINI_MAX_PAUZ = 3
 # Časové limity jednoho volání. Posíláme celé texty a nejlepší modely nad
 # nimi přemýšlejí – běh smí být delší, shrnutí je cennější než rychlost.
 GEMINI_TEXT_TIMEOUT = 180
@@ -323,6 +328,7 @@ _poradi = None              # seřazené modely pro tento proces (líně z model
 _modely = {}                # model -> stav (rozestup, vyřazení, vypnuté volby…)
 _spotreba = {}              # model -> {"volani", "vstup", "vystup"}
 _klic_zamitnut = False      # klíč neplatný nebo zablokovaný: dál nezkoušet
+_posledni_pretizeni = False  # poslední neúspěch ai_volani byl kvůli přetížení
 
 
 def _rodina(model):
@@ -345,6 +351,8 @@ def _stav(model):
                 "rozestup": GEMINI_ROZESTUP.get(_rodina(model), GEMINI_MIN_INTERVAL),
                 "dalsi": 0.0,            # kdy nejdřív smí jít další volání
                 "vyrazen": "",           # důvod, proč se model do konce běhu nezkouší
+                "pauza_do": 0.0,         # do kdy (time.monotonic) má přetížený model pauzu
+                "pauz": 0,               # kolik pauz už měl
                 "vypnuto": set(),        # volby, které model odmítl (system, mysleni…)
                 "selhani": 0,            # položky po sobě, na kterých model selhal
                 "zamek": threading.Lock(),
@@ -593,12 +601,29 @@ def _zkus_model(model, telo_fn, timeout):
             continue
         print(f"    AI {model}: {r.status_code} {zprava}")
         return "", "dalsi"
-    # Pokusy došly na dočasných chybách. Model zůstává ve hře, ale když selže
-    # na třech položkách po sobě, je nejspíš přetížený – do konce běhu pryč.
+    # Pokusy došly na dočasných chybách (5xx, timeout, minutový limit). Model
+    # zůstává ve hře, ale když selže na třech položkách po sobě, je nejspíš
+    # přetížený – dostane pauzu, po třetí pauze je do konce běhu pryč.
     st["selhani"] += 1
     if st["selhani"] >= 3:
-        _vyrad(model, "opakovaně nedostupný")
-    return "", "dalsi"
+        st["selhani"] = 0
+        st["pauz"] += 1
+        if st["pauz"] >= GEMINI_MAX_PAUZ:
+            _vyrad(model, "opakovaně nedostupný")
+        else:
+            st["pauza_do"] = time.monotonic() + GEMINI_PAUZA_S
+            print(f"    AI: {model} – přetížený, pauza {GEMINI_PAUZA_S // 60} min")
+    return "", "pretizeni"
+
+
+def _v_pauze(model):
+    return _stav(model)["pauza_do"] > time.monotonic()
+
+
+def ai_pretizena():
+    """Selhalo poslední volání ai_volani jen kvůli přetížení (5xx, limity za
+    minutu, pauzy)? Pak za to dotaz nemůže a pokus se mu nemá počítat."""
+    return _posledni_pretizeni
 
 
 def ai_volani(parts, system=None, schema=None, max_tokens=8192, timeout=GEMINI_TEXT_TIMEOUT):
@@ -608,18 +633,35 @@ def ai_volani(parts, system=None, schema=None, max_tokens=8192, timeout=GEMINI_T
     system  – systémová instrukce (Gemmě se předřadí textu)
     schema  – JSON schéma odpovědi pro modely, které ho umějí (jinak text)
 
-    Vrací (odpověď, model); ('', '') při neúspěchu nebo vypnutém AI."""
+    Vrací (odpověď, model); ('', '') při neúspěchu nebo vypnutém AI. Jestli
+    neúspěch způsobilo jen přetížení, řekne potom ai_pretizena()."""
+    global _posledni_pretizeni
+    _posledni_pretizeni = False
     if not gemini_enabled() or _klic_zamitnut:
         return "", ""
-    for model in gemini_modely():
-        if _stav(model)["vyrazen"]:
-            continue
-        text, vysledek = _zkus_model(
-            model, lambda: _telo(model, parts, system, schema, max_tokens), timeout)
-        if text:
-            return text, vysledek
-        if vysledek == "konec":
+    pretizeni = True
+    for kolo in range(2):
+        for model in gemini_modely():
+            if _stav(model)["vyrazen"] or _v_pauze(model):
+                continue
+            text, vysledek = _zkus_model(
+                model, lambda: _telo(model, parts, system, schema, max_tokens), timeout)
+            if text:
+                return text, vysledek
+            if vysledek == "konec":
+                print("    AI: žádný model nedal odpověď, zkusím příště")
+                return "", ""
+            if vysledek != "pretizeni":
+                pretizeni = False
+        # Když zbylé modely jen čekají na konec pauzy, počká se na první z nich
+        # a zkusí se to ještě jednou.
+        pauzy = [_stav(m)["pauza_do"] for m in gemini_modely() if not _stav(m)["vyrazen"]]
+        if kolo or not pretizeni or not pauzy or min(pauzy) <= time.monotonic():
             break
+        cekej = min(pauzy) - time.monotonic()
+        print(f"    AI: všechny modely mají pauzu, čekám {cekej / 60:.0f} min")
+        time.sleep(cekej)
+    _posledni_pretizeni = pretizeni
     print("    AI: žádný model nedal odpověď, zkusím příště")
     return "", ""
 
