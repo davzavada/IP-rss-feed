@@ -59,6 +59,8 @@ SOURCES = [
 # výběrem IP/IT – přehled je zatím jeden pro všechny.
 JUDIKATURA = [
     ("nsoud", "NS", "ns"),
+    ("nss", "NSS", "nss"),
+    ("us", "ÚS", "us"),
 ]
 
 
@@ -122,7 +124,8 @@ def collect_judikatura(now, oldest):
                 "src": key,
                 "src_label": label,
                 "tag": "",
-                "title": r.get("spz") or r.get("nazev") or "",
+                # U ÚS i populární název – modelu napoví, o čem věc je.
+                "title": " – ".join(x for x in (r.get("spz"), r.get("nazev")) if x),
                 "link": r.get("url", ""),
                 "guid": r.get("id", ""),
                 "heslo": r.get("heslo", ""),
