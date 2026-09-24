@@ -1,0 +1,672 @@
+{
+  "totalHits" : 1,
+  "maxScore" : 20.87122,
+  "maxScoreOthersDocuments" : 0.0,
+  "totalHitsRelation" : "EQUAL_TO",
+  "totalHitsOthersDocs" : 0,
+  "searchHits" : [ {
+    "index" : "index-affair@30-06-2026",
+    "id" : "C/0151/25/00000000RP/01/P/01",
+    "score" : 20.87122,
+    "sortValues" : [ 20.87122, 1740009600000 ],
+    "content" : {
+      "id" : "C/0151/25/00000000RP/01/P/01",
+      "affId" : "C/0151/25/00000000RP/01",
+      "publishedId" : "C-151/25",
+      "publishedAffId" : "C-151/25",
+      "procedureId" : "C/0151/25/00000000RP/01/P/01",
+      "jurisdiction" : "Cour de justice",
+      "jurisdictionCode" : "C",
+      "order" : 151,
+      "suiteNumber" : 1,
+      "procType" : "P",
+      "procNumber" : 1,
+      "usualNameML" : [ {
+        "el" : "Viaudret"
+      }, {
+        "nl" : "Viaudret"
+      }, {
+        "pt" : "Viaudret"
+      }, {
+        "ro" : "Viaudret"
+      }, {
+        "fi" : "Viaudret"
+      }, {
+        "sk" : "Viaudret"
+      }, {
+        "mt" : "Viaudret"
+      }, {
+        "hu" : "Viaudret"
+      }, {
+        "fr" : "Viaudret"
+      }, {
+        "et" : "Viaudret"
+      }, {
+        "en" : "Viaudret"
+      }, {
+        "sv" : "Viaudret"
+      }, {
+        "pl" : "Viaudret"
+      }, {
+        "sl" : "Viaudret"
+      }, {
+        "da" : "Viaudret"
+      }, {
+        "it" : "Viaudret"
+      }, {
+        "lt" : "Viaudret"
+      }, {
+        "lv" : "Viaudret"
+      }, {
+        "cs" : "Viaudret"
+      }, {
+        "bg" : "Viaudret"
+      }, {
+        "hr" : "Viaudret"
+      }, {
+        "es" : "Viaudret"
+      }, {
+        "de" : "Viaudret"
+      } ],
+      "introductionDate" : "2025-02-20",
+      "affairState" : "Affaire pendante",
+      "affairStateCode" : "ENC",
+      "procState" : "CLOTPUB",
+      "joinExist" : 0,
+      "pilot" : 0,
+      "joinAffairs" : [ ],
+      "pourvoiAffIds" : [ ],
+      "originPourvoiIds" : [ ],
+      "reExamenAffIds" : [ ],
+      "originReExamanIds" : [ ],
+      "transfertAffIds" : [ ],
+      "originTransfertIds" : [ ],
+      "oppObsFag" : 0,
+      "contentLength" : 0,
+      "docNoPart" : 0
+    },
+    "highlightFields" : {
+      "publishedId.keyword" : [ "<em class='highlight'>C-151/25</em>" ]
+    },
+    "innerHits" : {
+      "document" : {
+        "totalHits" : 5,
+        "totalHitsRelation" : "EQUAL_TO",
+        "maxScore" : 10.598584,
+        "searchHits" : [ {
+          "index" : "index-affair@30-06-2026",
+          "id" : "C/0151/25/00000000RP/01/P/01-3276181",
+          "score" : 10.598584,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "C/0151/25/00000000RP/01/P/01-3276181",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_297893",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+            "idPublished" : "C-151/25",
+            "docType" : "Demande de décision préjudicielle",
+            "docTypeCode" : "DDP",
+            "docDate" : "2025-02-20",
+            "docFormats" : [ "PDF" ],
+            "contentLength" : 0,
+            "contentML" : [ {
+              "cs" : "    \n \n  \nShrnutí C-151/25 – 1 \nVěc C-151/25 [Viaudret]i \nShrnutí žádosti o rozhodnutí o předběžné otázce podle čl. 98 odst. 1 \njednacího řádu Soudního dvora \nDatum doručení:  \n20. února 2025 \nPředkládající soud:  \nConseil d’État (Belgie) \nDatum předkládacího rozhodnutí:  \n12. února 2025 \nŽalobce:  \nF. B. \nŽalovaný:  \nRégion wallonne  \nVedlejší účastnice:  \nSociété anonyme PARC ÉOLIEN DE LEUZE-EN-HAINAUT \nSociété anonyme E-NOSVENTS \nSociété anonyme ELECTRABEL \nPředmět sporu v původním řízení \nTento správní spor se týká rozhodnutí o prodloužení povolení k výstavbě a \nk provozování přijatého bez předchozího veřejného šetření.  \nSkutkový stav a původní řízení \nŽalobce v původním řízení se domáhá zrušení rozhodnutí technického úředníka ze \ndne 2. dubna 2020, kterým se prodlužuje doba platnosti jednotného povolení \nuděleného společnosti Parc éolien de Leuze-en-Hainaut (PELZ) pro výstavbu \n \ni Název projednávané věci je fiktivní. Neodpovídá skutečnému jménu žádného z účastníků řízení. \nCS \nSHRNUTÍ ŽÁDOSTI O ROZHODNUTÍ O PŘEDBĚŽNÉ OTÁZCE – VĚC C-151/25 – 1 \n \n2  \na provozování parku o deseti větrných elektrárnách v Leuze-en-Hainaut (Belgie) \n(dále jen „napadený akt“). \nTohoto větrného parku se týká první povolení, které bylo uděleno dne 28. srpna \n2009 a zrušeno dne 16. dubna 2014 Conseil d’État (Státní rada, Belgie). Pokud jde \no nové povolení udělené dne 8. září 2014 po doplňujícím šetření, to bylo zrušeno \ndne 25. ledna 2017. Po novém doplňujícímšetření bylo dne 6. června 2017 \nuděleno povolení na dobu dvaceti let ode dne 28. srpna 2009. Žaloba na \nneplatnost podaná proti tomuto povolení byla rozhodnutím Conseil d’État (Státní \nrada) ze dne 29. března 2022 zamítnuta. \nNapadený akt prodlužuje dobu platnosti posledně uvedeného povolení o deset let, \ncož uplynutí jeho platnosti odkládá na den 28. srpna 2039.  \nSpolečnostem Parc éolien de Leuze-en-Hainaut (PELZ), eNosVents a Electrabel \nbylo jakožto těm, na koho přešla práva z tohoto aktu, povoleno vedlejší \núčastenství. \nPředmět žádosti o rozhodnutí o předběžné otázce \nConseil d’État (Státní rada) se Soudního dvora dotazuje na výklad, který je třeba \npřikládat čl. 6 odstavcům 1 a 10 a příloze I bodům 20 a 22 úmluvy o přístupu \nk informacím, účasti veřejnosti na rozhodování a přístupu k právní ochraně \nv záležitostech životního prostředí, podepsané v Aarhusu dne 25. června 1998 \n(dále jen „Aarhuská úmluva“).  \nPředběžná otázka \nV souladu s návrhem žalobce předkládá Conseil d’État (Státní rada) Soudnímu \ndvoru následující předběžnou otázku:  \n„V právním režimu, ve kterém provozování činnosti spadající do působnosti \npřílohy I Aarhuské úmluvy podléhá povolení k provozování udělovanému na dobu \nnejvýše 20 let, \n– musí být čl. 6 odstavce 1 a 10 a body 20 a 22 přílohy I Aarhuské úmluvy \nvykládány v tom smyslu, že rozhodnutí o prodloužení provozování činnosti, která \nbyla původně povolena na 20 let, o 10 let musí podléhat fázi účasti veřejnosti? \n– musí být čl. 6 odstavce 1 a 10 Aarhuské úmluvy vykládán v tom smyslu, že \ns tímto článkem není slučitelný právní režim, ve kterém s sebou řízení \no prodloužení provozování činnosti o 10 let nikdy nenese fázi účasti veřejnosti?“ \nVIAUDRET \n \n3 \nUplatňovaná ustanovení \nAarhuská úmluva \nČlánek 1 Aarhuské úmluvy stanoví: \n„Cíl \nS cílem přispět k ochraně práva každého příslušníka současné generace i generací \nbudoucích na život v prostředí příznivém pro jeho zdraví a životní pohodu každá \nsmluvní strana zaručí právo na přístup k informacím o životním prostředí, podíl \nveřejnosti na rozhodování o otázkách životního prostředí a přístup k právní \nochraně v záležitostech životního prostředí v souladu s ustanoveními této \númluvy.“ \nČlánek 6 Aarhuské úmluvy zejména stanoví: \n„1. Každá strana bude \na) uplatňovat ustanovení tohoto článku vzhledem k rozhodnutím o tom, zda \npovolit navrhované činnosti uvedené v příloze I; \nb) uplatňovat ustanovení tohoto článku – v souladu se svým vnitrostátním právem \n– také k rozhodnutím o navrhovaných činnostech, které nejsou uvedeny \nv příloze I a které mohou mít významný vliv na životní prostředí. Strany k tomuto \núčelu určí, zda navrhované aktivity podléhají těmto ustanovením; \n[...] \n10. Pokud orgán veřejné správy přehodnotí nebo zaktualizuje provozní podmínky \npro činnost uvedenou v odstavci 1, každá strana zajistí, že budou mutatis mutandis \nuplatněna ustanovení odstavců 2 až 9 tohoto článku v případech, kdy je to \nvhodné.“ \nPříloha I této úmluvy, nadepsaná „SEZNAM ČINNOSTÍ UVEDENÝCH V ČL. 6 \nODST. 1 PÍSM. a)“, zejména stanoví: \n„20. Jakákoli činnost nezahrnutá do odstavců 1 až 19 výše, pro kterou je účast \nveřejnosti stanovena procedurou posuzování vlivu na životní prostředí (EIA) \nv souladu s vnitrostátní legislativou. \n[...] \n22. Jakékoli změny nebo rozšíření činností, kdy tyto změny samy o sobě splňují \nkritéria nebo prahové hodnoty stanovené v této příloze, budou podléhat čl. 6 \nodst. 1 písm. a) úmluvy, jakékoli jiné změny nebo rozšíření činností budou \npodléhat čl. 6 odst. 1 písm. b) úmluvy.“ \nSHRNUTÍ ŽÁDOSTI O ROZHODNUTÍ O PŘEDBĚŽNÉ OTÁZCE – VĚC C-151/25 – 1 \n \n4  \nVnitrostátní ustanovení \nDécret du 23 juin 2016 modifiant le Code de l’environnement, le Code de l’eau et \ndivers décrets en matière de déchets et de permis d’environnement (nařízení ze \ndne 23. června 2016, kterým se mění zákoník životního prostředí, vodní zákon \na různá nařízení v oblasti odpadů a povolení v oblasti životního prostředí, dále \njen „nařízení ze dne 23. června 2016“) \nPodle článku 89 nařízení ze dne 23. června 2016 činí doba platnosti povolení \nuděleného pro větrnou elektrárnu nejvýše třicet let. \nČlánek 109 tohoto nařízení stanoví, že povolení platná přede dnem 1. srpna 2016 \nmohou být prodloužena na dobu nejvýše deset let. \nArrêté du Gouvernement wallon du 20 avril 2017 modifiant l’arrêté du \nGouvernement wallon du 4 juillet 2002 relatif à la procédure et à diverses \nmesures d’exécution du décret du 11 mars 1999 relatif au permis \nd’environnement et portant exécution des articles 108 et 109 du décret du 23 juin \n2016 modifiant le Code de l’environnement, le Code de l’eau et divers décrets en \nmatière de déchets et de permis d’environnement (vyhláška valonské vlády ze dne \n20. dubna 2017, kterou se mění vyhláška valonské vlády ze dne 4. července 2002 \no řízení a o různých opatřeních k nařízení ze dne 11. března 1999 o povolení \nv oblasti životního prostředí a o provedení článků 108 a 109 nařízení ze dne \n23. června 2016, kterým se mění zákoník životního prostředí, vodní zákon a různá \nnařízení v oblasti odpadů a povolení v oblasti životního prostředí (dále jen \n„vyhláška ze dne 20. dubna 2017“) \nTato vyhláška nestanoví nový proces účasti veřejnosti. \nArgumenty účastníků původního řízení \nŽaloba na neplatnost \n1 Žalobce uplatňuje žalobní důvod vycházející z porušení čl. 6 odst. 10 Aarhuské \númluvy, článků 2, 50 a 97 décret du 11 mars 1999 relatif au permis \nd’environnement (nařízení ze dne 11. března 1999 o povolení v oblasti životního \nprostředí, dále jen „nařízení ze dne 11. března 1999“), článku 109 nařízení ze dne \n23. června 2016, článků D.50 a D.75 knihy I Code de l’environnement (zákoník \nživotního prostředí) a článků 2 a 3 loi du 29 juillet 1991 relative à la motivation \nformelle des actes administratifs (zákon ze dne 29. července 1991 o formálním \nodůvodnění správních aktů).  \n2 Tvrdí, že větrný park povolený v projednávané věci je záměrem, který \nautomaticky podléhá posouzení vlivů na životní prostředí, jež zahrnuje fázi účasti \nveřejnosti. Upřesňuje, že s ohledem na přílohu I Aarhuské úmluvy spadá tento \nvětrný park do působnosti čl. 6 odst. 1 písm. a) této úmluvy. \nVIAUDRET \n \n5 \n3 Tvrdí, že rozhodnutí o změně podmínek provozování takové činnosti měla \npředcházet fáze účasti veřejnosti a že neprovedení veřejného šetření je stíháno \nneplatností napadeného rozhodnutí, jelikož veřejné šetření je podstatnou formální \nnáležitostí. \nŽalobní odpověď \n4 Žalovaný tvrdí, že s ohledem na to, jak pojmy „záměr“ a „povolení“ definuje čl. 1 \nodst. 2 písm. a) a c) směrnice Evropského parlamentu a Rady 2011/92/EU ze dne \n13. prosince 2011 o posuzování vlivů některých veřejných a soukromých záměrů \nna životní prostředí (Úř. věst. 2012, L 26, s. 1), není napadený akt, který spočívá \nv prodloužení doby platnosti povolení v oblasti životního prostředí, rozhodnutím, \nkterým se povoluje záměr. S odkazem na judikaturu Soudního dvora a díla nauky \nkromě toho žalovaný uplatňuje, že „[n]ení povolením rozhodnutí, kterým se \npovoluje pokračování v provozování činnosti a které nepovoluje žádnou změnu \nnebo rozšíření, které by měnilo její fyzický stav“.  \n5 Žalovaný je toho názoru, že napadený akt není ani rozhodnutím, kterým se \nobnovuje povolení v oblasti životního prostředí. Zdůrazňuje, že valonské právo \nnezná systém obnovy povolení v oblasti životního prostředí.  \n6 Kromě toho se domnívá, že doba platnosti povolení nepatří mezi zvláštní \npodmínky provozování zařízení, s tím, že tyto podmínky byly stanoveny při \nvydání povolení. Je toho názoru, že „znění nařízení ze dne 11. března 1999, \nnovelizačního nařízení ze dne 23. června 2016 a vyhlášky k jeho provedení \nukazuje, že k tomu, aby mohlo provozovateli svědčit prodloužení, není řízení \no prodloužení doby platnosti spojeno se stanovením nebo změnou podmínek“.  \n7 Mimoto uplatňuje, že „při rozhodování o prodloužení se logicky nepoužívají \nstejná posuzovací kritéria jako při rozhodování o žádosti o jednotné povolení“. \nPodle žalovaného se udělení nebo zamítnutí povolení v oblasti životního prostředí \nopírá o kritéria souladu s právními a správními požadavky, s cíli dohledu nad \nklasifikovanými zařízeními a se zájmy provozovatele, jakož i o podmínky \npovolení. Naopak tvrdí, že „zajištění trvalosti povolení v oblasti životního \nprostředí týkajícího se jedné nebo více větrných elektráren jejich prodloužením \nodpovídá potřebě obecného zájmu: rozvoji obnovitelných zdrojů energie“, s tím \nupřesněním, že „[v]edle obecného zájmu musí mít podniky i možnost pokračovat \nve svém rozvoji za životaschopných technických a ekonomických podmínek“. \n8 Žalovaný má za to, že proces účasti veřejnosti se týká povolení záměru, a nikoli \nprodloužení doby provozování činnosti. S odkazem na čl. 6 odst. 1 Aarhuské \númluvy tvrdí, že účelem rozhodnutí o prodloužení není povolit činnost uvedenou \nv příloze I této úmluvy.  \n9 Žalovaný uvádí, že teze, že doba platnosti povolení je podmínkou provozování, \nbyla převzata Conseil d’État (Státní rada) ve stanovisku č. 60.433/4 ze dne \nSHRNUTÍ ŽÁDOSTI O ROZHODNUTÍ O PŘEDBĚŽNÉ OTÁZCE – VĚC C-151/25 – 1 \n \n6  \n14. prosince 2016 k předběžnému návrhu vyhlášky, který vedl k vydání vyhlášky \nvalonské vlády ze dne 20. dubna 2017. \n10 Žalovaný odkazuje na přípis valonské vládě pro druhé čtení tohoto návrhu, který \nuvádí důvody, proč vyhláška nestanoví proces účasti veřejnosti. \n11 Žalovaný dodává, že žalobce neuvádí, jak se vlivy známé v okamžiku udělení \npovolení na dobu dvaceti let končící dnem 28. srpna 2029 liší od vlivů, které musí \nbýt zohledněny pro období běžící od prodloužení uvedeného povolení do dne \n28. srpna 2039. Uvádí, že veřejnost se mohla k záměru a k jeho případným \ndopadům vyjádřit při veřejných šetřeních konaných v návaznosti na různé opravné \nprostředky týkající se záměru větrného parku. \nSpis vedlejších účastnic \n12 Vedlejší účastnice potvrzují, že rozhodnutí o prodloužení jednotného povolení \npřijaté podle článku 109 nařízení ze dne 23. června 2016 není ani povolením, ani \nzáměrem ve smyslu směrnice 2011/92. Žalobce tedy není oprávněn dovolávat se \npřímého účinku Aarhuské úmluvy. \n13 Jsou toho názoru, že prodloužení doby platnosti jednotného povolení z titulu \nčl. 109 pododstavce 2 nařízení ze dne 23. června 2016 není činností spadající do \npůsobnosti přílohy I Aarhuské úmluvy. Podle nich ani toto ustanovení, ani \nvyhláška k jeho provedení ze dne 20. dubna 2017 neukládají, aby prodloužení \ndoby platnosti povolení týkajících se větrných elektráren povolených přede dnem \n1. srpna 2016 podléhalo řízení o posouzení vlivu na životní prostředí, takže \npoužití čl. 6 odst. 10 Aarhuské úmluvy musí být vyloučeno. \nReplika \n14 Žalobce má za to, že není relevantní dovolávat se směrnice 2011/92, neboť \nžalobní důvod, který na podporu své žaloby uplatňuje, z porušení této směrnice \nnevychází.  \n15 Domnívá se, že působnost této posledně uvedené směrnice je užší než působnost \nAarhuské úmluvy a že se pojem „záměr“ ve smyslu čl. 1 odst. 2 písm. a) uvedené \nsměrnice, jak je vykládán Soudním dvorem, vztahuje na stavební práce nebo \nzásahy, které mění fyzický stav lokality, což vylučuje prostou obnovu stávajícího \npovolení k provozování. Upřesňuje, že pouze směrnice 2011/92 spojuje pojem \n„záměr“ se „zásahy do přírodního prostředí“ a že v případě směrnice Rady \n92/43/EHS ze dne 21. května 1992 o ochraně přírodních stanovišť, volně žijících \nživočichů a planě rostoucích rostlin (Úř. věst. 1992, L 206, s. 7; Zvl. vyd. 15/02, \ns. 102), úmluvy z Espoo ze dne 25. února 1991 o posuzování vlivů na životní \nprostředí přesahujících hranice států (úmluva z Espoo) nebo Aarhuské úmluvy \ntomu tak není. Žalobce, který se opírá zejména o závěry výboru pro dohled nad \ndodržováním Aarhuské úmluvy (dále jen „Aarhuský výbor“) a o dokumenty \nEvropské hospodářské komise Organizace spojených národů, tvrdí, že článek 6 \nVIAUDRET \n \n7 \nAarhuské úmluvy se na rozhodnutí o prodloužení povolení k provozování bez \ndalších zásahů do přírodního prostředí použije. \n16 Připomíná, že žalobní důvod, kterého se dovolává, se opírá o čl. 6 odstavce 1 a 10 \nAarhuské úmluvy a že není sporu o tom, že povolení větrného parku spadá do \npůsobnosti čl. 6 odst. 1 písm. a) této úmluvy, takže se má použít režim čl. 6 \nodst. 10 uvedené úmluvy. Tvrdí, že pokud rozhodovací proces vztahující se \nk určité činnosti povinně zahrnuje fázi účasti veřejnosti podle čl. 6 odst. 1 písm. a) \nAarhuské úmluvy, měl by každý postup, kterým orgán veřejné moci následně \npřehodnocuje nebo aktualizuje podmínky, za nichž je tato činnost provozována, \ntakovou fázi zahrnovat. \n17 Žalobce má za to, že změna doby provozování skutečně představuje změnu \npodmínek, za kterých je dotčená činnost vykonávána. Stanovení doby platnosti \npovolení je totiž neoddělitelně spojeno s obsahem rozhodnutí o žádosti o povolení \nv oblasti životního prostředí nebo o jednotné povolení. \n18 Žádné ustanovení práva kromě toho neopravňuje úvahu, že by se v závislosti na \ntom, zda je rozhodnutí, které má být přijato, rozhodnutím o prodloužení povolení \nnebo rozhodnutím o udělení povolení, měla používat odlišná posuzovací kritéria.  \n19 Žalobce má za to, že mu nepřísluší uvádět, jak se vlivy známé v okamžiku udělení \njednotného povolení na dobu dvaceti let končící dnem 28. srpna 2029 liší od \nvlivů, které musí být zohledněny pro období běžící ode dne 28. srpna 2029 do dne \n28. srpna 2039. Domnívá se, že žalovaný se tak zaprvé vzdává výkonu své \nposuzovací pravomoci a že rozhodovací kritéria, jež se zdaleka neomezují pouze \nna vlivy dotčeného záměru, se zadruhé týkají i přípustnosti prodloužení doby \nplatnosti jednotného povolení s ohledem na požadavek dodržení nejlepších \ndostupných technik. \nPoslední spis žalobce \n20 Žalobce připomíná, že rozhodnutí o prodloužení provozování zařízení lze \nz hlediska ustanovení Aarhuské úmluvy chápat dvěma způsoby: lze je považovat \nza rozhodnutí o povolení provozování ve smyslu čl. 6 odst. 1 této úmluvy nebo za \nrozhodnutí o změně činnosti uvedené v příloze I uvedené úmluvy. Tuto změnu lze \nmimoto pojímat jako rozhodnutí o povolení (na prodlouženou dobu) činnosti \npodle přílohy I, které spadá do působnosti bodu 22 první věty této přílohy a na \nkteré se vztahuje čl. 6 odst. 1 písm. a) Aarhuské úmluvy, nebo v souladu se závěry \na doporučeními Aarhuského výboru za změnu podmínek provozování činnosti \nuvedené v příloze I, která se řídí čl. 6 odst. 10 této úmluvy a na kterou se pravidla \núčasti veřejnosti stanovená v odstavcích 2 až 9 tohoto článku uplatní „mutatis \nmutandis v případech, kdy je to vhodné“. \n21 Žalobce, který se v tomto ohledu dovolává výkladu pojmů „mutatis mutandis“ \na „v případech, kdy je to vhodné“ ze strany Aarhuského výboru, tvrdí, že v rámci \nřízení o přehodnocení nebo o aktualizaci podmínek pro provozování činnosti \nSHRNUTÍ ŽÁDOSTI O ROZHODNUTÍ O PŘEDBĚŽNÉ OTÁZCE – VĚC C-151/25 – 1 \n \n8  \nuvedené v příloze I je účast veřejnosti zásadou a neúčast veřejnosti výjimkou, \npřičemž důkazní břemeno ohledně nevýznamnosti přehodnocení nebo aktualizace \nnese příslušný orgán. Žalobce připomíná i to, že podle Aarhuského výboru je \nprávní řád, který nestanoví žádnou možnost účasti veřejnosti v takovém řízení, \nv rozporu s tím, co předepisuje čl. 6 odst. 10 Aarhuské úmluvy, a že je třeba \nvěnovat zvláštní pozornost rozhodnutí o prodloužení povolení k provozování, \nkteré podléhá ustanovením článku 6 této úmluvy, a to s výjimkou případů, kdy je \nzměna povolené doby „minimální co do rozsahu a na životní prostředí má zjevně \nzanedbatelné dopady nebo nemá dopady žádné“. Aarhuský výbor tak odmítl \npřipustit minimální rozsah přechodu z doby určité na neurčitou, prodloužení \nprovozování ze 40 na 60 let nebo dokonce prodloužení o více než dva roky. \n22 Žalobce připomíná, že závěry a doporučení Aarhuského výboru nejsou výkladem \npocházejícím od soudního orgánu, který by měl pravomoc vykládat ustanovení \nAarhuské úmluvy. \n23 Podle žalobce není judikatura Soudního dvora, ať založená na směrnici 2011/92 \nnebo na směrnici Evropského parlamentu a Rady 2010/75/EU ze dne 24. listopadu \n2010 o průmyslových emisích (integrované prevenci a omezování znečištění) (Úř. \nvěst. 2010, L 334, s. 17), rozhodná, protože změně záměru, která nevede ke změně \nfyzické stavu místa zařízení nebo k prodloužení doby provozování zařízení, \nnepřiznává povahu „záměru“ podléhajícího režimu posuzování vlivů. Uvádí i to, \nže směrnice 2010/75 stanoví fázi účasti veřejnosti pouze v rámci „podstatné \nzměny“ činnosti. \n24 Žalobce se domnívá, že prodloužení provozování na dobu deseti let, tedy na dobu \nrovnající se polovině původní doby provozování, nemá minimální rozsah a že \nz tohoto důvodu s sebou nese uplatnění způsobů účasti veřejnosti stanovených \nv čl. 6 odst. 2 až 9 Aarhuské úmluvy. Dodává, že s pokračováním provozu \nvětrného parku o deseti větrných elektrárnách pokračují obtíže spojené \ns přítomností a provozováním tohoto zařízení a že, pokud jde o činnost, na kterou \nse vztahuje příloha I Aarhuské úmluvy, nebyl povinen tyto vlivy dále rozebírat. \nPřipomíná, že původní žádost o povolení vedla k vydání několika nepříznivých \nstanovisek a rozhodnutí a že zamítnutí žaloby podané proti spornému povolení \nk Conseil d’État (Státní rada) neznamená patent na zákonnost nebo na neškodnost \ntohoto povolení. \n25 Dospívá k závěru, že námitka nepřípustnosti je neopodstatněná vzhledem k tomu, \nže napadený akt měl vést k veřejnému šetření, a tedy k oznámení podle článku \nD.29–22 odst. 2 knihy I zákoníku životního prostředí, a že pouze naplnění tohoto \noznámení mohlo vést k běhu žalobní lhůty. \n26 Podpůrně žalobce Conseil d’État (Státní rada) vyzývá, aby se obrátila na Soudní \ndvůr s předběžnou otázku týkající se výkladu relevantních ustanovení Aarhuské \númluvy. \nVIAUDRET \n \n9 \nPoslední spis vedlejších účastnic \n27 Vedlejší účastnice tvrdí, že žalobní důvod uplatněný žalobcem je nepřípustný, \njelikož sporné prodloužení není činností uvedenou v příloze I Aarhuské úmluvy \na čl. 6 odst. 10 této úmluvy nelze přiznat přímý účinek, pokud se týká činnosti, \nkterá v této příloze uvedena není. \n28 Připomínají působnost přílohy I bodu 20 Aarhuské úmluvy, který dopadá na \nvšechny činnosti, pro které vnitrostátní právní předpisy stanoví posuzování vlivů \nna životní prostředí (EIA), do něhož je zapojena veřejnost. Uvádějí, že ani čl. 109 \npododstavec 2 nařízení ze dne 23. června 2016 ani vyhláška k provedení tohoto \nnařízení neukládají, aby prodloužení doby platnosti povolení pro větrné parky \npovolené přede dnem 1. srpna 2016 podléhalo procesu posuzování vlivu na \nživotní prostředí, a vyvozují z toho, že toto prodloužení není činností uvedenou \nv příloze I bodu 20 Aarhuské úmluvy. \n29 V tomto ohledu připomínají judikaturu Soudního dvora opírající se o směrnici \n2011/92 – která změně záměru, která s sebou nenese změnu fyzického stavu místa \nzařízení, nepřiznává kvalifikaci „záměru“ – jakož i judikaturu opírající se \no směrnici 2010/75 – podle níž prodloužení povolení k provozování nemůže samo \no sobě představovat „podstatnou změnu“ zařízení podléhající účasti veřejnosti. \nPodle nich tato judikatura brání tomu, aby bylo sporné prodloužení považováno za \nčinnost spadající do působnosti přílohy I bodu 20 Aarhuské úmluvy.  \n30 Domnívají se, že vzhledem k tomu, že sporné prodloužení nespadá do působnosti \ntéto přílohy, může podléhat Aarhuské úmluvě pouze tehdy, pokud může mít \nvýznamný dopad na životní prostředí. Uvádějí, že Aarhuský výbor ve své zprávě \nze dne 30. března 2020 přirovnává systém určování podstatnosti změny zařízení \nve smyslu směrnice 2010/75 k systému určování činností uvedených v čl. 6 odst. 1 \npísm. b) Aarhuské úmluvy a potvrzuje nezbytnost předchozího rozhodnutí \npříslušného orgánu ohledně kvalifikace činnosti s ohledem na její možné dopady \nna životní prostředí, přičemž, nejsou-li takové dopady dány, není žádná účast \nveřejnosti nutná. Z toho vyvozují, že čl. 6 odst. 10 uvedené úmluvy nelze přiznat \npřímý účinek, pokud jde o činnosti, které nejsou uvedeny v příloze I uvedené \númluvy.  \n31 Za předpokladu, že však sporné prodloužení činností spadající do působnosti \npřílohy I Aarhuské úmluvy je nebo že musí v určitých případech vést k fázi účasti \nveřejnosti podle této úmluvy, vedlejší účastníce podpůrně zdůrazňují, že z výkladu \nbodů 47 až 49, ve spojení s bodem 98 zprávy Aarhuského výboru ze dne \n30. března 2020 plyne, že výraz „v případech, kdy je to vhodné“ použitý v čl. 6 \nodst. 10 uvedené úmluvy dává státům, které jsou smluvními stranami této úmluvy, \nprostor pro uvážení, pokud jde o nutnost organizovat účast veřejnosti v případě \nzměny podmínek provozování činnosti uvedené v úmluvě, včetně činnosti \nuvedené v příloze I této úmluvy. \nSHRNUTÍ ŽÁDOSTI O ROZHODNUTÍ O PŘEDBĚŽNÉ OTÁZCE – VĚC C-151/25 – 1 \n \n10  \n32 Vedlejší účastnice jsou toho názoru, že pouhé prodloužení doby provozování \nvětrného parku se netýká environmentálního aspektu činnosti a není s to vést \nk podstatné změně jejích základních parametrů, takže účast veřejnosti není \nv souladu s rozsudkem ze dne 2. června 2022, FCC Česká republika \n(C-43/21, EU:C:2022:425), nezbytná. \nPosouzení Conseil d’État (Státní rada) a odůvodnění žádosti o rozhodnutí \no předběžné otázce \n33 Ve stanovisku ze dne 14. prosince 2016 k předběžnému návrhu vyhlášky, který \nvedl k vydání vyhlášky valonské vlády ze dne 20. dubna 2017, uvádí legislativní \noddělení Conseil d’État (Státní rada) toto: \n„[...] slova ‚v případech, kdy je to vhodné‘, která jsou obsažena [v čl. 6 odst. 10 \nAarhuské úmluvy], podle všeho nelze chápat tak, že smluvním stranám \nponechávají volný a úplný výběr ohledně použití nebo nepoužití čl. 6 odstavců 2 \naž 9, pokud nastává situace uvedená v odstavci 10. Musí být spíše chápána tak, že \nstanoví proces účasti veřejnosti před přijetím jakéhokoli rozhodnutí \no přehodnocení nebo o aktualizaci podmínek pro výkon činnosti, která je buď \npřevzata do přílohy I úmluvy, nebo v ní uvedena není, avšak musí být považována \nza činnost, která může mít významný vliv na životní prostředí.“ \nPokračuje těmito slovy: \n„Rozhodnutí, kterým se prodlužuje doba platnosti povolení uděleného pro činnost, \njež je převzata do přílohy I úmluvy nebo musí být považována za činnost, která \nmůže mít významný vliv na životní prostředí, spadá do působnosti čl. 6 odst. 10 \ntéto úmluvy: mění totiž podmínky, za nichž je tato činnost vykonávána. \nMusí též podléhat procesu účasti veřejnosti v souladu s ustanoveními článku 6 \nodstavců 2 až 9 úmluvy.“ \n34 Valonská vláda se tímto stanoviskem neřídila a nový proces účasti veřejnosti před \nrozhodnutím o prodloužení doby platnosti povolení týkajícího se provozování \nvětrných elektráren nezavedla. \n35 Přípis valonské vládě pro druhé čtení návrhu uvádí důvody, proč dotčená vyhláška \nproces účasti veřejnosti nestanoví, těmito slovy: \n„Kromě toho je třeba poznamenat, že proces účasti veřejnosti, a to včetně studie \nvlivů na životní prostředí provedené v průběhu řízení o šetření žádosti o povolení, \nnepřihlíží k potenciální době, která může být v rámci povolení přiznána. \nŽadatel totiž podává svou žádost, která je následně předmětem procesu účasti \nveřejnosti, včetně studie vlivů na životní prostředí, s tím, že doufá, že mu pro jeho \npovolení bude svědčit maximální možná doba platnosti. Spisový materiál je proto \nstanovený a veřejnosti představený tímto způsobem. Veřejnost se přitom již \nVIAUDRET \n \n11 \nv průběhu procesu účasti vyjádřila k tomuto materiálu, který i přes možnost \nprodloužení doby platnosti není ve skutečnosti předmětem jakékoli změny \npodmínek povolení oproti původním podmínkám, u kterých byla veřejnost \nvyzvána, aby se vyjádřila. \nZ těchto důvodů, které vycházejí ze skutečnosti, že zavedení dodatečného procesu \núčasti veřejnosti by vedlo k diskriminaci, a ze skutečnosti, že veřejnost byla \nvyzvána, aby se k původnímu záměru vyjádřila bez ohledu na jeho dobu trvání, \navšak pouze s přihlédnutím k jeho potenciálnímu vlivu po dobu neurčitou, není \nvhodné, aby byl pro toto řízení umožňující legalizovat některé zvláštní situace \nstanoven nový proces účasti veřejnosti. \nZadruhé je třeba připomenout, že článek 109 směřuje k zavedení možnosti žádat \npro povolení týkající se jedné nebo více větrných elektráren, která platí nebo jsou \npředmětem šetření přede dnem 1. srpna 2016, o prodloužení doby platnosti, aby \njim svědčil týž právní režim jako povolením, u nichž byla žádost zkoumána po dni \n1. srpna 2016. Z týchž důvodů, jako jsou důvody uvedené, pokud jde o článek \n108, není nutné vkládat nový proces účasti veřejnosti. \nV obou případech se podmínky, za kterých je činnost vykonávána, nemění. \nPůvodní podmínky trvají beze změny po dobu trvání případně uděleného \nprodloužení.“ \n36 Žalovaný tedy skutečnost, že se nekoná proces účasti veřejnosti, odůvodňuje tím, \nže se tak vyhýbá vyvolání diskriminace, že veřejnost již byla vyzvána, aby se \nk původnímu záměru nezávisle na jeho trvání vyjádřila, a že se nemění původní \npodmínky, za nichž je činnost vykonávána. \n37 Mezinárodní ustanovení lze považovat za ustanovení, které má přímý účinek, \npokud obsahuje výrazy, které v něm umožňují spatřovat povinnosti, které jsou \njasné a přesné a které nejsou, co do provedení nebo účinků, podmíněny \npřijetímdalšího aktu. \nTím, že stanoví, že „[p]okud orgán veřejné správy přehodnotí nebo zaktualizuje \nprovozní podmínky pro činnost uvedenou v odstavci 1, budou mutatis mutandis \nuplatněna ustanovení odstavců 2 až 9 tohoto článku v případech, kdy je to \nvhodné“, stanoví čl. 6 odst. 10 Aarhuské úmluvy objektivně předpokládané \nsituace a povinnosti uložené orgánům. Neponechává státům žádnou posuzovací \npravomoc, pokud jde o činnost převzatou do přílohy I této úmluvy. \n38 Žalobní důvod vycházející z porušení čl. 6 odst. 10 Aarhuské úmluvy je přípustný \nv rozsahu, ve kterém má toto ustanovení vlastnosti, které mu propůjčují přímý \núčinek ve vnitrostátním právním řádu, a to přinejmenším pokud jde o činnosti \nuvedené v příloze I této úmluvy. \n39 Pokud jde o výklad dotčeného mezinárodního ustanovení, žalobce a vedlejší \núčastnice odkazují na závěry a doporučení Aarhuského výboru. Tento orgán je \nporadní a nemůže tedy přijmout právně závazné rozhodnutí. Ti samí účastníci \nSHRNUTÍ ŽÁDOSTI O ROZHODNUTÍ O PŘEDBĚŽNÉ OTÁZCE – VĚC C-151/25 – 1 \n \n12  \nřízení odkazují i na příručku k implementaci Aarhuské úmluvy, která rovněž \npostrádá právní závaznost, avšak obsahuje vodítka. \n40 V projednávané věci není sporu o tom, že povolení pro dotčený větrný park spadá \ndo působnosti čl. 6 odst. 1 písm. a) Aarhuské úmluvy, protože na ně dopadá \npříloha I bodu 20 této úmluvy jakožto na povolení podléhající postupu posouzení \nvlivů zahrnující fázi účasti veřejnosti. \n41 Obtíž pramení z právní kvalifikace rozhodnutí o prodloužení doby platnosti \npovolení k provozování tohoto větrného parku. Toto rozhodnutí spadá do \npůsobnosti čl. 6 odstavců 2 až 9 Aarhuské úmluvy, pokud je lze kvalifikovat: \n– buď jako povolení činnosti, která spadá do působnosti \npřílohy I uvedené v čl. 6 odst. 1 písm. a) Aarhuské úmluvy, nebo \ndokonce jako změnu nebo rozšíření této činnosti, jak je uvedena \nv bodě 22 této přílohy; \n– nebo jako povolení činnosti, která není uvedena v příloze I Aarhuské \númluvy, avšak která může mít významný vliv na životní prostředí ve \nsmyslu čl. 6 odst. 1 písm. b) této úmluvy; \n– nebo jako rozhodnutí o přehodnocení nebo o aktualizaci podmínek, za \nkterých je vykonávána činnost uvedená v čl. 6 odst. 1 Aarhuské \númluvy, ve smyslu čl. 6 odst. 10 této úmluvy. \nConseil d’État (Státní rada) se tedy stejně jako žalobce domnívá, že je třeba obrátit \nse na Soudní dvůr prostřednictvím žádosti o rozhodnutí o předběžné otázce, \njelikož Soudní dvůr má z tohoto titulu pravomoc vykládat Aarhuskou úmluvu \n(v tomto smyslu rozsudek ze dne 8. března 2011, Lesoochranárske zoskupenie, \nC-240/09, EU:C:2011:125, body 29 až 31). \n"
+            } ],
+            "docNoPart" : 1,
+            "celex" : "",
+            "groupByLogicalId" : [ {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276197",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "ES",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276211",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "BG",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276210",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "LT",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276196",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "ET",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276195",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "CS",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276182",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "HR",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276193",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "EN",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276184",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "HU",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276186",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "SK",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276201",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "PL",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276209",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "DE",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276204",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "NL",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276205",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "DA",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276206",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "RO",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276207",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "PT",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276208",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "FI",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276188",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "SL",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276189",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "SV",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276190",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "EL",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276181",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276192",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "IT",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3276183",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "LV",
+              "formats" : [ "PDF" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "",
+            "affairJurisdiction" : "Cour de justice",
+            "affairJurisdictionCode" : "C",
+            "routing" : "C/0151/25/00000000RP/01/P/01",
+            "ecli" : ""
+          },
+          "highlightFields" : {
+            "contentML.cs.exact" : [ "Shrnutí <em class='highlight'>C-151/25</em> – 1 \nVěc <em class='highlight'>C-151/25</em> [Viaudret]i \nShrnutí žádosti o rozhodnutí o předběžné otázce podle čl. 98 odst. 1 \njednacího řádu Soudního dvora \nDatum doručení:  \n20. února 2025 \nPředkládající soud:  \nConseil d’État (Belgie) \nDatum předkládacího rozhodnutí:  \n12. února 2025 \nŽalobce:  \nF. B. \nŽalovaný:  \nRégion wallonne  \nVedlejší účastnice:  \nSociété anonyme PARC ÉOLIEN DE LEUZE-EN-HAINAUT \nSociété anonyme E-NOSVENTS \nSociété anonyme ELECTRABEL \nPředmět sporu v původním řízení \nTento správní spor se týká rozhodnutí o prodloužení povolení k výstavbě a \nk provozování přijatého bez předchozího veřejného šetření.  \nSkutkový stav a původní řízení \nŽalobce v původním řízení se domáhá zrušení rozhodnutí technického úředníka ze \ndne 2. dubna 2020, kterým se prodlužuje doba platnosti jednotného povolení \nuděleného společnosti Parc éolien de Leuze-en-Hainaut (PELZ) pro výstavbu \n \ni Název projednávané věci je fiktivní. Neodpovídá skutečnému jménu žádného z účastníků řízení.", "Ti samí účastníci \nSHRNUTÍ ŽÁDOSTI O ROZHODNUTÍ O PŘEDBĚŽNÉ OTÁZCE – VĚC <em class='highlight'>C-151/25</em> – 1 \n \n12  \nřízení odkazují i na příručku k implementaci Aarhuské úmluvy, která rovněž \npostrádá právní závaznost, avšak obsahuje vodítka. \n40 V projednávané věci není sporu o tom, že povolení pro dotčený větrný park spadá \ndo působnosti čl. 6 odst. 1 písm. a) Aarhuské úmluvy, protože na ně dopadá \npříloha I bodu 20 této úmluvy jakožto na povolení podléhající postupu posouzení \nvlivů zahrnující fázi účasti veřejnosti. \n41 Obtíž pramení z právní kvalifikace rozhodnutí o prodloužení doby platnosti \npovolení k provozování tohoto větrného parku." ]
+          },
+          "innerHits" : { },
+          "routing" : "C/0151/25/00000000RP/01/P/01",
+          "matchedQueries" : [ ]
+        }, {
+          "index" : "index-affair@30-06-2026",
+          "id" : "C/0151/25/00000000RP/01/P/01-3522292",
+          "score" : 10.598584,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "C/0151/25/00000000RP/01/P/01-3522292",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_327190",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+            "idPublished" : "C-151/25",
+            "docType" : "Arrêt",
+            "docTypeCode" : "ARRET",
+            "docDate" : "2026-09-24",
+            "docFormats" : [ "HTML" ],
+            "contentLength" : 0,
+            "docNoPart" : 1,
+            "celex" : "62025CJ0151",
+            "groupByLogicalId" : [ {
+              "id" : "C/0151/25/00000000RP/01/P/01-3522292",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "HTML" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "Convention d&apos;Aarhus sur l&apos;accès à l&apos;information, la participation du public au processus décisionnel et l&apos;accès à la justice en matière d&apos;environnement (25/06/1998), article 6, paragraphes 1 et 10, et points 20 et 22 de l&apos;annexe I",
+            "affairJurisdiction" : "Cour de justice",
+            "affairJurisdictionCode" : "C",
+            "routing" : "C/0151/25/00000000RP/01/P/01",
+            "ecli" : "ECLI:EU:C:2026:789"
+          },
+          "highlightFields" : { },
+          "innerHits" : { },
+          "routing" : "C/0151/25/00000000RP/01/P/01",
+          "matchedQueries" : [ ]
+        }, {
+          "index" : "index-affair@30-06-2026",
+          "id" : "C/0151/25/00000000RP/01/P/01-3522309",
+          "score" : 10.598584,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "C/0151/25/00000000RP/01/P/01-3522309",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_327200",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+            "idPublished" : "C-151/25",
+            "docType" : "Résumé",
+            "docTypeCode" : "RES",
+            "docDate" : "2026-09-24",
+            "docFormats" : [ "HTML" ],
+            "contentLength" : 0,
+            "docNoPart" : 1,
+            "celex" : "",
+            "groupByLogicalId" : [ {
+              "id" : "C/0151/25/00000000RP/01/P/01-3522309",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "HTML" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "",
+            "affairJurisdiction" : "Cour de justice",
+            "affairJurisdictionCode" : "C",
+            "routing" : "C/0151/25/00000000RP/01/P/01",
+            "ecli" : "ECLI:EU:C:2026:789"
+          },
+          "highlightFields" : { },
+          "innerHits" : { },
+          "routing" : "C/0151/25/00000000RP/01/P/01",
+          "matchedQueries" : [ ]
+        }, {
+          "index" : "index-affair@30-06-2026",
+          "id" : "C/0151/25/00000000RP/01/P/01-3400700",
+          "score" : 10.598584,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "C/0151/25/00000000RP/01/P/01-3400700",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_313742",
+            "jpLogicDocId" : "id_307279",
+            "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+            "idPublished" : "C-151/25",
+            "docType" : "Conclusions",
+            "docTypeCode" : "CONCL",
+            "docDate" : "2025-12-18",
+            "docFormats" : [ "HTML" ],
+            "contentLength" : 0,
+            "contentML" : [ {
+              "cs" : "null STANOVISKO GENERÁLNÍ ADVOKÁTKY LAILY MEDINA přednesené dne 18. prosince 2025(1) Věc C‑151/25 [Viaudret(i)] F. B. proti Région wallonne, za účasti: Parc éolien de Leuze-en-Hainaut SA, e-NosVents SA, Electrabel SA [žádost o rozhodnutí o předběžné otázce, kterou podala Conseil d’État (Státní rada, Belgie)] „ Řízení o předběžné otázce – Aarhuská úmluva – Článek 6 – Účast veřejnosti – Článek 6 odst. 1 – Odstavce 20 a 22 přílohy I – Článek 6 odst. 10 – Přehodnocení nebo aktualizace provozních podmínek pro činnost – Prodloužení doby platnosti povolení k výstavbě a provozování větrného parku – Povinnost podmínit takové prodloužení fází účasti veřejnosti“ I. Úvod 1. Aarhuská úmluva(2) je, jak známo, vyzdvihovaná jako „dosud nejambicióznější projekt v oblasti environmentální demokracie pod záštitou Organizace spojených národů“(3). V Deklaraci z Luccy přijaté na prvním zasedání stran Aarhuské úmluvy je tato úmluva popisována jako „průlom v participativní demokracii“(4). 2. Aarhuská úmluva spočívá na třech pilířích, jimiž jsou: přístup k informacím, účast veřejnosti na rozhodování a přístup k právní ochraně, přičemž každý z těchto pilířů provádí jedno ze tří procesních práv v oblasti životního prostředí(5). Z uvedených tří práv je tím „nejvýrazněji demokratickým“(6) právo veřejnosti účastnit se rozhodování v záležitostech životního prostředí. Uvedené právo přispívá k dosažení jednoho z cílů Aarhuské úmluvy, kterým je, jak je uvedeno v desátém bodě jejího odůvodnění, posílení odpovědnosti orgánů veřejné správy a transparentnosti a posílení podpory veřejnosti v prospěch rozhodnutí týkajících se životního prostředí(7). 3. V projednávané věci vyvstává otázka, zda rozhodnutí o prodloužení doby platnosti povolení v oblasti životního prostředí k provozování činnosti, která spadá do působnosti čl. 6 odst. 1 písm. a) Aarhuské úmluvy, o 10 let vyžaduje fázi účasti veřejnosti a zda článek 6 jako celek brání vnitrostátní právní úpravě, která v případě takového prodloužení nestanoví účast veřejnost. Projednávaná věc poskytuje Soudnímu dvoru příležitost vyložit čl. 6 odst. 10 Aarhuské úmluvy, který stanoví, že pokud orgán veřejné správy přehodnotí nebo zaktualizuje provozní podmínky pro činnost uvedenou v odstavci 1, budou mutatis mutandis uplatněny požadavky na účast veřejnosti na rozhodování stanovené v odstavcích 2 až 9 tohoto článku v případech, kdy je to vhodné. Mimoto se bude zejména zabývat se otázkou, zda prodloužení doby provozování činnosti, na kterou se vztahuje čl. 6 odst. 1 písm. a), musí být považováno za přehodnocení nebo aktualizaci provozních podmínek pro dotčenou činnost a vyžaduje tedy účast veřejnosti, uzná-li se za vhodné. II. Právní rámec A. Mezinárodní právo 4. Článek 6 Aarhuské úmluvy, nadepsaný „Účast veřejnosti na rozhodování o specifických činnostech“, v odstavcích 1 a 10 stanoví: „1. Každá strana bude a) uplatňovat ustanovení tohoto článku vzhledem k rozhodnutím o tom, zda povolit navrhované činnosti uvedené v příloze I; b) uplatňovat ustanovení tohoto článku – v souladu se svým vnitrostátním právem – také k rozhodnutím o navrhovaných činnostech, které nejsou uvedeny v příloze I a které mohou mít významný vliv na životní prostředí. Strany k tomuto účelu určí, zda navrhované aktivity podléhají [navrhovaná činnost podléhá] těmto ustanovením; […] […] 10. Pokud orgán veřejné správy přehodnotí nebo zaktualizuje provozní podmínky pro činnost uvedenou v odstavci 1, každá strana zajistí, že budou mutatis mutandis uplatněna ustanovení odstavců 2 až 9 tohoto článku v případech, kdy je to vhodné.“ 5. Příloha I Aarhuské úmluvy obsahuje výčet činností uvedených v čl. 6 odst. 1 písm. a). Odstavce 20 a 22 přílohy I Aarhuské úmluvy jsou formulovány následovně: „20. Jakákoli činnost nezahrnutá do odstavců 1 až 19 výše, pro kterou je účast veřejnosti stanovena procedurou posuzování vlivu na životní prostředí (EIA) v souladu s vnitrostátní legislativou. […] 22. Jakékoli změny nebo rozšíření činností, kdy tyto změny samy o sobě splňují kritéria nebo prahové hodnoty stanovené v této příloze, budou podléhat čl. 6 odst. 1 písm. a) úmluvy, jakékoli jiné změny nebo rozšíření činností budou podléhat čl. 6 odst. 1 písm. b) úmluvy.“ B. Unijní právo 6. Článek 2 odst. 1 směrnice Evropského parlamentu a Rady 2011/92/EU ze dne 13. prosince 2011 o posuzování vlivů některých veřejných a soukromých záměrů na životní prostředí (Úř. věst. 2012, L 26, s. 1) (dále jen „směrnice EIA“) stanoví: „Členské státy přijmou všechna opatření nezbytná k zajištění, aby před vydáním povolení musely záměry, které mohou mít významný vliv na životní prostředí mimo jiné v důsledku své povahy, rozsahu nebo umístění, získat povolení a posouzení z hlediska jejich vlivů. Tyto záměry jsou vymezeny v článku 4.“ 7. Článek 4 odst. 1 a 2 směrnice EIA stanoví: „1. S výhradou čl. 2 odst. 4 podléhají záměry uvedené v příloze I posouzení v souladu s články 5 až 10. 2. S výhradou čl. 2 odst. 4 určí členské státy pro záměry uvedené v příloze II, zda záměr podléhá posouzení v souladu s články 5 až 10 […] […]“ 8. Příloha II směrnice EIA obsahuje výčet záměrů uvedených v čl. 4 odst. 2 směrnice EIA. Bod 3 zmíněné přílohy, nadepsaný „Energetický průmysl“, zahrnuje písmeno i): „Zařízení k využívání větru pro výrobu elektrické energie (větrné parky);“. C. Vnitrostátní právo 9. V důsledku doplnění první věty v článku 50 décret relatif au permis d’environnement (nařízení o povoleních v oblasti životního prostředí) ze dne 11. března 1999 (Moniteur belge ze dne 8. června 1999, s. 21114) (dále jen „nařízení o povoleních v oblasti životního prostředí), který stanoví dobu platnosti povolení v oblasti životního prostředí nejvýše na 20 let, článek 89 décret du 23 juin 2016 modifiant le Code de l’Environnement, le Code de l’Eau et divers décrets en matière de déchets et de permis d’environnement (nařízení ze dne 23. června 2016, kterým se mění zákoník životního prostředí, vodní zákon a různá nařízení v oblasti odpadů a povolení v oblasti životního prostředí) (dále jen „nařízení ze dne 23. června 2016“) stanoví, že doba platnosti povolení uděleného pro větrnou elektrárnu činí nejvýše 30 let. 10. Podle čl. 109 prvního odstavce nařízení ze dne 23. června 2016 se změna týkající se maximální 30leté doby platnosti povolení v oblasti životního prostředí uděleného pro větrnou elektrárnu uplatní na žádosti podané po nabytí účinnosti uvedeného nařízení, tedy po 1. srpnu 2016. Pokud jde o povolení platná před 1. srpnem 2016, z odst. 2 čl. 109 uvedeného nařízení vyplývá, že mohou být prodloužena jedenkrát nejvýše o 10 let. 11. Uvedená ustanovení byla provedena arrêté du Gouvernement wallon du 20 avril 2017 modifiant l’arrêté du Gouvernement wallon du 4 juillet 2002 relatif à la procédure et à diverses mesures d’exécution du décret du 11 mars 1999 relatif au permis d’environnement et portant exécution des articles 108 et 109 du décret du 23 juin 2016 modifiant le Code de l’Environnement, le Code de l’Eau et divers décrets en matière de déchets et de permis d’environnement (vyhláška valonské vlády ze dne 20. dubna 2017, kterou se mění vyhláška valonské vlády ze dne 4. července 2002 o řízení a o různých opatřeních k provedení [nařízení o povolení v oblasti životního prostředí] a k provedení článků 108 a 109 [nařízení ze dne 23. června 2016]) (dále jen „vyhláška ze dne 20. dubna 2017“). 12. Ustanovení uvedená v bodech 10 a 11 výše nevyžadují účast veřejnosti na příslušném rozhodovacím procesu. III. Skutkový stav, vnitrostátní řízení a předběžné otázky 13. Dne 28. srpna 2009 bylo společnosti s ručením omezeným Parc éolien de Leuze-en-Hainaut (PELZ) SA uděleno původní jednotné povolení(8) k výstavbě a provozování větrného parku čítajícího 10 větrných elektráren v obci Leuze-en-Hainaut (Belgie) (dále jen „větrný park“). Na základě uvedeného povolení byl větrný park postaven a uveden do provozu. Povolení bylo dne 16. dubna 2014 zrušeno Conseil d’État (Státní rada, Belgie) a po doplňujícím šetření bylo dne 8. září 2014 vydáno nové povolení, které bylo následně dne 25. ledna 2017 opět zrušeno. Konečně po opětovném prošetření bylo dne 6. června 2017 vydáno nové povolení na dobu 20 let, a to od 28. srpna 2009 do 28. srpna 2029. 14. Dne 2. dubna 2020 vydal technický úředník na žádost jednoho z provozovatelů větrného parku rozhodnutí o prodloužení doby platnosti povolení ze dne 6. června 2017 (ve vztahu k části týkající se povolení v oblasti životního prostředí) o 10 let, tedy do 28. srpna 2039 (dále jen „napadené rozhodnutí“). 15. F. B., žalobce v původním řízení a obyvatel oblasti, kde se větrný park nachází, se u předkládajícího soudu domáhá zrušení napadeného rozhodnutí. 16. Žalovaným v původním řízení je Région wallonne (Valonský region, Belgie). Společnostem Parc éolien de Leuze-en-Hainaut, eNosVents SA a Electrabel SA bylo povoleno vstoupit do řízení v postavení vedlejších účastnic řízení. 17. Ve své žalobě uplatňuje F. B. žalobní důvod vycházející mimo jiné z porušení čl. 6 odst. 10 Aarhuské úmluvy, přičemž tvrdí, že povolený větrný park spadá do působnosti čl. 6 odst. 1 písm. a) uvedené úmluvy. Uvádí, že rozhodnutí o změně podmínek jeho provozování měla předcházet fáze účasti veřejnosti. Neprovedení takového postupu způsobuje nezákonnost napadeného rozhodnutí. 18. Žalovaný tvrdí, že s ohledem na to, jak pojmy „záměr“ a „povolení“ definuje čl. 1 odst. 2 písm. a) a c) směrnice EIA, není napadené rozhodnutí, které pouze prodlužuje dobu platnosti povolení v oblasti životního prostředí, rozhodnutím, kterým se povoluje záměr. 19. Vedlejší účastnice v původním řízení tvrdí, že prodloužení doby platnosti jednotného povolení na základě čl. 109 odst. 2 nařízení ze dne 23. června 2016 nespadá do působnosti přílohy I Aarhuské úmluvy. Tvrdí, že uvedené ustanovení ani jeho provedení vyhláškou ze dne 20. dubna 2017 nevyžadují, aby prodlužování doby platnosti povolení týkajících se větrných parků vydaných před 1. srpnem 2016 podléhalo posuzování vlivů na životní prostředí (EIA). Uvedená okolnost brání uplatnění čl. 6 odst. 10 Aarhuské úmluvy. 20. Žalobce ve své replice uvedl, že směrnice EIA není relevantní, neboť žalobce netvrdí, že došlo k porušení uvedené směrnice. Tvrdí, že pokud rozhodovací proces vztahující se k určité činnosti zahrnuje fázi účasti veřejnosti podle čl. 6 odst. 1 písm. a) Aarhuské úmluvy, měl by takovou fázi zahrnovat i každý postup, kterým orgán veřejné správy následně přehodnocuje nebo aktualizuje provozní podmínky, za nichž je tato činnost vykonávána. Správní orgán tím, že nevyžadoval fázi účasti veřejnosti v rámci rozhodovacího procesu, nevykonal svou posuzovací pravomoc. 21. Žalobce rovněž odmítá námitku vznesenou žalovaným a vedlejšími účastnicemi, že jeho žaloba byla podána opožděně, přičemž tvrdí, že v návaznosti na napadené rozhodnutí mělo být provedeno projednání s veřejností, a tedy mělo být vydáno oznámení podle čl. D.29-22 odst. 2 knihy I Code de l’Environnement (zákoník životního prostředí) pro účely stanovení lhůty pro podání žaloby. 22. Předkládající soud uvádí, že vyhlášce ze dne 20. dubna 2017 předcházelo stanovisko legislativního odboru Conseil d’État (Státní rada). Podle uvedeného stanoviska rozhodnutí, kterým se prodlužuje doba platnosti povolení uděleného pro činnost, jež je uvedena v příloze I Aarhuské úmluvy, nebo která je považována za činnost, jež může mít významný vliv na životní prostředí, mění podmínky, za nichž je tato činnost vykonávána, a spadá do působnosti čl. 6 odst. 10 této úmluvy. V uvedeném stanovisku bylo proto konstatováno, že dotčené rozhodnutí musí podléhat účasti veřejnosti podle čl. 6 odst. 2 až 9 Aarhuské úmluvy. 23. Valonská vláda se ovšem tímto stanoviskem neřídila. Podle jejího názoru byla neexistence požadavku na zajištění účasti veřejnosti v zásadě odůvodněna nutností zabránit diskriminaci mezi dříve vydanými povoleními (udělenými na dobu nejvýše 20 let) a novými povoleními (udělenými na dobu nejvýše 30 let). Dále svůj postup odůvodnila tím, že veřejnost již vyjádřila svůj názor na záměr bez ohledu na dobu jeho trvání a že podmínky, za kterých je činnost vykonávána, se nezměnily. 24. Předkládající soud zdůrazňuje, že není sporu o tom, že dotčené povolení na větrný park spadá do působnosti čl. 6 odst. 1 písm. a) Aarhuské úmluvy ve spojení s odstavcem 20 její přílohy I. Jde o to, zda rozhodnutí o prodloužení doby platnosti napadeného povolení vyžaduje též fázi účasti veřejnosti. 25. Tak by tomu bylo v případě, že by rozhodnutí o prodloužení doby platnosti povolení mohlo být kvalifikováno jako některá z následujících možností: – povolení činnosti, na kterou se vztahuje čl. 6 odst. 1 písm. a) Aarhuské úmluvy a odstavec 20 její přílohy I, nebo dokonce jako změna nebo rozšíření uvedené činnosti ve smyslu odstavce 22 této přílohy, – povolení činnosti, která není uvedena v příloze I Aarhuské úmluvy, která však může mít významný vliv na životní prostředí ve smyslu čl. 6 odst. 1 písm. b) uvedené úmluvy, – rozhodnutí o přehodnocení nebo aktualizaci provozních podmínek pro činnost, která spadá do působnosti čl. 6 odst. 1 Aarhuské úmluvy, a to ve smyslu čl. 6 odst. 10 uvedené úmluvy. 26. Za těchto okolností se Conseil d’État (Státní rada) rozhodla přerušit řízení a položit Soudnímu dvoru následující předběžné otázky: „V právním režimu, ve kterém provozování činnosti spadající do působnosti přílohy I Aarhuské úmluvy podléhá povolení k provozování udělovanému na dobu nejvýše 20 let[:] 1) [M]usí být čl. 6 odst. 1 a 10 a [odstavce] 20 a 22 přílohy I Aarhuské úmluvy vykládány v tom smyslu, že rozhodnutí o prodloužení provozování činnosti, která byla původně povolena na 20 let, o 10 let musí podléhat fázi účasti veřejnosti? 2) [M]usí být čl. 6 odstavce 1 a 10 Aarhuské úmluvy vykládán v tom smyslu, že s tímto článkem není slučitelný právní režim, ve kterém řízení o prodloužení provozování činnosti o 10 let nikdy nezahrnuje fázi účasti veřejnosti?“ 27. Písemná vyjádření předložili F. B., společnost Electrabel, belgická vláda a Evropská komise. IV. Posouzení 28. Podstatou otázek předkládajícího soudu je, zda musí být buď čl. 6 odst. 1 Aarhuské úmluvy ve spojení s odstavci 20 a 22 její přílohy I, nebo čl. 6 odst. 10 této úmluvy vykládány v tom smyslu, že přijetí rozhodnutí, kterým se o 10 let prodlužuje provozování větrného parku, původně povolené na dobu 20 let, musí předcházet fáze účasti veřejnosti. Předkládající soud se rovněž táže, zda uvedená ustanovení brání vnitrostátní právní úpravě, která nezahrnuje do rozhodovacího procesu týkajícího se prodloužení provozování dotčené činnosti o 10 let fázi účasti veřejnosti. 29. Otázky předkládajícího soudu vyvstaly v rámci řízení o žalobě na neplatnost napadeného rozhodnutí podané F. B., obyvatelem oblasti, kde se větrný park nachází, a který kritizuje skutečnost, že nebyla provedena fáze účasti veřejnosti. 30. Úvodem je třeba připomenout, že ustanovení Aarhuské úmluvy, která byla podepsána Společenstvím a poté schválena rozhodnutím Rady 2005/370/ES(9), jsou nedílnou součástí právního řádu Unie(10). Z tohoto důvodu, jak uvádí Komise ve svém písemném vyjádření, musí Evropská unie a členské státy dodržovat povinnosti vyplývající z Aarhuské úmluvy, konkrétně povinnosti vyplývající z jejího článku 6 týkajícího se účasti veřejnosti. 31. Z předkládacího rozhodnutí vyplývá, že původní povolení na provozování dotčené činnosti (větrného parku) vyžaduje zajištění účasti veřejnosti. Tato činnost spadá do působnosti čl. 6 odst. 1 písm. a) Aarhuské úmluvy ve spojení s odstavcem 20 její přílohy I. Odstavec 20 totiž rozšiřuje požadavky týkající se účasti veřejnosti stanovené v článku 6 Aarhuské úmluvy na jakoukoli činnost, pro kterou vnitrostátní právní předpisy stanoví účast veřejnosti v rámci procedury posuzování vlivu na životní prostředí, což je případ činnosti, o kterou se jedná ve věci v původním řízení(11). 32. Uvedená činnost, pro kterou je podle vnitrostátního práva požadováno posouzení vlivů na životní prostředí, spadá do působnosti směrnice EIA(12). V písmenu i) hlavy 3 přílohy II směrnice EIA jsou totiž „[z]ařízení k využívání větru pro výrobu elektrické energie (větrné parky)“ zařazena mezi záměry uvedené v čl. 4 odst. 2 této směrnice, podle něhož členské státy určí, zda záměr podléhá posouzení vlivů na životní prostředí. 33. Napadené rozhodnutí prodlužuje dobu platnosti původního povolení pro provozování činnosti, ve vztahu k němuž je vyžadována účast veřejnosti (podle směrnice EIA a Aarhuské úmluvy, která je nedílnou součástí unijního právního řádu). 34. Použitelné právní předpisy, na jejichž základě bylo přijato napadené rozhodnutí, kterým došlo k prodloužení doby provozování dotčené činnosti, však nestanoví, že fáze účasti veřejnosti je nezbytnou podmínkou příslušného rozhodovacího procesu. 35. Otázkou tudíž je, zda měla být zajištěna účast veřejnosti na rozhodování o prodloužení doby provozování dotčené činnosti v souladu s Aarhuskou úmluvou(13). 36. Předkládající soud posuzuje tři právní ustanovení, která mohou být použitelná na prodloužení doby platnosti povolení pro provozování činnosti, která byla povolena podle čl. 6 odst. 1 písm. a) Aarhuské úmluvy. Prvním je čl. 6 odst. 1 písm. a) ve spojení s odstavcem 20 či 22 přílohy I úmluvy, druhým je čl. 6 odst. 1 písm. b) úmluvy a třetím je čl. 6 odst. 10 této úmluvy. Každé z těchto ustanovení určuje, zda a za jakých podmínek se vyžaduje provedení fáze účasti veřejnosti. 37. Rozhodnutí o prodloužení povolené činnosti lze právně kvalifikovat dvěma způsoby: jedná se o nové rozhodnutí, kterým se povoluje navrhovaná činnost podle čl. 6 odst. 1 písm. a) Aarhuské úmluvy ve spojení s odstavcem 20 přílohy I uvedené úmluvy či ve spojení s odstavcem 22 této přílohy (navrhovaná činnost je uvedena v příloze I) na jedné straně, nebo podle čl. 6 odst. 1 písm. b) úmluvy (navrhovaná činnost není uvedena v příloze I, ale má významný vliv na životní prostředí) na druhé straně. Druhou možností je, že uvedené rozhodnutí představuje přehodnocení nebo aktualizaci provozních podmínek pro činnost ve smyslu čl. 6 odst. 10 této úmluvy. A. Prodloužení doby platnosti povolení jako rozhodnutí, kterým se povoluje navrhovaná činnost [čl. 6 odst. 1 písm. a) a b) Aarhuské úmluvy] 38. Článek 6 Aarhuské úmluvy upravuje právo veřejnosti na účast na rozhodování o specifických činnostech. 39. Článek 6 odst. 1 písm. a) a b) společně stanoví kritéria, podle kterých se určí, která rozhodnutí musí podléhat účasti veřejnosti. Obě uvedená písmena spojuje skutečnost, že zohledňují potenciálně významný dopad navrhovaných činností na životní prostředí(14). Písmeno a) odkazuje na činnosti uvedené v příloze I, u nichž se předpokládá, že mají potenciálně významný vliv na životní prostředí a písmeno b) stanoví, že ustanovení o účasti veřejnosti budou v souladu s vnitrostátním právem uplatňována také k rozhodnutím o navrhovaných činnostech, které nejsou uvedeny v příloze I, ale přesto mohou mít významný vliv na životní prostředí. 40. S ohledem na možné použití tohoto ustanovení F. B. v podstatě tvrdí, že prodloužení doby platnosti povolení pro dotčenou činnost musí být ve vztahu k této činnosti považováno za nové rozhodnutí. Vzhledem k tomu, že původní povolení bylo vydáno podle čl. 6 odst. 1 písm. a) Aarhuské úmluvy ve spojení s odstavcem 20 její přílohy I(15), mělo by být prodloužení doby platnosti uvedeného povolení podle tvrzení F. B. považováno za nové rozhodnutí, a mělo by tedy vést k účasti veřejnosti. Alternativně by prodloužení doby platnosti mohlo být považováno za rozšíření nebo změnu takové činnosti ve smyslu odstavce 22 této přílohy, nebo za rozhodnutí týkající se činnosti, která není uvedena v této příloze, avšak může mít významný vliv na životní prostředí. 1. Prodloužení doby platnosti povolení jako rozhodnutí o povolení navrhované činnosti uvedené v příloze I [čl. 6 odst. 1 písm. a) a odstavec 20 přílohy I Aarhuské úmluvy] 41. Účast veřejnosti se v souladu s čl. 6 odst. 1 písm. a) Aarhuské úmluvy vztahuje na rozhodnutí o tom, zda povolit navrhované činnosti uvedené v příloze I této úmluvy(16). 42. Jak již bylo vysvětleno výše(17), odstavec 20 přílohy I Aarhuské úmluvy rozšiřuje působnost článku 6 na jakoukoli činnost nezahrnutou do odstavců 1 až 19 uvedené přílohy, pro kterou je účast veřejnosti stanovena procedurou posuzování vlivu na životní prostředí v souladu s vnitrostátní legislativou(18). 43. Určení, zda určitá činnost spadá do působnosti odstavce 20 přílohy I Aarhuské úmluvy, závisí na třech faktorech, a sice na i) účasti veřejnosti, ii) posouzení vlivů na životní prostředí, v souvislosti s nímž účast veřejnosti probíhá, a iii) vnitrostátní legislativě upravující posuzování vlivů na životní prostředí(19). 44. Pokud tedy vnitrostátní právní předpisy nevyžadují pro udělení nebo prodloužení platnosti povolení posouzení vlivů na životní prostředí, nemůže takový požadavek založit samotný odstavec 20 přílohy I. 45. Výše uvedené potvrzují i zjištění Výboru pro dohled nad dodržováním Aarhuské úmluvy (dále jen „Výbor pro dohled“), z nichž vyplývá, že rozhodnutí o prodloužení doby provozování činnosti, nespadá do působnosti odstavce 20 přílohy I Aarhuské úmluvy, pokud vnitrostátní právo nevyžaduje pro takové prodloužení posouzení vlivů na životní prostředí(20). 46. Ve věci v původním řízení je zjevné, že vnitrostátní právní předpisy stanoví požadavek na provedení posouzení vlivů na životní prostředí ve vztahu k vydání původního povolení na větrný park. Jak ovšem v podstatě uvedla Komise ve svých písemných vyjádřeních, prodloužení doby platnosti uvedeného povolení již takové posouzení podle všeho nevyžaduje. 47. Nelze tedy dospět k závěru, že prodloužení doby platnosti dotčeného povolení spadá do působnosti čl. 6 odst. 1 písm. a) Aarhuské úmluvy ve spojení s odstavcem 20 přílohy I této úmluvy. 2. Prodloužení doby platnosti povolení jako změna nebo rozšíření činnosti [čl. 6 odst. 1 písm. a) a odstavec 22 přílohy I Aarhuské úmluvy] 48. Odstavec 22 přílohy I Aarhuské úmluvy rozšiřuje působnost článku 6 Aarhuské úmluvy tak, že zahrnuje jakoukoli změnu nebo rozšíření činností, pokud taková změna nebo rozšíření samy o sobě splňují kritéria nebo prahové hodnoty stanovené v uvedené příloze. Na jakoukoli jinou změnu nebo rozšíření činností, které nesplňují kritéria nebo prahové hodnoty stanovené v dotčené příloze, se vztahuje čl. 6 odst. 1 písm. b) úmluvy. 49. Otázkou je, zda slovní spojení „změna nebo rozšíření“ musí být chápáno tak, že zahrnuje i pouhé prodloužení doby provozování činnosti. 50. Vzhledem k tomu, že první věta odstavce 22 přílohy I Aarhuské úmluvy je do značné míry podobná bodu 24 přílohy I směrnice EIA(21), je třeba připomenout, že podle judikatury Soudního dvora ze „znění a struktury [uvedeného ustanovení] vyplývá, že se týká změn nebo rozšíření záměru, které zejména vzhledem k jejich povaze nebo rozsahu představují rizika, pokud jde o vlivy na životní prostředí, podobná rizikům samotného záměru“(22). 51. Soudní dvůr rozhodl, že vnitrostátní opatření, která mají za následek prodloužení doby výroby elektřiny jadernými elektrárnami pro průmyslové účely o značnou dobu deseti let, přičemž předtím byla tato doba platnosti omezena na čtyřicet let, musejí být společně s rozsáhlými renovačními pracemi, které jsou nezbytné vzhledem k zastaralosti těchto elektráren a povinnosti zajistit jejich soulad s bezpečnostními normami, považována za „opatření se srovnatelným rozsahem, pokud jde o rizika vlivů na životní prostředí, jaký má prvotní uvedení uvedených elektráren do provozu“(23). 52. Na základě uvedené judikatury a jak v podstatě tvrdila Komise ve svém písemném vyjádření lze konstatovat, že nedochází-li k žádným pracím nebo fyzickým změnám, nelze pouhé prodloužení doby platnosti povolení pro již existující činnost, jako je tomu ve věci v původním řízení, kvalifikovat jako změnu nebo rozšíření činnosti. 53. Takový výklad má oporu i v rozsudku Soudního dvora ve věci FCC Česká republika(24) vydaném v souvislosti se směrnicí 2010/75, která provádí požadavky na účast veřejnosti v oblasti průmyslových emisí. V rámci uvedené směrnice je výraz „změna rozsahu“ součástí definice pojmu „podstatná změna“ uvedené v čl. 3 bodě 9 směrnice 2010/75. Udělení povolení pro jakoukoli „podstatnou změnu“ podléhá účasti veřejnosti podle čl. 24 odst. 1 písm. b) směrnice 2010/75. Pojem „podstatná změna“ je definován jako „změna v povaze, funkci či rozsahu zařízení […], která může mít významné nepříznivé účinky na lidské zdraví nebo životní prostředí“ (kurzivou zvýraznila autorka stanoviska). 54. Soudní dvůr konstatoval, že „samotné prodloužení doby skládkování na skládce odpadu nepředstavuje jako takové změnu rozměrů zařízení ani skladovací kapacity stanovené v původním povolení, a není tedy ‚změnou rozsahu‘ zařízení“(25). 55. Příručka k provedení Aarhuské úmluvy – která může být podle ustálené judikatury Soudního dvora považována za vysvětlující dokument, který lze případně vzít v úvahu, spolu s dalšími relevantními skutečnostmi, při výkladu této úmluvy, i když analýzy, které obsahuje, nejsou právně závazné a nemají normativní obsah, který je přiznán ustanovením uvedené úmluvy(26) – potvrzuje výklad, podle kterého se odstavec 22 přílohy I zmíněné úmluvy týká pouze fyzických změn nebo rozšíření činností(27). 56. V případě následných správních řízení, která se týkají navrhovaných činností spadajících do působnosti čl. 6 odst. 1 Aarhuské úmluvy, se nepoužije toto ustanovení ve spojení s odstavcem 22 přílohy I uvedené úmluvy, ale její čl. 6 odst. 10(28). 57. Pouhé prodloužení doby platnosti povolení ve věci v původním řízení, které neobnáší žádnou fyzickou změnu ani rozšíření dotčené činnosti, tak nemůže být kvalifikováno jako nové rozhodnutí. Jak však vysvětlím v části B níže, tím není dotčeno právo veřejnosti na účast na základě jiného ustanovení, a sice čl. 6 odst. 10 Aarhuské úmluvy, který upravuje přehodnocení a aktualizace činností. 3. Prodloužení doby platnosti povolení jako rozhodnutí týkající se činnosti, která má významný vliv na životní prostředí [čl. 6 odst. 1 písm. b) Aarhuské úmluvy] 58. Článek 6 odst. 1 písm. b) Aarhuské úmluvy stanoví, že ustanovení článku 6 úmluvy týkající se účasti veřejnosti na rozhodování o specifických činnostech se uplatní k rozhodnutím o navrhovaných činnostech, které nejsou uvedeny v příloze I této úmluvy a které mohou mít významný vliv na životní prostředí. 59. Ze znění čl. 6 odst. 1 písm. b) vyplývá, že strany Aarhuské úmluvy určí, zda se požadavky na účast veřejnosti uplatní tam, kde navrhovaná činnost může mít významný vliv na životní prostředí(29). 60. Pokud jde o prodloužení doby výkonu dotčené činnosti, jak v podstatě uvedla Komise ve svých písemných vyjádřeních, nejsou ve spisu, který má Soudní dvůr k dispozici, dostatečné důkazy a informace, aby bylo možné určit, zda lze toto prodloužení považovat za navrhovanou činnost, která může mít významný vliv na životní prostředí. 61. Je třeba také uvést, že odstavec 22 přílohy I Aarhuské úmluvy rozšiřuje působnost čl. 6 odst. 1 písm. b) této úmluvy na jakékoli změny nebo rozšíření činností, kdy tyto změny nebo rozšíření nesplňují samy o sobě kritéria nebo prahové hodnoty stanovené v uvedené příloze. 62. Z analýzy uvedené v předchozí části tohoto stanoviska(30) však vyplývá, že změnu nebo rozšíření činnosti podle tohoto odstavce 22 je třeba chápat jako fyzickou změnu nebo rozšíření, takže pouhé prodloužení povolení – prodloužení doby platnosti povolení bez fyzických změn nebo prací – není kvalifikováno jako taková změna nebo rozšíření. 63. Za uvedených okolností není prodloužení doby platnosti dotčeného povolení podle všeho rozhodnutím spadajícím do působnosti čl. 6 odst. 1 písm. b) Aarhuské úmluvy ve spojení s odstavcem 22 přílohy I této úmluvy. B. Prodloužení doby platnosti povolení jako přehodnocení nebo aktualizace provozních podmínek pro činnost (čl. 6 odst. 10 Aarhuské úmluvy) 64. Článek 6 odst. 10 Aarhuské úmluvy vyžaduje uplatnění požadavků na účast veřejnosti mutatis mutandis a „v případech, kdy je to vhodné“, pokud orgán veřejné správy „přehodnotí nebo zaktualizuje provozní podmínky“ pro činnost, která byla povolena podle odstavce 1 uvedeného ustanovení. 1. Podmínky pro uplatnění čl. 6 odst. 10 65. Článek 6 odst. 10 „doplňuje“(31) odstavec 22 přílohy I Aarhuské úmluvy. Zatímco tento odstavec 22 se týká fyzických změn nebo rozšíření činností, čl. 6 odst. 10 rozšiřuje požadavky na účast veřejnosti i na přehodnocení nebo aktualizaci provozních podmínek pro určitou činnost, což zahrnuje jakékoli správní přehodnocení nebo aktualizaci, aniž musí nutně zahrnovat i fyzickou změnu činnosti(32). 66. Článek 6 odst. 10 se uplatní, pokud dojde k přehodnocení nebo aktualizaci provozních podmínek pro činnost. Jak sám tento výraz naznačuje, „provozní podmínky“ jsou všechny podmínky nezbytné k tomu, aby mohla být činnost vykonávána(33). Formulace slovního spojení „přehodnotí nebo zaktualizuje“ je dostatečně široká na to, aby obsáhla i rozhodování v oblasti životního prostředí, které následuje po vydání původního povolení a má za následek změnu provozních podmínek. 67. V důsledku svého široce formulovaného znění obsáhne čl. 6 odst. 10 celý životní cyklus činnosti, pokud jde o záležitosti spadající do působnosti Aarhuské úmluvy. Uvedené ustanovení pomáhá zajistit setrvalé naplňování cíle spočívajícího v účasti veřejnosti, kterým je, jak uvádí devátý bod odůvodnění Aarhuské úmluvy, poskytnout veřejnosti příležitost vyjádřit své obavy a zájmy a umožnit orgánům veřejné správy brát tyto obavy a zájmy náležitě v úvahu. 68. Výše uvedené má oporu i v povaze některých činností vyjmenovaných v příloze I Aarhuské úmluvy, které zahrnují využívání přírodních zdrojů. Jak vysvětluje právní nauka, příslušná povolení jsou ve většině zemí „udělována pouze na omezenou dobu (obvykle nejvýše na dobu 10 let) a poté musí být prodloužena nebo zaktualizována“, neboť „množství zdroje, který má být využíván, a podmínky jeho využívání závisí do značné míry na stavu, v němž se dotčený přírodní zdroj nachází“(34). 69. Článek 6 odst. 10 této úmluvy stanoví, že odstavce 2 až 9 uvedeného článku se uplatní na účast veřejnosti mutatis mutandis a „v případech, kdy je to vhodné“. Odkaz na uplatnění požadavků na účast veřejnosti v čl. 6 odst. 10 mutatis mutandis jednoduše znamená „s nezbytnými změnami“(35). Pokud jde o vhodnost účasti veřejnosti, pak slovní spojení „v případech, kdy je to vhodné“ sice předpokládá „určitou volnost“, avšak „[neznamená] naprostou volnost“(36). Uvedené ustanovení spíše „představuje objektivní kritérium, které je nutné chápat v souvislostech cílů Úmluvy“(37). 70. Vhodnost účasti veřejnosti v případě přehodnocení nebo aktualizace provozních podmínek pro činnost souvisí s významností vlivů tohoto přehodnocení nebo aktualizace na životní prostředí. Při rozhodování o tom, zda by měla být navrhovaná činnost povolena, se totiž zohlední potenciálně významný dopad na životní prostředí(38), což je nadále relevantní i v pozdějších fázích rozhodování v oblasti životního prostředí. 71. Výše uvedené potvrzují i zjištění Výboru pro dohled, který zdůrazňuje, že při rozhodování o tom, zda bude v případě, kdy orgán veřejné správy přehodnotí nebo zaktualizuje provozní podmínky pro činnost, na kterou se vztahuje článek 6, „vhodné“, a tedy nezbytné, provést fázi účasti veřejnosti uplatní se „určitý druh testu významnosti“(39). 72. Výraz „v případech, kdy je to vhodné“ musí být uplatňován tak, aby byl zachován smysluplný účinek čl. 6 odst. 10 Aarhuské úmluvy. Požadavek na provedení fáze účasti veřejnosti by byl zbaven veškerého užitečného účinku, pokud vnitrostátní právní rámec nepředpokládal žádnou možnost posouzení vhodnosti provedení fáze účasti veřejnosti v případě přehodnocení nebo aktualizace činností. 73. Právě taková situace nastala ve věci, která vedla k formulaci zjištění Výboru pro dohled týkajících se Evropské unie ve vztahu ke směrnici 2010/75(40). Výbor pro dohled konstatoval, že Evropská unie jakožto strana Aarhuské úmluvy nedodržela čl. 6 odst. 10 této úmluvy „tím, že zavedla právní rámec, který nepředpokládá žádnou možnost účasti veřejnosti v souvislosti s přehodnoceními a aktualizacemi“ podle řady ustanovení uvedené směrnice, ve znění použitelném v okamžiku formulace uvedených zjištění(41). 74. Je nutno podotknout, že za účelem dosažení souladu s Aarhuskou úmluvou byla směrnice 2010/75 pozměněna s cílem upřesnit, že „osobám z řad dotčené veřejnosti by měla být dána včasná a účinná příležitost k účasti na udělování nebo aktualizaci podmínek povolení stanovených příslušným orgánem i v případě, že jsou tyto podmínky povolení přehodnocovány […]“(42). 2. Doba provozování činnosti jako provozní podmínka a prodloužení doby platnosti povolení ve věci v původním řízení 75. Článek 6 odst. 10 Aarhuské úmluvy se uplatní v případě přehodnocení nebo aktualizace provozních podmínek pro činnost, to znamená všech podmínek nezbytných pro další výkon dotčené činnosti(43). Povolená doba provozování činnosti je nezbytná pro další výkon uvedené činnosti a je součástí zmíněných provozních podmínek(44). 76. Rozhodnutí, kterým se prodlužuje doba provozování činnosti, tak mění její provozní podmínky a má tedy za následek uplatnění čl. 6 odst. 10 úmluvy. 77. Nemohu souhlasit s tvrzením belgické vlády, že čl. 6 odst. 10 se neuplatní, protože nedošlo ke změně původních podmínek, za kterých byla dotčená činnost vykonávána; tato absence změny nemění nic na skutečnosti, že původní celková doba trvání v délce 20 let byla prodloužena o polovinu, což vedlo ke změně původních provozních podmínek(45). 78. Pokud jde o vhodnost zajištění účasti veřejnosti, jak již bylo uvedeno, příslušné orgány mají určitý prostor pro uvážení, jehož výkon však musí být v souladu s cíli Aarhuské úmluvy(46). 79. Pokud jde o prodloužení doby platnosti povolení, neexistuje žádná „aritmetická“ prahová hodnota stanovená uvedenou úmluvou, při jejímž překročení je vhodné zajistit účast veřejnosti. Takové rozhodnutí musí být učiněno na základě věcných kritérií. Vhodnost účasti veřejnosti v případě prodloužení doby platnosti povolení a posouzení z hlediska významných vlivů na životní prostředí mohou záviset mimo jiné i na povaze činnosti, jejíž provozování má být prodlouženo, a na délce tohoto prodloužení. Je rovněž důležité vzít v úvahu, zda veřejnost byla v předchozích fázích účasti veřejnosti informována o možných prodlouženích povolení v budoucnu, a zda tedy měla možnost se vyjádřit k souvisejícím dopadům na životní prostředí(47). 80. Významné prodloužení původně povolené doby provozování činnosti je v každém případě přesvědčivou indicií nasvědčující tomu, že je vhodné provést fázi účasti veřejnosti. Výše uvedené je v souladu s cílem zajištění účasti veřejnosti, tedy s cílem poskytnout veřejnosti příležitost vyjádřit své obavy a zájmy(48). 81. Výbor pro dohled takový výklad potvrzuje. Opakovaně konstatoval, že „s výjimkou případů, kdy je změna povolené doby platnosti minimální a zjevně by měla jen nevýznamný vliv na životní prostředí, popřípadě by neměla vliv žádný, je vhodné, aby prodloužení doby platnosti podléhala ustanovením článku 6 (kurzivou zvýraznila autorka stanoviska)“(49). Prodloužení doby provozování činnosti o pět let bylo Výborem pro dohled považováno za prodloužení, které „rozhodně není minimální“, a tudíž vyžaduje účast veřejnosti(50). 82. Ve věci v původním řízení bylo povolení prodlouženo o 10 let. Prodloužení doby provozování činnosti, která byla původně povolena na dobu 20 let, o 10 let je prodloužením o polovinu původní doby trvání této činnosti a nelze je považovat za „minimální“. Kromě toho v okamžiku, kdy byla doba platnosti povolení prodloužena (2020), uplynulo od prvního zahájení dotčené činnosti (2009) již více než 10 let. 83. Uvedené faktory představují významnou indicii nasvědčující tomu, že účast veřejnosti je vhodná. V konečném důsledku však přísluší vnitrostátnímu soudu, aby posoudil uvedené okolnosti. 84. Další otázkou nastolenou v předkládacím rozhodnutí je skutečnost, že ve vnitrostátním právním rámci není zakotvena žádná možnost účasti veřejnosti v souvislosti s prodlužováním doby platnosti povolení pro danou činnost. 85. Z předkládacího rozhodnutí vyplývá, že jedním z důvodů, proč vnitrostátní zákonodárce nepřijal žádné ustanovení, které by upravovalo fázi účasti veřejnosti, byla skutečnost, že účast veřejnosti, včetně posouzení vlivů na životní prostředí, je zajištěna ve fázi, kdy provozovatel žádá o vydání povolení, a to bez ohledu na dobu platnosti uděleného povolení. Dalším důvodem bylo zabránit diskriminaci mezi novými povoleními pro větrné parky (udělovanými na dobu nejvýše 30 let) a povoleními vydanými v rámci předchozího režimu (udělenými na dobu nejvýše 20 let). 86. Nejsem přesvědčena o tom, že uvedené skutečnosti odůvodňují vyloučení prodloužení doby platnosti povolení zákonodárcem z působnosti čl. 6 odst. 10 Aarhuské úmluvy. Zaprvé uplatnění uvedeného ustanovení nezávisí na tom, zda vydání původního povolení předcházela účast veřejnosti. Toto ustanovení se použije ve všech situacích, kdy jsou provozní podmínky pro činnost „přehodnocovány nebo aktualizovány“, a vyžaduje, aby příslušný orgán posoudil, zda je účast veřejnosti „vhodná“. Slovní spojení „v případech, kdy je to vhodné“ sice ponechává orgánům veřejné správy určitý prostor pro uvážení, avšak výkonu takového uvážení se nelze zcela vzdát pouze z toho důvodu, že účast veřejnosti byla v minulosti zajištěna ve vztahu k otázkám, které nesouvisejí s přehodnocením či aktualizací provozních podmínek. Pokud by tomu tak nebylo, byl by čl. 6 odst. 10 zbaven svého užitečného účinku. Všechny činnosti, s nimiž byla spojena účast veřejnosti (týkající se jiných otázek, než je přehodnocení nebo aktualizace provozních podmínek pro činnost), by totiž byly z působnosti uvedeného ustanovení automaticky vyloučeny. 87. Pokud jde o činnost, o kterou se jedná ve věci v původním řízení, od okamžiku uvedení větrného parku do provozu došlo k několika po sobě jdoucím zrušením příslušného povolení soudy a jeho opětovnému posouzení(51). Ze spisu, který má Soudní dvůr k dispozici, není zřejmé, zda byla účast veřejnosti zajištěna v každé z uvedených fází. V každém případě nebylo prokázáno, že veřejnost měla příležitost vyjádřit své názory konkrétně k otázce případného významného prodloužení doby platnosti uděleného povolení(52). 88. Zadruhé, pokud jde o argument, že účast veřejnosti vede k diskriminaci mezi držiteli dříve vydaných povolení a držiteli nových povolení, považuji za důležité připomenout, že použití čl. 6 odst. 10 Aarhuské úmluvy není fakultativní. Jsou-li splněny podmínky pro jeho uplatnění, musí být právo na účast veřejnosti zajištěno(53). O vhodnosti účasti veřejnosti ve vztahu k dané činnosti musí být rozhodnuto v souladu s cíli úmluvy(54). Účast veřejnosti není bezduchým byrokratickým cvičením, ani se nejedná o pouhou formalitu; jedná se o prostředek k dosažení cílů environmentální demokracie sledovaných touto úmluvou(55). 89. Kromě toho se čl. 6 odst. 10 Aarhuské úmluvy vztahuje na všechny provozovatele bez ohledu na okamžik, kdy je jejich činnost povolena. Pokud jde tedy o provozovatele, kterým byla udělena povolení na dobu 30 let, i v jejich případě by mohla nastat fáze účasti veřejnosti na dalším rozhodování v oblasti životního prostředí, pokud dojde ke změně nebo aktualizaci provozních podmínek pro jejich činnost. 90. Je rovněž nutno upřesnit, že skutečnost, že při udělení povolení bylo provedeno posouzení vlivů na životní prostředí, není sama o sobě rozhodující pro uplatnění čl. 6 odst. 10. Tento článek ani právo na účast veřejnosti obecně podle Aarhuské úmluvy nejsou synonymem pro posouzení vlivů na životní prostředí(56). Jak je uvedeno v příručce k provedení Aarhuské úmluvy, rozsah použití druhého pilíře Aarhuské úmluvy je „odlišný a poněkud širší než rozsah posuzování z hlediska životního prostředí“(57). Jako příklad uvádí příručka právě přehodnocení nebo aktualizaci provozních podmínek specifických činností, které v mnoha zemích, pokud se nejedná o větší změnu v činnosti, nepodléhají postupu EIA, ale spíše procesu schvalování z hlediska životního prostředí(58). 91. Z uvedených důvodů mám za to, že čl. 6 odst. 10 brání vnitrostátní právní úpravě, která nestanoví povinnost orgánu veřejné správy posoudit vhodnost účasti veřejnosti při prodlužování doby platnosti povolení k provozování větrných parků o 10 let. 92. Výše zmíněná judikatura Soudního dvora(59) týkající se prodloužení doby provozování skládky v kontextu směrnice 2010/75 nemůže vést k odlišnému výkladu. V rozsudku FCC Česká republika Soudní dvůr rozhodl, že samotné prodloužení doby skládkování na skládce odpadu, kdy se nemění ani maximální schválené rozměry skládky ani její celková možná kapacita, není „podstatnou změnou“ ve smyslu čl. 3 bodu 9 uvedené směrnice. V důsledku toho nemohl mít provozovatel skládky povinnost žádat o nové povolení. Úvahy Soudního dvora vycházely z výrazu „podstatná změna“, který vyžaduje mimo jiné „změnu rozsahu“ zařízení. 93. Působnost čl. 6 odst. 10 Aarhuské úmluvy však nezávisí na „podstatné změně“ ani na fyzickém rozšíření činnosti; použije se v případě přehodnocení nebo aktualizace provozních podmínek pro činnost. Jak jsem již uvedla výše(60), zatímco odstavec 22 přílohy I Aarhuské úmluvy se použije na fyzické změny činnosti, čl. 6 odst. 10 se použije na následná správní řízení(61). 94. Kromě toho byla směrnice 2010/75 po vydání rozsudku FCC Česká republika pozměněna(62) tak, aby byla účast veřejnosti požadována v případě aktualizace povolení na žádost provozovatele za účelem prodloužení doby provozování skládky odpadů, která dosahuje prahových hodnot stanovených v bodě 5.4 přílohy I uvedené směrnice. 95. Rozsudek FCC Česká republika tudíž podle mého názoru nelze vykládat jako překážku výkladu, podle kterého prodloužení doby platnosti povolení pro větrný park o 10 let představuje aktualizaci provozních podmínek pro uvedenou činnost, která vede k uplatnění čl. 6 odst. 10 Aarhuské úmluvy. 96. S ohledem na všechny výše uvedené skutečnosti musí být čl. 6 odst. 10 Aarhuské úmluvy vykládán v tom smyslu, že orgánům veřejné správy ukládá povinnost posoudit vhodnost provedení fáze účasti veřejnosti v případě prodlužování doby platnosti povolení pro větrný park, které bylo původně uděleno na dobu 20 let, o 10 let a že brání právnímu režimu, podle kterého řízení o prodloužení doby platnosti povolení pro takovou činnost nezahrnuje povinnost orgánu veřejné správy posoudit vhodnost provedení fáze účasti veřejnosti. V. Závěry 97. S ohledem na výše uvedené úvahy navrhuji Soudnímu dvoru, aby na předběžné otázky položené Conseil d’État (Státní rada, Belgie) odpověděl následovně: „Článek 6 odst. 10 Aarhuské úmluvy o přístupu k informacím, účasti veřejnosti na rozhodování a přístupu k právní ochraně v záležitostech životního prostředí musí být vykládán v tom smyslu, že orgánům veřejné správy ukládá povinnost posoudit vhodnost provedení fáze účasti veřejnosti v případě prodlužování doby platnosti povolení pro větrný park, které bylo původně uděleno na dobu 20 let, o 10 let a že brání právnímu režimu, podle kterého řízení o prodloužení doby platnosti povolení pro takovou činnost nezahrnuje povinnost orgánu veřejné správy posoudit vhodnost provedení fáze účasti veřejnosti.“ 1– Původní jazyk: angličtina. i Název projednávané věci je fiktivní. Neodpovídá skutečnému jménu žádné ze zúčastněných stran. 2– Úmluva o přístupu k informacím, účasti veřejnosti na rozhodování a přístupu k právní ochraně v záležitostech životního prostředí, uzavřená v Aarhusu (Dánsko) dne 25. června 1998 a schválená jménem Společenství rozhodnutím Rady 2005/370/ES ze dne 17. února 2005 (Úř. věst. 2005, L 124, s. 1) (dále jen „Aarhuská úmluva“). 3– Evropská hospodářská komise OSN, The Aarhus Convention: An Implementation Guide (Příručka k provedení Aarhuské úmluvy), 2. vyd., 2014 (dále jen „příručka k provedení Aarhuské úmluvy“), s. 3 a 253. 4– Deklarace z Luccy, 21. až 23. října 2002, Lucca, Itálie. 5– Příručka k provedení Aarhuské úmluvy, s. 19. 6– Barritt, E., TheFoundations of the Aarhus Convention: Environmental Democracy, Rights and Stewardship, Oxford, Hart Publishing, 2020, s. 28. 7– Viz obecně Bándi, G. (ed.), Environmental Democracy and Law, Europa Law Publishing, Groningen/Amsterdam, 2014. 8– Ve vnitrostátních právních předpisech se slovním spojením „jednotné povolení“ (permis unique) označuje povolení, které se týká „kombinovaného záměru“ (projet mixte), který vyžaduje jak povolení v oblasti životního prostředí, tak stavební povolení. Viz definice obou slovních spojení podle čl. 1 odst. 11 a 12, jakož i článku 81 nařízení o povoleních v oblasti životního prostředí. Viz též definice permis unique, která je k dispozici na internetových stránkách https://permis-environnement.spw.wallonie.be/home/glossaire.html#permis-unique. 9– Rozhodnutí Rady ze dne 17. února 2005 o uzavření Úmluvy o přístupu k informacím, účasti veřejnosti na rozhodování a přístupu k právní ochraně v záležitostech životního prostředí jménem Evropského společenství (Úř. věst. 2005, L 124, s. 1). 10– V tomto smyslu viz rozsudky ze dne 8. března 2011, Lesoochranárske zoskupenie (C‑240/09, EU:C:2011:125, bod 30), a ze dne 8. listopadu 2022, Deutsche Umwelthilfe (Schvalování motorových vozidel) (C‑873/19, EU:C:2022:857, bod 48). 11– F. B. v písemném vyjádření uvádí, že větrné parky o celkové kapacitě 3 MW jsou zařízeními „třídy 1“, jejichž povolení vyžaduje posouzení vlivů na životní prostředí a provedení veřejného projednání. 12– Směrnice EIA provádí požadavky Aarhuské úmluvy týkající se účasti veřejnosti ve vztahu k záměrům, které spadají do působnosti uvedené směrnice. Viz bod 5 odůvodnění směrnice Evropského parlamentu a Rady 2003/35/ES ze dne 26. května 2003 o účasti veřejnosti na vypracovávání některých plánů a programů týkajících se životního prostředí a o změně směrnic Rady 85/337/EHS a 96/61/ES, pokud jde o účast veřejnosti a přístup k právní ochraně (Úř. věst. 2003, L 156, s. 17; Zvl. vyd. 15/07, s. 466), který uvádí, že „[a]by mohla být [Aarhuská] úmluva Společenstvím ratifikována, právní předpisy Společenství s ní musí být náležitě uvedeny v soulad“. 13– Žalobce kritizuje pouze skutečnost, že nebyla zajištěna účast veřejnosti. Nevznáší žádný žalobní důvod týkající se provedení posouzení vlivů na životní prostředí podle směrnice EIA. 14– Příručka k provedení Aarhuské úmluvy, s. 131. 15– Viz výše, bod 31 tohoto stanoviska. 16– Příručka k provedení Aarhuské úmluvy, s. 126. Podle uvedené příručky (na s. 131) je pojem „navrhované činnosti“ dostatečně široký na to, aby obsáhl jak pojem „záměr“ ve směrnici EIA, tak pojem „zařízení“ používaný ve směrnici Evropského parlamentu a Rady 2010/75/EU ze dne 24. listopadu 2010 o průmyslových emisích (integrované prevenci a omezování znečištění) (Úř. věst. 2010, L 334, s. 17). 17– Bod 31 tohoto stanoviska. 18– Viz výše, bod 31 tohoto stanoviska a příručka k provedení Aarhuské úmluvy, s. 131. 19– ACCC/C/2008/35 (Gruzie), zjištění a doporučení, 18. června 2010, bod 43. 20– ACCC/C/2013/107 (Irsko), zjištění a doporučení, 19. srpna 2019, bod 75. 21– Bod 24 přílohy I směrnice EIA zahrnuje mezi záměry uvedené v čl. 4 odst. 1 uvedené směrnice „[j]akékoli změny nebo rozšíření záměrů uvedených v [příloze I], jež samy o sobě dosahují prahových hodnot případně stanovených v této příloze“. 22– Rozsudek ze dne 29. července 2019, Inter-Environnement Wallonie a Bond Beter Leefmilieu Vlaanderen (C‑411/17, EU:C:2019:622, bod 78). 23– Rozsudek ze dne 29. července 2019, Inter-Environnement Wallonie a Bond Beter Leefmilieu Vlaanderen (C‑411/17, EU:C:2019:622, bod 79). Soudní dvůr konstatoval, že opatření dotčená v uvedené věci, jakož i modernizační práce, které jsou s nimi nerozlučně spojeny, tvoří samy o sobě „záměr“ ve smyslu čl. 1 odst. 2 písm. a) směrnice EIA (viz body 63 až 71, 90 a 94 uvedeného rozsudku). 24– Rozsudek ze dne 2. června 2022 (C‑43/21, dále jen „rozsudek FCC Česká republika“, EU:C:2022:425). 25– Rozsudek FCC Česká republika, bod 36. 26– Rozsudek ze dne 8. listopadu 2022, Deutsche Umwelthilfe (Schvalování motorových vozidel) (C‑873/19, EU:C:2022:857, bod 55). 27– Příručka k provedení Aarhuské úmluvy, s. 132 a 158. 28– Tamtéž. 29– Příručka k provedení Aarhuské úmluvy, s. 132. 30– Bod 57 tohoto stanoviska. 31– Příručka k provedení Aarhuské úmluvy, s. 158. 32– Pokud příslušná změna zahrnuje fyzickou změnu, spadá již pod odstavec 22 přílohy I. Viz bod 55 tohoto stanoviska. 33– ACCC/C/2014/122 (Španělsko), zjištění a doporučení, 17. prosince 2020, bod 73, Výbor pro dohled konstatoval, že „provozní podmínky“ pro činnost zahrnují „všechny podmínky uvedené v povolení, nikoli pouze technické podmínky nebo podmínky fungování ovlivňující výrobní proces“. V souladu s těmito zjištěními a doporučeními Výbor pro dohled v bodě 17 doporučení určeného Nizozemskému království, které se týká provedení bodu 3 písm. a) rozhodnutí VII/8 ze dne 28. listopadu 2023 uvedl, že „všechny podmínky týkající se povolení, ať jsou obsaženy v rozhodnutí, či nikoli je třeba považovat za provozní podmínky“. 34– Jendrośka, J., „Public participation under Article 6 of the Aarhus Convention“, in Bándi, G., poznámka pod čarou 7, op. cit., s. 136. Viz též příručka k provedení Aarhuské úmluvy, s. 158. 35– Příručka k provedení Aarhuské úmluvy, s. 159. 36– ACCC/C/2009/41 (Slovensko), zjištění a doporučení, 17. prosince 2010, bod 55. 37– Tamtéž, bod 56. 38– Viz bod 39 tohoto stanoviska. 39– ACCC/C/2014/121 (Evropská unie), zjištění a doporučení, 30. března 2020, bod 99. Podle těchto zjištění se test významnosti týká otázky, zda přehodnocení nebo aktualizace „může“ významně změnit základní parametry činnosti nebo se bude „týkat“ významných environmentálních aspektů dotčené činnosti“ [bod 104 s odkazem na ACCC/C/2006/17 (Evropské společenství), zjištění a doporučení, 2. května 2008]. 40– ACCC/C/2014/121 (Evropská unie), poznámka pod čarou 39, op. cit. 41– Tamtéž, body 109 a 120. 42– Viz bod 37 odůvodnění směrnice Evropského parlamentu a Rady (EU) 2024/1785 ze dne 24. dubna 2024, kterou se mění směrnice Evropského parlamentu a Rady 2010/75 a směrnice Rady 1999/31/ES o skládkách odpadů (Úř. věst. L 2024/1785). 43– Viz výše, bod 66 tohoto stanoviska. 44– ACCC/C/2014/104 (Nizozemsko), zjištění a doporučení, 18. června 2017, bod 65, v němž je zdůrazněno, že povolená doba provozování činnosti je „zjevně provozní podmínkou“. Podle příručky k provedení Aarhuské úmluvy „[v] mnoha zemích jsou environmentální povolení poskytována pouze na omezenou dobu (zpravidla do 10 let) a poté musejí být obnovena a/nebo aktualizována“ (s. 158). 45– v tomto smyslu viz ACCC/C/2013/107 (Irsko), zjištění a doporučení, 19. srpna 2019, bod 84. 46– Viz bod 67 tohoto stanoviska. 47– V tomto smyslu viz stanovisko generální advokátky J. Kokott ve věci FCC Česká republika (C‑43/21, EU:C:2022:64, bod 67). 48– Pokud jde o takové otázky, jako jsou možné úrovně hlukového nebo vizuálního znečištění (stroboskopický účinek). Obecně viz Vandenput, T. a Vermer, D., „Éoliennes“, in Delnoy, M. a Born, C.-Hu., Actualités choisies en droit de l’urbanisme et de l'environnement, Limal, Anthemis, Lutych, 2021, s. 218 až 249, na s. 228. 49– ACCC/C/2014/104 (Nizozemsko), poznámka pod čarou 44, op. cit., bod 71; ACCC/C/2013/107 (Irsko), poznámka pod čarou 45, op. cit., bod 83, ACCC/C/2016/143 (Česko), zjištění a doporučení, 26. července 2021, bod 106, a ACCC/C/2014/121 (Evropská unie), poznámka pod čarou 39, op. cit., bod 102. 50– ACCC/C/2013/107 (Irsko), poznámka pod čarou 45, op. cit., bod 84. 51– Viz bod 13 tohoto stanoviska. 52– V tomto smyslu viz ACCC/2013/107 (Irsko), poznámka pod čarou 45, op. cit., bod 85. 53– Viz článek 1 Aarhuské úmluvy, podle kterého „[…] každá smluvní strana zaručí právo na […] podíl veřejnosti na rozhodování […] v souladu s ustanoveními této úmluvy“ (kurzivou zvýraznila autorka tohoto stanoviska). 54– Viz ACCC/C/2014/121, (Evropská unie), poznámka pod čarou 39, op. cit., bod 97, a ACCC/C/2016/143 (Česko), poznámka pod čarou 49, op. cit., bod 103. 55– Viz mé úvodní poznámky v tomto stanovisku. 56– Jak uvádí Výbor pro dohled „Úmluva nečiní posuzování vlivů na životní prostředí povinnou součástí účasti veřejnosti; pouze vyžaduje, aby v případě, kdy je účast veřejnosti stanovena procedurou posuzování vlivů na životní prostředí (EIA) v souladu s vnitrostátní legislativou (odstavec 20 přílohy I Úmluvy), byla v rámci takové účasti veřejnosti uplatňována ustanovení článku 6“ [ACCC/C/2008/24 (Španělsko), zjištění a doporučení, 8. února 2011, bod 82]. 57– Příručka k provedení Aarhuské úmluvy, s. 122. 58– Tamtéž. 59– Bod 53 tohoto stanoviska. 60– Bod 65 tohoto stanoviska. 61– Příručka k provedení Aarhuské úmluvy, s. 158. 62– Viz bod 74 tohoto stanoviska."
+            } ],
+            "docNoPart" : 1,
+            "celex" : "62025CC0151",
+            "groupByLogicalId" : [ {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389977",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "LV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389975",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "MT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389974",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "EL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389976",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "HR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389978",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "EN",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389979",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "PT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389973",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "LT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389970",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389971",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "IT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389972",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "ES",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3400700",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "HU",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3430370",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "DE",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389968",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "CS",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389969",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "ET",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389965",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "RO",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389963",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "PL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389966",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "SK",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389967",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "SL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389964",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "NL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3470780",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "FI",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389980",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "SV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3389981",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "BG",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3404886",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "DA",
+              "formats" : [ "HTML" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "Convention d&apos;Aarhus sur l&apos;accès à l&apos;information, la participation du public au processus décisionnel et l&apos;accès à la justice en matière d&apos;environnement (25/06/1998), article 6, paragraphes 1 et 10, et points 20 et 22 de l&apos;annexe I",
+            "affairJurisdiction" : "Cour de justice",
+            "affairJurisdictionCode" : "C",
+            "routing" : "C/0151/25/00000000RP/01/P/01",
+            "ecli" : "ECLI:EU:C:2025:1011"
+          },
+          "highlightFields" : { },
+          "innerHits" : { },
+          "routing" : "C/0151/25/00000000RP/01/P/01",
+          "matchedQueries" : [ ]
+        }, {
+          "index" : "index-affair@30-06-2026",
+          "id" : "C/0151/25/00000000RP/01/P/01-3293369",
+          "score" : 10.598584,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "C/0151/25/00000000RP/01/P/01-3293369",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_299176",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+            "idPublished" : "C-151/25",
+            "docType" : "Demande (JO)",
+            "docTypeCode" : "DDP_COMM",
+            "docDate" : "2025-04-25",
+            "docFormats" : [ "HTML" ],
+            "contentLength" : 0,
+            "contentML" : [ {
+              "cs" : "Žádost o rozhodnutí o předběžné otázce, kterou podal Conseil d’État (Belgie) dne 20. února 2025 – F.B. v. Région wallonne (Věc C-151/25, Viaudret1 ) Jednací jazyk: francouzština Předkládající soud Conseil d’État Účastníci původního řízení Žalobce: F.B. Žalovaný: Région wallonne Vedlejší účastnice: Parc éolien de Leuze-en-Hainaut SA, e-NosVents SA, Electrabel SA Předběžná otázka V právním režimu, ve kterém provozování činnosti spadající do působnosti přílohy I Aarhuské úmluvy1 podléhá povolení k provozování udělovanému na dobu nejvýše 20 let, – musí být čl. 6 odstavce 1 a 10 a body 20 a 22 přílohy I Aarhuské úmluvy vykládány v tom smyslu, že rozhodnutí o prodloužení provozování činnosti, která byla původně povolena na 20 let, o 10 let musí podléhat fázi účasti veřejnosti? – musí být čl. 6 odstavce 1 a 10 Aarhuské úmluvy vykládán v tom smyslu, že s tímto článkem není slučitelný právní režim, ve kterém s sebou řízení o prodloužení provozování činnosti o 10 let nikdy nenese fázi účasti veřejnosti? ____________ 1 Název projednávané věci je fiktivní. Neodpovídá skutečnému jménu žádné ze zúčastněných stran. 1 Úmluva o přístupu k informacím, účasti veřejnosti na rozhodování a přístupu k právní ochraně v záležitostech životního prostředí (Aarhuská úmluva) (Úř. věst. 2005, L 124, s. 4)."
+            } ],
+            "docNoPart" : 1,
+            "celex" : "",
+            "groupByLogicalId" : [ {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293819",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "PT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293234",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "HU",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293369",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "BG",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293232",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "IT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293293",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "FI",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293761",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "SL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293762",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "SK",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293744",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "SV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293329",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "DE",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293184",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "LT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293186",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "LV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293809",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "PL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293286",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "GA",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293283",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293301",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "ET",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293302",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "ES",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293262",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "HR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293313",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "EL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293315",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "EN",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293765",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "RO",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293158",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "MT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293322",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "DA",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0151/25/00000000RP/01/P/01-3293337",
+              "idProcedure" : "C/0151/25/00000000RP/01/P/01",
+              "docLang" : "CS",
+              "formats" : [ "HTML" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "",
+            "affairJurisdiction" : "Cour de justice",
+            "affairJurisdictionCode" : "C",
+            "routing" : "C/0151/25/00000000RP/01/P/01",
+            "ecli" : ""
+          },
+          "highlightFields" : {
+            "contentML.cs.exact" : [ "Région wallonne (Věc <em class='highlight'>C-151/25</em>, Viaudret1 ) Jednací jazyk: francouzština Předkládající soud Conseil d’État Účastníci původního řízení Žalobce: F.B. Žalovaný: Région wallonne Vedlejší účastnice: Parc éolien de Leuze-en-Hainaut SA, e-NosVents SA, Electrabel SA Předběžná otázka V právním režimu, ve kterém provozování činnosti spadající do působnosti přílohy I Aarhuské úmluvy1 podléhá povolení k provozování udělovanému na dobu nejvýše 20 let, – musí být čl. 6 odstavce 1 a 10 a body 20 a 22 přílohy I Aarhuské úmluvy vykládány v tom smyslu, že rozhodnutí o prodloužení provozování činnosti, která byla původně povolena na 20 let, o 10 let musí podléhat fázi účasti veřejnosti? – musí být čl. 6 odstavce 1 a 10 Aarhuské úmluvy vykládán v tom smyslu, že s tímto článkem není slučitelný právní režim, ve kterém s sebou řízení o prodloužení provozování činnosti o 10 let nikdy nenese fázi účasti veřejnosti? ____________ 1 Název projednávané věci je fiktivní." ]
+          },
+          "innerHits" : { },
+          "routing" : "C/0151/25/00000000RP/01/P/01",
+          "matchedQueries" : [ ]
+        } ],
+        "empty" : false
+      }
+    },
+    "matchedQueries" : [ ]
+  } ],
+  "aggregatesMap" : {
+    "facet_bucket" : [ {
+      "name" : "procTypesWithoutResults",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "PREJ"
+      } ]
+    }, {
+      "name" : "jurisdiction",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "C"
+      } ]
+    }, {
+      "name" : "affairState",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "ENC"
+      } ]
+    }, {
+      "name" : "matCode",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "ENVI",
+        "childrenAggregate" : {
+          "name" : "matCodeTwo",
+          "aggregateCountValues" : [ ]
+        }
+      } ]
+    }, {
+      "name" : "procType",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "P"
+      } ]
+    } ]
+  }
+}
