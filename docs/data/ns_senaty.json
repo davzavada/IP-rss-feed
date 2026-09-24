@@ -1,0 +1,118 @@
+{
+  "poznamka": "Senáty NS pro nastavení výběru. Popisky orientačně podle rozvrhu práce NS 2026 – k ověření. Senát, který se objeví v datech a tady chybí, web nabídne aspoň s číslem.",
+  "vychozi": [
+    23
+  ],
+  "senaty": [
+    {
+      "senat": 20,
+      "kolegium": "civilni",
+      "popis": "exekuce a výkon rozhodnutí"
+    },
+    {
+      "senat": 21,
+      "kolegium": "civilni",
+      "popis": "pracovní právo"
+    },
+    {
+      "senat": 22,
+      "kolegium": "civilni",
+      "popis": "věcná práva"
+    },
+    {
+      "senat": 23,
+      "kolegium": "civilni",
+      "popis": "obchodní závazky, duševní vlastnictví, nekalá soutěž, rozhodčí řízení"
+    },
+    {
+      "senat": 24,
+      "kolegium": "civilni",
+      "popis": "dědictví, opatrovnictví"
+    },
+    {
+      "senat": 25,
+      "kolegium": "civilni",
+      "popis": "náhrada škody"
+    },
+    {
+      "senat": 26,
+      "kolegium": "civilni",
+      "popis": "nájem a bydlení"
+    },
+    {
+      "senat": 27,
+      "kolegium": "civilni",
+      "popis": "obchodní korporace"
+    },
+    {
+      "senat": 28,
+      "kolegium": "civilni",
+      "popis": "restituce, bezdůvodné obohacení"
+    },
+    {
+      "senat": 29,
+      "kolegium": "civilni",
+      "popis": "insolvence (Cdo, NSČR, ICdo), směnky"
+    },
+    {
+      "senat": 30,
+      "kolegium": "civilni",
+      "popis": "odpovědnost státu, ochrana osobnosti"
+    },
+    {
+      "senat": 31,
+      "kolegium": "civilni",
+      "popis": "velký senát občanskoprávního a obchodního kolegia"
+    },
+    {
+      "senat": 32,
+      "kolegium": "civilni",
+      "popis": "obchodní závazky"
+    },
+    {
+      "senat": 33,
+      "kolegium": "civilni",
+      "popis": "občanskoprávní závazky"
+    },
+    {
+      "senat": 3,
+      "kolegium": "trestni",
+      "popis": ""
+    },
+    {
+      "senat": 4,
+      "kolegium": "trestni",
+      "popis": ""
+    },
+    {
+      "senat": 5,
+      "kolegium": "trestni",
+      "popis": ""
+    },
+    {
+      "senat": 6,
+      "kolegium": "trestni",
+      "popis": ""
+    },
+    {
+      "senat": 7,
+      "kolegium": "trestni",
+      "popis": ""
+    },
+    {
+      "senat": 8,
+      "kolegium": "trestni",
+      "popis": ""
+    },
+    {
+      "senat": 11,
+      "kolegium": "trestni",
+      "popis": ""
+    },
+    {
+      "senat": 15,
+      "kolegium": "trestni",
+      "popis": "velký senát trestního kolegia"
+    }
+  ]
+}
