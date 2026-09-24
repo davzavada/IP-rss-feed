@@ -1,0 +1,467 @@
+{
+  "totalHits" : 1,
+  "maxScore" : 23.95525,
+  "maxScoreOthersDocuments" : 0.0,
+  "totalHitsRelation" : "EQUAL_TO",
+  "totalHitsOthersDocs" : 0,
+  "searchHits" : [ {
+    "index" : "index-affair@30-06-2026",
+    "id" : "C/0630/26/00000000RP/01/P/01",
+    "score" : 23.95525,
+    "sortValues" : [ 23.95525, 1781049600000 ],
+    "content" : {
+      "id" : "C/0630/26/00000000RP/01/P/01",
+      "affId" : "C/0630/26/00000000RP/01",
+      "publishedId" : "C-630/26",
+      "publishedAffId" : "C-630/26",
+      "procedureId" : "C/0630/26/00000000RP/01/P/01",
+      "jurisdiction" : "Cour de justice",
+      "jurisdictionCode" : "C",
+      "order" : 630,
+      "suiteNumber" : 1,
+      "procType" : "P",
+      "procNumber" : 1,
+      "usualNameML" : [ {
+        "el" : "Rada Miasta Krakowa"
+      }, {
+        "nl" : "Rada Miasta Krakowa"
+      }, {
+        "ro" : "Rada Miasta Krakowa"
+      }, {
+        "sk" : "Rada Miasta Krakowa"
+      }, {
+        "fi" : "Rada Miasta Krakowa"
+      }, {
+        "mt" : "Rada Miasta Krakowa"
+      }, {
+        "bg" : "Rada Miasta Krakowa"
+      }, {
+        "pt" : "Rada Miasta Krakowa"
+      }, {
+        "fr" : "Rada Miasta Krakowa"
+      }, {
+        "et" : "Rada Miasta Krakowa"
+      }, {
+        "sv" : "Rada Miasta Krakowa"
+      }, {
+        "it" : "Rada Miasta Krakowa"
+      }, {
+        "sl" : "Rada Miasta Krakowa"
+      }, {
+        "da" : "Rada Miasta Krakowa"
+      }, {
+        "lt" : "Rada Miasta Krakowa"
+      }, {
+        "cs" : "Rada Miasta Krakowa"
+      }, {
+        "lv" : "Rada Miasta Krakowa"
+      }, {
+        "hr" : "Rada Miasta Krakowa"
+      }, {
+        "es" : "Rada Miasta Krakowa"
+      }, {
+        "hu" : "Rada Miasta Krakowa"
+      }, {
+        "en" : "Rada Miasta Krakowa"
+      }, {
+        "de" : "Rada Miasta Krakowa"
+      }, {
+        "pl" : "Rada Miasta Krakowa"
+      } ],
+      "introductionDate" : "2026-06-10",
+      "affairState" : "Affaire pendante",
+      "affairStateCode" : "ENC",
+      "joinExist" : 0,
+      "pilot" : 0,
+      "joinAffairs" : [ ],
+      "pourvoiAffIds" : [ ],
+      "originPourvoiIds" : [ ],
+      "reExamenAffIds" : [ ],
+      "originReExamanIds" : [ ],
+      "transfertAffIds" : [ ],
+      "originTransfertIds" : [ ],
+      "oppObsFag" : 0,
+      "contentLength" : 0,
+      "docNoPart" : 0
+    },
+    "highlightFields" : {
+      "publishedId.keyword" : [ "<em class='highlight'>C-630/26</em>" ]
+    },
+    "innerHits" : {
+      "document" : {
+        "totalHits" : 2,
+        "totalHitsRelation" : "EQUAL_TO",
+        "maxScore" : 12.285533,
+        "searchHits" : [ {
+          "index" : "index-affair@30-06-2026",
+          "id" : "C/0630/26/00000000RP/01/P/01-3500749",
+          "score" : 12.285533,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "C/0630/26/00000000RP/01/P/01-3500749",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_324708",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+            "idPublished" : "C-630/26",
+            "docType" : "Demande de décision préjudicielle",
+            "docTypeCode" : "DDP",
+            "docDate" : "2026-06-10",
+            "docFormats" : [ "PDF" ],
+            "contentLength" : 0,
+            "contentML" : [ {
+              "cs" : "      \n \n      \nPřeklad C-630/26 – 1 \nVěc C-630/26 \nŽádost o rozhodnutí o předběžné otázce \nDatum podání: \n10. června 2026 \nPředkládající soud: \nNaczelny Sąd Administracyjny (Polsko) \nDatum předkládacího rozhodnutí: \n2. června 2026 \nŽalobkyně: \nJ. sp. z o.o. \nJ. S.A. \nC. sp. z o.o. v K. \nM. sp. z o.o. \nC. sp. z o.o. ve W. \nŽalovaná: \nRada Miasta Krakowa \n      \nSp. zn. II OSK 1153/25 \nUSNESENÍ \nNejvyšší správní soud (Naczelny Sąd Administracyjny) ve složení: \n[omissis] [složení soudu] \npo projednání dne 2. června 2026 \nna jednání v obecněsprávním kolegiu \nCS \nŽÁDOST O ROZHODNUTÍ O PŘEDBĚŽNÉ OTÁZCE ZE DNE 2. 6. 2026 – VĚC C-630/26 \n      \n \n2  \nkasačních stížností, které podaly společnosti J. sp. z o.o. se sídlem v K. a J. S.A. \nse sídlem v K., C. sp. z o.o. se sídlem v K., M. sp. z o.o. se sídlem ve W., C. sp. \nZ o.o. se sídlem ve W. \nproti rozsudku Vojvodského správního soudu v Krakově (Wojewódzki Sąd \nAdministracyjny w Krakowie, Polsko) \nze dne 28. června 2024 [omissis] [spisová značka rozsudku] \nve věci žaloby D. D., B. D. a Z. D., C. sp. z o.o. se sídlem ve W., C. sp. z o.o. se \nsídlem v K., T. sp. z o.o. sp.k. se sídlem v K., M. sp. z o.o. se sídlem ve W., C. sp. \nz o.o. se sídlem ve W., F. sp. z o.o. [...] sp.k. se sídlem v K., H. S.A. v K., B. – \npobočka v Polsku, J. sp. z o.o. se sídlem v K. a J. S.A. se sídlem v K. \nproti usnesení zastupitelstva města Krakov (Rada Miasta Krakowa)  \nze dne 26. února 2020 č. XXXVI/908/20 \nve věci stanovení „Zásad a podmínek pro umísťování objektů drobné architektury, \nreklamních tabulí a reklamních zařízení, jakož i oplocení“  \nrozhodl takto: \nI. v souladu s článkem 267 Smlouvy o fungování Evropské unie \n(konsolidované znění - Úř. věst. 2016, C 202, s. 1 a násl.; dále jen „SFEU“) se \nSoudnímu dvoru Evropské unie předkládá následující předběžná otázka: \n1) Musí být čl. 15 odst. 1 a odst. 2 písm. d) ve spojení s čl. 15 odst. 3 písm. a), \nb) a c) směrnice Evropského parlamentu a Rady 2006/123/ES ze dne \n12. prosince 2006 o službách na vnitřním trhu (Úř. věst. 2006, L 376, s. 36; \ndále jen „směrnice o službách“) vykládán v tom smyslu, že brání právní \núpravě obsažené v místním právním předpisu, která zavádí obecná omezení \nnebo zákazy používání určitých forem venkovní reklamy poskytovateli \nslužeb provozujícími reklamní činnost, přičemž současně připouští \npoužívání stejných nebo srovnatelných forem reklamy na infrastruktuře ve \nsprávě územního samosprávného celku nebo využívané na základě smluv \nuzavřených s tímto celkem, v situaci, kdy vnitřní rozpor této právní úpravy, \nspočívající v tom, že tentýž normotvorný orgán kvalifikoval prvky této \ninfrastruktury jako reklamní zařízení pro účely daně z nemovitých věcí, a \nsoučasně je považuje za komunální infrastrukturu vyňatou z režimu \nupravujícího reklamy na základě usnesení, může vést k závěru, že zavedená \nomezení nebyla objektivně nezbytná k dosažení deklarovaného cíle ochrany \nkrajiny? \n2) Musí být čl. 15 odst. 3 písm. a), b) a c) směrnice o službách vykládán v tom \nsmyslu, že při posuzování nediskriminační, nezbytné a přiměřené povahy \npožadavku omezujícího přístup k činnosti poskytování služeb má význam \nokolnost, že veřejnoprávní subjekt, který tento požadavek stanovil, je \nRADA MIASTA KRAKOWA \n \n3 \nsoučasně vlastníkem infrastruktury, na niž se vztahují výjimky z tohoto \npožadavku, nebo má prospěch z činnosti provozované s využitím této \ninfrastruktury? \nII. [omissis] [přerušení řízení] \nODŮVODNĚNÍ \nI. Předmět řízení a skutkový stav \n[1]. Zastupitelstvo města Krakova přijalo usnesení ze dne 26. února 2020 \nč. XXXVI/908/20 (uchwała z 26 lutego 2020 r. nr XXXVI/908/20; dále jen \n„usnesení o ochraně krajiny“) na základě čl. 37a odst. 1 zákona ze dne \n27. března 2003 o územním plánování a územním uspořádání (ustawa z dnia \n27 marca 2003 r. o planowaniu i zagospodarowaniu przestrzennym; Dz.U. z \nroku 2024, č. 1130, ve znění pozdějších předpisů; dále jen „upzp“), kterým \nstanovilo pravidla a podmínky pro umisťování objektů drobné architektury, \nreklamních tabulí a reklamních zařízení, jakož i oplocení na území Krakova. \nUsnesení má povahu obecně závazného místního právního předpisu. \n[2]. Usnesení o ochraně krajiny stanoví řadu omezení týkajících se umisťování \nreklamních zařízení, včetně omezení vztahujících se k velikosti reklamních \nnosičů a k využívání digitálních technologií. Současně se na některé druhy \ninfrastruktury související s plněním veřejných úkolů nebo fungující na \nzákladě právních vztahů spojujících hospodářské subjekty s městem vztahují \nodlišná normativní řešení \n[3]. Žaloby proti usnesení o ochraně krajiny podali k Vojvodskému správnímu \nsoudu v Krakově (Wojewódzki Sąd Administracyjny w Krakowie) \nprovozovatelé venkovní reklamy, subjekty využívající reklamu k propagaci \nsvé vlastní činnosti a vlastníci nemovitostí. Žalobci namítali, že přijatý \nregulační model vede k nerovnoměrnému rozložení břemen vyplývajících z \nusnesení a ovlivňuje podmínky výkonu hospodářské činnosti na trhu s \nvenkovní reklamou. Vojvodský správní soud v Krakově (Wojewódzki Sąd \nAdministracyjny w Krakowie) tyto žaloby zamítl rozsudkem ze dne \n28. června 2024 [omissis] [spisová značka] \n[4]. Kasační stížnosti proti uvedenému rozsudku podalo k Nejvyššímu \nsprávnímu soudu (Naczelny Sąd Administracyjny, Polsko) pět společností, \nkteré jej napadly v celém rozsahu. \nII. Uplatňovaná ustanovení vnitrostátního a místního práva \n[5]. Zákon ze dne 27. března 2003 o územním plánování a územním uspořádání \n(ustawa z dnia 27 marca 2003 r. o planowaniu i zagospodarowaniu \nprzestrzennym): \nŽÁDOST O ROZHODNUTÍ O PŘEDBĚŽNÉ OTÁZCE ZE DNE 2. 6. 2026 – VĚC C-630/26 \n      \n \n4  \n– článek 37a odst. 1 upzp: „Zastupitelstvo obce může formou usnesení \nstanovit pravidla a podmínky pro umisťování objektů drobné \narchitektury, reklamních tabulí a reklamních zařízení, jakož i oplocení, \njejich rozměry, kvalitativní standardy a druhy stavebních materiálů, z \nnichž mohou být zhotoveny“; \n– článek 37a odst. 3 upzp: „V usnesení uvedeném v odstavci 1 může \nzastupitelstvo obce stanovit zákaz umisťování oplocení, reklamních \ntabulí a reklamních zařízení, s výjimkou vývěsních štítů”; \n– článek 37a odst. 9 upzp: „Usnesení uvedené v odstavci 1 stanoví \npodmínky a lhůtu pro uvedení objektů drobné architektury, oplocení, \nreklamních tabulí a reklamních zařízení existujících ke dni nabytí jeho \núčinnosti do souladu se zákazy, zásadami a podmínkami v něm \nstanovenými; tato lhůta nesmí být kratší než 12 měsíců ode dne nabytí \núčinnosti tohoto usnesení”. \n[6]. Usnesení o ochraně krajiny zavádí obecné, přísné zákazy a rozměrová \nomezení pro samostatně stojící reklamní tabule a reklamní zařízení, jakož i \nzákaz používání digitálních obrazovek. Současně usnesení stanoví \nnásledující výjimky pro komunální a koncesní infrastrukturu: \n– ve vztahu k Městskému informačnímu systému (SIM): Podle § 25 \nodst. 3 bodu 4 usnesení o ochraně krajiny: „Ustanovení § 9 až § 21 se \nnepoužijí na: (...) 4) reklamy umisťované v rámci Městského \ninformačního systému Krakova”; \n– ve vztahu k přístřeškům zastávek městské dopravy (koncesní \ninfrastruktura): Podle § 12 bodu 1 usnesení o ochraně krajiny: \n„Připouští se umisťování reklamního panelu (...) 1) tvořícího vybavení \npřístřešku zastávky městské dopravy; na jednom přístřešku se připouští \numístění jednoho reklamního panelu”; \n– ve vztahu ke komunálnímu objektu (Sportovní a společenská hala T.): \nPodle § 9 odst. 8 bodu 4 usnesení o ochraně krajiny: „Zakazuje se \numisťování reklamních tabulí nebo reklamních zařízení s využitím \nsvětelných projekcí a pohyblivých prvků nebo prvků vyzařujících \nsvětlo s proměnlivou intenzitou (...), s výjimkou: (...) 4) reklamních \nzařízení umisťovaných na pozemcích č. 1/179, 1/180, 1/181, 1/182, \n1/183, 1/184, 1/185, k. ú. 52 Nowa Huta“. Podle § 11 odst. 3 usnesení \no ochraně krajiny: „Připouští se umisťování billboardů na pozemcích \nč. 1/179, 1/180, 1/181, 1/182, 1/183, 1/184, 1/185, k. ú. 52 Nowa \nHuta”. \nRADA MIASTA KRAKOWA \n \n5 \nIII. Uplatňovaná ustanovení unijního práva \n[7]. V souladu s čl. 4 bodem 7 směrnice o službách se „požadavkem“ rozumí \njakákoli povinnost, zákaz, podmínka nebo omezení vyplývající z právních \na správních předpisů členských států. \n[8]. V souladu s čl. 15 odst. 1 směrnice o službách členské státy posoudí, zda \njsou v rámci jejich právního systému uplatňovány některé požadavky \nuvedené v odstavci 2, a zajistí, aby všechny takové požadavky byly \nslučitelné s podmínkami stanovenými v odstavci 3. \n[9]. Článek 15 odst. 2 písm. d) směrnice o službách stanoví, že členské státy \nposoudí, zda jejich právní systém podmiňuje přístup k činnosti poskytování \nslužeb nebo její výkon splněním požadavků jiných než souvisejících se \nzáležitostmi upravenými směrnicí 2005/36/ES nebo stanovenými jinými \nnástroji Společenství, které vyhrazují přístup k dotyčné činnosti poskytování \nslužeb určitým poskytovatelům z důvodu zvláštní povahy této činnosti. \n[10]. V souladu s čl. 15 odst. 3 směrnice o službách požadavky uvedené \nv odstavci 2 musí splňovat tyto podmínky: a) nepřípustnost diskriminace: \npožadavky nesmějí být přímo ani nepřímo diskriminační na základě státní \npříslušnosti; b) nezbytnost: požadavky musejí být opodstatněné naléhavým \ndůvodem obecného zájmu; c) přiměřenost: požadavky musejí být vhodné \nk zajištění dosažení sledovaného cíle, nesmějí překračovat rámec toho, co je \npro dosažení daného cíle nezbytné. \nIV. Rozsah působnosti směrnice 2006/123/ES \n[11]. Podle názoru Nejvyššího správního soudu (Naczelny Sąd Administracyjny) \nčinnost spočívající v úplatném zpřístupňování reklamní plochy představuje \nčinnost v oblasti služeb ve smyslu článku 57 SFEU – jde o plnění \nposkytované za úplatu, na které se nevztahují výjimky podle čl. 2 odst. 2 \nsměrnice. \n[12]. Z judikatury Soudního dvora vyplývá, že plánovací a urbanistické regulace \nmohou podléhat posouzení z hlediska směrnice 2006/123/ES, pokud \novlivňují podmínky přístupu k činnosti v oblasti služeb nebo jejího výkonu. \nV rozsudku ze dne 30. ledna 2018 (C-31/16, Visser Vastgoed BV) Soudní \ndvůr uvedl, že plánovací předpisy mohou představovat „požadavky“ ve \nsmyslu směrnice o službách, pokud omezují přístup k určitému druhu \nhospodářské činnosti (bod 110 rozsudku). Rozhodující je skutečný tržní \núčinek regulace, nikoli její forma. \n[13]. V důsledku toho podléhají ustanovení usnesení o ochraně krajiny, která jsou \npředmětem tohoto řízení, posouzení ve světle článku 15 směrnice o \nslužbách. Ochrana krajiny, územního uspořádání a estetiky veřejného \nprostoru představuje odůvodněný cíl veřejného zájmu, který může odůvodnit \nŽÁDOST O ROZHODNUTÍ O PŘEDBĚŽNÉ OTÁZCE ZE DNE 2. 6. 2026 – VĚC C-630/26 \n      \n \n6  \nomezení hospodářské činnosti. Vyvstává však otázka, zda způsob \nuskutečnění tohoto cíle přijatý v napadeném usnesení splňuje požadavky \nnepřípustnosti diskriminace, nezbytnosti a přiměřenosti vyplývající z čl. 15 \nodst. 3 směrnice o službách. \nV. Pochybnosti týkající se podmínek nezbytnosti a přiměřenosti \n[14]. Z ustálené judikatury Soudního dvora vyplývá, že opatření omezující \nsvobody vnitřního trhu musí skutečně sloužit uskutečnění deklarovaného \ncíle a činit tak soudržným a systematickým způsobem. Toto posouzení \nvyžaduje zkoumat nejen obsah regulace, ale rovněž její strukturu a rozsah \nstanovených výjimek. \n[15]. Usnesení o ochraně krajiny zavádí dalekosáhlá omezení týkající se \nvyužívání určitých forem venkovní reklamy, zejména digitálních zařízení a \nvelkoformátových nosičů. Současně stanoví zvláštní řešení vztahující se k \nvybraným kategoriím infrastruktury. \n[16]. Ve vztahu k infrastruktuře související s provozem sportovní a společenské \nhaly spravované komunální společností usnesení o ochraně krajiny připouští \numisťování reklamních zařízení využívajících technologie a technické \nparametry, které nejsou dostupné ostatním účastníkům trhu s venkovní \nreklamou. Ze spisového materiálu vyplývá, že na fasádě objektu, nad \nvstupem č. 1, je v provozu venkovní LED obrazovka o rozměrech 54 × 9,9 \nm, což představuje plochu 534,6 m². Usnesení o ochraně krajiny zakazuje \nsoukromým provozovatelům používání digitálních nosičů o ploše \npřesahující 18 m², zatímco na komunální infrastruktuře je umístěna \nobrazovka téměř třicetinásobně překračující tuto prahovou hodnotu. \nUmístění obrazovky – při ulici Lema, kde projede více než 13 000 vozidel \ndenně, a v blízkosti třídy Pokoje s intenzitou dopravy přesahující 14 000 \nvozidel denně – svědčí o jejím významném komerčním působení. \n[17]. Samotná existence výjimek ještě sama o sobě neznamená neslučitelnost \nregulace s unijním právem. Vyvstává však otázka, zda má při posuzování \nnezbytnosti opatření omezujícího činnost v oblasti služeb význam \nskutečnost, že určité formy reklamní prezentace jsou považovány za \nnepřípustné vůči části účastníků trhu, zatímco na infrastruktuře, na kterou se \nvztahují výjimky stanovené týmž normativním aktem, jsou nadále přípustné. \nTato pochybnost je zvláště významná v situaci, kdy srovnávané formy \nreklamy mohou mít obdobný vliv na veřejný prostor, městskou krajinu a \nestetické vnímání okolí. \n[18]. Z hlediska podmínky nezbytnosti může být podstatné určit, zda rozdílné \nnakládání s jednotlivými kategoriemi reklamních nosičů nachází oporu v \nobjektivních rozdílech souvisejících s dosažením cíle ochrany krajiny, nebo \nzda vyplývá výlučně z jejich vazby na určitou kategorii infrastruktury. \nJestliže velkorozměrová digitální obrazovka na komunálním objektu \nRADA MIASTA KRAKOWA \n \n7 \nnepředstavuje ohrožení územního uspořádání, pak z hlediska urbanistické \nlogiky by totožná obrazovka náležející soukromému subjektu rovněž takové \nohrožení představovat neměla. V kasačních stížnostech přitom bylo \nnamítáno, že obdobné výjimky nebyly stanoveny pro soukromé objekty \nplnící funkce srovnatelné s funkcemi komunálních objektů, což vyvolává \notázku významu této okolnosti pro posouzení soudržnosti a nediskriminační \npovahy přijatého regulačního modelu. \n[19]. Obdobné pochybnosti vyvstávají v souvislosti s řešeními, která se týkají \ninfrastruktury zastávek. Usnesení o ochraně krajiny totiž připouští \numisťování reklamních panelů tvořících vybavení přístřešků zastávek, \npřestože základním cílem regulace je omezení přítomnosti reklamních \nzařízení ve veřejném prostoru. \n[20]. Předkládajícímu soudu je z úřední činnosti známo, že orgány města Krakova \npro daňové účely (daně z nemovitostí) kvalifikovaly přístřešky zastávek \nvybavené reklamními panely jako stavby s převažující reklamní funkcí - což \nbylo předmětem řízení ukončených rozsudkem Vojvodského správního \nsoudu v Krakově (Wojewódzki Sąd Administracyjny w Krakowie) ze dne \n23. května 2024 [omissis] [spisová značka rozsudku] a rozsudky Nejvyššího \nsprávního soudu (Naczelny Sąd Administracyjny) ze dne 16. ledna 2026 \n[omissis] [spisové značky rozsudků]. Tutéž infrastrukturu město posuzuje \njako zařízení s převažující reklamní funkcí tehdy, má-li přinášet daňové \npříjmy, avšak jako komunální infrastrukturu vyňatou z reklamního režimu \nusnesení o ochraně krajiny tehdy, jde-li o uplatnění jeho omezení. Takový \nvnitřní rozpor může mít význam pro posouzení soudržnosti přijatého \nregulačního modelu a jeho souladu s podmínkou nezbytnosti podle čl. 15 \nodst. 3 písm. b) směrnice o službách. \n[21]. Další pochybnosti se týkají vynětí prvků Městského informačního systému z \npůsobnosti části ustanovení usnesení o ochraně krajiny. Pokud tato \ninfrastruktura slouží výlučně k plnění informačních funkcí souvisejících s \nplněním veřejných úkolů, může se její situace lišit od situace subjektů \nvykonávajících reklamní činnost. Je-li však využívána rovněž k prezentaci \nkomerčního obsahu, vyvstává otázka významu této okolnosti pro posouzení \nsouladu regulace s čl. 15 odst. 3 písm. b) směrnice o službách. \n[22]. Pochybnosti předkládajícího soudu nemají výlučně abstraktní povahu. V \nprůběhu řízení žalobci soustavně namítali, že usnesení o ochraně krajiny \nvede k rozdílnému zacházení se subjekty, které se podle jejich názoru \nnacházejí ve srovnatelné hospodářské situaci. Podstata problému spočívá v \notázce, zda místní regulátor může vytvářet výjimky příznivé pro \ninfrastrukturu, kterou spravuje. Zejména bylo poukazováno na připuštění \nreklamní prezentace na infrastruktuře ve správě města, komunálních \nsubjektů nebo subjektů působících na základě právních vztahů s městem, při \nsoučasném omezení možnosti využívat srovnatelné reklamní nosiče jinými \núčastníky trhu. Tyto námitky se vztahovaly mimo jiné k infrastruktuře \nŽÁDOST O ROZHODNUTÍ O PŘEDBĚŽNÉ OTÁZCE ZE DNE 2. 6. 2026 – VĚC C-630/26 \n      \n \n8  \nzastávek, prvkům Městského informačního systému a infrastruktuře \nsouvisející s provozem komunálních objektů. Posouzení důvodnosti těchto \ntvrzení vyžaduje předchozí určení rozsahu ochrany vyplývající z čl. 15 odst. \n3 směrnice o službách. \n[23]. I pokud by bylo možné uznat, že přijatá omezení byla nezbytná, vyvstává \npochybnost ohledně jejich proporcionality stricto sensu: cíle ochrany krajiny \nby mohlo být dosaženo méně omezujícími prostředky – například \njednotnými technickými požadavky uplatňovanými bez výjimky na všechny \nsubjekty, nezávisle na vlastnickém titulu k infrastruktuře. Selektivní \nuplatňování omezení výlučně vůči soukromým subjektům může \nzpochybňovat tvrzení, že přijaté opatření je přiměřené. \nVI. Pochybnosti týkající se splnění kritéria nediskriminační povahy \n[24]. Samostatný, byť úzce související s posouzením nezbytnosti a přiměřenosti, \ninterpretační problém se týká podmínky nepřípustnosti diskriminace \nstanovené v čl. 15 odst. 3 písm. a) směrnice o službách. \n[25]. Za skutkového stavu projednávané věci vystupuje územní samosprávný \ncelek současně jako subjekt vykonávající regulační pravomoci (stanovením \nzákazů ve sféře impéria), jako vlastník či subjekt zajišťující správu \ninfrastruktury fungující ve veřejném prostoru (působením ve sféře dominia), \na navíc jako poskytovatel koncesí utvářející podmínky činnosti třetích \nsubjektů na reklamním trhu. \n[26]. Není pochyb o tom, že výkon vlastnických funkcí a veřejných funkcí obcí \npředstavuje součást běžného plnění úkolů územní samosprávy. Samotná \nkumulace těchto funkcí nemůže být považována za porušení unijního práva. \n[27]. Vyvstává však otázka, zda je při posuzování nediskriminační, nezbytné a \npřiměřené povahy požadavku omezujícího přístup k činnosti v oblasti služeb \ntřeba zohlednit okolnost, že infrastrukturu, na kterou se vztahují výjimky \nz omezení, spravuje subjekt, který tato omezení stanovil, a že tentýž subjekt \nmá nepřímo prospěch z příjmů dosahovaných z činnosti vykonávané \ns využitím této infrastruktury. Souběh těchto tří rolí – regulátora, vlastníka \ninfrastruktury a subjektu majícího prospěch z činnosti vykonávané \ns využitím této infrastruktury – může vyvolávat pochybnosti o \nnediskriminační povaze přijatého regulačního modelu, pokud vede k \nzachování regulační výhody nedostupné pro ostatní účastníky trhu. \n[28]. Zejména vyžaduje objasnění, zda tato okolnost může mít význam pro \nposouzení soudržnosti regulace sloužící k ochraně krajiny, jakož i pro \nurčení, zda uplatněná omezení skutečně nepřekračují meze toho, co je \nnezbytné k dosažení deklarovaného cíle veřejného zájmu. \nRADA MIASTA KRAKOWA \n \n9 \n[29]. Dále je třeba objasnit, zda má význam skutečnost, že činnost provozovaná \ns využitím této infrastruktury může vytvářet příjmy související s plněním \nveřejných úkolů nebo s činností subjektů spravovaných územním \nsamosprávným celkem, a tím ovlivňovat posouzení nezbytnosti a \npřiměřenosti přijatého regulačního modelu. \n[29a]. Pochybnosti předkládajícího soudu přitom nevyplývají ze samotné \nexistence výjimek z reklamních omezení, nýbrž z jejich vazby na \ninfrastrukturu ve správě subjektu, který tato omezení stanoví. V důsledku \ntoho vyvstává otázka, zda má pro posouzení souladu regulace s čl. 15 odst. 3 \npísm. a) a b) směrnice o službách význam nejen obsah výjimek, ale rovněž \ninstitucionální vztah mezi subjektem regulujícím trh a subjekty \nvyužívajícími tyto výjimky. \n[30]. Podle názoru předkládajícího soudu odpověď na tuto otázku nevyplývá \njednoznačně z dosavadní judikatury Soudního dvora. Dosavadní judikatura \nSoudního dvora objasňuje obecné podmínky nepřípustnosti diskriminace, \nnezbytnosti a přiměřenosti omezení týkajících se hospodářské činnosti, \nneřeší však výslovně otázku, jak posuzovat situace, v níž subjekt stanovící \nomezení je současně spojen s infrastrukturou využívající výjimky z těchto \nomezení. \nVII. Nezbytnost předložení předběžných otázek \n[31]. Nejvyšší správní soud (Naczelny Sąd Administracyjny) uvádí, že otázka, \nkterá je předmětem předběžných otázek, není vyřešena rozsudkem \nÚstavního soudu (Trybunał Konstytucyjny, Polsko) ze dne 12. prosince \n2023, sp. zn. P 20/19. Tento rozsudek se týká výlučně účinků usnesení o \nochraně krajiny ve vztahu k reklamním tabulím legálně umístěných před \nnabytím účinnosti tohoto usnesení - tj. souladu přechodného ustanovení, \nukládajícího odstranění již existujících nosičů s Ústavou Polské republiky. \nRozsudek P 20/19 se nezabývá otázkou asymetrického zvýhodnění \nkomunální infrastruktury vůči soukromým provozovatelům reklamního trhu \nani souladem takového zvýhodnění s unijním právem. Jedná se o odlišné \nnormativní řády: vnitrostátní ústavní řád a unijní smluvní řád, přičemž \nrozhodnutí v rámci jednoho z nich nenahrazuje posouzení v rámci druhého.  \n[32]. Nejvyšší správní soud (Naczelny Sąd Administracyjny) jako soud \nrozhodující v posledním stupni zvážil možnost samostatně rozhodnout \notázky unijního práva, jež vyvstaly v projednávané věci. Dospěl však k \nzávěru, že předložené otázky nelze považovat za zjevné ve smyslu \njudikatury Soudního dvora týkající se doktríny acte clair a acte éclairé. \nSoudní dvůr se zejména dosud přímo nevyjádřil k významu, který může mít \npro posouzení požadavku ve smyslu čl. 15 odst. 2 směrnice o službách na \nvnitřním trhu okolnost, že subjekt stanovící omezení zůstává současně \nspojen s infrastrukturou využívající výjimky z tohoto omezení. Nejvyšší \nŽÁDOST O ROZHODNUTÍ O PŘEDBĚŽNÉ OTÁZCE ZE DNE 2. 6. 2026 – VĚC C-630/26 \n      \n \n10  \nsprávní soud (Naczelny Sąd Administracyjny) přitom uvádí, že obdobný \nregulační model – spojující obecné zákazy adresované soukromým \nprovozovatelům s výjimkami ve prospěch komunální nebo koncesní \ninfrastruktury – funguje v usneseních o ochraně krajiny jiných územních \nsamosprávných celků v Polsku. Výklad podaný Soudním dvorem bude mít \ntedy význam nejen pro rozhodnutí projednávané věci, ale rovněž pro \nposouzení souladu obdobných regulací platných v jiných územních \nsamosprávných celcích s unijním právem. \n[33]. Odpověď na předložené otázky je nezbytná pro rozhodnutí projednávané \nvěci. V závislosti na rozsahu ochrany vyplývající z článku 15 směrnice o \nslužbách na vnitřním trhu se může lišit posouzení souladu zpochybňovaných \nustanovení usnesení o ochraně krajiny s právem Evropské unie, a v důsledku \ntoho i rozsah povinnosti Nejvyššího správního soudu (Naczelny Sąd \nAdministracyjny) určit jejich neplatnost. [omissis] [náklady řízení] \n[omissis] [přerušení řízení] \n[omissis] [procesní formulace] \n"
+            } ],
+            "docNoPart" : 1,
+            "celex" : "",
+            "groupByLogicalId" : [ {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500192",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "EL",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500230",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "CS",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500465",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "RO",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500310",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "HR",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500447",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "SL",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500749",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "BG",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500305",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "HU",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500448",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "SK",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500604",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "SV",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500281",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "IT",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500413",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "LT",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500410",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "LV",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500170",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "FI",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500515",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "PL",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500376",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "NL",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500163",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500224",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "DA",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500221",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "DE",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500508",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "PT",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500191",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "EN",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500185",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "ET",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3500187",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "ES",
+              "formats" : [ "PDF" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "",
+            "affairJurisdiction" : "Cour de justice",
+            "affairJurisdictionCode" : "C",
+            "routing" : "C/0630/26/00000000RP/01/P/01",
+            "ecli" : ""
+          },
+          "highlightFields" : {
+            "contentML.cs.exact" : [ "Překlad <em class='highlight'>C-630/26</em> – 1 \nVěc <em class='highlight'>C-630/26</em> \nŽádost o rozhodnutí o předběžné otázce \nDatum podání: \n10. června 2026 \nPředkládající soud: \nNaczelny Sąd Administracyjny (Polsko) \nDatum předkládacího rozhodnutí: \n2. června 2026 \nŽalobkyně: \nJ. sp. z o.o. \nJ. S.A. \nC. sp. z o.o. v K. \nM. sp. z o.o. \nC. sp. z o.o. ve W. \nŽalovaná: \nRada Miasta Krakowa \n      \nSp. zn. II OSK 1153/25 \nUSNESENÍ \nNejvyšší správní soud (Naczelny Sąd Administracyjny) ve složení: \n[omissis] [složení soudu] \npo projednání dne 2. června 2026 \nna jednání v obecněsprávním kolegiu \nCS \nŽÁDOST O ROZHODNUTÍ O PŘEDBĚŽNÉ OTÁZCE ZE DNE 2. 6. 2026 – VĚC <em class='highlight'>C-630/26</em> \n      \n \n2  \nkasačních stížností, které podaly společnosti J. sp. z o.o. se sídlem v K. a J. S.A. \nse sídlem v K., C. sp. z o.o. se sídlem v K., M. sp. z o.o. se sídlem ve W., C. sp. \nZ o.o. se sídlem ve W.", "Nejvyšší \nŽÁDOST O ROZHODNUTÍ O PŘEDBĚŽNÉ OTÁZCE ZE DNE 2. 6. 2026 – VĚC <em class='highlight'>C-630/26</em> \n      \n \n10  \nsprávní soud (Naczelny Sąd Administracyjny) přitom uvádí, že obdobný \nregulační model – spojující obecné zákazy adresované soukromým \nprovozovatelům s výjimkami ve prospěch komunální nebo koncesní \ninfrastruktury – funguje v usneseních o ochraně krajiny jiných územních \nsamosprávných celků v Polsku. Výklad podaný Soudním dvorem bude mít \ntedy význam nejen pro rozhodnutí projednávané věci, ale rovněž pro \nposouzení souladu obdobných regulací platných v jiných územních \nsamosprávných celcích s unijním právem. \n[33]. Odpověď na předložené otázky je nezbytná pro rozhodnutí projednávané \nvěci." ]
+          },
+          "innerHits" : { },
+          "routing" : "C/0630/26/00000000RP/01/P/01",
+          "matchedQueries" : [ ]
+        }, {
+          "index" : "index-affair@30-06-2026",
+          "id" : "C/0630/26/00000000RP/01/P/01-3521081",
+          "score" : 12.285533,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "C/0630/26/00000000RP/01/P/01-3521081",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_326991",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+            "idPublished" : "C-630/26",
+            "docType" : "Demande (JO)",
+            "docTypeCode" : "DDP_COMM",
+            "docDate" : "2026-09-21",
+            "docFormats" : [ "HTML" ],
+            "contentLength" : 0,
+            "contentML" : [ {
+              "cs" : "Žádost o rozhodnutí o předběžné otázce, kterou podal Naczelny Sąd Administracyjny (Polsko) dne 10. června 2026 – J. sp. z o.o. a další v. Rada Miasta Krakowa (Věc C-630/26, Rada Miasta Krakowa) Jednací jazyk: polština Předkládající soud Naczelny Sąd Administracyjny Účastníci původního řízení Žalobkyně: J. sp. z o.o., J. S.A., C. sp. z o.o. w K., M. sp. z o.o., C. sp. z o.o. w W. Žalovaná: Rada Miasta Krakowa Za účasti: D.D., B.D., Z.D., C. sp. z o.o., T. sp. z o.o., F. sp. z o.o. sp.k., H. S.A., B. Oddział w Polsce Předběžné otázky Musí být čl. 15 odst. 1 a odst. 2 písm. d) ve spojení s čl. 15 odst. 3 písm. a), b) a c) směrnice Evropského parlamentu a Rady 2006/123/ES ze dne 12. prosince 2006 o službách na vnitřním trhu1 (dále jen „směrnice o službách“) vykládán v tom smyslu, že brání právní úpravě obsažené v místním právním předpisu, která zavádí obecná omezení nebo zákazy používání určitých forem venkovní reklamy poskytovateli služeb provozujícími reklamní činnost, přičemž současně připouští používání stejných nebo srovnatelných forem reklamy na infrastruktuře ve správě územního samosprávného celku nebo využívané na základě smluv uzavřených s tímto celkem, v situaci, kdy vnitřní rozpor této právní úpravy, spočívající v tom, že tentýž normotvorný orgán kvalifikoval prvky této infrastruktury jako reklamní zařízení pro účely daně z nemovitých věcí, a současně je považuje za komunální infrastrukturu vyňatou z režimu upravujícího reklamy na základě usnesení, může vést k závěru, že zavedená omezení nebyla objektivně nezbytná k dosažení deklarovaného cíle ochrany krajiny? Musí být čl. 15 odst. 3 písm. a), b) a c) směrnice o službách vykládán v tom smyslu, že při posuzování nediskriminační, nezbytné a přiměřené povahy požadavku omezujícího přístup k činnosti poskytování služeb má význam okolnost, že veřejnoprávní subjekt, který tento požadavek stanovil, je současně vlastníkem infrastruktury, na niž se vztahují výjimky z tohoto požadavku, nebo má prospěch z činnosti provozované s využitím této infrastruktury? ____________ 1 Úř. věst. 2006, L 376, s. 36."
+            } ],
+            "docNoPart" : 1,
+            "celex" : "",
+            "groupByLogicalId" : [ {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521091",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "LV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521090",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "HU",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521092",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "HR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521085",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "BG",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521081",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "DA",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521082",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "RO",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521083",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "NL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521084",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "PL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521100",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "ES",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521099",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "SV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521098",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "MT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521103",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "EN",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521102",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "CS",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521104",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "IT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521088",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "FI",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521101",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "ET",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521087",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "DE",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521089",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "PT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521086",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "LT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521094",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "SK",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521095",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "SL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521093",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521096",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "GA",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0630/26/00000000RP/01/P/01-3521097",
+              "idProcedure" : "C/0630/26/00000000RP/01/P/01",
+              "docLang" : "EL",
+              "formats" : [ "HTML" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "",
+            "affairJurisdiction" : "Cour de justice",
+            "affairJurisdictionCode" : "C",
+            "routing" : "C/0630/26/00000000RP/01/P/01",
+            "ecli" : ""
+          },
+          "highlightFields" : {
+            "contentML.cs.exact" : [ "Rada Miasta Krakowa (Věc <em class='highlight'>C-630/26</em>, Rada Miasta Krakowa) Jednací jazyk: polština Předkládající soud Naczelny Sąd Administracyjny Účastníci původního řízení Žalobkyně: J. sp. z o.o., J. S.A., C. sp. z o.o. w K., M. sp. z o.o., C. sp. z o.o. w W. Žalovaná: Rada Miasta Krakowa Za účasti: D.D., B.D., Z.D., C. sp. z o.o., T. sp. z o.o., F. sp. z o.o. sp.k., H. S.A., B." ]
+          },
+          "innerHits" : { },
+          "routing" : "C/0630/26/00000000RP/01/P/01",
+          "matchedQueries" : [ ]
+        } ],
+        "empty" : false
+      }
+    },
+    "matchedQueries" : [ ]
+  } ],
+  "aggregatesMap" : {
+    "facet_bucket" : [ {
+      "name" : "procTypesWithoutResults",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "PREJ"
+      } ]
+    }, {
+      "name" : "jurisdiction",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "C"
+      } ]
+    }, {
+      "name" : "affairState",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "ENC"
+      } ]
+    }, {
+      "name" : "matCode",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "LCPE",
+        "childrenAggregate" : {
+          "name" : "matCodeTwo",
+          "aggregateCountValues" : [ {
+            "docCount" : 1,
+            "value" : "LCPE.ETAB",
+            "childrenAggregate" : {
+              "name" : "matCodeThree",
+              "aggregateCountValues" : [ ]
+            }
+          } ]
+        }
+      }, {
+        "docCount" : 1,
+        "value" : "LPSE",
+        "childrenAggregate" : {
+          "name" : "matCodeTwo",
+          "aggregateCountValues" : [ {
+            "docCount" : 1,
+            "value" : "LCPE.ETAB",
+            "childrenAggregate" : {
+              "name" : "matCodeThree",
+              "aggregateCountValues" : [ ]
+            }
+          } ]
+        }
+      } ]
+    }, {
+      "name" : "procType",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "P"
+      } ]
+    } ]
+  }
+}

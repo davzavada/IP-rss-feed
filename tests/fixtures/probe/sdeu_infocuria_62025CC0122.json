@@ -1,14 +1,14 @@
 {
   "totalHits" : 1,
-  "maxScore" : 19.31084,
+  "maxScore" : 19.304527,
   "maxScoreOthersDocuments" : 0.0,
   "totalHitsRelation" : "EQUAL_TO",
   "totalHitsOthersDocs" : 0,
   "searchHits" : [ {
     "index" : "index-affair@30-06-2026",
     "id" : "C/0122/25/00000000PV/01/P/01",
-    "score" : 19.31084,
-    "sortValues" : [ 19.31084, 1738713600000 ],
+    "score" : 19.304527,
+    "sortValues" : [ 19.304527, 1738713600000 ],
     "content" : {
       "id" : "C/0122/25/00000000PV/01/P/01",
       "affId" : "C/0122/25/00000000PV/01",
@@ -89,11 +89,11 @@
       "document" : {
         "totalHits" : 2,
         "totalHitsRelation" : "EQUAL_TO",
-        "maxScore" : 9.77968,
+        "maxScore" : 9.773368,
         "searchHits" : [ {
           "index" : "index-affair@30-06-2026",
           "id" : "C/0122/25/00000000PV/01/P/01-3263991",
-          "score" : 9.77968,
+          "score" : 9.773368,
           "sortValues" : [ ],
           "content" : {
             "id" : "C/0122/25/00000000PV/01/P/01-3263991",
@@ -252,7 +252,7 @@
         }, {
           "index" : "index-affair@30-06-2026",
           "id" : "C/0122/25/00000000PV/01/P/01-3522311",
-          "score" : 9.77968,
+          "score" : 9.773368,
           "sortValues" : [ ],
           "content" : {
             "id" : "C/0122/25/00000000PV/01/P/01-3522311",
