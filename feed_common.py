@@ -297,6 +297,39 @@ def gemini_enabled():
     return os.environ.get("SKIP_GEMINI", "").lower() not in ("1", "true", "yes")
 
 
+# Právní formy za jménem (s.r.o., a. s., GmbH…). Prompty je zakazují, modely
+# je přesto občas napíšou – odstraní se tady. Krátké velké zkratky (AG, SA…)
+# jen hned za slovem s velkým písmenem nebo číslicí (za jménem firmy), ať
+# nezmizí „GA“ ani „se“. Čárka před formou jde pryč s ní, a když byla forma
+# v čárkách („Spolek, z. s., a obec“), i ta za ní.
+_FORMY = (r"spol\.\s?s\s?r\.\s?o\.", r"s\.\s?r\.\s?o\.", r"a\.\s?s\.", r"v\.\s?o\.\s?s\.", r"k\.\s?s\.",
+          r"z\.\s?s\.", r"z\.\s?ú\.", r"o\.\s?p\.\s?s\.", r"s\.\s?p\.", r"sp\.\s?z\s?o\.\s?o\.",
+          r"S\.\s?p\.\s?A\.", r"S\.\s?A\.", r"S\.\s?à\s?r\.\s?l\.", r"S\.\s?r\.\s?l\.", r"B\.\s?V\.",
+          r"N\.\s?V\.", r"d\.\s?o\.\s?o\.", r"Kft\.", r"Zrt\.", r"GmbH(?:\s?&\s?Co\.\s?KG)?", r"Ltd\.?",
+          r"LLC", r"Inc\.?", r"plc", r"PLC", r"SARL")
+_ZKRATKY = (r"AG", r"SA", r"SE", r"AB", r"BV", r"NV", r"KG", r"SAS", r"SpA", r"SRL", r"Oy", r"A/S", r"ApS")
+_KONEC_FORMY = r"(?=$|[\s,.;:!?)\]“”\"'])"
+_FORMA_RE = re.compile(r"(?:(?P<carka>,)\s*|\s+)(?P<forma>" + "|".join(_FORMY) + r")(?(carka),?)"
+                       + _KONEC_FORMY)
+_ZKRATKA_RE = re.compile(r"(?P<jmeno>\b[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ0-9][\w&.'\-]*)(?:(?P<carka>,)\s*|\s+)"
+                         r"(?P<forma>" + "|".join(_ZKRATKY) + r")(?(carka),?)" + _KONEC_FORMY)
+_NOVA_VETA_RE = re.compile(r"\s*$|\s+[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ]")
+
+
+def bez_pravni_formy(text):
+    """„Alfa s.r.o. se soudila“ -> „Alfa se soudila“. Když tečka formy byla
+    zároveň koncem věty, zůstane."""
+    if not text:
+        return text or ""
+
+    def pryc(m):
+        konec_vety = m.group(0).endswith(".") and _NOVA_VETA_RE.match(m.string, m.end())
+        return "." if konec_vety else ""
+
+    text = _FORMA_RE.sub(pryc, text)
+    return _ZKRATKA_RE.sub(lambda m: m.group("jmeno"), text)
+
+
 def parse_ai_response(raw):
     """Rozparsuje odpověď modelu ve tvaru 'HESLO: ...' + 'SHRNUTÍ: ...'.
 

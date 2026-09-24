@@ -266,6 +266,29 @@ check("bez oblastí od AI se vezmou z metadat, procesní taky",
       v["oblasti"] == ["zavazky"] and v["procesni"] is True and pouzity == "gemini-test", str(v))
 check("systémový prompt nese seznam oblastí a JSON schéma",
       "gdpr – " in volani[-1]["system"] and volani[-1]["schema"]["type"] == "OBJECT")
+PRAVNI_FORMY = [
+    ("Mailboxde.cz s.r.o. se soudila s Úřadem", "Mailboxde.cz se soudila s Úřadem"),
+    ("Uniphone, s.r.o. se soudila", "Uniphone se soudila"),
+    ("Spolek Radslavská zátoka, z. s., a Spolek chatařů, z. s., podali žalobu",
+     "Spolek Radslavská zátoka a Spolek chatařů podali žalobu"),
+    ("Vodafone Czech Republic a. s. se domáhala", "Vodafone Czech Republic se domáhala"),
+    ("LENDIGO Services s. r. o. vedla exekuci", "LENDIGO Services vedla exekuci"),
+    ("Žalobkyní byla Alfa s.r.o. Soud rozhodl.", "Žalobkyní byla Alfa. Soud rozhodl."),
+    ("Gamma GmbH & Co. KG a Delta sp. z o.o. se přely", "Gamma a Delta se přely"),
+    ("BASF AG a Bayer AG proti Komisi.", "BASF a Bayer proti Komisi."),
+    ("Stanovisko GA se týká toho, zda se SE musí", "Stanovisko GA se týká toho, zda se SE musí"),
+]
+spatne = [(v, fc.bez_pravni_formy(v)) for v, c in PRAVNI_FORMY if fc.bez_pravni_formy(v) != c]
+check("právní formy ze shrnutí pryč (s.r.o., a. s., z. s. v čárkách, GmbH, AG…), „GA“ a „se“ zůstanou",
+      not spatne, str(spatne))
+s = slim(zaznam("ns:PF", "2026-09-22T00:00:00Z", ai={"heslo": "Alfa s.r.o.", "oblasti": ["zavazky"], "procesni": False,
+                                                    "shrnuti": "Alfa, a.s., se soudila s Betou s.r.o. o zaplacení."}))
+check("i hotová shrnutí na webu jsou bez právních forem",
+      s["shrnuti"] == "Alfa se soudila s Betou o zaplacení." and s["heslo"] == "Alfa", str(s))
+fc.ai_volani = falesna_ai('{"heslo": "Známka", "shrnuti": "Mailboxde.cz s.r.o. se soudila s Úřadem průmyslového '
+                          'vlastnictví o zápis známky.", "oblasti": ["prumyslova_prava"], "procesni": false}')
+v, _ = analyza.analyzuj(rozhodnuti, {"text": DLOUHY_TEXT}, TAX)
+check("nové shrnutí od AI je bez právní formy", v["shrnuti"].startswith("Mailboxde.cz se soudila"), str(v))
 check("prompt chce vždy aspoň jednu oblast, „ostatni“ nezná",
       "Vždy vyber aspoň jednu" in volani[-1]["system"] and "ostatni" not in volani[-1]["system"])
 fc.ai_volani = falesna_ai('{"heslo": "Pokuta", "shrnuti": "' + SHRNUTI + '", "oblasti": ["ostatni"], "procesni": false}')

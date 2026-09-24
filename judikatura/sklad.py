@@ -14,6 +14,7 @@ import json
 import os
 from datetime import timedelta
 
+import feed_common as fc
 from judikatura import fronta, model
 
 KOREN = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -69,8 +70,10 @@ def slim(z):
     if not out.get("soudce") and (z.get("meta") or {}).get("soudce"):
         out["soudce"] = z["meta"]["soudce"]
     ai = z.get("ai") or {}
-    out["heslo"] = ai.get("heslo", "")
-    out["shrnuti"] = ai.get("shrnuti", "")
+    # Právní formy pryč i u shrnutí, která AI napsala dřív (archiv zůstává).
+    heslo = ai.get("heslo", "")
+    out["heslo"] = fc.bez_pravni_formy(heslo).rstrip(".") if heslo else ""
+    out["shrnuti"] = fc.bez_pravni_formy(ai.get("shrnuti", ""))
     out["oblasti"] = ai.get("oblasti") or z.get("oblasti_meta") or []
     procesni = ai.get("procesni")
     out["procesni"] = bool(z.get("procesni_meta") if procesni is None else procesni)

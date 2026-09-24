@@ -155,11 +155,11 @@ def parse(raw, tax):
         shrnuti = cast(r"SHRNUT[IÍ]", vse)
         oblasti = re.split(r"[,;\n]+", cast("OBLASTI", vse))
         procesni = cast(r"PROCESN[IÍ]", vse)
-    shrnuti = _cist(shrnuti)
+    shrnuti = fc.bez_pravni_formy(_cist(shrnuti))
     if len(shrnuti) < MIN_SHRNUTI:
         return None
     return {
-        "heslo": _cist(heslo).rstrip("."),
+        "heslo": fc.bez_pravni_formy(_cist(heslo)).rstrip("."),
         "shrnuti": shrnuti,
         "oblasti": tax.normalizuj([_cist(o) for o in oblasti or [] if _cist(o)]),
         "procesni": _ano(procesni),

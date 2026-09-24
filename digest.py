@@ -30,6 +30,7 @@ from datetime import datetime, timedelta, timezone
 
 from feed_common import (
     DIGEST_PROMPT,
+    bez_pravni_formy,
     gemini_enabled,
     gemini_generate_raw,
     load_json,
@@ -213,8 +214,9 @@ def _strip_markdown(text):
 
 
 def _clean(text):
-    """Sjednotí bílé znaky do jednoho odstavce."""
-    return re.sub(r"\s+", " ", text).strip()
+    """Sjednotí bílé znaky do jednoho odstavce a odstraní právní formy
+    (s.r.o., a. s.…), které přehled psát nemá."""
+    return bez_pravni_formy(re.sub(r"\s+", " ", text).strip())
 
 
 def parse_digest(raw, items):
