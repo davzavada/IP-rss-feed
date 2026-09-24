@@ -105,6 +105,7 @@
 <main class="container">
 
 <!-- Přepínač stránek pro úzká okna, kde je boční navigace schovaná. -->
+<div class="pagetabs-lista">
 <nav class="pagetabs" aria-label="Přepínání stránek">
   <a href="#prehled">Novinky</a>
   <a href="#dvatydny" title="Dva týdny v IP a IT">2 týdny</a>
@@ -117,6 +118,7 @@
   <span class="pagetabs-sep" aria-hidden="true"></span>
   <a href="#kalendar" title="Kalendář jednání">Kalendář</a>
 </nav>
+</div>
 
 <div class="page" id="prehled">
 
@@ -139,7 +141,7 @@
 <section class="page" id="dvatydny" hidden>
   <div class="card">
     <div class="card-header">
-      <h2 class="card-title">Co se za dva týdny stalo v IP a IT</h2>
+      <h2 class="card-title">Dva týdny v IP a IT</h2>
       <span class="legend" id="digest-updated"></span>
       <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
       <div class="card-desc" hidden>Přehled toho podstatného z duševního vlastnictví a IT za poslední dva týdny. Píše ho AI z rozhodnutí všech soudů, která spadají do oblastí duševního vlastnictví a IT, a z článků v časopisech – na vašem výběru nezávisí. Nový vychází každé pondělí ráno.</div>
@@ -210,7 +212,7 @@
     <div class="card-header">
       <h2 class="card-title">Právní časopisy</h2>
       <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
-      <div class="card-desc" hidden>Nová čísla a články za poslední měsíc. Sleduje:
+      <div class="card-desc" hidden>Nová čísla a články za poslední 4 týdny. Sleduje:
         <ul id="casopisy-seznam"></ul>
         Které časopisy se ukazují, si po přihlášení vyberete v části Můj výběr.
       </div>
@@ -224,7 +226,8 @@
 <section class="page" id="kalendar" hidden>
   <div class="card" id="jednani">
     <div class="card-header">
-      <h2 class="card-title">Kalendář jednání – duševní vlastnictví</h2>
+      <h2 class="card-title">Kalendář jednání</h2>
+      <span class="legend">IP senáty MS a VS v Praze</span>
       <span class="legend" id="cal-info"></span>
       <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
       <div class="card-desc" hidden>

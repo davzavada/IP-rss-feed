@@ -28,7 +28,7 @@
   --head-h: 57px;
   --obsah-nahore: 28px;
   /* Odstíny štítků (soft badge) */
-  --badge-green-bg: hsl(142 76% 36% / 0.12);   --badge-green-fg: hsl(142 72% 29%);
+  --badge-green-bg: hsl(142 76% 36% / 0.12);   --badge-green-fg: hsl(142 72% 25%);
   --badge-blue-bg: hsl(217 91% 60% / 0.12);    --badge-blue-fg: hsl(224 76% 48%);
   --badge-amber-bg: hsl(38 92% 50% / 0.15);    --badge-amber-fg: hsl(26 90% 37%);
   --badge-indigo-bg: hsl(239 84% 67% / 0.13);  --badge-indigo-fg: hsl(244 55% 41%);
@@ -114,7 +114,7 @@ section[id], .card[id] { scroll-margin-top: calc(var(--head-h) + var(--obsah-nah
    posunul obsah karty níž. */
 .help-wrap { position: relative; margin-left: auto; display: flex; }
 .help {
-  width: 18px; height: 18px; flex: none; padding: 0;
+  width: 24px; height: 24px; flex: none; padding: 0;
   border: 1px solid var(--border); border-radius: 999px; background: none;
   color: var(--muted-foreground); font-size: var(--fs-sm); line-height: 1;
   cursor: pointer;
@@ -132,7 +132,7 @@ section[id], .card[id] { scroll-margin-top: calc(var(--head-h) + var(--obsah-nah
   text-align: left; font-weight: 400; letter-spacing: normal;
 }
 .card-desc[hidden] { display: none; }
-.help-wrap:hover .card-desc { display: block; }
+.card-title:focus { outline: none; }
 .card-desc ul { margin: 4px 0 0; padding-left: 18px; }
 .card-desc li { margin: 1px 0; }
 /* Obsah karty je dotazovatelný kontejner: o rozvržení tabulky nerozhoduje
@@ -364,7 +364,8 @@ button.cal-key:hover { box-shadow: inset 0 0 0 1px currentColor; }
 }
 /* Proběhlé dny jsou potlačené, ale čitelné – kalendář slouží i jako archiv. */
 .cal-day.past { background: color-mix(in srgb, var(--muted) 45%, var(--card)); }
-.cal-day.past .cal-daynum { opacity: 0.7; }
+/* Minulé dny tlumeně, ale čitelně (≥ 4,5 : 1 i na šedém podkladu). */
+.cal-day.past .cal-daynum { color: color-mix(in srgb, var(--muted-foreground) 75%, var(--foreground)); }
 /* Číslo dne má u všech dnů stejnou výšku řádku, jinak by dnešek se svou
    pilulkou posunul obsah buňky níž. Záporný okraj drží číslici zarovnanou
    s ostatními dny, i když je kolem ní pilulka. */
@@ -479,6 +480,13 @@ html.is-loading body { visibility: hidden; }
    Zůstává v jednom řádku; co se nevejde, posune se do strany (bez
    posuvníku) a okraj s dalšími záložkami vybledne. Svislé čárky oddělují
    skupiny stejně jako linky v boční navigaci. */
+/* Záložky stránek (úzká okna) drží pod hlavičkou. Pozadí má obal – maska
+   přechodu na okrajích posuvníku by jinak zprůhlednila i ji. */
+.pagetabs-lista {
+  position: sticky; top: var(--head-h); z-index: 30;
+  margin: calc(-1 * var(--obsah-nahore)) -24px 0; padding: 10px 24px 8px;
+  background: var(--background);
+}
 .pagetabs {
   display: flex; gap: 4px; align-items: center;
   overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain;
@@ -563,7 +571,7 @@ html.is-loading body { visibility: hidden; }
     left: calc(var(--obsah-x) + 24px - var(--nav-gap) - var(--nav-w));
   }
   /* Se zobrazenou boční navigací by byl přepínač nahoře nadbytečný. */
-  .pagetabs { display: none; }
+  .pagetabs-lista { display: none; }
 }
 /* Tabulka má spodní šířku 780 px; jakmile se do karty nevejde, vodorovné
    posouvání schová shrnutí a řádky se protáhnou. Místo toho je z každé
@@ -572,7 +580,8 @@ html.is-loading body { visibility: hidden; }
 @container (max-width: 790px) {
   .table-wrap { overflow-x: visible; margin-inline: 0; }
   table { display: block; min-width: 0; }
-  table colgroup, table thead { display: none; }
+  table colgroup { display: none; }
+  table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   tbody { display: block; }
   tbody tr {
     display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px;
@@ -603,6 +612,9 @@ html.is-loading body { visibility: hidden; }
   main.container { padding-block: var(--obsah-nahore) 48px; gap: 20px; }
   .card-header { padding: 14px 16px 0; }
   .card-filtr { padding: 10px 16px 0; }
+  .pagetabs-lista { margin-inline: -14px; padding-inline: 14px; }
+  /* Hlavička by se zalomila do dvou řádků. */
+  #updated { display: none; }
   .card-content { padding: 8px 16px 12px; }
   /* Popis za jménem webu zabere na telefonu tři řádky hlavičky. */
   h1 .tagline { display: none; }

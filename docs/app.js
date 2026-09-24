@@ -695,26 +695,29 @@ function renderTable(items, container, columns, key, prazdno, moznosti) {
     return;
   }
   tableColumns[key] = columns;
-  let html = '<div class="table-wrap"><table data-cols="' + esc(key) + '"><colgroup>';
+  // Role výslovně: v blokovém zobrazení (úzká karta) by display: block/flex
+  // tabulce vzal význam a čtečka by ztratila řádky a záhlaví.
+  let html = '<div class="table-wrap"><table role="table" data-cols="' + esc(key) + '"><colgroup>';
   widthsFor(key, columns).forEach(w => { html += '<col style="width:' + w.toFixed(2) + '%">'; });
-  html += "</colgroup><thead><tr>";
+  html += '</colgroup><thead role="rowgroup"><tr role="row">';
   columns.forEach((c, i) => {
     // Poslední sloupec už nemá kam růst – hranice je vždy mezi dvěma sloupci.
-    html += "<th" + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.label +
+    html += '<th role="columnheader"' + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.label +
       (i < columns.length - 1 ? resizerHtml(c) : "") + "</th>";
   });
-  html += "</tr></thead><tbody>";
+  html += '</tr></thead><tbody role="rowgroup">';
   let skupina = null;
   items.forEach(item => {
     const sk = m.skupina ? m.skupina(item) : null;
     if (sk !== null && sk !== skupina) {
       skupina = sk;
-      html += '<tr class="den"><th colspan="' + columns.length + '" scope="colgroup">' + sk + "</th></tr>";
+      html += '<tr class="den" role="row"><th role="rowheader" colspan="' + columns.length + '" scope="colgroup">' +
+        sk + "</th></tr>";
     }
     const trida = m.trida ? m.trida(item) : "";
-    html += trida ? '<tr class="' + trida + '">' : "<tr>";
+    html += '<tr role="row"' + (trida ? ' class="' + trida + '"' : "") + ">";
     columns.forEach(c => {
-      html += "<td" + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.render(item) + "</td>";
+      html += '<td role="cell"' + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.render(item) + "</td>";
     });
     html += "</tr>";
   });
@@ -2145,7 +2148,14 @@ function navigate(hash, push) {
   if (section) section.scrollIntoView({ block: "start" });
   else window.scrollTo(0, 0);
 
-  if (push) history.pushState(null, "", "#" + (id || page.id));
+  if (push) {
+    history.pushState(null, "", "#" + (id || page.id));
+    const nadpis = document.querySelector("#" + page.id + " .card-title");
+    if (nadpis) {
+      nadpis.setAttribute("tabindex", "-1");
+      nadpis.focus({ preventScroll: true });
+    }
+  }
   updateNav();
   odhalZalozku();
 }
@@ -2197,6 +2207,8 @@ function initNav() {
       const href = String(a.getAttribute("href") || "").replace(/^#/, "");
       // Zvýrazněná je aktuální sekce a k ní i její stránka.
       a.classList.toggle("active", href === active || href === currentPage.id);
+      if (href === currentPage.id) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
     });
   }
 
