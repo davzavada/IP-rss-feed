@@ -17,12 +17,11 @@
   --fs-md: 0.85rem;    /* veškerý text: seznamy, prosa, ovládání */
   --fs-lg: 1rem;       /* nadpisy karet a jméno webu */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  /* Rozvržení: boční navigace (viz @media min-width: 1600px). Pruh pro ni
-     je tak široký, aby se do něj vešel i nejdelší název stránky na jeden
-     řádek, a drží se jen vlevo – zrcadlit ho i vpravo kvůli vycentrování
-     obsahu by z pravé třetiny okna udělalo prázdné místo. */
+  /* Rozvržení: boční navigace (viz @media min-width: 1600px). Je tak
+     široká, aby se do ní vešel i nejdelší název stránky na jeden řádek;
+     od karet ji dělí stejná mezera jako karty mezi sebou. */
   --nav-w: 290px;
-  --nav-band: 340px;
+  --nav-gap: 28px;
   /* Odstíny štítků (soft badge) */
   --badge-green-bg: hsl(142 76% 36% / 0.12);   --badge-green-fg: hsl(142 72% 29%);
   --badge-blue-bg: hsl(217 91% 60% / 0.12);    --badge-blue-fg: hsl(224 76% 48%);
@@ -492,28 +491,18 @@ html.is-loading body { visibility: hidden; }
   width: 1px; background: var(--border);
 }
 @media (min-width: 1600px) {
-  /* Vlevo se vyhradí pruh na navigaci a obsah se od něj roztáhne doprava.
-     Vycentrovat ho by znamenalo držet stejně široký pruh i vpravo a ten by
-     zůstal prázdný; nechat ho doběhnout až k hraně okna ale taky ne – vpravo
-     proto zbude půlka toho, co si bere navigace vlevo. */
-  /* Jakmile obsah narazí na max-width, zbylé místo by celé spadlo doprava
-     a na velkém monitoru by vpravo zela díra. Navigace s obsahem se proto
-     posouvají jako jeden celek doprostřed: mezera od okna k navigaci vlevo
-     je stejná jako od karet k oknu vpravo (1576px = 1600px obsahu bez
-     vnitřního odsazení). */
+  /* Obsah stojí uprostřed okna a navigace se k němu zleva přilepí.
+     Když se nalevo od vycentrovaného obsahu nevejde, obsah se posune
+     doprava jen o tolik, aby jí zbylo místo (a 24 px k okraji okna).
+     --obsah-x je levý okraj .container; hlavička i stránka ho sdílí,
+     takže logo lícuje s kartami a navigace visí vlevo od obou. */
   :root {
-    --shift: max(0px, calc((100vw - var(--nav-band) - 1576px
-                            - (var(--nav-band) - var(--nav-w)) / 2) / 2));
+    --obsah-x: max(calc(var(--nav-w) + var(--nav-gap)), calc((100vw - 1600px) / 2));
   }
-  .container {
-    margin-left: calc(var(--nav-band) + var(--shift));
-    margin-right: max(24px, calc(var(--nav-band) / 2));
-  }
-  /* Navigace sedí uprostřed svého pruhu – ani nalepená na okraj okna,
-     ani na karty. */
+  .container { margin-left: var(--obsah-x); margin-right: auto; }
   #sidenav {
     display: flex;
-    left: calc((var(--nav-band) - var(--nav-w)) / 2 + var(--shift));
+    left: calc(var(--obsah-x) + 24px - var(--nav-gap) - var(--nav-w));
   }
   /* Se zobrazenou boční navigací by byl přepínač nahoře nadbytečný. */
   .pagetabs { display: none; }
