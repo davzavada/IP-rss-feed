@@ -602,7 +602,10 @@ function stavShrnutiText(polozky, oknoDni) {
       (bezOblasti === cekajici.length
         ? ", do výběru podle oblastí se tato rozhodnutí dostanou až potom."
         : bezOblasti
-          ? "; " + bezOblasti + " z nich zatím nemá oblast a do výběru podle oblastí se dostane až potom."
+          ? "; " + bezOblasti + " z nich zatím " +
+            (bezOblasti >= 2 && bezOblasti <= 4
+              ? "nemají oblast a do výběru podle oblastí se dostanou až potom."
+              : "nemá oblast a do výběru podle oblastí se dostane až potom.")
           : ", do té doby jsou zařazená podle údajů soudu."));
   }
   if (bezTextu) casti.push("U " + bezTextu + " rozhodnutí soud ještě nezveřejnil text.");
