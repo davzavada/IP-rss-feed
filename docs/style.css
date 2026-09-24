@@ -90,11 +90,10 @@ h1 .tagline { font-weight: 400; color: var(--muted-foreground); }
 .legend { font-size: var(--fs-sm); color: var(--muted-foreground); white-space: nowrap; }
 
 main.container { padding-block: 28px 72px; display: flex; flex-direction: column; gap: 28px; }
-/* Obsah je rozdělený na stránky (shrnutí / všechno nové / kalendář);
-   přepíná se mezi nimi navigací, viditelná je vždy jedna. */
+/* Obsah je rozdělený na stránky (shrnutí, stránka každého zdroje,
+   kalendář, výběr); přepíná se mezi nimi navigací, viditelná je vždy jedna. */
 .page { display: flex; flex-direction: column; gap: 28px; }
 .page[hidden] { display: none; }
-#recentni { gap: 20px; }
 section[id], .card[id] { scroll-margin-top: 76px; }
 
 /* Karta (shadcn Card) */
@@ -487,14 +486,31 @@ button.cal-key:hover { box-shadow: inset 0 0 0 1px currentColor; }
 html.is-loading body { visibility: hidden; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
-/* Přepínač stránek (shadcn tabs) – naskočí tam, kde zmizí boční navigace. */
-.pagetabs { display: flex; gap: 4px; flex-wrap: wrap; }
+/* Přepínač stránek (shadcn tabs) – naskočí tam, kde zmizí boční navigace.
+   Zůstává v jednom řádku; co se nevejde, posune se do strany (bez
+   posuvníku) a okraj s dalšími záložkami vybledne. Svislé čárky oddělují
+   skupiny stejně jako linky v boční navigaci. */
+.pagetabs {
+  display: flex; gap: 4px; align-items: center;
+  overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain;
+}
+.pagetabs::-webkit-scrollbar { display: none; }
 .pagetabs a {
+  flex: none; white-space: nowrap;
   padding: 6px 12px; border-radius: 8px; font-size: var(--fs-md);
   color: var(--muted-foreground); text-decoration: none;
 }
 .pagetabs a:hover { color: var(--foreground); background: var(--accent); }
 .pagetabs a.active { color: var(--foreground); background: var(--muted); font-weight: 500; }
+.pagetabs-sep { flex: none; width: 1px; height: 18px; margin-inline: 4px; background: var(--border); }
+.pagetabs.dalsi-vpravo { mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
+.pagetabs.dalsi-vlevo { mask-image: linear-gradient(to left, #000 calc(100% - 32px), transparent); }
+.pagetabs.dalsi-vlevo.dalsi-vpravo {
+  mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent);
+}
+@media (max-width: 480px) {
+  .pagetabs a { padding-inline: 10px; }
+}
 
 /* Boční navigace vlevo (jen na širokých obrazovkách) – plovoucí karta. */
 #sidenav {
@@ -520,9 +536,14 @@ html.is-loading body { visibility: hidden; }
    se čte hůř než delší pruh. Šířku pruhu drží --nav-w. */
 #sidenav a { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 /* Skupiny stránek oddělené linkou; podpoložky mají svislé vodítko,
-   aby bylo vidět, ke které stránce patří. */
+   aby bylo vidět, ke které stránce patří. Popisek skupiny (shadcn
+   SidebarGroupLabel) není odkaz – jen pojmenuje stránky pod sebou. */
 .nav-group { display: flex; flex-direction: column; gap: 2px; padding: 5px 0; }
 .nav-group + .nav-group { border-top: 1px solid var(--border); }
+.nav-label {
+  padding: 4px 9px 2px; font-size: var(--fs-sm); font-weight: 500;
+  color: var(--muted-foreground); white-space: nowrap;
+}
 #sidenav a:not(.sub) { color: var(--foreground); }
 #sidenav a:not(.sub).active { color: var(--link); }
 /* Podpoložky jsou odsazené o šířku ikony nadřazené stránky a drží se

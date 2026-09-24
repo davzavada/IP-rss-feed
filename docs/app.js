@@ -1845,13 +1845,21 @@ function initNastaveni() {
 
 /* ========== Stránky a navigace ========== */
 // Obsah je rozdělený na stránky; přepíná se podle adresy (#kotva).
-// Kotvy sekcí zůstávají platné – odkaz na #nsoud otevře druhou stránku.
+// Kotvy sekcí zůstávají platné – odkaz na #dvatydny otevře Shrnutí.
+// Každý zdroj má vlastní stránku.
 const PAGES = [
   { id: "prehled",  sections: ["dnesni", "dvatydny"] },
-  { id: "recentni", sections: ["nsoud", "nss", "us", "sdeu", "casopisy"] },
+  { id: "nsoud",    sections: [] },
+  { id: "nss",      sections: [] },
+  { id: "us",       sections: [] },
+  { id: "sdeu",     sections: [] },
+  { id: "casopisy", sections: [] },
   { id: "kalendar", sections: ["jednani"] },
   { id: "nastaveni", sections: ["vyber"] }
 ];
+// Kotvy z uložených odkazů: dřív byly všechny zdroje na jedné stránce
+// „Všechno nové" a SDEU se jmenoval cjeu.
+const STARE_KOTVY = { recentni: "nsoud", cjeu: "sdeu" };
 
 let currentPage = PAGES[0];
 let updateNav = function () {};
@@ -1863,8 +1871,12 @@ function pageOf(hash) {
 
 // Přepne na stránku a odscrolluje – buď na sekci, nebo na začátek stránky.
 function navigate(hash, push) {
-  const page = pageOf(hash);
-  const id = String(hash || "").replace(/^#/, "");
+  let id = String(hash || "").replace(/^#/, "");
+  if (STARE_KOTVY[id]) {
+    id = STARE_KOTVY[id];
+    history.replaceState(null, "", "#" + id);
+  }
+  const page = pageOf(id);
   currentPage = page;
   PAGES.forEach(p => {
     const el = document.getElementById(p.id);
@@ -1879,6 +1891,32 @@ function navigate(hash, push) {
 
   if (push) history.pushState(null, "", "#" + (id || page.id));
   updateNav();
+  odhalZalozku();
+}
+
+// V úzkém okně se přepínač stránek posouvá do strany: aktivní záložka
+// musí být vidět a u okraje, za kterým jsou další záložky, text vybledne.
+function odhalZalozku() {
+  const tabs = document.querySelector(".pagetabs");
+  const a = tabs && tabs.querySelector("a.active");
+  if (!a || tabs.scrollWidth <= tabs.clientWidth) return;
+  const t = tabs.getBoundingClientRect();
+  const r = a.getBoundingClientRect();
+  if (r.left < t.left + 28) tabs.scrollLeft -= t.left + 28 - r.left;
+  else if (r.right > t.right - 28) tabs.scrollLeft += r.right - (t.right - 28);
+}
+
+function initPagetabs() {
+  const tabs = document.querySelector(".pagetabs");
+  if (!tabs) return;
+  const okraje = () => {
+    const max = tabs.scrollWidth - tabs.clientWidth;
+    tabs.classList.toggle("dalsi-vlevo", tabs.scrollLeft > 2);
+    tabs.classList.toggle("dalsi-vpravo", tabs.scrollLeft < max - 2);
+  };
+  tabs.addEventListener("scroll", okraje, { passive: true });
+  window.addEventListener("resize", okraje);
+  okraje();
 }
 
 function initNav() {
@@ -1914,6 +1952,7 @@ function initNav() {
   window.addEventListener("popstate", () => navigate(location.hash, false));
   document.addEventListener("scroll", update, { passive: true });
   updateNav = update;
+  initPagetabs();
 }
 
 // Datum poslední aktualizace = nejnovější aktualizace ze všech zdrojů

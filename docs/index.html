@@ -78,17 +78,17 @@
 </header>
 
 <nav id="sidenav" aria-label="Navigace na stránce">
-  <!-- Jedna skupina = jedna stránka i s jejími sekcemi. -->
+  <!-- Skupiny stránek; zdroje mají každý svou stránku pod společným popiskem. -->
   <div class="nav-group">
     <a href="#prehled"><svg class="nav-ico" aria-hidden="true"><use href="#icon-sparkles"></use></svg><span>Shrnutí</span></a>
   </div>
   <div class="nav-group">
-    <a href="#recentni"><svg class="nav-ico" aria-hidden="true"><use href="#icon-list"></use></svg><span>Všechno nové</span></a>
-    <a href="#nsoud" class="sub"><svg class="nav-ico" aria-hidden="true"><use href="#icon-court"></use></svg><span>Nejvyšší soud</span></a>
-    <a href="#nss" class="sub"><svg class="nav-ico" aria-hidden="true"><use href="#icon-scale"></use></svg><span>Nejvyšší správní soud</span></a>
-    <a href="#us" class="sub"><svg class="nav-ico" aria-hidden="true"><use href="#icon-shield"></use></svg><span>Ústavní soud</span></a>
-    <a href="#sdeu" class="sub"><svg class="nav-ico" aria-hidden="true"><use href="#icon-eu"></use></svg><span>Soudní dvůr EU</span></a>
-    <a href="#casopisy" class="sub"><svg class="nav-ico" aria-hidden="true"><use href="#icon-book"></use></svg><span>Právní časopisy</span></a>
+    <span class="nav-label">Všechno nové</span>
+    <a href="#nsoud"><svg class="nav-ico" aria-hidden="true"><use href="#icon-court"></use></svg><span>Nejvyšší soud</span></a>
+    <a href="#nss"><svg class="nav-ico" aria-hidden="true"><use href="#icon-scale"></use></svg><span>Nejvyšší správní soud</span></a>
+    <a href="#us"><svg class="nav-ico" aria-hidden="true"><use href="#icon-shield"></use></svg><span>Ústavní soud</span></a>
+    <a href="#sdeu"><svg class="nav-ico" aria-hidden="true"><use href="#icon-eu"></use></svg><span>Soudní dvůr EU</span></a>
+    <a href="#casopisy"><svg class="nav-ico" aria-hidden="true"><use href="#icon-book"></use></svg><span>Právní časopisy</span></a>
   </div>
   <div class="nav-group">
     <a href="#kalendar"><svg class="nav-ico" aria-hidden="true"><use href="#icon-calendar"></use></svg><span>Kalendář jednání</span></a>
@@ -103,8 +103,14 @@
 <!-- Přepínač stránek pro úzká okna, kde je boční navigace schovaná. -->
 <nav class="pagetabs" aria-label="Přepínání stránek">
   <a href="#prehled">Shrnutí</a>
-  <a href="#recentni">Všechno nové</a>
-  <a href="#kalendar">Kalendář jednání</a>
+  <span class="pagetabs-sep" aria-hidden="true"></span>
+  <a href="#nsoud" title="Nejvyšší soud">NS</a>
+  <a href="#nss" title="Nejvyšší správní soud">NSS</a>
+  <a href="#us" title="Ústavní soud">ÚS</a>
+  <a href="#sdeu" title="Soudní dvůr EU">SDEU</a>
+  <a href="#casopisy" title="Právní časopisy">Časopisy</a>
+  <span class="pagetabs-sep" aria-hidden="true"></span>
+  <a href="#kalendar" title="Kalendář jednání">Kalendář</a>
   <a href="#nastaveni">Můj výběr</a>
 </nav>
 
@@ -135,9 +141,8 @@
 
 </div><!-- /#prehled -->
 
-<section class="page" id="recentni" hidden>
-
-  <div class="card" id="nsoud">
+<section class="page" id="nsoud" hidden>
+  <div class="card">
     <div class="card-header">
       <h2 class="card-title">Nejvyšší soud</h2>
       <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
@@ -147,8 +152,10 @@
     <p class="card-stav" id="stav-nsoud" role="status" hidden></p>
     <div class="card-content" id="feed-nsoud"><p class="loading">Načítám...</p></div>
   </div>
+</section>
 
-  <div class="card" id="nss">
+<section class="page" id="nss" hidden>
+  <div class="card">
     <div class="card-header">
       <h2 class="card-title">Nejvyšší správní soud</h2>
       <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
@@ -158,8 +165,10 @@
     <p class="card-stav" id="stav-nss" role="status" hidden></p>
     <div class="card-content" id="feed-nss"><p class="loading">Načítám...</p></div>
   </div>
+</section>
 
-  <div class="card" id="us">
+<section class="page" id="us" hidden>
+  <div class="card">
     <div class="card-header">
       <h2 class="card-title">Ústavní soud</h2>
       <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
@@ -169,8 +178,10 @@
     <p class="card-stav" id="stav-us" role="status" hidden></p>
     <div class="card-content" id="feed-us"><p class="loading">Načítám...</p></div>
   </div>
+</section>
 
-  <div class="card" id="sdeu">
+<section class="page" id="sdeu" hidden>
+  <div class="card">
     <div class="card-header">
       <h2 class="card-title">Soudní dvůr EU</h2>
       <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
@@ -180,8 +191,10 @@
     <p class="card-stav" id="stav-sdeu" role="status" hidden></p>
     <div class="card-content" id="feed-sdeu"><p class="loading">Načítám...</p></div>
   </div>
+</section>
 
-  <div class="card" id="casopisy">
+<section class="page" id="casopisy" hidden>
+  <div class="card">
     <div class="card-header">
       <h2 class="card-title">Právní časopisy</h2>
       <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
