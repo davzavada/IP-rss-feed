@@ -30,6 +30,7 @@ from urllib.parse import quote, urljoin, urlparse
 from zoneinfo import ZoneInfo
 
 import requests
+from bs4 import BeautifulSoup
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from feed_common import USER_AGENT  # noqa: E402
@@ -68,6 +69,52 @@ SPARQL = "https://publications.europa.eu/webapi/rdf/sparql"
 def domino_datum(d):
     """Datum ve tvaru, který bere dotaz Domina (24.9.2026)."""
     return f"{d.day}.{d.month}.{d.year}"
+
+
+def formular_pole(html, selektor, tlacitko=None):
+    """Pole formuláře tak, jak by je odeslal prohlížeč: [(název, hodnota)].
+
+    Zaškrtávátka a přepínače jen zaškrtnuté, u výběru zvolená (jinak první)
+    možnost, zakázaná pole a tlačítka ne – z tlačítek jen `tlacitko`
+    (název, hodnota), tedy to, kterým se formulář odesílá. Vrací (form, pole);
+    form je None, když formulář na stránce není."""
+    soup = BeautifulSoup(html, "html.parser")
+    form = soup.select_one(selektor)
+    if form is None:
+        return None, []
+    pole = []
+    for el in form.find_all(["input", "select", "textarea"]):
+        nazev = el.get("name")
+        if not nazev or el.has_attr("disabled"):
+            continue
+        if el.name == "input":
+            typ = (el.get("type") or "text").lower()
+            if typ in ("submit", "image", "button", "reset", "file"):
+                continue
+            if typ in ("checkbox", "radio"):
+                if el.has_attr("checked"):
+                    pole.append((nazev, el.get("value") or "on"))
+                continue
+            pole.append((nazev, el.get("value") or ""))
+        elif el.name == "select":
+            moznosti = el.find_all("option")
+            zvolene = [o for o in moznosti if o.has_attr("selected")] or moznosti[:1]
+            pole += [(nazev, o.get("value", o.get_text())) for o in zvolene]
+        else:
+            pole.append((nazev, el.get_text()))
+    if tlacitko:
+        pole.append(tlacitko)
+    return form, pole
+
+
+def nastav(pole, nazev, hodnota):
+    """Přepíše hodnotu pole (první výskyt), nebo pole přidá."""
+    for i, (n, _) in enumerate(pole):
+        if n == nazev:
+            pole[i] = (nazev, hodnota)
+            return pole
+    pole.append((nazev, hodnota))
+    return pole
 
 
 class Sonda:
@@ -147,25 +194,128 @@ def sonda_ns(s, den):
 
 # --- Nejvyšší správní soud ---
 
+NSS_SKRIPTY = ("/js/comboTreemin.js", "/js/site.js", "/js/infiniteScroll.js")
+
+
+def nss_predpona(pole, technicky_nazev):
+    """Předpona hodnoty podmínky podle technického názvu pole („aktualizovano"
+    = Datum zpřístupnění): vyhledavaciSekce[i].vyhledavaciPodminka[j].
+    vyhledavaciPodminkaHodnota[k]. – pořadí sekcí se může změnit."""
+    for n, v in pole:
+        m = re.match(r"^(vyhledavaciSekce\[\d+\]\.vyhledavaciPodminka\[\d+\]\."
+                     r"vyhledavaciPodminkaHodnota\[\d+\]\.)TechnickyNazev$", n)
+        if m and v == technicky_nazev:
+            return m.group(1)
+    return None
+
+
 def sonda_nss(s, den):
-    """Formulář vyhledávače (názvy polí, antiforgery token) a jeden dokument."""
+    """Formulář vyhledávače, jeho skripty (výběr soudu, nekonečné
+    stránkování), hledání podle data zpřístupnění a jeden dokument."""
     r = s.stahni("nss_formular", NSS_HOST + "/")
     s.stahni("nss_detail", NSS_HOST + "/DokumentDetail/Index/785607")
     s.stahni("nss_text", NSS_HOST + "/DokumentOriginal/Html/785607")
-    # Skripty stránky prozradí, kam a v jakém tvaru formulář posílá.
-    if r is not None and r.ok:
-        for i, src in enumerate(re.findall(r'<script[^>]+src="([^"]+)"', r.text)[:6]):
-            if src.startswith("http") and NSS_HOST not in src:
-                continue
-            s.stahni(f"nss_skript_{i}", urljoin(NSS_HOST + "/", src))
+    for cesta in NSS_SKRIPTY:
+        s.stahni("nss_js_" + cesta.rsplit("/", 1)[-1].split(".")[0], NSS_HOST + cesta)
+    if r is None or not r.ok:
+        return
+    form, pole = formular_pole(r.text, "form#findform", ("btSubmit", ""))
+    if form is None:
+        print("  formulář findform na stránce není")
+        return
+    akce = urljoin(r.url, form.get("action") or r.url)
+    predpona = nss_predpona(pole, "aktualizovano")
+    if not predpona:
+        print("  pole aktualizovano (Datum zpřístupnění) ve formuláři není")
+        return
+    hlav = {"Referer": r.url, "Origin": NSS_HOST}
+
+    def hledej(nazev, od, do, url=akce, soud=None):
+        p = list(pole)
+        nastav(p, predpona + "HodnotaDatumACasOd", od.strftime("%d.%m.%Y"))
+        nastav(p, predpona + "HodnotaDatumACasDo", do.strftime("%d.%m.%Y"))
+        if soud is not None:
+            ps = nss_predpona(p, "soudsenat")
+            if ps:
+                nastav(p, ps + "HodnotaCiselnikPolozky", soud)
+        return s.stahni(nazev, url, metoda="POST", data=p, headers=hlav)
+
+    vysledky = hledej("nss_hledat_den", den, den)
+    hledej("nss_hledat_tyden", den - timedelta(days=6), den)
+    hledej("nss_hledat_den_soud", den, den, soud="278")
+    hledej("nss_hledat_den_ecli", den, den,
+           url=urljoin(NSS_HOST, "/Home/Index?formular=1&zobrazeniVysledkuVolba=5"))
+    hledej("nss_hledat_den_export", den, den, url=urljoin(NSS_HOST, "/Home/Export"))
+    # Jeden dokument z výsledků (detail i text) – ukáže, jak vypadá čerstvý.
+    if vysledky is not None and vysledky.ok:
+        m = re.search(r"/DokumentDetail/Index/(\d+)", vysledky.text)
+        if m:
+            s.stahni("nss_detail_novy", f"{NSS_HOST}/DokumentDetail/Index/{m.group(1)}")
+            s.stahni("nss_text_novy", f"{NSS_HOST}/DokumentOriginal/Html/{m.group(1)}")
+        # Další stránka výsledků: odkazy nebo adresa pro nekonečné stránkování.
+        for i, href in enumerate(sorted(set(re.findall(
+                r'(?:href|data-url|data-next)="([^"]*(?:[Ss]trank|[Pp]age|[Dd]alsi|[Nn]ext)[^"]*)"',
+                vysledky.text)))[:3]):
+            s.stahni(f"nss_dalsi_{i}", urljoin(NSS_HOST, href.replace("&amp;", "&")),
+                     headers=hlav)
 
 
 # --- Ústavní soud ---
 
+US_HLEDANI = US_HOST + "/Search/Search.aspx"
+US_POLE = "ctl00$MainContent$"
+
+
 def sonda_us(s, den):
-    """Vyhledávací formulář NALUS (viewstate, pole data zpřístupnění) a text."""
-    s.stahni("us_formular", US_HOST + "/Search/Search.aspx")
+    """NALUS: formulář (viewstate), hledání podle data zpřístupnění ve dvou
+    zápisech data a „jen přírůstky za N dní", výsledky, detail a text."""
     s.stahni("us_text", US_HOST + "/Search/GetText.aspx?sz=1-1029-26_1")
+
+    def hledej(nazev, uprav):
+        r = s.stahni(nazev + "_formular", US_HLEDANI)
+        if r is None or not r.ok:
+            return None
+        form, pole = formular_pole(r.text, "form#aspnetForm",
+                                   (US_POLE + "but_search", "Vyhledat"))
+        if form is None:
+            print("  formulář aspnetForm na stránce není")
+            return None
+        nastav(pole, US_POLE + "razeni", "20")            # data zpřístupnění sestupně
+        nastav(pole, US_POLE + "resultsPageSize", "80")
+        uprav(pole)
+        return s.stahni(nazev, urljoin(r.url, form.get("action") or r.url), metoda="POST",
+                        data=pole, headers={"Referer": r.url, "Origin": US_HOST})
+
+    def rozsah(od, do, fmt):
+        def uprav(pole):
+            nastav(pole, US_POLE + "availableFrom", fmt(od))
+            nastav(pole, US_POLE + "availableTo", fmt(do))
+        return uprav
+
+    kratke = lambda d: f"{d.day}.{d.month}.{d.year}"     # noqa: E731
+    dlouhe = lambda d: d.strftime("%d.%m.%Y")            # noqa: E731
+    vysledky = hledej("us_hledat_den", rozsah(den, den, kratke))
+    hledej("us_hledat_den_dlouhe", rozsah(den, den, dlouhe))
+    hledej("us_hledat_tyden", rozsah(den - timedelta(days=6), den, kratke))
+
+    def prirustky(pole):
+        nastav(pole, US_POLE + "dle_data_zpristupneni", "on")
+        nastav(pole, US_POLE + "zpristupneno_pred", "7")
+    hledej("us_hledat_prirustky", prirustky)
+
+    if vysledky is None or not vysledky.ok:
+        return
+    html = vysledky.text.replace("&amp;", "&")
+    m = re.search(r'(?:href|onclick)="[^"]*?(ResultDetail\.aspx\?[^"\']+)', html)
+    if m:
+        s.stahni("us_detail", urljoin(US_HOST + "/Search/", m.group(1)))
+    m = re.search(r"GetText\.aspx\?sz=([^\"'&]+)", html)
+    if m:
+        s.stahni("us_text_novy", f"{US_HOST}/Search/GetText.aspx?sz={m.group(1)}")
+    # Stránkování: odkazy na další stránky výsledků.
+    for i, href in enumerate(sorted(set(re.findall(
+            r'href="([^"]*Results\.aspx\?[^"]*)"', html)))[:3]):
+        s.stahni(f"us_stranka_{i}", urljoin(US_HOST + "/Search/", href))
 
 
 # --- Soudní dvůr EU ---
