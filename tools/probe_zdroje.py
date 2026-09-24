@@ -305,6 +305,7 @@ def _curia_dotaz(hledat, razeni, zalozka):
 
 
 CDM = ("PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>\n"
+       "PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>\n"
        "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n")
 CELLAR_CELEX = "http://publications.europa.eu/resource/celex/{celex}"
 EURLEX_HTML = "https://eur-lex.europa.eu/legal-content/{jazyk}/TXT/HTML/?uri=CELEX:{celex}"
@@ -323,39 +324,37 @@ def cislo_veci(celex):
 
 
 def sonda_sdeu(s, den):
-    """InfoCuria: lazy chunky aplikace (pokročilé hledání, záložky), varianty
-    datových filtrů bez hledaného slova, hledání podle čísla věci česky
-    a SPARQL Cellaru s typy dokumentů."""
+    """InfoCuria s hledaným slovem „*", řazením DOC_DATE a filtrem data;
+    oznámení o nových věcech (CN) v Cellaru podle data vložení."""
     hlav = {"Content-Type": "application/json", "Accept": "application/json, text/plain, */*",
             "Origin": CURIA_APP, "Referer": CURIA_APP + "/"}
-    r = s.stahni("sdeu_aplikace", CURIA_APP + "/")
-    if r is not None and r.ok:
-        for src in re.findall(r'src="(main[^"]*\.js)"', r.text)[:1]:
-            m = s.stahni("sdeu_main", urljoin(CURIA_APP + "/", src))
-            if m is not None and m.ok:
-                # Chunky záložek a pokročilého hledání (tam je tvar filtrů).
-                for i, chunk in enumerate(sorted(set(re.findall(r'import\("\./(chunk-[A-Z0-9]+\.js)"\)',
-                                                              m.text)))[:40]):
-                    s.stahni(f"sdeu_chunk_{chunk[6:-3]}", urljoin(CURIA_APP + "/", chunk))
-
     od, do = den - timedelta(days=30), den
-    def dotaz(zalozka, filtry, hledat="", razeni="DATE", jazyk="CS"):
-        return dict(_curia_dotaz(hledat, razeni, zalozka), language=jazyk, filtersValue=[],
+
+    def dotaz(zalozka, filtry, hledat="*", razeni="DOC_DATE"):
+        return dict(_curia_dotaz(hledat, razeni, zalozka), language="CS", filtersValue=[],
                     advancedFiltersValue=filtry)
+    datum = [od.isoformat(), do.isoformat()]
     varianty = {
-        "iso": [od.isoformat(), do.isoformat()],
-        "cz": [od.strftime("%d/%m/%Y"), do.strftime("%d/%m/%Y")],
-        "ms": [str(int(datetime(od.year, od.month, od.day).timestamp() * 1000)),
-               str(int(datetime(do.year, do.month, do.day).timestamp() * 1000))],
+        "hvezda_docdate": dotaz("document", []),
+        "hvezda_docdate_filtr": dotaz("document", [{"field": "docDate_a", "values": datum,
+                                                    "valuesWithFullHierarchy": []}]),
+        "hvezda_affair_intro": dotaz("affair", [{"field": "introDate_a", "values": datum,
+                                                 "valuesWithFullHierarchy": []}], razeni="SCORE"),
+        "hvezda_affair_intro2": dotaz("affair", [{"field": "introductionDate_a", "values": datum,
+                                                  "valuesWithFullHierarchy": []}], razeni="SCORE"),
+        "hvezda_jurisprudence": dotaz("jurisprudence", [], razeni="DOC_DATE"),
+        "slovo_docdate": dotaz("document", [{"field": "docDate_a", "values": datum,
+                                             "valuesWithFullHierarchy": []}], hledat="Soudní dvůr"),
     }
-    for nazev, hodnoty in varianty.items():
-        for pole, zalozka in (("introDate_a", "affair"), ("docDate_a", "document")):
-            filtr = [{"field": pole, "values": hodnoty, "valuesWithFullHierarchy": hodnoty}]
-            s.stahni(f"sdeu_filtr_{pole[:-2]}_{nazev}", CURIA_HLEDANI, metoda="POST",
-                     json=dotaz(zalozka, filtr), headers=hlav)
-    s.stahni("sdeu_vec_cs", CURIA_HLEDANI, metoda="POST",
-             json=dict(dotaz("affair", [], hledat='"C-151/25"', razeni="SCORE"),
-                       publishedId="C-151/25", isSearchExact=True), headers=hlav)
+    for nazev, telo in varianty.items():
+        s.stahni(f"sdeu_{nazev}", CURIA_HLEDANI, metoda="POST", json=telo, headers=hlav)
+
+    _sparql(s, "sdeu_sparql_cn", f"""SELECT DISTINCT ?celex ?datum ?vlozeno WHERE {{
+  ?dilo cdm:resource_legal_id_celex ?celex ; cdm:resource_legal_type "CN"^^xsd:string ;
+        cmr:creationDate ?vlozeno .
+  OPTIONAL {{ ?dilo cdm:work_date_document ?datum }}
+  FILTER(?vlozeno >= "{(den - timedelta(days=45)).isoformat()}T00:00:00"^^xsd:dateTime)
+}} ORDER BY DESC(?vlozeno) LIMIT 300""".replace("PREFIX", "PREFIX"))
 
 
 SONDY = {"ns": sonda_ns, "nss": sonda_nss, "us": sonda_us, "sdeu": sonda_sdeu}
