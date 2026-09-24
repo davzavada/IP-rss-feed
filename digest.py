@@ -51,9 +51,14 @@ FORMAT_VERSION = "2"
 # (klíč zdroje, štítek, soubor feedu, stav prvního výskytu) – klíče jsou
 # shodné s index.html, aby se štítky obarvily stejně jako v seznamech.
 SOURCES = [
-    ("nsoud", "NS 23 Cdo", "feed.xml", "feed_seen.json"),
     ("cjeu", "CJEU", "ipcuria_feed.xml", "ipcuria_seen.json"),
     ("journals", "Časopis", "journals_feed.xml", "journals_seen.json"),
+]
+
+# Judikatura z oken pro web (docs/data/judikatura/), filtrovaná výchozím
+# výběrem IP/IT – přehled je zatím jeden pro všechny.
+JUDIKATURA = [
+    ("nsoud", "NS", "ns"),
 ]
 
 
@@ -86,6 +91,49 @@ def _first_seen(seen, guid):
         return None
 
 
+def _vychozi_vyber():
+    """(senáty NS, oblasti) výchozího výběru – ze stejných souborů jako web."""
+    oblasti = load_json(os.path.join(DOCS_DIR, "data", "oblasti.json")).get("oblasti", [])
+    senaty = load_json(os.path.join(DOCS_DIR, "data", "ns_senaty.json")).get("vychozi", [23])
+    return set(senaty), {o["id"] for o in oblasti if o.get("vychozi")}
+
+
+def collect_judikatura(now, oldest):
+    """Rozhodnutí z oken judikatury, která spadají do výchozího výběru."""
+    senaty, oblasti = _vychozi_vyber()
+    items = []
+    for key, label, soud in JUDIKATURA:
+        data = load_json(os.path.join(DOCS_DIR, "data", "judikatura", f"{soud}.json"))
+        found = 0
+        for r in data.get("polozky", []):
+            vybrano = (soud == "ns" and r.get("senat") in senaty) or \
+                bool(set(r.get("oblasti") or []) & oblasti)
+            since = _first_seen({"x": r.get("first_seen", "").replace("Z", "+00:00")}, "x")
+            if not vybrano or (since and since < oldest):
+                continue
+            pub_dt = None
+            if r.get("zverejneno"):
+                try:
+                    pub_dt = datetime.fromisoformat(r["zverejneno"]).replace(
+                        hour=12, tzinfo=timezone.utc)
+                except ValueError:
+                    pub_dt = None
+            items.append({
+                "src": key,
+                "src_label": label,
+                "tag": "",
+                "title": r.get("spz") or r.get("nazev") or "",
+                "link": r.get("url", ""),
+                "guid": r.get("id", ""),
+                "heslo": r.get("heslo", ""),
+                "summary": r.get("shrnuti", ""),
+                "pub_dt": pub_dt or since,
+            })
+            found += 1
+        print(f"  {label}: {found} položek z výchozího výběru")
+    return items
+
+
 def collect_items():
     """Načte položky ze všech feedů za okno WEEKS, seřazené od nejnovější.
 
@@ -94,7 +142,7 @@ def collect_items():
     """
     now = datetime.now(timezone.utc)
     oldest = now - timedelta(weeks=WEEKS)
-    items = []
+    items = collect_judikatura(now, oldest)
 
     for key, label, filename, seen_file in SOURCES:
         path = os.path.join(DOCS_DIR, filename)

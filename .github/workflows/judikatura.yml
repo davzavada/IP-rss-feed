@@ -1,0 +1,131 @@
+name: Judikatura
+
+on:
+  schedule:
+    # Jako u feedů: cron jen budí workflow, kdy se opravdu pracuje, rozhoduje
+    # krok „Naplánovat běh" podle pražského času. Minuta 35 je schválně jinde
+    # než u update-feed.yml (5), ať se běhy nepotkávají při pushi.
+    - cron: '35 * * * *'
+  workflow_dispatch:
+    inputs:
+      soudy:
+        description: 'Soudy oddělené čárkou (prázdné = všechny s adaptérem)'
+        type: string
+        default: ''
+      skip_gemini:
+        description: 'Jen objevování, bez AI shrnutí'
+        type: boolean
+        default: false
+      max_polozek:
+        description: 'Kolik rozhodnutí smí AI v tomto běhu zpracovat'
+        type: string
+        default: '120'
+
+permissions:
+  contents: write
+
+# Souběžné běhy by zapisovaly do stejného archivu – další běh počká ve frontě.
+concurrency:
+  group: judikatura
+  cancel-in-progress: false
+
+jobs:
+  judikatura:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Stáří posledního běhu se čte z historie commitů.
+          fetch-depth: 50
+
+      # Soudy zveřejňují přes den. Hlavní dávka jde v noci (23:00–7:00), aby
+      # bylo ráno hotovo, denní okno (9:00–14:00) doplní dopolední rozhodnutí.
+      # V okně se běží pokaždé, když od posledního běhu uběhlo aspoň 50 minut
+      # – scheduled běhy GitHubu chodí řídce, takže každý, který dorazí,
+      # posune frontu. Mimo okna se nedělá nic (ruční spuštění běží vždy).
+      - name: Naplánovat běh
+        id: plan
+        run: |
+          hour=$(TZ=Europe/Prague date +%-H)
+          last=$(git log --grep='^Update case law' -1 --format=%ct)
+          stari=$(( $(date +%s) - ${last:-0} ))
+
+          if [ "$hour" -ge 23 ] || [ "$hour" -lt 7 ]; then
+            window=nocni
+          elif [ "$hour" -ge 9 ] && [ "$hour" -lt 14 ]; then
+            window=denni
+          else
+            window=zadne
+          fi
+
+          if [ '${{ github.event_name }}' = 'workflow_dispatch' ]; then
+            run=true; duvod='ruční spuštění'
+          elif [ "$window" = zadne ]; then
+            run=false; duvod='mimo okna'
+          elif [ "$stari" -lt 3000 ]; then
+            run=false; duvod="okno $window, poslední běh před méně než 50 min"
+          else
+            run=true; duvod="okno $window"
+          fi
+
+          echo "run=$run" >> "$GITHUB_OUTPUT"
+          echo "$(TZ=Europe/Prague date '+%a %H:%M %Z'), poslední běh před $(( stari / 60 )) min -> $run ($duvod)"
+
+      - uses: actions/setup-python@v6
+        if: steps.plan.outputs.run == 'true'
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        if: steps.plan.outputs.run == 'true'
+        run: pip install -r requirements.txt
+
+      # Archiv se ukládá po každém rozhodnutí; když krok spadne nebo vyprší,
+      # commit níže uloží aspoň to, co se stihlo.
+      - name: Sběr judikatury
+        id: sber
+        if: steps.plan.outputs.run == 'true'
+        timeout-minutes: 45
+        continue-on-error: true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SKIP_GEMINI: ${{ inputs.skip_gemini }}
+          SOUDY: ${{ inputs.soudy }}
+          AI_MAX_POLOZEK: ${{ inputs.max_polozek || '120' }}
+          AI_MAX_MINUT: '35'
+        run: python scraper_judikatura.py
+
+      # Rozbitý archiv nebo okno se necommituje – další běh začne z posledního
+      # dobrého stavu a selhání přijde jako upozornění.
+      - name: Kontrola dat
+        id: kontrola
+        if: always() && steps.plan.outputs.run == 'true'
+        run: python -m judikatura.kontrola
+
+      - name: Commit & push
+        if: always() && steps.plan.outputs.run == 'true' && steps.kontrola.outcome == 'success'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/judikatura docs/data/judikatura
+          if git diff --cached --quiet; then
+            echo "Beze změn."
+            exit 0
+          fi
+          git commit -m "Update case law $(date -u +%Y-%m-%d)"
+          # Main se mohl mezitím pohnout (feedy, ruční úpravy). Archiv jiný
+          # workflow nepíše, takže rebase projde; kdyby ne, vyhrává tento běh.
+          for i in 1 2 3 4; do
+            git push && exit 0
+            sleep $(( i * 5 ))
+            git pull --rebase -X theirs origin main
+          done
+          exit 1
+
+      - name: Výsledek sběru
+        if: steps.sber.outcome == 'failure'
+        run: |
+          echo "::error::Sběr judikatury skončil chybou – viz krok „Sběr judikatury“ (uložené je commitnuté)."
+          exit 1

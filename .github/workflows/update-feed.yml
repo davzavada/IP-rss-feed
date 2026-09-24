@@ -89,9 +89,21 @@ jobs:
             [ "$prehled" = "$dnes" ] || digest=true
           fi
 
+          # Jednání (dokumenty na justice.cz) trvají 13–16 minut a přehledy soudů
+          # se mění nejvýš párkrát denně – stačí nejvýš jednou za 6 hodin.
+          # Ruční spuštění je stáhne vždy.
+          jednani=$scrape
+          if [ "$scrape" = true ] && [ '${{ github.event_name }}' != 'workflow_dispatch' ]; then
+            posledni=$(date -d "$(python3 -c "import json; print(json.load(open('docs/hearings.json'))['generated'])" 2>/dev/null)" +%s 2>/dev/null || echo 0)
+            if [ $(( $(date +%s) - posledni )) -lt 21600 ]; then
+              jednani=false
+            fi
+          fi
+
           echo "scrape=$scrape" >> "$GITHUB_OUTPUT"
           echo "digest=$digest" >> "$GITHUB_OUTPUT"
-          echo "$(TZ=Europe/Prague date '+%a %H:%M %Z'), feed starý $(( stari / 60 )) min -> scrapery: $scrape, přehled: $digest ($duvod)"
+          echo "jednani=$jednani" >> "$GITHUB_OUTPUT"
+          echo "$(TZ=Europe/Prague date '+%a %H:%M %Z'), feed starý $(( stari / 60 )) min -> scrapery: $scrape, jednání: $jednani, přehled: $digest ($duvod)"
 
       - uses: actions/setup-python@v6
         if: steps.plan.outputs.scrape == 'true'
@@ -102,25 +114,44 @@ jobs:
         if: steps.plan.outputs.scrape == 'true'
         run: pip install -r requirements.txt
 
-      - name: Run scrapers
+      # Judikaturu NS sbírá judikatura.yml. Každý scraper je samostatný krok:
+      # když jeden spadne, ostatní doběhnou a commit uloží, co se povedlo.
+      - name: SDEU (ipcuria)
+        id: ipcuria
         if: steps.plan.outputs.scrape == 'true'
+        continue-on-error: true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SKIP_GEMINI: ${{ inputs.skip_gemini }}
-        run: |
-          python scraper.py
-          python scraper_ipcuria.py
-          python scraper_journals.py
-          # Kalendář jednání závisí na dokumentech na msp.gov.cz – když se
-          # nepovede, ať nezablokuje commit ostatních feedů.
-          python scraper_hearings.py || echo "::warning::scraper_hearings selhal, feedy jedou dál"
+        run: python scraper_ipcuria.py
+
+      - name: Časopisy
+        id: casopisy
+        if: steps.plan.outputs.scrape == 'true'
+        continue-on-error: true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SKIP_GEMINI: ${{ inputs.skip_gemini }}
+        run: python scraper_journals.py
+
+      # Kalendář jednání závisí na dokumentech na msp.gov.cz.
+      - name: Jednání
+        id: jednani
+        if: steps.plan.outputs.jednani == 'true'
+        continue-on-error: true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SKIP_GEMINI: ${{ inputs.skip_gemini }}
+        run: python scraper_hearings.py
 
       # Přehled čte hotové feedy, takže běží až po scraperech – jednou týdně,
       # v pondělí ráno. Ručně spuštěný běh ho udělá taky. DIGEST_FORCE říká
       # digest.py, ať přehled napíše znovu i tehdy, když se vstup od minula
       # nezměnil – jednou týdně chceme čerstvý text, ne ten čtrnáct dní starý.
       - name: Dvoutýdenní přehled (pondělí ráno)
+        id: prehled
         if: steps.plan.outputs.digest == 'true'
+        continue-on-error: true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SKIP_GEMINI: ${{ inputs.skip_gemini }}
@@ -128,11 +159,12 @@ jobs:
         run: python digest.py
 
       - name: Commit & push feeds
-        if: steps.plan.outputs.scrape == 'true'
+        if: always() && steps.plan.outputs.scrape == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/ feed_seen.json journals_seen.json journals_meta.json feed_meta.json ipcuria_seen.json ipcuria_meta.json hearings_config.json
+          # docs/data/judikatura patří workflow judikatura.yml.
+          git add docs/ ':!docs/data/judikatura' journals_seen.json journals_meta.json ipcuria_seen.json ipcuria_meta.json hearings_config.json
           git diff --cached --quiet || git commit -m "Update RSS feeds $(date -u +%Y-%m-%d)"
           # Kdyby se main mezitím pohnul (dlouhý běh scraperu), přebasuj a zkus
           # znovu; u konfliktů v generovaných souborech vyhrává naše novější verze.
@@ -140,3 +172,21 @@ jobs:
             git push && break
             git pull --rebase -X theirs origin main
           done
+
+      # Commit výše uložil, co se povedlo; selhání se tu jen ohlásí. Jednání
+      # (dokumenty na msp.gov.cz) jen varují jako dřív, ostatní shodí běh,
+      # ať o tom přijde upozornění.
+      - name: Výsledek scraperů
+        if: always() && steps.plan.outputs.scrape == 'true'
+        run: |
+          if [ '${{ steps.jednani.outcome }}' = failure ]; then
+            echo "::warning::scraper_hearings selhal, ostatní feedy jsou commitnuté"
+          fi
+          selhalo=""
+          [ '${{ steps.ipcuria.outcome }}' = failure ] && selhalo="$selhalo SDEU"
+          [ '${{ steps.casopisy.outcome }}' = failure ] && selhalo="$selhalo časopisy"
+          [ '${{ steps.prehled.outcome }}' = failure ] && selhalo="$selhalo přehled"
+          if [ -n "$selhalo" ]; then
+            echo "::error::Selhalo:$selhalo (co se povedlo, je commitnuté)"
+            exit 1
+          fi

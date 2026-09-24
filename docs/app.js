@@ -1,6 +1,7 @@
-/* Owl – skript stránky. Čte hotové soubory vedle sebe (feed.xml,
-   ipcuria_feed.xml, journals_feed.xml, digest.json, hearings.json,
-   hearings.ics) a vykresluje je; nic nepočítá, co si už spočítaly scrapery. */
+/* Owl – skript stránky. Čte hotové soubory vedle sebe (data/judikatura/*.json,
+   ipcuria_feed.xml, journals_feed.xml, data/oblasti.json, digest.json,
+   hearings.json, hearings.ics) a vykresluje je; nic nepočítá, co si už
+   spočítaly scrapery. */
 
 /* ========== Pomocné ========== */
 
@@ -20,6 +21,53 @@ function safeHref(url) {
 function text(item, sel) {
   const el = item.querySelector(sel);
   return el ? el.textContent.trim() : "";
+}
+
+/* Položky ze všech zdrojů převádíme na obyčejné objekty, ať buňky tabulek
+   nemusí rozlišovat XML feed od JSONu:
+     title, link, doc (PDF), heslo, shrnuti, poznamka, datum, nove, autori
+   a u judikatury navíc oblasti, senat, druh, procesni. */
+
+// Autoři jsou ve feedu v <dc:creator> – čteme je přes jmenný prostor,
+// se záložním hledáním podle celého názvu značky (starší prohlížeče).
+const DC_NS = "http://purl.org/dc/elements/1.1/";
+
+function zXml(el) {
+  const autor = el.getElementsByTagNameNS(DC_NS, "creator")[0] ||
+    el.getElementsByTagName("dc:creator")[0];
+  return {
+    title: text(el, "title"),
+    link: text(el, "link"),
+    doc: text(el, "document-url"),
+    heslo: text(el, "ai-tag"),
+    shrnuti: text(el, "ai-summary"),
+    poznamka: text(el, "note"),
+    datum: text(el, "pubDate"),
+    nove: !!el.querySelector("is-new"),
+    autori: autor ? autor.textContent.trim() : ""
+  };
+}
+
+// „Nové" = poprvé viděné za posledních 24 hodin (stejně jako u feedů).
+const NOVE_MS = 24 * 60 * 60 * 1000;
+
+function zJson(r) {
+  const prvni = Date.parse(r.first_seen || "");
+  return {
+    title: r.spz || r.nazev || "",
+    link: r.url || "",
+    doc: r.pdf && r.pdf !== r.url ? r.pdf : "",
+    heslo: r.heslo || "",
+    shrnuti: r.shrnuti || "",
+    poznamka: r.poznamka || "",
+    datum: r.zverejneno || r.first_seen || "",
+    nove: !isNaN(prvni) && Date.now() - prvni < NOVE_MS,
+    autori: "",
+    oblasti: r.oblasti || [],
+    senat: r.senat,
+    druh: r.druh || "",
+    procesni: !!r.procesni
+  };
 }
 
 // „1. 9. 2026" – z ISO data (bez posunu přes UTC, který by ukrojil den)
@@ -79,7 +127,7 @@ function tagOf(title) {
 // Výchozí šířky v procentech podle druhu sloupce; sloupec, který tu není
 // (Shrnutí), si rozebere zbytek řádku. Každá tabulka má jinou skladbu
 // sloupců, takže se výchozí hodnoty počítají pro každou zvlášť.
-const COL_DEFAULTS = { type: 12, name: 20, heslo: 22, src: 15, date: 10, author: 14 };
+const COL_DEFAULTS = { type: 12, name: 20, oblasti: 14, heslo: 18, src: 15, date: 10, author: 14 };
 const MIN_COL_PCT = 4;          // pod tuhle šířku sloupec nepustíme
 const KEY_STEP_PCT = 2;         // krok při ovládání šipkami
 const COL_COOKIE = "colw";
@@ -254,29 +302,18 @@ function initColumnResize() {
 /* ========== Seznamy položek ========== */
 
 function nameCell(item) {
-  const title = esc(text(item, "title").replace(/^\[[^\]]+\]\s*/, ""));
-  const href = safeHref(text(item, "link"));
+  const title = esc(item.title.replace(/^\[[^\]]+\]\s*/, ""));
+  const href = safeHref(item.link);
   let html = href ? '<a href="' + href + '">' + title + "</a>" : title;
-  // U žádostí o předběžnou otázku ještě odkaz na samotný dokument – shrnutí
-  // je jen shrnutí, znění otázek je v něm.
-  const doc = safeHref(text(item, "document-url"));
+  // Odkaz ještě na samotný dokument (PDF rozhodnutí, znění předběžné otázky)
+  // – shrnutí je jen shrnutí.
+  const doc = safeHref(item.doc);
   if (doc) html += ' <a class="doc-link" href="' + doc + '">PDF</a>';
   return html;
 }
 
-// Autoři jsou ve feedu v <dc:creator> – čteme je přes jmenný prostor,
-// se záložním hledáním podle celého názvu značky (starší prohlížeče).
-const DC_NS = "http://purl.org/dc/elements/1.1/";
-
-function authorText(item) {
-  const el = item.getElementsByTagNameNS(DC_NS, "creator")[0] ||
-    item.getElementsByTagName("dc:creator")[0];
-  return el ? el.textContent.trim() : "";
-}
-
 function authorCell(item) {
-  const authors = authorText(item);
-  return authors ? '<span class="author">' + esc(authors) + "</span>" : "";
+  return item.autori ? '<span class="author">' + esc(item.autori) + "</span>" : "";
 }
 
 // V přehledu přes všechny zdroje jdou autoři pod název (má je jen část položek).
@@ -285,30 +322,61 @@ function nameAuthorCell(item) {
 }
 
 function hesloCell(item) {
-  const tag = text(item, "ai-tag");
+  const tag = item.heslo;
   return tag ? '<span class="heslo" title="' + esc(tag) + '">' + esc(tag) + "</span>" : "";
 }
 
 function summaryCell(item) {
-  const summary = text(item, "ai-summary");
-  if (summary) return '<span class="summary">' + esc(summary) + "</span>";
+  if (item.shrnuti) return '<span class="summary">' + esc(item.shrnuti) + "</span>";
   // Bez shrnutí ještě může být poznámka, proč žádné není – třeba že u žádosti
   // o předběžnou otázku zatím nejsou zveřejněné otázky.
-  const note = text(item, "note");
-  return note ? '<span class="summary note">' + esc(note) + "</span>" : "";
+  return item.poznamka ? '<span class="summary note">' + esc(item.poznamka) + "</span>" : "";
 }
 
 function dateCell(item) {
-  return czDate(text(item, "pubDate"));
+  return czDate(item.datum);
 }
 
 function typeCell(item) {
-  return tagBadge(tagOf(text(item, "title")));
+  return tagBadge(tagOf(item.title));
+}
+
+/* ========== Oblasti a výchozí výběr ========== */
+// Seznam oblastí a senátů NS čte stránka z data/ (stejné soubory jako AI).
+// Výchozí výběr (IP a IT) vidí každý; vlastní výběr přibude s přihlášením.
+let OBLASTI = {};                 // id -> název
+let VYCHOZI_OBLASTI = [];
+let VYCHOZI_SENATY_NS = [23];
+
+function nastavVyber(oblasti, senaty) {
+  if (oblasti && Array.isArray(oblasti.oblasti)) {
+    OBLASTI = {};
+    oblasti.oblasti.forEach(o => { OBLASTI[o.id] = o.nazev; });
+    VYCHOZI_OBLASTI = oblasti.oblasti.filter(o => o.vychozi).map(o => o.id);
+  }
+  if (senaty && Array.isArray(senaty.vychozi)) VYCHOZI_SENATY_NS = senaty.vychozi;
+}
+
+// Rozhodnutí NS je vidět, když je z vybraného senátu, nebo když spadá do
+// některé z vybraných oblastí (ostatní soudy jen podle oblastí).
+function vidiNS(item) {
+  if (VYCHOZI_SENATY_NS.indexOf(item.senat) >= 0) return true;
+  return (item.oblasti || []).some(o => VYCHOZI_OBLASTI.indexOf(o) >= 0);
+}
+
+// Štítky oblastí: nejvýš dvě a „+N", celý seznam v title.
+function oblastiCell(item) {
+  const nazvy = (item.oblasti || []).map(o => OBLASTI[o] || o);
+  if (!nazvy.length) return "";
+  const vidne = nazvy.slice(0, 2).map(n => '<span class="oblast">' + esc(n) + "</span>").join("");
+  const zbytek = nazvy.length > 2 ? '<span class="oblast oblast-vice">+' + (nazvy.length - 2) + "</span>" : "";
+  return '<span class="oblasti" title="' + esc(nazvy.join(", ")) + '">' + vidne + zbytek + "</span>";
 }
 
 // Definice sloupců sdílíme mezi živým feedem a novými položkami.
 const colsNsoud = [
-  { label: "Název", cls: "col-name", render: nameCell },
+  { label: "Spisová značka", cls: "col-name", render: nameCell },
+  { label: "Oblasti", cls: "col-oblasti", render: oblastiCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
   { label: "Shrnutí", cls: "col-summary", render: summaryCell },
   { label: "Datum", cls: "col-date", render: dateCell }
@@ -343,11 +411,28 @@ const colsToday = [
   { label: "Datum", cls: "col-date", render: dateCell }
 ];
 
+// Zdroje stránky. Judikatura je v JSONu s oknem pro web (data/judikatura/),
+// časopisy a SDEU zatím v XML; `filtr` je výběr, co z okna ukázat.
 const FEEDS = [
-  { key: "nsoud",    label: "NS 23 Cdo", url: "feed.xml",          cols: colsNsoud,    containerId: "feed-nsoud" },
-  { key: "cjeu",     label: "CJEU",      url: "ipcuria_feed.xml",  cols: colsCjeu,     containerId: "feed-cjeu" },
-  { key: "journals", label: "Časopis",   url: "journals_feed.xml", cols: colsJournals, containerId: "feed-journals" }
+  { key: "nsoud",    label: "NS",      json: "data/judikatura/ns.json", cols: colsNsoud,
+    containerId: "feed-nsoud", filtr: vidiNS },
+  { key: "cjeu",     label: "CJEU",    url: "ipcuria_feed.xml",  cols: colsCjeu,     containerId: "feed-cjeu" },
+  { key: "journals", label: "Časopis", url: "journals_feed.xml", cols: colsJournals, containerId: "feed-journals" }
 ];
+
+// Položky zdroje jako objekty; u zdroje si poznamená, kdy byl aktualizován.
+function nactiZdroj(f) {
+  if (f.json) {
+    return fetchJson(f.json).then(d => {
+      f.aktualizovano = d.generated || "";
+      return (d.polozky || []).map(zJson);
+    });
+  }
+  return fetchFeed(f.url).then(doc => {
+    f.aktualizovano = (doc.querySelector("lastBuildDate") || {}).textContent || "";
+    return Array.from(doc.querySelectorAll("item")).map(zXml);
+  });
+}
 
 function resizerHtml(column) {
   return '<span class="col-resizer" role="separator" aria-orientation="vertical"' +
@@ -393,14 +478,14 @@ function renderToday(results) {
   results.forEach((r, idx) => {
     if (r.status !== "fulfilled") return;
     r.value.forEach(item => {
-      if (item.querySelector("is-new")) {
+      if (item.nove) {
         item._src = FEEDS[idx].key;
         item._srcLabel = FEEDS[idx].label;
         today.push(item);
       }
     });
   });
-  today.sort((a, b) => new Date(text(b, "pubDate")) - new Date(text(a, "pubDate")));
+  today.sort((a, b) => new Date(b.datum) - new Date(a.datum));
   if (today.length === 0) {
     container.innerHTML = '<p class="feed-empty">Za posledních 24 hodin nic nepřibylo. ' +
       "Feedy se obnovují ráno v 7:00 a odpoledne ve 14:00.</p>";
@@ -1219,21 +1304,15 @@ function initNav() {
   updateNav = update;
 }
 
-// Datum poslední aktualizace = nejnovější <lastBuildDate> ze všech feedů.
-function showUpdated(docPromises) {
-  Promise.all(docPromises.map(p => p.then(
-    doc => {
-      const d = new Date((doc.querySelector("lastBuildDate") || {}).textContent || "");
-      return isNaN(d) ? null : d;
-    },
-    () => null
-  ))).then(dates => {
-    const latest = dates.filter(Boolean).sort((a, b) => b - a)[0];
-    if (!latest) return;
-    document.getElementById("updated").textContent =
-      "aktualizováno " + latest.toLocaleDateString("cs-CZ") + " " +
-      latest.toLocaleTimeString("cs-CZ", { hour: "2-digit", minute: "2-digit" });
-  });
+// Datum poslední aktualizace = nejnovější aktualizace ze všech zdrojů
+// (<lastBuildDate> u XML feedů, `generated` u JSONu).
+function showUpdated() {
+  const latest = FEEDS.map(f => new Date(f.aktualizovano || ""))
+    .filter(d => !isNaN(d)).sort((a, b) => b - a)[0];
+  if (!latest) return;
+  document.getElementById("updated").textContent =
+    "aktualizováno " + latest.toLocaleDateString("cs-CZ") + " " +
+    latest.toLocaleTimeString("cs-CZ", { hour: "2-digit", minute: "2-digit" });
 }
 
 function initApp() {
@@ -1242,11 +1321,15 @@ function initApp() {
   // Necháme si scroll pod kontrolou a začínáme nahoře.
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 
-  // Každý feed stáhneme jen jednou a sdílíme mezi sekcemi (všechno / nové).
-  const feedDocs = FEEDS.map(f => fetchFeed(f.url));
-  const feedPromises = feedDocs.map(
-    p => p.then(doc => Array.from(doc.querySelectorAll("item")))
-  );
+  // Každý zdroj stáhneme jen jednou a sdílíme mezi sekcemi (všechno / nové).
+  // Výchozí výběr (oblasti, senáty NS) se musí znát dřív, než se filtruje.
+  const vyberPromise = Promise.all([
+    fetchJson("data/oblasti.json").catch(() => null),
+    fetchJson("data/ns_senaty.json").catch(() => null)
+  ]).then(([oblasti, senaty]) => nastavVyber(oblasti, senaty));
+  const feedPromises = FEEDS.map(f => vyberPromise
+    .then(() => nactiZdroj(f))
+    .then(items => (f.filtr ? items.filter(f.filtr) : items)));
   // Dvoutýdenní přehled a kalendář se generují zvlášť – když chybí, jen se
   // nevykreslí; zbytek stránky na ně nečeká déle než na feedy.
   const digestPromise = fetchJson("digest.json").catch(() => null);
@@ -1282,7 +1365,7 @@ function initApp() {
       document.documentElement.classList.remove("is-loading");
     });
 
-  showUpdated(feedDocs);
+  Promise.allSettled(feedPromises).then(showUpdated);
 }
 
 initApp();

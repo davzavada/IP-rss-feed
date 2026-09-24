@@ -7,12 +7,15 @@ on:
   push:
     paths:
       - 'feed_common.py'
-      - 'scraper.py'
       - 'scraper_hearings.py'
       - 'scraper_journals.py'
+      - 'scraper_judikatura.py'
+      - 'judikatura/**'
+      - 'docs/data/oblasti.json'
+      - 'docs/data/ns_senaty.json'
       - 'test_hearings.py'
       - 'test_journals.py'
-      - 'test_nsoud.py'
+      - 'test_judikatura.py'
       - 'test_ai.py'
       - 'hearings_config.json'
       - 'tests/**'
@@ -34,7 +37,7 @@ jobs:
         run: python test_hearings.py
       - name: Testy scraperu časopisů
         run: python test_journals.py
-      - name: Testy scraperu rozhodnutí NS
-        run: python test_nsoud.py
+      - name: Testy sběru judikatury
+        run: python test_judikatura.py
       - name: Testy AI klienta
         run: python test_ai.py

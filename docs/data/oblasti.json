@@ -1,0 +1,189 @@
+{
+  "poznamka": "Pevný seznam oblastí. AI zařazuje rozhodnutí jen sem (1–3 oblasti). id se ukládá ve výběru uživatelů, proto se nemění – přejmenování jde přes `alias` (staré id -> nové). `vychozi` = výchozí výběr IP/IT pro nepřihlášené a nové uživatele.",
+  "verze": 1,
+  "oblasti": [
+    {
+      "id": "autorske",
+      "nazev": "Autorské právo",
+      "skupina": "Duševní vlastnictví a technologie",
+      "vychozi": true,
+      "popis": "autorská a související práva, software a databáze, kolektivní správa, výjimky a volná užití"
+    },
+    {
+      "id": "prumyslova_prava",
+      "nazev": "Průmyslová práva",
+      "skupina": "Duševní vlastnictví a technologie",
+      "vychozi": true,
+      "popis": "ochranné známky, označení původu, průmyslové vzory, patenty, užitné vzory, SPC, odrůdy; řízení před ÚPV a EUIPO"
+    },
+    {
+      "id": "nekala_soutez",
+      "nazev": "Nekalá soutěž a obchodní tajemství",
+      "skupina": "Duševní vlastnictví a technologie",
+      "vychozi": true,
+      "popis": "klamavá a srovnávací reklama, parazitování, zlehčování, know-how a obchodní tajemství"
+    },
+    {
+      "id": "it",
+      "nazev": "IT a digitální služby",
+      "skupina": "Duševní vlastnictví a technologie",
+      "vychozi": true,
+      "popis": "IT smlouvy, doménová jména, e-commerce, platformy (DSA, DMA), umělá inteligence, kybernetická bezpečnost, elektronické komunikace a podpisy"
+    },
+    {
+      "id": "gdpr",
+      "nazev": "Ochrana osobních údajů",
+      "skupina": "Duševní vlastnictví a technologie",
+      "vychozi": true,
+      "popis": "GDPR, cookies a ePrivacy, provozní a lokalizační údaje, kamerové záznamy"
+    },
+    {
+      "id": "osobnost_media",
+      "nazev": "Ochrana osobnosti a média",
+      "skupina": "Duševní vlastnictví a technologie",
+      "vychozi": false,
+      "popis": "osobnostní práva, pověst právnické osoby, svoboda projevu, tisk a vysílání"
+    },
+    {
+      "id": "zavazky",
+      "nazev": "Smlouvy a závazky",
+      "skupina": "Soukromé právo",
+      "vychozi": false,
+      "popis": "uzavírání, výklad a neplatnost smluv, odstoupení, smluvní pokuta, promlčení, bezdůvodné obohacení, nájem a pacht"
+    },
+    {
+      "id": "skoda",
+      "nazev": "Náhrada škody a újmy",
+      "skupina": "Soukromé právo",
+      "vychozi": false,
+      "popis": "odpovědnost za škodu a nemajetkovou újmu, včetně odpovědnosti státu za nezákonné rozhodnutí a nesprávný úřední postup"
+    },
+    {
+      "id": "spotrebitel",
+      "nazev": "Ochrana spotřebitele",
+      "skupina": "Soukromé právo",
+      "vychozi": false,
+      "popis": "spotřebitelské smlouvy a úvěry, nepřiměřená ujednání, práva cestujících"
+    },
+    {
+      "id": "vecna_prava",
+      "nazev": "Věcná práva a nemovitosti",
+      "skupina": "Soukromé právo",
+      "vychozi": false,
+      "popis": "vlastnictví, spoluvlastnictví včetně bytového a SVJ, držba, vydržení, věcná břemena, zástavní právo, katastr"
+    },
+    {
+      "id": "korporace",
+      "nazev": "Obchodní korporace",
+      "skupina": "Soukromé právo",
+      "vychozi": false,
+      "popis": "práva společníků a akcionářů, statutární orgány a jejich odpovědnost, valné hromady, přeměny, veřejný rejstřík"
+    },
+    {
+      "id": "insolvence",
+      "nazev": "Insolvence",
+      "skupina": "Soukromé právo",
+      "vychozi": false,
+      "popis": "insolvenční řízení, incidenční spory, oddlužení, restrukturalizace"
+    },
+    {
+      "id": "rodina_dedictvi",
+      "nazev": "Rodinné a dědické právo",
+      "skupina": "Soukromé právo",
+      "vychozi": false,
+      "popis": "manželství a společné jmění, výživné, péče o dítě, opatrovnictví, dědění a pozůstalostní řízení"
+    },
+    {
+      "id": "pracovni",
+      "nazev": "Pracovní právo",
+      "skupina": "Soukromé právo",
+      "vychozi": false,
+      "popis": "vznik a skončení pracovního poměru, mzda, odpovědnost v pracovním právu, služební věci zaměstnanců EU"
+    },
+    {
+      "id": "finance",
+      "nazev": "Finanční trh a pojištění",
+      "skupina": "Soukromé právo",
+      "vychozi": false,
+      "popis": "bankovní a platební služby, kapitálový trh, investiční služby, pojistné smlouvy, AML"
+    },
+    {
+      "id": "mps",
+      "nazev": "Mezinárodní právo soukromé",
+      "skupina": "Soukromé právo",
+      "vychozi": false,
+      "popis": "pravomoc a příslušnost v přeshraničních věcech, rozhodné právo, uznání a výkon cizích rozhodnutí, justiční spolupráce"
+    },
+    {
+      "id": "civilni_proces",
+      "nazev": "Civilní proces, exekuce a rozhodčí řízení",
+      "skupina": "Soukromé právo",
+      "vychozi": false,
+      "popis": "příslušnost, dokazování, opravné prostředky, přípustnost dovolání, náklady řízení, exekuce a výkon rozhodnutí, rozhodčí řízení"
+    },
+    {
+      "id": "ustavni",
+      "nazev": "Ústavní právo a základní práva",
+      "skupina": "Veřejné právo",
+      "vychozi": false,
+      "popis": "jen když je ústavní otázka jádrem věci (zákonnost zákona, volby, dělba moci, výklad Listiny); u ústavní stížnosti přidej i věcnou oblast sporu"
+    },
+    {
+      "id": "spravni",
+      "nazev": "Správní právo",
+      "skupina": "Veřejné právo",
+      "vychozi": false,
+      "popis": "správní řízení a správní soudnictví, přestupky a správní trestání, přístup k informacím, samospráva, regulovaná odvětví (energetika, doprava, léčiva); u SDEU i žaloby proti institucím EU a sankce"
+    },
+    {
+      "id": "dane",
+      "nazev": "Daně, cla a poplatky",
+      "skupina": "Veřejné právo",
+      "vychozi": false,
+      "popis": "DPH, daně z příjmů, daňový řád, spotřební daně, clo, místní poplatky"
+    },
+    {
+      "id": "verejne_zakazky",
+      "nazev": "Veřejné zakázky",
+      "skupina": "Veřejné právo",
+      "vychozi": false,
+      "popis": "zadávání veřejných zakázek a koncesí, přezkum úkonů zadavatele"
+    },
+    {
+      "id": "soutez",
+      "nazev": "Hospodářská soutěž a veřejná podpora",
+      "skupina": "Veřejné právo",
+      "vychozi": false,
+      "popis": "kartely, zneužití dominantního postavení, spojování soutěžitelů, veřejná podpora"
+    },
+    {
+      "id": "stavebni_zp",
+      "nazev": "Stavební právo a životní prostředí",
+      "skupina": "Veřejné právo",
+      "vychozi": false,
+      "popis": "stavební řízení, územní plánování, EIA, ochrana přírody, vody, odpady"
+    },
+    {
+      "id": "socialni_cizinci",
+      "nazev": "Sociální věci a cizinci",
+      "skupina": "Veřejné právo",
+      "vychozi": false,
+      "popis": "důchody, dávky, nemocenské a zdravotní pojištění, pobyt cizinců, azyl a mezinárodní ochrana"
+    },
+    {
+      "id": "trestni",
+      "nazev": "Trestní právo",
+      "skupina": "Trestní právo",
+      "vychozi": false,
+      "popis": "trestné činy a tresty, hospodářská trestná činnost, trestní odpovědnost právnických osob, trestní řízení včetně mezinárodní spolupráce a evropského zatýkacího rozkazu"
+    },
+    {
+      "id": "ostatni",
+      "nazev": "Ostatní",
+      "skupina": "Ostatní",
+      "vychozi": false,
+      "popis": "jen když nic jiného nesedí"
+    }
+  ],
+  "alias": {}
+}
