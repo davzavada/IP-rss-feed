@@ -324,37 +324,44 @@ def cislo_veci(celex):
 
 
 def sonda_sdeu(s, den):
-    """InfoCuria s hledaným slovem „*", řazením DOC_DATE a filtrem data;
-    oznámení o nových věcech (CN) v Cellaru podle data vložení."""
-    hlav = {"Content-Type": "application/json", "Accept": "application/json, text/plain, */*",
-            "Origin": CURIA_APP, "Referer": CURIA_APP + "/"}
-    od, do = den - timedelta(days=30), den
-
-    def dotaz(zalozka, filtry, hledat="*", razeni="DOC_DATE"):
-        return dict(_curia_dotaz(hledat, razeni, zalozka), language="CS", filtersValue=[],
-                    advancedFiltersValue=filtry)
-    datum = [od.isoformat(), do.isoformat()]
-    varianty = {
-        "hvezda_docdate": dotaz("document", []),
-        "hvezda_docdate_filtr": dotaz("document", [{"field": "docDate_a", "values": datum,
-                                                    "valuesWithFullHierarchy": []}]),
-        "hvezda_affair_intro": dotaz("affair", [{"field": "introDate_a", "values": datum,
-                                                 "valuesWithFullHierarchy": []}], razeni="SCORE"),
-        "hvezda_affair_intro2": dotaz("affair", [{"field": "introductionDate_a", "values": datum,
-                                                  "valuesWithFullHierarchy": []}], razeni="SCORE"),
-        "hvezda_jurisprudence": dotaz("jurisprudence", [], razeni="DOC_DATE"),
-        "slovo_docdate": dotaz("document", [{"field": "docDate_a", "values": datum,
-                                             "valuesWithFullHierarchy": []}], hledat="Soudní dvůr"),
-    }
-    for nazev, telo in varianty.items():
-        s.stahni(f"sdeu_{nazev}", CURIA_HLEDANI, metoda="POST", json=telo, headers=hlav)
-
-    _sparql(s, "sdeu_sparql_cn", f"""SELECT DISTINCT ?celex ?datum ?vlozeno WHERE {{
-  ?dilo cdm:resource_legal_id_celex ?celex ; cdm:resource_legal_type "CN"^^xsd:string ;
-        cmr:creationDate ?vlozeno .
-  OPTIONAL {{ ?dilo cdm:work_date_document ?datum }}
-  FILTER(?vlozeno >= "{(den - timedelta(days=45)).isoformat()}T00:00:00"^^xsd:dateTime)
-}} ORDER BY DESC(?vlozeno) LIMIT 300""".replace("PREFIX", "PREFIX"))
+    """Přesně ty dotazy, které posílá adaptér (judikatura/soudy/sdeu.py):
+    SPARQL rozhodnutí a oznámení za 14 dní, InfoCuria pro rozsudek SD,
+    rozsudek Tribunálu a stanovisko GA, Cellar XHTML pro čerstvý rozsudek
+    a pro oznámení o předběžné otázce."""
+    from judikatura.soudy import sdeu
+    od = den - timedelta(days=14)
+    hlav = {"Accept": "application/sparql-results+json"}
+    rozh = s.stahni("sdeu_sparql_rozhodnuti", SPARQL, metoda="POST", headers=hlav,
+                    data={"query": sdeu.dotaz_rozhodnuti(od, den),
+                          "format": "application/sparql-results+json"})
+    ozn = s.stahni("sdeu_sparql_oznameni", SPARQL, metoda="POST", headers=hlav,
+                   data={"query": sdeu.dotaz_oznameni(od),
+                         "format": "application/sparql-results+json"})
+    zaznamy = []
+    for r, prevod in ((rozh, sdeu.zaznamy_rozhodnuti), (ozn, sdeu.zaznamy_oznameni)):
+        try:
+            zaznamy += prevod(r.json())
+        except Exception as e:
+            print(f"  převod selhal: {type(e).__name__}: {e}")
+    print(f"  záznamů: {len(zaznamy)}")
+    priklady = []
+    for druh, soud in (("rozsudek", "C"), ("rozsudek", "T"), ("stanovisko GA", "C"),
+                       ("usnesení", "T"), (sdeu.DRUH_OTAZKA, "C")):
+        z = next((z for z in zaznamy if z["druh"] == druh and z["spz"].startswith(soud)), None)
+        if z:
+            priklady.append(z)
+    for z in priklady:
+        celex = z["meta"]["celex"]
+        s.stahni(f"sdeu_infocuria_{celex}", sdeu.INFOCURIA, metoda="POST",
+                 json=sdeu.dotaz_infocuria(z["spz"]), headers=sdeu.HLAVICKY_CURIA)
+    for z in priklady[:1] + priklady[-1:]:
+        celex = z["meta"]["celex"]
+        for jazyk in sdeu.TEXT_JAZYKY:
+            r = s.stahni(f"sdeu_cellar_{celex}_{jazyk}", sdeu.CELLAR.format(celex=celex),
+                         headers={"Accept": "application/xhtml+xml, text/html;q=0.9",
+                                  "Accept-Language": jazyk})
+            if r is not None and r.ok:
+                break
 
 
 SONDY = {"ns": sonda_ns, "nss": sonda_nss, "us": sonda_us, "sdeu": sonda_sdeu}
