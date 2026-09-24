@@ -22,6 +22,11 @@
      od karet ji dělí stejná mezera jako karty mezi sebou. */
   --nav-w: 290px;
   --nav-gap: 28px;
+  /* Výška lepivé hlavičky (56 px řádek + 1 px linka) a odsazení obsahu pod
+     ní. Z nich vychází horní okraj boční navigace i cíl skoku na sekci,
+     aby navigace lícovala s první kartou. */
+  --head-h: 57px;
+  --obsah-nahore: 28px;
   /* Odstíny štítků (soft badge) */
   --badge-green-bg: hsl(142 76% 36% / 0.12);   --badge-green-fg: hsl(142 72% 29%);
   --badge-blue-bg: hsl(217 91% 60% / 0.12);    --badge-blue-fg: hsl(224 76% 48%);
@@ -78,7 +83,7 @@ body {
     backdrop-filter: blur(8px);
   }
 }
-.head-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; flex-wrap: wrap; }
+.head-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: calc(var(--head-h) - 1px); flex-wrap: wrap; }
 h1 {
   margin: 0; font-size: var(--fs-lg); font-weight: 600; letter-spacing: -0.01em;
   display: flex; align-items: center; gap: 8px;
@@ -90,12 +95,12 @@ h1 {
 h1 .tagline { font-weight: 400; color: var(--muted-foreground); }
 .legend { font-size: var(--fs-sm); color: var(--muted-foreground); white-space: nowrap; }
 
-main.container { padding-block: 28px 72px; display: flex; flex-direction: column; gap: 28px; }
+main.container { padding-block: var(--obsah-nahore) 72px; display: flex; flex-direction: column; gap: 28px; }
 /* Obsah je rozdělený na stránky (shrnutí, stránka každého zdroje,
    kalendář, výběr); přepíná se mezi nimi navigací, viditelná je vždy jedna. */
 .page { display: flex; flex-direction: column; gap: 28px; }
 .page[hidden] { display: none; }
-section[id], .card[id] { scroll-margin-top: 76px; }
+section[id], .card[id] { scroll-margin-top: calc(var(--head-h) + var(--obsah-nahore)); }
 
 /* Karta (shadcn Card) */
 .card {
@@ -473,7 +478,7 @@ html.is-loading body { visibility: hidden; }
 
 /* Boční navigace vlevo (jen na širokých obrazovkách) – plovoucí karta. */
 #sidenav {
-  display: none; position: fixed; top: 96px; left: 20px;
+  display: none; position: fixed; top: calc(var(--head-h) + var(--obsah-nahore)); left: 20px;
   width: var(--nav-w); flex-direction: column; font-size: var(--fs-md);
   background: var(--card); border: 1px solid var(--border);
   border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 6px;
@@ -507,9 +512,9 @@ html.is-loading body { visibility: hidden; }
 /* Za jak dlouho zdroj ukazuje novinky – drobně a tlumeně vpravo. */
 .nav-okno {
   margin-left: auto; padding-left: 10px; font-size: var(--fs-sm);
-  color: var(--muted-foreground); opacity: 0.8; font-variant-numeric: tabular-nums;
+  color: var(--muted-foreground); font-variant-numeric: tabular-nums;
 }
-#sidenav a.active .nav-okno { color: inherit; opacity: 0.7; }
+#sidenav a.active .nav-okno { color: inherit; }
 #sidenav a:not(.sub).active { color: var(--link); }
 /* Podpoložky jsou odsazené o šířku ikony nadřazené stránky a drží se
    svislého vodítka, ať je vidět, kam patří. */
@@ -563,7 +568,8 @@ html.is-loading body { visibility: hidden; }
 @media (max-width: 640px) {
   .card-stav { margin-inline: 16px; }
   .container { padding-inline: 14px; }
-  main.container { padding-block: 20px 48px; gap: 20px; }
+  :root { --obsah-nahore: 20px; }
+  main.container { padding-block: var(--obsah-nahore) 48px; gap: 20px; }
   .card-header { padding: 14px 16px 0; }
   .card-content { padding: 8px 16px 12px; }
   /* Popis za jménem webu zabere na telefonu tři řádky hlavičky. */
