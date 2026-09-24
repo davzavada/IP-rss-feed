@@ -133,7 +133,7 @@ NO_QUESTIONS_MARKER = "questions are not yet available"
 # Dokud oznámení nevyjde, Cellar vrací 404 a ve feedu zůstane poznámka.
 CELEX_URL = "http://publications.europa.eu/resource/celex/{celex}"
 CELEX_HEADERS = {
-    "User-Agent": "pravni-rss-feed/1.0 (+https://rss.davidzavada.cz)",
+    "User-Agent": "pravni-rss-feed/1.0 (+https://owl.davidzavada.cz)",
     "Accept": "application/xhtml+xml",
     "Accept-Language": "eng",
 }
@@ -186,7 +186,7 @@ def fetch_eurlex_notice(case_ref):
 CURIA_APP = "https://infocuria.curia.europa.eu"
 CURIA_SEARCH_URL = "https://infocuriaws.curia.europa.eu/elastic-connector/search"
 CURIA_HEADERS = {
-    "User-Agent": "pravni-rss-feed/1.0 (+https://rss.davidzavada.cz)",
+    "User-Agent": "pravni-rss-feed/1.0 (+https://owl.davidzavada.cz)",
     "Accept": "application/json, text/plain, */*",
     "Content-Type": "application/json",
     "Origin": CURIA_APP,
@@ -388,7 +388,7 @@ def build_rss(decisions):
     SubElement(channel, "link").text = "https://curia.europa.eu/"
     # atom:link rel="self" – adresa feedu samotného (vyžaduje RSS best practice)
     SubElement(channel, "atom:link", attrib={
-        "href": "https://rss.davidzavada.cz/ipcuria_feed.xml",
+        "href": "https://owl.davidzavada.cz/ipcuria_feed.xml",
         "rel": "self", "type": "application/rss+xml",
     })
     SubElement(channel, "description").text = (

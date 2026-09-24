@@ -1327,7 +1327,7 @@ function initHelp() {
 // Publishable key je veřejný a patří do stránky – podle hostitele se volí
 // instance. Tajný klíč sem nikdy nepatří (je jen v GitHub secrets).
 const CLERK_KLICE = {
-  // "rss.davidzavada.cz": "pk_live_…",   // produkční instance, až bude
+  // "owl.davidzavada.cz": "pk_live_…",   // produkční instance, až bude
   "*": "pk_test_cHJvdmVuLWpheS0zOTI5LmNsZXJrLmFjY291bnRzLmRldiQ"
 };
 // Clerk JS (v6) a jeho komponenty (@clerk/ui) z Frontend API instance.

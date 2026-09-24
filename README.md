@@ -1,6 +1,6 @@
 # Owl – přehled novinek v IP a IT
 
-Statická stránka ([rss.davidzavada.cz](https://rss.davidzavada.cz/)),
+Statická stránka ([owl.davidzavada.cz](https://owl.davidzavada.cz/)),
 kterou plní scrapery z GitHub Actions. Sleduje novou judikaturu Nejvyššího
 soudu (všechny senáty, AI ji řadí do oblastí práva), judikaturu Soudního
 dvora EU k duševnímu vlastnictví a IT, články z právních časopisů a nařízená
@@ -108,7 +108,7 @@ vlastnictví a IT, všechny časopisy.
   (`@clerk/clerk-js@6` a komponenty `@clerk/ui@1`), až po vykreslení obsahu.
   Česká lokalizace je v `docs/vendor/clerk-cs-CZ.js`.
 - Publishable key je veřejný a je v `docs/app.js` (`CLERK_KLICE`, podle
-  hostitele: produkční instance pro `rss.davidzavada.cz`, jinak vývojová).
+  hostitele: produkční instance pro `owl.davidzavada.cz`, jinak vývojová).
   Tajný klíč do kódu ani na Vercel nepatří. Bude jen v GitHub secretu
   `CLERK_SECRET_KEY`, až budou přehledy podle výběru.
 - Výběr je u účtu v `user.unsafeMetadata.owl`:
@@ -157,7 +157,8 @@ Stránku stačí otevřít přes libovolný statický server nad `docs/`
 Stránku servíruje Vercel: projekt napojený na tohle repo, bez build kroku,
 výstupem je adresář `docs/` (viz `vercel.json`). Nasazuje se jen commit,
 který změní `docs/` nebo `vercel.json` (`ignoreCommand`) – commity se
-stavem scraperů mimo `docs/` deploy nespouštějí. Doménu (`rss.davidzavada.cz`)
+stavem scraperů mimo `docs/` deploy nespouštějí. Doménu (`owl.davidzavada.cz`)
 nese záznam CNAME u správce DNS, nasměrovaný na Vercel; GitHub Pages je
-vypnuté. Doména v UID kalendáře `hearings.ics` se bere z proměnné
-`SITE_HOST` (výchozí `rss.davidzavada.cz`), na hostingu tedy nezávisí.
+vypnuté. Doména webu pro odkaz na kalendář jde přepsat proměnnou
+`SITE_HOST`. UID událostí v `hearings.ics` drží doménu `rss.davidzavada.cz`
+z doby před přesunem, ať kalendáře nevidí jednání dvakrát.

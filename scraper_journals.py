@@ -649,7 +649,7 @@ CROSSREF_LOOKBACK_DAYS = 30  # jak daleko zpět se ptáme
 # nevyhrne archiv.
 CROSSREF_FILTRY = ("from-created-date", "from-pub-date")
 # Crossref etiketa: identifikuj se v User-Agent
-CROSSREF_UA = "pravni-rss-feed/1.0 (+https://rss.davidzavada.cz)"
+CROSSREF_UA = "pravni-rss-feed/1.0 (+https://owl.davidzavada.cz)"
 
 CROSSREF_JOURNALS = [
     # (online ISSN, zkratka do titulku a guid, plný název časopisu)
@@ -1170,9 +1170,9 @@ def build_rss(all_items):
 
     SubElement(channel, "title").text = "Právní časopisy"
     # <link> kanálu má vést na web, ne na XML samotné (to patří do atom:link self)
-    SubElement(channel, "link").text = "https://rss.davidzavada.cz/"
+    SubElement(channel, "link").text = "https://owl.davidzavada.cz/"
     SubElement(channel, "atom:link", attrib={
-        "href": "https://rss.davidzavada.cz/journals_feed.xml",
+        "href": "https://owl.davidzavada.cz/journals_feed.xml",
         "rel": "self", "type": "application/rss+xml",
     })
     SubElement(channel, "description").text = "Nová čísla právních časopisů a články"
