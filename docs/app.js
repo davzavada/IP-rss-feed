@@ -117,12 +117,16 @@ function tagOf(title) {
 
 /* ========== Šířky sloupců (tažení za záhlaví, uložení do cookie) ========== */
 // Výchozí šířky v procentech podle druhu sloupce; sloupec, který tu není
-// (Shrnutí), si rozebere zbytek řádku. Každá tabulka má jinou skladbu
+// (Shrnutí), si rozebere zbytek řádku – a má dostat nejvíc, je to hlavní
+// obsah. Zdroj a druh jsou štítky, název značka s odkazem na PDF, heslo
+// štítek, který se případně zalomí. Každá tabulka má jinou skladbu
 // sloupců, takže se výchozí hodnoty počítají pro každou zvlášť.
-const COL_DEFAULTS = { type: 12, name: 20, oblasti: 14, heslo: 18, src: 15, date: 10, author: 14 };
+const COL_DEFAULTS = { type: 10, name: 15, oblasti: 14, heslo: 13, src: 8, date: 8, author: 12 };
 const MIN_COL_PCT = 4;          // pod tuhle šířku sloupec nepustíme
 const KEY_STEP_PCT = 2;         // krok při ovládání šipkami
-const COL_COOKIE = "colw";
+// Ve 2. verzi užší sloupce kolem shrnutí – šířky natažené podle starých
+// výchozích se zahodí (jiný název cookie), ať platí nové.
+const COL_COOKIE = "colw2";
 const COL_COOKIE_MAX_AGE = 365 * 24 * 60 * 60;
 
 // Skladba sloupců podle klíče tabulky – potřeba při obnovení výchozích šířek.
@@ -880,188 +884,6 @@ function zmenyJednani(j) {
     z.soud === j.soud && z.spz === j.spz && z.datum === j.datum);
 }
 
-// Skládací hlavička části pod mřížkou (změny, koho kalendář sleduje).
-// Obsah je ve výchozím stavu sbalený, ať dlouhé výpisy neodsouvají kalendář;
-// rozbalí se kliknutím na hlavičku, Enterem nebo mezerníkem.
-function foldHead(id, obsahId, nadpis) {
-  return '<div class="cal-fold-head" id="' + id + '" role="button" tabindex="0" ' +
-      'aria-expanded="false" aria-controls="' + obsahId + '">' +
-      "<h3>" + esc(nadpis) + "</h3>" +
-      '<span class="fold" aria-hidden="true"><svg class="fold-ico"><use href="#icon-chevron"></use></svg></span>' +
-    "</div>";
-}
-
-// Seznam změn pod mřížkou – kvůli němu se přehledy porovnávají.
-function zmenyHtml() {
-  const zmeny = (calData.zmeny || []).filter(z => z && z.spz && z.typ);
-  let html = '<div class="cal-zmeny">' +
-    foldHead("zmeny-fold", "zmeny-content", "Změny v přehledech soudů");
-  if (!zmeny.length) {
-    return html + '<div class="card-content" id="zmeny-content" hidden>' +
-      '<p class="feed-empty">Od minulých přehledů se nic nezměnilo.</p></div></div>';
-  }
-  html += '<div class="card-content" id="zmeny-content" hidden><ul>';
-  zmeny.forEach(z => {
-    html += "<li>" +
-      '<span class="cal-zmena-kdy">' + esc(czDate(z.kdy)) + "</span>" +
-      courtBadge(z) +
-      '<span class="cal-zmena-spz">' + esc(z.spz) + "</span>" +
-      '<span class="cal-zmena">' + esc(zmenaText(z)) + "</span>" +
-      '<span class="cal-zmena-kdy">jednání ' + esc(czDate(z.datum)) + "</span>" +
-      "</li>";
-  });
-  return html + "</ul></div></div>";
-}
-
-/* ========== Koho kalendář sleduje ========== */
-// Patička kalendáře: které senáty se sledují a kteří soudci je vedou.
-// Předseda, členové a agenda jsou z rozvrhu práce (sestavy v hearings.json),
-// vedle nich soudci, kteří jednáním v přehledech skutečně předsedají – u VS
-// se v jednom senátu střídají, z rozvrhu samotného by to vidět nebylo.
-const SOUD_NAZVY = { MS: "Městský soud v Praze", VS: "Vrchní soud v Praze" };
-const TITULY_RE = /\b(?:JUDr|Mgr|Bc|Ing|PhDr|MUDr|RNDr|Dr|doc|prof|Ph\.?\s?D|LL\.?\s?M|MBA|DiS|CSc)\b\.?/gi;
-
-// „JUDr. Mgr. Petr Košík, Ph.D." -> „Petr Košík".
-function jmenoSoudce(jmeno) {
-  return String(jmeno || "").replace(TITULY_RE, " ").replace(/[,;()]/g, " ")
-    .replace(/\s+/g, " ").trim();
-}
-
-// Senát -> soudci, kteří v přehledech předsedají, od nejčastějšího. Bere
-// i minulá jednání z archivu, ať seznam nezávisí na tom, co je zrovna v okně.
-function predsedajiciSoudci(soud) {
-  const pocty = {};
-  (calData.jednani || []).forEach(j => {
-    const jmeno = jmenoSoudce(j.predseda);
-    if (j.soud !== soud || !j.senat || !jmeno) return;
-    const senat = pocty[j.senat] || (pocty[j.senat] = {});
-    senat[jmeno] = (senat[jmeno] || 0) + 1;
-  });
-  const out = {};
-  Object.keys(pocty).forEach(k => {
-    out[k] = Object.keys(pocty[k]).sort((a, b) => pocty[k][b] - pocty[k][a]);
-  });
-  return out;
-}
-
-function senatCislo(k) {
-  return parseInt(String(k).split(" ")[0], 10) || 0;
-}
-
-// Rejstříky téhož oddělení se píšou za jedno číslo: „2 C", „2 Cm", „2 EC"
-// -> „2 C, Cm, EC". Víc oddělení v jedné sestavě spojí „+" („9 C, EC, ECm
-// + 32 Cm"), a když má každé jen jeden rejstřík, stačí čárka („1 Cm, 21 Cm").
-function senatySpolu(klice) {
-  const oddeleni = new Map();
-  klice.forEach(k => {
-    const cislo = senatCislo(k);
-    if (!oddeleni.has(cislo)) oddeleni.set(cislo, []);
-    oddeleni.get(cislo).push(String(k).split(" ").slice(1).join(" "));
-  });
-  const casti = [];
-  oddeleni.forEach((rejstriky, cislo) => casti.push(cislo + " " + rejstriky.join(", ")));
-  const poJednom = Array.from(oddeleni.values()).every(r => r.length === 1);
-  return casti.join(poJednom ? ", " : " + ");
-}
-
-function sestavySouduHtml(soud) {
-  const vedou = predsedajiciSoudci(soud);
-  const radky = [];
-  const pokryte = new Set();
-  ((calData.sestavy || {})[soud] || []).forEach(s => {
-    const klice = (s && s.senaty) || [];
-    if (!klice.length) return;
-    klice.forEach(k => pokryte.add(k));
-    radky.push({ senaty: klice, predseda: s.predseda, clenove: s.clenove || [],
-                 agenda: s.agenda, pozn: s.pozn });
-  });
-  // Senáty mimo sestavy z rozvrhu. U městského soudu patří rejstříky C, Cm,
-  // EC a ECm s týmž číslem k jednomu oddělení (a jednomu soudci), proto se
-  // slučují; u vrchního soudu je „1 Co" jiný senát než „1 Cmo".
-  const skupiny = new Map();
-  ((calData.senaty || {})[soud] || []).filter(k => !pokryte.has(k)).forEach(k => {
-    const klic = soud === "MS" ? String(senatCislo(k)) : k;
-    if (!skupiny.has(klic)) skupiny.set(klic, []);
-    skupiny.get(klic).push(k);
-  });
-  skupiny.forEach(klice => radky.push({ senaty: klice }));
-  if (!radky.length) return "";
-  radky.sort((a, b) => senatCislo(a.senaty[0]) - senatCislo(b.senaty[0]));
-
-  const rozvrh = (calData.rozvrhy || {})[soud] || {};
-  const odkaz = rozvrh.url
-    ? ' · <a href="' + esc(rozvrh.url) + '" target="_blank" rel="noopener">rozvrh práce' +
-      (rozvrh.platnost ? ", " + esc(rozvrh.platnost) : "") + "</a>"
-    : "";
-  let html = '<div class="cal-sestavy-soud"><h4>' +
-    esc(SOUD_NAZVY[soud] || COURT_LABELS[soud] || soud) + odkaz + "</h4><ul>";
-  radky.forEach(r => {
-    const predsedaji = [];
-    r.senaty.forEach(k => (vedou[k] || []).forEach(j => {
-      if (predsedaji.indexOf(j) < 0) predsedaji.push(j);
-    }));
-    const casti = [];
-    if (r.predseda) {
-      casti.push("předseda " + esc(r.predseda) +
-        (r.clenove && r.clenove.length ? ", členové " + esc(r.clenove.join(", ")) : ""));
-    }
-    if (r.agenda) casti.push(esc(r.agenda));
-    if (r.pozn) casti.push('<span class="cal-sestava-pozn">' + esc(r.pozn) + "</span>");
-    // Kdo v přehledech předsedá, má smysl uvést, jen když to není (jen)
-    // předseda z rozvrhu – u VS se v senátu střídají, u MSPH za soudce
-    // na stáži jedná zástupce.
-    if (predsedaji.some(j => j !== r.predseda)) {
-      casti.push('<span class="cal-sestava-vedou">v přehledech ' +
-        (predsedaji.length > 1 ? "předsedají " : "předsedá ") +
-        esc(predsedaji.join(", ")) + "</span>");
-    } else if (!r.predseda) {
-      casti.push('<span class="cal-sestava-vedou">v přehledech zatím bez jednání</span>');
-    }
-    html += '<li><span class="cal-sestava-senaty">' + esc(senatySpolu(r.senaty)) + "</span>" +
-      '<span class="cal-sestava-kdo">' + casti.join(" · ") + "</span></li>";
-  });
-  return html + "</ul></div>";
-}
-
-function sestavyHtml() {
-  const soudy = Object.keys(calData.senaty || {})
-    .filter(s => ((calData.senaty || {})[s] || []).length);
-  if (!soudy.length) return "";
-  return '<div class="cal-sestavy">' +
-    foldHead("sestavy-fold", "sestavy-content", "Koho kalendář sleduje") +
-    '<div class="card-content" id="sestavy-content" hidden>' +
-    soudy.map(sestavySouduHtml).join("") +
-    '<p class="cal-sestavy-pozn">U Městského soudu rozhoduje senát jen spory ' +
-    "z průmyslového vlastnictví a o ochranu názvu; nekalou soutěž, pověst, autorské " +
-    "právo a kolektivní správce soudí předseda oddělení sám. Předběžná opatření " +
-    "(rejstřík Nc) se berou u předsedů sledovaných senátů. Žaloby proti Úřadu " +
-    "průmyslového vlastnictví se poznají podle žalovaného, ať je soudí kterýkoli " +
-    "senát správního úseku. Senáty, které IP senáty Vrchního soudu jen zastupují, " +
-    "kalendář nesleduje.</p>" +
-    "</div></div>";
-}
-
-// Napojí skládací hlavičku (foldHead) – začíná sbalená. `co` je do popisku
-// pro čtečky („Rozbalit změny").
-function sbalitelne(hlavaId, obsahId, co) {
-  const head = document.getElementById(hlavaId);
-  const content = document.getElementById(obsahId);
-  if (!head || !content) return;
-  const nastav = folded => {
-    content.hidden = folded;
-    head.setAttribute("aria-expanded", String(!folded));
-    head.setAttribute("aria-label", (folded ? "Rozbalit " : "Sbalit ") + co);
-  };
-  const prepni = () => nastav(head.getAttribute("aria-expanded") === "true");
-  nastav(true);
-  head.addEventListener("click", prepni);
-  head.addEventListener("keydown", e => {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    e.preventDefault();
-    prepni();
-  });
-}
-
 /* ========== Jedno jednání jako .ics ========== */
 // Celý kalendář se dá přihlásit z hearings.ics; tohle je pro jedno jednání,
 // které si člověk chce prostě jen jednou hodit do svého kalendáře. Událost
@@ -1301,18 +1123,13 @@ function renderKalendar(data) {
       '<div class="cal-wrap"><div class="cal-grid" id="cal-grid"></div></div>' +
       '<div class="cal-agenda" id="cal-agenda"></div>' +
       '<div class="cal-pop" id="cal-pop" role="dialog" aria-label="Detail jednání" hidden></div>' +
-    "</div>" +
-    zmenyHtml() +
-    sestavyHtml();
+    "</div>";
 
   const info = document.getElementById("cal-info");
   if (info && data.generated) {
     const kdy = czDate(data.generated);
     if (kdy) info.textContent = "aktualizováno " + kdy;
   }
-
-  sbalitelne("zmeny-fold", "zmeny-content", "změny");
-  sbalitelne("sestavy-fold", "sestavy-content", "seznam sledovaných senátů");
 
   document.getElementById("cal-prev")
     .addEventListener("click", () => calShiftDays(-CAL_POSUN_DNU));

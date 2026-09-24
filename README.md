@@ -150,7 +150,7 @@ v civilním úseku na IP senáty (seznam senátů a soudců z rozvrhů práce), 
 správního soudnictví MSPH (zvláštní dokument na téže stránce) na žaloby
 proti Úřadu průmyslového vlastnictví – podle žalovaného mezi účastníky
 (`ucastnici_ip`), ne podle senátu. Každý nový přehled porovnává s minulým
-a změny ukládá vedle jednání. Účastníky, kteří jsou fyzická osoba, drží
+a změny ukládá vedle jednání (na webu jsou v detailu jednání). Účastníky, kteří jsou fyzická osoba, drží
 archiv jen pod iniciálami; kdo je fyzická osoba, rozhoduje AI, a ptá se jí
 po dávkách, ať se odpověď vejde do stropu i s rostoucím archivem. U jména,
 kde AI nerozhodne, se celé jméno neuloží; jednání si v takovém případě nechá
@@ -160,13 +160,12 @@ výpadek AI pokaždé shodil jinou část kalendáře zpátky na holé značky.
 
 Senáty a jejich sestavy (předseda, členové, agenda, poznámka ke stážím) jsou
 v configu sepsané ručně podle rozvrhu v `rozvrh_zdroj` (`platnost`,
-`platnost_od`); `sestavy_navic` jsou senáty jen pro patičku kalendáře, podle
-kterých se nefiltruje (správní 15 A a 18 A MSPH). Jednou týdně scraper stáhne
+`platnost_od`) a do `hearings.json` jdou i se `sestavy_navic` (správní 15 A
+a 18 A MSPH, podle kterých se nefiltruje); web je nezobrazuje. Jednou týdně scraper stáhne
 rozvrh ze stránky soudu a AI extrakcí seznam přepíše jen tehdy, když rozvrh
 podle titulní strany platí od pozdějšího dne než ten zapsaný – starší ani
 stejný dokument ruční seznam nepřepíše. Senáty ze sloupce „Zastupuje senát“
-IP senáty jen zastupují a nesledují se. Patička kalendáře „Koho kalendář
-sleduje“ je ve výchozím stavu sbalená.
+IP senáty jen zastupují a nesledují se.
 
 ## Přihlášení a vlastní výběr
 
