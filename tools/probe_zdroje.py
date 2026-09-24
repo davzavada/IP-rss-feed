@@ -329,6 +329,15 @@ def sonda_sdeu(s, den):
     rozsudek Tribunálu a stanovisko GA, Cellar XHTML pro čerstvý rozsudek
     a pro oznámení o předběžné otázce."""
     from judikatura.soudy import sdeu
+    # ipcuria.eu: seznamy předběžných otázek a rozhodnutí k IP a stránky věcí.
+    r = s.stahni("ipcuria_referrals", "https://ipcuria.eu/all_referrals.php")
+    s.stahni("ipcuria_rulings", "https://ipcuria.eu/all_preliminary_rulings.php")
+    if r is not None and r.ok:
+        odkazy = re.findall(r'href="([^"]*case\?reference=[^"]+)"', r.text)
+        for i, href in enumerate(dict.fromkeys(odkazy)):
+            if i >= 3:
+                break
+            s.stahni(f"ipcuria_vec_{i}", urljoin("https://ipcuria.eu/", href.replace("&amp;", "&")))
     od = den - timedelta(days=14)
     hlav = {"Accept": "application/sparql-results+json"}
     rozh = s.stahni("sdeu_sparql_rozhodnuti", SPARQL, metoda="POST", headers=hlav,
