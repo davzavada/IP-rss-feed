@@ -165,10 +165,12 @@ vlastnictví a IT, všechny časopisy.
   `CLERK_SECRET_KEY`, až budou přehledy podle výběru.
 - Výběr je u účtu v `user.unsafeMetadata.owl`:
   `{"v":1,"ns":{"oblasti":[…],"senaty":[23]},"nss":{"oblasti":[…]},"us":{…},"sdeu":{…},"skryt_procesni":false,"skryte_casopisy":[]}`.
-  Nastavuje se na stránce `#nastaveni` (Můj výběr): matice oblastí × soudy
-  (NS, NSS, ÚS, SDEU), senáty NS po kolegiích, procesní rozhodnutí
-  a časopisy. Skupiny oblastí a kolegia bez vybraného se sbalí na jeden
-  řádek. Neznámé oblasti se zahodí, přejmenované převede `alias`
+  Nastavuje se na stránce `#nastaveni` (Můj výběr): oblasti práva, senáty
+  NS po kolegiích, časopisy a vypínač procesních rozhodnutí. Sekce jsou
+  na začátku sbalené a v hlavičce mají souhrn; vybírá se jedním kliknutím
+  na čip. Oblasti se zatím nastavují všem soudům stejně (výběr po soudech
+  je v datech připravený, na stránce schovaný). Změny platí až po
+  tlačítku Uložit. Neznámé oblasti se zahodí, přejmenované převede `alias`
   v `docs/data/oblasti.json`; soud, který v uloženém výběru chybí, dostane
   výchozí oblasti. Výchozí výběr se neukládá.
 - Pravidlo: rozhodnutí je vidět, když spadá do některé z oblastí vybraných

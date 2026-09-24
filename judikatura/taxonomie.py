@@ -37,14 +37,13 @@ class Taxonomie:
         return self._klice.get(self._norm(token))
 
     def normalizuj(self, seznam):
-        """Platná id bez duplicit, nejvýš tři; „ostatni" jen když nic jiného."""
+        """Platná id bez duplicit, nejvýš tři. Neznámá id (i dřívější
+        „ostatni") se zahodí."""
         out = []
         for token in seznam or []:
             oid = self.id_z(token)
             if oid and oid not in out:
                 out.append(oid)
-        if len(out) > 1 and "ostatni" in out:
-            out.remove("ostatni")
         return out[:MAX_OBLASTI]
 
     def do_promptu(self):

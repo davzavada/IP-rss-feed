@@ -1,6 +1,6 @@
 {
   "poznamka": "Pevný seznam oblastí. AI zařazuje rozhodnutí jen sem (1–3 oblasti). id se ukládá ve výběru uživatelů, proto se nemění – přejmenování jde přes `alias` (staré id -> nové). `vychozi` = výchozí výběr IP/IT pro nepřihlášené a nové uživatele.",
-  "verze": 1,
+  "verze": 2,
   "oblasti": [
     {
       "id": "autorske",
@@ -173,16 +173,9 @@
     {
       "id": "trestni",
       "nazev": "Trestní právo",
-      "skupina": "Trestní právo",
+      "skupina": "Veřejné právo",
       "vychozi": false,
       "popis": "trestné činy a tresty, hospodářská trestná činnost, trestní odpovědnost právnických osob, trestní řízení včetně mezinárodní spolupráce a evropského zatýkacího rozkazu"
-    },
-    {
-      "id": "ostatni",
-      "nazev": "Ostatní",
-      "skupina": "Ostatní",
-      "vychozi": false,
-      "popis": "jen když nic jiného nesedí"
     }
   ],
   "alias": {}

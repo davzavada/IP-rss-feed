@@ -354,9 +354,9 @@ let VYCHOZI_OBLASTI = [];
 let VYCHOZI_SENATY_NS = [23];
 let SENATY_NS = [];               // [{senat, kolegium, popis}]
 
-// Soudy, u kterých se vybírají oblasti – sloupce matice v nastavení.
-// U soudů se „brzy" se výběr uloží hned, ale uplatní se, až se jejich
-// rozhodnutí začnou sbírat. `nazev2` je 2. pád do vět.
+// Soudy, u kterých se filtruje podle oblastí. Výběr je uložený u každého
+// soudu zvlášť, ale stránka Můj výběr ho zatím nastavuje všem stejně.
+// `nazev2` je 2. pád do vět.
 const SOUDY_VYBERU = [
   { soud: "ns", zkratka: "NS", nazev: "Nejvyšší soud", nazev2: "Nejvyššího soudu" },
   { soud: "nss", zkratka: "NSS", nazev: "Nejvyšší správní soud", nazev2: "Nejvyššího správního soudu" },
@@ -412,7 +412,7 @@ function normalizujVyber(ulozeny) {
     v.skryte_casopisy = bezDuplicit(ulozeny.skryte_casopisy.filter(c => typeof c === "string")
       .map(idCasopisu));
   }
-  return v;
+  return seradVyber(v);
 }
 
 function jeVychozi(v) {
@@ -1489,9 +1489,10 @@ function zmenaUctu(user, vzdy) {
   if (vzdy || id !== prihlaseny) {
     prihlaseny = id;
     vyber = user ? normalizujVyber((user.unsafeMetadata || {}).owl) : vychoziVyber();
-    // Rozbalené skupiny se znovu určí podle výběru nového účtu.
-    otevreneSkupiny = null;
-    otevrenaKolegia = null;
+    // Nový účet začíná se sbalenými sekcemi a bez rozpracovaných změn.
+    otevreneSekce = new Set();
+    koncept = null;
+    stavUlozeni = "";
     vykresliZdroje();
     vykresliNastaveni();
   }
@@ -1532,13 +1533,13 @@ function vykresliUcet() {
 
 const KOLEGIA = { civilni: "Občanskoprávní a obchodní kolegium", trestni: "Trestní kolegium" };
 
-// Senáty NS k výběru: ze seznamu a navíc ty, které jsou v datech a v seznamu
-// chybí (aspoň s číslem).
-function senatyKVyberu() {
+// Senáty NS k výběru: ze seznamu a navíc ty, které jsou v datech nebo ve
+// výběru a v seznamu chybí (aspoň s číslem).
+function senatyKVyberu(v) {
   const znam = SENATY_NS.map(s => s.senat);
   const r = zdrojeVysledky && zdrojeVysledky[FEEDS.findIndex(f => f.key === "nsoud")];
   const vDatech = r && r.status === "fulfilled" ? r.value.map(i => i.senat) : [];
-  const navic = bezDuplicit(vDatech.concat(vyber.ns.senaty))
+  const navic = bezDuplicit(vDatech.concat((v || vyber).ns.senaty))
     .filter(n => Number.isInteger(n) && znam.indexOf(n) < 0)
     .sort((a, b) => a - b)
     .map(n => ({ senat: n, kolegium: "ostatni", popis: "" }));
@@ -1561,29 +1562,30 @@ function casopisyKVyberu() {
   return CASOPISY.slice();
 }
 
-function zaskrtavatko(atributy, zaskrtnuto, popisek, trida) {
+// Stránka výběru. Sekce jsou rozbalovací řádky (shadcn Accordion), na
+// začátku sbalené; v hlavičce každé je souhrn toho, co je vybrané. Vybírá
+// se jedním kliknutím na čip (tlačítko s aria-pressed). Změny se sbírají
+// v konceptu a platí – na webu i v účtu – až po „Uložit".
+let otevreneSekce = new Set();
+let koncept = null;               // rozpracovaný výběr; null = stejný jako uložený
+let stavUlozeni = "";             // „Ukládám…", „Uloženo", chyba
+let ukladam = false;
+
+function kopie(v) {
+  return JSON.parse(JSON.stringify(v));
+}
+
+function rozpracovano() {
+  return !!koncept && JSON.stringify(koncept) !== JSON.stringify(vyber);
+}
+
+// Čip má vždy stejně široké místo na znak (+ / ✓ / –), takže se po
+// kliknutí nezmění jeho velikost.
+function cipHtml(atributy, stav, obsah, title, trida) {
   const attrs = Object.keys(atributy).map(k => " " + k + '="' + esc(atributy[k]) + '"').join("");
-  return '<label class="volba' + (trida ? " " + trida : "") + '"><input type="checkbox"' + attrs +
-    (zaskrtnuto ? " checked" : "") + "> <span>" + popisek + "</span></label>";
-}
-
-// Rozbalené skupiny oblastí a kolegia NS. Do prvního vykreslení je null –
-// pak se otevře, co obsahuje výchozí nebo vybrané; dál si stránka pamatuje,
-// co uživatel rozbalil a sbalil.
-let otevreneSkupiny = null;
-let otevrenaKolegia = null;
-
-// Tlačítko, které rozbalí/sbalí blok. `pocet` je text za názvem.
-function prepinacHtml(trida, id, otevreno, nazev, pocet, klic) {
-  return '<button type="button" class="' + trida + '" aria-expanded="' + otevreno +
-    '" aria-controls="' + id + '" data-prepinac="' + esc(klic) + '">' +
-    '<svg class="fold-ico" aria-hidden="true"><use href="#icon-chevron"></use></svg>' +
-    '<span class="prepinac-text"><span class="prepinac-nazev">' + esc(nazev) + "</span>" +
-    '<span class="vyber-pocet">' + pocet + "</span></span></button>";
-}
-
-function pocetText(vybrano, celkem) {
-  return "vybráno " + vybrano + " z " + celkem;
+  return '<button type="button" class="cip' + (trida ? " " + trida : "") + '"' + attrs +
+    ' aria-pressed="' + stav + '"' + (title ? ' title="' + esc(title) + '"' : "") +
+    '><span class="cip-znak" aria-hidden="true"></span>' + obsah + "</button>";
 }
 
 function skupinyOblasti() {
@@ -1596,122 +1598,128 @@ function skupinyOblasti() {
   return skupiny;
 }
 
-// Oblast je vybraná, když je zaškrtnutá aspoň u jednoho soudu.
-function vybranaOblast(id) {
-  return SOUDY_VYBERU.some(s => vyber[s.soud].oblasti.indexOf(id) >= 0);
+function soudyOblasti(v, id) {
+  return SOUDY_VYBERU.filter(s => v[s.soud].oblasti.indexOf(id) >= 0);
 }
 
-// Matice oblastí × soudy. Každý řádek je vlastní mřížka se stejnými sloupci
-// (celý řádek se zvýrazní pod myší). Hlavička sloupce přepíná celý soud,
-// řádek skupiny celou skupinu u jednoho soudu; stav „částečně" doplní
-// obnovStavySkupin. Skupiny se dají sbalit na jediný řádek.
-function oblastiHtml() {
-  const soudy = SOUDY_VYBERU;
-  const skupiny = skupinyOblasti();
-  if (!otevreneSkupiny) {
-    otevreneSkupiny = new Set(skupiny.filter(sk => sk.oblasti.some(o =>
-      VYCHOZI_OBLASTI.indexOf(o.id) >= 0 || vybranaOblast(o.id))).map(sk => sk.nazev));
-  }
-  let html = '<div class="matice" style="--sloupcu:' + soudy.length + '">' +
-    '<div class="matice-radek matice-hlavicka"><span class="matice-nazev">Oblast</span>' +
-    soudy.map(s => '<label class="matice-soud" title="' + esc(s.nazev) +
-      (s.brzy ? " – zatím nesbíráme" : "") + '"><span class="matice-zkratka">' + esc(s.zkratka) +
-      "</span>" + '<input type="checkbox" data-sloupec="' + s.soud + '" aria-label="' +
-      esc(s.nazev + " – všechny oblasti") + '">' +
-      (s.brzy ? '<span class="matice-brzy">brzy</span>' : "") + "</label>").join("") +
-    "</div>";
-  skupiny.forEach((sk, i) => {
-    const otevreno = otevreneSkupiny.has(sk.nazev);
-    const vybrano = sk.oblasti.filter(o => vybranaOblast(o.id)).length;
-    html += '<div class="matice-blok" data-blok="' + i + '">' +
-      '<div class="matice-radek matice-skupina">' +
-      prepinacHtml("matice-prepinac", "sk-" + i, otevreno, sk.nazev,
-        pocetText(vybrano, sk.oblasti.length), sk.nazev) +
-      soudy.map(s => '<span class="matice-bunka"><input type="checkbox" data-skupina="' + i +
-        '" data-soud="' + s.soud + '" aria-label="' + esc(sk.nazev + " – " + s.nazev) +
-        '"></span>').join("") +
-      "</div>" +
-      '<div class="matice-oblasti" id="sk-' + i + '"' + (otevreno ? "" : " hidden") + ">";
-    sk.oblasti.forEach(o => {
-      html += '<div class="matice-radek"><span class="matice-nazev" title="' +
-        esc(o.popis || "") + '">' + esc(o.nazev) + "</span>" +
-        soudy.map(s => '<span class="matice-bunka"><input type="checkbox" data-oblast="' +
-          esc(o.id) + '" data-soud="' + s.soud + '" data-skupina-oblasti="' + i + '"' +
-          (vyber[s.soud].oblasti.indexOf(o.id) >= 0 ? " checked" : "") +
-          ' aria-label="' + esc(o.nazev + " – " + s.nazev) + '"></span>').join("") +
-        "</div>";
-    });
-    html += "</div></div>";
-  });
-  return html + "</div>";
+// Oblast se vybírá pro všechny soudy najednou. „mixed" zbyde jen po
+// dřívějším výběru zvlášť pro jednotlivé soudy.
+function stavOblasti(v, id) {
+  const n = soudyOblasti(v, id).length;
+  return n === SOUDY_VYBERU.length ? "true" : n ? "mixed" : "false";
 }
 
-// Senáty NS po kolegiích; kolegium se dá sbalit. Otevřené je občanskoprávní
-// a každé, ve kterém je něco vybrané.
-function senatyHtml() {
+function oblastiHtml(v) {
+  return '<p class="vyber-popis">Rozhodnutí uvidíte, když ho AI zařadí do některé z vybraných oblastí. ' +
+    "Výběr platí pro všechny soudy.</p>" + skupinyOblasti().map((sk, i) => {
+      const vse = sk.oblasti.every(o => stavOblasti(v, o.id) === "true");
+      return '<div class="vyber-skupina"><div class="skupina-hlava"><span class="skupina-nazev">' +
+        esc(sk.nazev) + '</span><button type="button" class="skupina-vse" data-skupina="' + i + '">' +
+        (vse ? "zrušit vše" : "vybrat vše") + "</button></div>" + '<div class="cipy">' +
+        sk.oblasti.map(o => {
+          const stav = stavOblasti(v, o.id);
+          const title = stav === "mixed"
+            ? "Vybráno jen u některých soudů (" + soudyOblasti(v, o.id).map(s => s.zkratka).join(", ") +
+              "), kliknutím u všech"
+            : o.popis;
+          return cipHtml({ "data-oblast": o.id }, stav, esc(o.nazev), title);
+        }).join("") + "</div></div>";
+    }).join("");
+}
+
+function tvar(n, jeden, dva, pet) {
+  return n + " " + (n === 1 ? jeden : n >= 2 && n <= 4 ? dva : pet);
+}
+
+function souhrnOblasti(v) {
+  const vse = OBLASTI_SEZNAM.filter(o => stavOblasti(v, o.id) === "true").map(o => o.nazev);
+  const cast = OBLASTI_SEZNAM.filter(o => stavOblasti(v, o.id) === "mixed").length;
+  if (!vse.length && !cast) return "Žádná";
+  const casti = [];
+  if (cast) casti.push(tvar(cast, "oblast", "oblasti", "oblastí") + " jen u některých soudů");
+  if (vse.length) casti.push(tvar(vse.length, "oblast", "oblasti", "oblastí") + ": " + vse.join(", "));
+  return casti.join("; ");
+}
+
+// Senáty NS po kolegiích, pod sebou (ve dvou sloupcích shora dolů).
+function senatyHtml(v) {
   const skupiny = {};
-  senatyKVyberu().forEach(s => { (skupiny[s.kolegium] = skupiny[s.kolegium] || []).push(s); });
-  if (!otevrenaKolegia) {
-    otevrenaKolegia = new Set(Object.keys(skupiny).filter(k => k === "civilni" ||
-      skupiny[k].some(s => vyber.ns.senaty.indexOf(s.senat) >= 0)));
-  }
-  return Object.keys(skupiny).map(k => {
-    const otevreno = otevrenaKolegia.has(k);
-    const vybrano = skupiny[k].filter(s => vyber.ns.senaty.indexOf(s.senat) >= 0).length;
-    return '<div class="kolegium" data-kolegium="' + esc(k) + '">' +
-      prepinacHtml("kolegium-prepinac", "kol-" + k, otevreno, KOLEGIA[k] || "Další senáty",
-        pocetText(vybrano, skupiny[k].length), k) +
-      '<div class="kolegium-senaty" id="kol-' + esc(k) + '"' + (otevreno ? "" : " hidden") + ">" +
-      skupiny[k].map(s => zaskrtavatko({ "data-senat": s.senat }, vyber.ns.senaty.indexOf(s.senat) >= 0,
+  senatyKVyberu(v).forEach(s => { (skupiny[s.kolegium] = skupiny[s.kolegium] || []).push(s); });
+  // Kolegium, jehož senáty popis nemají (trestní), se vejde do užších sloupců.
+  const uzke = k => skupiny[k].filter(s => s.popis).length * 2 < skupiny[k].length;
+  return '<p class="vyber-popis">Z vybraných senátů uvidíte všechna rozhodnutí, ať spadají do kterékoli ' +
+    "oblasti.</p>" + Object.keys(skupiny).map(k =>
+      '<div class="vyber-skupina"><div class="skupina-hlava"><span class="skupina-nazev">' +
+      esc(KOLEGIA[k] || "Další senáty") + '</span></div><div class="seznam-voleb' +
+      (uzke(k) ? " seznam-voleb-uzky" : "") + '">' +
+      skupiny[k].map(s => cipHtml({ "data-senat": s.senat }, String(v.ns.senaty.indexOf(s.senat) >= 0),
         '<span class="senat-cislo">' + s.senat + "</span>" +
-        (s.popis ? '<span class="senat-popis">' + esc(s.popis) + "</span>" : ""), "volba-senat")).join("") +
-      "</div></div>";
-  }).join("");
+        (s.popis ? '<span class="senat-popis">' + esc(s.popis) + "</span>" : ""), "", "cip-radek")).join("") +
+      "</div></div>").join("");
 }
 
-// Časopisy jako přepínací štítky: zvýrazněný = ukazuje se.
-function casopisyHtml(casopisy) {
-  return '<div class="cipy">' + casopisy.map(c =>
-    '<label class="cip" title="' + esc(c.nazev) + '"><input type="checkbox" data-casopis="' + esc(c.id) + '"' +
-    (vyber.skryte_casopisy.indexOf(c.id) < 0 ? " checked" : "") + "><span>" + esc(c.zkratka) + "</span></label>"
-  ).join("") + "</div>";
-}
-
-// Zaškrtávátka skupin a sloupců: zaškrtnuté, prázdné, nebo „částečně";
-// k tomu počty vybraných u skupin oblastí a kolegií.
-function obnovStavySkupin(el) {
-  function nastav(cil, polozky) {
-    const vybrano = polozky.filter(x => x.checked).length;
-    cil.checked = vybrano > 0 && vybrano === polozky.length;
-    cil.indeterminate = vybrano > 0 && vybrano < polozky.length;
+function souhrnSenatu(v) {
+  const s = v.ns.senaty.slice().sort((a, b) => a - b);
+  if (!s.length) return "Žádný – z Nejvyššího soudu jen rozhodnutí z vybraných oblastí";
+  if (s.length === 1) {
+    const x = SENATY_NS.find(z => z.senat === s[0]);
+    return "Senát " + s[0] + (x && x.popis ? " – " + x.popis : "");
   }
-  el.querySelectorAll("input[data-skupina]").forEach(cil => {
-    nastav(cil, Array.from(el.querySelectorAll('input[data-skupina-oblasti="' + cil.dataset.skupina +
-      '"][data-soud="' + cil.dataset.soud + '"]')));
-  });
-  el.querySelectorAll("input[data-sloupec]").forEach(cil => {
-    nastav(cil, Array.from(el.querySelectorAll('input[data-oblast][data-soud="' + cil.dataset.sloupec + '"]')));
-  });
-  el.querySelectorAll(".matice-blok").forEach(blok => {
-    const radky = Array.from(blok.querySelectorAll(".matice-oblasti .matice-radek"));
-    const vybrano = radky.filter(r => r.querySelector("input:checked")).length;
-    blok.querySelector(".vyber-pocet").textContent = pocetText(vybrano, radky.length);
-  });
-  el.querySelectorAll(".kolegium").forEach(kol => {
-    const senaty = Array.from(kol.querySelectorAll("input[data-senat]"));
-    kol.querySelector(".vyber-pocet").textContent =
-      pocetText(senaty.filter(i => i.checked).length, senaty.length);
-  });
+  return "Senáty " + s.slice(0, -1).join(", ") + " a " + s[s.length - 1];
+}
+
+// Časopisy: vybraný se ukazuje.
+function casopisyHtml(v, casopisy) {
+  return '<p class="vyber-popis">Vybrané časopisy se ukazují; kliknutím je skryjete nebo znovu zapnete.</p>' +
+    '<div class="cipy">' + casopisy.map(c => cipHtml({ "data-casopis": c.id },
+      String(v.skryte_casopisy.indexOf(c.id) < 0), esc(c.zkratka), c.nazev)).join("") + "</div>";
+}
+
+function souhrnCasopisu(v, casopisy) {
+  const skryte = casopisy.filter(c => v.skryte_casopisy.indexOf(c.id) >= 0);
+  if (!skryte.length) return "Všech " + casopisy.length;
+  if (skryte.length === casopisy.length) return "Žádný";
+  return (casopisy.length - skryte.length) + " z " + casopisy.length + ", skryté " +
+    skryte.map(c => c.zkratka).join(", ");
+}
+
+// Rozbalovací sekce: hlavička s názvem a souhrnem, obsah skrytý, dokud ho
+// uživatel neotevře.
+function sekceHtml(klic, nadpis, souhrn, obsah) {
+  const otevreno = otevreneSekce.has(klic);
+  return '<div class="vyber-sekce">' +
+    '<button type="button" class="sekce-hlava" aria-expanded="' + otevreno + '" aria-controls="sekce-' +
+    klic + '" data-sekce="' + klic + '"><span class="sekce-text"><span class="sekce-titul">' + esc(nadpis) +
+    '</span><span class="sekce-souhrn">' + esc(souhrn) + "</span></span>" +
+    '<svg class="fold-ico" aria-hidden="true"><use href="#icon-chevron"></use></svg></button>' +
+    '<div class="sekce-obsah" id="sekce-' + klic + '"' + (otevreno ? "" : " hidden") + ">" + obsah + "</div></div>";
+}
+
+// Procesní rozhodnutí: jediný vypínač rovnou v řádku (shadcn Switch).
+function procesniHtml(v) {
+  return '<div class="vyber-sekce"><button type="button" class="sekce-hlava" role="switch" aria-checked="' +
+    v.skryt_procesni + '" data-procesni="1"><span class="sekce-text">' +
+    '<span class="sekce-titul">Skrýt rutinní procesní rozhodnutí</span>' +
+    '<span class="sekce-souhrn sekce-souhrn-cely">Odmítnutí bez věcného posouzení, zastavení řízení, ' +
+    "příslušnost, poplatky. Označuje je AI u každého rozhodnutí.</span></span>" +
+    '<span class="switch" aria-hidden="true"></span></button></div>';
+}
+
+function akceHtml() {
+  const zmeny = rozpracovano();
+  return '<div class="vyber-akce" id="vyber-akce">' +
+    '<span class="vyber-stav" id="vyber-stav" role="status">' +
+    esc(stavUlozeni || (zmeny ? "Neuložené změny" : "")) + "</span>" +
+    '<button type="button" class="ucet-btn" id="vyber-vychozi">Obnovit výchozí</button>' +
+    '<button type="button" class="ucet-btn" id="vyber-zrusit"' + (zmeny && !ukladam ? "" : " hidden") +
+    ">Zrušit změny</button>" +
+    '<button type="button" class="ucet-btn ucet-btn-hlavni" id="vyber-ulozit"' +
+    (zmeny && !ukladam ? "" : " disabled") + ">Uložit</button></div>";
 }
 
 const POPIS_VYCHOZIHO = "Bez přihlášení web ukazuje výchozí výběr: u všech soudů rozhodnutí, " +
   "která AI zařadila do oblastí duševního vlastnictví a IT, u Nejvyššího soudu navíc všechna " +
   "rozhodnutí senátu 23 Cdo; všechny časopisy.";
-
-function sekceHtml(nadpis, popis, obsah) {
-  return '<section class="vyber-sekce"><h3 class="nastaveni-nadpis">' + esc(nadpis) + "</h3>" +
-    (popis ? '<p class="vyber-popis">' + popis + "</p>" : "") + obsah + "</section>";
-}
 
 function vykresliNastaveni() {
   const el = document.getElementById("nastaveni-obsah");
@@ -1726,9 +1734,9 @@ function vykresliNastaveni() {
   }
   if (!prihlaseny) {
     el.innerHTML = '<div class="nastaveni">' +
-      '<p class="nastaveni-uvod">Po přihlášení si vyberete, co chcete sledovat: oblasti práva ' +
-      "u jednotlivých soudů, senáty Nejvyššího soudu, jestli skrýt rutinní procesní rozhodnutí " +
-      "a které časopisy. Výběr se uloží k účtu a platí na všech zařízeních.</p>" +
+      '<p class="nastaveni-uvod">Po přihlášení si vyberete, co chcete sledovat: oblasti práva, ' +
+      "senáty Nejvyššího soudu, jestli skrýt rutinní procesní rozhodnutí a které časopisy. " +
+      "Výběr se uloží k účtu a platí na všech zařízeních.</p>" +
       '<p class="nastaveni-uvod">' + POPIS_VYCHOZIHO + "</p>" +
       '<p class="nastaveni-akce"><button type="button" class="ucet-btn ucet-prihlasit">Přihlásit se</button>' +
       '<button type="button" class="ucet-btn ucet-btn-hlavni ucet-registrace">Registrace</button></p>' +
@@ -1736,69 +1744,81 @@ function vykresliNastaveni() {
       "výběr, nic dalšího.</p></div>";
     return;
   }
+  if (!koncept) koncept = kopie(vyber);
+  const v = koncept;
   const casopisy = casopisyKVyberu();
-  const brzy = SOUDY_VYBERU.filter(s => s.brzy).map(s => s.nazev2);
   el.innerHTML = '<div class="nastaveni">' +
-    '<p class="nastaveni-uvod">Vyberte, co chcete sledovat. Změny se ukládají hned a platí na ' +
-    "všech zařízeních. Dvoutýdenní přehled zatím vychází z výchozího výběru.</p>" +
-    sekceHtml("Oblasti práva",
-      "Rozhodnutí uvidíte, když ho AI zařadí do některé z oblastí zaškrtnutých u jeho soudu. " +
-      "Sloupec zaškrtnete celý v hlavičce, skupinu v jejím řádku.",
-      oblastiHtml() +
-      (brzy.length ? '<p class="vyber-pozn">Rozhodnutí ' +
-        esc(brzy.join(", ").replace(/, ([^,]*)$/, " a $1")) +
-        " zatím nesbíráme – výběr se uplatní, jakmile je začneme sbírat.</p>" : "")) +
-    sekceHtml("Senáty Nejvyššího soudu",
-      "Z vybraných senátů uvidíte všechna rozhodnutí, ať spadají do kterékoli oblasti.",
-      senatyHtml()) +
-    sekceHtml("Procesní rozhodnutí", "",
-      zaskrtavatko({ "data-procesni": "1" }, vyber.skryt_procesni,
-        '<span class="volba-titul">Skrýt rutinní procesní rozhodnutí</span>' +
-        '<span class="volba-popis">Odmítnutí bez věcného posouzení, zastavení řízení, příslušnost, ' +
-        "poplatky. Označuje je AI u každého rozhodnutí.</span>", "volba-velka")) +
-    (casopisy.length ? sekceHtml("Časopisy",
-      "Zvýrazněné časopisy se ukazují; kliknutím je skryjete nebo znovu zapnete.",
-      casopisyHtml(casopisy)) : "") +
-    '<p class="nastaveni-akce"><button type="button" class="ucet-btn" id="vyber-vychozi">' +
-    'Obnovit výchozí výběr</button> <span class="legend" id="vyber-stav" role="status"></span></p>' +
-    "</div>";
-  obnovStavySkupin(el);
+    '<p class="nastaveni-uvod">Výběr platí na webu i na ostatních zařízeních, jakmile ho uložíte. ' +
+    "Dvoutýdenní přehled zatím vychází z výchozího výběru.</p>" +
+    '<div class="vyber-sekce-seznam">' +
+    sekceHtml("oblasti", "Oblasti práva", souhrnOblasti(v), oblastiHtml(v)) +
+    sekceHtml("senaty", "Senáty Nejvyššího soudu", souhrnSenatu(v), senatyHtml(v)) +
+    (casopisy.length ? sekceHtml("casopisy", "Časopisy", souhrnCasopisu(v, casopisy), casopisyHtml(v, casopisy)) : "") +
+    procesniHtml(v) + "</div>" + akceHtml() + "</div>";
 }
 
-// Výběr z formuláře (co je zaškrtnuté, to platí).
-function vyberZFormulare(el) {
-  const v = JSON.parse(JSON.stringify(vyber));
-  v.ns.senaty = Array.from(el.querySelectorAll("input[data-senat]:checked")).map(i => Number(i.dataset.senat));
-  SOUDY_VYBERU.forEach(s => {
-    v[s.soud].oblasti = Array.from(el.querySelectorAll('input[data-oblast][data-soud="' + s.soud + '"]:checked'))
-      .map(i => i.dataset.oblast);
-  });
-  const procesni = el.querySelector("input[data-procesni]");
-  if (procesni) v.skryt_procesni = procesni.checked;
-  v.skryte_casopisy = Array.from(el.querySelectorAll("input[data-casopis]"))
-    .filter(i => !i.checked).map(i => i.dataset.casopis);
+// Jen lišta s tlačítky (stav ukládání) – zbytek stránky se nemění.
+function obnovAkce() {
+  const lista = document.getElementById("vyber-akce");
+  if (lista) lista.outerHTML = akceHtml();
+}
+
+// Seznamy ve výběru drží stálé pořadí (oblasti podle seznamu, senáty podle
+// čísla, časopisy podle registru) – výběr, který se proklikáním vrátí
+// k uloženému nebo výchozímu, se pak jako takový i pozná.
+function seradVyber(v) {
+  const poradi = (seznam, klic) => (a, b) =>
+    seznam.findIndex(x => x[klic] === a) - seznam.findIndex(x => x[klic] === b);
+  SOUDY_VYBERU.forEach(s => v[s.soud].oblasti.sort(poradi(OBLASTI_SEZNAM, "id")));
+  v.ns.senaty.sort((a, b) => a - b);
+  v.skryte_casopisy.sort(poradi(CASOPISY, "id"));
   return v;
 }
 
-let ulozCasovac = null;
+function nastavPolozku(seznam, x, zapnout) {
+  const i = seznam.indexOf(x);
+  if (zapnout && i < 0) seznam.push(x);
+  else if (!zapnout && i >= 0) seznam.splice(i, 1);
+}
 
-// Ukládá se se zpožděním, ať série kliknutí skončí jedním zápisem. Výchozí
-// výběr se neukládá – z účtu se `owl` smaže.
+function prepniOblasti(v, ids) {
+  const zapnout = !ids.every(id => stavOblasti(v, id) === "true");
+  ids.forEach(id => SOUDY_VYBERU.forEach(s => nastavPolozku(v[s.soud].oblasti, id, zapnout)));
+}
+
+// Uložení: koncept se zapíše do účtu a teprve po úspěchu začne platit na
+// webu. Výchozí výběr se neukládá – z účtu se `owl` smaže.
 function ulozVyber() {
-  const stav = document.getElementById("vyber-stav");
-  if (stav) stav.textContent = "Ukládám…";
-  clearTimeout(ulozCasovac);
-  ulozCasovac = setTimeout(() => {
-    const user = clerk && clerk.user;
-    if (!user) return;
-    const meta = Object.assign({}, user.unsafeMetadata);
-    if (jeVychozi(vyber)) delete meta.owl;
-    else meta.owl = vyber;
-    user.update({ unsafeMetadata: meta }).then(
-      () => { const s = document.getElementById("vyber-stav"); if (s) s.textContent = "Uloženo"; },
-      () => { const s = document.getElementById("vyber-stav"); if (s) s.textContent = "Nepodařilo se uložit – zkuste to znovu."; }
-    );
-  }, 600);
+  const user = clerk && clerk.user;
+  if (!user || !koncept || ukladam) return;
+  const novy = kopie(koncept);
+  const meta = Object.assign({}, user.unsafeMetadata);
+  if (jeVychozi(novy)) delete meta.owl;
+  else meta.owl = novy;
+  ukladam = true;
+  stavUlozeni = "Ukládám…";
+  obnovAkce();
+  user.update({ unsafeMetadata: meta }).then(() => {
+    ukladam = false;
+    vyber = novy;
+    stavUlozeni = rozpracovano() ? "" : "Uloženo";
+    vykresliZdroje();
+    obnovAkce();
+  }, () => {
+    ukladam = false;
+    stavUlozeni = "Nepodařilo se uložit – zkuste to znovu.";
+    obnovAkce();
+  });
+}
+
+// Po změně se stránka výběru vykreslí znovu (souhrny, stavy čipů, lišta);
+// fokus zůstane na prvku, na který se klikalo.
+function prekresli(el, t) {
+  const klic = ["oblast", "skupina", "senat", "casopis", "procesni"].find(k => t.dataset[k] !== undefined);
+  const selektor = klic ? "[data-" + klic + '="' + CSS.escape(t.dataset[klic]) + '"]' : (t.id ? "#" + t.id : "");
+  vykresliNastaveni();
+  const cil = selektor && el.querySelector(selektor);
+  if (cil && !cil.disabled && !cil.hidden) cil.focus({ preventScroll: true });
 }
 
 function initNastaveni() {
@@ -1807,39 +1827,45 @@ function initNastaveni() {
     if (e.target.closest(".ucet-prihlasit")) prihlasit(false);
     else if (e.target.closest(".ucet-registrace")) prihlasit(true);
   });
-  if (!el) return;
-  el.addEventListener("change", e => {
-    const t = e.target;
-    if (t.dataset.skupina !== undefined) {
-      el.querySelectorAll('input[data-skupina-oblasti="' + t.dataset.skupina + '"][data-soud="' +
-        t.dataset.soud + '"]').forEach(i => { i.checked = t.checked; });
-    } else if (t.dataset.sloupec !== undefined) {
-      el.querySelectorAll('input[data-oblast][data-soud="' + t.dataset.sloupec + '"]')
-        .forEach(i => { i.checked = t.checked; });
-    }
-    obnovStavySkupin(el);
-    vyber = vyberZFormulare(el);
-    vykresliZdroje();
-    ulozVyber();
+  // Neuložené změny by zavřením nebo obnovením stránky zmizely.
+  window.addEventListener("beforeunload", e => {
+    if (!rozpracovano()) return;
+    e.preventDefault();
+    e.returnValue = "";
   });
+  if (!el) return;
   el.addEventListener("click", e => {
-    const prepinac = e.target.closest("[data-prepinac]");
-    if (prepinac) {
-      const otevrit = prepinac.getAttribute("aria-expanded") !== "true";
-      prepinac.setAttribute("aria-expanded", String(otevrit));
-      const obsah = document.getElementById(prepinac.getAttribute("aria-controls"));
+    const t = e.target.closest("button");
+    if (!t || !el.contains(t) || !koncept) return;
+    const d = t.dataset;
+    if (d.sekce) {
+      const otevrit = t.getAttribute("aria-expanded") !== "true";
+      t.setAttribute("aria-expanded", String(otevrit));
+      const obsah = document.getElementById("sekce-" + d.sekce);
       if (obsah) obsah.hidden = !otevrit;
-      const mnozina = prepinac.classList.contains("kolegium-prepinac") ? otevrenaKolegia : otevreneSkupiny;
-      if (mnozina) mnozina[otevrit ? "add" : "delete"](prepinac.dataset.prepinac);
+      otevreneSekce[otevrit ? "add" : "delete"](d.sekce);
       return;
     }
-    if (!e.target.closest("#vyber-vychozi")) return;
-    vyber = vychoziVyber();
-    otevreneSkupiny = null;
-    otevrenaKolegia = null;
-    vykresliNastaveni();
-    vykresliZdroje();
-    ulozVyber();
+    if (t.id === "vyber-ulozit") {
+      ulozVyber();
+      return;
+    }
+    if (ukladam) return;
+    if (t.id === "vyber-zrusit") koncept = kopie(vyber);
+    else if (t.id === "vyber-vychozi") koncept = vychoziVyber();
+    else if (d.oblast) prepniOblasti(koncept, [d.oblast]);
+    else if (d.skupina !== undefined) {
+      prepniOblasti(koncept, skupinyOblasti()[Number(d.skupina)].oblasti.map(o => o.id));
+    } else if (d.senat) {
+      const n = Number(d.senat);
+      nastavPolozku(koncept.ns.senaty, n, koncept.ns.senaty.indexOf(n) < 0);
+    } else if (d.casopis) {
+      nastavPolozku(koncept.skryte_casopisy, d.casopis, koncept.skryte_casopisy.indexOf(d.casopis) < 0);
+    } else if (d.procesni) koncept.skryt_procesni = !koncept.skryt_procesni;
+    else return;
+    seradVyber(koncept);
+    stavUlozeni = "";
+    prekresli(el, t);
   });
 }
 

@@ -102,14 +102,18 @@ check("podruhé už se nic nemění", not model.sloucit(stary, novy))
 # =====================================================================
 print("\n2) Seznam oblastí")
 # =====================================================================
-check("26 oblastí, id jedinečná", len(TAX.ids) == 26 and len(set(TAX.ids)) == 26, str(len(TAX.ids)))
+check("25 oblastí, id jedinečná, žádná „ostatni“",
+      len(TAX.ids) == 25 and len(set(TAX.ids)) == 25 and "ostatni" not in TAX.ids, str(len(TAX.ids)))
+check("tři skupiny, trestní právo patří do veřejného",
+      sorted({o["skupina"] for o in TAX.oblasti}) == ["Duševní vlastnictví a technologie", "Soukromé právo", "Veřejné právo"]
+      and next(o for o in TAX.oblasti if o["id"] == "trestni")["skupina"] == "Veřejné právo")
 check("výchozí výběr je IP/IT",
       TAX.vychozi == ["autorske", "prumyslova_prava", "nekala_soutez", "it", "gdpr"], str(TAX.vychozi))
 check("neznámé id zahodí, název převede, nejvýš tři",
       TAX.normalizuj(["Autorské právo", "it", "neexistuje", "GDPR", "zavazky"]) == ["autorske", "it", "gdpr"],
       str(TAX.normalizuj(["Autorské právo", "it", "neexistuje", "GDPR", "zavazky"])))
-check("„ostatni“ jen když nic jiného",
-      TAX.normalizuj(["ostatni", "zavazky"]) == ["zavazky"] and TAX.normalizuj(["ostatni"]) == ["ostatni"])
+check("dřívější „ostatni“ se zahodí",
+      TAX.normalizuj(["ostatni", "zavazky"]) == ["zavazky"] and TAX.normalizuj(["ostatni"]) == [])
 check("prompt obsahuje všechna id", all(f"{i} – " in TAX.do_promptu() for i in TAX.ids))
 d = tmpdir()
 with open(OBLASTI_JSON, encoding="utf-8") as f:
@@ -254,6 +258,19 @@ check("bez oblastí od AI se vezmou z metadat, procesní taky",
       v["oblasti"] == ["zavazky"] and v["procesni"] is True and pouzity == "gemini-test", str(v))
 check("systémový prompt nese seznam oblastí a JSON schéma",
       "gdpr – " in volani[-1]["system"] and volani[-1]["schema"]["type"] == "OBJECT")
+check("prompt chce vždy aspoň jednu oblast, „ostatni“ nezná",
+      "Vždy vyber aspoň jednu" in volani[-1]["system"] and "ostatni" not in volani[-1]["system"])
+fc.ai_volani = falesna_ai('{"heslo": "Pokuta", "shrnuti": "' + SHRNUTI + '", "oblasti": ["ostatni"], "procesni": false}')
+nahradni = {}
+for klic, zz in (("ns-civilni", dict(rozhodnuti, oblasti_meta=[])),
+                 ("ns-trestni", dict(rozhodnuti, oblasti_meta=[], rejstrik="Tdo")),
+                 ("nss", dict(rozhodnuti, soud="nss", oblasti_meta=[])),
+                 ("us", dict(rozhodnuti, soud="us", oblasti_meta=[])),
+                 ("sdeu", dict(rozhodnuti, soud="sdeu", oblasti_meta=[]))):
+    nahradni[klic] = analyza.analyzuj(zz, {"text": DLOUHY_TEXT}, TAX)[0]["oblasti"]
+check("bez oblasti od AI i z metadat: nejčastější oblast soudu, nikdy „ostatni“",
+      nahradni == {"ns-civilni": ["civilni_proces"], "ns-trestni": ["trestni"], "nss": ["spravni"],
+                   "us": ["ustavni"], "sdeu": ["spravni"]}, str(nahradni))
 fc.ai_volani = falesna_ai("")
 check("bez odpovědi nic", analyza.analyzuj(rozhodnuti, {"text": DLOUHY_TEXT}, TAX) == (None, ""))
 fc.ai_volani = falesna_ai('Tady: [{"id": "ns:T", "oblasti": ["zavazky", "xyz"], "procesni": "ne"}]')

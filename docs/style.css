@@ -634,8 +634,11 @@ html.is-loading body { visibility: hidden; }
   padding: 4px 12px; font-size: var(--fs-md); line-height: 1.4; cursor: pointer;
 }
 .ucet-btn:hover { background: var(--accent); }
-.ucet-btn-hlavni { background: var(--foreground); color: var(--background); border-color: var(--foreground); }
-.ucet-btn-hlavni:hover { background: var(--foreground); opacity: .88; }
+/* Hlavní tlačítko (Registrace, Uložit) má stejnou modrou jako vybrané
+   položky a aktivní navigace. */
+.ucet-btn-hlavni { background: var(--link); color: var(--background); border-color: var(--link); }
+.ucet-btn-hlavni:hover { background: var(--link); opacity: .88; }
+.ucet-btn-hlavni:disabled:hover { opacity: .45; }
 .ucet-odkaz { font-size: var(--fs-md); color: var(--link); text-decoration: none; white-space: nowrap; }
 .ucet-odkaz:hover { text-decoration: underline; }
 .ucet-user { display: inline-flex; align-items: center; min-width: 28px; min-height: 28px; }
@@ -648,119 +651,108 @@ html.is-loading body { visibility: hidden; }
 }
 .card-stav[hidden] { display: none; }
 
-/* Můj výběr: obsah nejvýš ~860 px, sekce oddělené čarou a mezerou. */
-.nastaveni { max-width: 860px; }
+/* Můj výběr: obsah nejvýš ~860 px. Sekce jsou rozbalovací řádky (shadcn
+   Accordion) se souhrnem v hlavičce, vybírá se čipy. Vybrané vypadá všude
+   stejně – modrý nádech jako aktivní položka v navigaci. */
+.nastaveni { max-width: 860px; --vybrano: var(--link); }
 .nastaveni-uvod { font-size: var(--fs-md); color: var(--muted-foreground); max-width: 72ch; margin: 4px 0 10px; }
 .nastaveni-pozn { font-size: var(--fs-sm); color: var(--muted-foreground); max-width: 72ch; margin: 14px 0 0; }
-.nastaveni-akce {
-  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-  margin: 28px 0 4px; padding-top: 22px; border-top: 1px solid var(--border);
-}
-.vyber-sekce { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--border); }
-.nastaveni-nadpis { font-size: var(--fs-lg); font-weight: 600; margin: 0 0 4px; letter-spacing: -0.01em; }
-.vyber-popis { font-size: var(--fs-md); color: var(--muted-foreground); max-width: 72ch; margin: 0 0 14px; }
-.vyber-pozn { font-size: var(--fs-sm); color: var(--muted-foreground); max-width: 72ch; margin: 12px 0 0; }
-.vyber-pocet {
-  font-size: var(--fs-sm); font-weight: 400; color: var(--muted-foreground);
-  font-variant-numeric: tabular-nums; white-space: nowrap;
-}
-.nastaveni input[type="checkbox"] {
-  width: 18px; height: 18px; margin: 0; flex: none; cursor: pointer;
-  accent-color: var(--foreground);
-}
+.nastaveni-akce { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 20px 0 4px; }
 
-/* Zaškrtávátko s popiskem (senáty, procesní rozhodnutí). */
-.volba {
-  display: flex; gap: 10px; align-items: flex-start; font-size: var(--fs-md);
-  line-height: 1.45; padding: 6px 0; cursor: pointer;
+.vyber-sekce-seznam { margin-top: 14px; border-top: 1px solid var(--border); }
+.vyber-sekce { border-bottom: 1px solid var(--border); }
+.sekce-hlava {
+  display: flex; align-items: center; gap: 14px; width: 100%;
+  padding: 14px 4px; border: 0; background: none; color: inherit;
+  font: inherit; text-align: left; cursor: pointer;
 }
-.volba > span { min-width: 0; }
-.volba input[type="checkbox"] { margin-top: 1px; }
-.volba-senat > span { display: flex; gap: 10px; align-items: baseline; }
+.sekce-hlava:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 6px; }
+.sekce-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.sekce-titul { font-size: var(--fs-md); font-weight: 600; }
+.sekce-hlava:hover .sekce-titul { text-decoration: underline; text-underline-offset: 3px; }
+/* Souhrn je v jednom řádku, co se nevejde, skončí třemi tečkami. */
+.sekce-souhrn {
+  font-size: var(--fs-md); color: var(--muted-foreground);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.sekce-souhrn-cely { white-space: normal; }
+.sekce-hlava .fold-ico { flex: none; color: var(--muted-foreground); }
+.sekce-hlava[aria-expanded="false"] .fold-ico { transform: rotate(-90deg); }
+.sekce-obsah { padding: 0 4px 20px; }
+.sekce-obsah[hidden] { display: none; }
+.vyber-popis { font-size: var(--fs-md); color: var(--muted-foreground); max-width: 72ch; margin: 0 0 14px; }
+
+.vyber-skupina + .vyber-skupina { margin-top: 16px; }
+.skupina-hlava { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+.skupina-nazev { font-size: var(--fs-sm); font-weight: 600; color: var(--muted-foreground); }
+.skupina-vse {
+  padding: 0; border: 0; background: none; cursor: pointer;
+  font: inherit; font-size: var(--fs-sm); color: var(--link);
+}
+.skupina-vse:hover { text-decoration: underline; text-underline-offset: 3px; }
+.skupina-vse:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 4px; }
+
+/* Čip = přepínací tlačítko. Znak vpředu (+ / ✓ / –) má pevnou šířku
+   a tloušťka písma se nemění, takže čip po kliknutí nezmění velikost. */
+.cipy { display: flex; flex-wrap: wrap; gap: 8px; }
+.cip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 12px 5px 10px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--card); color: var(--foreground);
+  font: inherit; font-size: var(--fs-md); line-height: 1.35; text-align: left; cursor: pointer;
+  transition: background-color .12s, border-color .12s, color .12s;
+}
+.cip:hover { border-color: var(--muted-foreground); }
+.cip:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+.cip-znak { flex: none; width: 0.9em; text-align: center; color: var(--muted-foreground); }
+.cip-znak::before { content: "+"; }
+.cip[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--vybrano) 11%, var(--card));
+  border-color: color-mix(in srgb, var(--vybrano) 45%, transparent);
+  color: var(--vybrano);
+}
+.cip[aria-pressed="true"] .cip-znak { color: inherit; }
+.cip[aria-pressed="true"] .cip-znak::before { content: "✓"; }
+/* Oblast vybraná jen u některých soudů (dřívější výběr po soudech). */
+.cip[aria-pressed="mixed"] { border-style: dashed; border-color: color-mix(in srgb, var(--vybrano) 60%, transparent); }
+.cip[aria-pressed="mixed"] .cip-znak { color: var(--vybrano); }
+.cip[aria-pressed="mixed"] .cip-znak::before { content: "–"; }
+
+/* Senáty pod sebou: ve dvou sloupcích shora dolů, na telefonu v jednom. */
+.seznam-voleb { columns: 2 280px; column-gap: 10px; }
+.seznam-voleb-uzky { columns: 4 130px; }
+.cip-radek {
+  display: flex; align-items: baseline; width: 100%; margin: 0 0 6px;
+  border-radius: 8px; break-inside: avoid;
+}
 .senat-cislo { flex: none; min-width: 1.6em; font-weight: 600; font-variant-numeric: tabular-nums; }
 .senat-popis { color: var(--muted-foreground); }
-.volba-velka > span { display: flex; flex-direction: column; gap: 2px; }
-.volba-titul { font-weight: 500; }
-.volba-popis { color: var(--muted-foreground); }
+.cip[aria-pressed="true"] .senat-popis { color: inherit; }
 
-/* Rozbalovací skupina (oblasti) a kolegium (senáty): tlačítko přes celý
-   řádek se šipkou, názvem a počtem vybraných. */
-.matice-prepinac, .kolegium-prepinac {
-  display: flex; align-items: center; gap: 8px; min-width: 0;
-  padding: 0; border: 0; background: none; color: inherit; cursor: pointer;
-  font: inherit; font-weight: 600; text-align: left;
+/* Vypínač (shadcn Switch). */
+.switch {
+  flex: none; position: relative; width: 36px; height: 20px; border-radius: 999px;
+  background: var(--border); transition: background-color .15s;
 }
-/* Počet vybraných se na úzkém řádku zalomí pod název, nepřekryje ho. */
-.prepinac-text {
-  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 8px; min-width: 0;
+.switch::after {
+  content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px;
+  border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgb(0 0 0 / .25);
+  transition: transform .15s;
 }
-.matice-prepinac .fold-ico, .kolegium-prepinac .fold-ico {
-  flex: none; color: var(--muted-foreground);
-}
-.matice-prepinac[aria-expanded="false"] .fold-ico,
-.kolegium-prepinac[aria-expanded="false"] .fold-ico { transform: rotate(-90deg); }
-.matice-prepinac:focus-visible, .kolegium-prepinac:focus-visible {
-  outline: 2px solid var(--link); outline-offset: 2px; border-radius: 4px;
-}
-.nastaveni [hidden] { display: none; }
-.kolegium + .kolegium { margin-top: 14px; }
-.kolegium-prepinac { padding: 4px 0; }
-.kolegium-senaty {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
-  column-gap: 32px; margin-top: 4px; padding-left: 22px;
-}
+[aria-checked="true"] > .switch { background: var(--vybrano); }
+[aria-checked="true"] > .switch::after { transform: translateX(16px); }
 
-/* Matice oblastí × soudy: každý řádek je vlastní mřížka se stejnými sloupci,
-   ať se dá zvýraznit celý. Na telefonu se sloupce zúží. */
-.matice { --sloupec: 64px; font-size: var(--fs-md); }
-.matice-radek {
-  display: grid; align-items: center; column-gap: 8px;
-  grid-template-columns: minmax(0, 1fr) repeat(var(--sloupcu, 1), var(--sloupec));
-  min-height: 40px; padding: 0 8px; border-bottom: 1px solid var(--border);
+/* Lišta s Uložit drží u spodního okraje okna, dokud je stránka výběru
+   delší než okno – tlačítko je pořád po ruce. */
+.vyber-akce {
+  position: sticky; bottom: 0; z-index: 2;
+  display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex-wrap: wrap;
+  margin-top: 16px; padding: 12px 0;
+  background: var(--card); border-top: 1px solid var(--border);
 }
-.matice-oblasti .matice-radek:hover { background: var(--accent); }
-.matice-oblasti .matice-nazev { padding: 9px 0 9px 22px; }
-.matice-hlavicka {
-  align-items: start; padding-bottom: 8px; color: var(--muted-foreground); font-weight: 500;
-}
-.matice-soud {
-  display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer;
-  text-align: center;
-}
-.matice-zkratka { font-weight: 600; color: var(--foreground); }
-.matice-brzy {
-  font-size: 0.7rem; line-height: 1; padding: 2px 6px; border-radius: 999px;
-  background: var(--muted); color: var(--muted-foreground);
-}
-.matice-skupina { min-height: 44px; }
-.matice-blok:not(:first-of-type) .matice-skupina { margin-top: 6px; }
-.matice-bunka { display: flex; align-items: center; justify-content: center; }
-
-/* Časopisy jako přepínací štítky: vybraný je plný. */
-.cipy { display: flex; flex-wrap: wrap; gap: 8px; }
-.cip { position: relative; cursor: pointer; }
-.cip input {
-  position: absolute; inset: 0; width: 100%; height: 100%; margin: 0;
-  opacity: 0; cursor: pointer;
-}
-.cip span {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border);
-  font-size: var(--fs-md); color: var(--muted-foreground); background: var(--card);
-}
-.cip input:checked + span {
-  background: var(--foreground); color: var(--background); border-color: var(--foreground);
-}
-.cip input:checked + span::before { content: "✓"; font-size: 0.8em; }
-.cip:hover span { border-color: var(--muted-foreground); }
-.cip input:focus-visible + span { outline: 2px solid var(--link); outline-offset: 2px; }
-
-@container (max-width: 560px) {
-  .matice { --sloupec: 42px; }
-  .matice-radek { column-gap: 4px; padding: 0 2px; }
-  .matice-oblasti .matice-nazev { padding-left: 10px; }
-  .kolegium-senaty { padding-left: 0; }
-}
+.vyber-stav { margin-right: auto; font-size: var(--fs-sm); color: var(--muted-foreground); }
+.ucet-btn:disabled { opacity: .45; cursor: default; }
+.ucet-btn[hidden] { display: none; }
 
 @media (max-width: 640px) {
   /* V hlavičce telefonu stačí jedno tlačítko – registrace je i v okně přihlášení. */

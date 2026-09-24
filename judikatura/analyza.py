@@ -30,8 +30,8 @@ SYSTEM = (
     "a úřady uváděj jménem, ale bez právní formy (bez s.r.o., a.s. apod.); "
     "fyzické osoby nejmenuj, piš žalobce, žalovaný, stěžovatel, obviněný.\n"
     "OBLASTI – jeden až tři identifikátory ze seznamu níže podle věcné "
-    "podstaty sporu, ne podle procesního rámce; první je hlavní. Když nesedí "
-    "nic, napiš ostatni.\n"
+    "podstaty sporu, ne podle procesního rámce; první je hlavní. Vždy vyber "
+    "aspoň jednu – když žádná nesedí přesně, tu nejbližší.\n"
     "PROCESNÍ – ano jen tehdy, když rozhodnutí nemá věcný právní závěr "
     "(odmítnutí pro vady, opožděnost nebo nepřípustnost bez věcného "
     "posouzení, zastavení řízení, přikázání věci, příslušnost, podjatost, "
@@ -166,6 +166,20 @@ def parse(raw, tax):
     }
 
 
+# Když AI nevrátí žádnou oblast ze seznamu a nepomohou ani úřední údaje:
+# oblast, kam věci od toho soudu patří nejčastěji (u NS podle rejstříku –
+# T… je trestní).
+NAHRADNI_OBLAST = {"nss": "spravni", "us": "ustavni", "sdeu": "spravni"}
+
+
+def nahradni_oblasti(z):
+    if z.get("oblasti_meta"):
+        return list(z["oblasti_meta"])
+    if z["soud"] == "ns":
+        return ["trestni" if (z.get("rejstrik") or "").startswith("T") else "civilni_proces"]
+    return [NAHRADNI_OBLAST.get(z["soud"], "spravni")]
+
+
 def analyzuj(z, obsah, tax):
     """Rozbor jednoho rozhodnutí. Vrací (výsledek, model) nebo (None, '')."""
     raw, model = fc.ai_volani(dotaz(z, obsah), system=SYSTEM.format(oblasti=tax.do_promptu()),
@@ -179,7 +193,7 @@ def analyzuj(z, obsah, tax):
         print(f"    [diag] {z['id']}: odpověď AI se nedala použít: {raw[:120]!r}")
         return None, ""
     if not vysledek["oblasti"]:
-        vysledek["oblasti"] = list(z.get("oblasti_meta") or []) or ["ostatni"]
+        vysledek["oblasti"] = nahradni_oblasti(z)
     if vysledek["procesni"] is None:
         vysledek["procesni"] = bool(z.get("procesni_meta"))
     return vysledek, model
