@@ -637,6 +637,11 @@ html.is-loading body { visibility: hidden; }
 .ucet-btn-hlavni:disabled:hover { opacity: .45; }
 .ucet-user { display: inline-flex; align-items: center; min-width: 28px; min-height: 28px; }
 
+/* Pod tabulkou judikatury pro nepřihlášeného: ukazuje se výchozí výběr. */
+.vychozi-pozn { margin: 14px 0 2px; font-size: var(--fs-sm); color: var(--muted-foreground); }
+.vychozi-pozn a { color: var(--link); text-decoration: none; }
+.vychozi-pozn a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
 /* Stav AI nad kartou judikatury (kolik rozhodnutí ještě čeká na shrnutí). */
 .card-stav {
   margin: 10px 22px 0; padding: 8px 12px; border-radius: 8px;

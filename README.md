@@ -173,7 +173,8 @@ sleduje“ je ve výchozím stavu sbalená.
 Přihlášení zajišťuje [Clerk](https://clerk.com) a slouží jen k vlastnímu
 výběru. Bez přihlášení (i při výpadku Clerku) web ukazuje výchozí výběr:
 u Nejvyššího soudu senát 23 a z ostatních senátů oblasti duševního
-vlastnictví a IT, všechny časopisy.
+vlastnictví a IT, všechny časopisy. Nepřihlášenému to web říká pod
+tabulkami judikatury a nabízí přihlášení (při výpadku Clerku ne).
 
 - Web je bez buildu, takže Clerk se načítá skriptem z Frontend API instance
   (`@clerk/clerk-js@6` a komponenty `@clerk/ui@1`), až po vykreslení obsahu.

@@ -630,10 +630,23 @@ function vykresliZdroje() {
     }
     // Druhá stránka je úplný výpis za okno feedu – nové položky z ní
     // nevynecháváme, na jednu stránku se položky nedostanou dvakrát.
-    renderTable(filtrovane[idx].value, document.getElementById(f.containerId), f.cols, f.key,
-                f.prazdno);
+    const el = document.getElementById(f.containerId);
+    renderTable(filtrovane[idx].value, el, f.cols, f.key, f.prazdno);
+    pripojVychozi(el, f.key);
   });
   renderToday(filtrovane);
+  pripojVychozi(document.getElementById("feed-today"), "today");
+}
+
+// Nepřihlášený vidí výchozí výběr – pod tabulkou judikatury mu to řekneme
+// a nabídneme přihlášení. Bez Clerku (výpadek) nic, přihlásit se nejde.
+const KARTY_S_VYBEREM = ["nsoud", "nss", "us", "sdeu", "today"];
+
+function pripojVychozi(el, key) {
+  if (!el || clerkStav !== "pripraven" || prihlaseny || KARTY_S_VYBEREM.indexOf(key) < 0) return;
+  el.insertAdjacentHTML("beforeend", '<p class="vychozi-pozn">Ve výchozím nastavení se ukazují jen ' +
+    "rozhodnutí z oblasti IP a IT" + (key === "nsoud" ? " a všechna rozhodnutí senátu 23 Cdo" : "") +
+    '. Chcete-li vlastní výběr, <a href="#nastaveni">přihlaste se</a> a nastavte si ho.</p>');
 }
 
 /* ========== Dvoutýdenní přehled (digest.json) ========== */
