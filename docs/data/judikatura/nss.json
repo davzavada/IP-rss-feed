@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T12:28:00Z",
+ "generated": "2026-09-24T12:31:50Z",
  "soud": "nss",
  "okno_dni": 14,
  "polozky": [
@@ -56,14 +56,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785694",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785694",
    "soudce": "Jiří Palla",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Důkazní břemeno plné moci",
+   "shrnuti": "Společnost CRYTEX se žalobou domáhala zrušení rozhodnutí Finančního úřadu pro hlavní město Prahu týkajícího se vrácení přeplatku na dani z přidané hodnoty. Nejvyšší správní soud řešil otázku rozložení důkazního břemena a hodnocení nepřímých důkazů ohledně doručení plné moci správci daně. Dospěl k závěru, že stěžovatelka neunesla důkazní břemeno ohledně předložení plné moci, a proto kasační stížnost zamítl.",
    "oblasti": [
-    "dane"
+    "dane",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785693",
@@ -78,14 +77,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785693",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785693",
    "soudce": "Jiří Palla",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Technické zhodnocení",
+   "shrnuti": "Pronomi a.s. se soudila s Odvolacím finančním ředitelstvím o daňovou uznatelnost nákladů na opravy bytového domu. Nejvyšší správní soud řešil otázku, zda stavební práce provedené v první etapě představovaly samostatné opravy, či zda tvořily spolu s druhou etapou celek vedoucí k technickému zhodnocení. Soud dospěl k závěru, že stavební práce obou etap spolu věcně, časově i účelově souvisely a představovaly technické zhodnocení nemovitosti, které nelze uznat jako daňový výdaj.",
    "oblasti": [
-    "dane"
+    "dane",
+    "zavazky",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785615",
@@ -98,14 +97,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785615",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785615",
    "soudce": "Jiřina Chmelová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Místní příslušnost soudu",
+   "shrnuti": "Žalobce se u Krajského soudu v Ostravě domáhal ochrany před nezákonným zásahem Vězeňské služby České republiky spočívajícím v nevyhovění žádosti o přemístění do jiné věznice, načež krajský soud věc postoupil Městskému soudu v Praze. Nejvyšší správní soud řešil, zda bylo takové postoupení věci předčasné, a dospěl k závěru, že krajský soud pochybil, neboť nejprve neodstranil nejasnosti ohledně zvoleného žalobního typu a vymezení žalovaného správního orgánu.",
    "oblasti": [
-    "trestni"
+    "civilni_proces",
+    "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785608",
@@ -120,14 +118,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785608",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785608",
    "soudce": "Milan Podhrázký",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Daňová uznatelnost nákladů",
+   "shrnuti": "Žalobce se domáhal přezkoumání rozhodnutí o doměření daně z příjmů právnických osob kvůli neuznaným nákladům na nákup dřevovýrobků. Nejvyšší správní soud řešil otázku, zda žalobce unesl důkazní břemeno ohledně prokazatelnosti a účelu vynaložených nákladů, a dospěl k závěru, že žalobce neprokázal následné použití zboží ke zdanitelným příjmům, pročež kasační stížnost zamítl.",
    "oblasti": [
-    "dane"
+    "dane",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785570",
@@ -186,14 +183,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785462",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785462",
    "soudce": "Petra Weissová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Jednotná žádost o dotaci",
+   "shrnuti": "Sociální farma podala kasační stížnost proti rozsudku Městského soudu v Praze, kterým byla zamítnuta její žaloba proti rozhodnutí Ministerstva zemědělství o zastavení řízení o jednotné žádosti. Nejvyšší správní soud řešil otázku, zda správní orgán měl povinnost vyzvat žadatele k doplnění chybějící přílohy prokazující splnění podmínky aktivního zemědělce. Soud dospěl k závěru, že zákon výslovně vylučuje výzvu k dodatečnému dokládání těchto způsobilostních příloh po uplynutí lhůty, a proto kasační stížnost zamítl.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785455",
@@ -252,12 +248,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785236",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785236",
    "soudce": "Ondřej Mrákota",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Zásahová žaloba",
+   "shrnuti": "Žalobce se podanou žalobou domáhal ochrany před nezákonným zásahem Ministerstva spravedlnosti spočívajícím v udělení a udržování statusu znaleckého ústavu nemocnici, která v jeho trestní věci zpracovala revizní znalecký posudek. Nejvyšší správní soud posuzoval otázku aktivní legitimace žalobce k podání zásahové žaloby. Dospěl k závěru, že zápis znaleckého ústavu nezasahuje do veřejných subjektivních práv třetích osob, a proto kasační stížnost zamítl.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": false
   },
   {
    "id": "nss:785213",
@@ -272,14 +269,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785213",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785213",
    "soudce": "Radim Kadlčák",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Posouzení vlivů na životní prostředí",
+   "shrnuti": "Spolek chatařů a majitelů loděnic Radslavská zátoka, z. s., a Spolek chatařů Radslav, z. s., podali žalobu proti obci Černá v Pošumaví na zrušení regulačního plánu, přičemž krajský soud jejich návrhu vyhověl a regulační plán zrušil pro absenci posouzení vlivů na životní prostředí (SEA). Nejvyšší správní soud v usnesení řešil otázku, zda může být regulační plán podle stavebního zákona z roku 2006 koncepcí vyžadující provedení SEA ve smyslu zákona o EIA a směrnice o posuzování vlivů některých plánů a programů na životní prostředí. Protože se chtěl odchýlit od dosavadní judikatury paušálně vylučující regulační plán z působnosti SEA, postoupil věc rozšířenému senátu.",
    "oblasti": [
-    "stavebni_zp"
+    "spravni",
+    "stavebni_zp",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785196",
@@ -382,14 +379,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784726",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784726",
    "soudce": "Jan Kratochvíl",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Daňová uznatelnost výdajů",
+   "shrnuti": "Žalobkyně se s Odvolacím finančním ředitelstvím soudila kvůli doměření daně z příjmů a neuznání daňové uznatelnosti výdajů. Nejvyšší správní soud řešil otázku procesních pochybení při odvolacím řízení a dokazování a dospěl k závěru, že kasační stížnost je nedůvodná, neboť žalobkyně neprokázala své důkazní břemeno a správní orgány nepochybily.",
    "oblasti": [
-    "dane"
+    "dane",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:769188",
@@ -404,14 +400,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/769188",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/769188",
    "soudce": "Radovan Havelec",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Daňová uznatelnost nákladů",
+   "shrnuti": "Žalobce se soudil s Odvolacím finančním ředitelstvím o doměření daně z příjmů a daňové ztráty kvůli neuznání nákladů na právní služby poskytované advokátní kanceláří. Soud řešil otázku, zda paušálně sjednané výdaje na právní služby a ochrana advokátní mlčenlivosti zbavují daňový subjekt povinnosti prokázat jejich věcnou souvislost s příjmy. Soud dospěl k závěru, že žalobce neunesl důkazní břemeno, neboť neprokázal konkrétní rozsah a účel poskytnutých služeb.",
    "oblasti": [
-    "dane"
+    "dane",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785730",
@@ -492,14 +487,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785717",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785717",
    "soudce": "Radovan Havelec",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Změna územního plánu",
+   "shrnuti": "Obec Lešany podala kasační stížnost proti rozsudku krajského soudu, kterým byl zrušen územní plán v části týkající se pozemku žalobců. Nejvyšší správní soud řešil otázku, zda bylo nutné změnu funkčního využití pozemku z bydlení na rekreaci a zákaz bydlení přezkoumatelně odůvodnit. Soud dospěl k závěru, že napadený územní plán neobsahuje konkrétní důvody pro tuto změnu, a proto kasační stížnost zamítl.",
    "oblasti": [
-    "stavebni_zp"
+    "spravni",
+    "vecna_prava",
+    "zavazky"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785716",
@@ -514,14 +509,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785716",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785716",
    "soudce": "Faisal Husseini",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Právo na informace",
+   "shrnuti": "Žalobkyně se domáhala poskytnutí dodatku k mezinárodní dohodě o vypořádání zadluženosti, což Ministerstvo financí odmítlo s odkazem na utajení informací. Nejvyšší správní soud řešil, zda je v případě obligatorního důvodu pro neposkytnutí utajované informace nutné provést test proporcionality. Soud dospěl k závěru, že za mimořádných okolností případu lze test proporcionality výjimečně provést.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785714",
@@ -558,14 +552,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785622",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785622",
    "soudce": "Lenka Matyášová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odpovědnost za přestupek",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Městského soudu v Praze, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva životního prostředí o uložení pokuty za přestupky na úseku vodního hospodářství. Nejvyšší správní soud řešil otázku, zda nájemce motelu odpovídá za přestupky spojené s provozem čistírny odpadních vod. Soud dospěl k závěru, že na nájemce přešla práva a povinnosti z vodoprávního povolení a odpovídá za stav vodního díla.",
    "oblasti": [
+    "spravni",
     "stavebni_zp"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785619",
@@ -580,14 +573,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785619",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785619",
    "soudce": "Viktor Kučera",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Opožděnost žaloby",
+   "shrnuti": "Žalobci se domáhali zrušení rozhodnutí žalovaného týkajících se dodatečného povolení a odstranění stavby u krajského soudu, který žalobu pro opožděnost odmítl. Nejvyšší správní soud řešil otázku včasnosti podané žaloby ve vztahu k jednoměsíční lhůtě dle stavebního zákona a doručení do datové schránky zástupce. Soud dospěl k závěru, že žaloba byla podána po lhůtě, a proto kasační stížnost zamítl.",
    "oblasti": [
+    "civilni_proces",
     "stavebni_zp"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785617",
@@ -624,14 +616,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785614",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785614",
    "soudce": "Lenka Matyášová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odpočet DPH",
+   "shrnuti": "Žalobce se domáhal zrušení rozsudku městského soudu, kterým byla zamítnuta jeho žaloba proti rozhodnutí Odvolacího finančního ředitelství o odepření nároku na odpočet DPH z důvodu neprokázání faktického přijetí plnění od deklarovaného dodavatele. Nejvyšší správní soud řešil otázku, zda žalobce unesl důkazní břemeno ohledně reálného přijetí sporných plnění. Kasační stížnost zamítl s tím, že předložené důkazy tvořily pouze formální doklady a nepřímé indicie, které ve svém souhrnu neprokazovaly, že práce fakticky provedl tvrzený dodavatel.",
    "oblasti": [
-    "dane"
+    "dane",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785613",
@@ -646,15 +637,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785613",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785613",
    "soudce": "Viktor Kučera",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Klamavá obchodní praktika",
+   "shrnuti": "Stěžovatelka se domáhala zrušení rozsudku městského soudu, který zamítl její žalobu proti rozhodnutí České obchodní inspekce o uložení pokuty za klamavou obchodní praktiku. Nejvyšší správní soud řešil otázku, zda byla obchodní praktika spočívající v uvádění slev vypočtených z ceníku dodavatele namísto vlastní prodejní ceny správně vyhodnocena jako klamavá. Dospěl k závěru, že taková praktika je klamavá vůči spotřebitelům bez ohledu na to, zda část zákazníků tvoří podnikatelé.",
    "oblasti": [
     "spotrebitel",
     "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785611",
@@ -691,12 +680,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785580",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785580",
    "soudce": "Václav Štencel",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Osvobození od soudních poplatků",
+   "shrnuti": "Stěžovatel podal kasační stížnost proti usnesení Městského soudu v Praze a současně požádal o osvobození od soudních poplatků, ustanovení zástupce a tlumočníka. Nejvyšší správní soud řešil, zda je kasační stížnost směřující proti zamítnutí žádosti o tlumočníka zjevně bezúspěšná ve vztahu k osvobození od poplatků. Soud dospěl k závěru, že tlumočník pro písemný styk nepřísluší, kasační stížnost je zjevně neúspěšná, a proto žádost o osvobození od soudních poplatků zamítl.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
   },
   {
    "id": "nss:785542",
@@ -711,14 +701,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785542",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785542",
    "soudce": "Sylva Šiškeová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Opakované zajištění cizince",
+   "shrnuti": "Žalobce se kasační stížností domáhal zrušení rozsudku Městského soudu v Praze, kterým byla zamítnuta jeho žaloba proti rozhodnutí o zajištění za účelem vycestování. Nejvyšší správní soud řešil otázku, zda byl dán reálný předpoklad realizace účelu zajištění v situaci, kdy je cizinec opakovaně zajišťován bez dosažení vycestování. Soud dospěl k závěru, že závěry městského soudu jsou předčasné, neboť se nedostatečně zabýval celkovým kontextem věci a průběhem předchozích zajištění.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785540",
@@ -733,14 +722,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785540",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785540",
    "soudce": "Jiřina Chmelová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Dotace a střet zájmů",
+   "shrnuti": "Ministerstvo zemědělství zrušilo veřejnoprávní smlouvu o poskytnutí dotace společnosti Výkrm Tagrea, protože byla uzavřena v rozporu se zákonem o střetu zájmů a finančním nařízením Evropské unie kvůli nepřímému ovládání mateřské společnosti předsedou vlády. Nejvyšší správní soud řešil otázku prekluze, použitelnosti zákona o střetu zájmů na dotace ze Státního zemědělského intervenčního fondu a vymezení ovládající osoby; dospěl k závěru, že kasační stížnost je nedůvodná a napadené rozhodnutí je správné.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "zavazky",
+    "finance"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785526",
@@ -755,14 +744,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785526",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785526",
    "soudce": "Petra Weissová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Nárok na odpočet DPH",
+   "shrnuti": "Žalobkyně se domáhala zrušení rozhodnutí žalovaného, kterým byla potvrzena dodatečná doměření daně z přidané hodnoty a penále z důvodu neprokázání přijetí deklarovaných zdanitelných plnění od dodavatele. Nejvyšší správní soud posuzoval, zda žalobkyně unesla důkazní břemeno a prokázala rozsah plnění a totožnost dodavatele. Kasační soud dospěl k závěru, že předložené důkazy neprokazují dodání plnění deklarovaným dodavatelem, a proto kasační stížnost zamítl.",
    "oblasti": [
-    "dane"
+    "dane",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785379",
@@ -777,15 +765,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785379",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785379",
    "soudce": "Michaela Bejčková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zákaz plnění smlouvy",
+   "shrnuti": "Žalobkyně se u soudu domáhala předběžného opatření zakazujícího plnění smlouvy na veřejnou zakázku, čemuž krajský soud vyhověl. Nejvyšší správní soud kasační stížnosti úřadu odmítl jako subjektivně nepřípustnou, avšak kasační stížnosti společnosti VARS BRNO vyhověl a usnesení krajského soudu zrušil. Soud dovodil, že soud je sice oprávněn předběžným opatřením plnění smlouvy zakázat, avšak v tomto případě krajský soud nesprávně vyhodnotil předpoklady pro vydání předběžného opatření.",
    "oblasti": [
     "verejne_zakazky",
-    "soutez"
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785377",
@@ -818,15 +804,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785343",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785343",
    "soudce": "Jitka Zavřelová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Materiální doručení",
+   "shrnuti": "Žalobce podal kasační stížnost proti usnesení městského soudu, kterým byla jeho žaloba proti rozhodnutí Ministerstva zemědělství odmítnuta jako opožděná. Nejvyšší správní soud řešil otázku, zda pro běh lhůty k podání žaloby rozhoduje datum doručení rozhodnutí zástupci, nebo okamžik, kdy se zástupce s rozhodnutím prokazatelně seznámil (materiální doručení). Soud dospěl k závěru, že okamžikem seznámení se s obsahem rozhodnutí nastává fikce oznámení a žaloba podaná po uplynutí dvouměsíční lhůty od tohoto seznámení je opožděná.",
    "oblasti": [
-    "spravni",
-    "dane"
+    "civilni_proces",
+    "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785340",
@@ -926,14 +910,12 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785144",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785144",
    "soudce": "Ivo Pospíšil",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Místní referendum",
+   "shrnuti": "Stěžovatel se u krajského soudu domáhal vyslovení neplatnosti rozhodnutí v místním referendu z důvodu nesrozumitelnosti otázky, přičemž krajský soud jeho návrh věcně projednal a zamítl. Nejvyšší správní soud řešil otázku rozsahu soudního přezkumu rozhodnutí v místním referendu, které je již neplatné ze zákona pro nedostatečnou účast. Dospěl k závěru, že v takovém případě nelze návrh věcně přezkoumat, nýbrž jej je nutno pro neodstranitelný nedostatek podmínek řízení odmítnout.",
    "oblasti": [
     "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784848",
@@ -970,14 +952,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784830",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784830",
    "soudce": "Petra Weissová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Stavění lhůty pro stanovení daně",
+   "shrnuti": "Společnost EKO Logistics podala kasační stížnost proti rozsudku Krajského soudu v Praze, kterým byla zamítnuta její žaloba proti rozhodnutí Odvolacího finančního ředitelství o potvrzení zastavení daňového řízení pro uplynutí prekluzivní lhůty. Nejvyšší správní soud řešil otázku, zda probíhající civilní řízení o náhradu škody mezi plátcem a jeho dodavatelem mohlo způsobit stavění lhůty pro stanovení daně podle § 148 odst. 4 písm. b) daňového řádu. Dospěl k závěru, že takové civilní řízení nemá vliv na stavění prekluzivní lhůty, neboť posouzení daňového podvodu a stanovení daně spadá do výlučné pravomoci správce daně, a kasační stížnost zamítl.",
    "oblasti": [
-    "dane"
+    "dane",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:783181",
@@ -992,14 +973,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/783181",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/783181",
    "soudce": "Jitka Zavřelová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odstranění stavby",
+   "shrnuti": "Žalobce se domáhal zrušení rozhodnutí o nařízení odstranění zahradní chatky postavené bez ohlášení, přičemž Nejvyšší správní soud řešil otázku, zda stavba provedená bez požadovaného ohlášením spadá pod § 129 odst. 1 písm. b) stavebního zákona 2006 jako stavba bez rozhodnutí či jeho náhrady. Soud dospěl k závěru, že ohlášení stavby nahrazuje stavební povolení, a proto stavba provedená bez ohlášení je nepovolenou stavbou, jejíž odstranění lze nařídit.",
    "oblasti": [
-    "stavebni_zp"
+    "stavebni_zp",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:782351",
@@ -1014,14 +994,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/782351",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/782351",
    "soudce": "Eva Šonková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Prekluze daně",
+   "shrnuti": "Žalobkyně se domáhala zrušení rozhodnutí Odvolacího finančního ředitelství o vyměření darovací daně z důvodu uplynutí prekluzivní lhůty a neexistence daňové povinnosti, neboť žila s dárkyní ve společné domácnosti. Nejvyšší správní soud řešil otázku, zda probíhající civilní řízení o povaze plnění staví lhůtu pro stanovení daně a zda byla splněna podmínka společné domácnosti. Soud dospěl k závěru, že prekluzivní lhůta uplynula včas a podmínky pro osvobození od daně nebyly splněny, proto kasační stížnost zamítl.",
    "oblasti": [
-    "dane"
+    "dane",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:780655",
@@ -1036,14 +1015,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/780655",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/780655",
    "soudce": "Eva Šonková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Příslušnost rozšířeného senátu",
+   "shrnuti": "Stěžovatelka podala kasační stížnost proti rozhodnutí Odvolacího finančního ředitelství týkajícímu se daně darovací, přičemž předkládající senát postoupil věc rozšířenému senátu pro údajný rozpor v judikatuře ohledně stavení prekluzivní lhůty podle daňového řádu. Rozšířený senát shledal, že předchozí rozhodnutí vycházela z odlišného skutkového základu a žádný skutečný rozpor mezi nimi neexistuje. Proto rozšířený senát odmítl věc projednat a vrátil ji původnímu senátu.",
    "oblasti": [
-    "dane"
+    "dane",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:768627",
@@ -1080,14 +1058,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/748275",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/748275",
    "soudce": "Eva Šonková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přípustnost žaloby",
+   "shrnuti": "Městská část podala žalobu proti rozhodnutí orgánu ochrany přírody a krajiny o umístění liniové stavby, kterou Městský soud v Praze odmítl pro nedostatek procesní způsobilosti. Nejvyšší správní soud posoudil, zda byla žaloba přípustná za situace, kdy městská část neabsolvovala správní řízení jako účastník. Dospěl k závěru, že žaloba byla nepřípustná pro nevyčerpání řádných opravných prostředků, neboť žalobkyně nenapadla usnesení o svém neúčastenství ve správním řízení.",
    "oblasti": [
+    "civilni_proces",
     "stavebni_zp"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785713",
@@ -1124,14 +1101,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785707",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785707",
    "soudce": "Tomáš Rychlý",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Rozhodný nedoplatek",
+   "shrnuti": "Žalobkyně se soudila s Finančním úřadem pro Moravskoslezský kraj o odpuštění příslušenství daně a rozložení úhrady nedoplatku v rámci režimu milostivého léta. Nejvyšší správní soud řešil otázku, zda nedoplatky žalobkyně naplňují definici rozhodného nedoplatku podle zákona o mimořádném odpuštění některých daňových dluhů. Dospěl k závěru, že kasační stížnost není důvodná, neboť u většiny nedoplatků nenastala splatnost do rozhodného dne.",
    "oblasti": [
-    "dane"
+    "dane",
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785706",
@@ -1190,15 +1167,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785690",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785690",
    "soudce": "Štěpán Výborný",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Vyvlastnění pozemku",
+   "shrnuti": "Žalobkyně se žalobou a následně kasační stížností domáhala zrušení rozhodnutí o omezení vlastnického práva k pozemku formou zřízení věcného břemene. Nejvyšší správní soud řešil otázku splnění podmínek pro vyvlastnění, zejména zásady subsidiarity a nutnosti souhlasu všech spoluvlastníků. Dospěl k závěru, že kasační stížnost není důvodná, neboť k vyvlastnění bylo nutno přistoupit pro absenci dohody s další spoluvlastnicí.",
    "oblasti": [
     "vecna_prava",
     "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785618",
@@ -1279,14 +1254,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785537",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785537",
    "soudce": "Sylva Šiškeová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Označování etiket lihovin",
+   "shrnuti": "Palírna U Zeleného stromu a.s. se u Nejvyššího správního soudu domáhala zrušení rozsudku Krajského soudu v Ostravě – pobočky v Olomouci, kterým byla zamítnuta její žaloba proti rozhodnutí Státní zemědělské a potravinářské inspekce o zákazu uvádění kontrolovaných lihovin na trh. Soud řešil otázku, zda označení a číselné údaje na etiketách lihovin byly klamavé či nejasné a zda byly splněny podmínky pro uložení nápravných opatření a zákaz prodeje. Nejvyšší správní soud dospěl k závěru, že napadený rozsudek je správný a přezkoumatelný, neboť etikety obsahovaly nevysvětlené a zavádějící údaje vzbuzující dojem o původu a zrání nápojů.",
    "oblasti": [
+    "spotrebitel",
     "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785535",
@@ -1301,14 +1275,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785535",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785535",
    "soudce": "Jan Kratochvíl",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Azyl a mezinárodní ochrana",
+   "shrnuti": "Žalobkyně se podanou žalobou domáhala zrušení rozhodnutí Ministerstva vnitra, kterým jí nebyla udělena mezinárodní ochrana. Nejvyšší správní soud řešil otázku, zda správní orgán dostatečně zjistil skutkový stav ohledně možnosti státní ochrany v zemi původu, a dospěl k závěru, že shromážděné podklady neobsahovaly potřebné informace o fungování policie a poskytování ochrany před soukromými osobami.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785499",
@@ -1323,14 +1296,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785499",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785499",
    "soudce": "Tomáš Herc",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Uplatnění žalobních bodů",
+   "shrnuti": "Žalobce a velitel vzdušných sil se soudili o zákonnost rozhodnutí o odvolání týkajícího se promlčení platu a rozšíření žádosti o doplacení platu. Nejvyšší správní soud řešil otázku, zda krajský soud pochybil, když odmítl přihlédnout k žalobnímu bodu uplatněnému až v replice po lhůtě k podání žaloby. Soud dospěl k závěru, že žalobce nemůže rozšiřovat žalobu o nové žalobní body po lhůtě pro podání žaloby, a proto kasační stížnost zamítl.",
    "oblasti": [
-    "pracovni"
+    "civilni_proces",
+    "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785485",
@@ -1345,14 +1317,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785485",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785485",
    "soudce": "Radan Malík",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přípustnost ochranné známky",
+   "shrnuti": "Mailboxde.cz s.r.o. se soudila s Úřadem průmyslového vlastnictví o zamítnutí přihlášky slovní ochranné známky Mailboxde.cz kvůli pravděpodobnosti záměny se starší ochrannou známkou MAIL BOXES ETC. Nejvyšší správní soud řešil otázku posouzení rozlišovací způsobilosti a podobnosti srovnávaných označení a potvrdil, že mezi označeními existuje pravděpodobnost záměny z hlediska sémantického, fonetického i vizuálního.",
    "oblasti": [
-    "prumyslova_prava"
+    "prumyslova_prava",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785476",
@@ -1367,14 +1338,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785476",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785476",
    "soudce": "Milan Podhrázký",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Označení potravin na regálových etiketách",
+   "shrnuti": "Státní zemědělská a potravinářská inspekce podala kasační stížnost proti rozsudku Krajského soudu v Českých Budějovicích, kterým bylo částečně vyhověno žalobě Kaufland Česká republika proti pokutě za přestupky na úseku potravinového práva. Nejvyšší správní soud řešil otázku, zda stručné označení příchuti na regálové etiketě může klamat spotřebitele. Soud dospěl k závěru, že zkratkovitý popis na cenovce, který postrádá výslovné uvedení slova příchuť, za určitých okolností nepředstavuje klamavé označení potraviny.",
    "oblasti": [
+    "spotrebitel",
     "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785456",
@@ -1431,15 +1401,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785409",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785409",
    "soudce": "Viktor Kučera",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zkapacitnění silničního okruhu",
+   "shrnuti": "Žalobci se domáhali zrušení rozhodnutí žalovaného o umístění stavby dálničního okruhu a souvisejících závazných stanovisek. Nejvyšší správní soud řešil otázku aktivní legitimace k uplatnění námitek bezpečnosti provozu, posouzení materiálního splnění povinnosti auditu bezpečnosti a přezkoumatelnosti závazného stanoviska vodoprávního úřadu. Dospěl k závěru, že napadený rozsudek krajského soudu neobstojí, neboť závěry o absenci řádného auditu a nepřezkoumatelnosti závazného stanoviska jsou předčasné a nepřezkoumatelné.",
    "oblasti": [
+    "spravni",
     "stavebni_zp",
-    "spravni"
+    "skoda"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785407",
@@ -1454,14 +1423,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785407",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785407",
    "soudce": "Štěpán Výborný",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Výjimka ze zákazů",
+   "shrnuti": "Spolek Zdravé Ktišsko napadl rozhodnutí Ministerstva životního prostředí, kterým byla povolena výjimka ze zákazů u zvláště chráněných druhů živočichů v souvislosti s těžbou granátu. Nejvyšší správní soud řešil otázku posouzení závažnosti zásahu a zákonných podmínek pro udělení výjimky, přičemž dospěl k závěru, že napadené rozhodnutí je zákonné a správní orgány řádně vymezily převažující veřejný zájem.",
    "oblasti": [
-    "stavebni_zp"
+    "spravni",
+    "vecna_prava"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785382",
@@ -1608,14 +1576,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785239",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785239",
    "soudce": "Pavel Molek",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Nepřezkoumatelnost rozhodnutí soudu",
+   "shrnuti": "Žalobce se soudil s Ministerstvem vnitra o mezinárodní ochranu. Nejvyšší správní soud řešil otázku přezkoumatelnosti rozsudku krajského soudu a dospěl k závěru, že rozsudek je nepřezkoumatelný pro opomenutý důkaz a nevypořádání některé žalobní argumentace.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785206",
@@ -1652,14 +1619,12 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784824",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784824",
    "soudce": "Jitka Zavřelová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Disciplinární řízení",
+   "shrnuti": "Žalobce se soudil s Představenstvem České komory autorizovaných inženýrů a techniků činných ve výstavbě o přezkum rozhodnutí o disciplinárním opatření. Nejvyšší správní soud řešil otázku, zda byl disciplinární orgán povinen znovu nařídit ústní jednání při novém projednání věci po zrušení původního rozhodnutí. Dospěl k závěru, že pokud již bylo ústní jednání řádně nařízeno a konáno v původním řízení, není nutné jej po vrácení věci odvolacím orgánem opakovat.",
    "oblasti": [
     "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:784809",
@@ -1740,14 +1705,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/782453",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/782453",
    "soudce": "Aleš Roztočil",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastavení řízení",
+   "shrnuti": "Žalobce DOLÁK Transport a obec Držovice se soudili o zrušení části územního plánu. Soud řešil otázku, zda je nutné zastavit řízení o kasační stížnosti pro nezaplacení soudního poplatku. Jelikož žalovaný poplatek ve lhůtě neuhradil, soud řízení o jeho kasační stížnosti zastavil.",
    "oblasti": [
-    "stavebni_zp"
+    "stavebni_zp",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785703",
@@ -1784,14 +1748,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785692",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785692",
    "soudce": "Faisal Husseini",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Daňová uznatelnost úroků",
+   "shrnuti": "Žalobce se kasační stížností domáhal zrušení rozsudku Městského soudu v Praze, který zamítl jeho žalobu proti rozhodnutí Odvolacího finančního ředitelství o dani z příjmů fyzických osob. Nejvyšší správní soud posuzoval otázku, zda daňové orgány mohly bez dalšího odmítnout a neprovedit důkazy včas předložené v odvolacím řízení. Soud dospěl k závěru, že předložené soupisy plateb nepostrádaly vypovídací potenci, a proto je finanční orgány měly provést a posoudit jejich věrohodnost ve spojení s ostatními podklady.",
    "oblasti": [
-    "dane"
+    "dane",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785691",
@@ -1806,14 +1769,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785691",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785691",
    "soudce": "Jitka Zavřelová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastoupení odborovou organizací",
+   "shrnuti": "Žalobce napadl kasační stížností usnesení krajského soudu, kterým byla odmítnuta jeho žaloba podaná prostřednictvím odborové organizace ve věci přestupku. Nejvyšší správní soud řešil otázku, zda odborová organizace může zastupovat svého člena v jakékoliv věci a za jakých podmínek. Dospěl k závěru, že věcné omezení zastoupení neexistuje, avšak soud musí materiálně zkoumat, zda subjekt skutečně vykonává odborovou činnost.",
    "oblasti": [
+    "civilni_proces",
     "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785620",
@@ -1850,14 +1812,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785527",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785527",
    "soudce": "Jitka Zavřelová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Mezinárodní ochrana",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Krajského soudu v Ostravě, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Nejvyšší správní soud řešil otázku, zda správní orgán dostatečně zjistil skutkový stav ohledně schopnosti státu původu poskytnout ochranu před pronásledováním ze strany soukromých osob. Soud dospěl k závěru, že shromážděné informace o zemi původu neobsahovaly údaje o fungování policie v Turecku a napadený rozsudek proto zrušil.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785498",
@@ -1872,14 +1833,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785498",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785498",
    "soudce": "Jitka Zavřelová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odměna ustanoveného zástupce",
+   "shrnuti": "Nejvyšší správní soud předložil rozšířenému senátu usnesení v řízení o kasační stížnosti žalobce proti rozhodnutí o nákladech řízení a věci samé, neboť v judikatuře existuje rozpor ohledně aktivní procesní legitimace žalobce k napadení výroku o odměně jeho ustanoveného zástupce. Soud řešil otázku, zda je žalobce oprávněn brojit proti tomuto výroku a zda přijatelnost jedné kasační námitky zakládá přijatelnost celé stížnosti, přičemž věc postoupil rozšířenému senátu k sjednocení judikatury.",
    "oblasti": [
-    "socialni_cizinci"
+    "civilni_proces",
+    "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785467",
@@ -1916,14 +1876,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785418",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785418",
    "soudce": "Štěpán Výborný",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Opožděnost žaloby",
+   "shrnuti": "Žalobce podal kasační stížnost proti usnesení krajského soudu, kterým byla jeho žaloba proti rozhodnutí žalovaného o určení veřejně přístupné účelové komunikace odmítnuta pro opožděnost. Nejvyšší správní soud řešil otázku, zda je pro počátek běhu lhůty pro podání žaloby rozhodné individuální doručení do datové schránky, nebo doručení veřejnou vyhláškou. Soud dospěl k závěru, že pro účastníka řízení majícího postavení hlavního účastníka a odvolatele je rozhodné individuální doručení do datové schránky, a kasační stížnost zamítl.",
    "oblasti": [
+    "civilni_proces",
     "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785414",
@@ -1938,14 +1897,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785414",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785414",
    "soudce": "Petr Mikeš",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zrušení trvalého pobytu",
+   "shrnuti": "Žalobce se soudil s Ministerstvem vnitra o zrušení rozhodnutí o zrušení povolení k trvalému pobytu. Nejvyšší správní soud řešil, zda správní orgán dostatečně posoudil aktuálnost a závažnost hrozby pro veřejný pořádek a přiměřenost zásahu do soukromého a rodinného života. Soud dospěl k závěru, že rozhodnutí správního orgánu neobsahuje přezkoumatelné hodnocení aktuálnosti hrozby, a proto rozsudek krajského soudu i rozhodnutí správního orgánu zrušil.",
    "oblasti": [
+    "spravni",
     "socialni_cizinci"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785413",
@@ -1960,14 +1918,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785413",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785413",
    "soudce": "Filip Dienstbier",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zahájení stavby",
+   "shrnuti": "Osoby zúčastněné na řízení IV a V podaly kasační stížnost proti rozsudku Krajského soudu v Brně, kterým bylo zrušeno rozhodnutí žalovaného o nařízení odstranění stavby polních cest. Nejvyšší správní soud řešil otázku, zda přípravné práce jako lokalizace vodovodu a provizorní odvodnění staveniště představují zahájení stavby ve smyslu § 115 odst. 4 stavebního zákona zachovávající platnost stavebního povolení. Dospěl k závěru, že takové úkony nelze považovat za zahájení stavby, a proto rozsudek krajského soudu zrušil a vrátil mu věc k dalšímu řízení.",
    "oblasti": [
-    "stavebni_zp"
+    "stavebni_zp",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785384",
@@ -1982,14 +1939,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785384",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785384",
    "soudce": "Jaroslav Vlašín",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Opatření obecné povahy",
+   "shrnuti": "ZOS Rychnov na Moravě s.r.o. a Městský úřad Moravská Třebová podali kasační stížnosti proti rozsudku krajského soudu, kterým bylo zrušeno opatření obecné povahy omezující dopravu v obci Rychnov na Moravě s odloženou účinností. Nejvyšší správní soud řešil otázku přiměřenosti tříletého odkladu účinnosti zrušení opatření a vypořádání nákladů řízení. Obě kasační stížnosti soud zamítl a potvrdil, že zvolená doba odkladu i závěr o procesním úspěchu navrhovatelky byly správné.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "vecna_prava",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785295",
@@ -2071,14 +2028,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784864",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784864",
    "soudce": "Tomáš Rychlý",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Dočasná ochrana cizinců",
+   "shrnuti": "Žalobce se žalobou na ochranu před nezákonným zásahem bránil proti vrácení žádosti o dočasnou ochranu Ministerstvem vnitra, přičemž Městský soud v Praze jeho žalobu zamítl. Nejvyšší správní soud posuzoval kasační stížnost žalobce a dospěl k závěru, že žalobce před rozhodným datem přesunul těžiště svých zájmů do jiného státu a nesplňuje tak podmínky pro udělení dočasné ochrany. Kasační stížnost proto jako nedůvodnou zamítl.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:784820",
@@ -2157,14 +2113,12 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/747787",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/747787",
    "soudce": "Petr Mikeš",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Rozpuštění politické strany",
+   "shrnuti": "Vláda navrhla rozpuštění Československé strany socialistické, protože ani po uplynutí lhůty v předchozím řízení o pozastavení činnosti neodstranila protiprávní stav spočívající v nepředložení výročních finančních zpráv. Nejvyšší správní soud řešil, zda trvají zákonné důvody pro rozpuštění politické strany. Dospěl k závěru, že politická strana ani po více než roce nenapravila nedostatky, a proto rozhodl o jejím rozpuštění.",
    "oblasti": [
     "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785621",
@@ -2179,14 +2133,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785621",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785621",
    "soudce": "Petra Weissová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Prekluze odvodu dotace",
+   "shrnuti": "Ministerstvo financí podalo kasační stížnost proti rozsudku Krajského soudu v Ostravě – pobočka v Olomouci, kterým bylo zrušeno rozhodnutí o odvodu za porušení rozpočtové kázně kvůli uplynutí prekluzivní lhůty podle unijního práva. Nejvyšší správní soud řešil otázku správného určení počátku běhu prekluzivní lhůty pro vydání rozhodnutí podle nařízení Rady (ES, Euratom) č. 2988/95. Dospěl k závěru, že napadený rozsudek je nepřezkoumatelný pro nedostatek důvodů, neboť krajský soud opomněl posoudit povahu nesrovnalosti a další související skutkové okolnosti.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785616",
@@ -2223,15 +2176,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785612",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785612",
    "soudce": "Radan Malík",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přístup k mobilní síti",
+   "shrnuti": "Uniphone, s.r.o. se soudila s Českým telekomunikačním úřadem ohledně jeho rozhodnutí o návrzích na uložení povinnosti operátorů uzavřít smlouvu o přístupu k mobilním sítím. Soud řešil otázku, zda přezkum takových rozhodnutí náleží správním soudům, nebo soudům v občanském soudním řízení. Dospěl k závěru, že jde o spor o obsah soukromoprávní smlouvy, a proto k jeho přezkumu nejsou pravomocné správní soudy.",
    "oblasti": [
     "it",
-    "spravni"
+    "zavazky",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785610",
@@ -2246,14 +2198,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785610",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785610",
    "soudce": "Radovan Havelec",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Povolení přípravku na ochranu rostlin",
+   "shrnuti": "Společnost JT Agro Ireland Limited se u Nejvyššího správního soudu bránila proti zamítnutí žádosti o povolení přípravku na ochranu rostlin na trh v České republice. Soud řešil otázku, zda správní orgány mohou odmítnout povolení přípravku na základě zpochybnění kvality posouzení provedeného zónovým členským státem poukazem na zastaralost metodiky. Dospěl k závěru, že takový postup není v rozporu se zónovým posouzením přípustný, pokud nejsou dány konkrétní vědecké poznatky o nepřijatelném riziku, a rozsudek městského soudu i rozhodnutí správních orgánů zrušil.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "stavebni_zp"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785609",
@@ -2268,14 +2219,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785609",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785609",
    "soudce": "Radovan Havelec",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Doručení fikcí",
+   "shrnuti": "Žalobkyně se žalobou domáhala zrušení rozhodnutí Odvolacího finančního ředitelství, kterým bylo zamítnuto její odvolání proti rozhodnutí o zastavení odvolacího řízení pro opožděnost, přičemž Nejvyšší správní soud řešil otázku, zda krajský soud pochybil, když bez řádného odůvodnění odmítl provést důkazy navržené k zpochybnění data doručení písemnosti. Nejvyšší správní soud dospěl k závěru, že krajský soud pochybil, neboť neprovedení důkazů řádně nezdůvodnil, a proto jeho rozsudek zrušil a vrátil mu věc k dalšímu řízení.",
    "oblasti": [
-    "dane"
+    "dane",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785607",
@@ -2290,14 +2240,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785607",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785607",
    "soudce": "Jakub Camrda",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Změna povolení k nakládání s vodami",
+   "shrnuti": "Žalobce se soudil s Ministerstvem zemědělství a dalšími účastníky o zrušení rozhodnutí o změně povolení k nakládání s vodami na vodním díle Nové Mlýny. Soud řešil otázku, zda je pravomocné rozhodnutí o výjimkách podle zákona o ochraně přírody a krajiny nezbytným podkladem pro vydání takového vodoprávního povolení. Nejvyšší správní soud potvrdil, že výjimky zohledňující ochranu přírody musí být pravomocné ještě před vydáním navazujícího vodoprávního povolení.",
    "oblasti": [
-    "stavebni_zp"
+    "stavebni_zp",
+    "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785590",
@@ -2357,14 +2306,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785410",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785410",
    "soudce": "Filip Dienstbier",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Aktivní žalobní legitimace",
+   "shrnuti": "Spolek podal žalobu proti rozhodnutí Magistrát města Brna o povolení uzavírky silnice a stanovení objízdné trasy, kterou Krajský soud v Brně odmítl pro nedostatek aktivní procesní legitimace. Nejvyšší správní soud kasační stížnosti stěžovatel vyhověl a usnesení krajského soudu zrušil. Dovodil, že spolek plausibilně tvrdil zásah do svých práv a aktivní legitimace byla dána.",
    "oblasti": [
+    "civilni_proces",
     "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785403",
@@ -2379,15 +2327,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785403",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785403",
    "soudce": "Milan Podhrázký",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zrušení trvalého pobytu",
+   "shrnuti": "Žalobce se u Nejvyššího správního soudu domáhal zrušení rozsudku Městského soudu v Praze, kterým byla zamítnuta jeho žaloba proti rozhodnutí Komise pro rozhodování ve věcech pobytu cizinců o zrušení platnosti povolení k trvalému pobytu. Soud řešil otázku, zda správní orgán musí při zrušení trvalého pobytu podle § 77 odst. 2 písm. g) zákona o pobytu cizinců vždy zkoumat aktuální hrozbu pro veřejný pořádek, a dospěl k závěru, že toto posouzení je již obsaženo v předchozím rozhodnutí o vyhoštění, takže se nepožaduje jeho opětovné provádění.",
    "oblasti": [
     "socialni_cizinci",
-    "trestni"
+    "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785242",
@@ -2424,14 +2370,12 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785238",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785238",
    "soudce": "Pavel Molek",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Záchranářská ulička",
+   "shrnuti": "Žalobce se kasační stížností domáhal zrušení rozsudku krajského soudu, kterým byla zamítnuta jeho žaloba proti rozhodnutí žalovaného o uložení pokuty za přestupek podle § 125c odst. 1 písm. k) zákona o silničním provozu. Nejvyšší správní soud řešil otázku, zda je povinnost vytvořit a udržovat prostor pro průjezd vozidel s právem přednostní jízdy podle § 41 odst. 8 téhož zákona podmíněna aktuální přítomností takového vozidla. Dospěl k závěru, že jde o preventivní povinnost, která vzniká bezprostředně se vznikem dopravního omezení, a proto žalobce spáchal přestupek již samotným vjezdem do tohoto prostoru bez ohledu na to, zda jím v daném okamžiku projíždělo vozidlo s právem přednostní jízdy.",
    "oblasti": [
     "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785161",
@@ -2446,15 +2390,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785161",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785161",
    "soudce": "Ondřej Bartoš",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Reklama na léčiva",
+   "shrnuti": "IBSA PHARMA se u Městského soudu v Praze bránila žalobou proti rozhodnutí Ministerstva zdravotnictví o přestupku na úseku reklamy na humánní léčivý přípravek Syntroxine. Nejvyšší správní soud řešil přezkoumatelnost rozsudku městského soudu a otázku souladu reklamních tvrzení s údajil v souhrnu údajů o přípravku. Dospěl k závěru, že napadený rozsudek je vnitřně rozporný a nepřezkoumatelný, proto jej zrušil a vrátil k dalšímu řízení.",
    "oblasti": [
     "spravni",
-    "nekala_soutez"
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785160",
@@ -2469,14 +2411,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785160",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785160",
    "soudce": "Václav Štencel",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přípustnost změny územního plánu",
+   "shrnuti": "Statutární město Brno podalo kasační stížnost proti rozsudku Krajského soudu v Brně, kterým byl zrušen územní plán v části týkající se pozemků vlastněných žalobkyní. Nejvyšší správní soud řešil otázku, zda obec řádně odůvodnila změnu funkčního využití pozemků z rekreace na zeleň a zda takový zásah obstojí v testu proporcionality. Soud dospěl k závěru, že obec neprokázala dostatečné a konkrétní důvody pro tak zásadní omezení vlastnického práva, a proto kasační stížnost zamítl.",
    "oblasti": [
-    "stavebni_zp"
+    "spravni",
+    "vecna_prava",
+    "ustavni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785141",
@@ -2491,12 +2433,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785141",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785141",
    "soudce": "Jan Kratochvíl",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Tisková zpráva soudu",
+   "shrnuti": "Žalobci napadli žalobou na ochranu před nezákonným zásahem zveřejnění tiskové zprávy Nejvyššího soudu týkající se výsledku jejich soudního sporu. Nejvyšší správní soud řešil otázku, zda Nejvyšší soud nebo jeho předseda vystupují při vydávání tiskových zpráv jako správní orgán. Dospěl k závěru, že nikoliv, neboť nejde o autoritativní působení do právní sféry osob v oblasti veřejné správy, a žalobu proto odmítl s odkazem na příslušnost civilních soudů.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
   },
   {
    "id": "nss:784792",
@@ -2509,12 +2452,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784792",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784792",
    "soudce": "Tomáš Rychlý",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Místní příslušnost soudu",
+   "shrnuti": "Žalobce podal u Nejvyššího správního soudu žalobu proti rozhodnutí Ministerstva spravedlnosti o zamítnutí žádosti o peněžitou pomoc obětem trestných činů. Soud řešil otázku svou věcné a místní příslušnosti k projednání této žaloby. Rozhodl, že k řízení není příslušný, a věc postoupil Městskému soudu v Praze jako soudu věcně a místně příslušnému.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
   },
   {
    "id": "nss:784778",
@@ -2529,14 +2473,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784778",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784778",
    "soudce": "Michaela Bejčková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zrušení termínu žádosti",
+   "shrnuti": "Žalobce se žalobou na ochranu před nezákonným zásahem domáhal u Městského soudu v Praze zrušení postupu Generálního konzulátu České republiky v Drážďanech, který zrušil jeho přidělený termín k podání žádosti o zaměstnaneckou kartu z důvodu nulové kvóty pro občany Vietnamské socialistické republiky. Městský soud žalobě vyhověl s tím, že konzulát měl žádost nabrat a vydat usnesení o nepřijatelnosti. Nejvyšší správní soud kasační stížnosti konzulátu vyhověl a rozsudek městského soudu zrušil s právním závěrem, že zastupitelský úřad nebyl povinen umožnit podání žádosti, pokud byla její nepřijatelnost na základě nulové kvóty zřejmá a žadatel nemohl nic namítnout.",
    "oblasti": [
+    "spravni",
     "socialni_cizinci"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:784681",
@@ -2595,14 +2538,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785572",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785572",
    "soudce": "Ondřej Bartoš",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Úrok z nesprávně stanovené daně",
+   "shrnuti": "Ostravské opravny a strojírny se soudily s Finančním úřadem pro Moravskoslezský kraj o přiznání úroku z nesprávně stanovené daně ve dvojnásobné výši podle § 254 odst. 5 daňového řádu. Nejvyšší správní soud řešil otázku, zda zřízení zástavního práva k obchodnímu závodu daňového subjektu představuje vedení exekučního řízení ve smyslu tohoto ustanovení. Soud dospěl k závěru, že zřízení zástavního práva není exekučním řízením, a proto žalobkyni nárok na dvojnásobný úrok nevznikl.",
    "oblasti": [
-    "dane"
+    "dane",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785571",
@@ -2661,14 +2603,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785563",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785563",
    "soudce": "Jiří Palla",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Pohotovostní služba lékařů",
+   "shrnuti": "Žalobce se soudil s Ministerstvem zdravotnictví o přezkum rozhodnutí o přestupku za odmítnutí účasti na pohotovostní službě zubních lékařů. Nejvyšší správní soud řešil otázku dopadu pozdější změny zákona o zdravotních službách, která povinnost i přestupek zrušila. Soud dospěl k závěru, že nová úprava představuje dekriminalizaci, a proto zrušil rozsudek krajského soudu i rozhodnutí správních orgánů.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785541",
@@ -2683,14 +2624,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785541",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785541",
    "soudce": "Ondřej Bartoš",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Prezidiální plná moc",
+   "shrnuti": "Krajský úřad Jihomoravského kraje a ZPĚTNÝ LEASING, s.r.o. vedly spor o včasnost žaloby proti rozhodnutí o přestupcích v závislosti na tom, zda byla řádně doručena zástupci žalobkyně na základě předložené plné moci. Nejvyšší správní soud řešil otázku posouzení povahy a vad plné moci označené jako prezidiální, je-li předložena v průběhu řízení, a postoupil věc rozšířenému senátu k jednotnému výkladu podmínek zastoupení.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785507",
@@ -2703,12 +2643,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785507",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785507",
    "soudce": "Viktor Kučera",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Ustanovení zástupce advokáta",
+   "shrnuti": "Žalobce podal u Nejvyššího správního soudu návrh na ustanovení zástupce z řad advokátů pro podání kasační stížnosti proti rozsudku Městského soudu v Praze ve věci příspěvku na péči. Nejvyšší správní soud řešil otázku, zda jsou splněny zákonné podmínky pro ustanovení zástupce podle § 35 odst. 10 s. ř. s. Soud dospěl k závěru, že žalobce splňuje podmínky pro osvobození od soudních poplatků a zastoupení je nezbytné k ochraně jeho práv, proto mu ustanovil advokáta.",
+   "oblasti": [
+    "socialni_cizinci",
+    "civilni_proces"
+   ],
+   "procesni": true
   },
   {
    "id": "nss:785486",
@@ -2745,14 +2686,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785405",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785405",
    "soudce": "Veronika Juřičková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Pokusné ověřování ve školství",
+   "shrnuti": "Školská právnická osoba se u soudu domáhala ochrany před nezákonným zásahem Ministerstva školství, mládeže a tělovýchovy spočívajícím v předčasném ukončení pokusného ověřování kombinovaného vzdělávání. Nejvyšší správní soud řešil otázku, zda ministerstvo bylo oprávněno pokusné ověřování zkrátit a ukončit před původně stanoveným termínem. Dospěl k závěru, že ministerstvo mělo k tomuto kroku zákonné zmocnění a dostatečné podklady, a proto žalobu zamítl.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "ustavni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785404",
@@ -2834,15 +2774,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785344",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785344",
    "soudce": "Tomáš Rychlý",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Příplatek k důchodu",
+   "shrnuti": "Žalobce se domáhal kasační stížností zrušení rozsudku Městského soudu v Praze, kterým byla zamítnuta jeho žaloba proti rozhodnutí České správy sociálního zabezpečení o zamítnutí žádosti o příplatek k důchodu podle zákona o soudní rehabilitaci. Nejvyšší správní soud řešil otázku, zda na tento příplatek vzniká nárok automaticky jen na základě soudní rehabilitace bez ohledu na to, zda byla dotčena doba pojištění. Soud dospěl k závěru, že příplatek je pouze alternativou k zápočtu dob a náleží jen osobám, které byly na svých právech v oblasti důchodového zabezpečení skutečně zkráceny, což v daném případě splněno nebylo.",
    "oblasti": [
+    "socialni_cizinci",
     "spravni",
-    "socialni_cizinci"
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785339",
@@ -2857,14 +2796,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785339",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785339",
    "soudce": "Michaela Bejčková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Nárok na odpočet DPH",
+   "shrnuti": "Společnost Klusáček vedla spory s Odvolacím finančním ředitelstvím ohledně doměření daně z přidané hodnoty a odepření nároku na odpočet za reklamní plnění. Nejvyšší správní soud řešil otázku, zda daňový subjekt unesl důkazní břemeno ohledně fakticity plnění a jeho dodavatele. Soud dospěl k závěru, že daňový subjekt neprokázal přijetí plnění od deklarovaného dodavatele, a kasační stížnost zamítl.",
    "oblasti": [
-    "dane"
+    "dane",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785338",
@@ -2901,14 +2839,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785246",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785246",
    "soudce": "Lenka Krupičková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odpovědnost provozovatele vozidla",
+   "shrnuti": "Krajský úřad Ústeckého kraje podal kasační stížnost proti rozsudku Krajského soudu v Ústí nad Labem, kterým bylo zrušeno rozhodnutí o přestupku provozovatele vozidla. Nejvyšší správní soud řešil otázku, zda neaplikovatelnost opatření obecné povahy k dopravnímu značení automaticky způsobuje nezákonnost rozhodnutí o přestupku, pokud řidič porušil téhož dne i jiné povinnosti. Dospěl k závěru, že dílčí porušení předpisu nevede samo o sobě ke zrušení rozhodnutí, pokud zbývající jednání naplňuje znaky přestupku a odpadlá okolnost neměla vliv na uloženou sankci.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785154",
@@ -2975,6 +2912,1751 @@
     "socialni_cizinci"
    ],
    "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785536",
+   "spz": "22 Azs 143/2026-46",
+   "ecli": "ECLI:CZ:NSS:2026:22.Azs.143.2026.46",
+   "druh": "usnesení",
+   "senat": 22,
+   "rejstrik": "Azs",
+   "datum": "2026-09-16",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785536",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785536",
+   "soudce": "Tomáš Foltas",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785529",
+   "spz": "2 As 161/2026-21",
+   "ecli": "ECLI:CZ:NSS:2026:2.As.161.2026.21",
+   "druh": "usnesení",
+   "senat": 2,
+   "rejstrik": "As",
+   "datum": "2026-09-16",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785529",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785529",
+   "soudce": "Václav Štencel",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "dane"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785524",
+   "spz": "1 Afs 21/2026-36",
+   "ecli": "ECLI:CZ:NSS:2026:1.Afs.21.2026.36",
+   "druh": "rozsudek",
+   "senat": 1,
+   "rejstrik": "Afs",
+   "datum": "2026-08-13",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785524",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785524",
+   "soudce": "Sylva Šiškeová",
+   "heslo": "Prominutí úroku",
+   "shrnuti": "KOVÁŘ plus s.r.o. se soudila s Finančním úřadem pro Zlínský kraj ohledně zamítnutí žádosti o prominutí úroku z posečkané částky z DPH. Nejvyšší správní soud řešil otázku, zda lze při rozhodování o prominutí úroku zohlednit vědomou účast daňového subjektu na daňovém podvodu. Soud dospěl k závěru, že povaha a intenzita zdrojového jednání (účast na podvodu) odůvodňují zamítnutí žádosti v plném rozsahu.",
+   "oblasti": [
+    "dane",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785501",
+   "spz": "2 Azs 119/2026-30",
+   "ecli": "ECLI:CZ:NSS:2026:2.Azs.119.2026.30",
+   "druh": "usnesení",
+   "senat": 2,
+   "rejstrik": "Azs",
+   "datum": "2026-09-15",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785501",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785501",
+   "soudce": "Václav Štencel",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785420",
+   "spz": "5 Azs 118/2026-30",
+   "ecli": "ECLI:CZ:NSS:2026:5.Azs.118.2026.30",
+   "druh": "usnesení",
+   "senat": 5,
+   "rejstrik": "Azs",
+   "datum": "2026-09-10",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785420",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785420",
+   "soudce": "Viktor Kučera",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785412",
+   "spz": "5 Ads 49/2026-28",
+   "ecli": "ECLI:CZ:NSS:2026:5.Ads.49.2026.28",
+   "druh": "rozsudek",
+   "senat": 5,
+   "rejstrik": "Ads",
+   "datum": "2026-09-11",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785412",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785412",
+   "soudce": "Lenka Matyášová",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785411",
+   "spz": "Nao 128/2026-27",
+   "ecli": "ECLI:CZ:NSS:2026:Nao.128.2026.27",
+   "druh": "usnesení",
+   "datum": "2026-09-10",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785411",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785411",
+   "soudce": "Jakub Camrda",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785406",
+   "spz": "5 Azs 93/2026-28",
+   "ecli": "ECLI:CZ:NSS:2026:5.Azs.93.2026.28",
+   "druh": "usnesení",
+   "senat": 5,
+   "rejstrik": "Azs",
+   "datum": "2026-09-10",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785406",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785406",
+   "soudce": "Lenka Matyášová",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785402",
+   "spz": "7 Ads 262/2025-23",
+   "ecli": "ECLI:CZ:NSS:2026:7.Ads.262.2025.23",
+   "druh": "usnesení",
+   "senat": 7,
+   "rejstrik": "Ads",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785402",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785402",
+   "soudce": "Jiřina Chmelová",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785353",
+   "spz": "3 Azs 26/2026-44",
+   "ecli": "ECLI:CZ:NSS:2026:3.Azs.26.2026.44",
+   "druh": "usnesení",
+   "senat": 3,
+   "rejstrik": "Azs",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785353",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785353",
+   "soudce": "Jaroslav Vlašín",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785337",
+   "spz": "3 As 92/2026-24",
+   "ecli": "ECLI:CZ:NSS:2026:3.As.92.2026.24",
+   "druh": "usnesení",
+   "senat": 3,
+   "rejstrik": "As",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785337",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785337",
+   "soudce": "Lenka Krupičková",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785322",
+   "spz": "4 Afs 25/2026-85",
+   "ecli": "ECLI:CZ:NSS:2026:4.Afs.25.2026.85",
+   "druh": "rozsudek",
+   "senat": 4,
+   "rejstrik": "Afs",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785322",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785322",
+   "soudce": "Tomáš Kocourek",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "dane"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785316",
+   "spz": "5 Afs 59/2026-70",
+   "ecli": "ECLI:CZ:NSS:2026:5.Afs.59.2026.70",
+   "druh": "rozsudek",
+   "senat": 5,
+   "rejstrik": "Afs",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785316",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785316",
+   "soudce": "Veronika Juřičková",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "dane"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785247",
+   "spz": "3 Azs 95/2026-33",
+   "ecli": "ECLI:CZ:NSS:2026:3.Azs.95.2026.33",
+   "druh": "usnesení",
+   "senat": 3,
+   "rejstrik": "Azs",
+   "datum": "2026-09-03",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785247",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785247",
+   "soudce": "Jaroslav Vlašín",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785245",
+   "spz": "3 As 178/2025-65",
+   "ecli": "ECLI:CZ:NSS:2026:3.As.178.2025.65",
+   "druh": "rozsudek",
+   "senat": 3,
+   "rejstrik": "As",
+   "datum": "2026-09-04",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785245",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785245",
+   "soudce": "Lenka Krupičková",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785167",
+   "spz": "22 As 91/2026-51",
+   "ecli": "ECLI:CZ:NSS:2026:22.As.91.2026.51",
+   "druh": "rozsudek",
+   "senat": 22,
+   "rejstrik": "As",
+   "datum": "2026-09-03",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785167",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785167",
+   "soudce": "Jan Kratochvíl",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "vecna_prava",
+    "spravni"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785092",
+   "spz": "22 Azs 117/2026-36",
+   "ecli": "ECLI:CZ:NSS:2026:22.Azs.117.2026.36",
+   "druh": "usnesení",
+   "senat": 22,
+   "rejstrik": "Azs",
+   "datum": "2026-09-02",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785092",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785092",
+   "soudce": "Jan Kratochvíl",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784827",
+   "spz": "10 As 111/2026-47",
+   "ecli": "ECLI:CZ:NSS:2026:10.As.111.2026.47",
+   "druh": "rozsudek",
+   "senat": 10,
+   "rejstrik": "As",
+   "datum": "2026-08-27",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784827",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784827",
+   "soudce": "Michaela Bejčková",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "vecna_prava",
+    "spravni"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784812",
+   "spz": "22 Azs 125/2026-37",
+   "ecli": "ECLI:CZ:NSS:2026:22.Azs.125.2026.37",
+   "druh": "usnesení",
+   "senat": 22,
+   "rejstrik": "Azs",
+   "datum": "2026-08-26",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784812",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784812",
+   "soudce": "Tomáš Foltas",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784742",
+   "spz": "10 Azs 50/2026-46",
+   "ecli": "ECLI:CZ:NSS:2026:10.Azs.50.2026.46",
+   "druh": "usnesení",
+   "senat": 10,
+   "rejstrik": "Azs",
+   "datum": "2026-08-20",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784742",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784742",
+   "soudce": "Ondřej Mrákota",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784320",
+   "spz": "6 Azs 78/2026-28",
+   "ecli": "ECLI:CZ:NSS:2026:6.Azs.78.2026.28",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Azs",
+   "datum": "2026-07-30",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784320",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784320",
+   "soudce": "Filip Dienstbier",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784297",
+   "spz": "22 As 27/2026-27",
+   "ecli": "ECLI:CZ:NSS:2026:22.As.27.2026.27",
+   "druh": "rozsudek",
+   "senat": 22,
+   "rejstrik": "As",
+   "datum": "2026-08-05",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784297",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784297",
+   "soudce": "Tomáš Foltas",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "stavebni_zp"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784025",
+   "spz": "6 Ads 132/2026-18",
+   "ecli": "ECLI:CZ:NSS:2026:6.Ads.132.2026.18",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Ads",
+   "datum": "2026-07-22",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784025",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784025",
+   "soudce": "Štěpán Výborný",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:783916",
+   "spz": "6 Azs 128/2026-21",
+   "ecli": "ECLI:CZ:NSS:2026:6.Azs.128.2026.21",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Azs",
+   "datum": "2026-07-17",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/783916",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/783916",
+   "soudce": "Veronika Juřičková",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:783759",
+   "spz": "5 Azs 118/2026-17",
+   "ecli": "ECLI:CZ:NSS:2026:5.Azs.118.2026.17",
+   "druh": "usnesení",
+   "senat": 5,
+   "rejstrik": "Azs",
+   "datum": "2026-07-15",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/783759",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/783759",
+   "soudce": "Viktor Kučera",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:783202",
+   "spz": "6 As 56/2026-47",
+   "ecli": "ECLI:CZ:NSS:2026:6.As.56.2026.47",
+   "druh": "rozsudek",
+   "senat": 6,
+   "rejstrik": "As",
+   "datum": "2026-06-25",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/783202",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/783202",
+   "soudce": "Štěpán Výborný",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "verejne_zakazky",
+    "soutez"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:748087",
+   "spz": "Pst 11/2025-21",
+   "ecli": "ECLI:CZ:NSS:2025:Pst.11.2025.21",
+   "druh": "rozsudek",
+   "datum": "2025-12-19",
+   "zverejneno": "2026-09-16",
+   "first_seen": "2026-09-16T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/748087",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/748087",
+   "soudce": "Michaela Bejčková",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785502",
+   "spz": "Na 140/2026-5",
+   "ecli": "ECLI:CZ:NSS:2026:Na.140.2026.5",
+   "druh": "usnesení",
+   "datum": "2026-09-15",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785502",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785502",
+   "soudce": "Tomáš Herc",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785497",
+   "spz": "9 As 110/2026-39",
+   "ecli": "ECLI:CZ:NSS:2026:9.As.110.2026.39",
+   "druh": "usnesení",
+   "senat": 9,
+   "rejstrik": "As",
+   "datum": "2026-09-15",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785497",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785497",
+   "soudce": "Radan Malík",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "stavebni_zp"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785494",
+   "spz": "7 Azs 136/2026-37",
+   "ecli": "ECLI:CZ:NSS:2026:7.Azs.136.2026.37",
+   "druh": "usnesení",
+   "senat": 7,
+   "rejstrik": "Azs",
+   "datum": "2026-09-10",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785494",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785494",
+   "soudce": "David Hipšr",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785416",
+   "spz": "7 As 22/2026-20",
+   "ecli": "ECLI:CZ:NSS:2026:7.As.22.2026.20",
+   "druh": "usnesení",
+   "senat": 7,
+   "rejstrik": "As",
+   "datum": "2026-09-10",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785416",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785416",
+   "soudce": "David Hipšr",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785401",
+   "spz": "4 As 159/2026-26",
+   "ecli": "ECLI:CZ:NSS:2026:4.As.159.2026.26",
+   "druh": "usnesení",
+   "senat": 4,
+   "rejstrik": "As",
+   "datum": "2026-09-10",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785401",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785401",
+   "soudce": "Aleš Roztočil",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "stavebni_zp"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785374",
+   "spz": "22 Azs 157/2026-46",
+   "ecli": "ECLI:CZ:NSS:2026:22.Azs.157.2026.46",
+   "druh": "usnesení",
+   "senat": 22,
+   "rejstrik": "Azs",
+   "datum": "2026-09-10",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785374",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785374",
+   "soudce": "Jitka Zavřelová",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785317",
+   "spz": "10 As 122/2026-38",
+   "ecli": "ECLI:CZ:NSS:2026:10.As.122.2026.38",
+   "druh": "rozsudek",
+   "senat": 10,
+   "rejstrik": "As",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785317",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785317",
+   "soudce": "Vojtěch Šimíček",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785313",
+   "spz": "6 Azs 118/2026-32",
+   "ecli": "ECLI:CZ:NSS:2026:6.Azs.118.2026.32",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Azs",
+   "datum": "2026-09-08",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785313",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785313",
+   "soudce": "Filip Dienstbier",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785312",
+   "spz": "9 Azs 18/2026-43",
+   "ecli": "ECLI:CZ:NSS:2026:9.Azs.18.2026.43",
+   "druh": "usnesení",
+   "senat": 9,
+   "rejstrik": "Azs",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785312",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785312",
+   "soudce": "Tomáš Herc",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785309",
+   "spz": "6 Azs 106/2026-34",
+   "ecli": "ECLI:CZ:NSS:2026:6.Azs.106.2026.34",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Azs",
+   "datum": "2026-09-08",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785309",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785309",
+   "soudce": "Filip Dienstbier",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785298",
+   "spz": "10 As 92/2026-34",
+   "ecli": "ECLI:CZ:NSS:2026:10.As.92.2026.34",
+   "druh": "usnesení",
+   "senat": 10,
+   "rejstrik": "As",
+   "datum": "2026-09-08",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785298",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785298",
+   "soudce": "Ondřej Mrákota",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785297",
+   "spz": "10 Afs 150/2026-18",
+   "ecli": "ECLI:CZ:NSS:2026:10.Afs.150.2026.18",
+   "druh": "usnesení",
+   "senat": 10,
+   "rejstrik": "Afs",
+   "datum": "2026-09-08",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785297",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785297",
+   "soudce": "Michaela Bejčková",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "dane"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785166",
+   "spz": "6 Azs 156/2026-38",
+   "ecli": "ECLI:CZ:NSS:2026:6.Azs.156.2026.38",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Azs",
+   "datum": "2026-09-02",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785166",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785166",
+   "soudce": "Štěpán Výborný",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785140",
+   "spz": "Nao 114/2026-10",
+   "ecli": "ECLI:CZ:NSS:2026:Nao.114.2026.10",
+   "druh": "usnesení",
+   "datum": "2026-09-03",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785140",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785140",
+   "soudce": "Jitka Zavřelová",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785135",
+   "spz": "21 Afs 234/2025-34",
+   "ecli": "ECLI:CZ:NSS:2026:21.Afs.234.2025.34",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "Afs",
+   "datum": "2026-08-27",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785135",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785135",
+   "soudce": "Radovan Havelec",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "dane"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784825",
+   "spz": "2 Ads 249/2025-55",
+   "ecli": "ECLI:CZ:NSS:2026:2.Ads.249.2025.55",
+   "druh": "rozsudek",
+   "senat": 2,
+   "rejstrik": "Ads",
+   "datum": "2026-08-27",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784825",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784825",
+   "soudce": "Eva Šonková",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784810",
+   "spz": "22 Afs 275/2025-57",
+   "ecli": "ECLI:CZ:NSS:2026:22.Afs.275.2025.57",
+   "druh": "rozsudek",
+   "senat": 22,
+   "rejstrik": "Afs",
+   "datum": "2026-08-27",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784810",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784810",
+   "soudce": "Jitka Zavřelová",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "dane"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784794",
+   "spz": "4 As 37/2026-63",
+   "ecli": "ECLI:CZ:NSS:2026:4.As.37.2026.63",
+   "druh": "usnesení",
+   "senat": 4,
+   "rejstrik": "As",
+   "datum": "2026-08-26",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784794",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784794",
+   "soudce": "Jiří Palla",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784776",
+   "spz": "2 As 43/2026-76",
+   "ecli": "ECLI:CZ:NSS:2026:2.As.43.2026.76",
+   "druh": "rozsudek",
+   "senat": 2,
+   "rejstrik": "As",
+   "datum": "2026-08-21",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784776",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784776",
+   "soudce": "Václav Štencel",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784560",
+   "spz": "6 Azs 156/2026-33",
+   "ecli": "ECLI:CZ:NSS:2026:6.Azs.156.2026.33",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Azs",
+   "datum": "2026-08-12",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784560",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784560",
+   "soudce": "Štěpán Výborný",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784160",
+   "spz": "6 As 146/2026-41",
+   "ecli": "ECLI:CZ:NSS:2026:6.As.146.2026.41",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "As",
+   "datum": "2026-07-29",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784160",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784160",
+   "soudce": "Štěpán Výborný",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:780573",
+   "spz": "6 As 5/2026-29",
+   "ecli": "ECLI:CZ:NSS:2026:6.As.5.2026.29",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "As",
+   "datum": "2026-03-18",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/780573",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/780573",
+   "soudce": "Štěpán Výborný",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785463",
+   "spz": "6 As 86/2026-101",
+   "ecli": "ECLI:CZ:NSS:2026:6.As.86.2026.101",
+   "druh": "rozsudek",
+   "senat": 6,
+   "rejstrik": "As",
+   "datum": "2026-09-10",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785463",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785463",
+   "soudce": "Štěpán Výborný",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "stavebni_zp"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785461",
+   "spz": "5 As 75/2025-81",
+   "ecli": "ECLI:CZ:NSS:2026:5.As.75.2025.81",
+   "druh": "rozsudek",
+   "senat": 5,
+   "rejstrik": "As",
+   "datum": "2026-09-11",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785461",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785461",
+   "soudce": "Jakub Camrda",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "stavebni_zp"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785457",
+   "spz": "6 Ads 147/2026-26",
+   "ecli": "ECLI:CZ:NSS:2026:6.Ads.147.2026.26",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Ads",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785457",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785457",
+   "soudce": "Štěpán Výborný",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785373",
+   "spz": "Nao 116/2026-11",
+   "ecli": "ECLI:CZ:NSS:2026:Nao.116.2026.11",
+   "druh": "usnesení",
+   "datum": "2026-09-10",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785373",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785373",
+   "soudce": "Jan Kratochvíl",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785352",
+   "spz": "22 Ads 234/2025-36",
+   "ecli": "ECLI:CZ:NSS:2026:22.Ads.234.2025.36",
+   "druh": "rozsudek",
+   "senat": 22,
+   "rejstrik": "Ads",
+   "datum": "2026-09-10",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785352",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785352",
+   "soudce": "Jitka Zavřelová",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785347",
+   "spz": "10 As 109/2026-50",
+   "ecli": "ECLI:CZ:NSS:2026:10.As.109.2026.50",
+   "druh": "rozsudek",
+   "senat": 10,
+   "rejstrik": "As",
+   "datum": "2026-09-10",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785347",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785347",
+   "soudce": "Ondřej Mrákota",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785323",
+   "spz": "2 As 20/2026-148",
+   "ecli": "ECLI:CZ:NSS:2026:2.As.20.2026.148",
+   "druh": "rozsudek",
+   "senat": 2,
+   "rejstrik": "As",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785323",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785323",
+   "soudce": "Václav Štencel",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "stavebni_zp"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785310",
+   "spz": "6 As 169/2026-24",
+   "ecli": "ECLI:CZ:NSS:2026:6.As.169.2026.24",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "As",
+   "datum": "2026-09-08",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785310",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785310",
+   "soudce": "Filip Dienstbier",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785301",
+   "spz": "1 Afs 70/2026-51",
+   "ecli": "ECLI:CZ:NSS:2026:1.Afs.70.2026.51",
+   "druh": "rozsudek",
+   "senat": 1,
+   "rejstrik": "Afs",
+   "datum": "2026-09-08",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785301",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785301",
+   "soudce": "Ivo Pospíšil",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "dane"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785300",
+   "spz": "Nad 118/2026-25",
+   "ecli": "ECLI:CZ:NSS:2026:Nad.118.2026.25",
+   "druh": "usnesení",
+   "datum": "2026-09-08",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785300",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785300",
+   "soudce": "Sylva Šiškeová",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785299",
+   "spz": "1 Afs 61/2026-50",
+   "ecli": "ECLI:CZ:NSS:2026:1.Afs.61.2026.50",
+   "druh": "rozsudek",
+   "senat": 1,
+   "rejstrik": "Afs",
+   "datum": "2026-09-08",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785299",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785299",
+   "soudce": "Ivo Pospíšil",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "dane"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785249",
+   "spz": "3 Afs 173/2025-53",
+   "ecli": "ECLI:CZ:NSS:2026:3.Afs.173.2025.53",
+   "druh": "usnesení",
+   "senat": 3,
+   "rejstrik": "Afs",
+   "datum": "2026-09-03",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785249",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785249",
+   "soudce": "Jaroslav Vlašín",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "dane"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785248",
+   "spz": "21 As 35/2025-47",
+   "ecli": "ECLI:CZ:NSS:2026:21.As.35.2025.47",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "As",
+   "datum": "2026-09-07",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785248",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785248",
+   "soudce": "Faisal Husseini",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "pracovni"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785235",
+   "spz": "6 As 107/2026-21",
+   "ecli": "ECLI:CZ:NSS:2026:6.As.107.2026.21",
+   "druh": "rozsudek",
+   "senat": 6,
+   "rejstrik": "As",
+   "datum": "2026-09-03",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785235",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785235",
+   "soudce": "Veronika Juřičková",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni",
+    "socialni_cizinci"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785214",
+   "spz": "10 As 116/2026-38",
+   "ecli": "ECLI:CZ:NSS:2026:10.As.116.2026.38",
+   "druh": "rozsudek",
+   "senat": 10,
+   "rejstrik": "As",
+   "datum": "2026-09-03",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785214",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785214",
+   "soudce": "Vojtěch Šimíček",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "stavebni_zp"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785207",
+   "spz": "10 Ads 131/2026-46",
+   "ecli": "ECLI:CZ:NSS:2026:10.Ads.131.2026.46",
+   "druh": "usnesení",
+   "senat": 10,
+   "rejstrik": "Ads",
+   "datum": "2026-09-03",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785207",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785207",
+   "soudce": "Vojtěch Šimíček",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785203",
+   "spz": "10 As 98/2026-76",
+   "ecli": "ECLI:CZ:NSS:2026:10.As.98.2026.76",
+   "druh": "rozsudek",
+   "senat": 10,
+   "rejstrik": "As",
+   "datum": "2026-09-03",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785203",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785203",
+   "soudce": "Vojtěch Šimíček",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "stavebni_zp"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785202",
+   "spz": "6 As 137/2026-33",
+   "ecli": "ECLI:CZ:NSS:2026:6.As.137.2026.33",
+   "druh": "rozsudek",
+   "senat": 6,
+   "rejstrik": "As",
+   "datum": "2026-09-03",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785202",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785202",
+   "soudce": "Veronika Juřičková",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "stavebni_zp"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:785201",
+   "spz": "6 As 96/2026-40",
+   "ecli": "ECLI:CZ:NSS:2026:6.As.96.2026.40",
+   "druh": "rozsudek",
+   "senat": 6,
+   "rejstrik": "As",
+   "datum": "2026-09-03",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785201",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785201",
+   "soudce": "Veronika Juřičková",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784855",
+   "spz": "6 As 84/2026-58",
+   "ecli": "ECLI:CZ:NSS:2026:6.As.84.2026.58",
+   "druh": "rozsudek",
+   "senat": 6,
+   "rejstrik": "As",
+   "datum": "2026-08-28",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784855",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784855",
+   "soudce": "Filip Dienstbier",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784846",
+   "spz": "6 As 103/2026-25",
+   "ecli": "ECLI:CZ:NSS:2026:6.As.103.2026.25",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "As",
+   "datum": "2026-08-27",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784846",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784846",
+   "soudce": "Filip Dienstbier",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784839",
+   "spz": "6 As 171/2026-14",
+   "ecli": "ECLI:CZ:NSS:2026:6.As.171.2026.14",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "As",
+   "datum": "2026-08-27",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784839",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784839",
+   "soudce": "Štěpán Výborný",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784821",
+   "spz": "10 As 84/2026-96",
+   "ecli": "ECLI:CZ:NSS:2026:10.As.84.2026.96",
+   "druh": "rozsudek",
+   "senat": 10,
+   "rejstrik": "As",
+   "datum": "2026-08-26",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784821",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784821",
+   "soudce": "Vojtěch Šimíček",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "stavebni_zp"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784815",
+   "spz": "4 Azs 103/2026-40",
+   "ecli": "ECLI:CZ:NSS:2026:4.Azs.103.2026.40",
+   "druh": "usnesení",
+   "senat": 4,
+   "rejstrik": "Azs",
+   "datum": "2026-08-26",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784815",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784815",
+   "soudce": "Jiří Palla",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784303",
+   "spz": "2 Azs 103/2026-40",
+   "ecli": "ECLI:CZ:NSS:2026:2.Azs.103.2026.40",
+   "druh": "usnesení",
+   "senat": 2,
+   "rejstrik": "Azs",
+   "datum": "2026-08-05",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784303",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784303",
+   "soudce": "Eva Šonková",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784289",
+   "spz": "1 Azs 53/2026-92",
+   "ecli": "ECLI:CZ:NSS:2026:1.Azs.53.2026.92",
+   "druh": "usnesení",
+   "senat": 1,
+   "rejstrik": "Azs",
+   "datum": "2026-08-04",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784289",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784289",
+   "soudce": "Ivo Pospíšil",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:784066",
+   "spz": "4 As 81/2025-34",
+   "ecli": "ECLI:CZ:NSS:2026:4.As.81.2025.34",
+   "druh": "usnesení",
+   "senat": 4,
+   "rejstrik": "As",
+   "datum": "2026-07-22",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784066",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784066",
+   "soudce": "Petra Weissová",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "stavebni_zp"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:782897",
+   "spz": "10 As 98/2026-41",
+   "ecli": "ECLI:CZ:NSS:2026:10.As.98.2026.41",
+   "druh": "usnesení",
+   "senat": 10,
+   "rejstrik": "As",
+   "datum": "2026-06-17",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/782897",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/782897",
+   "soudce": "Vojtěch Šimíček",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "stavebni_zp"
+   ],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:781157",
+   "spz": "2 As 22/2026-97",
+   "ecli": "ECLI:CZ:NSS:2026:2.As.22.2026.97",
+   "druh": "rozsudek",
+   "senat": 2,
+   "rejstrik": "As",
+   "datum": "2026-04-13",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/781157",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/781157",
+   "soudce": "Eva Šonková",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "stavebni_zp"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:747796",
+   "spz": "Pst 12/2025-22",
+   "ecli": "ECLI:CZ:NSS:2025:Pst.12.2025.22",
+   "druh": "rozsudek",
+   "datum": "2025-12-10",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/747796",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/747796",
+   "soudce": "Radan Malík",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "nss:747563",
+   "spz": "6 Ads 237/2024-26",
+   "ecli": "ECLI:CZ:NSS:2025:6.Ads.237.2024.26",
+   "druh": "rozsudek",
+   "senat": 6,
+   "rejstrik": "Ads",
+   "datum": "2025-11-28",
+   "zverejneno": "2026-09-14",
+   "first_seen": "2026-09-14T12:00:00Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/747563",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/747563",
+   "soudce": "Filip Dienstbier",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": false,
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   }
