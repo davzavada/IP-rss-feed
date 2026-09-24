@@ -620,19 +620,18 @@ const colsToday = [
 
 // Zdroje stránky: okna judikatury (data/judikatura/) a časopisy
 // (data/casopisy.json); `filtr` je výběr, co z okna ukázat.
-const PRAZDNY_VYBER = 'Ve vašem výběru za tu dobu nic nepřibylo. <a href="#nastaveni">Upravit výběr</a>';
 const FEEDS = [
   { key: "nsoud",    label: "NS",      json: "data/judikatura/ns.json", cols: colsNsoud,
-    containerId: "feed-nsoud", filtr: vidiNS, prazdno: PRAZDNY_VYBER, stavId: "stav-nsoud" },
+    containerId: "feed-nsoud", filtr: vidiNS, stavId: "stav-nsoud" },
   { key: "nss",      label: "NSS",     json: "data/judikatura/nss.json", cols: colsNss,
-    containerId: "feed-nss", filtr: vidiPodleOblasti("nss"), prazdno: PRAZDNY_VYBER, stavId: "stav-nss" },
+    containerId: "feed-nss", filtr: vidiPodleOblasti("nss"), stavId: "stav-nss" },
   // ÚS: značka a pod ní populární název (nameCell), jinak stejné sloupce jako NS.
   { key: "us",       label: "ÚS",      json: "data/judikatura/us.json", cols: colsNsoud,
-    containerId: "feed-us", filtr: vidiPodleOblasti("us"), prazdno: PRAZDNY_VYBER, stavId: "stav-us" },
+    containerId: "feed-us", filtr: vidiPodleOblasti("us"), stavId: "stav-us" },
   { key: "sdeu",     label: "SDEU",    json: "data/judikatura/sdeu.json", cols: colsSdeu,
-    containerId: "feed-sdeu", filtr: vidiPodleOblasti("sdeu"), prazdno: PRAZDNY_VYBER, stavId: "stav-sdeu" },
+    containerId: "feed-sdeu", filtr: vidiPodleOblasti("sdeu"), stavId: "stav-sdeu" },
   { key: "journals", label: "Časopis", json: "data/casopisy.json", prevod: zCasopisu, cols: colsJournals,
-    containerId: "feed-journals", filtr: vidiCasopis, prazdno: PRAZDNY_VYBER }
+    containerId: "feed-journals", filtr: vidiCasopis }
 ];
 
 // Stránka zdroje v navigaci (časopisy mají stránku #casopisy).
@@ -771,35 +770,117 @@ function vykresliStavShrnuti() {
 function vykresliZdroje() {
   if (!zdrojeVysledky) return;
   vykresliStavShrnuti();
-  const filtrovane = zdrojeVysledky.map((r, idx) => {
+  const vybrane = zdrojeVysledky.map((r, idx) => {
     const f = FEEDS[idx];
     if (r.status !== "fulfilled" || !f.filtr) return r;
     return { status: "fulfilled", value: r.value.filter(f.filtr) };
   });
   FEEDS.forEach((f, idx) => {
-    if (filtrovane[idx].status === "rejected") {
+    if (zdrojeVysledky[idx].status === "rejected") {
       failed(f.containerId);
+      vykresliFiltr(f.key, null, null);
       return;
     }
-    // Druhá stránka je úplný výpis za okno feedu – nové položky z ní
-    // nevynecháváme, na jednu stránku se položky nedostanou dvakrát.
-    const el = document.getElementById(f.containerId);
-    renderTable(filtrovane[idx].value, el, f.cols, f.key, f.prazdno);
-    pripojVychozi(el, f.key);
+    const vse = zdrojeVysledky[idx].value;
+    const vyb = vybrane[idx].value;
+    vykresliFiltr(f.key, vyb.length, vse.length);
+    renderTable(rezim(f.key) === "vse" ? vse : vyb, document.getElementById(f.containerId),
+                f.cols, f.key, prazdnoHtml(f, vse.length));
   });
-  renderToday(filtrovane);
-  pripojVychozi(document.getElementById("feed-today"), "today");
+  const nove = vysledky => vysledky.reduce((n, r) =>
+    n + (r.status === "fulfilled" ? r.value.filter(i => i.nove).length : 0), 0);
+  vykresliFiltr("today", nove(vybrane), nove(zdrojeVysledky));
+  renderToday(rezim("today") === "vse" ? zdrojeVysledky : vybrane);
 }
 
-// Nepřihlášený vidí výchozí výběr – pod tabulkou judikatury mu to řekneme
-// a nabídneme přihlášení. Bez Clerku (výpadek) nic, přihlásit se nejde.
-const KARTY_S_VYBEREM = ["nsoud", "nss", "us", "sdeu", "today"];
+/* ========== Lišta filtru: Můj výběr | Vše ========== */
+// Stránky zdrojů ukazují jen to, co odpovídá výběru (nepřihlášenému
+// výchozímu IP a IT). Lišta pod nadpisem to říká nahlas – kolik z kolika
+// a podle čeho – a jedním klikem přepne na všechno. Přepnutí platí jen
+// v této relaci prohlížeče, uložený výběr nemění.
+const REZIM_KLIC = "owl:rezim";
+const SOUD_ZDROJE = { nsoud: "ns", nss: "nss", us: "us", sdeu: "sdeu" };
+let rezimy = {};
+try {
+  rezimy = JSON.parse(sessionStorage.getItem(REZIM_KLIC) || "{}") || {};
+} catch (e) {
+  rezimy = {};
+}
 
-function pripojVychozi(el, key) {
-  if (!el || clerkStav !== "pripraven" || prihlaseny || KARTY_S_VYBEREM.indexOf(key) < 0) return;
-  el.insertAdjacentHTML("beforeend", '<p class="vychozi-pozn">Ve výchozím nastavení se ukazují jen ' +
-    "rozhodnutí z oblasti IP a IT" + (key === "nsoud" ? " a všechna rozhodnutí senátu 23 Cdo" : "") +
-    '. Chcete-li vlastní výběr, <a href="#nastaveni">přihlaste se</a> a nastavte si ho.</p>');
+function rezim(key) {
+  return rezimy[key] === "vse" ? "vse" : "vyber";
+}
+
+function nastavRezim(key, r) {
+  rezimy[key] = r === "vse" ? "vse" : "vyber";
+  try {
+    sessionStorage.setItem(REZIM_KLIC, JSON.stringify(rezimy));
+  } catch (e) { /* bez úložiště platí přepnutí jen do obnovení stránky */ }
+  vykresliZdroje();
+  const tl = document.querySelector('#filtr-' + key + ' [data-rezim="' + rezimy[key] + '"]');
+  if (tl) tl.focus({ preventScroll: true });
+}
+
+function stejneMnoziny(a, b) {
+  return a.length === b.length && a.every(x => b.indexOf(x) >= 0);
+}
+
+function popisOblasti(oblasti) {
+  if (stejneMnoziny(oblasti, VYCHOZI_OBLASTI)) return "IP a IT";
+  if (oblasti.length === OBLASTI_SEZNAM.length) return "všechny oblasti";
+  return oblasti.length ? tvar(oblasti.length, "oblast", "oblasti", "oblastí") : "";
+}
+
+// Krátký popis, podle čeho se filtruje: „IP a IT, senát 23", „6 oblastí".
+function popisVyberu(key) {
+  const v = vyber || vychoziVyber();
+  if (key === "journals") {
+    const n = CASOPISY.length - v.skryte_casopisy.length;
+    return n + " z " + CASOPISY.length + " časopisů";
+  }
+  const casti = [];
+  const soud = SOUD_ZDROJE[key] || "ns";
+  const obl = popisOblasti(v[soud].oblasti);
+  if (obl) casti.push(obl);
+  if (key === "nsoud" || key === "today") {
+    const sen = souhrnSenatu(v);
+    if (sen !== "žádný") casti.push((v.ns.senaty.length > 1 ? "senáty " : "senát ") + sen);
+  }
+  return casti.join(", ");
+}
+
+function vykresliFiltr(key, nVyb, nVse) {
+  const el = document.getElementById("filtr-" + key);
+  if (!el) return;
+  // Časopisy bez skrytých: výběr nic nefiltruje, lišta by nic neřekla.
+  if (nVyb == null || (key === "journals" && nVyb === nVse)) {
+    el.hidden = true;
+    el.innerHTML = "";
+    return;
+  }
+  const r = rezim(key);
+  const tl = (hodnota, text, n) => '<button type="button" data-rezim="' + hodnota + '" data-zdroj="' + key +
+    '" aria-pressed="' + (r === hodnota) + '">' + text + ' <span class="pocet">' + n + "</span></button>";
+  let odkaz = "";
+  if (clerkStav === "pripraven") {
+    odkaz = prihlaseny ? '<a href="#nastaveni">Upravit</a>'
+      : '<a href="#nastaveni">Přihlaste se a nastavte si vlastní</a>';
+  }
+  const popis = popisVyberu(key);
+  el.innerHTML = '<div class="prepinac" role="group" aria-label="Co ukázat">' +
+    tl("vyber", prihlaseny ? "Můj výběr" : "Výchozí výběr", nVyb) + tl("vse", "Vše", nVse) + "</div>" +
+    (popis ? '<span class="filtr-popis">' + esc(popis) + "</span>" : "") +
+    (odkaz ? '<span class="filtr-odkaz">' + odkaz + "</span>" : "");
+  el.hidden = false;
+}
+
+// Prázdná tabulka řekne proč: za dobu okna nic nepřibylo, nebo přibylo,
+// ale do výběru nic nespadá – a nabídne to ukázat.
+function prazdnoHtml(f, nVse) {
+  const za = f.oknoDni ? "za posledních " + tvar(f.oknoDni, "den", "dny", "dní") : "za tu dobu";
+  if (!nVse) return "Nic nového " + za + ".";
+  return "Do výběru nic nespadá (celkem " + za + ": " + nVse + "). " +
+    '<button type="button" class="odkaz-tl" data-rezim="vse" data-zdroj="' + f.key + '">Zobrazit vše</button>';
 }
 
 /* ========== Dvoutýdenní přehled (digest.json) ========== */
@@ -1858,7 +1939,9 @@ function initNastaveni() {
   const el = document.getElementById("nastaveni-obsah");
   const dialog = document.getElementById("vyber-dialog");
   document.addEventListener("click", e => {
-    if (e.target.closest(".ucet-prihlasit")) prihlasit(false);
+    const rezimTl = e.target.closest("[data-rezim]");
+    if (rezimTl) nastavRezim(rezimTl.dataset.zdroj, rezimTl.dataset.rezim);
+    else if (e.target.closest(".ucet-prihlasit")) prihlasit(false);
     else if (e.target.closest(".ucet-registrace")) prihlasit(true);
     else if (e.target.closest('a[href="#nastaveni"]')) {
       e.preventDefault();
