@@ -21,7 +21,9 @@
     "trestni",
     "ustavni"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "vyhoveno",
+   "vysledek_popis": "vyhověno"
   },
   {
    "id": "us:4-465-26_1",
@@ -42,7 +44,9 @@
     "skoda",
     "civilni_proces"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "vyhoveno",
+   "vysledek_popis": "vyhověno"
   },
   {
    "id": "us:4-2303-26_1",
@@ -62,7 +66,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro nepřípustnost"
   },
   {
    "id": "us:4-1666-26_1",
@@ -82,7 +88,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "vyhoveno",
+   "vysledek_popis": "vyhověno"
   },
   {
    "id": "us:4-1549-26_1",
@@ -102,7 +110,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "vyhoveno",
+   "vysledek_popis": "vyhověno"
   },
   {
    "id": "us:3-767-26_1",
@@ -122,7 +132,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost; odmítnuto pro nepříslušnost"
   },
   {
    "id": "us:2-999-26_2",
@@ -142,7 +154,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "vyhoveno",
+   "vysledek_popis": "vyhověno"
   },
   {
    "id": "us:2-1922-26_1",
@@ -163,7 +177,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "castecne",
+   "vysledek_popis": "vyhověno; odmítnuto pro nepřípustnost; odmítnuto pro neoprávněnost navrhovatele; procesní - náhrada nákladů řízení - § 62"
   },
   {
    "id": "us:2-1140-25_2",
@@ -184,7 +200,9 @@
     "ustavni",
     "zavazky"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "castecne",
+   "vysledek_popis": "vyhověno; zastaveno; odmítnuto - pro 2b; procesní - náhrada nákladů řízení - § 62"
   },
   {
    "id": "us:1-273-26_1",
@@ -204,7 +222,9 @@
     "vecna_prava",
     "zavazky"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
   },
   {
    "id": "us:1-1767-26_1",
@@ -225,7 +245,9 @@
     "ustavni",
     "skoda"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "vyhoveno",
+   "vysledek_popis": "vyhověno"
   },
   {
    "id": "us:4-2233-26_1",
@@ -245,7 +267,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
   },
   {
    "id": "us:4-2208-26_1",
@@ -264,7 +288,9 @@
     "trestni",
     "civilni_proces"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost; odmítnuto pro nepříslušnost"
   },
   {
    "id": "us:4-2191-26_1",
@@ -283,7 +309,9 @@
     "trestni",
     "civilni_proces"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
   },
   {
    "id": "us:4-1961-26_1",
@@ -303,7 +331,9 @@
     "ustavni",
     "civilni_proces"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro nepřípustnost"
   },
   {
    "id": "us:4-1706-26_1",
@@ -321,7 +351,9 @@
    "oblasti": [
     "civilni_proces"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neodstraněné vady"
   },
   {
    "id": "us:3-2334-26_1",
@@ -340,7 +372,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro nepřípustnost"
   },
   {
    "id": "us:3-2221-26_1",
@@ -359,7 +393,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neoprávněnost navrhovatele; odmítnuto pro nepřípustnost"
   },
   {
    "id": "us:3-2164-26_1",
@@ -378,7 +414,9 @@
     "trestni",
     "ustavni"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
   },
   {
    "id": "us:3-2102-26_1",
@@ -398,7 +436,9 @@
     "ustavni",
     "finance"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
   },
   {
    "id": "us:3-2022-26_1",
@@ -417,7 +457,9 @@
     "rodina_dedictvi",
     "civilni_proces"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost; odmítnuto pro nepříslušnost"
   },
   {
    "id": "us:2-3135-25_1",
@@ -437,7 +479,9 @@
     "civilni_proces",
     "skoda"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "vyhoveno",
+   "vysledek_popis": "vyhověno"
   },
   {
    "id": "us:2-2440-26_1",
@@ -456,7 +500,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neodstraněné vady"
   },
   {
    "id": "us:2-1984-26_1",
@@ -476,7 +522,9 @@
     "civilni_proces",
     "trestni"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "castecne",
+   "vysledek_popis": "vyhověno; odmítnuto pro nepřípustnost"
   },
   {
    "id": "us:2-1699-26_1",
@@ -495,7 +543,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neodstraněné vady"
   },
   {
    "id": "us:1-3495-25_1",
@@ -515,7 +565,9 @@
     "zavazky",
     "civilni_proces"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost; odmítnuto pro neoprávněnost navrhovatele; odmítnuto pro nedodržení lhůty"
   },
   {
    "id": "us:1-2259-26_1",
@@ -534,7 +586,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neodstraněné vady"
   },
   {
    "id": "us:1-2240-26_1",
@@ -553,7 +607,9 @@
     "civilni_proces",
     "korporace"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
   },
   {
    "id": "us:1-2145-26_1",
@@ -572,7 +628,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neodstraněné vady"
   },
   {
    "id": "us:1-1824-26_1",
@@ -591,7 +649,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neodstraněné vady"
   },
   {
    "id": "us:1-1726-26_1",
@@ -610,7 +670,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neodstraněné vady"
   },
   {
    "id": "us:1-1717-26_1",
@@ -629,7 +691,9 @@
     "spravni",
     "civilni_proces"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
   },
   {
    "id": "us:1-1674-26_1",
@@ -648,7 +712,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neodstraněné vady"
   },
   {
    "id": "us:1-1228-26_1",
@@ -668,7 +734,9 @@
     "civilni_proces",
     "rodina_dedictvi"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
   },
   {
    "id": "us:4-655-26_1",
@@ -688,7 +756,9 @@
     "zavazky",
     "civilni_proces"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
   },
   {
    "id": "us:4-2365-26_1",
@@ -707,7 +777,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro nepřípustnost"
   },
   {
    "id": "us:4-2350-26_1",
@@ -727,7 +799,9 @@
     "ustavni",
     "rodina_dedictvi"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro nepřípustnost"
   },
   {
    "id": "us:4-2308-26_1",
@@ -746,7 +820,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neodstraněné vady"
   },
   {
    "id": "us:4-2265-26_1",
@@ -766,7 +842,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
   },
   {
    "id": "us:4-2194-26_1",
@@ -824,7 +902,9 @@
     "civilni_proces",
     "skoda"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost; odmítnuto pro nepřípustnost"
   },
   {
    "id": "us:4-2023-26_1",
@@ -843,7 +923,9 @@
     "trestni",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
   },
   {
    "id": "us:4-1947-26_1",
@@ -862,7 +944,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neodstraněné vady"
   },
   {
    "id": "us:4-1837-26_1",
@@ -882,7 +966,9 @@
     "ustavni",
     "civilni_proces"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
   },
   {
    "id": "us:4-1795-26_1",
@@ -901,7 +987,9 @@
     "trestni",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
   },
   {
    "id": "us:4-1738-26_1",
@@ -920,7 +1008,9 @@
     "rodina_dedictvi",
     "civilni_proces"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
   },
   {
    "id": "us:4-1652-26_1",
@@ -939,7 +1029,9 @@
     "trestni",
     "dane"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
   },
   {
    "id": "us:4-1150-26_1",
@@ -959,7 +1051,9 @@
     "vecna_prava",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neoprávněnost navrhovatele"
   },
   {
    "id": "us:4-1068-26_1",
@@ -997,7 +1091,9 @@
    "oblasti": [
     "civilni_proces"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro nepřípustnost"
   },
   {
    "id": "us:3-2441-26_1",
@@ -1016,7 +1112,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neodstraněné vady"
   },
   {
    "id": "us:3-2335-26_1",
@@ -1035,7 +1133,9 @@
     "civilni_proces",
     "trestni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro nepřípustnost"
   },
   {
    "id": "us:3-1736-26_1",
@@ -1055,7 +1155,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neodstraněné vady"
   },
   {
    "id": "us:3-1679-26_2",
@@ -1094,7 +1196,9 @@
     "rodina_dedictvi",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro nepřípustnost"
   },
   {
    "id": "us:3-1223-26_1",
@@ -1113,7 +1217,9 @@
     "dane",
     "civilni_proces"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
   },
   {
    "id": "us:3-1208-26_1",
@@ -1132,7 +1238,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
   },
   {
    "id": "us:3-1091-26_1",
@@ -1151,7 +1259,9 @@
     "insolvence",
     "civilni_proces"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neoprávněnost navrhovatele"
   },
   {
    "id": "us:2-2313-26_1",
@@ -1189,7 +1299,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
   },
   {
    "id": "us:2-1996-26_1",
@@ -1208,7 +1320,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neodstraněné vady"
   },
   {
    "id": "us:1-2540-26_1",
@@ -1227,7 +1341,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neodstraněné vady"
   },
   {
    "id": "us:1-2496-26_1",
@@ -1246,7 +1362,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neodstraněné vady"
   },
   {
    "id": "us:1-2439-26_1",
@@ -1265,7 +1383,9 @@
     "ustavni",
     "civilni_proces"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neodstraněné vady"
   },
   {
    "id": "us:1-2397-26_1",
@@ -1284,7 +1404,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
   },
   {
    "id": "us:1-2396-26_1",
@@ -1303,7 +1425,9 @@
     "ustavni",
     "civilni_proces"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neodstraněné vady"
   },
   {
    "id": "us:1-2309-26_1",
@@ -1322,7 +1446,9 @@
     "ustavni",
     "spravni"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neodstraněné vady"
   },
   {
    "id": "us:1-1941-26_1",
@@ -1339,6 +1465,8 @@
    "shrnuti": "",
    "oblasti": [],
    "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro neodstraněné vady",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -1359,7 +1487,9 @@
     "civilni_proces",
     "vecna_prava"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost; odmítnuto pro nepřípustnost"
   },
   {
    "id": "us:1-1799-26_1",
@@ -1379,7 +1509,9 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost; procesní - odložení vykonatelnosti"
   },
   {
    "id": "us:1-1625-26_1",
@@ -1398,7 +1530,9 @@
     "civilni_proces",
     "skoda"
    ],
-   "procesni": true
+   "procesni": true,
+   "vysledek": "odmitnuto",
+   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost; odmítnuto pro neoprávněnost navrhovatele"
   },
   {
    "id": "us:2-1971-26_3",
@@ -1418,7 +1552,9 @@
     "rodina_dedictvi",
     "civilni_proces"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "vyhoveno",
+   "vysledek_popis": "vyhověno"
   },
   {
    "id": "us:2-1101-26_2",
@@ -1438,7 +1574,9 @@
     "rodina_dedictvi",
     "civilni_proces"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "vyhoveno",
+   "vysledek_popis": "vyhověno"
   },
   {
    "id": "us:1-1029-26_1",
@@ -1458,7 +1596,9 @@
     "rodina_dedictvi",
     "ustavni"
    ],
-   "procesni": false
+   "procesni": false,
+   "vysledek": "zamitnuto",
+   "vysledek_popis": "zamítnuto; odmítnuto pro nepřípustnost; odmítnuto pro nedodržení lhůty"
   }
  ]
 }

@@ -15,7 +15,7 @@ import os
 from datetime import timedelta
 
 import feed_common as fc
-from judikatura import fronta, model
+from judikatura import fronta, model, vysledky
 
 KOREN = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(KOREN, "data", "judikatura")
@@ -64,8 +64,8 @@ def stav_shrnuti(z):
 
 
 def slim(z):
-    """Výřez záznamu pro web: metadata, shrnutí, oblasti, příznak procesní;
-    bez shrnutí navíc `stav_shrnuti` a větu k němu v `poznamka`."""
+    """Výřez záznamu pro web: metadata, shrnutí, oblasti, příznak procesní,
+    výsledek; bez shrnutí navíc `stav_shrnuti` a větu k němu v `poznamka`."""
     out = {k: z.get(k) for k in SLIM_POLE if z.get(k) not in (None, "", [])}
     if not out.get("soudce") and (z.get("meta") or {}).get("soudce"):
         out["soudce"] = z["meta"]["soudce"]
@@ -77,6 +77,12 @@ def slim(z):
     out["oblasti"] = ai.get("oblasti") or z.get("oblasti_meta") or []
     procesni = ai.get("procesni")
     out["procesni"] = bool(z.get("procesni_meta") if procesni is None else procesni)
+    # Výsledek (odmítnuto, zamítnuto…) před shrnutím; úřední znění do bubliny.
+    kod, popis = vysledky.vysledek(z)
+    if kod:
+        out["vysledek"] = kod
+        if popis:
+            out["vysledek_popis"] = popis
     if not out["shrnuti"]:
         out["stav_shrnuti"] = stav_shrnuti(z)
         out["poznamka"] = STAV_SHRNUTI[out["stav_shrnuti"]]

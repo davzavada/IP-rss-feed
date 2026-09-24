@@ -83,11 +83,20 @@ pro AI.
   rozhodnutí projde AI – řídí pořadí ve frontě a výběr na webu – a zůstane,
   když AI žádnou oblast nevrátí. Obecné kodexy (o. s. ř., s. ř. s.,
   občanský zákoník, Listina) v mapě předpisů chybí schválně.
+- **Výsledek rozhodnutí** (`judikatura/vysledky.py`): odmítnuto, zamítnuto,
+  zrušeno a vráceno, zrušeno, změněno, vyhověno, zčásti vyhověno, zastaveno.
+  Na webu stojí tlumeně kapitálkami před shrnutím. NSS a ÚS ho mají
+  v úředním výroku (`meta.vyrok`, jeho znění je v bublině štítku), u NS
+  a SDEU ho AI čte z textu spolu se shrnutím (údaj VÝSLEDEK). Výklad
+  v řízení o předběžné otázce, stanovisko GA, přikázání věci, podjatost
+  a podobné (`jine`) štítek nemají. Rozhodnutí NS a SDEU shrnutá dřív, než
+  AI výsledek určovala, se rozeberou znovu, ale až po všech nových.
 - **Fronta**: AI zpracovává jen rozhodnutí z okna webu, střídavě po soudech.
   Nejdřív to, co spadá do výchozího výběru (senát 23, oblasti IP a IT), pak
-  věcná a nakonec procesní rozhodnutí. Když text zatím není, zkouší se znovu
-  po 1, 2, 4… hodinách, nejvýš šestkrát. Běh má rozpočet (`AI_MAX_POLOZEK`,
-  `AI_MAX_MINUT`) a archiv ukládá po každém rozhodnutí.
+  věcná a nakonec procesní rozhodnutí; opakované rozbory (doplnění
+  výsledku, nová verze promptu) až za nimi. Když text zatím není, zkouší se
+  znovu po 1, 2, 4… hodinách, nejvýš šestkrát. Běh má rozpočet
+  (`AI_MAX_POLOZEK`, `AI_MAX_MINUT`) a archiv ukládá po každém rozhodnutí.
 - **Stav shrnutí**: rozhodnutí bez shrnutí má v okně `stav_shrnuti`
   (`pripravuje` – čeká ve frontě, `ceka_na_text` – soud ještě nezveřejnil
   text, `nepodarilo` – vyčerpané pokusy) a větu k němu v `poznamka`. Karta

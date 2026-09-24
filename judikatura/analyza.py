@@ -1,9 +1,10 @@
-"""AI rozbor rozhodnutí: heslo, shrnutí, oblasti a příznak procesní.
+"""AI rozbor rozhodnutí: heslo, shrnutí, oblasti, příznak procesní a výsledek.
 
 Jedno volání na rozhodnutí, vždy nad celým textem. Modely Gemini dostanou
-JSON schéma (oblasti jako výčet povolených id), Gemma stejné pokyny
-a odpovídá značkami HESLO / SHRNUTÍ / OBLASTI / PROCESNÍ. Parser zvládne
-obojí; oblasti mimo seznam zahodí.
+JSON schéma (oblasti a výsledek jako výčet povolených hodnot), Gemma stejné
+pokyny a odpovídá značkami HESLO / SHRNUTÍ / OBLASTI / PROCESNÍ / VÝSLEDEK.
+Parser zvládne obojí; oblasti mimo seznam zahodí, výsledek převede na kód
+(judikatura/vysledky.py).
 """
 
 import base64
@@ -11,6 +12,7 @@ import json
 import re
 
 import feed_common as fc
+from judikatura import vysledky
 from judikatura.model import NAZVY_SOUDU
 
 # Zvýšit, když se změní prompt tak, že stará shrnutí už neodpovídají –
@@ -23,7 +25,7 @@ SYSTEM = (
     "stanovisko generálního advokáta nebo žádost o rozhodnutí o předběžné "
     "otázce) i s úředními údaji. Odpovídej česky, i když je text v jiném "
     "jazyce. Nic si nevymýšlej, drž se textu.\n\n"
-    "Vrať čtyři údaje:\n"
+    "Vrať pět údajů:\n"
     "HESLO – výstižné právní téma o 1–3 slovech (např. Smluvní pokuta, "
     "Ochranná známka, Přípustnost dovolání).\n"
     "SHRNUTÍ – nejvýše tři věty podle pokynu u rozhodnutí. Právnické osoby "
@@ -35,10 +37,18 @@ SYSTEM = (
     "PROCESNÍ – ano jen tehdy, když rozhodnutí nemá věcný právní závěr "
     "(odmítnutí pro vady, opožděnost nebo nepřípustnost bez věcného "
     "posouzení, zastavení řízení, přikázání věci, příslušnost, podjatost, "
-    "poplatky, ustanovení zástupce); jinak ne.\n\n"
-    "Když dotaz chce JSON, použij pole heslo, shrnuti, oblasti a procesni. "
-    "Jinak odpověz přesně takto, bez dalšího textu:\n"
-    "HESLO: …\nSHRNUTÍ: …\nOBLASTI: id, id\nPROCESNÍ: ano/ne\n\n"
+    "poplatky, ustanovení zástupce); jinak ne.\n"
+    "VÝSLEDEK – jak soud o podání rozhodl, jedním z kódů: odmitnuto, "
+    "zamitnuto, zruseno_vraceno (zrušil a vrátil k dalšímu řízení, u trestních "
+    "věcí i přikázal věc znovu projednat), zruseno (zrušil bez vrácení – třeba "
+    "i rozhodnutí správního orgánu, nebo napadený akt), zmeneno (sám rozhodl "
+    "jinak), vyhoveno, castecne (zčásti vyhověl, zčásti ne), zastaveno, jine "
+    "(výklad v řízení o předběžné otázce, stanovisko GA, žádost o předběžnou "
+    "otázku, přikázání věci, příslušnost, podjatost, odklad a jiná rozhodnutí "
+    "bez výsledku ve věci).\n\n"
+    "Když dotaz chce JSON, použij pole heslo, shrnuti, oblasti, procesni "
+    "a vysledek. Jinak odpověz přesně takto, bez dalšího textu:\n"
+    "HESLO: …\nSHRNUTÍ: …\nOBLASTI: id, id\nPROCESNÍ: ano/ne\nVÝSLEDEK: kód\n\n"
     "Seznam oblastí (id – název: co sem patří):\n{oblasti}"
 )
 
@@ -75,9 +85,10 @@ def schema(tax):
             "shrnuti": {"type": "STRING"},
             "oblasti": {"type": "ARRAY", "items": {"type": "STRING", "enum": tax.ids}},
             "procesni": {"type": "BOOLEAN"},
+            "vysledek": {"type": "STRING", "enum": list(vysledky.KODY)},
         },
-        "required": ["heslo", "shrnuti", "oblasti", "procesni"],
-        "propertyOrdering": ["heslo", "shrnuti", "oblasti", "procesni"],
+        "required": ["heslo", "shrnuti", "oblasti", "procesni", "vysledek"],
+        "propertyOrdering": ["heslo", "shrnuti", "oblasti", "procesni", "vysledek"],
     }
 
 
@@ -137,24 +148,27 @@ def _cist(s):
 
 
 def parse(raw, tax):
-    """Odpověď modelu -> {heslo, shrnuti, oblasti, procesni}; None, když se
-    nedá použít (chybí shrnutí nebo je podezřele krátké)."""
+    """Odpověď modelu -> {heslo, shrnuti, oblasti, procesni, vysledek}; None,
+    když se nedá použít (chybí shrnutí nebo je podezřele krátké). Výsledek je
+    kód z vysledky.KODY, nebo None, když ho model neuvedl."""
     raw = re.sub(r"\*\*|__", "", raw or "")
     data = _json_z(raw)
     if data is not None:
         heslo, shrnuti = data.get("heslo"), data.get("shrnuti") or data.get("shrnutí")
         oblasti, procesni = data.get("oblasti"), data.get("procesni", data.get("procesní"))
+        vysledek = data.get("vysledek", data.get("výsledek"))
         if isinstance(oblasti, str):
             oblasti = re.split(r"[,;\n]+", oblasti)
     else:
         def cast(znacka, dalsi):
             m = re.search(rf"{znacka}\s*:\s*(.*?)\s*(?=(?:{dalsi})\s*:|$)", raw, re.I | re.S)
             return m.group(1) if m else ""
-        vse = r"HESLO|SHRNUT[IÍ]|OBLASTI|PROCESN[IÍ]"
+        vse = r"HESLO|SHRNUT[IÍ]|OBLASTI|PROCESN[IÍ]|V[YÝ]SLEDEK"
         heslo = cast("HESLO", vse)
         shrnuti = cast(r"SHRNUT[IÍ]", vse)
         oblasti = re.split(r"[,;\n]+", cast("OBLASTI", vse))
         procesni = cast(r"PROCESN[IÍ]", vse)
+        vysledek = cast(r"V[YÝ]SLEDEK", vse)
     shrnuti = fc.bez_pravni_formy(_cist(shrnuti))
     if len(shrnuti) < MIN_SHRNUTI:
         return None
@@ -163,6 +177,7 @@ def parse(raw, tax):
         "shrnuti": shrnuti,
         "oblasti": tax.normalizuj([_cist(o) for o in oblasti or [] if _cist(o)]),
         "procesni": _ano(procesni),
+        "vysledek": vysledky.normalizuj(_cist(vysledek)),
     }
 
 

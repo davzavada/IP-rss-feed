@@ -16,7 +16,7 @@ import os
 import re
 import sys
 
-from judikatura import model
+from judikatura import model, vysledky
 from judikatura.sklad import DATA_DIR, WEB_DIR
 from judikatura.taxonomie import Taxonomie
 
@@ -118,6 +118,8 @@ def _okno(web, soud, zaznamy, tax, chyby, varovani):
         nezname = [o for o in p["oblasti"] if o not in tax.ids]
         if nezname:
             varovani.append(f"{soud}.json: {id_} má neznámé oblasti {nezname}")
+        if "vysledek" in p and (p["vysledek"] not in vysledky.KODY or p["vysledek"] == "jine"):
+            chyby.append(f"{soud}.json: {id_} má neznámý výsledek {p['vysledek']!r}")
 
 
 def zkontroluj(soudy=model.SOUDY, data_dir=DATA_DIR, web_dir=WEB_DIR, tax=None):
