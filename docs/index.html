@@ -42,6 +42,14 @@
   <symbol id="icon-court" viewBox="0 0 24 24">
     <path d="M3 21h18M5 21v-9M10 21v-9M14 21v-9M19 21v-9M2.5 10 12 4l9.5 6"></path>
   </symbol>
+  <symbol id="icon-scale" viewBox="0 0 24 24">
+    <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
+    <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
+    <path d="M7 21h10M12 3v18M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path>
+  </symbol>
+  <symbol id="icon-shield" viewBox="0 0 24 24">
+    <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+  </symbol>
   <symbol id="icon-eu" viewBox="0 0 24 24">
     <circle cx="12" cy="12" r="9"></circle>
     <path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18M3.5 9h17M3.5 15h17"></path>
@@ -84,6 +92,8 @@
   <div class="nav-group">
     <a href="#recentni"><svg class="nav-ico" aria-hidden="true"><use href="#icon-list"></use></svg><span>Všechno nové</span></a>
     <a href="#nsoud" class="sub"><svg class="nav-ico" aria-hidden="true"><use href="#icon-court"></use></svg><span>Nejvyšší soud</span></a>
+    <a href="#nss" class="sub"><svg class="nav-ico" aria-hidden="true"><use href="#icon-scale"></use></svg><span>Nejvyšší správní soud</span></a>
+    <a href="#us" class="sub"><svg class="nav-ico" aria-hidden="true"><use href="#icon-shield"></use></svg><span>Ústavní soud</span></a>
     <a href="#cjeu" class="sub"><svg class="nav-ico" aria-hidden="true"><use href="#icon-eu"></use></svg><span>Soudní dvůr EU – IP a IT</span></a>
     <a href="#casopisy" class="sub"><svg class="nav-ico" aria-hidden="true"><use href="#icon-book"></use></svg><span>Právní časopisy</span></a>
   </div>
@@ -112,7 +122,7 @@
     <div class="card-header">
       <h2 class="card-title">Nové za posledních 24 hodin</h2>
       <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
-      <div class="card-desc" hidden>Co ve všech třech feedech přibylo za posledních 24 hodin. Feedy se obnovují ráno v 7:00 a odpoledne ve 14:00.</div>
+      <div class="card-desc" hidden>Co za posledních 24 hodin přibylo u soudů a v časopisech – z judikatury jen to, co odpovídá výběru. Sběr běží v noci a dopoledne, ráno v 7:00 a odpoledne ve 14:00 je hotovo.</div>
       </span>
     </div>
     <div class="card-content" id="feed-today"><p class="loading">Načítám...</p></div>
@@ -143,6 +153,28 @@
     </div>
     <p class="card-stav" id="stav-nsoud" role="status" hidden></p>
     <div class="card-content" id="feed-nsoud"><p class="loading">Načítám...</p></div>
+  </div>
+
+  <div class="card" id="nss">
+    <div class="card-header">
+      <h2 class="card-title">Nejvyšší správní soud</h2>
+      <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
+      <div class="card-desc" hidden>Rozhodnutí Nejvyššího správního soudu zpřístupněná ve vyhledávači NSS za poslední dva týdny (rozhodnutí krajských soudů, která tam také jsou, se neukazují). Ve výchozím výběru ta, která spadají do oblastí duševního vlastnictví a IT – u NSS hlavně spory s Úřadem průmyslového vlastnictví o ochranné známky a patenty, osobní údaje a elektronické komunikace. Než rozhodnutí zařadí AI, řadí se podle oblasti úpravy a předpisů, které uvádí soud. Po přihlášení si oblasti vyberete v části Můj výběr.</div>
+      </span>
+    </div>
+    <p class="card-stav" id="stav-nss" role="status" hidden></p>
+    <div class="card-content" id="feed-nss"><p class="loading">Načítám...</p></div>
+  </div>
+
+  <div class="card" id="us">
+    <div class="card-header">
+      <h2 class="card-title">Ústavní soud</h2>
+      <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
+      <div class="card-desc" hidden>Nálezy, usnesení a stanoviska pléna zpřístupněná v databázi NALUS za poslední dva týdny, pod značkou populární název, pokud ho soud dal. Ve výchozím výběru ta, která spadají do oblastí duševního vlastnictví a IT. Než rozhodnutí zařadí AI, řadí se podle dotčených předpisů a věcného rejstříku. Po přihlášení si oblasti vyberete v části Můj výběr.</div>
+      </span>
+    </div>
+    <p class="card-stav" id="stav-us" role="status" hidden></p>
+    <div class="card-content" id="feed-us"><p class="loading">Načítám...</p></div>
   </div>
 
   <div class="card" id="cjeu">

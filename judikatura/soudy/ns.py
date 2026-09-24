@@ -26,6 +26,7 @@ from bs4 import BeautifulSoup
 
 from feed_common import USER_AGENT
 from judikatura import model
+from judikatura.soudy.web import cz_datum  # noqa: F401 (i pro migraci)
 
 HOST = "https://rozhodnuti.nsoud.cz"
 HLEDANI = HOST + "/Judikatura/judikatura_ns.nsf/$$WebSearch1"
@@ -63,15 +64,6 @@ CITACE_RE = re.compile(r"^Citace rozhodnutí Nejvyššího soudu by měla.*?www\
 
 def domino_datum(d):
     return d.strftime("%d.%m.%Y")
-
-
-def cz_datum(text):
-    """„20. 5. 2026" -> „2026-05-20"; '' když to nejde."""
-    m = re.search(r"(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})", text or "")
-    if not m:
-        return ""
-    den, mes, rok = (int(x) for x in m.groups())
-    return f"{rok:04d}-{mes:02d}-{den:02d}"
 
 
 def abs_url(href, host=HOST):

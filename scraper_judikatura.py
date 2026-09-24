@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Sběr judikatury: objeví nová rozhodnutí, AI je shrne a zařadí do oblastí.
 
-Soudy se přidávají postupně (zatím Nejvyšší soud – všechny senáty). Archiv
-je v data/judikatura/, okna pro web v docs/data/judikatura/ – viz balíček
-judikatura/ a README.
+Soudy: Nejvyšší soud (všechny senáty), Nejvyšší správní soud a Ústavní
+soud; Soudní dvůr EU přibude. Archiv je v data/judikatura/, okna pro web
+v docs/data/judikatura/ – viz balíček judikatura/ a README.
 
 Použití:
     python scraper_judikatura.py                  # všechny soudy s adaptérem
-    python scraper_judikatura.py --soudy ns
+    python scraper_judikatura.py --soudy nss,us
     SKIP_GEMINI=1 python scraper_judikatura.py    # jen objevování, bez AI
 
 Rozpočet AI na běh: --max-polozek / --max-minut, nebo proměnné
@@ -20,8 +20,10 @@ import sys
 
 from judikatura import orchestr
 from judikatura.soudy.ns import NS
+from judikatura.soudy.nss import NSS
+from judikatura.soudy.us import US
 
-ADAPTERY = {"ns": NS}
+ADAPTERY = {"ns": NS, "nss": NSS, "us": US}
 
 
 def main():

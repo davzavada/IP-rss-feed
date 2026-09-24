@@ -56,6 +56,8 @@ function zJson(r) {
   const prvni = Date.parse(r.first_seen || "");
   return {
     title: r.spz || r.nazev || "",
+    // Populární název (u ÚS) jde pod značku; bez značky je sám titulkem.
+    vec: r.spz && r.nazev ? r.nazev : "",
     link: r.url || "",
     doc: r.pdf && r.pdf !== r.url ? r.pdf : "",
     heslo: r.heslo || "",
@@ -311,6 +313,7 @@ function nameCell(item) {
   // – shrnutí je jen shrnutí.
   const doc = safeHref(item.doc);
   if (doc) html += ' <a class="doc-link" href="' + doc + '">PDF</a>';
+  if (item.vec) html += '<span class="vec">' + esc(item.vec) + "</span>";
   return html;
 }
 
@@ -358,12 +361,12 @@ let SENATY_NS = [];               // [{senat, kolegium, popis}]
 
 // Soudy, u kterých se vybírají oblasti – sloupce matice v nastavení.
 // U soudů se „brzy" se výběr uloží hned, ale uplatní se, až se jejich
-// rozhodnutí začnou sbírat.
+// rozhodnutí začnou sbírat. `nazev2` je 2. pád do vět.
 const SOUDY_VYBERU = [
-  { soud: "ns", zkratka: "NS", nazev: "Nejvyšší soud" },
-  { soud: "nss", zkratka: "NSS", nazev: "Nejvyšší správní soud", brzy: true },
-  { soud: "us", zkratka: "ÚS", nazev: "Ústavní soud", brzy: true },
-  { soud: "sdeu", zkratka: "SDEU", nazev: "Soudní dvůr EU", brzy: true }
+  { soud: "ns", zkratka: "NS", nazev: "Nejvyšší soud", nazev2: "Nejvyššího soudu" },
+  { soud: "nss", zkratka: "NSS", nazev: "Nejvyšší správní soud", nazev2: "Nejvyššího správního soudu" },
+  { soud: "us", zkratka: "ÚS", nazev: "Ústavní soud", nazev2: "Ústavního soudu" },
+  { soud: "sdeu", zkratka: "SDEU", nazev: "Soudní dvůr EU", nazev2: "Soudního dvora EU", brzy: true }
 ];
 
 let vyber = null;                 // platný výběr (výchozí nebo z účtu)
@@ -428,6 +431,16 @@ function vidiNS(item) {
   return (item.oblasti || []).some(o => v.ns.oblasti.indexOf(o) >= 0);
 }
 
+// NSS a ÚS: rozhodnutí je vidět, když spadá do některé z oblastí vybraných
+// u jeho soudu (dokud ho AI nezařadí, platí oblasti podle úředních údajů).
+function vidiPodleOblasti(soud) {
+  return item => {
+    const v = vyber || vychoziVyber();
+    if (v.skryt_procesni && item.procesni) return false;
+    return (item.oblasti || []).some(o => v[soud].oblasti.indexOf(o) >= 0);
+  };
+}
+
 function vidiCasopis(item) {
   const v = vyber || vychoziVyber();
   return v.skryte_casopisy.indexOf(tagOf(item.title)) < 0;
@@ -436,6 +449,13 @@ function vidiCasopis(item) {
 // Definice sloupců sdílíme mezi živým feedem a novými položkami.
 const colsNsoud = [
   { label: "Spisová značka", cls: "col-name", render: nameCell },
+  { label: "Heslo", cls: "col-heslo", render: hesloCell },
+  { label: "Shrnutí", cls: "col-summary", render: summaryCell },
+  { label: "Datum", cls: "col-date", render: dateCell }
+];
+
+const colsNss = [
+  { label: "Číslo jednací", cls: "col-name", render: nameCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
   { label: "Shrnutí", cls: "col-summary", render: summaryCell },
   { label: "Datum", cls: "col-date", render: dateCell }
@@ -476,6 +496,11 @@ const PRAZDNY_VYBER = 'Ve vašem výběru za tu dobu nic nepřibylo. <a href="#n
 const FEEDS = [
   { key: "nsoud",    label: "NS",      json: "data/judikatura/ns.json", cols: colsNsoud,
     containerId: "feed-nsoud", filtr: vidiNS, prazdno: PRAZDNY_VYBER, stavId: "stav-nsoud" },
+  { key: "nss",      label: "NSS",     json: "data/judikatura/nss.json", cols: colsNss,
+    containerId: "feed-nss", filtr: vidiPodleOblasti("nss"), prazdno: PRAZDNY_VYBER, stavId: "stav-nss" },
+  // ÚS: značka a pod ní populární název (nameCell), jinak stejné sloupce jako NS.
+  { key: "us",       label: "ÚS",      json: "data/judikatura/us.json", cols: colsNsoud,
+    containerId: "feed-us", filtr: vidiPodleOblasti("us"), prazdno: PRAZDNY_VYBER, stavId: "stav-us" },
   { key: "cjeu",     label: "CJEU",    url: "ipcuria_feed.xml",  cols: colsCjeu,     containerId: "feed-cjeu" },
   { key: "journals", label: "Časopis", url: "journals_feed.xml", cols: colsJournals, containerId: "feed-journals",
     filtr: vidiCasopis, prazdno: PRAZDNY_VYBER }
@@ -562,17 +587,23 @@ function renderToday(results) {
 let zdrojeVysledky = null;
 
 // Nad kartou judikatury: kolik rozhodnutí z celého okna (ne jen z výběru)
-// ještě nemá shrnutí. Bez AI zařazení se mimo vybrané senáty do výběru
-// podle oblastí nedostanou, tak ať je jasné, že ještě přibudou.
+// ještě nemá shrnutí. Rozhodnutí bez oblasti se do výběru podle oblastí
+// dostanou až po AI, tak ať je jasné, že ještě přibudou. (U NSS a ÚS má
+// většina oblast už podle údajů soudu.)
 function stavShrnutiText(polozky, oknoDni) {
-  const pripravuje = polozky.filter(i => i.stav === "pripravuje").length;
+  const cekajici = polozky.filter(i => i.stav === "pripravuje");
+  const bezOblasti = cekajici.filter(i => !(i.oblasti || []).length).length;
   const bezTextu = polozky.filter(i => i.stav === "ceka_na_text").length;
   const casti = [];
-  if (pripravuje) {
-    casti.push("AI ještě zpracovává " + pripravuje + " z " + polozky.length + " rozhodnutí" +
+  if (cekajici.length) {
+    casti.push("AI ještě zpracovává " + cekajici.length + " z " + polozky.length + " rozhodnutí" +
       (oknoDni ? " za posledních " + oknoDni + " dní" : "") + ". Shrnutí a oblasti doplní " +
-      "v nočním (23–7 h) nebo dopoledním (9–14 h) běhu, do výběru podle oblastí se tato " +
-      "rozhodnutí dostanou až potom.");
+      "v nočním (23–7 h) nebo dopoledním (9–14 h) běhu" +
+      (bezOblasti === cekajici.length
+        ? ", do výběru podle oblastí se tato rozhodnutí dostanou až potom."
+        : bezOblasti
+          ? "; " + bezOblasti + " z nich zatím nemá oblast a do výběru podle oblastí se dostane až potom."
+          : ", do té doby jsou zařazená podle údajů soudu."));
   }
   if (bezTextu) casti.push("U " + bezTextu + " rozhodnutí soud ještě nezveřejnil text.");
   return casti.join(" ");
@@ -1701,7 +1732,7 @@ function vykresliNastaveni() {
     return;
   }
   const casopisy = casopisyKVyberu();
-  const brzy = SOUDY_VYBERU.filter(s => s.brzy).map(s => s.nazev);
+  const brzy = SOUDY_VYBERU.filter(s => s.brzy).map(s => s.nazev2);
   el.innerHTML = '<div class="nastaveni">' +
     '<p class="nastaveni-uvod">Vyberte, co chcete sledovat. Změny se ukládají hned a platí na ' +
     "všech zařízeních. Dvoutýdenní přehled zatím vychází z výchozího výběru.</p>" +
@@ -1709,8 +1740,9 @@ function vykresliNastaveni() {
       "Rozhodnutí uvidíte, když ho AI zařadí do některé z oblastí zaškrtnutých u jeho soudu. " +
       "Sloupec zaškrtnete celý v hlavičce, skupinu v jejím řádku.",
       oblastiHtml() +
-      (brzy.length ? '<p class="vyber-pozn">' + esc(brzy.join(", ").replace(/, ([^,]*)$/, " a $1")) +
-        " zatím nesbíráme – výběr se u nich uplatní, jakmile jejich rozhodnutí začneme sbírat.</p>" : "")) +
+      (brzy.length ? '<p class="vyber-pozn">Rozhodnutí ' +
+        esc(brzy.join(", ").replace(/, ([^,]*)$/, " a $1")) +
+        " zatím nesbíráme – výběr se uplatní, jakmile je začneme sbírat.</p>" : "")) +
     sekceHtml("Senáty Nejvyššího soudu",
       "Z vybraných senátů uvidíte všechna rozhodnutí, ať spadají do kterékoli oblasti.",
       senatyHtml()) +
@@ -1811,7 +1843,7 @@ function initNastaveni() {
 // Kotvy sekcí zůstávají platné – odkaz na #nsoud otevře druhou stránku.
 const PAGES = [
   { id: "prehled",  sections: ["dnesni", "dvatydny"] },
-  { id: "recentni", sections: ["nsoud", "cjeu", "casopisy"] },
+  { id: "recentni", sections: ["nsoud", "nss", "us", "cjeu", "casopisy"] },
   { id: "kalendar", sections: ["jednani"] },
   { id: "nastaveni", sections: ["vyber"] }
 ];

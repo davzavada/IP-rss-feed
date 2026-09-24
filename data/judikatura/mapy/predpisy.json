@@ -1,0 +1,737 @@
+{
+ "poznamka": "Číslo předpisu -> oblasti (docs/data/oblasti.json). Jen předpisy, které o věci něco řeknou; obecné kodexy (o. s. ř., s. ř. s., správní řád, občanský zákoník, Ústava, Listina, Úmluva) tu chybí schválně. Používají adaptéry NSS a ÚS (judikatura/mapy.py).",
+ "predpisy": {
+  "121/2000": {
+   "nazev": "autorský zákon",
+   "oblasti": [
+    "autorske"
+   ]
+  },
+  "441/2003": {
+   "nazev": "zákon o ochranných známkách",
+   "oblasti": [
+    "prumyslova_prava"
+   ]
+  },
+  "527/1990": {
+   "nazev": "zákon o vynálezech a zlepšovacích návrzích",
+   "oblasti": [
+    "prumyslova_prava"
+   ]
+  },
+  "478/1992": {
+   "nazev": "zákon o užitných vzorech",
+   "oblasti": [
+    "prumyslova_prava"
+   ]
+  },
+  "207/2000": {
+   "nazev": "zákon o ochraně průmyslových vzorů",
+   "oblasti": [
+    "prumyslova_prava"
+   ]
+  },
+  "452/2001": {
+   "nazev": "zákon o ochraně označení původu a zeměpisných označení",
+   "oblasti": [
+    "prumyslova_prava"
+   ]
+  },
+  "221/2006": {
+   "nazev": "zákon o vymáhání práv z průmyslového vlastnictví",
+   "oblasti": [
+    "prumyslova_prava"
+   ]
+  },
+  "206/2000": {
+   "nazev": "zákon o ochraně biotechnologických vynálezů",
+   "oblasti": [
+    "prumyslova_prava"
+   ]
+  },
+  "408/2000": {
+   "nazev": "zákon o ochraně práv k odrůdám",
+   "oblasti": [
+    "prumyslova_prava"
+   ]
+  },
+  "529/1991": {
+   "nazev": "zákon o ochraně topografií polovodičových výrobků",
+   "oblasti": [
+    "prumyslova_prava"
+   ]
+  },
+  "14/1993": {
+   "nazev": "zákon o opatřeních k ochraně průmyslového vlastnictví",
+   "oblasti": [
+    "prumyslova_prava"
+   ]
+  },
+  "110/2019": {
+   "nazev": "zákon o zpracování osobních údajů",
+   "oblasti": [
+    "gdpr"
+   ]
+  },
+  "101/2000": {
+   "nazev": "zákon o ochraně osobních údajů",
+   "oblasti": [
+    "gdpr"
+   ]
+  },
+  "480/2004": {
+   "nazev": "zákon o některých službách informační společnosti",
+   "oblasti": [
+    "it"
+   ]
+  },
+  "127/2005": {
+   "nazev": "zákon o elektronických komunikacích",
+   "oblasti": [
+    "it"
+   ]
+  },
+  "181/2014": {
+   "nazev": "zákon o kybernetické bezpečnosti",
+   "oblasti": [
+    "it"
+   ]
+  },
+  "264/2025": {
+   "nazev": "zákon o kybernetické bezpečnosti",
+   "oblasti": [
+    "it"
+   ]
+  },
+  "297/2016": {
+   "nazev": "zákon o službách vytvářejících důvěru pro elektronické transakce",
+   "oblasti": [
+    "it"
+   ]
+  },
+  "365/2000": {
+   "nazev": "zákon o informačních systémech veřejné správy",
+   "oblasti": [
+    "it"
+   ]
+  },
+  "12/2020": {
+   "nazev": "zákon o právu na digitální služby",
+   "oblasti": [
+    "it"
+   ]
+  },
+  "40/1995": {
+   "nazev": "zákon o regulaci reklamy",
+   "oblasti": [
+    "nekala_soutez"
+   ]
+  },
+  "231/2001": {
+   "nazev": "zákon o provozování rozhlasového a televizního vysílání",
+   "oblasti": [
+    "osobnost_media"
+   ]
+  },
+  "132/2010": {
+   "nazev": "zákon o audiovizuálních mediálních službách na vyžádání",
+   "oblasti": [
+    "osobnost_media"
+   ]
+  },
+  "46/2000": {
+   "nazev": "tiskový zákon",
+   "oblasti": [
+    "osobnost_media"
+   ]
+  },
+  "634/1992": {
+   "nazev": "zákon o ochraně spotřebitele",
+   "oblasti": [
+    "spotrebitel"
+   ]
+  },
+  "257/2016": {
+   "nazev": "zákon o spotřebitelském úvěru",
+   "oblasti": [
+    "spotrebitel"
+   ]
+  },
+  "145/2010": {
+   "nazev": "zákon o spotřebitelském úvěru (starý)",
+   "oblasti": [
+    "spotrebitel"
+   ]
+  },
+  "90/2012": {
+   "nazev": "zákon o obchodních korporacích",
+   "oblasti": [
+    "korporace"
+   ]
+  },
+  "182/2006": {
+   "nazev": "insolvenční zákon",
+   "oblasti": [
+    "insolvence"
+   ]
+  },
+  "328/1991": {
+   "nazev": "zákon o konkursu a vyrovnání",
+   "oblasti": [
+    "insolvence"
+   ]
+  },
+  "262/2006": {
+   "nazev": "zákoník práce",
+   "oblasti": [
+    "pracovni"
+   ]
+  },
+  "65/1965": {
+   "nazev": "zákoník práce (starý)",
+   "oblasti": [
+    "pracovni"
+   ]
+  },
+  "234/2014": {
+   "nazev": "zákon o státní službě",
+   "oblasti": [
+    "pracovni"
+   ]
+  },
+  "361/2003": {
+   "nazev": "zákon o služebním poměru příslušníků bezpečnostních sborů",
+   "oblasti": [
+    "pracovni"
+   ]
+  },
+  "221/1999": {
+   "nazev": "zákon o vojácích z povolání",
+   "oblasti": [
+    "pracovni"
+   ]
+  },
+  "256/2004": {
+   "nazev": "zákon o podnikání na kapitálovém trhu",
+   "oblasti": [
+    "finance"
+   ]
+  },
+  "240/2013": {
+   "nazev": "zákon o investičních společnostech a investičních fondech",
+   "oblasti": [
+    "finance"
+   ]
+  },
+  "21/1992": {
+   "nazev": "zákon o bankách",
+   "oblasti": [
+    "finance"
+   ]
+  },
+  "277/2009": {
+   "nazev": "zákon o pojišťovnictví",
+   "oblasti": [
+    "finance"
+   ]
+  },
+  "170/2018": {
+   "nazev": "zákon o distribuci pojištění a zajištění",
+   "oblasti": [
+    "finance"
+   ]
+  },
+  "253/2008": {
+   "nazev": "zákon o některých opatřeních proti legalizaci výnosů z trestné činnosti",
+   "oblasti": [
+    "finance"
+   ]
+  },
+  "370/2017": {
+   "nazev": "zákon o platebním styku",
+   "oblasti": [
+    "finance"
+   ]
+  },
+  "91/2012": {
+   "nazev": "zákon o mezinárodním právu soukromém",
+   "oblasti": [
+    "mps"
+   ]
+  },
+  "97/1963": {
+   "nazev": "zákon o mezinárodním právu soukromém a procesním (starý)",
+   "oblasti": [
+    "mps"
+   ]
+  },
+  "120/2001": {
+   "nazev": "exekuční řád",
+   "oblasti": [
+    "civilni_proces"
+   ]
+  },
+  "216/1994": {
+   "nazev": "zákon o rozhodčím řízení",
+   "oblasti": [
+    "civilni_proces"
+   ]
+  },
+  "82/1998": {
+   "nazev": "zákon o odpovědnosti za škodu způsobenou při výkonu veřejné moci",
+   "oblasti": [
+    "skoda"
+   ]
+  },
+  "94/1963": {
+   "nazev": "zákon o rodině",
+   "oblasti": [
+    "rodina_dedictvi"
+   ]
+  },
+  "359/1999": {
+   "nazev": "zákon o sociálně-právní ochraně dětí",
+   "oblasti": [
+    "rodina_dedictvi"
+   ]
+  },
+  "72/1994": {
+   "nazev": "zákon o vlastnictví bytů",
+   "oblasti": [
+    "vecna_prava"
+   ]
+  },
+  "256/2013": {
+   "nazev": "katastrální zákon",
+   "oblasti": [
+    "vecna_prava"
+   ]
+  },
+  "344/1992": {
+   "nazev": "katastrální zákon (starý)",
+   "oblasti": [
+    "vecna_prava"
+   ]
+  },
+  "229/1991": {
+   "nazev": "zákon o půdě",
+   "oblasti": [
+    "vecna_prava"
+   ]
+  },
+  "87/1991": {
+   "nazev": "zákon o mimosoudních rehabilitacích",
+   "oblasti": [
+    "vecna_prava"
+   ]
+  },
+  "428/2012": {
+   "nazev": "zákon o majetkovém vyrovnání s církvemi",
+   "oblasti": [
+    "vecna_prava"
+   ]
+  },
+  "280/2009": {
+   "nazev": "daňový řád",
+   "oblasti": [
+    "dane"
+   ]
+  },
+  "337/1992": {
+   "nazev": "zákon o správě daní a poplatků",
+   "oblasti": [
+    "dane"
+   ]
+  },
+  "586/1992": {
+   "nazev": "zákon o daních z příjmů",
+   "oblasti": [
+    "dane"
+   ]
+  },
+  "235/2004": {
+   "nazev": "zákon o dani z přidané hodnoty",
+   "oblasti": [
+    "dane"
+   ]
+  },
+  "353/2003": {
+   "nazev": "zákon o spotřebních daních",
+   "oblasti": [
+    "dane"
+   ]
+  },
+  "338/1992": {
+   "nazev": "zákon o dani z nemovitých věcí",
+   "oblasti": [
+    "dane"
+   ]
+  },
+  "340/2013": {
+   "nazev": "zákonné opatření o dani z nabytí nemovitých věcí",
+   "oblasti": [
+    "dane"
+   ]
+  },
+  "16/1993": {
+   "nazev": "zákon o dani silniční",
+   "oblasti": [
+    "dane"
+   ]
+  },
+  "565/1990": {
+   "nazev": "zákon o místních poplatcích",
+   "oblasti": [
+    "dane"
+   ]
+  },
+  "242/2016": {
+   "nazev": "celní zákon",
+   "oblasti": [
+    "dane"
+   ]
+  },
+  "13/1993": {
+   "nazev": "celní zákon (starý)",
+   "oblasti": [
+    "dane"
+   ]
+  },
+  "134/2016": {
+   "nazev": "zákon o zadávání veřejných zakázek",
+   "oblasti": [
+    "verejne_zakazky"
+   ]
+  },
+  "137/2006": {
+   "nazev": "zákon o veřejných zakázkách",
+   "oblasti": [
+    "verejne_zakazky"
+   ]
+  },
+  "143/2001": {
+   "nazev": "zákon o ochraně hospodářské soutěže",
+   "oblasti": [
+    "soutez"
+   ]
+  },
+  "395/2009": {
+   "nazev": "zákon o významné tržní síle",
+   "oblasti": [
+    "soutez"
+   ]
+  },
+  "215/2004": {
+   "nazev": "zákon o úpravě některých vztahů v oblasti veřejné podpory",
+   "oblasti": [
+    "soutez"
+   ]
+  },
+  "183/2006": {
+   "nazev": "stavební zákon (2006)",
+   "oblasti": [
+    "stavebni_zp"
+   ]
+  },
+  "283/2021": {
+   "nazev": "stavební zákon",
+   "oblasti": [
+    "stavebni_zp"
+   ]
+  },
+  "50/1976": {
+   "nazev": "stavební zákon (1976)",
+   "oblasti": [
+    "stavebni_zp"
+   ]
+  },
+  "114/1992": {
+   "nazev": "zákon o ochraně přírody a krajiny",
+   "oblasti": [
+    "stavebni_zp"
+   ]
+  },
+  "100/2001": {
+   "nazev": "zákon o posuzování vlivů na životní prostředí",
+   "oblasti": [
+    "stavebni_zp"
+   ]
+  },
+  "254/2001": {
+   "nazev": "vodní zákon",
+   "oblasti": [
+    "stavebni_zp"
+   ]
+  },
+  "541/2020": {
+   "nazev": "zákon o odpadech",
+   "oblasti": [
+    "stavebni_zp"
+   ]
+  },
+  "185/2001": {
+   "nazev": "zákon o odpadech (starý)",
+   "oblasti": [
+    "stavebni_zp"
+   ]
+  },
+  "201/2012": {
+   "nazev": "zákon o ochraně ovzduší",
+   "oblasti": [
+    "stavebni_zp"
+   ]
+  },
+  "334/1992": {
+   "nazev": "zákon o ochraně zemědělského půdního fondu",
+   "oblasti": [
+    "stavebni_zp"
+   ]
+  },
+  "289/1995": {
+   "nazev": "lesní zákon",
+   "oblasti": [
+    "stavebni_zp"
+   ]
+  },
+  "326/1999": {
+   "nazev": "zákon o pobytu cizinců",
+   "oblasti": [
+    "socialni_cizinci"
+   ]
+  },
+  "325/1999": {
+   "nazev": "zákon o azylu",
+   "oblasti": [
+    "socialni_cizinci"
+   ]
+  },
+  "186/2013": {
+   "nazev": "zákon o státním občanství",
+   "oblasti": [
+    "socialni_cizinci"
+   ]
+  },
+  "155/1995": {
+   "nazev": "zákon o důchodovém pojištění",
+   "oblasti": [
+    "socialni_cizinci"
+   ]
+  },
+  "187/2006": {
+   "nazev": "zákon o nemocenském pojištění",
+   "oblasti": [
+    "socialni_cizinci"
+   ]
+  },
+  "48/1997": {
+   "nazev": "zákon o veřejném zdravotním pojištění",
+   "oblasti": [
+    "socialni_cizinci"
+   ]
+  },
+  "117/1995": {
+   "nazev": "zákon o státní sociální podpoře",
+   "oblasti": [
+    "socialni_cizinci"
+   ]
+  },
+  "111/2006": {
+   "nazev": "zákon o pomoci v hmotné nouzi",
+   "oblasti": [
+    "socialni_cizinci"
+   ]
+  },
+  "108/2006": {
+   "nazev": "zákon o sociálních službách",
+   "oblasti": [
+    "socialni_cizinci"
+   ]
+  },
+  "329/2011": {
+   "nazev": "zákon o poskytování dávek osobám se zdravotním postižením",
+   "oblasti": [
+    "socialni_cizinci"
+   ]
+  },
+  "435/2004": {
+   "nazev": "zákon o zaměstnanosti",
+   "oblasti": [
+    "socialni_cizinci"
+   ]
+  },
+  "589/1992": {
+   "nazev": "zákon o pojistném na sociální zabezpečení",
+   "oblasti": [
+    "socialni_cizinci"
+   ]
+  },
+  "582/1991": {
+   "nazev": "zákon o organizaci a provádění sociálního zabezpečení",
+   "oblasti": [
+    "socialni_cizinci"
+   ]
+  },
+  "106/1999": {
+   "nazev": "zákon o svobodném přístupu k informacím",
+   "oblasti": [
+    "spravni"
+   ]
+  },
+  "250/2016": {
+   "nazev": "zákon o odpovědnosti za přestupky",
+   "oblasti": [
+    "spravni"
+   ]
+  },
+  "200/1990": {
+   "nazev": "zákon o přestupcích",
+   "oblasti": [
+    "spravni"
+   ]
+  },
+  "361/2000": {
+   "nazev": "zákon o provozu na pozemních komunikacích",
+   "oblasti": [
+    "spravni"
+   ]
+  },
+  "13/1997": {
+   "nazev": "zákon o pozemních komunikacích",
+   "oblasti": [
+    "spravni"
+   ]
+  },
+  "128/2000": {
+   "nazev": "zákon o obcích",
+   "oblasti": [
+    "spravni"
+   ]
+  },
+  "129/2000": {
+   "nazev": "zákon o krajích",
+   "oblasti": [
+    "spravni"
+   ]
+  },
+  "455/1991": {
+   "nazev": "živnostenský zákon",
+   "oblasti": [
+    "spravni"
+   ]
+  },
+  "458/2000": {
+   "nazev": "energetický zákon",
+   "oblasti": [
+    "spravni"
+   ]
+  },
+  "378/2007": {
+   "nazev": "zákon o léčivech",
+   "oblasti": [
+    "spravni"
+   ]
+  },
+  "119/2002": {
+   "nazev": "zákon o zbraních",
+   "oblasti": [
+    "spravni"
+   ]
+  },
+  "90/2024": {
+   "nazev": "zákon o zbraních a střelivu",
+   "oblasti": [
+    "spravni"
+   ]
+  },
+  "561/2004": {
+   "nazev": "školský zákon",
+   "oblasti": [
+    "spravni"
+   ]
+  },
+  "111/1998": {
+   "nazev": "zákon o vysokých školách",
+   "oblasti": [
+    "spravni"
+   ]
+  },
+  "258/2000": {
+   "nazev": "zákon o ochraně veřejného zdraví",
+   "oblasti": [
+    "spravni"
+   ]
+  },
+  "424/1991": {
+   "nazev": "zákon o sdružování v politických stranách a hnutích",
+   "oblasti": [
+    "spravni"
+   ]
+  },
+  "40/2009": {
+   "nazev": "trestní zákoník",
+   "oblasti": [
+    "trestni"
+   ]
+  },
+  "140/1961": {
+   "nazev": "trestní zákon (starý)",
+   "oblasti": [
+    "trestni"
+   ]
+  },
+  "141/1961": {
+   "nazev": "trestní řád",
+   "oblasti": [
+    "trestni"
+   ]
+  },
+  "418/2011": {
+   "nazev": "zákon o trestní odpovědnosti právnických osob",
+   "oblasti": [
+    "trestni"
+   ]
+  },
+  "218/2003": {
+   "nazev": "zákon o soudnictví ve věcech mládeže",
+   "oblasti": [
+    "trestni"
+   ]
+  },
+  "104/2013": {
+   "nazev": "zákon o mezinárodní justiční spolupráci ve věcech trestních",
+   "oblasti": [
+    "trestni"
+   ]
+  },
+  "45/2013": {
+   "nazev": "zákon o obětech trestných činů",
+   "oblasti": [
+    "trestni"
+   ]
+  },
+  "293/1993": {
+   "nazev": "zákon o výkonu vazby",
+   "oblasti": [
+    "trestni"
+   ]
+  },
+  "169/1999": {
+   "nazev": "zákon o výkonu trestu odnětí svobody",
+   "oblasti": [
+    "trestni"
+   ]
+  },
+  "59/2017": {
+   "nazev": "zákon o použití peněžních prostředků z majetkové trestní sankce",
+   "oblasti": [
+    "trestni"
+   ]
+  },
+  "279/2003": {
+   "nazev": "zákon o výkonu zajištění majetku a věcí v trestním řízení",
+   "oblasti": [
+    "trestni"
+   ]
+  }
+ }
+}

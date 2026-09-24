@@ -28,6 +28,8 @@
   --badge-blue-bg: hsl(217 91% 60% / 0.12);    --badge-blue-fg: hsl(224 76% 48%);
   --badge-amber-bg: hsl(38 92% 50% / 0.15);    --badge-amber-fg: hsl(26 90% 37%);
   --badge-indigo-bg: hsl(239 84% 67% / 0.13);  --badge-indigo-fg: hsl(244 55% 41%);
+  --badge-teal-bg: hsl(173 80% 36% / 0.12);    --badge-teal-fg: hsl(175 84% 25%);
+  --badge-rose-bg: hsl(347 77% 50% / 0.11);    --badge-rose-fg: hsl(345 70% 40%);
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -44,6 +46,8 @@
     --badge-blue-bg: hsl(217 91% 60% / 0.16);   --badge-blue-fg: hsl(213 94% 68%);
     --badge-amber-bg: hsl(38 92% 50% / 0.16);   --badge-amber-fg: hsl(43 96% 56%);
     --badge-indigo-bg: hsl(234 89% 74% / 0.16); --badge-indigo-fg: hsl(230 94% 82%);
+    --badge-teal-bg: hsl(173 80% 40% / 0.16);   --badge-teal-fg: hsl(172 66% 55%);
+    --badge-rose-bg: hsl(347 77% 50% / 0.16);   --badge-rose-fg: hsl(351 95% 76%);
   }
 }
 
@@ -174,6 +178,8 @@ td a:hover { text-decoration: underline; }
   { overflow-wrap: anywhere; }
 .author { color: var(--muted-foreground); }
 .col-name .author { display: block; margin-top: 2px; font-size: var(--fs-sm); }
+/* Populární název rozhodnutí ÚS pod značkou. */
+.vec { display: block; margin-top: 2px; font-size: var(--fs-sm); color: var(--muted-foreground); }
 .nowrap { white-space: nowrap; }
 .summary { line-height: 1.55; }
 .note { color: var(--muted-foreground); font-style: italic; }
@@ -223,6 +229,8 @@ body.is-resizing { cursor: col-resize; user-select: none; -webkit-user-select: n
 .tag-ruling { background: var(--badge-green-bg); color: var(--badge-green-fg); }
 .tag-referral { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
 .src-nsoud { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
+.src-nss { background: var(--badge-teal-bg); color: var(--badge-teal-fg); }
+.src-us { background: var(--badge-rose-bg); color: var(--badge-rose-fg); }
 .src-cjeu { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
 .src-journals { background: var(--badge-amber-bg); color: var(--badge-amber-fg); }
 

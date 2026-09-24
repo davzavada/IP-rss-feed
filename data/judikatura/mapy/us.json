@@ -1,0 +1,153 @@
+{
+ "poznamka": "Ústavní soud. rejstrik: část slova (bez ohledu na velikost písmen) z věcného rejstříku nebo předmětu řízení -> oblasti. K tomu dotčené předpisy z predpisy.json; senát Pl. (plénum) přidá ustavni.",
+ "rejstrik": {
+  "autorsk": [
+   "autorske"
+  ],
+  "počítačový program": [
+   "autorske",
+   "it"
+  ],
+  "ochranná známka": [
+   "prumyslova_prava"
+  ],
+  "ochranné známky": [
+   "prumyslova_prava"
+  ],
+  "patent": [
+   "prumyslova_prava"
+  ],
+  "průmyslové vlastnictví": [
+   "prumyslova_prava"
+  ],
+  "průmyslový vzor": [
+   "prumyslova_prava"
+  ],
+  "užitný vzor": [
+   "prumyslova_prava"
+  ],
+  "nekalá soutěž": [
+   "nekala_soutez"
+  ],
+  "obchodní tajemství": [
+   "nekala_soutez"
+  ],
+  "reklam": [
+   "nekala_soutez"
+  ],
+  "osobní údaj": [
+   "gdpr"
+  ],
+  "osobních údajů": [
+   "gdpr"
+  ],
+  "internet": [
+   "it"
+  ],
+  "elektronické komunikace": [
+   "it"
+  ],
+  "doménové jméno": [
+   "it"
+  ],
+  "svoboda projevu": [
+   "osobnost_media"
+  ],
+  "ochrana osobnosti": [
+   "osobnost_media"
+  ],
+  "sdělovací prostředky": [
+   "osobnost_media"
+  ],
+  "spotřebitel": [
+   "spotrebitel"
+  ],
+  "insolven": [
+   "insolvence"
+  ],
+  "oddlužení": [
+   "insolvence"
+  ],
+  "konkurs": [
+   "insolvence"
+  ],
+  "exekuc": [
+   "civilni_proces"
+  ],
+  "rozhodčí": [
+   "civilni_proces"
+  ],
+  "pracovní poměr": [
+   "pracovni"
+  ],
+  "služební poměr": [
+   "pracovni"
+  ],
+  "zaměstnan": [
+   "pracovni"
+  ],
+  "daň": [
+   "dane"
+  ],
+  "veřejné zakázk": [
+   "verejne_zakazky"
+  ],
+  "hospodářská soutěž": [
+   "soutez"
+  ],
+  "veřejná podpora": [
+   "soutez"
+  ],
+  "stavební": [
+   "stavebni_zp"
+  ],
+  "územní plán": [
+   "stavebni_zp"
+  ],
+  "životní prostředí": [
+   "stavebni_zp"
+  ],
+  "azyl": [
+   "socialni_cizinci"
+  ],
+  "cizin": [
+   "socialni_cizinci"
+  ],
+  "důchod": [
+   "socialni_cizinci"
+  ],
+  "nemocensk": [
+   "socialni_cizinci"
+  ],
+  "zdravotní pojištění": [
+   "socialni_cizinci"
+  ],
+  "trestn": [
+   "trestni"
+  ],
+  "vazb": [
+   "trestni"
+  ],
+  "obviněn": [
+   "trestni"
+  ],
+  "nezletil": [
+   "rodina_dedictvi"
+  ],
+  "výživn": [
+   "rodina_dedictvi"
+  ],
+  "dědic": [
+   "rodina_dedictvi"
+  ],
+  "rozvod": [
+   "rodina_dedictvi"
+  ],
+  "společné jmění manželů": [
+   "rodina_dedictvi"
+  ],
+  "přestup": [
+   "spravni"
+  ]
+ }
+}

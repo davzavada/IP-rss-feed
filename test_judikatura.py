@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Testy sběru judikatury (balíček judikatura/ a adaptér Nejvyššího soudu).
+"""Testy sběru judikatury (balíček judikatura/ a adaptéry NS, NSS a ÚS).
 
-Bez sítě: web NS i Gemini API se simulují. Jde o to, co pipeline s daty
+Bez sítě: weby soudů i Gemini API se simulují, stránky soudů jsou skutečné
+odpovědi, které stáhla sonda (tests/fixtures/). Jde o to, co pipeline s daty
 udělá – že se stejné rozhodnutí nevede dvakrát, že staré se netváří jako
 nové, že archiv v gitu nemění řádky zbytečně, že AI dostane celý text
 a že se výpadek jednoho zdroje nepropíše do ostatních.
@@ -12,6 +13,7 @@ Spuštění: python test_judikatura.py
 import base64
 import json
 import os
+import re
 import shutil
 import sys
 import tempfile
@@ -19,9 +21,12 @@ from datetime import date, datetime, timedelta, timezone
 from urllib.parse import parse_qs, urlparse
 
 import feed_common as fc
-from judikatura import analyza, fronta, kontrola, migrace, model, orchestr
+from judikatura import analyza, fronta, kontrola, mapy, migrace, model, orchestr
 from judikatura.sklad import Sklad, slim
 from judikatura.soudy import ns
+from judikatura.soudy import nss as soud_nss
+from judikatura.soudy import us as soud_us
+from judikatura.soudy.web import formular_pole
 from judikatura.taxonomie import SOUBOR as OBLASTI_JSON
 from judikatura.taxonomie import Taxonomie
 
@@ -717,7 +722,378 @@ check("deska nemá detail – nic se nestahuje", web.volani == [])
 check("deska: rovnou PDF", adapter.text(d_z)["zdroj"] == "pdf" and web.volani == [d_z["pdf"]])
 
 # =====================================================================
-print("\n8) Migrace starého feedu 23 Cdo")
+print("\n8) NSS a ÚS: stránky, hledání, první zařazení")
+# =====================================================================
+KOREN_FX = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tests", "fixtures")
+
+
+def fx(soud, jmeno, binarne=False):
+    with open(os.path.join(KOREN_FX, soud, jmeno), "rb" if binarne else "r",
+              **({} if binarne else {"encoding": "utf-8"})) as f:
+        return f.read()
+
+
+class Relace:
+    """Simulovaná requests.Session: `odpovedi(metoda, url, data)` -> Odp."""
+
+    def __init__(self, odpovedi, zaznam):
+        self.odpovedi = odpovedi
+        self.zaznam = zaznam
+
+    def get(self, url, **kw):
+        self.zaznam.append(("GET", url, None))
+        return self.odpovedi("GET", url, None)
+
+    def post(self, url, data=None, **kw):
+        self.zaznam.append(("POST", url, data))
+        return self.odpovedi("POST", url, data)
+
+
+def relace(odpovedi, zaznam):
+    return lambda: Relace(odpovedi, zaznam)
+
+
+soud_nss.NSS.pauza = 0
+
+# --- NSS: výsledky hledání ---
+NSS_VYSLEDKY = fx("nss", "vysledky_2026-09-21.html")
+radky0 = soud_nss.parse_radky(NSS_VYSLEDKY)
+radky1 = soud_nss.parse_radky(fx("nss", "dalsi_radky.html"))
+check("NSS: první stránka 40 řádků z 92, dočtená 20",
+      len(radky0) == 40 and soud_nss.pocet_vysledku(NSS_VYSLEDKY) == 92 and len(radky1) == 20
+      and soud_nss.parse_radky(fx("nss", "dalsi_prazdne.html")) == [])
+check("NSS: řádek výsledků", radky0[0] == {
+    "id": "785703", "datum": "2026-09-21", "cj": "2 Azs 127/2026-41", "senat": "tříčlenný senát NSS",
+    "druh": "usnesení", "vyrok": "odmítnuto", "ucastnici": "Ministerstvo vnitra, xxx"}, str(radky0[0]))
+check("NSS: krajské soudy a jejich pobočky se poznají",
+      sum(soud_nss.je_nss(r["senat"]) for r in radky0) == 18
+      and not soud_nss.je_nss("Městský soud v Praze") and not soud_nss.je_nss("pobočka Olomouc")
+      and not soud_nss.je_nss("Nejvyšší soud ČR") and soud_nss.je_nss("7členný RS NSS") and soud_nss.je_nss("kárný senát"))
+url_dalsi, par_dalsi = soud_nss.parametry_dalsich(NSS_VYSLEDKY)
+check("NSS: parametry dočítání ze skriptu stránky",
+      url_dalsi == soud_nss.HOST + "/Home/MyResTRowsCont"
+      and json.loads(par_dalsi["vyhledavaciPodminky"])[0]["TechnickyNazev"] == "aktualizovano"
+      and par_dalsi["zobrazeniVysledkuId"] == "1" and "order by" in par_dalsi["resultOrder"],
+      str(par_dalsi)[:200])
+check("NSS: číslo jednací bez mezer navíc",
+      soud_nss.cislo_jednaci("21 Afs    31/2026 -   32") == "21 Afs 31/2026-32"
+      and soud_nss.cislo_jednaci("9\xa0As\xa022/2026\xa0-\xa039") == "9 As 22/2026-39")
+check("NSS: procesní podle výroku",
+      soud_nss.procesni("odmítnuto pro nepřijatelnost") and soud_nss.procesni("odkladný účinek: přiznání")
+      and soud_nss.procesni("zastaveno") and soud_nss.procesni("nepodjatý soudce")
+      and not soud_nss.procesni("zamítnuto") and not soud_nss.procesni("rozšířený senát: postoupení")
+      and not soud_nss.procesni(""))
+
+# --- NSS: detail a text ---
+d = soud_nss.parse_detail(fx("nss", "detail_785620.html"))
+check("NSS: detail – data, druh, ECLI, čj.",
+      d["datum"] == "2026-09-18" and d["zverejneno"] == "2026-09-21" and d["druh"] == "usnesení"
+      and d["ecli"] == "ECLI:CZ:NSS:2026:9.As.22.2026.39" and d["cj"] == "9 As 22/2026-39",
+      str({k: v for k, v in d.items() if k != "meta"}))
+check("NSS: detail – soudce, oblast úpravy, výrok, orgán, předpisy",
+      d["meta"]["soudce"] == "Tomáš Herc" and d["meta"]["oblast_upravy"] == "Přestupky"
+      and d["meta"]["vyrok"] == "odmítnuto pro nepřijatelnost"
+      and d["meta"]["spravni_organ"] == "Magistrát hlavního města Prahy"
+      and d["meta"]["predpisy"].startswith("§ 36 odst. 3 zákona č. 500/2004 Sb.; ")
+      and "§ 125c odst. 1 písm. k zákona č. 361/2000 Sb." in d["meta"]["predpisy"], str(d["meta"]))
+check("NSS: první zařazení podle oblasti úpravy", soud_nss.oblasti_meta(d["meta"]) == ["spravni"]
+      and soud_nss.oblasti_meta(soud_nss.parse_detail(fx("nss", "detail_785607.html"))["meta"]) == ["stavebni_zp"])
+text = soud_nss.text_z_txt(fx("nss", "text_785707.html", binarne=True))
+check("NSS: prostý text z UTF-16 bez obrázků a nul",
+      text.startswith("21 Afs 31/2026") and "ROZSUDEK" in text and "\ntakto:\n" in text
+      and text.endswith("předseda senátu") and "\x00" not in text and "[OBRÁZEK]" not in text
+      and len(text) > 15000, text[:80])
+ASPOSE = ('<html><head><title>5 As 1/2026 - html</title></head><body><div style="-aw-headerfooter-type:'
+          'header-first"><p><span>5 As 1/2026</span></p></div><p><span>Nejvyšší </span><span>správní'
+          '</span><span> soud rozhodl</span></p><p><span>[OBRÁZEK]</span></p>'
+          + "<p><span>Odůvodnění </span><span>kasační stížnosti.</span></p>" * 40 + "</body></html>")
+text = soud_nss.text_z_html(ASPOSE.encode("utf-8"))
+check("NSS: čitelná podoba – úseky do vět, bez záhlaví stránek",
+      text.startswith("Nejvyšší správní soud rozhodl\nOdůvodnění kasační stížnosti.")
+      and "5 As 1/2026" not in text and "[OBRÁZEK]" not in text, text[:80])
+
+# --- NSS: hledání přes formulář a dočítání ---
+zaznam_nss = []
+
+
+def web_nss(metoda, url, data):
+    if metoda == "GET" and url == soud_nss.HOST + "/":
+        return Odp(text=fx("nss", "formular.html"))
+    if metoda == "POST" and url == soud_nss.HOST + "/":
+        return Odp(text=NSS_VYSLEDKY)
+    if metoda == "POST" and url == soud_nss.HOST + "/Home/MyResTRowsCont":
+        return Odp(text=fx("nss", "dalsi_radky.html") if data["pageNum"] == "1" else "")
+    if metoda == "GET" and url.startswith(soud_nss.HOST + "/DokumentDetail/Index/"):
+        return Odp(text=fx("nss", "detail_785620.html"))
+    raise OSError(f"neočekávaná adresa {metoda} {url}")
+
+
+nalezene = soud_nss.NSS(session_factory=relace(web_nss, zaznam_nss)).objev(date(2026, 9, 21), date(2026, 9, 21))
+hledani = dict(zaznam_nss[1][2])
+check("NSS: formulář se pošle celý s datem zpřístupnění od–do+1 a tokenem",
+      zaznam_nss[0][:2] == ("GET", soud_nss.HOST + "/") and zaznam_nss[1][:2] == ("POST", soud_nss.HOST + "/")
+      and hledani["vyhledavaciSekce[1].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0]."
+                  "HodnotaDatumACasOd"] == "21.09.2026"
+      and hledani["vyhledavaciSekce[1].vyhledavaciPodminka[1].vyhledavaciPodminkaHodnota[0]."
+                  "HodnotaDatumACasDo"] == "22.09.2026"
+      and hledani["__RequestVerificationToken"].startswith("CfDJ8") and "btSubmit" in hledani
+      and len(zaznam_nss[1][2]) > 250, str(zaznam_nss[1][2][:3]))
+check("NSS: dočítá se po stránkách, dokud stránka něco vrací",
+      [z[2]["pageNum"] for z in zaznam_nss if z[1].endswith("MyResTRowsCont")] == ["1", "2"])
+ocekavane = {r["id"] for r in radky0 + radky1 if soud_nss.je_nss(r["senat"])}
+check("NSS: jen senáty NSS, bez opakování",
+      sorted(z["id"] for z in nalezene) == sorted(f"nss:{i}" for i in ocekavane)
+      and len(nalezene) == len(ocekavane) > 30, f"{len(nalezene)} vs {len(ocekavane)}")
+z = next(z for z in nalezene if z["id"] == "nss:785703")
+check("NSS: záznam z řádku – čj., senát, odkazy, procesní",
+      z["spz"] == "2 Azs 127/2026-41" and z["senat"] == 2 and z["rejstrik"] == "Azs"
+      and z["druh"] == "usnesení" and z["datum"] == "2026-09-21" and z["zverejneno"] == ""
+      and z["url"] == soud_nss.HOST + "/DokumentOriginal/Html/785703"
+      and z["pdf"] == soud_nss.HOST + "/DokumentOriginal/Index/785703" and z["procesni_meta"], str(z))
+try:
+    soud_nss.NSS(session_factory=relace(lambda m, u, d: Odp(text="<html>Údržba</html>"), [])).objev(
+        date(2026, 9, 21), date(2026, 9, 21))
+    check("NSS: stránka bez formuláře je chyba zdroje", False)
+except RuntimeError:
+    check("NSS: stránka bez formuláře je chyba zdroje", True)
+
+z = soud_nss.zaznam_z_radku(radky0[0] | {"id": "785620", "cj": "9 As 22/2026-39", "vyrok": "zamítnuto"})
+soud_nss.NSS(session_factory=relace(web_nss, [])).doplnit(z)
+check("NSS: doplnění z detailu (má přednost před řádkem) – zveřejnění, ECLI, soudce, oblasti, procesní",
+      z["zverejneno"] == "2026-09-21" and z["datum"] == "2026-09-18" and z["ecli"].endswith("9.As.22.2026.39")
+      and z["meta"]["soudce"] == "Tomáš Herc" and z["oblasti_meta"] == ["spravni"] and z["procesni_meta"]
+      and z["meta"]["ucastnici"] == "Magistrát hlavního města Prahy, xxx", str(z["meta"]))
+
+
+def nss_detail(vydano, zpristupneno, oblast="Duševní vlastnictví", organ="Úřad průmyslového vlastnictví"):
+    pole = {"cj": "7 As    1/2024-   50", "ecli": "ECLI:CZ:NSS:2024:7.As.1.2024.50",
+            "datumvydanirozhodnuti": vydano, "aktualizovano": zpristupneno + " 10:00:00",
+            "druhdokumentuavyrokrozhodnuti": "Rozsudek", "vyrokrozhodnuti": "zamítnuto",
+            "oblastupravy": oblast, "soudcezpravodaj": "NOVÁK Jan"}
+    telo = "".join(f'<div data-field-id="{k}"><span class="det-textitle">{k} :</span>'
+                   f'<span class="det-textval"> {v}</span></div>' for k, v in pole.items())
+    telo += ('<table><thead><tr><td class="det-textitle" data-field-id="nazevspravnihoorganu">Název'
+             '</td></tr></thead><tbody><tr><td class="det-textval" data-field-id="nazevspravnihoorganu">'
+             + organ + "</td></tr></tbody></table>")
+    return "<html><body>" + telo + "</body></html>"
+
+
+z = model.novy_zaznam("nss", "nss:1", spz="7 As 1/2024-50")
+soud_nss.NSS(session_factory=relace(lambda m, u, d: Odp(text=nss_detail("15.01.2024", "22.09.2026")),
+                               [])).doplnit(z)
+check("NSS: znovu zpřístupněné staré rozhodnutí není novinka",
+      z["zverejneno"] == "2024-01-15" and z["meta"]["zpristupneno"] == "2026-09-22"
+      and model.prvni_vyskyt(z["zverejneno"], NYNI, False) == dt("2024-01-15T12:00:00Z"))
+check("NSS: spor s ÚPV je průmyslové vlastnictví, soudce jménem napřed",
+      z["oblasti_meta"] == ["prumyslova_prava"] and z["meta"]["soudce"] == "Jan Novák", str(z["oblasti_meta"]))
+
+TEXT_NSS = fx("nss", "text_785707.html", binarne=True)
+PDF_URL = soud_nss.HOST + "/DokumentOriginal/Index/1"
+
+
+def web_textu(text=TEXT_NSS, html=None, pdf=None):
+    def odp(metoda, url, data):
+        if url.endswith("/Text/1") and text is not None:
+            return Odp(content=text)
+        if url.endswith("/Html/1") and html is not None:
+            return Odp(content=html)
+        if url == PDF_URL and pdf is not None:
+            return Odp(content=pdf)
+        return Odp(500, "chyba")
+    return relace(odp, [])
+
+
+z = model.novy_zaznam("nss", "nss:1", spz="7 As 1/2024-50")
+obsah = soud_nss.NSS(session_factory=web_textu()).text(z)
+check("NSS: text z prostého textu", obsah["zdroj"] == "text" and obsah["text"].startswith("21 Afs 31/2026"))
+obsah = soud_nss.NSS(session_factory=web_textu(text=None, html=ASPOSE.encode("utf-8"))).text(z)
+check("NSS: bez prostého textu čitelná podoba", obsah["zdroj"] == "html"
+      and obsah["text"].startswith("Nejvyšší správní soud rozhodl"))
+puvodni_pdf_text_nss = soud_nss.pdf_text
+soud_nss.pdf_text = lambda data: ""
+obsah = soud_nss.NSS(session_factory=web_textu(text=None, pdf=b"%PDF-1.7 sken")).text(z)
+check("NSS: nakonec PDF modelu", obsah == {"pdf": b"%PDF-1.7 sken", "zdroj": "pdf"})
+soud_nss.pdf_text = puvodni_pdf_text_nss
+check("NSS: bez textu nic", soud_nss.NSS(session_factory=web_textu(text=None)).text(z) == {})
+CHYBOVA = ("<html><body>" + "<p>Omlouváme se, stránka není k dispozici. Zkuste to později.</p>" * 20
+           + "</body></html>").encode("utf-8")
+check("NSS: chybová stránka místo textu se modelu neposílá",
+      soud_nss.NSS(session_factory=web_textu(text=CHYBOVA, html=CHYBOVA)).text(z) == {})
+zaznam_rel = []
+adapter_nss = soud_nss.NSS(session_factory=relace(web_nss, zaznam_rel))
+adapter_nss.objev(date(2026, 9, 21), date(2026, 9, 21))
+relace_hledani = adapter_nss._relace
+adapter_nss.doplnit(soud_nss.zaznam_z_radku(radky0[0]))
+check("NSS: detail jde v relaci hledání (s jejími cookies)", adapter_nss._relace is relace_hledani
+      and zaznam_rel[-1][1] == soud_nss.HOST + "/DokumentDetail/Index/785703")
+
+# --- ÚS: výsledky, text ---
+US_VYSLEDKY = fx("us", "vysledky_2026-09-21.html")
+radky, celkem = soud_us.parse_vysledky(US_VYSLEDKY)
+check("ÚS: výpis 11 rozhodnutí", len(radky) == 11 and celkem == 11)
+r = radky[0]
+check("ÚS: značka, ECLI, soudce, název, data",
+      r["sz"] == "2-1922-26_1" and r["spz"] == "II. ÚS 1922/26" and r["ecli"] == "ECLI:CZ:US:2026:2.US.1922.26.1"
+      and r["soudce"] == "Veronika Křesťanová" and r["nazev"].startswith("Výklad § 1042 občanského")
+      and (r["datum"], r["vyhlaseno"], r["zverejneno"]) == ("2026-09-09", "2026-09-15", "2026-09-21"), str(r))
+check("ÚS: předpisy, forma, význam, výroky, předmět a rejstřík",
+      r["predpisy"][2] == "89/2012 Sb., § 1042" and r["forma"] == "Nález" and r["vyznam"] == "3"
+      and r["vyroky"][0] == "vyhověno" and len(r["vyroky"]) == 4
+      and all("/" in p for p in r["predmet"]) and len(r["predmet"]) == 3
+      and "náklady řízení" in r["rejstrik"], str(r))
+u = next(x for x in radky if x["spz"] == "IV. ÚS 2303/26")
+check("ÚS: usnesení bez vyhlášení a názvu, odmítnutí pro nepřípustnost je procesní",
+      u["forma"] == "Usnesení" and u["vyhlaseno"] == "" and u["nazev"] == "" and u["navrhovatel"] == ["STĚŽOVATEL - FO"]
+      and soud_us.procesni(u["vyroky"]) and not soud_us.procesni(r["vyroky"])
+      and not soud_us.procesni(["odmítnuto pro zjevnou neopodstatněnost"]), str(u))
+check("ÚS: další stránka, prázdné hledání, formulář místo výsledků",
+      soud_us.parse_vysledky(fx("us", "vysledky_strana2.html"))[1] == 378
+      and len(soud_us.parse_vysledky(fx("us", "vysledky_strana2.html"))[0]) == 10
+      and soud_us.parse_vysledky(fx("us", "vysledky_prazdne.html")) == ([], 0)
+      and soud_us.parse_vysledky(fx("us", "formular.html")) == ([], None))
+z = soud_us.zaznam_z_radku(next(x for x in radky if x["spz"] == "Pl. ÚS 10/26"))
+check("ÚS: záznam – id, odkaz na text, druh, název, soudce",
+      z["id"] == "us:Pl-10-26_2" and z["url"] == soud_us.HOST + "/Search/GetText.aspx?sz=Pl-10-26_2"
+      and z["druh"] == "nález" and z["nazev"].startswith("Obnovené řízení po rozsudku ESLP")
+      and z["meta"]["soudce"] == "Tomáš Langášek" and z["zverejneno"] == "2026-09-21", str(z))
+check("ÚS: plénum je ústavní, trestní řád trestní, ústavní předpisy nic neřeknou",
+      z["oblasti_meta"] == ["ustavni", "trestni"]
+      and soud_us.zaznam_z_radku(r)["oblasti_meta"] == [], str(z["oblasti_meta"]))
+check("ÚS: značky ve tvaru citace",
+      soud_us.spisova_znacka("IV.ÚS 465/26 #1") == "IV. ÚS 465/26"
+      and soud_us.spisova_znacka("Pl.ÚS-st. 60/24 #1") == "Pl. ÚS-st. 60/24"
+      and soud_us.spisova_znacka("x", "usnesení sp. zn. III. ÚS 767/26 ze dne 12. 8. 2026") == "III. ÚS 767/26")
+text = soud_us.parse_text(fx("us", "text_1-1029-26_1.html"))
+check("ÚS: text rozhodnutí s formou, bez tlačítek a hlavičky stránky",
+      text.startswith("NÁLEZ\n\nÚstavní soud rozhodl v senátu") and "\nOdůvodnění:\n" in text
+      and text.endswith("Jan Wintr") and "Stáhnout ve formátu" not in text, text[:80])
+
+# --- ÚS: hledání a stránkování ---
+zaznam_us = []
+
+
+def web_us(prvni, dalsi):
+    def odp(metoda, url, data):
+        if metoda == "GET" and url == soud_us.HLEDANI:
+            return Odp(text=fx("us", "formular.html"))
+        if metoda == "POST" and url == soud_us.HLEDANI:
+            return Odp(text=prvni)
+        if metoda == "GET" and url.startswith(soud_us.VYSLEDKY + "?page="):
+            return Odp(text=dalsi.get(url.rsplit("=", 1)[1], fx("us", "formular.html")))
+        if metoda == "GET" and url.startswith(soud_us.HOST + "/Search/GetText.aspx"):
+            return Odp(text=fx("us", "text_1-1029-26_1.html"))
+        raise OSError(f"neočekávaná adresa {metoda} {url}")
+    return relace(odp, zaznam_us)
+
+
+nalezene = soud_us.US(session_factory=web_us(US_VYSLEDKY, {})).objev(date(2026, 9, 14), date(2026, 9, 24))
+post = dict(zaznam_us[1][2])
+check("ÚS: formulář s viewstate, datem zpřístupnění a řazením",
+      zaznam_us[1][:2] == ("POST", soud_us.HLEDANI) and post["ctl00$MainContent$availableFrom"] == "14.9.2026"
+      and post["ctl00$MainContent$availableTo"] == "24.9.2026" and post["ctl00$MainContent$razeni"] == "20"
+      and post["ctl00$MainContent$resultsPageSize"] == "80" and post["__VIEWSTATE"]
+      and post["ctl00$MainContent$but_search"] == "Vyhledat"
+      and post["ctl00$MainContent$nalezy"] == post["ctl00$MainContent$usneseni"] == "on", str(post)[:200])
+check("ÚS: celý výsledek na jedné stránce – dál se nestránkuje",
+      len(nalezene) == 11 and not any("page=" in z[1] for z in zaznam_us))
+zaznam_us.clear()
+nalezene = soud_us.US(session_factory=web_us(fx("us", "vysledky_strana2.html"), {"1": US_VYSLEDKY})).objev(
+    date(2026, 8, 25), date(2026, 9, 24))
+ocekavane_us = {r["sz"] for r in soud_us.parse_vysledky(fx("us", "vysledky_strana2.html"))[0] + radky}
+check("ÚS: další stránky z relace, dokud něco vracejí, bez opakování",
+      [z[1].rsplit("=", 1)[1] for z in zaznam_us if "page=" in z[1]] == ["1", "2"]
+      and sorted(z["id"] for z in nalezene) == sorted(f"us:{sz}" for sz in ocekavane_us),
+      str([z[1] for z in zaznam_us]))
+try:
+    soud_us.US(session_factory=web_us(fx("us", "formular.html"), {})).objev(date(2026, 9, 14), date(2026, 9, 24))
+    check("ÚS: formulář místo výsledků je chyba zdroje", False)
+except RuntimeError:
+    check("ÚS: formulář místo výsledků je chyba zdroje", True)
+obsah = soud_us.US(session_factory=web_us(US_VYSLEDKY, {})).text(nalezene[0])
+check("ÚS: text z trvalé adresy", obsah["zdroj"] == "html" and obsah["text"].startswith("NÁLEZ"))
+
+# --- mapy ---
+spatne = [(k, o) for k, v in mapy.nacti("predpisy")["predpisy"].items() for o in v["oblasti"]
+          if o not in TAX.ids]
+spatne += [(k, o) for sekce in ("oblast_upravy", "organy") for k, v in mapy.nacti("nss")[sekce].items()
+           for o in v if o not in TAX.ids]
+spatne += [(k, o) for k, v in mapy.nacti("us")["rejstrik"].items() for o in v if o not in TAX.ids]
+check("mapy znají jen oblasti ze seznamu", not spatne, str(spatne))
+check("předpisy z citací v různém tvaru",
+      mapy.cisla_predpisu(["121/2000 Sb., § 40", "§ 4 zákona č. 441/2003 Sb.", "2/1993 Sb./Sb.m.s., čl. 36"])
+      == ["121/2000", "441/2003", "2/1993"]
+      and mapy.z_predpisu(["121/2000 Sb.", "§ 10 zákona č. 110/2019 Sb."]) == ["autorske", "gdpr"])
+check("oblast úpravy podle skupiny před pomlčkou",
+      mapy.z_oblasti_upravy("Daně - daň z příjmů") == ["dane"]
+      and mapy.z_oblasti_upravy("Sociální ochrana – Zdravotní pojištění") == ["socialni_cizinci"]
+      and mapy.z_oblasti_upravy("Nezpůsobilost soudce § 91 z.č. 6/2002 Sb.") == ["spravni"]
+      and mapy.z_oblasti_upravy("Něco nového") == [])
+check("orgány a rejstřík podle části názvu",
+      mapy.z_organu(["Úřad průmyslového vlastnictví, xxx"]) == ["prumyslova_prava"]
+      and mapy.z_organu(["Úřad pro ochranu osobních údajů"]) == ["gdpr"]
+      and mapy.z_rejstriku(["ochranná známka", "trestní řízení"]) == ["prumyslova_prava", "trestni"])
+_, pole = formular_pole(fx("nss", "formular.html"), "form#findform")
+strom = next(v for n, v in pole if n.endswith("ciselnikTreeData") and "Duševní vlastnictví" in v)
+oblasti_nss = [t for t in re.findall(r'title:"([^"]+)"', strom)
+               if t not in ("Ostatní", "Ostatní (nekasační agenda)", "Procesní")]
+bez_mapy = [t for t in oblasti_nss if not mapy.z_oblasti_upravy(t)]
+check("každá oblast úpravy z vyhledávače NSS má oblast", len(oblasti_nss) > 70 and not bez_mapy, str(bez_mapy))
+
+# --- celý běh s oběma adaptéry ---
+ED, EW = tmpdir(), tmpdir()
+radky_podle_id = {r["id"]: r for r in radky0 + radky1}
+IP_ID = next(r["id"] for r in radky0 if soud_nss.je_nss(r["senat"]) and r["id"] != "785703")
+
+
+def web_nss_behu(metoda, url, data):
+    if "/DokumentDetail/Index/" in url:
+        id_ = url.rsplit("/", 1)[1]
+        r = radky_podle_id[id_]
+        vydano = "15.01.2024" if id_ == "785703" else ".".join(reversed(r["datum"].split("-")))
+        return Odp(text=nss_detail(vydano, "21.09.2026",
+                                   oblast="Duševní vlastnictví" if id_ == IP_ID else "Daně - ostatní",
+                                   organ="Úřad průmyslového vlastnictví" if id_ == IP_ID else "Finanční úřad"))
+    if "/DokumentOriginal/Text/" in url:
+        return Odp(content=TEXT_NSS)
+    return web_nss(metoda, url, data)
+
+
+fc.ai_volani = falesna_ai(lambda parts: json.dumps(
+    {"heslo": "Heslo", "shrnuti": SHRNUTI, "oblasti": ["dane"], "procesni": False}))
+zaznam_us.clear()
+volani.clear()
+souhrn = orchestr.beh({"nss": soud_nss.NSS(session_factory=relace(web_nss_behu, [])),
+                       "us": soud_us.US(session_factory=web_us(US_VYSLEDKY, {}))},
+                      ["nss", "us"], nyni=NYNI, max_polozek=200, stav_cesta=os.path.join(ED, "stav.json"),
+                      data_dir=ED, web_dir=EW)
+arch_nss = Sklad("nss", data_dir=ED, web_dir=EW).nacti(NYNI).zaznamy
+arch_us = Sklad("us", data_dir=ED, web_dir=EW).nacti(NYNI).zaznamy
+with open(os.path.join(EW, "nss.json"), encoding="utf-8") as f:
+    okno_nss = json.load(f)
+with open(os.path.join(EW, "us.json"), encoding="utf-8") as f:
+    okno_us = json.load(f)
+check("běh: náběh NSS i ÚS, všechno nalezené v archivu",
+      souhrn["nss"]["nove"] == len(ocekavane) and souhrn["us"]["nove"] == 11
+      and len(arch_us) == 11, str(souhrn))
+check("běh: znovu zpřístupněné staré rozhodnutí je v archivu, ale ne na webu",
+      "nss:785703" in Sklad("nss", data_dir=ED, web_dir=EW).nacti(NYNI).index
+      and "nss:785703" not in {p["id"] for p in okno_nss["polozky"]}
+      and len(okno_nss["polozky"]) == len(ocekavane) - 1, str(len(okno_nss["polozky"])))
+ip = next(p for p in okno_nss["polozky"] if p["id"] == f"nss:{IP_ID}")
+check("běh: okna pro web se shrnutím, první výskyt podle zpřístupnění",
+      ip["shrnuti"] == SHRNUTI and ip["first_seen"] == "2026-09-21T12:00:00Z"
+      and okno_us["okno_dni"] == 14 and all(p["shrnuti"] for p in okno_us["polozky"])
+      and any(p.get("nazev", "").startswith("Obnovené řízení") for p in okno_us["polozky"]), str(ip))
+prvni_dotaz = volani[0]["parts"][0]["text"]
+check("běh: fronta vzala spor s ÚPV jako první (výchozí výběr podle úředních údajů)",
+      "Úřad průmyslového vlastnictví" in prvni_dotaz and "oblast_upravy: Duševní vlastnictví" in prvni_dotaz,
+      prvni_dotaz[:300])
+chyby, varovani = kontrola.zkontroluj(("nss", "us"), data_dir=ED, web_dir=EW)
+check("běh: archiv NSS a ÚS projde kontrolou", not chyby and not varovani, str(chyby + varovani)[:300])
+fc.ai_volani = falesna_ai(ai_odpoved)
+
+# =====================================================================
+print("\n9) Migrace starého feedu 23 Cdo")
 # =====================================================================
 RSS = ("<rss><channel><item><title>23 Cdo 1/2026</title><link>L</link><guid>G</guid>"
        "<ai-summary>S</ai-summary><ai-tag>T</ai-tag></item><item><title>X</title></item></channel></rss>")
@@ -772,7 +1148,7 @@ check("klasifikace jen aktivních záznamů se shrnutím", migrace.klasifikuj(li
       and db["ai"]["oblasti"] == ["skoda"] and "ns:deska:23cdo418/2026" not in volani[-1]["parts"][0]["text"])
 
 # =====================================================================
-print("\n9) Kontrola dat")
+print("\n10) Kontrola dat")
 # =====================================================================
 KD, KW = tmpdir(), tmpdir()
 k = Sklad("ns", data_dir=KD, web_dir=KW).nacti(NYNI)

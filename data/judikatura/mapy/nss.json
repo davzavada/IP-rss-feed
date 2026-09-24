@@ -1,0 +1,217 @@
+{
+ "poznamka": "Nejvyšší správní soud. oblast_upravy: text z detailu (Oblast úpravy) -> oblasti; neznámý text se zkusí podle části před pomlčkou („Daně - daň z příjmů“ -> „Daně“). Seznam hodnot je ve formuláři vyhledávače (tests/fixtures/nss/formular.html). organy: část názvu správního orgánu nebo účastníka řízení -> oblasti.",
+ "oblast_upravy": {
+  "Azyl": [
+   "socialni_cizinci"
+  ],
+  "Bezpečnost": [
+   "spravni"
+  ],
+  "Bezpečnost práce": [
+   "pracovni",
+   "spravni"
+  ],
+  "Cenné papíry": [
+   "finance"
+  ],
+  "Ceny": [
+   "spravni"
+  ],
+  "Cla": [
+   "dane"
+  ],
+  "Daně": [
+   "dane"
+  ],
+  "Dotace, rozpočtová pravidla": [
+   "spravni"
+  ],
+  "Důchodové pojištění": [
+   "socialni_cizinci"
+  ],
+  "Duševní vlastnictví": [
+   "prumyslova_prava"
+  ],
+  "Energetika": [
+   "spravni"
+  ],
+  "Finance": [
+   "finance"
+  ],
+  "Kárná odpovědnost": [
+   "spravni"
+  ],
+  "Kompetenční spor podle § 2 z.č. 131/2002 Sb.": [
+   "spravni"
+  ],
+  "Kompetenční spor podle § 97 a násl. s.ř.s.": [
+   "spravni"
+  ],
+  "Kultura": [
+   "spravni"
+  ],
+  "Loterie a jiné podobné hry": [
+   "spravni"
+  ],
+  "Nezpůsobilost soudce §  91 z.č. 6/2002 Sb.": [
+   "spravni"
+  ],
+  "Nezpůsobilost státního zástupce § 32 z.č. 283/1993 Sb.": [
+   "spravni"
+  ],
+  "Obyvatelstvo": [
+   "spravni"
+  ],
+  "Odškodnění": [
+   "spravni"
+  ],
+  "Ochrana hospodářské soutěže a veřejné zakázky": [
+   "verejne_zakazky",
+   "soutez"
+  ],
+  "Ochrana spotřebitele": [
+   "spotrebitel",
+   "spravni"
+  ],
+  "Pobyt cizinců": [
+   "socialni_cizinci"
+  ],
+  "Politické strany a hnutí": [
+   "spravni"
+  ],
+  "Poplatky": [
+   "dane"
+  ],
+  "Pozemky a zeměměřictví": [
+   "vecna_prava",
+   "spravni"
+  ],
+  "Pozemní komunikace": [
+   "spravni"
+  ],
+  "Právo na informace": [
+   "spravni"
+  ],
+  "Přestupky": [
+   "spravni"
+  ],
+  "Referendum": [
+   "spravni"
+  ],
+  "Regulace reklamy": [
+   "nekala_soutez",
+   "spravni"
+  ],
+  "Restituce": [
+   "vecna_prava"
+  ],
+  "Shromažďovací právo": [
+   "ustavni",
+   "spravni"
+  ],
+  "Služební poměr": [
+   "pracovni"
+  ],
+  "Sociální ochrana": [
+   "socialni_cizinci"
+  ],
+  "Spolčovací právo": [
+   "spravni"
+  ],
+  "Státní a finanční kontrola": [
+   "spravni"
+  ],
+  "Státní občanství": [
+   "socialni_cizinci"
+  ],
+  "Stavební zákon": [
+   "stavebni_zp"
+  ],
+  "Školství a věda": [
+   "spravni"
+  ],
+  "Telekomunikace, spoje, pošta": [
+   "it",
+   "spravni"
+  ],
+  "Tisk, rozhlas, televize": [
+   "osobnost_media",
+   "spravni"
+  ],
+  "Územní samospráva": [
+   "spravni"
+  ],
+  "Vodní právo": [
+   "stavebni_zp"
+  ],
+  "Volby": [
+   "spravni"
+  ],
+  "Zájmová a profesní samospráva": [
+   "spravni"
+  ],
+  "Zaměstnanost": [
+   "socialni_cizinci"
+  ],
+  "Zbraně a střelivo": [
+   "spravni"
+  ],
+  "Zdravotnictví a hygiena": [
+   "spravni"
+  ],
+  "Zemědělství, myslivost a rybářství": [
+   "spravni"
+  ],
+  "Živnostenské právo": [
+   "spravni"
+  ],
+  "Životní prostředí": [
+   "stavebni_zp"
+  ]
+ },
+ "organy": {
+  "Úřad průmyslového vlastnictví": [
+   "prumyslova_prava"
+  ],
+  "Úřad pro ochranu osobních údajů": [
+   "gdpr"
+  ],
+  "Český telekomunikační úřad": [
+   "it"
+  ],
+  "Národní úřad pro kybernetickou a informační bezpečnost": [
+   "it"
+  ],
+  "Rada pro rozhlasové a televizní vysílání": [
+   "osobnost_media"
+  ],
+  "Česká obchodní inspekce": [
+   "spotrebitel"
+  ],
+  "Česká národní banka": [
+   "finance"
+  ],
+  "Úřad pro ochranu hospodářské soutěže": [
+   "verejne_zakazky",
+   "soutez"
+  ],
+  "Finanční úřad": [
+   "dane"
+  ],
+  "Odvolací finanční ředitelství": [
+   "dane"
+  ],
+  "Generální finanční ředitelství": [
+   "dane"
+  ],
+  "Celní úřad": [
+   "dane"
+  ],
+  "Generální ředitelství cel": [
+   "dane"
+  ],
+  "Česká správa sociálního zabezpečení": [
+   "socialni_cizinci"
+  ]
+ }
+}
