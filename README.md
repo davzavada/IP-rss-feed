@@ -4,8 +4,8 @@ Statická stránka ([rss.davidzavada.cz](https://rss.davidzavada.cz/)),
 kterou dvakrát denně plní scrapery z GitHub Actions. Sleduje rozhodnutí
 senátu 23 Cdo Nejvyššího soudu, judikaturu Soudního dvora EU k duševnímu
 vlastnictví a IT, články z právních časopisů a nařízená jednání IP senátů
-Městského a Vrchního soudu v Praze. Ke všemu dělá AI (Gemma přes Gemini API)
-heslo a třívěté shrnutí, jednou týdně z toho napíše dvoutýdenní přehled.
+Městského a Vrchního soudu v Praze. Ke všemu dělá AI (Gemini API) heslo
+a třívěté shrnutí, jednou týdně z toho napíše dvoutýdenní přehled.
 
 ## Jak to drží pohromadě
 
@@ -24,6 +24,15 @@ Každý feed si vede **stav prvního výskytu** (`*_seen.json`): kdy položku
 poprvé viděl. Podle něj drží položku v okně (NS dva týdny, časopisy čtyři,
 CJEU osm) a označuje ji jako novou, když přibyla v posledních 24 hodinách.
 Tím nezáleží na tom, kdy zdroj položku datuje ani jestli datum později přepíše.
+
+**AI** běží na free tieru Gemini API (klíč z Google AI Studia, projekt bez
+billingu): nejdřív `gemini-flash-lite-latest`, a když nemůže (limit, výpadek),
+nejnovější Gemma ze seznamu modelů. Pro a Flash se nepoužívají – Pro má na
+free tieru kvótu vyčerpanou hned a Flash bývá přetížený. Alias `-latest`
+posouvá Google sám, takže nový model se použije bez zásahu. Po vyčerpaném
+denním limitu jde běh na další model. Pořadí jde vnutit proměnnou
+`GEMINI_MODELS` (názvy oddělené čárkou). Modelům jdou celé texty rozhodnutí,
+bez ořezu.
 
 **AI shrnutí** se cachují v `*_meta.json` podle stejného klíče a prořezávají
 se spolu se stavem prvního výskytu, takže soubory nerostou donekonečna. Bez

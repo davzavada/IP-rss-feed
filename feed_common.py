@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Sdílené utility pro RSS scrapery: sledování prvního výskytu položek a
-volitelné AI shrnutí přes Gemma (Gemini API).
+volitelné AI shrnutí přes Gemini API.
 
 Sledování prvního výskytu: každý feed si drží JSON {guid: ISO datum prvního
 výskytu}. Podle něj:
@@ -11,15 +11,18 @@ výskytu}. Podle něj:
 Tím je doba zobrazení stabilní (nezávisí na tom, když zdroj přepíše datum)
 a u všech feedů jednotná.
 
-AI shrnutí: jednotný klient Gemma 4 31B (štědrý free-tier) s throttlingem
-a opakováním při 429/5xx. Sdílí ho hlavní scraper i ostatní feedy. Cache
-shrnutí mají všechny feedy stejnou (summarize_with_cache).
+AI: jednotný klient Gemini API na free tieru – Flash-Lite, a když nemůže,
+nejnovější Gemma; při vyčerpaném limitu nebo výpadku přejde na další model.
+Sdílí ho všechny scrapery i přehled. Cache shrnutí mají všechny feedy
+stejnou (summarize_with_cache).
 """
 
+import atexit
 import base64
 import json
 import os
 import re
+import threading
 import time
 from datetime import datetime, timedelta, timezone
 
@@ -166,25 +169,43 @@ def summarize_with_cache(items, meta_file, key_of, summarize, needs_call=None,
     return items
 
 
-# --- AI shrnutí přes Gemma (Gemini API) ---
-# Gemma 4 31B má štědrý free-tier; throttlujeme na 12 požadavků/min (5 s mezi
-# voláními) a opakujeme při dočasných chybách. Throttle je per-proces – každý
-# scraper běží jako vlastní proces, takže si vystačí s vlastním rozestupem.
+# --- AI přes Gemini API na free tieru ---
+# Klíč je z Google AI Studia a projekt nemá zapnutý billing, takže všechno
+# běží zdarma, ale s denními a minutovými limity zvlášť pro každý model.
+# Pro a Flash se nepoužívají: Pro má na free tieru kvótu vyčerpanou hned
+# a Flash bývá přetížený (503). Klient proto začíná Flash-Lite (rychlý, bere
+# celé texty) a pak zkusí nejnovější Gemmu. Alias „-latest" posouvá Google
+# sám na nejnovější verzi, takže nový model se použije bez zásahu do kódu.
+# Model, který na free tieru není (429 s nulovou kvótou) nebo neexistuje
+# (404), se vyřadí; model s vyčerpaným denním limitem se přeskočí do konce
+# běhu. Pořadí jde vnutit proměnnou GEMINI_MODELS (názvy oddělené čárkou).
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
-GEMINI_MODEL = "gemma-4-31b-it"
-GEMINI_URL = (
-    f"https://generativelanguage.googleapis.com/v1beta/models/"
-    f"{GEMINI_MODEL}:generateContent"
-)
-GEMINI_MIN_INTERVAL = 5.0   # s mezi voláními (= 12 req/min)
-GEMINI_MAX_RETRIES = 4      # opakování při přetížení, timeoutu a výpadku
-# Nad PDF Gemma přemýšlí déle než nad textem a minuta jí občas nestačí –
-# běh smí být delší, shrnutí je cennější než rychlost.
-GEMINI_PDF_TIMEOUT = 150
-# Opakovat má smysl jen u dočasných potíží. Ostatní 4xx (neplatný klíč,
-# vstup, který model nepřijme) vrátí totéž i po dalších pokusech.
-GEMINI_RETRY_STATUSES = (408, 429, 500, 502, 503, 504)
-_gemini_last_call = 0.0
+GEMINI_API = "https://generativelanguage.googleapis.com/v1beta"
+GEMINI_VYCHOZI_MODELY = ("gemini-flash-lite-latest",)
+# Poslední záloha, když se nejnovější Gemma nedá zjistit ze seznamu modelů.
+GEMMA_ZALOZNI = "gemma-4-31b-it"
+# Rozestup mezi voláními téhož modelu (s). Limity za minutu Google u free
+# tieru nezveřejňuje – tohle jsou opatrné hodnoty; když model přesto vrátí
+# 429 za minutu, počká se, kolik si řekne (RetryInfo).
+GEMINI_ROZESTUP = {"pro": 12.0, "flash-lite": 4.0, "flash": 6.0, "gemma": 2.5}
+GEMINI_MIN_INTERVAL = 5.0   # základ backoffu při výpadku
+# Pokusy na jeden model při přetížení a timeoutu. Méně než dřív s jedinou
+# Gemmou: přetížený model (503) je častý a další v pořadí odpoví dřív.
+GEMINI_MAX_RETRIES = 3
+GEMINI_MAX_CEKANI = 90      # nejdéle tolik se čeká na minutový limit
+# Časové limity jednoho volání. Posíláme celé texty a nejlepší modely nad
+# nimi přemýšlejí – běh smí být delší, shrnutí je cennější než rychlost.
+GEMINI_TEXT_TIMEOUT = 180
+GEMINI_PDF_TIMEOUT = 300
+# Opakovat na témže modelu má smysl jen u dočasných potíží. 429 se řeší zvlášť
+# podle toho, jestli jde o limit za minutu, za den, nebo o model mimo free tier.
+GEMINI_RETRY_STATUSES = (408, 500, 502, 503, 504)
+# Bezpečnostní filtry na minimum – trestní rozhodnutí by jinak padala.
+GEMINI_BEZPECNOST = [
+    {"category": c, "threshold": "BLOCK_NONE"}
+    for c in ("HARM_CATEGORY_HARASSMENT", "HARM_CATEGORY_HATE_SPEECH",
+              "HARM_CATEGORY_SEXUALLY_EXPLICIT", "HARM_CATEGORY_DANGEROUS_CONTENT")
+]
 
 # Prompt pro rozhodnutí NS ČR.
 JUDIKATURA_PROMPT = (
@@ -286,13 +307,15 @@ def gemini_enabled():
 
 
 def parse_ai_response(raw):
-    """Rozparsuje odpověď Gemmy ve tvaru 'HESLO: ...' + 'SHRNUTÍ: ...'.
+    """Rozparsuje odpověď modelu ve tvaru 'HESLO: ...' + 'SHRNUTÍ: ...'.
 
     Vrací (shrnutí, heslo). Když značky chybí, bere celý text jako shrnutí.
+    Modely Gemini rády píšou značky tučně (**HESLO:**) – markdown se zahodí.
     """
     def clean(s):
         return re.sub(r"\s+", " ", s).strip()
 
+    raw = re.sub(r"\*\*|__", "", raw or "")
     heslo = ""
     mh = re.search(r"HESLO:\s*(.*?)\s*(?=SHRNUT[IÍ]:|$)", raw, re.IGNORECASE | re.DOTALL)
     if mh:
@@ -307,76 +330,308 @@ def parse_ai_response(raw):
     return clean(summary), heslo
 
 
-def _gemini_generate(parts, max_tokens=4096, timeout=60):
-    """Pošle `parts` (text/inline_data) Gemmě a vrátí surový text odpovědi.
+# --- Klient: výběr modelu, limity, zálohy ---
 
-    Hlídá rozestup mezi voláními a opakuje při dočasných chybách
-    (GEMINI_RETRY_STATUSES) s exponenciálním backoffem. Vrací '' při
-    neúspěchu, useknuté odpovědi nebo vypnutém AI.
+_zamek = threading.Lock()   # chrání sdílený stav níže
+_poradi = None              # seřazené modely pro tento proces (líně z models.list)
+_modely = {}                # model -> stav (rozestup, vyřazení, vypnuté volby…)
+_spotreba = {}              # model -> {"volani", "vstup", "vystup"}
+_klic_zamitnut = False      # 401/403: klíč nebo projekt nepustí nic, dál nezkoušet
 
-    `timeout` je na jedno volání; u dlouhých vstupů (dvoutýdenní přehled)
-    je potřeba víc než výchozí minuta – opakování s tímtéž stropem by
-    jen třikrát spadlo na stejný timeout.
-    """
-    global _gemini_last_call
-    if not gemini_enabled():
-        return ""
 
-    def back_off(attempt, msg):
-        """Ohlásí nezdařený pokus a počká před dalším – po posledním už ne."""
-        if attempt + 1 >= GEMINI_MAX_RETRIES:
-            print(f"    {msg} (pokus {attempt+1}/{GEMINI_MAX_RETRIES})")
-            return
-        backoff = GEMINI_MIN_INTERVAL * (2 ** attempt)
-        print(f"    {msg} – čekám {backoff:.0f}s (pokus {attempt+1}/{GEMINI_MAX_RETRIES})")
-        time.sleep(backoff)
+def _rodina(model):
+    """Rodina modelu kvůli rozestupům a podporovaným volbám."""
+    m = model.lower()
+    if m.startswith("gemma"):
+        return "gemma"
+    if "flash-lite" in m:
+        return "flash-lite"
+    if "flash" in m:
+        return "flash"
+    return "pro" if "pro" in m else "flash"
 
-    payload = {
-        "contents": [{"parts": parts}],
-        # Gemma je „thinking" model – necháme vyšší strop, ať se přemýšlení
-        # i odpověď vejdou (jinak finishReason MAX_TOKENS).
-        "generationConfig": {"temperature": 0.2, "maxOutputTokens": max_tokens},
-    }
-    for attempt in range(GEMINI_MAX_RETRIES):
-        wait = GEMINI_MIN_INTERVAL - (time.monotonic() - _gemini_last_call)
-        if wait > 0:
-            time.sleep(wait)
+
+def _stav(model):
+    with _zamek:
+        st = _modely.get(model)
+        if st is None:
+            st = _modely[model] = {
+                "rozestup": GEMINI_ROZESTUP.get(_rodina(model), GEMINI_MIN_INTERVAL),
+                "dalsi": 0.0,            # kdy nejdřív smí jít další volání
+                "vyrazen": "",           # důvod, proč se model do konce běhu nezkouší
+                "vypnuto": set(),        # volby, které model odmítl (system, mysleni…)
+                "selhani": 0,            # položky po sobě, na kterých model selhal
+                "zamek": threading.Lock(),
+            }
+        return st
+
+
+def _seznam_modelu():
+    """Názvy modelů, které klíč smí volat přes generateContent; None, když
+    se seznam nepodaří stáhnout (pak se jede podle výchozího pořadí)."""
+    try:
+        r = requests.get(f"{GEMINI_API}/models", params={"pageSize": 1000},
+                         headers={"x-goog-api-key": GEMINI_API_KEY}, timeout=30)
+        if r.status_code != 200:
+            print(f"    AI: seznam modelů nedostupný ({r.status_code})")
+            return None
+        return {m["name"].split("/", 1)[-1] for m in r.json().get("models", [])
+                if "generateContent" in m.get("supportedGenerationMethods", [])}
+    except Exception as e:
+        print(f"    AI: seznam modelů nedostupný ({e})")
+        return None
+
+
+def _nejnovejsi_gemma(dostupne):
+    """Nejnovější a největší „hustá" Gemma (gemma-4-31b-it před gemma-4-26b-a4b-it
+    i před gemma-3-27b-it); None, když žádná v seznamu není."""
+    kandidati = []
+    for nazev in dostupne or ():
+        m = re.fullmatch(r"gemma-(\d+(?:\.\d+)?)-(\d+)b-it", nazev)
+        if m:
+            kandidati.append((float(m.group(1)), int(m.group(2)), nazev))
+    return max(kandidati)[2] if kandidati else None
+
+
+def gemini_modely():
+    """Pořadí modelů pro tento proces: vnucené GEMINI_MODELS, jinak výchozí
+    aliasy, které klíč zná, a nakonec nejnovější Gemma."""
+    global _poradi
+    if _poradi is not None:
+        return _poradi
+    vnucene = [m.strip() for m in os.environ.get("GEMINI_MODELS", "").split(",") if m.strip()]
+    if vnucene:
+        poradi = vnucene
+    else:
+        dostupne = _seznam_modelu()
+        poradi = [m for m in GEMINI_VYCHOZI_MODELY if dostupne is None or m in dostupne]
+        poradi.append(_nejnovejsi_gemma(dostupne) or GEMMA_ZALOZNI)
+    with _zamek:
+        if _poradi is None:
+            _poradi = poradi
+            print(f"    AI: pořadí modelů {', '.join(_poradi)}")
+    return _poradi
+
+
+def _pockej_na_model(model):
+    """Rozestup mezi voláními téhož modelu; bezpečné i pro víc vláken."""
+    st = _stav(model)
+    with st["zamek"]:
+        ted = time.monotonic()
+        if st["dalsi"] > ted:
+            time.sleep(st["dalsi"] - ted)
+        st["dalsi"] = time.monotonic() + st["rozestup"]
+
+
+def _telo(model, parts, system, schema, max_tokens):
+    """JSON dotazu pro daný model, bez voleb, které model dřív odmítl."""
+    st = _stav(model)
+    gemma = _rodina(model) == "gemma"
+    vypnuto = st["vypnuto"]
+    if system and (gemma or "system" in vypnuto):
+        # Gemma systémové instrukce nebere – předřadí se textu dotazu.
+        parts = [{"text": system}] + list(parts)
+        system = None
+    config = {"temperature": 0.2, "maxOutputTokens": max_tokens}
+    telo = {"contents": [{"role": "user", "parts": list(parts)}], "generationConfig": config}
+    if system:
+        telo["systemInstruction"] = {"parts": [{"text": system}]}
+    if schema and not gemma and "json" not in vypnuto:
+        config["responseMimeType"] = "application/json"
+        config["responseSchema"] = schema
+    if not gemma and "mysleni" not in vypnuto:
+        # Na shrnutí stačí málo přemýšlení a je výrazně rychlejší.
+        config["thinkingConfig"] = {"thinkingLevel": "low"}
+    if "bezpecnost" not in vypnuto:
+        telo["safetySettings"] = GEMINI_BEZPECNOST
+    return telo
+
+
+# Podle slova ve zprávě u 400 se pozná, kterou volbu model nebere.
+_VOLBY_Z_CHYBY = (
+    ("mysleni", ("thinking",)),
+    ("json", ("responseschema", "response_schema", "responsemimetype",
+              "response_mime_type", "json mode")),
+    ("system", ("systeminstruction", "system_instruction", "developer instruction")),
+    ("bezpecnost", ("safety",)),
+)
+
+
+def _kvota_z_chyby(chyba):
+    """Z těla 429 vytáhne (denní limit?, nulová kvóta?, čekání v s)."""
+    denni = nulova = False
+    cekani = None
+    for d in chyba.get("details") or []:
+        typ = d.get("@type", "")
+        if typ.endswith("QuotaFailure"):
+            for v in d.get("violations") or []:
+                jmeno = f"{v.get('quotaId', '')} {v.get('quotaMetric', '')}".lower()
+                if "perday" in jmeno or "per_day" in jmeno:
+                    denni = True
+                if str(v.get("quotaValue", "")).strip() == "0":
+                    nulova = True
+        elif typ.endswith("RetryInfo"):
+            m = re.match(r"([\d.]+)s", str(d.get("retryDelay", "")))
+            if m:
+                cekani = float(m.group(1))
+    return denni, nulova, cekani
+
+
+def _zapis_spotrebu(model, data):
+    u = data.get("usageMetadata") or {}
+    with _zamek:
+        sp = _spotreba.setdefault(model, {"volani": 0, "vstup": 0, "vystup": 0})
+        sp["volani"] += 1
+        sp["vstup"] += int(u.get("promptTokenCount") or 0)
+        sp["vystup"] += int(u.get("candidatesTokenCount") or 0) + int(u.get("thoughtsTokenCount") or 0)
+
+
+def ai_spotreba():
+    """Kopie spotřeby v tomto procesu: {model: {volani, vstup, vystup}}."""
+    with _zamek:
+        return {m: dict(v) for m, v in _spotreba.items()}
+
+
+@atexit.register
+def _vypis_spotrebu():
+    def cislo(n):
+        return f"{n:,}".replace(",", " ")
+    for model, sp in ai_spotreba().items():
+        print(f"AI spotřeba {model}: {sp['volani']} volání, "
+              f"{cislo(sp['vstup'])} tokenů vstupu, {cislo(sp['vystup'])} výstupu")
+
+
+def _vyrad(model, duvod):
+    st = _stav(model)
+    if not st["vyrazen"]:
+        st["vyrazen"] = duvod
+        print(f"    AI: {model} – {duvod}, dál bez něj")
+
+
+def _zkus_model(model, telo_fn, timeout):
+    """Jeden model, s opakováním při dočasných potížích.
+
+    Vrací (text, verze) při úspěchu; jinak ('', důvod), kde důvod říká, proč
+    má položka zkusit další model („dalsi"), nebo že nemá smysl zkoušet nic
+    („konec")."""
+    global _klic_zamitnut
+    st = _stav(model)
+    for pokus in range(GEMINI_MAX_RETRIES):
+        _pockej_na_model(model)
         try:
             r = requests.post(
-                GEMINI_URL,
+                f"{GEMINI_API}/models/{model}:generateContent",
                 headers={"x-goog-api-key": GEMINI_API_KEY, "Content-Type": "application/json"},
-                json=payload,
-                timeout=timeout,
+                json=telo_fn(), timeout=timeout,
             )
-            _gemini_last_call = time.monotonic()
-            if r.status_code >= 400:
-                # Samotný stavový kód nestačí: 429 z vyčerpané kvóty a 500 od
-                # přetíženého modelu se pozná až podle textu v těle odpovědi.
-                detail = re.sub(r"\s+", " ", r.text)[:300]
-                if r.status_code in GEMINI_RETRY_STATUSES:
-                    back_off(attempt, f"AI {r.status_code}: {detail}")
-                    continue
-                print(f"    AI {r.status_code}: {detail}")
-                return ""
-            data = r.json()
-            cand = data["candidates"][0]
-            parts_out = cand.get("content", {}).get("parts", [])
-            # Gemma vrací „thought" části (přemýšlení) i odpověď – bereme jen odpověď.
-            raw = "".join(p.get("text", "") for p in parts_out if not p.get("thought")).strip()
-            if cand.get("finishReason") == "MAX_TOKENS":
-                print(f"    AI: useknuto (MAX_TOKENS), necachuji – '{raw[:40]}…'")
-                return ""
-            return raw
         except Exception as e:
-            _gemini_last_call = time.monotonic()
-            back_off(attempt, f"CHYBA AI: {e}")
+            if pokus + 1 < GEMINI_MAX_RETRIES:
+                cekej = GEMINI_MIN_INTERVAL * (2 ** pokus)
+                print(f"    AI {model}: {type(e).__name__} – čekám {cekej:.0f}s "
+                      f"(pokus {pokus + 1}/{GEMINI_MAX_RETRIES})")
+                time.sleep(cekej)
             continue
-    print("    AI: vyčerpány pokusy, zkusím příště")
-    return ""
+        if r.status_code == 200:
+            data = r.json()
+            kandidati = data.get("candidates") or []
+            if not kandidati:
+                duvod = (data.get("promptFeedback") or {}).get("blockReason", "bez odpovědi")
+                print(f"    AI {model}: zablokováno ({duvod}), zkusím další model")
+                return "", "dalsi"
+            cand = kandidati[0]
+            text = "".join(p.get("text", "") for p in (cand.get("content") or {}).get("parts", [])
+                           if not p.get("thought")).strip()
+            konec = cand.get("finishReason")
+            _zapis_spotrebu(model, data)
+            if konec == "MAX_TOKENS" or not text:
+                print(f"    AI {model}: bez celé odpovědi ({konec}), zkusím další model")
+                return "", "dalsi"
+            st["selhani"] = 0
+            return text, data.get("modelVersion") or model
+        chyba = {}
+        try:
+            chyba = r.json().get("error") or {}
+        except ValueError:
+            pass
+        zprava = re.sub(r"\s+", " ", str(chyba.get("message") or r.text))[:200]
+        if r.status_code == 429:
+            denni, nulova, cekani = _kvota_z_chyby(chyba)
+            if nulova:
+                _vyrad(model, "na free tieru není")
+                return "", "dalsi"
+            if denni:
+                _vyrad(model, "denní limit vyčerpán")
+                return "", "dalsi"
+            cekej = min(cekani or GEMINI_MIN_INTERVAL * (2 ** pokus), GEMINI_MAX_CEKANI)
+            print(f"    AI {model}: limit za minutu – čekám {cekej:.0f}s")
+            time.sleep(cekej)
+            continue
+        if r.status_code == 400:
+            nizko = zprava.lower()
+            for volba, slova in _VOLBY_Z_CHYBY:
+                if volba not in st["vypnuto"] and any(w in nizko for w in slova):
+                    st["vypnuto"].add(volba)
+                    print(f"    AI {model}: nebere volbu „{volba}\", posílám bez ní")
+                    break
+            else:
+                # Třeba příliš dlouhý vstup – jiný model ho může vzít.
+                print(f"    AI {model}: 400 {zprava}")
+                return "", "dalsi"
+            continue
+        if r.status_code == 404:
+            _vyrad(model, "neexistuje")
+            return "", "dalsi"
+        if r.status_code in (401, 403):
+            _klic_zamitnut = True
+            print(f"    AI: klíč odmítnut ({r.status_code}: {zprava}) – AI v tomto běhu končí")
+            return "", "konec"
+        if r.status_code in GEMINI_RETRY_STATUSES:
+            if pokus + 1 < GEMINI_MAX_RETRIES:
+                cekej = GEMINI_MIN_INTERVAL * (2 ** pokus)
+                print(f"    AI {model}: {r.status_code} – čekám {cekej:.0f}s "
+                      f"(pokus {pokus + 1}/{GEMINI_MAX_RETRIES})")
+                time.sleep(cekej)
+            continue
+        print(f"    AI {model}: {r.status_code} {zprava}")
+        return "", "dalsi"
+    # Pokusy došly na dočasných chybách. Model zůstává ve hře, ale když selže
+    # na třech položkách po sobě, je nejspíš přetížený – do konce běhu pryč.
+    st["selhani"] += 1
+    if st["selhani"] >= 3:
+        _vyrad(model, "opakovaně nedostupný")
+    return "", "dalsi"
+
+
+def ai_volani(parts, system=None, schema=None, max_tokens=8192, timeout=GEMINI_TEXT_TIMEOUT):
+    """Pošle dotaz nejlepšímu dostupnému modelu, při neúspěchu dalšímu.
+
+    parts   – části dotazu (text, inline_data), jak je bere generateContent
+    system  – systémová instrukce (Gemmě se předřadí textu)
+    schema  – JSON schéma odpovědi pro modely, které ho umějí (jinak text)
+
+    Vrací (odpověď, model); ('', '') při neúspěchu nebo vypnutém AI."""
+    if not gemini_enabled() or _klic_zamitnut:
+        return "", ""
+    for model in gemini_modely():
+        if _stav(model)["vyrazen"]:
+            continue
+        text, vysledek = _zkus_model(
+            model, lambda: _telo(model, parts, system, schema, max_tokens), timeout)
+        if text:
+            return text, vysledek
+        if vysledek == "konec":
+            break
+    print("    AI: žádný model nedal odpověď, zkusím příště")
+    return "", ""
+
+
+def _gemini_generate(parts, max_tokens=8192, timeout=GEMINI_TEXT_TIMEOUT):
+    """Surový text odpovědi (starší rozhraní, beze jména modelu)."""
+    return ai_volani(parts, max_tokens=max_tokens, timeout=timeout)[0]
 
 
 def gemini_summarize_pdf(pdf_bytes, prompt):
-    """Pošle PDF + prompt Gemmě, vrátí (shrnutí, heslo). ('', '') při neúspěchu."""
+    """Pošle PDF + prompt, vrátí (shrnutí, heslo). ('', '') při neúspěchu."""
     if not pdf_bytes:
         return "", ""
     parts = [
@@ -390,25 +645,22 @@ def gemini_summarize_pdf(pdf_bytes, prompt):
 
 
 def gemini_summarize_text(text, prompt):
-    """Pošle text + prompt Gemmě, vrátí (shrnutí, heslo). ('', '') při neúspěchu."""
+    """Pošle text + prompt, vrátí (shrnutí, heslo). ('', '') při neúspěchu.
+
+    Text jde celý – modely berou stovky tisíc tokenů a rozhodnutí se má
+    shrnovat z celého znění, ne z ořezu."""
     text = (text or "").strip()
     if not text:
         return "", ""
-    # Příliš dlouhý text ořízneme – pro shrnutí stačí začátek/podstata.
-    if len(text) > 20000:
-        text = text[:20000]
     parts = [{"text": prompt + "\n\n--- TEXT ---\n" + text}]
     return parse_ai_response(_gemini_generate(parts))
 
 
-def gemini_generate_raw(prompt, text, max_tokens=8192, timeout=240):
-    """Pošle prompt + text Gemmě a vrátí surovou odpověď bez parsování.
+def gemini_generate_raw(prompt, text, max_tokens=8192, timeout=300):
+    """Pošle prompt + text a vrátí surovou odpověď bez parsování.
 
-    Pro delší výstupy, které nemají tvar HESLO/SHRNUTÍ (dvoutýdenní přehled).
-    Takové volání má o řád delší vstup než shrnutí jedné položky a Gemma nad
-    ním přemýšlí déle – proto štědrý timeout. Vrací '' při neúspěchu nebo
-    vypnutém AI.
-    """
+    Pro delší výstupy, které nemají tvar HESLO/SHRNUTÍ (dvoutýdenní přehled,
+    rozvrh práce, dávky jmen). Vrací '' při neúspěchu nebo vypnutém AI."""
     text = (text or "").strip()
     if not text:
         return ""

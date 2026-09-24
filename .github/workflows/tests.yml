@@ -13,6 +13,7 @@ on:
       - 'test_hearings.py'
       - 'test_journals.py'
       - 'test_nsoud.py'
+      - 'test_ai.py'
       - 'hearings_config.json'
       - 'tests/**'
       - '.github/workflows/tests.yml'
@@ -35,3 +36,5 @@ jobs:
         run: python test_journals.py
       - name: Testy scraperu rozhodnutí NS
         run: python test_nsoud.py
+      - name: Testy AI klienta
+        run: python test_ai.py

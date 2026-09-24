@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Dvoutýdenní přehled – AI shrnutí shrnutí ze všech feedů dohromady.
 
-Čte hotové feedy z docs/ (běží tedy až po scraperech), pošle Gemmě číslovaný
+Čte hotové feedy z docs/ (běží tedy až po scraperech), pošle AI číslovaný
 seznam položek za poslední dva týdny a nechá si napsat krátký přehled po
 tématech: hlavně to, co je relevantní pro praxi v IP/IT, plus pár dalších
 zajímavostí. Velká část položek se do přehledu nedostane – obecné věci, věci
@@ -177,7 +177,7 @@ def input_hash(items):
 
 
 def _strip_markdown(text):
-    """Odstraní markdown ozdoby, které Gemma občas přidá (**TÉMA:**, odrážky).
+    """Odstraní markdown ozdoby, které modely občas přidají (**TÉMA:**, odrážky).
 
     Dělá se to před parsováním, jinak by se značky TÉMA/TEXT/ZDROJE nenašly.
     """

@@ -1022,7 +1022,7 @@ def scrape_jiplp():
         JIPLP_ISSN, JIPLP_LABEL, JIPLP_NAME, "OUP")
 
 
-# --- AI shrnutí (Gemma) ---
+# --- AI shrnutí ---
 
 # Vydavatelé místo obsahu občas pošlou hlášku o vypnutém JavaScriptu nebo
 # kontrolu prohlížeče. Takový text nesmí jít do AI: model z něj buď udělá
@@ -1078,7 +1078,7 @@ def fetch_page(url, limit=6000):
 
 
 def enrich_summaries(items):
-    """Doplní AI shrnutí (HESLO + SHRNUTÍ) přes Gemma; cache podle guid.
+    """Doplní AI shrnutí (HESLO + SHRNUTÍ); cache podle guid.
 
     Volá se až na ponechané položky (po okně). Články (OJS, Crossref)
     shrnuje z názvu a anotace/abstraktu, čísla časopisů (ÚPV) z celého PDF,
