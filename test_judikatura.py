@@ -1103,7 +1103,7 @@ check("SDEU: rozsudky, usnesení a stanoviska za 14 dní (bez abstraktů a výta
 z = next(z for z in rozh if z["id"] == "sdeu:62025CJ0151")
 check("SDEU: záznam rozsudku – věc, druh, data, ECLI, odkaz",
       z["spz"] == "C-151/25" and z["druh"] == "rozsudek" and z["datum"] == z["zverejneno"] == "2026-09-24"
-      and z["ecli"] == "ECLI:EU:C:2026:789" and z["url"] == "https://curia.europa.eu/juris/liste.jsf?num=C-151/25&language=cs"
+      and z["ecli"] == "ECLI:EU:C:2026:789" and z["url"] == "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0151"
       and z["meta"] == {"soud_eu": "Soudní dvůr", "celex": "62025CJ0151"}, str(z))
 ozn = soud_sdeu.zaznamy_oznameni(SPARQL_OZN)
 z = next(z for z in ozn if z["spz"] == "C-630/26")
