@@ -1,15 +1,13 @@
-name: Update RSS Feed
+name: Časopisy, jednání a přehled
 
 on:
   schedule:
-    # Cron neurčuje, kdy se scrapuje – jen jak často se workflow ozve. GitHub
-    # totiž scheduled běhy nedoručuje spolehlivě: od konce srpna 2026 chodí
-    # se zpožděním hodin, celé dny mlčí (27. a 31. 8.) a hlavně jich pustí
-    # jen zlomek. Naplánováno je 24 výskytů denně, reálně dorazí zhruba
-    # jeden za tři až pět hodin – zahustit cron víc nepomůže, GitHub ostatní
-    # výskyty zahodí. Kdy se opravdu pracuje, rozhoduje až krok „Naplánovat
-    # běh" podle skutečného pražského času.
-    - cron: '5 * * * *'
+    # Jednou denně ve 2:00 pražského času, stejně jako judikatura. Cron počítá
+    # v UTC, proto dva výrazy – 0:00 UTC je 2:00 v letním čase, 1:00 UTC ve
+    # 2:00 v zimním; krok „Naplánovat běh" pustí ten, který odpovídá (podle
+    # výrazu, který běh vyvolal – GitHub scheduled běhy chodí se zpožděním).
+    - cron: '0 0 * * *'
+    - cron: '0 1 * * *'
   workflow_dispatch:       # ruční spuštění
     inputs:
       skip_gemini:
@@ -33,77 +31,34 @@ jobs:
       - uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          # Rozhodnutí, jestli okno už má svůj běh za sebou, se dělá podle data
-          # posledního commitu s feedy – na to je potřeba kus historie, ne HEAD.
+          # Kus historie, ať rebase před pushem nemusí dotahovat všechno.
           fetch-depth: 50
 
-      # Feed má být hotový v 7:00 a ve 14:00 pražského času. Protože běhy chodí
-      # řídce a nepředvídatelně, nestačí čekat na jeden ve správnou chvíli:
-      # okna jsou proto široká (23:00–7:00 a 9:00–14:00) a uvnitř nich se
-      # scrapuje pokaždé, když je feed starší než dvě hodiny. Každý běh, který
-      # do okna spadne, tak posune data blíž k cíli – a ten poslední před 7:00
-      # nebo 14:00 rozhoduje o tom, co uživatel uvidí. Mimo okna se nedělá nic.
-      #
-      # Všechno se počítá v Europe/Prague, takže přechod mezi letním a zimním
-      # časem se řeší sám a nejsou kvůli němu potřeba zdvojené cron výrazy.
+      # Jeden běh denně ve 2:00: časopisy a jednání; v pondělí navíc
+      # dvoutýdenní přehled, ať je hotový na začátek týdne. Ruční spuštění
+      # stáhne všechno a přehled přegeneruje.
       - name: Naplánovat běh
         id: plan
         run: |
-          hour=$(TZ=Europe/Prague date +%-H)
-          dnes=$(TZ=Europe/Prague date +%F)
-          # Poslední commit s feedy = kdy naposled nějaký běh práci opravdu
-          # udělal. Když žádný takový v historii není, ber to jako dávno.
-          last=$(git log --grep='^Update RSS feeds' -1 --format=%ct)
-          stari=$(( $(date +%s) - ${last:-0} ))
-
-          if [ "$hour" -ge 23 ] || [ "$hour" -lt 7 ]; then
-            window=ranni
-          elif [ "$hour" -ge 9 ] && [ "$hour" -lt 14 ]; then
-            window=odpoledni
-          else
-            window=zadne
-          fi
-
+          posun=$(TZ=Europe/Prague date +%z)
           if [ '${{ github.event_name }}' = 'workflow_dispatch' ]; then
             scrape=true; duvod='ruční spuštění'
-          elif [ "$window" = zadne ]; then
-            scrape=false; duvod='mimo okna'
-          elif [ "$stari" -lt 7200 ]; then
-            scrape=false; duvod="okno $window, feed je mladší než dvě hodiny"
           else
-            scrape=true; duvod="okno $window"
+            case "${{ github.event.schedule }}|$posun" in
+              '0 0 * * *|+0200'|'0 1 * * *|+0100') scrape=true; duvod='denní běh ve 2:00' ;;
+              *) scrape=false; duvod='tento cron není 2:00 v Praze (druhý výraz je pro jiný čas roku)' ;;
+            esac
           fi
-
-          # Dvoutýdenní přehled jednou týdně: v pondělí ráno, ať je na stránce
-          # hotový na začátek týdne. Ranní okno začíná už v neděli
-          # ve 23:00, proto se kromě dne hlídá i to, že je po půlnoci. Když už
-          # dnešní přehled existuje, podruhé se negeneruje – během jednoho rána
-          # se do okna vejde víc scrapovacích běhů.
           digest=false
           if [ '${{ github.event_name }}' = 'workflow_dispatch' ]; then
             digest=true
-          elif [ "$scrape" = true ] && [ "$window" = ranni ] && [ "$hour" -lt 7 ] \
-               && [ "$(TZ=Europe/Prague date +%u)" = "1" ]; then
-            prehled=$(TZ=Europe/Prague date -d \
-              "$(grep -m1 '"generated"' docs/digest.json | cut -d'"' -f4)" +%F 2>/dev/null || true)
-            [ "$prehled" = "$dnes" ] || digest=true
+          elif [ "$scrape" = true ] && [ "$(TZ=Europe/Prague date +%u)" = "1" ]; then
+            digest=true
           fi
-
-          # Jednání (dokumenty na justice.cz) trvají 13–16 minut a přehledy soudů
-          # se mění nejvýš párkrát denně – stačí nejvýš jednou za 6 hodin.
-          # Ruční spuštění je stáhne vždy.
-          jednani=$scrape
-          if [ "$scrape" = true ] && [ '${{ github.event_name }}' != 'workflow_dispatch' ]; then
-            posledni=$(date -d "$(python3 -c "import json; print(json.load(open('docs/hearings.json'))['generated'])" 2>/dev/null)" +%s 2>/dev/null || echo 0)
-            if [ $(( $(date +%s) - posledni )) -lt 21600 ]; then
-              jednani=false
-            fi
-          fi
-
           echo "scrape=$scrape" >> "$GITHUB_OUTPUT"
           echo "digest=$digest" >> "$GITHUB_OUTPUT"
-          echo "jednani=$jednani" >> "$GITHUB_OUTPUT"
-          echo "$(TZ=Europe/Prague date '+%a %H:%M %Z'), feed starý $(( stari / 60 )) min -> scrapery: $scrape, jednání: $jednani, přehled: $digest ($duvod)"
+          echo "jednani=$scrape" >> "$GITHUB_OUTPUT"
+          echo "$(TZ=Europe/Prague date '+%a %H:%M %Z') -> scrapery: $scrape, přehled: $digest ($duvod)"
 
       - uses: actions/setup-python@v6
         if: steps.plan.outputs.scrape == 'true'
@@ -136,11 +91,11 @@ jobs:
           SKIP_GEMINI: ${{ inputs.skip_gemini }}
         run: python scraper_hearings.py
 
-      # Přehled čte hotové feedy, takže běží až po scraperech – jednou týdně,
-      # v pondělí ráno. Ručně spuštěný běh ho udělá taky. DIGEST_FORCE říká
+      # Přehled čte hotové výstupy (časopisy, okna judikatury), takže běží až po
+      # scraperech – jednou týdně, v pondělí ve 2:00. Ručně spuštěný běh ho udělá taky. DIGEST_FORCE říká
       # digest.py, ať přehled napíše znovu i tehdy, když se vstup od minula
       # nezměnil – jednou týdně chceme čerstvý text, ne ten čtrnáct dní starý.
-      - name: Dvoutýdenní přehled (pondělí ráno)
+      - name: Dvoutýdenní přehled (pondělí)
         id: prehled
         if: steps.plan.outputs.digest == 'true'
         continue-on-error: true
@@ -150,14 +105,14 @@ jobs:
           DIGEST_FORCE: '1'
         run: python digest.py
 
-      - name: Commit & push feeds
+      - name: Commit & push
         if: always() && steps.plan.outputs.scrape == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           # docs/data/judikatura patří workflow judikatura.yml.
           git add docs/ ':!docs/data/judikatura' journals_seen.json journals_meta.json hearings_config.json
-          git diff --cached --quiet || git commit -m "Update RSS feeds $(date -u +%Y-%m-%d)"
+          git diff --cached --quiet || git commit -m "Update journals and hearings $(date -u +%Y-%m-%d)"
           # Kdyby se main mezitím pohnul (dlouhý běh scraperu), přebasuj a zkus
           # znovu; u konfliktů v generovaných souborech vyhrává naše novější verze.
           for i in 1 2 3; do
@@ -172,7 +127,7 @@ jobs:
         if: always() && steps.plan.outputs.scrape == 'true'
         run: |
           if [ '${{ steps.jednani.outcome }}' = failure ]; then
-            echo "::warning::scraper_hearings selhal, ostatní feedy jsou commitnuté"
+            echo "::warning::scraper_hearings selhal, ostatní výstupy jsou commitnuté"
           fi
           selhalo=""
           [ '${{ steps.casopisy.outcome }}' = failure ] && selhalo="$selhalo časopisy"

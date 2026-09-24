@@ -177,15 +177,15 @@ vlastnictví a IT, všechny časopisy.
 
 ## Workflow
 
-- `update-feed.yml` – cron se ozývá každou hodinu, ale scrapuje jen v oknech
-  před 7:00 a 14:00 pražského času (GitHub scheduled běhy chodí řídce
-  a nepravidelně, proto jsou okna široká). V pondělí ráno navíc `digest.py`.
-  Každý scraper je samostatný krok. Když jeden spadne, ostatní doběhnou a
-  commit uloží, co se povedlo. Jednání (13–16 minut) jen jednou za 6 hodin.
-- `judikatura.yml` – sběr judikatury v nočním okně 23:00–7:00 (hlavní
-  dávka, v 7:00 je hotovo) a v denním 9:00–14:00, v okně pokaždé, když od
-  posledního běhu uběhlo aspoň 50 minut. Ručně jde pustit jen pro vybrané
-  soudy, bez AI nebo s jiným rozpočtem.
+- `update-feed.yml` – časopisy a kalendář jednání jednou denně ve 2:00
+  pražského času, v pondělí k tomu `digest.py`. Cron má dva výrazy (0:00
+  a 1:00 UTC) a krok „Naplánovat běh" pustí ten, který v daném čase roku
+  odpovídá 2:00 v Praze. Každý scraper je samostatný krok. Když jeden
+  spadne, ostatní doběhnou a commit uloží, co se povedlo.
+- `judikatura.yml` – sběr judikatury taky jednou denně ve 2:00 (soudy
+  zveřejňují přes den, ráno je hotovo všechno z předchozího dne). Jediný
+  běh má na AI rozpočet až 300 rozhodnutí a 90 minut. Ručně jde pustit
+  kdykoli, jen pro vybrané soudy, bez AI nebo s jiným rozpočtem.
 - `probe.yml` – jen ručně: stáhne odpovědi webů soudů (formuláře, výpisy,
   detaily, InfoCuria, SPARQL) jako artefakt, s volbou `ulozit` je commitne
   do vybrané větve jako fixtures. Na weby soudů je vidět jen z Actions.

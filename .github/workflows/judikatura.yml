@@ -2,10 +2,12 @@ name: Judikatura
 
 on:
   schedule:
-    # Jako u feedů: cron jen budí workflow, kdy se opravdu pracuje, rozhoduje
-    # krok „Naplánovat běh" podle pražského času. Minuta 35 je schválně jinde
-    # než u update-feed.yml (5), ať se běhy nepotkávají při pushi.
-    - cron: '35 * * * *'
+    # Jednou denně ve 2:00 pražského času. Cron počítá v UTC, proto dva
+    # výrazy – 0:00 UTC je 2:00 v letním čase, 1:00 UTC ve 2:00 v zimním;
+    # krok „Naplánovat běh" pustí ten, který odpovídá (podle výrazu, který
+    # běh vyvolal – GitHub scheduled běhy chodí i s hodinovým zpožděním).
+    - cron: '0 0 * * *'
+    - cron: '0 1 * * *'
   workflow_dispatch:
     inputs:
       soudy:
@@ -19,7 +21,7 @@ on:
       max_polozek:
         description: 'Kolik rozhodnutí smí AI v tomto běhu zpracovat'
         type: string
-        default: '120'
+        default: '300'
 
 permissions:
   contents: write
@@ -32,46 +34,30 @@ concurrency:
 jobs:
   judikatura:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 130
     steps:
       - uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          # Stáří posledního běhu se čte z historie commitů.
+          # Kus historie, ať rebase před pushem nemusí dotahovat všechno.
           fetch-depth: 50
 
-      # Soudy zveřejňují přes den. Hlavní dávka jde v noci (23:00–7:00), aby
-      # bylo ráno hotovo, denní okno (9:00–14:00) doplní dopolední rozhodnutí.
-      # V okně se běží pokaždé, když od posledního běhu uběhlo aspoň 50 minut
-      # – scheduled běhy GitHubu chodí řídce, takže každý, který dorazí,
-      # posune frontu. Mimo okna se nedělá nic (ruční spuštění běží vždy).
+      # Jeden běh denně ve 2:00: soudy zveřejňují přes den, ráno je tak hotovo
+      # všechno z předchozího dne. Ruční spuštění běží vždy.
       - name: Naplánovat běh
         id: plan
         run: |
-          hour=$(TZ=Europe/Prague date +%-H)
-          last=$(git log --grep='^Update case law' -1 --format=%ct)
-          stari=$(( $(date +%s) - ${last:-0} ))
-
-          if [ "$hour" -ge 23 ] || [ "$hour" -lt 7 ]; then
-            window=nocni
-          elif [ "$hour" -ge 9 ] && [ "$hour" -lt 14 ]; then
-            window=denni
-          else
-            window=zadne
-          fi
-
+          posun=$(TZ=Europe/Prague date +%z)
           if [ '${{ github.event_name }}' = 'workflow_dispatch' ]; then
             run=true; duvod='ruční spuštění'
-          elif [ "$window" = zadne ]; then
-            run=false; duvod='mimo okna'
-          elif [ "$stari" -lt 3000 ]; then
-            run=false; duvod="okno $window, poslední běh před méně než 50 min"
           else
-            run=true; duvod="okno $window"
+            case "${{ github.event.schedule }}|$posun" in
+              '0 0 * * *|+0200'|'0 1 * * *|+0100') run=true; duvod='denní běh ve 2:00' ;;
+              *) run=false; duvod='tento cron není 2:00 v Praze (druhý výraz je pro jiný čas roku)' ;;
+            esac
           fi
-
           echo "run=$run" >> "$GITHUB_OUTPUT"
-          echo "$(TZ=Europe/Prague date '+%a %H:%M %Z'), poslední běh před $(( stari / 60 )) min -> $run ($duvod)"
+          echo "$(TZ=Europe/Prague date '+%a %H:%M %Z') -> $run ($duvod)"
 
       - uses: actions/setup-python@v6
         if: steps.plan.outputs.run == 'true'
@@ -87,14 +73,14 @@ jobs:
       - name: Sběr judikatury
         id: sber
         if: steps.plan.outputs.run == 'true'
-        timeout-minutes: 45
+        timeout-minutes: 110
         continue-on-error: true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SKIP_GEMINI: ${{ inputs.skip_gemini }}
           SOUDY: ${{ inputs.soudy }}
-          AI_MAX_POLOZEK: ${{ inputs.max_polozek || '120' }}
-          AI_MAX_MINUT: '35'
+          AI_MAX_POLOZEK: ${{ inputs.max_polozek || '300' }}
+          AI_MAX_MINUT: '90'
         run: python scraper_judikatura.py
 
       # Rozbitý archiv nebo okno se necommituje – další běh začne z posledního

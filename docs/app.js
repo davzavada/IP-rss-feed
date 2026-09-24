@@ -570,7 +570,7 @@ function renderToday(results) {
   today.sort((a, b) => new Date(b.datum) - new Date(a.datum));
   if (today.length === 0) {
     container.innerHTML = '<p class="feed-empty">Za posledních 24 hodin nic nepřibylo. ' +
-      "Feedy se obnovují ráno v 7:00 a odpoledne ve 14:00.</p>";
+      "Sběr běží jednou denně ve 2:00 v noci.</p>";
   } else {
     renderTable(today, container, colsToday, "today");
   }
@@ -592,7 +592,7 @@ function stavShrnutiText(polozky, oknoDni) {
   if (cekajici.length) {
     casti.push("AI ještě zpracovává " + cekajici.length + " z " + polozky.length + " rozhodnutí" +
       (oknoDni ? " za posledních " + oknoDni + " dní" : "") + ". Shrnutí a oblasti doplní " +
-      "v nočním (23–7 h) nebo dopoledním (9–14 h) běhu" +
+      "při nočním sběru (ve 2:00)" +
       (bezOblasti === cekajici.length
         ? ", do výběru podle oblastí se tato rozhodnutí dostanou až potom."
         : bezOblasti
