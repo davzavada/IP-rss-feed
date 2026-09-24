@@ -580,7 +580,6 @@ html.is-loading body { visibility: hidden; }
   :root { --obsah-nahore: 20px; }
   main.container { padding-block: var(--obsah-nahore) 48px; gap: 20px; }
   .card-header { padding: 14px 16px 0; }
-  .card-filtr { padding: 10px 16px 0; }
   .pagetabs-lista { margin-inline: -14px; padding-inline: 14px; }
   /* Hlavička by se zalomila do dvou řádků. */
   #updated { display: none; }
@@ -616,36 +615,9 @@ html.is-loading body { visibility: hidden; }
 .ucet-user { display: inline-flex; align-items: center; min-width: 28px; min-height: 28px; }
 
 /* Pod tabulkou judikatury pro nepřihlášeného: ukazuje se výchozí výběr. */
-/* Lišta filtru pod nadpisem karty: přepínač Můj výběr | Vše s počty,
-   za ním tlumeně podle čeho se filtruje a odkaz na úpravu výběru. */
-.card-filtr {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px;
-  padding: 12px 22px 0; font-size: var(--fs-sm); color: var(--muted-foreground);
-}
-.card-filtr[hidden] { display: none; }
-.prepinac {
-  display: inline-flex; padding: 2px; gap: 2px;
-  background: var(--muted); border-radius: 8px;
-}
-.prepinac button {
-  border: 0; background: none; cursor: pointer; font: inherit; color: var(--muted-foreground);
-  padding: 3px 10px; border-radius: 6px; line-height: 1.5;
-}
-.prepinac button:hover { color: var(--foreground); }
-.prepinac button[aria-pressed="true"] {
-  background: var(--card); color: var(--foreground); font-weight: 500; box-shadow: var(--shadow-sm);
-}
-.prepinac button:focus-visible { outline: 2px solid var(--link); outline-offset: 1px; }
-.prepinac .pocet { margin-left: 4px; font-variant-numeric: tabular-nums; }
-.filtr-odkaz a { color: var(--link); text-decoration: none; }
-.filtr-odkaz a:hover { text-decoration: underline; text-underline-offset: 3px; }
-/* Tlačítko, které vypadá jako odkaz (v prázdné tabulce). */
-.odkaz-tl {
-  padding: 0; border: 0; background: none; cursor: pointer;
-  font: inherit; color: var(--link);
-}
-.odkaz-tl:hover { text-decoration: underline; text-underline-offset: 3px; }
-.odkaz-tl:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 4px; }
+.vychozi-pozn { margin: 14px 0 2px; font-size: var(--fs-sm); color: var(--muted-foreground); }
+.vychozi-pozn a { color: var(--link); text-decoration: none; }
+.vychozi-pozn a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 /* Stav AI nad kartou judikatury (kolik rozhodnutí ještě čeká na shrnutí). */
 .card-stav {

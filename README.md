@@ -213,14 +213,6 @@ tabulkami judikatury a nabízí přihlášení (při výpadku Clerku ne).
   se ignoruje).
 - Pravidlo: rozhodnutí je vidět, když spadá do některé z oblastí vybraných
   u jeho soudu; u NS navíc všechna rozhodnutí vybraných senátů.
-- Lišta pod nadpisem karty (zdroje v navigaci pod popiskem „Zdroje",
-  i úvodní stránka): přepínač „Můj výběr | Vše" (nepřihlášenému „Výchozí
-  výběr") s počty, za ním podle čeho se filtruje („IP a IT, senát 23")
-  a „Upravit", nepřihlášenému nabídka přihlášení. Přepnutí na Vše platí jen
-  v relaci prohlížeče (`sessionStorage`, `owl:rezim`) a výběr nemění.
-  Prázdná tabulka řekne, jestli za okno nic nepřibylo, nebo jen nic
-  nespadá do výběru, a nabídne „Zobrazit vše". U časopisů se lišta ukáže,
-  jen když je některý skrytý.
 
 ## Workflow
 
