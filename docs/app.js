@@ -426,19 +426,9 @@ function vidiCasopis(item) {
   return v.skryte_casopisy.indexOf(tagOf(item.title)) < 0;
 }
 
-// Štítky oblastí: nejvýš dvě a „+N", celý seznam v title.
-function oblastiCell(item) {
-  const nazvy = (item.oblasti || []).map(o => OBLASTI[o] || o);
-  if (!nazvy.length) return "";
-  const vidne = nazvy.slice(0, 2).map(n => '<span class="oblast">' + esc(n) + "</span>").join("");
-  const zbytek = nazvy.length > 2 ? '<span class="oblast oblast-vice">+' + (nazvy.length - 2) + "</span>" : "";
-  return '<span class="oblasti" title="' + esc(nazvy.join(", ")) + '">' + vidne + zbytek + "</span>";
-}
-
 // Definice sloupců sdílíme mezi živým feedem a novými položkami.
 const colsNsoud = [
   { label: "Spisová značka", cls: "col-name", render: nameCell },
-  { label: "Oblasti", cls: "col-oblasti", render: oblastiCell },
   { label: "Heslo", cls: "col-heslo", render: hesloCell },
   { label: "Shrnutí", cls: "col-summary", render: summaryCell },
   { label: "Datum", cls: "col-date", render: dateCell }
@@ -1327,8 +1317,8 @@ function initHelp() {
 // Publishable key je veřejný a patří do stránky – podle hostitele se volí
 // instance. Tajný klíč sem nikdy nepatří (je jen v GitHub secrets).
 const CLERK_KLICE = {
-  // "owl.davidzavada.cz": "pk_live_…",   // produkční instance, až bude
-  "*": "pk_test_cHJvdmVuLWpheS0zOTI5LmNsZXJrLmFjY291bnRzLmRldiQ"
+  "owl.davidzavada.cz": "pk_live_Y2xlcmsub3dsLmRhdmlkemF2YWRhLmN6JA",  // produkce
+  "*": "pk_test_cHJvdmVuLWpheS0zOTI5LmNsZXJrLmFjY291bnRzLmRldiQ"        // náhledy, localhost
 };
 // Clerk JS (v6) a jeho komponenty (@clerk/ui) z Frontend API instance.
 const CLERK_JS = "@clerk/clerk-js@6/dist/clerk.browser.js";
@@ -1342,7 +1332,7 @@ function clerkKlic() {
   return CLERK_KLICE[location.hostname] || CLERK_KLICE["*"];
 }
 
-// Frontend API instance je v klíči: pk_test_<base64("host$")>.
+// Frontend API instance je v klíči: pk_live_/pk_test_<base64("host$")>.
 function clerkFrontendApi(klic) {
   try {
     const host = atob(String(klic).split("_").slice(2).join("_")).replace(/\$$/, "");

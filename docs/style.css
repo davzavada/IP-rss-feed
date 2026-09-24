@@ -226,16 +226,6 @@ body.is-resizing { cursor: col-resize; user-select: none; -webkit-user-select: n
 .src-cjeu { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
 .src-journals { background: var(--badge-amber-bg); color: var(--badge-amber-fg); }
 
-/* Oblasti rozhodnutí (ze seznamu oblastí) – neutrální štítky; v úzkém
-   sloupci se zalomí pod sebe, ať se vejdou i delší názvy. */
-.oblasti { display: flex; flex-wrap: wrap; gap: 4px; }
-.oblast {
-  display: inline-block; border-radius: 6px; padding: 1px 7px;
-  font-size: var(--fs-sm); line-height: 1.45;
-  background: var(--muted); color: var(--muted-foreground);
-}
-.oblast-vice { font-variant-numeric: tabular-nums; }
-
 /* Dvoutýdenní přehled (digest.json) – text, ne seznam. */
 .digest-intro { margin: 6px 0 4px; font-size: var(--fs-md); line-height: 1.6; }
 .digest-block { padding: 14px 0; border-bottom: 1px solid var(--border); }
@@ -578,8 +568,6 @@ html.is-loading body { visibility: hidden; }
   .col-author { order: 4; flex-basis: 100%; }
   /* Heslo se v bloku vejde celé – ořezávat ho je potřeba jen ve sloupci. */
   .col-heslo { order: 5; max-width: 100%; white-space: normal; overflow: visible; }
-  /* Oblasti za heslem na stejném řádku, shrnutí až pod nimi. */
-  .col-oblasti { order: 6; }
   .col-summary { order: 6; flex-basis: 100%; color: var(--muted-foreground); }
   .col-src .src, .col-src .tag { margin-bottom: 0; }
 }
