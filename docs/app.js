@@ -297,14 +297,31 @@ function initColumnResize() {
 
 /* ========== Seznamy položek ========== */
 
+// Vyhledávač NSS posílá PDF ke stažení; na webu na Vercelu ho proto
+// odkaz otevře přes náhled (api/pdf.js), který ho prohlížeči předá
+// k zobrazení. Jméno souboru na konci adresy je spisová značka – ukáže se
+// v titulku karty. Lokálně (bez funkcí Vercelu) vede odkaz rovnou na NSS;
+// PDF Nejvyššího soudu prohlížeč ukáže sám.
+const NAHLED_PDF = /(^|\.)davidzavada\.cz$|\.vercel\.app$/.test(location.hostname);
+const NSS_PDF_RE = /^https:\/\/vyhledavac\.nssoud\.cz\/DokumentOriginal\/Index\/(\d+)$/;
+
+function pdfHref(item) {
+  const nss = NAHLED_PDF && NSS_PDF_RE.exec(item.doc || "");
+  if (!nss) return safeHref(item.doc);
+  const jmeno = item.title.replace(/[/\\]+/g, "-").replace(/[^\p{L}\p{N} ._-]+/gu, "")
+    .replace(/\s+/g, " ").trim() || "rozhodnuti";
+  return "/pdf/nss/" + nss[1] + "/" + encodeURIComponent(jmeno + ".pdf");
+}
+
 function nameCell(item) {
   const title = esc(item.title.replace(/^\[[^\]]+\]\s*/, ""));
   const href = safeHref(item.link);
   let html = href ? '<a href="' + href + '">' + title + "</a>" : title;
   // Odkaz ještě na samotný dokument (PDF rozhodnutí, znění předběžné otázky)
-  // – shrnutí je jen shrnutí.
-  const doc = safeHref(item.doc);
-  if (doc) html += ' <a class="doc-link" href="' + doc + '">PDF</a>';
+  // – shrnutí je jen shrnutí. Otevře se v nové kartě, ať čtenář nepřijde
+  // o místo v tabulce.
+  const doc = pdfHref(item);
+  if (doc) html += ' <a class="doc-link" href="' + doc + '" target="_blank" rel="noopener">PDF</a>';
   if (item.vec) html += '<span class="vec">' + esc(item.vec) + "</span>";
   return html;
 }

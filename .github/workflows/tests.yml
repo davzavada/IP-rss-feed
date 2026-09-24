@@ -12,6 +12,7 @@ on:
       - 'scraper_judikatura.py'
       - 'digest.py'
       - 'judikatura/**'
+      - 'api/**'
       - 'docs/data/oblasti.json'
       - 'docs/data/ns_senaty.json'
       - 'test_hearings.py'
@@ -45,3 +46,9 @@ jobs:
         run: python test_ai.py
       - name: Testy dvoutýdenního přehledu
         run: python test_digest.py
+      # Náhled PDF (api/pdf.js) je funkce Vercelu v Node.
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Testy náhledu PDF
+        run: node --test tests/test_pdf_api.js

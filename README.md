@@ -214,17 +214,20 @@ tabulkami judikatury a nabízí přihlášení (při výpadku Clerku ne).
 - `probe.yml` – jen ručně: stáhne odpovědi webů soudů (formuláře, výpisy,
   detaily, InfoCuria, SPARQL) jako artefakt, s volbou `ulozit` je commitne
   do vybrané větve jako fixtures. Na weby soudů je vidět jen z Actions.
+  U každé odpovědi zapíše i `Content-Disposition` (jestli prohlížeč PDF
+  ukáže, nebo stáhne); se soudy `-` stáhne jen zadané adresy.
 - `tests.yml` – `test_hearings.py` a `test_journals.py` nad uloženými
   originály dokumentů v `tests/fixtures`, `test_judikatura.py` (archiv, fronta,
   AI rozbor, adaptéry NS, NSS a ÚS nad uloženými odpověďmi soudů, mapy metadat,
-  migrace, kontrola dat v repu)
-  a `test_ai.py`.
+  migrace, kontrola dat v repu), `test_ai.py`, `test_digest.py`
+  a `tests/test_pdf_api.js` (náhled PDF, v Node).
 
 ## Lokálně
 
 ```
 pip install -r requirements.txt icalendar   # icalendar jen pro testy
 python test_hearings.py && python test_journals.py && python test_judikatura.py
+node --test tests/test_pdf_api.js           # náhled PDF (api/pdf.js)
 python scraper_journals.py                  # a další scrapery stejně
 SKIP_GEMINI=1 python scraper_journals.py    # bez AI
 SKIP_GEMINI=1 python scraper_judikatura.py --soudy ns   # jen objevování
@@ -238,8 +241,19 @@ Stránku stačí otevřít přes libovolný statický server nad `docs/`
 
 Stránku servíruje Vercel: projekt napojený na tohle repo, bez build kroku,
 výstupem je adresář `docs/` (viz `vercel.json`). Nasazuje se jen commit,
-který změní `docs/` nebo `vercel.json` (`ignoreCommand`) – commity se
-stavem scraperů mimo `docs/` deploy nespouštějí. Doménu (`owl.davidzavada.cz`)
+který změní `docs/`, `api/` nebo `vercel.json` (`ignoreCommand`) – commity se
+stavem scraperů mimo `docs/` deploy nespouštějí.
+
+Jediná funkce na serveru je náhled PDF (`api/pdf.js`). Vyhledávač NSS
+posílá PDF rozhodnutí s `Content-Disposition: attachment`, takže se po
+kliknutí rovnou stáhne. Odkaz „PDF" u rozhodnutí NSS proto vede na
+`/pdf/nss/{id}/{spisová značka}.pdf` (přepis ve `vercel.json`); funkce
+PDF z NSS stáhne a pošle ho jako `inline`, prohlížeč ho otevře v nové
+kartě. Bere jen číselné id dokumentu, adresu na NSS si skládá sama. Když
+NSS neodpoví nebo nevrátí PDF (nebo je PDF větší než 4 MB, víc funkce
+vrátit nesmí), přesměruje na původní adresu. CDN Vercelu si PDF drží
+týden. PDF Nejvyššího soudu jdou rovnou na soud, ten je posílá inline sám.
+Lokálně (bez Vercelu) vede odkaz rovnou na NSS. Doménu (`owl.davidzavada.cz`)
 nese záznam CNAME u správce DNS, nasměrovaný na Vercel; GitHub Pages je
 vypnuté. Doména webu pro odkaz na kalendář jde přepsat proměnnou
 `SITE_HOST`. UID událostí v `hearings.ics` drží doménu `rss.davidzavada.cz`
