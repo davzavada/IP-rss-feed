@@ -651,14 +651,69 @@ ROZVRH_AI_PROMPT = (
     "i zpracování osobních údajů. NEpatří sem insolvence, veřejné rejstříky, "
     "cenné papíry, korporace, rozhodčí nálezy, trestní ani správní úsek.\n"
     "Odpověz POUZE platným JSON objektem bez dalšího textu ve tvaru:\n"
-    '{{"senaty": [{{"senat": "<číslo> <rejstřík>", "predseda": "Jméno Příjmení"}}],\n'
+    '{{"senaty": [{{"senat": "<číslo> <rejstřík>", "predseda": "Jméno Příjmení",\n'
+    '               "clenove": ["Jméno Příjmení", ...], "agenda": "stručně"}}],\n'
     '  "soudci": ["Jméno Příjmení", ...]}}\n'
     "Do „senaty“ dej KAŽDOU kombinaci čísla soudního oddělení a rejstříku "
     "(C, EC, Cm, ECm, Co, Cmo…), pod kterou tato oddělení vedou spisové "
     "značky – např. oddělení 12 s rejstříky Cm, ECm, C, EC = čtyři položky "
     "„12 Cm“, „12 ECm“, „12 C“, „12 EC“. Rejstříky Nc a EVCm vynech. "
-    "Do „soudci“ dej předsedy těchto senátů bez titulů. Nic si nevymýšlej."
+    "U každé položky uveď předsedu senátu, v „clenove“ další soudce, kteří "
+    "v senátu rozhodují (samosoudce = prázdný seznam), a v „agenda“ několika "
+    "slovy, jaké věci senát podle rozvrhu soudí. Všechna jména bez titulů. "
+    "Do „soudci“ dej předsedy těchto senátů. Nic si nevymýšlej."
 )
+
+
+def jmeno_bez_titulu(jmeno):
+    """„JUDr. Roman Horáček, MBA" -> „Roman Horáček" (pro zobrazení)."""
+    j = TITLES_RE.sub(" ", str(jmeno or ""))
+    return " ".join(re.sub(r"[.,;()]", " ", j).split())
+
+
+def senat_poradi(k):
+    """Řazení klíčů senátů: podle čísla, pak podle rejstříku."""
+    cislo, _, rejstrik = k.partition(" ")
+    return (int(cislo) if cislo.isdigit() else 0, rejstrik)
+
+
+def rozvrh_z_odpovedi(data):
+    """Z odpovědi AI na rozvrh práce vytáhne (senaty, soudci, sestavy).
+
+    `senaty` a `soudci` jsou ploché seznamy jako dřív – podle nich se filtrují
+    jednání (mark_ip). `sestavy` drží, kdo kterému senátu předsedá a kdo v něm
+    sedí: senáty se stejným předsedou, členy i agendou se slučují do jedné
+    sestavy („1 Cmo, 2 Co – Horáček"). Kalendář je ukazuje pod mřížkou."""
+    senaty, soudci, skupiny = [], set(), {}
+    if not isinstance(data, dict):
+        return [], [], []
+    for polozka in data.get("senaty", []):
+        if not isinstance(polozka, dict):
+            continue
+        m = re.match(r"\s*(\d+)\s*([A-Za-z]+)", str(polozka.get("senat", "")))
+        predseda = jmeno_bez_titulu(polozka.get("predseda"))
+        if predseda:
+            soudci.add(predseda)
+        if not m:
+            continue
+        klic = senat_key(m.group(1), m.group(2))
+        senaty.append(klic)
+        clenove = polozka.get("clenove") if isinstance(polozka.get("clenove"), list) else []
+        clenove = tuple(c for c in (jmeno_bez_titulu(c) for c in clenove)
+                        if c and c != predseda)
+        agenda = " ".join(str(polozka.get("agenda") or "").split())
+        skupiny.setdefault((predseda, clenove, agenda), []).append(klic)
+    for j in data.get("soudci", []):
+        j = " ".join(str(j).split())
+        if j:
+            soudci.add(j)
+    sestavy = [
+        {"senaty": sorted(set(klice), key=senat_poradi), "predseda": predseda,
+         "clenove": list(clenove), "agenda": agenda}
+        for (predseda, clenove, agenda), klice in skupiny.items()
+    ]
+    sestavy.sort(key=lambda x: senat_poradi(x["senaty"][0]))
+    return sorted(set(senaty), key=senat_poradi), sorted(soudci), sestavy
 
 
 def update_rozvrh(config, court, pdf_bytes, source_url):
@@ -667,7 +722,9 @@ def update_rozvrh(config, court, pdf_bytes, source_url):
     cfg = config["courts"][court]
     digest = hashlib.sha256(pdf_bytes).hexdigest()
     zdroj = cfg.get("rozvrh_zdroj") or {}
-    if zdroj.get("hash") == digest:
+    # Sestavy senátů (kdo senátu předsedá, kdo v něm sedí) se ukládají až od
+    # 9/2026. Kde ještě chybí, vytáhne je AI jednou i z nezměněného rozvrhu.
+    if zdroj.get("hash") == digest and "sestavy" in cfg:
         print(f"  [{court}] rozvrh práce beze změny (hash sedí)")
         return False
     if not gemini_enabled():
@@ -691,25 +748,7 @@ def update_rozvrh(config, court, pdf_bytes, source_url):
     text = "\n\n".join(pages)[:80000]
     prompt = ROZVRH_AI_PROMPT.format(soud=cfg["nazev"])
     raw = gemini_generate_raw(prompt, text, max_tokens=8192)
-    data = extract_json(raw)
-    senaty, soudci_display = [], set()
-    if isinstance(data, dict):
-        for s in data.get("senaty", []):
-            if not isinstance(s, dict):
-                continue
-            m = re.match(r"\s*(\d+)\s*([A-Za-z]+)", str(s.get("senat", "")))
-            if m:
-                senaty.append(senat_key(m.group(1), m.group(2)))
-            p = TITLES_RE.sub(" ", str(s.get("predseda", "")))
-            p = " ".join(re.sub(r"[.,;]", " ", p).split())
-            if p:
-                soudci_display.add(p)
-        for j in data.get("soudci", []):
-            j = " ".join(str(j).split())
-            if j:
-                soudci_display.add(j)
-    senaty = sorted(set(senaty), key=lambda k: (int(k.split()[0]), k.split()[1]))
-    soudci_display = sorted(soudci_display)
+    senaty, soudci_display, sestavy = rozvrh_z_odpovedi(extract_json(raw))
     if not senaty:
         print(f"  [{court}] AI z rozvrhu nic nevytáhla – nechávám starý seznam")
         return False
@@ -717,6 +756,7 @@ def update_rozvrh(config, court, pdf_bytes, source_url):
     cfg["senaty"] = senaty
     if soudci_display:
         cfg["soudci"] = soudci_display
+    cfg["sestavy"] = sestavy
     # `popis` je ruční poznámka, odkud seznam pochází – tu si neseme dál.
     cfg["rozvrh_zdroj"] = {
         "popis": (cfg.get("rozvrh_zdroj") or {}).get("popis"),
@@ -1351,9 +1391,11 @@ def main():
     # 3) Změny proti minulým přehledům držíme jen měsíc zpět.
     output["zmeny"] = orez_zmeny(output.get("zmeny", []))
 
-    # Seznam senátů a soudců do výstupu – kalendář je ukazuje u filtru.
+    # Sledované senáty, soudci a sestavy senátů z rozvrhu do výstupu –
+    # kalendář z nich skládá patičku „Koho kalendář sleduje".
     output["senaty"] = {c: cfg.get("senaty", []) for c, cfg in config["courts"].items()}
     output["soudci"] = {c: cfg.get("soudci", []) for c, cfg in config["courts"].items()}
+    output["sestavy"] = {c: cfg.get("sestavy", []) for c, cfg in config["courts"].items()}
     output["generated"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     output["ics"] = write_ics(output)
     save_json(OUTPUT_FILE, output)

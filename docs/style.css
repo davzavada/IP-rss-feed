@@ -440,6 +440,29 @@ button.cal-key:hover { box-shadow: inset 0 0 0 1px currentColor; }
   white-space: nowrap;
 }
 .cal-zmeny .cal-zmena-spz { font-weight: 600; }
+
+/* Patička kalendáře: sledované senáty a jejich soudci. */
+.cal-sestavy { margin-top: 18px; border-top: 1px solid var(--border); padding-top: 12px; }
+.cal-sestavy h3 { margin: 0; font-size: var(--fs-md); font-weight: 600; }
+.cal-sestavy h4 {
+  margin: 12px 0 4px; font-size: var(--fs-sm); font-weight: 600;
+  color: var(--muted-foreground);
+}
+.cal-sestavy ul { margin: 0; padding: 0; list-style: none; }
+.cal-sestavy li {
+  display: flex; align-items: baseline; gap: 4px 12px; flex-wrap: wrap;
+  padding: 5px 0; border-bottom: 1px solid var(--border);
+  font-size: var(--fs-md);
+}
+.cal-sestavy li:last-child { border-bottom: 0; }
+.cal-sestava-senaty {
+  font-weight: 600; font-variant-numeric: tabular-nums;
+  min-width: 9.5em;
+}
+.cal-sestava-vedou { color: var(--muted-foreground); }
+.cal-sestavy-pozn {
+  margin: 10px 0 0; font-size: var(--fs-sm); color: var(--muted-foreground);
+}
 .src-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
 .src-vs { background: var(--badge-green-bg); color: var(--badge-green-fg); }
 
