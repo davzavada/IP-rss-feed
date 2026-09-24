@@ -1,4 +1,4 @@
-# Owl – přehled novinek v IP a IT
+# Owl – přehled novinek v doktríně a judikatuře
 
 Statická stránka ([owl.davidzavada.cz](https://owl.davidzavada.cz/)),
 kterou plní scrapery z GitHub Actions. Sleduje novou judikaturu Nejvyššího
