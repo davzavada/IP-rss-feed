@@ -601,3 +601,47 @@ html.is-loading body { visibility: hidden; }
   .cal-toolbar { gap: 10px; }
   .cal-pop { width: calc(100% - 8px); }
 }
+
+/* ===== Přihlášení (Clerk) a můj výběr ===== */
+.head-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+.ucet { display: flex; align-items: center; gap: 8px; }
+.ucet-btn {
+  background: var(--card); color: var(--foreground);
+  border: 1px solid var(--border); border-radius: 8px;
+  padding: 4px 12px; font-size: var(--fs-md); line-height: 1.4; cursor: pointer;
+}
+.ucet-btn:hover { background: var(--accent); }
+.ucet-btn-hlavni { background: var(--foreground); color: var(--background); border-color: var(--foreground); }
+.ucet-btn-hlavni:hover { background: var(--foreground); opacity: .88; }
+.ucet-odkaz { font-size: var(--fs-md); color: var(--link); text-decoration: none; white-space: nowrap; }
+.ucet-odkaz:hover { text-decoration: underline; }
+.ucet-user { display: inline-flex; align-items: center; min-width: 28px; min-height: 28px; }
+
+.nastaveni-uvod { font-size: var(--fs-md); color: var(--muted-foreground); max-width: 72ch; margin: 4px 0 10px; }
+.nastaveni-pozn { font-size: var(--fs-sm); color: var(--muted-foreground); max-width: 72ch; margin: 14px 0 0; }
+.nastaveni-akce { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 22px 0 4px; }
+.nastaveni-nadpis { font-size: var(--fs-md); font-weight: 600; margin: 22px 0 6px; }
+.volby { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 2px 28px; }
+.volby-radek { display: flex; flex-wrap: wrap; gap: 2px 22px; }
+.volby-skupina h4 { font-size: var(--fs-sm); font-weight: 600; color: var(--muted-foreground); margin: 6px 0 2px; }
+.volba { display: flex; gap: 8px; align-items: baseline; font-size: var(--fs-md); padding: 3px 0; cursor: pointer; }
+.volba input, .matice input { accent-color: var(--foreground); }
+.volba span { min-width: 0; }
+
+/* Matice oblastí × soudy – mřížka: název oblasti a za ním sloupec na soud. */
+.matice {
+  display: grid; max-width: 720px; font-size: var(--fs-md);
+  grid-template-columns: minmax(0, 1fr) repeat(var(--sloupcu, 1), minmax(5.5rem, max-content));
+  column-gap: 16px;
+}
+.matice > * { padding: 5px 0; border-bottom: 1px solid var(--border); min-width: 0; }
+.matice-hlava { font-weight: 500; color: var(--muted-foreground); }
+.matice-skupina { font-weight: 600; padding-top: 14px; }
+.matice-bunka { display: flex; align-items: center; justify-content: center; gap: 6px; }
+label.matice-hlava, label.matice-oblast { cursor: pointer; }
+
+@media (max-width: 640px) {
+  /* V hlavičce telefonu stačí jedno tlačítko – registrace je i v okně přihlášení. */
+  .head-right .ucet-registrace { display: none; }
+  .head-right { gap: 8px; }
+}

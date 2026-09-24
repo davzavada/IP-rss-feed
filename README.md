@@ -97,6 +97,28 @@ kde AI nerozhodne, se celé jméno neuloží; jednání si v takovém případě
 spisovou značkou, dokud ho některý běh neklasifikuje. Bez toho by jeden
 výpadek AI pokaždé shodil jinou část kalendáře zpátky na holé značky.
 
+## Přihlášení a vlastní výběr
+
+Přihlášení zajišťuje [Clerk](https://clerk.com) a slouží jen k vlastnímu
+výběru. Bez přihlášení (i při výpadku Clerku) web ukazuje výchozí výběr:
+u Nejvyššího soudu senát 23 a z ostatních senátů oblasti duševního
+vlastnictví a IT, všechny časopisy.
+
+- Web je bez buildu, takže Clerk se načítá skriptem z Frontend API instance
+  (`@clerk/clerk-js@6` a komponenty `@clerk/ui@1`), až po vykreslení obsahu.
+  Česká lokalizace je v `docs/vendor/clerk-cs-CZ.js`.
+- Publishable key je veřejný a je v `docs/app.js` (`CLERK_KLICE`, podle
+  hostitele: produkční instance pro `rss.davidzavada.cz`, jinak vývojová).
+  Tajný klíč do kódu ani na Vercel nepatří. Bude jen v GitHub secretu
+  `CLERK_SECRET_KEY`, až budou přehledy podle výběru.
+- Výběr je u účtu v `user.unsafeMetadata.owl`:
+  `{"v":1,"ns":{"senaty":[23],"oblasti":[…]},"skryt_procesni":false,"skryte_casopisy":[]}`.
+  Nastavuje se na stránce `#nastaveni` (Můj výběr). Neznámé oblasti se
+  zahodí, přejmenované převede `alias` v `docs/data/oblasti.json`. Výchozí
+  výběr se neukládá.
+- Pravidlo: rozhodnutí NS je vidět, když je z vybraného senátu, nebo spadá
+  do některé z vybraných oblastí. Pak se případně skryjí rutinní procesní.
+
 ## Workflow
 
 - `update-feed.yml` – cron se ozývá každou hodinu, ale scrapuje jen v oknech
