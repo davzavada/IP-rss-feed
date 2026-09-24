@@ -612,6 +612,26 @@ const FEEDS = [
     containerId: "feed-journals", filtr: vidiCasopis, prazdno: PRAZDNY_VYBER }
 ];
 
+// Stránka zdroje v navigaci (časopisy mají stránku #casopisy).
+const STRANKA_ZDROJE = { journals: "casopisy" };
+
+// V boční navigaci u každého zdroje nenápadně vpravo, za jak dlouhou dobu
+// ukazuje novinky (okno dat, okno_dni v JSON – u soudů 14 nebo 30 dní).
+function ukazOkna() {
+  FEEDS.forEach(f => {
+    const a = document.querySelector('#sidenav a[href="#' + (STRANKA_ZDROJE[f.key] || f.key) + '"]');
+    if (!a || !f.oknoDni) return;
+    let el = a.querySelector(".nav-okno");
+    if (!el) {
+      el = document.createElement("span");
+      el.className = "nav-okno";
+      a.appendChild(el);
+    }
+    el.textContent = tvar(f.oknoDni, "den", "dny", "dní");
+    el.title = "Novinky za posledních " + el.textContent;
+  });
+}
+
 // Položky zdroje jako objekty; u zdroje si poznamená, kdy byl aktualizován.
 function nactiZdroj(f) {
   return fetchJson(f.json).then(d => {
@@ -1945,6 +1965,13 @@ function initNav() {
     e.preventDefault();
     navigate(a.getAttribute("href"), true);
   }));
+  // Logo vede na Nové za 24 hodin (na začátek stránky); když už tam jsme,
+  // nový záznam do historie nepřidá.
+  const znacka = document.querySelector(".znacka");
+  if (znacka) znacka.addEventListener("click", e => {
+    e.preventDefault();
+    navigate("#prehled", location.hash !== "#prehled");
+  });
   window.addEventListener("popstate", () => navigate(location.hash, false));
   document.addEventListener("scroll", update, { passive: true });
   updateNav = update;
@@ -1996,6 +2023,7 @@ function initApp() {
   Promise.all([Promise.allSettled(feedPromises), digestPromise, hearingsPromise, fontsReady])
     .then(([results, digest, hearings]) => {
       zdrojeVysledky = results;
+      ukazOkna();
       vykresliZdroje();
       vykresliNastaveni();
       renderDigest(digest);
