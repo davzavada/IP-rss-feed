@@ -57,12 +57,22 @@
     <rect x="3" y="5" width="18" height="16" rx="2"></rect>
     <path d="M16 3v4M8 3v4M3 10h18"></path>
   </symbol>
+  <symbol id="icon-sliders" viewBox="0 0 24 24">
+    <path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"></path>
+    <circle cx="16" cy="6" r="2"></circle>
+    <circle cx="10" cy="12" r="2"></circle>
+    <circle cx="18" cy="18" r="2"></circle>
+  </symbol>
 </svg>
 
 <header class="site-head">
   <div class="container head-row">
     <h1><img class="logo" src="favicon.svg" alt="" width="22" height="22">Owl <span class="tagline">– přehled novinek v IP a IT doktríně a judikatuře</span></h1>
-    <span class="legend" id="updated"></span>
+    <div class="head-right">
+      <span class="legend" id="updated"></span>
+      <!-- Přihlášení (Clerk) – vyplní app.js, až se Clerk načte. -->
+      <div class="ucet" id="ucet" hidden></div>
+    </div>
   </div>
 </header>
 
@@ -80,6 +90,9 @@
   <div class="nav-group">
     <a href="#kalendar"><svg class="nav-ico" aria-hidden="true"><use href="#icon-calendar"></use></svg><span>Kalendář jednání</span></a>
   </div>
+  <div class="nav-group">
+    <a href="#nastaveni"><svg class="nav-ico" aria-hidden="true"><use href="#icon-sliders"></use></svg><span>Můj výběr</span></a>
+  </div>
 </nav>
 
 <main class="container">
@@ -89,6 +102,7 @@
   <a href="#prehled">Shrnutí</a>
   <a href="#recentni">Všechno nové</a>
   <a href="#kalendar">Kalendář jednání</a>
+  <a href="#nastaveni">Můj výběr</a>
 </nav>
 
 <div class="page" id="prehled">
@@ -124,7 +138,7 @@
     <div class="card-header">
       <h2 class="card-title">Nejvyšší soud</h2>
       <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
-      <div class="card-desc" hidden>Rozhodnutí Nejvyššího soudu zveřejněná za poslední dva týdny – z databáze rozhodnutí i z úřední desky (vyhlášené rozsudky). Ve výchozím výběru všechna rozhodnutí senátu 23 Cdo a z ostatních senátů ta, která AI zařadila do oblastí duševního vlastnictví a IT.</div>
+      <div class="card-desc" hidden>Rozhodnutí Nejvyššího soudu zveřejněná za poslední dva týdny – z databáze rozhodnutí i z úřední desky (vyhlášené rozsudky). Ve výchozím výběru všechna rozhodnutí senátu 23 Cdo a z ostatních senátů ta, která AI zařadila do oblastí duševního vlastnictví a IT. Po přihlášení si senáty a oblasti vyberete v části Můj výběr.</div>
       </span>
     </div>
     <div class="card-content" id="feed-nsoud"><p class="loading">Načítám...</p></div>
@@ -187,6 +201,18 @@
       </span>
     </div>
     <div class="card-content" id="feed-kalendar"><p class="loading">Načítám...</p></div>
+  </div>
+</section>
+
+<section class="page" id="nastaveni" hidden>
+  <div class="card" id="vyber">
+    <div class="card-header">
+      <h2 class="card-title">Můj výběr</h2>
+      <span class="help-wrap"><button type="button" class="help" aria-expanded="false" aria-label="K čemu to je">?</button>
+      <div class="card-desc" hidden>Co z judikatury a časopisů chcete vidět. Výběr se ukládá k účtu; bez přihlášení platí výchozí výběr zaměřený na duševní vlastnictví a IT.</div>
+      </span>
+    </div>
+    <div class="card-content" id="nastaveni-obsah"><p class="loading">Načítám...</p></div>
   </div>
 </section>
 

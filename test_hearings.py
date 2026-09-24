@@ -414,6 +414,9 @@ try:
     check("ICS má časovou zónu", len(list(cal.walk("VTIMEZONE"))) == 1)
     check("ICS: události mají jméno sporu a odkaz na InfoSoud",
           all(str(e.get("SUMMARY")) and "infosoud" in str(e.get("URL")) for e in evs))
+    check("ICS: UID drží původní doménu, odkaz vede na owl.davidzavada.cz",
+          all(str(e.get("UID")).endswith("@rss.davidzavada.cz") for e in evs)
+          and out["ics"] == "https://owl.davidzavada.cz/hearings.ics", out["ics"])
     check("ICS: u žaloby proti ÚPV je v popisu úsek, u civilní věci ne",
           any("Úsek správního soudnictví" in str(e.get("DESCRIPTION")) for e in evs)
           and not any("Civilní úsek" in str(e.get("DESCRIPTION")) for e in evs))

@@ -1122,9 +1122,12 @@ def merge_output(existing, court, items, period, zdroj_url, cfg):
 # Google si externí kalendář tahá sám, jednou za několik hodin; proto stačí,
 # že soubor leží vedle stránky.
 ICS_FILE = "docs/hearings.ics"
-# Doména webu jde do UID událostí. Musí zůstat stejná i po přesunu hostingu,
-# jinak by kalendáře, které si soubor stáhly, viděly každé jednání dvakrát.
-ICS_DEFAULT_HOST = "rss.davidzavada.cz"
+# Doména webu (odkaz na kalendář v hearings.json); jde přepsat SITE_HOST.
+SITE_DEFAULT_HOST = "owl.davidzavada.cz"
+# Doména v UID událostí je jen identifikátor – zůstává z doby, kdy web běžel
+# na rss.davidzavada.cz. Kdyby se změnila, kalendáře, které si soubor
+# stáhly, by viděly každé jednání dvakrát.
+ICS_UID_HOST = "rss.davidzavada.cz"
 
 # Pražská zóna napsaná ručně – jednání jsou vždy v místním čase a bez VTIMEZONE
 # by je klienti mimo ČR posunuli.
@@ -1172,11 +1175,9 @@ def ics_fold(line):
 
 
 def site_host():
-    """Doména pro UID v ICS: proměnná SITE_HOST, jinak ICS_DEFAULT_HOST.
-
-    Dřív se brala z docs/CNAME, jenže ten soubor patří GitHub Pages a na
-    Vercelu odpadne – UID se na něm viset nesmí."""
-    return os.environ.get("SITE_HOST", "").strip() or ICS_DEFAULT_HOST
+    """Doména webu: proměnná SITE_HOST, jinak SITE_DEFAULT_HOST. Na UID
+    událostí nemá vliv (ICS_UID_HOST)."""
+    return os.environ.get("SITE_HOST", "").strip() or SITE_DEFAULT_HOST
 
 
 def infosoud_url(j, courts):
@@ -1211,7 +1212,7 @@ def write_ics(output, path=None):
     path = path or ICS_FILE
     courts = output.get("courts", {})
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-    host = site_host()
+    host = ICS_UID_HOST
 
     lines = [
         "BEGIN:VCALENDAR",
@@ -1290,8 +1291,8 @@ def write_ics(output, path=None):
     lines.append("END:VCALENDAR")
     with open(path, "w", encoding="utf-8", newline="") as f:
         f.write("\r\n".join(ics_fold(x) for x in lines) + "\r\n")
-    print(f"Kalendář: {count} IP jednání -> {path} (https://{host}/hearings.ics)")
-    return f"https://{host}/hearings.ics"
+    print(f"Kalendář: {count} IP jednání -> {path} (https://{site_host()}/hearings.ics)")
+    return f"https://{site_host()}/hearings.ics"
 
 
 def parse_kv(pairs):

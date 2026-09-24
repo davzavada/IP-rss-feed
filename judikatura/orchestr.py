@@ -108,6 +108,11 @@ def zpracuj_ai(sklady, adaptery, nyni, tax, rozpocet):
                            at=model.iso(model.ted()), zdroj=obsah.get("zdroj", ""))
             z["stav"] = {"pokusy": 0, "dalsi_pokus": None, "duvod": None}
             hotovo += 1
+        elif _ai_vycerpana():
+            # Klíč odmítnut nebo žádný model nezbyl – za to rozhodnutí nemůže,
+            # pokus se mu nepočítá. Dál to v tomto běhu nemá smysl.
+            print("    AI: v tomto běhu už nic neodpoví, zbytek fronty příště")
+            break
         else:
             fronta.odlozit(z, nyni, "ai-selhani")
         sklad.zmeneno(z)

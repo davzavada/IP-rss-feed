@@ -449,6 +449,23 @@ fc._klic_zamitnut = True
 souhrn = beh({"nss": nss}, TRETI_DEN + timedelta(hours=2))
 check("odmítnutý klíč = AI se v běhu už nezkouší", souhrn["ai"] == 0 and not volani)
 fc._klic_zamitnut = False
+
+
+def odmitnuty_klic(parts, system=None, schema=None, max_tokens=8192, timeout=0):
+    volani.append(parts)
+    fc._klic_zamitnut = True
+    return "", ""
+
+
+fc.ai_volani = odmitnuty_klic
+nss3 = Adapter("nss", [model.novy_zaznam("nss", f"nss:k{i}", zverejneno="2026-09-27") for i in range(3)])
+souhrn = beh({"nss": nss3}, TRETI_DEN + timedelta(hours=3))
+arch_nss = archiv("nss")
+check("klíč odmítnutý uprostřed běhu: fronta se zastaví a rozhodnutím se pokus nepočítá",
+      len(volani) == 1 and all((arch_nss[f"nss:k{i}"]["stav"] or {}).get("pokusy", 0) == 0 for i in range(3)),
+      str([(arch_nss[f"nss:k{i}"]["stav"]) for i in range(3)]))
+fc._klic_zamitnut = False
+fc.ai_volani = falesna_ai(ai_odpoved)
 chyby, varovani = kontrola.zkontroluj(("ns", "nss"), data_dir=BD, web_dir=BW)
 check("archiv po bězích projde kontrolou", not chyby and not varovani, str(chyby + varovani)[:300])
 

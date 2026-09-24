@@ -336,7 +336,7 @@ _zamek = threading.Lock()   # chrání sdílený stav níže
 _poradi = None              # seřazené modely pro tento proces (líně z models.list)
 _modely = {}                # model -> stav (rozestup, vyřazení, vypnuté volby…)
 _spotreba = {}              # model -> {"volani", "vstup", "vystup"}
-_klic_zamitnut = False      # 401/403: klíč nebo projekt nepustí nic, dál nezkoušet
+_klic_zamitnut = False      # klíč neplatný nebo zablokovaný: dál nezkoušet
 
 
 def _rodina(model):
@@ -508,6 +508,15 @@ def _vyrad(model, duvod):
         print(f"    AI: {model} – {duvod}, dál bez něj")
 
 
+def _klic_neplatny(chyba, zprava):
+    """400 kvůli klíči (smazaný, přepsaný, s překlepem): Gemini ho hlásí jako
+    INVALID_ARGUMENT s důvodem API_KEY_INVALID. S takovým klíčem nepůjde nic."""
+    for detail in chyba.get("details") or []:
+        if isinstance(detail, dict) and detail.get("reason") == "API_KEY_INVALID":
+            return True
+    return "api key not valid" in zprava.lower()
+
+
 def _zkus_model(model, telo_fn, timeout):
     """Jeden model, s opakováním při dočasných potížích.
 
@@ -566,6 +575,10 @@ def _zkus_model(model, telo_fn, timeout):
             print(f"    AI {model}: limit za minutu – čekám {cekej:.0f}s")
             time.sleep(cekej)
             continue
+        if r.status_code == 400 and _klic_neplatny(chyba, zprava):
+            _klic_zamitnut = True
+            print(f"    AI: neplatný klíč ({zprava}) – AI v tomto běhu končí")
+            return "", "konec"
         if r.status_code == 400:
             nizko = zprava.lower()
             for volba, slova in _VOLBY_Z_CHYBY:

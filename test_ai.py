@@ -242,6 +242,15 @@ druhy = dotaz()
 check("odmítnutý klíč ukončí AI pro celý běh",
       prvni == ("", "") and druhy == ("", "") and len(sit.volani) == 1, str(sit.modely_volani()))
 
+sit, _ = priprav({PRVNI: [chyba(400, "API key not valid. Please pass a valid API key.", [
+    {"@type": "type.googleapis.com/google.rpc.ErrorInfo", "reason": "API_KEY_INVALID",
+     "domain": "googleapis.com"}])]})
+prvni = dotaz()
+druhy = dotaz()
+check("neplatný klíč (400 API_KEY_INVALID) ukončí AI pro celý běh",
+      prvni == ("", "") and druhy == ("", "") and sit.modely_volani() == [PRVNI]
+      and fc._klic_zamitnut, str(sit.modely_volani()))
+
 sit, _ = priprav({PRVNI: [ok("useknuté", finish="MAX_TOKENS")],
                   DRUHY: [ok("celé")]})
 check("useknutá odpověď → další model", dotaz()[0] == "celé")
