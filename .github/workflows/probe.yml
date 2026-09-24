@@ -1,0 +1,78 @@
+name: Sonda zdrojů
+
+# Stáhne syrové odpovědi webů soudů (formuláře, výpisy, detaily, InfoCuria,
+# SPARQL) a uloží je jako artefakt. Z nich se píšou parsery a testy – na weby
+# soudů je vidět jen odsud, ne z prostředí, kde se kód vyvíjí.
+#
+# Spouští se jen ručně a na jakékoli větvi (workflow musí ležet v main, aby šel
+# spustit, ale běží verze z vybrané větve – ta si může přidat další úlohy).
+# Volba „ulozit" navíc commitne menší odpovědi do tests/fixtures/probe/
+# ve vybrané větvi; na main nezapíše nikdy.
+on:
+  workflow_dispatch:
+    inputs:
+      soudy:
+        description: 'Zdroje oddělené čárkou (ns,nss,us,sdeu)'
+        default: 'ns,nss,us,sdeu'
+      datum:
+        description: 'Den pro dotazy podle data (RRRR-MM-DD, prázdné = včera)'
+        default: ''
+      url:
+        description: 'Další adresy ke stažení, oddělené mezerou (jen weby zdrojů)'
+        default: ''
+      ulozit:
+        description: 'Commitnout odpovědi do větve jako fixtures (ne do main)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write   # jen pro volbu ulozit
+
+concurrency:
+  group: probe-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # Vstupy jdou do skriptu přes proměnné, ne přes příkazovou řádku –
+      # text z formuláře se tak nikdy nevykoná jako shell.
+      - name: Sonda
+        env:
+          PROBE_SOUDY: ${{ inputs.soudy }}
+          PROBE_DATUM: ${{ inputs.datum }}
+          PROBE_URL: ${{ inputs.url }}
+        run: python tools/probe_zdroje.py --vystup build/probe
+
+      - name: Odpovědi jako artefakt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: probe
+          path: build/probe/
+          if-no-files-found: ignore
+          retention-days: 7
+
+      # Do repa jen odpovědi do 1,5 MB (skripty aplikací jsou větší a jako
+      # fixtures je nepotřebujeme).
+      - name: Uložit do větve jako fixtures
+        if: inputs.ulozit && github.ref != 'refs/heads/main'
+        run: |
+          mkdir -p tests/fixtures/probe
+          find build/probe -maxdepth 1 -type f -size -1500k -exec cp {} tests/fixtures/probe/ \;
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add tests/fixtures/probe
+          git diff --cached --quiet || git commit -m "Sonda zdrojů: odpovědi $(date -u +%Y-%m-%d)"
+          git push
