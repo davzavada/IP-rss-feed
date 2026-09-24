@@ -1,0 +1,758 @@
+{
+  "totalHits" : 1,
+  "maxScore" : 22.205914,
+  "maxScoreOthersDocuments" : 0.0,
+  "totalHitsRelation" : "EQUAL_TO",
+  "totalHitsOthersDocs" : 0,
+  "searchHits" : [ {
+    "index" : "index-affair@30-06-2026",
+    "id" : "C/0722/24/00000000RP/01/P/01",
+    "score" : 22.205914,
+    "sortValues" : [ 22.205914, 1729641600000 ],
+    "content" : {
+      "id" : "C/0722/24/00000000RP/01/P/01",
+      "affId" : "C/0722/24/00000000RP/01",
+      "publishedId" : "C-722/24",
+      "publishedAffId" : "C-722/24",
+      "procedureId" : "C/0722/24/00000000RP/01/P/01",
+      "jurisdiction" : "Cour de justice",
+      "jurisdictionCode" : "C",
+      "order" : 722,
+      "suiteNumber" : 1,
+      "procType" : "P",
+      "procNumber" : 1,
+      "usualNameML" : [ {
+        "es" : "Elektro bizness"
+      }, {
+        "hu" : "Elektro bizness"
+      }, {
+        "fr" : "Elektro bizness"
+      }, {
+        "el" : "Elektro bizness"
+      }, {
+        "pt" : "Elektro bizness"
+      }, {
+        "nl" : "Elektro bizness"
+      }, {
+        "de" : "Elektro bizness"
+      }, {
+        "fi" : "Elektro bizness"
+      }, {
+        "cs" : "Elektro bizness"
+      }, {
+        "lv" : "Elektro bizness"
+      }, {
+        "en" : "Elektro bizness"
+      }, {
+        "pl" : "Elektro bizness"
+      }, {
+        "et" : "Elektro bizness"
+      }, {
+        "sv" : "Elektro bizness"
+      }, {
+        "sl" : "Elektro bizness"
+      }, {
+        "da" : "Elektro bizness"
+      }, {
+        "lt" : "Elektro bizness"
+      }, {
+        "ro" : "Elektro bizness"
+      }, {
+        "sk" : "Elektro bizness"
+      }, {
+        "bg" : "Elektro bizness"
+      }, {
+        "mt" : "Elektro bizness"
+      }, {
+        "it" : "Elektro bizness"
+      }, {
+        "hr" : "Elektro bizness"
+      } ],
+      "introductionDate" : "2024-10-23",
+      "closeDate" : "2026-09-17",
+      "affairState" : "Affaire clôturée",
+      "affairStateCode" : "CLOTPUB",
+      "procState" : "CLOTPUB",
+      "joinExist" : 1,
+      "pilot" : 1,
+      "idPilot" : "C/0722/24/00000000RP/01/P/01#C-722/24",
+      "joinAffairs" : [ "C/0756/24/00000000RP/01/P/01#C-756/24" ],
+      "pourvoiAffIds" : [ ],
+      "originPourvoiIds" : [ ],
+      "reExamenAffIds" : [ ],
+      "originReExamanIds" : [ ],
+      "transfertAffIds" : [ ],
+      "originTransfertIds" : [ ],
+      "oppObsFag" : 0,
+      "contentLength" : 0,
+      "docNoPart" : 0
+    },
+    "highlightFields" : {
+      "publishedId.keyword" : [ "<em class='highlight'>C-722/24</em>" ]
+    },
+    "innerHits" : {
+      "document" : {
+        "totalHits" : 4,
+        "totalHitsRelation" : "EQUAL_TO",
+        "maxScore" : 10.915208,
+        "searchHits" : [ {
+          "index" : "index-affair@30-06-2026",
+          "id" : "C/0722/24/00000000RP/01/P/01-3225923",
+          "score" : 10.915208,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "C/0722/24/00000000RP/01/P/01-3225923",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_293919",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+            "idPublished" : "C-722/24",
+            "docType" : "Demande de décision préjudicielle",
+            "docTypeCode" : "DDP",
+            "docDate" : "2024-10-23",
+            "docFormats" : [ "PDF" ],
+            "contentLength" : 0,
+            "contentML" : [ {
+              "cs" : "    \n \n    \nPřeklad C-722/24 – 1 \nVěc C-722/24 \nŽádost o rozhodnutí o předběžné otázce \nDatum doručení: \n23. října 2024 \nPředkládající soud: \nAugstākā tiesa (Senāts) (nejvyšší soud, Lotyšsko) \nDatum předkládacího rozhodnutí: \n23. října 2024 \nŽalobkyně v prvním stupni a navrhovatelka v řízení o kasačním opravném \nprostředku: \nSIA Elektro bizness \nŽalovaná v prvním stupni a odpůrkyně v řízení o kasačním opravném \nprostředku: \nSabiedrisko pakalpojumu regulēšanas komisija (Komise pro \nregulaci veřejných služeb) \n  \n[omissis] \nLatvijas Republikas Senāts (Nejvyšší soud Lotyšské republiky) \nUSNESENÍ \nV Rize, dne 23. října 2024 \nSenāts (Nejvyšší soud) [omissis] [Složení soudu a zástupci osob účastnících se \njednání] \npřezkoumal kasační opravný prostředek podaný společností SIA Elektro bizness \nproti rozsudku Administratīvā apgabaltiesa (krajský správní soud, Lotyšsko) ze \ndne 8. července 2022 vyhlášenému v soudním řízení správním zahájeném na \nnávrh společnosti SIA Elektro bizness, v němž se domáhá určení, že rozhodnutí \nSabiedrisko pakalpojumu regulēšanas komisija (Komise pro regulaci veřejných \nslužeb, Lotyšsko, dále jen „regulační orgán“) č. 65 ze dne 10. června 2021 je \nnezákonné a dále se domáhá vydání příznivého správního aktu. \nCS \nŽÁDOST O ROZHODNUTÍ O PŘEDBĚŽNÉ OTÁZCE ZE DNE 23. ŘÍJNA 2024 – VĚC C-722/24 \n \n2  \nSkutečnosti předcházející sporu \nPopis skutkového stavu \n1 Projednávaná věc se týká sporu mezi žalobkyní, SIA Elektro bizness, a Komisí \npro regulaci veřejných služeb ve věci práva žalobkyně vybudovat přímé elektrické \nvedení spojující kabelové podzemní vedení o napětí 20 kilovoltů, které vlastní \nžalobkyně, se zařízením zákazníka, kterým je městská agentura místní správy \nměsta Ogre nazvaná Ogres komunikācijas (dále jen „zákazník“). \n2 Obchodními činnostmi žalobkyně jsou výroba elektřiny v kogenerační elektrárně \na obchod s elektřinou. Žalobkyně vyrábí elektřinu ve své vlastní kogenerační \nelektrárně, která se nachází na ulici Upes prospekts, č. 21, v Ogre. Kogenerační \nelektrárna žalobkyně je napojena na podzemní kabelové elektrické vedení o napětí \n20 kilovoltů v délce 7,6 km, které je ve vlastnictví žalobkyně (dále jen „sporné \nkabelové vedení“). Sporné kabelové vedení bylo vybudováno a žalobkyně jej \npořídila a připojila ke své kogenerační elektrárně již před vstupem \nElektroenerģijas tirgus likums (zákon o trhu s elektřinou, Litva) v platnost v roce \n2005. \nElektřina vyrobená kogenerační elektrárnou je žalobkyní přenesena \nprostřednictvím sporného kabelového vedení do infrastruktury distribuční \nsoustavy provozovatele distribuční soustavy, kterým je akciová společnost \nSadales tīkls (dále jen „soustava Sadales tīkls“). Žalobkyně zároveň využívá \nsporné kabelové vedení pro dodávky elektřiny šesti průmyslovým zákazníkům, \nkteří jsou již připojeni k spornému kabelovému vedení a kterým žalobkyně \ndodává elektřinu přímo, tedy bez zprostředkování soustavou Sadales tīkls. \nV roce 2021 se žalobkyně obrátila na regulační orgán s žádostí o vydání povolení \nk zavedení přímého vedení, a sice k zavedení elektrického vedení v délce cca 400 \nmetrů, které by spojilo sporné kabelové vedení se zařízením zákazníka (dále jen \n„navrhované vedení“), aby mohla žalobkyně dodávat zákazníkovi elektřinu \nvyrobenou ve své kogenerační elektrárně. Žalobkyně uvedla, že v případě \nzavedení navrhovaného vedení by se zákazník odpojil od soustavy Sadales tīkls \n(stal by se „izolovaným zákazníkem“) a elektřinu by odebíral přímo od žalobkyně. \nŽalobkyně tak chce využít sporné kabelové vedení, které je v jejím vlastnictví, \nk tomu, aby se připojila k dalšímu zákazníkovi, kterému dodává vyrobenou \nelektřinu, bez zprostředkování soustavou Sadales tīkls. \nRozhodnutím rady regulačního orgánu č. 65 ze dne 10. června 2021 bylo \nžalobkyni zamítnuto povolení k zavedení přímého vedení. Regulační orgán založil \nrozhodnutí na několika úvahách, zejména na skutečnosti, že vedení navrhované \nžalobkyní by nebylo přímým vedením ve smyslu zákona o trhu s elektřinou, neboť \nby zákazníka připojovalo k zařízení pro přenos elektřiny (ke spornému \nkabelovému vedení), a nikoliv ke vzdálenému výrobnímu místu elektřiny (k \nzařízení, kde se elektřina vyrábí, tj. ke kogenerační elektrárně žalobkyně \n[omissis]). \nELEKTRO BIZNESS \n \n3 \nVzhledem k tomu, že žalobkyně s rozhodnutím regulačního orgánu nesouhlasila, \nobrátila se na [Administratīvā apgabaltiesa (krajský správní soud)] a domáhala se \nu něj, aby uvedené rozhodnutí prohlásil za protiprávní a uložil regulačnímu \norgánu, aby vydal správní akt, kterým by bylo žalobkyni vydáno povolení \npřímého vedení k zavedení navrhovaného vedení. \n3 Rozsudkem Administratīvā apgabaltiesa (krajský správní soud) byla žaloba \nzamítnuta. [Administratīvā apgabaltiesa (krajský správní soud)] měl za to, že \nvětšina úvah regulačního orgánu je nesprávná, ale souhlasil s regulačním \norgánem, že zavedení vedení navrhovaného žalobkyní by mělo být zamítnuto \nz důvodu, že by přímo nespojovalo zákazníka s výrobním místem elektřiny (s \nkogeneračním zařízením žalobkyně [omissis]). [Administratīvā apgabaltiesa \n(krajský správní soud)] zdůraznil, že přímé vedení je elektrické vedení spojující \nvzdáleného zákazníka se vzdáleným výrobním místem. Po posouzení grafického \nznázornění umístění navrhovaného vedení, které předložila žalobkyně, \n[Administratīvā apgabaltiesa (krajský správní soud)] stanovil, že elektrické \nvedení, které má být instalováno, nebude začínat od [omissis], kde se nachází \nkogenerační elektrárna žalobkyně, ale od sporného kabelového vedení, takže bude \nnapojovat zákazníka na sporné kabelové vedení, a nikoli přímo na kogenerační \nelektrárnu. [Administratīvā apgabaltiesa (krajský správní soud)] měl za to, že \nsporné kabelové vedení nelze považovat za výrobní místo, neboť slouží k přenosu \nvyrobené elektřiny, a nikoli k výrobě elektřiny. Z tohoto důvodu měl \n[Administratīvā apgabaltiesa (krajský správní soud)] za to, že regulační orgán \nodůvodněně nevydal povolení k zavedení vedení navrhovaného žalobkyní. \n4 Žalobkyně podala kasační opravný prostředek, kterým zpochybnila závěr \n[Administratīvā apgabaltiesa (krajský správní soud)], že překážkou pro získání \npovolení k přímému vedení je skutečnost, že žalobkyní navrhované vedení by \nzákazníka napojilo na sporné kabelové vedení, které je ve vlastnictví žalobkyně. \nŽalobkyně zdůraznila, že elektrické vedení, které je ve vlastnictví výrobce \nelektřiny a kterým je vyrobená elektřina přenášena za účelem dodávek přímým \nzákazníkům a do soustavy Sadales tīkls, je nedílnou součástí provozu kogenerační \nelektrárny, a proto by mělo být považováno za součást výrobního místa. V tomto \nohledu žalobkyně odkázala na čl. 9.1 odst. 2 lotyšského Enerģētikas likums (zákon \no energii, Litva), který stanoví, že kogenerační elektrárna se skládá z jednoho \nnebo více kogeneračních zařízení, jejichž provoz zajišťuje mimo jiné \ninfrastruktura pro přenos vyrobené elektřiny. \nNa jednání žalobkyně dále uvedla, že cílem přímého vedení je poskytnout výrobci \nelektřiny možnost dodávat vyrobenou energii přímo zákazníkovi, to znamená \ndodávat zákazníkovi energii bez zprostředkování soustavou Sadales tīkls. Z tohoto \ndůvodu je podle žalobkyně irelevantní, zda vedení navrhované výrobcem spojuje \nzákazníka přímo s výrobním místem elektřiny nebo s elektrickým vedením, které \nje ve vlastnictví výrobce a které již slouží k přenosu vyrobené elektřiny \nz výrobního místa; žalobkyně tvrdí, že jediným relevantním faktorem je, zda \nnavrhované vedení spolu s elektrickým vedením, které již existuje a je ve \nŽÁDOST O ROZHODNUTÍ O PŘEDBĚŽNÉ OTÁZCE ZE DNE 23. ŘÍJNA 2024 – VĚC C-722/24 \n \n4  \nvlastnictví výrobce, zajistí dodávku elektřiny od výrobce zákazníkovi, aniž je \ntřeba využít soustavu Sadales tīkls. \n5 Ve svém vyjádření ke kasačnímu opravnému prostředku regulační orgán \nzdůraznil, že výroba energie a přenos nebo distribuce energie jsou vzájemně \nodlišné činnosti, a že v důsledku toho nelze elektrické vedení používané pro \npřenos elektřiny považovat za místo výroby elektřiny ve smyslu pojmu přímé \nvedení. Regulační orgán rovněž zdůraznil, že podle čl. 9.1 odst. 4 zákona o energii \njsou kogenerační zařízení nacházející se na stejné poštovní adrese považována za \njedinou kogenerační elektrárnu. \nZástupce regulačního orgánu na jednání dále vysvětlil, že situace, kdy výrobce \nelektřiny vlastní kabelové vedení o napětí 20 kilovoltů, které sahá několik \nkilometrů za hranice poštovní adresy zařízení pro výrobu elektřiny, je atypická. \nV projednávané věci taková situace vznikla tím, že žalobkyně nabyla vlastnictví \nke spornému kabelovému vedení již před nabytím účinnosti zákona o trhu \ns elektřinou. Je tedy přípustné, aby žalobkyně vlastnila toto kabelové vedení \na využívala je k dodávkám elektřiny šesti zákazníkům, kteří jsou již připojeni \nk dotčenému kabelovému vedení. Podle zástupce regulačního orgánu však \nsoučasná situace v podstatě znamená, že sporné kabelové vede ní žalobkyně je \nvyužíváno jako malá distribuční soustava, přestože žalobkyně není držitelkou \nlicence provozovatele distribuční soustavy. Podle tohoto zástupce regulačního \norgánu není účelem zavedení přímého vedení vytvoření distribuční soustavy ve \nvlastnictví výrobce. Proto lze podle zástupce za přímé vedení považovat pouze \nelektrické vedení, které spojuje zákazníka přímo s výrobním místem elektřiny. \nPrávní odůvodnění \nPoužitelná právní úprava \nUnijní právo \n6 Směrnice Evropského parlamentu a Rady (EU) 2019/944 ze dne 5. června 2019 \no společných pravidlech pro vnitřní trh s elektřinou a o změně směrnice \n2012/27/EU (přepracované znění) (dále jen „směrnice 2019/944“): \nČlánek 2 Definice \n41) „přímým vedením“ elektrické vedení spojující izolované výrobní místo \ns izolovaným zákazníkem, nebo elektrické vedení spojující výrobce elektřiny \ns podnikem dodávajícím elektřinu, který přímo zásobuje své vlastní prostory, \ndceřiné společnosti nebo zákazníky[.]  \nČlánek 7 Přímá vedení \n1. Členské státy přijmou nezbytná opatření, která umožní: \nELEKTRO BIZNESS \n \n5 \na) všem výrobcům a podnikům dodávajícím elektřinu usazeným na jejich \núzemí zásobovat své vlastní prostory, dceřiné společnosti a zákazníky \nprostřednictvím přímých vedení, aniž by se na ně vztahovaly nepřiměřené \nadministrativní postupy nebo náklady; \nb) všem zákazníkům na jejich území, aby byli, ať už individuálně nebo \nspolečně, výrobci a podniky dodávajícími elektřinu zásobováni prostřednictvím \npřímých vedení. \n2. Členské státy stanoví kritéria pro povolení výstavby přímých vedení na \nsvém území. Tato kritéria musí být objektivní a nediskriminační. \nLotyšské právo \n7 Zákon o trhu s elektřinou (přijatý dne 5. května 2005; k dispozici na: \nhttps://likumi.lv/ta/id/108834-elektroenergijas-tirgus-likums): \nČlánek 1 Pojmy používané v tomto zákoně \n29) přímé vedení: elektrické vedení spojující vzdálené výrobní místo elektřiny \nse vzdáleným zákazníkem nebo elektrické vedení spojující vzdáleného výrobce \nelektřiny a obchodníka přímo zásobujícího zařízení v jeho vlastnictví nebo držení, \ndceřiné společnosti a jeho vlastní zákazníky; \nČlánek 25 Zavedení vedení \n1. […] \n2. Provozovatel distribuční soustavy má právo zavést distribuční soustavu na \núzemí, na které se vztahuje jeho licence. \n3. Jiná osoba než provozovatel distribuční soustavy je oprávněna zavést \ndistribuční vedení na území, na které se vztahuje licence provozovatele distribuční \nsoustavy, pokud je budované vedení: \n1) Přímé vedení; [...] \nČlánek 26 Přímé vedení \n1. Výrobce má právo dodávat elektřinu zákazníkům nebo do vlastních zařízení \nprostřednictvím připojení přímého vedení. \n2. Povolení k zavedení připojení přímého vedení vydává regulační orgán. \nRegulační orgán stanoví objektivní a jednotná kritéria, na jejichž základě je \nvydáváno povolení k zavedení připojení přímého vedení. \nDůvody pro pochybnosti o výkladu unijní právní úpravy \nŽÁDOST O ROZHODNUTÍ O PŘEDBĚŽNÉ OTÁZCE ZE DNE 23. ŘÍJNA 2024 – VĚC C-722/24 \n \n6  \n8 V projednávané věci je třeba rozhodnout, zda vedení navržené žalobkyní, \nvzhledem k tomu, že má být vybudováno napojením zákazníka na sporné \nkabelové vedení, a nikoliv přímo na umístění kogenerační elektrárnu žalobkyně, je \ntřeba považovat za přímé vedení ve smyslu právní úpravy trhu s elektřinou. \n9 V projednávané věci se elektrické vedení, které chce žalobkyně zavést, nacházelo \nna území, na které se vztahuje licence provozovatele distribuční soustavy (akciové \nspolečnosti Sadales tīkls). Podle čl. 25 odst. 3 zákona o trhu s elektřinou je jiná \nosoba než provozovatel distribuční soustavy oprávněna zavést distribuční vedení \nna území, na které se vztahuje licence provozovatele distribuční soustavy, pokud \nje budované vedení přímým vedením nebo vnitřním vedením. Článek 26 tohoto \nzákona, který upravuje zavádění přímých vedení, stanoví, že výrobce má právo \ndodávat elektřinu zákazníkům nebo do vlastních zařízení prostřednictvím \npřipojení přímého vedení. Definice přímého vedení je uvedena v čl. 1 bodě 29 \nzákona, který mimo jiné stanoví, že přímé vedení je elektrickým vedením \nspojujícím vzdálené výrobní místo elektřiny s izolovaným zákazníkem. \nS ohledem na výše uvedenou úpravu se žalobkyně domnívá, že přímé vedení je \nv podstatě elektrické vedení, které umožňuje dodávku elektřiny od výrobce \nk zákazníkovi bez zprostředkování soustavou Sadales tīkls. Proto lze podle \nžalobkyně za přímé vedení považovat i vedení spojující zákazníka se zařízením \npro přenos elektřiny, které je ve vlastnictví výrobce, pokud umožňuje dodávku \nelektřiny od výrobce k zákazníkovi bez zprostředkování soustavou Sadales \ntīkls. Regulační orgán se domnívá, že přímá vedení jsou pouze elektrická vedení, \nkteré bezprostředně spojují zákazníka právě s výrobním místem elektřiny, tedy se \nzařízením, kde se vyrábí elektřina. Pro regulační orgán je rozhodující právě to, zda \nje sporné elektrické vedení vedeno z výrobního místa elektřiny přímo \nk zákazníkovi. \nÚčastníci řízení tedy mají pojmově odlišný názor na druh elektrického vedení, \nkteré lze považovat za přímé vedení, a pro rozhodnutí projednávané věci musí \nSenāts (Nejvyšší soud) objasnit, zda má být vedení navrhované žalobkyní chápáno \njako přímé vedení. \n10 Ustanovení zákona o trhu s elektřinou uvedená v bodě výše provádějí ustanovení \nsměrnice 2019/944 o přímých vedeních (článek 2 bod 41 a článek 7 směrnice). \nV důsledku toho musí být právní úprava zavedení přímých vedení stanovená \nzákonem v souladu se směrnicí, což znamená, že povaha pojmu „přímá vedení“ \npoužitého v zákoně musí být vyjasněna s ohledem na ustanovení směrnice \n2019/944. \nV článku 2 bodě 41 směrnice 2019/944 není v souvislosti s pojmem „přímé \nvedení“ uveden žádný odkaz na vnitrostátní právo pokud jde o význam, který má \nbýt tomuto pojmu přisouzen, a je tedy třeba vycházet z toho, že přímé vedení \npředstavuje autonomní pojem unijního práva, který musí být ve všech členských \nstátech uplatňován jednotně. \nELEKTRO BIZNESS \n \n7 \nVýklad čl. 7 odst. 1 směrnice (EU) 2019/944 ve spojení s bodem 11 odůvodnění \n(který zdůrazňuje, že jedině zcela otevřený trh, který umožňuje všem \nspotřebitelům vybírat si svobodně své dodavatele a všem dodavatelům svobodně \nzásobovat své zákazníky je slučitelný s volným pohybem zboží, svobodou \nusazování a volným pohybem služeb), a s ohledem na cíl vymezený v článku 1 \ntéže směrnice (pro srovnání viz také rozsudek Soudního dvora Evropské unie ze \ndne 19. prosince 2019, Engie Cartagena, C-523/18, EU: C:2019:1129, body 47 \na 48), vyvolává dojem, že cílem právní úpravy je zejména podpořit možnost \nvýrobců dodávat elektřinu zákazníkům také prostřednictvím přímého vedení, \npokud si to výrobce a zákazník přejí. To naznačuje, že podstatou přímého vedení \nmůže být umožnit výrobci dodávat elektřinu zákazníkovi přímo, tedy bez \nzprostředkování soustavou provozovatele distribuční soustavy. Pokud by tomu tak \nbylo, bylo by možné připustit, že spojení mezi zákazníkem a výrobním místem se \nuskutečňuje rovněž díky zavedení elektrického vedení spojujícího tohoto \nzákazníka se zařízením pro přenos elektřiny, které není ve vlastnictví výrobce a je \njiž postaveno, i když se místo připojení nachází mimo výrobní místo energie, \npokud je v důsledku toho možné dodávat elektřinu z výrobního místa zákazníkovi \nbez využití soustav provozovatele distribuční soustavy. \nDefinice přímého vedení uvedená v čl. 2 bodě 41 směrnice však není jasná, neboť \nze znění tohoto ustanovení nevyplývá, jaký druh spojení je vyžadován mezi \nzákazníkem a výrobním místem (tj. zda se přímé vedení může skládat pouze \nz elektrického vedení připojujícího zákazníka k samotnému výrobnímu místu \nenergie, anebo zda naopak spojení mezi výrobním místem energie a zákazníkem \nmůže být rovněž vytvořeno pomocí několika propojených elektrických vedení, \npokud k dodávkám elektřiny prostřednictvím těchto soustav dochází bez \nzprostředkování soustavou provozovatele distribuční soustavy). Toto pravidlo \nrovněž neobjasňuje, co se rozumí izolovaným výrobním místem: tj. zda tento \npojem zahrnuje nejen soubor zařízení umístěných na jedné poštovní adrese \na určených k výrobě elektřiny, ale také s nimi spojenou infrastrukturu určenou \nk přenosu vyrobené energie, která je ve vlastnictví výrobce (elektrické vedení), \ni když se tato infrastruktura nachází mimo místo (poštovní adresu) zařízení pro \nvýrobu elektřiny. Výše uvedené právní pravidlo pouze uvádí, že přímé vedení je \nelektrické vedení, které spojuje izolované výrobní místo elektřiny s izolovaným \nzákazníkem, a tuto definici lze chápat i tak, že přímé vedení je typ elektrického \nvedení, které je zavedeno od zákazníka přímo do výrobního místa elektřiny. To \nrovněž naznačuje pojem použitý v anglickém znění směrnice (isolated generation \nsite). \n11 S ohledem na úvahy uvedené v bodech výše má Senāts (Nejvyšší soud) za to, že \nv projednávané věci je nezbytné vyložit ustanovení směrnice 2019/944 za účelem \npoužití tohoto výkladu při použití zákona o trhu s elektřinou. Vzhledem k tomu, \nže výklad příslušných ustanovení unijního práva není jednoznačný a Soudní dvůr \nEvropské unie jej ve své judikatuře dosud nevyložil, má Senāts (Nejvyšší soud) za \nto, že je třeba položit Soudnímu dvoru Evropské unie předběžnou otázku, zda \nelektrické vedení, jaké navrhuje zavést žalobkyně, odpovídá pojmu „přímé \nvedení“ ve smyslu směrnice 2019/944. \nŽÁDOST O ROZHODNUTÍ O PŘEDBĚŽNÉ OTÁZCE ZE DNE 23. ŘÍJNA 2024 – VĚC C-722/24 \n \n8  \n[omissis] [ustálené formulace] \nVýroková část \nPodle článku 267 Smlouvy o fungování Evropské unie [omissis] Senāts (Nejvyšší \nsoud) \nnařizuje \nPředložit Soudnímu dvoru Evropské unie následující předběžné otázky: \nPro účely čl. 2 bodu 41 směrnice Evropského parlamentu a Rady (EU) 2019/944 \nze dne 5. června 2019 o společných pravidlech pro vnitřní trh s elektřinou a \no změně směrnice 2012/27/EU (přepracované znění): \na) musí být pojem „izolované výrobní místo“ použitý v tomto ustanovení \nvykládán v tom smyslu, že zahrnuje rovněž elektrické vedení, které je ve \nvlastnictví výrobce, je připojeno k zařízení pro výrobu elektřiny, je určeno \nk přenosu vyrobené elektřiny a sahá za hranice místa (poštovní adresy) zařízení \npro výrobu elektřiny? \nb) zahrnuje definice přímého vedení uvedená v tomto ustanovení elektrické \nvedení, které připojuje zákazníka k výrobnímu místu elektřiny (kogenerační \nelektrárně) zavedením připojení k již vybudovanému elektrickému vedení ve \nvlastnictví výrobce, které je určeno k přenosu elektřiny, pokud je v důsledku toho \nzajištěna dodávka elektřiny od výrobce k zákazníkovi bez zprostředkování \nsoustavou provozovatele distribuční soustavy? Má na odpověď na tuto otázku vliv \nskutečnost, že již vybudované elektrické vedení, které je ve vlastnictví výrobce \na je určeno k přenosu elektřiny, a se kterým by bylo spojeno vedení, které je \nnavrhováno zavést, aby připojilo nového zákazníka, se již používá k dodávkám \nelektřiny jiným zákazníkům? \nŘízení se přerušuje do vydání rozhodnutí Soudního dvora Evropské unie. \n[omissis] [nemožnost podat opravný prostředek] \n[omissis] [podpisy] \n"
+            } ],
+            "docNoPart" : 1,
+            "celex" : "",
+            "groupByLogicalId" : [ {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225931",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "BG",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225954",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "SK",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225957",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "HR",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225965",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "LT",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225967",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "DA",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225972",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "IT",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225976",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "ES",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225935",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "RO",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225923",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225941",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "CS",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225942",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "SV",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225963",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "PT",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225961",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "DE",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225960",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "HU",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225958",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "LV",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225982",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "EL",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225966",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "PL",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225947",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "SL",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225971",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "EN",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225977",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "ET",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225936",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "NL",
+              "formats" : [ "PDF" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3225929",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "FI",
+              "formats" : [ "PDF" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "",
+            "affairJurisdiction" : "Cour de justice",
+            "affairJurisdictionCode" : "C",
+            "routing" : "C/0722/24/00000000RP/01/P/01",
+            "ecli" : ""
+          },
+          "highlightFields" : {
+            "contentML.cs.exact" : [ "Překlad <em class='highlight'>C-722/24</em> – 1 \nVěc <em class='highlight'>C-722/24</em> \nŽádost o rozhodnutí o předběžné otázce \nDatum doručení: \n23. října 2024 \nPředkládající soud: \nAugstākā tiesa (Senāts) (nejvyšší soud, Lotyšsko) \nDatum předkládacího rozhodnutí: \n23. října 2024 \nŽalobkyně v prvním stupni a navrhovatelka v řízení o kasačním opravném \nprostředku: \nSIA Elektro bizness \nŽalovaná v prvním stupni a odpůrkyně v řízení o kasačním opravném \nprostředku: \nSabiedrisko pakalpojumu regulēšanas komisija (Komise pro \nregulaci veřejných služeb) \n  \n[omissis] \nLatvijas Republikas Senāts (Nejvyšší soud Lotyšské republiky) \nUSNESENÍ \nV Rize, dne 23. října 2024 \nSenāts (Nejvyšší soud) [omissis] [Složení soudu a zástupci osob účastnících se \njednání] \npřezkoumal kasační opravný prostředek podaný společností SIA Elektro bizness \nproti rozsudku Administratīvā apgabaltiesa (krajský správní soud, Lotyšsko) ze \ndne 8. července 2022 vyhlášenému v soudním řízení správním zahájeném na \nnávrh společnosti SIA Elektro bizness, v němž se domáhá", "ŘÍJNA 2024 – VĚC <em class='highlight'>C-722/24</em> \n \n8  \n[omissis] [ustálené formulace] \nVýroková část \nPodle článku 267 Smlouvy o fungování Evropské unie [omissis] Senāts (Nejvyšší \nsoud) \nnařizuje \nPředložit Soudnímu dvoru Evropské unie následující předběžné otázky: \nPro účely čl. 2 bodu 41 směrnice Evropského parlamentu a Rady (EU) 2019/944 \nze dne 5. června 2019 o společných pravidlech pro vnitřní trh s elektřinou a \no změně směrnice 2012/27/EU (přepracované znění): \na) musí být pojem „izolované výrobní místo“ použitý v tomto ustanovení \nvykládán v tom smyslu, že zahrnuje rovněž elektrické vedení, které je ve \nvlastnictví výrobce, je připojeno k zařízení pro výrobu elektřiny, je určeno \nk přenosu vyrobené elektřiny a sahá za hranice místa (poštovní adresy) zařízení \npro výrobu elektřiny?" ]
+          },
+          "innerHits" : { },
+          "routing" : "C/0722/24/00000000RP/01/P/01",
+          "matchedQueries" : [ ]
+        }, {
+          "index" : "index-affair@30-06-2026",
+          "id" : "C/0722/24/00000000RP/01/P/01-3229583",
+          "score" : 10.915208,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "C/0722/24/00000000RP/01/P/01-3229583",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_294155",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+            "idPublished" : "C-722/24",
+            "docType" : "Demande (JO)",
+            "docTypeCode" : "DDP_COMM",
+            "docDate" : "2024-12-13",
+            "docFormats" : [ "HTML" ],
+            "contentLength" : 0,
+            "contentML" : [ {
+              "cs" : "Žádost o rozhodnutí o předběžné otázce, kterou podal Augstākā tiesa (Senāts) (Lotyšsko) dne 23. října 2024 – SIA Elektro bizness v. Sabiedrisko pakalpojumu regulēšanas komisija (Věc C-722/24, Elektro bizness) Jednací jazyk: lotyština Předkládající soud Augstākā tiesa (Senāts) Účastnice původního řízení Žalobkyně v prvním stupni a navrhovatelka v řízení o kasačním opravném prostředku: SIA Elektro bizness Žalovaná: Sabiedrisko pakalpojumu regulēšanas komisija Předběžné otázky Pro účely čl. 2 bodu 41 směrnice Evropského parlamentu a Rady (EU) 2019/9441 ze dne 5. června 2019 o společných pravidlech pro vnitřní trh s elektřinou a o změně směrnice 2012/27/EU (přepracované znění): a) musí být pojem „izolované výrobní místo“ použitý v tomto ustanovení vykládán v tom smyslu, že zahrnuje rovněž elektrické vedení, které je ve vlastnictví výrobce, je připojeno k zařízení pro výrobu elektřiny, je určeno k přenosu vyrobené elektřiny a sahá za hranice místa (poštovní adresy) zařízení pro výrobu elektřiny? b) zahrnuje definice přímého vedení uvedená v tomto ustanovení elektrické vedení, které připojuje zákazníka k výrobnímu místu elektřiny (kogenerační elektrárně) zavedením připojení k již vybudovanému elektrickému vedení ve vlastnictví výrobce, které je určeno k přenosu elektřiny, pokud je v důsledku toho zajištěna dodávka elektřiny od výrobce k zákazníkovi bez zprostředkování soustavou provozovatele distribuční soustavy? Má na odpověď na tuto otázku vliv skutečnost, že již vybudované elektrické vedení, které je ve vlastnictví výrobce a je určeno k přenosu elektřiny, a se kterým by bylo spojeno vedení, které je navrhováno zavést, aby připojilo nového zákazníka, se již používá k dodávkám elektřiny jiným zákazníkům? ____________ 1 Úř. věst. 2019, L 158, s. 125."
+            } ],
+            "docNoPart" : 1,
+            "celex" : "",
+            "groupByLogicalId" : [ {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229583",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "IT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229267",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "FI",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229434",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "LV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229603",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "SV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229438",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "LT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229529",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "HR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229228",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "DE",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229541",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "GA",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229373",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "BG",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229676",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "PT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229527",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "HU",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229261",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "CS",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229614",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "SK",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229281",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229304",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "ET",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229306",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "ES",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229311",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "EL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229310",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "EN",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229709",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "RO",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229613",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "SL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229232",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "DA",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229506",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "MT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229677",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "PL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3229465",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "NL",
+              "formats" : [ "HTML" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "",
+            "affairJurisdiction" : "Cour de justice",
+            "affairJurisdictionCode" : "C",
+            "routing" : "C/0722/24/00000000RP/01/P/01",
+            "ecli" : ""
+          },
+          "highlightFields" : {
+            "contentML.cs.exact" : [ "Sabiedrisko pakalpojumu regulēšanas komisija (Věc <em class='highlight'>C-722/24</em>, Elektro bizness) Jednací jazyk: lotyština Předkládající soud Augstākā tiesa (Senāts) Účastnice původního řízení Žalobkyně v prvním stupni a navrhovatelka v řízení o kasačním opravném prostředku: SIA Elektro bizness Žalovaná: Sabiedrisko pakalpojumu regulēšanas komisija Předběžné otázky Pro účely čl. 2 bodu 41 směrnice Evropského parlamentu a Rady (EU) 2019/9441 ze dne 5. června 2019 o společných pravidlech pro vnitřní trh s elektřinou a o změně směrnice 2012/27/EU (přepracované znění): a) musí být pojem „izolované výrobní místo“ použitý v tomto ustanovení vykládán v tom smyslu, že zahrnuje rovněž elektrické vedení, které je ve vlastnictví výrobce, je připojeno k zařízení pro výrobu elektřiny, je určeno k přenosu vyrobené elektřiny a sahá za hranice místa (poštovní adresy) zařízení pro výrobu elektřiny?" ]
+          },
+          "innerHits" : { },
+          "routing" : "C/0722/24/00000000RP/01/P/01",
+          "matchedQueries" : [ ]
+        }, {
+          "index" : "index-affair@30-06-2026",
+          "id" : "C/0722/24/00000000RP/01/P/01-3517813",
+          "score" : 10.915208,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "C/0722/24/00000000RP/01/P/01-3517813",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_326739",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+            "idPublished" : "C-722/24",
+            "docType" : "Arrêt",
+            "docTypeCode" : "ARRET",
+            "docDate" : "2026-09-17",
+            "docFormats" : [ "HTML" ],
+            "contentLength" : 0,
+            "contentML" : [ {
+              "cs" : "null ROZSUDEK SOUDNÍHO DVORA (třetího senátu) 17. září 2026(*) „ Řízení o předběžné otázce – Vnitřní trh s elektřinou – Směrnice (EU) 2019/944 – Článek 2 bod 41 – Pojmy ‚přímé vedení‘, ‚izolované výrobní místo‘ a ‚izolovaný zákazník‘ – Článek 7 – Podmínky vydání povolení k výstavbě ‚přímého vedení‘ – Článek 9 – Povinnosti veřejné služby uložené elektroenergetickým podnikům – Připojení nového zákazníka k elektrickému vedení spojenému s výrobcem – Zachování rezervního připojení k distribuční soustavě provozovatele“ Ve spojených věcech C‑722/24 a C‑756/24, jejichž předmětem jsou dvě žádosti o rozhodnutí o předběžné otázce podané na základě článku 267 SFEU rozhodnutími Augstākā tiesa (Senāts) (Nejvyšší soud, Lotyšsko) ze dne 23. října 2024 a 31. října 2024, došlými Soudnímu dvoru dne 23. října 2024 a 31. října 2024, v řízeních SIA Elektro bizness proti Sabiedrisko pakalpojumu regulēšanas komisija (C‑722/24), a Sabiedrisko pakalpojumu regulēšanas komisija proti SIA Jelgavas autobusu parks (C‑756/24), SOUDNÍ DVŮR (třetí senát), ve složení: C. Lycourgos, předseda senátu, O. Spineanu-Matei, S. Rodin, N. Piçarra (zpravodaj) a N. Fenger, soudci, generální advokátka: J. Kokott, za soudní kancelář: A. Calot Escobar, vedoucí, s přihlédnutím k písemné části řízení, s ohledem na vyjádření, která předložili: – za Sabiedrisko pakalpojumu regulēšanas komisija: J. Miķelsons, izpilddirektors, a A. Ozola, padomes priekšsēdētāja, – za italskou vládu: S. Fiorentino, jako zmocněnec, ve spolupráci s: L. Vignato, avvocato dello Stato, – za rakouskou vládu: A. Posch, J. Schmoll a P. Thalmann, jako zmocněnci, – za Evropskou komisi: O. Beynet, L. Ozola a T. Scharf, jako zmocněnci, po vyslechnutí stanoviska generální advokátky na jednání konaném dne 12. února 2026, vydává tento Rozsudek 1 Žádosti o rozhodnutí o předběžné otázce se týkají výkladu čl. 2 bodu 41 a článku 7 směrnice Evropského parlamentu a Rady (EU) 2019/944 ze dne 5. června 2019 o společných pravidlech pro vnitřní trh s elektřinou a o změně směrnice 2012/27/EU (Úř. věst. 2019, L 158, s. 125). 2 Tyto žádosti byly předloženy v rámci sporu mezi společností podle lotyšského práva SIA Elektro bizness, která působí v odvětví výroby a dodávek elektřiny, a Sabiedrisko pakalpojumu regulēšanas komisija (Komise pro regulaci veřejných služeb, Lotyšsko, dále jen „regulační orgán“) ve věci povolení výstavby elektrického vedení, které má spojit existující vedení patřící společnosti Elektro bizness s obecním orgánem v Ogre (Lotyšsko) (C‑722/24), a v rámci sporu mezi regulačním orgánem, tj. Sabiedrisko pakalpojumu regulēšanas komisija, a společností podle lotyšského práva SIA Jelgavas autobusu parks, která působí v odvětví komunální osobní dopravy (dále jen „Autobusu parks“), ve věci povolení výstavby elektrického vedení, které má spojit výrobce elektřiny SIA Gren Latvija se společností Autobusu parks za účelem dodávek elektřiny posledně uvedené společnosti bez využití distribuční soustavy provozovatele (C‑756/24). Právní rámec Směrnice 2019/944 3 Body 2, 6, 7, 10 a 11 odůvodnění směrnice 2019/944 uvádějí: „(2) Účelem vnitřního trhu s elektřinou, který je v [Evropské u]nii postupně zaváděn od roku 1999, je organizovat konkurenční trhy s elektřinou přes hranice států, a tím poskytnout skutečnou možnost výběru všem konečným zákazníkům v Unii, ať již občanům nebo podnikům, dále nové obchodní příležitosti, konkurenční ceny, účinné investiční signály a vyšší standardy služeb a přispět k bezpečnosti dodávek a k udržitelnosti. [...] (6) Sdělení [Evropské k]omise ze dne 15. července 2015 nazvané ‚Zahájení veřejné konzultace o novém uspořádání trhu s energií‘ zdůraznilo, že posun od výroby ve velkých centralizovaných výrobních zařízeních k decentralizované výrobě elektřiny z obnovitelných zdrojů a dekarbonizovaným trhům vyžaduje úpravu stávajících pravidel obchodu s elektřinou a změny [změnu] stávajících tržních rolí. Sdělení vyzdvihlo potřebu pružnějšího uspořádání trhů s elektřinou a plné integrace všech hráčů na trhu – včetně výrobců energie z obnovitelných zdrojů, poskytovatelů nových energetických služeb [nových poskytovatelů energetických služeb], ukládání energie a flexibilní poptávky [...] (7) S cílem vytvořit vnitřní trh s elektřinou by členské státy měly podporovat integraci svých vnitrostátních trhů a spolupráci provozovatelů soustav na úrovni Unie a na regionální úrovni a současně do ní začlenit i dosud existující izolované soustavy, jež se v Unii dosud vyskytují a vytvářejí ostrovní provozy [energetické ostrovy]. [...] (10) Klíčovou úlohu, pokud jde o dosažení flexibility potřebné k přizpůsobení elektrizační soustavy proměnlivé a distribuované výrobě elektřiny z obnovitelných zdrojů, hrají spotřebitelé [...] (11) Svobody, které občanům Unie zaručuje Smlouva o fungování Evropské unie (dále jen ‚Smlouva o fungování EU‘) – mimo jiné volný pohyb zboží, svobodu usazování a volný pohyb služeb – lze užívat jedině na zcela otevřeném trhu, který umožňuje všem spotřebitelům vybírat si svobodně své dodavatele a všem dodavatelům svobodně zásobovat své zákazníky.“ 4 Článek 1 této směrnice, nadepsaný „Předmět“, stanoví: „Tato směrnice stanoví společná pravidla pro výrobu, přenos a distribuci elektřiny, ukládání energie a dodávky elektřiny a také opatření na ochranu spotřebitele s cílem vytvořit v Unii skutečně integrované, konkurenční, flexibilní, spravedlivé a transparentní trhy s elektřinou zaměřené na spotřebitele. Tato směrnice má za cíl s využitím výhod integrovaného trhu zajistit dostupné, transparentní ceny energie a náklady pro spotřebitele, vysokou míru bezpečnosti dodávek a plynulý přechod k udržitelnému nízkouhlíkovému energetickému systému. Stanoví klíčová pravidla týkající se organizace a fungování odvětví elektroenergetiky v Unii, zejména pravidla týkající se ochrany spotřebitelů a posílení jejich postavení, otevřeného přístupu na integrovaný trh, přístupu třetích osob k přenosové a distribuční infrastruktuře, požadavky na oddělení a pravidla týkající se nezávislosti regulačních orgánů v členských státech. Tato směrnice rovněž stanoví způsoby spolupráce mezi členskými státy, regulačními orgány a provozovateli přenosových soustav při budování plně propojeného vnitřního trhu s elektřinou, který zvyšuje podíl elektřiny z obnovitelných zdrojů, volnou hospodářskou soutěž a bezpečnost dodávek.“ 5 Článek 2 uvedené směrnice, nadepsaný „Definice“, stanoví: „Pro účely této směrnice se rozumí: [...] 29) ‚provozovatelem distribuční soustavy‘ fyzická nebo právnická osoba, která odpovídá za provoz, údržbu a v případě potřeby za rozvoj distribuční soustavy v dané oblasti a případně její propojení s jinými soustavami a dále za zabezpečení dlouhodobé schopnosti soustavy uspokojovat přiměřenou poptávku po distribuci elektřiny; [...] 38) ‚výrobcem‘ fyzická nebo právnická osoba vyrábějící elektřinu; [...] 41) ‚přímým vedením‘ elektrické vedení spojující izolované výrobní místo s izolovaným zákazníkem, nebo elektrické vedení spojující výrobce elektřiny s podnikem dodávajícím elektřinu, který přímo zásobuje [a podnik dodávající elektřinu, aby přímo zásobovali] své vlastní prostory, dceřiné společnosti nebo zákazníky; [...] 57) ‚elektroenergetickým podnikem‘ fyzická nebo právnická osoba, která vykonává alespoň jednu z těchto funkcí: výroba, přenos, distribuce, agregace, odezva strany poptávky, ukládání energie, dodávky nebo nákup elektřiny, a která zajišťuje obchodní, technické nebo údržbářské úkoly související s těmito funkcemi, která však nezahrnuje konečné zákazníky; [...]“ 6 Článek 4 téže směrnice, ve znění použitelném na spory v původních řízeních, nadepsaný „Svobodný výběr dodavatele“, stanovil: „Členské státy zajistí, aby všichni zákazníci mohli svobodně nakupovat elektřinu od dodavatele dle vlastního výběru a aby všichni zákazníci mohli mít více než jednu smlouvu na dodávky elektřiny současně, pod podmínkou, že jsou zřízena požadovaná místa připojení a body měření.“ 7 Článek 6 odst. 1 a 2 směrnice 2019/944, nadepsaný „Přístup třetích osob“, stanoví: „1. Členské státy zajistí zavedení systému pro přístup třetích osob k přenosovým a distribučním soustavám na základě zveřejněných sazeb použitelných na všechny zákazníky a používaných objektivně a bez diskriminace mezi uživateli soustavy. Členské státy zajistí, aby tyto sazby nebo metodiky jejich výpočtu byly před vstupem sazeb v platnost schváleny v souladu s článkem 59 a aby tyto sazby a metodiky, schvalují-li se jen metodiky, byly před vstupem sazeb v platnost zveřejněny. 2. Provozovatel přenosové nebo distribuční soustavy může odmítnout přístup, pokud postrádá nezbytnou kapacitu. Pro takové odmítnutí musí uvést řádně podložené důvody, zejména s ohledem na článek 9, založené na objektivních, technicky a hospodářsky ospravedlnitelných kritériích. Členské státy nebo, stanoví-li tak daný členský stát, regulační orgány těchto členských států zajistí, aby byla tato kritéria důsledně uplatňována a aby uživatel soustavy, kterému byl odmítnut přístup, mohl využít postupu alternativního řešení sporů. Pokud je to žádoucí a pokud došlo k odmítnutí přístupu, regulační orgány dále zajistí, aby provozovatel přenosové soustavy nebo provozovatel distribuční soustavy poskytl náležité informace o opatřeních, která budou nezbytná k posílení soustavy. Tyto informace se poskytnou vždy, pokud byl odepřen přístup k dobíjecím stanicím. Osobě požadující takové informace může být účtován přiměřený poplatek odrážející náklady na jejich poskytnutí.“ 8 Článek 7 této směrnice, nadepsaný „Přímá vedení“, stanoví: „1. Členské státy přijmou nezbytná opatření, která umožní: a) všem výrobcům a podnikům dodávajícím elektřinu usazeným na jejich území zásobovat své vlastní prostory, dceřiné společnosti a zákazníky prostřednictvím přímých vedení, aniž by se na ně vztahovaly nepřiměřené administrativní postupy nebo náklady; b) všem zákazníkům na jejich území, aby byli, ať už individuálně nebo společně, výrobci a podniky dodávajícími elektřinu zásobováni prostřednictvím přímých vedení. 2. Členské státy stanoví kritéria pro povolení výstavby přímých vedení na svém území. Tato kritéria musí být objektivní a nediskriminační. 3. Možnost dodávek elektřiny prostřednictvím přímých vedení podle odstavce 1 tohoto článku nemá vliv na možnost uzavírat smlouvy o dodávkách elektřiny podle článku 6. 4. Členské státy mohou podmínit vydání povolení k výstavbě přímého vedení buď odmítnutím přístupu do soustavy na základě článku 6, je-li to vhodné, nebo zahájením postupu řešení sporů podle článku 60. 5. Členské státy mohou odmítnout povolit výstavbu přímého vedení, pokud by udělení tohoto povolení bránilo uplatňování ustanovení o povinnostech veřejné služby podle článku 9. Toto odmítnutí musí být řádně odůvodněno.“ 9 Článek 9 uvedené směrnice, nadepsaný „Povinnosti veřejné služby“, stanoví: „1. Aniž je dotčen odstavec 2, členské státy zabezpečí na základě svého institucionálního uspořádání, při zohlednění zásady subsidiarity, aby elektroenergetické podniky byly provozovány v souladu se zásadami této směrnice a s cílem dosažení konkurenčního a bezpečného trhu s elektřinou udržitelného z hlediska životního prostředí a aby nebyly diskriminovány z hlediska svých práv nebo povinností. 2. S plným ohledem na související ustanovení Smlouvy o fungování EU, zejména na její článek 106, mohou členské státy uložit z důvodů obecného hospodářského zájmu podnikům působícím v odvětví elektroenergetiky povinnosti veřejné služby, které se mohou týkat bezpečnosti, včetně bezpečnosti dodávek, pravidelnosti, kvality a cen dodávek, jakož i ochrany životního prostředí, včetně energetické účinnosti, energie z obnovitelných zdrojů a ochrany klimatu. Tyto povinnosti musí být jasně vymezené, transparentní, nediskriminační a ověřitelné a musí zaručovat rovnost přístupu pro elektroenergetické podniky Unie ke spotřebitelům v jednotlivých členských státech. Povinnosti veřejné služby, které se týkají stanovování cen za dodávky elektřiny, musí splňovat požadavky stanovené v článku 5 této směrnice. [...] 5. Členské státy se mohou rozhodnout neuplatňovat články 6, 7 a 8 této směrnice, pokud by jejich uplatnění právně nebo fakticky bránilo plnění povinností uložených elektroenergetickým podnikům z důvodů obecného hospodářského zájmu a pokud tím rozvoj obchodu nebude dotčen v míře, která by byla v rozporu se zájmem Unie. Zájmy Unie mimo jiné zahrnují ochranu hospodářské soutěže s ohledem na zákazníky v souladu s článkem 106 Smlouvy o fungování EU a s touto směrnicí.“ 10 Článek 31 téže směrnice, nadepsaný „Úkoly provozovatelů distribučních soustav“, v odstavci 1 stanoví: „Provozovatel distribuční soustavy odpovídá za zajištění dlouhodobé schopnosti soustavy uspokojovat přiměřenou poptávku po distribuci elektřiny a za hospodárný způsob provozu, údržby a rozvoje bezpečné, spolehlivé a účinné distribuční soustavy elektřiny ve své oblasti s náležitým ohledem na životní prostředí a energetickou účinnost.“ 11 Článek 59 odst. 7 písm. a) směrnice 2019/944 stanoví: „Kromě případů, kdy je pro stanovování a schvalování podmínek nebo metodik pro provádění kodexů sítě a rámcových pokynů podle kapitoly VII nařízení [Evropského parlamentu a Rady] (EU) 2019/943 [ze dne 5. června 2019 o vnitřním trhu s elektřinou (Úř. věst. 2019, L 158, s. 54)] [příslušná Agentura Evropské unie pro spolupráci energetických regulačních orgánů z důvodu jejich koordinované povahy], jak stanoví čl. 5 odst. 2 nařízení [Evropského parlamentu a Rady] (EU) 2019/942 [ze dne 5. června 2019, kterým se zřizuje Agentura Evropské unie pro spolupráci energetických regulačních orgánů (Úř. věst. 2019, L 158, s. 22)], jsou regulační orgány příslušné pro stanovování nebo schvalování alespoň vnitrostátních metodik používaných pro výpočet nebo stanovení podmínek s dostatečným předstihem před tím, než vstoupí v platnost pro: a) připojení a přístup k vnitrostátním sítím, včetně sazeb za přenos a distribuci nebo jejich metodiky výpočtu, přičemž tyto sazby nebo metodiky musí umožňovat provádění nezbytných investic do sítí tak, aby díky těmto investicím bylo možné zabezpečit životaschopnost sítí;“ Lotyšské právo 12 Článek 1 bod 29 Elektroenerģijas tirgus likums (zákon o trhu s elektřinou) ze dne 5. května 2005 (Latvijas Vēstnesis, 2005, č. 82), ve znění použitelném na spory v původních řízeních (dále jen „ETL“), stanoví, že „přímým vedením“ je „elektrické vedení spojující izolované výrobní místo s izolovaným zákazníkem, nebo elektrické vedení spojující izolovaného výrobce elektřiny s obchodníkem, jenž přímo zásobuje prostory, které vlastní nebo má v držení, propojené podniky a své vlastní zákazníky“. 13 Článek 25 ETL, nadepsaný „Instalace vedení“, v odstavcích 2 a 3 stanoví: „2. Provozovatel distribuční soustavy má právo instalovat distribuční vedení v oblasti, na kterou se vztahuje jeho licence. 3. Jiná osoba než provozovatel distribuční soustavy má právo instalovat distribuční vedení v oblasti, na kterou se vztahuje licence provozovatele distribuční soustavy, pokud je budované vedení: 1) přímým vedením; [...]“ 14 Článek 26 ETL, nadepsaný „Přímé vedení“, stanovil: „1. Výrobce má právo dodávat elektřinu svým zákazníkům nebo do svých vlastních prostor prostřednictvím připojení přímého vedení. 2. Povolení k instalaci připojení pomocí přímého vedení uděluje regulační orgán. Regulační orgán stanoví objektivní a jednotná kritéria pro udělování povolení k instalaci připojení pomocí přímého vedení.“ Spory v původních řízeních a předběžné otázky Věc C‑722/24 15 Elektro bizness je společnost založená podle lotyšského práva, která vyrábí elektřinu v zařízení pro kombinovanou výrobu tepla a elektřiny a tuto elektřinu prostřednictvím podzemního kabelového vedení o napětí 20 000 voltů a délce 7,6 kilometrů dodává nejen do distribuční soustavy, jejímž provozovatelem ve smyslu čl. 2 bodu 29 směrnice 2019/944 je AS Sadales tīkls, ale rovněž šesti průmyslovým zákazníkům, aniž k tomu využívá této soustavy. Společnost Elektro bizness je vlastníkem jak tohoto zařízení, tak tohoto elektrického vedení. 16 V roce 2021 požádala společnost Elektro bizness regulační orgán o povolení k výstavbě nového elektrického vedení v délce přibližně 400 metrů, aby spojila existující vedení s prostory nového zákazníka, který by tak byl elektřinou vyrobenou v jejím zařízení pro kombinovanou výrobu tepla a elektřiny zásobován bez využití uvedené soustavy. Po ukončení výstavby tohoto vedení by se tento nový zákazník odpojil od distribuční soustavy provozovatele, stal by se „izolovaným zákazníkem“ a nakupoval by přímo elektřinu vyrobenou a dodávanou společností Elektro bizness. 17 Rozhodnutím ze dne 10. června 2021 regulační orgán tuto žádost zamítl z důvodu, že zamýšlené elektrické vedení není „přímým vedením“ ve smyslu čl. 1 bodu 29 ETL, neboť by spojovalo zákazníka s existujícím elektrickým vedením, a nikoli s místem výroby elektřiny, v projednávaném případě se zařízením pro kombinovanou výrobu tepla a elektřiny společnosti Elektro bizness. 18 Vzhledem k tomu, že žaloba podaná proti tomuto rozhodnutí byla rozsudkem Administratīvā apgabaltiesa (Krajský správní soud, Lotyšsko) zamítnuta, podala společnost Elektro bizness proti uvedenému rozsudku kasační opravný prostředek k Augstākā tiesa (Senāts) (Nejvyšší soud, Lotyšsko), který je předkládajícím soudem. 19 Předkládající soud si klade otázku, zda je zamýšlené elektrické vedení „přímým vedením“ ve smyslu čl. 2 bodu 41 směrnice 2019/944, jelikož by společnosti Elektro bizness umožňovalo dodávat elektřinu zákazníkovi bez využití distribuční soustavy provozovatele, nebo zda – jak tvrdí regulační orgán – může být takto kvalifikováno pouze vedení, které zajišťuje přímý přenos elektřiny z výrobního místa k zákazníkovi. 20 Uvedený soud má za to, že jelikož směrnice 2019/944 neobsahuje žádný odkaz na vnitrostátní právo, měl by být pojem „přímé vedení“ považován za autonomní pojem unijního práva. Podle jeho názoru ze znění bodu 11 odůvodnění ve spojení s článkem 1 a čl. 7 odst. 1 této směrnice vyplývá, že jejím cílem je zejména podpořit možnost, aby výrobci elektřiny dodávali elektřinu svým zákazníkům bez využití distribuční soustavy provozovatele, pokud si to přejí. 21 Tentýž soud má však za to, že pojem „izolované výrobní místo“ uvedený v čl. 2 bodě 41 dané směrnice může odkazovat nejen na soubor zařízení určených k výrobě elektřiny, která se nacházejí na jedné adrese, ale rovněž na elektrická vedení patřící výrobci, jimiž je takto vyrobená elektřina dodávána, i když se tato vedení nacházejí mimo dané výrobní místo. S ohledem na znění tohoto čl. 2 bodu 41 se předkládající soud přiklání k názoru, že přímým vedením je elektrické vedení přímo spojující výrobní místo se zákazníkem. 22 Za těchto podmínek se Augstākā tiesa (Senāts) (Nejvyšší soud) rozhodl přerušit řízení a položit Soudnímu dvoru následující předběžné otázky: „Ve smyslu čl. 2 bodu 41 [směrnice 2019/944] 1) musí být pojem ‚izolované výrobní místo‘ chápán tak, že zahrnuje i elektrické vedení patřící výrobci, které je spojeno se zařízením pro výrobu elektřiny, je určeno k přenosu vyrobené elektřiny a přesahuje hranice umístění (nachází se na jiné adrese) zařízení pro výrobu elektřiny? 2) Zahrnuje definice ‚přímého vedení‘ elektrické vedení, které spojuje zákazníka s místem výroby elektřiny (zařízení pro kombinovanou výrobu tepla a elektřiny) tím, že jej připojuje k již vybudovanému elektrickému vedení, které je ve vlastnictví výrobce a je určeno k přenosu elektřiny, pokud v důsledku toho výrobce dodává elektřinu zákazníkovi bez využití soustavy provozovatele distribuční soustavy? Má na odpověď na tuto otázku vliv skutečnost, že již vybudované elektrické vedení ve vlastnictví výrobce, které je určeno k přenosu elektřiny a ke kterému by bylo připojeno elektrické vedení vedoucí až k novému zákazníkovi, se již využívá k dodávkám elektřiny jiným zákazníkům?“ Věc C‑756/24 23 Autobusu parks je společnost založená podle lotyšského práva, která působí v odvětví komunální osobní dopravy. Tato společnost požádala v březnu 2021 regulační orgán o povolení k výstavbě vedení v délce 6,5 km, které by spojovalo zařízení na výrobu vodíku, jehož je vlastníkem a které slouží k zásobování městských autobusů poháněných vodíkem, se zařízením pro kombinovanou výrobu tepla a elektřiny z biomasy, které patří společnosti Gren Latvija. 24 Podle společnosti Autobusu parks je spojení jejího zařízení na výrobu vodíku se společností Gren Latvija prostřednictvím přímého vedení nezbytné zejména za účelem snížení nákladů souvisejících s jejími rostoucími potřebami v oblasti dodávek elektřiny. Společnost Autobusu parks upřesnila, že po výstavbě zamýšleného vedení bude nakupovat elektřinu přímo od společnosti Gren Latvija a nebude využívat distribuční soustavu provozovatele, k níž si však chce ponechat rezervní připojení. 25 Rozhodnutím ze dne 4. listopadu 2021 regulační orgán tuto žádost zamítl s odůvodněním, že nebylo požádáno o povolení k výstavbě „přímého vedení“, jelikož společnost Autobusu parks nelze považovat za „izolovaného zákazníka“, protože je připojena k distribuční soustavě provozovatele. Podle regulačního orgánu v projednávaném případě neexistuje žádný technický nebo hospodářský důvod pro výstavbu zamýšleného vedení, jelikož tato distribuční soustava je schopna za přiměřené náklady uspokojit dodatečné potřeby společnosti Autobusu parks v oblasti dodávek elektřiny. 26 Společnost Autobusu parks podala proti tomuto rozhodnutí žalobu k Administratīvā apgabaltiesa (Krajský správní soud), který jí vyhověl a nařídil regulačnímu orgánu, aby povolil výstavbu přímého vedení spojujícího společnost Autobusu parks s výrobcem elektřiny Gren Latvija, přičemž náležitě zohlednil, že po výstavbě tohoto vedení nebude společnost Autobusu parks pro zásobování elektřinou využívat distribuční soustavu provozovatele. 27 Uvedený soud kromě toho konstatoval, že přímá vedení jsou součástí konkurenčních trhů s elektřinou a stanovisko regulačního orgánu, podle kterého lze přímé vedení vystavět pouze za účelem zajištění dodávek elektřiny zákazníkům, kteří nemají možnost odebírat elektřinu z distribuční soustavy provozovatele, nelze vyvodit z platné právní úpravy. 28 Regulační orgán podal proti uvedenému rozsudku kasační opravný prostředek k Augstākā tiesa (Senāts) (Nejvyšší soud), který je předkládajícím soudem, a tvrdil, že povolení výstavby přímých vedení bez jakéhokoli technického a ekonomického odůvodnění ohrožuje zájmy a potřeby všech zákazníků. Zákazníci, kteří v důsledku využívání přímého vedení k odběru elektřiny již nejsou připojeni k distribuční soustavě provozovatele, se totiž podle jeho názoru již finančně nepodílí na údržbě a rozvoji této soustavy, což vede ke zvýšení nákladů na poskytované služby. 29 Podle předkládajícího soudu z výkladu čl. 7 odst. 1 ve spojení s bodem 11 odůvodnění směrnice 2019/944 a ve světle článku 1 této směrnice vyplývá, že cílem této směrnice je podpořit možnost, aby výrobci dodávali elektřinu svým zákazníkům prostřednictvím přímých vedení, pokud si to přejí. S ohledem na odstavce 3 a 5 tohoto článku 7, jakož i na článek 4 uvedené směrnice si však uvedený soud klade otázku, zda má být dodávání elektřiny prostřednictvím přímého vedení povoleno pouze ve výjimečných případech, nebo zda má být považováno za alternativní způsob dodávek elektřiny. 30 Uvedený soud se dále zamýšlí nad pojmem „izolovaný zákazník“ ve smyslu čl. 2 bodu 41 směrnice 2019/944. Klade si otázku, zda skutečnost, že si zákazník přeje ponechat rezervní připojení k distribuční soustavě provozovatele, představuje překážku pro povolení výstavby přímého vedení, a zda je pro výklad tohoto pojmu relevantní okolnost, že je tato soustava schopna zákazníkovi zajistit potřebnou kapacitu pro dodávky elektřiny. 31 Za těchto podmínek se Augstākā tiesa (Senāts) (Nejvyšší soud) rozhodl přerušit řízení a položit Soudnímu dvoru následující předběžné otázky: „1) Je třeba článek 7 [směrnice 2019/944] vykládat v tom smyslu, že ‚přímé vedení‘ má být považováno za alternativní způsob dodávek elektřiny, pokud si to zákazník přeje, nebo je přímé vedení povoleno pouze za výjimečných okolností? 2) Je třeba čl. 2 bod 41 [směrnice 2019/944] vykládat v tom smyslu, že jako ‚přímé vedení‘ [lze kvalifikovat] elektrické vedení, jímž má být výrobce elektřiny, který je připojen k distribuční soustavě, spojen se zákazníkem připojeným k distribuční soustavě, pokud si tento zákazník po vybudování plánovaného elektrického vedení ponechá toto připojení k distribuční soustavě jako rezervní připojení, ale bude odpojen od distribuční soustavy, dokud mu bude výrobce elektřiny dodávat elektřinu prostřednictvím přímého vedení? 3) Je třeba pod pojmem ‚izolovaný zákazník‘ použitým v čl. 2 bodě 41 [směrnice 2019/944] rozumět výhradně zákazníka, který není připojen k distribuční soustavě a kterému provozovatel distribuční soustavy nemůže zajistit potřebnou kapacitu vybudováním připojení za přiměřené náklady?“ 32 Rozhodnutím ze dne 10. prosince 2024 předseda Soudního dvora spojil věci C‑722/24 a C‑756/24 pro účely písemné a ústní části řízení, jakož i pro účely rozsudku. K předběžným otázkám 33 Podstatou otázek předkládajícího soudu, které je třeba zkoumat společně, je, zda čl. 2 bod 41 směrnice 2019/944 ve spojení s jejím článkem 7 musí být vykládán v tom smyslu, že pojem „přímé vedení“, který je v něm uveden, zahrnuje elektrické vedení, které má spojit: – nového zákazníka s existujícím elektrickým vedením, prostřednictvím kterého jeho vlastník zásobuje jiné zákazníky bez využití distribuční soustavy provozovatele, i když uvedené vedení přesahuje hranice dotyčného výrobního místa; – výrobce elektřiny se zákazníkem, který si chce ponechat rezervní připojení k distribuční soustavě provozovatele, přičemž tento provozovatel je schopen tomuto zákazníkovi zajistit potřebné dodávky elektřiny bez nutnosti instalace tohoto nového vedení. 34 Úvodem je třeba poznamenat, že čl. 2 bod 41 směrnice 2019/944 obsahuje dvě definice pojmu „přímé vedení“. Podle první definice je přímým vedením „elektrické vedení spojující izolované výrobní místo s izolovaným zákazníkem“. Podle druhé definice je přímým vedením „elektrické vedení spojující výrobce elektřiny [a podnik dodávající elektřinu, aby přímo zásobovali] své vlastní prostory, dceřiné společnosti nebo zákazníky“, přičemž ve znění této druhé definice chybí slovo „izolovaný“. 35 Podle ustálené judikatury je třeba při výkladu ustanovení unijního práva vzít v úvahu nejen jeho znění, ale i jeho kontext a cíle právní úpravy, jejíž je součástí (viz rozsudek ze dne 17. listopadu 1983, Merck, 292/82, EU:C:1983:335, bod 12, a rozsudek ze dne 15. ledna 2026, AVR-Afvalverwerking, C‑692/23, EU:C:2026:4, bod 37). 36 Pokud jde o znění první definice „přímého vedení“ uvedené v čl. 2 bodě 41 směrnice 2019/944, jak v podstatě uvedla generální advokátka v bodě 91 svého stanoviska, jazykové verze tohoto ustanovení sice nejsou totožné, avšak většina z nich vyjadřuje tutéž myšlenku, tedy že jak výrobní místo, tak zákazník jsou izolováni nebo odděleni od distribuční soustavy provozovatele. Tak je tomu zejména ve znění lotyšském („izolēts“), dánském („isoleret“), řeckém („mεμονωμένη/μεμονωμένο“), anglickém („isolated“), francouzském („isolé“), chorvatském („izoliran“), italském („isolato“), portugalském („isolado“) a rumunském („izolat“). Je tomu tak rovněž ve znění německém („einzelnen“) a švédském („enskild“), která odkazují na myšlenku něčeho „separovaného“. 37 Výraz „izolovaný“ ve smyslu tohoto čl. 2 bodu 41 tedy odkazuje na výrobní místo nebo výrobce elektřiny a na spotřebitele elektřiny, kteří nejsou spojeni s distribuční soustavou provozovatele, a mohou být tudíž vzájemně spojeni pouze „přímým vedením“ ve smyslu první definice uvedené v tomto ustanovení. 38 Tuto myšlenku separace, která je vyjádřena pojmem „izolovaný“ použitým ve směrnici 2019/944, podle všeho potvrzuje sedmý bod odůvodnění této směrnice, který uvádí, že s cílem vytvořit vnitřní trh s elektřinou musí členské státy podporovat integraci svých vnitrostátních trhů a spolupráci provozovatelů soustav na úrovni Unie a na regionální úrovni „a současně do ní začlenit i dosud existující izolované soustavy, jež se v Unii dosud vyskytují a vytvářejí energetické ostrovy“. 39 Pokud jde o druhou definici pojmu „přímé vedení“ uvedenou v čl. 2 bodě 41 směrnice 2019/944 a připomenutou v bodě 34 tohoto rozsudku, je třeba uvést, podobně jako to učinila rakouská vláda v písemném vyjádření, že slovo „a“ obsažené ve výrazu „spojující výrobce elektřiny [a podnik dodávající elektřinu]“ je třeba vykládat jako „nebo“. Tento výklad umožňuje postihnout všechny případy, kdy je „výrobce“ nebo „podnik dodávající elektřinu“ spojen elektrickým vedením se svými prostorami, dceřinými společnostmi a zákazníky, které zásobuje. 40 Tento výklad je na prvním místě podpořen kontextuální analýzou této druhé definice pojmu „přímé vedení“. 41 Na jedné straně jak „výrobce elektřiny“, tak „podnik dodávající elektřinu“ ve smyslu druhé definice pojmu „přímé vedení“ totiž spadají pod široce definovaný pojem „elektroenergetický podnik“ ve smyslu čl. 2 bodu 57 této směrnice, kterým se rozumí „fyzická nebo právnická osoba, která vykonává alespoň jednu z těchto funkcí: výroba, přenos, distribuce, agregace, odezva strany poptávky, ukládání energie, dodávky nebo nákup elektřiny, a která zajišťuje obchodní, technické nebo údržbářské úkoly související s těmito funkcemi, která však nezahrnuje konečné zákazníky“. 42 Na druhé straně článek 7 uvedené směrnice, nadepsaný „Přímá vedení“, ukládá členským státům v odst. 1 písm. a) povinnost přijmout nezbytná opatření, která umožní všem výrobcům a podnikům dodávajícím elektřinu a usazeným na jejich území zásobovat své vlastní prostory, dceřiné společnosti a zákazníky prostřednictvím přímých vedení, aniž by se na ně vztahovaly nepřiměřené administrativní postupy nebo náklady. Z tohoto ustanovení tedy vyplývá, jak v podstatě uvedla generální advokátka v bodě 37 svého stanoviska, že jak výrobci elektřiny, tak podniky dodávající elektřinu musí mít možnost zásobovat své vlastní prostory, dceřiné společnosti a zákazníky prostřednictvím přímého vedení. 43 Takový výklad je na druhém místě podpořen cíli sledovanými směrnicí 2019/944, jak jsou uvedeny v jejím článku 1 ve světle bodů 2, 6 a 11 jejího odůvodnění, mezi něž patří zejména vytvoření skutečně integrovaných, konkurenčních, flexibilních, spravedlivých a transparentních trhů s elektřinou v Unii zaměřených na spotřebitele s cílem zajistit dostupné, transparentní ceny energie a náklady pro spotřebitele, vysokou míru bezpečnosti dodávek a plynulý přechod k udržitelnému nízkouhlíkovému energetickému systému. 44 Výstavba „přímých vedení“ ve smyslu čl. 2 bodu 41 této směrnice totiž rozšiřuje svobodu volby, kterou mají spotřebitelé, a to tím, že jim nabízí možnost odebírat elektřinu od elektroenergetických podniků dle vlastního výběru, aniž by byli závislí na distribuční soustavě provozovatele. Tato přímá vedení, která posilují autonomii spotřebitelů a jejich úlohu decentralizovaných účastníků trhu s elektřinou, mohou přispět, jak dokládá spor v původním řízení ve věci C‑756/24, k rozvoji výroby elektřiny z obnovitelných zdrojů, které jsou prostředkem k zajištění energetického přechodu a udržitelného rozvoje v souladu s cíli uvedené směrnice. 45 Z výše uvedeného vyplývá, že pokud zákazník odebírá elektřinu prostřednictvím vedení, které jej spojuje přímo s výrobcem elektřiny nebo podnikem dodávajícím elektřinu, aniž k tomu využívá distribuční soustavu provozovatele, musí být toto vedení kvalifikováno jako „přímé“ ve smyslu druhé definice uvedené v tomto čl. 2 bodě 41, i když tento zákazník, tento výrobce nebo tento podnik nejsou „izolovaní“, tedy bez připojení k této soustavě. 46 Je na předkládajícím soudu, aby s ohledem na všechny informace, které má k dispozici, určil, zda elektrická vedení, u nichž regulační orgán odmítl udělit povolení k výstavbě, spadají pod jednu ze dvou definic uvedených v čl. 2 bodě 41 směrnice 2019/944, a zejména zda by tato vedení umožnila, aby nový zákazník společnosti Elektro bizness a společnost Autobusu parks byli zásobováni elektřinou od společnosti Elektro bizness, resp. od společnosti Gren Latvija, aniž by byla využita distribuční soustava provozovatele ve smyslu bodu 29 tohoto článku 2. 47 Soudní dvůr nicméně může uvedenému soudu poskytnout všechny prvky výkladu unijního práva, které mohou být užitečné pro rozhodnutí ve věcech, jež mu byly předloženy (rozsudek ze dne 4. března 2021, Frenetikexito, C‑581/19, EU:C:2021:167, bod 36 a citovaná judikatura). 48 Z žádosti o rozhodnutí o předběžné otázce týkající se věci C‑722/24 vyplývá, že elektřina vyrobená v zařízení pro kombinovanou výrobu tepla a elektřiny společnosti Elektro bizness je přepravována vedením, jehož je tato společnost rovněž vlastníkem, k jejím šesti průmyslovým zákazníkům a do distribuční soustavy provozovatele. Pokud by po výstavbě nového vedení, o jejíž povolení požádala společnost Elektro bizness, tento elektroenergetický podnik ve smyslu čl. 2 bodu 57 směrnice 2019/944 zásoboval nového zákazníka prostřednictvím tohoto vedení a bez využití distribuční soustavy provozovatele, lze toto vedení kvalifikovat jako „přímé vedení“ ve smyslu druhé definice obsažené v čl. 2 bodě 41 směrnice 2019/944, aniž by bylo v tomto ohledu relevantní, že toto vedení, jehož vlastníkem je společnost Elektro bizness, spojuje zákazníka s existujícím vedením, které dodává elektřinu, a nikoli přímo s výrobním místem, v projednávané věci zařízením pro kombinovanou výrobu tepla a elektřiny, jejímž vlastníkem je rovněž společnost Elektro bizness. 49 Jak totiž vyplývá z bodu 45 tohoto rozsudku, rozhodujícím kritériem pro účely kvalifikace jako „přímé vedení“ ve smyslu druhé definice uvedené v tomto ustanovení je kritérium zásobování zákazníka výrobcem elektřiny nebo podnikem dodávajícím elektřinu bez využití distribuční soustavy provozovatele ve smyslu čl. 2 bodu 29 této směrnice, a to bez ohledu na to, zda jsou tyto hospodářské subjekty již k této soustavě připojeny. 50 Na tuto kvalifikaci nemá vliv ani okolnost, na kterou předkládající soud poukázal v žádosti o rozhodnutí o předběžné otázce ve věci C‑756/24, tedy že si dotyčný zákazník po výstavbě vedení, které ho přímo spojuje s výrobcem elektřiny, ponechává rezervní připojení k distribuční soustavě provozovatele. 51 Požadavek úplného odpojení od distribuční soustavy provozovatele po připojení k přímému vedení, který nevyplývá ze znění ani z kontextu čl. 2 bodu 41 směrnice 2019/944, by totiž mohl být v rozporu s právem zákazníka svobodně si vybrat dodavatele elektřiny, které je zakotveno v článku 4 této směrnice, jakož i se zásadou volného přístupu k soustavě, která vyplývá z čl. 6 odst. 1 uvedené směrnice. Kromě toho čl. 7 odst. 3 směrnice 2019/944 stanoví, že možnost dodávek elektřiny prostřednictvím přímých vedení nemá vliv na možnost uzavírat smlouvy o dodávkách elektřiny podle článku 6 téže směrnice. 52 Z těchto úvah vyplývá, že zákazník musí mít možnost, pokud si to přeje, ponechat si po výstavbě přímého vedení rezervní připojení k veřejné distribuční soustavě. Jak ovšem v podstatě uvedla Komise v písemném vyjádření, ponechání takového připojení nesmí narušovat plnění úkolů provozovatele distribuční soustavy, zejména – jak stanoví čl. 31 odst. 1 směrnice 2019/944 – úkol zajistit dlouhodobou schopnost soustavy uspokojovat přiměřenou poptávku po distribuci elektřiny a zajistit hospodárný způsob provozu, údržby a rozvoje bezpečné, spolehlivé a účinné distribuční soustavy elektřiny ve své oblasti s náležitým ohledem na životní prostředí a energetickou účinnost. Zákazníkovi, který si takové rezervní připojení ponechá, tak mohou být uloženy určité povinnosti, jako je zejména zaplacení finančního příspěvku, který musí být stanoven v souladu se směrnicí 2019/944 a zejména s postupem stanoveným v jejím čl. 59 odst. 7. 53 Pokud jde konečně o otázku, zda lze „přímé vedení“ ve smyslu čl. 2 bodu 41 této směrnice povolit pouze za výjimečných okolností, zejména pokud distribuční soustava provozovatele není schopna zajistit zákazníkovi potřebné dodávky elektřiny, vyplývá zaprvé z čl. 7 odst. 1 směrnice 2019/944 ve spojení s bodem 11 odůvodnění této směrnice, že všichni výrobci elektřiny a všechny podniky dodávající elektřinu usazené na území členských států musí mít možnost zásobovat prostřednictvím přímého vedení své vlastní prostory, dceřiné společnosti a zákazníky, aniž by byli vystaveni nepřiměřeným administrativním postupům nebo nákladům. Dále musí být možné, aby všichni zákazníci usazení na tomto území byli, ať už individuálně nebo společně, „elektroenergetickým podnikem“ ve smyslu čl. 2 bodu 57 uvedené směrnice zásobováni prostřednictvím přímého vedení. 54 Zadruhé musí být tento čl. 7 odst. 1 vykládán ve spojení s článkem 4 téže směrnice, který stanoví, že všichni zákazníci musí mít možnost svobodně nakupovat elektřinu od dodavatelů dle vlastního výběru. 55 Zatřetí, jak bylo připomenuto v bodech 43 a 44 tohoto rozsudku, výstavba přímých vedení přispívá k dosažení cílů směrnice 2019/944, které jsou uvedeny v jejím článku 1. 56 Začtvrté, jak zdůraznila generální advokátka v bodě 55 svého stanoviska, je třeba rozlišovat mezi podmínkami, za kterých musí být elektrické vedení kvalifikováno jako „přímé vedení“ ve smyslu čl. 2 bodu 41 směrnice 2019/944, a podmínkami, za kterých může být takové vedení povoleno. Zatímco čl. 7 odst. 1 této směrnice stanoví právo zákazníků na dodávky elektřiny prostřednictvím přímého vedení a právo výrobců a dodavatelů elektřiny zajistit takové dodávky, odstavec 2 tohoto článku 7 ukládá členským státům povinnost stanovit objektivní a nediskriminační kritéria pro udělování povolení k výstavbě přímého vedení. Podle odstavce 4 uvedeného článku 7 mohou členské státy podmínit vydání těchto povolení buď odmítnutím přístupu do soustavy na základě článku 6 uvedené směrnice, nebo zahájením postupu řešení sporů podle jejího článku 60. 57 Kromě toho podle čl. 7 odst. 5 uvedené směrnice mohou členské státy odmítnout povolit výstavbu přímého vedení, pokud udělení tohoto povolení může bránit uplatňování ustanovení o povinnostech veřejné služby podle článku 9 téže směrnice, která se v souladu s odstavcem 2 tohoto článku týkají bezpečnosti, včetně bezpečnosti dodávek, pravidelnosti, kvality a cen dodávek, jakož i ochrany životního prostředí, včetně energetické účinnosti, energie z obnovitelných zdrojů a ochrany klimatu. 58 Konečně podle čl. 9 odst. 5 směrnice 2019/944 se mohou členské státy rozhodnout neuplatňovat mimo jiné její článek 7, pokud by jeho uplatnění právně nebo fakticky bránilo plnění povinností uložených elektroenergetickým podnikům z důvodů obecného hospodářského zájmu a pokud tím rozvoj obchodu nebude dotčen v míře, která by byla v rozporu se zájmem Unie. 59 Ze všech těchto ustanovení vyplývá, že tato směrnice ponechává členským státům prostor pro uvážení, aby v souladu s cíli a obecnými zásadami této směrnice stanovily kritéria pro udělování povolení k výstavbě přímých vedení, pokud jsou tato kritéria objektivní a nediskriminační, aby se zajistilo, že výstavba těchto vedení nebude v rozporu zejména s integritou a životaschopností distribuční soustavy provozovatele a umožní zaručit zákazníkům potřebné připojení k soustavě za dostupné náklady. 60 V projednávaném případě je na předkládajícím soudu, aby posoudil, zda by s ohledem na vnitrostátní kontext trhu s elektřinou a zejména na zvláštnosti dodávek energie na tomto trhu, jak jsou popsány v žádostech o rozhodnutí o předběžné otázce, povolení k výstavbě takových přímých vedení, jako jsou vedení dotčená ve věcech v původních řízeních, nepřiměřeně omezovalo schopnost provozovatele distribuční soustavy plnit své povinnosti veřejné služby, zejména povinnost poskytovat výrobcům a zákazníkům potřebné připojení k dotyčné soustavě v souladu s podmínkami připojení stanovenými regulačním orgánem. 61 Ze všech výše uvedených důvodů vyplývá, že čl. 2 bod 41 směrnice 2019/944 ve spojení s jejím článkem 7 musí být vykládán v tom smyslu, že pojem „přímé vedení“, který je v něm uveden, zahrnuje elektrické vedení, které má spojit: – nového zákazníka s existujícím elektrickým vedením, prostřednictvím kterého jeho vlastník zásobuje jiné zákazníky bez využití distribuční soustavy provozovatele, i když uvedené vedení přesahuje hranice dotyčného výrobního místa; – výrobce elektřiny se zákazníkem, který si chce za přiměřený finanční příspěvek ponechat rezervní připojení k distribuční soustavě provozovatele, pokud neexistují takové výjimečné okolnosti, jako je neschopnost tohoto provozovatele zajistit tomuto zákazníkovi potřebné dodávky elektřiny, aniž jsou dotčena omezení stanovená v čl. 7 odst. 2, 4 a 5 této směrnice, pokud jde o povolení k výstavbě přímého vedení. K nákladům řízení 62 Vzhledem k tomu, že řízení má, pokud jde o účastníky původního řízení, povahu incidenčního řízení ve vztahu ke sporu probíhajícímu před předkládajícím soudem, je k rozhodnutí o nákladech řízení příslušný uvedený soud. Výdaje vzniklé předložením jiných vyjádření Soudnímu dvoru než vyjádření uvedených účastníků řízení se nenahrazují. Z těchto důvodů Soudní dvůr (třetí senát) rozhodl takto: Článek 2 bod 41 směrnice Evropského parlamentu a Rady (EU) 2019/944 ze dne 5. června 2019 o společných pravidlech pro vnitřní trh s elektřinou a o změně směrnice 2012/27/EU ve spojení s jejím článkem 7 musí být vykládán v tom smyslu, že pojem „přímé vedení“, který je v něm uveden, zahrnuje elektrické vedení, které má spojit: – nového zákazníka s existujícím elektrickým vedením, prostřednictvím kterého jeho vlastník zásobuje jiné zákazníky bez využití distribuční soustavy provozovatele, i když uvedené vedení přesahuje hranice dotyčného výrobního místa; – výrobce elektřiny se zákazníkem, který si chce za přiměřený finanční příspěvek ponechat rezervní připojení k distribuční soustavě provozovatele, pokud neexistují takové výjimečné okolnosti, jako je neschopnost tohoto provozovatele zajistit tomuto zákazníkovi potřebné dodávky elektřiny, aniž jsou dotčena omezení stanovená v čl. 7 odst. 2, 4 a 5 této směrnice, pokud jde o povolení k výstavbě přímého vedení. Podpisy * Jednací jazyk: lotyština."
+            } ],
+            "docNoPart" : 1,
+            "celex" : "62024CJ0722",
+            "groupByLogicalId" : [ {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518035",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "DE",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518052",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "ES",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518051",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "HU",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518053",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "ET",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518049",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "MT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518050",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "CS",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518054",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "SK",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518048",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "EL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518039",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "DA",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518056",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "GA",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518037",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "SV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3517814",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "LV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3517813",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518040",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "RO",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518041",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "NL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518043",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "EN",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518044",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "HR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518042",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "LT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518045",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "IT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518046",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "PT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518047",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "BG",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518055",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "SL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518036",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "FI",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3518038",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "PL",
+              "formats" : [ "HTML" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "",
+            "affairJurisdiction" : "Cour de justice",
+            "affairJurisdictionCode" : "C",
+            "routing" : "C/0722/24/00000000RP/01/P/01",
+            "ecli" : "ECLI:EU:C:2026:766"
+          },
+          "highlightFields" : { },
+          "innerHits" : { },
+          "routing" : "C/0722/24/00000000RP/01/P/01",
+          "matchedQueries" : [ ]
+        }, {
+          "index" : "index-affair@30-06-2026",
+          "id" : "C/0722/24/00000000RP/01/P/01-3412201",
+          "score" : 10.915208,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "C/0722/24/00000000RP/01/P/01-3412201",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_315507",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+            "idPublished" : "C-722/24",
+            "docType" : "Conclusions",
+            "docTypeCode" : "CONCL",
+            "docDate" : "2026-02-12",
+            "docFormats" : [ "HTML" ],
+            "contentLength" : 0,
+            "contentML" : [ {
+              "cs" : "STANOVISKO GENERÁLNÍ ADVOKÁTKY JULIANE KOKOTT přednesené dne 12. února 2026(1) Spojené věci C‑722/24 a C‑756/24 SIA „Elektro bizness“ za účasti: Sabiedrisko pakalpojumu regulēšanas komisija (C‑722/24) a Sabiedrisko pakalpojumu regulēšanas komisija za účasti: SIA „Jelgavas autobusu parks“ (C‑756/24) [žádost o rozhodnutí o předběžné otázce podaná Augstākā tiesa (Senāts) (nejvyšší soud, Lotyšsko)] „ Žádost o rozhodnutí o předběžné otázce – Vnitřní trh s elektřinou – Směrnice (EU) 2019/944 – Článek 2 bod 41 – Pojem přímého vedení – Možnost výběru pro zákazníky – Úplné oddělení od soustavy – Připojení zákazníka ke stávajícímu vedení – Připojení většího počtu zákazníků“ Obsah I. Úvod 1. Je přímé vedení, jehož prostřednictvím zákazník odebírá elektřinu od výrobce bez zprostředkování soustavou (a tedy bez placení souvisejících nákladů), vyhrazeno pouze pro zákazníky, kteří nemohou být z technických nebo ekonomických důvodů připojeni k distribuční soustavě? Nebo mají členské státy možnost povolit přímé vedení i v jiných případech (například jako podporu průmyslových areálů nebo decentralizované výroby a dodávek „zelené“ energie)? 2. Toto je ve svém jádru otázka, na níž je založena tato žádost o rozhodnutí o předběžné otázce podaná Augstākā tiesa (Senāts) (nejvyšší soud, Lotyšsko). 3. Přímé vedení je uznávanou součástí vnitřního trhu s elektřinou počínaje směrnicí 96/92/ES(2). V aktuálně platné směrnici (EU) 2019/944 (dále jen „směrnice o vnitřním trhu s elektřinou“)(3) je regulováno tak, aby bylo možné dosáhnout rovnováhy mezi bezpečností dodávek pro všechny zákazníky a spravedlivým rozdělením nákladů na distribuční soustavu na jedné straně a podporou průmyslu a diverzifikace výroby energie na straně druhé. 4. Obě žádosti o rozhodnutí o předběžné otázce, které podal Augstākā tiesa (Senāts) (nejvyšší soud [senát]) dávají nyní Soudnímu dvoru možnost upřesnit podmínky příslušné náhrady. 5. Obě elektrická vedení, která jsou předmětem původního řízení, mají sloužit jako spojení mezi zařízením pro výrobu elektřiny a zákazníkem. Obě plánovaná vedení však mají určitá specifika: ve věci C‑722/24 má být zákazník připojen prostřednictvím elektrického vedení, které je předmětem sporu, ke stávajícímu elektrickému vedení, které je připojeno k distribuční soustavě a prostřednictvím kterého jsou již zásobováni další zákazníci. V případě C‑756/24 je zákazník k distribuční soustavě již připojen a přeje si toto připojení zachovat i v budoucnu jako záložní připojení vedle elektrického vedení, které je předmětem sporu. II. Právní rámec A. Unijní právo 6. Článek 2 („Definice“) bod 41 směrnice o vnitřním trhu s elektřinou obsahuje definici pojmu přímé vedení. Pro účely této směrnice se rozumí: „ ‚přímým vedením‘ elektrické vedení spojující izolované výrobní místo s izolovaným zákazníkem, nebo elektrické vedení spojující výrobce elektřiny s podnikem dodávajícím elektřinu, který přímo zásobuje své vlastní prostory, dceřiné společnosti nebo zákazníky;“. 7. Článek 7 téže směrnice, nadepsaný „Přímá vedení“, stanoví: „1. Členské státy přijmou nezbytná opatření, která umožní: a) všem výrobcům a podnikům dodávajícím elektřinu(4) usazeným na jejich území zásobovat své vlastní prostory, dceřiné společnosti a zákazníky prostřednictvím přímých vedení, aniž by se na ně vztahovaly nepřiměřené administrativní postupy nebo náklady; b) všem zákazníkům na jejich území, aby byli, ať už individuálně nebo společně, výrobci a podniky dodávajícími elektřinu zásobováni prostřednictvím přímých vedení. 2. Členské státy stanoví kritéria pro povolení výstavby přímých vedení na svém území. Tato kritéria musí být objektivní a nediskriminační. 3. Možnost dodávek elektřiny prostřednictvím přímých vedení podle odstavce 1 tohoto článku nemá vliv na možnost uzavírat smlouvy o dodávkách elektřiny podle článku 6. 4. Členské státy mohou podmínit vydání povolení k výstavbě přímého vedení buď odmítnutím přístupu do soustavy na základě článku 6, je-li to vhodné, nebo zahájením postupu řešení sporů podle článku 60. 5. Členské státy mohou odmítnout povolit výstavbu přímého vedení, pokud by udělení tohoto povolení bránilo uplatňování ustanovení o povinnostech veřejné služby podle článku 9. Toto odmítnutí musí být řádně odůvodněno.“ B. Lotyšské právo 8. V článku 1 bodě 29 Elektroenerģijas tirgus likums ze dne 5. května 2005 (dále jen „zákon o trhu s elektřinou“) je přímé vedení definováno jako „elektrické vedení spojující izolované výrobní místo elektřiny s izolovaným zákazníkem nebo elektrické vedení spojující izolovaného výrobce elektřiny a obchodníka přímo zásobujícího zařízení v jeho vlastnictví nebo držení, spojené podniky a jeho vlastní zákazníky;“. 9. Článek 25 („Výstavba vedení“) odst. 2 a odst. 3 bod 1 zákona o trhu s elektřinou zní: „2. Provozovatel distribuční soustavy má právo zavést distribuční soustavu na území, na které se vztahuje jeho licence. 3. Jiná osoba než provozovatel distribuční soustavy je oprávněna zavést distribuční vedení na území, na které se vztahuje licence provozovatele distribuční soustavy, pokud je budované vedení: bod 1) přímým vedením;“. 10. Článek 26 („Přímé vedení“) zákona o trhu s elektřinou stanoví: „1. Výrobce má právo dodávat elektřinu zákazníkům nebo do vlastních zařízení prostřednictvím připojení přímého vedení. 2. Povolení k zavedení připojení přímého vedení vydává regulační orgán. Regulační orgán stanoví objektivní a jednotná kritéria, na jejichž základě je vydáváno povolení k zavedení připojení přímého vedení.“ III. Spory v původním řízení a předběžné otázky A. Věc C‑722/24, Elektro bizness 11. Společnost Elektro bizness provozuje kogenerační elektrárnu. Kromě této elektrárny vlastní také na tuto elektrárnu napojené podzemní kabelové vedení (dále jen „stávající vedení“) o délce 7,6 kilometru, kterým se přepravuje 20 kilovoltů elektřiny. Stávající vedení vlastnila společnost Elektro bizness již před tím, než v roce 2005 vstoupil v platnost zákon o trhu s elektřinou. Společnost Elektro bizness přepravuje tímto vedením elektřinu do soustavy akciové společnosti Sadales tīkls. Stávající vedení využívá také k zásobování šesti průmyslových zákazníků elektřinou bez zprostředkování soustavou Sadales tīkls. 12. V roce 2021 podala společnost Elektro bizness žádost u Sabiedrisko pakalpojumu regulēšanas komisija, Komise pro regulaci veřejných služeb (dále jen „regulační orgán“) o vydání povolení k výstavbě přímého vedení. Plánované vedení mělo připojit zařízení zákazníka ke stávajícímu vedení na vzdálenost přibližně 400 metrů a umožnit společnosti Elektro bizness dodávat tomuto zákazníkovi elektřinu bez zprostředkování soustavou Sadales tīkls. 13. Regulační orgán společnosti Elektro bizness rozhodnutím č. 65 ze dne 10. června 2021 zřízení přímého vedení zamítl. Své rozhodnutí odůvodnil tím, že plánované elektrické vedení není přímým vedením. Vzhledem k tomu, že stávající vedení nelze považovat za součást „výrobního místa elektřiny“, plánované vedení nespojuje podle jeho tvrzení zákazníka s izolovaným výrobním místem. 14. Společnost Elektro bizness následně podala žalobu k Administratīvā apgabaltiesa (krajský správní soud, Lotyšsko), který ji zamítl. Souhlasil s názorem regulačního orgánu, že stávající vedení nelze považovat za součást výrobního místa, protože neslouží k výrobě, nýbrž k přenosu vyrobené elektřiny. Zákazník by tudíž nebyl připojen přímo k zařízení pro výrobu elektřiny. 15. Společnost Elektro bizness se proti tomuto rozhodnutí odvolala k Augstākā tiesa (Senāts) (nejvyšší soud [senát]) s tím, že stávající vedení je nedílnou součástí provozu zařízení pro výrobu elektřiny, a proto by mělo být považováno za součást výrobního místa. Účelem výstavby přímého vedení je kromě toho poskytnout výrobci elektřiny možnost dodávat vyrobenou energii zákazníkovi přímo, bez zprostředkování soustavou. 16. Za těchto podmínek Augstākās tiesas (Senāts) (nejvyšší soud [senát]) přerušil řízení a položil Soudnímu dvoru tyto předběžné otázky: „Ve smyslu čl. 2 bodu 41 [směrnice o vnitřním trhu s elektřinou]: 1) Musí být pojem ‚izolované výrobní místo‘ použitý v tomto ustanovení vykládán takovým způsobem, že zahrnuje rovněž elektrické vedení, které je ve vlastnictví výrobce, je připojeno k zařízení pro výrobu elektřiny, je určeno k přenosu vyrobené elektřiny a sahá za hranice místa (poštovní adresy) zařízení pro výrobu elektřiny? 2) Zahrnuje definice ‚přímého vedení‘ uvedená v tomto ustanovení elektrické vedení, které zákazníka spojuje s výrobním místem (kogenerační elektrárnou) připojením k již vybudovanému elektrickému vedení ve vlastnictví výrobce, které je určeno k přenosu elektřiny, pokud je v důsledku toho zajištěno zásobování elektřinou od výrobce k zákazníkovi bez zprostředkování soustavou provozovatele distribuční soustavy? Je pro odpověď na tuto otázku důležitá okolnost, že již vybudované elektrické vedení, které je ve vlastnictví výrobce a je určeno k přenosu elektřiny a k němuž by bylo navrhované vedení pro připojení nového zákazníka nataženo, se již používá k dodávání elektřiny dalším zákazníkům?“ B. Věc C‑756/24, Jelgavas autobusu parks 17. Společnost Jelgavas autobusu parks působí v oblasti místní veřejné dopravy. Měla v úmyslu používat městské autobusy na vodíkový pohon a za tímto účelem provozovat vodíkovou elektrárnu. 18. V březnu 2021 společnost Jelgavas autobusu parks požádala regulační orgán o povolení vybudovat 6,5 km dlouhé elektrické vedení, které propojí její vodíkovou elektrárnu s elektrárnou na biomasu provozovanou společností SIA Gren Latvija. Společnost Jelgavas autobusu parks by chtěla nakupovat elektřinu přímo od společnosti Gren Latvija, mimo jiné proto, aby snížila náklady spojené s navýšením připojovací kapacity. Po vybudování plánovaného elektrického vedení si chce společnost Jelgavas autobusu parks ponechat své stávající připojení na soustavu provozovatele Sadales tīkls pouze jako záložní. Uvádí, že v době, kdy bude odebírat elektřinu prostřednictvím přímého vedení, nebude ji odebírat ze soustavy. 19. Regulační orgán tuto žádost zamítl rozhodnutím č. 123 ze dne 4. listopadu 2021. Podle jeho názoru nebylo možné udělit povolení k výstavbě „přímého vedení“, protože společnost Jelgavas autobusu parks nelze považovat za „izolovaného zákazníka“. Provozovatel soustavy může totiž zajistit, že Jelgavas autobusu parks bude zásobována za přiměřených nákladů i v případě navýšení kapacity. Výstavba přímého vedení je však podle jeho tvrzení povolena pouze v případě, že je technicky a ekonomicky odůvodněná. Společnost Jelgavas autobusu parks se proti tomuto zamítnutí odvolala k Administratīvā apgabaltiesa (krajský správní soud). 20. Administratīvā apgabaltiesa (krajský správní soud) žalobě vyhověl. Z právního rámce podle jeho názoru nevyplývá, že účelem výstavby přímých vedení je zajištění dodávek elektřiny pouze takovým zákazníkům, kteří nemají žádné nebo jen omezené možnosti odebírat potřebnou elektřinu ze soustavy. Je sice pravda, že přímé vedení předpokládá oddělení od sítě, společnost Jelgavas autobusu parks však vydala prohlášení, podle něhož bude po dobu využívání přímého vedení zajištěno její oddělení od sítě Sadales tīkls. Proto je podle jeho názoru oddělení dostatečné. 21. Regulační orgán podal proti tomuto rozhodnutí kasační opravný prostředek k Augstākā tiesa (Senāts) (nejvyšší soud [senát]). Tento soud proto řízení přerušil a předložil Soudnímu dvoru dvě následující otázky: „1) Musí být článek 7 směrnice o vnitřním trhu s elektřinou vykládán v tom smyslu, že ‚přímé vedení‘ je alternativní formou dodávek elektřiny, pokud o to zákazník požádá, nebo má být směrnice vykládána v tom smyslu, že přímé vedení je povoleno pouze za výjimečných okolností? 2) Musí být čl. 2 bod 41 [směrnice o vnitřním trhu s elektřinou] vykládán v tom smyslu, že za ‚přímé vedení‘ může být považováno elektrické vedení, jehož prostřednictvím je plánováno propojit výrobce elektřiny připojeného k distribuční soustavě se zákazníkem připojeným k distribuční soustavě, pokud má být tento zákazník i po vybudování navrhovaného elektrického vedení připojen k distribuční soustavě prostřednictvím záložního připojení, ale má být od distribuční soustavy oddělen po dobu, kdy je mu prostřednictvím tohoto přímého vedení dodávána elektřina od jejího výrobce? 3) Musí se pod pojmem ‚izolovaný zákazník‘ v čl. 2 bodě 41 [směrnice o vnitřním trhu s elektřinou] chápat výhradně zákazník, který není připojen k distribuční soustavě a kterému provozovatel distribuční soustavy nemůže zajistit nezbytnou kapacitu vybudováním připojení za přiměřených nákladů?“ 22. Rozhodnutím ze dne 6. prosince 2024 předseda Soudního dvora obě věci, C‑722/24, Elektro bizness, a C‑756/24, Jelgavas autobusu parks, pro účely písemného a ústního řízení a konečného rozsudku spojil. 23. Regulační orgán a Evropská komise vydaly k oběma věcem svá písemná stanoviska. Italská vláda vydala písemné stanovisko ve věci C‑722/24, Elektro bizness, rakouská vláda ve věci C‑756/24, Jelgavas autobusu parks. Soudní dvůr podle čl. 76 odst. 2 jednacího řádu rozhodl, že se nebude konat ústní část řízení. IV. Právní analýza 24. Uvedených pět předběžných otázek se ve svém jádru týká dvou okruhů otázek, jejichž analýza vyžaduje výklad pojmu přímé vedení. 25. V tomto ohledu je třeba nejprve přezkoumat, zda je přímé vedení alternativní formou dodávek energie, nebo zda může být vybudováno pouze v případě, že zákazník nemůže být z technických nebo ekonomických důvodů připojen k soustavě (A.) (otázka 2 ve věci C‑722/24 a otázky 1 a 3 ve věci C‑756/24). Pokud by platila druhá z uvedených možností, nebylo by již třeba zabývat se další otázkou, zda vedle přímého vedení může nadále existovat i záložní připojení k soustavě (B.) (otázka 2 ve věci C‑756/24). 26. Předkládající soud se kromě toho táže, zda prostřednictvím přímého vedení může být připojen pouze jeden izolovaný zákazník, nebo i více zákazníků a jak je třeba chápat pojem „izolovaného výrobního místa“ (otázky 1 a 2 ve věci C‑722/24 a otázka 3 ve věci C‑756/24) (C. až E.). A. Přímé vedení jako alternativní forma dodávek energie? (Otázka 2 ve věci C‑722/24 a otázky 1 a 3 ve věci C‑756/24) 27. V první části své druhé otázky položené ve věci C‑722/24 se předkládající soud ptá, zda rozhodujícím kritériem přímého vedení ve smyslu definice uvedené v čl. 2 bodě 41 směrnice o vnitřním trhu s elektřinou je to, že zásobování elektřinou od výrobce k zákazníkovi je zajištěno bez zprostředkování soustavou provozovatele distribuční soustavy. Taková definice přímého vedení by vycházela ze skutečného způsobu zásobování a platila by nezávisle na tom, zda zákazník je nebo může být připojen k soustavě. 28. Objasnění této otázky je rovněž nezbytným předpokladem odpovědi na otázku, zda zásobování prostřednictvím přímého vedení představuje alternativní formu zásobování elektřinou, nebo zda je vyhrazeno pro výjimečné případy, kdy je zajištění jiné formy dodávek z technických nebo ekonomických důvodů nemožné (otázky 1 a 3 ve věci C‑756/24). Pokud by mělo jít o to, že nesmí existovat možnost připojení, stávající zákazníci, kteří jsou k soustavě již připojeni, nebo noví zákazníci, kteří mají možnost připojení, by si zásobování prostřednictvím přímého vedení nemohli zvolit. 29. Článek 2 bodu 41 směrnice o vnitřním trhu s elektřinou definuje dva případy přímého vedení. Jedná se buď o „elektrické vedení spojující izolované výrobní místo s izolovaným zákazníkem“ (případ 1), nebo o „elektrické vedení spojující výrobce elektřiny s podnikem dodávajícím elektřinu, který přímo zásobuje své vlastní prostory, dceřiné společnosti nebo zákazníky“. 30. Nejprve vysvětlím, jak je třeba tyto dva případy od sebe odlišit a proč je pro sporná elektrická vedení relevantní druhý z nich (1.). Tato analýza již vychází z předpokladu, že přímé vedení je pojímáno jako alternativa k zásobování elektřinou prostřednictvím soustavy (2.). 1. K vymezení případů 1 a 2 podle čl. 2 bodu 41 směrnice o vnitřním trhu s elektřinou 31. Formulace položených otázek vyvolává dojem, že předkládající soud chce vědět, zda sporná elektrická vedení splňují podmínky prvního případu, tj. zda je lze kvalifikovat jako elektrická vedení „spojující izolované výrobní místo s izolovaným zákazníkem“(5). 32. Nicméně okolnosti sporu v původním řízení, jak tvrdí Rakousko ve věci C‑756/24, vyvolávají otázku, zda by sporná elektrická vedení neměla být kvalifikována spíše jako druhý případ, tj. jako elektrická vedení „spojující výrobce elektřiny s […], který přímo zásobuje […] zákazníky“. Elektrické vedení, které je předmětem sporu ve věci C‑722/24, má v tomto smyslu spojovat společnost Elektro bizness s jejím novým zákazníkem prostřednictvím stávajícího elektrického vedení, kterým již zásobuje šest dalších zákazníků bez zprostředkování soustavou. Elektrické vedení, které je předmětem sporu ve věci C‑756/24, je sice k soustavě již připojeno, ale s elektrárnou na biomasu společnosti Gren Latvija spojuje společnost Jelgavas autobusu parks za účelem přímého zásobování. 33. Rakousko zastává v tomto ohledu názor, že případ 1 podle článku 2 bodu 41 směrnice o vnitřním trhu s elektřinou („elektrické vedení spojující izolované výrobní místo s izolovaným zákazníkem“) se vztahuje pouze na tzv. „energeticky izolované lokality“. V tomto případě je výrobní místo, které není připojeno k soustavě, spojeno se zákazníkem, který rovněž není připojen k soustavě, prostřednictvím „přímého vedení“, takže obě tato zařízení jsou izolována od ostatních elektrických vedení a připojení k soustavě. Oproti tomu případ 2 je třeba chápat šíře: podle Rakouska zahrnuje všechny případy, kdy elektrické vedení spojuje výrobce nebo dodavatele přímo s jeho vlastními prostory, dceřinou společností nebo zákazníkem. Spojka „a“, která je v případě 2 podle čl. 2 bodě 41 použita dvakrát, má být podle Rakouska chápána jako „nebo“. 34. Tento názor je přesvědčivý. 35. Je pravda, že formulace případu 2, podle níž dotčené elektrické vedení spojuje „výrobce elektřiny s podnikem dodávajícím elektřinu, který přímo zásobuje své vlastní prostory, dceřiné společnosti nebo zákazníky“(6), je [v německém znění, kde je místo předložky „s“ a spojky „nebo“ použito spojky „a“] nejednoznačná. Formulace použitá ve většině jazykových verzí(7) na první pohled totiž naznačuje, že výrobce a podnik dodávající elektřinu musí být spojeni přímým vedením a že podnik dodávající elektřinu by pak své vlastní prostory, své dceřiné společnosti a své zákazníky připojil prostřednictvím jiného elektrického vedení. Tento dojem vzniká použitím spojky „a“ místo spojky „nebo“. 36. Proti tomuto chápání však svědčí gramatická úvaha. Použití množného čísla ([v německé verzi „ihre Betriebsstätte“, „ihre Tochterunternehmen“, „ihre Kunden“ –] jejich „prostory“, jejich „dceřiné společnosti“, jejich „zákazníky“)(8) jasně ukazuje, že se jedná o prostory, dceřiné společnosti a zákazníky výrobců i dodavatelů. Na základě toho lze proto logicky soudit, že jak první „a“ („výrobce elektřiny a podnik dodávající elektřinu“) [v českém znění: „výrobce elektřiny s podnikem dodávajícím elektřinu“], tak druhé „a“ („jejich prostory, jejich dceřiné společnosti a jejich zákazníky“) [v českém znění: „své vlastní prostory, dceřiné společnosti nebo zákazníky“] se má v této větě chápat jako „nebo“. Neboť to, že v tomto druhém případě je třeba chápat spojku „a“ ve smyslu „nebo“ („jejich vlastní prostory, jejich dceřiné společnosti [nebo] jejich zákazníky“), je zcela zřejmé, protože ne všichni výrobci nebo podniky dodávající elektřinu musejí mít nutně (další) vlastní prostory i dceřiné společnosti a zákazníky(9). 37. Tento názor podporuje i systematická úvaha. Článek 7 odst. 1 směrnice o vnitřním trhu s elektřinou, který specifikuje právo na zřízení přímého vedení, ve svém písmenu a) stanoví, že členské státy přijmou nezbytná opatření, která umožní „všem výrobcům a podnikům dodávajícím elektřinu […] zásobovat své vlastní prostory, dceřiné společnosti a zákazníky prostřednictvím přímých vedení […]“. Také z tohoto ustanovení je zřejmé, že právo zásobovat své vlastní prostory, dceřiné společnosti a (ve smyslu „nebo“) zákazníky prostřednictvím přímého vedení by měli mít jak výrobci, tak podniky dodávající elektřinu. 38. A ve prospěch tohoto chápání případu 2 podle čl. 2 bodu 41 směrnice o vnitřním trhu s elektřinou, tzn. že své vlastní prostory, dceřiné společnosti, a především zákazníky mohou prostřednictvím přímého vedení zásobovat jak výrobci, tak podniky dodávající elektřinu, hovoří v neposlední řadě i teleologická úvaha. Je tomu tak proto, jak vysvětlím níže v bodech 61 a dále, že nástroj přímého vedení má přispět k liberalizaci vnitřního trhu s elektřinou a s ohledem na jeho ekologickou transformaci nabídnout větší flexibilitu jako alternativu k samotným dodávkám z distribuční soustavy. V souladu s tím je pak to, že tento nástroj může používat nejen výrobce ve spojení s podnikem dodávajícím elektřinu, ale i tento výrobce sám. 39. Elektrické vedení spojující izolované výrobní místo s izolovaným zákazníkem (případ 1) je vždy také elektrickým vedením, které spojuje výrobce a zákazníka (jedna z konstelací případu 2). To znamená, že přímé vedení podle případu 1 je vždy nutně také přímým vedením podle případu 2, tzn. že případ 1 je dílčím případem případu 2. 40. Zdá se, že ve srovnání s případem 2 klade případ 1 vyšší požadavky, protože předpokládá „izolované výrobní místo“ a „izolovaného zákazníka“. Tímto předpokladem však nejsou dotčena práva výrobců, podniků dodávajících elektřinu a zákazníků, která jsou zaručena v článku 7 směrnice o vnitřním trhu s elektřinou, projeví se to ale nejspíš pouze nepřímo v rámci čl. 7 odst. 4, podle kterého členské státy mohou podmínit vydání povolení k výstavbě přímého vedení odmítnutím přístupu do soustavy. 41. Abych mohla dát předkládajícímu soudu odpovědi, které jsou relevantní pro rozhodnutí sporů v obou původních řízeních, přikročím proto nyní k posouzení elektrického vedení plánovaného společností Elektro bizness (věc C‑722/24) i plánovaného elektrického vedení pro připojení společnosti Jelgavas autobusu parks (věc C‑756/24) na základě kritérií – šíře vymezeného – případu 2 podle čl. 2 bodu 41 směrnice o vnitřním trhu s elektřinou. 2. Pojetí přímého vedení podle čl. 2 bodu 41 případu 2 směrnice o vnitřním trhu s elektřinou jako alternativy k soustavě 42. Otázka tedy nyní zní: Je přímé vedení ve svém širším vymezení dle případu 2, tj. jako „elektrické vedení spojující výrobce elektřiny s ([v německém znění ‚a‘] ve smyslu ‚nebo‘) podnikem dodávajícím elektřinu, který přímo zásobuje své vlastní prostory, dceřiné společnosti nebo ([v německém znění ‚a‘] ve smyslu ‚nebo‘) zákazníky, chápáno jako alternativa k soustavě? Odpověď na tuto otázku vyplývá z příslušného znění (a), legislativní historie (b), kontextu (c), systematiky (d) a cílů (e) směrnice o vnitřním trhu s elektřinou. a) Znění definice podle článku 2 bodu 41 případu 2 43. V definici pojmu „přímé vedení“ podle článku 2 bodu 41 případu 2 směrnice o vnitřním trhu s elektřinou se uvádí, že zákazníkovi musí být energie dodávána bez zprostředkování soustavou. Je tomu tak proto, že přímé vedení je elektrické vedení určené k přímému zásobování („přímo zásobuje“). Podle obecného významu tohoto slova je přímé zásobování zásobováním „nezprostředkovaným“, „probíhajícím bez oklik“. Z tohoto důvodu je nasnadě chápat slova „přímo zásobuje“ ve smyslu zásobování bez zprostředkování soustavou. 44. Ze samotného znění naopak nelze vyvozovat nějakou užší definici pojmu v tom smyslu, že by stávající nebo možné připojení k soustavě bylo s přímým vedením neslučitelné. Z hlediska této definice nezáleží na tom, zda připojení k soustavě již existuje nebo zda by takové připojení bylo možné. 45. Skutečnost, že zákonodárce při definici pojmu nevycházel ze situace z hlediska připojení, ale ze situace z hlediska zásobování, svědčí rovněž o tom, že rozhodujícím kritériem přímého vedení je pouze způsob zásobování. b) Legislativní historie čl. 2 bodu 41 46. Pokud se mezi sebou významově liší nějaké starší a novější znění určitého ustanovení práva EU, lze předpokládat, že autoři novějšího ustanovení se chtěli od předchozí normy odchýlit(10). V článku 2 bodě 12 první směrnice o vnitřním trhu s elektřinou (směrnice 96/92/ES) bylo přímé vedení definováno jako „elektrické vedení doplňující propojenou síť“. Podstatným znakem přímého vedení proto byla jeho komplementarita vůči síti. To však může znamenat dvojí: přímé vedení může být jak vedením, které je doplněním sítě v obecném smyslu (k zásobování energeticky izolovaných lokalit, u nichž nejsou zákazníci připojeni k síti), tak vedením, které je doplňujícím připojením k síti pro jednoho konkrétního zákazníka. 47. Ustanovením čl. 2 bodu 15 směrnice 2003/54/ES(11), kterou byla směrnice 96/92 zrušena, byla zavedena nová definice přímého vedení, která je v podstatě(12) obsahově shodná se současným zněním ustanovení směrnice (EU) 2019/944. 48. Skutečnost, že z nynější definice byla vypuštěna komplementarita sítě a přímého vedení, by mohla být vykládána jako známka toho, že zákonodárce usiloval o užší vymezení, podle kterého by přímé vedení pro určitého zákazníka mohlo existovat pouze místo sítě, ale nikoli vedle ní. 49. Takový závěr je však nepřesvědčivý. Směrnice 2003/54 zavedla výrazně obsáhlejší definici přímého vedení. Zákonodárce se proto snažil zohlednit různé konstelace, v nichž by bylo možné přímé vedení použít. Z legislativní historie tohoto nástroje proto nelze vyvozovat, že by se pojem přímého vedení vztahoval pouze na konstelace, kdy neexistuje žádný přístup k síti. c) Srovnání se směrnicí o vnitřním trhu s plynem 50. Zúžené chápání tohoto pojmu nevyplývá ani ze srovnání se směrnicí (EU) 2024/1788 (dále jen „směrnice o vnitřním trhu s plynem“)(13), která také obsahuje definici přímého vedení (v některých jazykových zněních „přímé potrubní vedení“). Toto znění je podobné znění směrnice 96/92/ES a přímé vedení definuje jako „potrubí pro přepravu zemního plynu doplňující propojenou soustavu“. 51. To však neznamená, že by zákonodárce chtěl definovat přímé vedení na vnitřním trhu s elektřinou jinak, tj. úžeji. Jak vyplývá z bodu 18 odůvodnění směrnice o vnitřním trhu s elektřinou, regulační přístupy obou směrnic jsou vzhledem k řadě rozdílů, jimiž se liší dodávky elektřiny a plynu, například pokud jde o skladovatelnost, infrastrukturu, výrobní struktury a faktory, které mají vliv na stabilitu sítě, natolik odlišné, že z rozdílnosti jejich formulací nelze vyvozovat žádné závěry. d) Systematika směrnice o vnitřním trhu s elektřinou 52. Podle Komise se mimo jiné na základě systematické úvahy ukazuje, že v případě, kdy existuje připojení k síti nebo je dostupné za přiměřené ceny, zákazník nemá právo zvolit si připojení k přímému vedení. To podle jejího názoru představuje totiž pouze výjimku za účelem přednostního zásobování prostřednictvím soustav. Vzhledem k této výjimečnosti lze za přímá vedení považovat elektrická vedení pouze v případě, kdy se k soustavě nelze připojit. 53. Názor, že přímá vedení jsou v rámci systematiky směrnice o vnitřním trhu s elektřinou výjimkou, však není přesvědčivý. 54. Pokud se definice podle článku 2 bodu 41 vykládá ve spojení s ostatními ustanoveními této směrnice, vzniká spíše opačný obraz. Článek 7 odst. 1 ukládá členským státům povinnost přijmout „nezbytná opatření“, která umožní „všem zákazníkům“ na jejich území, aby byli, ať už individuálně nebo společně, výrobci a podniky dodávajícími elektřinu […] zásobováni prostřednictvím přímých vedení“(14). Podle článku 4 mají navíc členské státy zajistit, aby „všichni zákazníci mohli svobodně nakupovat elektřinu od dodavatele dle vlastního výběru“(15). Tato ustanovení tedy nijak nesvědčí o tom, že by se vztahovala pouze na zásobování elektřinou prostřednictvím soustav. 55. V této souvislosti se domnívám, že je třeba rozlišovat mezi podmínkami, za jakých lze určité elektrické vedení kvalifikovat jako přímé vedení, a podmínkami, za jakých lze takové vedení povolit. Toto rozlišení předpokládá také článek 7 směrnice o vnitřním trhu s elektřinou. 56. Ustanovení čl. 7 odst. 1 stanoví základní právo zákazníků na dodávky prostřednictvím přímého vedení a tomu odpovídající právo výrobců a podniků dodávajících elektřinu zásobovat své zákazníky prostřednictvím přímého vedení. Na druhé straně další odstavce článku 7 stanoví, že členské státy mohou podmínit vydání povolení přímých vedení splněním objektivních a nediskriminačních kritérií. Pokud by však za přímé vedení bylo možné považovat elektrické vedení pouze v případě, že elektřinu není možné dodávat jinak než prostřednictvím přímého vedení, pak by odstavce 2 až 5 článku 7 měly jen velmi omezenou oblast působnosti. V praxi by to totiž znamenalo, že členské státy mohou stanovit pouze kritéria pro případy, kdy zákazníci nemohou být připojeni vůbec – ani prostřednictvím přímého vedení, ani prostřednictvím soustavy. 57. Při úzkém chápání pojmu „přímé vedení“ by zejména čl. 7 odst. 4 neměl žádnou oblast působnosti. Podle tohoto ustanovení mohou členské státy omezit vydávání povolení k výstavbě přímého vedení na případy, kdy je uživatelům sítě odepřen přístup do soustavy na základě čl. 6 odst. 2, protože provozovatelé přenosové a distribuční soustavy nemají potřebnou kapacitu, nebo kdy byl v této souvislosti zahájen postup řešení sporů. 58. Totéž platí i pro čl. 7 odst. 5. Členské státy mohou zamítnout povolení výstavby přímého vedení, pokud by vydání takového povolení bránilo uplatňování ustanovení o povinnostech veřejné služby podle článku 9. Toto ustanovení se pravděpodobně týká zejména konstelací, v nichž by přímé vedení umožnilo hospodářskému subjektu neoprávněně se vyhnout placení síťových poplatků. Ve prospěch této domněnky svědčí i to, že členské státy se podle čl. 9 odst. 5 mohou rozhodnout neuplatňovat článek 7, pokud by jeho uplatnění právně nebo fakticky bránilo plnění povinností uložených elektroenergetickým podnikům z důvodů obecného hospodářského zájmu. 59. Závěr, že přímé vedení je alternativou k dodávkám elektřiny prostřednictvím soustavy, není v rozporu ani s rozsudkem ve věci ENGIE Deutschland GmbH. Soudní dvůr v tomto rozsudku sice zdůraznil zásadní úlohu, kterou provozovatelům soustav přisuzuje směrnice o vnitřním trhu s elektřinou při dokončování integrace vnitrostátních trhů(16). Toto rozhodnutí se však týkalo případu, kdy vnitrostátní zákonodárce vytvořil novou kategorii, která v této směrnici nebyla stanovena a která mohla narušit její systematiku(17). V projednávané věci je však přímé vedení kategorií, kterou tato směrnice sama stanoví. 60. Systematická úvaha proto podle mého názoru hovoří ve prospěch širokého chápání pojmu „přímé vedení“, podle něhož je směrodatné pouze to, že neexistuje žádné zprostředkování soustavou. e) Cíle směrnice 61. Tentýž závěr vyplývá i z celkového posouzení cílů, které směrnice o vnitřním trhu s elektřinou sleduje(18). 1) Liberalizace vnitřního trhu s elektřinou 62. Pro široké chápání pojmu „přímé vedení“ svědčí v první řadě skutečnost, že cílem směrnice o vnitřním trhu s elektřinou je úplná liberalizace vnitřního trhu s elektřinou(19). 63. Před liberalizací měly podniky dodávající elektřinu v mnoha členských státech monopol. Směrnice o vnitřním trhu s elektřinou, počínajíc přijetím směrnice 96/92(20), postupně otevřely společný trh s dodávkami elektřiny. Tímto způsobem mají být nejen zajištěny konkurenceschopné ceny, vysoké standardy dodávek energie a stabilita sítě, ale také naplňovány cíle v oblasti udržitelnosti. Výslovně je to uvedeno ve druhém bodě odůvodnění aktuálně platné směrnice 2019/944(21). 64. Přímá vedení jsou základním stavebním kamenem plně otevřeného vnitřního trhu s elektřinou. Pokud budou požadavky na elektrická vedení kvalifikovaná jako přímá vedení nižší, může být prostřednictvím přímých vedení zásobováno více zákazníků. Široké chápání pojmu „přímé vedení“ tak podporuje rozsáhlejší liberalizaci a integraci tohoto trhu. 65. Podle bodu 35 odůvodnění směrnice 96/92/ES „by mělo být upraveno povolování, výstavba a využívání přímých vedení“. Nynější znění směrnice sice již ve svých bodech odůvodnění žádný takový výslovný odkaz na význam přímých vedení pro cíl úplné liberalizace neobsahuje, 66. Důležitost úlohy přímých vedení z hlediska dodávek energie je však i bez výslovné zmínky v bodech odůvodnění jasně patrná z čl. 7 odst. 1 směrnice o vnitřním trhu s elektřinou. Členské státy přijmou podle tohoto článku nezbytná opatření, která umožní, aby všichni výrobci a podniky dodávající elektřinu mohli zásobovat mj. své zákazníky prostřednictvím přímých vedení a aby prostřednictvím přímého vedení mohli být zásobováni všichni zákazníci. Následující odstavce článku 7 dávají sice členským státům možnost omezit za zvláštních okolností vydávání povolení přímých vedení, to však jen potvrzuje, že pojem „přímé vedení“ podle čl. 2 bodu 41 směrnice o vnitřním trhu s elektřinou je třeba chápat široce a že zřizování přímých vedení mohou členské státy nanejvýš pouze omezit. 2) Cíl ekologické transformace 67. Směrnice o vnitřním trhu s elektřinou má navíc podle svého čl. 1 odst. 2 za cíl s využitím výhod integrovaného trhu zajistit plynulý přechod k udržitelnému nízkouhlíkovému energetickému systému. Udržitelnost je jako jeden z cílů, které tato směrnice sleduje, zmíněna mimo jiné i ve druhém bodě odůvodnění. 68. Přímá vedení sice neslouží jen pro dodávky energie z obnovitelných zdrojů, mohou nicméně cíl udržitelnosti podpořit. 69. Přímá vedení dávají totiž zákazníkům možnost využívat výhradně „zelenou“ elektřinu, aniž by museli využívat okliku přes veřejnou síť, kde elektřina v současné době nepochází výhradně z obnovitelných zdrojů energie. Dobrým příkladem je případ společnosti Jelgavas autobusu parks ve věci C‑756/24, která chce díky přímému vedení získávat elektřinu z elektrárny na biomasu. 3) Konflikt s cílem zajištění dostupných cen energie 70. Podle čl. 1 odst. 2 má však směrnice o vnitřním trhu s elektřinou také za cíl s využitím výhod integrovaného trhu zajistit dostupné, transparentní ceny energie a náklady pro spotřebitele, vysokou míru bezpečnosti dodávek. 71. Podle Komise musí být pojem „přímé vedení“ vykládán úzce, protože platby za elektřinu dodávanou prostřednictvím přímého vedení nepřispívají k úhradě nákladů na elektroenergetickou síť jako celek, zatímco zákazníci zásobovaní prostřednictvím této sítě musejí platit obecné síťové poplatky. Komise tak poukazuje na oprávněnou obavu, že by mohlo dojít ke zvýšení cen energie, zejména pro domácnosti a malé podniky, pokud by zákazníci (zejména velcí průmysloví odběratelé) mohli být zásobováni prostřednictvím přímého vedení také v případě, kdy jsou nebo mohou být připojeni k síti. Důvodem je to, že domácnosti a malé podniky odebírají méně elektřiny, což znamená, že výstavba přímého vedení pro tyto zákazníky by se výrobcům a podnikům dodávajícím elektřinu pravděpodobně nevyplatila. Budou-li velcí zákazníci v oblasti energie síť opouštět a odebírat elektřinu prostřednictvím přímého vedení – bez síťových poplatků – zvýší se tím zároveň náklady na údržbu a provoz sítě pro zbývající odběratele. 72. I když obavy Komise sdílím, nevidím důvod, proč z toho vyvozovat, že zákonodárce chtěl tento problém řešit stanovením úzké definice přímého vedení. 73. Jak jsem vysvětlila již v bodě 55 a násl., skutečnost, že je určité elektrické vedení klasifikováno jako přímé, nemusí nutně znamenat, že musí být povoleno. Ustanovení čl. 7 odst. 2 až 5 směrnice o vnitřním trhu s elektřinou dávají členským státům spíše možnost zamítnout povolení výstavby přímého vedení, pokud uplatní objektivní a nediskriminační kritéria a zohlední podmínky uvedené v čl. 7 odst. 1. Potenciální negativní dopady na ceny energie pro domácnosti a malé koncové zákazníky lze zohlednit při rozhodování o vydání povolení v rámci diskreční pravomoci členských států (jak bylo již objasněno v bodě 58, zvláště pak s ohledem na čl. 7 odst. 5 a čl. 9 odst. 5)(22). Podle. bodu 58 odůvodnění směrnice o vnitřním trhu s elektřinou by navíc členské státy měly obecně přijmout nezbytná opatření k ochraně zranitelných zákazníků a zákazníků trpících energetickou chudobou. 74. Přezkoumání toho, zda je zamítnutí povolení výstavby sporných elektrických vedení, o něž se jedná v projednávané věci, založeno na obavě z konkrétních negativních dopadů a zda se zakládá na objektivních a nediskriminačních kritériích, přísluší předkládajícímu soudu(23). 3. Dílčí závěry 75. Na základě předcházejících úvah jsem dospěla k závěru, že z hlediska platné definice přímého vedení nezáleží na tom, zda připojení k soustavě již existuje nebo zda by takové připojení bylo technicky možné či ekonomicky proveditelné. Z hlediska definice přímého vedení záleží pouze na tom, zda je zákazník výrobcem(24) zásobován bez zprostředkování soustavou. B. Úplné oddělení od soustavy (otázka 2 ve věci C‑756/24) 76. Svou druhou otázkou ve věci C‑756/24 se předkládající soud ptá, zda může být zákazník, který byl již dříve připojen k soustavě, spojen s výrobcem elektřiny prostřednictvím přímého vedení, i když si chce po výstavbě plánovaného vedení ponechat stávající připojení k soustavě jako připojení záložní. 77. Pokud je, jak bylo vysvětleno výše, rozhodujícím kritériem přímého vedení to, že zákazník je zásobován výrobcem bez zprostředkování soustavou, nemůže záležet na tom, zda má záložní připojení k síti nebo zda toto připojení používá souběžně s přímým vedením. 78. Správnost tohoto názoru potvrzuje článek 4 směrnice o vnitřním trhu s elektřinou, který zaručuje zákazníkovi svobodný výběr dodavatele. Podle tohoto článku by členské státy měly zajistit, aby zákazníci měli možnost uzavřít současně více než jednu smlouvu o dodávkách elektřiny. V článku 7 odst. 3 je dále upřesněno, že se může jednat i o souběh přímého vedení a připojení k soustavě. 79. Jak zdůrazňuje Rakousko, (kontrolovaná) možnost odebírat elektřinu střídavě prostřednictvím přímého vedení a ze soustavy je obzvláště důležitá vzhledem k aktivní roli, kterou by nyní měli hrát zákazníci jako decentralizované subjekty při využívání obnovitelných zdrojů energie, které často doplňují dodávky ze soustavy(25). 80. Není proto nutné zákazníka od soustavy úplně oddělit či odpojit(26), aby mohl být zásobován prostřednictvím přímého vedení. C. K otázce připojení více zákazníků k jednomu a témuž elektrickému vedení (otázka 2 ve věci C‑722/24) 81. V druhé části své druhé otázky ve věci C‑722/24 se předkládající soud ptá, zda může být prostřednictvím téhož přímého vedení připojeno více zákazníků, nebo zda může být přímé vedení využíváno pouze k zásobování jednoho zákazníka. 82. Domnívám se, že jako přímé vedení může být klasifikováno i elektrické vedení, k němuž je připojeno více zákazníků. Na rozdíl od článku 2 bodu 41 případu 1 směrnice o vnitřním trhu s elektřinou totiž zákonodárce neomezil případ 2 na izolovaného zákazníka. Odlišná formulace obou těchto případů jasně ukazuje, že v případě 2 nejsou na zákazníka kladeny žádné další požadavky. 83. Pro výklad, podle něhož může být prostřednictvím přímého vedení zásobováno více zákazníků, svědčí navíc i cíl směrnice o vnitřním trhu s elektřinou, který je uveden v bodě 79 a který spočívá v tom, že zákazníkům je přisouzena decentralizovaná a doplňková úloha při ekologické transformaci trhu s elektřinou. 84. Skutečnost, že ke stávajícímu vedení, ke kterému chce společnost Elektro bizness připojit svého zákazníka, jsou již připojeni další zákazníci a že prostřednictvím tohoto vedení je navíc i přepravována elektřina do soustavy, nebrání tomu, aby spojení mezi společností Elektro bizness a dotčeným zákazníkem bylo klasifikováno jako přímé vedení. V tomto ohledu postačí, aby společnost Elektro bizness dodávala elektřinu (i) tomuto zákazníkovi (rovněž) přímo (tj. bez zprostředkování soustavou) a aby technická opatření zabránila nekontrolovanému toku elektřiny z distribuční soustavy k tomuto zákazníkovi. D. K pojmu „výrobní místo“ (otázka 1 ve věci C‑722/24) 85. Svou první otázkou ve věci C‑722/24 se předkládající soud dále ptá, zda elektrické vedení, které je ve vlastnictví výrobce, je připojeno k elektrárně, slouží k přenosu vyrobené elektřiny a sahá za hranice místa zařízení pro výrobu elektřiny(27), spadá pod pojem „izolované výrobní místo“ ve smyslu čl. 2 bodu 41 případu 1 směrnice o vnitřním trhu s elektřinou. Je třeba poznamenat, že na rozdíl od toho, co vyplývá například z formulace položené předběžné otázky, předkládající soud neomezuje svou otázku týkající se „přenosu vyrobené elektřiny“ na „přenos“ elektřiny ve smyslu čl. 2 bodu 34 této směrnice, nýbrž odkazuje netechnicky na všechny formy přepravy energie. 86. Vedlejší je také okolnost, zda elektrické vedení patří k jednomu izolovanému výrobnímu místu (případ 1), nebo je považována za součást místa výrobce (případ 2). Jak jsem již uvedla v bodě 39, rozdíl mezi oběma případy, které upravuje čl. 2 bod 41, je v tomto ohledu irelevantní. 87. Předkládajícímu soudu nejde také v zásadě o to, aby zjistil, pod který případ nejednoznačně formulovaného čl. 2 bodu 41 má spadat elektrické vedení, které je předmětem sporu ve věci C‑722/24. Jeho cílem je spíše získat odpověď na obecnou otázku, zda lze elektrické vedení, které spojuje zákazníka nikoli s místem výrobce, nýbrž se stávajícím vedením, které k tomuto místu vede, klasifikovat jako přímé vedení. 88. Podle mého názoru není přitom rozhodující prostorové vymezení místa výrobce, nýbrž funkční spojení mezi zákazníkem a výrobcem prostřednictvím přímého vedení. Elektrické vedení je jinak řečeno přímým vedením tehdy, když slouží přímému zásobování zákazníka výrobcem, ať už na základě spojení zákazníka k místu výrobce, nebo k vedení připojenému k tomuto objektu, pokud součástí připojení není obecná elektroenergetická síť. E. K otázce kritéria izolovaného zákazníka a izolovaného výrobního místa (otázky 1 a 2 ve věci C‑722/24 a otázka 3 ve věci C‑756/24) 89. Jak jsem vysvětlila v bodě 39, obě elektrická vedení, jejichž povolení je předmětem sporu v obou původních řízeních, nepochybně spadají do působnosti čl. 2 bodu 41 případu 2 směrnice o vnitřním trhu s elektřinou. 90. Obě tato sporná vedení však zároveň nespadají pod případ 1 tohoto ustanovení, protože v obou sporech v původním řízení již existuje připojení k soustavě. 91. Různé jazykové verze směrnice o vnitřním trhu s elektřinou nejsou sice zcela totožné, pokud jde o umístění výrobního místa a zákazníka podle čl. 2 bodu 41 případu 1, většina z nich však vychází z předpokladu, že jsou od sebe svou polohou navzájem odděleni a vzdáleni. V některých jazykových verzích, mj. lotyšské, anglické a francouzské(28), se používají výrazy „izolēts lietotājs“, „isolated customer“ či „client isolé“, které zdůrazňují izolovanost, oddělenost či odloučenost umístění zákazníka nebo výrobního místa. V jiných jazykových verzích, například v estonské, finské a polské, je užito podobného výrazu separátní („eraldiasetseva tarbijaga“, „erilliseen asiakkaaseen“ či „wydzielonym odbiorcą“). Výrazy „einzelner Kunde“ či „enskild kund“, které jsou použity v německé a švédské jazykové verzi, lze rovněž chápat jako samostatné či izolované. 92. Z tohoto celkového přehledu je tedy zřejmé, že čl. 2 bod 41 případ 1 směrnice o vnitřním trhu s elektřinou se vztahuje, jak tvrdí Rakousko, na situaci tzv. energeticky izolovaných lokalit, které nejsou připojeny k distribuční soustavě. S výhradou posouzení předkládajícím soudem tedy elektrická vedení, která jsou předmětem sporu v obou původních řízeních, nespadají do oblasti působnosti tohoto případu. V. Závěry 93. S ohledem na výše uvedené úvahy navrhuji, aby Soudní dvůr odpověděl na předběžné otázky položené Augstākā tiesa (Senāts) (nejvyšší soud [senát], Lotyšsko) následovně: „Ustanovení čl. 2 bodu 41 ve spojení s článkem 7 směrnice Evropského parlamentu a Rady (EU) 2019/944 ze dne 5. června 2019 o společných pravidlech pro vnitřní trh s elektřinou a o změně směrnice 2012/27/EU musí být vykládána v tomto smyslu, že: – elektrické vedení lze považovat za přímé vedení tehdy, když slouží přímému zásobování zákazníka; – z hlediska definice přímého vedení záleží pouze na tom, zda je zákazník výrobcem nebo podnikem dodávajícím elektřinu zásobován bez zprostředkování soustavou; – přímým vedením může být elektrické vedení, jehož prostřednictvím má být spojen výrobce spojený s distribuční soustavou se zákazníkem připojeným k distribuční soustavě, pokud je tento zákazník zásobován tímto výrobcem elektřinou přímo, bez zprostředkování soustavou; – definice přímého vedení může zahrnovat i elektrické vedení používané k dodávání elektřiny více zákazníkům.“ 1– Původní jazyk: němčina. 2– Směrnice Evropského parlamentu a Rady 96/92/ES ze dne 19. prosince 1996 o společných pravidlech pro vnitřní trh s elektřinou (Úř. věst. 1997, L 27, s. 20). 3– Směrnice Evropského parlamentu a Rady (EU) 2019/944 ze dne 5. června 2019 o společných pravidlech pro vnitřní trh s elektřinou a o změně směrnice 2012/27/EU (Úř. věst. 2019, L 158, s. 125). 4– Poznámka pod čarou se netýká českého znění stanoviska. 5– Ve věci C‑722/24 se obě položené otázky týkají výkladu pojmu „izolované výrobní místo“ či „výrobní místo“, který se objevuje pouze v prvním případě. Třetí otázka položená ve věci C‑756/24 se týká výkladu pojmu „izolovaný zákazník“, který je rovněž použit pouze v prvním případě. 6– Kurziva doplněna. 7- V českém znění se například na druhém místě nachází spojka „nebo“ („oder“). 8– Kurziva doplněna. 9– Lotyšský zákon o trhu s elektřinou se v tomto bodě od znění směrnice odchyluje, jelikož v čl. 1 bodě 29 definuje druhý případ jako elektrické vedení „spojující izolovaného výrobce elektřiny a obchodníka přímo zásobujícího zařízení v jeho vlastnictví nebo držení, spojené podniky a jeho vlastní zákazníky“. Toto ustanovení by nicméně mělo být možné vykládat v souladu se směrnicí tak, že do svých zařízení a svým spojeným podnikům a zákazníkům může elektřinu přímo dodávat i výrobce. Vyplývá to zejména z článku 26 zákona o trhu s elektřinou, podle kterého „[má] výrobce […] právo dodávat elektřinu zákazníkům nebo do vlastních zařízení prostřednictvím připojení přímého vedení“. 10– Stejně i rozsudek ze dne 1. června 1961, Gabriel Simon proti Soudnímu dvoru Evropských společenství (15/60, EU:C:1961:11, s. 261). Viz rovněž stanovisko generální advokátky J. Kokott ve věci Quelle (C‑404/06, EU:C:2007:682, bod 58). 11– Směrnice Evropského parlamentu a Rady ze dne 26. června 2003 o společných pravidlech pro vnitřní trh s elektřinou a o zrušení směrnice 96/92/ES (Úř. věst. 2003, L 176, s. 37; Zvl. vyd. 12/02, s. 211). 12– Podle čl. 2 bodu 15 směrnice 2003/54 bylo přímé vedení „elektrické vedení spojující izolované výrobní místo s izolovaným zákazníkem, nebo elektrické vedení spojující výrobce elektřiny s podnikem dodávajícím elektřinu, který přímo zásobuje svá vlastní zařízení, dceřiné společnosti nebo oprávněné zákazníky“. 13– Směrnice Evropského parlamentu a Rady ze dne 13. června 2024 o společných pravidlech pro vnitřní trh s plynem z obnovitelných zdrojů, se zemním plynem a s vodíkem a o změně směrnice (EU) 2023/1791 a zrušení směrnice 2009/73/ES (Úř. věst. L, 2024/1788). 14– Kurzivou zvýraznil autor stanoviska. 15– Kurzivou zvýraznil autor stanoviska. 16– Rozsudek Komise ze dne 28. listopadu 2024, ENGIE Deutschland GmbH (C‑293/23, EU:C:2024:992, bod 77). 17– Vytvořením kategorie „zařízení pro vlastní spotřebu“, jež v této směrnici není stanovena, německý zákonodárce zároveň vymezil pojem „distribuční soustava“ úže, než stanoví směrnice. Provozovatelé zařízení pro vlastní spotřebu nepodléhali povinnostem provozovatelů distribučních soustav, a hrozilo tudíž riziko obcházení ustanovení směrnice. 18– Z ustálené judikatury Soudního dvora vyplývá, že v případě různých možných výkladů unijních právních předpisů je třeba upřednostnit výklad, který zajistí, že si ustanovení zachová svůj užitečný účinek; viz rozsudky ze dne 22. září 1988, Land de Sarre a další (187/87, EU:C:1988:439, bod 19), a ze dne 24. února 2000, Komise Evropských společenství proti Francouzské republice (C‑434/97, EU:C:2000:98, bod 21). 19– Viz rovněž moje stanovisko ve věci Sabatauskas a další (C‑239/07, EU:C:2008:344, bod 22). 20– Do té doby platila výše uvedená směrnice 2003/54 a směrnice Evropského parlamentu a Rady 2009/72/ES ze dne 13. července 2009 o společných pravidlech pro vnitřní trh s elektřinou a o zrušení směrnice 2003/54/ES (Úř. věst. 2009, L 211, s. 55). 21– Podle tohoto bodu je účelem vnitřního trhu s elektřinou „organizovat konkurenční trhy s elektřinou přes hranice států, a tím poskytnout skutečnou možnost výběru všem konečným zákazníkům v Unii, ať již občanům nebo podnikům, dále nové obchodní příležitosti, konkurenční ceny, účinné investiční signály a vyšší standardy služeb a přispět k bezpečnosti dodávek a k udržitelnosti“. Viz také bod 4 odůvodnění směrnice 96/92 a 3. a 5. bod odůvodnění směrnice 2009/72. 22– Viz již moje stanovisko ve věci Sabatauskas a další (C‑239/07, EU:C:2008:344, bod 43). Viz také rozsudek ze dne 9. října 2008, Sabatauskas a další (C‑239/07, EU:C:2008:551, bod 48), a rovněž stanovisko generálního advokáta G. Pitruzzella ve věci Elektrorazpredelenie Yug (C‑31/18, EU:C:2019:421, bod 43). 23– Rozsudek ze dne 9. října 2008, Sabatauskas a další (C‑239/07, EU:C:2008:551, bod 48); stanovisko generálního advokáta G. Pitruzzella ve věci Elektrorazpredelenie Yug (C‑31/18, EU:C:2019:421, bod 43). 24– Totéž platí i pro ostatní konstelace, které zahrnuje čl. 2 bod 41. 25– Viz např. článek 15 („Aktivní zákazníci“) nebo článek 16 („Občanská energetická společenství“), jakož i body 42 až 47 směrnice o vnitřním trhu s elektřinou. 26– Společnost Jelgavas autobusu parks předložila regulačnímu orgánu prohlášení, že po dobu připojení k plánovanému přímému vedení bude zajištěno odpojení od soustavy. 27– Podle předkládajícího soudu je toto místo definováno poštovní adresou. 28– Totéž platí pro italský výraz („cliente isolato“), dánský („isoleret kunde“) a portugalský („cliente isolado“)."
+            } ],
+            "docNoPart" : 1,
+            "celex" : "62024CC0722",
+            "groupByLogicalId" : [ {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412223",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "SL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412206",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "EL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412207",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "MT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412208",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "LT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412220",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412221",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "HU",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412222",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "SK",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412203",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "PL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412202",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "DE",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412204",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "DA",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412209",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "EN",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412201",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "NL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412205",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "RO",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412215",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "ET",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412217",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "HR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412214",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "ES",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412216",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "CS",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412218",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "LV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412212",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "PT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412213",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "BG",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412219",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "IT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412210",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "FI",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0722/24/00000000RP/01/P/01-3412211",
+              "idProcedure" : "C/0722/24/00000000RP/01/P/01",
+              "docLang" : "SV",
+              "formats" : [ "HTML" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "",
+            "affairJurisdiction" : "Cour de justice",
+            "affairJurisdictionCode" : "C",
+            "routing" : "C/0722/24/00000000RP/01/P/01",
+            "ecli" : "ECLI:EU:C:2026:97"
+          },
+          "highlightFields" : { },
+          "innerHits" : { },
+          "routing" : "C/0722/24/00000000RP/01/P/01",
+          "matchedQueries" : [ ]
+        } ],
+        "empty" : false
+      }
+    },
+    "matchedQueries" : [ ]
+  } ],
+  "aggregatesMap" : {
+    "facet_bucket" : [ {
+      "name" : "procTypesWithoutResults",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "PREJ"
+      } ]
+    }, {
+      "name" : "jurisdiction",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "C"
+      } ]
+    }, {
+      "name" : "affairState",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "CLOTPUB"
+      } ]
+    }, {
+      "name" : "matCode",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "ENER",
+        "childrenAggregate" : {
+          "name" : "matCodeTwo",
+          "aggregateCountValues" : [ ]
+        }
+      } ]
+    }, {
+      "name" : "procType",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "P"
+      } ]
+    } ]
+  }
+}

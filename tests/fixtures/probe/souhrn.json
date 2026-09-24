@@ -9,7 +9,7 @@
     "soubor": "ipcuria_referrals.html",
     "velikost": 29236,
     "orizlo": false,
-    "trvani_s": 0.6
+    "trvani_s": 0.5
   },
   {
     "nazev": "ipcuria_rulings",
@@ -24,6 +24,54 @@
     "trvani_s": 0.2
   },
   {
+    "nazev": "ipcuria_vec_0",
+    "metoda": "GET",
+    "url": "https://ipcuria.eu/case?reference=C-1009/26",
+    "status": 200,
+    "konecna_url": "https://ipcuria.eu/case?reference=C-1009/26",
+    "typ": "text/html; charset=UTF-8",
+    "soubor": "ipcuria_vec_0.html",
+    "velikost": 4401,
+    "orizlo": false,
+    "trvani_s": 0.1
+  },
+  {
+    "nazev": "ipcuria_vec_1",
+    "metoda": "GET",
+    "url": "https://ipcuria.eu/case?reference=C-837/26",
+    "status": 200,
+    "konecna_url": "https://ipcuria.eu/case?reference=C-837/26",
+    "typ": "text/html; charset=UTF-8",
+    "soubor": "ipcuria_vec_1.html",
+    "velikost": 4329,
+    "orizlo": false,
+    "trvani_s": 0.1
+  },
+  {
+    "nazev": "ipcuria_vec_2",
+    "metoda": "GET",
+    "url": "https://ipcuria.eu/case?reference=C-829/26",
+    "status": 200,
+    "konecna_url": "https://ipcuria.eu/case?reference=C-829/26",
+    "typ": "text/html; charset=UTF-8",
+    "soubor": "ipcuria_vec_2.html",
+    "velikost": 4269,
+    "orizlo": false,
+    "trvani_s": 0.1
+  },
+  {
+    "nazev": "ipcuria_vec_3",
+    "metoda": "GET",
+    "url": "https://ipcuria.eu/case?reference=C-806/26",
+    "status": 200,
+    "konecna_url": "https://ipcuria.eu/case?reference=C-806/26",
+    "typ": "text/html; charset=UTF-8",
+    "soubor": "ipcuria_vec_3.html",
+    "velikost": 4379,
+    "orizlo": false,
+    "trvani_s": 0.1
+  },
+  {
     "nazev": "sdeu_sparql_rozhodnuti",
     "metoda": "POST",
     "url": "https://publications.europa.eu/webapi/rdf/sparql",
@@ -31,9 +79,9 @@
     "konecna_url": "https://publications.europa.eu/webapi/rdf/sparql",
     "typ": "application/sparql-results+json",
     "soubor": "sdeu_sparql_rozhodnuti.json",
-    "velikost": 36852,
+    "velikost": 41371,
     "orizlo": false,
-    "trvani_s": 0.5
+    "trvani_s": 0.6
   },
   {
     "nazev": "sdeu_sparql_oznameni",
@@ -48,16 +96,16 @@
     "trvani_s": 0.1
   },
   {
-    "nazev": "sdeu_infocuria_62025CJ0151",
+    "nazev": "sdeu_infocuria_62024CJ0722",
     "metoda": "POST",
     "url": "https://infocuriaws.curia.europa.eu/elastic-connector/search",
     "status": 200,
     "konecna_url": "https://infocuriaws.curia.europa.eu/elastic-connector/search",
     "typ": "application/json; charset=UTF-8",
-    "soubor": "sdeu_infocuria_62025CJ0151.json",
-    "velikost": 166384,
+    "soubor": "sdeu_infocuria_62024CJ0722.json",
+    "velikost": 160164,
     "orizlo": false,
-    "trvani_s": 1.0
+    "trvani_s": 1.4
   },
   {
     "nazev": "sdeu_infocuria_62024TJ0463",
@@ -72,14 +120,14 @@
     "trvani_s": 0.2
   },
   {
-    "nazev": "sdeu_infocuria_62025CC0122",
+    "nazev": "sdeu_infocuria_62024CC0836",
     "metoda": "POST",
     "url": "https://infocuriaws.curia.europa.eu/elastic-connector/search",
     "status": 200,
     "konecna_url": "https://infocuriaws.curia.europa.eu/elastic-connector/search",
     "typ": "application/json; charset=UTF-8",
-    "soubor": "sdeu_infocuria_62025CC0122.json",
-    "velikost": 88909,
+    "soubor": "sdeu_infocuria_62024CC0836.json",
+    "velikost": 61757,
     "orizlo": false,
     "trvani_s": 0.2
   },
@@ -108,16 +156,16 @@
     "trvani_s": 0.2
   },
   {
-    "nazev": "sdeu_cellar_62025CJ0151_ces",
+    "nazev": "sdeu_cellar_62024CJ0722_ces",
     "metoda": "GET",
-    "url": "http://publications.europa.eu/resource/celex/62025CJ0151",
+    "url": "http://publications.europa.eu/resource/celex/62024CJ0722",
     "status": 200,
-    "konecna_url": "http://publications.europa.eu/resource/cellar/719e1f72-b7f3-11f1-81de-01aa75ed71a1.0002.01/DOC_1",
+    "konecna_url": "http://publications.europa.eu/resource/cellar/31c037f6-b273-11f1-b9e5-01aa75ed71a1.0008.01/DOC_1",
     "typ": "text/html;charset=UTF-8",
-    "soubor": "sdeu_cellar_62025CJ0151_ces.html",
-    "velikost": 49448,
+    "soubor": "sdeu_cellar_62024CJ0722_ces.html",
+    "velikost": 56538,
     "orizlo": false,
-    "trvani_s": 0.4
+    "trvani_s": 0.6
   },
   {
     "nazev": "sdeu_cellar_62026CN0630_ces",

@@ -1,0 +1,489 @@
+{
+  "totalHits" : 1,
+  "maxScore" : 21.701725,
+  "maxScoreOthersDocuments" : 0.0,
+  "totalHitsRelation" : "EQUAL_TO",
+  "totalHitsOthersDocs" : 0,
+  "searchHits" : [ {
+    "index" : "index-affair@30-06-2026",
+    "id" : "C/0836/24/00000000PV/01/P/01",
+    "score" : 21.701725,
+    "sortValues" : [ 21.701725, 1733356800000 ],
+    "content" : {
+      "id" : "C/0836/24/00000000PV/01/P/01",
+      "affId" : "C/0836/24/00000000PV/01",
+      "publishedId" : "C-836/24 P",
+      "publishedAffId" : "C-836/24 P",
+      "procedureId" : "C/0836/24/00000000PV/01/P/01",
+      "jurisdiction" : "Cour de justice",
+      "jurisdictionCode" : "C",
+      "order" : 836,
+      "suiteNumber" : 1,
+      "procType" : "P",
+      "procNumber" : 1,
+      "usualNameML" : [ {
+        "pt" : "PT/Comissão e o."
+      }, {
+        "sk" : "PT/Komisia a i."
+      }, {
+        "el" : "PT κατά Επιτροπής κ.λπ."
+      }, {
+        "nl" : "PT/Commissie e.a."
+      }, {
+        "ro" : "PT/Comisia și alții"
+      }, {
+        "fi" : "PT v. komissio ym."
+      }, {
+        "mt" : "PT vs Il-Kummissjoni et"
+      }, {
+        "bg" : "PT/Комисия и др."
+      }, {
+        "hr" : "PT/Komisija i drugi"
+      }, {
+        "hu" : "PT kontra Bizottság és társai"
+      }, {
+        "es" : "PT/Comisión y otros"
+      }, {
+        "lv" : "PT/Komisija u.c."
+      }, {
+        "cs" : "PT v. Komise a další"
+      }, {
+        "sv" : "PT mot kommissionen m.fl."
+      }, {
+        "pl" : "PT przeciwko Komisji i in."
+      }, {
+        "et" : "PT vs. komisjon jt"
+      }, {
+        "de" : "PT/ Kommission u. a."
+      }, {
+        "fr" : "PT / Commission e.a."
+      }, {
+        "en" : "PT v Commission and Others"
+      }, {
+        "sl" : "PT proti Komisija in drugim"
+      }, {
+        "da" : "PT mod Kommissionen m.fl."
+      }, {
+        "it" : "PT/ Commissione e a."
+      }, {
+        "lt" : "PT prieš Komisiją ir kt."
+      } ],
+      "introductionDate" : "2024-12-05",
+      "affairState" : "Affaire pendante",
+      "affairStateCode" : "ENC",
+      "joinExist" : 0,
+      "pilot" : 0,
+      "joinAffairs" : [ ],
+      "pourvoiAffIds" : [ "C/0836/24/00000000PV/01/P/01#C-836/24 P" ],
+      "originPourvoiIds" : [ "T/0367/22/00000000RF/01/P/01#T-367/22" ],
+      "reExamenAffIds" : [ ],
+      "originReExamanIds" : [ ],
+      "transfertAffIds" : [ ],
+      "originTransfertIds" : [ ],
+      "oppObsFag" : 0,
+      "contentLength" : 0,
+      "docNoPart" : 0
+    },
+    "highlightFields" : { },
+    "innerHits" : {
+      "document" : {
+        "totalHits" : 3,
+        "totalHitsRelation" : "EQUAL_TO",
+        "maxScore" : 10.663012,
+        "searchHits" : [ {
+          "index" : "index-affair@30-06-2026",
+          "id" : "C/0836/24/00000000PV/01/P/01-3268577",
+          "score" : 10.663012,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "C/0836/24/00000000PV/01/P/01-3268577",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_297348",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+            "idPublished" : "C-836/24 P",
+            "docType" : "Requête (JO)",
+            "docTypeCode" : "PV_COMM",
+            "docDate" : "2025-03-14",
+            "docFormats" : [ "HTML" ],
+            "contentLength" : 0,
+            "contentML" : [ {
+              "cs" : "Kasační opravný prostředek podaný dne 5. prosince 2024 PT proti rozsudku Tribunálu (desátého senátu) vydanému dne 25. září 2024 ve věci T-367/22, PT v. Komise (Věc C-836/24 P) Jednací jazyk: francouzština Účastníci řízení Účastnice řízení podávající kasační opravný prostředek (navrhovatelka): PT (zástupce: S. Orlandi, advokát) Další účastníci řízení: Evropská komise, Evropský parlament, Rada Evropské unie Návrhová žádání Navrhovatelka navrhuje, aby Soudní dvůr: zrušil rozsudek ze dne 25. září 2024 vydaný ve věci PT v. Komise, T-367/22; zrušil rozhodnutí ze dne 4. října 2021, kterým orgán oprávněný k uzavírání pracovních smluv vypočítal a stanovil nároky navrhovatelky na starobní důchod, v rozsahu, v němž nároky navrhovatelky na důchod převedené do důchodového systému orgánů Evropské unie (DSEU), jež nemají vliv na její důchod, jí nebyly nahrazeny; uložil Evropské komisi náhradu nákladů v obou stupních řízení. Důvody kasačního opravného prostředku a hlavní argumenty Na podporu kasačního opravného prostředku navrhovatelka tvrdí, že napadený rozsudek je stižen několika nesprávnými právními posouzeními, která se týkají zejména: analýzy námitky protiprávnosti, nezohlednění základních cílů převodu nároků na důchod, nesprávného uplatnění základních zásad rovného zacházení, proporcionality a práva na řádnou správu. Podle navrhovatelky Tribunál nezohlednil základní cíle převodu nároků na důchod, a sice: (1) zajistit volný pohyb zaměstnanců ve veřejné správě v Unii (2), učinit veřejnou službu Unie atraktivnější tím, že budou chráněna nabytá práva. Tribunál tím, že dospěl k závěru, že zaměstnanci, kteří převedli své nároky, musí „nést všechny důsledky“ této volby, neprokázal slučitelnost tohoto stanoviska s výše uvedenými cíli. Tribunál neprávem rozhodl, že převedené nároky na důchod ovlivňují výši důchodu v rámci režimu životního minima, třebaže se tyto nároky stanou zcela neúčinnými a nemají v této souvislosti žádný skutečný účinek. Tribunál stanovil hierarchii mezi hlavním výpočtem nároků na důchod (příspěvkové roky započitatelné pro účely převodu/roků služby) a podpůrným uplatněním životního minima (pouze roky služby), čímž porušil zásady odůvodnění a soudržnosti. Navrhovatelka nebyla v době převedení informována o účincích pravidla životního minima. Proto nelze tvrdit, že by akceptovala riziko ztráty svých nároků v případě uplatnění tohoto pravidla. Odmítnutí vrátit převedené nároky, které se staly zbytečnými, představuje pro navrhovatelku nepřiměřenou škodu bez výslovného právního nebo zákonného odůvodnění. Zachování nároků převedených Unií bez protihodnoty představuje bezdůvodné obohacení, které je v rozporu se základními zásadami spravedlnosti a rovnosti. Tribunál správně nezohlednil analogii se situací žalobců ve věci Barroso Truta a další, ve které zaměstnanci nacházející se ve srovnatelné situaci získali náhradu svých převedených nároků na důchod. Tribunál odmítl argumentaci navrhovatelky z důvodu neexistence důkazů, aniž zohlednil okolnosti, které tento důkaz znemožňovaly. Napadené rozhodnutí neodůvodněně rozlišuje mezi zaměstnanci nacházejícími se ve srovnatelných situacích, čímž porušuje zásady rovnosti a řádné správy. ____________"
+            } ],
+            "docNoPart" : 1,
+            "celex" : "",
+            "groupByLogicalId" : [ {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268671",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "ES",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268789",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "MT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268670",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "EL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268618",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "GA",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268674",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "ET",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268915",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "SL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268917",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "SK",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268707",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "PL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268610",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268577",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "HR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268579",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "HU",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268703",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "CS",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268680",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "BG",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268645",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "DE",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268926",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "SV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268668",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "EN",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268605",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "FI",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268641",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "DA",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268775",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "LV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268777",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "LT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268585",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "IT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268735",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "NL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268903",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "RO",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3268711",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "PT",
+              "formats" : [ "HTML" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "",
+            "affairJurisdiction" : "Cour de justice",
+            "affairJurisdictionCode" : "C",
+            "routing" : "C/0836/24/00000000PV/01/P/01",
+            "ecli" : ""
+          },
+          "highlightFields" : {
+            "contentML.cs.exact" : [ "Komise (Věc <em class='highlight'>C-836/24</em> P) Jednací jazyk: francouzština Účastníci řízení Účastnice řízení podávající kasační opravný prostředek (navrhovatelka): PT (zástupce: S. Orlandi, advokát) Další účastníci řízení: Evropská komise, Evropský parlament, Rada Evropské unie Návrhová žádání Navrhovatelka navrhuje, aby Soudní dvůr: zrušil rozsudek ze dne 25. září 2024 vydaný ve věci PT v. Komise, T-367/22; zrušil rozhodnutí ze dne 4. října 2021, kterým orgán oprávněný k uzavírání pracovních smluv vypočítal a stanovil nároky navrhovatelky na starobní důchod, v rozsahu, v němž nároky navrhovatelky na důchod převedené do důchodového systému orgánů Evropské unie (DSEU), jež nemají vliv na její důchod, jí nebyly nahrazeny; uložil Evropské komisi náhradu nákladů v obou stupních řízení." ]
+          },
+          "innerHits" : { },
+          "routing" : "C/0836/24/00000000PV/01/P/01",
+          "matchedQueries" : [ ]
+        }, {
+          "index" : "index-affair@30-06-2026",
+          "id" : "C/0836/24/00000000PV/01/P/01-3324630",
+          "score" : 10.663012,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "C/0836/24/00000000PV/01/P/01-3324630",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_302341",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+            "idPublished" : "C-836/24 P",
+            "docType" : "Ordonnance",
+            "docTypeCode" : "ORD_NP",
+            "docDate" : "2025-07-01",
+            "docFormats" : [ "HTML" ],
+            "contentLength" : 0,
+            "docNoPart" : 1,
+            "celex" : "62024CO0836",
+            "groupByLogicalId" : [ {
+              "id" : "C/0836/24/00000000PV/01/P/01-3324630",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "HTML" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "",
+            "affairJurisdiction" : "Cour de justice",
+            "affairJurisdictionCode" : "C",
+            "routing" : "C/0836/24/00000000PV/01/P/01",
+            "ecli" : "ECLI:EU:C:2025:502"
+          },
+          "highlightFields" : { },
+          "innerHits" : { },
+          "routing" : "C/0836/24/00000000PV/01/P/01",
+          "matchedQueries" : [ ]
+        }, {
+          "index" : "index-affair@30-06-2026",
+          "id" : "C/0836/24/00000000PV/01/P/01-3518212",
+          "score" : 10.663012,
+          "sortValues" : [ ],
+          "content" : {
+            "id" : "C/0836/24/00000000PV/01/P/01-3518212",
+            "joinExist" : 0,
+            "pilot" : 0,
+            "oppObsFag" : 0,
+            "logicDocId" : "id_326755",
+            "jpLogicDocId" : "id_null",
+            "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+            "idPublished" : "C-836/24 P",
+            "docType" : "Conclusions",
+            "docTypeCode" : "CONCL",
+            "docDate" : "2026-09-17",
+            "docFormats" : [ "HTML" ],
+            "contentLength" : 0,
+            "contentML" : [ {
+              "cs" : "null STANOVISKO GENERÁLNÍHO ADVOKÁTA ANDREY BIONDIHO přednesené dne 17. září 2026(1) Věc C‑836/24 P PT proti Evropské komisi „ Kasační opravný prostředek – Veřejná služba – Starobní důchod – Pravidlo životního minima – Námitka neplatnosti čl. 77 čtvrtého pododstavce služebního řádu – Článek 277 SFEU – Rozsudek Barroso Truta – Rozhodnutí výboru pro vyřizování stížností – Zásada rovného zacházení“ I. Úvod 1. Projednávaným kasačním opravným prostředkem se PT, navrhovatelka, domáhá zrušení rozsudku Tribunálu Evropské unie(2), kterým Tribunál zamítl její žalobu, založenou primárně na námitce neplatnosti čl. 77 čtvrtého pododstavce služebního řádu úředníků Evropské unie (dále jen „služební řád“). Tato žaloba směřovala ke zrušení rozhodnutí ze dne 4. října 2021, kterým orgán oprávněný k uzavírání pracovních smluv (dále jen „OOUPS“) stanovil nároky navrhovatelky na důchod za použití pravidla životního minima, aniž nařídil vrácení kapitálové hodnoty vnitrostátních nároků na důchod, které byly předtím převedeny do důchodového systému orgánů Evropské unie (dále jen „DSEU“). Na základě týchž skutkových okolností podala navrhovatelka druhou žalobu, založenou na bezdůvodném obohacení, která byla rovněž zamítnuta rozsudkem, proti němuž je nyní souběžně podán kasační opravný prostředek(3). 2. Spor má původ v tom, že navrhovatelka převedla své vnitrostátní nároky na důchod do DSEU, což vedlo k přiznání započtení příspěvkových roků v rozsahu dvanácti let, deseti měsíců a sedmnácti dnů. V okamžiku stanovení starobního důchodu provedla správa dvojí výpočet stanovený článkem 77 služebního řádu: běžný výpočet, který zahrnoval takto započtené příspěvkové roky, vedl k měsíční částce 1 635,38 eur, zatímco použití pravidla životního minima vedlo k částce 1 662,29 eur. Navrhovatelce byla přiznána posledně uvedená, pro ni příznivější částka. Z toho vyplynulo, že roky započitatelné pro důchod započtené na základě převodu neměly žádný konkrétní dopad na výši důchodu. 3. S odkazem na tuto okolnost vznesla navrhovatelka v prvním stupni primárně námitku neplatnosti čl. 77 čtvrtého pododstavce služebního řádu v rozsahu, v němž toto ustanovení v případě použití pravidla životního minima nestanoví vrácení převedeného kapitálu, a podpůrně námitku neplatnosti obecných prováděcích ustanovení k článkům 11 a 12 přílohy VIII služebního řádu(4). Tribunál v napadeném rozsudku obě námitky zamítl. 4. Na žádost Soudního dvora se toto stanovisko omezí na třetí důvod kasačního opravného prostředku. Již nyní uvádím, že navrhnu jeho zamítnutí v obou jeho částech. II. Právní rámec A. Služební řád úředníků Evropské unie 5. Článek 77 služebního řádu ve svém druhém a čtvrtém pododstavci stanoví: „Horní hranice starobního důchodu činí 70 % posledního základního platu v posledním stupni, do kterého byl úředník zařazen nejméně po dobu jednoho roku. Za každý rok služby podle článku 3 přílohy VIII náleží úředníkovi 1,80 % z tohoto posledního základního platu. [...] Výše starobního důchodu nesmí být nižší než 4 % částky životního minima za jeden rok služby. [...]“ 6. Článek 11 odst. 2 přílohy VIII služebního řádu stanoví: „Úředník, který nastoupí do služebního poměru v Evropské unii po: – odchodu ze služby ve státní správě nebo ve vnitrostátní či mezinárodní organizaci, – výkonu zaměstnání nebo samostatné výdělečné činnosti, může v období mezi svým jmenováním a dobou vzniku nároku na vyplácení starobního důchodu ve smyslu článku 77 služebního řádu uhradit Unii kapitálovou hodnotu nároků na důchod vzniklých na základě takové služby nebo činnosti, jejíž výše je aktualizována ke dni skutečného převodu. V takovém případě stanoví orgán oprávněný ke jmenování v rámci příslušného orgánu, v němž úředník vykonává službu, s přihlédnutím k základnímu platu a věku úředníka a ke směnnému kurzu v den žádosti o převod, prostřednictvím obecných prováděcích ustanovení počet let služby započitatelných pro důchod, které mu jsou započteny v rámci důchodového systému Unie za předcházející služební období na základě kapitálu převedeného, po odečtení částky představující kapitálové zhodnocení, mezi dnem žádosti o převod a skutečným dnem převodu. Úředníci mohou využít této možnosti pro každý členský stát a dotčený penzijní fond pouze jednou.“ III. Ke kasačnímu opravnému prostředku 7. Ústředním předmětem projednávaného kasačního opravného prostředku je vztah mezi námitkou neplatnosti podle článku 277 SFEU a směry judikatury a správní praxí, kterých se navrhovatelka dovolává jako měřítka platnosti čl. 77 čtvrtého pododstavce služebního řádu. Přesněji řečeno ústřední otázkou, na níž je spor založen, je, zda závěr, k němuž Tribunál dospěl v rozsudku, který bude posouzen níže, společně se správním opatřením přijatým jiným orgánem může v rámci námitky neplatnosti založit právo navrhovatelky na vrácení převedeného kapitálu. 8. Navrhovatelka navrhuje, aby Soudní dvůr zrušil napadený rozsudek, vyhověl jejím návrhovým žádáním uplatněným v prvním stupni a uložil Komisi náhradu nákladů řízení v obou stupních. Komise, podporovaná Evropským parlamentem a Radou Evropské unie jako vedlejšími účastníky řízení, navrhuje, aby Soudní dvůr kasační opravný prostředek zamítl a uložil navrhovatelce náhradu nákladů řízení. 9. Kasační opravný prostředek se člení na tři důvody. V rámci prvního důvodu, který je rozdělen na dvě části, navrhovatelka namítá nesprávná právní posouzení, kterých se měl Tribunál dopustit tím, že zamítl námitku neplatnosti čl. 77 čtvrtého pododstavce služebního řádu, pokud jde o srovnatelnost situací (první část) a mechanismus výpočtu starobního důchodu ve spojení s pravidlem životního minima (druhá část). V rámci druhého důvodu, který je rozdělen na tři části, vytýká údajnou nepřiměřenost odmítnutí vrátit převedené nároky na důchod, přičemž namítá bezdůvodné obohacení Unie, porušení práva na řádnou správu a porušení zásady solidarity. Konečně v rámci třetího důvodu, který je rozdělen na dvě části, zpochybňuje způsob, jakým Tribunál posoudil argumenty navrhovatelky založené na analogii s věcí Barroso Truta(5) a na rozhodnutí výboru Soudního dvora Evropské unie pověřeného vyřizováním stížností (dále jen „Výbor“) ze dne 29. ledna 2024(6). 10. První část druhého důvodu, týkající se údajného bezdůvodného obohacení Unie, navrhovatelka rozvádí odkazem na argumenty uplatněné v souběžném kasačním opravném prostředku ve věci C‑835/24 P, jehož je tato otázka jediným předmětem. Samostatné stanovisko přednesené dne 10. září 2026(7) na něj v plném rozsahu odkazuje. V tomto stanovisku se tedy budu věnovat přezkumu třetího důvodu. Pokud jde o první důvod a zbývající části druhého důvodu, omezím se na poznámky nezbytně nutné k tomu, abych stručně uvedl jejich výsledek. IV. Úvodní poznámky 11. Před přezkumem důvodů kasačního opravného prostředku je vhodné připomenout kontext, do něhož je projednávaná věc zasazena. Právním prostředkem, kterého se navrhovatelka dovolává primárně, je námitka neplatnosti podle článku 277 SFEU. Ta umožňuje incidenčně zpochybnit použitelnost aktu s obecnou působností, který tvoří základ napadeného individuálního rozhodnutí, s poukazem na jeho neslučitelnost s normami nebo zásadami vyšší právní síly(8). 12. Je sice pravda, že jak připomněl Soudní dvůr, námitka neplatnosti „nezbavuje spor týkající se stanovení práv a povinností zaměstnanců jeho povahy sporu mezi Společenstvím a jeho zaměstnanci“(9), mechanismus stanovený článkem 277 SFEU má nicméně ze své podstaty za předmět platnost aktu s obecnou působností jako takového, a nikoli způsob jeho výkladu nebo použití v konkrétním případě. 13. Ustanovením, jehož platnost je zpochybňována, je čl. 77 čtvrtý pododstavec služebního řádu, který stanoví pravidlo životního minima. Toto pravidlo je součástí již popsaného mechanismu výpočtu starobního důchodu: vedle běžného výpočtu založeného na započtených letech služby – včetně příspěvkových roků započtených na základě případného převodu vnitrostátních nároků na důchod – zaručuje pravidlo životního minima minimální částku určenou pouze podle let služby odsloužených pro Unii. Skutečně přiznaný důchod odpovídá příznivějšímu z těchto dvou výsledků. 14. Zásadní otázkou, kterou nastoluje třetí důvod kasačního opravného prostředku, je, zda závěr, k němuž Tribunál dospěl v rozsudku Barroso Truta, jakož i rozhodnutí Výboru přijaté po vydání tohoto rozsudku mohou – z hlediska námitky neplatnosti nebo zásady rovného zacházení – podpořit právo navrhovatelky na vrácení převedeného kapitálu. Právě této otázce je toto stanovisko věnováno. V. K prvnímu a druhému důvodu kasačního opravného prostředku 15. Vzhledem k tomu, že tyto důvody nespadají do předmětu tohoto stanoviska, omezím se na následující poznámky, a to v pořadí, v jakém jsou uplatněny. A. K prvnímu důvodu 16. V rámci první části prvního důvodu kasačního opravného prostředku navrhovatelka vytýká Tribunálu, že zamítl námitku neplatnosti z hlediska srovnatelnosti situací. Tato výtka však neobjasňuje, v čem by měl být přezkum provedený Tribunálem v bodě 38 a následujících napadeného rozsudku – v němž Tribunál vyloučil srovnatelnost situace zaměstnanců, kteří převedli své vnitrostátní nároky na důchod, se situací těch, kteří tak neučinili – stižen nesprávným právním posouzením. Ve skutečnosti pouze znovu předkládá tezi, která již byla zamítnuta v prvním stupni, aniž označuje nesprávné posouzení, kterým má být stiženo odůvodnění Tribunálu. Kasační opravný prostředek musí přitom přesným způsobem uvádět kritizované části rozsudku, jehož zrušení se navrhovatel domáhá, jakož i právní argumenty, které tento návrh specificky podporují. Tuto část je proto třeba odmítnout jako nepřípustnou(10). 17. V rámci druhé části prvního důvodu kasačního opravného prostředku navrhovatelka uplatňuje tři výtky: první vychází z údajné neexistence vztahu „primární/podpůrný“ mezi výpočtem podle druhého pododstavce a pravidlem podle čtvrtého pododstavce článku 77 služebního řádu; druhá z údajného porušení povinnosti uvést odůvodnění; třetí, uplatněná podpůrně, z porušení zásady rovného zacházení souvisejícího s týmž mechanismem výpočtu. Tyto výtky jsou v rozporu s judikaturou ve věci KY(11), v níž Soudní dvůr objasnil, že pravidlo životního minima se použije pouze podpůrně, tedy tehdy, pokud použití pravidel výpočtu stanovených v prvním a druhém pododstavci neumožňuje úředníkovi dosáhnout částky zaručené tímto pravidlem(12). Tribunál v bodech 44 a 45 napadeného rozsudku pouze převzal tento judikatorní závěr a své rozhodnutí odůvodnil v souladu s požadavky judikatury. Třetí výtka je čistě odvozená a sdílí osud prvních dvou. 18. Navrhuji proto Soudnímu dvoru, aby první důvod kasačního opravného prostředku jako celek zčásti odmítl jako nepřípustný a zčásti zamítl jako neopodstatněný. B. Ke druhému důvodu kasačního opravného prostředku 19. Pokud jde o první část druhého důvodu kasačního opravného prostředku, týkající se bezdůvodného obohacení, odkazuji, jak jsem již uvedl, na stanovisko, které je předloženo v souběžné věci C‑835/24 P. Omezím se na poznámku, že pokud se Soudní dvůr ztotožní s přístupem, který v něm navrhuji, bude z toho nutně vyplývat zamítnutí odpovídající části v projednávané věci. 20. Druhá část, založená na údajném porušení práva na řádnou správu zakotveného v článku 41 Listiny základních práv Evropské unie, je neopodstatněná. Pouze totiž v jiné podobě opakuje argument, podle něhož by odmítnutí vrátit převedený kapitál vedlo k nepřiměřenému výsledku. Práva na řádnou správu se přitom nelze dovolávat ani za účelem přiznání práva zaměstnanci, které použitelný právní rámec nestanoví, ani jako základu pro výklad ustanovení služebního řádu, který by byl v rozporu s jejich jasným zněním. 21. Zásada zakotvená v článku 41 Listiny správě nepochybně ukládá povinnost jednat spravedlivě a nestranně a dodržovat procesní záruky. Může rovněž usměrňovat výklad ustanovení služebního řádu v mezích vymezených jejich zněním a účelem. Nemůže však odůvodnit nepoužití platného ustanovení služebního řádu ani sloužit jako základ pro výklad, který by měnil jeho normativní dosah. To platí tím spíše pro čl. 77 čtvrtý pododstavec služebního řádu, který vyčerpávajícím způsobem upravuje kritéria použitelná pro výpočet starobního důchodu. Nebyl-li prokázán rozpor tohoto ustanovení s článkem 41 Listiny, nelze posledně uvedené ustanovení použít k tomu, aby byl cestou výkladu zaveden způsob výpočtu nebo právo na vrácení, které služební řád nestanoví. Opačný přístup by mimoto ohrozil požadavek právní jistoty, který služební řád naplňuje tím, že přesně stanoví kritéria pro stanovení důchodových dávek(13). 22. Ani třetí část, založená na zásadě solidarity, nenachází oporu v judikatuře Soudního dvora. Soudní dvůr totiž upřesnil, že DSEU nelze stavět na roveň systému, v němž příspěvky zaplacené dotyčnou osobou představují přímou protihodnotu budoucí důchodové dávky(14). Důchodový systém Unie je sám založen na solidárním mechanismu: příspěvky se podílejí na financování společného systému a nezakládají jednotlivci právo na vrácení částky odpovídající zaplaceným příspěvkům. Nárok na důchod tedy vyplývá z postavení úředníka nebo zaměstnance a z podmínek stanovených služebním řádem, a nikoli ze vztahu matematické ekvivalence mezi individuálními příspěvky a důchodovým plněním. I tuto část je proto třeba zamítnout. 23. Navrhuji proto Soudnímu dvoru, aby druhý důvod kasačního opravného prostředku jako celek zčásti zamítl s odkazem na stanovisko v souběžné věci a ve zbývající části jako neopodstatněný. VI. K třetím důvodu kasačního opravného prostředku 24. Třetí důvod kasačního opravného prostředku, na který se soustředí věcná analýza v tomto stanovisku, je rozdělen na dvě části, které – ačkoli jsou formálně odlišné – tvoří z věcného hlediska jedinou výtku založenou zaprvé na judikatuře Barroso Truta a zadruhé na správní praxi, která se rozvinula v návaznosti na tuto judikaturu. A. Argumenty účastnic řízení 25. V rámci první části navrhovatelka tvrdí, že se Tribunál dopustil nesprávného právního posouzení, když vyloučil možnost dovolávat se rozsudku Barroso Truta, v němž měl Tribunál hypoteticky, avšak dostatečně jasně uznat opodstatněnost žaloby na vrácení převedeného kapitálu, který nebyl konkrétně zohledněn v okamžiku stanovení nároků na důchod. V rámci druhé části navrhovatelka vytýká Tribunálu, že nevyvodil náležité důsledky z rozhodnutí Výboru, které bylo přijato po vydání rozsudku Barroso Truta ve prospěch jednoho z žalobců v uvedené věci. 26. Komise nejprve uplatňuje argument předběžné povahy: třetí důvod kasačního opravného prostředku směřuje proti úvahám, které Tribunál uvedl pro úplnost poté, co již námitku neplatnosti zamítl z důvodů, které samy o sobě postačovaly k jejímu zamítnutí. Podle ustálené judikatury by tato okolnost sama o sobě postačovala k zamítnutí tohoto důvodu jako směřujícího proti argumentaci, o kterou se výrok napadeného rozsudku neopírá(15). B. Analýza 27. Je vhodné vyjít právě z poznámky Komise týkající se nadbytečné povahy napadených bodů. Tato poznámka je opodstatněná: body, proti nimž směřují obě části tohoto důvodu – body 51 až 64 – Tribunál uvádí formulací „pro úplnost“, poté co zamítnutí námitky neplatnosti již v plném rozsahu odůvodnil v bodech 35 až 50 a vyslovil v bodě 50. Tato skutečnost by sama o sobě postačovala k rozhodnutí o tomto důvodu. Pokud jej přesto přezkoumám, je tomu tak proto, že zásadní otázka, kterou nastoluje – zda může směr judikatury a správní praxe, která na něj navázala, sloužit jako měřítko platnosti ustanovení služebního řádu – přesahuje rámec projednávané věci a zasluhuje objasnění. Následující přezkum je tedy prováděn podpůrně. Obě části třetího důvodu proto posoudím odděleně. Pokud jde o první aspekt, nepoužitelnost rozsudku Barroso Truta v projednávaném řízení vyplývá ze tří vzájemně se doplňujících důvodů: z odlišného předmětu obou věcí, ze znění bodu 103 uvedeného rozsudku a z hypotetické a obezřetné povahy jeho bodu 106, jak ji potvrdila pozdější judikatura Soudního dvora. Pokud jde o druhý aspekt, každý ze tří samostatných důvodů vede sám o sobě k zamítnutí: správní rozhodnutí nemůže sloužit jako měřítko platnosti ustanovení s obecnou působností; opatření přijatá jedním orgánem ve prospěch jeho zaměstnanců nezavazují ostatní orgány; dovolávaná skutková okolnost nebyla před Tribunálem předmětem kontradiktorního řízení. Začnu prvním z těchto aspektů, který představuje zásadní otázku. Na závěr uvedu souhrnnou úvahu k tomuto důvodu jako celku. 1. K první části: možnost dovolávat se rozsudku Barroso Truta a další v. Soudní dvůr Evropské unie 28. Rozsudek Barroso Truta byl vydán ve věci týkající se náhrady škody. Žalobci, smluvní zaměstnanci Soudního dvora, se dovolávali mimosmluvní odpovědnosti Unie za újmu, která měla vzniknout v důsledku nedostatečných informací poskytnutých jim správou v okamžiku, kdy využili možnosti převodu, pokud jde o možnost, že příspěvkové roky započtené na základě tohoto převodu zůstanou v důsledku použití životního minima bez účinku. Poté, co Tribunál žalobu ve věci samé zamítl z důvodu neexistence skutečné a jisté újmy v době rozhodování – neboť ke stanovení důchodů žalobců dosud nedošlo – doplnil v bodech 103 až 106 rozsudku několik úvah uvedených pro úplnost týkajících se právních prostředků, které by žalobcům zůstaly k dispozici poté, co budou jejich nároky na důchod stanoveny, pokud by se předpokládaná újma následně skutečně projevila(16). 29. Navrhovatelka z těchto úvah dovozuje, že Tribunál tímto způsobem, byť jen incidenčně, zakotvil zásadu práva na vrácení převedeného kapitálu, který nebyl konkrétně zohledněn při stanovení důchodu. Takový výklad se mi nejeví jako opodstatněný. 30. Zaprvé je předmět projednávané věci zásadně odlišný od předmětu věci Barroso Truta. V uvedené věci šlo o žalobu na náhradu škody založenou na porušení informační povinnosti správou; v projednávané věci jde o námitku neplatnosti podle článku 277 SFEU směřující k nepoužití čl. 77 čtvrtého pododstavce služebního řádu. Nejde o pouhý rozdíl v označení: oba právní prostředky mají odlišný předmět a podmínky, což má přímý dopad na thema decidendum, jelikož neplatnost ustanovení služebního řádu musí být posuzována výlučně s ohledem na jeho slučitelnost s normami a zásadami vyšší právní síly unijního právního řádu. Naproti tomu určení mimosmluvní odpovědnosti Unie vyžaduje další krok: kromě porušení právní normy musí být prokázána existence nahraditelné škody a přímá příčinná souvislost mezi vytýkaným porušením a tvrzenou újmou(17). 31. Úvahy Tribunálu uvedené v bodech 103 až 106 rozsudku Barroso Truta se tedy na specifický předmět projednávané věci nevztahují. 32. Zadruhé bod 103 rozsudku Barroso Truta výslovně zdůrazňuje, že kapitál převedený do DSEU nezanikl: poté, co byl převeden vnitrostátním orgánem, byl přeměněn na příspěvkové roky, které musí být v zásadě zohledněny při výpočtu důchodu. Právě k tomu v projednávané věci došlo prostřednictvím dvojího výpočtu provedeného správou podle článku 77 služebního řádu. Skutečnost, že v důsledku tohoto dvojího výpočtu v konkrétním případě převážilo pravidlo životního minima, nesvědčí o tom, že převedený kapitál nebyl zohledněn, nýbrž je výsledkem běžného fungování mechanismu stanoveného služebním řádem: možnost převodu, jak Soudní dvůr objasnil v rozsudku KY, zaručuje zohlednění příspěvkových roků, avšak nezaručuje žádný konkrétní hospodářský výsledek(18). 33. Zatřetí má zvláštní význam skutečnost, že bod 106 rozsudku Barroso Truta je formulován jako pouhá hypotéza do budoucna. Tribunál v něm, zjevně s výhradou případného budoucího vzniku újmy, uvádí možnost restituční žaloby; takto obezřetná formulace nemohla být – a fortiori nemůže být dnes – chápána tak, že by předjímala zásadní řešení pro budoucí a hypotetický případ. 34. Soudní dvůr to upřesnil v rozsudku KY: Tribunál ve věci Barroso Truta o této otázce nerozhodl s konečnou platností a omezil se na úvahy formulované zvláště obezřetně(19). 35. Z toho vyplývá, že Tribunál v bodech 53 až 55 napadeného rozsudku správně vyloučil možnost vztáhnout rozsudek Barroso Truta na situaci navrhovatelky. Odůvodnění je sice stručné, avšak dostačující: přesně označuje tři znaky – předmět žaloby, povahu úvah pronesených obiter dictum, hypotetickou formulaci – které brání tomu, aby byl z rozsudku Barroso Truta dovozován právní účinek, který mu navrhovatelka přisuzuje. 36. Ještě jedna poznámka se mi jeví jako užitečná. I kdyby byla úvahám uvedeným v rozsudku Barroso Truta pro úplnost přiznána hodnota směru judikatury Tribunálu, tyto úvahy odkazovaly – v bodě 104 – na žalobu směřující přímo proti aktům, kterými byly stanoveny nároky na důchod, tedy v systému právních prostředků zaměstnanců na žalobu podle článku 91 služebního řádu. Námitka neplatnosti čl. 77 čtvrtého pododstavce služebního řádu, kterou navrhovatelka vznesla v projednávaném řízení, nebyla ani zmíněna. Je proto velmi sporná představa, že by Tribunál chtěl v uvedeném rozsudku předjímat posouzení slučitelnosti ustanovení aktu s obecnou působností, jakým je článek 77 služebního řádu, se zásadami vyšší právní síly unijního práva. První část třetího důvodu kasačního opravného prostředku je proto třeba zamítnout jako neopodstatněnou. 2. Ke druhé části: relevance rozhodnutí výboru Soudního dvora Evropské unie pověřeného vyřizováním stížností ze dne 29. ledna 2024 37. V rámci druhé části třetího důvodu kasačního opravného prostředku navrhovatelka tvrdí, že po vydání rozsudku Barroso Truta dosáhl jeden z žalobců v uvedené věci prostřednictvím rozhodnutí Výboru ze dne 29. ledna 2024 zrušení rozhodnutí, kterým OOUPS zamítl jeho žádost o vrácení kapitálové hodnoty jeho vnitrostátních nároků na důchod. Uvedené rozhodnutí je založeno na zásadě rovného zacházení ve vztahu k dalším dvěma bývalým žalobcům v téže věci Barroso Truta – označeným jako pánové G. a F. – kteří podle údajů obsažených v samotném rozhodnutí již dříve skutečně dosáhli vrácení převedeného kapitálu. Navrhovatelka tvrdí, že Tribunál měl z této okolnosti vyvodit potvrzení opodstatněnosti jejích argumentů a odmítnutí zacházet s ní stejným způsobem v každém případě představuje porušení zásady rovného zacházení a práva na řádnou správu. 38. Je třeba poukázat na tři další skutečnosti, které vyplývají z rozhodnutí Výboru a jsou relevantní pro následující analýzu. Zaprvé stěžovatel před Výborem uplatnil tři samostatné důvody: zjevně nesprávné posouzení, bezdůvodné obohacení Unie a porušení zásady rovného zacházení. Výbor vyhověl důvodu vycházejícímu z rovného zacházení a prohlásil, že není nutné přezkoumávat ostatní důvody; nerozhodl tedy o důvodu založeném na bezdůvodném obohacení, který zůstal nedotčen. Zadruhé se věc rozhodnutá Výborem týkala situace, v níž částečná neúčinnost započtených příspěvkových roků vyplývala z použití horní hranice důchodu ve výši 70 % stanovené v čl. 77 druhém pododstavci služebního řádu, jelikož stěžovatel dosáhl teoretické důchodové sazby 80,02361 %, která byla snížena na maximální hranici stanovenou služebním řádem. Posuzovaná situace se tedy liší od situace navrhovatelky, jejíž důchod byl stanoven za použití pravidla životního minima podle čtvrtého pododstavce téhož článku. Zatřetí, pokud jde o vrácení částek, k němuž dříve došlo ve prospěch pánů G. a F., rozhodnutí se omezuje na konstatování jeho existence pro účely posouzení srovnatelnosti, aniž objasňuje jeho právní základ nebo přesné skutkové okolnosti. 39. Argument navrhovatelky naráží s ohledem na tyto skutečnosti na tři samostatné překážky, které přezkoumám v pořadí, v němž je uvádím. První, která představuje zásadní otázku, má strukturální povahu a týká se vztahu mezi správním rozhodnutím a námitkou neplatnosti. Druhá spočívá v tom, že opatření přijatá jedním orgánem ve prospěch jeho zaměstnanců nezavazují ostatní orgány. Třetí spočívá v tom, že dovolávaná skutková okolnost nebyla předmětem kontradiktorního řízení před Tribunálem, takže Tribunálu nelze vytýkat žádné zkreslení. Každá z těchto překážek sama o sobě postačuje k zamítnutí druhé části třetího důvodu kasačního opravného prostředku. 40. Pokud jde o první překážku, považuji za užitečné rozlišit tři roviny, v nichž lze zpochybnit „právní základ“ individuálního rozhodnutí: i) neexistenci použitelné právní normy; ii) její nesprávný výklad nebo použití v konkrétním případě; iii) neplatnost této normy ve vztahu k ustanovením nebo zásadám vyšší právní síly. Pro účely námitky neplatnosti vznesené navrhovatelkou je relevantní pouze třetí případ. Předmětem řízení v prvním stupni a projednávaného kasačního opravného prostředku je totiž platnost čl. 77 čtvrtého pododstavce služebního řádu, kterou navrhovatelka zpochybňuje podle článku 277 SFEU. Naproti tomu není zpochybňován výklad ani použití tohoto ustanovení správou v konkrétním případě(20). 41. Rozhodnutí Výboru přitom spadá do druhé z těchto rovin, nikoli do třetí. Používá článek 77 služebního řádu na konkrétní případ; nezpochybňuje jeho platnost, ani tak učinit nemohlo. Přijetí určitého výkladu nebo způsobu použití tohoto ustanovení totiž samo o sobě neumožňuje dovodit vadu spočívající v neplatnosti samotného ustanovení. To nevylučuje, že totéž rozhodnutí může být relevantní v jiném kontextu: může mít význam v rámci žaloby založené na bezdůvodném obohacení Unie – a není náhodou, že právě do tohoto rámce navrhovatelka zasadila svůj argument v souběžné věci C‑835/24 P. Tento rámec je však odlišný od rámce námitky neplatnosti, a právě v uvedené věci musí být tento argument posouzen. 42. Potvrzuje to samotné rozhodnutí. Výbor vyhověl důvodu vycházejícímu z rovného zacházení, který uplatnil stěžovatel, a nepřezkoumal důvod založený na bezdůvodném obohacení, který zůstal nedotčen. Ani na správní úrovni tedy nebylo stanoveno žádné obecné pravidlo pro vrácení. 43. Toto rozlišení není formální. Přezkum platnosti podle článku 277 SFEU má za předmět soulad aktu s obecnou působností s normami a zásadami vyšší právní síly unijního právního řádu(21); jeho předmětem není způsob, jakým jej určitá správa použila. Praxe dovolávaná v projednávané věci – tedy rozhodnutí Výboru ze dne 29. ledna 2024 – spadá do posledně uvedené roviny. Připustit, že by mohla odhalit vadu spočívající v neplatnosti, by vedlo k důsledku, jehož nepravděpodobnost je zřejmá již z jeho samotného vyslovení: platnost ustanovení služebního řádu, tedy jednotného předpisu použitelného ve stejném znění na všechny orgány, by se měnila v závislosti na tom, který orgán jej použil, a na okamžiku, kdy tento orgán změnil svou praxi. Takový výsledek je neslučitelný jak s jednotným uplatňováním služebního řádu, tak s požadavkem právní jistoty. 44. Pokud jde o druhou překážku, a podpůrně, je třeba připomenout, že podle ustálené judikatury představují opatření přijatá unijním orgánem ve prospěch určité skupiny osob při neexistenci jakékoli právní povinnosti vyplývající ze služebního řádu opatření, jichž se nelze dovolávat na podporu důvodu vycházejícího z porušení zásady rovného zacházení ve vztahu k jinému orgánu(22). Rozhodnutí Výboru, byť je pro svého adresáta v rámci veřejné služby Soudního dvora příznivé, samo o sobě nepředstavuje akt postačující k tomu, aby OOUPS Komise vznikla povinnost poskytnout obdobné zacházení. Je třeba dodat, že odkaz tohoto rozhodnutí na částky dříve vrácené pánům G. a F. není doprovázen objasněním formálního právního základu těchto vrácení: Výbor se omezuje na konstatování jejich existence pro účely posouzení srovnatelnosti, aniž upřesňuje, zda k nim došlo při plnění povinnosti vyplývající ze služebního řádu, při přímém použití bodu 106 rozsudku Barroso Truta, z důvodů správní spravedlnosti nebo z jiného titulu. Tribunál již v bodě 58 napadeného rozsudku konstatoval neexistenci takového upřesnění a rozhodnutí Výboru tento nedostatek neodstraňuje. 45. Pokud jde konečně o třetí překážku, a dále podpůrně, z okolností uvedených v napadeném rozsudku nevyplývá, že by rozhodnutí Výboru bylo formálně založeno do spisu v řízení v prvním stupni ani že by jeho obsah byl vylíčen dostatečně k tomu, aby Tribunál mohl posoudit jeho význam: Tribunál v bodě 56 napadeného rozsudku pouze uvádí, že okolnost vrácení částek po vydání rozsudku Barroso Truta byla zmíněna na jednání, a kvalifikuje ji jako pouhé nepodložené tvrzení. Každopádně bylo toto rozhodnutí ve spisu v projednávaném řízení uvedeno až jako příloha kasačního opravného prostředku a z dostupných podkladů nevyplývá, že by bylo před Tribunálem formálně předmětem kontradiktorního řízení. Bez ohledu na otázku režimu použitelného na předkládání nových skutečností v řízení o kasačním opravném prostředku je v každém případě zřejmé, že navrhovatelka neprokazuje způsobem vyžadovaným v řízení o kasačním opravném prostředku, že Tribunál zkreslil skutečnosti, které mu byly předloženy(23). 46. Tři zde posouzené překážky vedou jednoznačně k zamítnutí druhé části třetího důvodu kasačního opravného prostředku. Rozhodnutí Výboru není právně způsobilé zpochybnit v rámci námitky neplatnosti platnost čl. 77 čtvrtého pododstavce služebního řádu. Jde totiž o akt přijatý unijním orgánem při výkonu svých pravomocí, založený na zásadě rovného zacházení a vztahující se k situaci, která je strukturálně odlišná od situace navrhovatelky. 3. Shrnutí 47. Při pohledu na třetí důvod kasačního opravného prostředku jako celek se mi jeví, že spočívá na jediném a témže nesprávném předpokladu: že zohlednění směru judikatury formulovaného obezřetně v rozsudku Barroso Truta a správního rozhodnutí přijatého v návaznosti na něj může samo o sobě plnit funkci měřítka platnosti čl. 77 čtvrtého pododstavce služebního řádu. Tento předpoklad směšuje jednotlivé roviny: námitka neplatnosti předpokládá, že je napadené ustanovení poměřováno s normami vyšší právní síly, nikoli s jinými ustanoveními téže právní síly, a tím spíše nikoli se správní praxí, která se vytvořila u jiného orgánu a ve strukturálně odlišné skutkové situaci, i kdyby z této praxe vyplynulo pro dotyčnou osobu příznivější zacházení. 48. Otázka rozsudku Barroso Truta může být případně relevantní v rámci žaloby na vydání bezdůvodného obohacení – což vysvětluje, proč je posuzována ve stanovisku v souběžné věci C‑835/24 P. V rovině posuzované v projednávané věci však nemůže obstát. 49. Nelze však přehlédnout, že systém vymezený článkem 77 služebního řádu vede v případech, kdy pravidlo životního minima převáží nad běžným výpočtem, k výsledku, který se – z pohledu jednotlivého zaměstnance, jehož kariéra v Unii byla krátká a jehož vnitrostátní nároky na důchod se po jejich převodu ukážou jako ekonomicky neúčinné – může oprávněně jevit jako neuspokojivý. Právě tento pohled ostatně vyplývá z bodu 106 rozsudku Barroso Truta a ze samotného rozhodnutí Výboru, na které navrhovatelka odkazuje. Z výše uvedených důvodů to však nezakládá vadu spočívající v neplatnosti ustanovení služebního řádu; případný restituční prostředek nápravy nadále podléhá podmínkám vlastním žalobě na vydání bezdůvodného obohacení, které jsou posuzovány v souběžné věci C‑835/24 P. 50. Posouzení, zda jsou určité korektivy nezbytné nebo vhodné, předpokládá normativní úsudek směřující k vymezení celkového uspořádání použitelné právní úpravy. Takové posouzení přesahuje rámec soudní funkce, která se omezuje na ověření souladu stávající úpravy s normami a zásadami právního řádu a nezahrnuje nahrazování normotvůrce při volbě způsobu regulace. 51. Navrhuji proto Soudnímu dvoru, aby třetí důvod kasačního opravného prostředku v obou jeho částech zamítl jako neopodstatněný. Nadbytečná povaha odůvodnění Tribunálu v bodech 51 až 64 napadeného rozsudku, o níž byla řeč výše, tento závěr podporuje. VII. Závěry 52. S ohledem na všechny výše uvedené úvahy, a aniž je dotčeno posouzení jiných důvodů a výtek kasačního opravného prostředku, než je třetí důvod, navrhuji Soudnímu dvoru, aby třetí důvod kasačního opravného prostředku v obou jeho částech zamítl jako neopodstatněný. 1 Původní jazyk: italština. 2 Rozsudek ze dne 25. září 2024, PT v. Komise (T‑367/22, EU:T:2024:654) (dále jen „napadený rozsudek“). 3 Pokud jde o souběžnou věc týkající se bezdůvodného obohacení, viz rozsudek ze dne 25. září 2024, PT v. Komise (T‑788/22, EU:T:2024:655), který je předmětem kasačního opravného prostředku ve věci C‑835/24 P. 4 Společný odkaz na články 11 a 12 přílohy VIII přebírá název obecných prováděcích ustanovení přijatých pro obě tato ustanovení. V projednávané věci je relevantní pouze čl. 11 odst. 2. Článek 12, který upravuje odchozí převod ve prospěch osoby, jež skončí služební poměr, aniž získala nárok na starobní důchod, se v případě navrhovatelky nepoužije. 5 Rozsudek ze dne 18. září 2018, Barroso Truta a další v. Soudní dvůr Evropské unie (T‑702/16 P, EU:T:2018:557) (dále jen „rozsudek Barroso Truta“). 6 Rozhodnutí výboru Soudního dvora Evropské unie pověřeného vyřizováním stížností ze dne 29. ledna 2024 (R-12/23; příloha A.3 kasačního opravného prostředku). 7 V tomto smyslu viz též stanovisko generálního advokáta A. Biondiho PT v. Komise (C-835/24 P, EU:C:2026:751). 8 Podle článku 277 SFEU je předmětem incidenčního zpochybnění platnost aktu s obecnou působností, který tvoří základ napadeného individuálního rozhodnutí: viz rozsudek ze dne 16. března 2023, Komise v. Calhau Correia de Paiva (C‑511/21 P, EU:C:2023:208, body 43 a 44 a citovaná judikatura). V tomto smyslu se dále používá výraz „neplatnost“; v procesních písemnostech je tento právní prostředek označován jako „námitka protiprávnosti“. 9 Rozsudek ze dne 6. října 2000, Rada v. Busacca a další (C‑434/98 P, EU:C:2000:546, bod 24). 10 V tomto smyslu viz rozsudky ze dne 18. července 2013, Schindler Holding a další v. Komise (C‑501/11 P, EU:C:2013:522, bod 43), a ze dne 3. října 2013, Rintisch v. OHIM (C‑120/12 P, EU:C:2013:638, bod 49). 11 Rozsudek ze dne 4. května 2023, KY v. Soudní dvůr Evropské unie (C‑100/22 P, nezveřejněný, EU:C:2023:377) (dále jen „rozsudek KY“). 12 Rozsudek ze dne 4. května 2023, KY v. Soudní dvůr Evropské unie (C‑100/22 P, nezveřejněný, EU:C:2023:377, body 64 a 65). 13 V tomto smyslu viz usnesení Tribunálu ze dne 10. února 2025, FB v. Parlament (T‑468/24, EU:T:2025:156, bod 41). 14 Rozsudek ze dne 4. května 2023, KY v. Soudní dvůr Evropské unie (C‑100/22 P, nezveřejněný, EU:C:2023:377, bod 69). Nedávný rozsudek ze dne 18. prosince 2025, Bopuis (C‑776/24, EU:C:2025:1010, bod 52). 15 V tomto smyslu viz rozsudek ze dne 6. září 2017, Intel v. Komise (C‑413/14 P, EU:C:2017:632, bod 63 a citovaná judikatura). 16 Viz rozsudek ze dne 18. září 2018, Barroso Truta a další v. Soudní dvůr Evropské unie (T‑702/16 P, EU:T:2018:557, body 103 až 106). 17 Viz rozsudek ze dne 16. prosince 2008, Masdar (UK) v. Komise (C‑47/07 P, EU:C:2008:726, bod 49 a citovaná judikatura). 18 Rozsudek ze dne 4. května 2023, KY v. Soudní dvůr Evropské unie (C‑100/22 P, EU:C:2023:377, bod 69). 19 Rozsudek ze dne 4. května 2023, KY v. Soudní dvůr Evropské unie (C‑100/22 P, EU:C:2023:377, bod 81). V tomto smyslu viz rovněž rozsudek ze dne 9. listopadu 2022, WP a další v. Komise (T‑604/21, EU:T:2022:686, bod 56). 20 Viz výše uvedený rozsudek Komise v. Calhau Correia de Paiva, body 43 a 44. 21 Výše uvedený rozsudek Calhau Correia de Paiva, bod 44. 22 Bod 57 napadeného rozsudku a citovaná judikatura. 23 V tomto smyslu viz rozsudek ze dne 27. března 2025, XH v. Komise (C‑91/23 P, EU:C:2025:219, bod 28 a citovaná judikatura)."
+            } ],
+            "docNoPart" : 1,
+            "celex" : "62024CC0836",
+            "groupByLogicalId" : [ {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517859",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "LV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517848",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "NL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517853",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "SK",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517844",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "FI",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517851",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "DA",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517855",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "ES",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517846",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "PT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517857",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "CS",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517864",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "MT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517862",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "HU",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517860",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "IT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517849",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "DE",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3518212",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "EN",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517845",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "SV",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517852",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "RO",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517854",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "SL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517847",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "BG",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517865",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "LT",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517850",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "PL",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517856",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "ET",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517858",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "HR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517861",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "FR",
+              "formats" : [ "HTML" ]
+            }, {
+              "id" : "C/0836/24/00000000PV/01/P/01-3517863",
+              "idProcedure" : "C/0836/24/00000000PV/01/P/01",
+              "docLang" : "EL",
+              "formats" : [ "HTML" ]
+            } ],
+            "published" : "no",
+            "dispNatVisRef" : "",
+            "dispIntVisRef" : "",
+            "affairJurisdiction" : "Cour de justice",
+            "affairJurisdictionCode" : "C",
+            "routing" : "C/0836/24/00000000PV/01/P/01",
+            "ecli" : "ECLI:EU:C:2026:778"
+          },
+          "highlightFields" : { },
+          "innerHits" : { },
+          "routing" : "C/0836/24/00000000PV/01/P/01",
+          "matchedQueries" : [ ]
+        } ],
+        "empty" : false
+      }
+    },
+    "matchedQueries" : [ ]
+  } ],
+  "aggregatesMap" : {
+    "facet_bucket" : [ {
+      "name" : "procTypesWithoutResults",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "FONC"
+      }, {
+        "docCount" : 1,
+        "value" : "PVOI"
+      } ]
+    }, {
+      "name" : "jurisdiction",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "C"
+      } ]
+    }, {
+      "name" : "affairState",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "ENC"
+      } ]
+    }, {
+      "name" : "matCode",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "STAT",
+        "childrenAggregate" : {
+          "name" : "matCodeTwo",
+          "aggregateCountValues" : [ ]
+        }
+      } ]
+    }, {
+      "name" : "procType",
+      "aggregateCountValues" : [ {
+        "docCount" : 1,
+        "value" : "P"
+      } ]
+    } ]
+  }
+}
