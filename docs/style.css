@@ -278,6 +278,7 @@ main { min-width: 0; padding: 32px 48px 48px; }
 .stitek {
   font-size: 12px; font-weight: 500; padding: 2px 8px; border-radius: 6px;
   background: var(--muted); color: var(--fg-3); white-space: nowrap;
+  opacity: 0.6;   /* oblasti jsou doplňková informace, ne hlavní obsah */
 }
 /* „…" za první oblastí – jen na telefonu, kde se oblasti nevejdou vedle
    odkazů. Klepnutí ukáže všechny. */
