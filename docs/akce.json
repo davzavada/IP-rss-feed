@@ -46,10 +46,10 @@
       "zkratka": "ALAI",
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
-      "pocet": 0,
-      "stazeno": null,
-      "cesta": null,
-      "chyba": "HTTPSConnectionPool(host='alai.cz', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='alai.cz', port=443) at 0x7f105aec6780>, 'Connection to alai.cz timed out. (connect timeout=60)'))"
+      "pocet": 1,
+      "stazeno": "2026-09-25T12:52:25+00:00",
+      "cesta": "ai",
+      "chyba": null
     },
     "UPV": {
       "nazev": "Úřad průmyslového vlastnictví",
@@ -758,6 +758,26 @@
         "rodina_dedictvi"
       ],
       "oblasti_klic": "743ca7b63ca8"
+    },
+    {
+      "id": "5603bd46d6c4b416225d",
+      "poradatel": "ALAI",
+      "datum": "2026-10-23",
+      "zacatek": "13:00",
+      "konec": "",
+      "nazev": "Hudební plagiát",
+      "misto": "Jazz Dock, Praha",
+      "forma": "prezencne",
+      "lektori": [],
+      "cena": "pro členy zdarma, pro nečleny 1000 Kč",
+      "anotace": "Seminář se zabývá problematikou hudebního plagiátu z hlediska muzikologického, autorskoprávního a procesního.",
+      "url": "https://www.alai.cz/index.php?uid=105",
+      "detail_pokusy": 1,
+      "oblasti": [
+        "autorske",
+        "civilni_proces"
+      ],
+      "oblasti_klic": "f12a8b5fcce2"
     },
     {
       "id": "b390d311ffd8d569645c",
