@@ -1076,12 +1076,13 @@
    "first_seen": "2026-09-14T12:00:00Z",
    "nazev": "UC v. Komise",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TO0381(01)",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "ceka_na_text",
-   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
+   "heslo": "Zveřejnění vyloučení",
+   "shrnuti": "Předseda Tribunálu v řízení o předběžném opatření (T-381/26 R) rozhodoval, zda odložit zveřejnění informace o tom, že Komise vyloučila italskou poradenskou společnost ze zadávacích řízení EU kvůli její účasti na kartelu, kterou pravomocně konstatoval italský soutěžní úřad AGCM. Návrhu vyhověl a odložil zveřejnění na webu Komise i ve veřejné části databáze EDES: námitky nepřiměřenosti (malá role, krátké trvání, chybějící úmysl, spolupráce) vyžadují podrobné posouzení ve věci samé. Zveřejnění na 18 měsíců by navíc způsobilo nevyčíslitelnou a nevratnou újmu na pověsti.",
+   "oblasti": [
+    "verejne_zakazky",
+    "spravni"
+   ],
+   "procesni": true
   },
   {
    "id": "sdeu:62026TO0359(01)",
@@ -1094,12 +1095,12 @@
    "first_seen": "2026-09-14T12:00:00Z",
    "nazev": "YOU Solutions Germany v. ECHA",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TO0359(01)",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "ceka_na_text",
-   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
+   "heslo": "Biocidy, předběžné opatření",
+   "shrnuti": "Předseda Tribunálu v řízení o předběžném opatření (T-359/26 R) rozhodoval o návrhu YOU Solutions Germany na odklad účinnosti rozhodnutí ECHA, kterým byla Global Amines Germany zapsána na seznam podle čl. 95 nařízení o biocidech jako dodavatel účinné látky diamin pro typy přípravků 2 až 4. Návrh zamítl pro nedostatek naléhavosti: ochrana údajů uplynula 31. 12. 2025 a navrhovatelka nedoložila svůj tržní podíl ani finanční situaci. Závislost na jediném smluvním výrobci, který se nyní stal konkurentem, je podle předsedy jejím vlastním obchodním rozhodnutím.",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true
   },
   {
    "id": "sdeu:62026TO0330(01)",
@@ -1112,12 +1113,13 @@
    "first_seen": "2026-09-14T12:00:00Z",
    "nazev": "TH v. Komise",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TO0330(01)",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "ceka_na_text",
-   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
+   "heslo": "Zveřejnění vyloučení",
+   "shrnuti": "Předseda Tribunálu v řízení o předběžném opatření (T-330/26 R) rozhodoval, zda odložit zveřejnění informace o tom, že Komise vyloučila navrhovatelku na dva a půl roku ze zadávacích řízení podle finančního nařízení 2024/2509 kvůli nepravdivému čestnému prohlášení o pokutách od regulátorů. Návrhu vyhověl: námitka, že Komise nesprávně vyložila pojem „závažné profesní pochybení“, se nejeví jako zjevně neopodstatněná. Veřejně dostupné zveřejnění by navíc způsobilo nevyčíslitelnou a nevratnou újmu na pověsti, zatímco finanční zájmy Unie chrání již zápis do systému EDES.",
+   "oblasti": [
+    "verejne_zakazky",
+    "spravni"
+   ],
+   "procesni": true
   },
   {
    "id": "sdeu:62026TO0305(01)",
@@ -1130,12 +1132,12 @@
    "first_seen": "2026-09-14T12:00:00Z",
    "nazev": "SNF Group v. ECHA",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TO0305(01)",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "ceka_na_text",
-   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
+   "heslo": "Biocidy, předběžné opatření",
+   "shrnuti": "Předseda Tribunálu v řízení o předběžném opatření (T-305/26 R) rozhodoval o návrhu SNF Group na odklad účinnosti rozhodnutí ECHA, kterým byla Vink Chemicals zapsána na seznam podle čl. 95 nařízení o biocidech jako dodavatel účinné látky THPS pro typy přípravků 6, 11 a 12. Návrh zamítl pro nedostatek naléhavosti: údaje po 31. 12. 2025 nebyly chráněny, navrhovatelka mohla včas jednat a může žádat náhradu podle nařízení 2026/1165, přičemž vážnou a nenapravitelnou finanční újmu nedoložila. Zrušil také dřívější prozatímní odklad.",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true
   },
   {
    "id": "sdeu:62026TO0304(01)",
@@ -1148,12 +1150,12 @@
    "first_seen": "2026-09-14T12:00:00Z",
    "nazev": "SNF Group v. ECHA",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TO0304(01)",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "ceka_na_text",
-   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
+   "heslo": "Biocidy, předběžné opatření",
+   "shrnuti": "Předseda Tribunálu v řízení o předběžném opatření (T-304/26 R) rozhodoval o návrhu SNF Group na odklad účinnosti rozhodnutí ECHA, kterým byla Hubei XingFa Chemicals Group zapsána na seznam podle čl. 95 nařízení o biocidech jako dodavatel účinné látky THPS pro typ přípravku 11. Návrh zamítl pro nedostatek naléhavosti, protože ochrana údajů uplynula 31. 12. 2025, nařízení o biocidech nemá udržovat monopoly a navrhovatelka nedoložila vážnou a nenapravitelnou finanční újmu. Zrušil také dřívější prozatímní odklad.",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true
   },
   {
    "id": "sdeu:62026TO0244(01)",
@@ -1166,12 +1168,12 @@
    "first_seen": "2026-09-14T12:00:00Z",
    "nazev": "SNF Group v. ECHA",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TO0244(01)",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "ceka_na_text",
-   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
+   "heslo": "Biocidy, předběžné opatření",
+   "shrnuti": "Předseda Tribunálu v řízení o předběžném opatření (T-244/26 R) rozhodoval o návrhu SNF Group na odklad účinnosti rozhodnutí ECHA, kterým byla Hubei XingFa Chemicals Group zapsána na seznam podle čl. 95 nařízení o biocidech jako dodavatel účinné látky THPS pro typ přípravku 12. Návrh zamítl pro nedostatek naléhavosti: ochrana údajů uplynula 31. 12. 2025 (což potvrdilo nařízení 2026/1165), právo vlastnit údaje není absolutní a navrhovatelka nedoložila vážnou a nenapravitelnou finanční újmu ani ohrožení skupiny. Zrušil také dřívější prozatímní odklad a jako nepřípustný odmítl neurčitý návrh na „jiná vhodná opatření“.",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true
   },
   {
    "id": "sdeu:62026CO0367",
