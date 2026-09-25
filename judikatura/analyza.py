@@ -11,12 +11,58 @@ import json
 import re
 
 import feed_common as fc
-from judikatura.model import NAZVY_SOUDU
+from judikatura.model import NAZVY_SOUDU, bez_diakritiky
 
 # Zvýšit, když se změní prompt tak, že stará shrnutí už neodpovídají –
 # rozhodnutí v okně se pak přepočítají (archiv se sám nepřepisuje).
 PROMPT_VERZE = 1
 MIN_SHRNUTI = 40
+# Verze pokynu k heslu. Heslo se dá přepsat levně ze shrnutí (prepis_hesel),
+# takže změna hesla nevyvolá nový rozbor celých textů jako PROMPT_VERZE.
+HESLO_VERZE = 2
+HESLO_MAX_SLOV = 10
+HESLO_MAX_ZNAKU = 80
+
+# Pokyn k heslu – sdílí ho rozbor i přepis starých hesel.
+HESLO_POKYN = (
+    "HESLO – nadpis na jeden řádek (nejvýš asi osm slov) ve tvaru „věc – "
+    "závěr“: o co ve věci jde a jak to soud rozhodl, např. Smlouva "
+    "o postoupení autorských práv – Řím I; Smluvní pokuta u leasingu – "
+    "přiměřená; Známky BIO a BIOLIT – zaměnitelné; Výpověď z nájmu bytu – "
+    "neplatná. Když závěr není (předběžná otázka, odmítnutí), stačí věc: "
+    "Odpovědnost platforem za obsah uživatelů. Musí z něj být poznat věcná "
+    "podstata sporu. Nikdy nepiš jen procesní institut (Přípustnost "
+    "dovolání, Odmítnutí ústavní stížnosti, Zastavení řízení, Místní "
+    "příslušnost, Odkladný účinek, Podjatost, Náklady řízení) – u procesního "
+    "rozhodnutí ho spoj s věcí: Dovolání ve sporu o nájemné – nepřípustné; "
+    "Odkladný účinek u povolení stavby – nepřiznán.\n"
+)
+
+# Slova procesních institutů. Heslo složené jen z nich (Přípustnost
+# dovolání, Místní příslušnost soudu, Zastavení dovolacího řízení) nic
+# neříká o věci – takové se přepíše, i když ho model vrátil. Porovnává se
+# bez diakritiky a velikosti písmen.
+PROCESNI_SLOVA = set("""
+a od pro v ve o na k z
+pripustnost nepripustnost nepripustne pripustne prijatelnost neprijatelnost
+odmitnuti odmitnuto zastaveni zastaveno zpetvzeti opozdena opozdene opozdenost
+mistni vecna vecne prislusnost prislusnosti prislusny odkladny odkladneho ucinek ucinku
+podjatost podjatosti namitka namitky naklady nakladu nahrada nahrady duvody duvod
+spojeni veci vec obnova obnovy rizeni rizení hodnoceni dukazu dukazy
+osvobozeni soudnich soudni poplatku poplatek poplatky prikazani
+dovolani dovolaci dovolaciho dovolacim kasacni kasacniho stiznosti stiznost ustavni
+soudu soud exekuci exekuce vady vad navrhu navrh lhuta lhuty zmeskani prominuti
+ustanoveni zastupce preruseni bagatelni predbezne predbezneho opatreni
+""".split())
+
+
+def heslo_obecne(heslo):
+    """Heslo, ze kterého není poznat, o co ve věci jde (jen procesní
+    institut), nebo je moc dlouhé na jeden řádek."""
+    h = re.sub(r"\s+", " ", str(heslo or "")).strip().rstrip(".")
+    slova = [w for w in re.split(r"[^\w]+", bez_diakritiky(h).lower()) if w]
+    return (not slova or all(w in PROCESNI_SLOVA for w in slova)
+            or len(h) > HESLO_MAX_ZNAKU or len(h.split()) > HESLO_MAX_SLOV)
 
 SYSTEM = (
     "Jsi asistent českého advokáta. Dostaneš jedno soudní rozhodnutí (případně "
@@ -24,8 +70,7 @@ SYSTEM = (
     "otázce) i s úředními údaji. Odpovídej česky, i když je text v jiném "
     "jazyce. Nic si nevymýšlej, drž se textu.\n\n"
     "Vrať čtyři údaje:\n"
-    "HESLO – výstižné právní téma o 1–3 slovech (např. Smluvní pokuta, "
-    "Ochranná známka, Přípustnost dovolání).\n"
+    + HESLO_POKYN +
     "SHRNUTÍ – nejvýše tři věty podle pokynu u rozhodnutí. Právnické osoby "
     "a úřady uváděj jménem, ale bez právní formy (bez s.r.o., a.s. apod.); "
     "fyzické osoby nejmenuj, piš žalobce, žalovaný, stěžovatel, obviněný.\n"
@@ -197,6 +242,40 @@ def analyzuj(z, obsah, tax):
     if vysledek["procesni"] is None:
         vysledek["procesni"] = bool(z.get("procesni_meta"))
     return vysledek, model
+
+
+PREPIS_HESEL_SYSTEM = (
+    "Jsi asistent českého advokáta. U každého rozhodnutí níže máš dosavadní "
+    "heslo a shrnutí. Napiš ke každému nové heslo podle tohoto pokynu:\n"
+    + HESLO_POKYN +
+    "Vycházej jen ze shrnutí, nic si nevymýšlej; fyzické osoby nejmenuj, "
+    "firmy bez právní formy. Odpověz jen JSON objektem {\"<id>\": \"heslo\", …} "
+    "s klíči ze zadání."
+)
+PREPIS_DAVKA = 20
+
+
+def prepis_hesla_davku(zaznamy):
+    """Nová hesla ze shrnutí pro dávku rozhodnutí – jedno volání. Vrací
+    {id: heslo} jen s hesly, která projdou (heslo_obecne); None, když AI
+    neodpověděla (dávka se zkusí příště)."""
+    text = "\n\n".join(
+        f"id: {z['id']}\nsoud: {NAZVY_SOUDU.get(z['soud'], z['soud'])}"
+        + (f" – {z['druh']}" if z.get("druh") else "")
+        + f"\ndosavadní heslo: {(z.get('ai') or {}).get('heslo', '')}"
+        + f"\nshrnutí: {(z.get('ai') or {}).get('shrnuti', '')}"
+        for z in zaznamy)
+    raw, _ = fc.ai_volani([{"text": text}], system=PREPIS_HESEL_SYSTEM, max_tokens=4096)
+    data = _json_z(re.sub(r"\*\*|__", "", raw or ""))
+    if data is None:
+        return None
+    platna = {z["id"] for z in zaznamy}
+    out = {}
+    for id_, heslo in data.items():
+        heslo = fc.bez_pravni_formy(_cist(heslo)).rstrip(".")
+        if id_ in platna and not heslo_obecne(heslo):
+            out[id_] = heslo
+    return out
 
 
 KLASIFIKACE_SYSTEM = (

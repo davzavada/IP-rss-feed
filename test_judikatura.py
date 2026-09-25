@@ -311,6 +311,63 @@ check("dávková klasifikace migrace",
 fc.ai_volani = falesna_ai("nevím")
 check("nečitelná klasifikace = nic", analyza.klasifikuj_davku([rozhodnuti], TAX) == {})
 
+# Heslo: „věc – závěr“, ne samotný procesní institut.
+for h in ("Přípustnost dovolání", "Odmítnutí ústavní stížnosti", "Místní příslušnost soudu",
+          "Zastavení dovolacího řízení", "Odkladný účinek kasační stížnosti", "Námitka podjatosti", ""):
+    check(f"obecné heslo: {h!r}", analyza.heslo_obecne(h))
+for h in ("Smlouva o postoupení autorských práv – Řím I", "Dovolání ve sporu o nájemné – nepřípustné",
+          "Ochranná známka", "Uznání cizího rozhodnutí"):
+    check(f"věcné heslo: {h!r}", not analyza.heslo_obecne(h))
+check("heslo přes jeden řádek je obecné",
+      analyza.heslo_obecne("Velmi dlouhé heslo které má určitě víc slov než se vejde na jeden řádek"))
+check("pokyn k heslu je v rozboru i v přepisu",
+      analyza.HESLO_POKYN in analyza.SYSTEM and analyza.HESLO_POKYN in analyza.PREPIS_HESEL_SYSTEM)
+
+stare = [dict(rozhodnuti, id=f"ns:H{i}", ai={"heslo": "Přípustnost dovolání", "shrnuti": SHRNUTI}) for i in range(3)]
+fc.ai_volani = falesna_ai('```json\n{"ns:H0": "Smluvní pokuta u leasingu – přiměřená s.r.o.", '
+                          '"ns:H1": "Přípustnost dovolání", "ns:X": "Cizí"}\n```')
+nova = analyza.prepis_hesla_davku(stare)
+check("přepis hesel: jen platná a známá id",
+      nova == {"ns:H0": "Smluvní pokuta u leasingu – přiměřená"}, str(nova))
+fc.ai_volani = falesna_ai("")
+check("přepis hesel bez odpovědi = None", analyza.prepis_hesla_davku(stare) is None)
+
+
+class FalesnySklad:
+    def __init__(self, zaznamy):
+        self.zaznamy, self.zmenene, self.ulozeno = zaznamy, [], 0
+
+    def v_okne(self, nyni, dni):
+        return self.zaznamy
+
+    def zmeneno(self, z):
+        self.zmenene.append(z["id"])
+
+    def uloz(self):
+        self.ulozeno += 1
+
+
+zaznamy = [dict(rozhodnuti, id=f"ns:P{i}", ai={"heslo": "Zastavení řízení" if i % 2 else "Smluvní pokuta",
+                                                "shrnuti": SHRNUTI}) for i in range(45)]
+zaznamy.append(dict(rozhodnuti, id="ns:HOTOVO", ai={"heslo": "Staré", "shrnuti": SHRNUTI, "hv": analyza.HESLO_VERZE}))
+zaznamy.append(dict(rozhodnuti, id="ns:NAHRAZENO", nahrazeno="ns:P0", ai={"heslo": "X", "shrnuti": SHRNUTI}))
+volani.clear()
+fc.ai_volani = falesna_ai(lambda parts: json.dumps(
+    {ln[4:]: "Nové heslo – závěr" for ln in parts[0]["text"].splitlines() if ln.startswith("id: ")}))
+sklad = FalesnySklad(zaznamy)
+prepsano = orchestr.prepis_hesel({"ns": sklad}, NYNI, max_davek=2)
+check("přepis hesel: v rozpočtu dávek, obecná napřed",
+      prepsano == 40 and len(volani) == 2
+      and all(z["ai"]["heslo"] == "Nové heslo – závěr" for z in zaznamy if z["id"] in
+              {f"ns:P{i}" for i in range(1, 45, 2)}), f"{prepsano} {len(volani)}")
+check("přepis hesel: hotové a nahrazené se nesahají",
+      zaznamy[-2]["ai"]["heslo"] == "Staré" and zaznamy[-1]["ai"]["heslo"] == "X")
+check("přepis hesel: označí verzi a uloží", sum(1 for z in zaznamy if z["ai"].get("hv") == analyza.HESLO_VERZE) == 41
+      and sklad.ulozeno == 2)
+orchestr.prepis_hesel({"ns": sklad}, NYNI, max_davek=2)
+check("přepis hesel: příští běh dodělá zbytek",
+      all(z["ai"].get("hv") == analyza.HESLO_VERZE for z in zaznamy if not z.get("nahrazeno")))
+
 # =====================================================================
 print("\n5) Fronta a rozpočet")
 # =====================================================================

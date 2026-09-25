@@ -117,6 +117,9 @@ def zpracuj_ai(sklady, adaptery, nyni, tax, rozpocet):
         if vysledek:
             z["ai"] = dict(vysledek, model=pouzity, pv=analyza.PROMPT_VERZE, tv=tax.verze,
                            at=model.iso(model.ted()), zdroj=obsah.get("zdroj", ""))
+            # Obecné heslo („Přípustnost dovolání") ještě přepíše prepis_hesel.
+            if not analyza.heslo_obecne(vysledek.get("heslo")):
+                z["ai"]["hv"] = analyza.HESLO_VERZE
             z["stav"] = {"pokusy": 0, "dalsi_pokus": None, "duvod": None}
             hotovo += 1
         elif _ai_vycerpana():
@@ -134,6 +137,54 @@ def zpracuj_ai(sklady, adaptery, nyni, tax, rozpocet):
         sklad.zmeneno(z)
         sklad.uloz()
     return hotovo
+
+
+# Kolik dávek hesel (po PREPIS_DAVKA) se za běh přepíše. Stačí to na celé
+# okno za dva až tři běhy; nové rozbory mají heslo podle nového pokynu rovnou.
+HESLA_MAX_DAVEK = 15
+
+
+def prepis_hesel(sklady, nyni, max_davek=HESLA_MAX_DAVEK):
+    """Hesla podle starého pokynu (bez `hv`) přepíše ze shrnutí, po dávkách.
+    Levné – posílá jen heslo a shrnutí, ne celý text. Vrací počet
+    přepsaných hesel."""
+    kandidati = []
+    for soud, sklad in sklady.items():
+        for z in sklad.v_okne(nyni, model.OKNA_DNI[soud]):
+            ai = z.get("ai") or {}
+            if (ai.get("shrnuti") and not z.get("nahrazeno")
+                    and int(ai.get("hv") or 0) < analyza.HESLO_VERZE):
+                kandidati.append(z)
+    # Nejdřív ta, co nic neříkají, pak od nejnovějšího.
+    kandidati.sort(key=lambda z: (not analyza.heslo_obecne((z.get("ai") or {}).get("heslo")),
+                                  analyza_datum(z)), reverse=False)
+    prepsano = 0
+    for i in range(0, min(len(kandidati), max_davek * analyza.PREPIS_DAVKA), analyza.PREPIS_DAVKA):
+        if _ai_vycerpana():
+            break
+        davka = kandidati[i:i + analyza.PREPIS_DAVKA]
+        nova = analyza.prepis_hesla_davku(davka)
+        if nova is None:
+            continue
+        for z in davka:
+            if z["id"] in nova:
+                z["ai"]["heslo"] = nova[z["id"]]
+                prepsano += 1
+            # I bez nového hesla (AI ho nedala nebo neprošlo) se dál
+            # nezkouší – jinak by se jedna dávka opakovala každý běh.
+            z["ai"]["hv"] = analyza.HESLO_VERZE
+            sklady[z["soud"]].zmeneno(z)
+        for sklad in sklady.values():
+            sklad.uloz()
+    if kandidati:
+        print(f"Hesla podle nového pokynu: přepsáno {prepsano}, čeká "
+              f"{max(0, len(kandidati) - max_davek * analyza.PREPIS_DAVKA)}")
+    return prepsano
+
+
+def analyza_datum(z):
+    """Řadicí klíč od nejnovějšího (sestupně přes záporné znaky)."""
+    return fronta._zaporne(z.get("zverejneno") or z.get("first_seen") or "")
 
 
 def zapis_stav(zdravi, nyni, cesta=None):
@@ -196,6 +247,7 @@ def beh(adaptery, soudy, nyni=None, max_polozek=60, max_minut=20, stav_cesta=Non
         rozpocet = fronta.Rozpocet(max_polozek, max_minut)
         hotovo = zpracuj_ai(sklady, adaptery, nyni, tax, rozpocet)
         print(f"AI rozborů: {hotovo}")
+        prepis_hesel(sklady, nyni)
 
     for soud, sklad in sklady.items():
         sklad.uloz()
