@@ -3,6 +3,9 @@
   "framework": null,
   "outputDirectory": "docs",
   "ignoreCommand": "git diff --quiet HEAD^ HEAD -- docs api vercel.json",
+  "git": {
+    "deploymentEnabled": { "main": true, "**": false }
+  },
   "rewrites": [
     { "source": "/pdf/:soud/:id/:soubor", "destination": "/api/pdf?soud=:soud&id=:id&soubor=:soubor" }
   ],
