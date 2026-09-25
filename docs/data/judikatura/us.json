@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-25T03:24:23Z",
+ "generated": "2026-09-25T07:12:27Z",
  "soud": "us",
  "okno_dni": 14,
  "polozky": [
@@ -53,12 +53,13 @@
    "first_seen": "2026-09-25T03:24:23Z",
    "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-1819-26_1",
    "soudce": "Josef Baxa",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Spojení věcí",
+   "shrnuti": "Ústavní soud rozhodl o spojení dvou ústavních stížností téhož stěžovatele směřujících proti týmž rozhodnutím obecných soudů v trestní věci ke společnému řízení z důvodu hospodárnosti a efektivity.",
+   "oblasti": [
+    "trestni",
+    "ustavni"
+   ],
+   "procesni": true
   },
   {
    "id": "us:4-1763-26_2",
@@ -71,12 +72,13 @@
    "first_seen": "2026-09-25T03:24:23Z",
    "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-1763-26_2",
    "soudce": "Lucie Dolanská Bányaiová",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Spojení věcí",
+   "shrnuti": "Stěžovatel obec napadal rozhodnutí obecních soudů týkající se náhrady nákladů řízení ve sporech o dluhy z nájmu bytu. Ústavní soud rozhodl pouze o spojení několika ústavních stížností stěžovatele ke společnému řízení z důvodu hospodárnosti a efektivity.",
+   "oblasti": [
+    "civilni_proces",
+    "zavazky"
+   ],
+   "procesni": true
   },
   {
    "id": "us:3-852-26_1",
@@ -108,14 +110,14 @@
    "first_seen": "2026-09-25T03:24:23Z",
    "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-795-26_1",
    "soudce": "Milan Hulmák",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Styk rodičů s dětmi",
+   "shrnuti": "Stěžovatelka napadala rozsudek krajského soudu, kterým byl upraven a postupně rozšířen styk otce s nezletilým dítětem. Ústavní soud neshledal porušení namítaných základních práv, neboť obecné soudy řádně zohlednily nejlepší zájem dítěte a jeho právo na péči obou rodičů. Ústavní stížnost byla odmítnuta jako zjevně neopodstatněná.",
    "oblasti": [
-    "rodina_dedictvi"
+    "rodina_dedictvi",
+    "civilni_proces",
+    "ustavni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "us:3-2071-26_1",
@@ -204,12 +206,13 @@
    "first_seen": "2026-09-25T03:24:23Z",
    "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2495-26_1",
    "soudce": "Jiří Přibáň",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Odmítnutí ústavní stížnosti",
+   "shrnuti": "Stěžovatelé napadli usnesení Nejvyššího soudu ústavní stížností. Ústavní soud návrh odmítl pro neodstranění vad, neboť stěžovatelé nebyli zastoupeni advokátem a jejich podání postrádalo ústavněprávně relevantní argumentaci, přičemž vzhledem k předchozím poučením v obdobných věcech již nebylo nutné je k odstranění vad znovu vyzývat.",
+   "oblasti": [
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": true
   },
   {
    "id": "us:2-2395-26_1",
@@ -222,12 +225,13 @@
    "first_seen": "2026-09-25T03:24:23Z",
    "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2395-26_1",
    "soudce": "Jiří Přibáň",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Odmítnutí ústavní stížnosti",
+   "shrnuti": "Stěžovatelka napadla usnesení Krajského soudu v Ústí nad Labem, pobočky v Liberci, ústavní stížností. Ústavní soud ji odmítl pro neodstranění vady spočívající v absenci povinného zastoupení advokátem, přičemž stěžovatelce neposkytl novou lhůtu k odstranění vad, neboť s ohledem na její dřívější podání byla s touto povinností dostatečně obeznámena.",
+   "oblasti": [
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": true
   },
   {
    "id": "us:2-2338-26_1",
@@ -259,12 +263,13 @@
    "first_seen": "2026-09-25T03:24:23Z",
    "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2271-26_1",
    "soudce": "Pavel Šámal",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Zpětvzetí ústavní stížnosti",
+   "shrnuti": "Stěžovatelka napadla rozsudek Krajského soudu v Praze ústavní stížností. Následně vzala ústavní stížnost v celém rozsahu zpět dříve, než se Ústavní soud odebral k závěrečné poradě. Ústavní soud proto řízení o ústavní stížnosti zastavil.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "ustavni"
+   ],
+   "procesni": true
   },
   {
    "id": "us:2-2184-26_1",
@@ -277,14 +282,13 @@
    "first_seen": "2026-09-25T03:24:23Z",
    "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2184-26_1",
    "soudce": "Martin Smolek",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Antidumpingové clo",
+   "shrnuti": "Stěžovatel napadal rozhodnutí Nejvyššího správního soudu týkající se doměření antidumpingového cla v prodloužené desetileté prekluzivní lhůtě a nepoložení předběžné otázky Soudnímu dvoru EU. Ústavní soud neshledal porušení základních práv stěžovatele, neboť výklad lhůty a aplikace judikatury Soudního dvora EU byly ústavně souladné. Ústavní stížnost proto odmítl pro zjevnou neopodstatněnost.",
    "oblasti": [
-    "dane"
+    "dane",
+    "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "us:2-2124-26_1",
@@ -297,14 +301,13 @@
    "first_seen": "2026-09-25T03:24:23Z",
    "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2124-26_1",
    "soudce": "Jiří Přibáň",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Promlčení nároku na odškodnění",
+   "shrnuti": "Stěžovatel napadal rozhodnutí obecných soudů, která zamítla jeho žalobu na náhradu nemajetkové újmy z důvodu uplynutí promlčecí doby. Ústavní soud neshledal porušení základních práv stěžovatele a konstatoval, že podání stížnosti k Evropskému soudu pro lidská práva nemá za následek stavění běhu promlčecí lhůty pro uplatnění nároku vůči státu. Ústavní stížnost proto odmítl jako zjevně neopodstatněnou.",
    "oblasti": [
-    "skoda"
+    "skoda",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "us:2-1797-26_1",
@@ -317,12 +320,13 @@
    "first_seen": "2026-09-25T03:24:23Z",
    "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-1797-26_1",
    "soudce": "Jiří Přibáň",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Spojení věcí",
+   "shrnuti": "Stěžovatel napadl ústavní stížností rozsudky Nejvyššího správního soudu týkající se doměření daně z příjmů právnických osob. Ústavní soud rozhodl o spojení dvou ústavních stížností ke společnému řízení z důvodu hospodárnosti a efektivity, neboť věci spolu úzce souvisejí a obsahují obdobnou argumentaci.",
+   "oblasti": [
+    "dane",
+    "civilni_proces"
+   ],
+   "procesni": true
   },
   {
    "id": "us:2-1725-26_1",
@@ -335,14 +339,14 @@
    "first_seen": "2026-09-25T03:24:23Z",
    "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-1725-26_1",
    "soudce": "Jiří Přibáň",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Daňová kontrola prekluze",
+   "shrnuti": "Stěžovatel napadal rozhodnutí o doměření daně z přidané hodnoty a penále s argumentem, že uplynula prekluzivní lhůta a že správce daně pochybil. Ústavní soud shledal ústavní stížnost zjevně neopodstatněnou, neboť Nejvyšší správní soud i Krajský soud v Ostravě se všemi námitkami řádně a ústavně konformně vypořádaly a nezjistil porušení práva na soudní ochranu. Ústavní stížnost byla odmítnuta.",
    "oblasti": [
-    "dane"
+    "dane",
+    "spravni",
+    "ustavni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "us:1-3203-25_1",
@@ -355,14 +359,13 @@
    "first_seen": "2026-09-25T03:24:23Z",
    "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-3203-25_1",
    "soudce": "Kateřina Ronovská",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odměna za přesčas",
+   "shrnuti": "Stěžovatelka napadala rozhodnutí správních soudů a správního orgánu týkající se neproplacení příplatku za vedení k platu za službu přesčas ve státní službě. Ústavní soud shledal ústavní stížnost zjevně neopodstatněnou, neboť obecné soudy svá rozhodnutí řádně a srozumitelně odůvodnily a výklad právní úpravy odměňování v zákoně o státní službě a v zákoníku práce není neústavní. Ústavní stížnost byla odmítnuta pro zjevnou neopodstatněnost.",
    "oblasti": [
-    "pracovni"
+    "pracovni",
+    "spravni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "us:1-2373-26_1",
@@ -375,12 +378,14 @@
    "first_seen": "2026-09-25T03:24:23Z",
    "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-2373-26_1",
    "soudce": "Jan Wintr",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Péče o dítě",
+   "shrnuti": "Stěžovatelka napadala rozsudek krajského soudu týkající se určení školní docházky nezletilých dětí, přičemž namítala nedostatečné dokazování, absenci řádného odůvodnění a porušení svého práva na rodinný život. Ústavní soud shledal ústavní stížnost zjevně neopodstatněnou, neboť krajský soud řádně a srozumitelně odůvodnil své rozhodnutí v nejlepším zájmu dětí a přihlédl i k tomu, že původní změnu škol provedla matka bez souhlasu otce. Ústavní stížnost byla proto odmítnuta.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": false
   },
   {
    "id": "us:1-2239-26_1",
@@ -393,12 +398,13 @@
    "first_seen": "2026-09-25T03:24:23Z",
    "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-2239-26_1",
    "soudce": "Kateřina Ronovská",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Bagatelní věc",
+   "shrnuti": "Stěžovatelka napadala rozsudky obecných soudů vydané ve věci zaplacení odměny za účetní služby, přičemž namítala porušení práva na soudní ochranu a rovnost účastníků. Ústavní soud neshledal porušení žádného základního práva, protože šlo o bagatelní věc bez ústavněprávního přesahu a napadená rozhodnutí řádně odůvodnila skutkové i právní závěry. Ústavní stížnost byla odmítnuta jako zjevně neopodstatněná.",
+   "oblasti": [
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": false
   },
   {
    "id": "us:1-2097-26_1",
@@ -411,12 +417,14 @@
    "first_seen": "2026-09-25T03:24:23Z",
    "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-2097-26_1",
    "soudce": "Dita Řepková",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Předběžné opatření",
+   "shrnuti": "Stěžovatel napadal usnesení o prodloužení předběžného opatření ve věci ochrany proti domácímu násilí. Ústavní soud neshledal porušení jeho základních práv a neshledal rozhodnutí svévolnými. Ústavní stížnost byla odmítnuta jako zjevně neopodstatněná pro zdrženlivý přezkum prozatímních opatření a nižší důkazní standard.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": false
   },
   {
    "id": "us:1-1404-26_1",
@@ -429,14 +437,13 @@
    "first_seen": "2026-09-25T03:24:23Z",
    "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-1404-26_1",
    "soudce": "Jan Wintr",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Styk prarodičů s dítětem",
+   "shrnuti": "Stěžovatelé napadli usnesení soudu, kterým jim byla uložena povinnost účastnit se rodinné terapie a umožnit psychologovi kontakt s nezletilým dítětem. Ústavní soud neshledal porušení práva na ochranu rodinného života. Ústavní stížnost odmítl jako zjevně neopodstatněnou, protože napadené rozhodnutí nepředstavuje konečnou úpravu styku, nýbrž snahu o smírné vyřešení konfliktu v rodině a přípravu na něj.",
    "oblasti": [
-    "rodina_dedictvi"
+    "rodina_dedictvi",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "us:Pl-10-26_2",

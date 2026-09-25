@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-25T03:24:23Z",
+ "generated": "2026-09-25T07:12:27Z",
  "soud": "sdeu",
  "okno_dni": 30,
  "polozky": [
@@ -718,12 +718,14 @@
    "first_seen": "2026-09-17T12:00:00Z",
    "nazev": "Tersten",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0407",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Evokační právo Úřadu evropského veřejného žalobce",
+   "shrnuti": "Generální advokát navrhuje, že unijní právo nebrání tomu, aby vnitrostátní orgány vedly trestní stíhání, přestože Úřad evropského veřejného žalobce nebyl včas informován o zahájeném vyšetřování. Vnitrostátní orgány mají povinnost Úřad dodatečně informovat o probíhajících řízeních, načež může Úřad evropského veřejného žalobce stále uplatnit své evokační právo. Toto řešení vyplývá ze systematického a teleologického výkladu nařízení 2017/1939 s ohledem na cíl účinného boje proti trestným činům poškozujícím finanční zájmy Unie.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces",
+    "trestni"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62025CC0317",
@@ -736,12 +738,14 @@
    "first_seen": "2026-09-17T12:00:00Z",
    "nazev": "Groupe Canal +",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0317",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Souhlas s přímým marketingem",
+   "shrnuti": "Generální advokát navrhuje, aby Soudní dvůr rozhodl, že souhlas subjektu údajů udělený prvotnímu shromažďovateli s předáním údajů blíže neurčeným „partnerům“ pro účely přímého marketingu nepostačuje, pokud nebyla v okamžiku udělení souhlasu známa totožnost příjemce. Společnost využívající takto získané údaje k elektronickému marketingu tak musí předem získat nový, specifický a informovaný souhlas subjektu údajů. Jinak by nebyly dodrženy požadavky transparentnosti a ochrany soukromí podle unijních předpisů o ochraně údajů a elektronických komunikacích.",
+   "oblasti": [
+    "gdpr",
+    "it",
+    "spotrebitel"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62024CJ0876",
@@ -773,12 +777,13 @@
    "first_seen": "2026-09-17T12:00:00Z",
    "nazev": "Elektro bizness",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0722",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Přímé vedení",
+   "shrnuti": "Soudní dvůr EU rozhodoval o výkladu pojmu přímé vedení ve smyslu směrnice 2019/944 o vnitřním trhu s elektřinou. Konstatoval, že pojem přímé vedení zahrnuje jak elektrické vedení spojující nového zákazníka s existujícím vedením vlastníka bez využití distribuční soustavy, tak vedení spojující výrobce se zákazníkem, který si přeje ponechat rezervní připojení k distribuční soustavě za přiměřený finanční příspěvek. Členské státy však mohou výstavbu přímého vedení podmínit objektivními kritérií, pokud neohrožuje plnění povinností veřejné služby provozovatele soustavy.",
+   "oblasti": [
+    "spravni",
+    "zavazky"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62024CJ0721",
@@ -791,12 +796,13 @@
    "first_seen": "2026-09-17T12:00:00Z",
    "nazev": "Vista-Life Pharma a Vista-Life Pharma Belgium",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0721",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Zdravotní tvrzení potravin",
+   "shrnuti": "Soudní dvůr EU rozhodoval o výkladu pravidel pro výživová a zdravotní tvrzení při označování doplňků stravy podle nařízení č. 1924/2006. Určil, že údaje o četnosti užívání nebo způsobu podávání představují zdravotní tvrzení, pokud jsou prezentovány ve spojení s příznivými účinky na zdraví. Dále konstatoval, že povinný doprovodný údaj k tvrzením o snížení rizika onemocnění nemusí být citován zcela doslovně, postačí jasná a srozumitelná informace, a za určitých podmínek jej není nutné opakovat v každé reklamě, pokud je uveden přímo na obalu výrobku.",
+   "oblasti": [
+    "spotrebitel",
+    "spravni"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62024CJ0657",
@@ -809,12 +815,13 @@
    "first_seen": "2026-09-17T12:00:00Z",
    "nazev": "Kyberg Pharma",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0657",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Zdravotní tvrzení potravin",
+   "shrnuti": "Soudní dvůr EU rozhodl, že písemná reklama na doplňky stravy nespadá pod pojem „označení“ ve smyslu čl. 10 odst. 2 nařízení (ES) č. 1924/2006. Pokud jsou povinné informace o významu různorodé stravy uvedeny přímo na označení výrobku, nemusí být již opakovány v reklamě na tento produkt.",
+   "oblasti": [
+    "spotrebitel",
+    "spravni"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62024CJ0438",
@@ -827,12 +834,13 @@
    "first_seen": "2026-09-17T12:00:00Z",
    "nazev": "Erakond Eestimaa Rohelised",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0438",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Kauce ve volbách",
+   "shrnuti": "Soudní dvůr EU posuzoval slučitelnost estonské právní úpravy, která podmiňuje registraci kandidátů pro volby do Evropského parlamentu složením vysoké kauce a její vrácení vazuje na zisk alespoň pěti procent hlasů, s unijním právem. Rozhodl, že taková úprava porušuje právo být volen a zásadu zastupitelské demokracie, protože výše kauce a přísné podmínky jejího vrácení nepřiměřeně omezují výkon tohoto práva.",
+   "oblasti": [
+    "spotrebitel",
+    "ustavni"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62024CC0836",
@@ -845,12 +853,13 @@
    "first_seen": "2026-09-17T12:00:00Z",
    "nazev": "PT v. Komise a další",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CC0836",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Starobní důchod",
+   "shrnuti": "Generální advokát navrhuje zamítnout kasační opravný prostředek v posuzované části, neboť se stěžovatelka neúspěšně domáhá přezkumu platnosti ustanovení služebního řádu prostřednictvím odlišné judikatury a správní praxe. Pravidlo životního minima zaručuje minimální částku starobního důchodu, aniž zakládá právo na vrácení dříve převedených vnitrostátních důchodových nároků, pokud se tyto nároky v důsledku výpočtu neprojeví ve výsledné výši důchodu. Uplatněná námitka neplatnosti a dovolávaná rozhodnutí jiných orgánů nemohou změnit závazný normativní výklad služebního řádu.",
+   "oblasti": [
+    "pracovni",
+    "civilni_proces"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62025TJ0890",
@@ -863,12 +872,12 @@
    "first_seen": "2026-09-16T12:00:00Z",
    "nazev": "Fitmart v. EUIPO (ULTRAPURE)",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0890",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Ochranná známka",
+   "shrnuti": "Tribunál řešil, zda figurativní ochranná známka Evropské unie ULTRAPURE pro doplňky stravy, potraviny a nápoje trpí absolutním důvodem pro odmítnutí zápisu pro nedostatkem rozlišovací způsobilosti. Dospěl k závěru, že slovní prvek spojující výrazy \"ultra\" a \"pure\" bude relevantní veřejností vnímán pouze jako banální a chvalozpětné propagační sdělení o vlastnostech výrobků, přičemž jednoduché grafické provedení na tom nic nemění. Žalobu proto zamítl.",
+   "oblasti": [
+    "prumyslova_prava"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62025TJ0885",
@@ -881,12 +890,12 @@
    "first_seen": "2026-09-16T12:00:00Z",
    "nazev": "Sudex v. EUIPO - Ammunition Operations (Remington SYNERGY WORLD)",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0885",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Ochranná známka",
+   "shrnuti": "Tribunál řešil, zda žalobce jednal při podání přihlášky EU ochranné známky ve zlé víře ve smyslu čl. 59 odst. 1 písm. b) nařízení (EU) 2017/1001. Dospěl k závěru, že žalobce věděl o starší ochranné známce a jeho úmyslem bylo nepoctivě těžit z její pověsti, a proto žalobu zamítl.",
+   "oblasti": [
+    "prumyslova_prava"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62025TJ0827",
@@ -899,12 +908,12 @@
    "first_seen": "2026-09-16T12:00:00Z",
    "nazev": "Cobra Golf v. EUIPO (ULTRADRY)",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0827",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Ochranná známka",
+   "shrnuti": "Tribunál řešil, zda slovní ochranná známka Evropské unie ULTRADRY pro golfové tašky, patřící do třídy 28, je popisná a postrádá rozlišovací způsob. Tribunál potvrdil závěr Úřadu Evropské unie pro duševní vlastnictví, že označení je popisné, protože přímo a bez nutnosti složitějších myšlenkových pochodů popisuje vlastnost a účel golfových tašek udržovat jejich obsah extrémně suchý, a proto žalobu zamítl.",
+   "oblasti": [
+    "prumyslova_prava"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62025TJ0566",
@@ -917,12 +926,13 @@
    "first_seen": "2026-09-16T12:00:00Z",
    "nazev": "Worldwide Machinery v. EUIPO - Scaip (SUPERIOR MANUFACTURING)",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0566",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Převod ochranné známky",
+   "shrnuti": "Tribunál řešil, zda byly splněny podmínky pro převod unijní ochranné známky podle článku 8 odst. 3 nařízení č. 207/2009 z důvodu existence zástupcovského či věrnostního vztahu a starších práv. Dospěl k závěru, že žalobce neprokázal existenci svěřenského (fiduciárního) vztahu, v němž by žalovaný vystupoval jako jeho zástupce, ani neprokázal existenci dřívějších nezapsaných práv k označení, a proto žalobu zamítl.",
+   "oblasti": [
+    "prumyslova_prava",
+    "civilni_proces"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62025TJ0509",
@@ -935,12 +945,13 @@
    "first_seen": "2026-09-16T12:00:00Z",
    "nazev": "Société des produits Nestlé v. EUIPO - European Food (FITNESS)",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0509",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Ochranná známka",
+   "shrnuti": "Tribunál zamítl žalobu na zrušení rozhodnutí odvolacího senátu EUIPO, kterým byla zrušena EU ochranná známka FITNESS pro absolutní důvod neplatnosti. Soud potvrdil, že opožděně předložený důkaz byl přípustný a že slovní prvek FITNESS má popisnou povahu vzhledem ke zboží vřídícím se do tříd 29, 30 a 32, neboť označuje vlastnosti či účel zboží spojeného s dobrou fyzickou kondicí a zdravou výživou.",
+   "oblasti": [
+    "prumyslova_prava",
+    "civilni_proces"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62025TJ0467",
@@ -953,12 +964,13 @@
    "first_seen": "2026-09-16T12:00:00Z",
    "nazev": "Absara Industrial v. EUIPO - Hansgrohe (KROMAT)",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0467",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Pravděpodobnost záměny",
+   "shrnuti": "Soudní dvůr EU (Tribunál) řešil žalobu na zrušení rozhodnutí odvolacího senátu EUIPO, kterým byla částečně zamítnuta přihláška ochranné známky z důvodu pravděpodobnosti záměny s dřívější ochrannou známkou. Tribunál dospěl k závěru, že odvolací senát nesprávně posoudil stupeň podobnosti mezi spornými označeními a opomenul zohlednit slabou rozlišovací způsobilost dřívější ochranné známky v rámci celkového posouzení pravděpodobnosti záměny, a proto napadené rozhodnutí zrušil.",
+   "oblasti": [
+    "prumyslova_prava",
+    "civilni_proces"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62025TJ0060",
@@ -971,12 +983,12 @@
    "first_seen": "2026-09-16T12:00:00Z",
    "nazev": "Fissore v. EUIPO - Paraggi (fissore)",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0060",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Pravděpodobnost záměny",
+   "shrnuti": "Tribunál řešil otázku, zda existuje pravděpodobnost záměny mezi přihlašovanou obrazovou ochrannou známkou Evropské unie obsahující slovní prvek Fissore a dřívější obrazovou ochrannou známkou Evropské unie CristianoFissore. Dospěl k závěru, že vzhledem k totožnosti či průměrné podobnosti zboží, vizuální a fonetické podobnosti označení a normální rozlišovací schopnosti dřívější známky existuje na straně veřejnosti pravděpodobnost záměny.",
+   "oblasti": [
+    "prumyslova_prava"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62024TJ0460",
@@ -989,12 +1001,13 @@
    "first_seen": "2026-09-16T12:00:00Z",
    "nazev": "Gagarina v. Rada",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0460",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Omezující opatření vůči Ukrajině",
+   "shrnuti": "Tribunál řešil žalobu na zrušení omezujících opatření uvalených Radou Evropské unie na žadatelku v souvislosti s ruskou agresí proti Ukrajině. Částečně žalobě vyhověl a zrušil akty o prodloužení sankcí z roku 2025, protože Rada neprokázala pokračování rozhodného jednání, přičemž ve zbytku žalobu zamítl.",
+   "oblasti": [
+    "spravni",
+    "zavazky"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62024TJ0459",
@@ -1007,12 +1020,13 @@
    "first_seen": "2026-09-16T12:00:00Z",
    "nazev": "Trotsenko v. Rada",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0459",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Omezující opatření vůči Rusku",
+   "shrnuti": "Tribunál řešil žalobu na zrušení aktů Rady o zmrazení majetku a zavedení cestovních omezení vůči stěžovateli v rámci opatření souvisejících s válkou na Ukrajině. Dospěl k závěru, že Rada neporušila povinnost uvést důvody ani právo na obhajobu a že nepochybila, když stěžovatele zařadila na seznam jako podnikatele působícího v klíčových hospodářských odvětvích poskytujících podstatné zdroje příjmů ruské vládě. Žalobu proto v celém rozsahu zamítl.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62024TJ0287",
@@ -1025,12 +1039,13 @@
    "first_seen": "2026-09-16T12:00:00Z",
    "nazev": "EB v. ECB",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0287",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Zrušení pracovní smlouvy",
+   "shrnuti": "Tribunál řešil, zda Evropská centrální banka mohla jednostranně zrušit krátkodobou pracovní smlouvu uzavřenou s žalobkyní ještě před nastoupením do práce bez dodržení výpovědní doby z důvodu ztráty důvěry. Tribunál rozhodl, že Evropská centrální banka byla vázána smluvními podmínkami pro ukončení smlouvy a musela dodržet výpovědní dobu, a proto napadené rozhodnutí zrušil.",
+   "oblasti": [
+    "pracovni",
+    "civilni_proces"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62022TO0083",
@@ -1043,12 +1058,12 @@
    "first_seen": "2026-09-16T12:00:00Z",
    "nazev": "Selimfiber v. EUIPO - Qureshi (SPETRA)",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62022TO0083",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Ochranná známka EU",
+   "shrnuti": "Tribunál řešil otázku, zda pro účely uplatnění staršího práva v řízení o námitkách proti přihlášce ochranné známky Evropské unie musí být starší právo chráněno v členském státě i v době rozhodování odvolacího senátu, nebo pouze k datu podání přihlášky. Rozhodl, že starší právo musí existovat a být chráněno v členském státě až do data konečného rozhodnutí o námitkách, a jelikož starší neregistrovaná práva ve Spojeném království po skončení přechodného období již tuto podmínku nesplňovala, žalobu jako zjevně neopodstatněnou zamítl.",
+   "oblasti": [
+    "prumyslova_prava"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62026TO0381(01)",
@@ -1065,8 +1080,8 @@
    "shrnuti": "",
    "oblasti": [],
    "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
   },
   {
    "id": "sdeu:62026TO0359(01)",
@@ -1083,8 +1098,8 @@
    "shrnuti": "",
    "oblasti": [],
    "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
   },
   {
    "id": "sdeu:62026TO0330(01)",
@@ -1101,8 +1116,8 @@
    "shrnuti": "",
    "oblasti": [],
    "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
   },
   {
    "id": "sdeu:62026TO0305(01)",
@@ -1119,8 +1134,8 @@
    "shrnuti": "",
    "oblasti": [],
    "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
   },
   {
    "id": "sdeu:62026TO0304(01)",
@@ -1137,8 +1152,8 @@
    "shrnuti": "",
    "oblasti": [],
    "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
   },
   {
    "id": "sdeu:62026TO0244(01)",
@@ -1155,8 +1170,8 @@
    "shrnuti": "",
    "oblasti": [],
    "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
   },
   {
    "id": "sdeu:62026CO0367",
@@ -1169,12 +1184,13 @@
    "first_seen": "2026-09-14T12:00:00Z",
    "nazev": "Madžarac v. Komise",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CO0367",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Přípustnost pourvoi",
+   "shrnuti": "Soudní dvůr EU řešil přípustnost pourvoi směřujícího proti usnesení Tribunálu, kterým byl odmítnut žalobcův návrh na konstatování nečinnosti Evropské komise ohledně nezahájení řízení o nesplnění povinnosti. Soudní dvůr pourvoi odmítl jako zjevně nepřípustný, protože podané opravné prostředky byly vágní, nesplňovaly náležitosti přesné identifikace napadených bodů a neobsahovaly koherentní právní argumentaci.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
   }
  ]
 }

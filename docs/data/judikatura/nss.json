@@ -1,8 +1,614 @@
 {
- "generated": "2026-09-25T03:24:23Z",
+ "generated": "2026-09-25T07:12:27Z",
  "soud": "nss",
  "okno_dni": 14,
  "polozky": [
+  {
+   "id": "nss:785809",
+   "spz": "7 As 152/2026-10",
+   "ecli": "ECLI:CZ:NSS:2026:7.As.152.2026.10",
+   "druh": "usnesení",
+   "senat": 7,
+   "rejstrik": "As",
+   "datum": "2026-09-25",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785809",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785809",
+   "soudce": "Milan Podhrázký",
+   "heslo": "Úmrtí účastníka řízení",
+   "shrnuti": "Žalobce podal kasační stížnost proti usnesení krajského soudu, kterým byla odmítnuta jeho žaloba na poskytnutí informací. Nejvyšší správní soud řešil, zda lze v řízení pokračovat po smrti stěžovatele, když předmětem sporu bylo právo na informaci vázané přímo k jeho osobě. Soud dospěl k závěru, že úmrtím stěžovatele nastal neodstranitelný nedostatek podmínky řízení, a proto kasační stížnost odmítl.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:785808",
+   "spz": "2 Afs 161/2025-71",
+   "ecli": "ECLI:CZ:NSS:2026:2.Afs.161.2025.71",
+   "druh": "rozsudek",
+   "senat": 2,
+   "rejstrik": "Afs",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785808",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785808",
+   "soudce": "Tomáš Kocourek",
+   "heslo": "Zneužití práva v daních",
+   "shrnuti": "Společnost CARIDDI se soudila s Odvolacím finančním ředitelstvím o dodatečné vyměření daně z příjmů právnických osob. Nejvyšší správní soud řešil otázku, zda správní orgány dostatečně odůvodnily aplikaci zákazu zneužití práva namísto použití standardní korekce cen mezi spojenými osobami podle zákona o daních z příjmů. Soud dospěl k závěru, že napadené rozhodnutí je nepřezkoumatelné pro nedostatek důvodů, neboť se řádně nevypořádalo s možností aplikace § 23 odst. 7 zákona o daních z příjmů.",
+   "oblasti": [
+    "dane",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785807",
+   "spz": "4 As 123/2026-47",
+   "ecli": "ECLI:CZ:NSS:2026:4.As.123.2026.47",
+   "druh": "rozsudek",
+   "senat": 4,
+   "rejstrik": "As",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785807",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785807",
+   "soudce": "Tomáš Kocourek",
+   "heslo": "Umístění základnové stanice",
+   "shrnuti": "Žalobkyně se domáhala zrušení rozhodnutí o umístění stavby základnové stanice mobilních operátorů, avšak neuspěla. Nejvyšší správní soud řešil otázku přezkoumatelnosti vypořádání odvolacích námitek a souladu stavby s územním plánem. Dospěl k závěru, že napadené rozhodnutí je přezkoumatelné a stavba odpovídá přípustnému využití území.",
+   "oblasti": [
+    "stavebni_zp",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785806",
+   "spz": "1 As 52/2026-37",
+   "ecli": "ECLI:CZ:NSS:2026:1.As.52.2026.37",
+   "druh": "rozsudek",
+   "senat": 1,
+   "rejstrik": "As",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785806",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785806",
+   "soudce": "Ondřej Bartoš",
+   "heslo": "Poskytnutí informací",
+   "shrnuti": "Žalobce se kasační stížností domáhal zrušení rozsudku Městského soudu v Praze, kterým byla zamítnuta jeho žaloba proti rozhodnutí Vrchního státního zastupitelství v Praze o odmítnutí žádosti o poskytnutí usnesení o odložení věci podle zákona o svobodném přístupu k informacím. Nejvyšší správní soud posuzoval otázku přezkoumatelnosti závěrů městského soudu ohledně aplikace § 12 a § 11 odst. 6 informačního zákona a dospěl k závěru, že napadený rozsudek je přezkoumatelný a kasační stížnost je nedůvodná, proto ji zamítl.",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785805",
+   "spz": "9 Ads 30/2026-23",
+   "ecli": "ECLI:CZ:NSS:2026:9.Ads.30.2026.23",
+   "druh": "rozsudek",
+   "senat": 9,
+   "rejstrik": "Ads",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785805",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785805",
+   "soudce": "Radan Malík",
+   "heslo": "Zastřené zprostředkování zaměstnání",
+   "shrnuti": "Trabajo podala kasační stížnost proti rozsudku Krajského soudu v Brně, kterým byla zamítnuta její žaloba proti rozhodnutí Státního úřadu inspekce práce o uplatnění pokuty za přestupek podle zákona o zaměstnanosti. Nejvyšší správní soud řešil otázku, zda poskytování zaměstnanců na základě rámcové smlouvy o dílo představovalo dovolený outsourcing, či neoprávněný pronájem pracovní síly. Soud dospěl k závěru, že šlo o zastřené zprostředkování zaměstnání, protože stěžovatelka pouze poskytovala pracovní sílu bez komplexního zajištění sjednaného díla a bez vlastního řízení činnosti zaměstnanců na pracovišti objednatele.",
+   "oblasti": [
+    "pracovni",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785804",
+   "spz": "10 As 74/2026-55",
+   "ecli": "ECLI:CZ:NSS:2026:10.As.74.2026.55",
+   "druh": "usnesení",
+   "senat": 10,
+   "rejstrik": "As",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785804",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785804",
+   "soudce": "Ondřej Mrákota",
+   "heslo": "Oprava rozsudku",
+   "shrnuti": "Žalobce se kasační stížností domáhal přezkumu usnesení Městského soudu v Praze týkajícího se ochrany před nezákonným zásahem Ministerstva spravedlnosti. Nejvyšší správní soud řešil otázku opravy zjevné nesprávnosti v původním rozsudku týkající se výše přiznané odměny ustanovené zástupkyni. Soud usnesením opravil výpočet nákladů řízení, neboť zástupkyně nebyla plátkyní DPH.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:785803",
+   "spz": "2 As 60/2026-33",
+   "ecli": "ECLI:CZ:NSS:2026:2.As.60.2026.33",
+   "druh": "rozsudek",
+   "senat": 2,
+   "rejstrik": "As",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785803",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785803",
+   "soudce": "Eva Šonková",
+   "heslo": "Poskytnutí informace",
+   "shrnuti": "Žalobce se domáhal poskytnutí usnesení o odložení věci v trestní věci ve veřejném prostoru označované jako reklamní větev Čapího hnízda, avšak povinný subjekt žádost odmítl s odkazem na výluku podle § 11 odst. 6 zákona o svobodném přístupu k informacím. Nejvyšší správní soud řešil otázku, zda správní orgány a městský soud správně aplikovaly uvedenou výluku v situaci, kdy probíhala dohledová prověrka a hrozilo „obživnutí“ trestního stíhání. Dospěl k závěru, že odepření informací bylo důvodné a přiměřené, neboť by poskytnutí usnesení mohlo ohrozit schopnost orgánů činných v trestním řízení plnit své úkoly.",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785802",
+   "spz": "10 As 256/2025-83",
+   "ecli": "ECLI:CZ:NSS:2026:10.As.256.2025.83",
+   "druh": "rozsudek",
+   "senat": 10,
+   "rejstrik": "As",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785802",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785802",
+   "soudce": "Vojtěch Šimíček",
+   "heslo": "Označování slev",
+   "shrnuti": "Albert Česká republika se soudil s Českou obchodní inspekcí kvůli pokutě za nesprávné informování spotřebitelů o slevě z výrobku. Nejvyšší správní soud řešil výklad povinnosti uvádět nejnižší cenu za posledních 30 dnů a otázku formální a materiální stránky přestupku. Soud dospěl k závěru, že uvádění nejnižší ceny malým písmem a zvýrazňování jiné ceny na etiketě je porušením zákona o ochraně spotřebitele, a kasační stížnost zamítl.",
+   "oblasti": [
+    "spotrebitel",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785801",
+   "spz": "10 Afs 60/2025-80",
+   "ecli": "ECLI:CZ:NSS:2026:10.Afs.60.2025.80",
+   "druh": "rozsudek",
+   "senat": 10,
+   "rejstrik": "Afs",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785801",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785801",
+   "soudce": "Ondřej Bartoš",
+   "heslo": "Korunové dluhopisy",
+   "shrnuti": "Žalobkyně se domáhala zrušení rozhodnutí Odvolacího finančního ředitelství, kterým jí byla doměřena daň z příjmů právnických osob kvůli uplatnění úrokových nákladů z korunových dluhopisů. Nejvyšší správní soud řešil otázku, zda zapojení korunových dluhopisů do restrukturalizace vlastnické struktury představovalo zneužití práva. Dospěl k závěru, že převažujícím účelem tohoto kroku bylo dosažení daňové výhody v rozporu se smyslem daňové úpravy, a proto kasační stížnost zamítl.",
+   "oblasti": [
+    "dane",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785800",
+   "spz": "7 Afs 224/2025-54",
+   "ecli": "ECLI:CZ:NSS:2026:7.Afs.224.2025.54",
+   "druh": "rozsudek",
+   "senat": 7,
+   "rejstrik": "Afs",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785800",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785800",
+   "soudce": "Jiřina Chmelová",
+   "heslo": "Místní koeficient daně",
+   "shrnuti": "Navrhovatel se u soudu domáhal zrušení opatření obecné povahy, kterým odpůrkyně stanovila místní koeficient daně z nemovitých věcí. Nejvyšší správní soud řešil otázku, zda obec mohla vydat opatření obecné povahy před účinností příslušného zákonného zmocnění a zda je nutné konkrétní výši koeficientu podrobně odůvodňovat. Dospěl k závěru, že obec měla pravomoc vydat akt s odloženou aplikovatelností a konkrétní výše koeficientu je výsledkem politické úvahy zastupitelstva, kterou není třeba detailně kvantifikovat.",
+   "oblasti": [
+    "dane",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785799",
+   "spz": "Nao 142/2026-338",
+   "ecli": "ECLI:CZ:NSS:2026:Nao.142.2026.338",
+   "druh": "usnesení",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785799",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785799",
+   "soudce": "Vojtěch Šimíček",
+   "heslo": "Námitka podjatosti",
+   "shrnuti": "Žalobce IVREL INVEST podal námitku podjatosti proti soudkyni Krajského soudu v Hradci Králové v řízení vedeném s Odvolacím finančním ředitelstvím. Nejvyšší správní soud řešil otázku, zda procesní postup soudkyně a její dřívější rozhodnutí zakládají důvod pro její vyloučení. Soud rozhodl, že postup soudce v řízení není sám o sobě důvodem pro vyloučení, a proto soudkyně vyloučena není.",
+   "oblasti": [
+    "civilni_proces",
+    "dane"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:785798",
+   "spz": "Nao 144/2026-36",
+   "ecli": "ECLI:CZ:NSS:2026:Nao.144.2026.36",
+   "druh": "usnesení",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785798",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785798",
+   "soudce": "Tomáš Rychlý",
+   "heslo": "Námitka podjatosti",
+   "shrnuti": "Žalobkyně se u Nejvyššího správního soudu domáhala vyloučení soudců 4. senátu z projednávání její kasační stížnosti kvůli jejich dřívějšímu rozhodování v jiné její věci. Nejvyšší správní soud rozhodl, že soudci nejsou vyloučeni, neboť nesouhlas s rozhodováním soudce v jiných věcech není zákonným důvodem pro jeho vyloučení.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:785797",
+   "spz": "22 Azs 98/2026-23",
+   "ecli": "ECLI:CZ:NSS:2026:22.Azs.98.2026.23",
+   "druh": "rozsudek",
+   "senat": 22,
+   "rejstrik": "Azs",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785797",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785797",
+   "soudce": "Tomáš Foltas",
+   "heslo": "Dočasná ochrana Ukrajina",
+   "shrnuti": "Ministerstvo vnitra podalo kasační stížnost proti rozsudku Městského soudu v Praze, kterým bylo vyhověno žalobci na ochranu před nezákonným zásahem spočívajícím v prohlášení zániku dočasné ochrany. Nejvyšší správní soud dospěl k závěru, že napadený rozsudek je nepřezkoumatelný pro nedostatek důvodů. Městský soud se ve svém rozhodnutí řádně nezabýval otázkou, zda žalobce vůbec spadal do osobní působnosti unijní úpravy dočasné ochrany.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:785796",
+   "spz": "22 As 87/2026-43",
+   "ecli": "ECLI:CZ:NSS:2026:22.As.87.2026.43",
+   "druh": "rozsudek",
+   "senat": 22,
+   "rejstrik": "As",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785796",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785796",
+   "soudce": "Tomáš Foltas",
+   "heslo": "Oprava chyby v katastru",
+   "shrnuti": "Žalobkyně se s kým soudila a o co šlo: Žalobkyně se u správních soudů domáhala žalobou zrušení rozhodnutí žalovaného, kterým byla zamítnuta její žádost o opravu údajů v katastru nemovitostí spočívající v doplnění zápisu povinnosti z věcného břemene. Jakou právní otázku soud řešil: Nejvyšší správní soud řešil otázku, zda absenci zápisu povinnosti odpovídající věcnému břemeni lze vnímat jako zřejmý omyl při vedení nebo obnově katastru, který lze opravit postupem podle § 36 odst. 1 písm. a) katastrálního zákona. Jak ji vyřešil: Soud dospěl k závěru, že posouzení věci vyžaduje složité zkoumání historických listin a existenci sporných právních otázek, což vylučuje postup v režimu opravy zřejmého omylu, a proto kasační stížnost žalovaného shledal důvodnou, rozsudek krajského soudu zrušil a žalobu zamítl.",
+   "oblasti": [
+    "vecna_prava",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785794",
+   "spz": "1 Afs 72/2026-52",
+   "ecli": "ECLI:CZ:NSS:2026:1.Afs.72.2026.52",
+   "druh": "usnesení",
+   "senat": 1,
+   "rejstrik": "Afs",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785794",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785794",
+   "soudce": "Ivo Pospíšil",
+   "heslo": "Odmítnutí kasační stížnosti",
+   "shrnuti": "Žalobkyně se žalobou domáhala ochrany před nezákonným zásahem Finančního úřadu pro Ústecký kraj spočívajícím ve vydání výzvy k odstranění pochybností, přičemž krajský soud její žalobu odmítl jako opožděnou. Nejvyšší správní soud řešil otázku splnění podmínky povinného zastoupení advokátem v řízení o kasační stížnosti. Jelikož stěžovatelka neodstranila vadu spočívající v absenci povinného zastoupení ve stanovené lhůtě, Nejvyšší správní soud kasační stížnost odmítl.",
+   "oblasti": [
+    "civilni_proces",
+    "dane"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:785793",
+   "spz": "1 As 80/2026-42",
+   "ecli": "ECLI:CZ:NSS:2026:1.As.80.2026.42",
+   "druh": "rozsudek",
+   "senat": 1,
+   "rejstrik": "As",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785793",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785793",
+   "soudce": "Ivo Pospíšil",
+   "heslo": "Územní plán",
+   "shrnuti": "Navrhovatelka se žalobou domáhala zrušení části územního plánu, která na jejích pozemcích omezila zastavitelnost z důvodu protipovodňové ochrany. Nejvyšší správní soud řešil otázku přezkoumatelnosti, vnitřní rozpornosti a proporcionality regulace územního plánu. Kasační stížnost zamítl s tím, že omezení vlastnického práva kvůli protipovodňové ochraně a vymezení retenčního prostoru je proporcionální a v souladu se zákonem.",
+   "oblasti": [
+    "stavebni_zp",
+    "vecna_prava",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785792",
+   "spz": "21 As 103/2026-51",
+   "ecli": "ECLI:CZ:NSS:2026:21.As.103.2026.51",
+   "druh": "usnesení",
+   "senat": 21,
+   "rejstrik": "As",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785792",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785792",
+   "soudce": "Radovan Havelec",
+   "heslo": "Zastavení řízení o kasační stížnosti",
+   "shrnuti": "Stěžovatelka podala kasační stížnost proti usnesení městského soudu o zastavení žaloby, přičemž se domáhala zrušení tohoto rozhodnutí. Nejvyšší správní soud řešil otázku následků nezaplacení soudního poplatku ve stanovené lhůtě po částečném osvobození. Protože stěžovatelka nezaplatila zbývající část poplatku včas, soud řízení o kasační stížnosti zastavil.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:785791",
+   "spz": "5 As 101/2026-41",
+   "ecli": "ECLI:CZ:NSS:2026:5.As.101.2026.41",
+   "druh": "rozsudek",
+   "senat": 5,
+   "rejstrik": "As",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785791",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785791",
+   "soudce": "Viktor Kučera",
+   "heslo": "Ověření dokumentace stavby",
+   "shrnuti": "Stěžovatelka podala kasační stížnost proti rozsudku Krajského soudu v Praze, kterým byla zamítnuta její žaloba proti rozhodnutí Krajského úřadu Středočeského kraje o zastavení řízení o žádosti o ověření dokumentace skutečného provedení stavby. Nejvyšší správní soud řešil otázku, zda stavební úřad mohl zastavit řízení pro nepřeložení dokumentace a nedoložení vlastnického práva ke stavbě ze strany stěžovatelky, a dospěl k závěru, že kasační stížnost není důvodná, neboť doložení potřebných podkladů je povinností žadatele.",
+   "oblasti": [
+    "stavebni_zp",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785790",
+   "spz": "10 As 108/2026-54",
+   "ecli": "ECLI:CZ:NSS:2026:10.As.108.2026.54",
+   "druh": "usnesení",
+   "senat": 10,
+   "rejstrik": "As",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785790",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785790",
+   "soudce": "Michaela Bejčková",
+   "heslo": "Nepřípustnost kasační stížnosti",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Krajského soudu v Brně, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva dopravy ve věci provozování stanice technické kontroly. Nejvyšší správní soud řešil, zda kasační stížnost představuje přípustnou polemiku se závěry krajského soudu. Soud dospěl k závěru, že stěžovatel pouze opakoval žalobní argumentaci a kasační stížnost proto odmítl pro nepřípustnost.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:785789",
+   "spz": "9 Azs 124/2026-26",
+   "ecli": "ECLI:CZ:NSS:2026:9.Azs.124.2026.26",
+   "druh": "usnesení",
+   "senat": 9,
+   "rejstrik": "Azs",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785789",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785789",
+   "soudce": "Tomáš Herc",
+   "heslo": "Pobyt cizinců",
+   "shrnuti": "Žalobce (občan Ruské federace) se kasační stížností domáhal zrušení rozsudku Krajského soudu v Brně, kterým byla zamítnuta jeho žaloba proti rozhodnutí Komise pro rozhodování ve věcech pobytu cizinců o zamítnutí žádosti o povolení k dlouhodobému pobytu za účelem studia anglického jazyka. Nejvyšší správní soud řešil otázku, zda takové studium na jazykové škole představuje účel vyžadující pobyt na území České republiky ve smyslu zákona o pobytu cizinců. Soud dospěl k závěru, že kasační stížnost je nepřijatelná, protože nastolená právní otázka byla již vyřešena ustálenou judikaturou, podle níž takové studium nemá k území České republiky dostatečně intenzivní, těsnou a seriózní vazbu.",
+   "oblasti": [
+    "socialni_cizinci",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:785788",
+   "spz": "1 As 106/2026-88",
+   "ecli": "ECLI:CZ:NSS:2026:1.As.106.2026.88",
+   "druh": "usnesení",
+   "senat": 1,
+   "rejstrik": "As",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785788",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785788",
+   "soudce": "Ivo Pospíšil",
+   "heslo": "Odkladný účinek",
+   "shrnuti": "Společenství vlastníků jednotek domů Štěchovická čp. 1905, 1906, 1907 se domáhalo přiznání odkladného účinku kasační stížnosti proti rozsudku městského soudu, kterým byly zamítnuty žaloby proti rozhodnutí Magistrátu hlavního města Prahy o stavebním záměru. Nejvyšší správní soud řešil otázku, zda stěžovatelka splnila zákonné podmínky pro přiznání odkladného účinku, zejména povinnost tvrzení a důkazní povinnost ohledně hrozící újmy. Soud dospěl k závěru, že stěžovatelka hrozící újmu (ohrožení statiky budovy) ničím nedoložila, a proto jejím návrhem nevyhověl.",
+   "oblasti": [
+    "stavebni_zp",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:785787",
+   "spz": "10 Azs 144/2026-19",
+   "ecli": "ECLI:CZ:NSS:2026:10.Azs.144.2026.19",
+   "druh": "usnesení",
+   "senat": 10,
+   "rejstrik": "Azs",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785787",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785787",
+   "soudce": "Michaela Bejčková",
+   "heslo": "Odmítnutí kasační stížnosti",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Krajského soudu v Brně týkajícímu se mezinárodní ochrany, aniž by ji v zákonné lhůtě doplnil o kasační důvody. Nejvyšší správní soud řešil otázku následků neodstranění vad blanketní kasační stížnosti a stížnost odmítl. Jelikož stěžovatel neodstranil vytýkané vady včas, brání tento nedostatek jejímu projednání.",
+   "oblasti": [
+    "socialni_cizinci",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:785786",
+   "spz": "10 As 145/2026-22",
+   "ecli": "ECLI:CZ:NSS:2026:10.As.145.2026.22",
+   "druh": "usnesení",
+   "senat": 10,
+   "rejstrik": "As",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785786",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785786",
+   "soudce": "Ondřej Mrákota",
+   "heslo": "Zastavení řízení",
+   "shrnuti": "Žalobce se soudil s Krajským úřadem Zlínského kraje o ochranu před nezákonným zásahem, přičemž podal kasační stížnost proti usnesení krajského soudu. Nejvyšší správní soud řešil otázku nesplnění poplatkové povinnosti za kasační stížnost. Jelikož žalobce soudní poplatek neuhradil ani přes výzvu soudu, Nejvyšší správní soud řízení o kasační stížnosti zastavil.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:785142",
+   "spz": "21 As 92/2026-39",
+   "ecli": "ECLI:CZ:NSS:2026:21.As.92.2026.39",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "As",
+   "datum": "2026-08-27",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785142",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785142",
+   "soudce": "Radovan Havelec",
+   "heslo": "Přípustnost kasační stížnosti",
+   "shrnuti": "Žalobce podal kasační stížnost proti usnesení Městského soudu v Praze, kterým byla jeho žaloba proti rozhodnutím správních orgánů odmítnuta pro opožděnost, nepřípustnost a nedostatek pravomoci. Nejvyšší správní soud řešil otázku přezkoumatelnosti napadeného usnesení a důvodnosti kasačních námitek. Dospěl k závěru, že kasační stížnost není důvodná, a proto ji zamítl.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:784822",
+   "spz": "22 As 208/2025-101",
+   "ecli": "ECLI:CZ:NSS:2026:22.As.208.2025.101",
+   "druh": "rozsudek",
+   "senat": 22,
+   "rejstrik": "As",
+   "datum": "2026-08-27",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784822",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784822",
+   "soudce": "Jan Kratochvíl",
+   "heslo": "Uznání obory",
+   "shrnuti": "Dva myslivecké spolky a jedno honební společenstvo podaly žalobu proti rozhodnutí Krajského úřadu Ústeckého kraje o uznání nové obory pod podmínkou řádného oplocení. Nejvyšší správní soud řešil, zda lze oboru uznat s časově nekonkretizovanou odkládací podmínkou existence oplocení. Dospěl k závěru, že rozhodnutí musí obsahovat přesný a předem určitelný okamžik vzniku obory, aby byla zajištěna právní jistota dotčených subjektů.",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:784789",
+   "spz": "21 As 82/2026-21",
+   "ecli": "ECLI:CZ:NSS:2026:21.As.82.2026.21",
+   "druh": "usnesení",
+   "senat": 21,
+   "rejstrik": "As",
+   "datum": "2026-08-25",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784789",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784789",
+   "soudce": "Radovan Havelec",
+   "heslo": "Fikce doručení",
+   "shrnuti": "Žalovaný se kasační stížností domáhal zrušení rozsudku krajského soudu, kterým bylo zrušeno jeho rozhodnutí o zamítnutí odvolání pro opožděnost. Nejvyšší správní soud řešil otázku posouzení splnění podmínek pro doručení rozhodnutí fikcí v situaci, kdy adresát zpochybnil zanechání zákonného poučení. Soud dospěl k závěru, že kasační stížnost je nepřijatelná, neboť stěžovatel uplatnil pouze nesouhlas s hodnocením důkazů krajským soudem.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:784756",
+   "spz": "4 As 144/2026-27",
+   "ecli": "ECLI:CZ:NSS:2026:4.As.144.2026.27",
+   "druh": "usnesení",
+   "senat": 4,
+   "rejstrik": "As",
+   "datum": "2026-08-20",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784756",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784756",
+   "soudce": "Tomáš Kocourek",
+   "heslo": "Odkladný účinek kasační stížnosti",
+   "shrnuti": "Žalobce se u Nejvyššího správního soudu domáhal přiznání odkladného účinku kasační stížnosti proti rozsudku krajského soudu, kterým byla zamítnuta jeho žaloba proti rozhodnutí Krajského úřadu Olomouckého kraje o omezení vlastnického práva k pozemku vyvlastněním. Soud řešil otázku, zda byly splněny zákonné podmínky pro přiznání odkladného účinku podle liniového zákona, zejména zda stěžovateli hrozila závažná újma na právech. Soud dospěl k závěru, že podmínky pro přiznání odkladného účinku byly splněny, neboť stěžovatel dostatečně osvědčil riziko zásahu do statiky stavby, a proto kasační stížnosti odkladný účinek přiznal.",
+   "oblasti": [
+    "vecna_prava",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:780783",
+   "spz": "6 Afs 164/2025-29",
+   "ecli": "ECLI:CZ:NSS:2026:6.Afs.164.2025.29",
+   "druh": "rozsudek",
+   "senat": 6,
+   "rejstrik": "Afs",
+   "datum": "2026-03-30",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/780783",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/780783",
+   "soudce": "Filip Dienstbier",
+   "heslo": "Dotační podmínky",
+   "shrnuti": "Český svaz vodního póla podal kasační stížnost proti rozsudku Městského soudu v Praze, kterým byla zamítnuta jeho žaloba proti rozhodnutí Národní sportovní agentury o zastavení řízení o žádosti o dotaci. Nejvyšší správní soud řešil otázku určitosti dotačních podmínek a výkladu pojmu seriál akcí ve smyslu dotační výzvy. Dospěl k závěru, že podmínka vylučující podporu akcí skládajících se z několika dílčích turnajů v různých termínech je srozumitelná a Národní sportovní agentura ji aplikovala správně.",
+   "oblasti": [
+    "finance",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:746917",
+   "spz": "22 As 208/2025-35",
+   "ecli": "ECLI:CZ:NSS:2025:22.As.208.2025.35",
+   "druh": "usnesení",
+   "senat": 22,
+   "rejstrik": "As",
+   "datum": "2025-11-05",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T07:12:27Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/746917",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/746917",
+   "soudce": "Jan Kratochvíl",
+   "heslo": "Odkladný účinek kasační stížnosti",
+   "shrnuti": "V řízení o kasační stížnosti proti rozsudku krajského soudu, kterým byla zrušena rozhodnutí o změně honiteb a uznání obory, podala osoba zúčastněná na řízení návrh na přiznání odkladného účinku. Nejvyšší správní soud řešil otázku, zda stěžovatel splnil zákonné podmínky pro přiznání odkladného účinku, zejména povinnost tvrdit a osvědčit hrozbu závažné újmy. Soud dospěl k závěru, že návrh nebyl podepřen žádnými důkazy k prokázání tvrzené újmy, a proto návrh na přiznání odkladného účinku zamítl.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
   {
    "id": "nss:785776",
    "spz": "Nao 141/2026-202",
@@ -307,14 +913,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785143",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785143",
    "soudce": "Jan Kratochvíl",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přípustnost kasační stížnosti",
+   "shrnuti": "Žalobkyně podala kasační stížnost proti rozsudku Městského soudu v Praze, kterým byla zamítnuta její žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Nejvyšší správní soud řešil otázku přípustnosti kasačních námitek, které nereagují na nosné důvody napadeného rozhodnutí městského soudu a pouze obecně opakují dřívější tvrzení. Soud dospěl k závěru, že takové námitky jsou nepřípustné, a proto kasační stížnost odmítl.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784823",
@@ -412,14 +1017,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785730",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785730",
    "soudce": "Ondřej Mrákota",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Krajského soudu v Plzni, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra, a navrhl přiznání odkladného účinku. Nejvyšší správní soud řešil otázku splnění zákonných podmínek pro přiznání odkladného účinku kasační stížnosti. Soud rozhodl, že odkladný účinek se nepřiznává, protože žalobce v rozporu s břemenem tvrzení vznik žádné újmy vůbec netvrdil.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785721",
@@ -455,14 +1059,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785720",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785720",
    "soudce": "David Hipšr",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastavení řízení o kasační stížnosti",
+   "shrnuti": "Žalobce podal kasační stížnost proti usnesení městského soudu o zastavení řízení pro nezaplacení soudního poplatku ve věci odmítnutí žádosti o určení bezplatného advokáta. Nejvyšší správní soud řešil otázku následků nezaplacení zbývající části soudního poplatku po částečném osvobození a opakované žádosti o plné osvobození. Protože stěžovatelka nezaplatila poplatek v určené lhůtě a nepřednesla nové skutečnosti ke změně poměrů, soud řízení zastavil.",
    "oblasti": [
+    "civilni_proces",
     "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785717",
@@ -520,14 +1123,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785714",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785714",
    "soudce": "Aleš Roztočil",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odmítnutí kasační stížnosti",
+   "shrnuti": "Společnost CORRTECH Machinery podala kasační stížnost proti usnesení krajského soudu, kterým byla odmítnuta žaloba podaná fyzickou osobou proti rozhodnutí Odvolacího finančního ředitelství o nevyloučení majetku z daňové exekuce. Nejvyšší správní soud řešil otázku, zda kasační stížnost podala oprávněná osoba, a dospěl k závěru, že žalobu v řízení před krajským soudem podala fyzická osoba, nikoliv stěžovatel. Kasační stížnost proto odmítl jako podanou osobou k tomu zjevně neoprávněnou.",
    "oblasti": [
+    "civilni_proces",
     "dane"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785622",
@@ -584,14 +1186,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785617",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785617",
    "soudce": "Jiřina Chmelová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Pobyt cizinců",
+   "shrnuti": "Ministerstvo vnitra podalo kasační stížnost proti rozsudku Krajského soudu v Plzni, které zrušilo rozhodnutí o zrušení platnosti povolení k trvalému pobytu žalobce. Nejvyšší správní soud řešil otázku rozsahu dokazování potřebného ke zjištění nejlepšího zájmu nezletilého dítěte v řízení o zrušení trvalého pobytu. Kasační stížnost odmítl pro nepřijatelnost, neboť neshledal zásadní pochybení krajského soudu při výkladu práva ani odchýlení od ustálené judikatury.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785614",
@@ -648,14 +1249,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785611",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785611",
    "soudce": "Jakub Camrda",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přijatelnost kasační stížnosti",
+   "shrnuti": "Žalobce se kasační stížností domáhal zrušení rozsudku krajského soudu, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti ve smyslu § 104a s. ř. s. Kasační stížnost odmítl pro nepřijatelnost, neboť svým významem podstatně nepřesahuje vlastní zájmy stěžovatele a nastolené právní otázky jsou již dostatečně řešeny dosavadní judikaturou.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785580",
@@ -774,12 +1374,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785377",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785377",
    "soudce": "Aleš Roztočil",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Námitka podjatosti",
+   "shrnuti": "Žalobce podal námitku podjatosti proti soudkyni Nejvyššího správního soudu v řízení o kasační stížnosti kvůli jejímu postupu při rozhodování o osvobození od soudních poplatků. Nejvyšší správní soud řešil, zda postup soudkyně v řízení a podané trestní oznámení představují důvod pro její vyloučení. Rozhodl, že námitka není důvodná, neboť nespokojenost s postupem soudce či podání trestního oznámení nezakládají podjatost.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
   },
   {
    "id": "nss:785343",
@@ -813,14 +1414,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785340",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785340",
    "soudce": "Tomáš Foltas",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Námitka podjatosti",
+   "shrnuti": "Žalobkyně podala námitku podjatosti vůči všem soudcům správního úseku Krajského soudu v Ústí nad Labem v řízení vedeném proti Finančnímu úřadu pro Ústecký kraj. Nejvyšší správní soud řešil, zda obecná tvrzení o systémové podjatosti a vazbách na finanční správu zakládají důvod pro vyloučení soudců. Soud rozhodl, že námitky jsou nedůvodné, neboť žalobkyně nepředložila žádné konkrétní objektivní okolnosti zpochybňující nepodjatost soudců.",
    "oblasti": [
-    "dane"
+    "civilni_proces",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785318",
@@ -835,14 +1435,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785318",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785318",
    "soudce": "Michaela Bejčková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Pobyt cizinců",
+   "shrnuti": "Žalobce (vietnamský občan) se kasační stížností domáhal zrušení rozsudku Městského soudu v Praze, kterým byla zamítnuta jeho žaloba proti rozhodnutí o odmítnutí žádosti o povolení k přechodnému pobytu rodinného příslušníka občana EU. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti ve věci posouzení závislosti žadatele na výživě občana EU podle § 15a odst. 1 písm. d) zákona o pobytu cizinců. Dospěl k závěru, že kasační stížnost je nepřípustná, protože ve věci nebylo prokázáno, že by žalobce byl na své dceři (občance ČR) závislý, a městský soud nezatížil své rozhodnutí hrubým pochybením.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785305",
@@ -857,15 +1456,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785305",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785305",
    "soudce": "Štěpán Výborný",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek kasační stížnosti",
+   "shrnuti": "Žalobci se v řízení o kasační stížnosti domáhali přiznání odkladného účinku proti rozhodnutí Státního pozemkového úřadu týkajícímu se pozemkových úprav. Nejvyšší správní soud řešil, zda byly splněny zákonné podmínky pro přiznání odkladného účinku. Soud návrh zamítl, protože stěžovatelé neprokázali hrozbu nepoměrně větší újmy a navíc správní orgán postupuje dle metodického návodu tak, že rozhodnutí o přechodu vlastnických práv nevydá před skončením řízení o kasační stížnosti.",
    "oblasti": [
+    "spravni",
     "vecna_prava",
-    "spravni"
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785147",
@@ -880,14 +1478,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785147",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785147",
    "soudce": "Tomáš Rychlý",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Kasační stížnost",
+   "shrnuti": "Stěžovatelka podala kasační stížnost proti usnesení Městského soudu v Praze v řízení s Českou advokátní komorou. Nejvyšší správní soud řešil, zda je dán důvod pro prodloužení lhůty k doložení povinného zastoupení advokátem po dobu řízení o určení advokáta. Soud rozhodl, že takový důvod není, a jelikož stěžovatelka plnou moc nedoložila, kasační stížnost odmítl.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785144",
@@ -920,14 +1517,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784848",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784848",
    "soudce": "Viktor Kučera",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek",
+   "shrnuti": "Žalobci se kasační stížností domáhali zrušení usnesení krajského soudu, kterým byla odmítnuta jejich žaloba proti rozhodnutím o odstranění stavby, a současně navrhli přiznání odkladného účinku kasační stížnosti. Nejvyšší správní soud řešil otázku, zda Jsou splněny zákonné podmínky pro přiznání odkladného účinku podle § 73 odst. 2 s. ř. s. Dospěl k závěru, že nepřiznání odkladného účinku by pro žalobce představovalo nepoměrně větší újmu v podobě nevratného odstranění staveb, než jaká by vznikla jiným osobám, a proto kasační stížnosti odkladný účinek přiznal.",
    "oblasti": [
-    "stavebni_zp"
+    "stavebni_zp",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784830",
@@ -1026,14 +1622,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/768627",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/768627",
    "soudce": "Faisal Husseini",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek kasační stížnosti",
+   "shrnuti": "Žalobkyně se u Městského soudu v Praze domáhala zrušení rozhodnutí Ministerstva financí o odmítnutí žádosti o poskytnutí informací, přičemž městský soud žalobě vyhověl a věc vrátil k novému projednání. Nejvyšší správní soud řešil otázku, zda jsou splněny podmínky pro přiznání odkladného účinku kasační stížnosti podané žalovaným správním orgánem. Soud dospěl k závěru, že žalovaný nedoložil vznik újmy spočívající v ohrožení důležitého veřejného zájmu, a proto návrh na přiznání odkladného účinku zamítl.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:748275",
@@ -1069,14 +1664,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785713",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785713",
    "soudce": "Faisal Husseini",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastavení řízení",
+   "shrnuti": "Žalobce se kasační stížností domáhal zrušení rozsudku Městského soudu v Praze v závislosti na sporu s Česká advokátní komora. Soud řešil otázku následků nezaplacení zbývající části soudního poplatku ve stanovené lhůtě. Protože stěžovatel poplatek ani přes výzvu a částečné osvobození neuhradil, soud řízení podle zákona zastavil.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785707",
@@ -1113,14 +1707,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785706",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785706",
    "soudce": "Aleš Roztočil",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přípustnost kasační stížnosti",
+   "shrnuti": "Žalobkyně se kasační stížností domáhala zrušení usnesení krajského soudu v části, kterou byl zamítnut její návrh na ustanovení zástupce z řad advokátů. Nejvyšší správní soud řešil otázku přípustnosti kasační stížnosti proti rozhodnutí o návrhu na ustanovení zástupce. Dospěl k závěru, že taková kasační stížnost je podle § 104 odst. 3 písm. e) soudního řádu správního nepřípustná, a proto ji odmítl.",
    "oblasti": [
-    "dane"
+    "civilni_proces",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785705",
@@ -1135,14 +1728,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785705",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785705",
    "soudce": "Faisal Husseini",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přijatelnost kasační stížnosti",
+   "shrnuti": "Ministerstvo vnitra podalo kasační stížnost proti rozsudku Krajského soudu v Brně, kterým bylo zrušeno rozhodnutí o neprodloužení dlouhodobého pobytu cizince za účelem podnikání. Nejvyšší správní soud řešil, zda kasační stížnost splňuje podmínky přijatelnosti a zda správní orgán dostatečně posoudil přiměřenost rozhodnutí ve vztahu k rodinnému životu. Soud dospěl k závěru, že kasační stížnost je nepřijatelná, neboť nastolené otázky jsou již ustáleně řešeny v judikatuře a krajský soud nepochybil.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785690",
@@ -1178,14 +1770,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785618",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785618",
    "soudce": "Milan Podhrázký",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek kasační stížnosti",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Městského soudu v Praze, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany, a navrhl přiznání odkladného účinku. Nejvyšší správní soud řešil otázku, zda stěžovatel dostatečně tvrdil a osvědčil existenci hrozby nepoměrně větší újmy. Soud dospěl k závěru, že stěžovatelova tvrzení o hrozbě újmy a zásahu do soukromého života byla příliš obecná, a proto jeho návrh na přiznání odkladného účinku zamítl.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785569",
@@ -1200,14 +1791,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785569",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785569",
    "soudce": "Eva Šonková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zpětvzetí kasační stížnosti",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Krajského soudu v Ostravě ve věci mezinárodní ochrany, avšak v průběhu řízení ji vzal zpět. Nejvyšší správní soud se zabýval otázkou účinků tohoto zpětvzetí. Vzhledem k jednoznačnému projevu vůle stěžovatele soud řízení podle § 47 písm. a) ve spojení s § 120 s. ř. s. zastavil.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785564",
@@ -1222,14 +1812,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785564",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785564",
    "soudce": "Sylva Šiškeová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zpětvzetí kasační stížnosti",
+   "shrnuti": "Žalobce se domáhal přezkoumání rozhodnutí žalovaného Ministerstva vnitra týkajícího se mezinárodní ochrany. Soud řešil otázku procesních důsledků zpětvzetí kasační stížnosti a řízení zastavil, protože stěžovatel vzal svou kasační stížnost výslovně zpět v plném rozsahu.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785537",
@@ -1349,14 +1938,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785456",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785456",
    "soudce": "Štěpán Výborný",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přijatelnost kasační stížnosti",
+   "shrnuti": "Žalobce se domáhal kasační stížností zrušení rozsudku Krajského soudu v Ústí nad Labem, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti a posouzení, zda ekonomické důvody a obavy z věřitelů zakládají nárok na mezinárodní ochranu. Dospěl k závěru, že kasační stížnost je nepřijatelná, neboť napadené rozhodnutí je v souladu s ustálenou judikaturou a obavy z dluhů bez zajištění ochrany státu nejsou azylově relevantním důvodem.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785415",
@@ -1371,12 +1959,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785415",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785415",
    "soudce": "Milan Podhrázký",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Zastavení řízení pro nezaplacení poplatku",
+   "shrnuti": "Žalobce se kasační stížností domáhal zrušení usnesení Krajského soudu v Plzni týkajícího se zásahové žaloby proti Vězeňské službě České republiky - Věznice Ostrov. Nejvyšší správní soud řešil otázku splnění poplatkové povinnosti v řízení o kasační stížnosti. Protože stěžovatel ve stanovené lhůtě nezaplatil soudní poplatek, soud řízení zastavil.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
   },
   {
    "id": "nss:785409",
@@ -1434,14 +2023,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785382",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785382",
    "soudce": "Radovan Havelec",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek kasační stížnosti",
+   "shrnuti": "Krajský úřad Středočeského kraje se soudil s Air 6 Park o přiznání odkladného účinku kasační stížnosti proti rozsudku krajského soudu, kterým bylo zrušeno rozhodnutí o zamístění žádosti o umístění stavby. Nejvyšší správní soud řešil otázku, zda jsou splněny zákonné předpoklady pro přiznání odkladného účinku kasační stížnosti. Soud dospěl k závěru, že tvrzená újma spočívající v poškození zemědělského půdního fondu je zcela hypotetická a předčasná, a proto návrh zamítl.",
    "oblasti": [
-    "stavebni_zp"
+    "stavebni_zp",
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785380",
@@ -1456,14 +2045,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785380",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785380",
    "soudce": "Jiří Palla",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odmítnutí kasační stížnosti",
+   "shrnuti": "Žalobkyně podala kasační stížnost proti usnesení Městského soudu v Praze, kterým byla odmítnuta její žaloba proti rozhodnutím České advokátní komory o neurčení advokáta. Nejvyšší správní soud řešil otázku nesplnění povinného zastoupení advokátem v řízení o kasační stížnosti. Jelikož stěžovatelka ani přes výzvu soudu nedoložila plnou moc advokáta ani vysokoškolské právnické vzdělání, soud kasační stížnost odmítl.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785378",
@@ -1478,14 +2066,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785378",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785378",
    "soudce": "Jan Kratochvíl",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek kasační stížnosti",
+   "shrnuti": "Policie České republiky a Ředitelství služby cizinecké policie podaly kasační stížnost proti rozsudku Městského soudu v Praze, kterým bylo zrušeno rozhodnutí o správním vyhoštění žalobkyně. Nejvyšší správní soud řešil, zda hrozba dalšího procesního vývoje ve správním řízení a nutnost vydat nové rozhodnutí představují pro správní orgán závažnou újmu odůvodňující přiznání odkladného účinku kasační stížnosti. Soud dospěl k závěru, že tyto skutečnosti samy o sobě újmu nezakládají, a proto návrh na přiznání odkladného účinku zamítl.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785375",
@@ -1500,14 +2087,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785375",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785375",
    "soudce": "Radovan Havelec",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odmítnutí kasační stížnosti",
+   "shrnuti": "Žalobce se soudil s Komisí pro rozhodování ve věcech pobytu cizinců ohledně kasační stížnosti proti rozsudku městského soudu, kterým byla zamítnuta jeho žaloba proti rozhodnutí o zamítnutí žádosti o prodloužení pobytu. Nejvyšší správní soud řešil otázku, zda kasační stížnost obsahuje veškeré povinné náležitosti včetně petitu a konkrétních kasačních důvodů. Jelikož stěžovatel přes výzvu soudu neodstranil vady podání a neuvedl petit ani konkrétní důvody, Nejvyšší správní soud kasační stížnost odmítl.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785346",
@@ -1522,14 +2108,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785346",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785346",
    "soudce": "Jan Kratochvíl",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Tlumočení v azylu",
+   "shrnuti": "Žalobce se kasační stížností domáhal zrušení rozsudku Městského soudu v Praze, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o zamítnutí žádosti o mezinárodní ochranu. Nejvyšší správní soud posuzoval otázku, zda má žadatel právo na tlumočení do mateřského jazyka a zda bylo v řízení pochybeno ohledně přiznaného tlumočníka. Soud dospěl k závěru, že kasační stížnost je nepřijatelná, neboť nastolená právní otázka je v judikatuře již vyřešena a soudy se nedopustily zásadního pochybení.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785306",
@@ -1544,14 +2129,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785306",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785306",
    "soudce": "Vojtěch Šimíček",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přijatelnost kasační stížnosti",
+   "shrnuti": "Žalobce se kasační stížností domáhal zrušení rozsudku krajského soudu, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti a namítaného nahrazení chybějících úvah správního orgánu soudem. Kasační stížnost odmítl pro nepřijatelnost, neboť nevyvstala žádná dosud neřešená právní otázka a krajský soud se nedopustil hrubého pochybení.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785239",
@@ -1587,14 +2171,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785206",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785206",
    "soudce": "Radovan Havelec",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odmítnutí kasační stížnosti",
+   "shrnuti": "Žalobkyně se kasační stížností domáhala přezkumu rozhodnutí o odmítnutí žaloby týkající se zvýšení starobního důchodu. Nejvyšší správní soud řešil otázku následků neodstranění nedostatku povinného zastoupení advokátem. Protože stěžovatelka ani přes výzvu soudu nedoložila své právnické vzdělání ani plnou moc pro zastupování, soud kasační stížnost odmítl.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784824",
@@ -1629,14 +2212,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784809",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784809",
    "soudce": "Radovan Havelec",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek kasační stížnosti",
+   "shrnuti": "Žalobce se soudil s Komisi pro rozhodování ve věcech pobytu cizinců o přiznání odkladného účinku kasační stížnosti proti rozhodnutí o neprodloužení dlouhodobého pobytu. Nejvyšší správní soud řešil otázku, zda byly splněny zákonné podmínky pro přiznání odkladného účinku. Soud dospěl k závěru, že stěžovatel neprokázal hrozbu nepoměrně větší újmy, a proto návrh zamítl.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784795",
@@ -1651,14 +2234,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784795",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784795",
    "soudce": "Tomáš Rychlý",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odmítnutí kasační stížnosti",
+   "shrnuti": "Stěžovatel se žalobou domáhal přezkoumání postupu Ministerstva vnitra, přičemž v řízení o kasační stížnosti nebyl zastoupen advokátem ani nedoložil potřebné právnické vzdělání. Nejvyšší správní soud řešil otázku splnění podmínky povinného zastoupení a kasační stížnost odmítl pro neodstranění tohoto nedostatku podmínek řízení.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:783757",
@@ -1673,14 +2255,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/783757",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/783757",
    "soudce": "Viktor Kučera",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek kasační stížnosti",
+   "shrnuti": "Ředitelství silnic a dálnic a Ministerstvo dopravy podaly kasační stížnost proti rozsudku krajského soudu, kterým bylo zrušeno rozhodnutí o umístění stavby dálnice a závazné stanovisko, přičemž Ředitelství silnic a dálnic navíc navrhlo přiznání odkladného účinku. Nejvyšší správní soud řešil, zda jsou splněny zákonné podmínky pro přiznání odkladného účinku kasační stížnosti ve smyslu § 73 odst. 2 soudního řádu správního. Soud dospěl k závěru, že tvrzená újma spočívající v nemožnosti pokračovat v přípravě záměru je pouze standardním následkem zrušujícího rozsudku a převážil veřejný zájem na bezpečnosti dopravy a ochraně vod, proto návrh na přiznání odkladného účinku zamítl.",
    "oblasti": [
+    "spravni",
+    "civilni_proces",
     "stavebni_zp"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:782453",
@@ -1716,14 +2298,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785703",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785703",
    "soudce": "Václav Štencel",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odmítnutí kasační stížnosti",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Krajského soudu v Ostravě – pobočky v Olomouci ve věci mezinárodní ochrany. Nejvyšší správní soud řešil otázku, zda lze kasační stížnost odmítnout pro neodstranění vad spočívající v absenci stížnostních námitek po marném uplynutí lhůty. Soud dospěl k závěru, že pro absenci důvodů nelze v řízení pokračovat, a proto kasační stížnost odmítl.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785692",
@@ -1780,14 +2361,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785620",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785620",
    "soudce": "Tomáš Herc",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přestupek provozovatele vozidla",
+   "shrnuti": "Stěžovatel se u Nejvyššího správního soudu domáhal zrušení rozsudku Městského soudu v Praze, kterým byla zamítnuta jeho žaloba proti rozhodnutí Magistrátu hlavního města Prahy o přestupku provozovatele vozidla. Soud řešil otázku dodržení práva vyjádřit se k podkladům rozhodnutí a prokazování stání vozidla na základě statických snímků. Kasační stížnost se odmítá pro nepřijatelnost, neboť nastolené právní otázky jsou již v judikatuře dořešeny.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785527",
@@ -1844,14 +2424,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785467",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785467",
    "soudce": "Milan Podhrázký",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Nepřijatelnost kasační stížnosti",
+   "shrnuti": "Žalobce se kasační stížností domáhal zrušení rozsudku Krajského soudu v Ústí nad Labem, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti a posoudil, zda se krajský soud odchýlil od ustálené judikatury či se dopustil zásadního pochybení. Dospěl k závěru, že kasační stížnost je nepřijatelná, neboť žádost byla motivována snahou o legalizaci pobytu a obavy z věřitelů nepředstavují azylově relevantní důvod.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785418",
@@ -1951,14 +2530,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785295",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785295",
    "soudce": "Vojtěch Šimíček",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Opožděná kasační stížnost",
+   "shrnuti": "Žalobce podal kasační stížnost proti usnesení krajského soudu, kterým byla odmítnuta jeho žaloba na zvýšení invalidního důchodu. Nejvyšší správní soud řešil otázku včasnosti podané kasační stížnosti. Dospěl k závěru, že stěžovatel podal stížnost po uplynutí zákonné dvoutýdenní lhůty, a proto ji odmítl jako opožděnou.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785240",
@@ -1973,14 +2551,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785240",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785240",
    "soudce": "Faisal Husseini",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odmítnutí kasační stížnosti",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Krajského soudu v Ostravě, kterou odmítl Nejvyšší správní soud. Soud řešil otázku, zda lze pro neodstranění vad podání odmítnout kasační stížnost. Dospěl k závěru, že jestliže stěžovatel ve stanovené lhůtě nedoplnil chybějící důvody kasační stížnosti, je nutno ji odmítnout.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785199",
@@ -1995,15 +2572,12 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785199",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785199",
    "soudce": "Tomáš Rychlý",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zpětvzetí kasační stížnosti",
+   "shrnuti": "Stěžovatelka podala kasační stížnost proti usnesení Krajského soudu v Hradci Králové ve věci vedené u Ministerstva pro místní rozvoj, za účasti Krajské správy a údržby silnic Středočeského kraje a M. P. Soud řešil otázku procesních důsledků zpětvzetí návrhu a řízení zastavil, protože stěžovatelka vzala kasační stížnost v plném rozsahu zpět.",
    "oblasti": [
-    "vecna_prava",
     "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784864",
@@ -2039,14 +2613,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784820",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784820",
    "soudce": "Eva Šonková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Nezaplacený soudní poplatek",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozhodnutí Česká advokátní komora, přičemž nezaplatil soudní poplatek. Nejvyšší správní soud řešil otázku, zda opakovaná žádost žalobce o plné osvobození od soudních poplatků opírající se o další probíhající řízení představuje novou skutečnost odůvodňující nové posouzení. Soud rozhodl, že jelikož žalobce neprokázal podstatnou změnu majetkových poměrů, řízení o kasační stížnosti zastavil.",
    "oblasti": [
+    "civilni_proces",
     "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784813",
@@ -2061,14 +2634,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784813",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784813",
    "soudce": "Jitka Zavřelová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastavení řízení",
+   "shrnuti": "Stěžovatel podal kasační stížnost proti rozhodnutí Krajského soudu v Ústí nad Labem, přičemž se domáhal plného osvobození od soudních poplatků. Nejvyšší správní soud řešil otázku, zda uplatněné skutečnosti ohledně souběžně probíhajících řízení představují změnu poměrů odůvodňující nové posouzení žádosti. Soud dospěl k závěru, že stěžovatel neprokázal podstatnou změnu majetkových poměrů, a jelikož nezaplatil soudní poplatek ve stanovené lhůtě, řízení o kasační stížnosti zastavil.",
    "oblasti": [
+    "civilni_proces",
     "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784791",
@@ -2083,14 +2655,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784791",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784791",
    "soudce": "Aleš Roztočil",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastavení řízení",
+   "shrnuti": "Žalobce se u Nejvyššího správního soudu domáhal přezkumu usnesení krajského soudu o zastavení řízení pro nezaplacení soudního poplatku. Soud řešil otázku splnění podmínek pro zastavení řízení o kasační stížnosti pro nezaplacení poplatku. Protože stěžovatel soudní poplatek ve stanovené lhůtě neuhradil, Nejvyšší správní soud řízení o kasační stížnosti zastavil.",
    "oblasti": [
+    "civilni_proces",
     "dane"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:747787",
@@ -2144,14 +2715,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785616",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785616",
    "soudce": "Tomáš Kocourek",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Opožděná kasační stížnost",
+   "shrnuti": "Žalobce podal kasační stížnost proti usnesení Krajského soudu v Brně, kterým byla odmítnuta jeho žaloba proti rozhodnutí Krajského úřadu Jihomoravského kraje ve věci poskytování informací. Nejvyšší správní soud řešil otázku včasnosti podání kasační stížnosti. Dospěl k závěru, že stěžovatel podal stížnost až po uplynutí zákonné dvoutýdenní lhůty, a proto ji podle § 46 odst. 1 písm. b) ve spojení s § 120 soudního řádu správního odmítl jako opožděnou.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785612",
@@ -2251,14 +2821,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785590",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785590",
    "soudce": "Václav Štencel",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastavení řízení",
+   "shrnuti": "V řízení o kasační stížnosti se LESCUS Cetkovice a Odvolací finanční ředitelství soudili o daň z přidané hodnoty. Nejvyšší správní soud řešil, zda lze prominout zmeškání lhůty k úhradě soudního poplatku. Soud rozhodl, že lhůta k zaplacení poplatku je propadná a nelze ji dodatečně prominout, a proto řízení o kasační stížnosti zastavil.",
    "oblasti": [
-    "dane"
+    "dane",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785579",
@@ -2273,15 +2842,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785579",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785579",
    "soudce": "Jiřina Chmelová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Předčasná kasační stížnost",
+   "shrnuti": "Žalobkyně se žalobou domáhala ochrany před nezákonným zásahem katastrálního úřadu, kterou krajský soud odmítl pro opožděnost. Nejvyšší správní soud řešil otázku přípustnosti kasační stížnosti podané proti rozhodnutí, které nebylo řádně doručeno v důsledku úmrtí účastníka před doručením. Rozhodl, že kasační stížnost je předčasná a odmítl ji, protože usnesení krajského soudu dosud nenabylo právní moci.",
    "oblasti": [
-    "vecna_prava",
+    "civilni_proces",
     "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785410",
@@ -2338,14 +2905,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785242",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785242",
    "soudce": "Pavel Molek",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Záznam bodů v registru řidičů",
+   "shrnuti": "Žalobce se soudil s Krajským úřadem Jihočeského kraje ohledně odmítnutí námitk proti záznamu bodů v registru řidičů. Nejvyšší správní soud řešil, zda záměna registračních značek nákladního vozidla a přívěsu a nesprávné označení vozidla jako tahače činí příkazový blok nezpůsobilým podkladem pro záznam bodů. Dospěl k závěru, že nikoli, neboť z příkazového bloku bylo i přes tyto nepřesnosti jednoznačně patrné, kdo, kdy, kde a jakého přestupku se žalobce dopustil.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785238",
@@ -2484,14 +3050,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784681",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784681",
    "soudce": "Václav Štencel",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Opožděná kasační stížnost",
+   "shrnuti": "Žalobce podal kasační stížnost proti usnesení Krajského soudu v Ústí nad Labem – pobočky v Liberci, přičemž Nejvyšší správní soud řešil otázku včasnosti tohoto podání. Soud dospěl k závěru, že kasační stížnost byla podána po uplynutí zákonné dvoutýdenní lhůty počítané od fikce doručení, a proto ji podle § 46 odst. 1 písm. b) ve spojení s § 120 s. ř. s. odmítl.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:783988",
@@ -2506,14 +3071,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/783988",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/783988",
    "soudce": "Pavel Molek",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek kasační stížnosti",
+   "shrnuti": "Žalobce se soudil s Krajským úřadem Jihočeského kraje o přiznání odkladného účinku kasační stížnosti proti rozsudku krajského soudu, kterým byla zamítnuta žaloba proti rozhodnutí o potvrzení dosažení 12 bodů v registru řidičů. Nejvyšší správní soud řešil otázku, zda jsou splněny zákonné podmínky pro přiznání odkladného účinku. Dospěl k závěru, že podmínky splněny jsou, neboť výkon rozhodnutí by pro žalobce znamenal existenční újmu a žalovaný neprokázal rozpor s důležitým veřejným zájmem, a proto kasační stížnosti odkladný účinek přiznal.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785572",
@@ -2549,14 +3113,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785571",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785571",
    "soudce": "Jiří Palla",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek azyl",
+   "shrnuti": "Žalobce se s Ministerstvem vnitra soudil o mezinárodní ochranu a v rámci kasační stížnosti navrhl přiznání odkladného účinku. Nejvyšší správní soud řešil, zda jsou splněny zákonné podmínky pro přiznání odkladného účinku kasační stížnosti. Soud dospěl k závěru, že hrozící újma v podobě nuceného vycestování převyšuje případný veřejný zájem, a proto kasační stížnosti odkladný účinek přiznal.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785565",
@@ -2571,14 +3134,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785565",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785565",
    "soudce": "Sylva Šiškeová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odmítnutí kasační stížnosti",
+   "shrnuti": "Žalobkyně se podanou kasační stížností domáhala přezkumu usnesení krajského soudu ve věci invalidního důchodu. Nejvyšší správní soud řešil otázku procesního postupu při absenci uznávaného elektronického podpisu u kasační stížnosti podané po 1. 1. 2026. Jelikož stěžovatelka vadu podání ve stanovené lhůtě neodstranila, soud kasační stížnost odmítl.",
    "oblasti": [
+    "civilni_proces",
     "socialni_cizinci"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785563",
@@ -2654,14 +3216,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785486",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785486",
    "soudce": "Radan Malík",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek",
+   "shrnuti": "Stěžovatel podal kasační stížnost proti rozsudku Krajského soudu v Ústí nad Labem – pobočky v Liberci, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o zamítnutí žádosti o povolení přechodného pobytu rodinného příslušníka občana Evropské unie, a navrhl přiznání odkladného účinku. Nejvyšší správní soud řešil otázku, zda jsou splněny zákonné podmínky pro přiznání odkladného účinku kasační stížnosti ve smyslu hrozby nepoměrně větší újmy a rozporu s důležitým veřejným zájmem. Soud dospěl k závěru, že podmínky splněny jsou, neboť stěžovateli hrozí zásah do soukromého a rodinného života a tento zájem převažuje nad veřejným zájmem na výkonu rozhodnutí.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785405",
@@ -2697,14 +3259,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785404",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785404",
    "soudce": "Milan Podhrázký",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odmítnutí kasační stížnosti",
+   "shrnuti": "Stěžovatel se u Nejvyššího správního soudu domáhal přezkumu rozsudku Městského soudu v Praze týkajícího se zamítnutí jeho žádosti o mezinárodní ochranu, avšak podal blanketní kasační stížnost. Soud řešil otázku, zda lze projednat kasační stížnost, kterou stěžovatel ve stanovené lhůtě nedoplnil o konkrétní kasační důvody. Soud rozhodl, že pro absenci zákonných náležitostí kasační stížnost odmítá podle § 37 odst. 5 ve spojení s § 120 s. ř. s.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785399",
@@ -2719,14 +3280,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785399",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785399",
    "soudce": "Veronika Juřičková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek",
+   "shrnuti": "Stěžovatel se v řízení o kasační stížnosti domáhal přiznání odkladného účinku rozhodnutí o správním vyhoštění. Nejvyšší správní soud řešil otázku, zda stěžovatel osvědčil hrozbu závažné a nepoměrně větší újmy, zejména v důsledku zásahu do rodinného života po uzavření manželství s občankou Evropské unie. Soud dospěl k závěru, že podmínky pro přiznání odkladného účinku splněny nebyly, neboť stěžovatel neprokázal existenci výjimečných okolností ani zásadní materiální či psychické závislosti rodinných příslušníků na jeho osobní přítomnosti, a proto návrh zamítl.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785381",
@@ -2741,15 +3301,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785381",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785381",
    "soudce": "Aleš Roztočil",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zpětvzetí kasační stížnosti",
+   "shrnuti": "Žalobce se kasační stížností domáhal zrušení rozsudku Krajského soudu v Brně, kterým byla zamítnuta jeho žaloba proti rozhodnutí Česká obchodní inspekcija o uložení pokuty za přestupky na úseku ochrany spotřebitele. Nejvyšší správní soud neřešil žádnou právní otázku věcného charakteru, neboť stěžovatel vzal kasační stížnost zpět. Soud proto řízení podle § 47 písm. a) s. ř. s. zastavil.",
    "oblasti": [
     "spotrebitel",
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785344",
@@ -2807,14 +3366,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785338",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785338",
    "soudce": "Petra Weissová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastavení řízení",
+   "shrnuti": "Společnost MARPO se u Nejvyššího správního soudu domáhala přezkumu rozhodnutí Odvolacího finančního ředitelství týkajícího se daně z příjmů. Soud řešil otázku splnění podmínek pro vedení řízení o kasační stížnosti. Protože stěžovatelka ve stanovené lhůtě neuhradila soudní poplatek, soud řízení zastavil.",
    "oblasti": [
-    "dane"
+    "dane",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785246",
@@ -2850,14 +3408,12 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785154",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785154",
    "soudce": "Petr Mikeš",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastavení řízení",
+   "shrnuti": "Žalobce se soudil s Ministerstvem financí o poskytnutí informací. Nejvyšší správní soud řešil otázku následků nezaplacení soudního poplatku za kasační stížnost. Protože stěžovatel poplatek ve stanovené lhůtě neuhradil, soud řízení zastavil.",
    "oblasti": [
     "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784858",
@@ -2894,14 +3450,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/781616",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/781616",
    "soudce": "Eva Šonková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odmítnutí kasační stížnosti",
+   "shrnuti": "Žalobkyně se žalobou domáhala přezkumu rozhodnutí Ministerstva vnitra, o němž rozhodoval Krajský soud v Hradci Králové a následně Nejvyšší správní soud. Nejvyšší správní soud řešil otázku splnění podmínky povinného zastoupení advokátem v řízení o kasační stížnosti. Protože stěžovatelka ani na výzvu soudu nedostatek zastoupení neodstranila, Nejvyšší správní soud kasační stížnost odmítl.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785536",
@@ -2916,14 +3471,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785536",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785536",
    "soudce": "Tomáš Foltas",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Nepřijatelnost kasační stížnosti",
+   "shrnuti": "Stěžovatel podal kasační stížnost proti rozsudku Krajského soudu v Plzni, kterým byla zamítnuta jeho žaloba proti rozhodnutí žalované o zrušení platnosti zaměstnanecké karty kvůli výkonu nelegální práce. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti a použití výslechů z jiného řízení jako důkazu. Dospěl k závěru, že kasační stížnost je nepřijatelná, protože nenabízí žádný obecný přesah a napadený rozsudek netrpí zásadními vadami.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785529",
@@ -2938,14 +3493,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785529",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785529",
    "soudce": "Václav Štencel",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Nepřípustnost kasační stížnosti",
+   "shrnuti": "Stěžovatelka podala kasační stížnost proti usnesení krajského soudu o nepřiznání osvobození od soudních poplatků a zamítnutí návrhu na ustanovení zástupce. Nejvyšší správní soud řešil, zda je taková kasační stížnost přípustná podle nové právní úpravy účinné od 1. 1. 2026. Dospěl k závěru, že kasační stížnost je nepřípustná, a proto ji odmítl.",
    "oblasti": [
-    "dane"
+    "civilni_proces",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785524",
@@ -2981,14 +3535,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785501",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785501",
    "soudce": "Václav Štencel",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zamítnutí prodloužení pobytu",
+   "shrnuti": "Stěžovatel se kasační stížností domáhal zrušení rozsudku městského soudu, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o zamítnutí žádosti o prodloužení platnosti zaměstnanecké karty. Nejvyšší správní soud posuzoval otázku přijatelnosti kasační stížnosti ve světle namítané nepřezkoumatelnosti rozsudku a posouzení přiměřenosti zásahu do soukromého a rodinného života cizince. Dospěl k závěru, že napadený rozsudek nevybočuje z ustálené judikatury a kasační stížnost proto odmítl pro nepřijatelnost.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785420",
@@ -3003,14 +3556,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785420",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785420",
    "soudce": "Viktor Kučera",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přijatelnost kasační stížnosti",
+   "shrnuti": "Stěžovatel podal kasační stížnost proti rozsudku Krajského soudu v Brně, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o odmítnutí opakované žádosti o mezinárodní ochranu. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti a dostatečnosti podkladů pro posouzení opakované žádosti. Dospěl k závěru, že kasační stížnost je nepřijatelná, protože předložené právní otázky jsou již ustálenou judikaturou dořešeny.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785412",
@@ -3044,14 +3596,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785411",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785411",
    "soudce": "Jakub Camrda",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Námitka podjatosti",
+   "shrnuti": "Žalobce podal námitku podjatosti proti soudkyni Městského soudu v Praze v řízení o žalobě proti rozhodnutí České správy sociálního zabezpečení o dobrovolném důchodovém pojištění. Nejvyšší správní soud řešil, zda může být procesní postup soudkyně spočívající ve výzvě k zaplacení soudního poplatku důvodem pro její vyloučení. Dospěl k závěru, že postup soudkyně v řízení není zákonným důvodem k jejímu vyloučení, a proto rozhodl, že soudkyně není podjatá.",
    "oblasti": [
+    "civilni_proces",
     "socialni_cizinci"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785406",
@@ -3066,14 +3617,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785406",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785406",
    "soudce": "Lenka Matyášová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Mezinárodní ochrana",
+   "shrnuti": "Žalobkyně podala kasační stížnost proti rozsudku Městského soudu v Praze, kterým byla zamítnuta její žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Nejvyšší správní soud řešil otázku, zda ekonomické důvody a obtíže se splácením dluhů v zemi původu mohou založit nárok na mezinárodní ochranu. Soud dospěl k závěru, že takové důvody jsou čistě ekonomické povahy a kasační stížnost odmítl pro nepřijatelnost.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785402",
@@ -3088,14 +3638,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785402",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785402",
    "soudce": "Jiřina Chmelová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Invalidní důchod",
+   "shrnuti": "Žalobce se soudil s Českou správou sociálního zabezpečení o přiznání invalidního důchodu. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti směřující proti posouzení míry poklesu pracovní schopnosti a odmítl ji pro nepřijatelnost, neboť krajský soud postupoval v souladu s ustálenou judikaturou a posudek posudkové komise shledal úplným a přesvědčivým.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785353",
@@ -3110,14 +3659,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785353",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785353",
    "soudce": "Jaroslav Vlašín",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přijatelnost kasační stížnosti",
+   "shrnuti": "Stěžovatel se u Nejvyššího správního soudu domáhal přezkumu rozsudku Krajského soudu v Ostravě, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti ve věci, kde žadatel namítal pronásledování ze strany soukromých osob (lichvářů) v zemi původu, aniž by se obrátil na tamní státní orgány. Soud dospěl k závěru, že kasační stížnost nepřesahuje vlastní zájmy stěžovatele a netrpí hrubým pochybením krajského soudu, a proto ji odmítl pro nepřijatelnost.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785337",
@@ -3132,14 +3680,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785337",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785337",
    "soudce": "Lenka Krupičková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přestupek v dopravě",
+   "shrnuti": "Žalobce se u Nejvyššího správního soudu domáhal zrušení rozsudku Krajského soudu v Českých Budějovicích, kterým byla zamítnuta jeho žaloba proti rozhodnutí žalovaného Krajského úřadu Jihočeského kraje o uznání vinným ze spáchání přestupku odmítnutím lékařského vyšetření na alkohol. Soud řešil otázku přijatelnosti kasační stížnosti ve věci, kde žalobce namítal nedostatečně zjištěný skutkový stav a neprovedení důkazů ústním jednáním. Kasační stížnost odmítl pro nepřijatelnost, neboť neshledal žádné zásadní pochybení krajského soudu ani přesah vlastních zájmů stěžovatele.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785322",
@@ -3196,14 +3743,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785247",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785247",
    "soudce": "Jaroslav Vlašín",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přijatelnost kasační stížnosti",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Krajského soudu v Českých Budějovicích, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti a posuzoval, zda stěžovatelem nastolená právní otázka přesahuje jeho vlastní zájmy. Soud dospěl k závěru, že věc nepřesahuje vlastní zájmy stěžovatele a kasační stížnost odmítl pro nepřijatelnost.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785245",
@@ -3262,14 +3808,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785092",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785092",
    "soudce": "Jan Kratochvíl",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Nepřijatelnost kasační stížnosti",
+   "shrnuti": "Žalobkyně se žalobou domáhala zrušení rozhodnutí Ministerstva vnitra, kterým jí nebyla udělena mezinárodní ochrana, přičemž Městský soud v Praze její žalobu zamítl. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti směřující proti rozsudku městského soudu a zabýval se tím, zda nepříznivá socioekonomická situace v zemi původu může představovat důvod pro udělení mezinárodní ochrany. Dospěl k závěru, že kasační stížnost je nepřijatelná, neboť nastolená otázka je v judikatuře ustálena a městský soud nepochybil.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784827",
@@ -3306,14 +3851,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784812",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784812",
    "soudce": "Tomáš Foltas",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Nepřijatelnost kasační stížnosti",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Městského soudu v Praze, který zamítl jeho žalobu proti rozhodnutí Ministerstva vnitra o nepřípustnosti opakované žádosti o mezinárodní ochranu. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti a posouzení nových skutečností v řízení o opakované žádosti. Kasační stížnost odmítl pro nepřijatelnost, neboť stěžovatelem uváděné dluhy nebyly novou skutečností a tvrzené otcovství ani rodinné vazby nezakládají důvod pro udělení mezinárodní ochrany.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784742",
@@ -3328,14 +3872,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784742",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784742",
    "soudce": "Ondřej Mrákota",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Nepřijatelnost kasační stížnosti",
+   "shrnuti": "Žalobkyně podala kasační stížnost proti rozsudku Krajského soudu v Praze, kterým byla zamítnuta její žaloba proti rozhodnutí Ministerstva vnitra o zamítnutí žádosti o mezinárodní ochranu. Nejvyšší správní soud řešil otázku posouzení hrozby vážné újmy ze strany lichvářů v zemi původu a dospěl k závěru, že stěžovatelka nepředložila konkrétní tvrzení o neschopnosti či neochotě státních orgánů Vietnamu poskytnout jí ochranu. Kasační stížnost proto odmítl pro nepřijatelnost, neboť nevyvstala žádná dosud neřešená právní otázka.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784320",
@@ -3350,14 +3893,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784320",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784320",
    "soudce": "Filip Dienstbier",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přípustnost kasační stížnosti",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Městského soudu v Praze, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Nejvyšší správní soud řešil otázku přípustnosti kasační stížnosti obsahující pouze obecné či v žalobě již uplatněné námitky bez reakce na napadený rozsudek. Soud rozhodl, že taková kasační stížnost je nepřípustná a podle § 46 odst. 1 písm. d) s. ř. s. ji odmítl.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784297",
@@ -3393,14 +3935,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784025",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784025",
    "soudce": "Štěpán Výborný",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastavení řízení",
+   "shrnuti": "Žalobce se kasační stížností domáhal zrušení rozhodnutí krajského soudu ve věci pojistného na sociální zabezpečení. Nejvyšší správní soud řešil otázku splnění poplatkové povinnosti a povinného zastoupení. Protože stěžovatel ve stanovené lhůtě nezaplatil soudní poplatek, soud řízení o kasační stížnosti zastavil.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:783916",
@@ -3415,14 +3956,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/783916",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/783916",
    "soudce": "Veronika Juřičková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odmítnutí kasační stížnosti",
+   "shrnuti": "Žalobce se soudil s Ministerstvem vnitra o přezkum rozhodnutí týkajícího se opakované žádosti o mezinárodní ochranu. Soud řešil otázku splnění náležitostí kasační stížnosti a dospěl k závěru, že stěžovatel ve stanovené lhůtě neodstranil vady podání. Proto Nejvyšší správní soud kasační stížnost odmítl.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:783759",
@@ -3437,14 +3977,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/783759",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/783759",
    "soudce": "Viktor Kučera",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek kasační stížnosti",
+   "shrnuti": "Žalobce se kasační stížností domáhal přiznání odkladného účinku proti rozsudku Krajského soudu v Brně, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o nepřípustnosti opakované žádosti o mezinárodní ochranu. Nejvyšší správní soud řešil, zda jsou splněny zákonné podmínky pro přiznání odkladného účinku kasační stížnosti ve věci mezinárodní ochrany. Soud dospěl k závěru, že hrozba újmy na životě a bezpečnosti stěžovatele je reálná a přiznání odkladného účinku nebrání veřejný zájem, a proto kasační stížnosti odkladný účinek přiznal.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:783202",
@@ -3497,12 +4036,12 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785502",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785502",
    "soudce": "Tomáš Herc",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Určení lhůty k úkonu",
+   "shrnuti": "Navrhovatel se podaným návrhem u Nejvyššího správního soudu domáhal určení lhůty k provedení procesního úkonu vůči advokátovi určenému Českou advokátní komorou k podání ústavní stížnosti a vydání předběžného opatření. Nejvyšší správní soud konstatoval, že správní soudy nemají pravomoc určovat lhůtu k úkonu advokátovi ani o takovém návrhu rozhodovat, a proto návrh odmítl.",
+   "oblasti": [
+    "civilni_proces"
+   ],
+   "procesni": true
   },
   {
    "id": "nss:785497",
@@ -3517,14 +4056,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785497",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785497",
    "soudce": "Radan Malík",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastavení řízení",
+   "shrnuti": "Stěžovatel podal kasační stížnost proti rozsudku Krajského soudu v Hradci Králové – pobočky v Pardubicích, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva dopravy týkajícímu se vyvlastnění. Nejvyšší správní soud řešil otázku nesplnění poplatkové povinnosti v řízení o kasační stížnosti. Jelikož stěžovatel ani přes řádnou výzvu a poučení neuhradil soudní poplatek, soud řízení zastavil.",
    "oblasti": [
-    "stavebni_zp"
+    "stavebni_zp",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785494",
@@ -3539,14 +4077,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785494",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785494",
    "soudce": "David Hipšr",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přijatelnost kasační stížnosti",
+   "shrnuti": "Žalobce se žalobou domáhal určení, že postup Ministerstva vnitra spočívající ve zneplatnění vízového štítku a vydání výjezdního příkazu před přijetím žádosti o dlouhodobé vízum byl nezákonným zásahem, avšak Městský soud v Praze žalobu zamítl. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti a posouzení intenzity namítaného zásahu správního orgánu. Dospěl k závěru, že kasační stížnost je nepřijatelná, neboť nastolené právní otázky jsou již vyřešeny ustálenou judikaturou a postup správního orgánu nedosáhl intenzity nezákonného zásahu.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785416",
@@ -3561,14 +4098,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785416",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785416",
    "soudce": "David Hipšr",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Držení mobilního telefonu za jízdy",
+   "shrnuti": "Krajský úřad Moravskoslezského kraje se kasační stížností domáhal zrušení rozsudku Krajského soudu v Ostravě, kterým bylo zrušeno rozhodnutí o přestupku řidiče za držení mobilního telefonu. Nejvyšší správní soud řešil otázku, zda provedený vyšetřovací pokus spolehlivě prokázal spáchání přestupku. Soud dospěl k závěru, že vyšetřovací pokus nepotvrdil možnost rozeznat držení telefonu v ruce řidiče, a kasační stížnost odmítl pro nepřijatelnost.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785401",
@@ -3583,14 +4119,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785401",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785401",
    "soudce": "Aleš Roztočil",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek",
+   "shrnuti": "Stěžovatelé se domáhali zrušení rozsudku Krajského soudu v Brně, kterým byla zamítnuta jejich žaloba proti rozhodnutí Magistrátu města Brna o nařízení odstranění stavby rekreačního objektu. Nejvyšší správní soud řešil otázku, zda Jsou splněny podmínky pro přiznání odkladného účinku kasační stížnosti. Dospěl k závěru, že tyto podmínky naplněny jsou, neboť výkon rozhodnutí by pro stěžovatele znamenal nepoměrně větší a fakticky nevratnou újmu, a proto odkladný účinek přiznal.",
    "oblasti": [
-    "stavebni_zp"
+    "stavebni_zp",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785374",
@@ -3605,14 +4140,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785374",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785374",
    "soudce": "Jitka Zavřelová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek kasační stížnosti",
+   "shrnuti": "Stěžovatel se podanou kasační stížností domáhal přiznání odkladného účinku proti rozsudku krajského soudu, kterým byla zamítnuta jeho žaloba proti rozhodnutí Komise pro rozhodování ve věcech pobytu cizinců o zamítnutí žádosti o zaměstnaneckou kartu. Nejvyšší správní soud řešil, zda jsou splněny zákonné podmínky pro přiznání odkladného účinku kasační stížnosti. Dospěl k závěru, že nepřiznáním odkladného účinku by stěžovateli hrozila nepoměrně větší újma spočívající v nutnosti vycestovat a narušení kontaktu s jeho nezletilou dcerou, než jaká může vzniknout jiným osobám, a proto návrhu vyhověl.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785317",
@@ -3648,14 +4182,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785313",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785313",
    "soudce": "Filip Dienstbier",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přípustnost kasační stížnosti",
+   "shrnuti": "Žalobkyně podala kasační stížnost proti rozsudku Městského soudu v Praze, kterým byla zamítnuta její žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Nejvyšší správní soud řešil otázku přípustnosti kasační stížnosti tvořené pouze opakováním dřívějších žalobních námitek. Soud dospěl k závěru, že taková kasační stížnost je nepřípustná, a proto ji odmítl.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785312",
@@ -3670,14 +4203,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785312",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785312",
    "soudce": "Tomáš Herc",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přijatelnost kasační stížnosti",
+   "shrnuti": "Žalobkyně se domáhala zrušení rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany, které Městský soud v Praze zamítl. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti a posouzení individuálních důvodů pro udělení mezinárodní ochrany z důvodu politických názorů a zdravotního stavu. Dospěl k závěru, že kasační stížnost svým významem podstatně nepřesahuje zájmy stěžovatelky, a proto ji odmítl pro nepřijatelnost.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785309",
@@ -3692,14 +4225,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785309",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785309",
    "soudce": "Filip Dienstbier",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Nepřípustnost kasační stížnosti",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Městského soudu v Praze, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Nejvyšší správní soud řešil, zda kasační stížnost splňuje požadavky na vymezení stížních důvodů a zda směřuje proti napadenému rozhodnutí soudu. Dospěl k závěru, že námitky stěžovatele jsou pouhým zopakováním žaloby a nereagují na závěry městského soudu, a proto kasační stížnost podle § 46 odst. 1 písm. d) s. ř. s. odmítl jako nepřípustnou.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785298",
@@ -3714,14 +4246,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785298",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785298",
    "soudce": "Ondřej Mrákota",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastavení řízení",
+   "shrnuti": "Žalobce se podáním kasační stížnosti domáhal přezkoumání rozhodnutí České advokátní komory. Nejvyšší správní soud řešil otázku splnění podmínek řízení a zaplacení soudního poplatku. Protože žalobce ve stanovené lhůtě nezaplatil soudní poplatek a nedoložil ani právní zastoupení či vzdělání, soud řízení zastavil.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785297",
@@ -3736,14 +4267,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785297",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785297",
    "soudce": "Michaela Bejčková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastavení řízení",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku krajského soudu ve věci DPH, ale nezaplatil soudní poplatek. Nejvyšší správní soud řešil následky nezaplacení poplatku a řízení zastavil, protože žalobce poplatek neuhradil ani po výzvě v určené lhůtě.",
    "oblasti": [
-    "dane"
+    "dane",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785166",
@@ -3758,14 +4288,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785166",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785166",
    "soudce": "Štěpán Výborný",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zpětvzetí kasační stížnosti",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Městského soudu v Praze, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Nejvyšší správní soud řešil procesní důsledek zpětvzetí kasační stížnosti. Jelikož žalobce vzal svou kasační stížnost zpět, soud řízení zastavil.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785140",
@@ -3778,14 +4307,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785140",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785140",
    "soudce": "Jitka Zavřelová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Námitka podjatosti",
+   "shrnuti": "Žalobce podal námitku systémové podjatosti všech soudců Městského soudu v Praze v řízení vedeném pod sp. zn. 6 Ad 12/2026. Nejvyšší správní soud řešil otázku, zda lze projednat námitku podjatosti podanou až po pravomocném skončení věci. Soud dospěl k závěru, že neexistuje-li již neskončené řízení, je nutno námitku podjatosti odmítnout.",
    "oblasti": [
+    "civilni_proces",
     "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785135",
@@ -3865,14 +4393,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784794",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784794",
    "soudce": "Jiří Palla",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přípustnost kasační stížnosti",
+   "shrnuti": "Žalobkyně podala kasační stížnost proti rozsudku Krajského soudu v Brně, kterým byla zamítnuta její žaloba na ochranu před nezákonným zásahem Statutárního města Brno - Městské části Brno-Řečkovice a Mokrá Hora v přestupkovém řízení. Nejvyšší správní soud řešil otázku, zda kasační stížnost splňuje zákonné náležitosti a směřuje proti důvodům napadeného rozhodnutí. Soud dospěl k závěru, že stěžovatelka v kasační stížnosti vůbec nepolemizovala s nosnými právními závěry krajského soudu, a proto kasační stížnost podle § 104 odst. 4 zákona č. 150/2002 Sb. odmítl jako nepřípustnou.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784776",
@@ -3908,14 +4435,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784560",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784560",
    "soudce": "Štěpán Výborný",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek kasační stížnosti",
+   "shrnuti": "Žalobce se domáhal přiznání odkladného účinku kasační stížnosti podané proti rozsudku Městského soudu v Praze, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Nejvyšší správní soud řešil otázku včasnosti návrhu na přiznání odkladného účinku. Soud rozhodl, že návrh je opožděný, protože nebyl podán současně s kasační stížností, jak vyžaduje zákon o azylu.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784160",
@@ -3930,14 +4456,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784160",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784160",
    "soudce": "Štěpán Výborný",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek kasační stížnosti",
+   "shrnuti": "V řízení o kasačních stížnostech proti rozsudku krajského soudu, kterým byl zrušen schvalovací výměr lesního hospodářského plánu, se osoba zúčastněná na řízení domáhala přiznání odkladného účinku. Nejvyšší správní soud řešil otázku, zda stěžovatel osvědčil hrozbu nepoměrně větší újmy ve smyslu § 73 odst. 2 s. ř. s. Dospěl k závěru, že tvrzení o ekonomických a provozních dopadech byla příliš obecná a hypotetická, a proto návrh na přiznání odkladného účinku zamítl.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "stavebni_zp",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:780573",
@@ -3952,14 +4478,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/780573",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/780573",
    "soudce": "Štěpán Výborný",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Nepřijatelnost kasační stížnosti",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Krajského soudu v Ostravě – pobočky v Olomouci, kterým byla zamítnuta jeho žaloba proti rozhodnutí žalovaného o přestupku na úseku dopravy. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti a posouzení přiměřenosti uložené sankce v souvislosti se zákaz dvojího přičítání. Dospěl k závěru, že kasační stížnost je nepřijatelná, neboť napadený rozsudek nevykazuje zásadní pochybení a kasační stížnost svým významem nepřesahuje vlastní zájmy stěžovatele.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785463",
@@ -4018,14 +4543,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785457",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785457",
    "soudce": "Štěpán Výborný",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Oprávnění kasační stížnosti",
+   "shrnuti": "Žalobkyně se žalobou domáhala přezkumu rozhodnutí Ministerstva práce a sociálních věcí o nepřiznání příspěvku na bydlení, přičemž městský soud její žalobu zamítl. Poté, co žalobkyně zemřela, podali kasační stížnost její potenciální dědici jako stěžovatelé. Nejvyšší správní soud řešil otázku, zda jsou stěžovatelé procesními nástupci oprávněnými k podání kasační stížnosti, a dospěl k závěru, že nároky na dávky státní sociální podstaty nejsou předmětem dědictví a stěžovatelé nesplňují zákonné podmínky procesního nástupnictví, pročež kasační stížnost odmítl.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785373",
@@ -4038,14 +4562,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785373",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785373",
    "soudce": "Jan Kratochvíl",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Vyloučení soudce",
+   "shrnuti": "Žalobce se domáhal vyloučení dvou soudců Krajského soudu v Brně pro podjatost v řízení o žalobě proti rozhodnutí rektora Masarykovy univerzity ve věci disciplinárního přestupku. Nejvyšší správní soud řešil otázku, zda dlouhodobá externí výuka soudce na fakultě, jejíž orgán vydal prvostupňové rozhodnutí, zakládá důvod pro jeho podjatost. Soud dospěl k závěru, že soudce Majerčík, který na Fakultě sociálních studií pravidelně vyučuje, je z projednávání věci vyloučen, zatímco soudce Kokeš, který na této fakultě nepůsobí, vyloučen není.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785352",
@@ -4125,14 +4648,12 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785310",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785310",
    "soudce": "Filip Dienstbier",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastavení řízení",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Krajského soudu v Brně ve věci žaloby proti rozhodnutí Krajského úřadu Jihomoravského kraje o poskytnutí informací. Soud řešil otázku nesplnění poplatkové povinnosti a rozhodl o zastavení řízení pro nezaplacení soudního poplatku ve stanovené lhůtě.",
    "oblasti": [
     "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785301",
@@ -4208,14 +4729,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785249",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785249",
    "soudce": "Jaroslav Vlašín",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zánik účastníka řízení",
+   "shrnuti": "Žalobkyně Adetec Holding se soudila s Odvolacím finančním ředitelstvím o přezkoumání rozhodnutí týkajícího se daně z přidané hodnoty. Nejvyšší správní soud řešil otázku, zda lze pokračovat v řízení o kasační stížnosti poté, co žalobkyně zánikem bez likvidace ztratila způsobilost být účastníkem řízení a nemá právního nástupce. Soud dospěl k závěru, že jde o neodstranitelný nedostatek podmínky řízení, a proto kasační stížnost odmítl.",
    "oblasti": [
+    "civilni_proces",
     "dane"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785248",
@@ -4293,14 +4813,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785207",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785207",
    "soudce": "Vojtěch Šimíček",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přijatelnost kasační stížnosti",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku krajského soudu, kterým byla zamítnuta jeho žaloba proti rozhodnutí České správy sociálního zabezpečení o zamítnutí žádosti o invalidní důchod. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti a námitky týkající se nesprávného složení posudkové komise a posouzení míry poklesu pracovní schopnosti. Soud dospěl k závěru, že kasační stížnost je nepřijatelná, protože nastolené otázky jsou již judikatorně vyřešeny a krajský soud se nedopustil zásadního pochybení.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785203",
@@ -4399,14 +4918,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784846",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784846",
    "soudce": "Filip Dienstbier",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastavení řízení",
+   "shrnuti": "Žalobce se kasační stížností domáhal přezkumu usnesení o zastavení řízení pro nezaplacení soudního poplatku, přičemž Nejvyšší správní soud řešil otázku povinnosti rozhodovat o opakované žádosti o osvobození od soudních poplatků. Soud uzavřel, že o opakované žádosti není nutné rozhodovat, pokud neobsahuje nové a věrohodné skutečnosti, a protože stěžovatel poplatek ve lhůtě neuhradil, řízení o kasační stížnosti zastavil.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784839",
@@ -4421,12 +4939,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784839",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784839",
    "soudce": "Štěpán Výborný",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Opožděná kasační stížnost",
+   "shrnuti": "Žalobce se soudil s Hlavním městem Praha o ochranu před nezákonným zásahem, přičemž kasační stížnost podal po lhůtě. Nejvyšší správní soud řešil otázku včasnosti kasační stížnosti. Soud rozhodl, že kasační stížnost byla podána opožděně, a proto ji odmítl.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
   },
   {
    "id": "nss:784821",
@@ -4462,14 +4981,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784815",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784815",
    "soudce": "Jiří Palla",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přijatelnost kasační stížnosti",
+   "shrnuti": "Ministerstvo vnitra podalo kasační stížnost proti rozsudku Krajského soudu v Ostravě pobočky v Olomouci, kterým bylo zrušeno rozhodnutí o zajištění žalobce. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti ve světle ustálené judikatury ohledně překážky vycestování občanů Ukrajiny. Soud kasační stížnost odmítl pro nepřijatelnost, neboť krajský soud rozhodnul v souladu s ustálenou judikaturou správních soudů.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784303",
@@ -4484,14 +5002,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784303",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784303",
    "soudce": "Eva Šonková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Mezinárodní ochrana",
+   "shrnuti": "Žalobce se soudil s Ministerstvem vnitra o udělení mezinárodní ochrany, přičemž v kasační stížnosti namítal obavu z odvodu do armády a nucených odvodů na Ukrajině. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti ve vztahu k posouzení plnění branné povinnosti a údajných nucených odvodů jako azylových důvodů. Dospěl k závěru, že kasační stížnost je nepřijatelná, protože napadené rozhodnutí krajského soudu odpovídá ustálené judikatuře.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784289",
@@ -4506,14 +5023,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784289",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784289",
    "soudce": "Ivo Pospíšil",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odmítnutí kasační stížnosti",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Krajského soudu v Ostravě – pobočky v Olomouci ve věci zajištění podle zákona o azylu, přičemž v průběhu řízení ztratil právního zástupce. Nejvyšší správní soud řešil otázku splnění podmínky povinného zastoupení a jelikož stěžovatel přes výzvu nedoložil plnou moc advokáta ani právnické vzdělání, kasační stížnost odmítl pro vady.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784066",
@@ -4528,14 +5044,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784066",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784066",
    "soudce": "Petra Weissová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Přípustnost kasační stížnosti",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Krajského soudu v Hradci Králové – pobočka v Pardubicích, kterým byla zamítnuta jeho žaloba proti rozhodnutí žalovaného o stavebním záměru. Nejvyšší správní soud řešil otázku přípustnosti kasační stížnosti, která z velké části opakovala žalobní body a nereagovala na závěry krajského soudu. Soud dospěl k závěru, že kasační stížnost je nepřípustná dle § 104 odst. 4 soudního řádu správního, a proto ji odmítl.",
    "oblasti": [
+    "civilni_proces",
     "stavebni_zp"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:782897",
@@ -4550,14 +5065,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/782897",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/782897",
    "soudce": "Vojtěch Šimíček",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastavení řízení",
+   "shrnuti": "Obce a město Horažďovice se žalobou a následnou kasační stížností domáhaly zrušení rozhodnutí o stanovení průzkumného území Březový potok pro úložiště jaderného paliva, přičemž Ministerstvo životního prostředí bylo žalovaným. Nejvyšší správní soud řešil procesní otázku zpětvzetí kasační stížnosti devíti stěžovateli. Protože tito stěžovatelé vzali kasační stížnost zpět, soud řízení o jejich kasační stížnosti podle § 47 písm. a) ve spojení s § 37 odst. 4 s. ř. s. zastavil.",
    "oblasti": [
-    "stavebni_zp"
+    "stavebni_zp",
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:781157",
