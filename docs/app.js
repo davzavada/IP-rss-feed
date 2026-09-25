@@ -317,24 +317,32 @@ const FEEDS = [
 // Stránka zdroje v navigaci (časopisy mají stránku #casopisy).
 const STRANKA_ZDROJE = { journals: "casopisy" };
 
-// Okno zdroje slovy: celé týdny od tří výš (okno časopisů) jako týdny,
-// jinak ve dnech.
+// Okno zdroje slovy: 28 až 31 dní je měsíc (okno všech zdrojů), celé
+// týdny od tří výš jako týdny, jinak ve dnech.
 function oknoText(dni) {
+  if (dni >= 28 && dni <= 31) return "měsíc";
   return dni >= 21 && dni % 7 === 0 ? tvar(dni / 7, "týden", "týdny", "týdnů") : tvar(dni, "den", "dny", "dní");
 }
 
+// Okno do věty za „za": „poslední měsíc", „poslední 3 týdny", „posledních 14 dní".
+function oknoZa(dni) {
+  const okno = oknoText(dni);
+  return (/^(měsíc|1 |[234] )/.test(okno) ? "poslední " : "posledních ") + okno;
+}
+
 // V boční navigaci u každého zdroje nenápadně vpravo, za jak dlouhou dobu
-// ukazuje novinky (okno dat, okno_dni v JSON – u soudů 14 nebo 30 dní).
+// ukazuje novinky (okno dat, okno_dni v JSON – u všech zdrojů měsíc).
 // Stejné okno patří i do popisu pod nadpisem stránky zdroje.
 function ukazOkna() {
   FEEDS.forEach(f => {
     if (!f.oknoDni) return;
     const okno = oknoText(f.oknoDni);
+    const za = oknoZa(f.oknoDni);
     const popis = document.getElementById("popis-" + f.key);
     if (popis) {
       popis.textContent = f.key === "journals"
-        ? "Nová čísla a články za poslední " + okno + "."
-        : "Rozhodnutí zveřejněná za posledních " + okno + ", nejnovější nahoře.";
+        ? "Nová čísla a články za " + za + "."
+        : "Rozhodnutí zveřejněná za " + za + ", nejnovější nahoře.";
     }
     const a = document.querySelector('#sidenav a[href="#' + (STRANKA_ZDROJE[f.key] || f.key) + '"]');
     if (!a) return;
@@ -345,7 +353,7 @@ function ukazOkna() {
       a.appendChild(el);
     }
     el.textContent = okno;
-    el.title = "Novinky za posledních " + okno;
+    el.title = "Novinky za " + za;
   });
 }
 
@@ -508,7 +516,7 @@ function stavShrnutiText(polozky, oknoDni) {
   const casti = [];
   if (cekajici.length) {
     casti.push("AI ještě zpracovává " + cekajici.length + " z " + polozky.length + " rozhodnutí" +
-      (oknoDni ? " za posledních " + oknoDni + " dní" : "") + ". Shrnutí a oblasti doplní " +
+      (oknoDni ? " za " + oknoZa(oknoDni) : "") + ". Shrnutí a oblasti doplní " +
       "při nočním sběru (ve 2:00)" +
       (bezOblasti === cekajici.length
         ? ", do výběru podle oblastí se tato rozhodnutí dostanou až potom."
@@ -1464,7 +1472,7 @@ function souhrnSenatu(v) {
 // Časopisy: vybraný se ukazuje (ukládá se, které jsou skryté).
 function casopisyHtml(v, casopisy) {
   const vybrane = casopisy.filter(c => v.skryte_casopisy.indexOf(c.id) < 0).length;
-  return '<p class="vyber-uvod">Nová čísla a články za poslední 4 týdny z vybraných časopisů.</p>' +
+  return '<p class="vyber-uvod">Nová čísla a články za poslední měsíc z vybraných časopisů.</p>' +
     skupinaHtml("Časopisy", vybrane + " z " + casopisy.length,
       vseHtml({ "data-vse": "casopisy" }, vybrane === casopisy.length),
       '<div class="volby">' + casopisy.map(c => volbaHtml({ "data-casopis": c.id },

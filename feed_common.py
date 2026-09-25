@@ -4,7 +4,7 @@ volitelné AI shrnutí přes Gemini API.
 
 Sledování prvního výskytu: každý feed si drží JSON {guid: ISO datum prvního
 výskytu}. Podle něj:
-  - ponecháme jen položky s prvním výskytem do `weeks` týdnů zpět,
+  - ponecháme jen položky s prvním výskytem do `days` dní zpět (OKNO_DNI),
   - označíme položky, které přibyly v posledních 24 hodinách
     (item["is_new"] = True).
 
@@ -45,6 +45,11 @@ SEEN_PRUNE_DAYS = 120
 # nalezené před půlnocí přišly o příznak dřív, než si je ráno někdo přečte.
 NEW_WINDOW = timedelta(hours=24)
 
+# Okno webu u všech zdrojů (soudy i časopisy): měsíc podle prvního výskytu.
+# 31 dní, aby první den měsíce bylo v okně celý předchozí měsíc – z toho
+# bude vycházet měsíční shrnutí.
+OKNO_DNI = 31
+
 
 def is_new(first_seen, now=None):
     """True, když položka přibyla v posledních NEW_WINDOW hodinách."""
@@ -65,8 +70,8 @@ def save_seen(state_file, seen, prune_days=SEEN_PRUNE_DAYS):
         json.dump(pruned, f, ensure_ascii=False, indent=2)
 
 
-def filter_by_first_seen(items, guid_of, state_file, weeks=2):
-    """Ponechá jen položky s prvním výskytem do `weeks` týdnů zpět.
+def filter_by_first_seen(items, guid_of, state_file, days=OKNO_DNI):
+    """Ponechá jen položky s prvním výskytem do `days` dní zpět.
 
     Každé ponechané položce nastaví item["is_new"] = True, pokud přibyla
     v posledních 24 hodinách. Stav prvního výskytu zároveň uloží.
@@ -76,7 +81,7 @@ def filter_by_first_seen(items, guid_of, state_file, weeks=2):
     """
     seen = load_json(state_file)
     now = datetime.now(timezone.utc)
-    cutoff = now - timedelta(weeks=weeks)
+    cutoff = now - timedelta(days=days)
 
     kept = []
     for item in items:

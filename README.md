@@ -27,7 +27,7 @@ tools/probe_zdroje.py sonda: syrové odpovědi webů soudů pro parsery a testy
 ```
 
 Časopisy si vedou **stav prvního výskytu** (`journals_seen.json`): kdy
-položku poprvé viděly. Podle něj drží položku v okně (čtyři týdny)
+položku poprvé viděly. Podle něj drží položku v okně (měsíc)
 a web ji ukáže v Novinkách, když přibyla v posledních 24 hodinách (judikatura
 totéž dělá přes `first_seen` v archivu). Registr časopisů (`CASOPISY`
 ve `scraper_journals.py`) dává každému stálé id, které se ukládá ve výběru
@@ -67,8 +67,10 @@ pro AI.
 - **Archiv** je v `data/judikatura/{soud}/RRRR-MM.jsonl`: jeden záznam na
   řádek, seřazený podle id, v měsíci prvního výskytu. `index.tsv` drží
   všechna id, takže se nic nezdvojí ani po letech. Na web jde jen okno
-  `docs/data/judikatura/{soud}.json` (NS, NSS, ÚS 14 dní, SDEU 30), a to jen
-  když se obsah opravdu změní. Vercel archiv nevidí, nasazuje jen `docs/`.
+  `docs/data/judikatura/{soud}.json` (u všech soudů i časopisů měsíc:
+  `OKNO_DNI` = 31 dní ve `feed_common.py`, ať je první den měsíce v okně celý
+  předchozí měsíc jako podklad pro měsíční shrnutí), a to jen když se obsah
+  opravdu změní. Vercel archiv nevidí, nasazuje jen `docs/`.
 - **První výskyt** je čas, kdy jsme rozhodnutí objevili. Když ale bylo
   zveřejněné před víc než třemi dny (vynechané běhy, první běh soudu), bere
   se datum zveřejnění, ať se staré netváří jako nové. Úplně první běh soudu

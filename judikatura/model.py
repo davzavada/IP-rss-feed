@@ -9,6 +9,8 @@ import re
 import unicodedata
 from datetime import datetime, timedelta, timezone
 
+from feed_common import OKNO_DNI
+
 SOUDY = ("ns", "nss", "us", "sdeu")
 NAZVY_SOUDU = {
     "ns": "Nejvyšší soud",
@@ -17,9 +19,9 @@ NAZVY_SOUDU = {
     "sdeu": "Soudní dvůr EU",
 }
 
-# Kolik dní zpět zobrazuje web (podle prvního výskytu). Pevně v kódu – SDEU
-# rozhoduje méně a po skupinách, proto měsíc.
-OKNA_DNI = {"ns": 14, "nss": 14, "us": 14, "sdeu": 30}
+# Kolik dní zpět zobrazuje web (podle prvního výskytu): u všech soudů měsíc,
+# ať je v okně celý podklad pro měsíční shrnutí. Archiv drží všechno.
+OKNA_DNI = {"ns": OKNO_DNI, "nss": OKNO_DNI, "us": OKNO_DNI, "sdeu": OKNO_DNI}
 
 
 def ted():

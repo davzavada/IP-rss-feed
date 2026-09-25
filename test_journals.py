@@ -414,7 +414,7 @@ check("první zápis okna", s.zapis_json([zprava, rozhodnuti], cesta, t1))
 with open(cesta, encoding="utf-8") as f:
     okno = json.load(f)
 check("okno: čas, dny, registr, položky",
-      okno["generated"] == "2026-09-24T05:00:00Z" and okno["okno_dni"] == 28
+      okno["generated"] == "2026-09-24T05:00:00Z" and okno["okno_dni"] == 31
       and okno["casopisy"] == s.CASOPISY and [p["id"] for p in okno["polozky"]] == ["pravnik-4064", rozhodnuti["guid"]])
 check("beze změny obsahu se nepřepisuje (ani čas)",
       not s.zapis_json([zprava, rozhodnuti], cesta, t1 + timedelta(hours=6)))

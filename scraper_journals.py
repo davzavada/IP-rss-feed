@@ -25,6 +25,7 @@ from feed_common import (
     JOURNAL_ARTICLE_PROMPT,
     JOURNAL_DECISION_PROMPT,
     JOURNAL_ISSUE_PROMPT,
+    OKNO_DNI,
     USER_AGENT,
     filter_by_first_seen,
     gemini_enabled,
@@ -39,8 +40,8 @@ STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "journals_
 # Cache AI shrnutí podle guid ({guid: {"summary": ..., "tag": ...}}).
 META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "journals_meta.json")
 
-# Okno: články vycházejí po číslech, takže se drží déle než rozhodnutí.
-WINDOW_WEEKS = 4
+# Okno: měsíc podle prvního výskytu, stejně jako u soudů.
+WINDOW_DAYS = OKNO_DNI
 
 # Registr časopisů. `id` je stálé (ukládá se ve výběru uživatele), `zkratka`
 # je štítek na webu a zároveň prefix titulku položky ([IIC] …) ze scraperů.
@@ -674,14 +675,14 @@ def fetch_ojs_rss(feed_url, label, journal_name):
 # i abstrakty. Novinky bereme podle data vzniku DOI (≈ online publikace).
 
 CROSSREF_API = "https://api.crossref.org/journals/{issn}/works"
-CROSSREF_LOOKBACK_DAYS = 30  # jak daleko zpět se ptáme
+CROSSREF_LOOKBACK_DAYS = OKNO_DNI  # jak daleko zpět se ptáme (okno webu)
 # Ptáme se dvakrát, protože ani jedno datum samo o sobě nestačí:
 #   from-created-date  – kdy vznikl DOI záznam. Chytí i staršího „novinku“,
 #                        kterou vydavatel deponoval teprve teď.
 #   from-pub-date      – kdy článek vyšel. Chytí čísla, jejichž DOI vydavatel
 #                        deponoval dopředu (ahead of print) – tak vypadlo
 #                        srpnové číslo QMJIP, deponované o měsíce dřív.
-# Výsledky se slučují podle DOI, okno zůstává u obou 30 dní, takže se
+# Výsledky se slučují podle DOI, okno zůstává u obou měsíc, takže se
 # nevyhrne archiv.
 CROSSREF_FILTRY = ("from-created-date", "from-pub-date")
 # Crossref etiketa: identifikuj se v User-Agent
@@ -1227,7 +1228,7 @@ def zapis_json(all_items, cesta=None, nyni=None):
     """Zapíše okno časopisů. Jen když se obsah změnil – jinak by každý běh
     měnil čas a spouštěl commit i nasazení. Vrací True při zápisu."""
     cesta = cesta or OUTPUT
-    obsah = {"okno_dni": WINDOW_WEEKS * 7, "casopisy": CASOPISY,
+    obsah = {"okno_dni": WINDOW_DAYS, "casopisy": CASOPISY,
              "polozky": [polozka_json(it) for it in all_items]}
     if os.path.exists(cesta):
         try:
@@ -1320,11 +1321,11 @@ def main():
         except Exception as e:
             print(f"  CHYBA při stahování {label}: {e}")
 
-    # Ponecháme jen položky s prvním výskytem do WINDOW_WEEKS zpět (u všech
+    # Ponecháme jen položky s prvním výskytem do WINDOW_DAYS zpět (u všech
     # zdrojů). První výskyt sledujeme sami, aby se staré články s přepsaným
     # datem nevracely.
     all_items = filter_by_first_seen(
-        all_items, lambda i: i["guid"], STATE_FILE, weeks=WINDOW_WEEKS
+        all_items, lambda i: i["guid"], STATE_FILE, days=WINDOW_DAYS
     )
 
     # Zdroje, které datum vydání neuvádějí (weby českých časopisů), dostanou
