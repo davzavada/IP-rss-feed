@@ -1184,19 +1184,24 @@ function nactiSkript(src, atributy) {
   });
 }
 
-function initClerk() {
+// Skripty Clerku se stahují hned při startu, souběžně s feedy.
+function nactiClerkSkripty() {
   const klic = clerkKlic();
   const host = clerkFrontendApi(klic);
-  if (!host) {
-    clerkNedostupny(new Error("neplatný klíč Clerku"));
-    return;
-  }
+  if (!host) return Promise.reject(new Error("neplatný klíč Clerku"));
   const cdn = "https://" + host + "/npm/";
-  Promise.all([
+  return Promise.all([
     nactiSkript("vendor/clerk-cs-CZ.js"),
     nactiSkript(cdn + CLERK_UI, { crossorigin: "anonymous" }),
     nactiSkript(cdn + CLERK_JS, { crossorigin: "anonymous", "data-clerk-publishable-key": klic })
-  ])
+  ]);
+}
+
+// Spustí se až po načtení oblastí a časopisů – uložený výběr se podle nich
+// normalizuje. Promise se splní, jakmile je jasné, kdo je přihlášený (nebo
+// že Clerk nejde); nikdy neselže.
+function initClerk(skripty) {
+  return skripty
     .then(() => window.Clerk.load({
       ui: { ClerkUI: window.__internal_ClerkUICtor },
       localization: window.clerkCsCZ
@@ -1214,6 +1219,10 @@ function initClerk() {
     })
     .catch(clerkNedostupny);
 }
+
+// Jak dlouho nejvýš stránka při načtení čeká na Clerk, než se ukáže. Pak
+// už se ukáže ve výchozím výběru a přihlášení doběhne za ní.
+const CLERK_CEKANI_MS = 3000;
 
 function clerkNedostupny(e) {
   console.warn("Přihlášení není k dispozici:", e);
@@ -1930,6 +1939,8 @@ function initApp() {
   // Dvoutýdenní přehled a kalendář se generují zvlášť – když chybí, jen se
   // nevykreslí; zbytek stránky na ně nečeká déle než na feedy.
   const digestPromise = fetchJson("digest.json").catch(() => null);
+  const clerkSkripty = nactiClerkSkripty();
+  clerkSkripty.catch(() => {});   // chybu vyřeší initClerk()
   const hearingsPromise = fetchJson("hearings.json").catch(() => null);
   initNav();
   initNovinkyFiltr();
@@ -1939,8 +1950,15 @@ function initApp() {
   // Vykreslíme až všechny feedy dorazí (stahují se paralelně, jsou ze
   // stejného původu). Jedno překreslení místo tří – stránka při načítání
   // neposkakuje. Selhání jednoho feedu ostatní nezdrží.
-  // Čekáme i na fonty, ať text po odkrytí nepřeskočí na jiné písmo.
-  const fontsReady = document.fonts ? document.fonts.ready.catch(() => {}) : Promise.resolve();
+  // Čekáme i na fonty, ať text po odkrytí nepřeskočí na jiné písmo. Jen na
+  // řezy Geistu, ne na document.fonts.ready – to čeká na načtení celého
+  // dokumentu včetně skriptů Clerku. Nejdéle ale CLERK_CEKANI_MS.
+  const fontsReady = Promise.race([
+    document.fonts
+      ? Promise.all(["400", "500", "600"].map(w => document.fonts.load(w + " 1em Geist"))).catch(() => {})
+      : Promise.resolve(),
+    new Promise(ok => setTimeout(ok, CLERK_CEKANI_MS))
+  ]);
   Promise.all([Promise.allSettled(feedPromises), digestPromise, hearingsPromise, fontsReady])
     .then(([results, digest, hearings]) => {
       zdrojeVysledky = results;
@@ -1949,12 +1967,17 @@ function initApp() {
       vykresliNastaveni();
       renderDigest(digest);
       renderKalendar(hearings);
+      // Stránku odkryjeme, až je známý účet – jinak by přihlášenému
+      // probliknul výchozí výběr a hlavička bez účtu. Na Clerk ale čekáme
+      // jen chvíli; když nestihne, doběhne až po odkrytí.
+      const cekani = new Promise(ok => setTimeout(ok, CLERK_CEKANI_MS));
+      return Promise.race([initClerk(clerkSkripty), cekani]);
+    })
+    .then(() => {
       // Až teď je jasná výška stránky – otevřeme kotvu z adresy (a přepočítáme
       // zvýraznění) ještě než stránku odkryjeme, ať nic nepřeskočí.
       navigate(location.hash, false);
       document.documentElement.classList.remove("is-loading");
-      // Přihlášení až teď – obsah na Clerk nečeká.
-      initClerk();
     });
 
   Promise.allSettled(feedPromises).then(showUpdated);
