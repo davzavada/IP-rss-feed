@@ -420,6 +420,52 @@ check("beze změny obsahu se nepřepisuje (ani čas)",
       not s.zapis_json([zprava, rozhodnuti], cesta, t1 + timedelta(hours=6)))
 
 # =====================================================================
+print("\nArchiv (data/casopisy/RRRR-MM.jsonl)")
+# =====================================================================
+archiv_dir = tempfile.mkdtemp(prefix="archiv-casopisu-")
+rozhodnuti["first_seen"] = datetime(2026, 8, 30, 6, 0, tzinfo=timezone.utc)
+
+
+def nacti_archiv():
+    out = {}
+    for jmeno in sorted(os.listdir(archiv_dir)):
+        with open(os.path.join(archiv_dir, jmeno), encoding="utf-8") as f:
+            out[jmeno] = [json.loads(r) for r in f if r.strip()]
+    return out
+
+
+check("první archivace: obě položky nové", s.archivuj([zprava, rozhodnuti], archiv_dir) == 2)
+arch = nacti_archiv()
+check("měsíc podle prvního výskytu, záznam jako v okně",
+      sorted(arch) == ["2026-08.jsonl", "2026-09.jsonl"]
+      and arch["2026-09.jsonl"] == [s.polozka_json(zprava)]
+      and arch["2026-08.jsonl"] == [s.polozka_json(rozhodnuti)], str(arch))
+mtime = os.path.getmtime(os.path.join(archiv_dir, "2026-08.jsonl"))
+check("znovu nic nového", s.archivuj([zprava, rozhodnuti], archiv_dir) == 0
+      and os.path.getmtime(os.path.join(archiv_dir, "2026-08.jsonl")) == mtime)
+zprava["summary"], zprava["tag"] = "Doplněné shrnutí.", "Seminář"
+s.archivuj([zprava], archiv_dir)
+check("doplněné shrnutí se do archivu propíše",
+      nacti_archiv()["2026-09.jsonl"][0].get("shrnuti") == "Doplněné shrnutí.")
+
+# =====================================================================
+print("\nStav prvního výskytu a cache")
+# =====================================================================
+stav = os.path.join(tempfile.mkdtemp(prefix="stav-"), "seen.json")
+davno = (datetime.now(timezone.utc) - timedelta(days=400)).isoformat()
+nedavno = (datetime.now(timezone.utc) - timedelta(days=10)).isoformat()
+with open(stav, "w", encoding="utf-8") as f:
+    json.dump({"stary": davno, "novy": nedavno}, f)
+drzene = fc.filter_by_first_seen([{"guid": "stary"}, {"guid": "novy"}], lambda i: i["guid"], stav,
+                                 prune_days=None)
+with open(stav, encoding="utf-8") as f:
+    ulozeny = json.load(f)
+check("bez prořezávání stav drží i rok staré položky, okno jen měsíc",
+      sorted(ulozeny) == ["novy", "stary"] and [i["guid"] for i in drzene] == ["novy"], str(ulozeny))
+check("cache shrnutí se prořízne podle stáří, ne podle přítomnosti ve stavu",
+      fc.prune_meta({"stary": {}, "novy": {}}, stav) == {"novy": {}})
+
+# =====================================================================
 failed = [n for n, ok, _ in results if not ok]
 print(f"\n{len(results) - len(failed)}/{len(results)} testů prošlo")
 if failed:

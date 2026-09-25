@@ -111,7 +111,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           # docs/data/judikatura patří workflow judikatura.yml.
-          git add docs/ ':!docs/data/judikatura' journals_seen.json journals_meta.json hearings_config.json
+          git add docs/ ':!docs/data/judikatura' data/casopisy journals_seen.json journals_meta.json hearings_config.json
           git diff --cached --quiet || git commit -m "Update journals and hearings $(date -u +%Y-%m-%d)"
           # Kdyby se main mezitím pohnul (dlouhý běh scraperu), přebasuj a zkus
           # znovu; u konfliktů v generovaných souborech vyhrává naše novější verze.

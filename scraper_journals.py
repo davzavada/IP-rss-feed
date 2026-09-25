@@ -37,6 +37,9 @@ from feed_common import (
 
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "data", "casopisy.json")
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "journals_seen.json")
+# Archiv všech článků a čísel: data/casopisy/RRRR-MM.jsonl podle měsíce
+# prvního výskytu, jeden záznam (jako v okně pro web) na řádek. Web ho nevidí.
+ARCHIV_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "casopisy")
 # Cache AI shrnutí podle guid ({guid: {"summary": ..., "tag": ...}}).
 META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "journals_meta.json")
 
@@ -1248,6 +1251,44 @@ def zapis_json(all_items, cesta=None, nyni=None):
     return True
 
 
+def archivuj(all_items, adresar=None):
+    """Zanese položky okna do archivu data/casopisy/RRRR-MM.jsonl (měsíc
+    prvního výskytu). Existující záznam se přepíše novějším – i shrnutí, které
+    se mezitím zahodilo nebo vzniklo znovu. Cache shrnutí drží déle než okno,
+    takže položka v okně o hotové shrnutí nepřijde. Soubor se přepíše, jen
+    když se změní. Vrací počet nově archivovaných položek."""
+    adresar = adresar or ARCHIV_DIR
+    po_mesicich = {}
+    for it in all_items:
+        z = polozka_json(it)
+        mesic = (z.get("first_seen") or z["datum"])[:7]
+        po_mesicich.setdefault(mesic, []).append(z)
+    nove = 0
+    for mesic, zaznamy in po_mesicich.items():
+        cesta = os.path.join(adresar, mesic + ".jsonl")
+        archiv = {}
+        if os.path.exists(cesta):
+            with open(cesta, encoding="utf-8") as f:
+                for radek in f:
+                    if radek.strip():
+                        z = json.loads(radek)
+                        archiv[z["id"]] = z
+        puvodni = dict(archiv)
+        for z in zaznamy:
+            if z["id"] not in archiv:
+                nove += 1
+            archiv[z["id"]] = z
+        if archiv == puvodni:
+            continue
+        os.makedirs(adresar, exist_ok=True)
+        tmp = cesta + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            for k in sorted(archiv):
+                f.write(json.dumps(archiv[k], ensure_ascii=False, sort_keys=True) + "\n")
+        os.replace(tmp, cesta)
+    return nove
+
+
 def main():
     print("Stahuji právní časopisy...")
     all_items = []
@@ -1323,9 +1364,10 @@ def main():
 
     # Ponecháme jen položky s prvním výskytem do WINDOW_DAYS zpět (u všech
     # zdrojů). První výskyt sledujeme sami, aby se staré články s přepsaným
-    # datem nevracely.
+    # datem nevracely. Stav se neprořezává: zdroje vypisují i rok staré
+    # články a po vypadnutí ze stavu by se vrátily jako nové.
     all_items = filter_by_first_seen(
-        all_items, lambda i: i["guid"], STATE_FILE, days=WINDOW_DAYS
+        all_items, lambda i: i["guid"], STATE_FILE, days=WINDOW_DAYS, prune_days=None
     )
 
     # Zdroje, které datum vydání neuvádějí (weby českých časopisů), dostanou
@@ -1342,6 +1384,9 @@ def main():
 
     # Cache shrnutí prořízneme podle stavu prvního výskytu, ať neroste donekonečna
     prune_meta_file(META_FILE, STATE_FILE)
+
+    nove = archivuj(all_items)
+    print(f"Archiv časopisů: {nove} nových položek")
 
     if zapis_json(all_items):
         print(f"Časopisy zapsány do {OUTPUT}")
