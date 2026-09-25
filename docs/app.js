@@ -99,18 +99,6 @@ function failed(containerId) {
   document.getElementById(containerId).innerHTML = '<p class="feed-empty">Nepodařilo se načíst feed.</p>';
 }
 
-/* ========== Štítky ========== */
-
-function tagSlug(label) {
-  return String(label).toLowerCase().replace(/[^a-z0-9]+/g, "-");
-}
-
-// Štítek časopisu / typu řízení.
-function tagBadge(label) {
-  if (!label) return "";
-  return '<span class="tag tag-' + tagSlug(label) + '">' + esc(label) + "</span>";
-}
-
 /* ========== Seznamy položek ========== */
 
 // Vyhledávač NSS posílá PDF ke stažení; na webu na Vercelu ho proto
@@ -150,10 +138,11 @@ function zdrojLabel(url) {
 function pripravPolozku(item, key) {
   item._src = key;
   if (key === "journals") {
-    item.ident = item.tag || "";
+    // „IIC · Liliia Oprysk · Článek" – autoři patří ke zkratce časopisu.
+    item.ident = [item.tag, item.autori].filter(Boolean).join(" · ");
     item.druhText = "Článek";
     item.titul = item.title.replace(/^\[[^\]]+\]\s*/, "");
-    item.vecText = item.autori || "";
+    item.vecText = "";
     item.stitky = item.heslo ? [item.heslo] : [];
   } else {
     item.ident = item.spz || "";
@@ -168,6 +157,19 @@ function pripravPolozku(item, key) {
 
 const TECKA = '<span aria-hidden="true">·</span>';
 
+// Na desktopu jsou odkazy nenápadný šedý text hned za titulkem, na telefonu
+// tlačítka dole vpravo vedle oblastí (dost velká na prst). Každá varianta
+// má vlastní kopii odkazů; CSS ukáže jen tu, která na šířku okna patří.
+function odkazyHtml(p, tlacitka) {
+  const doc = pdfHref(p);
+  const zdroj = safeHref(p.link);
+  const cls = tlacitka ? "odkaz" : "odkaz-text";
+  let html = "";
+  if (doc) html += '<a class="' + cls + (tlacitka ? " odkaz-pdf" : "") + '" href="' + doc + '" target="_blank" rel="noopener">PDF</a>';
+  if (zdroj) html += '<a class="' + cls + '" href="' + zdroj + '" target="_blank" rel="noopener">' + zdrojLabel(p.link) + " ↗</a>";
+  return html;
+}
+
 function polozkaHtml(p) {
   const meta = [];
   if (p.ident) meta.push('<span class="polozka-ident">' + esc(p.ident) + "</span>");
@@ -176,23 +178,18 @@ function polozkaHtml(p) {
   if (p.vecText) {
     html += '<span class="meta-vec">' + (meta.length ? TECKA : "") + "<span>" + esc(p.vecText) + "</span></span>";
   }
-  html += "</div>";
-  const datum = czDate(p.datum);
-  html += '<span class="polozka-datum">' + esc(datum) + "</span>";
-  html += '<h3 class="polozka-titul">' + esc(p.titul) + "</h3>";
+  html += '<span class="polozka-datum">' + esc(czDate(p.datum)) + "</span></div>";
+  // Odkaz ještě na samotný dokument (PDF rozhodnutí) – shrnutí je jen
+  // shrnutí. Obojí se otevře v nové kartě, ať čtenář nepřijde o místo.
+  const odkazy = odkazyHtml(p, false);
+  html += '<div class="polozka-hlava"><h3 class="polozka-titul">' + esc(p.titul) + "</h3>" +
+    (odkazy ? '<span class="polozka-odkazy-text">' + odkazy + "</span>" : "") + "</div>";
   if (p.vecText) html += '<div class="polozka-vec">' + esc(p.vecText) + "</div>";
   // Bez shrnutí ještě může být poznámka, proč žádné není – třeba že u žádosti
   // o předběžnou otázku zatím nejsou zveřejněné otázky.
   if (p.shrnuti) html += '<p class="polozka-shrnuti">' + esc(p.shrnuti) + "</p>";
   else if (p.poznamka) html += '<p class="polozka-shrnuti note">' + esc(p.poznamka) + "</p>";
-  // Odkaz ještě na samotný dokument (PDF rozhodnutí) – shrnutí je jen
-  // shrnutí. Obojí se otevře v nové kartě, ať čtenář nepřijde o místo.
-  const doc = pdfHref(p);
-  const zdroj = safeHref(p.link);
-  html += '<div class="polozka-odkazy">';
-  if (doc) html += '<a class="odkaz odkaz-pdf" href="' + doc + '" target="_blank" rel="noopener">PDF</a>';
-  if (zdroj) html += '<a class="odkaz" href="' + zdroj + '" target="_blank" rel="noopener">' + zdrojLabel(p.link) + " ↗</a>";
-  html += "</div></article>";
+  html += '<div class="polozka-odkazy">' + odkazyHtml(p, true) + "</div></article>";
   return html;
 }
 
@@ -299,44 +296,56 @@ function vidiCasopis(item) {
 // Zdroje stránky: okna judikatury (data/judikatura/) a časopisy
 // (data/casopisy.json); `filtr` je výběr, co z okna ukázat. `nazev`
 // a `ikona` jsou do nadpisu skupiny v Novinkách.
-const PRAZDNY_VYBER = 'Ve vašem výběru za tu dobu nic nepřibylo. <a href="#nastaveni">Upravit výběr</a>';
 const FEEDS = [
   { key: "nsoud",    label: "NS",      nazev: "Nejvyšší soud", ikona: "icon-court",
     json: "data/judikatura/ns.json",
-    containerId: "feed-nsoud", filtr: vidiNS, prazdno: PRAZDNY_VYBER, stavId: "stav-nsoud" },
+    containerId: "feed-nsoud", filtr: vidiNS, stavId: "stav-nsoud" },
   { key: "nss",      label: "NSS",     nazev: "Nejvyšší správní soud", ikona: "icon-scale",
     json: "data/judikatura/nss.json",
-    containerId: "feed-nss", filtr: vidiPodleOblasti("nss"), prazdno: PRAZDNY_VYBER, stavId: "stav-nss" },
+    containerId: "feed-nss", filtr: vidiPodleOblasti("nss"), stavId: "stav-nss" },
   { key: "us",       label: "ÚS",      nazev: "Ústavní soud", ikona: "icon-shield",
     json: "data/judikatura/us.json",
-    containerId: "feed-us", filtr: vidiPodleOblasti("us"), prazdno: PRAZDNY_VYBER, stavId: "stav-us" },
+    containerId: "feed-us", filtr: vidiPodleOblasti("us"), stavId: "stav-us" },
   { key: "sdeu",     label: "SDEU",    nazev: "Soudní dvůr EU", ikona: "icon-eu",
     json: "data/judikatura/sdeu.json",
-    containerId: "feed-sdeu", filtr: vidiPodleOblasti("sdeu"), prazdno: PRAZDNY_VYBER, stavId: "stav-sdeu" },
+    containerId: "feed-sdeu", filtr: vidiPodleOblasti("sdeu"), stavId: "stav-sdeu" },
   { key: "journals", label: "Časopis", nazev: "Právní časopisy", ikona: "icon-book",
     json: "data/casopisy.json", prevod: zCasopisu,
-    containerId: "feed-journals", filtr: vidiCasopis, prazdno: PRAZDNY_VYBER }
+    containerId: "feed-journals", filtr: vidiCasopis }
 ];
 
 // Stránka zdroje v navigaci (časopisy mají stránku #casopisy).
 const STRANKA_ZDROJE = { journals: "casopisy" };
 
+// Okno zdroje slovy: celé týdny od tří výš (okno časopisů) jako týdny,
+// jinak ve dnech.
+function oknoText(dni) {
+  return dni >= 21 && dni % 7 === 0 ? tvar(dni / 7, "týden", "týdny", "týdnů") : tvar(dni, "den", "dny", "dní");
+}
+
 // V boční navigaci u každého zdroje nenápadně vpravo, za jak dlouhou dobu
 // ukazuje novinky (okno dat, okno_dni v JSON – u soudů 14 nebo 30 dní).
+// Stejné okno patří i do popisu pod nadpisem stránky zdroje.
 function ukazOkna() {
   FEEDS.forEach(f => {
+    if (!f.oknoDni) return;
+    const okno = oknoText(f.oknoDni);
+    const popis = document.getElementById("popis-" + f.key);
+    if (popis) {
+      popis.textContent = f.key === "journals"
+        ? "Nová čísla a články za poslední " + okno + "."
+        : "Rozhodnutí zveřejněná za posledních " + okno + ", nejnovější nahoře.";
+    }
     const a = document.querySelector('#sidenav a[href="#' + (STRANKA_ZDROJE[f.key] || f.key) + '"]');
-    if (!a || !f.oknoDni) return;
+    if (!a) return;
     let el = a.querySelector(".nav-okno");
     if (!el) {
       el = document.createElement("span");
       el.className = "nav-okno";
       a.appendChild(el);
     }
-    // Celé týdny od tří výš (okno časopisů) jako týdny, jinak ve dnech.
-    el.textContent = f.oknoDni >= 21 && f.oknoDni % 7 === 0
-      ? tvar(f.oknoDni / 7, "týden", "týdny", "týdnů") : tvar(f.oknoDni, "den", "dny", "dní");
-    el.title = "Novinky za posledních " + el.textContent;
+    el.textContent = okno;
+    el.title = "Novinky za posledních " + okno;
   });
 }
 
@@ -350,13 +359,48 @@ function nactiZdroj(f) {
   });
 }
 
-// `prazdno` je HTML hlášky, když nic není (u filtrovaných stránek odkaz na výběr).
-function renderSeznam(items, container, prazdno) {
-  if (items.length === 0) {
-    container.innerHTML = '<p class="feed-empty">' + (prazdno || "Žádné nové položky.") + "</p>";
-    return;
+// Nejnovější nahoře; položky bez čitelného data na konec.
+function podleData(a, b) {
+  const t = x => { const d = Date.parse(x.datum || ""); return isNaN(d) ? 0 : d; };
+  return t(b) - t(a);
+}
+
+// Stránka zdroje je jeden souvislý seznam za celé okno, nejnovější nahoře.
+// Přepínač nad ním ukazuje buď jen váš výběr, nebo všechno.
+const archivVse = {};             // klíč zdroje -> true, když je zapnuté „Vše"
+
+function renderArchiv(f, vsechny) {
+  const container = document.getElementById(f.containerId);
+  const mine = f.filtr ? vsechny.filter(f.filtr) : vsechny;
+  const vse = !!archivVse[f.key];
+  const prepinac = document.getElementById("prepinac-" + f.key);
+  if (prepinac) {
+    prepinac.hidden = false;
+    prepinac.innerHTML = [["", "Můj výběr", mine.length], ["1", "Vše", vsechny.length]].map(([k, label, n]) =>
+      '<button type="button" data-archiv="' + f.key + '" data-vse="' + k + '" aria-pressed="' + (!!k === vse) +
+      '"><span>' + label + '</span><span class="segment-pocet">' + n + "</span></button>").join("");
   }
-  container.innerHTML = '<div class="zdroj">' + items.map(polozkaHtml).join("") + "</div>";
+  const items = (vse ? vsechny : mine).slice().sort(podleData);
+  if (items.length) {
+    container.innerHTML = '<div class="zdroj">' + items.map(polozkaHtml).join("") + "</div>";
+  } else if (!vse && vsechny.length) {
+    container.innerHTML = '<p class="feed-empty feed-empty-box">Za sledované období tu podle vašeho výběru nic není. ' +
+      '<button type="button" class="odkaz-tlacitko" data-archiv="' + f.key + '" data-vse="1">Přepněte na Vše.</button></p>';
+  } else {
+    container.innerHTML = '<p class="feed-empty feed-empty-box">Za sledované období tu nic není.</p>';
+  }
+}
+
+function initArchivPrepinac() {
+  document.addEventListener("click", e => {
+    const b = e.target.closest("button[data-archiv]");
+    if (!b || !zdrojeVysledky) return;
+    const key = b.dataset.archiv;
+    archivVse[key] = !!b.dataset.vse;
+    vykresliZdroje();
+    const znovu = document.querySelector("#prepinac-" + key + ' [data-vse="' + b.dataset.vse + '"]');
+    if (znovu) znovu.focus();
+  });
 }
 
 /* ========== Novinky: posledních 24 hodin ========== */
@@ -421,12 +465,32 @@ function initNovinkyFiltr() {
     const znovu = prepinac.querySelector('[data-filtr="' + novinkyFiltr + '"]');
     if (znovu) znovu.focus();
   });
-  // Na telefonu je u položky vidět jen první oblast a „…" – klepnutí
-  // ukáže všechny.
-  document.addEventListener("click", e => {
-    const vic = e.target.closest(".stitek-vic");
-    if (vic) vic.parentElement.classList.add("vse");
-  });
+  const stitek = document.getElementById("vyber-stitek");
+  if (stitek) stitek.addEventListener("click", otevriVyber);
+}
+
+// Štítek „Můj výběr: IP, IT, senát 23" vedle filtru Novinek – souhrn toho,
+// podle čeho se Novinky řídí. Bez Clerku se nedá nic změnit, tak není.
+function vykresliVyberStitek() {
+  const el = document.getElementById("vyber-stitek");
+  if (!el) return;
+  el.hidden = clerkStav !== "pripraven" || !vyber;
+  if (el.hidden) return;
+  el.innerHTML = '<svg class="vyber-stitek-ico" aria-hidden="true"><use href="#icon-check"></use></svg>' +
+    "<span>Můj výběr: " + esc(souhrnVyberu(vyber)) + "</span>";
+}
+
+// Krátce: výchozí oblasti jako „IP, IT", jinak jejich názvy (nejvýš dvě)
+// nebo počet; za nimi senáty NS.
+function souhrnVyberu(v) {
+  const oblasti = OBLASTI_SEZNAM.filter(o => stavOblasti(v, o.id) === "true").map(o => o.id);
+  let text = "";
+  if (oblasti.length && JSON.stringify(oblasti) === JSON.stringify(VYCHOZI_OBLASTI)) text = "IP, IT";
+  else if (oblasti.length && oblasti.length <= 2) text = oblasti.map(id => OBLASTI[id]).join(", ");
+  else if (oblasti.length) text = tvar(oblasti.length, "oblast", "oblasti", "oblastí");
+  const senaty = souhrnSenatu(v);
+  if (senaty !== "žádný senát") text += (text ? ", " : "") + senaty;
+  return text || "nic";
 }
 
 // Stažené položky zdrojů (výsledky Promise.allSettled). Při změně výběru se
@@ -465,7 +529,8 @@ function vykresliStavShrnuti() {
     if (!el) return;
     const r = zdrojeVysledky[idx];
     const text = r.status === "fulfilled" ? stavShrnutiText(r.value, f.oknoDni) : "";
-    el.textContent = text;
+    el.innerHTML = text ? '<svg class="nav-ico" aria-hidden="true"><use href="#icon-info"></use></svg>' +
+      "<span>" + esc(text) + "</span>" : "";
     el.hidden = !text;
   });
 }
@@ -479,18 +544,19 @@ function vykresliZdroje() {
     return { status: "fulfilled", value: r.value.filter(f.filtr) };
   });
   FEEDS.forEach((f, idx) => {
-    if (filtrovane[idx].status === "rejected") {
+    const r = zdrojeVysledky[idx];
+    if (r.status === "rejected") {
       failed(f.containerId);
       return;
     }
-    // Druhá stránka je úplný výpis za okno feedu – nové položky z ní
+    // Stránka zdroje je úplný výpis za okno feedu – nové položky z ní
     // nevynecháváme, na jednu stránku se položky nedostanou dvakrát.
-    const el = document.getElementById(f.containerId);
-    renderSeznam(filtrovane[idx].value, el, f.prazdno);
-    pripojVychozi(el, f.key);
+    renderArchiv(f, r.value);
+    pripojVychozi(document.getElementById(f.containerId), f.key);
   });
   renderToday(filtrovane);
   pripojVychozi(document.getElementById("feed-today"), "today");
+  vykresliVyberStitek();
 }
 
 // Nepřihlášený vidí výchozí výběr – pod tabulkou judikatury mu to řekneme
@@ -510,32 +576,44 @@ function pripojVychozi(el, key) {
 // z JSONu nedá do stránky propašovat cizí třída.
 const SRC_KEYS = FEEDS.map(f => f.key);
 
+// Zdroj tématu jako štítek: barevná zkratka soudu (u článků zkratka
+// časopisu, IIC, GRUR Int…), název a šipka ven.
 function digestSource(s) {
   const key = SRC_KEYS.indexOf(s.src) >= 0 ? s.src : "";
-  const badge = '<span class="src' + (key ? " src-" + key : "") + '">' + esc(s.label || "") + "</span>";
-  // U článků ještě zkratka časopisu ([JIPLP], [IIC], …), u CJEU typ řízení.
-  const inner = badge + tagBadge(s.tag) + "<span>" + esc(s.title || "") + "</span>";
+  const label = key === "journals" && s.tag ? s.tag : s.label;
+  const inner = '<span class="digest-source-label' + (key ? " ico-" + key : "") + '">' + esc(label || "") + "</span>" +
+    '<span class="digest-source-titul">' + esc(s.title || "") + "</span>";
   const href = safeHref(s.link || "");
   return href
-    ? '<a class="digest-source" href="' + href + '">' + inner + "</a>"
+    ? '<a class="digest-source" href="' + href + '" target="_blank" rel="noopener">' + inner +
+      '<span class="digest-source-sipka" aria-hidden="true">↗</span></a>'
     : '<span class="digest-source">' + inner + "</span>";
 }
 
 function renderDigest(data) {
   const container = document.getElementById("feed-digest");
-  // Přehled se na rozdíl od feedů generuje jen jednou týdně, takže datum
-  // poslední aktualizace patří k němu – to v hlavičce stránky je z feedů.
-  const stamp = document.getElementById("digest-updated");
-  if (stamp && data && data.generated) {
-    stamp.textContent = "Aktualizováno " + czDate(data.generated) + ".";
-  }
   if (!data || !Array.isArray(data.blocks) || data.blocks.length === 0) {
     container.innerHTML = '<p class="feed-empty">Přehled zatím není k dispozici.</p>';
     return;
   }
-  let html = "";
-  if (data.intro) html += '<p class="digest-intro">' + esc(data.intro) + "</p>";
-  html += '<div class="digest-bloky">';
+  // Nad tématy období přehledu a z kolika položek vybíral; na telefonu
+  // je období místo popisu stránky.
+  const from = czDate(data.from), to = czDate(data.to);
+  const obdobi = from && to ? from + " – " + to : "";
+  const meta = document.getElementById("digest-meta");
+  if (meta) {
+    const casti = [];
+    if (obdobi) casti.push('<span class="digest-obdobi">' + esc(obdobi) + "</span>");
+    if (data.total) {
+      casti.push("<span>z " + data.total + (data.total === 1 ? " položky" : " položek") +
+        (data.covered ? ", " + data.covered + " v přehledu" : "") + "</span>");
+    }
+    meta.innerHTML = casti.join(TECKA);
+    meta.hidden = !casti.length;
+  }
+  const obdobiM = document.getElementById("digest-obdobi-m");
+  if (obdobiM) obdobiM.textContent = obdobi;
+  let html = '<div class="digest-bloky">';
   data.blocks.forEach(b => {
     html += '<div class="digest-block">';
     html += '<h3 class="digest-title">' + esc(b.title || "") + "</h3>";
@@ -547,14 +625,6 @@ function renderDigest(data) {
     html += "</div>";
   });
   html += "</div>";
-
-  const from = czDate(data.from), to = czDate(data.to);
-  const meta = [];
-  if (data.total) meta.push("vybráno z " + data.total + " položek");
-  if (from && to) meta.push("období " + from + " – " + to);
-  if (meta.length) {
-    html += '<p class="digest-meta">' + esc(meta.join(" · ")) + "</p>";
-  }
   container.innerHTML = html;
 }
 
@@ -1012,10 +1082,13 @@ function renderKalendar(data) {
     "</div>" +
     '<div class="cal-seznam" id="cal-seznam"></div>';
 
-  const info = document.getElementById("cal-info");
-  if (info && data.generated) {
-    const kdy = czDate(data.generated);
-    if (kdy) info.textContent = "Aktualizováno " + kdy + ".";
+  // Na telefonu není poznámka pod seznamem – dokdy soudy jednání
+  // zveřejnily, stojí v popisu stránky.
+  const info = document.getElementById("cal-info-m");
+  const doKdy = zverejnenoDo();
+  if (info && doKdy) {
+    const d = dateOf(doKdy);
+    info.textContent = " Zveřejněno do " + d.getDate() + ". " + (d.getMonth() + 1) + ".";
   }
 
   document.getElementById("cal-prev")
@@ -1147,6 +1220,7 @@ function clerkNedostupny(e) {
   clerkStav = "nedostupny";
   vykresliUcet();
   vykresliNastaveni();
+  vykresliVyberStitek();
 }
 
 // Výběr se přepíná jen při přihlášení a odhlášení (jiný účet). Změny
@@ -1245,15 +1319,9 @@ function senatyKVyberu(v) {
   return SENATY_NS.concat(navic);
 }
 
-// Registr časopisů z data/casopisy.json: štítky v nastavení a seznam
-// v nápovědě karty.
+// Registr časopisů z data/casopisy.json: zkratky u článků a volby v nastavení.
 function nastavCasopisy(seznam) {
   CASOPISY = seznam.filter(c => c && c.id && c.zkratka);
-  const ul = document.getElementById("casopisy-seznam");
-  if (ul) {
-    ul.innerHTML = CASOPISY.map(c => "<li>" + esc(c.zkratka === c.nazev ? c.nazev : c.zkratka + " – " + c.nazev) +
-      (c.vydavatel ? ' <span class="legend">(' + esc(c.vydavatel) + ")</span>" : "") + "</li>").join("");
-  }
 }
 
 // Časopisy k výběru: všechny z registru (id, zkratka, název).
@@ -1837,8 +1905,11 @@ function showUpdated() {
   // „Aktualizováno dnes 2:14", jinak s datem.
   const cas = latest.getHours() + ":" + String(latest.getMinutes()).padStart(2, "0");
   const dnes = isoOf(latest) === isoOf(new Date());
-  document.getElementById("updated").textContent = "Aktualizováno " +
-    (dnes ? "dnes" : latest.getDate() + ". " + (latest.getMonth() + 1) + ".") + " " + cas;
+  const text = "Aktualizováno " + (dnes ? "dnes" : latest.getDate() + ". " + (latest.getMonth() + 1) + ".") + " " + cas;
+  document.getElementById("updated").textContent = text;
+  // Na telefonu hlavička čas nemá – je v popisu Novinek.
+  const m = document.getElementById("updated-m");
+  if (m) m.textContent = " " + text + ".";
 }
 
 function initApp() {
@@ -1862,6 +1933,7 @@ function initApp() {
   const hearingsPromise = fetchJson("hearings.json").catch(() => null);
   initNav();
   initNovinkyFiltr();
+  initArchivPrepinac();
   initNastaveni();
 
   // Vykreslíme až všechny feedy dorazí (stahují se paralelně, jsou ze

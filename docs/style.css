@@ -146,6 +146,17 @@ main { min-width: 0; padding: 32px 48px 48px; }
 #sidenav a:hover { background: var(--accent); color: var(--foreground); }
 #sidenav a.active { background: var(--active-bg); color: var(--active-fg); font-weight: 500; }
 #sidenav a:focus-visible { outline-offset: -2px; }
+/* Měsíční shrnutí je za paywallem – šedá položka se zámkem, nikam nevede. */
+.nav-zamceno {
+  display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 7px;
+  color: var(--faint); white-space: nowrap; cursor: not-allowed;
+}
+.nav-zamceno > .nav-ico { color: var(--switch-off); }
+.nav-zamceno > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.nav-zamek {
+  width: 13px; height: 13px; flex: none; margin-left: auto; color: var(--faint);
+  fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
 /* Ikony jsou kreslené tahem, ne výplní – nastavení je společné. */
 .nav-ico {
   width: 16px; height: 16px; flex: none;
@@ -187,6 +198,11 @@ main { min-width: 0; padding: 32px 48px 48px; }
 .pagetabs a:hover { color: var(--foreground); background: var(--accent); }
 .pagetabs a.active { background: var(--active-bg); color: var(--active-fg); font-weight: 500; }
 .pagetabs a:focus-visible { outline-offset: -2px; }
+.pagetabs-zamceno {
+  flex: none; display: flex; align-items: center; gap: 5px; white-space: nowrap;
+  padding: 6px 11px; border-radius: 8px; font-size: 14px; color: var(--faint); cursor: not-allowed;
+}
+.pagetabs-zamceno .nav-zamek { margin-left: 0; }
 .pagetabs-sep { flex: none; width: 1px; height: 18px; margin-inline: 4px; background: var(--border); }
 .pagetabs.dalsi-vpravo { mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
 .pagetabs.dalsi-vlevo { mask-image: linear-gradient(to left, #000 calc(100% - 32px), transparent); }
@@ -204,12 +220,30 @@ main { min-width: 0; padding: 32px 48px 48px; }
 .page-title { margin: 0; font-size: 26px; font-weight: 600; letter-spacing: -0.02em; }
 .page-title:focus { outline: none; }
 .page-desc { margin: 0; font-size: 14px; line-height: 1.55; color: var(--muted-foreground); max-width: 90ch; text-wrap: pretty; }
-.page-vice { font-size: 14px; color: var(--muted-foreground); }
-.page-vice summary { cursor: pointer; color: var(--link); width: max-content; }
-.page-vice ul { margin: 6px 0 0; padding-left: 18px; line-height: 1.6; }
 .feed { display: flex; flex-direction: column; gap: 22px; }
 .loading, .feed-empty { color: var(--muted-foreground); font-size: 14px; margin: 0; }
 .feed-empty a { white-space: nowrap; }
+.feed-empty-box { padding: 14px 16px; border-radius: 8px; background: var(--muted); color: var(--fg-3); }
+/* Tlačítko, které vypadá jako odkaz („Přepněte na Vše."). */
+.odkaz-tlacitko {
+  border: 0; background: none; padding: 0; cursor: pointer; color: var(--link); white-space: nowrap;
+}
+.odkaz-tlacitko:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Lišta nad Novinkami: filtr a vedle něj souhrn výběru. */
+.page-lista { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.page-lista:not(:has(> :not([hidden]))) { display: none; }
+.vyber-stitek {
+  display: flex; align-items: center; gap: 6px; font-size: 13px; padding: 5px 11px;
+  border: 1px solid var(--border); border-radius: 999px; background: var(--background);
+  color: var(--fg-2); cursor: pointer;
+}
+.vyber-stitek[hidden] { display: none; }
+.vyber-stitek:hover { border-color: var(--faint); background: var(--panel); color: var(--foreground); }
+.vyber-stitek-ico {
+  width: 13px; height: 13px; flex: none; color: var(--link);
+  fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round;
+}
 
 /* Přepínač segmentů (shadcn Tabs): Vše / Judikatura / Časopisy
    a v kalendáři 3 týdny / Seznam. */
@@ -244,46 +278,32 @@ main { min-width: 0; padding: 32px 48px 48px; }
 .ico-journals { color: var(--badge-amber-fg); }
 
 .polozka {
-  /* Pravý sloupec je přesně tak široký jako odkazy (auto) – pevná šířka
-     v písmu Geist nestačila a odkazy přetékaly nad shrnutí. */
-  display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 40px; row-gap: 4px;
-  /* Shrnutí vede až ke sloupci s odkazy (bez stropu na délku řádku),
-     od odkazů ho dělí jen úzká mezera. */
-  grid-template-areas: "meta datum" "titul odkazy" "shrnuti ." "stitky .";
+  /* Shrnutí vede přes celou šířku položky; datum je vpravo na řádku se
+     značkou, odkazy nenápadně hned za titulkem. */
+  display: flex; flex-direction: column; gap: 6px;
   padding: 14px 0; border-bottom: 1px solid var(--border-soft);
 }
 .polozka:last-child { border-bottom: 0; }
 .polozka-meta {
-  grid-area: meta; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
   font-size: 13px; color: var(--muted-foreground);
 }
 .polozka-ident { color: var(--fg-2); }
 .meta-vec { display: inline-flex; gap: 8px; min-width: 0; }
-.polozka-datum {
-  grid-area: datum; justify-self: end; font-size: 13px; color: var(--muted-foreground);
-  font-variant-numeric: tabular-nums; white-space: nowrap;
-}
+.polozka-datum { margin-left: auto; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.polozka-hlava { display: flex; align-items: baseline; gap: 4px 14px; flex-wrap: wrap; }
 .polozka-titul {
-  grid-area: titul; margin: 0; font-size: 16px; font-weight: 600; line-height: 1.35;
+  margin: 0; font-size: 16px; font-weight: 600; line-height: 1.35;
   letter-spacing: -0.01em; text-wrap: pretty; overflow-wrap: anywhere;
 }
-.polozka-vec { grid-area: vec; display: none; font-size: 13px; color: var(--muted-foreground); }
-.polozka-shrnuti {
-  grid-area: shrnuti; margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--fg-2);
-  text-wrap: pretty;
-}
+.polozka-odkazy-text { display: flex; align-items: baseline; gap: 10px; font-size: 12.5px; white-space: nowrap; }
+.odkaz-text { color: var(--faint); }
+.odkaz-text:hover { color: var(--active-fg); }
+.polozka-vec { display: none; font-size: 13px; color: var(--muted-foreground); }
+.polozka-shrnuti { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--fg-2); text-wrap: pretty; }
 .polozka-shrnuti.note { color: var(--muted-foreground); font-style: italic; }
-.polozka-stitky { grid-area: stitky; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 4px; min-width: 0; }
-.polozka-stitky:empty { display: none; }
-.stitek {
-  font-size: 12px; font-weight: 500; padding: 2px 8px; border-radius: 6px;
-  background: var(--muted); color: var(--fg-3); white-space: nowrap;
-  opacity: 0.6;   /* oblasti jsou doplňková informace, ne hlavní obsah */
-}
-/* „…" za první oblastí – jen na telefonu, kde se oblasti nevejdou vedle
-   odkazů. Klepnutí ukáže všechny. */
-.stitek-vic { display: none; border: 0; cursor: pointer; flex: none; }
-.polozka-odkazy { grid-area: odkazy; justify-self: end; align-self: start; display: flex; gap: 6px; }
+/* Odkazy jako tlačítka – jen na telefonu (viz níž). */
+.polozka-odkazy { display: none; justify-content: flex-end; gap: 6px; margin-top: 4px; }
 .odkaz {
   display: inline-flex; align-items: center; font-size: 12px; font-weight: 500;
   padding: 3px 8px; border: 1px solid var(--border); border-radius: 6px;
@@ -294,44 +314,37 @@ main { min-width: 0; padding: 32px 48px 48px; }
 
 /* Stav AI nad seznamem judikatury (kolik rozhodnutí ještě čeká na shrnutí). */
 .card-stav {
-  margin: 0; padding: 10px 14px; border-radius: 8px;
-  background: var(--muted); color: var(--fg-3);
-  font-size: 13px; line-height: 1.5; max-width: 110ch;
+  display: flex; gap: 8px; align-items: flex-start;
+  color: var(--fg-3); font-size: 13px; line-height: 1.5; max-width: 110ch;
 }
+.card-stav .nav-ico { width: 15px; height: 15px; margin-top: 2px; color: var(--muted-foreground); }
 .card-stav[hidden] { display: none; }
 /* Pod judikaturou pro nepřihlášeného: ukazuje se výchozí výběr. */
-.vychozi-pozn { margin: 0; font-size: 13px; color: var(--muted-foreground); }
-
-/* ===== Štítky (shadcn Badge) – dvoutýdenní přehled a kalendář ===== */
-.tag, .src {
-  display: inline-block; border-radius: 6px; padding: 2px 8px;
-  font-size: 12px; font-weight: 500; line-height: 1.45;
-  background: var(--muted); color: var(--fg-3); white-space: nowrap;
+.vychozi-pozn {
+  margin: 8px 0 0; padding: 12px 14px; border-radius: 8px; background: var(--muted);
+  font-size: 13px; line-height: 1.5; color: var(--fg-3); text-wrap: pretty;
 }
-.src-nsoud { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
-.src-nss { background: var(--badge-teal-bg); color: var(--badge-teal-fg); }
-.src-us { background: var(--badge-rose-bg); color: var(--badge-rose-fg); }
-/* src-cjeu: starší přehledy (digest.json) ještě mají původní klíč. */
-.src-sdeu, .src-cjeu { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
-.src-journals { background: var(--badge-amber-bg); color: var(--badge-amber-fg); }
-.src-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
-.src-vs { background: var(--badge-green-bg); color: var(--badge-green-fg); }
+.vychozi-pozn a { color: var(--active-fg); text-decoration: underline; text-underline-offset: 2px; }
 
 /* ===== Dvoutýdenní přehled (digest.json) – text, ne seznam ===== */
-.digest-intro { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--fg-2); max-width: 90ch; }
-.digest-bloky { display: flex; flex-direction: column; border-top: 1px solid var(--border); }
-.digest-block { padding: 14px 0; border-bottom: 1px solid var(--border-soft); }
-.digest-block:last-child { border-bottom: 0; }
-.digest-title { margin: 0 0 4px; font-size: 16px; font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; }
-.digest-text { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--fg-2); max-width: 90ch; }
-.digest-sources { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
+.digest-meta { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 13px; color: var(--muted-foreground); }
+.digest-meta[hidden] { display: none; }
+.digest-obdobi { font-weight: 500; color: var(--fg-2); }
+.digest-bloky { display: flex; flex-direction: column; }
+.digest-block { display: flex; flex-direction: column; gap: 8px; padding: 20px 0; border-top: 1px solid var(--border); }
+.digest-title { margin: 0; font-size: 18px; font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; }
+.digest-text { margin: 0; font-size: 15px; line-height: 1.6; color: var(--fg-2); max-width: 90ch; text-wrap: pretty; }
+/* Zdroje tématu: štítky s barevnou zkratkou soudu nebo časopisu. */
+.digest-sources { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 2px; }
 .digest-source {
-  display: inline-flex; align-items: baseline; gap: 6px;
-  font-size: 13px; color: var(--link); text-decoration: none; overflow-wrap: anywhere;
+  display: flex; align-items: center; gap: 6px; min-width: 0; max-width: 100%;
+  font-size: 13px; padding: 4px 10px; border: 1px solid var(--border); border-radius: 7px;
+  color: var(--fg-2); text-decoration: none;
 }
-.digest-source:hover { text-decoration: underline; }
-.digest-source .src, .digest-source .tag { flex: none; }
-.digest-meta { margin: 0; font-size: 13px; color: var(--muted-foreground); }
+a.digest-source:hover { border-color: var(--faint); text-decoration: none; }
+.digest-source-label { flex: none; font-size: 12px; font-weight: 600; }
+.digest-source-titul { min-width: 0; overflow-wrap: anywhere; }
+.digest-source-sipka { flex: none; color: var(--faint); }
 
 /* ===== Kalendář jednání (MS + VS, IP senáty) ===== */
 .cal-toolbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
@@ -655,31 +668,32 @@ html.is-loading body { visibility: hidden; }
   .page-head { gap: 4px; }
   .page-title { font-size: 24px; }
   .page-desc { line-height: 1.5; }
-  /* Filtry nad novinkami na telefonu nejsou – novinky začínají hned. */
-  #novinky-filtr { display: none; }
+  /* Filtr ani štítek výběru nad novinkami na telefonu nejsou – novinky
+     začínají hned (výběr je v nabídce účtu). */
+  #novinky-lista { display: none; }
+  /* Přepínač Můj výběr / Vše přes celou šířku, dost velký na prst. */
+  .archiv-prepinac { align-self: stretch; border-radius: 10px; }
+  .archiv-prepinac button { flex: 1; justify-content: center; align-items: center; min-height: 36px; font-size: 14px; border-radius: 8px; }
+  .feed-empty-box { padding: 12px 14px; }
+  .digest-meta { display: none; }
   .feed { gap: 18px; }
   .zdroj-hlava { gap: 8px; padding-bottom: 8px; }
 
-  /* Datum na řádku se značkou, název věci pod titulkem, oblasti a odkazy
-     dole na jednom řádku (odkazy vpravo, dost velké na prst). */
-  .polozka {
-    grid-template-columns: minmax(0, 1fr) auto; column-gap: 8px;
-    grid-template-areas: "meta datum" "titul titul" "vec vec" "shrnuti shrnuti" "stitky odkazy";
-    padding: 12px 0;
-  }
-  .polozka-meta .meta-vec { display: none; }
+  /* Datum na řádku se značkou, název věci pod titulkem, odkazy dole
+     vpravo jako tlačítka (dost velká na prst). */
+  .polozka { padding: 16px 0; }
+  .polozka-meta .meta-vec, .polozka-odkazy-text { display: none; }
   .polozka-vec { display: block; }
-  .polozka-datum { align-self: baseline; }
-  .polozka-stitky { flex-wrap: nowrap; overflow: hidden; gap: 6px; align-self: center; }
-  .polozka-stitky:not(.vse) .stitek:not(:first-child):not(.stitek-vic) { display: none; }
-  .polozka-stitky .stitek:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-  .polozka-stitky .stitek-vic { display: inline-block; }
-  .polozka-stitky.vse { flex-wrap: wrap; }
-  .polozka-stitky.vse .stitek-vic { display: none; }
-  .polozka-odkazy { align-self: end; }
+  .polozka-odkazy { display: flex; }
   .odkaz { min-height: 32px; padding: 0 10px; border-radius: 8px; font-size: 13px; }
   .odkaz-pdf { font-size: 12px; }
-  .digest-source { flex-wrap: wrap; }
+  /* Zdroje přehledu pod sebou, každý na jeden řádek. */
+  .digest-block { padding: 18px 0; }
+  .digest-title { font-size: 17px; }
+  .digest-text { line-height: 1.55; }
+  .digest-sources { flex-direction: column; gap: 6px; }
+  .digest-source { gap: 8px; min-height: 40px; padding: 0 12px; border-radius: 8px; }
+  .digest-source-titul { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
   /* Kalendář: jen seznam nadcházejících jednání. */
   .cal-toolbar, .cal-pozn, .cal-den-rel, .cal-predseda { display: none; }

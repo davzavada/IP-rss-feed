@@ -85,6 +85,16 @@
     <circle cx="10" cy="12" r="2"></circle>
     <circle cx="18" cy="18" r="2"></circle>
   </symbol>
+  <symbol id="icon-calendar-text" viewBox="0 0 24 24">
+    <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+    <path d="M16 3v4M8 3v4M3 10h18M7 14h10M7 17h6"></path>
+  </symbol>
+  <symbol id="icon-lock" viewBox="0 0 24 24">
+    <rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
+  </symbol>
+  <symbol id="icon-info" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path>
+  </symbol>
 </svg>
 
 <header class="site-head">
@@ -102,6 +112,8 @@
   <div class="nav-group">
     <a href="#prehled"><svg class="nav-ico" aria-hidden="true"><use href="#icon-clock"></use></svg><span>Novinky</span><span class="nav-pocet" id="nav-pocet"></span></a>
     <a href="#dvatydny"><svg class="nav-ico" aria-hidden="true"><use href="#icon-sparkles"></use></svg><span>Dva týdny v IP a IT</span></a>
+    <!-- Měsíční shrnutí je za paywallem: zatím jen zamčená položka, nikam nevede. -->
+    <span class="nav-zamceno" aria-disabled="true" title="Dostupné v placené verzi"><svg class="nav-ico" aria-hidden="true"><use href="#icon-calendar-text"></use></svg><span>Shrnutí za poslední měsíc</span><svg class="nav-zamek" aria-label="zamčeno"><use href="#icon-lock"></use></svg></span>
   </div>
   <div class="nav-group">
     <span class="nav-label">Archiv podle zdroje</span>
@@ -123,6 +135,7 @@
 <nav class="pagetabs" aria-label="Přepínání stránek">
   <a href="#prehled">Novinky</a>
   <a href="#dvatydny" title="Dva týdny v IP a IT">2 týdny</a>
+  <span class="pagetabs-zamceno" aria-disabled="true" title="Shrnutí za poslední měsíc – v placené verzi"><span>Měsíc</span><svg class="nav-zamek" aria-label="zamčeno"><use href="#icon-lock"></use></svg></span>
   <span class="pagetabs-sep" aria-hidden="true"></span>
   <a href="#nsoud" title="Nejvyšší soud">NS</a>
   <a href="#nss" title="Nejvyšší správní soud">NSS</a>
@@ -139,68 +152,79 @@
 <section class="page" id="prehled">
   <div class="page-head" id="dnesni">
     <h2 class="page-title">Novinky</h2>
-    <p class="page-desc">Co přibylo za posledních 24 hodin u soudů a v časopisech – podle vašeho výběru. Sběr běží denně ve 2:00.</p>
+    <p class="page-desc"><span class="jen-d">Co přibylo za posledních 24 hodin u soudů a v časopisech – podle vašeho výběru. Sběr běží denně ve 2:00.</span><span class="jen-m">Za posledních 24 hodin, podle vašeho výběru.<span id="updated-m"></span></span></p>
   </div>
-  <div class="segment" id="novinky-filtr" role="group" aria-label="Filtr novinek" hidden></div>
+  <div class="page-lista" id="novinky-lista">
+    <div class="segment" id="novinky-filtr" role="group" aria-label="Filtr novinek" hidden></div>
+    <!-- Souhrn výběru; kliknutím se otevře Můj výběr (nepřihlášenému přihlášení). -->
+    <button type="button" class="vyber-stitek" id="vyber-stitek" title="Upravit výběr" hidden></button>
+  </div>
   <div class="feed" id="feed-today"><p class="loading">Načítám...</p></div>
 </section>
 
 <section class="page" id="dvatydny" hidden>
   <div class="page-head">
     <h2 class="page-title">Dva týdny v IP a IT</h2>
-    <p class="page-desc">Přehled toho podstatného z duševního vlastnictví a IT za poslední dva týdny. Píše ho AI z rozhodnutí všech soudů, která spadají do oblastí duševního vlastnictví a IT, a z článků v časopisech – na vašem výběru nezávisí. Nový vychází každé pondělí ráno. <span id="digest-updated"></span></p>
+    <p class="page-desc jen-d">Přehled toho podstatného z duševního vlastnictví a IT za poslední dva týdny. Píše ho AI z rozhodnutí všech soudů v oblastech IP a IT a z článků v časopisech – na vašem výběru nezávisí. Nový vychází každé pondělí ráno.</p>
+    <p class="page-desc jen-m" id="digest-obdobi-m"></p>
   </div>
+  <p class="digest-meta" id="digest-meta" hidden></p>
   <div class="feed" id="feed-digest"><p class="loading">Načítám...</p></div>
 </section>
 
 <section class="page" id="nsoud" hidden>
   <div class="page-head">
     <h2 class="page-title">Nejvyšší soud</h2>
+    <p class="page-desc" id="popis-nsoud"></p>
   </div>
-  <p class="card-stav" id="stav-nsoud" role="status" hidden></p>
+  <div class="segment archiv-prepinac" id="prepinac-nsoud" role="group" aria-label="Co ukázat" hidden></div>
+  <div class="card-stav" id="stav-nsoud" role="status" hidden></div>
   <div class="feed" id="feed-nsoud"><p class="loading">Načítám...</p></div>
 </section>
 
 <section class="page" id="nss" hidden>
   <div class="page-head">
     <h2 class="page-title">Nejvyšší správní soud</h2>
+    <p class="page-desc" id="popis-nss"></p>
   </div>
-  <p class="card-stav" id="stav-nss" role="status" hidden></p>
+  <div class="segment archiv-prepinac" id="prepinac-nss" role="group" aria-label="Co ukázat" hidden></div>
+  <div class="card-stav" id="stav-nss" role="status" hidden></div>
   <div class="feed" id="feed-nss"><p class="loading">Načítám...</p></div>
 </section>
 
 <section class="page" id="us" hidden>
   <div class="page-head">
     <h2 class="page-title">Ústavní soud</h2>
+    <p class="page-desc" id="popis-us"></p>
   </div>
-  <p class="card-stav" id="stav-us" role="status" hidden></p>
+  <div class="segment archiv-prepinac" id="prepinac-us" role="group" aria-label="Co ukázat" hidden></div>
+  <div class="card-stav" id="stav-us" role="status" hidden></div>
   <div class="feed" id="feed-us"><p class="loading">Načítám...</p></div>
 </section>
 
 <section class="page" id="sdeu" hidden>
   <div class="page-head">
     <h2 class="page-title">Soudní dvůr EU</h2>
+    <p class="page-desc" id="popis-sdeu"></p>
   </div>
-  <p class="card-stav" id="stav-sdeu" role="status" hidden></p>
+  <div class="segment archiv-prepinac" id="prepinac-sdeu" role="group" aria-label="Co ukázat" hidden></div>
+  <div class="card-stav" id="stav-sdeu" role="status" hidden></div>
   <div class="feed" id="feed-sdeu"><p class="loading">Načítám...</p></div>
 </section>
 
 <section class="page" id="casopisy" hidden>
   <div class="page-head">
     <h2 class="page-title">Právní časopisy</h2>
-    <p class="page-desc">Nová čísla a články za poslední 4 týdny. Které časopisy se ukazují, si po přihlášení vyberete v části Můj výběr.</p>
-    <details class="page-vice">
-      <summary>Sledované časopisy</summary>
-      <ul id="casopisy-seznam"></ul>
-    </details>
+    <p class="page-desc" id="popis-journals">Nová čísla a články za poslední 4 týdny.</p>
   </div>
+  <div class="segment archiv-prepinac" id="prepinac-journals" role="group" aria-label="Co ukázat" hidden></div>
   <div class="feed" id="feed-journals"><p class="loading">Načítám...</p></div>
 </section>
 
 <section class="page" id="kalendar" hidden>
   <div class="page-head" id="jednani">
     <h2 class="page-title">Kalendář jednání</h2>
-    <p class="page-desc">Nařízená jednání IP senátů Městského a Vrchního soudu v Praze a žaloby proti Úřadu průmyslového vlastnictví. Soudy přehled zveřejňují zhruba na dva týdny dopředu a průběžně ho vydávají znovu; když se jednání přesune nebo změní, je to vidět v jeho detailu. <span id="cal-info"></span></p>
+    <p class="page-desc"><span class="jen-d">Nařízená jednání IP senátů Městského a Vrchního soudu v Praze a žaloby proti Úřadu průmyslového vlastnictví. Soudy přehled zveřejňují zhruba na dva týdny dopředu.</span><span class="jen-m">IP senáty MS a VS v Praze.<span id="cal-info-m"></span></span></p>
   </div>
   <div class="feed" id="feed-kalendar"><p class="loading">Načítám...</p></div>
 </section>
