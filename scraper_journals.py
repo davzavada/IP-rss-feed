@@ -71,6 +71,13 @@ CASOPISY = [
      "vydavatel": "Wiley"},
     {"id": "jiplp", "zkratka": "JIPLP", "nazev": "Journal of Intellectual Property Law & Practice",
      "vydavatel": "Oxford University Press"},
+    {"id": "ijlit", "zkratka": "IJLIT", "nazev": "International Journal of Law and Information "
+     "Technology", "vydavatel": "Oxford University Press"},
+    {"id": "jpil", "zkratka": "JPIL", "nazev": "Journal of Private International Law",
+     "vydavatel": "Taylor & Francis"},
+    {"id": "cmlr", "zkratka": "CMLRev", "nazev": "Common Market Law Review",
+     "vydavatel": "Kluwer Law International"},
+    {"id": "elj", "zkratka": "ELJ", "nazev": "European Law Journal", "vydavatel": "Wiley"},
 ]
 CASOPIS_PODLE_ZKRATKY = {c["zkratka"]: c["id"] for c in CASOPISY}
 PREFIX_RE = re.compile(r"^\[([^\]]+)\]\s*")
@@ -856,11 +863,65 @@ JIPLP_ISSN = "1747-1540"
 JIPLP_LABEL = "JIPLP"
 JIPLP_NAME = "Journal of Intellectual Property Law & Practice"
 
+# Další časopisy s vlastním feedem vydavatele. Feed dodal redaktor webu;
+# ISSN (online) je pro zálohu v Crossrefu, když feed nevyjde.
+#   (zkratka, název, feed, stránka časopisu pro Referer, ISSN, vydavatel)
+DALSI_FEEDY = [
+    ("IJLIT", "International Journal of Law and Information Technology",
+     "https://academic.oup.com/rss/site_5171/3035.xml", "https://academic.oup.com/ijlit",
+     "1464-3693", "OUP"),
+    ("JPIL", "Journal of Private International Law",
+     "https://www.tandfonline.com/feed/rss/rpil20", "https://www.tandfonline.com/toc/rpil20/current",
+     "1757-8418", "Taylor & Francis"),
+    ("CMLRev", "Common Market Law Review",
+     "https://kluwerlawonline.com/feeds/COLA", "https://kluwerlawonline.com/journals/COLA",
+     "0165-0750", "Kluwer"),
+    ("ELJ", "European Law Journal",
+     "https://onlinelibrary.wiley.com/feed/14680386/most-recent",
+     "https://onlinelibrary.wiley.com/journal/14680386", "1468-0386", "Wiley"),
+]
+
+
+def _lokalni(tag):
+    """Jméno prvku bez jmenného prostoru („{http://…/rss/1.0/}title" -> „title")."""
+    return tag.rsplit("}", 1)[-1] if isinstance(tag, str) else ""
+
 
 def _item_text(item, tag, ns=None):
-    """Text potomka <item>, nebo prázdný řetězec."""
-    el = item.find(tag, ns) if ns else item.find(tag)
+    """Text potomka <item>, nebo prázdný řetězec.
+
+    Tag bez prefixu se hledá podle jména bez jmenného prostoru – RSS 1.0
+    (Taylor & Francis) i Atom mají prvky ve vlastním prostoru. Atomový
+    <link href="…"/> nemá text, adresa je v atributu."""
+    if ns or ":" in tag or "/" in tag:
+        el = item.find(tag, ns) if ns else item.find(tag)
+    else:
+        kandidati = [c for c in item if _lokalni(c.tag) == tag]
+        if tag == "link":
+            kandidati.sort(key=lambda c: c.get("rel", "alternate") != "alternate")
+        el = kandidati[0] if kandidati else None
+        if el is not None and not (el.text or "").strip() and el.get("href"):
+            return el.get("href").strip()
     return (el.text or "").strip() if el is not None and el.text else ""
+
+
+def _rss_datum(item, ns):
+    """Datum položky: RSS 2.0 pubDate (RFC 822), jinak dc:date / Atom
+    published / updated (ISO 8601). None, když žádné není nebo nejde přečíst."""
+    for raw, iso in ((_item_text(item, "pubDate"), False), (_item_text(item, "dc:date", ns), True),
+                     (_item_text(item, "published"), True), (_item_text(item, "updated"), True)):
+        if not raw:
+            continue
+        try:
+            d = (datetime.fromisoformat(raw.replace("Z", "+00:00")) if iso
+                 else parsedate_to_datetime(raw))
+        except (TypeError, ValueError):
+            try:
+                d = parsedate_to_datetime(raw)
+            except (TypeError, ValueError):
+                continue
+        return d if d.tzinfo else d.replace(tzinfo=timezone.utc)
+    return None
 
 
 def _rss_doi(item, ns):
@@ -967,7 +1028,9 @@ def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
     too_old = 0
     bez_doi = 0
 
-    for item in root.iter("item"):
+    # RSS 2.0 <item>, RSS 1.0 {…/rss/1.0/}item (T&F), Atom <entry> (Kluwer).
+    polozky = [e for e in root.iter() if _lokalni(e.tag) in ("item", "entry")]
+    for item in polozky:
         title = clean_title(_item_text(item, "title"))
         if not title:
             continue
@@ -979,16 +1042,8 @@ def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
         if not link:
             continue
 
-        pub_date, odhad = datetime.now(timezone.utc), True
-        raw_date = _item_text(item, "pubDate") or _item_text(item, "dc:date", ns)
-        if raw_date:
-            try:
-                pub_date = parsedate_to_datetime(raw_date)
-                if pub_date.tzinfo is None:
-                    pub_date = pub_date.replace(tzinfo=timezone.utc)
-                odhad = False
-            except (TypeError, ValueError):
-                pass
+        datum = _rss_datum(item, ns)
+        pub_date, odhad = (datum, False) if datum else (datetime.now(timezone.utc), True)
         # Feed bez data se nesmí zahodit jako starý, ale ani vydávat za dnešek –
         # datum dostane podle prvního výskytu (viz pub_date_odhad v main()).
         if not odhad and pub_date < cutoff:
@@ -998,7 +1053,9 @@ def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
         zaznamy.append({
             "title": title, "doi": doi, "link": link,
             "authors": _rss_autor(item, ns),
-            "abstract": _abstract_text(_item_text(item, "description")),
+            "abstract": _abstract_text(_item_text(item, "description")
+                                       or _item_text(item, "summary")
+                                       or _item_text(item, "content")),
             "pub_date": pub_date, "odhad": odhad,
         })
 
@@ -1350,10 +1407,14 @@ def main():
             print(f"  CHYBA při stahování {label}: {e}")
 
     # 7. Časopisy s vlastním RSS vydavatele (se zálohou v Crossref)
-    for nazev, zdroj, label, scrape in (
+    dalsi = [(nazev, f"{vydavatel} RSS", label,
+              lambda f=feed, r=ref, i=issn, l=label, n=nazev, v=vydavatel:
+              _rss_nebo_crossref(f, r, i, l, n, v))
+             for label, nazev, feed, ref, issn, vydavatel in DALSI_FEEDY]
+    for nazev, zdroj, label, scrape in [
         (JWIP_NAME, "Wiley RSS", JWIP_LABEL, scrape_jwip),
         (JIPLP_NAME, "OUP RSS", JIPLP_LABEL, scrape_jiplp),
-    ):
+    ] + dalsi:
         print(f"  Zdroj: {nazev} ({zdroj})")
         try:
             rss_items = scrape()

@@ -1,0 +1,51 @@
+name: Časopisy – ověření feedů
+
+# Dočasné: jen pro větev akce-testbeh. Přečte feedy nových časopisů
+# (bez AI) a vypíše, co v nich je. Výsledek commitne do téže větve.
+on:
+  push:
+    branches: [akce-testbeh]
+    paths-ignore: ['build/**']
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - name: Feedy
+        env:
+          SKIP_GEMINI: '1'
+        run: |
+          mkdir -p build
+          python - <<'PY' 2>&1 | tee build/feedy.txt
+          import scraper_journals as s
+          for label, nazev, feed, ref, issn, vyd in s.DALSI_FEEDY:
+              print(f"== {label} ({vyd})")
+              try:
+                  items = s.fetch_publisher_rss(feed, label, nazev, ref)
+                  print(f"   RSS: {len(items)} článků")
+              except Exception as e:
+                  items = []
+                  print(f"   RSS selhal: {e}")
+              try:
+                  cr = s.fetch_crossref_journal(issn, label, nazev)
+                  print(f"   Crossref {issn}: {len(cr)} článků za okno")
+              except Exception as e:
+                  print(f"   Crossref selhal: {e}")
+              for i in items[:4]:
+                  print(f"   - {i['pub_date']:%Y-%m-%d}{' (odhad)' if i.get('pub_date_odhad') else ''} | {i['title'][:80]} | {i['authors'][:40]} | {i['link'][:70]}")
+          PY
+      - name: Commit
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f build && git commit -m "Feedy" && git push

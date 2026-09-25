@@ -225,6 +225,46 @@ check("feed se hlásí jako prohlížeč (Wiley i OUP jinak vracely 403)",
       and _hlavicky.get("Referer") == "https://academic.oup.com/jiplp",
       str(_hlavicky))
 
+# RSS 1.0 (RDF, Taylor & Francis) a Atom (Kluwer): položky i pole jsou ve
+# vlastním jmenném prostoru, datum je ISO 8601, odkaz v Atomu v atributu.
+_nedavno = (s.datetime.now(s.timezone.utc) - s.timedelta(days=5)).strftime("%Y-%m-%dT%H:%M:%SZ")
+_TF_FEED = f"""<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://purl.org/rss/1.0/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:prism="http://prismstandard.org/namespaces/basic/2.0/">
+<channel><title>Journal of Private International Law</title></channel>
+<item rdf:about="https://www.tandfonline.com/doi/full/10.1080/17441048.2026.2555555?af=R">
+  <title>Party autonomy in cross-border succession</title>
+  <link>https://www.tandfonline.com/doi/full/10.1080/17441048.2026.2555555?af=R</link>
+  <description>Abstract The article examines choice of law.</description>
+  <dc:creator>Maria Rossi</dc:creator>
+  <dc:date>{_nedavno}</dc:date>
+  <prism:doi>10.1080/17441048.2026.2555555</prism:doi>
+</item></rdf:RDF>"""
+_ATOM_FEED = f"""<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Common Market Law Review</title>
+<entry><title>The rule of law conditionality after Hungary v Parliament</title>
+  <link rel="alternate" href="https://kluwerlawonline.com/journalarticle/Common+Market+Law+Review/61.5/COLA2026055"/>
+  <author><name>Peter Novak</name></author>
+  <published>{_nedavno}</published>
+  <summary>Case note on the conditionality regulation.</summary>
+</entry></feed>"""
+s.requests.get = lambda url, headers=None, **k: _FeedResp(_TF_FEED if "tandfonline" in url else _ATOM_FEED)
+tf = s.fetch_publisher_rss("https://www.tandfonline.com/feed/rss/rpil20", "JPIL",
+                           "Journal of Private International Law")
+atom = s.fetch_publisher_rss("https://kluwerlawonline.com/feeds/COLA", "CMLRev", "Common Market Law Review")
+s.requests.get = _puvodni_get
+check("RSS 1.0 (T&F): článek s DOI, autorem a datem",
+      len(tf) == 1 and tf[0]["guid"] == "JPIL-10.1080/17441048.2026.2555555"
+      and tf[0]["authors"] == "Maria Rossi" and not tf[0]["pub_date_odhad"]
+      and "choice of law" in tf[0]["description"], str(tf))
+check("Atom (Kluwer): odkaz z atributu, autor, datum a anotace",
+      len(atom) == 1 and atom[0]["link"].startswith("https://kluwerlawonline.com/journalarticle/")
+      and atom[0]["authors"] == "Peter Novak" and not atom[0]["pub_date_odhad"]
+      and "conditionality regulation" in atom[0]["description"], str(atom))
+check("nové časopisy jsou v registru i ve zdrojích",
+      {l for l, *_ in s.DALSI_FEEDY} == {"IJLIT", "JPIL", "CMLRev", "ELJ"}
+      and {l for l, *_ in s.DALSI_FEEDY} <= {c["zkratka"] for c in s.CASOPISY})
+
 # =====================================================================
 print("\n6) Crossref – dvojí dotaz a datum vydání")
 # =====================================================================
@@ -405,7 +445,8 @@ check("položka se shrnutím poznámku ani popis nemá",
       j_rozh.get("shrnuti") and "poznamka" not in j_rozh and "popis" not in j_rozh, str(j_rozh))
 check("každá zkratka ze scraperů je v registru",
       {c["zkratka"] for c in s.CASOPISY} >= {"DV", "EP", "Právník", "Jurisprudence", "TLQ", "IIC", "GRUR Int",
-                                            "QMJIP", "JWIP", "JIPLP"}
+                                            "QMJIP", "JWIP", "JIPLP",
+                                            "IJLIT", "JPIL", "CMLRev", "ELJ"}
       | {lab for _, lab, _ in s.OJS_SOURCES} | {lab for _, lab, _ in s.CROSSREF_JOURNALS}
       and len({c["id"] for c in s.CASOPISY}) == len(s.CASOPISY))
 cesta = os.path.join(tempfile.mkdtemp(prefix="casopisy-"), "casopisy.json")
