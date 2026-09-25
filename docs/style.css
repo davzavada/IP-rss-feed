@@ -245,7 +245,9 @@ main { min-width: 0; padding: 32px 48px 48px; }
 
 .polozka {
   display: grid; grid-template-columns: minmax(0, 1fr) 120px; column-gap: 24px; row-gap: 4px;
-  grid-template-areas: "meta datum" "titul odkazy" "shrnuti ." "stitky .";
+  /* Shrnutí a oblasti jdou i pod sloupec s odkazy (ten má jen dva řádky),
+     vpravo jim zbyde kus volného místa. */
+  grid-template-areas: "meta datum" "titul odkazy" "shrnuti shrnuti" "stitky stitky";
   padding: 14px 0; border-bottom: 1px solid var(--border-soft);
 }
 .polozka:last-child { border-bottom: 0; }
@@ -266,7 +268,7 @@ main { min-width: 0; padding: 32px 48px 48px; }
 .polozka-vec { grid-area: vec; display: none; font-size: 13px; color: var(--muted-foreground); }
 .polozka-shrnuti {
   grid-area: shrnuti; margin: 0; font-size: 14px; line-height: 1.5; color: var(--fg-2);
-  max-width: 90ch; text-wrap: pretty;
+  padding-right: 48px; text-wrap: pretty;
 }
 .polozka-shrnuti.note { color: var(--muted-foreground); font-style: italic; }
 .polozka-stitky { grid-area: stitky; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 4px; min-width: 0; }
@@ -663,6 +665,7 @@ html.is-loading body { visibility: hidden; }
     padding: 12px 0;
   }
   .polozka-meta .meta-vec { display: none; }
+  .polozka-shrnuti { padding-right: 0; }
   .polozka-vec { display: block; }
   .polozka-datum { align-self: baseline; }
   .polozka-stitky { flex-wrap: nowrap; overflow: hidden; gap: 6px; align-self: center; }
