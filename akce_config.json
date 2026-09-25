@@ -1,0 +1,54 @@
+{
+  "note": "Pořadatelé vzdělávacích akcí pro Kalendář akcí. `stranky` jsou výpisy akcí, které scraper_akce.py každou noc stáhne; `hosty` jsou domény, na které smí vést odkaz na přihlášku (jinak se odkaz zahodí a vede se na výpis). `zkratka` a `barva` jsou pro štítek a barvu v kalendáři, pořadí je pořadí štítků na webu. `parser` je volitelné jméno vlastního parseru v PARSERY ve scraper_akce.py – bez něj se akce berou z iCal odkazu, ze schema.org Event (JSON-LD), a když nic z toho stránka nemá, vytáhne je AI z textu stránky.",
+  "poradatele": {
+    "CAK": {
+      "nazev": "Česká advokátní komora",
+      "zkratka": "ČAK",
+      "barva": "#b42318",
+      "stranky": ["https://www.cak.cz/vzdelavaci-akce-cak-5"],
+      "hosty": ["cak.cz"]
+    },
+    "PFUK": {
+      "nazev": "Právnická fakulta UK",
+      "zkratka": "PF UK",
+      "barva": "#6d28d9",
+      "stranky": ["https://www.prf.cuni.cz/events"],
+      "hosty": ["prf.cuni.cz", "cuni.cz"]
+    },
+    "JCP": {
+      "nazev": "Jednota českých právníků",
+      "zkratka": "JČP",
+      "barva": "#1d4ed8",
+      "stranky": ["https://jednotaceskychpravniku.cz/vzdelavaci-akce/"],
+      "hosty": ["jednotaceskychpravniku.cz"]
+    },
+    "BECK": {
+      "nazev": "Beck-semináře",
+      "zkratka": "Beck",
+      "barva": "#a15c07",
+      "stranky": ["https://www.beck-seminare.cz/"],
+      "hosty": ["beck-seminare.cz"]
+    },
+    "EPRAVO": {
+      "nazev": "epravo.cz",
+      "zkratka": "epravo",
+      "barva": "#15803d",
+      "stranky": ["https://www.epravo.cz/top/aktualne/vzdelavaci_akce/"],
+      "hosty": ["epravo.cz"]
+    },
+    "ALAI": {
+      "nazev": "ALAI Česká republika",
+      "zkratka": "ALAI",
+      "barva": "#be185d",
+      "stranky": ["https://www.alai.cz/"],
+      "hosty": ["alai.cz"]
+    },
+    "UPV": {
+      "nazev": "Úřad průmyslového vlastnictví",
+      "zkratka": "ÚPV",
+      "barva": "#0e7490",
+      "stranky": ["https://upv.gov.cz/vzdelavani/kurzy-a-seminare"],
+      "hosty": ["upv.gov.cz"]
+    }
+  }
+}

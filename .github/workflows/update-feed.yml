@@ -1,4 +1,4 @@
-name: Časopisy, jednání a přehled
+name: Časopisy, jednání, akce a přehled
 
 on:
   schedule:
@@ -91,6 +91,17 @@ jobs:
           SKIP_GEMINI: ${{ inputs.skip_gemini }}
         run: python scraper_hearings.py
 
+      # Kalendář akcí – výpisy pořadatelů (akce_config.json); AI z nich čte
+      # akce, kde web nemá strojově čitelná data, a řadí je do oblastí.
+      - name: Akce
+        id: akce
+        if: steps.plan.outputs.scrape == 'true'
+        continue-on-error: true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SKIP_GEMINI: ${{ inputs.skip_gemini }}
+        run: python scraper_akce.py
+
       # Přehled čte hotové výstupy (časopisy, okna judikatury), takže běží až po
       # scraperech – jednou týdně, v pondělí ve 2:00. Ručně spuštěný běh ho udělá taky. DIGEST_FORCE říká
       # digest.py, ať přehled napíše znovu i tehdy, když se vstup od minula
@@ -112,7 +123,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           # docs/data/judikatura patří workflow judikatura.yml.
           git add docs/ ':!docs/data/judikatura' data/casopisy journals_seen.json journals_meta.json hearings_config.json
-          git diff --cached --quiet || git commit -m "Update journals and hearings $(date -u +%Y-%m-%d)"
+          git diff --cached --quiet || git commit -m "Update journals, hearings and events $(date -u +%Y-%m-%d)"
           # Kdyby se main mezitím pohnul (dlouhý běh scraperu), přebasuj a zkus
           # znovu; u konfliktů v generovaných souborech vyhrává naše novější verze.
           for i in 1 2 3; do
@@ -121,13 +132,16 @@ jobs:
           done
 
       # Commit výše uložil, co se povedlo; selhání se tu jen ohlásí. Jednání
-      # (dokumenty na msp.gov.cz) jen varují jako dřív, ostatní shodí běh,
+      # (dokumenty na msp.gov.cz) a akce (weby pořadatelů) jen varují, ostatní shodí běh,
       # ať o tom přijde upozornění.
       - name: Výsledek scraperů
         if: always() && steps.plan.outputs.scrape == 'true'
         run: |
           if [ '${{ steps.jednani.outcome }}' = failure ]; then
             echo "::warning::scraper_hearings selhal, ostatní výstupy jsou commitnuté"
+          fi
+          if [ '${{ steps.akce.outcome }}' = failure ]; then
+            echo "::warning::scraper_akce selhal, ostatní výstupy jsou commitnuté"
           fi
           selhalo=""
           [ '${{ steps.casopisy.outcome }}' = failure ] && selhalo="$selhalo časopisy"

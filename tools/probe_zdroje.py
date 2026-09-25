@@ -15,6 +15,7 @@ Použití (lokálně i v probe.yml):
     python tools/probe_zdroje.py --soudy ns,sdeu --datum 2026-09-22
     python tools/probe_zdroje.py --url https://vyhledavac.nssoud.cz/...
     python tools/probe_zdroje.py --soudy - --url …    # jen vlastní adresy
+    python tools/probe_zdroje.py --soudy akce          # výpisy pořadatelů akcí
 
 Parametry jdou zadat i proměnnými PROBE_SOUDY, PROBE_DATUM a PROBE_URL –
 workflow je tak nemusí vkládat do příkazové řádky.
@@ -47,6 +48,9 @@ POVOLENE_HOSTY = (
     "nsoud.cz", "nssoud.cz", "usoud.cz", "curia.europa.eu",
     "publications.europa.eu", "eur-lex.europa.eu", "justice.cz",
     "davidzavada.cz",
+    # pořadatelé vzdělávacích akcí (akce_config.json)
+    "cak.cz", "prf.cuni.cz", "jednotaceskychpravniku.cz", "beck-seminare.cz",
+    "epravo.cz", "alai.cz", "upv.gov.cz",
 )
 
 HLAVICKY = {
@@ -340,7 +344,19 @@ def sonda_sdeu(s, den):
                 break
 
 
-SONDY = {"ns": sonda_ns, "nss": sonda_nss, "us": sonda_us, "sdeu": sonda_sdeu}
+def sonda_akce(s, den):
+    """Výpisy akcí všech pořadatelů z akce_config.json – z nich se píšou
+    vlastní parsery ve scraper_akce.py (PARSERY) a jejich testy."""
+    koren = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    with open(os.path.join(koren, "akce_config.json"), encoding="utf-8") as f:
+        poradatele = json.load(f)["poradatele"]
+    for org, cfg in poradatele.items():
+        for i, url in enumerate(cfg.get("stranky", [])):
+            s.stahni(f"akce_{org.lower()}_{i}", url)
+
+
+SONDY = {"ns": sonda_ns, "nss": sonda_nss, "us": sonda_us, "sdeu": sonda_sdeu,
+         "akce": sonda_akce}
 
 
 def vychozi_den():

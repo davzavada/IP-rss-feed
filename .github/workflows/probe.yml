@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
     inputs:
       soudy:
-        description: 'Zdroje oddělené čárkou (ns,nss,us,sdeu; - = žádný, jen adresy)'
+        description: 'Zdroje oddělené čárkou (ns,nss,us,sdeu,akce; - = žádný, jen adresy)'
         default: 'ns,nss,us,sdeu'
       datum:
         description: 'Den pro dotazy podle data (RRRR-MM-DD, prázdné = včera)'

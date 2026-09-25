@@ -10,8 +10,8 @@ vlastnictví a IT.
 
 Web má stránky Novinky (co přibylo za posledních 24 hodin, tedy úlovek
 nočního běhu), Dva týdny v IP a IT (přehled je jeden pro všechny, na výběru
-nezávisí), každý zdroj zvlášť (NS, NSS, ÚS, SDEU, časopisy) a Kalendář
-jednání; Můj výběr je dialog z nabídky účtu.
+nezávisí), každý zdroj zvlášť (NS, NSS, ÚS, SDEU, časopisy), Kalendář
+jednání a Kalendář akcí; Můj výběr je dialog z nabídky účtu.
 
 ## Jak to drží pohromadě
 
@@ -19,6 +19,7 @@ jednání; Můj výběr je dialog z nabídky účtu.
 scraper_judikatura.py judikatura NS, NSS, ÚS a SDEU                 -> data/judikatura/, docs/data/judikatura/
 scraper_journals.py  časopisy (weby, OJS, Crossref, RSS vydavatelů)  -> data/casopisy/, docs/data/casopisy.json
 scraper_hearings.py  jednání MSPH a VS Praha (.docx/.pdf na justice) -> docs/hearings.json, hearings.ics
+scraper_akce.py      vzdělávací akce pořadatelů (akce_config.json)  -> docs/akce.json, akce.ics
 digest.py            dvoutýdenní přehled IP a IT (judikatura z oblastí IP/IT, časopisy) -> docs/digest.json
 judikatura/          archiv, oblasti, mapy metadat, AI rozbor, fronta, adaptéry soudů (soudy/), migrace, kontrola
 feed_common.py       sdílené: první výskyt položek, AI klient, prompty, cache shrnutí
@@ -183,6 +184,33 @@ podle titulní strany platí od pozdějšího dne než ten zapsaný – starší
 stejný dokument ruční seznam nepřepíše. Senáty ze sloupce „Zastupuje senát“
 IP senáty jen zastupují a nesledují se.
 
+**Kalendář akcí** (`scraper_akce.py`) sbírá semináře, webináře a konference
+pořadatelů z `akce_config.json` (ČAK, PF UK, Jednota českých právníků,
+Beck-semináře, epravo.cz, ALAI, ÚPV). U každého je výpis akcí, domény, na
+které smí vést odkaz na přihlášku, zkratka a barva pro štítek; pořadí je
+pořadí štítků na webu. Akce z výpisu se berou první cestou, která něco vrátí:
+vlastní parser (`parser` v configu, `PARSERY`), odkaz na iCal nebo schema.org
+Event v JSON-LD, a nakonec AI z textu stránky (odkazy v něm zůstanou, ať AI
+vrátí i adresu akce). Novým akcím, kterým ve výpisu chybí anotace, lektoři
+nebo cena, se stáhne jejich stránka (nejvýš `AKCE_MAX_DETAILU` za běh). AI
+pak každou akci zařadí do 1–3 oblastí z `docs/data/oblasti.json`, stejně
+jako judikaturu; znovu se ptá, jen když se změní název nebo anotace.
+
+- Výstup `docs/akce.json`: `poradatele` (název, zkratka, barva, výpis, počet
+  nadcházejících akcí a stav posledního čtení – `stazeno`, `cesta` = parser /
+  ical / jsonld / ai, `chyba`), `formy` (popisky forem) a `akce` – každá
+  s `id`, `poradatel`, `datum` (+ `datum_do` u vícedenních), `zacatek`,
+  `konec`, `nazev`, `misto`, `forma` (`prezencne` / `online` / `hybridne`),
+  `lektori`, `cena`, `anotace`, `url` a `oblasti`. Vedle je `akce.ics`
+  k odběru v kalendáři (UID podle `id`).
+- Výpis, který se nepodaří stáhnout, nechá akce pořadatele, jak byly. Budoucí
+  akce, která z výpisu zmizí, vypadne (zrušená) – kromě případu, kdy výpis
+  četla AI a vrátila míň než polovinu akcí proti minulému běhu; to se bere
+  jako výpadek čtení. Proběhlé akce se drží 45 dní.
+- Weby pořadatelů nejsou z vývojového prostředí vidět. Sonda je stáhne
+  (`probe.yml` se zdrojem `akce`, s volbou `ulozit` do `tests/fixtures/probe/`)
+  a podle nich jde pro web, kde AI čte špatně, napsat vlastní parser.
+
 ## Přihlášení a vlastní výběr
 
 Přihlášení zajišťuje [Clerk](https://clerk.com) a slouží jen k vlastnímu
@@ -224,7 +252,7 @@ seznamy judikatury a nabízí přihlášení (při výpadku Clerku ne).
 
 ## Workflow
 
-- `update-feed.yml` – časopisy a kalendář jednání jednou denně ve 2:00
+- `update-feed.yml` – časopisy, kalendář jednání a akce jednou denně ve 2:00
   pražského času, v pondělí k tomu `digest.py`. Cron má dva výrazy (0:00
   a 1:00 UTC) a krok „Naplánovat běh" pustí ten, který v daném čase roku
   odpovídá 2:00 v Praze. Každý scraper je samostatný krok. Když jeden
@@ -241,19 +269,21 @@ seznamy judikatury a nabízí přihlášení (při výpadku Clerku ne).
 - `tests.yml` – `test_hearings.py` a `test_journals.py` nad uloženými
   originály dokumentů v `tests/fixtures`, `test_judikatura.py` (archiv, fronta,
   AI rozbor, adaptéry NS, NSS a ÚS nad uloženými odpověďmi soudů, mapy metadat,
-  migrace, kontrola dat v repu), `test_ai.py`, `test_digest.py`
-  a `tests/test_pdf_api.js` (náhled PDF, v Node).
+  migrace, kontrola dat v repu), `test_ai.py`, `test_digest.py`,
+  `test_akce.py` (čtení JSON-LD, iCal a AI nad syntetickými stránkami, sloučení,
+  oblasti, akce.ics) a `tests/test_pdf_api.js` (náhled PDF, v Node).
 
 ## Lokálně
 
 ```
 pip install -r requirements.txt icalendar   # icalendar jen pro testy
-python test_hearings.py && python test_journals.py && python test_judikatura.py
+python test_hearings.py && python test_journals.py && python test_judikatura.py && python test_akce.py
 node --test tests/test_pdf_api.js           # náhled PDF (api/pdf.js)
 python scraper_journals.py                  # a další scrapery stejně
 SKIP_GEMINI=1 python scraper_journals.py    # bez AI
 SKIP_GEMINI=1 python scraper_judikatura.py --soudy ns   # jen objevování
 python scraper_hearings.py --local-jednani MS=tests/fixtures/msph_civilni_2026-08-16_31.docx
+SKIP_GEMINI=1 python scraper_akce.py --local UPV=akce.ics   # akce z uložené stránky / .ics
 ```
 
 Stránku stačí otevřít přes libovolný statický server nad `docs/`
