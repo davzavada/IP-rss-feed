@@ -185,12 +185,6 @@ function polozkaHtml(p) {
   // o předběžnou otázku zatím nejsou zveřejněné otázky.
   if (p.shrnuti) html += '<p class="polozka-shrnuti">' + esc(p.shrnuti) + "</p>";
   else if (p.poznamka) html += '<p class="polozka-shrnuti note">' + esc(p.poznamka) + "</p>";
-  html += '<div class="polozka-stitky">' + p.stitky.map(s => '<span class="stitek">' + esc(s) + "</span>").join("");
-  if (p.stitky.length > 1) {
-    html += '<button type="button" class="stitek stitek-vic" title="' + esc(p.stitky.join(" · ")) +
-      '" aria-label="Ukázat všechny oblasti: ' + esc(p.stitky.join(", ")) + '">…</button>';
-  }
-  html += "</div>";
   // Odkaz ještě na samotný dokument (PDF rozhodnutí) – shrnutí je jen
   // shrnutí. Obojí se otevře v nové kartě, ať čtenář nepřijde o místo.
   const doc = pdfHref(p);
