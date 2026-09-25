@@ -25,23 +25,27 @@ jobs:
           SKIP_GEMINI: '1'
         run: |
           mkdir -p build
-          python - <<'PY' 2>&1 | tee build/feedy.txt
-          import scraper_journals as s
+          python - <<'PY' 2>&1 | tee build/feedy2.txt
+          import requests, json, scraper_journals as s
+          UA = {"User-Agent": s.CROSSREF_UA}
+          h = {"User-Agent": s.USER_AGENT, "Accept": "application/rss+xml, application/xml;q=0.9, */*;q=0.5"}
+          r = requests.get("https://kluwerlawonline.com/feeds/COLA", headers=h, timeout=30)
+          open("build/kluwer_cola.xml", "wb").write(r.content)
+          print("Kluwer", r.status_code, r.headers.get("Content-Type"), len(r.content))
+          for issn in ("1744-1048", "1757-8418"):
+              m = requests.get(f"https://api.crossref.org/journals/{issn}", headers=UA, timeout=30)
+              if m.status_code != 200:
+                  print(issn, m.status_code); continue
+              j = m.json()["message"]
+              w = requests.get(f"https://api.crossref.org/journals/{issn}/works",
+                               params={"sort": "created", "order": "desc", "rows": 3, "select": "DOI,title,created"},
+                               headers=UA, timeout=30).json()["message"]["items"]
+              print(issn, j["title"], j.get("issn-type"), j["counts"]["total-dois"],
+                    [(x["created"]["date-time"][:10], (x.get("title") or [""])[0][:50]) for x in w])
           for label, nazev, feed, ref, issn, vyd in s.DALSI_FEEDY:
-              print(f"== {label} ({vyd})")
-              try:
-                  items = s.fetch_publisher_rss(feed, label, nazev, ref)
-                  print(f"   RSS: {len(items)} článků")
-              except Exception as e:
-                  items = []
-                  print(f"   RSS selhal: {e}")
-              try:
-                  cr = s.fetch_crossref_journal(issn, label, nazev)
-                  print(f"   Crossref {issn}: {len(cr)} článků za okno")
-              except Exception as e:
-                  print(f"   Crossref selhal: {e}")
-              for i in items[:4]:
-                  print(f"   - {i['pub_date']:%Y-%m-%d}{' (odhad)' if i.get('pub_date_odhad') else ''} | {i['title'][:80]} | {i['authors'][:40]} | {i['link'][:70]}")
+              if label == "CMLRev":
+                  for i in s.fetch_publisher_rss(feed, label, nazev, ref)[:5]:
+                      print("  ", i["pub_date"], i.get("pub_date_odhad"), "|", i["title"], "|", i["authors"])
           PY
       - name: Commit
         if: always()

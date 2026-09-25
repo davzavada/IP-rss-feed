@@ -242,7 +242,7 @@ _TF_FEED = f"""<?xml version="1.0" encoding="UTF-8"?>
 </item></rdf:RDF>"""
 _ATOM_FEED = f"""<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Common Market Law Review</title>
-<entry><title>The rule of law conditionality after Hungary v Parliament</title>
+<entry><title>UPCYCLING AND TRADE MARK USE UNDER EU LAW [pre-publication]</title>
   <link rel="alternate" href="https://kluwerlawonline.com/journalarticle/Common+Market+Law+Review/61.5/COLA2026055"/>
   <author><name>Peter Novak</name></author>
   <published>{_nedavno}</published>
@@ -257,6 +257,8 @@ check("RSS 1.0 (T&F): článek s DOI, autorem a datem",
       len(tf) == 1 and tf[0]["guid"] == "JPIL-10.1080/17441048.2026.2555555"
       and tf[0]["authors"] == "Maria Rossi" and not tf[0]["pub_date_odhad"]
       and "choice of law" in tf[0]["description"], str(tf))
+check("Kluwer: bez „[pre-publication]“ a bez verzálek",
+      atom and atom[0]["title"] == "[CMLRev] Upcycling and Trade Mark Use under EU Law", atom and atom[0]["title"])
 check("Atom (Kluwer): odkaz z atributu, autor, datum a anotace",
       len(atom) == 1 and atom[0]["link"].startswith("https://kluwerlawonline.com/journalarticle/")
       and atom[0]["authors"] == "Peter Novak" and not atom[0]["pub_date_odhad"]

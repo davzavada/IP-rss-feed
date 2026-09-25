@@ -882,6 +882,9 @@ DALSI_FEEDY = [
 ]
 
 
+PREPUBLIKACE_RE = re.compile(r"\s*\[\s*pre-?publication\s*\]\s*", re.IGNORECASE)
+
+
 def _lokalni(tag):
     """Jméno prvku bez jmenného prostoru („{http://…/rss/1.0/}title" -> „title")."""
     return tag.rsplit("}", 1)[-1] if isinstance(tag, str) else ""
@@ -1031,7 +1034,9 @@ def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
     # RSS 2.0 <item>, RSS 1.0 {…/rss/1.0/}item (T&F), Atom <entry> (Kluwer).
     polozky = [e for e in root.iter() if _lokalni(e.tag) in ("item", "entry")]
     for item in polozky:
-        title = clean_title(_item_text(item, "title"))
+        # Kluwer značí články před vydáním „[pre-publication]“; ta malá písmena
+        # by jinak zabránila převést verzálkový název (normalize_title).
+        title = clean_title(PREPUBLIKACE_RE.sub("", _item_text(item, "title")))
         if not title:
             continue
 
