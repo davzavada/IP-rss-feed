@@ -441,7 +441,7 @@ check("u shrnutí je model, verze promptu a zdroj textu",
       and arch["ns:1"]["ai"]["zdroj"] == "html")
 with open(os.path.join(BW, "ns.json"), encoding="utf-8") as f:
     okno = json.load(f)
-check("okno pro web se zapíše", len(okno["polozky"]) == 3 and okno["okno_dni"] == 14)
+check("okno pro web se zapíše", len(okno["polozky"]) == 3 and okno["okno_dni"] == model.OKNA_DNI["ns"] == fc.OKNO_DNI)
 with open(STAV, encoding="utf-8") as f:
     stav = json.load(f)
 check("zdraví soudu ve stav.json", stav["soudy"]["ns"]["nove"] == 3 and stav["soudy"]["ns"]["chyba"] is None,
@@ -1369,7 +1369,7 @@ check("běh: znovu zpřístupněné staré rozhodnutí je v archivu, ale ne na w
 ip = next(p for p in okno_nss["polozky"] if p["id"] == f"nss:{IP_ID}")
 check("běh: okna pro web se shrnutím, první výskyt podle zpřístupnění",
       ip["shrnuti"] == SHRNUTI and ip["first_seen"] == "2026-09-21T12:00:00Z"
-      and okno_us["okno_dni"] == 14 and all(p["shrnuti"] for p in okno_us["polozky"])
+      and okno_us["okno_dni"] == model.OKNA_DNI["us"] and all(p["shrnuti"] for p in okno_us["polozky"])
       and any(p.get("nazev", "").startswith("Obnovené řízení") for p in okno_us["polozky"]), str(ip))
 prvni_dotaz = volani[0]["parts"][0]["text"]
 check("běh: fronta vzala spor s ÚPV jako první (výchozí výběr podle úředních údajů)",

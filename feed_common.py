@@ -4,7 +4,7 @@ volitelné AI shrnutí přes Gemini API.
 
 Sledování prvního výskytu: každý feed si drží JSON {guid: ISO datum prvního
 výskytu}. Podle něj:
-  - ponecháme jen položky s prvním výskytem do `weeks` týdnů zpět,
+  - ponecháme jen položky s prvním výskytem do `days` dní zpět (OKNO_DNI),
   - označíme položky, které přibyly v posledních 24 hodinách
     (item["is_new"] = True).
 
@@ -35,15 +35,20 @@ USER_AGENT = (
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 )
 
-# Jak dlouho držet záznam o prvním výskytu. Musí být delší než nejdelší
-# zobrazované okno (CJEU 8 týdnů), jinak by se položka po vypadnutí ze stavu
-# označila podruhé jako nová. Cache shrnutí se prořezává podle téhož stavu.
+# Jak dlouho držet záznam o prvním výskytu (když se stav prořezává). Musí být
+# delší než okno webu (OKNO_DNI), jinak by se položka po vypadnutí ze stavu
+# označila podruhé jako nová. Cache shrnutí se prořezává po stejné době.
 SEEN_PRUNE_DAYS = 120
 
 # „Nové" = přibylo v posledních 24 hodinách. Kalendářní den se k tomu nehodí:
 # ranní okno běhů (23:00–7:00 Praha) jde přes půlnoc, takže by položky
 # nalezené před půlnocí přišly o příznak dřív, než si je ráno někdo přečte.
 NEW_WINDOW = timedelta(hours=24)
+
+# Okno webu u všech zdrojů (soudy i časopisy): měsíc podle prvního výskytu.
+# 31 dní, aby první den měsíce bylo v okně celý předchozí měsíc – z toho
+# bude vycházet měsíční shrnutí.
+OKNO_DNI = 31
 
 
 def is_new(first_seen, now=None):
@@ -52,12 +57,12 @@ def is_new(first_seen, now=None):
 
 
 def save_seen(state_file, seen, prune_days=SEEN_PRUNE_DAYS):
-    """Uloží stav, vyhodí záznamy starší než prune_days."""
-    cutoff = datetime.now(timezone.utc) - timedelta(days=prune_days)
+    """Uloží stav, vyhodí záznamy starší než prune_days (None = nic)."""
+    cutoff = datetime.now(timezone.utc) - timedelta(days=prune_days) if prune_days else None
     pruned = {}
     for guid, ts in seen.items():
         try:
-            if datetime.fromisoformat(ts) >= cutoff:
+            if cutoff is None or datetime.fromisoformat(ts) >= cutoff:
                 pruned[guid] = ts
         except (ValueError, TypeError):
             continue
@@ -65,8 +70,9 @@ def save_seen(state_file, seen, prune_days=SEEN_PRUNE_DAYS):
         json.dump(pruned, f, ensure_ascii=False, indent=2)
 
 
-def filter_by_first_seen(items, guid_of, state_file, weeks=2):
-    """Ponechá jen položky s prvním výskytem do `weeks` týdnů zpět.
+def filter_by_first_seen(items, guid_of, state_file, days=OKNO_DNI,
+                         prune_days=SEEN_PRUNE_DAYS):
+    """Ponechá jen položky s prvním výskytem do `days` dní zpět.
 
     Každé ponechané položce nastaví item["is_new"] = True, pokud přibyla
     v posledních 24 hodinách. Stav prvního výskytu zároveň uloží.
@@ -76,7 +82,7 @@ def filter_by_first_seen(items, guid_of, state_file, weeks=2):
     """
     seen = load_json(state_file)
     now = datetime.now(timezone.utc)
-    cutoff = now - timedelta(weeks=weeks)
+    cutoff = now - timedelta(days=days)
 
     kept = []
     for item in items:
@@ -93,7 +99,7 @@ def filter_by_first_seen(items, guid_of, state_file, weeks=2):
             item["first_seen"] = first_seen
             kept.append(item)
 
-    save_seen(state_file, seen)
+    save_seen(state_file, seen, prune_days)
     return kept
 
 
@@ -113,17 +119,24 @@ def save_json(path, data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
-def prune_meta(meta, state_file):
-    """Ponechá v meta cache jen záznamy, jejichž klíč je i ve stavu prvního
-    výskytu. Stav se prořezává po SEEN_PRUNE_DAYS dnech, takže cache roste
-    s ním a ne donekonečna.
+def prune_meta(meta, state_file, days=SEEN_PRUNE_DAYS):
+    """Ponechá v meta cache jen záznamy, jejichž klíč je ve stavu prvního
+    výskytu nejvýš `days` dní zpět. Cache je jen pro položky v okně (starší
+    se už neshrnují), takže neroste donekonečna, ani když stav drží všechno.
 
     Když je stav prázdný (čerstvý reset sledování), cache raději nechá být.
     """
     seen = load_json(state_file)
     if not seen:
         return meta
-    return {k: v for k, v in meta.items() if k in seen}
+    cutoff = datetime.now(timezone.utc) - timedelta(days=days)
+
+    def cerstvy(k):
+        try:
+            return datetime.fromisoformat(seen[k]) >= cutoff
+        except (KeyError, ValueError, TypeError):
+            return False
+    return {k: v for k, v in meta.items() if cerstvy(k)}
 
 
 def prune_meta_file(meta_file, state_file):

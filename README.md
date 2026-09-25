@@ -17,7 +17,7 @@ jednání; Můj výběr je dialog z nabídky účtu.
 
 ```
 scraper_judikatura.py judikatura NS, NSS, ÚS a SDEU                 -> data/judikatura/, docs/data/judikatura/
-scraper_journals.py  časopisy (weby, OJS, Crossref, RSS vydavatelů)  -> docs/data/casopisy.json
+scraper_journals.py  časopisy (weby, OJS, Crossref, RSS vydavatelů)  -> data/casopisy/, docs/data/casopisy.json
 scraper_hearings.py  jednání MSPH a VS Praha (.docx/.pdf na justice) -> docs/hearings.json, hearings.ics
 digest.py            dvoutýdenní přehled IP a IT (judikatura z oblastí IP/IT, časopisy) -> docs/digest.json
 judikatura/          archiv, oblasti, mapy metadat, AI rozbor, fronta, adaptéry soudů (soudy/), migrace, kontrola
@@ -27,12 +27,24 @@ tools/probe_zdroje.py sonda: syrové odpovědi webů soudů pro parsery a testy
 ```
 
 Časopisy si vedou **stav prvního výskytu** (`journals_seen.json`): kdy
-položku poprvé viděly. Podle něj drží položku v okně (čtyři týdny)
+položku poprvé viděly. Podle něj drží položku v okně (měsíc)
 a web ji ukáže v Novinkách, když přibyla v posledních 24 hodinách (judikatura
 totéž dělá přes `first_seen` v archivu). Registr časopisů (`CASOPISY`
 ve `scraper_journals.py`) dává každému stálé id, které se ukládá ve výběru
 uživatele, a zkratku pro štítek; okno `docs/data/casopisy.json` se
-přepisuje, jen když se obsah změní. RSS feedy web už nevydává – všechno je
+přepisuje, jen když se obsah změní. Stav prvního výskytu se u časopisů
+neprořezává (zdroje vypisují i rok staré články, po vypadnutí ze stavu by se
+vrátily jako nové); cache shrnutí `journals_meta.json` drží jen 120 dní.
+
+**Archiv časopisů** je v `data/casopisy/RRRR-MM.jsonl` podle měsíce prvního
+výskytu: každý článek a číslo, co kdy prošlo oknem, jeden záznam (stejný jako
+v okně pro web, se shrnutím) na řádek, seřazený podle id. Záznam se přepíše
+novější verzí (i shrnutí). Web archiv nevidí. Starší
+články (od března 2026) jsou do něj doplněné jednorázově z historie
+`docs/journals_feed.xml` a `casopisy.json` v gitu. Archivy judikatury
+i časopisů se neořezávají – drží se všechno.
+
+RSS feedy web už nevydává – všechno je
 na stránce (kalendář jednání dál i jako `hearings.ics`).
 Tím nezáleží na tom, kdy zdroj položku datuje ani jestli datum později přepíše.
 
@@ -67,8 +79,10 @@ pro AI.
 - **Archiv** je v `data/judikatura/{soud}/RRRR-MM.jsonl`: jeden záznam na
   řádek, seřazený podle id, v měsíci prvního výskytu. `index.tsv` drží
   všechna id, takže se nic nezdvojí ani po letech. Na web jde jen okno
-  `docs/data/judikatura/{soud}.json` (NS, NSS, ÚS 14 dní, SDEU 30), a to jen
-  když se obsah opravdu změní. Vercel archiv nevidí, nasazuje jen `docs/`.
+  `docs/data/judikatura/{soud}.json` (u všech soudů i časopisů měsíc:
+  `OKNO_DNI` = 31 dní ve `feed_common.py`, ať je první den měsíce v okně celý
+  předchozí měsíc jako podklad pro měsíční shrnutí), a to jen když se obsah
+  opravdu změní. Vercel archiv nevidí, nasazuje jen `docs/`.
 - **První výskyt** je čas, kdy jsme rozhodnutí objevili. Když ale bylo
   zveřejněné před víc než třemi dny (vynechané běhy, první běh soudu), bere
   se datum zveřejnění, ať se staré netváří jako nové. Úplně první běh soudu

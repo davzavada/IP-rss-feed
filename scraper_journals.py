@@ -25,6 +25,7 @@ from feed_common import (
     JOURNAL_ARTICLE_PROMPT,
     JOURNAL_DECISION_PROMPT,
     JOURNAL_ISSUE_PROMPT,
+    OKNO_DNI,
     USER_AGENT,
     filter_by_first_seen,
     gemini_enabled,
@@ -36,11 +37,14 @@ from feed_common import (
 
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "data", "casopisy.json")
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "journals_seen.json")
+# Archiv všech článků a čísel: data/casopisy/RRRR-MM.jsonl podle měsíce
+# prvního výskytu, jeden záznam (jako v okně pro web) na řádek. Web ho nevidí.
+ARCHIV_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "casopisy")
 # Cache AI shrnutí podle guid ({guid: {"summary": ..., "tag": ...}}).
 META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "journals_meta.json")
 
-# Okno: články vycházejí po číslech, takže se drží déle než rozhodnutí.
-WINDOW_WEEKS = 4
+# Okno: měsíc podle prvního výskytu, stejně jako u soudů.
+WINDOW_DAYS = OKNO_DNI
 
 # Registr časopisů. `id` je stálé (ukládá se ve výběru uživatele), `zkratka`
 # je štítek na webu a zároveň prefix titulku položky ([IIC] …) ze scraperů.
@@ -674,14 +678,14 @@ def fetch_ojs_rss(feed_url, label, journal_name):
 # i abstrakty. Novinky bereme podle data vzniku DOI (≈ online publikace).
 
 CROSSREF_API = "https://api.crossref.org/journals/{issn}/works"
-CROSSREF_LOOKBACK_DAYS = 30  # jak daleko zpět se ptáme
+CROSSREF_LOOKBACK_DAYS = OKNO_DNI  # jak daleko zpět se ptáme (okno webu)
 # Ptáme se dvakrát, protože ani jedno datum samo o sobě nestačí:
 #   from-created-date  – kdy vznikl DOI záznam. Chytí i staršího „novinku“,
 #                        kterou vydavatel deponoval teprve teď.
 #   from-pub-date      – kdy článek vyšel. Chytí čísla, jejichž DOI vydavatel
 #                        deponoval dopředu (ahead of print) – tak vypadlo
 #                        srpnové číslo QMJIP, deponované o měsíce dřív.
-# Výsledky se slučují podle DOI, okno zůstává u obou 30 dní, takže se
+# Výsledky se slučují podle DOI, okno zůstává u obou měsíc, takže se
 # nevyhrne archiv.
 CROSSREF_FILTRY = ("from-created-date", "from-pub-date")
 # Crossref etiketa: identifikuj se v User-Agent
@@ -1227,7 +1231,7 @@ def zapis_json(all_items, cesta=None, nyni=None):
     """Zapíše okno časopisů. Jen když se obsah změnil – jinak by každý běh
     měnil čas a spouštěl commit i nasazení. Vrací True při zápisu."""
     cesta = cesta or OUTPUT
-    obsah = {"okno_dni": WINDOW_WEEKS * 7, "casopisy": CASOPISY,
+    obsah = {"okno_dni": WINDOW_DAYS, "casopisy": CASOPISY,
              "polozky": [polozka_json(it) for it in all_items]}
     if os.path.exists(cesta):
         try:
@@ -1245,6 +1249,44 @@ def zapis_json(all_items, cesta=None, nyni=None):
         f.write(json.dumps(data, ensure_ascii=False, indent=1) + "\n")
     os.replace(tmp, cesta)
     return True
+
+
+def archivuj(all_items, adresar=None):
+    """Zanese položky okna do archivu data/casopisy/RRRR-MM.jsonl (měsíc
+    prvního výskytu). Existující záznam se přepíše novějším – i shrnutí, které
+    se mezitím zahodilo nebo vzniklo znovu. Cache shrnutí drží déle než okno,
+    takže položka v okně o hotové shrnutí nepřijde. Soubor se přepíše, jen
+    když se změní. Vrací počet nově archivovaných položek."""
+    adresar = adresar or ARCHIV_DIR
+    po_mesicich = {}
+    for it in all_items:
+        z = polozka_json(it)
+        mesic = (z.get("first_seen") or z["datum"])[:7]
+        po_mesicich.setdefault(mesic, []).append(z)
+    nove = 0
+    for mesic, zaznamy in po_mesicich.items():
+        cesta = os.path.join(adresar, mesic + ".jsonl")
+        archiv = {}
+        if os.path.exists(cesta):
+            with open(cesta, encoding="utf-8") as f:
+                for radek in f:
+                    if radek.strip():
+                        z = json.loads(radek)
+                        archiv[z["id"]] = z
+        puvodni = dict(archiv)
+        for z in zaznamy:
+            if z["id"] not in archiv:
+                nove += 1
+            archiv[z["id"]] = z
+        if archiv == puvodni:
+            continue
+        os.makedirs(adresar, exist_ok=True)
+        tmp = cesta + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            for k in sorted(archiv):
+                f.write(json.dumps(archiv[k], ensure_ascii=False, sort_keys=True) + "\n")
+        os.replace(tmp, cesta)
+    return nove
 
 
 def main():
@@ -1320,11 +1362,12 @@ def main():
         except Exception as e:
             print(f"  CHYBA při stahování {label}: {e}")
 
-    # Ponecháme jen položky s prvním výskytem do WINDOW_WEEKS zpět (u všech
+    # Ponecháme jen položky s prvním výskytem do WINDOW_DAYS zpět (u všech
     # zdrojů). První výskyt sledujeme sami, aby se staré články s přepsaným
-    # datem nevracely.
+    # datem nevracely. Stav se neprořezává: zdroje vypisují i rok staré
+    # články a po vypadnutí ze stavu by se vrátily jako nové.
     all_items = filter_by_first_seen(
-        all_items, lambda i: i["guid"], STATE_FILE, weeks=WINDOW_WEEKS
+        all_items, lambda i: i["guid"], STATE_FILE, days=WINDOW_DAYS, prune_days=None
     )
 
     # Zdroje, které datum vydání neuvádějí (weby českých časopisů), dostanou
@@ -1341,6 +1384,9 @@ def main():
 
     # Cache shrnutí prořízneme podle stavu prvního výskytu, ať neroste donekonečna
     prune_meta_file(META_FILE, STATE_FILE)
+
+    nove = archivuj(all_items)
+    print(f"Archiv časopisů: {nove} nových položek")
 
     if zapis_json(all_items):
         print(f"Časopisy zapsány do {OUTPUT}")
