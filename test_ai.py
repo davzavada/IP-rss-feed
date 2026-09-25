@@ -241,7 +241,12 @@ check("po třetí pauze je model do konce běhu pryč",
 
 sit, _ = priprav({PRVNI: [Odp(200, {"promptFeedback": {"blockReason": "SAFETY"}})],
                   DRUHY: [PRETIZENO()] * fc.GEMINI_MAX_RETRIES})
-check("zablokovaný dotaz není přetížení (pokus se počítá)", dotaz() == ("", "") and not fc.ai_pretizena())
+check("zablokovaný u jednoho, přetížený u druhého → přetížení (druhý ho může vzít příště)",
+      dotaz() == ("", "") and fc.ai_pretizena())
+
+sit, _ = priprav({m: [Odp(200, {"promptFeedback": {"blockReason": "PROHIBITED_CONTENT"}})] for m in PORADI})
+check("zablokovaný u všech modelů není přetížení (pokus se počítá)",
+      dotaz() == ("", "") and not fc.ai_pretizena())
 
 sit, _ = priprav({PRVNI: [ConnectionError("reset")] * 2 + [ok("po výpadku")]})
 check("síťová chyba se opakuje", dotaz()[0] == "po výpadku", str(sit.modely_volani()))

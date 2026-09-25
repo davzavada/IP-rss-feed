@@ -489,11 +489,14 @@ check("jednání vypsané v dokumentu se nehlásí jako odvolané", zmeny_neip =
       str(zmeny_neip))
 
 # Stejnou změnu najde každý další běh znovu; ukládá se jen jednou a jen měsíc.
-opakovana = dict(dle_znacky["12 C 9/2026"])
-starsi = dict(opakovana, kdy=(dnes - _td(days=40)).isoformat(), spz="12 C 8/2026")
-orezane = s.orez_zmeny([opakovana, dict(opakovana, kdy="2026-08-25"), starsi])
+# Měsíc se počítá od skutečného dneška, proto data relativně k němu.
+dnes_opravdu = _date.today()
+poprve = (dnes_opravdu - _td(days=6)).isoformat()
+opakovana = dict(dle_znacky["12 C 9/2026"], kdy=dnes_opravdu.isoformat())
+starsi = dict(opakovana, kdy=(dnes_opravdu - _td(days=40)).isoformat(), spz="12 C 8/2026")
+orezane = s.orez_zmeny([opakovana, dict(opakovana, kdy=poprve), starsi])
 check("stejná změna se neuloží dvakrát", len(orezane) == 1, str(orezane))
-check("uloží se datum prvního výskytu", orezane[0]["kdy"] == "2026-08-25",
+check("uloží se datum prvního výskytu", orezane[0]["kdy"] == poprve,
       str(orezane[0]["kdy"]))
 check("změny starší než měsíc odpadnou",
       not [z for z in orezane if z["spz"] == "12 C 8/2026"])

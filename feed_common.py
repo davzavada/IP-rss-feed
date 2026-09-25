@@ -672,11 +672,16 @@ def ai_volani(parts, system=None, schema=None, max_tokens=8192, timeout=GEMINI_T
     _posledni_pretizeni = False
     if not gemini_enabled() or _klic_zamitnut:
         return "", ""
-    pretizeni = True
+    # Za přetížení (pokus se rozhodnutí nepočítá) se bere, když aspoň jeden
+    # model selhal jen dočasně – ten ho příště může vzít, i když ho jiný
+    # zablokoval (PROHIBITED_CONTENT u trestních věcí) nebo nevzal pro délku.
+    # Když nevyšel žádný model, jsou všechny v pauze nebo vyřazené.
+    pretizeni, zkouseno = False, False
     for kolo in range(2):
         for model in gemini_modely():
             if _stav(model)["vyrazen"] or _v_pauze(model):
                 continue
+            zkouseno = True
             text, vysledek = _zkus_model(
                 model, lambda: _telo(model, parts, system, schema, max_tokens), timeout)
             if text:
@@ -684,8 +689,9 @@ def ai_volani(parts, system=None, schema=None, max_tokens=8192, timeout=GEMINI_T
             if vysledek == "konec":
                 print("    AI: žádný model nedal odpověď, zkusím příště")
                 return "", ""
-            if vysledek != "pretizeni":
-                pretizeni = False
+            if vysledek == "pretizeni":
+                pretizeni = True
+        pretizeni = pretizeni or not zkouseno
         # Když zbylé modely jen čekají na konec pauzy, počká se na první z nich
         # a zkusí se to ještě jednou.
         pauzy = [_stav(m)["pauza_do"] for m in gemini_modely() if not _stav(m)["vyrazen"]]
