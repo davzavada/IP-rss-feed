@@ -242,6 +242,12 @@ v každém svém dni, kurz delší než týden jen v den začátku.
 
 ## Přihlášení a vlastní výběr
 
+**Kalendář jednání** vidí jen účty v `JEN_PRO` v `docs/app.js` (podle
+e-mailu v Clerku, teď jen provozovatel): navigace, záložka i stránka mají
+`data-jen="kalendar"` a bez třídy `smi-kalendar` na `<html>` jsou schované;
+odkaz `#kalendar` ostatní přesměruje na Novinky. Je to jen schování na webu –
+`hearings.json` a `hearings.ics` zůstávají veřejné na své adrese.
+
 Přihlášení zajišťuje [Clerk](https://clerk.com) a slouží jen k vlastnímu
 výběru. Bez přihlášení (i při výpadku Clerku) web ukazuje výchozí výběr:
 u Nejvyššího soudu senát 23 a z ostatních senátů oblasti duševního

@@ -214,6 +214,10 @@ main { min-width: 0; padding: 32px 48px 48px; }
   mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent);
 }
 
+/* Stránky jen pro vybrané účty (JEN_PRO v app.js): bez třídy smi-… na <html>
+   nejsou vidět ani v navigaci. */
+html:not(.smi-kalendar) [data-jen="kalendar"] { display: none !important; }
+
 /* ===== Stránka ===== */
 /* Obsah je rozdělený na stránky; viditelná je vždy jedna. */
 .page { display: flex; flex-direction: column; gap: 22px; }

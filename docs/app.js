@@ -1608,8 +1608,35 @@ function clerkNedostupny(e) {
 // Výběr se přepíná jen při přihlášení a odhlášení (jiný účet). Změny
 // výběru dělá tahle stránka sama, takže pozdější ozvěny od Clerku po
 // uložení nic nepřepisují. `vzdy` = první stav po načtení Clerku.
+// Stránky jen pro vybrané účty (podle e-mailu v Clerku). Jen schování na
+// webu: data (hearings.json, hearings.ics) zůstávají veřejná na své adrese.
+const JEN_PRO = { kalendar: ["davzavada@gmail.com"] };
+
+function emailyUctu(user) {
+  return ((user && user.emailAddresses) || [])
+    .map(e => String(e.emailAddress || "").toLowerCase()).filter(Boolean);
+}
+
+function smiVidet(stranka) {
+  const povoleno = JEN_PRO[stranka];
+  if (!povoleno) return true;
+  const user = clerk && clerk.user;
+  return emailyUctu(user).some(e => povoleno.indexOf(e) >= 0);
+}
+
+// Třída na <html> odkryje položky navigace a stránky s data-jen="…".
+function nastavViditelnost() {
+  Object.keys(JEN_PRO).forEach(stranka =>
+    document.documentElement.classList.toggle("smi-" + stranka, smiVidet(stranka)));
+  // Když někdo stojí na stránce, kterou už (nebo ještě) nesmí vidět, nebo se
+  // naopak přihlásil a adresa míří na jeho stránku, přepočítá se to.
+  const cil = pageOf(location.hash);
+  if (cil !== currentPage) navigate(location.hash, false);
+}
+
 function zmenaUctu(user, vzdy) {
   const id = user ? user.id : null;
+  nastavViditelnost();
   if (vzdy || id !== prihlaseny) {
     prihlaseny = id;
     vyber = user ? normalizujVyber((user.unsafeMetadata || {}).owl) : vychoziVyber();
@@ -2171,7 +2198,9 @@ let updateNav = function () {};
 
 function pageOf(hash) {
   const id = String(hash || "").replace(/^#/, "");
-  return PAGES.find(p => p.id === id || p.sections.indexOf(id) >= 0) || PAGES[0];
+  const page = PAGES.find(p => p.id === id || p.sections.indexOf(id) >= 0) || PAGES[0];
+  // Stránka jen pro vybrané účty se ostatním neotevře ani z odkazu.
+  return smiVidet(page.id) ? page : PAGES[0];
 }
 
 // Přepne na stránku a odscrolluje – buď na sekci, nebo na začátek stránky.
