@@ -244,7 +244,9 @@ main { min-width: 0; padding: 32px 48px 48px; }
 .ico-journals { color: var(--badge-amber-fg); }
 
 .polozka {
-  display: grid; grid-template-columns: minmax(0, 1fr) 116px; column-gap: 16px; row-gap: 4px;
+  /* Pravý sloupec je přesně tak široký jako odkazy (auto) – pevná šířka
+     v písmu Geist nestačila a odkazy přetékaly nad shrnutí. */
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 40px; row-gap: 4px;
   /* Shrnutí vede až ke sloupci s odkazy (bez stropu na délku řádku),
      od odkazů ho dělí jen úzká mezera. */
   grid-template-areas: "meta datum" "titul odkazy" "shrnuti ." "stitky .";
