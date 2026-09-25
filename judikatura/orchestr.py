@@ -115,8 +115,12 @@ def zpracuj_ai(sklady, adaptery, nyni, tax, rozpocet):
         vysledek, pouzity = analyza.analyzuj(z, obsah, tax)
         rozpocet.zapocitej()
         if vysledek:
+            stare = z.get("ai") or {}
             z["ai"] = dict(vysledek, model=pouzity, pv=analyza.PROMPT_VERZE, tv=tax.verze,
                            at=model.iso(model.ted()), zdroj=obsah.get("zdroj", ""))
+            # Ručně napsané heslo přežije i nový rozbor.
+            if stare.get("heslo_rucne"):
+                z["ai"].update(heslo=stare["heslo"], heslo_rucne=True, hv=analyza.HESLO_VERZE)
             # Obecné heslo („Přípustnost dovolání") ještě přepíše prepis_hesel.
             if not analyza.heslo_obecne(vysledek.get("heslo")):
                 z["ai"]["hv"] = analyza.HESLO_VERZE
@@ -153,7 +157,7 @@ def prepis_hesel(sklady, nyni, max_davek=HESLA_MAX_DAVEK):
     for soud, sklad in sklady.items():
         for z in sklad.v_okne(nyni, model.OKNA_DNI[soud]):
             ai = z.get("ai") or {}
-            if (ai.get("shrnuti") and not z.get("nahrazeno")
+            if (ai.get("shrnuti") and not z.get("nahrazeno") and not ai.get("heslo_rucne")
                     and int(ai.get("hv") or 0) < analyza.HESLO_VERZE):
                 kandidati.append(z)
     # Nejdřív ta, co nic neříkají, pak od nejnovějšího.

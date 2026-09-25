@@ -378,6 +378,10 @@ check("přepis hesel: označí verzi a uloží", sum(1 for z in zaznamy if z["ai
 orchestr.prepis_hesel({"ns": sklad}, NYNI, max_davek=2)
 check("přepis hesel: příští běh dodělá zbytek",
       all(z["ai"].get("hv") == analyza.HESLO_VERZE for z in zaznamy if not z.get("nahrazeno")))
+rucni = dict(rozhodnuti, id="ns:RUCNE", ai={"heslo": "Ručně psané", "shrnuti": SHRNUTI, "heslo_rucne": True})
+volani.clear()
+orchestr.prepis_hesel({"ns": FalesnySklad([rucni])}, NYNI)
+check("ručně psané heslo se nepřepisuje", rucni["ai"]["heslo"] == "Ručně psané" and not volani)
 neprosle = dict(rozhodnuti, id="ns:DLOUHE", ai={"heslo": "Zastavení řízení", "shrnuti": SHRNUTI})
 fc.ai_volani = falesna_ai('{"ns:DLOUHE": "Přípustnost dovolání"}')
 orchestr.prepis_hesel({"ns": FalesnySklad([neprosle])}, NYNI)
