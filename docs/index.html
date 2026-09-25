@@ -92,6 +92,9 @@
   <symbol id="icon-lock" viewBox="0 0 24 24">
     <rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
   </symbol>
+  <symbol id="icon-ticket" viewBox="0 0 24 24">
+    <path d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4Z"></path><path d="M13 5v2M13 11v2M13 17v0"></path>
+  </symbol>
   <symbol id="icon-info" viewBox="0 0 24 24">
     <circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path>
   </symbol>
@@ -125,6 +128,7 @@
   </div>
   <div class="nav-group">
     <a href="#kalendar"><svg class="nav-ico" aria-hidden="true"><use href="#icon-calendar"></use></svg><span>Kalendář jednání</span></a>
+    <a href="#akce"><svg class="nav-ico" aria-hidden="true"><use href="#icon-ticket"></use></svg><span>Kalendář akcí</span></a>
   </div>
 </nav>
 
@@ -144,6 +148,7 @@
   <a href="#casopisy" title="Právní časopisy">Časopisy</a>
   <span class="pagetabs-sep" aria-hidden="true"></span>
   <a href="#kalendar" title="Kalendář jednání">Kalendář</a>
+  <a href="#akce" title="Kalendář akcí">Akce</a>
 </nav>
 </div>
 
@@ -227,6 +232,14 @@
     <p class="page-desc"><span class="jen-d">Nařízená jednání IP senátů Městského a Vrchního soudu v Praze a žaloby proti Úřadu průmyslového vlastnictví. Soudy přehled zveřejňují zhruba na dva týdny dopředu.</span><span class="jen-m">IP senáty MS a VS v Praze.<span id="cal-info-m"></span></span></p>
   </div>
   <div class="feed" id="feed-kalendar"><p class="loading">Načítám...</p></div>
+</section>
+
+<section class="page" id="akce" hidden>
+  <div class="page-head">
+    <h2 class="page-title">Kalendář akcí</h2>
+    <p class="page-desc"><span class="jen-d">Semináře, webináře a konference z ČAK, PF UK, Jednoty českých právníků, Beck-seminářů, epravo.cz, ALAI a ÚPV. AI každou akci zařadí do stejných oblastí jako rozhodnutí.</span><span class="jen-m">Vzdělávací akce sedmi pořadatelů.</span></p>
+  </div>
+  <div class="feed" id="feed-akce"><p class="loading">Načítám...</p></div>
 </section>
 
 </div><!-- /.obsah -->

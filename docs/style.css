@@ -506,6 +506,26 @@ a.digest-source:hover { border-color: var(--faint); text-decoration: none; }
   font-size: 13px; color: var(--fg-3);
 }
 
+/* ===== Kalendář akcí =====
+   Stejné třídy jako kalendář jednání; barvu pořadatele nese proměnná --org
+   (z akce.json), pozadí štítků se z ní míchá. */
+.ak-rozsah { margin-left: auto; }
+.ak-poradatele { display: flex; gap: 8px; flex-wrap: wrap; }
+.ak-key { color: var(--org); background: color-mix(in srgb, var(--org) 11%, transparent); }
+.ak-chip .cal-dot, .ak-barva { background: var(--org); }
+.ak-org { color: var(--org); background: color-mix(in srgb, var(--org) 11%, transparent); white-space: nowrap; }
+.ak-titul { color: inherit; }
+.ak-misto { min-width: 0; overflow-wrap: anywhere; }
+.ak-oblasti { display: flex; gap: 6px; flex-wrap: wrap; }
+.ak-oblast {
+  font-size: 12px; padding: 1px 7px; border-radius: 6px;
+  border: 1px solid var(--border); color: var(--muted-foreground);
+}
+/* Mřížka s víkendem, když na něj nějaká akce připadá. */
+.cal-grid.cal-grid-7 { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.cal-grid.cal-grid-7 > * { border-left: 0; }
+.cal-grid.cal-grid-7 > :not(:nth-child(7n + 1)) { border-left: 1px solid var(--border); }
+
 /* ===== Můj výběr: dialog (shadcn Dialog) =====
    Vlevo záložky se souhrnem výběru, vpravo seznam se zaškrtávacími poli,
    dole lišta s Uložit, která je vidět pořád. */
@@ -713,6 +733,15 @@ html.is-loading body { visibility: hidden; }
   .cal-radek-meta { gap: 6px; }
   .cal-radek-akce { display: none; }
   .cal-radek-ikona { display: flex; }
+  /* Akce: přepínač oblastí a pořadatelé zůstávají, pohled je jen seznam. */
+  #akce .cal-toolbar { display: flex; }
+  #ak-pohled { display: none; }
+  .ak-rozsah { margin-left: 0; align-self: stretch; flex: 1; border-radius: 10px; }
+  .ak-rozsah button { flex: 1; justify-content: center; min-height: 36px; font-size: 14px; border-radius: 8px; }
+  .ak-poradatele { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -16px; padding-inline: 16px; }
+  .ak-key { flex: none; }
+  #akce .cal-pozn { display: block; }
+  .ak-oblasti { display: none; }
 
   /* Můj výběr přes celou obrazovku; záložky jako přepínač nahoře. */
   /* 100 %, ne 100vw – to by započítalo i posuvník stránky. */

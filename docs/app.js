@@ -570,6 +570,8 @@ function vykresliZdroje() {
   renderToday(filtrovane);
   pripojVychozi(document.getElementById("feed-today"), "today");
   vykresliVyberStitek();
+  // „Moje oblasti" v Kalendáři akcí se řídí týmž výběrem.
+  akPrekresli();
 }
 
 // Nepřihlášený vidí výchozí výběr – pod tabulkou judikatury mu to řekneme
@@ -1152,6 +1154,372 @@ function renderKalendar(data) {
 
   renderCalPocty();
   redrawCal();
+}
+
+/* ========== Kalendář akcí ========== */
+// Semináře, webináře a konference pořadatelů (akce.json ze scraper_akce.py).
+// Stejné pohledy jako Kalendář jednání – „3 týdny" s bublinou a „Seznam" –
+// jen se barví podle pořadatele a filtruje i podle oblastí z Můj výběr.
+// Akce bývají i o víkendu – mřížka pak dostane sobotu a neděli, jinak má
+// jen pracovní dny jako u jednání.
+let akData = null;       // obsah akce.json
+let akStart = null;      // pondělí prvního zobrazeného týdne
+let akPohled = "mesic";  // mesic | seznam
+let akVse = false;       // false = jen akce z mých oblastí
+let akVypnute = {};      // pořadatel -> true, když je skrytý
+let akPopKey = null;
+
+function akPoradatel(a) {
+  return ((akData && akData.poradatele) || {})[a.poradatel] || { zkratka: a.poradatel, nazev: a.poradatel };
+}
+
+// Barva pořadatele jde do CSS proměnné; štítky si z ní míchají pozadí.
+function akBarva(a) {
+  const b = akPoradatel(a).barva;
+  return /^#[0-9a-f]{3,8}$/i.test(b || "") ? ' style="--org: ' + b + '"' : "";
+}
+
+function mojeOblasti() {
+  const v = vyber || vychoziVyber();
+  return bezDuplicit(SOUDY_VYBERU.reduce((acc, x) => acc.concat(v[x.soud].oblasti), []));
+}
+
+function akVidi(a) {
+  if (akVse) return true;
+  const moje = mojeOblasti();
+  return (a.oblasti || []).some(o => moje.indexOf(ALIAS_OBLASTI[o] || o) >= 0);
+}
+
+// Akce po filtrech, seskupené podle dne. Vícedenní akce (konference) je
+// v každém svém dni; dlouhý kurz (přes týden, třeba celý semestr) jen v den
+// začátku – jinak by zaplnil celou mřížku.
+const AK_MAX_ROZPETI = 7;
+
+function akPodleDne(sFiltrem) {
+  const byDay = {};
+  (akData.akce || []).forEach(a => {
+    if (!a || !a.datum) return;
+    if (sFiltrem !== false && (akVypnute[a.poradatel] || !akVidi(a))) return;
+    const d = dateOf(a.datum);
+    let konec = dateOf(a.datum_do || a.datum);
+    if ((konec - d) / 864e5 > AK_MAX_ROZPETI) konec = dateOf(a.datum);
+    for (let i = 0; d <= konec; i++) {
+      const iso = isoOf(d);
+      (byDay[iso] = byDay[iso] || []).push(a);
+      d.setDate(d.getDate() + 1);
+    }
+  });
+  Object.values(byDay).forEach(list => list.sort((a, b) =>
+    minutesOf(a.zacatek) - minutesOf(b.zacatek) || String(a.nazev).localeCompare(String(b.nazev), "cs")));
+  return byDay;
+}
+
+function akCas(a) {
+  if (!a.zacatek) return "";
+  return a.zacatek + (a.konec ? "–" + a.konec : "");
+}
+
+function akKdy(a) {
+  if (a.datum_do && a.datum_do !== a.datum) {
+    const od = dateOf(a.datum), dd = dateOf(a.datum_do);
+    return od.getDate() + ". " + (od.getMonth() + 1) + ". – " + dd.getDate() + ". " + (dd.getMonth() + 1) +
+      ". " + dd.getFullYear() + (akCas(a) ? " · " + akCas(a) : "");
+  }
+  return denNazev(a.datum) + (akCas(a) ? " · " + akCas(a) : "");
+}
+
+function akOdkaz(a) {
+  return safeHref(a.url) || safeHref(akPoradatel(a).url) || "";
+}
+
+function akOblasti(a) {
+  return bezDuplicit((a.oblasti || []).map(o => OBLASTI[ALIAS_OBLASTI[o] || o]).filter(Boolean));
+}
+
+function akChipHtml(a, iso, idx) {
+  return '<button type="button" class="cal-chip ak-chip" data-date="' + iso + '" data-idx="' + idx +
+    '" aria-expanded="false"' + akBarva(a) + ' title="' + esc(akPoradatel(a).zkratka + ": " + a.nazev) + '">' +
+    '<span class="cal-dot"></span>' +
+    (a.zacatek ? '<span class="cal-chip-time">' + esc(a.zacatek) + "</span>" : "") +
+    '<span class="cal-chip-name">' + esc(a.nazev) + "</span></button>";
+}
+
+function akGrid() {
+  const byDay = akPodleDne();
+  const start = new Date(akStart);
+  const todayIso = isoOf(new Date());
+  // Víkend se ukáže, jen když na něj v okně nějaká akce připadá.
+  let vikend = false;
+  for (let w = 0; w < CAL_TYDNU && !vikend; w++) for (let i = 5; i < 7; i++) {
+    const d = new Date(start); d.setDate(start.getDate() + w * 7 + i);
+    if (byDay[isoOf(d)]) vikend = true;
+  }
+  const dnu = vikend ? 7 : 5;
+  const grid = document.getElementById("ak-grid");
+  grid.classList.toggle("cal-grid-7", vikend);
+  let html = CAL_DOWS.concat(vikend ? ["So", "Ne"] : []).map(d => '<div class="cal-dow">' + d + "</div>").join("");
+  for (let w = 0; w < CAL_TYDNU; w++) {
+    for (let i = 0; i < dnu; i++) {
+      const d = new Date(start);
+      d.setDate(start.getDate() + w * 7 + i);
+      const iso = isoOf(d);
+      const cls = ["cal-day"];
+      if (iso === todayIso) cls.push("today");
+      else if (iso < todayIso) cls.push("past");
+      const cislo = d.getDate() === 1 ? "1. " + (d.getMonth() + 1) + "." : d.getDate();
+      html += '<div class="' + cls.join(" ") + '" data-sloupec="' + i + '" data-dnu="' + dnu + '" data-tyden="' + w + '">' +
+        '<div class="cal-daynum"><span>' + cislo + "</span></div>" +
+        (byDay[iso] || []).map((a, idx) => akChipHtml(a, iso, idx)).join("") + "</div>";
+    }
+  }
+  const konec = new Date(start);
+  konec.setDate(start.getDate() + (CAL_TYDNU - 1) * 7 + dnu - 1);
+  grid.innerHTML = html;
+  document.getElementById("ak-title").textContent = calRangeLabel(start, konec);
+  document.getElementById("ak-today").hidden = isoOf(akStart) === isoOf(calDefaultStart());
+}
+
+function akSeznam() {
+  const byDay = akPodleDne();
+  const todayIso = isoOf(new Date());
+  const dny = Object.keys(byDay).sort().filter(d => d >= todayIso);
+  let html = dny.map(iso => '<div class="cal-den"><div class="cal-den-hlava">' +
+    '<span class="cal-den-nazev">' + esc(denNazev(iso)) + "</span>" +
+    '<span class="cal-den-rel">' + esc(zaKolik(iso) + " · " + tvar(byDay[iso].length, "akce", "akce", "akcí")) + "</span></div>" +
+    byDay[iso].map(a => {
+      const p = akPoradatel(a);
+      const url = esc(akOdkaz(a));
+      const meta = ['<span class="cal-soud ak-org"' + akBarva(a) + ' title="' + esc(p.nazev) + '">' + esc(p.zkratka) + "</span>"];
+      if (a.forma) meta.push("<span>" + esc(((akData.formy || {})[a.forma]) || a.forma) + "</span>");
+      if (a.misto && a.forma !== "online") meta.push('<span aria-hidden="true">·</span><span class="ak-misto">' + esc(a.misto) + "</span>");
+      const obl = akOblasti(a);
+      return '<div class="cal-radek"><span class="cal-radek-cas">' + esc(a.zacatek || "–") + "</span>" +
+        '<div class="cal-radek-telo"><div class="cal-radek-nazev">' +
+          (url ? '<a class="ak-titul" href="' + url + '" target="_blank" rel="noopener">' + esc(a.nazev) + "</a>" : esc(a.nazev)) +
+        "</div>" +
+        '<div class="cal-radek-meta">' + meta.join("") + "</div>" +
+        (obl.length ? '<div class="ak-oblasti">' + obl.map(o => '<span class="ak-oblast">' + esc(o) + "</span>").join("") + "</div>" : "") +
+        "</div>" +
+        '<div class="cal-radek-akce">' + (url ? '<a class="odkaz" href="' + url + '" target="_blank" rel="noopener">Přihláška ↗</a>' : "") + "</div>" +
+        (url ? '<a class="cal-radek-ikona" href="' + url + '" target="_blank" rel="noopener" title="Přihláška u pořadatele" ' +
+          'aria-label="Přihláška u pořadatele"><svg class="nav-ico" aria-hidden="true"><use href="#icon-ticket"></use></svg></a>' : "") +
+        "</div>";
+    }).join("") + "</div>").join("");
+  if (!dny.length) {
+    html = '<p class="feed-empty">' + (akVse ? "Žádné nadcházející akce." :
+      'Ve vašich oblastech teď žádná akce není. <button type="button" class="odkaz-tlacitko" id="ak-na-vse">Ukázat všechny.</button>') + "</p>";
+  }
+  document.getElementById("ak-seznam").innerHTML = html;
+}
+
+function akPopHtml(a, datum, idx) {
+  const p = akPoradatel(a);
+  const ikona = id => '<svg class="nav-ico" aria-hidden="true"><use href="#' + id + '"></use></svg>';
+  let html = '<div class="cal-pop-lista"><button type="button" class="cal-pop-close" aria-label="Zavřít" title="Zavřít">' +
+    ikona("icon-x") + "</button></div>" +
+    '<div class="cal-pop-hlava"><span class="cal-pop-barva ak-barva"' + akBarva(a) + "></span><div>" +
+    '<h3 class="cal-pop-titul">' + esc(a.nazev) + "</h3>" +
+    '<div class="cal-pop-kdy">' + esc(akKdy(a)) + "</div></div></div>";
+  const obl = akOblasti(a);
+  html += '<div class="cal-pop-radky">' + ikona("icon-court") + "<div><div>" + esc(p.nazev) + "</div>" +
+    (obl.length ? '<div class="cal-pop-sub">' + esc(obl.join(" · ")) + "</div>" : "") + "</div>";
+  const forma = ((akData.formy || {})[a.forma]) || "";
+  const kde = [a.forma === "online" ? "" : a.misto, forma].filter(Boolean).join(" · ");
+  if (kde) html += ikona("icon-pin") + "<div>" + esc(kde) + "</div>";
+  const kdo = [(a.lektori || []).join(", "), a.cena].filter(Boolean).join(" · ");
+  if (kdo) html += ikona("icon-user") + "<div>" + esc(kdo) + "</div>";
+  if (a.anotace) html += ikona("icon-info") + '<div class="cal-pop-sub">' + esc(a.anotace) + "</div>";
+  html += "</div>";
+  const url = akOdkaz(a);
+  html += '<div class="cal-pop-akce">' +
+    (url ? '<a class="btn btn-hlavni" href="' + esc(url) + '" target="_blank" rel="noopener">Přihláška u pořadatele ↗</a>' : "") +
+    '<button type="button" class="btn ak-ics" data-date="' + esc(datum) + '" data-idx="' + idx +
+    '" title="Uložit akci jako událost do vlastního kalendáře">Stáhnout .ics</button></div>';
+  return html;
+}
+
+function akZavriPop() {
+  akPopKey = null;
+  const box = document.getElementById("ak-pop");
+  if (box) { box.hidden = true; box.innerHTML = ""; }
+  document.querySelectorAll(".ak-chip.is-open").forEach(el => {
+    el.classList.remove("is-open");
+    el.setAttribute("aria-expanded", "false");
+  });
+}
+
+function akOtevriPop(anchor) {
+  const datum = anchor.dataset.date, idx = Number(anchor.dataset.idx);
+  const a = (akPodleDne()[datum] || [])[idx];
+  if (!a) return;
+  akZavriPop();
+  const box = document.getElementById("ak-pop");
+  box.innerHTML = akPopHtml(a, datum, idx);
+  box.hidden = false;
+  // Stejné umístění jako u jednání: vpravo od prvních tří sloupců, jinak
+  // vlevo; v posledním týdnu nahoru.
+  const den = anchor.closest(".cal-day");
+  const s = document.getElementById("ak-shell").getBoundingClientRect();
+  const r = anchor.getBoundingClientRect(), d = den.getBoundingClientRect();
+  const w = box.offsetWidth, h = box.offsetHeight;
+  const vpravo = Number(den.dataset.sloupec) < Math.ceil(Number(den.dataset.dnu) / 2);
+  let left = vpravo ? d.right - s.left + 8 : d.left - s.left - 8 - w;
+  const okno = document.documentElement.clientWidth;
+  left = Math.max(8 - s.left, Math.min(left, okno - 8 - s.left - w));
+  const nahoru = Number(den.dataset.tyden) >= CAL_TYDNU - 1;
+  box.style.left = left + "px";
+  box.style.top = (nahoru ? r.bottom - s.top + 8 - h : r.top - s.top - 8) + "px";
+  anchor.classList.add("is-open");
+  anchor.setAttribute("aria-expanded", "true");
+  akPopKey = datum + "#" + idx;
+}
+
+// Jedna akce jako .ics: vyřízne se z hotového akce.ics podle id.
+let akIcsPromise = null;
+function akStahniIcs(a) {
+  if (!akIcsPromise) akIcsPromise = fetch("akce.ics").then(r => {
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return r.text();
+  });
+  akIcsPromise.then(ics => {
+    const lines = ics.split(/\r?\n/);
+    const uidAt = lines.findIndex(l => l.startsWith("UID:akce-" + a.id + "@"));
+    if (uidAt < 0) throw new Error("akce v akce.ics není");
+    let od = uidAt, do_ = uidAt;
+    while (od > 0 && lines[od] !== "BEGIN:VEVENT") od--;
+    while (do_ < lines.length && lines[do_] !== "END:VEVENT") do_++;
+    const head = [];
+    let drop = false;
+    for (const line of lines.slice(0, lines.indexOf("BEGIN:VEVENT"))) {
+      if (line.startsWith(" ")) { if (!drop) head.push(line); continue; }
+      drop = ICS_DROP_RE.test(line);
+      if (!drop) head.push(line);
+    }
+    const text = head.concat(lines.slice(od, do_ + 1), ["END:VCALENDAR"]).join("\r\n") + "\r\n";
+    const url = URL.createObjectURL(new Blob([text], { type: "text/calendar;charset=utf-8" }));
+    const odkaz = document.createElement("a");
+    odkaz.href = url;
+    odkaz.download = "akce-" + String(a.nazev + " " + a.datum).normalize("NFD").replace(/[̀-ͯ]/g, "")
+      .replace(/[^0-9A-Za-z]+/g, "-").replace(/^-+|-+$/g, "").toLowerCase().slice(0, 80) + ".ics";
+    odkaz.addEventListener("click", e => e.stopPropagation());
+    document.body.appendChild(odkaz);
+    odkaz.click();
+    odkaz.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+  }).catch(e => {
+    console.error("Stažení .ics selhalo:", e);
+    window.open("akce.ics", "_blank");
+  });
+}
+
+function akPocty() {
+  const todayIso = isoOf(new Date());
+  const nadchazejici = (akData.akce || []).filter(a => a && (a.datum_do || a.datum) >= todayIso);
+  document.querySelectorAll("#ak-poradatele .cal-key").forEach(el => {
+    const n = nadchazejici.filter(a => a.poradatel === el.dataset.org && akVidi(a)).length;
+    el.querySelector(".cal-key-pocet").textContent = n;
+  });
+  const moje = akVse; akVse = false;
+  const mojeN = nadchazejici.filter(akVidi).length;
+  akVse = moje;
+  document.querySelectorAll("#ak-rozsah button").forEach(b => {
+    b.setAttribute("aria-pressed", String((b.dataset.vse === "1") === akVse));
+    b.querySelector(".segment-pocet").textContent = b.dataset.vse === "1" ? nadchazejici.length : mojeN;
+  });
+}
+
+function akPrekresli() {
+  if (!akData) return;
+  akZavriPop();
+  document.getElementById("ak-mesic").hidden = akPohled !== "mesic";
+  document.getElementById("ak-seznam").hidden = akPohled !== "seznam";
+  document.querySelectorAll("#ak-pohled button").forEach(b =>
+    b.setAttribute("aria-pressed", String(b.dataset.pohled === akPohled)));
+  akPocty();
+  akGrid();
+  akSeznam();
+}
+
+function renderAkce(data) {
+  const container = document.getElementById("feed-akce");
+  if (!container) return;
+  if (!data || !Array.isArray(data.akce)) {
+    container.innerHTML = '<p class="feed-empty">Kalendář akcí zatím není k dispozici – první akce přibudou po nočním sběru.</p>';
+    return;
+  }
+  akData = data;
+  akStart = calDefaultStart();
+  const stitky = Object.keys(data.poradatele || {}).map(k => {
+    const p = data.poradatele[k];
+    const barva = /^#[0-9a-f]{3,8}$/i.test(p.barva || "") ? ' style="--org: ' + p.barva + '"' : "";
+    return '<button type="button" class="cal-key ak-key" data-org="' + esc(k) + '" aria-pressed="true"' + barva +
+      ' title="' + esc(p.nazev) + ' – skrýt nebo zobrazit"><span class="cal-key-dot"></span><span>' + esc(p.zkratka) +
+      '</span><span class="cal-key-pocet"></span></button>';
+  }).join("");
+  container.innerHTML =
+    '<div class="cal-toolbar">' +
+      '<div class="segment" id="ak-pohled" role="group" aria-label="Zobrazení">' +
+        '<button type="button" data-pohled="mesic" aria-pressed="true">3 týdny</button>' +
+        '<button type="button" data-pohled="seznam" aria-pressed="false">Seznam</button>' +
+      "</div>" +
+      '<div class="segment ak-rozsah" id="ak-rozsah" role="group" aria-label="Které akce">' +
+        '<button type="button" data-vse="0" aria-pressed="true">Moje oblasti <span class="segment-pocet"></span></button>' +
+        '<button type="button" data-vse="1" aria-pressed="false">Vše <span class="segment-pocet"></span></button>' +
+      "</div>" +
+    "</div>" +
+    '<div class="ak-poradatele" id="ak-poradatele">' + stitky + "</div>" +
+    '<div class="cal-mesic" id="ak-mesic">' +
+      '<div class="cal-nav">' +
+        '<button type="button" id="ak-prev" aria-label="O týden zpět">‹</button>' +
+        '<button type="button" id="ak-next" aria-label="O týden vpřed">›</button>' +
+        '<span class="cal-title" id="ak-title"></span>' +
+        '<button type="button" id="ak-today">Dnes</button>' +
+      "</div>" +
+      '<div class="cal-shell" id="ak-shell">' +
+        '<div class="cal-grid" id="ak-grid"></div>' +
+        '<div class="cal-pop" id="ak-pop" role="dialog" aria-label="Detail akce" hidden></div>' +
+      "</div>" +
+    "</div>" +
+    '<div class="cal-seznam" id="ak-seznam"></div>' +
+    '<p class="cal-pozn">Akce stahujeme každou noc z webů pořadatelů. Oblasti přiřazuje AI podle názvu a anotace akce. ' +
+      'Celý kalendář jde odebírat: <a href="akce.ics">akce.ics</a>.</p>';
+
+  const posun = dny => { const p = new Date(akStart); p.setDate(p.getDate() + dny); akStart = p; akPrekresli(); };
+  document.getElementById("ak-prev").addEventListener("click", () => posun(-CAL_POSUN_DNU));
+  document.getElementById("ak-next").addEventListener("click", () => posun(CAL_POSUN_DNU));
+  document.getElementById("ak-today").addEventListener("click", () => { akStart = calDefaultStart(); akPrekresli(); });
+  container.addEventListener("click", e => {
+    const pohled = e.target.closest("#ak-pohled button");
+    if (pohled) { akPohled = pohled.dataset.pohled; akPrekresli(); return; }
+    const rozsah = e.target.closest("#ak-rozsah button");
+    if (rozsah) { akVse = rozsah.dataset.vse === "1"; akPrekresli(); return; }
+    if (e.target.closest("#ak-na-vse")) { akVse = true; akPrekresli(); return; }
+    const key = e.target.closest(".ak-key");
+    if (key) {
+      akVypnute[key.dataset.org] = !akVypnute[key.dataset.org];
+      key.setAttribute("aria-pressed", String(!akVypnute[key.dataset.org]));
+      akPrekresli();
+      return;
+    }
+    const chip = e.target.closest(".ak-chip");
+    if (chip) {
+      if (akPopKey === chip.dataset.date + "#" + chip.dataset.idx) akZavriPop();
+      else akOtevriPop(chip);
+      return;
+    }
+    if (e.target.closest("#ak-pop .cal-pop-close")) { akZavriPop(); return; }
+    const ics = e.target.closest(".ak-ics");
+    if (ics) {
+      const a = (akPodleDne()[ics.dataset.date] || [])[Number(ics.dataset.idx)];
+      if (a) akStahniIcs(a);
+    }
+  });
+  document.addEventListener("click", e => {
+    if (akPopKey && !e.target.closest("#ak-pop, .ak-chip")) akZavriPop();
+  });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && akPopKey) akZavriPop(); });
+  window.addEventListener("resize", () => { if (akPopKey) akZavriPop(); });
+  akPrekresli();
 }
 
 /* ========== Přihlášení (Clerk) ========== */
@@ -1797,7 +2165,8 @@ const PAGES = [
   { id: "us",       sections: [] },
   { id: "sdeu",     sections: [] },
   { id: "casopisy", sections: [] },
-  { id: "kalendar", sections: ["jednani"] }
+  { id: "kalendar", sections: ["jednani"] },
+  { id: "akce",     sections: [] }
 ];
 // Kotvy z uložených odkazů: dřív byly všechny zdroje na jedné stránce
 // „Všechno nové" a SDEU se jmenoval cjeu. Můj výběr byl stránkou #nastaveni –
@@ -1991,6 +2360,7 @@ function initApp() {
   const clerkSkripty = nactiClerkSkripty();
   clerkSkripty.catch(() => {});   // chybu vyřeší initClerk()
   const hearingsPromise = fetchJson("hearings.json").catch(() => null);
+  const akcePromise = fetchJson("akce.json").catch(() => null);
   initNav();
   initNovinkyFiltr();
   initArchivPrepinac();
@@ -2008,14 +2378,15 @@ function initApp() {
       : Promise.resolve(),
     new Promise(ok => setTimeout(ok, CLERK_CEKANI_MS))
   ]);
-  Promise.all([Promise.allSettled(feedPromises), digestPromise, hearingsPromise, fontsReady])
-    .then(([results, digest, hearings]) => {
+  Promise.all([Promise.allSettled(feedPromises), digestPromise, hearingsPromise, fontsReady, akcePromise])
+    .then(([results, digest, hearings, , akce]) => {
       zdrojeVysledky = results;
       ukazOkna();
       vykresliZdroje();
       vykresliNastaveni();
       renderDigest(digest);
       renderKalendar(hearings);
+      renderAkce(akce);
       // Stránku odkryjeme, až je známý účet – jinak by přihlášenému
       // probliknul výchozí výběr a hlavička bez účtu. Na Clerk ale čekáme
       // jen chvíli; když nestihne, doběhne až po odkrytí.

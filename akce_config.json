@@ -6,7 +6,8 @@
       "zkratka": "ČAK",
       "barva": "#b42318",
       "stranky": ["https://www.cak.cz/vzdelavaci-akce-cak-5"],
-      "hosty": ["cak.cz"]
+      "hosty": ["cak.cz"],
+      "parser": "cak"
     },
     "PFUK": {
       "nazev": "Právnická fakulta UK",
@@ -40,7 +41,7 @@
       "nazev": "ALAI Česká republika",
       "zkratka": "ALAI",
       "barva": "#be185d",
-      "stranky": ["https://www.alai.cz/"],
+      "stranky": ["https://alai.cz/"],
       "hosty": ["alai.cz"]
     },
     "UPV": {

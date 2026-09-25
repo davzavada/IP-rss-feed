@@ -189,12 +189,23 @@ pořadatelů z `akce_config.json` (ČAK, PF UK, Jednota českých právníků,
 Beck-semináře, epravo.cz, ALAI, ÚPV). U každého je výpis akcí, domény, na
 které smí vést odkaz na přihlášku, zkratka a barva pro štítek; pořadí je
 pořadí štítků na webu. Akce z výpisu se berou první cestou, která něco vrátí:
-vlastní parser (`parser` v configu, `PARSERY`), odkaz na iCal nebo schema.org
-Event v JSON-LD, a nakonec AI z textu stránky (odkazy v něm zůstanou, ať AI
-vrátí i adresu akce). Novým akcím, kterým ve výpisu chybí anotace, lektoři
-nebo cena, se stáhne jejich stránka (nejvýš `AKCE_MAX_DETAILU` za běh). AI
-pak každou akci zařadí do 1–3 oblastí z `docs/data/oblasti.json`, stejně
-jako judikaturu; znovu se ptá, jen když se změní název nebo anotace.
+vlastní parser (`parser` v configu, `PARSERY` – zatím ČAK, jehož výpis je
+tabulka), odkaz na iCal nebo schema.org Event v JSON-LD, a nakonec AI z textu
+stránky (odkazy v něm zůstanou, ať AI vrátí i adresu akce; výzvy, granty
+a studijní nabídky vynechá). Akcím, kterým ve výpisu chybí anotace, lektoři
+nebo cena, se stáhne jejich stránka, u PDF (ÚPV) text z PDF a když stránka
+odkazuje na pozvánku (ČAK), i ta. Rozpočet `AKCE_MAX_DETAILU` (80 za běh) se
+dělí mezi pořadatele; na co nezbude, přijde na řadu další noc, nejvýš dva
+pokusy na akci (`detail_pokusy`). Předpony formy v názvu („HYBRIDNÍ FORMA:",
+„Online seminář:") jdou do pole `forma`. AI pak každou akci zařadí do 1–3
+oblastí z `docs/data/oblasti.json`, stejně jako judikaturu; znovu se ptá,
+jen když se změní název nebo anotace.
+
+Na webu je Kalendář akcí stránkou vedle Kalendáře jednání (`#akce`): mřížka
+na tři týdny (víkend jen když na něj akce připadá) s bublinou detailu,
+seznam nadcházejících akcí, štítky pořadatelů v jejich barvě jako filtr
+a přepínač „Moje oblasti / Vše“ podle oblastí z Můj výběr. Vícedenní akce je
+v každém svém dni, kurz delší než týden jen v den začátku.
 
 - Výstup `docs/akce.json`: `poradatele` (název, zkratka, barva, výpis, počet
   nadcházejících akcí a stav posledního čtení – `stazeno`, `cesta` = parser /
@@ -209,7 +220,11 @@ jako judikaturu; znovu se ptá, jen když se změní název nebo anotace.
   jako výpadek čtení. Proběhlé akce se drží 45 dní.
 - Weby pořadatelů nejsou z vývojového prostředí vidět. Sonda je stáhne
   (`probe.yml` se zdrojem `akce`, s volbou `ulozit` do `tests/fixtures/probe/`)
-  a podle nich jde pro web, kde AI čte špatně, napsat vlastní parser.
+  a podle nich jde pro web, kde AI čte špatně, napsat vlastní parser
+  (výpis ČAK je v `tests/fixtures/akce/`).
+- Beck-semináře chrání web ochranou WEDOS proti robotům (odpověď 401 s testem
+  v prohlížeči) a ALAI z GitHub Actions neodpovídá; oba zatím zůstávají bez
+  akcí (`chyba` v akce.json).
 
 ## Přihlášení a vlastní výběr
 

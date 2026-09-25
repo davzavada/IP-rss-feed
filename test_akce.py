@@ -226,17 +226,66 @@ out = {"poradatele": {"CAK": {"nazev": "Česká advokátní komora", "zkratka": 
        "akce": [dict(ak("Seminář, s čárkou", "2026-10-01"), zacatek="09:00", konec="12:30",
                      forma="online", lektori=["JUDr. A"], url="https://www.cak.cz/a"),
                 dict(ak("Bez konce", "2026-10-02"), zacatek="23:30"),
-                dict(ak("Vícedenní", "2026-10-05"), datum_do="2026-10-06")]}
+                dict(ak("Vícedenní", "2026-10-05"), datum_do="2026-10-06"),
+                dict(ak("Semestrální kurz", "2026-10-05"), datum_do="2026-12-14", zacatek="16:00", konec="17:30")]}
 p = os.path.join(tmp, "akce.ics")
 s.write_ics(out, p)
 ics = open(p, encoding="utf-8", newline="").read()
 check("ics: čas", "DTSTART;TZID=Europe/Prague:20261001T090000" in ics and "T123000" in ics)
 check("ics: konec nepřeteče přes půlnoc", "DTEND;TZID=Europe/Prague:20261002T235900" in ics)
 check("ics: vícedenní celodenní", "DTSTART;VALUE=DATE:20261005" in ics and "DTEND;VALUE=DATE:20261007" in ics)
+check("ics: dlouhý kurz jako jedna událost s časem",
+      "DTSTART;TZID=Europe/Prague:20261005T160000" in ics and "Do 14. 12. 2026" in ics)
 check("ics: escapování a pořadatel", "SUMMARY:ČAK: Seminář\\, s čárkou" in ics)
 check("ics: stálé UID", f"UID:akce-{out['akce'][0]['id']}@{s.ICS_UID_HOST}" in ics)
 check("ics: řádky nejvýš 75 bajtů", all(len(r.encode()) <= 75 for r in ics.split("\r\n")))
 check("ics: zpětně čitelné", [e["nazev"] for e in s.z_ics(ics)][0] == "ČAK: Seminář, s čárkou")
+
+# --- Vlastní parsery nad uloženými výpisy ------------------------------------
+print("Parsery")
+with open("tests/fixtures/akce/cak_vypis_2026-09-25.html", encoding="utf-8") as f:
+    cak = s.parser_cak(f.read(), CAK["stranky"][0])
+check("ČAK: všech 39 řádků výpisu", len(cak) == 39, str(len(cak)))
+check("ČAK: datum, čas, odkaz",
+      (cak[0]["datum"], cak[0]["zacatek"], cak[0]["konec"], cak[0]["url"])
+      == ("30. 09. 2026", "10:00", "14:00", "https://www.cak.cz/akce/1191"), str(cak[0]))
+kurz = next(x for x in cak if x["datum_do"])
+check("ČAK: kurz od–do", kurz["datum_do"] == "14. 12. 2026" and kurz["zacatek"] == "16:00", str(kurz))
+n = s.normalizuj(cak[0], "CAK", CAK, CAK["stranky"][0])
+check("předpona formy z názvu pryč",
+      n["nazev"].startswith("Advokátní tarif") and n["forma"] == "hybridne", str(n))
+check("předpona bez zbytku názvu zůstane",
+      s.normalizuj({"nazev": "Online:", "datum": "2026-10-01"}, "CAK", CAK, "")["nazev"] == "Online:")
+check("ČAK: všechny normalizované",
+      all(s.normalizuj(x, "CAK", CAK, CAK["stranky"][0]) for x in cak))
+
+check("pozvánka ze stránky akce",
+      s.odkaz_pozvanky('<a href="/kalendar/soubor/1215">Pozvánka 30.9.2026 - PREZENČNÍ FORMA.pdf</a>'
+                       '<a href="/jinde">Kontakty</a>', "https://www.cak.cz/akce/1191", ["cak.cz"])
+      == "https://www.cak.cz/kalendar/soubor/1215")
+check("pozvánka jen z domény pořadatele",
+      s.odkaz_pozvanky('<a href="https://jinde.cz/x.pdf">Pozvánka</a>', "https://www.cak.cz/akce/1", ["cak.cz"]) is None)
+
+# --- Stránky akcí -------------------------------------------------------------
+print("Stránky akcí")
+puvodni = (s.text_detailu, s.z_ai_detailu)
+stazeno = []
+s.text_detailu = lambda url, hosty=(): (stazeno.append(url) or ("", "text"))
+s.z_ai_detailu = lambda text, org, cfg: {"lektori": ["JUDr. X"], "cena": "990 Kč", "anotace": "O čem to je."}
+cfgd = {"poradatele": {"CAK": CAK}}
+akce_d = [ak(f"D{i}", f"2026-10-0{i + 1}", url=f"https://www.cak.cz/akce/{i}") for i in range(4)]
+zbytek = s.dopln_detaily(akce_d, cfgd, 3)
+check("detail: jen v rozpočtu, od nejbližších", zbytek == 0 and len(stazeno) == 3
+      and akce_d[0]["lektori"] == ["JUDr. X"] and not akce_d[3]["lektori"], str(stazeno))
+s.dopln_detaily(akce_d, cfgd, 3)
+check("detail: hotové se nestahují znovu, zbylá další noc",
+      stazeno[3:] == ["https://www.cak.cz/akce/3"] and akce_d[3]["cena"] == "990 Kč", str(stazeno))
+s.z_ai_detailu = lambda text, org, cfg: None
+prazdna = [ak("Bez údajů", "2026-10-01", url="https://www.cak.cz/akce/9")]
+for _ in range(4):
+    s.dopln_detaily(prazdna, cfgd, 5)
+check("detail: nejvýš dva pokusy", prazdna[0]["detail_pokusy"] == s.DETAIL_POKUSU)
+s.text_detailu, s.z_ai_detailu = puvodni
 
 # --- Skutečný config ----------------------------------------------------------
 print("Config")
