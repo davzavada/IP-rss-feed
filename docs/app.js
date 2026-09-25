@@ -1480,9 +1480,7 @@ function renderAkce(data) {
         '<div class="cal-pop" id="ak-pop" role="dialog" aria-label="Detail akce" hidden></div>' +
       "</div>" +
     "</div>" +
-    '<div class="cal-seznam" id="ak-seznam"></div>' +
-    '<p class="cal-pozn">Akce stahujeme každou noc z webů pořadatelů. Oblasti přiřazuje AI podle názvu a anotace akce. ' +
-      'Celý kalendář jde odebírat: <a href="akce.ics">akce.ics</a>.</p>';
+    '<div class="cal-seznam" id="ak-seznam"></div>';
 
   const posun = dny => { const p = new Date(akStart); p.setDate(p.getDate() + dny); akStart = p; akPrekresli(); };
   document.getElementById("ak-prev").addEventListener("click", () => posun(-CAL_POSUN_DNU));

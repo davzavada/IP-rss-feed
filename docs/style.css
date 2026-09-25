@@ -740,7 +740,6 @@ html.is-loading body { visibility: hidden; }
   .ak-rozsah button { flex: 1; justify-content: center; min-height: 36px; font-size: 14px; border-radius: 8px; }
   .ak-poradatele { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -16px; padding-inline: 16px; }
   .ak-key { flex: none; }
-  #akce .cal-pozn { display: block; }
   .ak-oblasti { display: none; }
 
   /* Můj výběr přes celou obrazovku; záložky jako přepínač nahoře. */
