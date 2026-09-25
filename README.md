@@ -37,7 +37,10 @@ přepisuje, jen když se obsah změní. Stav prvního výskytu se u časopisů
 neprořezává (zdroje vypisují i rok staré články, po vypadnutí ze stavu by se
 vrátily jako nové); cache shrnutí `journals_meta.json` drží jen 120 dní.
 
-Časopisy s vlastním feedem vydavatele (JWIP, JIPLP a `DALSI_FEEDY`: IJLIT,
+Registr se do `casopisy.json` zapisuje při běhu scraperu; nový časopis
+v registru je proto potřeba do souboru propsat hned (jinak ho dialog Můj
+výběr ukáže až po nočním běhu). Časopisy na OJS (RPT, MUJLT, ČPVP, JIPITEC)
+se čtou z RSS OJS. Časopisy s vlastním feedem vydavatele (JWIP, JIPLP a `DALSI_FEEDY`: IJLIT,
 JPIL, CMLRev, ELJ) se čtou z feedu (RSS 2.0, RSS 1.0 i Atom) a když nevyjde,
 z Crossrefu podle ISSN. Z GitHub Actions projde feed OUP (IJLIT) a Kluweru
 (CMLRev); Wiley (ELJ) a Taylor & Francis (JPIL) vracejí 403, ty jedou přes

@@ -59,6 +59,8 @@ CASOPISY = [
      "vydavatel": "Masarykova univerzita"},
     {"id": "mujlt", "zkratka": "MUJLT", "nazev": "Masaryk University Journal of Law and Technology",
      "vydavatel": "Masarykova univerzita"},
+    {"id": "cpvp", "zkratka": "ČPVP", "nazev": "Časopis pro právní vědu a praxi",
+     "vydavatel": "Masarykova univerzita"},
     {"id": "jipitec", "zkratka": "JIPITEC", "nazev": "Journal of Intellectual Property, "
      "Information Technology and E-Commerce Law", "vydavatel": "JIPITEC"},
     {"id": "qmjip", "zkratka": "QMJIP", "nazev": "Queen Mary Journal of Intellectual Property",
@@ -614,6 +616,8 @@ OJS_SOURCES = [
      "RPT", "Revue pro právo a technologie"),
     ("https://journals.muni.cz/mujlt/gateway/plugin/WebFeedGatewayPlugin/rss2",
      "MUJLT", "Masaryk University Journal of Law and Technology"),
+    ("https://journals.muni.cz/cpvp/gateway/plugin/WebFeedGatewayPlugin/rss2",
+     "ČPVP", "Časopis pro právní vědu a praxi"),
     ("https://www.jipitec.eu/jipitec/gateway/plugin/WebFeedGatewayPlugin/rss2",
      "JIPITEC", "JIPITEC – Journal of Intellectual Property, Information "
                 "Technology and E-Commerce Law"),
@@ -1426,7 +1430,7 @@ def main():
     except Exception as e:
         print(f"  CHYBA při stahování TLQ: {e}")
 
-    # 5. Časopisy na OJS (RPT, MUJLT, JIPITEC)
+    # 5. Časopisy na OJS (RPT, MUJLT, ČPVP, JIPITEC)
     for feed_url, label, journal_name in OJS_SOURCES:
         print(f"  Zdroj: {journal_name} (OJS RSS)")
         try:
