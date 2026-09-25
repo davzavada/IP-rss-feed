@@ -186,7 +186,7 @@ IP senáty jen zastupují a nesledují se.
 
 **Kalendář akcí** (`scraper_akce.py`) sbírá semináře, webináře a konference
 pořadatelů z `akce_config.json` (ČAK, PF UK, Jednota českých právníků,
-Beck-semináře, epravo.cz, ALAI, ÚPV). U každého je výpis akcí, domény, na
+epravo.cz, ALAI, ÚPV). U každého je výpis akcí, domény, na
 které smí vést odkaz na přihlášku, zkratka a barva pro štítek; pořadí je
 pořadí štítků na webu. Akce z výpisu se berou první cestou, která něco vrátí:
 vlastní parser (`parser` v configu, `PARSERY` – zatím ČAK, jehož výpis je
@@ -222,8 +222,7 @@ v každém svém dni, kurz delší než týden jen v den začátku.
   (`probe.yml` se zdrojem `akce`, s volbou `ulozit` do `tests/fixtures/probe/`)
   a podle nich jde pro web, kde AI čte špatně, napsat vlastní parser
   (výpis ČAK je v `tests/fixtures/akce/`).
-- Beck-semináře chrání web ochranou WEDOS proti robotům (odpověď 401 s testem
-  v prohlížeči) a ALAI z GitHub Actions neodpovídá; oba zatím zůstávají bez
+- ALAI z GitHub Actions občas neodpovídá; pořadatel pak zůstane bez nových
   akcí (`chyba` v akce.json).
 
 ## Přihlášení a vlastní výběr

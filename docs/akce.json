@@ -31,16 +31,6 @@
       "cesta": "ai",
       "chyba": null
     },
-    "BECK": {
-      "nazev": "Beck-semináře",
-      "zkratka": "Beck",
-      "barva": "#a15c07",
-      "url": "https://www.beck-seminare.cz/",
-      "pocet": 0,
-      "stazeno": null,
-      "cesta": null,
-      "chyba": "401 Client Error: Unauthorized for url: https://www.beck-seminare.cz/"
-    },
     "EPRAVO": {
       "nazev": "epravo.cz",
       "zkratka": "epravo",
@@ -55,7 +45,7 @@
       "nazev": "ALAI Česká republika",
       "zkratka": "ALAI",
       "barva": "#be185d",
-      "url": "https://alai.cz/",
+      "url": "https://www.alai.cz/index.php?up",
       "pocet": 0,
       "stazeno": null,
       "cesta": null,

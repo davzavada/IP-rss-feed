@@ -49,7 +49,7 @@ POVOLENE_HOSTY = (
     "publications.europa.eu", "eur-lex.europa.eu", "justice.cz",
     "davidzavada.cz",
     # pořadatelé vzdělávacích akcí (akce_config.json)
-    "cak.cz", "prf.cuni.cz", "jednotaceskychpravniku.cz", "beck-seminare.cz",
+    "cak.cz", "prf.cuni.cz", "jednotaceskychpravniku.cz",
     "epravo.cz", "alai.cz", "upv.gov.cz",
 )
 

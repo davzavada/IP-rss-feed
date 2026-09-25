@@ -5,51 +5,69 @@
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
-      "stranky": ["https://www.cak.cz/vzdelavaci-akce-cak-5"],
-      "hosty": ["cak.cz"],
+      "stranky": [
+        "https://www.cak.cz/vzdelavaci-akce-cak-5"
+      ],
+      "hosty": [
+        "cak.cz"
+      ],
       "parser": "cak"
     },
     "PFUK": {
       "nazev": "Právnická fakulta UK",
       "zkratka": "PF UK",
       "barva": "#6d28d9",
-      "stranky": ["https://www.prf.cuni.cz/events"],
-      "hosty": ["prf.cuni.cz", "cuni.cz"]
+      "stranky": [
+        "https://www.prf.cuni.cz/events"
+      ],
+      "hosty": [
+        "prf.cuni.cz",
+        "cuni.cz"
+      ]
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
       "zkratka": "JČP",
       "barva": "#1d4ed8",
-      "stranky": ["https://jednotaceskychpravniku.cz/vzdelavaci-akce/"],
-      "hosty": ["jednotaceskychpravniku.cz"]
-    },
-    "BECK": {
-      "nazev": "Beck-semináře",
-      "zkratka": "Beck",
-      "barva": "#a15c07",
-      "stranky": ["https://www.beck-seminare.cz/"],
-      "hosty": ["beck-seminare.cz"]
+      "stranky": [
+        "https://jednotaceskychpravniku.cz/vzdelavaci-akce/"
+      ],
+      "hosty": [
+        "jednotaceskychpravniku.cz"
+      ]
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
       "zkratka": "epravo",
       "barva": "#15803d",
-      "stranky": ["https://www.epravo.cz/top/aktualne/vzdelavaci_akce/"],
-      "hosty": ["epravo.cz"]
+      "stranky": [
+        "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/"
+      ],
+      "hosty": [
+        "epravo.cz"
+      ]
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
       "zkratka": "ALAI",
       "barva": "#be185d",
-      "stranky": ["https://alai.cz/"],
-      "hosty": ["alai.cz"]
+      "stranky": [
+        "https://www.alai.cz/index.php?up"
+      ],
+      "hosty": [
+        "alai.cz"
+      ]
     },
     "UPV": {
       "nazev": "Úřad průmyslového vlastnictví",
       "zkratka": "ÚPV",
       "barva": "#0e7490",
-      "stranky": ["https://upv.gov.cz/vzdelavani/kurzy-a-seminare"],
-      "hosty": ["upv.gov.cz"]
+      "stranky": [
+        "https://upv.gov.cz/vzdelavani/kurzy-a-seminare"
+      ],
+      "hosty": [
+        "upv.gov.cz"
+      ]
     }
   }
 }

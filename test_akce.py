@@ -290,8 +290,8 @@ s.text_detailu, s.z_ai_detailu = puvodni
 # --- Skutečný config ----------------------------------------------------------
 print("Config")
 real = s.load_json(s.CONFIG_FILE)
-check("sedm pořadatelů v pořadí štítků",
-      list(real["poradatele"]) == ["CAK", "PFUK", "JCP", "BECK", "EPRAVO", "ALAI", "UPV"])
+check("šest pořadatelů v pořadí štítků",
+      list(real["poradatele"]) == ["CAK", "PFUK", "JCP", "EPRAVO", "ALAI", "UPV"])
 for org, cfg in real["poradatele"].items():
     check(f"{org}: úplný záznam",
           all(cfg.get(k) for k in ("nazev", "zkratka", "barva", "stranky", "hosty"))

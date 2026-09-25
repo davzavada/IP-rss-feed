@@ -2,7 +2,7 @@
 """Kalendář akcí – vzdělávací akce pořadatelů z akce_config.json.
 
 Semináře, webináře a konference ČAK, PF UK, Jednoty českých právníků,
-Beck-seminářů, epravo.cz, ALAI a ÚPV v jednom kalendáři. Výstup jde do
+epravo.cz, ALAI a ÚPV v jednom kalendáři. Výstup jde do
 docs/akce.json (čte ho Kalendář akcí na webu) a docs/akce.ics (odběr
 v kalendáři).
 
