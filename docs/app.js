@@ -157,16 +157,14 @@ function pripravPolozku(item, key) {
 
 const TECKA = '<span aria-hidden="true">·</span>';
 
-// Na desktopu jsou odkazy nenápadný šedý text hned za titulkem, na telefonu
-// tlačítka dole vpravo vedle oblastí (dost velká na prst). Každá varianta
-// má vlastní kopii odkazů; CSS ukáže jen tu, která na šířku okna patří.
-function odkazyHtml(p, tlacitka) {
+// Na desktopu jsou odkazy nenápadný šedý text hned za titulkem. Na telefonu
+// je místo nich odkazem na zdroj samotný titulek (viz polozkaHtml).
+function odkazyHtml(p) {
   const doc = pdfHref(p);
   const zdroj = safeHref(p.link);
-  const cls = tlacitka ? "odkaz" : "odkaz-text";
   let html = "";
-  if (doc) html += '<a class="' + cls + (tlacitka ? " odkaz-pdf" : "") + '" href="' + doc + '" target="_blank" rel="noopener">PDF</a>';
-  if (zdroj) html += '<a class="' + cls + '" href="' + zdroj + '" target="_blank" rel="noopener">' + zdrojLabel(p.link) + " ↗</a>";
+  if (doc) html += '<a class="odkaz-text" href="' + doc + '" target="_blank" rel="noopener">PDF</a>';
+  if (zdroj) html += '<a class="odkaz-text" href="' + zdroj + '" target="_blank" rel="noopener">' + zdrojLabel(p.link) + " ↗</a>";
   return html;
 }
 
@@ -181,15 +179,22 @@ function polozkaHtml(p) {
   html += '<span class="polozka-datum">' + esc(czDate(p.datum)) + "</span></div>";
   // Odkaz ještě na samotný dokument (PDF rozhodnutí) – shrnutí je jen
   // shrnutí. Obojí se otevře v nové kartě, ať čtenář nepřijde o místo.
-  const odkazy = odkazyHtml(p, false);
-  html += '<div class="polozka-hlava"><h3 class="polozka-titul">' + esc(p.titul) + "</h3>" +
+  const odkazy = odkazyHtml(p);
+  // Titulek vede na zdroj – klikací je jen na telefonu, kde za ním odkazy
+  // nejsou (na desktopu ho CSS nechá jako prostý text).
+  const zdroj = safeHref(p.link);
+  const titul = zdroj
+    ? '<a class="titul-odkaz" href="' + zdroj + '" target="_blank" rel="noopener">' + esc(p.titul) +
+      '<span class="titul-sipka" aria-hidden="true"> ↗</span></a>'
+    : esc(p.titul);
+  html += '<div class="polozka-hlava"><h3 class="polozka-titul">' + titul + "</h3>" +
     (odkazy ? '<span class="polozka-odkazy-text">' + odkazy + "</span>" : "") + "</div>";
   if (p.vecText) html += '<div class="polozka-vec">' + esc(p.vecText) + "</div>";
   // Bez shrnutí ještě může být poznámka, proč žádné není – třeba že u žádosti
   // o předběžnou otázku zatím nejsou zveřejněné otázky.
   if (p.shrnuti) html += '<p class="polozka-shrnuti">' + esc(p.shrnuti) + "</p>";
   else if (p.poznamka) html += '<p class="polozka-shrnuti note">' + esc(p.poznamka) + "</p>";
-  html += '<div class="polozka-odkazy">' + odkazyHtml(p, true) + "</div></article>";
+  html += "</article>";
   return html;
 }
 
@@ -1830,6 +1835,7 @@ function navigate(hash, push) {
   const section = page.sections.indexOf(id) >= 0 ? document.getElementById(id) : null;
   if (section) section.scrollIntoView({ block: "start" });
   else window.scrollTo(0, 0);
+  zobrazListu();
 
   if (push) {
     history.pushState(null, "", "#" + (id || page.id));
@@ -1866,6 +1872,40 @@ function initPagetabs() {
   tabs.addEventListener("scroll", okraje, { passive: true });
   window.addEventListener("resize", okraje);
   okraje();
+}
+
+let zobrazListu = () => {};
+
+// Lišta se záložkami (úzká okna) při posouvání dolů zajede pod hlavičku
+// a při posunu nahoru se vrátí – obsah má na telefonu víc místa. Aby lišta
+// neposkakovala při drobném pohybu prstu, počítá se posun jedním směrem
+// (LIMIT px); nahoře na stránce je vždycky vidět.
+function initSkryvaniListy() {
+  const lista = document.querySelector(".pagetabs-lista");
+  if (!lista) return;
+  const LIMIT = 40;
+  let posledni = window.scrollY, soucet = 0, skryta = false, klidDo = 0;
+  const nastav = hodnota => {
+    skryta = hodnota;
+    soucet = 0;
+    lista.classList.toggle("skryta", hodnota);
+  };
+  window.addEventListener("scroll", () => {
+    const y = window.scrollY, d = y - posledni;
+    posledni = y;
+    // Posun, který udělala stránka sama (skok na sekci), lištu neschová.
+    if (performance.now() < klidDo) return;
+    // Na desktopu je lišta schovaná (display: none) – nic nepočítat.
+    if (!lista.offsetParent) { if (skryta) nastav(false); return; }
+    soucet = (Math.sign(soucet) === Math.sign(d) ? soucet : 0) + d;
+    if (!skryta && soucet > LIMIT && y > lista.offsetHeight + 20) nastav(true);
+    else if (skryta && (soucet < -LIMIT || y <= 0)) nastav(false);
+  }, { passive: true });
+  // Po přepnutí stránky musí být záložky vidět (volá navigate).
+  zobrazListu = () => {
+    klidDo = performance.now() + 800;
+    if (skryta) nastav(false);
+  };
 }
 
 function initNav() {
@@ -1911,6 +1951,7 @@ function initNav() {
   document.addEventListener("scroll", update, { passive: true });
   updateNav = update;
   initPagetabs();
+  initSkryvaniListy();
 }
 
 // Datum poslední aktualizace = nejnovější aktualizace ze všech zdrojů
