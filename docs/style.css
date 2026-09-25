@@ -1,33 +1,30 @@
-/* Design tokeny podle shadcn/ui (paleta zinc), tmavý režim přes
-   prefers-color-scheme. */
+/* Design tokeny: paleta zinc (shadcn/ui) a barvy soudů, tmavý režim přes
+   prefers-color-scheme. Stupně šedé textu jdou od nejtmavší (foreground)
+   po nejsvětlejší (faint) – hierarchii nese barva a tučnost. */
 :root {
   color-scheme: light dark;
-  --background: hsl(0 0% 100%);
-  --foreground: hsl(240 10% 3.9%);
-  --card: hsl(0 0% 100%);
-  --muted: hsl(240 4.8% 95.9%);
-  --muted-foreground: hsl(240 3.8% 46.1%);
-  --border: hsl(240 5.9% 90%);
-  --accent: hsl(240 4.8% 95.9%);
-  --link: hsl(221 83% 53%);
-  --radius: 0.625rem;
-  /* Stupnice písma. Tři kroky na celý web – víc jich na jedné obrazovce
-     působí rozháraně. Hierarchii nese tučnost a barva, ne velikost. */
-  --fs-sm: 0.8rem;     /* druhotné: štítky, datum, legenda, kalendář */
-  --fs-md: 0.85rem;    /* veškerý text: seznamy, prosa, ovládání */
-  --fs-lg: 1rem;       /* nadpisy karet a jméno webu */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  /* Rozvržení: boční navigace (viz @media min-width: 1600px). Je tak
-     široká, aby se do ní vešel i nejdelší název stránky na jeden řádek;
-     od karet ji dělí stejná mezera jako karty mezi sebou. */
-  --nav-w: 290px;
-  --nav-gap: 28px;
-  /* Výška lepivé hlavičky (56 px řádek + 1 px linka) a odsazení obsahu pod
-     ní. Z nich vychází horní okraj boční navigace i cíl skoku na sekci,
-     aby navigace lícovala s první kartou. */
-  --head-h: 57px;
-  --obsah-nahore: 28px;
-  /* Odstíny štítků (soft badge) */
+  --background: #ffffff;
+  --foreground: #09090b;
+  --fg-2: #3f3f46;            /* shrnutí, značky */
+  --fg-3: #52525b;            /* štítky, popisy voleb */
+  --muted-foreground: #71717a;
+  --faint: #a1a1aa;           /* počty, proběhlé dny */
+  --card: #ffffff;            /* dialog, bublina */
+  --panel: #fafafa;           /* záložky dialogu */
+  --raised: #ffffff;          /* vybraný segment přepínače */
+  --muted: #f4f4f5;
+  --accent: #f4f4f5;          /* najetí myší */
+  --border: #e4e4e7;
+  --border-soft: #f0f0f2;     /* mezi položkami */
+  --link: #2563eb;
+  --active-bg: rgb(37 99 235 / 0.09);
+  --active-fg: #1d4ed8;
+  --primary: #09090b;         /* hlavní tlačítko */
+  --primary-fg: #ffffff;
+  --switch-off: #d4d4d8;
+  --shadow-raised: 0 1px 2px rgb(0 0 0 / 0.08);
+  --head-h: 60px;
+  /* Odstíny štítků (soft badge) – zároveň barvy soudů v navigaci a nadpisech. */
   --badge-green-bg: hsl(142 76% 36% / 0.12);   --badge-green-fg: hsl(142 72% 25%);
   --badge-blue-bg: hsl(217 91% 60% / 0.12);    --badge-blue-fg: hsl(224 76% 48%);
   --badge-amber-bg: hsl(38 92% 50% / 0.15);    --badge-amber-fg: hsl(26 90% 37%);
@@ -37,15 +34,26 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: hsl(240 10% 3.9%);
-    --foreground: hsl(0 0% 98%);
-    --card: hsl(240 5.9% 7%);
-    --muted: hsl(240 3.7% 15.9%);
-    --muted-foreground: hsl(240 5% 64.9%);
-    --border: hsl(240 3.7% 15.9%);
-    --accent: hsl(240 3.7% 15.9%);
-    --link: hsl(213 94% 68%);
-    --shadow-sm: 0 0 #0000;
+    --background: #09090b;
+    --foreground: #fafafa;
+    --fg-2: #d4d4d8;
+    --fg-3: #a1a1aa;
+    --muted-foreground: #a1a1aa;
+    --faint: #71717a;
+    --card: #111113;
+    --panel: #0c0c0e;
+    --raised: #3f3f46;
+    --muted: #27272a;
+    --accent: #27272a;
+    --border: #27272a;
+    --border-soft: #1c1c1f;
+    --link: #60a5fa;
+    --active-bg: rgb(96 165 250 / 0.12);
+    --active-fg: #93c5fd;
+    --primary: #fafafa;
+    --primary-fg: #09090b;
+    --switch-off: #3f3f46;
+    --shadow-raised: 0 1px 2px rgb(0 0 0 / 0.4);
     --badge-green-bg: hsl(142 71% 45% / 0.16);  --badge-green-fg: hsl(142 69% 58%);
     --badge-blue-bg: hsl(217 91% 60% / 0.16);   --badge-blue-fg: hsl(213 94% 68%);
     --badge-amber-bg: hsl(38 92% 50% / 0.16);   --badge-amber-fg: hsl(43 96% 56%);
@@ -65,16 +73,24 @@ button, input, select, textarea { font: inherit; }
 html { scroll-behavior: smooth; background: var(--background); scrollbar-gutter: stable; }
 body {
   margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+  font-family: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
                "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   background: var(--background); color: var(--foreground);
   line-height: 1.5; -webkit-font-smoothing: antialiased;
 }
-.container { max-width: 1600px; margin-inline: auto; padding-inline: 24px; }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* Fokus z klávesnice (i po návratu z PDF v nové kartě) barvou webu, ne
+   černým rámečkem prohlížeče. */
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--link); outline-offset: 2px; border-radius: 6px;
+}
+.legend { font-size: 13px; color: var(--muted-foreground); white-space: nowrap; }
 
-/* Lepivá hlavička s rozostřením (shadcn header) */
+/* ===== Hlavička ===== */
 .site-head {
-  position: sticky; top: 0; z-index: 40;
+  position: sticky; top: 0; z-index: 40; height: var(--head-h);
+  display: flex; align-items: center; gap: 20px; padding: 0 24px;
   border-bottom: 1px solid var(--border); background: var(--background);
 }
 @supports (backdrop-filter: blur(8px)) {
@@ -83,380 +99,81 @@ body {
     backdrop-filter: blur(8px);
   }
 }
-.head-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: calc(var(--head-h) - 1px); flex-wrap: wrap; }
-h1 {
-  margin: 0; font-size: var(--fs-lg); font-weight: 600; letter-spacing: -0.01em;
-  display: flex; align-items: center; gap: 8px;
+/* Logo s názvem je odkaz na Novinky – vypadá dál jako nadpis. */
+.znacka {
+  display: flex; align-items: center; gap: 10px; color: inherit; text-decoration: none;
+  font-size: 17px; font-weight: 600; letter-spacing: -0.01em;
 }
-.logo { border-radius: 5px; flex: none; }
-/* Logo s názvem je odkaz na Nové za 24 hodin – vypadá dál jako nadpis. */
-.znacka { display: flex; align-items: center; gap: 8px; color: inherit; text-decoration: none; }
-/* Jméno webu nese váhu, popis za ním zůstává potichu. */
-h1 .tagline { font-weight: 400; color: var(--muted-foreground); }
-.legend { font-size: var(--fs-sm); color: var(--muted-foreground); white-space: nowrap; }
+.znacka:hover { text-decoration: none; }
+.logo { border-radius: 6px; flex: none; }
+.head-right { margin-left: auto; display: flex; align-items: center; gap: 14px; }
 
-main.container { padding-block: var(--obsah-nahore) 72px; display: flex; flex-direction: column; gap: 28px; }
-/* Obsah je rozdělený na stránky (shrnutí, stránka každého zdroje,
-   kalendář, výběr); přepíná se mezi nimi navigací, viditelná je vždy jedna. */
-.page { display: flex; flex-direction: column; gap: 28px; }
-.page[hidden] { display: none; }
-section[id], .card[id] { scroll-margin-top: calc(var(--head-h) + var(--obsah-nahore)); }
+/* ===== Rozvržení: navigace vlevo, obsah uprostřed =====
+   Obsah má nejvýš 1040 px. Na širokém okně (od 1600 px) je vpravo
+   stejně široký prázdný sloupec jako navigace vlevo, takže obsah stojí
+   přesně na středu okna a neroztahuje se doprava. */
+.rozvrh { display: grid; grid-template-columns: minmax(0, 1fr); }
+main { min-width: 0; padding: 32px 48px 48px; }
+.obsah { max-width: 1040px; margin-inline: auto; }
 
-/* Karta (shadcn Card) */
-.card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: calc(var(--radius) + 2px); box-shadow: var(--shadow-sm);
+#sidenav { display: none; }
+@media (min-width: 1024px) {
+  .rozvrh { grid-template-columns: 240px minmax(0, 1fr); }
+  #sidenav {
+    display: flex; flex-direction: column; gap: 18px;
+    position: sticky; top: var(--head-h); align-self: start;
+    height: calc(100vh - var(--head-h)); overflow-y: auto;
+    padding: 20px 12px; border-right: 1px solid var(--border); font-size: 14px;
+  }
+  .pagetabs-lista { display: none; }
 }
-.card-header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 18px 22px 0; }
-.card-title { margin: 0; font-size: var(--fs-lg); font-weight: 600; letter-spacing: -0.01em; }
-/* Popis karty visí na otazníku vpravo v hlavičce: ukáže se jako bublina
-   nad ním, ne jako pole pod hlavičkou – jinak by při každém otevření
-   posunul obsah karty níž. */
-.help-wrap { position: relative; margin-left: auto; display: flex; }
-.help {
-  width: 24px; height: 24px; flex: none; padding: 0;
-  border: 1px solid var(--border); border-radius: 999px; background: none;
-  color: var(--muted-foreground); font-size: var(--fs-sm); line-height: 1;
-  cursor: pointer;
-}
-.help-wrap:hover .help, .help[aria-expanded="true"] {
-  color: var(--foreground); background: var(--accent); border-color: var(--muted-foreground);
-}
-.card-desc {
-  position: absolute; z-index: 20; top: calc(100% + 8px); right: 0;
-  width: max-content; max-width: min(380px, 80vw);
-  margin: 0; padding: 10px 12px;
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 10px; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
-  font-size: var(--fs-md); color: var(--muted-foreground);
-  text-align: left; font-weight: 400; letter-spacing: normal;
-}
-.card-desc[hidden] { display: none; }
-.card-title:focus { outline: none; }
-.card-desc ul { margin: 4px 0 0; padding-left: 18px; }
-.card-desc li { margin: 1px 0; }
-/* Obsah karty je dotazovatelný kontejner: o rozvržení tabulky nerozhoduje
-   šířka okna, ale karty. Boční navigace se proto zapíná až od 1600 px
-   (viz @media min-width: 1600px) – níž by ukrojila tolik, že by obsah
-   zůstal užší, než tabulka potřebuje (viz min-width u table), i na
-   běžném 1920×1080 notebooku se zapnutým škálováním (125–150 %, tedy
-   efektivně ~1280–1536 px). */
-.card-content { padding: 10px 22px 16px; container-type: inline-size; }
-
-/* Ikony jsou kreslené tahem, ne výplní – nastavení je společné, ať to
-   nemusí nést každý <symbol>. */
-.nav-ico, .fold-ico {
-  fill: none; stroke: currentColor; stroke-width: 2;
-  stroke-linecap: round; stroke-linejoin: round;
+@media (min-width: 1600px) {
+  .rozvrh { grid-template-columns: 260px minmax(0, 1fr) 260px; }
+  main { padding-inline: 0; }
 }
 
-/* Tabulka (shadcn Table). Krajní buňky mají vnitřní okraj, aby podbarvení
-   řádku při najetí nezačínalo těsně u štítku; tabulka o něj přesahuje do
-   odsazení karty, takže text dál lícuje s nadpisem karty. */
-.table-wrap { overflow-x: auto; margin-inline: -10px; }
-table { width: 100%; border-collapse: collapse; font-size: var(--fs-md); table-layout: fixed; min-width: 780px; }
-th { text-align: left; font-size: var(--fs-md); font-weight: 500; color: var(--muted-foreground); padding: 8px 20px 8px 0; border-bottom: 1px solid var(--border); }
-td { padding: 12px 20px 12px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
-th:first-child, td:first-child { padding-left: 10px; }
-th:last-child, td:last-child { padding-right: 10px; }
-tbody tr:last-child td { border-bottom: 0; }
-tbody tr { transition: background-color 0.12s ease; }
-tbody tr:hover { background: color-mix(in srgb, var(--muted) 55%, transparent); }
-td a { color: var(--link); text-decoration: none; text-underline-offset: 3px; }
-/* Fokus z klávesnice (i po návratu z PDF v nové kartě) barvou webu, ne
-   černým rámečkem prohlížeče. */
-a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 4px; }
-#sidenav a:focus-visible, .pagetabs a:focus-visible { outline-offset: -2px; border-radius: 7px; }
-td a:hover { text-decoration: underline; }
+/* Boční navigace (shadcn Sidebar). Názvy se nezalamují – dvouřádková
+   položka se čte hůř než zkrácená. */
+.nav-group { display: flex; flex-direction: column; gap: 2px; }
+.nav-group:last-child { border-top: 1px solid var(--border); padding-top: 14px; }
+.nav-label { padding: 0 10px 4px; font-size: 12px; font-weight: 500; color: var(--muted-foreground); }
+#sidenav a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 7px 10px; border-radius: 7px;
+  color: var(--fg-2); text-decoration: none; white-space: nowrap;
+}
+#sidenav a > span:first-of-type { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+#sidenav a:hover { background: var(--accent); color: var(--foreground); }
+#sidenav a.active { background: var(--active-bg); color: var(--active-fg); font-weight: 500; }
+#sidenav a:focus-visible { outline-offset: -2px; }
+/* Ikony jsou kreslené tahem, ne výplní – nastavení je společné. */
+.nav-ico {
+  width: 16px; height: 16px; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+#sidenav a:not(.active) .nav-ico { color: var(--fg-3); }
+/* Zdroje mají ikonu v barvě svého soudu (i když jsou aktivní). Dvojitá
+   třída, ať přebije šedou u neaktivních položek výš. */
+#sidenav a .nav-ico.ico-nsoud { color: var(--badge-indigo-fg); }
+#sidenav a .nav-ico.ico-nss { color: var(--badge-teal-fg); }
+#sidenav a .nav-ico.ico-us { color: var(--badge-rose-fg); }
+#sidenav a .nav-ico.ico-sdeu { color: var(--badge-blue-fg); }
+#sidenav a .nav-ico.ico-journals { color: var(--badge-amber-fg); }
+/* Počet novinek a za jak dlouho zdroj ukazuje novinky – vpravo, drobně. */
+.nav-pocet, .nav-okno {
+  margin-left: auto; padding-left: 8px; font-size: 12px; font-weight: 400;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.nav-pocet { color: var(--muted-foreground); }
+#sidenav a.active .nav-pocet { color: inherit; font-weight: 500; }
+.nav-okno { color: var(--faint); }
 
-/* Šířky sloupců (table-layout: fixed) řídí <colgroup>, které vykresluje
-   skript – výchozí podle obsahu (prizpusobSirky), uživatelské v cookie.
-   V CSS proto zůstává jen to, co se šířkou nesouvisí. */
-/* Neviditelná měrka, do které skript vkládá obsah buněk, aby zjistil jeho
-   přirozenou šířku; má třídu sloupce, takže platí stejná pravidla. */
-.meric { position: absolute; top: 0; left: -10000px; visibility: hidden; pointer-events: none; }
-.meric-th { font-weight: 500; }
-/* Druhý řádek pod značkou (populární název, autor) se zalomí a šířku
-   sloupce neurčuje. */
-.meric.col-name .vec, .meric.col-name .author { display: none; }
-.col-src .src, .col-src .tag { margin-bottom: 3px; }
-.col-date {
-  color: var(--muted-foreground); font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
-/* Heslo je štítek v úzkém sloupci – delší se zalomí na druhý řádek, ne
-   ořízne (řádek je kvůli shrnutí stejně vyšší). */
-.col-heslo { overflow-wrap: break-word; }
-.col-type, .col-name, .col-summary, .col-src, .col-author
-  { overflow-wrap: anywhere; }
-.author { color: var(--muted-foreground); }
-.col-name .author { display: block; margin-top: 2px; font-size: var(--fs-sm); }
-/* Populární název rozhodnutí ÚS pod značkou. */
-.vec { display: block; margin-top: 2px; font-size: var(--fs-sm); color: var(--muted-foreground); }
-.nowrap { white-space: nowrap; }
-.summary { line-height: 1.55; }
-.note { color: var(--muted-foreground); font-style: italic; }
-.doc-link {
-  font-size: var(--fs-sm); font-weight: 600; letter-spacing: .04em; white-space: nowrap;
-  padding: 1px 5px; border: 1px solid currentColor; border-radius: 4px;
-  text-decoration: none; vertical-align: 1px;
-}
-
-/* Táhlo na hranici záhlaví – mění šířku sloupce na úkor toho vpravo.
-   Je o pár pixelů širší než čára a přesahuje do mezery mezi sloupci,
-   aby se trefovalo i myší, která není úplně přesná. */
-th { position: relative; }
-.col-resizer {
-  position: absolute; top: 0; right: -5px; z-index: 1;
-  width: 11px; height: 100%;
-  cursor: col-resize; touch-action: none;
-  background: none; border: 0; padding: 0;
-}
-.col-resizer::before {
-  content: ""; position: absolute; top: 3px; bottom: 3px; left: 5px;
-  width: 1px; background: transparent; transition: background-color 0.12s ease;
-}
-.col-resizer:hover::before,
-.col-resizer:focus-visible::before,
-.col-resizer.is-active::before { background: var(--link); }
-.col-resizer:focus { outline: none; }
-/* Během tažení ať se neoznačuje text a kurzor drží tvar i mimo táhlo. */
-body.is-resizing { cursor: col-resize; user-select: none; -webkit-user-select: none; }
-/* Inline-block, ne block – barevné pozadí má obepínat text, ne se roztáhnout
-   přes celou šířku sloupce. Delší heslo se zalomí uvnitř štítku. */
-.col-heslo .heslo, .heslo-u-znacky .heslo {
-  display: inline-block; max-width: 100%; vertical-align: top;
-  white-space: normal; line-height: 1.35;
-}
-/* Kopie hesla v buňce se značkou – ukáže se jen v blokovém zobrazení. */
-.heslo-u-znacky { display: none; }
-
-/* Štítky (shadcn Badge). Heslo = akcent; zdroj/typ mají sémantické odstíny,
-   ostatní neutrální „secondary". */
-.heslo, .tag, .src {
-  display: inline-block; border-radius: 6px; padding: 2px 8px;
-  font-size: var(--fs-sm); font-weight: 500; line-height: 1.45;
-}
-.heslo { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
-.tag, .src { background: var(--muted); color: var(--muted-foreground); white-space: nowrap; }
-.tag-ruling { background: var(--badge-green-bg); color: var(--badge-green-fg); }
-.tag-referral { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
-.tag-opinion { background: var(--badge-amber-bg); color: var(--badge-amber-fg); }
-.src-nsoud { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
-.src-nss { background: var(--badge-teal-bg); color: var(--badge-teal-fg); }
-.src-us { background: var(--badge-rose-bg); color: var(--badge-rose-fg); }
-/* src-cjeu: starší přehledy (digest.json) ještě mají původní klíč. */
-.src-sdeu, .src-cjeu { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
-.src-journals { background: var(--badge-amber-bg); color: var(--badge-amber-fg); }
-
-/* Dvoutýdenní přehled (digest.json) – text, ne seznam. */
-.digest-intro { margin: 6px 0 4px; font-size: var(--fs-md); line-height: 1.6; }
-.digest-block { padding: 14px 0; border-bottom: 1px solid var(--border); }
-.digest-block:last-of-type { border-bottom: 0; padding-bottom: 4px; }
-.digest-title { margin: 0 0 4px; font-size: var(--fs-md); font-weight: 600; letter-spacing: -0.01em; }
-.digest-text { margin: 0; font-size: var(--fs-md); line-height: 1.55; }
-.digest-sources { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; }
-.digest-source {
-  display: inline-flex; align-items: baseline; gap: 6px;
-  font-size: var(--fs-sm); color: var(--link); text-decoration: none;
-  overflow-wrap: anywhere;
-}
-.digest-source:hover { text-decoration: underline; }
-.digest-source .src, .digest-source .tag { flex: none; }
-.digest-meta { margin: 14px 0 0; font-size: var(--fs-sm); color: var(--muted-foreground); }
-.fold {
-  margin-left: auto; width: 24px; height: 24px; flex: none; padding: 0;
-  display: inline-flex; align-items: center; justify-content: center;
-  border: 1px solid var(--border); border-radius: 8px; background: none;
-  color: var(--muted-foreground); cursor: pointer;
-}
-.fold:hover, .fold:focus-visible {
-  color: var(--foreground); background: var(--accent); border-color: var(--muted-foreground);
-}
-.fold-ico { width: 14px; height: 14px; transition: transform 0.15s; }
-.fold[aria-expanded="false"] .fold-ico { transform: rotate(-90deg); }
-.card-content[hidden] { display: none; }
-
-/* ===== Kalendář jednání (MS + VS, IP senáty) ===== */
-.cal-toolbar {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 12px; flex-wrap: wrap; margin: 6px 0 14px;
-}
-.cal-nav { display: flex; align-items: center; gap: 6px; }
-.cal-nav button {
-  background: var(--card); color: var(--foreground);
-  border: 1px solid var(--border); border-radius: 8px;
-  padding: 4px 10px; font-size: var(--fs-md); line-height: 1.4; cursor: pointer;
-}
-.cal-nav button:hover { background: var(--accent); }
-.cal-title { min-width: 130px; text-align: center; font-weight: 600; font-size: var(--fs-md); }
-.cal-filters { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: var(--fs-md); color: var(--muted-foreground); }
-/* Štítek soudu je zároveň legenda i přepínač – klikne se rovnou na barvu.
-   Vypnutý soud barvu ztratí a zůstane z něj jen obrys. */
-.cal-key {
-  border-radius: 5px; padding: 2px 9px; font-size: var(--fs-sm);
-  border: 1px solid transparent; font-family: inherit; line-height: 1.5;
-}
-button.cal-key { cursor: pointer; }
-button.cal-key:hover { box-shadow: inset 0 0 0 1px currentColor; }
-.cal-key[aria-pressed="false"] {
-  background: none; color: var(--muted-foreground); border-color: var(--border);
-}
-.cal-key-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
-.cal-key-vs { background: var(--badge-green-bg); color: var(--badge-green-fg); }
-
-/* Bublina s detailem se umisťuje k proklikanému štítku, proto je mřížka
-   v pozicovaném obalu. Vodorovné posouvání zůstává na .cal-wrap, jinak by
-   bublinu ořízlo. */
-.cal-shell { position: relative; }
-.cal-wrap { overflow-x: auto; }
-/* Mobilní seznam dnů – na širokých obrazovkách je vidět mřížka. */
-.cal-agenda { display: none; }
-.cal-agenda-day { padding: 8px 0; border-bottom: 1px solid var(--border); }
-.cal-agenda-day:last-child { border-bottom: 0; }
-.cal-agenda-date {
-  font-size: var(--fs-sm); font-weight: 600; color: var(--muted-foreground);
-  padding: 0 4px 4px;
-}
-.cal-agenda .cal-chip { padding: 5px 4px; }
-.cal-grid {
-  /* minmax(0, 1fr) je nutné: s holým 1fr má sloupec spodní šířku podle
-     obsahu a jeden dlouhý název jednání by mřížku roztáhl přes okno. */
-  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px;
-  min-width: 470px;
-}
-.cal-dow { font-size: var(--fs-sm); font-weight: 500; color: var(--muted-foreground); padding: 2px 6px; }
-.cal-day {
-  min-height: 96px; padding: 4px 7px;
-  border: 1px solid var(--border); border-radius: 8px;
-  background: var(--card); font-size: var(--fs-sm);
-  display: flex; flex-direction: column; gap: 3px; align-items: stretch;
-  text-align: left; cursor: default;
-}
-/* Proběhlé dny jsou potlačené, ale čitelné – kalendář slouží i jako archiv. */
-.cal-day.past { background: color-mix(in srgb, var(--muted) 45%, var(--card)); }
-/* Minulé dny tlumeně, ale čitelně (≥ 4,5 : 1 i na šedém podkladu). */
-.cal-day.past .cal-daynum { color: color-mix(in srgb, var(--muted-foreground) 75%, var(--foreground)); }
-/* Číslo dne má u všech dnů stejnou výšku řádku, jinak by dnešek se svou
-   pilulkou posunul obsah buňky níž. Záporný okraj drží číslici zarovnanou
-   s ostatními dny, i když je kolem ní pilulka. */
-.cal-daynum {
-  align-self: flex-start; display: flex; align-items: center;
-  height: 20px; padding: 0 6px; margin-left: -4px; border-radius: 999px;
-  font-size: var(--fs-sm); color: var(--muted-foreground);
-  font-variant-numeric: tabular-nums;
-}
-.cal-day.today .cal-daynum { background: var(--link); color: #fff; }
-/* Štítek dne: barevná tečka soudu, čas a jméno sporu na jednom řádku.
-   Zalomené jméno přes tři řádky rozhazovalo výšku buněk a v mřížce se
-   hůř hledalo – co se nevejde, se ořízne, celé je v title a v bublině. */
-.cal-chip {
-  display: flex; align-items: center; gap: 6px;
-  width: 100%; padding: 2px 4px; border: 0; border-radius: 5px;
-  background: none; color: var(--foreground);
-  font-family: inherit; font-size: var(--fs-sm); line-height: 1.5;
-  text-align: left; cursor: pointer;
-}
-.cal-chip:hover { background: var(--accent); }
-.cal-chip.is-open { background: var(--accent); }
-.cal-chip.is-open, .cal-more.is-open { box-shadow: 0 0 0 2px var(--link); }
-.cal-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
-.cal-chip-time {
-  color: var(--muted-foreground); font-variant-numeric: tabular-nums; flex: none;
-}
-/* min-width: 0 je nutné, jinak flexový prvek nejde zmenšit pod svůj text
-   a výpustka se nikdy neuplatní. */
-.cal-chip-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cal-chip-ms .cal-dot { background: var(--badge-blue-fg); }
-.cal-chip-vs .cal-dot { background: var(--badge-green-fg); }
-.cal-more {
-  font-size: var(--fs-sm); color: var(--muted-foreground);
-  background: none; border: 0; border-radius: 5px; padding: 0 5px;
-  font-family: inherit; text-align: left; cursor: pointer;
-}
-.cal-more:hover { color: var(--foreground); text-decoration: underline; }
-
-/* Detail jednání – bublina u proklikaného štítku. Je uvnitř .cal-shell,
-   takže se posouvá se stránkou a nemění výšku obsahu pod kalendářem. */
-.cal-pop {
-  position: absolute; z-index: 30; width: min(340px, calc(100% - 12px));
-  transition: width 0.12s ease;
-  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16), 0 2px 6px rgba(0, 0, 0, 0.08);
-  padding: 12px 14px;
-}
-.cal-pop[hidden] { display: none; }
-/* Rolování je až uvnitř – na .cal-pop by ořízlo šipku, která z bubliny
-   vyčnívá ven. */
-.cal-pop-body {
-  overflow-y: auto;
-  display: flex; flex-direction: column; gap: 10px;
-}
-.cal-pop-arrow {
-  position: absolute; top: -6px; width: 10px; height: 10px; background: var(--card);
-  border-left: 1px solid var(--border); border-top: 1px solid var(--border);
-  transform: rotate(45deg);
-}
-.cal-pop-arrow.is-below { top: auto; bottom: -6px; transform: rotate(225deg); }
-.cal-pop-close {
-  position: absolute; top: 6px; right: 8px; z-index: 1;
-  background: none; border: 0; padding: 4px 6px; border-radius: 6px;
-  color: var(--muted-foreground); font-size: var(--fs-md); line-height: 1; cursor: pointer;
-}
-.cal-pop-close:hover { background: var(--accent); color: var(--foreground); }
-/* V bublině nemá smysl rámeček v rámečku; víc jednání odděluje linka. */
-.cal-pop .cal-event { border: 0; border-radius: 0; padding: 0; }
-.cal-pop .cal-event + .cal-event { border-top: 1px solid var(--border); padding-top: 10px; }
-.cal-detail-title { margin: 0 26px 0 0; font-size: var(--fs-md); font-weight: 600; }
-.cal-event {
-  border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px;
-  display: flex; flex-direction: column; gap: 8px; font-size: var(--fs-md);
-}
-.cal-event-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-.cal-event-time { font-weight: 600; font-variant-numeric: tabular-nums; }
-/* Název sporu je hlavní identifikace jednání, spisová značka až v detailu. */
-.cal-event-name { font-weight: 600; font-size: var(--fs-md); }
-.cal-event-vs { color: var(--muted-foreground); font-weight: 400; }
-.cal-event-rows { display: grid; grid-template-columns: auto 1fr; gap: 3px 12px; }
-.cal-event-rows dt { color: var(--muted-foreground); }
-.cal-event-rows dd { margin: 0; }
-.cal-event-links { display: flex; gap: 14px; flex-wrap: wrap; }
-.cal-event-links a { color: var(--link); text-decoration: none; font-size: var(--fs-sm); }
-.cal-event-links a:hover { text-decoration: underline; }
-/* Stažení .ics je akce, ne odkaz, ale vedle odkazu na InfoSoud má vypadat
-   stejně – tlačítko se tedy zbaví vlastního vzhledu. */
-.cal-event-links .cal-ics {
-  background: none; border: 0; padding: 0; cursor: pointer;
-  font: inherit; font-size: var(--fs-sm); color: var(--link);
-}
-.cal-event-links .cal-ics:hover { text-decoration: underline; }
-/* Změna proti minulému přehledu – u jednání v bublině. */
-.cal-zmena {
-  display: inline-block; border-radius: 6px; padding: 1px 7px;
-  font-size: var(--fs-sm); font-weight: 500;
-  background: var(--badge-amber-bg); color: var(--badge-amber-fg);
-}
-.src-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
-.src-vs { background: var(--badge-green-bg); color: var(--badge-green-fg); }
-
-.loading, .feed-empty { color: var(--muted-foreground); font-size: var(--fs-md); margin: 6px 0; }
-/* Dokud nejsou feedy (a fonty) načtené, neukazujeme nic – jinak by nejdřív
-   probliskla hlavička s prázdnou stránkou a teprve pak naskočil obsah.
-   Třídu nasazuje i sundává skript, takže bez JS se stránka zobrazí normálně;
-   sundá se v initApp() nebo nejpozději po pojistném timeoutu. */
-html.is-loading body { visibility: hidden; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-
-/* Přepínač stránek (shadcn tabs) – naskočí tam, kde zmizí boční navigace.
-   Zůstává v jednom řádku; co se nevejde, posune se do strany (bez
-   posuvníku) a okraj s dalšími záložkami vybledne. Svislé čárky oddělují
-   skupiny stejně jako linky v boční navigaci. */
-/* Záložky stránek (úzká okna) drží pod hlavičkou. Pozadí má obal – maska
-   přechodu na okrajích posuvníku by jinak zprůhlednila i ji. */
+/* Přepínač stránek (úzká okna) drží pod hlavičkou. Zůstává v jednom
+   řádku; co se nevejde, posune se do strany a okraj vybledne. */
 .pagetabs-lista {
   position: sticky; top: var(--head-h); z-index: 30;
-  margin: calc(-1 * var(--obsah-nahore)) -24px 0; padding: 10px 24px 8px;
-  background: var(--background);
+  margin: -32px -48px 24px; padding: 8px 12px;
+  background: var(--background); border-bottom: 1px solid var(--border);
 }
 .pagetabs {
   display: flex; gap: 4px; align-items: center;
@@ -464,340 +181,558 @@ html.is-loading body { visibility: hidden; }
 }
 .pagetabs::-webkit-scrollbar { display: none; }
 .pagetabs a {
-  flex: none; white-space: nowrap;
-  padding: 6px 12px; border-radius: 8px; font-size: var(--fs-md);
-  color: var(--muted-foreground); text-decoration: none;
+  flex: none; white-space: nowrap; padding: 6px 11px; border-radius: 8px;
+  font-size: 14px; color: var(--muted-foreground); text-decoration: none;
 }
 .pagetabs a:hover { color: var(--foreground); background: var(--accent); }
-.pagetabs a.active { color: var(--foreground); background: var(--muted); font-weight: 500; }
+.pagetabs a.active { background: var(--active-bg); color: var(--active-fg); font-weight: 500; }
+.pagetabs a:focus-visible { outline-offset: -2px; }
 .pagetabs-sep { flex: none; width: 1px; height: 18px; margin-inline: 4px; background: var(--border); }
 .pagetabs.dalsi-vpravo { mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
 .pagetabs.dalsi-vlevo { mask-image: linear-gradient(to left, #000 calc(100% - 32px), transparent); }
 .pagetabs.dalsi-vlevo.dalsi-vpravo {
   mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent);
 }
-@media (max-width: 480px) {
-  .pagetabs a { padding-inline: 10px; }
-}
 
-/* Boční navigace vlevo (jen na širokých obrazovkách) – plovoucí karta. */
-#sidenav {
-  display: none; position: fixed; top: calc(var(--head-h) + var(--obsah-nahore)); left: 20px;
-  width: var(--nav-w); flex-direction: column; font-size: var(--fs-md);
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 6px;
-}
-#sidenav a {
-  display: flex; align-items: center; gap: 9px;
-  color: var(--muted-foreground); text-decoration: none;
-  padding: 6px 9px; border-radius: 7px; line-height: 1.35;
-}
-.nav-ico { width: 15px; height: 15px; flex: none; opacity: 0.85; }
-#sidenav a:hover { color: var(--foreground); background: var(--accent); }
-/* Zvýraznění barvou odkazu, ne šedou – aktivní položka je pak vidět
-   na první pohled a ikona se zvýrazní s ní. */
-#sidenav a.active {
-  color: var(--link); background: color-mix(in srgb, var(--link) 11%, transparent);
-}
-#sidenav a.active .nav-ico { opacity: 1; }
-/* Názvy stránek i sekcí se nezalamují – dvouřádková položka v navigaci
-   se čte hůř než delší pruh. Šířku pruhu drží --nav-w. */
-#sidenav a { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-/* Skupiny stránek oddělené linkou; podpoložky mají svislé vodítko,
-   aby bylo vidět, ke které stránce patří. Popisek skupiny (shadcn
-   SidebarGroupLabel) není odkaz – jen pojmenuje stránky pod sebou. */
-.nav-group { display: flex; flex-direction: column; gap: 2px; padding: 5px 0; }
-.nav-group + .nav-group { border-top: 1px solid var(--border); }
-.nav-label {
-  padding: 4px 9px 2px; font-size: var(--fs-sm); font-weight: 500;
-  color: var(--muted-foreground); white-space: nowrap;
-}
-#sidenav a:not(.sub) { color: var(--foreground); }
-/* Za jak dlouho zdroj ukazuje novinky – drobně a tlumeně vpravo. */
-.nav-okno {
-  margin-left: auto; padding-left: 10px; font-size: var(--fs-sm);
-  color: var(--muted-foreground); font-variant-numeric: tabular-nums;
-}
-#sidenav a.active .nav-okno { color: inherit; }
-#sidenav a:not(.sub).active { color: var(--link); }
-/* Podpoložky jsou odsazené o šířku ikony nadřazené stránky a drží se
-   svislého vodítka, ať je vidět, kam patří. */
-#sidenav a.sub { position: relative; margin-left: 18px; }
-#sidenav a.sub::before {
-  content: ""; position: absolute; left: -9px; top: 4px; bottom: 4px;
-  width: 1px; background: var(--border);
-}
-@media (min-width: 1600px) {
-  /* Obsah stojí uprostřed okna a navigace se k němu zleva přilepí.
-     Když se nalevo od vycentrovaného obsahu nevejde, obsah se posune
-     doprava jen o tolik, aby jí zbylo místo (a 24 px k okraji okna).
-     --obsah-x je levý okraj .container; hlavička i stránka ho sdílí,
-     takže logo lícuje s kartami a navigace visí vlevo od obou. */
-  :root {
-    --obsah-x: max(calc(var(--nav-w) + var(--nav-gap)), calc((100vw - 1600px) / 2));
-  }
-  .container { margin-left: var(--obsah-x); margin-right: auto; }
-  #sidenav {
-    display: flex;
-    left: calc(var(--obsah-x) + 24px - var(--nav-gap) - var(--nav-w));
-  }
-  /* Se zobrazenou boční navigací by byl přepínač nahoře nadbytečný. */
-  .pagetabs-lista { display: none; }
-}
-/* Tabulka má spodní šířku 780 px; jakmile se do karty nevejde, vodorovné
-   posouvání schová shrnutí a řádky se protáhnou. Místo toho je z každé
-   položky blok: nahoře štítky zdroje a datum, pod nimi značka s heslem,
-   název věci nebo autor a shrnutí. */
-@container (max-width: 790px) {
-  .table-wrap { overflow-x: visible; margin-inline: 0; }
-  table { display: block; min-width: 0; }
-  table colgroup { display: none; }
-  table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-  tbody { display: block; }
-  tbody tr {
-    display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px;
-    padding: 12px 0; border-bottom: 1px solid var(--border);
-  }
-  tbody tr:hover { background: none; }
-  tbody td, tbody td:first-child, tbody td:last-child { display: block; padding: 0; border: 0; }
-  tbody td:empty { display: none; }
-  .col-src, .col-type { order: 1; }
-  .col-date { order: 2; font-size: var(--fs-sm); }
-  .col-name { order: 3; flex-basis: 100%; font-weight: 500; }
-  .col-author { order: 4; flex-basis: 100%; }
-  .col-summary { order: 6; flex-basis: 100%; color: var(--muted-foreground); }
-  .col-src .src, .col-src .tag { margin-bottom: 0; }
-  /* Heslo stojí hned za značkou (a PDF): sloupec Heslo se schová a ukáže se
-     jeho kopie v buňce se značkou. Vyplní zbytek řádku a delší se zalomí
-     uvnitř štítku, ať nemusí samo pod značku; název věci a autor jdou pod
-     ně. */
-  tbody td.col-heslo { display: none; }
-  tbody td.col-name { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 6px; }
-  .heslo-u-znacky { display: block; flex: 1 1 0; min-width: min(7em, 100%); }
-  tbody td.col-name .vec, tbody td.col-name .author { flex-basis: 100%; }
-}
-@media (max-width: 640px) {
-  .card-stav { margin-inline: 16px; }
-  .container { padding-inline: 14px; }
-  :root { --obsah-nahore: 20px; }
-  main.container { padding-block: var(--obsah-nahore) 48px; gap: 20px; }
-  .card-header { padding: 14px 16px 0; }
-  .pagetabs-lista { margin-inline: -14px; padding-inline: 14px; }
-  /* Hlavička by se zalomila do dvou řádků. */
-  #updated { display: none; }
-  .card-content { padding: 8px 16px 12px; }
-  /* Popis za jménem webu zabere na telefonu tři řádky hlavičky. */
-  h1 .tagline { display: none; }
-  /* Ve zdrojích přehledu zbyde na název vedle štítků úzký sloupec –
-     ať se radši zalomí pod ně a využije celou šířku. */
-  .digest-source { flex-wrap: wrap; }
+/* ===== Stránka ===== */
+/* Obsah je rozdělený na stránky; viditelná je vždy jedna. */
+.page { display: flex; flex-direction: column; gap: 22px; }
+.page[hidden] { display: none; }
+[id] { scroll-margin-top: calc(var(--head-h) + 24px); }
+/* Popis stránky je vidět hned pod nadpisem, ne schovaný pod otazníkem. */
+.page-head { display: flex; flex-direction: column; gap: 6px; }
+.page-title { margin: 0; font-size: 26px; font-weight: 600; letter-spacing: -0.02em; }
+.page-title:focus { outline: none; }
+.page-desc { margin: 0; font-size: 14px; line-height: 1.55; color: var(--muted-foreground); max-width: 90ch; text-wrap: pretty; }
+.page-vice { font-size: 14px; color: var(--muted-foreground); }
+.page-vice summary { cursor: pointer; color: var(--link); width: max-content; }
+.page-vice ul { margin: 6px 0 0; padding-left: 18px; line-height: 1.6; }
+.feed { display: flex; flex-direction: column; gap: 22px; }
+.loading, .feed-empty { color: var(--muted-foreground); font-size: 14px; margin: 0; }
+.feed-empty a { white-space: nowrap; }
 
-  /* Šest týdnů v mřížce se na telefonu přečíst nedá – místo ní seznam
-     dnů, ve kterých něco je. */
-  .cal-wrap { display: none; }
-  .cal-agenda { display: block; }
-  .cal-toolbar { gap: 10px; }
-  .cal-pop { width: calc(100% - 8px); }
+/* Přepínač segmentů (shadcn Tabs): Vše / Judikatura / Časopisy
+   a v kalendáři 3 týdny / Seznam. */
+.segment {
+  display: flex; gap: 2px; padding: 3px; align-self: flex-start;
+  background: var(--muted); border-radius: 9px;
 }
-
-/* ===== Přihlášení (Clerk) a můj výběr ===== */
-.head-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
-.ucet { display: flex; align-items: center; gap: 8px; }
-.ucet-btn {
-  background: var(--card); color: var(--foreground);
-  border: 1px solid var(--border); border-radius: 8px;
-  padding: 4px 12px; font-size: var(--fs-md); line-height: 1.4; cursor: pointer;
+.segment[hidden] { display: none; }
+.segment button {
+  display: flex; gap: 6px; border: 0; background: transparent; cursor: pointer;
+  font-size: 13px; font-weight: 500; padding: 5px 12px; border-radius: 7px;
+  color: var(--muted-foreground);
 }
-.ucet-btn:hover { background: var(--accent); }
-/* Hlavní tlačítko (Registrace, Uložit) má stejnou modrou jako vybrané
-   položky a aktivní navigace. */
-.ucet-btn-hlavni { background: var(--link); color: var(--background); border-color: var(--link); }
-.ucet-btn-hlavni:hover { background: var(--link); opacity: .88; }
-.ucet-btn-hlavni:disabled:hover { opacity: .45; }
-.ucet-user { display: inline-flex; align-items: center; min-width: 28px; min-height: 28px; }
+.segment button:hover { color: var(--foreground); }
+.segment button[aria-pressed="true"] { background: var(--raised); color: var(--foreground); box-shadow: var(--shadow-raised); }
+.segment-pocet { color: var(--faint); font-variant-numeric: tabular-nums; }
 
-/* Pod tabulkou judikatury pro nepřihlášeného: ukazuje se výchozí výběr. */
-.vychozi-pozn { margin: 14px 0 2px; font-size: var(--fs-sm); color: var(--muted-foreground); }
-.vychozi-pozn a { color: var(--link); text-decoration: none; }
-.vychozi-pozn a:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* ===== Položky (novinky i archiv zdrojů) =====
+   Pořadí čtení: značka → heslo jako titulek → shrnutí → oblasti. Datum
+   a odkazy stojí stranou, nekonkurují. */
+.zdroj { display: flex; flex-direction: column; }
+.zdroj-hlava {
+  display: flex; align-items: center; gap: 10px;
+  padding-bottom: 10px; border-bottom: 1px solid var(--border);
+}
+.zdroj-nazev { font-size: 14px; font-weight: 600; }
+.zdroj-pocet { font-size: 13px; color: var(--muted-foreground); }
+.ico-nsoud { color: var(--badge-indigo-fg); }
+.ico-nss { color: var(--badge-teal-fg); }
+.ico-us { color: var(--badge-rose-fg); }
+.ico-sdeu { color: var(--badge-blue-fg); }
+.ico-journals { color: var(--badge-amber-fg); }
 
-/* Stav AI nad kartou judikatury (kolik rozhodnutí ještě čeká na shrnutí). */
+.polozka {
+  /* Pravý sloupec je přesně tak široký jako odkazy (auto) – pevná šířka
+     v písmu Geist nestačila a odkazy přetékaly nad shrnutí. */
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 40px; row-gap: 4px;
+  /* Shrnutí vede až ke sloupci s odkazy (bez stropu na délku řádku),
+     od odkazů ho dělí jen úzká mezera. */
+  grid-template-areas: "meta datum" "titul odkazy" "shrnuti ." "stitky .";
+  padding: 14px 0; border-bottom: 1px solid var(--border-soft);
+}
+.polozka:last-child { border-bottom: 0; }
+.polozka-meta {
+  grid-area: meta; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  font-size: 13px; color: var(--muted-foreground);
+}
+.polozka-ident { color: var(--fg-2); }
+.meta-vec { display: inline-flex; gap: 8px; min-width: 0; }
+.polozka-datum {
+  grid-area: datum; justify-self: end; font-size: 13px; color: var(--muted-foreground);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.polozka-titul {
+  grid-area: titul; margin: 0; font-size: 15px; font-weight: 600; line-height: 1.35;
+  letter-spacing: -0.01em; text-wrap: pretty; overflow-wrap: anywhere;
+}
+.polozka-vec { grid-area: vec; display: none; font-size: 13px; color: var(--muted-foreground); }
+.polozka-shrnuti {
+  grid-area: shrnuti; margin: 0; font-size: 14px; line-height: 1.5; color: var(--fg-2);
+  text-wrap: pretty;
+}
+.polozka-shrnuti.note { color: var(--muted-foreground); font-style: italic; }
+.polozka-stitky { grid-area: stitky; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 4px; min-width: 0; }
+.polozka-stitky:empty { display: none; }
+.stitek {
+  font-size: 12px; font-weight: 500; padding: 2px 8px; border-radius: 6px;
+  background: var(--muted); color: var(--fg-3); white-space: nowrap;
+  opacity: 0.6;   /* oblasti jsou doplňková informace, ne hlavní obsah */
+}
+/* „…" za první oblastí – jen na telefonu, kde se oblasti nevejdou vedle
+   odkazů. Klepnutí ukáže všechny. */
+.stitek-vic { display: none; border: 0; cursor: pointer; flex: none; }
+.polozka-odkazy { grid-area: odkazy; justify-self: end; align-self: start; display: flex; gap: 6px; }
+.odkaz {
+  display: inline-flex; align-items: center; font-size: 12px; font-weight: 500;
+  padding: 3px 8px; border: 1px solid var(--border); border-radius: 6px;
+  color: var(--fg-2); white-space: nowrap; text-decoration: none; background: var(--background);
+}
+.odkaz:hover { background: var(--accent); color: var(--foreground); text-decoration: none; }
+.odkaz-pdf { font-weight: 600; letter-spacing: 0.04em; padding-inline: 7px; }
+
+/* Stav AI nad seznamem judikatury (kolik rozhodnutí ještě čeká na shrnutí). */
 .card-stav {
-  margin: 10px 22px 0; padding: 8px 12px; border-radius: 8px;
-  background: var(--muted); color: var(--muted-foreground);
-  font-size: var(--fs-sm); line-height: 1.5; max-width: 110ch;
+  margin: 0; padding: 10px 14px; border-radius: 8px;
+  background: var(--muted); color: var(--fg-3);
+  font-size: 13px; line-height: 1.5; max-width: 110ch;
 }
 .card-stav[hidden] { display: none; }
+/* Pod judikaturou pro nepřihlášeného: ukazuje se výchozí výběr. */
+.vychozi-pozn { margin: 0; font-size: 13px; color: var(--muted-foreground); }
 
-/* Můj výběr: dialog (shadcn Dialog) otevíraný z nabídky účtu. Sekce jsou
-   rozbalovací řádky (shadcn Accordion) se souhrnem v hlavičce, vybírá se
-   čipy. Vybrané vypadá všude stejně – modrý nádech jako aktivní položka
-   v navigaci. */
+/* ===== Štítky (shadcn Badge) – dvoutýdenní přehled a kalendář ===== */
+.tag, .src {
+  display: inline-block; border-radius: 6px; padding: 2px 8px;
+  font-size: 12px; font-weight: 500; line-height: 1.45;
+  background: var(--muted); color: var(--fg-3); white-space: nowrap;
+}
+.src-nsoud { background: var(--badge-indigo-bg); color: var(--badge-indigo-fg); }
+.src-nss { background: var(--badge-teal-bg); color: var(--badge-teal-fg); }
+.src-us { background: var(--badge-rose-bg); color: var(--badge-rose-fg); }
+/* src-cjeu: starší přehledy (digest.json) ještě mají původní klíč. */
+.src-sdeu, .src-cjeu { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
+.src-journals { background: var(--badge-amber-bg); color: var(--badge-amber-fg); }
+.src-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
+.src-vs { background: var(--badge-green-bg); color: var(--badge-green-fg); }
+
+/* ===== Dvoutýdenní přehled (digest.json) – text, ne seznam ===== */
+.digest-intro { margin: 0; font-size: 14px; line-height: 1.6; color: var(--fg-2); max-width: 90ch; }
+.digest-bloky { display: flex; flex-direction: column; border-top: 1px solid var(--border); }
+.digest-block { padding: 14px 0; border-bottom: 1px solid var(--border-soft); }
+.digest-block:last-child { border-bottom: 0; }
+.digest-title { margin: 0 0 4px; font-size: 15px; font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; }
+.digest-text { margin: 0; font-size: 14px; line-height: 1.5; color: var(--fg-2); max-width: 90ch; }
+.digest-sources { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
+.digest-source {
+  display: inline-flex; align-items: baseline; gap: 6px;
+  font-size: 13px; color: var(--link); text-decoration: none; overflow-wrap: anywhere;
+}
+.digest-source:hover { text-decoration: underline; }
+.digest-source .src, .digest-source .tag { flex: none; }
+.digest-meta { margin: 0; font-size: 13px; color: var(--muted-foreground); }
+
+/* ===== Kalendář jednání (MS + VS, IP senáty) ===== */
+.cal-toolbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+/* Štítek soudu je zároveň legenda i přepínač, s počtem nadcházejících
+   jednání. Vypnutý soud barvu ztratí a zůstane z něj jen obrys. */
+.cal-key {
+  display: flex; align-items: center; gap: 6px; cursor: pointer;
+  font-size: 13px; font-weight: 500; padding: 5px 11px; border-radius: 999px;
+  border: 1px solid transparent;
+}
+.cal-key-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.cal-key-pocet { opacity: 0.7; font-variant-numeric: tabular-nums; }
+.cal-key-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
+.cal-key-vs { background: var(--badge-green-bg); color: var(--badge-green-fg); }
+.cal-key[aria-pressed="false"] { background: var(--background); color: var(--muted-foreground); border-color: var(--border); }
+.cal-key[aria-pressed="false"] .cal-key-dot { background: var(--switch-off); }
+
+.cal-mesic { display: flex; flex-direction: column; gap: 16px; }
+.cal-mesic[hidden], .cal-seznam[hidden] { display: none; }
+.cal-nav { display: flex; align-items: center; gap: 8px; }
+.cal-nav button {
+  font-size: 13px; border: 1px solid var(--border); background: var(--background); color: var(--foreground);
+  border-radius: 7px; padding: 3px 10px; cursor: pointer;
+}
+.cal-nav button:hover { background: var(--accent); }
+.cal-nav button[hidden] { display: none; }
+.cal-title { font-size: 15px; font-weight: 600; margin-inline: 6px 0; }
+
+/* Mřížka ve stylu Google Kalendáře: jeden blok s tenkými linkami. Bublina
+   s detailem se umisťuje k proklikanému štítku, proto je v pozicovaném
+   obalu (.cal-shell). */
+.cal-shell { position: relative; }
+.cal-grid {
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
+  border: 1px solid var(--border); border-radius: 10px; background: var(--background);
+}
+.cal-grid > :nth-child(5n + 2), .cal-grid > :nth-child(5n + 3),
+.cal-grid > :nth-child(5n + 4), .cal-grid > :nth-child(5n + 5) { border-left: 1px solid var(--border); }
+.cal-dow {
+  padding: 8px 0 6px; text-align: center; font-size: 11px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted-foreground);
+}
+.cal-day {
+  min-height: 132px; min-width: 0; padding: 6px 6px 8px; border-top: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 2px;
+}
+.cal-daynum { display: flex; justify-content: center; padding-bottom: 4px; }
+.cal-daynum span {
+  min-width: 26px; height: 26px; padding: 0 6px;
+  display: flex; align-items: center; justify-content: center; border-radius: 999px;
+  font-size: 12px; font-weight: 500; color: var(--fg-2); font-variant-numeric: tabular-nums;
+}
+.cal-day.today .cal-daynum span { background: var(--link); color: #fff; font-weight: 600; }
+.cal-day.past .cal-daynum span { color: var(--faint); }
+/* Štítek dne: barevná tečka soudu, čas a jméno sporu na jednom řádku.
+   Co se nevejde, se ořízne – celé je v title a v bublině. */
+.cal-chip {
+  display: flex; align-items: center; gap: 6px; width: 100%; min-width: 0;
+  font-size: 12px; line-height: 20px; padding: 0 6px; border: 0; border-radius: 4px;
+  background: none; color: var(--foreground); text-align: left; cursor: pointer;
+}
+.cal-chip:hover { background: var(--accent); }
+.cal-chip.is-open { background: var(--active-bg); }
+.cal-chip:focus-visible { outline-offset: 0; border-radius: 4px; }
+.cal-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.cal-chip-ms .cal-dot, .cal-barva-ms { background: var(--badge-blue-fg); }
+.cal-chip-vs .cal-dot, .cal-barva-vs { background: var(--badge-green-fg); }
+.cal-chip-time { flex: none; color: var(--fg-3); font-variant-numeric: tabular-nums; }
+/* min-width: 0 je nutné, jinak flexový prvek nejde zmenšit pod svůj text
+   a výpustka se nikdy neuplatní. */
+.cal-chip-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 500; }
+/* Proběhlé dny jen šedým textem – kalendář slouží i jako archiv. */
+.cal-day.past .cal-chip, .cal-day.past .cal-chip-time { color: var(--faint); }
+
+/* Detail jednání – bublina vedle štítku (u čtvrtka a pátku vlevo,
+   v posledním týdnu nahoru). */
+.cal-pop {
+  position: absolute; z-index: 30; width: min(360px, calc(100vw - 32px));
+  background: var(--card); color: var(--foreground); border-radius: 12px;
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.16), 0 2px 6px rgb(0 0 0 / 0.08);
+  padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 14px;
+}
+.cal-pop[hidden] { display: none; }
+@media (prefers-color-scheme: dark) { .cal-pop { border: 1px solid var(--border); } }
+.cal-pop-lista { display: flex; justify-content: flex-end; margin: -4px -6px -6px 0; }
+.cal-pop-close {
+  width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+  border: 0; border-radius: 999px; background: none; color: var(--fg-3); cursor: pointer;
+}
+.cal-pop-close:hover { background: var(--accent); color: var(--foreground); }
+.cal-pop-hlava { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 14px; align-items: start; }
+.cal-pop-barva { width: 14px; height: 14px; border-radius: 4px; margin-top: 5px; }
+.cal-pop-titul { margin: 0; font-size: 18px; font-weight: 600; line-height: 1.3; text-wrap: pretty; overflow-wrap: anywhere; }
+.cal-pop-kdy { font-size: 14px; color: var(--fg-3); }
+.cal-pop-radky {
+  display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px 14px;
+  font-size: 14px; line-height: 1.45;
+}
+.cal-pop-radky .nav-ico { margin-top: 2px; color: var(--muted-foreground); }
+.cal-pop-radky > div { min-width: 0; overflow-wrap: anywhere; }
+.cal-pop-sub { color: var(--muted-foreground); }
+.cal-pop-zmeny, .cal-pop-akce { display: flex; gap: 8px; flex-wrap: wrap; padding-left: 34px; }
+.btn {
+  display: inline-flex; align-items: center; font-size: 13px; font-weight: 500;
+  padding: 7px 12px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--background); color: var(--foreground); cursor: pointer; text-decoration: none;
+}
+.btn:hover { background: var(--accent); text-decoration: none; }
+.btn-hlavni { background: var(--primary); color: var(--primary-fg); border-color: var(--primary); }
+.btn-hlavni:hover { background: var(--primary); opacity: 0.88; }
+.btn:disabled { opacity: 0.4; cursor: default; }
+.btn-hlavni:disabled:hover { opacity: 0.4; }
+.btn[hidden] { display: none; }
+/* Změna proti minulému přehledu – u jednání v bublině. */
+.cal-zmena {
+  display: inline-block; border-radius: 6px; padding: 1px 7px;
+  font-size: 12px; font-weight: 500;
+  background: var(--badge-amber-bg); color: var(--badge-amber-fg);
+}
+
+/* Seznam nadcházejících jednání po dnech. */
+.cal-seznam { display: flex; flex-direction: column; gap: 28px; }
+.cal-den { display: flex; flex-direction: column; }
+.cal-den-hlava {
+  display: flex; align-items: baseline; gap: 10px;
+  padding-bottom: 10px; border-bottom: 1px solid var(--border);
+}
+.cal-den-nazev { font-size: 15px; font-weight: 600; }
+.cal-den-rel { font-size: 13px; color: var(--muted-foreground); }
+.cal-radek {
+  display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 20px;
+  padding: 14px 0; border-bottom: 1px solid var(--border-soft); align-items: start;
+}
+.cal-radek-cas { font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; padding-top: 1px; }
+.cal-radek-telo { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.cal-radek-nazev { font-size: 16px; font-weight: 600; line-height: 1.35; overflow-wrap: anywhere; }
+.cal-radek-meta {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  font-size: 13px; color: var(--muted-foreground);
+}
+.cal-soud { font-size: 12px; font-weight: 500; padding: 1px 7px; border-radius: 5px; }
+.cal-soud-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
+.cal-soud-vs { background: var(--badge-green-bg); color: var(--badge-green-fg); }
+.cal-spz { color: var(--fg-2); }
+.cal-radek-akce { display: flex; gap: 6px; }
+.cal-radek-akce button.odkaz { cursor: pointer; font-family: inherit; }
+.cal-radek-ikona {
+  display: none; width: 36px; height: 36px; align-items: center; justify-content: center;
+  border: 1px solid var(--border); border-radius: 8px; color: var(--fg-2);
+}
+.cal-radek-ikona:hover { background: var(--accent); }
+.cal-pozn {
+  padding: 12px 14px; border-radius: 8px; background: var(--muted);
+  font-size: 13px; color: var(--fg-3);
+}
+
+/* ===== Můj výběr: dialog (shadcn Dialog) =====
+   Vlevo záložky se souhrnem výběru, vpravo seznam se zaškrtávacími poli,
+   dole lišta s Uložit, která je vidět pořád. */
 .dialog {
-  width: min(1040px, calc(100vw - 32px)); max-height: min(88vh, 960px);
-  margin: auto; padding: 0; border: 1px solid var(--border);
-  border-radius: calc(var(--radius) + 4px);
-  background: var(--card); color: var(--foreground);
-  box-shadow: 0 16px 48px rgb(0 0 0 / 0.22);
+  width: min(920px, calc(100vw - 32px)); height: min(680px, calc(100dvh - 32px));
+  max-width: none; max-height: none; margin: auto; padding: 0; border: 0;
+  border-radius: 14px; background: var(--card); color: var(--foreground);
+  box-shadow: 0 24px 64px rgb(0 0 0 / 0.28); overflow: hidden;
   flex-direction: column;
 }
+@media (prefers-color-scheme: dark) { .dialog { border: 1px solid var(--border); } }
 .dialog[open] { display: flex; }
-.dialog::backdrop { background: rgb(0 0 0 / 0.45); }
+.dialog::backdrop { background: rgb(9 9 11 / 0.45); }
 /* Stránka pod otevřeným dialogem se neposouvá. */
 html:has(.dialog[open]) { overflow: hidden; }
-.dialog-hlava { display: flex; align-items: center; gap: 10px; padding: 18px 22px 8px; flex: none; }
+.dialog-hlava {
+  flex: none; display: flex; align-items: center; gap: 10px;
+  padding: 18px 20px 16px 24px; border-bottom: 1px solid var(--border);
+}
+.dialog-nadpis { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.dialog-nadpis h2 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+.dialog-nadpis p { margin: 0; font-size: 13px; color: var(--muted-foreground); }
 .dialog-zavrit {
-  margin-left: auto; width: 30px; height: 30px; flex: none;
+  margin-left: auto; width: 32px; height: 32px; flex: none;
   display: inline-flex; align-items: center; justify-content: center;
   border: 0; border-radius: 8px; background: none; color: var(--muted-foreground); cursor: pointer;
 }
 .dialog-zavrit:hover { background: var(--accent); color: var(--foreground); }
-.dialog-zavrit:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
-.dialog-telo { overflow-y: auto; padding: 0 22px; min-height: 0; }
-@media (max-width: 640px) {
-  /* Na telefonu přes celou obrazovku. */
-  .dialog { width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh; border: 0; border-radius: 0; }
-  .dialog-hlava { padding: 14px 16px 6px; }
-  .dialog-telo { padding: 0 16px; flex: 1; }
-}
-/* Ikona Můj výběr v nabídce účtu (Clerk) – velikostí jako jeho vlastní. */
-.ucet-menu-ico { width: 16px; height: 16px; display: block; }
+.dialog-telo { flex: 1; min-height: 0; display: flex; }
 
-.nastaveni { --vybrano: var(--link); }
-/* Jen po registraci: jedna věta nad sekcemi. */
-.nastaveni-uvitani { font-size: var(--fs-md); max-width: 110ch; margin: 4px 0 10px; }
+.nastaveni {
+  flex: 1; min-width: 0; min-height: 0; display: grid;
+  grid-template-columns: 168px minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-areas: "taby obsah" "akce akce";
+}
+.vyber-taby-lista { grid-area: taby; border-right: 1px solid var(--border); padding: 12px; background: var(--panel); }
+.vyber-taby { display: flex; flex-direction: column; gap: 2px; }
+.vyber-tab {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 1px; width: 100%;
+  text-align: left; border: 0; border-radius: 8px; padding: 9px 12px; cursor: pointer; background: transparent;
+}
+.vyber-tab:hover { background: var(--accent); }
+.vyber-tab[aria-selected="true"] { background: var(--raised); box-shadow: var(--shadow-raised), 0 0 0 1px var(--border); }
+.tab-label { font-size: 14px; font-weight: 500; color: var(--fg-3); }
+.vyber-tab[aria-selected="true"] .tab-label { color: var(--foreground); }
+.tab-souhrn { font-size: 13px; color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
+.tab-short { display: none; }
 
-.vyber-sekce-seznam { margin-top: 14px; border-top: 1px solid var(--border); }
-.vyber-sekce { border-bottom: 1px solid var(--border); }
-/* Pod poslední sekcí je čára lišty s Uložit – druhá by byla navíc. */
-.vyber-sekce:last-child { border-bottom: 0; }
-/* Hlavička sekce: šipka, název a vpravo krátký souhrn („6 z 25"). */
-.sekce-hlava {
-  display: flex; align-items: center; gap: 10px; width: 100%;
-  padding: 14px 4px; border: 0; background: none; color: inherit;
-  font: inherit; text-align: left; cursor: pointer;
+.vyber-obsah {
+  grid-area: obsah; overflow-y: auto; overflow-x: hidden; min-height: 0;
+  padding: 20px 36px 24px 28px; display: flex; flex-direction: column; gap: 22px;
 }
-.sekce-hlava:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 6px; }
-.sekce-titul { flex: 1; min-width: 0; font-size: var(--fs-md); font-weight: 600; }
-/* Podtržení jen tam, kde je myš – na dotykovém displeji by po klepnutí zůstalo. */
-@media (hover: hover) {
-  .sekce-hlava:hover .sekce-titul { text-decoration: underline; text-underline-offset: 3px; }
+.vyber-obsah:focus { outline: none; }
+.vyber-uvod { margin: 0; font-size: 14px; color: var(--fg-3); line-height: 1.55; max-width: 72ch; }
+.nastaveni-uvitani { margin: 0; font-size: 14px; line-height: 1.55; padding: 10px 14px; border-radius: 8px; background: var(--active-bg); color: var(--active-fg); }
+.vyber-skupina { display: flex; flex-direction: column; gap: 6px; }
+.vyber-skupina-hlava {
+  display: flex; align-items: baseline; gap: 8px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--border);
 }
-/* Souhrn je v jednom řádku, co se nevejde, skončí třemi tečkami. */
-.sekce-souhrn {
-  flex: none; max-width: 55%; font-size: var(--fs-md); color: var(--muted-foreground);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-variant-numeric: tabular-nums;
+.vyber-skupina-nazev { font-size: 14px; font-weight: 600; }
+.vyber-skupina-pocet { font-size: 13px; color: var(--muted-foreground); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.vyber-vse {
+  margin-left: auto; border: 0; background: none; padding: 0; cursor: pointer;
+  font-size: 13px; color: var(--link); white-space: nowrap;
 }
-.sekce-hlava .fold-ico { flex: none; color: var(--muted-foreground); }
-.sekce-hlava[aria-expanded="false"] .fold-ico { transform: rotate(-90deg); }
-.sekce-obsah { padding: 2px 4px 20px 30px; }
-.sekce-obsah[hidden] { display: none; }
-/* Jedna drobná poznámka pod obsahem sekce – co výběr znamená. */
-.vyber-poznamka { font-size: var(--fs-sm); color: var(--muted-foreground); max-width: 72ch; margin: 16px 0 0; }
+.vyber-vse:hover { text-decoration: underline; text-underline-offset: 3px; }
+.volby { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 16px; }
 
-.vyber-skupina + .vyber-skupina { margin-top: 16px; }
-/* Skupina: název kapitálkami, počet vybraných a vpravo tlumené „Vybrat vše"
-   – nesoupeří s vybranými čipy. */
-.skupina-hlava { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; }
-.skupina-nazev {
-  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
-  color: var(--muted-foreground);
+/* Zaškrtávací pole (role="checkbox"): celý řádek je tlačítko. */
+.volba {
+  display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 12px; align-items: start;
+  text-align: left; border: 0; background: none; color: var(--foreground);
+  padding: 9px 8px; margin: 0 -8px; border-radius: 8px; cursor: pointer;
 }
-.skupina-pocet { font-size: var(--fs-sm); color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
-.skupina-vse {
-  margin-left: auto; padding: 0; border: 0; background: none; cursor: pointer;
-  font: inherit; font-size: var(--fs-sm); color: var(--muted-foreground);
+.volba:hover { background: var(--accent); }
+.volba-senat { grid-template-columns: 18px 28px minmax(0, 1fr); gap: 10px; padding-block: 8px; }
+.volba-box {
+  width: 18px; height: 18px; margin-top: 1px; border-radius: 5px;
+  border: 1.5px solid var(--faint); background: var(--background);
+  display: flex; align-items: center; justify-content: center;
 }
-.skupina-vse:hover { color: var(--foreground); text-decoration: underline; text-underline-offset: 3px; }
-.skupina-vse { white-space: nowrap; }
-@media (max-width: 640px) {
-  /* Na telefonu by odsazení pod šipkou jen ubíralo místo čipům. */
-  .sekce-obsah { padding-left: 4px; }
+.volba-box svg {
+  width: 12px; height: 12px; fill: none; stroke: #fff; stroke-width: 3.5;
+  stroke-linecap: round; stroke-linejoin: round; opacity: 0;
 }
-.skupina-vse:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 4px; }
-
-/* Čip = přepínací tlačítko. Znak vpředu (+ / ✓ / –) má pevnou šířku
-   a tloušťka písma se nemění, takže čip po kliknutí nezmění velikost. */
-.cipy { display: flex; flex-wrap: wrap; gap: 8px; }
-.cip {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 5px 12px 5px 10px; border-radius: 999px;
-  border: 1px solid var(--border); background: var(--card); color: var(--foreground);
-  font: inherit; font-size: var(--fs-md); line-height: 1.35; text-align: left; cursor: pointer;
-  transition: background-color .12s, border-color .12s, color .12s;
-}
-.cip:hover { border-color: var(--muted-foreground); }
-.cip:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
-.cip-znak { flex: none; width: 0.9em; text-align: center; color: var(--muted-foreground); }
-.cip-znak::before { content: "○"; }
-.cip[aria-pressed="true"] {
-  background: color-mix(in srgb, var(--vybrano) 11%, var(--card));
-  border-color: color-mix(in srgb, var(--vybrano) 45%, transparent);
-  color: var(--vybrano);
-}
-.cip[aria-pressed="true"] .cip-znak { color: inherit; }
-.cip[aria-pressed="true"] .cip-znak::before { content: "✓"; }
+.volba[aria-checked="true"] .volba-box, .volba[aria-checked="mixed"] .volba-box { background: var(--link); border-color: var(--link); }
+.volba[aria-checked="true"] .volba-box svg { opacity: 1; }
 /* Oblast vybraná jen u některých soudů (dřívější výběr po soudech). */
-.cip[aria-pressed="mixed"] { border-style: dashed; border-color: color-mix(in srgb, var(--vybrano) 60%, transparent); }
-.cip[aria-pressed="mixed"] .cip-znak { color: var(--vybrano); }
-.cip[aria-pressed="mixed"] .cip-znak::before { content: "–"; }
-
-/* Senáty pod sebou: ve sloupcích shora dolů (podle šířky tři, dva, jeden). */
-.seznam-voleb { columns: 3 280px; column-gap: 10px; }
-.cip-radek {
-  display: flex; align-items: baseline; width: 100%; margin: 0 0 6px;
-  border-radius: 8px; break-inside: avoid;
-}
-.senat-cislo { flex: none; min-width: 1.6em; font-weight: 600; font-variant-numeric: tabular-nums; }
-.senat-popis { color: var(--muted-foreground); }
-.cip[aria-pressed="true"] .senat-popis { color: inherit; }
+.volba[aria-checked="mixed"] .volba-box::after { content: ""; width: 8px; height: 2px; border-radius: 1px; background: #fff; }
+.volba-nazev { font-size: 14px; font-weight: 500; line-height: 1.45; }
+.volba-casopis .volba-nazev { font-weight: 400; }
+.volba-cislo { font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.45; }
+.volba-popis { font-size: 14px; line-height: 1.45; color: var(--fg-3); }
 
 /* Řádek s vypínačem (trestní kolegium jako celek). */
 .volba-prepinac {
-  display: flex; align-items: center; gap: 14px; width: 100%;
-  padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px;
-  background: var(--card); color: inherit; font: inherit; text-align: left; cursor: pointer;
-  transition: background-color .12s, border-color .12s;
+  display: flex; align-items: center; gap: 14px; text-align: left; width: calc(100% + 16px);
+  border: 0; background: none; color: var(--foreground); cursor: pointer;
+  padding: 10px 8px; margin: 0 -8px; border-radius: 8px;
 }
-.volba-prepinac:hover { border-color: var(--muted-foreground); }
-.volba-prepinac:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
-.volba-prepinac[aria-checked="true"] {
-  background: color-mix(in srgb, var(--vybrano) 11%, var(--card));
-  border-color: color-mix(in srgb, var(--vybrano) 45%, transparent);
-}
+.volba-prepinac:hover { background: var(--accent); }
 .volba-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
-.volba-titul { font-size: var(--fs-md); font-weight: 600; }
-.volba-popis { font-size: var(--fs-md); color: var(--muted-foreground); }
-
+.volba-titul { font-size: 14px; font-weight: 500; }
+.volba-prepinac .volba-popis { font-size: 13px; color: var(--muted-foreground); }
+.jen-m { display: none; }
 /* Vypínač (shadcn Switch). */
 .switch {
   flex: none; position: relative; width: 36px; height: 20px; border-radius: 999px;
-  background: var(--border); transition: background-color .15s;
+  background: var(--switch-off); transition: background-color .15s;
 }
 .switch::after {
   content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px;
   border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgb(0 0 0 / .25);
   transition: transform .15s;
 }
-[aria-checked="true"] > .switch { background: var(--vybrano); }
+[aria-checked="true"] > .switch { background: var(--link); }
 [aria-checked="true"] > .switch::after { transform: translateX(16px); }
 
-/* Lišta s Uložit drží u spodního okraje dialogu, i když se obsah
-   posouvá – tlačítko je pořád po ruce. */
 .vyber-akce {
-  position: sticky; bottom: 0; z-index: 2;
-  display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex-wrap: wrap;
-  padding: 14px 0 18px;
-  background: var(--card); border-top: 1px solid var(--border);
+  grid-area: akce; display: flex; align-items: center; gap: 10px;
+  padding: 14px 20px 14px 24px; border-top: 1px solid var(--border); background: var(--card);
 }
-/* Obnovit výchozí vlevo, stav a tlačítka vpravo. */
-#vyber-vychozi { margin-right: auto; }
-.vyber-stav { font-size: var(--fs-sm); color: var(--muted-foreground); }
-.ucet-btn:disabled { opacity: .45; cursor: default; }
-.ucet-btn[hidden] { display: none; }
+.vyber-stav { margin-left: auto; font-size: 13px; color: var(--muted-foreground); }
+.btn-hlavni#vyber-ulozit { padding-inline: 16px; }
 
+/* ===== Přihlášení (Clerk) ===== */
+.ucet { display: flex; align-items: center; gap: 8px; }
+.ucet[hidden] { display: none; }
+.ucet-btn {
+  background: var(--background); color: var(--foreground);
+  border: 1px solid var(--border); border-radius: 8px;
+  padding: 5px 12px; font-size: 13px; font-weight: 500; line-height: 1.4; cursor: pointer;
+}
+.ucet-btn:hover { background: var(--accent); }
+.ucet-btn-hlavni { background: var(--primary); color: var(--primary-fg); border-color: var(--primary); }
+.ucet-btn-hlavni:hover { background: var(--primary); opacity: .88; }
+.ucet-user { display: inline-flex; align-items: center; min-width: 30px; min-height: 30px; }
+/* Ikona Můj výběr v nabídce účtu (Clerk) – velikostí jako jeho vlastní. */
+.ucet-menu-ico { width: 16px; height: 16px; display: block; }
+
+/* Dokud nejsou feedy (a fonty) načtené, neukazujeme nic – jinak by nejdřív
+   probliskla hlavička s prázdnou stránkou a teprve pak naskočil obsah.
+   Třídu nasazuje i sundává skript, takže bez JS se stránka zobrazí normálně;
+   sundá se v initApp() nebo nejpozději po pojistném timeoutu. */
+html.is-loading body { visibility: hidden; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* ===== Střední šířky (tablet): bez boční navigace ===== */
+@media (max-width: 1023px) {
+  main { padding: 24px 24px 48px; }
+  .pagetabs-lista { margin: -24px -24px 24px; }
+}
+
+/* ===== Telefon ===== */
 @media (max-width: 640px) {
-  /* V hlavičce telefonu stačí jedno tlačítko – registrace je i v okně přihlášení. */
+  :root { --head-h: 52px; }
+  .site-head { padding: 0 16px; gap: 10px; }
+  /* Hlavička by se zalomila do dvou řádků. */
+  #updated { display: none; }
   .head-right .ucet-registrace { display: none; }
-  .head-right { gap: 8px; }
+  main { padding: 20px 16px 32px; }
+  .pagetabs-lista { margin: -20px -16px 20px; }
+  .page { gap: 18px; }
+  .page-head { gap: 4px; }
+  .page-title { font-size: 24px; }
+  .page-desc { line-height: 1.5; }
+  /* Filtry nad novinkami na telefonu nejsou – novinky začínají hned. */
+  #novinky-filtr { display: none; }
+  .feed { gap: 18px; }
+  .zdroj-hlava { gap: 8px; padding-bottom: 8px; }
+
+  /* Datum na řádku se značkou, název věci pod titulkem, oblasti a odkazy
+     dole na jednom řádku (odkazy vpravo, dost velké na prst). */
+  .polozka {
+    grid-template-columns: minmax(0, 1fr) auto; column-gap: 8px;
+    grid-template-areas: "meta datum" "titul titul" "vec vec" "shrnuti shrnuti" "stitky odkazy";
+    padding: 12px 0;
+  }
+  .polozka-meta .meta-vec { display: none; }
+  .polozka-vec { display: block; }
+  .polozka-datum { align-self: baseline; }
+  .polozka-stitky { flex-wrap: nowrap; overflow: hidden; gap: 6px; align-self: center; }
+  .polozka-stitky:not(.vse) .stitek:not(:first-child):not(.stitek-vic) { display: none; }
+  .polozka-stitky .stitek:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .polozka-stitky .stitek-vic { display: inline-block; }
+  .polozka-stitky.vse { flex-wrap: wrap; }
+  .polozka-stitky.vse .stitek-vic { display: none; }
+  .polozka-odkazy { align-self: end; }
+  .odkaz { min-height: 32px; padding: 0 10px; border-radius: 8px; font-size: 13px; }
+  .odkaz-pdf { font-size: 12px; }
+  .digest-source { flex-wrap: wrap; }
+
+  /* Kalendář: jen seznam nadcházejících jednání. */
+  .cal-toolbar, .cal-pozn, .cal-den-rel, .cal-predseda { display: none; }
+  .cal-mesic { display: none !important; }
+  .cal-seznam { display: flex !important; gap: 18px; }
+  .cal-den-hlava { padding-bottom: 8px; gap: 8px; }
+  .cal-radek { grid-template-columns: 48px minmax(0, 1fr) 36px; gap: 12px; padding: 12px 0; }
+  .cal-radek-cas { padding-top: 0; }
+  .cal-radek-telo { gap: 4px; }
+  .cal-radek-meta { gap: 6px; }
+  .cal-radek-akce { display: none; }
+  .cal-radek-ikona { display: flex; }
+
+  /* Můj výběr přes celou obrazovku; záložky jako přepínač nahoře. */
+  /* 100 %, ne 100vw – to by započítalo i posuvník stránky. */
+  .dialog { width: 100%; height: 100%; border-radius: 0; border: 0; }
+  .dialog-hlava { height: 52px; padding: 0 8px 0 16px; }
+  .dialog-nadpis h2 { font-size: 17px; }
+  .dialog-nadpis p { display: none; }
+  .dialog-zavrit { width: 44px; height: 44px; color: var(--fg-3); }
+  .nastaveni {
+    grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto;
+    grid-template-areas: "taby" "obsah" "akce";
+  }
+  .vyber-taby-lista { border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; background: var(--card); }
+  .vyber-taby { flex-direction: row; padding: 3px; background: var(--muted); border-radius: 10px; }
+  .vyber-tab { flex: 1; align-items: center; justify-content: center; min-height: 36px; padding: 0 6px; }
+  .vyber-tab .tab-label, .vyber-tab .tab-souhrn { display: none; }
+  .tab-short { display: inline; font-size: 14px; font-weight: 500; color: var(--fg-3); }
+  .vyber-tab[aria-selected="true"] { box-shadow: var(--shadow-raised); }
+  .vyber-tab[aria-selected="true"] .tab-short { color: var(--foreground); }
+  .vyber-obsah { padding: 14px 16px 20px; gap: 18px; }
+  .vyber-uvod, .bez-hlavy-m { display: none; }
+  .vyber-skupina { gap: 0; }
+  .vyber-vse { min-height: 32px; }
+  .volby { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .volba { margin: 0; padding: 12px 0; border-radius: 0; border-bottom: 1px solid var(--muted); min-height: 44px; }
+  .volba:hover { background: none; }
+  .volba { grid-template-columns: 20px minmax(0, 1fr); }
+  .volba.volba-senat { grid-template-columns: 20px 28px minmax(0, 1fr); }
+  .volba-box { width: 20px; height: 20px; margin-top: 0; }
+  .volba-box svg { width: 13px; height: 13px; }
+  .volba-nazev { font-size: 15px; }
+  .volba-cislo { font-size: 15px; }
+  .volba-prepinac { margin: 0; width: 100%; padding: 14px 0; border-radius: 0; gap: 12px; }
+  .volba-prepinac:hover { background: none; }
+  .volba-prepinac .volba-titul { font-size: 15px; }
+  .volba-prepinac .switch { width: 40px; height: 24px; }
+  .volba-prepinac .switch::after { width: 20px; height: 20px; }
+  .jen-m { display: inline; }
+  .jen-d { display: none; }
+  .vyber-akce { padding: 12px 16px 18px; }
+  .vyber-akce .vyber-stav, .vyber-akce #vyber-zrusit { display: none; }
+  .vyber-akce .btn { font-size: 14px; min-height: 44px; padding: 0 14px; border-radius: 10px; }
+  .vyber-akce #vyber-ulozit { flex: 1; justify-content: center; font-size: 15px; }
 }

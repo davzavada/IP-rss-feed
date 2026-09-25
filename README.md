@@ -91,8 +91,8 @@ pro AI.
   `AI_MAX_MINUT`) a archiv ukládá po každém rozhodnutí.
 - **Stav shrnutí**: rozhodnutí bez shrnutí má v okně `stav_shrnuti`
   (`pripravuje` – čeká ve frontě, `ceka_na_text` – soud ještě nezveřejnil
-  text, `nepodarilo` – vyčerpané pokusy) a větu k němu v `poznamka`. Karta
-  nad tabulkou ukazuje, kolik rozhodnutí z celého okna ještě čeká na AI
+  text, `nepodarilo` – vyčerpané pokusy) a větu k němu v `poznamka`. Rámeček
+  nad seznamem ukazuje, kolik rozhodnutí z celého okna ještě čeká na AI
   a jestli se do výběru podle oblastí dostanou až se zařazením (NS mimo
   vybrané senáty), nebo v něm už jsou podle údajů soudu (NSS, ÚS).
 - **Nejvyšší soud**: databáze (Lotus Domino) padá na 500, když je dotaz moc
@@ -175,7 +175,7 @@ Přihlášení zajišťuje [Clerk](https://clerk.com) a slouží jen k vlastním
 výběru. Bez přihlášení (i při výpadku Clerku) web ukazuje výchozí výběr:
 u Nejvyššího soudu senát 23 a z ostatních senátů oblasti duševního
 vlastnictví a IT, všechny časopisy. Nepřihlášenému to web říká pod
-tabulkami judikatury a nabízí přihlášení (při výpadku Clerku ne).
+seznamy judikatury a nabízí přihlášení (při výpadku Clerku ne).
 
 - Web je bez buildu, takže Clerk se načítá skriptem z Frontend API instance
   (`@clerk/clerk-js@6` a komponenty `@clerk/ui@1`), až po vykreslení obsahu.
@@ -188,16 +188,18 @@ tabulkami judikatury a nabízí přihlášení (při výpadku Clerku ne).
   `{"v":1,"ns":{"oblasti":[…],"senaty":[23]},"nss":{"oblasti":[…]},"us":{…},"sdeu":{…},"skryt_procesni":false,"skryte_casopisy":[]}`.
   Nastavuje se v dialogu Můj výběr, který se otevírá z nabídky účtu
   (tlačítko Clerku v hlavičce, první položka) nebo z odkazu „Upravit výběr“
-  u prázdné karty; stará kotva `#nastaveni` ho otevře taky. Po registraci
+  u prázdného seznamu; stará kotva `#nastaveni` ho otevře taky. Po registraci
   se otevře sám (čerstvý účet bez uloženého výběru, jednou – příznak
-  `owl:uvitani:{id}` v localStorage) s jednou uvítací větou nahoře. Sekce
-  oblasti práva, senáty NS a časopisy jsou na začátku sbalené a v hlavičce
-  mají krátký souhrn („6 z 25", „23 a 31", „všech 13"); skupiny ukazují
-  počet vybraných, vybírá se jedním kliknutím na čip (○ / ✓). Oblasti se zatím nastavují
+  `owl:uvitani:{id}` v localStorage) s jednou uvítací větou nahoře. Vlevo
+  jsou záložky oblasti práva, senáty NS a časopisy (na telefonu přepínač
+  nahoře) s krátkým souhrnem („5 z 25", „senát 23", „všech 13"); skupiny
+  ukazují počet vybraných a „Vybrat vše / Zrušit vše", vybírá se
+  zaškrtávacími poli. Oblasti se zatím nastavují
   všem soudům stejně (výběr po soudech je v datech připravený, na stránce
   schovaný). Občanskoprávní senáty jsou jednotlivě, trestní kolegium jedním
   vypínačem. Změny platí až po tlačítku Uložit (pak se dialog zavře);
-  zavřít s neuloženými změnami jde po potvrzení (a jen tehdy hlídá stránku
+  Zrušit změny zahodí; zavřít křížkem nebo Esc s neuloženými změnami jde
+  po potvrzení (a jen tehdy hlídá stránku
   `beforeunload`). Neznámé oblasti se zahodí,
   přejmenované převede `alias` v `docs/data/oblasti.json`; soud, který
   v uloženém výběru chybí, dostane výchozí oblasti. Výchozí výběr se

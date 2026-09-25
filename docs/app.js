@@ -32,6 +32,7 @@ function zJson(r) {
   const prvni = Date.parse(r.first_seen || "");
   return {
     title: r.spz || r.nazev || "",
+    spz: r.spz || "",
     // Populární název (u ÚS) jde pod značku; bez značky je sám titulkem.
     vec: r.spz && r.nazev ? r.nazev : "",
     link: r.url || "",
@@ -110,280 +111,6 @@ function tagBadge(label) {
   return '<span class="tag tag-' + tagSlug(label) + '">' + esc(label) + "</span>";
 }
 
-// „[IIC] Název" -> „IIC"
-function tagOf(title) {
-  const m = title.match(/^\[([^\]]+)\]/);
-  return m ? m[1] : "";
-}
-
-/* ========== Šířky sloupců (tažení za záhlaví, uložení do cookie) ========== */
-// Výchozí šířky v procentech podle druhu sloupce; sloupec, který tu není
-// (Shrnutí), si rozebere zbytek řádku – a má dostat nejvíc, je to hlavní
-// obsah. Zdroj a druh jsou štítky, název značka s odkazem na PDF, heslo
-// štítek, který se případně zalomí. Každá tabulka má jinou skladbu
-// sloupců, takže se výchozí hodnoty počítají pro každou zvlášť.
-const COL_DEFAULTS = { type: 10, name: 15, oblasti: 14, heslo: 13, src: 8, date: 8, author: 12 };
-const MIN_COL_PCT = 4;          // pod tuhle šířku sloupec nepustíme
-const KEY_STEP_PCT = 2;         // krok při ovládání šipkami
-// Ve 2. verzi užší sloupce kolem shrnutí – šířky natažené podle starých
-// výchozích se zahodí (jiný název cookie), ať platí nové.
-const COL_COOKIE = "colw2";
-const COL_COOKIE_MAX_AGE = 365 * 24 * 60 * 60;
-
-// Skladba sloupců podle klíče tabulky – potřeba při obnovení výchozích šířek.
-const tableColumns = {};
-
-function readCookie(name) {
-  const m = document.cookie.match("(?:^|; )" + name + "=([^;]*)");
-  try {
-    return m ? decodeURIComponent(m[1]) : "";
-  } catch (e) {
-    return "";
-  }
-}
-
-function writeCookie(name, value) {
-  try {
-    document.cookie = name + "=" + encodeURIComponent(value) +
-      ";path=/;max-age=" + COL_COOKIE_MAX_AGE + ";samesite=lax";
-  } catch (e) { /* zakázané cookies – šířky prostě nepřežijí načtení */ }
-}
-
-// Cookie drží { klíč tabulky: [procenta sloupců] }. Poškozený obsah
-// (ruční úprava, starší verze stránky) zahodíme a jedeme na výchozích.
-function loadWidths() {
-  try {
-    const data = JSON.parse(readCookie(COL_COOKIE) || "{}");
-    return data && typeof data === "object" && !Array.isArray(data) ? data : {};
-  } catch (e) {
-    return {};
-  }
-}
-
-const storedWidths = loadWidths();
-
-function colKey(c) {
-  return String(c.cls || "").replace(/^col-/, "");
-}
-
-function defaultWidths(columns) {
-  // Výchozí šířka je podle typu sloupce; tabulka si ji může přebít (`width`),
-  // když má sloupců míň a je kam růst.
-  const fixed = columns.map(c => c.width || COL_DEFAULTS[colKey(c)] || 0);
-  const rest = 100 - fixed.reduce((a, b) => a + b, 0);
-  const flexible = fixed.filter(w => !w).length;
-  return fixed.map(w => w || Math.max(MIN_COL_PCT, rest / (flexible || 1)));
-}
-
-// Uložené šířky bereme jen tehdy, když sedí na aktuální skladbu sloupců;
-// součet dorovnáme na 100 %, ať se nesejde tabulka širší nebo užší než řádek.
-function ulozeneSirky(key, columns) {
-  const saved = storedWidths[key];
-  const usable = Array.isArray(saved) && saved.length === columns.length &&
-    saved.every(w => typeof w === "number" && isFinite(w) && w >= 1);
-  return usable ? saved : null;
-}
-
-function widthsFor(key, columns) {
-  const saved = ulozeneSirky(key, columns);
-  if (!saved) return defaultWidths(columns);
-  const sum = saved.reduce((a, b) => a + b, 0);
-  return saved.map(w => (w / sum) * 100);
-}
-
-function saveWidths(key, widths) {
-  if (!key) return;
-  storedWidths[key] = widths.map(w => Math.round(w * 100) / 100);
-  writeCookie(COL_COOKIE, JSON.stringify(storedWidths));
-}
-
-function currentWidths(table) {
-  return Array.from(table.querySelectorAll("col")).map(c => parseFloat(c.style.width) || 0);
-}
-
-function applyWidths(table, widths) {
-  const cols = table.querySelectorAll("col");
-  widths.forEach((w, i) => { if (cols[i]) cols[i].style.width = w.toFixed(2) + "%"; });
-}
-
-// Posun hranice mezi sloupci i a i+1: co jeden získá, druhý ztratí, takže
-// zbytek tabulky zůstane, kde byl. Vrací nové šířky (v procentech).
-function moveBoundary(widths, i, deltaPct) {
-  const pair = widths[i] + widths[i + 1];
-  const next = widths.slice();
-  next[i] = Math.max(MIN_COL_PCT, Math.min(widths[i] + deltaPct, pair - MIN_COL_PCT));
-  next[i + 1] = pair - next[i];
-  return next;
-}
-
-function boundaryOf(handle) {
-  const th = handle.parentElement;
-  const table = th.closest("table");
-  return { table, index: Array.prototype.indexOf.call(th.parentElement.children, th) };
-}
-
-function resetWidths(table) {
-  const key = table.dataset.cols;
-  const columns = tableColumns[key];
-  if (!columns) return;
-  applyWidths(table, defaultWidths(columns));
-  delete storedWidths[key];
-  writeCookie(COL_COOKIE, JSON.stringify(storedWidths));
-  prizpusobSirky(table);
-}
-
-// Výchozí šířky podle obsahu: sloupce kolem shrnutí (zdroj, značka, heslo,
-// datum…) jsou tak široké, jak potřebuje jejich nejdelší položka, s malou
-// rezervou; shrnutí dostane zbytek. Delší obsah (název článku, populární
-// název, dlouhé heslo) má strop v em a zalomí se. Změřit jde jen viditelnou
-// tabulku – na skryté stránce se to dopočítá při jejím zobrazení, a znovu
-// při změně šířky okna. Kdo si sloupce potáhl, má uložené vlastní šířky
-// a ty platí dál.
-const FIT_MAX_EM = { name: 18, heslo: 16, author: 14, type: 12, oblasti: 14 };
-// Štítky zdroje stojí pod sebou – sloupci stačí nejširší z nich.
-const FIT_MIN_CONTENT = { src: true };
-const FIT_REZERVA_PX = 6;
-const MIN_SHRNUTI_PCT = 38;
-
-// Přirozená šířka obsahu sloupce v px (včetně odsazení buňky); null
-// u shrnutí a u sloupců s pevnou šířkou z definice.
-function zmerObsah(table, columns) {
-  const telo = table.tBodies[0] && table.tBodies[0].rows[0];
-  if (!telo) return columns.map(() => null);
-  const pismo = parseFloat(getComputedStyle(table).fontSize) || 14;
-  const meric = document.createElement("div");
-  // Měrka stojí vedle tabulky, písmo tabulky (menší než okolí) jí dáme ručně.
-  meric.style.fontSize = pismo + "px";
-  table.parentNode.appendChild(meric);
-  const sirky = columns.map((c, j) => {
-    const k = colKey(c);
-    if (c.width || k === "summary") return null;
-    meric.className = "meric " + (c.cls || "");
-    meric.style.width = FIT_MIN_CONTENT[k] ? "min-content" : "max-content";
-    meric.classList.add("meric-th");
-    meric.innerHTML = esc(c.label);
-    const zahlavi = meric.getBoundingClientRect().width;
-    meric.classList.remove("meric-th");
-    const hodnoty = [];
-    Array.from(telo.parentNode.rows).forEach(tr => {
-      // Prázdné buňky (článek bez autora) šířku neurčují.
-      if (!tr.cells[j] || !tr.cells[j].textContent.trim()) return;
-      meric.innerHTML = tr.cells[j].innerHTML;
-      hodnoty.push(meric.getBoundingClientRect().width);
-    });
-    // Sloupec se řídí zhruba devadesátým percentilem, ne nejdelší položkou –
-    // pár výjimek (dlouhé heslo) se radši zalomí, než aby kvůli nim byl
-    // široký celý sloupec. U krátkých tabulek to vyjde na nejdelší.
-    hodnoty.sort((a, b) => a - b);
-    const typicka = hodnoty.length ? hodnoty[Math.ceil(0.9 * (hodnoty.length - 1))] : 0;
-    const strop = FIT_MAX_EM[k] ? FIT_MAX_EM[k] * pismo : Infinity;
-    const cs = getComputedStyle(telo.cells[j]);
-    return Math.max(zahlavi, Math.min(typicka, strop)) + parseFloat(cs.paddingLeft) +
-      parseFloat(cs.paddingRight) + FIT_REZERVA_PX;
-  });
-  meric.remove();
-  return sirky;
-}
-
-function prizpusobSirky(table) {
-  const key = table && table.dataset.cols;
-  const columns = key && tableColumns[key];
-  if (!columns || ulozeneSirky(key, columns) || getComputedStyle(table).display === "block") return;
-  const celkem = table.getBoundingClientRect().width;
-  if (!celkem) return;
-  if (!table._obsah) table._obsah = zmerObsah(table, columns);
-  const px = table._obsah;
-  const pevne = columns.reduce((s, c) => s + (c.width || 0), 0);
-  let obsah = px.map(w => (w == null ? 0 : (w / celkem) * 100));
-  const soucet = obsah.reduce((a, b) => a + b, 0);
-  const smi = Math.max(0, 100 - MIN_SHRNUTI_PCT - pevne);
-  if (soucet > smi) obsah = obsah.map(p => (p * smi) / soucet);
-  const pruzne = columns.filter((c, j) => !c.width && px[j] == null).length || 1;
-  const widths = columns.map((c, j) => c.width || (px[j] == null ? 0 : Math.max(MIN_COL_PCT, obsah[j])));
-  const zbytek = 100 - widths.reduce((a, b) => a + b, 0);
-  applyWidths(table, widths.map((w, j) => (!columns[j].width && px[j] == null ? zbytek / pruzne : w)));
-}
-
-function prizpusobViditelne(koren) {
-  (koren || document).querySelectorAll("table[data-cols]").forEach(prizpusobSirky);
-}
-
-let sirkyRaf = 0;
-window.addEventListener("resize", () => {
-  cancelAnimationFrame(sirkyRaf);
-  sirkyRaf = requestAnimationFrame(() => prizpusobViditelne());
-});
-
-function initColumnResize() {
-  let drag = null;
-
-  document.addEventListener("pointerdown", e => {
-    const handle = e.target.closest(".col-resizer");
-    if (!handle || (e.pointerType === "mouse" && e.button !== 0)) return;
-    const { table, index } = boundaryOf(handle);
-    // Šířky měříme v pixelech ze skutečně vykreslené tabulky – tažení pak
-    // sedí na pohyb myši i tam, kde tabulka přetéká (min-width: 780px).
-    const cells = handle.parentElement.parentElement.children;
-    drag = {
-      table, index, handle,
-      startX: e.clientX,
-      total: table.getBoundingClientRect().width,
-      a: cells[index].getBoundingClientRect().width,
-      b: cells[index + 1].getBoundingClientRect().width
-    };
-    handle.classList.add("is-active");
-    document.body.classList.add("is-resizing");
-    handle.setPointerCapture(e.pointerId);
-    e.preventDefault();
-  });
-
-  document.addEventListener("pointermove", e => {
-    if (!drag || !drag.total) return;
-    const pct = w => (w / drag.total) * 100;
-    const widths = currentWidths(drag.table);
-    widths[drag.index] = pct(drag.a);
-    widths[drag.index + 1] = pct(drag.b);
-    applyWidths(drag.table, moveBoundary(widths, drag.index, pct(e.clientX - drag.startX)));
-  });
-
-  function endDrag() {
-    if (!drag) return;
-    drag.handle.classList.remove("is-active");
-    document.body.classList.remove("is-resizing");
-    saveWidths(drag.table.dataset.cols, currentWidths(drag.table));
-    drag = null;
-  }
-
-  document.addEventListener("pointerup", endDrag);
-  document.addEventListener("pointercancel", endDrag);
-
-  // Dvojklik na hranici = zpátky na výchozí šířky celé tabulky.
-  document.addEventListener("dblclick", e => {
-    const handle = e.target.closest(".col-resizer");
-    if (!handle) return;
-    e.preventDefault();
-    resetWidths(boundaryOf(handle).table);
-  });
-
-  // Bez myši: táhlo je ve fokusu a šipky s ním hýbou.
-  document.addEventListener("keydown", e => {
-    const handle = e.target.closest && e.target.closest(".col-resizer");
-    if (!handle) return;
-    const step = e.key === "ArrowLeft" ? -KEY_STEP_PCT
-      : e.key === "ArrowRight" ? KEY_STEP_PCT : 0;
-    const { table, index } = boundaryOf(handle);
-    if (step) {
-      e.preventDefault();
-      const widths = moveBoundary(currentWidths(table), index, step);
-      applyWidths(table, widths);
-      saveWidths(table.dataset.cols, widths);
-    } else if (e.key === "Home") {
-      e.preventDefault();
-      resetWidths(table);
-    }
-  });
-}
-
 /* ========== Seznamy položek ========== */
 
 // Vyhledávač NSS posílá PDF ke stažení; na webu na Vercelu ho proto
@@ -402,63 +129,77 @@ function pdfHref(item) {
   return "/pdf/nss/" + nss[1] + "/" + encodeURIComponent(jmeno + ".pdf");
 }
 
-function nameCell(item, sHeslem) {
-  const title = esc(item.title.replace(/^\[[^\]]+\]\s*/, ""));
-  const href = safeHref(item.link);
-  let html = href ? '<a href="' + href + '">' + title + "</a>" : title;
-  // Odkaz ještě na samotný dokument (PDF rozhodnutí, znění předběžné otázky)
-  // – shrnutí je jen shrnutí. Otevře se v nové kartě, ať čtenář nepřijde
-  // o místo v tabulce.
-  const doc = pdfHref(item);
-  if (doc) html += ' <a class="doc-link" href="' + doc + '" target="_blank" rel="noopener">PDF</a>';
-  // Na telefonu stojí heslo hned za značkou: tabulka s heslem má jeho kopii
-  // i tady a CSS ukáže vždy jen jedno z nich (v tabulce sloupec Heslo).
-  if (sHeslem && item.heslo) {
-    html += ' <span class="heslo-u-znacky"><span class="heslo">' + esc(item.heslo) + "</span></span>";
+// Položka ze zdroje (už převedená přes zJson / zCasopisu) jako řádek
+// seznamu. Pořadí čtení: značka · druh · název věci → heslo jako titulek →
+// shrnutí → oblasti; datum a odkazy stojí stranou.
+function velkym(s) {
+  s = String(s || "");
+  return s ? s.charAt(0).toUpperCase() + s.slice(1) : "";
+}
+
+// Popisek odkazu na zdroj podle toho, kam vede.
+function zdrojLabel(url) {
+  if (/^https?:\/\/eur-lex\.europa\.eu\//i.test(url)) return "EUR-Lex";
+  if (/^https?:\/\/curia\.europa\.eu\//i.test(url)) return "Curia";
+  return "Zdroj";
+}
+
+// Doplní k položce, co potřebuje řádek: značku, druh, titulek, název věci
+// pod ním a štítky. U judikatury je titulkem heslo (značka jde nad něj),
+// u článků název článku a heslo je štítek.
+function pripravPolozku(item, key) {
+  item._src = key;
+  if (key === "journals") {
+    item.ident = item.tag || "";
+    item.druhText = "Článek";
+    item.titul = item.title.replace(/^\[[^\]]+\]\s*/, "");
+    item.vecText = item.autori || "";
+    item.stitky = item.heslo ? [item.heslo] : [];
+  } else {
+    item.ident = item.spz || "";
+    item.druhText = velkym(item.druh);
+    item.titul = item.heslo || item.vec || item.title;
+    item.vecText = item.vec && item.vec !== item.titul ? item.vec : "";
+    if (item.titul === item.ident) item.ident = "";
+    item.stitky = bezDuplicit((item.oblasti || []).map(o => OBLASTI[ALIAS_OBLASTI[o] || o]).filter(Boolean));
   }
-  if (item.vec) html += '<span class="vec">' + esc(item.vec) + "</span>";
-  return html;
+  return item;
 }
 
-function nameHesloCell(item) {
-  return nameCell(item, true);
-}
+const TECKA = '<span aria-hidden="true">·</span>';
 
-function authorCell(item) {
-  return item.autori ? '<span class="author">' + esc(item.autori) + "</span>" : "";
-}
-
-// V přehledu přes všechny zdroje jdou autoři pod název (má je jen část položek).
-function nameAuthorCell(item) {
-  return nameCell(item, true) + authorCell(item);
-}
-
-function hesloCell(item) {
-  const tag = item.heslo;
-  return tag ? '<span class="heslo" title="' + esc(tag) + '">' + esc(tag) + "</span>" : "";
-}
-
-function summaryCell(item) {
-  if (item.shrnuti) return '<span class="summary">' + esc(item.shrnuti) + "</span>";
+function polozkaHtml(p) {
+  const meta = [];
+  if (p.ident) meta.push('<span class="polozka-ident">' + esc(p.ident) + "</span>");
+  if (p.druhText) meta.push("<span>" + esc(p.druhText) + "</span>");
+  let html = '<article class="polozka"><div class="polozka-meta">' + meta.join(TECKA);
+  if (p.vecText) {
+    html += '<span class="meta-vec">' + (meta.length ? TECKA : "") + "<span>" + esc(p.vecText) + "</span></span>";
+  }
+  html += "</div>";
+  const datum = czDate(p.datum);
+  html += '<span class="polozka-datum">' + esc(datum) + "</span>";
+  html += '<h3 class="polozka-titul">' + esc(p.titul) + "</h3>";
+  if (p.vecText) html += '<div class="polozka-vec">' + esc(p.vecText) + "</div>";
   // Bez shrnutí ještě může být poznámka, proč žádné není – třeba že u žádosti
   // o předběžnou otázku zatím nejsou zveřejněné otázky.
-  return item.poznamka ? '<span class="summary note">' + esc(item.poznamka) + "</span>" : "";
-}
-
-function dateCell(item) {
-  return czDate(item.datum);
-}
-
-// U SDEU druh rozhodnutí (rozsudek, stanovisko GA, předběžná otázka…),
-// u časopisů zkratka časopisu z titulku.
-const DRUHY_SDEU = { "rozsudek": "tag-ruling", "předběžná otázka": "tag-referral",
-                     "stanovisko GA": "tag-opinion" };
-
-function typeCell(item) {
-  if (item.sdeu && item.druh) {
-    return '<span class="tag ' + (DRUHY_SDEU[item.druh] || "") + '">' + esc(item.druh) + "</span>";
+  if (p.shrnuti) html += '<p class="polozka-shrnuti">' + esc(p.shrnuti) + "</p>";
+  else if (p.poznamka) html += '<p class="polozka-shrnuti note">' + esc(p.poznamka) + "</p>";
+  html += '<div class="polozka-stitky">' + p.stitky.map(s => '<span class="stitek">' + esc(s) + "</span>").join("");
+  if (p.stitky.length > 1) {
+    html += '<button type="button" class="stitek stitek-vic" title="' + esc(p.stitky.join(" · ")) +
+      '" aria-label="Ukázat všechny oblasti: ' + esc(p.stitky.join(", ")) + '">…</button>';
   }
-  return tagBadge(item.tag || tagOf(item.title));
+  html += "</div>";
+  // Odkaz ještě na samotný dokument (PDF rozhodnutí) – shrnutí je jen
+  // shrnutí. Obojí se otevře v nové kartě, ať čtenář nepřijde o místo.
+  const doc = pdfHref(p);
+  const zdroj = safeHref(p.link);
+  html += '<div class="polozka-odkazy">';
+  if (doc) html += '<a class="odkaz odkaz-pdf" href="' + doc + '" target="_blank" rel="noopener">PDF</a>';
+  if (zdroj) html += '<a class="odkaz" href="' + zdroj + '" target="_blank" rel="noopener">' + zdrojLabel(p.link) + " ↗</a>";
+  html += "</div></article>";
+  return html;
 }
 
 /* ========== Oblasti a výběr (výchozí, nebo uložený u účtu) ========== */
@@ -561,64 +302,25 @@ function vidiCasopis(item) {
   return v.skryte_casopisy.indexOf(item.casopis) < 0;
 }
 
-// Definice sloupců sdílíme mezi živým feedem a novými položkami.
-const colsNsoud = [
-  { label: "Spisová značka", cls: "col-name", render: nameHesloCell },
-  { label: "Heslo", cls: "col-heslo", render: hesloCell },
-  { label: "Shrnutí", cls: "col-summary", render: summaryCell },
-  { label: "Datum", cls: "col-date", render: dateCell }
-];
-
-const colsNss = [
-  { label: "Číslo jednací", cls: "col-name", render: nameHesloCell },
-  { label: "Heslo", cls: "col-heslo", render: hesloCell },
-  { label: "Shrnutí", cls: "col-summary", render: summaryCell },
-  { label: "Datum", cls: "col-date", render: dateCell }
-];
-
-const colsSdeu = [
-  { label: "Druh", cls: "col-type", render: typeCell },
-  { label: "Věc", cls: "col-name", render: nameHesloCell },
-  { label: "Heslo", cls: "col-heslo", render: hesloCell },
-  { label: "Shrnutí", cls: "col-summary", render: summaryCell },
-  { label: "Datum", cls: "col-date", render: dateCell }
-];
-
-const colsJournals = [
-  { label: "Časopis", cls: "col-type", render: typeCell },
-  { label: "Název", cls: "col-name", render: nameCell, width: 26 },
-  { label: "Autor", cls: "col-author", render: authorCell },
-  { label: "Shrnutí", cls: "col-summary", render: summaryCell },
-  // U časopisů, které datum vydání neuvádějí, je to datum, kdy článek
-  // ve feedu přibyl (viz pub_date_odhad ve scraper_journals.py).
-  { label: "Datum", cls: "col-date", render: dateCell }
-];
-
-// Nové položky – kombinovaná tabulka přes všechny tři zdroje.
-// Ve sloupci Zdroj je vedle sebe štítek zdroje a štítek časopisu/typu.
-const colsToday = [
-  { label: "Zdroj", cls: "col-src", render: i =>
-      '<span class="src src-' + i._src + '">' + i._srcLabel + "</span> " + typeCell(i) },
-  { label: "Název", cls: "col-name", render: nameAuthorCell },
-  { label: "Heslo", cls: "col-heslo", render: hesloCell },
-  { label: "Shrnutí", cls: "col-summary", render: summaryCell },
-  { label: "Datum", cls: "col-date", render: dateCell }
-];
-
 // Zdroje stránky: okna judikatury (data/judikatura/) a časopisy
-// (data/casopisy.json); `filtr` je výběr, co z okna ukázat.
+// (data/casopisy.json); `filtr` je výběr, co z okna ukázat. `nazev`
+// a `ikona` jsou do nadpisu skupiny v Novinkách.
 const PRAZDNY_VYBER = 'Ve vašem výběru za tu dobu nic nepřibylo. <a href="#nastaveni">Upravit výběr</a>';
 const FEEDS = [
-  { key: "nsoud",    label: "NS",      json: "data/judikatura/ns.json", cols: colsNsoud,
+  { key: "nsoud",    label: "NS",      nazev: "Nejvyšší soud", ikona: "icon-court",
+    json: "data/judikatura/ns.json",
     containerId: "feed-nsoud", filtr: vidiNS, prazdno: PRAZDNY_VYBER, stavId: "stav-nsoud" },
-  { key: "nss",      label: "NSS",     json: "data/judikatura/nss.json", cols: colsNss,
+  { key: "nss",      label: "NSS",     nazev: "Nejvyšší správní soud", ikona: "icon-scale",
+    json: "data/judikatura/nss.json",
     containerId: "feed-nss", filtr: vidiPodleOblasti("nss"), prazdno: PRAZDNY_VYBER, stavId: "stav-nss" },
-  // ÚS: značka a pod ní populární název (nameCell), jinak stejné sloupce jako NS.
-  { key: "us",       label: "ÚS",      json: "data/judikatura/us.json", cols: colsNsoud,
+  { key: "us",       label: "ÚS",      nazev: "Ústavní soud", ikona: "icon-shield",
+    json: "data/judikatura/us.json",
     containerId: "feed-us", filtr: vidiPodleOblasti("us"), prazdno: PRAZDNY_VYBER, stavId: "stav-us" },
-  { key: "sdeu",     label: "SDEU",    json: "data/judikatura/sdeu.json", cols: colsSdeu,
+  { key: "sdeu",     label: "SDEU",    nazev: "Soudní dvůr EU", ikona: "icon-eu",
+    json: "data/judikatura/sdeu.json",
     containerId: "feed-sdeu", filtr: vidiPodleOblasti("sdeu"), prazdno: PRAZDNY_VYBER, stavId: "stav-sdeu" },
-  { key: "journals", label: "Časopis", json: "data/casopisy.json", prevod: zCasopisu, cols: colsJournals,
+  { key: "journals", label: "Časopis", nazev: "Právní časopisy", ikona: "icon-book",
+    json: "data/casopisy.json", prevod: zCasopisu,
     containerId: "feed-journals", filtr: vidiCasopis, prazdno: PRAZDNY_VYBER }
 ];
 
@@ -637,7 +339,9 @@ function ukazOkna() {
       el.className = "nav-okno";
       a.appendChild(el);
     }
-    el.textContent = tvar(f.oknoDni, "den", "dny", "dní");
+    // Celé týdny od tří výš (okno časopisů) jako týdny, jinak ve dnech.
+    el.textContent = f.oknoDni >= 21 && f.oknoDni % 7 === 0
+      ? tvar(f.oknoDni / 7, "týden", "týdny", "týdnů") : tvar(f.oknoDni, "den", "dny", "dní");
     el.title = "Novinky za posledních " + el.textContent;
   });
 }
@@ -648,74 +352,87 @@ function nactiZdroj(f) {
     f.aktualizovano = d.generated || "";
     f.oknoDni = d.okno_dni || 0;
     if (Array.isArray(d.casopisy)) nastavCasopisy(d.casopisy);
-    return (d.polozky || []).map(f.prevod || zJson);
+    return (d.polozky || []).map(r => pripravPolozku((f.prevod || zJson)(r), f.key));
   });
 }
 
-function resizerHtml(column) {
-  return '<span class="col-resizer" role="separator" aria-orientation="vertical"' +
-    ' tabindex="0" aria-label="Šířka sloupce ' + esc(column.label) + '"' +
-    ' title="Táhnutím změníte šířku sloupce, dvojklikem obnovíte výchozí"></span>';
-}
-
-// `prazdno` je HTML hlášky, když nic není (u filtrovaných karet odkaz na výběr).
-function renderTable(items, container, columns, key, prazdno) {
+// `prazdno` je HTML hlášky, když nic není (u filtrovaných stránek odkaz na výběr).
+function renderSeznam(items, container, prazdno) {
   if (items.length === 0) {
     container.innerHTML = '<p class="feed-empty">' + (prazdno || "Žádné nové položky.") + "</p>";
     return;
   }
-  tableColumns[key] = columns;
-  // Role výslovně: v blokovém zobrazení (úzká karta) by display: block/flex
-  // tabulce vzal význam a čtečka by ztratila řádky a záhlaví.
-  let html = '<div class="table-wrap"><table role="table" data-cols="' + esc(key) + '"><colgroup>';
-  widthsFor(key, columns).forEach(w => { html += '<col style="width:' + w.toFixed(2) + '%">'; });
-  html += '</colgroup><thead role="rowgroup"><tr role="row">';
-  columns.forEach((c, i) => {
-    // Poslední sloupec už nemá kam růst – hranice je vždy mezi dvěma sloupci.
-    html += '<th role="columnheader"' + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.label +
-      (i < columns.length - 1 ? resizerHtml(c) : "") + "</th>";
-  });
-  html += '</tr></thead><tbody role="rowgroup">';
-  items.forEach(item => {
-    html += '<tr role="row">';
-    columns.forEach(c => {
-      html += '<td role="cell"' + (c.cls ? ' class="' + c.cls + '"' : "") + ">" + c.render(item) + "</td>";
-    });
-    html += "</tr>";
-  });
-  html += "</tbody></table></div>";
-  container.innerHTML = html;
-  prizpusobSirky(container.querySelector("table"));
+  container.innerHTML = '<div class="zdroj">' + items.map(polozkaHtml).join("") + "</div>";
 }
 
 /* ========== Novinky: posledních 24 hodin ========== */
+// Seskupené podle zdroje (v pořadí FEEDS), nad nimi přepínač Vše /
+// Judikatura / Časopisy s počty.
+const FILTRY_NOVINEK = [
+  { k: "vse", label: "Vše", bere: () => true },
+  { k: "jud", label: "Judikatura", bere: i => i._src !== "journals" },
+  { k: "cas", label: "Časopisy", bere: i => i._src === "journals" }
+];
+let novinkyFiltr = "vse";
+let novinkyVysledky = null;       // poslední profiltrované výsledky zdrojů
 
 // `results` jsou výsledky Promise.allSettled nad položkami jednotlivých feedů.
 function renderToday(results) {
+  novinkyVysledky = results;
   const container = document.getElementById("feed-today");
+  const prepinac = document.getElementById("novinky-filtr");
+  const pocet = document.getElementById("nav-pocet");
   // Když selžou všechny feedy, není to „nic nového", ale chyba načítání.
   if (results.every(r => r.status === "rejected")) {
     failed("feed-today");
     return;
   }
   const polozky = [];
-  results.forEach((r, idx) => {
-    if (r.status !== "fulfilled") return;
-    r.value.forEach(item => {
-      if (item.nove) {
-        item._src = FEEDS[idx].key;
-        item._srcLabel = FEEDS[idx].label;
-        polozky.push(item);
-      }
-    });
+  results.forEach(r => {
+    if (r.status === "fulfilled") r.value.forEach(item => { if (item.nove) polozky.push(item); });
   });
-  polozky.sort((a, b) => new Date(b.datum) - new Date(a.datum));
+  if (pocet) pocet.textContent = polozky.length || "";
+  if (prepinac) {
+    prepinac.hidden = polozky.length === 0;
+    prepinac.innerHTML = FILTRY_NOVINEK.map(f =>
+      '<button type="button" data-filtr="' + f.k + '" aria-pressed="' + (f.k === novinkyFiltr) + '"><span>' +
+      f.label + '</span><span class="segment-pocet">' + polozky.filter(f.bere).length + "</span></button>").join("");
+  }
   if (polozky.length === 0) {
     container.innerHTML = '<p class="feed-empty">Za posledních 24 hodin nic nepřibylo. ' +
       "Sběr běží jednou denně ve 2:00 v noci.</p>";
     return;
   }
-  renderTable(polozky, container, colsToday, "today");
+  const filtr = FILTRY_NOVINEK.find(f => f.k === novinkyFiltr) || FILTRY_NOVINEK[0];
+  const html = FEEDS.map(f => {
+    const skupina = polozky.filter(i => i._src === f.key && filtr.bere(i))
+      .sort((a, b) => new Date(b.datum) - new Date(a.datum));
+    if (!skupina.length) return "";
+    return '<section class="zdroj" aria-label="' + esc(f.nazev) + '"><div class="zdroj-hlava">' +
+      '<svg class="nav-ico ico-' + f.key + '" aria-hidden="true"><use href="#' + f.ikona + '"></use></svg>' +
+      '<span class="zdroj-nazev">' + esc(f.nazev) + '</span><span class="zdroj-pocet">' + skupina.length +
+      "</span></div>" + skupina.map(polozkaHtml).join("") + "</section>";
+  }).join("");
+  container.innerHTML = html || '<p class="feed-empty">V téhle části za posledních 24 hodin nic nepřibylo.</p>';
+}
+
+function initNovinkyFiltr() {
+  const prepinac = document.getElementById("novinky-filtr");
+  if (prepinac) prepinac.addEventListener("click", e => {
+    const b = e.target.closest("button[data-filtr]");
+    if (!b || !novinkyVysledky) return;
+    novinkyFiltr = b.dataset.filtr;
+    renderToday(novinkyVysledky);
+    pripojVychozi(document.getElementById("feed-today"), "today");
+    const znovu = prepinac.querySelector('[data-filtr="' + novinkyFiltr + '"]');
+    if (znovu) znovu.focus();
+  });
+  // Na telefonu je u položky vidět jen první oblast a „…" – klepnutí
+  // ukáže všechny.
+  document.addEventListener("click", e => {
+    const vic = e.target.closest(".stitek-vic");
+    if (vic) vic.parentElement.classList.add("vse");
+  });
 }
 
 // Stažené položky zdrojů (výsledky Promise.allSettled). Při změně výběru se
@@ -775,7 +492,7 @@ function vykresliZdroje() {
     // Druhá stránka je úplný výpis za okno feedu – nové položky z ní
     // nevynecháváme, na jednu stránku se položky nedostanou dvakrát.
     const el = document.getElementById(f.containerId);
-    renderTable(filtrovane[idx].value, el, f.cols, f.key, f.prazdno);
+    renderSeznam(filtrovane[idx].value, el, f.prazdno);
     pripojVychozi(el, f.key);
   });
   renderToday(filtrovane);
@@ -816,7 +533,7 @@ function renderDigest(data) {
   // poslední aktualizace patří k němu – to v hlavičce stránky je z feedů.
   const stamp = document.getElementById("digest-updated");
   if (stamp && data && data.generated) {
-    stamp.textContent = "aktualizováno " + czDate(data.generated);
+    stamp.textContent = "Aktualizováno " + czDate(data.generated) + ".";
   }
   if (!data || !Array.isArray(data.blocks) || data.blocks.length === 0) {
     container.innerHTML = '<p class="feed-empty">Přehled zatím není k dispozici.</p>';
@@ -824,6 +541,7 @@ function renderDigest(data) {
   }
   let html = "";
   if (data.intro) html += '<p class="digest-intro">' + esc(data.intro) + "</p>";
+  html += '<div class="digest-bloky">';
   data.blocks.forEach(b => {
     html += '<div class="digest-block">';
     html += '<h3 class="digest-title">' + esc(b.title || "") + "</h3>";
@@ -834,6 +552,7 @@ function renderDigest(data) {
     }
     html += "</div>";
   });
+  html += "</div>";
 
   const from = czDate(data.from), to = czDate(data.to);
   const meta = [];
@@ -846,11 +565,14 @@ function renderDigest(data) {
 }
 
 /* ========== Kalendář jednání (hearings.json) ========== */
-// Jednání MS a VS Praha v agendě duševního vlastnictví. V mřížce je štítek
-// se jménem sporu; detail se otevře jako bublina u toho štítku, ať kalendář
-// pod sebou nemění výšku a obsah stránky nepodskakuje.
-const CAL_DOWS = ["Po", "Út", "St", "Čt", "Pá", "So", "Ne"];
-const COURT_LABELS = { MS: "MS Praha", VS: "VS Praha" };
+// Jednání MS a VS Praha v agendě duševního vlastnictví. Dva pohledy:
+// „3 týdny" (mřížka ve stylu Google Kalendáře, detail jako bublina vedle
+// štítku) a „Seznam" nadcházejících jednání po dnech. Na telefonu je
+// vidět jen seznam.
+const CAL_DOWS = ["Po", "Út", "St", "Čt", "Pá"];
+const DNY = ["Neděle", "Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "Sobota"];
+const MESICE = ["ledna", "února", "března", "dubna", "května", "června", "července",
+                "srpna", "září", "října", "listopadu", "prosince"];
 // Kalendář neukazuje měsíc, ale okno tří týdnů, které začíná tímhle
 // týdnem: minulé týdny už si nikdo nevypisuje a soudy stejně vypisují
 // jednání jen zhruba na dva týdny dopředu. Šipky posouvají o týden,
@@ -860,7 +582,9 @@ const CAL_POSUN_DNU = 7;
 
 let calData = null;      // obsah hearings.json
 let calStart = null;     // pondělí prvního zobrazeného týdne (Date)
-let calPopKey = null;    // co je rozkliknuté: "datum#idx" (idx -1 = celý den)
+let calPohled = "mesic"; // mesic | seznam
+let calSoudy = { MS: true, VS: true };
+let calPopKey = null;    // co je rozkliknuté: "datum#idx"
 
 // ISO datum z lokálního Date – toISOString by přes UTC ukrajovalo den.
 function isoOf(d) {
@@ -875,12 +599,13 @@ function mondayOf(d) {
   return p;
 }
 
+
 // Výchozí okno: začíná pondělím tohoto týdne.
 function calDefaultStart() {
   return mondayOf(new Date());
 }
 
-// „17. 8. – 13. 9. 2026"; rok u začátku jen tehdy, když se okno láme přes něj.
+// „21. 9. – 9. 10. 2026"; rok u začátku jen tehdy, když se okno láme přes něj.
 function calRangeLabel(od, do_) {
   const den = d => d.getDate() + ". " + (d.getMonth() + 1) + ".";
   const zacatek = den(od) + (od.getFullYear() === do_.getFullYear()
@@ -888,12 +613,24 @@ function calRangeLabel(od, do_) {
   return zacatek + " – " + den(do_) + " " + do_.getFullYear();
 }
 
-function calFilters() {
-  const on = id => {
-    const el = document.getElementById(id);
-    return !el || el.getAttribute("aria-pressed") !== "false";
-  };
-  return { MS: on("flt-ms"), VS: on("flt-vs") };
+// Datum z ISO řetězce v místním čase (new Date("2026-09-29") by bralo UTC).
+function dateOf(iso) {
+  const [y, m, d] = String(iso).split("-").map(Number);
+  return new Date(y, m - 1, d);
+}
+
+// „Úterý 29. září"
+function denNazev(iso) {
+  const d = dateOf(iso);
+  return DNY[d.getDay()] + " " + d.getDate() + ". " + MESICE[d.getMonth()];
+}
+
+// „dnes", „zítra", „za 4 dny"
+function zaKolik(iso) {
+  const dny = Math.round((dateOf(iso) - dateOf(isoOf(new Date()))) / 864e5);
+  if (dny === 0) return "dnes";
+  if (dny === 1) return "zítra";
+  return "za " + tvar(dny, "den", "dny", "dní");
 }
 
 // „9:30" vs „10:00" se řetězcově řadí špatně (dokumenty píšou i jednocifernou
@@ -903,12 +640,12 @@ function minutesOf(hodina) {
   return m ? Number(m[1]) * 60 + Number(m[2]) : 24 * 60 + 1;
 }
 
+
 // Jednání po aplikaci filtrů, seskupená podle ISO data.
 function calEventsByDay() {
-  const f = calFilters();
   const byDay = {};
   (calData.jednani || []).forEach(j => {
-    if (!j || !j.datum || !f[j.soud] || !j.ip) return;
+    if (!j || !j.datum || !calSoudy[j.soud] || !j.ip) return;
     (byDay[j.datum] = byDay[j.datum] || []).push(j);
   });
   Object.values(byDay).forEach(list => list.sort(
@@ -935,43 +672,22 @@ function infosoudUrl(j) {
     "&rocnik=" + encodeURIComponent(j.rocnik);
 }
 
-function courtBadge(j) {
-  const key = j.soud === "MS" ? "ms" : "vs";
-  return '<span class="src src-' + key + '">' + esc(COURT_LABELS[j.soud] || j.soud) + "</span>";
+
+function courtName(j) {
+  const court = (calData.courts || {})[j.soud] || {};
+  return court.nazev || j.soud;
 }
 
-// V mřížce i v mobilním seznamu je vidět čas a jméno sporu; spisová
-// značka až po rozkliknutí.
+// Štítek v mřížce: barevná tečka soudu, čas a jméno sporu bez „a další"
+// (celé je v title a v bublině).
 function chipHtml(j, iso, idx) {
   const chip = j.soud === "MS" ? "cal-chip-ms" : "cal-chip-vs";
   return '<button type="button" class="cal-chip ' + chip +
     '" data-date="' + iso + '" data-idx="' + idx + '" aria-expanded="false" title="' +
-    esc(caseName(j) + " · " + (j.spz || "")) + '">' +
+    esc(caseName(j) + (j.spz ? " · " + j.spz : "")) + '">' +
     '<span class="cal-dot"></span>' +
     (j.hodina ? '<span class="cal-chip-time">' + esc(j.hodina) + "</span>" : "") +
-    '<span class="cal-chip-name">' + esc(caseName(j)) + "</span></button>";
-}
-
-// Na telefonu se mřížka tří týdnů nedá číst – vedle ní se proto vykreslí
-// seznam dnů, ve kterých něco je, a CSS podle šířky ukáže jedno z toho.
-// Obojí se kreslí ze stejných dat, takže bublina funguje v obou.
-function renderCalAgenda(byDay, start, konec) {
-  const odIso = isoOf(start), doIso = isoOf(konec);
-  const vOkne = Object.keys(byDay).sort().filter(d => d >= odIso && d <= doIso);
-  if (!vOkne.length) {
-    return '<p class="feed-empty">V tomhle období nejsou žádná jednání.</p>';
-  }
-  let html = "";
-  vOkne.forEach(iso => {
-    const d = new Date(iso);
-    // Rok je v nadpisu okna nad seznamem, u každého dne by jen překážel.
-    const nadpis = CAL_DOWS[(d.getDay() + 6) % 7] + " " +
-      czDate(iso).replace(/ \d{4}$/, "");
-    html += '<div class="cal-agenda-day"><div class="cal-agenda-date">' +
-      esc(nadpis) + "</div>" +
-      byDay[iso].map((j, idx) => chipHtml(j, iso, idx)).join("") + "</div>";
-  });
-  return html;
+    '<span class="cal-chip-name">' + esc(caseName(j).replace(/ a další$/, "")) + "</span></button>";
 }
 
 function renderCalGrid() {
@@ -979,35 +695,85 @@ function renderCalGrid() {
   const start = new Date(calStart);
   const todayIso = isoOf(new Date());
 
-  // Víkendy soudy nezasedají, tak se v mřížce jen pletou do cesty – bez
-  // nich je na pracovní dny víc místa. CAL_DOWS zůstává celý (používá ho
-  // i agenda níž), tady se vezme jen pracovní část.
-  let html = CAL_DOWS.slice(0, 5).map(d => '<div class="cal-dow">' + d + "</div>").join("");
-  for (let i = 0; i < CAL_TYDNU * 7; i++) {
-    const d = new Date(start);
-    d.setDate(start.getDate() + i);
-    if (d.getDay() === 0 || d.getDay() === 6) continue;
-    const iso = isoOf(d);
-    const events = byDay[iso] || [];
-    const cls = ["cal-day"];
-    if (iso === todayIso) cls.push("today");
-    else if (iso < todayIso) cls.push("past");
-    html += '<div class="' + cls.join(" ") + '">';
-    // Okno přesahuje přes měsíce, tak u prvního dne (a u prvního v měsíci)
-    // patří k číslu i měsíc – jinak by „1" nešlo zařadit.
-    const cislo = (i === 0 || d.getDate() === 1)
-      ? d.getDate() + ". " + (d.getMonth() + 1) + "." : d.getDate();
-    html += '<span class="cal-daynum">' + cislo + "</span>";
-    events.forEach((j, idx) => {
-      html += chipHtml(j, iso, idx);
-    });
-    html += "</div>";
+  // Víkendy soudy nezasedají – mřížka má jen pracovní dny.
+  let html = CAL_DOWS.map(d => '<div class="cal-dow">' + d + "</div>").join("");
+  for (let w = 0; w < CAL_TYDNU; w++) {
+    for (let i = 0; i < 5; i++) {
+      const d = new Date(start);
+      d.setDate(start.getDate() + w * 7 + i);
+      const iso = isoOf(d);
+      const cls = ["cal-day"];
+      if (iso === todayIso) cls.push("today");
+      else if (iso < todayIso) cls.push("past");
+      // U prvního dne v měsíci patří k číslu i měsíc – jinak by „1" nešlo zařadit.
+      const cislo = d.getDate() === 1 ? "1. " + (d.getMonth() + 1) + "." : d.getDate();
+      html += '<div class="' + cls.join(" ") + '" data-sloupec="' + i + '" data-tyden="' + w + '">' +
+        '<div class="cal-daynum"><span' + (iso === todayIso ? ' aria-label="dnes ' + cislo + '"' : "") + ">" +
+        cislo + "</span></div>" +
+        (byDay[iso] || []).map((j, idx) => chipHtml(j, iso, idx)).join("") + "</div>";
+    }
   }
   const konec = new Date(start);
-  konec.setDate(start.getDate() + CAL_TYDNU * 7 - 1);
+  konec.setDate(start.getDate() + (CAL_TYDNU - 1) * 7 + 4);
   document.getElementById("cal-grid").innerHTML = html;
-  document.getElementById("cal-agenda").innerHTML = renderCalAgenda(byDay, start, konec);
   document.getElementById("cal-title").textContent = calRangeLabel(start, konec);
+  document.getElementById("cal-today").hidden = isoOf(calStart) === isoOf(calDefaultStart());
+}
+
+// Dokdy soudy zveřejnily přehled: konec nejpozdějšího období ze
+// staženích přehledů, bez něj datum posledního jednání.
+function zverejnenoDo() {
+  let konec = "";
+  Object.values(calData.courts || {}).forEach(c => {
+    Object.values(c.useky || {}).forEach(u => {
+      if (u && u.obdobi && u.obdobi.do > konec) konec = u.obdobi.do;
+    });
+  });
+  if (!konec) (calData.jednani || []).forEach(j => { if (j.datum > konec) konec = j.datum; });
+  return konec;
+}
+
+// Seznam jen nadcházejících jednání (proběhlá jsou v pohledu 3 týdny).
+function renderCalSeznam() {
+  const byDay = calEventsByDay();
+  const todayIso = isoOf(new Date());
+  const dny = Object.keys(byDay).sort().filter(d => d >= todayIso);
+  let html = dny.map(iso => '<div class="cal-den"><div class="cal-den-hlava">' +
+    '<span class="cal-den-nazev">' + esc(denNazev(iso)) + "</span>" +
+    '<span class="cal-den-rel">' + esc(zaKolik(iso) + " · " + byDay[iso].length + " jednání") + "</span></div>" +
+    byDay[iso].map((j, idx) => {
+      const soud = j.soud === "MS" ? "ms" : "vs";
+      const url = esc(infosoudUrl(j));
+      const meta = ['<span class="cal-soud cal-soud-' + soud + '" title="' + esc(courtName(j)) + '">' + esc(j.soud) + "</span>"];
+      if (j.spz) meta.push('<span class="cal-spz">' + esc(j.spz) + "</span>");
+      if (j.predseda) meta.push('<span class="cal-predseda" aria-hidden="true">·</span><span class="cal-predseda">' + esc(j.predseda) + "</span>");
+      if (j.sin) meta.push('<span aria-hidden="true">·</span><span>síň ' + esc(j.sin) + "</span>");
+      return '<div class="cal-radek"><span class="cal-radek-cas">' + esc(j.hodina || "–") + "</span>" +
+        '<div class="cal-radek-telo"><div class="cal-radek-nazev">' + esc(caseName(j)) + "</div>" +
+        '<div class="cal-radek-meta">' + meta.join("") + "</div></div>" +
+        '<div class="cal-radek-akce"><a class="odkaz" href="' + url + '" target="_blank" rel="noopener">InfoSoud ↗</a>' +
+        (j.uid ? '<button type="button" class="odkaz cal-ics" data-date="' + iso + '" data-idx="' + idx +
+          '" title="Uložit tohle jednání jako událost do vlastního kalendáře">.ics</button>' : "") + "</div>" +
+        '<a class="cal-radek-ikona" href="' + url + '" target="_blank" rel="noopener" title="Otevřít v InfoSoudu" ' +
+        'aria-label="Otevřít v InfoSoudu"><svg class="nav-ico" aria-hidden="true"><use href="#icon-court"></use></svg></a></div>';
+    }).join("") + "</div>").join("");
+  if (!dny.length) html = '<p class="feed-empty">Žádná nadcházející jednání soudy zatím nezveřejnily.</p>';
+  const doKdy = zverejnenoDo();
+  if (doKdy) {
+    const d = dateOf(doKdy);
+    html += '<div class="cal-pozn">Soudy zatím zveřejnily jednání do ' + d.getDate() + ". " + (d.getMonth() + 1) +
+      ". Přehled na další dny přibude, až ho vydají.</div>";
+  }
+  document.getElementById("cal-seznam").innerHTML = html;
+}
+
+// Počty nadcházejících jednání u štítků soudů (bez ohledu na filtr).
+function renderCalPocty() {
+  const todayIso = isoOf(new Date());
+  ["MS", "VS"].forEach(s => {
+    const el = document.getElementById("cal-pocet-" + s);
+    if (el) el.textContent = (calData.jednani || []).filter(j => j && j.ip && j.soud === s && j.datum >= todayIso).length;
+  });
 }
 
 // Co se s jednáním stalo od minulého přehledu. Scraper porovnává každý
@@ -1109,55 +875,46 @@ function usekNazev(j) {
   return meta.nazev || j.usek;
 }
 
-// Detail jednání do bubliny. `nadpis` je jen u celodenního výpisu –
-// u jednoho jednání by nad jeho jménem jen zabíral místo.
-// `datum` a `zaklad` (pořadí prvního jednání v tom dni) nese tlačítko na
-// stažení .ics – podle nich si ho posluchač v bublině zase najde.
-function calPopHtml(events, nadpis, datum, zaklad) {
-  let html = '<span class="cal-pop-arrow"></span>' +
-    '<button type="button" class="cal-pop-close" aria-label="Zavřít">✕</button>' +
-    '<div class="cal-pop-body">';
-  if (nadpis) html += '<h3 class="cal-detail-title">' + esc(nadpis) + "</h3>";
-  events.forEach((j, poradi) => {
-    // Oddělovač „v." zvýrazníme, ať se neztratí v názvech typu
-    // „Hudební divadlo v Karlíně v. Jiří Strach".
-    const name = esc(caseName(j)).replace(
-      / v\. /, ' <span class="cal-event-vs">v.</span> ');
-    html += '<div class="cal-event">';
-    html += '<div class="cal-event-head">' +
-      '<span class="cal-event-time">' + esc(j.hodina || "–") + "</span>" +
-      courtBadge(j) +
-      '<span class="cal-event-name">' + name + "</span>" +
-      "</div>";
 
-    const rows = [];
-    if (j.spz) rows.push(["Spisová značka", esc(j.spz)]);
-    if (j.predseda) rows.push(["Předseda senátu", esc(j.predseda)]);
-    if (j.senat) rows.push(["Senát", esc(j.senat)]);
-    const usek = usekNazev(j);
-    if (usek) rows.push(["Úsek", esc(usek)]);
-    if (j.sin) rows.push(["Jednací síň", esc(j.sin)]);
-    const parties = (j.ucastnici || []).filter(Boolean);
-    if (parties.length) rows.push(["Účastníci", parties.map(esc).join("<br>")]);
-    html += '<dl class="cal-event-rows">' +
-      rows.map(r => "<dt>" + r[0] + "</dt><dd>" + r[1] + "</dd>").join("") + "</dl>";
+// Detail jednání do bubliny (ve stylu Google Kalendáře): barva soudu,
+// název sporu a kdy, pod tím soud se značkou, síň, předseda a účastníci.
+// `datum` a `idx` nese tlačítko na stažení .ics – podle nich si ho
+// posluchač zase najde.
+function calPopHtml(j, datum, idx) {
+  const soud = j.soud === "MS" ? "ms" : "vs";
+  const ikona = id => '<svg class="nav-ico" aria-hidden="true"><use href="#' + id + '"></use></svg>';
+  let html = '<div class="cal-pop-lista"><button type="button" class="cal-pop-close" aria-label="Zavřít" title="Zavřít">' +
+    ikona("icon-x") + "</button></div>" +
+    '<div class="cal-pop-hlava"><span class="cal-pop-barva cal-barva-' + soud + '"></span><div>' +
+    '<h3 class="cal-pop-titul">' + esc(caseName(j)) + "</h3>" +
+    '<div class="cal-pop-kdy">' + esc(denNazev(datum) + (j.hodina ? " · " + j.hodina : "")) + "</div></div></div>";
 
-    const zmeny = zmenyJednani(j);
-    if (zmeny.length) {
-      html += '<div class="cal-event-links">' + zmeny.map(z =>
-        '<span class="cal-zmena">' + esc(zmenaText(z)) + "</span>").join("") + "</div>";
-    }
-    html += '<div class="cal-event-links">' +
-      '<a href="' + esc(infosoudUrl(j)) + '" target="_blank" rel="noopener">' +
-      "Otevřít na InfoSoudu ↗</a>";
-    // Bez uid (starší data) není co vyříznout – tlačítko se nenabídne.
-    if (j.uid) {
-      html += '<button type="button" class="cal-ics" data-date="' + esc(datum) +
-        '" data-idx="' + (zaklad + poradi) + '" title="Uložit tohle jednání ' +
-        'jako událost do vlastního kalendáře">Stáhnout .ics</button>';
-    }
-    html += "</div></div>";
-  });
+  const usek = usekNazev(j);
+  const sub = [j.spz, usek].filter(Boolean).join(" · ");
+  html += '<div class="cal-pop-radky">' + ikona("icon-court") +
+    "<div><div>" + esc(courtName(j)) + "</div>" + (sub ? '<div class="cal-pop-sub">' + esc(sub) + "</div>" : "") + "</div>";
+  if (j.sin) html += ikona("icon-pin") + "<div>Jednací síň " + esc(j.sin) + "</div>";
+  if (j.predseda) html += ikona("icon-user") + "<div>" + esc(j.predseda) + "</div>";
+  // Účastníci z dat; starší data je nemají, tak se rozdělí jméno sporu.
+  let strany = (j.ucastnici || []).filter(Boolean);
+  if (!strany.length && / v\. /.test(j.nazev || "") && !/ a další$/.test(j.nazev)) strany = j.nazev.split(" v. ");
+  if (strany.length) html += ikona("icon-users") + "<div>" + strany.map(esc).join("<br>") + "</div>";
+  html += "</div>";
+
+  // „Nové jednání" se neukazuje – nové je v kalendáři skoro všechno;
+  // zajímavé jsou jen přesuny a změny času nebo síně.
+  const zmeny = zmenyJednani(j).filter(z => z.typ !== "nove");
+  if (zmeny.length) {
+    html += '<div class="cal-pop-zmeny">' + zmeny.map(z =>
+      '<span class="cal-zmena">' + esc(zmenaText(z)) + "</span>").join("") + "</div>";
+  }
+  html += '<div class="cal-pop-akce"><a class="btn btn-hlavni" href="' + esc(infosoudUrl(j)) +
+    '" target="_blank" rel="noopener">Otevřít v InfoSoudu ↗</a>';
+  // Bez uid (starší data) není co vyříznout – tlačítko se nenabídne.
+  if (j.uid) {
+    html += '<button type="button" class="btn cal-ics" data-date="' + esc(datum) + '" data-idx="' + idx +
+      '" title="Uložit tohle jednání jako událost do vlastního kalendáře">Stáhnout .ics</button>';
+  }
   return html + "</div>";
 }
 
@@ -1165,53 +922,41 @@ function closeCalPop() {
   calPopKey = null;
   const box = document.getElementById("cal-pop");
   if (box) { box.hidden = true; box.innerHTML = ""; }
-  document.querySelectorAll(".cal-chip.is-open, .cal-more.is-open").forEach(el => {
+  document.querySelectorAll(".cal-chip.is-open").forEach(el => {
     el.classList.remove("is-open");
     el.setAttribute("aria-expanded", "false");
   });
 }
 
-// Bublinu posadíme na tu stranu štítku, kde je v okně víc místa, a obsah
-// omezíme tak, aby se celá vešla na obrazovku. Šipka míří na štítek.
+// Bublina stojí vedle dne: u pondělí až středy vpravo, u čtvrtka a pátku
+// vlevo; v prvních dvou týdnech lícuje nahoře se štítkem, v posledním
+// dole (roste nahoru). Do okna ji pak ještě dorovnáme.
 function placeCalPop(anchor) {
   const box = document.getElementById("cal-pop");
-  const telo = box.querySelector(".cal-pop-body");
+  const den = anchor.closest(".cal-day");
   const s = document.getElementById("cal-shell").getBoundingClientRect();
   const a = anchor.getBoundingClientRect();
-  const okno = document.documentElement.clientHeight;
-  const podStitkem = okno - a.bottom - 16;
-  const nadStitkem = a.top - 16;
-  const dolu = podStitkem >= nadStitkem;
-  box.style.left = "0px";
-  box.style.top = "0px";
-  if (telo) {
-    telo.style.maxHeight = "";
-    const ramecek = box.offsetHeight - telo.offsetHeight;   // odsazení + linka
-    telo.style.maxHeight =
-      Math.max(140, (dolu ? podStitkem : nadStitkem) - ramecek) + "px";
-  }
+  const d = den.getBoundingClientRect();
   const w = box.offsetWidth, h = box.offsetHeight;
-  const stred = a.left + a.width / 2 - s.left;
-  const left = Math.max(6, Math.min(stred - w / 2, s.width - w - 6));
+  const vpravo = Number(den.dataset.sloupec) < 3;
+  let left = vpravo ? d.right - s.left + 8 : d.left - s.left - 8 - w;
+  // V úzkém okně by vedle dne nezbylo místo – pak přes mřížku, ale v okně.
+  const okno = document.documentElement.clientWidth;
+  left = Math.max(8 - s.left, Math.min(left, okno - 8 - s.left - w));
+  const nahoru = Number(den.dataset.tyden) >= CAL_TYDNU - 1;
+  const top = nahoru ? a.bottom - s.top + 8 - h : a.top - s.top - 8;
   box.style.left = left + "px";
-  box.style.top = (dolu ? a.bottom - s.top + 8 : a.top - s.top - h - 8) + "px";
-  const arrow = box.querySelector(".cal-pop-arrow");
-  if (arrow) {
-    arrow.style.left = Math.max(8, Math.min(stred - left - 5, w - 24)) + "px";
-    arrow.classList.toggle("is-below", !dolu);
-  }
+  box.style.top = top + "px";
 }
 
 function openCalPop(anchor) {
   const datum = anchor.dataset.date;
   const idx = Number(anchor.dataset.idx);
-  const den = calEventsByDay()[datum] || [];
-  const events = idx >= 0 ? [den[idx]].filter(Boolean) : den;
-  if (!events.length) return;
+  const j = (calEventsByDay()[datum] || [])[idx];
+  if (!j) return;
   closeCalPop();
   const box = document.getElementById("cal-pop");
-  box.innerHTML = calPopHtml(events, idx < 0 ? "Jednání " + czDate(datum) : "",
-    datum, idx < 0 ? 0 : idx);
+  box.innerHTML = calPopHtml(j, datum, idx);
   box.hidden = false;
   placeCalPop(anchor);
   anchor.classList.add("is-open");
@@ -1222,7 +967,12 @@ function openCalPop(anchor) {
 function redrawCal() {
   // Překreslením zmizí štítek, ke kterému byla bublina přišpendlená.
   closeCalPop();
+  document.getElementById("cal-mesic").hidden = calPohled !== "mesic";
+  document.getElementById("cal-seznam").hidden = calPohled !== "seznam";
+  document.querySelectorAll("#cal-pohled button").forEach(b =>
+    b.setAttribute("aria-pressed", String(b.dataset.pohled === calPohled)));
   renderCalGrid();
+  renderCalSeznam();
 }
 
 function calShiftDays(delta) {
@@ -1241,34 +991,37 @@ function renderKalendar(data) {
   calData = data;
   calStart = calDefaultStart();
 
+  const stitek = (s, nazev) => '<button type="button" class="cal-key cal-key-' + s.toLowerCase() +
+    '" data-soud="' + s + '" aria-pressed="true" title="Skrýt nebo zobrazit jednání ' + nazev + '">' +
+    '<span class="cal-key-dot"></span><span>' + s + '</span><span class="cal-key-pocet" id="cal-pocet-' + s +
+    '"></span></button>';
   container.innerHTML =
     '<div class="cal-toolbar">' +
+      '<div class="segment" id="cal-pohled" role="group" aria-label="Zobrazení">' +
+        '<button type="button" data-pohled="mesic" aria-pressed="true">3 týdny</button>' +
+        '<button type="button" data-pohled="seznam" aria-pressed="false">Seznam</button>' +
+      "</div>" +
+      // Klikací barevné štítky – legenda mřížky a filtr v jednom.
+      stitek("MS", "Městského soudu v Praze") + stitek("VS", "Vrchního soudu v Praze") +
+    "</div>" +
+    '<div class="cal-mesic" id="cal-mesic">' +
       '<div class="cal-nav">' +
         '<button type="button" id="cal-prev" aria-label="O týden zpět">‹</button>' +
-        '<span class="cal-title" id="cal-title"></span>' +
         '<button type="button" id="cal-next" aria-label="O týden vpřed">›</button>' +
+        '<span class="cal-title" id="cal-title"></span>' +
         '<button type="button" id="cal-today">Dnes</button>' +
       "</div>" +
-      '<div class="cal-filters">' +
-        // Klikací barevné štítky – legenda mřížky a filtr v jednom.
-        '<button type="button" class="cal-key cal-key-ms" id="flt-ms" ' +
-          'aria-pressed="true" title="Skrýt nebo zobrazit jednání Městského ' +
-          'soudu v Praze">MS Praha</button>' +
-        '<button type="button" class="cal-key cal-key-vs" id="flt-vs" ' +
-          'aria-pressed="true" title="Skrýt nebo zobrazit jednání Vrchního ' +
-          'soudu v Praze">VS Praha</button>' +
+      '<div class="cal-shell" id="cal-shell">' +
+        '<div class="cal-grid" id="cal-grid"></div>' +
+        '<div class="cal-pop" id="cal-pop" role="dialog" aria-label="Detail jednání" hidden></div>' +
       "</div>" +
     "</div>" +
-    '<div class="cal-shell" id="cal-shell">' +
-      '<div class="cal-wrap"><div class="cal-grid" id="cal-grid"></div></div>' +
-      '<div class="cal-agenda" id="cal-agenda"></div>' +
-      '<div class="cal-pop" id="cal-pop" role="dialog" aria-label="Detail jednání" hidden></div>' +
-    "</div>";
+    '<div class="cal-seznam" id="cal-seznam"></div>';
 
   const info = document.getElementById("cal-info");
   if (info && data.generated) {
     const kdy = czDate(data.generated);
-    if (kdy) info.textContent = "aktualizováno " + kdy;
+    if (kdy) info.textContent = "Aktualizováno " + kdy + ".";
   }
 
   document.getElementById("cal-prev")
@@ -1279,69 +1032,46 @@ function renderKalendar(data) {
     calStart = calDefaultStart();
     redrawCal();
   });
-  ["flt-ms", "flt-vs"].forEach(id => {
-    const el = document.getElementById(id);
+  document.getElementById("cal-pohled").addEventListener("click", e => {
+    const b = e.target.closest("button[data-pohled]");
+    if (!b) return;
+    calPohled = b.dataset.pohled;
+    redrawCal();
+  });
+  container.querySelectorAll(".cal-key").forEach(el => {
     el.addEventListener("click", () => {
-      el.setAttribute("aria-pressed",
-        el.getAttribute("aria-pressed") === "false" ? "true" : "false");
+      calSoudy[el.dataset.soud] = !calSoudy[el.dataset.soud];
+      el.setAttribute("aria-pressed", String(calSoudy[el.dataset.soud]));
       redrawCal();
     });
   });
-  // Posluchač je na celé skořápce, ať obslouží mřížku i mobilní seznam.
-  document.getElementById("cal-shell").addEventListener("click", e => {
-    const btn = e.target.closest(".cal-chip, .cal-more");
-    if (!btn) return;
-    const key = btn.dataset.date + "#" + btn.dataset.idx;
-    // Druhý klik na týž štítek bublinu zavře.
-    if (calPopKey === key) closeCalPop();
-    else openCalPop(btn);
-  });
-  document.getElementById("cal-pop").addEventListener("click", e => {
+  container.addEventListener("click", e => {
+    const chip = e.target.closest(".cal-chip");
+    if (chip) {
+      const key = chip.dataset.date + "#" + chip.dataset.idx;
+      // Druhý klik na týž štítek bublinu zavře.
+      if (calPopKey === key) closeCalPop();
+      else openCalPop(chip);
+      return;
+    }
     if (e.target.closest(".cal-pop-close")) { closeCalPop(); return; }
     const ics = e.target.closest(".cal-ics");
     if (!ics) return;
-    const den = calEventsByDay()[ics.dataset.date] || [];
-    const j = den[Number(ics.dataset.idx)];
+    const j = (calEventsByDay()[ics.dataset.date] || [])[Number(ics.dataset.idx)];
     if (j) stahniIcs(j);
   });
-  // Klik jinam a Esc bublinu zavřou; při změně velikosti okna by šipka
-  // ukazovala mimo, tak ji taky zavřeme.
+  // Klik jinam a Esc bublinu zavřou; při změně velikosti okna by stála
+  // mimo štítek, tak ji taky zavřeme.
   document.addEventListener("click", e => {
-    if (calPopKey && !e.target.closest("#cal-pop, .cal-chip, .cal-more")) closeCalPop();
+    if (calPopKey && !e.target.closest("#cal-pop, .cal-chip")) closeCalPop();
   });
   document.addEventListener("keydown", e => {
     if (e.key === "Escape" && calPopKey) closeCalPop();
   });
   window.addEventListener("resize", () => { if (calPopKey) closeCalPop(); });
 
+  renderCalPocty();
   redrawCal();
-}
-
-/* ========== Popisy karet a sbalování přehledu ========== */
-// Popis karty se ukazuje při najetí myší (čistě v CSS). Klik ho připne –
-// na dotykových zařízeních žádné najetí není a na delší text se hodí čas.
-function closeHelp(krome) {
-  document.querySelectorAll(".help[aria-expanded='true']").forEach(b => {
-    if (b === krome) return;
-    b.setAttribute("aria-expanded", "false");
-    const d = b.parentElement.querySelector(".card-desc");
-    if (d) d.hidden = true;
-  });
-}
-
-function initHelp() {
-  document.addEventListener("click", e => {
-    const btn = e.target.closest(".help");
-    if (!btn) { closeHelp(null); return; }
-    const desc = btn.parentElement.querySelector(".card-desc");
-    if (!desc) return;
-    closeHelp(btn);
-    desc.hidden = !desc.hidden;
-    btn.setAttribute("aria-expanded", String(!desc.hidden));
-  });
-  document.addEventListener("keydown", e => {
-    if (e.key === "Escape") closeHelp(null);
-  });
 }
 
 /* ========== Přihlášení (Clerk) ========== */
@@ -1433,8 +1163,8 @@ function zmenaUctu(user, vzdy) {
   if (vzdy || id !== prihlaseny) {
     prihlaseny = id;
     vyber = user ? normalizujVyber((user.unsafeMetadata || {}).owl) : vychoziVyber();
-    // Nový účet začíná se sbalenými sekcemi a bez rozpracovaných změn.
-    otevreneSekce = new Set();
+    // Nový účet začíná na první záložce a bez rozpracovaných změn.
+    vyberTab = "oblasti";
     koncept = null;
     stavUlozeni = "";
     const dialog = document.getElementById("vyber-dialog");
@@ -1461,7 +1191,7 @@ function uvitatNovy(user) {
     localStorage.setItem(klic, "1");
   } catch (e) { /* bez úložiště se okno otevře, jen si to nezapamatuje */ }
   uvitani = true;
-  otevreneSekce.add("oblasti");
+  vyberTab = "oblasti";
   otevriVyber();
 }
 
@@ -1537,15 +1267,15 @@ function casopisyKVyberu() {
   return CASOPISY.slice();
 }
 
-// Stránka výběru. Sekce jsou rozbalovací řádky (shadcn Accordion), na
-// začátku sbalené; v hlavičce každé je souhrn toho, co je vybrané. Vybírá
-// se jedním kliknutím na čip (tlačítko s aria-pressed). Změny se sbírají
-// v konceptu a platí – na webu i v účtu – až po „Uložit".
-let otevreneSekce = new Set();
+
+// Dialog výběru. Vlevo záložky (na telefonu přepínač nahoře) se souhrnem
+// toho, co je v nich vybrané; vpravo seznam se zaškrtávacími poli. Změny
+// se sbírají v konceptu a platí – na webu i v účtu – až po „Uložit".
+let vyberTab = "oblasti";         // oblasti | senaty | casopisy
 let uvitani = false;              // dialog otevřený po registraci – nahoře uvítací věta
 let otevrenoZ = null;             // prvek, na který se po zavření vrátí fokus
 let koncept = null;               // rozpracovaný výběr; null = stejný jako uložený
-let stavUlozeni = "";             // „Ukládám…", „Uloženo", chyba
+let stavUlozeni = "";             // „Ukládám…", chyba
 let ukladam = false;
 
 function kopie(v) {
@@ -1556,13 +1286,27 @@ function rozpracovano() {
   return !!koncept && JSON.stringify(koncept) !== JSON.stringify(vyber);
 }
 
-// Čip má vždy stejně široké místo na znak (+ / ✓ / –), takže se po
-// kliknutí nezmění jeho velikost.
-function cipHtml(atributy, stav, obsah, title, trida) {
+
+// Zaškrtávací pole: celý řádek je tlačítko s role="checkbox". Stav
+// „mixed" zbyde jen po dřívějším výběru oblastí zvlášť pro jednotlivé soudy.
+function volbaHtml(atributy, stav, obsah, title, trida) {
   const attrs = Object.keys(atributy).map(k => " " + k + '="' + esc(atributy[k]) + '"').join("");
-  return '<button type="button" class="cip' + (trida ? " " + trida : "") + '"' + attrs +
-    ' aria-pressed="' + stav + '"' + (title ? ' title="' + esc(title) + '"' : "") +
-    '><span class="cip-znak" aria-hidden="true"></span>' + obsah + "</button>";
+  return '<button type="button" role="checkbox" class="volba' + (trida ? " " + trida : "") + '"' + attrs +
+    ' aria-checked="' + stav + '"' + (title ? ' title="' + esc(title) + '"' : "") +
+    '><span class="volba-box" aria-hidden="true"><svg><use href="#icon-check"></use></svg></span>' + obsah + "</button>";
+}
+
+// Skupina voleb: nadpis, počet vybraných a vpravo „Vybrat vše / Zrušit vše".
+function skupinaHtml(nazev, pocet, tlacitko, obsah, trida) {
+  return '<div class="vyber-skupina"><div class="vyber-skupina-hlava' + (trida ? " " + trida : "") + '">' +
+    '<span class="vyber-skupina-nazev">' + esc(nazev) + "</span>" +
+    (pocet ? '<span class="vyber-skupina-pocet">' + pocet + "</span>" : "") + (tlacitko || "") + "</div>" +
+    obsah + "</div>";
+}
+
+function vseHtml(atributy, vse) {
+  const attrs = Object.keys(atributy).map(k => " " + k + '="' + esc(atributy[k]) + '"').join("");
+  return '<button type="button" class="vyber-vse"' + attrs + ">" + (vse ? "Zrušit vše" : "Vybrat vše") + "</button>";
 }
 
 function skupinyOblasti() {
@@ -1586,24 +1330,75 @@ function stavOblasti(v, id) {
   return n === SOUDY_VYBERU.length ? "true" : n ? "mixed" : "false";
 }
 
+
 function oblastiHtml(v) {
-  return skupinyOblasti().map((sk, i) => {
-    const vybrano = sk.oblasti.filter(o => stavOblasti(v, o.id) === "true").length;
-    const vse = vybrano === sk.oblasti.length;
-    return '<div class="vyber-skupina"><div class="skupina-hlava"><span class="skupina-nazev">' +
-      esc(sk.nazev) + '</span><span class="skupina-pocet">' + vybrano + "/" + sk.oblasti.length + "</span>" +
-      '<button type="button" class="skupina-vse" data-skupina="' + i + '">' +
-      (vse ? "Zrušit vše" : "Vybrat vše") + "</button></div>" + '<div class="cipy">' +
-      sk.oblasti.map(o => {
-        const stav = stavOblasti(v, o.id);
-        const title = stav === "mixed"
-          ? "Vybráno jen u některých soudů (" + soudyOblasti(v, o.id).map(s => s.zkratka).join(", ") +
-            "), kliknutím u všech"
-          : o.popis;
-        return cipHtml({ "data-oblast": o.id }, stav, esc(o.nazev), title);
-      }).join("") + "</div></div>";
-  }).join("") + '<p class="vyber-poznamka">Platí pro všechny soudy. Rozhodnutí se ukáže, když ho AI ' +
-    "zařadí do některé z vybraných oblastí.</p>";
+  return '<p class="vyber-uvod">Platí pro všechny soudy. Rozhodnutí se ukáže, když ho AI zařadí aspoň do ' +
+    "jedné z vybraných oblastí.</p>" +
+    skupinyOblasti().map((sk, i) => {
+      const vybrano = sk.oblasti.filter(o => stavOblasti(v, o.id) === "true").length;
+      return skupinaHtml(sk.nazev, vybrano + " z " + sk.oblasti.length,
+        vseHtml({ "data-skupina": i }, vybrano === sk.oblasti.length),
+        '<div class="volby">' + sk.oblasti.map(o => {
+          const stav = stavOblasti(v, o.id);
+          const title = stav === "mixed"
+            ? "Vybráno jen u některých soudů (" + soudyOblasti(v, o.id).map(s => s.zkratka).join(", ") +
+              "), kliknutím u všech"
+            : o.popis;
+          return volbaHtml({ "data-oblast": o.id }, stav, '<span class="volba-nazev">' + esc(o.nazev) + "</span>", title);
+        }).join("") + "</div>");
+    }).join("");
+}
+
+// Senáty NS. Občanskoprávní jednotlivě; trestní kolegium jediným
+// vypínačem pro všechny jeho senáty. Senát, který je v datech a v seznamu
+// chybí, se nabídne aspoň s číslem.
+function senatyHtml(v) {
+  const skupiny = {};
+  senatyKVyberu(v).forEach(s => { (skupiny[s.kolegium] = skupiny[s.kolegium] || []).push(s); });
+  const volba = s => volbaHtml({ "data-senat": s.senat }, String(v.ns.senaty.indexOf(s.senat) >= 0),
+    '<span class="volba-cislo">' + s.senat + '</span><span class="volba-popis">' + esc(s.popis || "") + "</span>",
+    "", "volba-senat");
+  let html = '<p class="vyber-uvod">Z vybraných senátů Nejvyššího soudu se ukáže všechno, bez ohledu na oblast. ' +
+    "Z ostatních jen to, co spadá do vašich oblastí.</p>";
+  if (skupiny.civilni) {
+    const vybrane = skupiny.civilni.filter(s => v.ns.senaty.indexOf(s.senat) >= 0).length;
+    html += skupinaHtml(KOLEGIA.civilni, vybrane + " z " + skupiny.civilni.length, "",
+      '<div class="volby">' + skupiny.civilni.map(volba).join("") + "</div>", "bez-hlavy-m");
+  }
+  const trestni = senatyKolegia("trestni");
+  if (trestni.length) {
+    html += skupinaHtml(KOLEGIA.trestni, "", "",
+      '<button type="button" class="volba-prepinac" role="switch" aria-checked="' + celeKolegium(v, "trestni") +
+      '" data-kolegium="trestni"><span class="volba-text">' +
+      '<span class="volba-titul"><span class="jen-d">Všechna rozhodnutí trestních senátů</span>' +
+      '<span class="jen-m">Trestní kolegium</span></span>' +
+      '<span class="volba-popis"><span class="jen-d">' + esc((trestni.length > 1 ? "senáty " : "senát ") + seznamCisel(trestni)) +
+      '</span><span class="jen-m">všechna rozhodnutí trestních senátů</span></span></span>' +
+      '<span class="switch" aria-hidden="true"></span></button>', "bez-hlavy-m");
+  }
+  if (skupiny.ostatni) {
+    html += skupinaHtml("Další senáty", "", "", '<div class="volby">' + skupiny.ostatni.map(volba).join("") + "</div>");
+  }
+  return html;
+}
+
+function souhrnSenatu(v) {
+  const trestni = celeKolegium(v, "trestni") ? senatyKolegia("trestni") : [];
+  const cisla = v.ns.senaty.filter(n => trestni.indexOf(n) < 0).sort((a, b) => a - b);
+  let text = cisla.length ? (cisla.length === 1 ? "senát " : "senáty ") + cisla.join(", ") : "";
+  if (trestni.length) text += (text ? " + " : "") + "trestní";
+  return text || "žádný senát";
+}
+
+// Časopisy: vybraný se ukazuje (ukládá se, které jsou skryté).
+function casopisyHtml(v, casopisy) {
+  const vybrane = casopisy.filter(c => v.skryte_casopisy.indexOf(c.id) < 0).length;
+  return '<p class="vyber-uvod">Nová čísla a články za poslední 4 týdny z vybraných časopisů.</p>' +
+    skupinaHtml("Časopisy", vybrane + " z " + casopisy.length,
+      vseHtml({ "data-vse": "casopisy" }, vybrane === casopisy.length),
+      '<div class="volby">' + casopisy.map(c => volbaHtml({ "data-casopis": c.id },
+        String(v.skryte_casopisy.indexOf(c.id) < 0), '<span class="volba-nazev">' + esc(c.nazev || c.zkratka) + "</span>",
+        c.zkratka !== c.nazev ? c.zkratka : "", "volba-casopis")).join("") + "</div>");
 }
 
 function tvar(n, jeden, dva, pet) {
@@ -1633,51 +1428,6 @@ function seznamCisel(cisla) {
   return cisla.length > 1 ? cisla.slice(0, -1).join(", ") + " a " + cisla[cisla.length - 1] : String(cisla[0]);
 }
 
-function senatyHtml(v) {
-  const skupiny = {};
-  senatyKVyberu(v).forEach(s => { (skupiny[s.kolegium] = skupiny[s.kolegium] || []).push(s); });
-  const skupina = (nazev, obsah, pocet) => '<div class="vyber-skupina"><div class="skupina-hlava">' +
-    '<span class="skupina-nazev">' + esc(nazev) + "</span>" +
-    (pocet ? '<span class="skupina-pocet">' + pocet + "</span>" : "") + "</div>" + obsah + "</div>";
-  const cip = (s, trida) => cipHtml({ "data-senat": s.senat }, String(v.ns.senaty.indexOf(s.senat) >= 0),
-    '<span class="senat-cislo">' + s.senat + "</span>" +
-    (s.popis ? '<span class="senat-popis">' + esc(s.popis) + "</span>" : ""), "", trida);
-  let html = "";
-  if (skupiny.civilni) {
-    const vybrane = skupiny.civilni.filter(s => v.ns.senaty.indexOf(s.senat) >= 0).length;
-    html += skupina(KOLEGIA.civilni, '<div class="seznam-voleb">' +
-      skupiny.civilni.map(s => cip(s, "cip-radek")).join("") + "</div>",
-      vybrane + "/" + skupiny.civilni.length);
-  }
-  const trestni = senatyKolegia("trestni");
-  if (trestni.length) {
-    html += '<div class="vyber-skupina"><button type="button" class="volba-prepinac" role="switch" ' +
-      'aria-checked="' + celeKolegium(v, "trestni") + '" data-kolegium="trestni">' +
-      '<span class="volba-text"><span class="volba-titul">Trestní kolegium</span>' +
-      '<span class="volba-popis">Všechna rozhodnutí trestních senátů (' + esc(seznamCisel(trestni)) +
-      ").</span></span>" + '<span class="switch" aria-hidden="true"></span></button></div>';
-  }
-  if (skupiny.ostatni) {
-    html += skupina("Další senáty", '<div class="cipy">' + skupiny.ostatni.map(s => cip(s)).join("") + "</div>");
-  }
-  return html + '<p class="vyber-poznamka">Z vybraných senátů se ukáže všechno, bez ohledu na oblast.</p>';
-}
-
-function souhrnSenatu(v) {
-  const trestni = celeKolegium(v, "trestni") ? senatyKolegia("trestni") : [];
-  const cisla = v.ns.senaty.filter(n => trestni.indexOf(n) < 0).sort((a, b) => a - b);
-  const casti = [];
-  if (cisla.length) casti.push(seznamCisel(cisla));
-  if (trestni.length) casti.push("trestní kolegium");
-  return casti.length ? casti.join(" + ") : "žádný";
-}
-
-// Časopisy: vybraný se ukazuje.
-function casopisyHtml(v, casopisy) {
-  return '<div class="cipy">' + casopisy.map(c => cipHtml({ "data-casopis": c.id },
-      String(v.skryte_casopisy.indexOf(c.id) < 0), esc(c.zkratka), c.nazev)).join("") + "</div>";
-}
-
 function souhrnCasopisu(v, casopisy) {
   const skryte = casopisy.filter(c => v.skryte_casopisy.indexOf(c.id) >= 0);
   if (!skryte.length) return "všech " + casopisy.length;
@@ -1685,28 +1435,15 @@ function souhrnCasopisu(v, casopisy) {
   return (casopisy.length - skryte.length) + " z " + casopisy.length;
 }
 
-// Rozbalovací sekce: hlavička s názvem a souhrnem, obsah skrytý, dokud ho
-// uživatel neotevře.
-function sekceHtml(klic, nadpis, souhrn, obsah) {
-  const otevreno = otevreneSekce.has(klic);
-  return '<div class="vyber-sekce">' +
-    '<button type="button" class="sekce-hlava" aria-expanded="' + otevreno + '" aria-controls="sekce-' +
-    klic + '" data-sekce="' + klic + '">' +
-    '<svg class="fold-ico" aria-hidden="true"><use href="#icon-chevron"></use></svg>' +
-    '<span class="sekce-titul">' + esc(nadpis) + '</span><span class="sekce-souhrn">' + esc(souhrn) +
-    "</span></button>" +
-    '<div class="sekce-obsah" id="sekce-' + klic + '"' + (otevreno ? "" : " hidden") + ">" + obsah + "</div></div>";
-}
 
 function akceHtml() {
   const zmeny = rozpracovano();
   return '<div class="vyber-akce" id="vyber-akce">' +
-    '<button type="button" class="ucet-btn" id="vyber-vychozi">Obnovit výchozí</button>' +
+    '<button type="button" class="btn" id="vyber-vychozi">Obnovit výchozí</button>' +
     '<span class="vyber-stav" id="vyber-stav" role="status">' +
     esc(stavUlozeni || (zmeny ? "Neuložené změny" : "")) + "</span>" +
-    '<button type="button" class="ucet-btn" id="vyber-zrusit"' + (zmeny && !ukladam ? "" : " hidden") +
-    ">Zrušit změny</button>" +
-    '<button type="button" class="ucet-btn ucet-btn-hlavni" id="vyber-ulozit"' +
+    '<button type="button" class="btn" id="vyber-zrusit">Zrušit</button>' +
+    '<button type="button" class="btn btn-hlavni" id="vyber-ulozit"' +
     (zmeny && !ukladam ? "" : " disabled") + ">Uložit</button></div>";
 }
 
@@ -1721,14 +1458,32 @@ function vykresliNastaveni() {
   if (!koncept) koncept = kopie(vyber);
   const v = koncept;
   const casopisy = casopisyKVyberu();
-  el.innerHTML = '<div class="nastaveni">' +
-    (uvitani ? '<p class="nastaveni-uvitani">Vítejte v Owl. Vyberte si, co chcete sledovat – výchozí ' +
-      "je IP a IT. Výběr kdykoli změníte v nabídce účtu.</p>" : "") +
-    '<div class="vyber-sekce-seznam">' +
-    sekceHtml("oblasti", "Oblasti práva", souhrnOblasti(v), oblastiHtml(v)) +
-    sekceHtml("senaty", "Senáty Nejvyššího soudu", souhrnSenatu(v), senatyHtml(v)) +
-    (casopisy.length ? sekceHtml("casopisy", "Časopisy", souhrnCasopisu(v, casopisy), casopisyHtml(v, casopisy)) : "") +
-    "</div>" + akceHtml() + "</div>";
+  const taby = [
+    ["oblasti", "Oblasti práva", "Oblasti", souhrnOblasti(v)],
+    ["senaty", "Senáty NS", "Senáty", souhrnSenatu(v)]
+  ];
+  if (casopisy.length) taby.push(["casopisy", "Časopisy", "Časopisy", souhrnCasopisu(v, casopisy)]);
+  if (!taby.some(t => t[0] === vyberTab)) vyberTab = "oblasti";
+  const panel = vyberTab === "senaty" ? senatyHtml(v)
+    : vyberTab === "casopisy" ? casopisyHtml(v, casopisy) : oblastiHtml(v);
+  // Posunutí seznamu přežije překreslení po kliknutí na volbu.
+  const staryObsah = el.querySelector(".vyber-obsah");
+  const posun = staryObsah && staryObsah.dataset.tab === vyberTab ? staryObsah.scrollTop : 0;
+  el.innerHTML = '<div class="nastaveni"><div class="vyber-taby-lista">' +
+    '<div class="vyber-taby" role="tablist" aria-label="Části výběru">' +
+    taby.map(([k, label, kratce, souhrn]) => {
+      const vybrana = k === vyberTab;
+      return '<button type="button" role="tab" class="vyber-tab" id="tab-' + k + '" data-tab="' + k +
+        '" aria-selected="' + vybrana + '" aria-controls="vyber-obsah" tabindex="' + (vybrana ? 0 : -1) + '">' +
+        '<span class="tab-label">' + label + '</span><span class="tab-souhrn">' + esc(souhrn) + "</span>" +
+        '<span class="tab-short" aria-hidden="true">' + kratce + "</span></button>";
+    }).join("") + "</div></div>" +
+    '<div class="vyber-obsah" id="vyber-obsah" role="tabpanel" aria-labelledby="tab-' + vyberTab +
+    '" data-tab="' + vyberTab + '" tabindex="-1">' +
+    (uvitani && vyberTab === "oblasti" ? '<p class="nastaveni-uvitani">Vítejte v Owl. Vyberte si, co chcete ' +
+      "sledovat – výchozí je IP a IT. Výběr kdykoli změníte v nabídce účtu.</p>" : "") +
+    panel + "</div>" + akceHtml() + "</div>";
+  el.querySelector(".vyber-obsah").scrollTop = posun;
   hlidejOdchod();
 }
 
@@ -1807,10 +1562,11 @@ function ulozVyber() {
   });
 }
 
-// Po změně se stránka výběru vykreslí znovu (souhrny, stavy čipů, lišta);
+
+// Po změně se dialog vykreslí znovu (souhrny, stavy voleb, lišta);
 // fokus zůstane na prvku, na který se klikalo.
 function prekresli(el, t) {
-  const klic = ["oblast", "skupina", "senat", "kolegium", "casopis"].find(k => t.dataset[k] !== undefined);
+  const klic = ["tab", "oblast", "skupina", "senat", "kolegium", "casopis", "vse"].find(k => t.dataset[k] !== undefined);
   const selektor = klic ? "[data-" + klic + '="' + CSS.escape(t.dataset[klic]) + '"]' : (t.id ? "#" + t.id : "");
   vykresliNastaveni();
   const cil = selektor && el.querySelector(selektor);
@@ -1833,6 +1589,9 @@ function otevriVyber() {
   if (!dialog.open) {
     otevrenoZ = document.activeElement;
     dialog.showModal();
+    // Fokus na seznam, ne na křížek – ten by jinak svítil rámečkem.
+    const obsah = dialog.querySelector(".vyber-obsah");
+    if (obsah) obsah.focus({ preventScroll: true });
   }
 }
 
@@ -1843,6 +1602,15 @@ function zavriVyber() {
   koncept = null;
   stavUlozeni = "";
   dialog.close();
+}
+
+
+// „Zrušit" zahodí rozpracované změny bez ptaní – je to výslovná volba.
+function zrusVyber() {
+  const dialog = document.getElementById("vyber-dialog");
+  koncept = null;
+  stavUlozeni = "";
+  if (dialog && dialog.open) dialog.close();
 }
 
 function initNastaveni() {
@@ -1866,6 +1634,7 @@ function initNastaveni() {
     // mezitím zmizí, pak na tlačítko účtu.
     dialog.addEventListener("close", () => {
       uvitani = false;
+      koncept = null;
       hlidejOdchod();
       const videt = x => x && x.isConnected && x !== document.body && x.getClientRects().length > 0;
       const cil = videt(otevrenoZ) ? otevrenoZ
@@ -1875,25 +1644,41 @@ function initNastaveni() {
     });
   }
   if (!el) return;
+  // Záložky se přepínají i šipkami (vzor ARIA Tabs).
+  el.addEventListener("keydown", e => {
+    const tab = e.target.closest && e.target.closest(".vyber-tab");
+    if (!tab) return;
+    const vsechny = Array.from(el.querySelectorAll(".vyber-tab"));
+    const i = vsechny.indexOf(tab);
+    const krok = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+    let cil = null;
+    if (krok) cil = vsechny[(i + krok + vsechny.length) % vsechny.length];
+    else if (e.key === "Home") cil = vsechny[0];
+    else if (e.key === "End") cil = vsechny[vsechny.length - 1];
+    if (!cil) return;
+    e.preventDefault();
+    vyberTab = cil.dataset.tab;
+    prekresli(el, cil);
+  });
   el.addEventListener("click", e => {
     const t = e.target.closest("button");
     if (!t || !el.contains(t) || !koncept) return;
     const d = t.dataset;
-    if (d.sekce) {
-      const otevrit = t.getAttribute("aria-expanded") !== "true";
-      t.setAttribute("aria-expanded", String(otevrit));
-      const obsah = document.getElementById("sekce-" + d.sekce);
-      if (obsah) obsah.hidden = !otevrit;
-      otevreneSekce[otevrit ? "add" : "delete"](d.sekce);
+    if (d.tab) {
+      vyberTab = d.tab;
+      prekresli(el, t);
       return;
     }
     if (t.id === "vyber-ulozit") {
       ulozVyber();
       return;
     }
+    if (t.id === "vyber-zrusit") {
+      zrusVyber();
+      return;
+    }
     if (ukladam) return;
-    if (t.id === "vyber-zrusit") koncept = kopie(vyber);
-    else if (t.id === "vyber-vychozi") koncept = vychoziVyber();
+    if (t.id === "vyber-vychozi") koncept = vychoziVyber();
     else if (d.oblast) prepniOblasti(koncept, [d.oblast]);
     else if (d.skupina !== undefined) {
       prepniOblasti(koncept, skupinyOblasti()[Number(d.skupina)].oblasti.map(o => o.id));
@@ -1902,6 +1687,10 @@ function initNastaveni() {
       nastavPolozku(koncept.ns.senaty, n, koncept.ns.senaty.indexOf(n) < 0);
     } else if (d.casopis) {
       nastavPolozku(koncept.skryte_casopisy, d.casopis, koncept.skryte_casopisy.indexOf(d.casopis) < 0);
+    } else if (d.vse === "casopisy") {
+      const ids = casopisyKVyberu().map(c => c.id);
+      const vse = ids.every(id => koncept.skryte_casopisy.indexOf(id) < 0);
+      koncept.skryte_casopisy = vse ? ids : [];
     } else if (d.kolegium) {
       const zapnout = !celeKolegium(koncept, d.kolegium);
       senatyKolegia(d.kolegium).forEach(n => nastavPolozku(koncept.ns.senaty, n, zapnout));
@@ -1958,8 +1747,6 @@ function navigate(hash, push) {
     const el = document.getElementById(p.id);
     if (el) el.hidden = (p !== page);
   });
-  // Tabulky na dosud skryté stránce teprve teď mají rozměry.
-  prizpusobViditelne(document.getElementById(page.id));
 
   const section = page.sections.indexOf(id) >= 0 ? document.getElementById(id) : null;
   if (section) section.scrollIntoView({ block: "start" });
@@ -1967,7 +1754,7 @@ function navigate(hash, push) {
 
   if (push) {
     history.pushState(null, "", "#" + (id || page.id));
-    const nadpis = document.querySelector("#" + page.id + " .card-title");
+    const nadpis = document.querySelector("#" + page.id + " .page-title");
     if (nadpis) {
       nadpis.setAttribute("tabindex", "-1");
       nadpis.focus({ preventScroll: true });
@@ -2053,9 +1840,11 @@ function showUpdated() {
   const latest = FEEDS.map(f => new Date(f.aktualizovano || ""))
     .filter(d => !isNaN(d)).sort((a, b) => b - a)[0];
   if (!latest) return;
-  document.getElementById("updated").textContent =
-    "aktualizováno " + latest.toLocaleDateString("cs-CZ") + " " +
-    latest.toLocaleTimeString("cs-CZ", { hour: "2-digit", minute: "2-digit" });
+  // „Aktualizováno dnes 2:14", jinak s datem.
+  const cas = latest.getHours() + ":" + String(latest.getMinutes()).padStart(2, "0");
+  const dnes = isoOf(latest) === isoOf(new Date());
+  document.getElementById("updated").textContent = "Aktualizováno " +
+    (dnes ? "dnes" : latest.getDate() + ". " + (latest.getMonth() + 1) + ".") + " " + cas;
 }
 
 function initApp() {
@@ -2078,11 +1867,8 @@ function initApp() {
   const digestPromise = fetchJson("digest.json").catch(() => null);
   const hearingsPromise = fetchJson("hearings.json").catch(() => null);
   initNav();
-  initHelp();
+  initNovinkyFiltr();
   initNastaveni();
-  // Tažení šířek visí na dokumentu, takže platí i pro tabulky, které
-  // se vykreslí až po dotažení feedů.
-  initColumnResize();
 
   // Vykreslíme až všechny feedy dorazí (stahují se paralelně, jsou ze
   // stejného původu). Jedno překreslení místo tří – stránka při načítání
