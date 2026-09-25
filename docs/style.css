@@ -152,12 +152,13 @@ main { min-width: 0; padding: 32px 48px 48px; }
   fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
 }
 #sidenav a:not(.active) .nav-ico { color: var(--fg-3); }
-/* Zdroje mají ikonu v barvě svého soudu (i když jsou aktivní). */
-#sidenav a .ico-nsoud { color: var(--badge-indigo-fg); }
-#sidenav a .ico-nss { color: var(--badge-teal-fg); }
-#sidenav a .ico-us { color: var(--badge-rose-fg); }
-#sidenav a .ico-sdeu { color: var(--badge-blue-fg); }
-#sidenav a .ico-journals { color: var(--badge-amber-fg); }
+/* Zdroje mají ikonu v barvě svého soudu (i když jsou aktivní). Dvojitá
+   třída, ať přebije šedou u neaktivních položek výš. */
+#sidenav a .nav-ico.ico-nsoud { color: var(--badge-indigo-fg); }
+#sidenav a .nav-ico.ico-nss { color: var(--badge-teal-fg); }
+#sidenav a .nav-ico.ico-us { color: var(--badge-rose-fg); }
+#sidenav a .nav-ico.ico-sdeu { color: var(--badge-blue-fg); }
+#sidenav a .nav-ico.ico-journals { color: var(--badge-amber-fg); }
 /* Počet novinek a za jak dlouho zdroj ukazuje novinky – vpravo, drobně. */
 .nav-pocet, .nav-okno {
   margin-left: auto; padding-left: 8px; font-size: 12px; font-weight: 400;

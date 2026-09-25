@@ -901,7 +901,9 @@ function calPopHtml(j, datum, idx) {
   if (strany.length) html += ikona("icon-users") + "<div>" + strany.map(esc).join("<br>") + "</div>";
   html += "</div>";
 
-  const zmeny = zmenyJednani(j);
+  // „Nové jednání" se neukazuje – nové je v kalendáři skoro všechno;
+  // zajímavé jsou jen přesuny a změny času nebo síně.
+  const zmeny = zmenyJednani(j).filter(z => z.typ !== "nove");
   if (zmeny.length) {
     html += '<div class="cal-pop-zmeny">' + zmeny.map(z =>
       '<span class="cal-zmena">' + esc(zmenaText(z)) + "</span>").join("") + "</div>";
