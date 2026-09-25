@@ -134,7 +134,8 @@ pro AI.
   podání, oblasti podle kategorií webu (`data/judikatura/mapy/ipcuria.json`)
   a odkaz na věc na webu Soudního dvora. Text je žádost o rozhodnutí
   o předběžné otázce z InfoCurie, pak oznámení v Cellaru, pak otázky ze
-  stránky ipcuria; do té doby „Položené otázky zatím nejsou zveřejněné“.
+  stránky ipcuria; do té doby „Podáno {datum}. Položené otázky zatím nejsou
+  zveřejněné.“ (datum podání je u předběžné otázky bez shrnutí vždy).
   Oznámení v ÚV ranou otázku převezme stejně jako databáze NS úřední desku:
   hotové shrnutí přejde na oznámení, bez shrnutí se oznámení ukáže jako nové.
 - Na text rozhodnutí se čeká, dokud je rozhodnutí v okně – zkouší se při

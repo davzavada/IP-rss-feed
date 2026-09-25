@@ -12,7 +12,7 @@ opravdu přibude. Na web jde jen okno (pár set záznamů na soud).
 
 import json
 import os
-from datetime import timedelta
+from datetime import date, timedelta
 
 import feed_common as fc
 from judikatura import fronta, model
@@ -80,9 +80,22 @@ def slim(z):
     if not out["shrnuti"]:
         out["stav_shrnuti"] = stav_shrnuti(z)
         out["poznamka"] = STAV_SHRNUTI[out["stav_shrnuti"]]
-        if out["stav_shrnuti"] == "ceka_na_text" and z.get("druh") == "předběžná otázka":
-            out["poznamka"] = CEKA_NA_OTAZKY
+        if z.get("druh") == "předběžná otázka":
+            if out["stav_shrnuti"] == "ceka_na_text":
+                out["poznamka"] = CEKA_NA_OTAZKY
+            podano = _datum_cz(z.get("datum"))
+            if podano:
+                out["poznamka"] = f"Podáno {podano}. " + out["poznamka"]
     return out
+
+
+def _datum_cz(iso):
+    """'2026-09-11' -> '11. 9. 2026'; '' když to nejde."""
+    try:
+        d = date.fromisoformat((iso or "")[:10])
+    except ValueError:
+        return ""
+    return f"{d.day}. {d.month}. {d.year}"
 
 
 class Sklad:

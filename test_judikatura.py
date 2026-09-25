@@ -202,10 +202,10 @@ check("vyčerpané pokusy AI: nepodařilo se",
 s = slim(zaznam("ns:I", "2026-09-22T00:00:00Z", stav={"pokusy": 9, "duvod": "bez-textu"}))
 check("na text se čeká i po mnoha pokusech", s["stav_shrnuti"] == "ceka_na_text", str(s))
 s = slim(zaznam("sdeu:ipc:C-1/26", "2026-09-22T00:00:00Z", soud="sdeu", spz="C-1/26",
-                druh="předběžná otázka", stav={"pokusy": 2, "duvod": "bez-textu"}))
-check("předběžná otázka bez textu: čeká na otázky",
-      (s["stav_shrnuti"], s["poznamka"]) == ("ceka_na_text", "Položené otázky zatím nejsou zveřejněné."),
-      str(s))
+                druh="předběžná otázka", datum="2026-09-11", stav={"pokusy": 2, "duvod": "bez-textu"}))
+check("předběžná otázka bez textu: datum podání a čeká na otázky",
+      (s["stav_shrnuti"], s["poznamka"])
+      == ("ceka_na_text", "Podáno 11. 9. 2026. Položené otázky zatím nejsou zveřejněné."), str(s))
 s = slim(zaznam("ns:E", "2026-09-22T00:00:00Z", oblasti_meta=["dane"], procesni_meta=True,
                 ai={"heslo": "H", "shrnuti": SHRNUTI, "oblasti": ["spravni"], "procesni": False}))
 check("oblasti a procesní z AI mají přednost",
