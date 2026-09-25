@@ -19,23 +19,27 @@ PROMPT_VERZE = 1
 MIN_SHRNUTI = 40
 # Verze pokynu k heslu. Heslo se dá přepsat levně ze shrnutí (prepis_hesel),
 # takže změna hesla nevyvolá nový rozbor celých textů jako PROMPT_VERZE.
-HESLO_VERZE = 2
-HESLO_MAX_SLOV = 10
-HESLO_MAX_ZNAKU = 80
+HESLO_VERZE = 3
+HESLO_MAX_SLOV = 9
+HESLO_MAX_ZNAKU = 75
 
 # Pokyn k heslu – sdílí ho rozbor i přepis starých hesel.
 HESLO_POKYN = (
-    "HESLO – nadpis na jeden řádek (nejvýš asi osm slov) ve tvaru „věc – "
-    "závěr“: o co ve věci jde a jak to soud rozhodl, např. Smlouva "
-    "o postoupení autorských práv – Řím I; Smluvní pokuta u leasingu – "
-    "přiměřená; Známky BIO a BIOLIT – zaměnitelné; Výpověď z nájmu bytu – "
-    "neplatná. Když závěr není (předběžná otázka, odmítnutí), stačí věc: "
-    "Odpovědnost platforem za obsah uživatelů. Musí z něj být poznat věcná "
-    "podstata sporu. Nikdy nepiš jen procesní institut (Přípustnost "
-    "dovolání, Odmítnutí ústavní stížnosti, Zastavení řízení, Místní "
-    "příslušnost, Odkladný účinek, Podjatost, Náklady řízení) – u procesního "
-    "rozhodnutí ho spoj s věcí: Dovolání ve sporu o nájemné – nepřípustné; "
-    "Odkladný účinek u povolení stavby – nepřiznán.\n"
+    "HESLO – nadpis na jeden řádek ve tvaru „věc – závěr“, co nejkratší: "
+    "typicky čtyři až šest slov, nejvýš osm. Věc = o co jde, bez zbytečných "
+    "slov (Smlouva o postoupení autorských práv, ne Formální platnost "
+    "smlouvy o postoupení autorských práv). Závěr = co soud právně řekl, "
+    "jedním až třemi slovy (Řím I, přiměřená, zaměnitelné, neplatná), ne "
+    "popis řízení. Příklady: Smlouva o postoupení autorských práv – Řím I; "
+    "Smluvní pokuta u leasingu – přiměřená; Známky BIO a BIOLIT – "
+    "zaměnitelné; Výpověď z nájmu bytu – neplatná. Když soud věcně "
+    "nerozhodl (odmítnutí, nepřípustnost, zastavení, příslušnost), napiš "
+    "věc a výsledek: Nájem bytu – dovolání nepřípustné; Exekuce na mzdu – "
+    "příslušný OS Kroměříž. Předběžná otázka bez odpovědi: jen věc "
+    "(Odpovědnost platforem za obsah uživatelů). Nikdy nepiš jen procesní "
+    "institut (Přípustnost dovolání, Odmítnutí ústavní stížnosti, Zastavení "
+    "řízení, Místní příslušnost, Odkladný účinek, Podjatost, Náklady "
+    "řízení).\n"
 )
 
 # Slova procesních institutů. Heslo složené jen z nich (Přípustnost

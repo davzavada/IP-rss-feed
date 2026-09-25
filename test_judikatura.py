@@ -367,6 +367,13 @@ check("přepis hesel: označí verzi a uloží", sum(1 for z in zaznamy if z["ai
 orchestr.prepis_hesel({"ns": sklad}, NYNI, max_davek=2)
 check("přepis hesel: příští běh dodělá zbytek",
       all(z["ai"].get("hv") == analyza.HESLO_VERZE for z in zaznamy if not z.get("nahrazeno")))
+neprosle = dict(rozhodnuti, id="ns:DLOUHE", ai={"heslo": "Zastavení řízení", "shrnuti": SHRNUTI})
+fc.ai_volani = falesna_ai('{"ns:DLOUHE": "Přípustnost dovolání"}')
+orchestr.prepis_hesel({"ns": FalesnySklad([neprosle])}, NYNI)
+check("neprošlé heslo se zkusí znovu", "hv" not in neprosle["ai"] and neprosle["ai"]["hv_pokusy"] == 1)
+orchestr.prepis_hesel({"ns": FalesnySklad([neprosle])}, NYNI)
+check("po dvou pokusech zůstane dosavadní",
+      neprosle["ai"]["hv"] == analyza.HESLO_VERZE and neprosle["ai"]["heslo"] == "Zastavení řízení")
 
 # =====================================================================
 print("\n5) Fronta a rozpočet")

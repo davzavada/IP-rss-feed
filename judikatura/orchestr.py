@@ -142,6 +142,7 @@ def zpracuj_ai(sklady, adaptery, nyni, tax, rozpocet):
 # Kolik dávek hesel (po PREPIS_DAVKA) se za běh přepíše. Stačí to na celé
 # okno za dva až tři běhy; nové rozbory mají heslo podle nového pokynu rovnou.
 HESLA_MAX_DAVEK = 15
+HESLO_POKUSU = 2
 
 
 def prepis_hesel(sklady, nyni, max_davek=HESLA_MAX_DAVEK):
@@ -167,12 +168,19 @@ def prepis_hesel(sklady, nyni, max_davek=HESLA_MAX_DAVEK):
         if nova is None:
             continue
         for z in davka:
+            ai = z["ai"]
             if z["id"] in nova:
-                z["ai"]["heslo"] = nova[z["id"]]
+                ai["heslo"] = nova[z["id"]]
+                ai["hv"] = analyza.HESLO_VERZE
+                ai.pop("hv_pokusy", None)
                 prepsano += 1
-            # I bez nového hesla (AI ho nedala nebo neprošlo) se dál
-            # nezkouší – jinak by se jedna dávka opakovala každý běh.
-            z["ai"]["hv"] = analyza.HESLO_VERZE
+            else:
+                # AI heslo nedala nebo neprošlo (dlouhé, jen procesní) – zkusí
+                # se příští běh, nejvýš HESLO_POKUSU×; pak zůstane dosavadní.
+                ai["hv_pokusy"] = int(ai.get("hv_pokusy") or 0) + 1
+                if ai["hv_pokusy"] >= HESLO_POKUSU:
+                    ai["hv"] = analyza.HESLO_VERZE
+                    ai.pop("hv_pokusy", None)
             sklady[z["soud"]].zmeneno(z)
         for sklad in sklady.values():
             sklad.uloz()
