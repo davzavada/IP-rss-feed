@@ -341,7 +341,6 @@ function oknoZa(dni) {
 function ukazOkna() {
   FEEDS.forEach(f => {
     if (!f.oknoDni) return;
-    const okno = oknoText(f.oknoDni);
     const za = oknoZa(f.oknoDni);
     const popis = document.getElementById("popis-" + f.key);
     if (popis) {
@@ -349,17 +348,12 @@ function ukazOkna() {
         ? "Nová čísla a články za " + za + "."
         : "Rozhodnutí zveřejněná za " + za + ", nejnovější nahoře.";
     }
-    const a = document.querySelector('#sidenav a[href="#' + (STRANKA_ZDROJE[f.key] || f.key) + '"]');
-    if (!a) return;
-    let el = a.querySelector(".nav-okno");
-    if (!el) {
-      el = document.createElement("span");
-      el.className = "nav-okno";
-      a.appendChild(el);
-    }
-    el.textContent = okno;
-    el.title = "Novinky za " + za;
   });
+  // Období je v navigaci jen jednou, v nadpisu skupiny („Archiv podle
+  // zdroje · poslední měsíc"); u jednotlivých zdrojů už není.
+  const okna = bezDuplicit(FEEDS.filter(f => f.oknoDni).map(f => oknoZa(f.oknoDni)));
+  const nadpis = document.getElementById("nav-archiv");
+  if (nadpis && okna.length === 1) nadpis.textContent = "Archiv podle zdroje · " + okna[0];
 }
 
 // Položky zdroje jako objekty; u zdroje si poznamená, kdy byl aktualizován.
