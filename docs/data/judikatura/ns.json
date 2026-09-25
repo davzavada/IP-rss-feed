@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T15:56:03Z",
+ "generated": "2026-09-25T03:24:23Z",
  "soud": "ns",
  "okno_dni": 14,
  "polozky": [
@@ -20,8 +20,7 @@
     "zavazky",
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto"
+   "procesni": true
   },
   {
    "id": "ns:FAB90B80E3BC2E7BC1258E7C004D4366",
@@ -39,8 +38,7 @@
    "oblasti": [
     "trestni"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto"
+   "procesni": false
   },
   {
    "id": "ns:F95127E26A1DDE4EC1258E7C004D437F",
@@ -71,12 +69,14 @@
    "zverejneno": "2026-09-24",
    "first_seen": "2026-09-24T15:56:03Z",
    "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/F9212E03C221C2CFC1258E7C004D433F?openDocument",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Usmrcení z nedbalosti",
+   "shrnuti": "Obviněný podal dovolání proti usnesení odvolacího soudu, kterým bylo potvrzeno jeho odsouzení za přečin usmrcení z nedbalosti a ublížení na zdraví v souvislosti s dopravní nehodou. Nejvyšší soud řešil otázku naplnění skutkové podstaty nedbalostního trestného činu, existence příčinné souvislosti a přezkoumatelnosti rozhodnutí soudů nižších stupňů. Dovolání shledal zjevně neopodstatněným a odmítl je, neboť obviněný svým nepřiměřeným způsobem jízdy porušil důležité povinnosti řidiče a zavinil smrt poškozeného motocyklisty.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces",
+    "skoda"
+   ],
+   "procesni": false
   },
   {
    "id": "ns:CF3265836B08B8FCC1258E7C004D4350",
@@ -94,8 +94,7 @@
    "oblasti": [
     "trestni"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto"
+   "procesni": false
   },
   {
    "id": "ns:BB433CA8D9EF1E78C1258E7C004D4388",
@@ -114,8 +113,7 @@
     "trestni",
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "zamitnuto"
+   "procesni": true
   },
   {
    "id": "ns:B7CBA935977FB623C1258E7C004D4358",
@@ -133,8 +131,7 @@
    "oblasti": [
     "trestni"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto"
+   "procesni": false
   },
   {
    "id": "ns:B3F5D28088650FC1C1258E7C004D43B1",
@@ -153,8 +150,7 @@
     "civilni_proces",
     "zavazky"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto"
+   "procesni": true
   },
   {
    "id": "ns:9C3EAAF4A0B02B21C1258E7C004D43A8",
@@ -174,8 +170,7 @@
     "rodina_dedictvi",
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto"
+   "procesni": true
   },
   {
    "id": "ns:9BF2F57DDBF2897EC1258E7C004D438F",
@@ -188,12 +183,13 @@
    "zverejneno": "2026-09-24",
    "first_seen": "2026-09-24T15:56:03Z",
    "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/9BF2F57DDBF2897EC1258E7C004D438F?openDocument",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Ublížení na zdraví z nedbalosti",
+   "shrnuti": "Obviněný podal dovolání proti usnesení Krajského soudu v Praze, kterým bylo rozhodnuto v trestní věci přečinu ublížení na zdraví z nedbalosti spáchaného při dopravní nehodě. Nejvyšší soud řešil otázku naplnění dovolacích důvodů, posouzení příčinné souvislosti a hodnocení důkazů. Dovolání odmítl jako zjevně neopodstatněné, protože námitky obviněného z větší části neodpovídaly uplatněným dovolacím důvodům a skutková zjištění soudů byla učiněna bez zjevných rozporů.",
+   "oblasti": [
+    "trestni",
+    "skoda"
+   ],
+   "procesni": false
   },
   {
    "id": "ns:9055B02F301BBA3CC1258E7C004D4374",
@@ -212,8 +208,7 @@
     "trestni",
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto"
+   "procesni": true
   },
   {
    "id": "ns:82FAF31B7B27BE99C1258E7C004D43C9",
@@ -231,8 +226,7 @@
    "oblasti": [
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "zamitnuto"
+   "procesni": true
   },
   {
    "id": "ns:7F00607FCAF324CEC1258E7C004D43D2",
@@ -287,8 +281,7 @@
     "civilni_proces",
     "zavazky"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto"
+   "procesni": true
   },
   {
    "id": "ns:6ADD3AEFE7AFA7FAC1258E7C004D43D9",
@@ -307,8 +300,7 @@
     "civilni_proces",
     "socialni_cizinci"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto"
+   "procesni": true
   },
   {
    "id": "ns:36314E7570D8E510C1258E7C004D43C4",
@@ -328,8 +320,7 @@
     "skoda",
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto"
+   "procesni": true
   },
   {
    "id": "ns:334A32D60A791AA7C1258E7C004D439E",
@@ -348,8 +339,7 @@
     "zavazky",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto"
+   "procesni": false
   },
   {
    "id": "ns:3196ACF14AFCCFB9C1258E7C004D4395",
@@ -368,8 +358,7 @@
     "trestni",
     "zavazky"
    ],
-   "procesni": false,
-   "vysledek": "zruseno_vraceno"
+   "procesni": false
   },
   {
    "id": "ns:2C2AC41361B92EA5C1258E7C004D436F",
@@ -388,8 +377,7 @@
     "trestni",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zruseno_vraceno"
+   "procesni": false
   },
   {
    "id": "ns:267572FDB6511577C1258E7C004D43B9",
@@ -409,8 +397,7 @@
     "zavazky",
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto"
+   "procesni": true
   },
   {
    "id": "ns:1B4F242A2BF7C47FC1258E7C004D4347",
@@ -428,8 +415,7 @@
    "oblasti": [
     "trestni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto"
+   "procesni": true
   },
   {
    "id": "ns:120B674032B03C66C1258E7C004D43BF",
@@ -449,8 +435,7 @@
     "zavazky",
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto"
+   "procesni": true
   },
   {
    "id": "ns:10A7E370E7B00647C1258E7C004D4333",
@@ -470,8 +455,7 @@
     "zavazky",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zruseno_vraceno"
+   "procesni": false
   },
   {
    "id": "ns:03DE6F6162D6E3CCC1258E7C004D434C",
@@ -490,8 +474,7 @@
     "trestni",
     "mps"
    ],
-   "procesni": false,
-   "vysledek": "vyhoveno"
+   "procesni": false
   },
   {
    "id": "ns:02CBD24EDBADDD45C1258E7C004D43B4",
@@ -509,8 +492,7 @@
    "oblasti": [
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto"
+   "procesni": true
   },
   {
    "id": "ns:0177E6AFCF09DBC1C1258E7C004D43A3",
@@ -530,8 +512,7 @@
     "rodina_dedictvi",
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto"
+   "procesni": true
   },
   {
    "id": "ns:8D62E0A1AC96B7C7C1258E7C002E492B",
@@ -3020,6 +3001,80 @@
    "procesni": false
   },
   {
+   "id": "ns:deska:29icdo82/2025",
+   "spz": "29 ICdo 82/2025",
+   "druh": "rozsudek",
+   "senat": 29,
+   "rejstrik": "ICdo",
+   "datum": "2026-09-15",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._znen%C3%AD_rozsudku_29_ICdo_82_2025.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._znen%C3%AD_rozsudku_29_ICdo_82_2025.pdf",
+   "heslo": "Neúčinnost právního jednání",
+   "shrnuti": "Žalobce jako insolvenční správce WCA International žaloval žalovaného o určení neúčinnosti platby ve výši 400 000 Kč. Soud řešil, zda lze v řízení pokračovat poté, co reorganizace dlužníka skončila splněním reorganizačního plánu. Vzhledem k tomu, že žádný věřitel nepodal návrh na pokračování v řízení, soud řízení zastavil.",
+   "oblasti": [
+    "insolvence"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:deska:29icdo177/2026",
+   "spz": "29 ICdo 177/2026",
+   "druh": "rozsudek",
+   "senat": 29,
+   "rejstrik": "ICdo",
+   "datum": "2026-09-15",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._znen%C3%AD_rozsudku_29_ICdo_177_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._znen%C3%AD_rozsudku_29_ICdo_177_2026.pdf",
+   "heslo": "Neúčinnost právního jednání",
+   "shrnuti": "Žalobce jako insolvenční správce WCA International žaloval žalovaného o určení neúčinnosti platby. Soud řešil, zda lze v řízení pokračovat po skončení reorganizace dlužníka, a rozhodl, že řízení zastavuje, protože žádný věřitel nepodal v zákonné lhůtě návrh na jeho pokračování.",
+   "oblasti": [
+    "insolvence"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:deska:29icdo158/2026",
+   "spz": "29 ICdo 158/2026",
+   "druh": "rozsudek",
+   "senat": 29,
+   "rejstrik": "ICdo",
+   "datum": "2026-09-15",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._znen%C3%AD_rozsudku_29_ICdo_158_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._znen%C3%AD_rozsudku_29_ICdo_158_2026.pdf",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "ns:deska:27cdo3331/2025",
+   "spz": "27 Cdo 3331/2025",
+   "druh": "rozsudek",
+   "senat": 27,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-15",
+   "zverejneno": "2026-09-15",
+   "first_seen": "2026-09-15T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._znen%C3%AD_rozsudku_27_Cdo_3331_2025.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._znen%C3%AD_rozsudku_27_Cdo_3331_2025.pdf",
+   "heslo": "Péče řádného hospodáře",
+   "shrnuti": "HC Sparta Praha žalovala dva bývalé členy představenstva o náhradu škody za porušení péče řádného hospodáře. Soud řešil, zda je v souladu s péčí řádného hospodáře delegování činností představenstva na společnosti ovládané členy představenstva, kteří tyto činnosti následně vykonávali osobně za úplatu. Nejvyšší soud rozhodl, že takové jednání není v souladu s péčí řádného hospodáře a loajalitou bez ohledu na ekonomický výsledek, a zároveň kritizoval vyhodnocení rozporujících znaleckých posudků bez výslechu znalců.",
+   "oblasti": [
+    "korporace",
+    "skoda",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
    "id": "ns:F5053885382BB3FAC1258E73004D4357",
    "spz": "11 Tcu 107/2026",
    "ecli": "ECLI:CZ:NS:2026:11.TCU.107.2026.1",
@@ -3924,44 +3979,6 @@
    "shrnuti": "V. S. žaloval A. V. o určení neúčinnosti právního jednání. Soud řešil zejména otázku, zda může být věřitel zkrácen i tzv. ekvivalentním právním jednáním. Vzhledem k rozporům v judikatuře Nejvyššího soudu rozhodl senát o postoupení věci k rozhodnutí velkému senátu.",
    "oblasti": [
     "zavazky",
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:B7F0C0D32CBE09CFC1258E6E004D333B",
-   "spz": "23 Cdo 686/2026",
-   "druh": "usnesení",
-   "senat": 23,
-   "rejstrik": "Cdo",
-   "datum": "2026-08-26",
-   "zverejneno": "2026-09-10",
-   "first_seen": "2026-09-10T21:31:30Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/B7F0C0D32CBE09CFC1258E6E004D333B?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/A73497E8704F3339C1258E6E004D41FF/$file/23%20Cdo%20686_2026.pdf?openElement",
-   "heslo": "Bezdůvodné obohacení",
-   "shrnuti": "P. B. se soudil s Martinem Prokešem o vrácení zálohy za nedokončenou projektovou dokumentaci. Soud řešil, zda částečně předaná, ale prakticky nevyužitelná dokumentace představovala pro žalobce majetkový prospěch. Nejvyšší soud potvrdil, že takové plnění nepředstavuje majetkový prospěch a při určení výše náhrady za bezdůvodné obohacení lze vycházet ze smluvené ceny.",
-   "oblasti": [
-    "zavazky",
-    "skoda"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:0A939852534E0534C1258E6E004D32E6",
-   "spz": "23 Cdo 2050/2026",
-   "druh": "usnesení",
-   "senat": 23,
-   "rejstrik": "Cdo",
-   "datum": "2026-08-19",
-   "zverejneno": "2026-09-10",
-   "first_seen": "2026-09-10T21:31:30Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/0A939852534E0534C1258E6E004D32E6?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/DD3090505133238CC1258E6F001B8936/$file/23%20Cdo%202050_2026.pdf?openElement",
-   "heslo": "Nahrazení projevu vůle",
-   "shrnuti": "B. F. žaloval J. Č. o nahrazení projevu vůle k uzavření kupní smlouvy o převodu nemovitostí. Nejvyšší soud řešil návrh žalobce na odklad vykonatelnosti a právní moci rozsudku odvolacího soudu, kterým byla žaloba zamítnuta. Soud návrh zamítl, neboť odklad u nákladů řízení není přípustný a u věci samotné nebyla prokázána hrozba závažné újmy.",
-   "oblasti": [
-    "vecna_prava",
     "civilni_proces"
    ],
    "procesni": true

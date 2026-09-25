@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T15:56:03Z",
+ "generated": "2026-09-25T03:24:23Z",
  "soud": "nss",
  "okno_dni": 14,
  "polozky": [
@@ -60,9 +60,7 @@
     "dane",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785693",
@@ -84,9 +82,7 @@
     "zavazky",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785615",
@@ -126,9 +122,7 @@
     "dane",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785570",
@@ -149,9 +143,7 @@
     "socialni_cizinci",
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno"
+   "procesni": true
   },
   {
    "id": "nss:785538",
@@ -172,9 +164,7 @@
     "dane",
     "spravni"
    ],
-   "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno"
+   "procesni": true
   },
   {
    "id": "nss:785462",
@@ -195,9 +185,7 @@
     "spravni",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785455",
@@ -212,14 +200,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785455",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785455",
    "soudce": "Lenka Matyášová",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek",
+   "shrnuti": "Žalobce se soudil s Ministerstvem vnitra o přiznání odkladného účinku kasační stížnosti proti rozsudku krajského soudu, kterým byla zamítnuta žaloba proti rozhodnutí o zajištění. Nejvyšší správní soud řešil otázku splnění podmínek pro přiznání odkladného účinku kasační stížnosti ve věci zajištění cizince. Dospěl k závěru, že podmínky splněny nebyly, protože stěžovatel nekonkretizoval hrozící újmu a rozhodnutí o zajištění samo o sobě povinnost vycestovat nezakládá.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785419",
@@ -240,9 +228,7 @@
     "socialni_cizinci",
     "spravni"
    ],
-   "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno"
+   "procesni": true
   },
   {
    "id": "nss:785236",
@@ -263,9 +249,7 @@
     "civilni_proces",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785213",
@@ -302,14 +286,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785196",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785196",
    "soudce": "Michaela Bejčková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek",
+   "shrnuti": "eMIF Invest žalovala Rozhodčí orgán Všeobecné zdravotní pojišťovny České republiky kvůli vyměřenému penále z nedoplatku pojistného. Soud řešil, zda přiznat kasační stížnosti odkladný účinek na základě tvrzení žalobkyně o hrozící újmě. Soud návrh zamítl, protože samotná povinnost zaplatit penále bez doložení vážných finančních obtíží nepředstavuje významnou újmu.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785143",
@@ -330,8 +313,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -348,16 +329,12 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784823",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784823",
    "soudce": "Ivo Pospíšil",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Opožděná kasační stížnost",
+   "shrnuti": "Žalobkyně se soudila s Ministerstvem školství, mládeže a tělovýchovy o přezkoumání výsledku didaktického testu z českého jazyka a literatury v rámci maturitní zkoušky. Soud řešil, zda byla kasační stížnost podána v zákonné lhůtě. Soud stížnost odmítl, protože byla podána opožděně a zmeškání této lhůty nelze prominout.",
    "oblasti": [
     "spravni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784762",
@@ -372,14 +349,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784762",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784762",
    "soudce": "Václav Štencel",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Odkladný účinek",
+   "shrnuti": "Žalobce se soudil s Ministerstvem vnitra o přiznání odkladného účinku kasační stížnosti v řízení o mezinárodní ochraně. Soud řešil, zda je v souladu s novou právní úpravou a s přiměřeností újmy možné přiznat odkladný účinek, aby žalobci nehrozilo vyhoštění do Moldavska. Soud odkladný účinek přiznal, protože hrozící újma žalobci je nepoměrně větší než případná újma jiným osobám a není v rozporu s veřejným zájmem.",
    "oblasti": [
-    "socialni_cizinci"
+    "socialni_cizinci",
+    "spravni"
    ],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:784726",
@@ -400,9 +376,7 @@
     "dane",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:769188",
@@ -423,9 +397,7 @@
     "dane",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785730",
@@ -462,16 +434,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785721",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785721",
    "soudce": "David Hipšr",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastavení řízení",
+   "shrnuti": "KOVÁŘ plus podal žalobu proti Odvolacímu finančnímu ředitelství v řízení o prominutí penále z daně z přidané hodnoty. Soud řešil kasační stížnost Odvolacího finančního ředitelství, kterou stěžovatel v plném rozsahu vzal zpět. Nejvyšší správní soud proto řízení zastavil.",
    "oblasti": [
-    "dane"
+    "dane",
+    "spravni"
    ],
-   "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": true
   },
   {
    "id": "nss:785720",
@@ -492,8 +461,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -517,9 +484,7 @@
     "vecna_prava",
     "zavazky"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785716",
@@ -540,9 +505,7 @@
     "spravni",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785714",
@@ -563,8 +526,6 @@
     "dane"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -587,9 +548,7 @@
     "spravni",
     "stavebni_zp"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785619",
@@ -610,9 +569,7 @@
     "civilni_proces",
     "stavebni_zp"
    ],
-   "procesni": true,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": true
   },
   {
    "id": "nss:785617",
@@ -633,8 +590,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -657,9 +612,7 @@
     "dane",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785613",
@@ -680,9 +633,7 @@
     "spotrebitel",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785611",
@@ -703,8 +654,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -748,9 +697,7 @@
     "socialni_cizinci",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zruseno_vraceno",
-   "vysledek_popis": "zrušeno a vráceno"
+   "procesni": false
   },
   {
    "id": "nss:785540",
@@ -772,9 +719,7 @@
     "zavazky",
     "finance"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785526",
@@ -795,9 +740,7 @@
     "dane",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785379",
@@ -818,9 +761,7 @@
     "verejne_zakazky",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zruseno",
-   "vysledek_popis": "zrušeno + odmítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785377",
@@ -859,9 +800,7 @@
     "civilni_proces",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785340",
@@ -902,8 +841,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -949,8 +886,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -970,9 +905,7 @@
    "oblasti": [
     "spravni"
    ],
-   "procesni": true,
-   "vysledek": "zruseno",
-   "vysledek_popis": "zrušeno + odmítnuto"
+   "procesni": true
   },
   {
    "id": "nss:784848",
@@ -1015,9 +948,7 @@
     "dane",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:783181",
@@ -1038,9 +969,7 @@
     "stavebni_zp",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:782351",
@@ -1061,9 +990,7 @@
     "dane",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:780655",
@@ -1127,9 +1054,7 @@
     "civilni_proces",
     "stavebni_zp"
    ],
-   "procesni": true,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": true
   },
   {
    "id": "nss:785713",
@@ -1150,8 +1075,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -1175,9 +1098,7 @@
     "spravni",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785706",
@@ -1198,8 +1119,6 @@
     "dane"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -1222,8 +1141,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -1246,9 +1163,7 @@
     "vecna_prava",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785618",
@@ -1291,8 +1206,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -1315,8 +1228,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -1339,9 +1250,7 @@
     "spotrebitel",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785535",
@@ -1362,9 +1271,7 @@
     "socialni_cizinci",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zruseno_vraceno",
-   "vysledek_popis": "zrušeno a vráceno"
+   "procesni": false
   },
   {
    "id": "nss:785499",
@@ -1385,9 +1292,7 @@
     "civilni_proces",
     "spravni"
    ],
-   "procesni": true,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": true
   },
   {
    "id": "nss:785485",
@@ -1408,9 +1313,7 @@
     "prumyslova_prava",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785476",
@@ -1431,9 +1334,7 @@
     "spotrebitel",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785456",
@@ -1454,8 +1355,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -1476,8 +1375,6 @@
    "shrnuti": "",
    "oblasti": [],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -1501,9 +1398,7 @@
     "stavebni_zp",
     "skoda"
    ],
-   "procesni": false,
-   "vysledek": "zruseno_vraceno",
-   "vysledek_popis": "zrušeno a vráceno"
+   "procesni": false
   },
   {
    "id": "nss:785407",
@@ -1524,9 +1419,7 @@
     "spravni",
     "vecna_prava"
    ],
-   "procesni": false,
-   "vysledek": "zruseno_vraceno",
-   "vysledek_popis": "zrušeno a vráceno"
+   "procesni": false
   },
   {
    "id": "nss:785382",
@@ -1569,8 +1462,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -1615,8 +1506,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -1639,8 +1528,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -1663,8 +1550,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -1687,9 +1572,7 @@
     "socialni_cizinci",
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "zruseno_vraceno",
-   "vysledek_popis": "zrušeno a vráceno"
+   "procesni": true
   },
   {
    "id": "nss:785206",
@@ -1710,8 +1593,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -1733,9 +1614,7 @@
    "oblasti": [
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:784809",
@@ -1778,8 +1657,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -1845,8 +1722,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -1869,9 +1744,7 @@
     "dane",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zruseno",
-   "vysledek_popis": "zrušeno + zrušení rozhodnutí spr. orgánu"
+   "procesni": false
   },
   {
    "id": "nss:785691",
@@ -1892,9 +1765,7 @@
     "civilni_proces",
     "spravni"
    ],
-   "procesni": true,
-   "vysledek": "zruseno_vraceno",
-   "vysledek_popis": "zrušeno a vráceno"
+   "procesni": true
   },
   {
    "id": "nss:785620",
@@ -1915,8 +1786,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -1939,9 +1808,7 @@
     "socialni_cizinci",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zruseno_vraceno",
-   "vysledek_popis": "zrušeno a vráceno"
+   "procesni": false
   },
   {
    "id": "nss:785498",
@@ -1983,8 +1850,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -2007,9 +1872,7 @@
     "civilni_proces",
     "spravni"
    ],
-   "procesni": true,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": true
   },
   {
    "id": "nss:785414",
@@ -2030,9 +1893,7 @@
     "spravni",
     "socialni_cizinci"
    ],
-   "procesni": false,
-   "vysledek": "zruseno",
-   "vysledek_popis": "zrušeno + zrušení rozhodnutí spr. orgánu"
+   "procesni": false
   },
   {
    "id": "nss:785413",
@@ -2053,9 +1914,7 @@
     "stavebni_zp",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zruseno_vraceno",
-   "vysledek_popis": "zrušeno a vráceno"
+   "procesni": false
   },
   {
    "id": "nss:785384",
@@ -2077,9 +1936,7 @@
     "vecna_prava",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785295",
@@ -2100,8 +1957,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -2124,8 +1979,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -2149,8 +2002,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -2173,9 +2024,7 @@
     "socialni_cizinci",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:784820",
@@ -2196,8 +2045,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -2220,8 +2067,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -2244,8 +2089,6 @@
     "dane"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -2286,9 +2129,7 @@
     "spravni",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zruseno_vraceno",
-   "vysledek_popis": "zrušeno a vráceno"
+   "procesni": false
   },
   {
    "id": "nss:785616",
@@ -2309,8 +2150,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -2334,9 +2173,7 @@
     "zavazky",
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": true
   },
   {
    "id": "nss:785610",
@@ -2357,9 +2194,7 @@
     "spravni",
     "stavebni_zp"
    ],
-   "procesni": false,
-   "vysledek": "zruseno",
-   "vysledek_popis": "zrušeno + zrušení rozhodnutí spr. orgánu"
+   "procesni": false
   },
   {
    "id": "nss:785609",
@@ -2380,9 +2215,7 @@
     "dane",
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "zruseno_vraceno",
-   "vysledek_popis": "zrušeno a vráceno"
+   "procesni": true
   },
   {
    "id": "nss:785607",
@@ -2403,9 +2236,7 @@
     "stavebni_zp",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785590",
@@ -2426,8 +2257,6 @@
     "dane"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "řízení: zastavení",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -2451,8 +2280,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -2475,9 +2302,7 @@
     "civilni_proces",
     "spravni"
    ],
-   "procesni": true,
-   "vysledek": "zruseno_vraceno",
-   "vysledek_popis": "zrušeno a vráceno"
+   "procesni": true
   },
   {
    "id": "nss:785403",
@@ -2498,9 +2323,7 @@
     "socialni_cizinci",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785242",
@@ -2521,8 +2344,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -2544,9 +2365,7 @@
    "oblasti": [
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785161",
@@ -2567,9 +2386,7 @@
     "spravni",
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "zruseno_vraceno",
-   "vysledek_popis": "zrušeno a vráceno"
+   "procesni": true
   },
   {
    "id": "nss:785160",
@@ -2591,9 +2408,7 @@
     "vecna_prava",
     "ustavni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785141",
@@ -2614,9 +2429,7 @@
     "civilni_proces",
     "spravni"
    ],
-   "procesni": true,
-   "vysledek": "zruseno",
-   "vysledek_popis": "zrušeno + odmítnuto"
+   "procesni": true
   },
   {
    "id": "nss:784792",
@@ -2656,9 +2469,7 @@
     "spravni",
     "socialni_cizinci"
    ],
-   "procesni": false,
-   "vysledek": "zruseno_vraceno",
-   "vysledek_popis": "zrušeno a vráceno"
+   "procesni": false
   },
   {
    "id": "nss:784681",
@@ -2679,8 +2490,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -2725,9 +2534,7 @@
     "dane",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785571",
@@ -2770,8 +2577,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -2794,9 +2599,7 @@
     "spravni",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zruseno",
-   "vysledek_popis": "zrušeno + zrušení rozhodnutí spr. orgánu"
+   "procesni": false
   },
   {
    "id": "nss:785541",
@@ -2879,9 +2682,7 @@
     "spravni",
     "ustavni"
    ],
-   "procesni": false,
-   "vysledek": "zruseno",
-   "vysledek_popis": "zrušeno + zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785404",
@@ -2902,8 +2703,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -2949,8 +2748,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -2974,9 +2771,7 @@
     "spravni",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785339",
@@ -2997,9 +2792,7 @@
     "dane",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785338",
@@ -3020,8 +2813,6 @@
     "dane"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3044,9 +2835,7 @@
     "spravni",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zruseno_vraceno",
-   "vysledek_popis": "zrušeno a vráceno"
+   "procesni": false
   },
   {
    "id": "nss:785154",
@@ -3067,8 +2856,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3092,9 +2879,7 @@
     "zavazky",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:781616",
@@ -3115,8 +2900,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3139,8 +2922,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3163,8 +2944,6 @@
     "dane"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3187,9 +2966,7 @@
     "dane",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785501",
@@ -3210,8 +2987,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3234,8 +3009,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3258,9 +3031,7 @@
     "socialni_cizinci",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785411",
@@ -3301,8 +3072,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3325,8 +3094,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3349,8 +3116,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3373,8 +3138,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3391,16 +3154,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785322",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785322",
    "soudce": "Tomáš Kocourek",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Daň z příjmů",
+   "shrnuti": "Žalobce se soudil s Odvolacím finančním ředitelstvím o doměření daně z příjmů fyzických osob a stanovení penále. Nejvyšší správní soud řešil otázku přezkoumatelnosti rozsudku krajského soudu ohledně stanovení referenční ceny a posouzení spojených osob. Dospěl k závěru, že rozsudek krajského soudu je částečně nepřezkoumatelný pro nevypořádání námitky ohledně správnosti referenčního vzorku.",
    "oblasti": [
-    "dane"
+    "dane",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zruseno_vraceno",
-   "vysledek_popis": "zrušeno a vráceno",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785316",
@@ -3421,9 +3181,7 @@
     "dane",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785247",
@@ -3444,8 +3202,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3462,16 +3218,14 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785245",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785245",
    "soudce": "Lenka Krupičková",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Veřejně přístupná účelová komunikace",
+   "shrnuti": "Město Třebechovice pod Orebem a další účastníci vedli spory o existenci veřejně přístupné účelové komunikace a odstranění pevné překážky. Nejvyšší správní soud řešil otázku, zda je nutné vedle souhlasu vlastníka zkoumat i existenci nutné komunikační potřeby. Dospěl k závěru, že kumulativní splnění všech zákonných znaků včetně nutné komunikační potřeby je nezbytné, a proto kasační stížnost zamítl.",
    "oblasti": [
-    "spravni"
+    "vecna_prava",
+    "spravni",
+    "zavazky"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto",
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "procesni": false
   },
   {
    "id": "nss:785167",
@@ -3493,9 +3247,7 @@
     "spravni",
     "zavazky"
    ],
-   "procesni": true,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": true
   },
   {
    "id": "nss:785092",
@@ -3516,8 +3268,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3541,9 +3291,7 @@
     "vecna_prava",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:784812",
@@ -3564,8 +3312,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3588,8 +3334,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3612,8 +3356,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3636,9 +3378,7 @@
     "stavebni_zp",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:784025",
@@ -3659,8 +3399,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3683,8 +3421,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3729,9 +3465,7 @@
     "verejne_zakazky",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zruseno",
-   "vysledek_popis": "zrušeno + zrušení rozhodnutí spr. orgánu"
+   "procesni": false
   },
   {
    "id": "nss:748087",
@@ -3767,8 +3501,6 @@
    "shrnuti": "",
    "oblasti": [],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3791,8 +3523,6 @@
     "stavebni_zp"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3815,8 +3545,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3839,8 +3567,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3907,9 +3633,7 @@
     "spravni",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785313",
@@ -3930,8 +3654,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3954,8 +3676,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -3978,8 +3698,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -4002,8 +3720,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -4026,8 +3742,6 @@
     "dane"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -4050,8 +3764,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -4072,8 +3784,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -4096,9 +3806,7 @@
     "dane",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:784825",
@@ -4120,9 +3828,7 @@
     "zavazky",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:784810",
@@ -4144,9 +3850,7 @@
     "zavazky",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:784794",
@@ -4167,8 +3871,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -4191,9 +3893,7 @@
     "vecna_prava",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:784560",
@@ -4258,8 +3958,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -4283,9 +3981,7 @@
     "vecna_prava",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785461",
@@ -4307,9 +4003,7 @@
     "vecna_prava",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785457",
@@ -4330,8 +4024,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -4375,9 +4067,7 @@
     "spravni",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zruseno_vraceno",
-   "vysledek_popis": "zrušeno a vráceno"
+   "procesni": false
   },
   {
    "id": "nss:785347",
@@ -4398,9 +4088,7 @@
     "spravni",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785323",
@@ -4422,9 +4110,7 @@
     "vecna_prava",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785310",
@@ -4445,8 +4131,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -4469,9 +4153,7 @@
     "dane",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785300",
@@ -4511,9 +4193,7 @@
     "dane",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785249",
@@ -4534,8 +4214,6 @@
     "dane"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -4558,9 +4236,7 @@
     "pracovni",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785235",
@@ -4581,9 +4257,7 @@
     "spravni",
     "pracovni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785214",
@@ -4604,9 +4278,7 @@
     "stavebni_zp",
     "vecna_prava"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785207",
@@ -4627,8 +4299,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -4651,9 +4321,7 @@
     "spravni",
     "stavebni_zp"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:785202",
@@ -4674,9 +4342,7 @@
     "spravni",
     "stavebni_zp"
    ],
-   "procesni": true,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": true
   },
   {
    "id": "nss:785201",
@@ -4697,9 +4363,7 @@
     "spravni",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:784855",
@@ -4720,9 +4384,7 @@
     "spravni",
     "skoda"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:784846",
@@ -4743,8 +4405,6 @@
     "spravni"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "zastaveno",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -4765,8 +4425,6 @@
    "shrnuti": "",
    "oblasti": [],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -4789,9 +4447,7 @@
     "stavebni_zp",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zruseno",
-   "vysledek_popis": "zrušeno + zrušeno opatř. obec. povahy"
+   "procesni": false
   },
   {
    "id": "nss:784815",
@@ -4812,8 +4468,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -4836,8 +4490,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřijatelnost",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -4860,8 +4512,6 @@
     "socialni_cizinci"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -4884,8 +4534,6 @@
     "stavebni_zp"
    ],
    "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -4908,8 +4556,6 @@
     "stavebni_zp"
    ],
    "procesni": true,
-   "vysledek": "zastaveno",
-   "vysledek_popis": "řízení: zastavení",
    "stav_shrnuti": "pripravuje",
    "poznamka": "Shrnutí se připravuje."
   },
@@ -4932,9 +4578,7 @@
     "stavebni_zp",
     "spravni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   },
   {
    "id": "nss:747796",
@@ -4974,9 +4618,7 @@
     "socialni_cizinci",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto"
+   "procesni": false
   }
  ]
 }

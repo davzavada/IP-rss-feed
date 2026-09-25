@@ -1,8 +1,443 @@
 {
- "generated": "2026-09-24T15:56:03Z",
+ "generated": "2026-09-25T03:24:23Z",
  "soud": "us",
  "okno_dni": 14,
  "polozky": [
+  {
+   "id": "us:4-2913-25_1",
+   "spz": "IV. ÚS 2913/25",
+   "ecli": "ECLI:CZ:US:2026:4.US.2913.25.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-01",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2913-25_1",
+   "soudce": "Josef Baxa",
+   "heslo": "Náklady exekuce",
+   "shrnuti": "Stěžovatel napadal usnesení okresního soudu, kterým byly zamítnuty jeho námitky proti příkazu k úhradě nákladů exekuce na výživném. Ústavní soud neshledal porušení základních práv a ústavní stížnost odmítl jako zjevně neopodstatněnou, neboť šlo o bagatelní věc a napadené rozhodnutí bylo řádně odůvodněno.",
+   "oblasti": [
+    "civilni_proces",
+    "ustavni",
+    "rodina_dedictvi"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:4-2251-26_1",
+   "spz": "IV. ÚS 2251/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.2251.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-02",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2251-26_1",
+   "soudce": "Zdeněk Kühn",
+   "heslo": "Datová schránka",
+   "shrnuti": "Stěžovatel napadal usnesení soudů týkající se doručování písemností do datové schránky nepodnikající fyzické osoby namísto datové schránky podnikatele v původním nalézacím řízení. Ústavní soud neshledal porušení práva na soudní ochranu, neboť obecné soudy řádně odůvodnily, že stěžovatel v řízení nevystupoval jako podnikatel a ze žaloby ani ze smlouvy neplynuly žádné indicie o opačném závěru. Ústavní stížnost byla proto odmítnuta jako zjevně neopodstatněná.",
+   "oblasti": [
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:4-1819-26_1",
+   "spz": "IV. ÚS 1819/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.1819.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-02",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-1819-26_1",
+   "soudce": "Josef Baxa",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "us:4-1763-26_2",
+   "spz": "IV. ÚS 1763/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.1763.26.2",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-02",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-1763-26_2",
+   "soudce": "Lucie Dolanská Bányaiová",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "us:3-852-26_1",
+   "spz": "III. ÚS 852/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.852.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-08-12",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-852-26_1",
+   "soudce": "Milan Hulmák",
+   "heslo": "Zajištění věci v trestním řízení",
+   "shrnuti": "Stěžovatel napadl rozhodnutí o zajištění peněžních prostředků na svém bankovním účtu vydaná v trestním řízení vedeném pro podezření ze zvlášť závažných zločinů. Ústavní soud neshledal porušení základních práv stěžovatele, neboť napadená rozhodnutí vycházela z dostatečně doloženého vyššího stupně pravděpodobnosti, že jde o výnos z trestné činnosti, a rozsah či délka zajištění jsou přiměřené. Ústavní stížnost proto odmítl pro zjevnou neopodstatněnost.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-795-26_1",
+   "spz": "III. ÚS 795/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.795.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-08-27",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-795-26_1",
+   "soudce": "Milan Hulmák",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "rodina_dedictvi"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "us:3-2071-26_1",
+   "spz": "III. ÚS 2071/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.2071.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-03",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "nazev": "Povinnost soudu ověřit si doručení avizovaného odůvodnění stížnosti",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-2071-26_1",
+   "soudce": "Jan Svatoň",
+   "heslo": "Odůvodnění stížnosti",
+   "shrnuti": "Stěžovatel napadal usnesení Vrchního soudu v Praze a Krajského soudu v Ústí nad Labem o ponechání ve vazbě. Ústavní soud shledal porušení práva na soudní ochranu, protože Vrchní soud v Praze pominul včas podané odůvodnění stížnosti. Napadení usnesení Krajského soudu v Ústí nad Labem bylo odmítnuto pro nepřípustnost, neboť stěžovatel v podstatě napadal věcnou správnost rozhodnutí o vazbě.",
+   "oblasti": [
+    "trestni",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-1703-26_1",
+   "spz": "III. ÚS 1703/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.1703.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-08-12",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-1703-26_1",
+   "soudce": "Daniela Zemanová",
+   "heslo": "Upuštění od trestu",
+   "shrnuti": "Stěžovatel napadal usnesení Okresního soudu v Sokolově, kterým mu bylo zamítnuto upuštění od výkonu trestu odnětí svobody navzdory změně protidrogové legislativy. Ústavní soud neshledal porušení práva na retroaktivitu mírnějšího zákona podle čl. 40 odst. 6 Listiny, protože toto ustanovení se aplikuje pouze do doby pravomoci rozsudku. Návrh byl odmítnut pro zjevnou neopodstatněnost, neboť změna zákona v průběhu výkonu trestu automaticky nezakládá právo na upuštění od něj.",
+   "oblasti": [
+    "trestni",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-1661-26_1",
+   "spz": "III. ÚS 1661/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.1661.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-08-12",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-1661-26_1",
+   "soudce": "Daniela Zemanová",
+   "heslo": "Hodnocení důkazů",
+   "shrnuti": "Stěžovatel napadal rozhodnutí Okresního soudu v Litoměřicích, Krajského soudu v Ústí nad Labem a Nejvyššího soudu v trestní věci ublížení na zdraví. Ústavní soud neshledal porušení základních práv stěžovatele, neboť obecné soudy s jeho obhajobou řádně vyvrátily a závěry byly v souladu s důkazy. Stížnost byla odmítnuta jako zjevně neopodstatněná.",
+   "oblasti": [
+    "trestni",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-1052-26_1",
+   "spz": "III. ÚS 1052/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.1052.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-08-12",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-1052-26_1",
+   "soudce": "Milan Hulmák",
+   "heslo": "Péče o dítě",
+   "shrnuti": "Stěžovatel napadal rozsudky Okresního soudu ve Vyškově a Krajského soudu v Brně ohledně péče o nezletilé dítě, rozsahu styku a výše výživného. Ústavní soud neshledal porušení základních práv, neboť obecné soudy postupovaly v nejlepším zájmu dítěte a zohlednily jeho přání. Stížnost byla odmítnuta jako zjevně neopodstatněná.",
+   "oblasti": [
+    "rodina_dedictvi"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:2-2495-26_1",
+   "spz": "II. ÚS 2495/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2495.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-08-31",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2495-26_1",
+   "soudce": "Jiří Přibáň",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "us:2-2395-26_1",
+   "spz": "II. ÚS 2395/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2395.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-08-31",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2395-26_1",
+   "soudce": "Jiří Přibáň",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "us:2-2338-26_1",
+   "spz": "II. ÚS 2338/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2338.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-08-31",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2338-26_1",
+   "soudce": "Jiří Přibáň",
+   "heslo": "Rodičovská zodpovědnost",
+   "shrnuti": "Stěžovatel napadal rozsudky Okresního soudu v Sokolově a Krajského soudu v Plzni o místu plnění povinné školní docházky nezletilého dítěte. Namítal porušení práva na ochranu rodičovství, rodiny a dětí a práva na spravedlivý proces. Ústavní soud stížnost odmítl, neboť obecné soudy rozhodly v nejlepším zájmu dítěte a stěžovatel se domáhal pouze přezkumu správnosti valoración důkazů.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:2-2271-26_1",
+   "spz": "II. ÚS 2271/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2271.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-08-31",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2271-26_1",
+   "soudce": "Pavel Šámal",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "us:2-2184-26_1",
+   "spz": "II. ÚS 2184/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2184.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-02",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2184-26_1",
+   "soudce": "Martin Smolek",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "dane"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "us:2-2124-26_1",
+   "spz": "II. ÚS 2124/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2124.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-08-31",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2124-26_1",
+   "soudce": "Jiří Přibáň",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "skoda"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "us:2-1797-26_1",
+   "spz": "II. ÚS 1797/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.1797.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-02",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-1797-26_1",
+   "soudce": "Jiří Přibáň",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [],
+   "procesni": true,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "us:2-1725-26_1",
+   "spz": "II. ÚS 1725/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.1725.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-02",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-1725-26_1",
+   "soudce": "Jiří Přibáň",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "dane"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "us:1-3203-25_1",
+   "spz": "I. ÚS 3203/25",
+   "ecli": "ECLI:CZ:US:2026:1.US.3203.25.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-08-26",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-3203-25_1",
+   "soudce": "Kateřina Ronovská",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "pracovni"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "us:1-2373-26_1",
+   "spz": "I. ÚS 2373/26",
+   "ecli": "ECLI:CZ:US:2026:1.US.2373.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-08-26",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-2373-26_1",
+   "soudce": "Jan Wintr",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "us:1-2239-26_1",
+   "spz": "I. ÚS 2239/26",
+   "ecli": "ECLI:CZ:US:2026:1.US.2239.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-08-24",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-2239-26_1",
+   "soudce": "Kateřina Ronovská",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "us:1-2097-26_1",
+   "spz": "I. ÚS 2097/26",
+   "ecli": "ECLI:CZ:US:2026:1.US.2097.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-08-26",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-2097-26_1",
+   "soudce": "Dita Řepková",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
+  {
+   "id": "us:1-1404-26_1",
+   "spz": "I. ÚS 1404/26",
+   "ecli": "ECLI:CZ:US:2026:1.US.1404.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-08-26",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-25T03:24:23Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-1404-26_1",
+   "soudce": "Jan Wintr",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "rodina_dedictvi"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "pripravuje",
+   "poznamka": "Shrnutí se připravuje."
+  },
   {
    "id": "us:Pl-10-26_2",
    "spz": "Pl. ÚS 10/26",
@@ -21,9 +456,7 @@
     "trestni",
     "ustavni"
    ],
-   "procesni": false,
-   "vysledek": "vyhoveno",
-   "vysledek_popis": "vyhověno"
+   "procesni": false
   },
   {
    "id": "us:4-465-26_1",
@@ -44,9 +477,7 @@
     "skoda",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "vyhoveno",
-   "vysledek_popis": "vyhověno"
+   "procesni": false
   },
   {
    "id": "us:4-2303-26_1",
@@ -66,9 +497,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřípustnost"
+   "procesni": true
   },
   {
    "id": "us:4-1666-26_1",
@@ -88,9 +517,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": false,
-   "vysledek": "vyhoveno",
-   "vysledek_popis": "vyhověno"
+   "procesni": false
   },
   {
    "id": "us:4-1549-26_1",
@@ -110,9 +537,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "vyhoveno",
-   "vysledek_popis": "vyhověno"
+   "procesni": true
   },
   {
    "id": "us:3-767-26_1",
@@ -132,9 +557,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost; odmítnuto pro nepříslušnost"
+   "procesni": false
   },
   {
    "id": "us:2-999-26_2",
@@ -154,9 +577,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": false,
-   "vysledek": "vyhoveno",
-   "vysledek_popis": "vyhověno"
+   "procesni": false
   },
   {
    "id": "us:2-1922-26_1",
@@ -177,9 +598,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": false,
-   "vysledek": "castecne",
-   "vysledek_popis": "vyhověno; odmítnuto pro nepřípustnost; odmítnuto pro neoprávněnost navrhovatele; procesní - náhrada nákladů řízení - § 62"
+   "procesni": false
   },
   {
    "id": "us:2-1140-25_2",
@@ -200,9 +619,7 @@
     "ustavni",
     "zavazky"
    ],
-   "procesni": false,
-   "vysledek": "castecne",
-   "vysledek_popis": "vyhověno; zastaveno; odmítnuto - pro 2b; procesní - náhrada nákladů řízení - § 62"
+   "procesni": false
   },
   {
    "id": "us:1-273-26_1",
@@ -222,9 +639,7 @@
     "vecna_prava",
     "zavazky"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
+   "procesni": false
   },
   {
    "id": "us:1-1767-26_1",
@@ -245,9 +660,7 @@
     "ustavni",
     "skoda"
    ],
-   "procesni": false,
-   "vysledek": "vyhoveno",
-   "vysledek_popis": "vyhověno"
+   "procesni": false
   },
   {
    "id": "us:4-2233-26_1",
@@ -267,9 +680,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
+   "procesni": true
   },
   {
    "id": "us:4-2208-26_1",
@@ -288,9 +699,7 @@
     "trestni",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost; odmítnuto pro nepříslušnost"
+   "procesni": false
   },
   {
    "id": "us:4-2191-26_1",
@@ -309,9 +718,7 @@
     "trestni",
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
+   "procesni": true
   },
   {
    "id": "us:4-1961-26_1",
@@ -331,9 +738,7 @@
     "ustavni",
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřípustnost"
+   "procesni": true
   },
   {
    "id": "us:4-1706-26_1",
@@ -351,9 +756,7 @@
    "oblasti": [
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady"
+   "procesni": true
   },
   {
    "id": "us:3-2334-26_1",
@@ -372,9 +775,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřípustnost"
+   "procesni": true
   },
   {
    "id": "us:3-2221-26_1",
@@ -393,9 +794,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neoprávněnost navrhovatele; odmítnuto pro nepřípustnost"
+   "procesni": true
   },
   {
    "id": "us:3-2164-26_1",
@@ -414,9 +813,7 @@
     "trestni",
     "ustavni"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
+   "procesni": false
   },
   {
    "id": "us:3-2102-26_1",
@@ -436,9 +833,7 @@
     "ustavni",
     "finance"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
+   "procesni": true
   },
   {
    "id": "us:3-2022-26_1",
@@ -457,9 +852,7 @@
     "rodina_dedictvi",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost; odmítnuto pro nepříslušnost"
+   "procesni": false
   },
   {
    "id": "us:2-3135-25_1",
@@ -479,9 +872,7 @@
     "civilni_proces",
     "skoda"
    ],
-   "procesni": false,
-   "vysledek": "vyhoveno",
-   "vysledek_popis": "vyhověno"
+   "procesni": false
   },
   {
    "id": "us:2-2440-26_1",
@@ -500,9 +891,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady"
+   "procesni": true
   },
   {
    "id": "us:2-1984-26_1",
@@ -522,9 +911,7 @@
     "civilni_proces",
     "trestni"
    ],
-   "procesni": false,
-   "vysledek": "castecne",
-   "vysledek_popis": "vyhověno; odmítnuto pro nepřípustnost"
+   "procesni": false
   },
   {
    "id": "us:2-1699-26_1",
@@ -543,9 +930,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady"
+   "procesni": true
   },
   {
    "id": "us:1-3495-25_1",
@@ -565,9 +950,7 @@
     "zavazky",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost; odmítnuto pro neoprávněnost navrhovatele; odmítnuto pro nedodržení lhůty"
+   "procesni": false
   },
   {
    "id": "us:1-2259-26_1",
@@ -586,9 +969,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady"
+   "procesni": true
   },
   {
    "id": "us:1-2240-26_1",
@@ -607,9 +988,7 @@
     "civilni_proces",
     "korporace"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
+   "procesni": false
   },
   {
    "id": "us:1-2145-26_1",
@@ -628,9 +1007,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady"
+   "procesni": true
   },
   {
    "id": "us:1-1824-26_1",
@@ -649,9 +1026,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady"
+   "procesni": true
   },
   {
    "id": "us:1-1726-26_1",
@@ -670,9 +1045,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady"
+   "procesni": true
   },
   {
    "id": "us:1-1717-26_1",
@@ -691,9 +1064,7 @@
     "spravni",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
+   "procesni": false
   },
   {
    "id": "us:1-1674-26_1",
@@ -712,9 +1083,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady"
+   "procesni": true
   },
   {
    "id": "us:1-1228-26_1",
@@ -734,9 +1103,7 @@
     "civilni_proces",
     "rodina_dedictvi"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
+   "procesni": false
   },
   {
    "id": "us:4-655-26_1",
@@ -756,9 +1123,7 @@
     "zavazky",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
+   "procesni": false
   },
   {
    "id": "us:4-2365-26_1",
@@ -777,9 +1142,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřípustnost"
+   "procesni": true
   },
   {
    "id": "us:4-2350-26_1",
@@ -799,9 +1162,7 @@
     "ustavni",
     "rodina_dedictvi"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřípustnost"
+   "procesni": true
   },
   {
    "id": "us:4-2308-26_1",
@@ -820,9 +1181,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady"
+   "procesni": true
   },
   {
    "id": "us:4-2265-26_1",
@@ -842,9 +1201,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
+   "procesni": false
   },
   {
    "id": "us:4-2194-26_1",
@@ -902,9 +1259,7 @@
     "civilni_proces",
     "skoda"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost; odmítnuto pro nepřípustnost"
+   "procesni": true
   },
   {
    "id": "us:4-2023-26_1",
@@ -923,9 +1278,7 @@
     "trestni",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
+   "procesni": true
   },
   {
    "id": "us:4-1947-26_1",
@@ -944,9 +1297,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady"
+   "procesni": true
   },
   {
    "id": "us:4-1837-26_1",
@@ -966,9 +1317,7 @@
     "ustavni",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
+   "procesni": false
   },
   {
    "id": "us:4-1795-26_1",
@@ -987,9 +1336,7 @@
     "trestni",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
+   "procesni": true
   },
   {
    "id": "us:4-1738-26_1",
@@ -1008,9 +1355,7 @@
     "rodina_dedictvi",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
+   "procesni": false
   },
   {
    "id": "us:4-1652-26_1",
@@ -1029,9 +1374,7 @@
     "trestni",
     "dane"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
+   "procesni": true
   },
   {
    "id": "us:4-1150-26_1",
@@ -1051,9 +1394,7 @@
     "vecna_prava",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neoprávněnost navrhovatele"
+   "procesni": true
   },
   {
    "id": "us:4-1068-26_1",
@@ -1091,9 +1432,7 @@
    "oblasti": [
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřípustnost"
+   "procesni": true
   },
   {
    "id": "us:3-2441-26_1",
@@ -1112,9 +1451,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady"
+   "procesni": true
   },
   {
    "id": "us:3-2335-26_1",
@@ -1133,9 +1470,7 @@
     "civilni_proces",
     "trestni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřípustnost"
+   "procesni": true
   },
   {
    "id": "us:3-1736-26_1",
@@ -1155,9 +1490,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady"
+   "procesni": true
   },
   {
    "id": "us:3-1679-26_2",
@@ -1196,9 +1529,7 @@
     "rodina_dedictvi",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro nepřípustnost"
+   "procesni": true
   },
   {
    "id": "us:3-1223-26_1",
@@ -1217,9 +1548,7 @@
     "dane",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
+   "procesni": false
   },
   {
    "id": "us:3-1208-26_1",
@@ -1238,9 +1567,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
+   "procesni": true
   },
   {
    "id": "us:3-1091-26_1",
@@ -1259,9 +1586,7 @@
     "insolvence",
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neoprávněnost navrhovatele"
+   "procesni": true
   },
   {
    "id": "us:2-2313-26_1",
@@ -1299,9 +1624,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
+   "procesni": false
   },
   {
    "id": "us:2-1996-26_1",
@@ -1320,9 +1643,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady"
+   "procesni": true
   },
   {
    "id": "us:1-2540-26_1",
@@ -1341,9 +1662,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady"
+   "procesni": true
   },
   {
    "id": "us:1-2496-26_1",
@@ -1362,9 +1681,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady"
+   "procesni": true
   },
   {
    "id": "us:1-2439-26_1",
@@ -1383,9 +1700,7 @@
     "ustavni",
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady"
+   "procesni": true
   },
   {
    "id": "us:1-2397-26_1",
@@ -1404,9 +1719,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost"
+   "procesni": false
   },
   {
    "id": "us:1-2396-26_1",
@@ -1425,9 +1738,7 @@
     "ustavni",
     "civilni_proces"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady"
+   "procesni": true
   },
   {
    "id": "us:1-2309-26_1",
@@ -1446,9 +1757,7 @@
     "ustavni",
     "spravni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady"
+   "procesni": true
   },
   {
    "id": "us:1-1941-26_1",
@@ -1467,9 +1776,7 @@
     "trestni",
     "ustavni"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro neodstraněné vady"
+   "procesni": true
   },
   {
    "id": "us:1-1827-26_1",
@@ -1488,9 +1795,7 @@
     "civilni_proces",
     "vecna_prava"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost; odmítnuto pro nepřípustnost"
+   "procesni": true
   },
   {
    "id": "us:1-1799-26_1",
@@ -1510,9 +1815,7 @@
     "civilni_proces",
     "ustavni"
    ],
-   "procesni": false,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost; procesní - odložení vykonatelnosti"
+   "procesni": false
   },
   {
    "id": "us:1-1625-26_1",
@@ -1531,9 +1834,7 @@
     "civilni_proces",
     "skoda"
    ],
-   "procesni": true,
-   "vysledek": "odmitnuto",
-   "vysledek_popis": "odmítnuto pro zjevnou neopodstatněnost; odmítnuto pro neoprávněnost navrhovatele"
+   "procesni": true
   },
   {
    "id": "us:2-1971-26_3",
@@ -1553,9 +1854,7 @@
     "rodina_dedictvi",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "vyhoveno",
-   "vysledek_popis": "vyhověno"
+   "procesni": false
   },
   {
    "id": "us:2-1101-26_2",
@@ -1575,9 +1874,7 @@
     "rodina_dedictvi",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "vyhoveno",
-   "vysledek_popis": "vyhověno"
+   "procesni": false
   },
   {
    "id": "us:1-1029-26_1",
@@ -1597,9 +1894,7 @@
     "rodina_dedictvi",
     "ustavni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto",
-   "vysledek_popis": "zamítnuto; odmítnuto pro nepřípustnost; odmítnuto pro nedodržení lhůty"
+   "procesni": false
   }
  ]
 }

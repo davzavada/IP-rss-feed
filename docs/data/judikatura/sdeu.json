@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T15:56:03Z",
+ "generated": "2026-09-25T03:24:23Z",
  "soud": "sdeu",
  "okno_dni": 30,
  "polozky": [
@@ -34,12 +34,14 @@
    "first_seen": "2026-09-24T12:00:00Z",
    "nazev": "Ministerstvo na zemedelieto i hranite a další",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0600",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Vyšší moc v zemědělství",
+   "shrnuti": "Soudní dvůr EU rozhodl, že ztráta práva užívat zemědělskou půdu v důsledku legislativní změny může představovat vyšší moc nebo výjimečnou okolnost ve smyslu nařízení č. 1974/2006, pokud šlo o nepředvídatelnou událost a příjemce podpory učinil veškerá rozumná opatření. Dále konstatoval, že fakultativní povaha tohoto ustanovení nezakládá práva jednotlivcům, a proto nevede k odpovědnosti členského státu za škodu. Částečné převzetí výčtu případů vyšší moci do vnitrostátního práva tak nepředstavuje dostatečně závažné porušení unijního práva.",
+   "oblasti": [
+    "spravni",
+    "zavazky",
+    "skoda"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62025CJ0511",
@@ -109,12 +111,13 @@
    "first_seen": "2026-09-24T12:00:00Z",
    "nazev": "Trenitalia a INPS",
    "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0369",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Informování o pracovních podmínkách",
+   "shrnuti": "Soudní dvůr EU rozhodl, že pojem „práva“ v čl. 8 odst. 1 směrnice 91/533 se vztahuje pouze na práva vyplývající z této směrnice, jako je právo na obdržení informačního dokumentu o pracovních podmínkách. Pod tento pojem tak nespadají samotná práva z pracovní smlouvy nebo pracovního poměru, s nimiž má být zaměstnanec seznámen.",
+   "oblasti": [
+    "pracovni",
+    "spravni"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62025CJ0300",
@@ -288,8 +291,7 @@
     "spravni",
     "spotrebitel"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto"
+   "procesni": false
   },
   {
    "id": "sdeu:62025TJ0409",
@@ -307,8 +309,7 @@
    "oblasti": [
     "prumyslova_prava"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto"
+   "procesni": false
   },
   {
    "id": "sdeu:62025TJ0232",
@@ -326,8 +327,7 @@
    "oblasti": [
     "prumyslova_prava"
    ],
-   "procesni": false,
-   "vysledek": "zruseno"
+   "procesni": false
   },
   {
    "id": "sdeu:62025TJ0231",
@@ -345,8 +345,7 @@
    "oblasti": [
     "prumyslova_prava"
    ],
-   "procesni": false,
-   "vysledek": "zruseno"
+   "procesni": false
   },
   {
    "id": "sdeu:62024TJ0584",
@@ -365,8 +364,7 @@
     "spravni",
     "ustavni"
    ],
-   "procesni": false,
-   "vysledek": "vyhoveno"
+   "procesni": false
   },
   {
    "id": "sdeu:62024TJ0463",
@@ -386,8 +384,7 @@
     "osobnost_media",
     "civilni_proces"
    ],
-   "procesni": false,
-   "vysledek": "castecne"
+   "procesni": false
   },
   {
    "id": "sdeu:62024TJ0240",
@@ -406,8 +403,7 @@
     "spravni",
     "trestni"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto"
+   "procesni": false
   },
   {
    "id": "sdeu:62024TJ0239",
@@ -427,8 +423,7 @@
     "zavazky",
     "skoda"
    ],
-   "procesni": false,
-   "vysledek": "zamitnuto"
+   "procesni": false
   },
   {
    "id": "sdeu:62026CN0769",
