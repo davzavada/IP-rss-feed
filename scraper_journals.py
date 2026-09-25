@@ -71,6 +71,13 @@ CASOPISY = [
      "vydavatel": "Wiley"},
     {"id": "jiplp", "zkratka": "JIPLP", "nazev": "Journal of Intellectual Property Law & Practice",
      "vydavatel": "Oxford University Press"},
+    {"id": "ijlit", "zkratka": "IJLIT", "nazev": "International Journal of Law and Information "
+     "Technology", "vydavatel": "Oxford University Press"},
+    {"id": "jpil", "zkratka": "JPIL", "nazev": "Journal of Private International Law",
+     "vydavatel": "Taylor & Francis"},
+    {"id": "cmlr", "zkratka": "CMLRev", "nazev": "Common Market Law Review",
+     "vydavatel": "Kluwer Law International"},
+    {"id": "elj", "zkratka": "ELJ", "nazev": "European Law Journal", "vydavatel": "Wiley"},
 ]
 CASOPIS_PODLE_ZKRATKY = {c["zkratka"]: c["id"] for c in CASOPISY}
 PREFIX_RE = re.compile(r"^\[([^\]]+)\]\s*")
@@ -856,11 +863,92 @@ JIPLP_ISSN = "1747-1540"
 JIPLP_LABEL = "JIPLP"
 JIPLP_NAME = "Journal of Intellectual Property Law & Practice"
 
+# Další časopisy s vlastním feedem vydavatele. Feed dodal redaktor webu;
+# ISSN (online) je pro zálohu v Crossrefu, když feed nevyjde.
+#   (zkratka, název, feed, stránka časopisu pro Referer, ISSN, vydavatel)
+DALSI_FEEDY = [
+    ("IJLIT", "International Journal of Law and Information Technology",
+     "https://academic.oup.com/rss/site_5171/3035.xml", "https://academic.oup.com/ijlit",
+     "1464-3693", "OUP"),
+    ("JPIL", "Journal of Private International Law",
+     "https://www.tandfonline.com/feed/rss/rpil20", "https://www.tandfonline.com/toc/rpil20/current",
+     "1757-8418", "Taylor & Francis"),
+    ("CMLRev", "Common Market Law Review",
+     "https://kluwerlawonline.com/feeds/COLA", "https://kluwerlawonline.com/journals/COLA",
+     "0165-0750", "Kluwer"),
+    ("ELJ", "European Law Journal",
+     "https://onlinelibrary.wiley.com/feed/14680386/most-recent",
+     "https://onlinelibrary.wiley.com/journal/14680386", "1468-0386", "Wiley"),
+]
+
+
+PREPUBLIKACE_RE = re.compile(r"\s*\[\s*pre-?publication\s*\]\s*", re.IGNORECASE)
+
+
+def _lokalni(tag):
+    """Jméno prvku bez jmenného prostoru („{http://…/rss/1.0/}title" -> „title")."""
+    return tag.rsplit("}", 1)[-1] if isinstance(tag, str) else ""
+
 
 def _item_text(item, tag, ns=None):
-    """Text potomka <item>, nebo prázdný řetězec."""
-    el = item.find(tag, ns) if ns else item.find(tag)
+    """Text potomka <item>, nebo prázdný řetězec.
+
+    Tag bez prefixu se hledá podle jména bez jmenného prostoru – RSS 1.0
+    (Taylor & Francis) i Atom mají prvky ve vlastním prostoru. Atomový
+    <link href="…"/> nemá text, adresa je v atributu."""
+    if ns or ":" in tag or "/" in tag:
+        el = item.find(tag, ns) if ns else item.find(tag)
+    else:
+        kandidati = [c for c in item if _lokalni(c.tag) == tag]
+        if tag == "link":
+            kandidati.sort(key=lambda c: c.get("rel", "alternate") != "alternate")
+        el = kandidati[0] if kandidati else None
+        if el is not None and not (el.text or "").strip() and el.get("href"):
+            return el.get("href").strip()
     return (el.text or "").strip() if el is not None and el.text else ""
+
+
+# Patička anotace u Kluweru („… Volume 63 Online ISSN 0165-0750").
+ISSN_PATICKA_RE = re.compile(r"\s*Volume\s+\d+\s+(?:Online\s+)?ISSN\s+[\dXx-]+\s*$")
+# Kód článku Kluweru na konci adresy (COLA2026072) – zůstává stejný, i když
+# článek přejde z „[pre-publication]“ do čísla a adresa se změní.
+KLUWER_KOD_RE = re.compile(r"kluwerlawonline\.com/.*/([A-Z]+\d{6,})$", re.IGNORECASE)
+
+
+def _stabilni_klic(link):
+    """Klíč článku bez DOI pro guid: u Kluweru kód článku, jinak adresa."""
+    m = KLUWER_KOD_RE.search(link or "")
+    return m.group(1).upper() if m else link
+
+
+def _rss_datum_z(raw):
+    """RFC 822 datum (pubDate, lastBuildDate) -> datetime, None když nejde."""
+    if not raw:
+        return None
+    try:
+        d = parsedate_to_datetime(raw)
+    except (TypeError, ValueError):
+        return None
+    return d if d.tzinfo else d.replace(tzinfo=timezone.utc)
+
+
+def _rss_datum(item, ns):
+    """Datum položky: RSS 2.0 pubDate (RFC 822), jinak dc:date / Atom
+    published / updated (ISO 8601). None, když žádné není nebo nejde přečíst."""
+    for raw, iso in ((_item_text(item, "pubDate"), False), (_item_text(item, "dc:date", ns), True),
+                     (_item_text(item, "published"), True), (_item_text(item, "updated"), True)):
+        if not raw:
+            continue
+        try:
+            d = (datetime.fromisoformat(raw.replace("Z", "+00:00")) if iso
+                 else parsedate_to_datetime(raw))
+        except (TypeError, ValueError):
+            try:
+                d = parsedate_to_datetime(raw)
+            except (TypeError, ValueError):
+                continue
+        return d if d.tzinfo else d.replace(tzinfo=timezone.utc)
+    return None
 
 
 def _rss_doi(item, ns):
@@ -963,32 +1051,38 @@ def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
         "atom": "http://www.w3.org/2005/Atom",
     }
     cutoff = datetime.now(timezone.utc) - timedelta(days=RSS_MAX_AGE_DAYS)
+    # Kluwer dává každé položce čas sestavení feedu místo data článku – takové
+    # datum nic neříká a bere se jako neznámé (datum pak určí první výskyt).
+    kanal = next((e for e in root.iter() if _lokalni(e.tag) == "channel"), None)
+    cas_feedu = {_rss_datum(kanal, ns)} | {
+        _rss_datum_z(_item_text(kanal, "lastBuildDate"))} if kanal is not None else set()
+    cas_feedu.discard(None)
     zaznamy = []
     too_old = 0
     bez_doi = 0
 
-    for item in root.iter("item"):
-        title = clean_title(_item_text(item, "title"))
+    # RSS 2.0 <item>, RSS 1.0 {…/rss/1.0/}item (T&F), Atom <entry> (Kluwer).
+    polozky = [e for e in root.iter() if _lokalni(e.tag) in ("item", "entry")]
+    for item in polozky:
+        # Kluwer značí články před vydáním „[pre-publication]“; ta malá písmena
+        # by jinak zabránila převést verzálkový název (normalize_title).
+        title = clean_title(PREPUBLIKACE_RE.sub("", _item_text(item, "title")))
         if not title:
             continue
 
         doi = _rss_doi(item, ns)
         if not doi:
             bez_doi += 1
-        link = f"https://doi.org/{doi}" if doi else _bez_parametru(_item_text(item, "link"))
+        # Mezery v adrese (Kluwer: „…/63.5 [pre-publication]/COLA2026072").
+        link = (f"https://doi.org/{doi}" if doi
+                else _bez_parametru(_item_text(item, "link")).replace(" ", "%20"))
         if not link:
             continue
 
-        pub_date, odhad = datetime.now(timezone.utc), True
-        raw_date = _item_text(item, "pubDate") or _item_text(item, "dc:date", ns)
-        if raw_date:
-            try:
-                pub_date = parsedate_to_datetime(raw_date)
-                if pub_date.tzinfo is None:
-                    pub_date = pub_date.replace(tzinfo=timezone.utc)
-                odhad = False
-            except (TypeError, ValueError):
-                pass
+        datum = _rss_datum(item, ns)
+        if datum in cas_feedu:
+            datum = None
+        pub_date, odhad = (datum, False) if datum else (datetime.now(timezone.utc), True)
         # Feed bez data se nesmí zahodit jako starý, ale ani vydávat za dnešek –
         # datum dostane podle prvního výskytu (viz pub_date_odhad v main()).
         if not odhad and pub_date < cutoff:
@@ -998,7 +1092,10 @@ def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
         zaznamy.append({
             "title": title, "doi": doi, "link": link,
             "authors": _rss_autor(item, ns),
-            "abstract": _abstract_text(_item_text(item, "description")),
+            "abstract": ISSN_PATICKA_RE.sub("", _abstract_text(
+                _item_text(item, "description") or _item_text(item, "summary")
+                or _item_text(item, "content"))).strip(),
+            "klic": _stabilni_klic(link),
             "pub_date": pub_date, "odhad": odhad,
         })
 
@@ -1016,7 +1113,7 @@ def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
             "description": popis_polozky(title, authors, journal_name, zkratit(abstract)),
             # Stejný tvar guid jako u Crossref, ať se článek po přepnutí zdroje
             # neoznačí podruhé jako nový.
-            "guid": f"{label}-{z['doi']}" if z["doi"] else f"{label}-{z['link']}",
+            "guid": f"{label}-{z['doi'] or z['klic']}",
             "pub_date": z["pub_date"],
             "pub_date_odhad": z["odhad"],
             "ai_source": "article",
@@ -1350,10 +1447,14 @@ def main():
             print(f"  CHYBA při stahování {label}: {e}")
 
     # 7. Časopisy s vlastním RSS vydavatele (se zálohou v Crossref)
-    for nazev, zdroj, label, scrape in (
+    dalsi = [(nazev, f"{vydavatel} RSS", label,
+              lambda f=feed, r=ref, i=issn, l=label, n=nazev, v=vydavatel:
+              _rss_nebo_crossref(f, r, i, l, n, v))
+             for label, nazev, feed, ref, issn, vydavatel in DALSI_FEEDY]
+    for nazev, zdroj, label, scrape in [
         (JWIP_NAME, "Wiley RSS", JWIP_LABEL, scrape_jwip),
         (JIPLP_NAME, "OUP RSS", JIPLP_LABEL, scrape_jiplp),
-    ):
+    ] + dalsi:
         print(f"  Zdroj: {nazev} ({zdroj})")
         try:
             rss_items = scrape()
