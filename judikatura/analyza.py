@@ -19,27 +19,28 @@ PROMPT_VERZE = 1
 MIN_SHRNUTI = 40
 # Verze pokynu k heslu. Heslo se dá přepsat levně ze shrnutí (prepis_hesel),
 # takže změna hesla nevyvolá nový rozbor celých textů jako PROMPT_VERZE.
-HESLO_VERZE = 3
+HESLO_VERZE = 4
 HESLO_MAX_SLOV = 9
 HESLO_MAX_ZNAKU = 75
 
 # Pokyn k heslu – sdílí ho rozbor i přepis starých hesel.
 HESLO_POKYN = (
-    "HESLO – nadpis na jeden řádek ve tvaru „věc – závěr“, co nejkratší: "
-    "typicky čtyři až šest slov, nejvýš osm. Věc = o co jde, bez zbytečných "
-    "slov (Smlouva o postoupení autorských práv, ne Formální platnost "
-    "smlouvy o postoupení autorských práv). Závěr = co soud právně řekl, "
-    "jedním až třemi slovy (Řím I, přiměřená, zaměnitelné, neplatná), ne "
-    "popis řízení. Příklady: Smlouva o postoupení autorských práv – Řím I; "
-    "Smluvní pokuta u leasingu – přiměřená; Známky BIO a BIOLIT – "
-    "zaměnitelné; Výpověď z nájmu bytu – neplatná. Když soud věcně "
-    "nerozhodl (odmítnutí, nepřípustnost, zastavení, příslušnost), napiš "
-    "věc a výsledek: Nájem bytu – dovolání nepřípustné; Exekuce na mzdu – "
-    "příslušný OS Kroměříž. Předběžná otázka bez odpovědi: jen věc "
-    "(Odpovědnost platforem za obsah uživatelů). Nikdy nepiš jen procesní "
-    "institut (Přípustnost dovolání, Odmítnutí ústavní stížnosti, Zastavení "
-    "řízení, Místní příslušnost, Odkladný účinek, Podjatost, Náklady "
-    "řízení).\n"
+    "HESLO – nadpis na jeden řádek, čtyři až šest slov, nejvýš osm: obecný "
+    "právní závěr, který z rozhodnutí plyne a platí i pro jiné spory, "
+    "stručně jako právní věta. Pomlčku ani dvojtečku nepotřebuje; použij "
+    "je, jen když nadpis zkrátí. Příklady: Postoupení autorských práv "
+    "spadá pod Řím I; Obecné ujištění nevylučuje zjevné vady; "
+    "Nezpůsobilost jednat lze prokázat posudkem; Prodloužení povolení "
+    "vyžaduje účast veřejnosti; Spolku stačí tvrdit zásah do práv; Stání "
+    "vozidla lze prokázat statickými snímky; Předem zaslaná nabídka: "
+    "smlouva mimo obchodní prostory. Nepiš výsledek řízení (dovolání "
+    "odmítnuto, nepřípustné, zamítnuto, zrušeno, vyhověno, nepřiznán) ani "
+    "jména a místa z případu. Když rozhodnutí obecný závěr nemá (odmítnutí "
+    "bez věcného posouzení, zastavení, příslušnost, předběžná otázka bez "
+    "odpovědi), napiš jen právní otázku: Bezdůvodné obohacení a právní "
+    "důvod plnění. Nikdy nepiš jen procesní institut (Přípustnost "
+    "dovolání, Odmítnutí ústavní stížnosti, Zastavení řízení, Místní "
+    "příslušnost, Odkladný účinek, Podjatost, Náklady řízení).\n"
 )
 
 # Slova procesních institutů. Heslo složené jen z nich (Přípustnost
@@ -60,13 +61,41 @@ ustanoveni zastupce preruseni bagatelni predbezne predbezneho opatreni
 """.split())
 
 
+# Slova výsledku řízení. Část hesla za pomlčkou (dvojtečkou) složená jen z nich
+# („– dovolání odmítnuto", „– nepřípustné") je výsledek sporu, ne obecný
+# právní závěr, a odřízne se (ocisti_heslo).
+VYSLEDEK_SLOVA = PROCESNI_SLOVA | set("""
+odmitnuto odmitnuta odmitnute odmitnut zamitnuto zamitnuta zamitnute zamitnut
+zruseno zrusena zruseny zrusen vyhoveno vyhovena vyhoveni potvrzeno potvrzena
+nepripustna nepripustny nepriznan nepriznano priznan priznano neprijatelna
+neprijatelne zastavena prislusny prislusna urcen urcena nedovodna duvodna
+castecne jen neuspesne uspesne
+""".split())
+
+
+def ocisti_heslo(heslo):
+    """Odřízne z hesla výsledek řízení za pomlčkou („Předkupní právo
+    k pozemku – dovolání odmítnuto" -> „Předkupní právo k pozemku")."""
+    h = re.sub(r"\s+", " ", str(heslo or "")).strip().rstrip(".")
+    # Oddělovače zůstávají v seznamu (sudé indexy = části), ať se vrátí,
+    # jak byly.
+    casti = re.split(r"(\s+[–—-]\s+|:\s+)", h)
+    while len(casti) > 1:
+        slova = [w for w in re.split(r"[^\w]+", bez_diakritiky(casti[-1]).lower()) if w]
+        if slova and all(w in VYSLEDEK_SLOVA for w in slova):
+            del casti[-2:]
+        else:
+            break
+    return "".join(casti)
+
+
 def heslo_obecne(heslo):
     """Heslo, ze kterého není poznat, o co ve věci jde (jen procesní
     institut), nebo je moc dlouhé na jeden řádek."""
     h = re.sub(r"\s+", " ", str(heslo or "")).strip().rstrip(".")
     slova = [w for w in re.split(r"[^\w]+", bez_diakritiky(h).lower()) if w]
     return (not slova or all(w in PROCESNI_SLOVA for w in slova)
-            or len(h) > HESLO_MAX_ZNAKU or len(h.split()) > HESLO_MAX_SLOV)
+            or len(h) > HESLO_MAX_ZNAKU or len(slova) > HESLO_MAX_SLOV)
 
 SYSTEM = (
     "Jsi asistent českého advokáta. Dostaneš jedno soudní rozhodnutí (případně "
@@ -208,7 +237,7 @@ def parse(raw, tax):
     if len(shrnuti) < MIN_SHRNUTI:
         return None
     return {
-        "heslo": fc.bez_pravni_formy(_cist(heslo)).rstrip("."),
+        "heslo": ocisti_heslo(fc.bez_pravni_formy(_cist(heslo))),
         "shrnuti": shrnuti,
         "oblasti": tax.normalizuj([_cist(o) for o in oblasti or [] if _cist(o)]),
         "procesni": _ano(procesni),
@@ -276,7 +305,7 @@ def prepis_hesla_davku(zaznamy):
     platna = {z["id"] for z in zaznamy}
     out = {}
     for id_, heslo in data.items():
-        heslo = fc.bez_pravni_formy(_cist(heslo)).rstrip(".")
+        heslo = ocisti_heslo(fc.bez_pravni_formy(_cist(heslo)))
         if id_ in platna and not heslo_obecne(heslo):
             out[id_] = heslo
     return out

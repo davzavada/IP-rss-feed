@@ -316,8 +316,19 @@ for h in ("Přípustnost dovolání", "Odmítnutí ústavní stížnosti", "Mís
           "Zastavení dovolacího řízení", "Odkladný účinek kasační stížnosti", "Námitka podjatosti", ""):
     check(f"obecné heslo: {h!r}", analyza.heslo_obecne(h))
 for h in ("Smlouva o postoupení autorských práv – Řím I", "Dovolání ve sporu o nájemné – nepřípustné",
+          "Postoupení autorských práv spadá pod Řím I",
+          "Zajištění účtu: stačí vyšší pravděpodobnost výnosu z trestné činnosti",
           "Ochranná známka", "Uznání cizího rozhodnutí"):
     check(f"věcné heslo: {h!r}", not analyza.heslo_obecne(h))
+for pred, po in (("Předkupní právo k pozemku – dovolání odmítnuto", "Předkupní právo k pozemku"),
+                ("Odkladný účinek u povolení stavby – nepřiznán", "Odkladný účinek u povolení stavby"),
+                ("Mezinárodní ochrana – kasační stížnost nepřijatelná", "Mezinárodní ochrana"),
+                ("Mezinárodní ochrana: kasační stížnost nepřijatelná", "Mezinárodní ochrana"),
+                ("Předem zaslaná nabídka: smlouva mimo obchodní prostory",
+                 "Předem zaslaná nabídka: smlouva mimo obchodní prostory"),
+                ("Smlouva o postoupení autorských práv – Řím I", "Smlouva o postoupení autorských práv – Řím I"),
+                ("Smluvní pokuta nad 0,5 % denně – nepřiměřená", "Smluvní pokuta nad 0,5 % denně – nepřiměřená")):
+    check(f"výsledek řízení z hesla pryč: {pred!r}", analyza.ocisti_heslo(pred) == po, analyza.ocisti_heslo(pred))
 check("heslo přes jeden řádek je obecné",
       analyza.heslo_obecne("Velmi dlouhé heslo které má určitě víc slov než se vejde na jeden řádek"))
 check("pokyn k heslu je v rozboru i v přepisu",

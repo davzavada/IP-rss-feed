@@ -90,9 +90,9 @@ pro AI.
   hledá týden zpět, další deset dní.
 - **AI rozbor** dělá jedním voláním heslo, nejvýš třívěté shrnutí, 1–3
   oblasti ze seznamu `docs/data/oblasti.json` a příznak čistě procesního
-  rozhodnutí. Heslo je nadpis na jeden řádek ve tvaru „věc – závěr“
-  (Smlouva o postoupení autorských práv – Řím I), nikdy jen procesní
-  institut („Přípustnost dovolání“); takové heslo (`heslo_obecne`) i hesla
+  rozhodnutí. Heslo je nadpis na jeden řádek, obecný právní závěr jako
+  krátká právní věta (Postoupení autorských práv spadá pod Řím I), bez
+  výsledku řízení a nikdy jen procesní institut („Přípustnost dovolání“); takové heslo (`heslo_obecne`) i hesla
   podle staršího pokynu (`ai.hv` < `HESLO_VERZE`) přepíše každý běh levně
   ze shrnutí, po dávkách (`prepis_hesel`, nejvýš 15 × 20 za běh). Model dostane vždy celý text a úřední údaje (heslo NS, oblast
   úpravy NSS, věcný rejstřík ÚS, dotčené předpisy) jako vodítko. Oblasti
