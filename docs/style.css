@@ -185,7 +185,11 @@ main { min-width: 0; padding: 32px 48px 48px; }
   position: sticky; top: var(--head-h); z-index: 30;
   margin: -32px -48px 24px; padding: 8px 12px;
   background: var(--background); border-bottom: 1px solid var(--border);
+  transition: transform .25s ease, opacity .25s ease;
 }
+/* Při posouvání dolů lišta zajede pod hlavičku, při posunu nahoru se vrátí
+   (initSkryvaniLisy v app.js). Hlavička je poloprůhledná, proto i opacity. */
+.pagetabs-lista.skryta { transform: translateY(-100%); opacity: 0; pointer-events: none; }
 .pagetabs {
   display: flex; gap: 4px; align-items: center;
   overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain;
@@ -296,21 +300,22 @@ main { min-width: 0; padding: 32px 48px 48px; }
   margin: 0; font-size: 16px; font-weight: 600; line-height: 1.35;
   letter-spacing: -0.01em; text-wrap: pretty; overflow-wrap: anywhere;
 }
+/* Titulek je odkazem na zdroj jen na telefonu; na desktopu je prostý text
+   (odkazy jsou hned za ním). */
+.titul-odkaz { color: inherit; text-decoration: none; pointer-events: none; }
+.titul-sipka { display: none; color: var(--faint); font-weight: 400; }
 .polozka-odkazy-text { display: flex; align-items: baseline; gap: 10px; font-size: 12.5px; white-space: nowrap; }
 .odkaz-text { color: var(--faint); }
 .odkaz-text:hover { color: var(--active-fg); }
 .polozka-vec { display: none; font-size: 13px; color: var(--muted-foreground); }
 .polozka-shrnuti { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--fg-2); text-wrap: pretty; }
 .polozka-shrnuti.note { color: var(--muted-foreground); font-style: italic; }
-/* Odkazy jako tlačítka – jen na telefonu (viz níž). */
-.polozka-odkazy { display: none; justify-content: flex-end; gap: 6px; margin-top: 4px; }
 .odkaz {
   display: inline-flex; align-items: center; font-size: 12px; font-weight: 500;
   padding: 3px 8px; border: 1px solid var(--border); border-radius: 6px;
   color: var(--fg-2); white-space: nowrap; text-decoration: none; background: var(--background);
 }
 .odkaz:hover { background: var(--accent); color: var(--foreground); text-decoration: none; }
-.odkaz-pdf { font-weight: 600; letter-spacing: 0.04em; padding-inline: 7px; }
 
 /* Stav AI nad seznamem judikatury (kolik rozhodnutí ještě čeká na shrnutí). */
 .card-stav {
@@ -647,7 +652,10 @@ html:has(.dialog[open]) { overflow: hidden; }
    Třídu nasazuje i sundává skript, takže bez JS se stránka zobrazí normálně;
    sundá se v initApp() nebo nejpozději po pojistném timeoutu. */
 html.is-loading body { visibility: hidden; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .pagetabs-lista { transition: none; }
+}
 
 /* ===== Střední šířky (tablet): bez boční navigace ===== */
 @media (max-width: 1023px) {
@@ -679,14 +687,13 @@ html.is-loading body { visibility: hidden; }
   .feed { gap: 18px; }
   .zdroj-hlava { gap: 8px; padding-bottom: 8px; }
 
-  /* Datum na řádku se značkou, název věci pod titulkem, odkazy dole
-     vpravo jako tlačítka (dost velká na prst). */
+  /* Datum na řádku se značkou, název věci pod titulkem. Odkazem na zdroj
+     je sám titulek (se šipkou), tlačítka PDF a Zdroj tu nejsou. */
   .polozka { padding: 16px 0; }
   .polozka-meta .meta-vec, .polozka-odkazy-text { display: none; }
   .polozka-vec { display: block; }
-  .polozka-odkazy { display: flex; }
-  .odkaz { min-height: 32px; padding: 0 10px; border-radius: 8px; font-size: 13px; }
-  .odkaz-pdf { font-size: 12px; }
+  .titul-odkaz { pointer-events: auto; }
+  .titul-sipka { display: inline; }
   /* Zdroje přehledu pod sebou, každý na jeden řádek. */
   .digest-block { padding: 18px 0; }
   .digest-title { font-size: 17px; }
