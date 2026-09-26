@@ -1215,6 +1215,36 @@ PREHLED_OK = "ok"                 # naparsovaný celý
 PREHLED_NEUPLNY = "neuplny"       # naparsovaná jen část – nic se nemaže
 PREHLED_BEZ_DOKUMENTU = "bez_dokumentu"   # úsek dokument zrovna nevydal
 PREHLED_CHYBA = "chyba"           # stažení/formát/parsování selhalo
+PREHLED_BEZE_ZMENY = "beze_zmeny"  # stejný dokument jako minule – nic nového
+
+
+def otisk_prehledu(data, cfg):
+    """Otisk staženého přehledu i nastavení, podle kterého se filtruje (IP
+    senáty, soudci, účastníci). Když se nezmění ani jedno, dá stejný
+    dokument stejná jednání – netřeba ho znovu parsovat ani volat AI."""
+    filtr = json.dumps({k: cfg.get(k) for k in ("senaty", "soudci", "ucastnici_ip")},
+                       sort_keys=True, ensure_ascii=False)
+    return hashlib.sha256(data + filtr.encode("utf-8")).hexdigest()
+
+
+def _bez_stazeno(courts):
+    """Metadata soudů bez času stažení úseků (pro beze_zmeny)."""
+    out = {}
+    for c, meta in (courts or {}).items():
+        m = dict(meta)
+        m["useky"] = {u: {k: v for k, v in (x or {}).items() if k != "stazeno"}
+                      for u, x in (meta.get("useky") or {}).items()}
+        out[c] = m
+    return out
+
+
+def beze_zmeny(stary, novy, nestale=("generated",)):
+    """True, když se výstup liší nejvýš v časových razítcích (`nestale`) –
+    pak se soubor nepřepisuje, ať se kvůli razítku zbytečně necommituje
+    a nenasazuje web."""
+    oriznout = lambda d: {k: v for k, v in (d or {}).items() if k not in nestale}
+    return json.dumps(oriznout(stary), sort_keys=True, ensure_ascii=False) == \
+        json.dumps(oriznout(novy), sort_keys=True, ensure_ascii=False)
 
 
 def warning(zprava):
@@ -1223,10 +1253,14 @@ def warning(zprava):
     print(f"::warning::{zprava}")
 
 
-def scrape_jednani(court, cfg, prehled, local_file=None):
+def scrape_jednani(court, cfg, prehled, local_file=None, minuly_otisk=None):
     """Stáhne (nebo načte lokálně) jeden přehled jednání a naparsuje ho.
 
-    Vrací (items, period, zdroj_url, stav); items je None, když se
+    Přehled se stahuje každý běh, ale když má stejný otisk jako minule
+    (`minuly_otisk`, viz otisk_prehledu), dál se nečte: vrátí se stav
+    PREHLED_BEZE_ZMENY a jednání zůstanou, jak jsou.
+
+    Vrací (items, period, zdroj_url, stav, otisk); items je None, když se
     nepodařilo získat vůbec nic – volající pak nechá dosavadní data být.
     `stav` je jedno z PREHLED_*: odliší skutečné selhání od úseku, který
     dokument zrovna nevydal, a úplný přehled od neúplného.
@@ -1267,21 +1301,26 @@ def scrape_jednani(court, cfg, prehled, local_file=None):
             if not href:
                 if links:
                     print(f"  [{tag}] na stránce není dokument tohoto úseku")
-                    return None, None, None, PREHLED_BEZ_DOKUMENTU
+                    return None, None, None, PREHLED_BEZ_DOKUMENTU, None
                 print(f"  [{tag}] na stránce nejsou odkazy na dokumenty")
-                return None, None, None, PREHLED_CHYBA
+                return None, None, None, PREHLED_CHYBA, None
             print(f"  [{tag}] stahuji: {text or href}")
             data = http_get(href).content
             zdroj = href
         except requests.RequestException as e:
             print(f"  [{tag}] stažení selhalo: {e}")
-            return None, None, None, PREHLED_CHYBA
+            return None, None, None, PREHLED_CHYBA, None
+
+    otisk = otisk_prehledu(data, cfg)
+    if not local_file and minuly_otisk and otisk == minuly_otisk:
+        print(f"  [{tag}] přehled beze změny od minula – nečtu ho znovu")
+        return None, None, zdroj, PREHLED_BEZE_ZMENY, otisk
 
     is_docx = data[:2] == b"PK"
     is_pdf = data[:5] == b"%PDF-"
     if not (is_docx or is_pdf):
         print(f"  [{tag}] neznámý formát dokumentu – přeskočeno")
-        return None, None, None, PREHLED_CHYBA
+        return None, None, None, PREHLED_CHYBA, None
 
     items, period = [], None
     try:
@@ -1336,8 +1375,9 @@ def scrape_jednani(court, cfg, prehled, local_file=None):
           + (f", období {period[0]} – {period[1]}" if period else "")
           + (f", bez účastníků {bez_stran}" if bez_stran else ""))
     if not items:
-        return None, period, zdroj, PREHLED_CHYBA
-    return items, period, zdroj, stav
+        return None, period, zdroj, PREHLED_CHYBA, None
+    # Otisk jen u úplně přečteného přehledu – neúplný se příště čte znovu.
+    return items, period, zdroj, stav, (otisk if stav == PREHLED_OK else None)
 
 
 # --- Co se v přehledu změnilo od minule ---------------------------------
@@ -1461,7 +1501,7 @@ def usek_nazev(cfg, usek):
 
 
 def merge_output(existing, court, items, period, zdroj_url, cfg,
-                 mazat=True, redigovat=True):
+                 mazat=True, redigovat=True, otisk=None):
     """Zanese nový přehled do výstupu.
 
     Ukládají se jen jednání v agendě duševního vlastnictví. Ostatní věci
@@ -1543,6 +1583,8 @@ def merge_output(existing, court, items, period, zdroj_url, cfg,
         "stazeno": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "zdroj": zdroj_url,
     }
+    if otisk:
+        meta["useky"][usek]["otisk"] = otisk
 
 
 # --- iCalendar export (přihlášení v Google Kalendáři přes URL) ---
@@ -1805,7 +1847,12 @@ def main():
             local = local_jednani.get(f"{court}:{usek}") or (
                 local_jednani.get(court) if len(cfg.get("prehledy", [{}])) == 1
                 or usek == cfg.get("prehledy", [{}])[0].get("usek") else None)
-            items, period, zdroj, stav = scrape_jednani(court, cfg, prehled, local)
+            minuly = (((output.get("courts") or {}).get(court) or {})
+                      .get("useky", {}).get(usek) or {}).get("otisk")
+            items, period, zdroj, stav, otisk = scrape_jednani(
+                court, cfg, prehled, local, minuly)
+            if stav == PREHLED_BEZE_ZMENY:
+                continue
             if stav == PREHLED_CHYBA:
                 selhaly.append(tag)
             elif stav == PREHLED_NEUPLNY:
@@ -1815,11 +1862,12 @@ def main():
             mark_ip(items, cfg)
             print(f"  [{tag}] v agendě IP: "
                   f"{sum(1 for it in items if it.get('ip'))} z {len(items)}")
-            prehledy.append((court, cfg, items, period, zdroj, stav))
+            prehledy.append((court, cfg, items, period, zdroj, stav, otisk))
 
     if not prehledy:
-        # Nic nového – hearings.json ani .ics se nepřepisují, ať se jen
-        # kvůli časovým razítkům nezměnily a stará data se netvářila čerstvě.
+        # Nic nového (přehledy beze změny nebo nedostupné) – hearings.json
+        # ani .ics se nepřepisují, ať se jen kvůli časovým razítkům
+        # nezměnily a stará data se netvářila čerstvě.
         if selhaly:
             sys.exit(f"Nepodařilo se získat žádný přehled jednání "
                      f"(selhalo: {', '.join(selhaly)}) – výstup nechávám.")
@@ -1834,9 +1882,9 @@ def main():
                  output["jednani"], kes)
     uloz_osoby_kes(kes)
 
-    for court, cfg, items, period, zdroj, stav in prehledy:
+    for court, cfg, items, period, zdroj, stav, otisk in prehledy:
         merge_output(output, court, items, period, zdroj, cfg,
-                     mazat=stav == PREHLED_OK, redigovat=False)
+                     mazat=stav == PREHLED_OK, redigovat=False, otisk=otisk)
 
     # 4) Změny proti minulým přehledům držíme jen měsíc zpět. Nová jednání
     #    stránka mezi změnami neukazuje – starší záznamy tohoto typu pryč.
@@ -1844,10 +1892,23 @@ def main():
                                   if z.get("typ") != "nove"])
 
     zapis_sledovane(output, config)
-    output["generated"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
-    output["ics"] = write_ics(output)
-    save_json(OUTPUT_FILE, output)
-    print(f"Hotovo: {len(output['jednani'])} IP jednání -> {OUTPUT_FILE}")
+    output["ics"] = f"https://{site_host()}/hearings.ics"
+    # UID dopisuje write_ics – tady dřív, ať se porovnává se stejným tvarem.
+    for j in output.get("jednani", []):
+        if j.get("ip") and j.get("datum"):
+            j["uid"] = ics_uid(j)
+    # Zapisuje se, jen když se obsah opravdu změnil: jinak by čas stažení
+    # a razítko v .ics každý den vyvolaly commit a nasazení webu.
+    predtim = load_json(OUTPUT_FILE)
+    if beze_zmeny(predtim, output, nestale=("generated", "courts")) and \
+            beze_zmeny(_bez_stazeno(predtim.get("courts")), _bez_stazeno(output.get("courts")), ()):
+        print(f"Hotovo: {len(output['jednani'])} IP jednání, obsah beze změny – "
+              f"{OUTPUT_FILE} nepřepisuji")
+    else:
+        output["generated"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        output["ics"] = write_ics(output)
+        save_json(OUTPUT_FILE, output)
+        print(f"Hotovo: {len(output['jednani'])} IP jednání -> {OUTPUT_FILE}")
 
     if selhaly:
         warning(f"Jednání: nepodařilo se získat {', '.join(selhaly)} – "

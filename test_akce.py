@@ -10,6 +10,8 @@ vlastních parserů nad nimi.
 Spuštění: python test_akce.py
 """
 
+import contextlib
+import io
 import json
 import os
 import sys
@@ -565,6 +567,35 @@ check("běh: duplikát zůstává ve stavu, ne ve výpisu ani v ics",
       str(vystup["duplikaty"]))
 check("běh: počet bez duplikátu", vystup["poradatele"]["EPRAVO"]["pocet"] == 0
       and vystup["poradatele"]["PFUK"]["pocet"] == 1, str(vystup["poradatele"]))
+# Druhý běh se stejným obsahem (jen jiný čas): akce.json ani .ics se nepřepíšou.
+with open(os.path.join(beh, "akce.json"), encoding="utf-8") as f:
+    pred_json = f.read()
+with open(os.path.join(beh, "akce.ics"), encoding="utf-8") as f:
+    pred_ics = f.read()
+
+
+class PozdejsiCas(s.datetime):
+    @classmethod
+    def now(cls, tz=None):
+        return s.datetime(2026, 9, 25, 14, 30, tzinfo=tz)
+
+
+s.CONFIG_FILE, s.OUTPUT_FILE, s.ICS_FILE = (os.path.join(beh, "config.json"), os.path.join(beh, "akce.json"),
+                                            os.path.join(beh, "akce.ics"))
+s.datetime = PozdejsiCas
+sys.argv = ["scraper_akce.py", "--local", f"UPV={stranka}"]
+buf = io.StringIO()
+try:
+    with contextlib.redirect_stdout(buf):
+        s.main()
+finally:
+    s.CONFIG_FILE, s.OUTPUT_FILE, s.ICS_FILE, sys.argv, s.datetime = puvodni_beh
+with open(os.path.join(beh, "akce.json"), encoding="utf-8") as f:
+    po_json = f.read()
+with open(os.path.join(beh, "akce.ics"), encoding="utf-8") as f:
+    po_ics = f.read()
+check("běh beze změny obsahu soubory nepřepíše (ani čas stažení, ani razítko v ics)",
+      po_json == pred_json and po_ics == pred_ics and "nepřepisuji" in buf.getvalue(), buf.getvalue()[-300:])
 s.gemini_enabled, s.gemini_generate_raw = puvodni_enabled, puvodni_raw
 
 # --- Skutečný config ----------------------------------------------------------
