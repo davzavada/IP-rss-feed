@@ -225,8 +225,9 @@ stránky (odkazy v něm zůstanou, ať AI vrátí i adresu akce; výzvy, granty
 a studijní nabídky vynechá). Akcím, kterým ve výpisu chybí anotace, lektoři
 nebo cena, se stáhne jejich stránka, u PDF (ÚPV) text z PDF a když stránka
 odkazuje na pozvánku (ČAK), i ta. Rozpočet `AKCE_MAX_DETAILU` (80 za běh) se
-dělí mezi pořadatele; na co nezbude, přijde na řadu další noc, nejvýš dva
-pokusy na akci (`detail_pokusy`). Předpony formy v názvu („HYBRIDNÍ FORMA:",
+dělí mezi pořadatele podle toho, kolik akcí na stránku čeká; na co nezbude,
+přijde na řadu další noc, nejvýš dva pokusy na akci (`detail_pokusy`,
+přečtená stránka se znovu nečte, výpadek AI se nepočítá). Předpony formy v názvu („HYBRIDNÍ FORMA:",
 „Online seminář:") jdou do pole `forma`. AI pak každou akci zařadí do 1–3
 oblastí z `docs/data/oblasti.json`, stejně jako judikaturu; znovu se ptá,
 jen když se změní název nebo anotace.
@@ -243,11 +244,16 @@ v každém svém dni, kurz delší než týden jen v den začátku.
   s `id`, `poradatel`, `datum` (+ `datum_do` u vícedenních), `zacatek`,
   `konec`, `nazev`, `misto`, `forma` (`prezencne` / `online` / `hybridne`),
   `lektori`, `cena`, `anotace`, `url` a `oblasti`. Vedle je `akce.ics`
-  k odběru v kalendáři (UID podle `id`).
-- Výpis, který se nepodaří stáhnout, nechá akce pořadatele, jak byly. Budoucí
-  akce, která z výpisu zmizí, vypadne (zrušená) – kromě případu, kdy výpis
-  četla AI a vrátila míň než polovinu akcí proti minulému běhu; to se bere
-  jako výpadek čtení. Proběhlé akce se drží 45 dní.
+  k odběru v kalendáři (UID podle `id`; přejmenovaná akce si ho drží podle
+  své stránky). Tatáž akce u dvou pořadatelů (epravo prodává i akce jiných,
+  `prodejce` v configu) se ukáže jednou; druhý záznam je v `duplikaty`.
+- Výpis, který se nepodaří stáhnout ani přečíst (AI neodpoví), nechá akce
+  pořadatele, jak byly (`chyba`). Výpis, jehož text se od minula nezměnil
+  (`otisk`), AI znovu nečte. Budoucí akce, která z výpisu zmizí nebo ji
+  pořadatel v názvu ohlásí jako zrušenou, vypadne – kromě případu, kdy výpis
+  nevrátil žádnou akci, nebo ho četla AI a vrátila míň než polovinu akcí
+  proti minulému běhu; to se bere jako výpadek čtení. Proběhlé akce se drží
+  45 dní, akce pořadatele vyřazeného z configu vypadnou hned.
 - Weby pořadatelů nejsou z vývojového prostředí vidět. Sonda je stáhne
   (`probe.yml` se zdrojem `akce`, s volbou `ulozit` do `tests/fixtures/probe/`)
   a podle nich jde pro web, kde AI čte špatně, napsat vlastní parser

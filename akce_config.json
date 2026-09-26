@@ -1,5 +1,5 @@
 {
-  "note": "Pořadatelé vzdělávacích akcí pro Kalendář akcí. `stranky` jsou výpisy akcí, které scraper_akce.py každou noc stáhne; `hosty` jsou domény, na které smí vést odkaz na přihlášku (jinak se odkaz zahodí a vede se na výpis). `zkratka` a `barva` jsou pro štítek a barvu v kalendáři, pořadí je pořadí štítků na webu. `parser` je volitelné jméno vlastního parseru v PARSERY ve scraper_akce.py – bez něj se akce berou z iCal odkazu, ze schema.org Event (JSON-LD), a když nic z toho stránka nemá, vytáhne je AI z textu stránky.",
+  "note": "Pořadatelé vzdělávacích akcí pro Kalendář akcí. `stranky` jsou výpisy akcí, které scraper_akce.py každou noc stáhne; `hosty` jsou domény, na které smí vést odkaz na přihlášku (jinak se odkaz zahodí a vede se na výpis). `zkratka` a `barva` jsou pro štítek a barvu v kalendáři, pořadí je pořadí štítků na webu. `parser` je volitelné jméno vlastního parseru v PARSERY ve scraper_akce.py – bez něj se akce berou z iCal odkazu, ze schema.org Event (JSON-LD), a když nic z toho stránka nemá, vytáhne je AI z textu stránky. `prodejce` je pořadatel, který prodává vstupenky i na akce jiných – když je tatáž akce i u jejího pořadatele, ukáže se ta jeho.",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -45,7 +45,8 @@
       ],
       "hosty": [
         "epravo.cz"
-      ]
+      ],
+      "prodejce": true
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",

@@ -24,9 +24,12 @@ každou akci zařadí do 1–3 oblastí ze stejného seznamu jako judikaturu
 (docs/data/oblasti.json); zařazení se drží u akce a znovu se ptá, jen když
 se změní název nebo anotace.
 
-Když se výpis pořadatele nepodaří stáhnout ani přečíst, jeho akce zůstanou,
-jak byly. Proběhlé akce se drží PROSLE_DNI dní (měsíční mřížka je ukazuje
-tlumeně), pak vypadnou.
+Když se výpis pořadatele nepodaří stáhnout ani přečíst (i když AI
+neodpoví), jeho akce zůstanou, jak byly. Výpis, jehož text se od minula
+nezměnil (`otisk` u pořadatele), AI znovu nečte. Akce, kterou pořadatel
+v názvu ohlásí jako zrušenou, vypadne. Tatáž akce u dvou pořadatelů se
+ukáže jednou (rozdel_duplicity). Proběhlé akce se drží PROSLE_DNI dní
+(měsíční mřížka je ukazuje tlumeně), pak vypadnou.
 
 Lokálně bez přístupu na weby pořadatelů:
     python scraper_akce.py --local CAK=stranka.html UPV=akce.ics
@@ -47,7 +50,7 @@ import requests
 from bs4 import BeautifulSoup
 
 from feed_common import (
-    USER_AGENT, gemini_enabled, gemini_generate_raw, load_json, save_json,
+    USER_AGENT, ai_pretizena, gemini_enabled, gemini_generate_raw, load_json, save_json,
 )
 from judikatura.taxonomie import Taxonomie
 from scraper_hearings import (
@@ -70,7 +73,8 @@ HEADERS = {
 PROSLE_DNI = 45
 DOPREDU_DNI = 400
 # Kolik stránek akcí (detailů) se za běh stáhne a nechá přečíst AI. Dělí se
-# rovným dílem mezi pořadatele; po prvních nocích zbývají jen nové akce.
+# mezi pořadatele podle toho, kolik akcí na detail čeká (rozdel_rozpocet);
+# po prvních nocích zbývají jen nové akce.
 AKCE_MAX_DETAILU = int(os.environ.get("AKCE_MAX_DETAILU", "80"))
 # Kolik akcí jde do jednoho dotazu na oblasti.
 OBLASTI_DAVKA = 25
@@ -161,6 +165,59 @@ def norm_forma(s, misto=""):
     return ""
 
 
+def jako_text(x, prvni=False):
+    """Hodnota od AI nebo z cizího JSON-LD jako řetězec. Seznam se spojí
+    mezerou (s `prvni` se vezme jen první neprázdný prvek – u odkazu),
+    slovník, None a jiné typy dají ''. Model může vrátit ve `forma` výčet
+    ["online", "prezencne"] – spojený ho norm_forma přečte jako hybridně."""
+    if isinstance(x, str):
+        return x
+    if isinstance(x, (int, float)) and not isinstance(x, bool):
+        return str(x)
+    if isinstance(x, list):
+        casti = [c for c in (jako_text(y) for y in x if not isinstance(y, (list, dict))) if c.strip()]
+        if prvni:
+            return casti[0] if casti else ""
+        return " ".join(casti)
+    return ""
+
+
+TEXTOVA_POLE = ("nazev", "datum", "datum_do", "zacatek", "konec", "misto", "forma", "cena", "anotace")
+
+
+def ocisti_zaznam(raw):
+    """Syrový záznam s poli v typech, se kterými zbytek kódu počítá (texty
+    jako řetězce, url jeden řetězec, lektoři seznam nebo řetězec)."""
+    out = dict(raw)
+    for k in TEXTOVA_POLE:
+        if k in out:
+            out[k] = jako_text(out[k])
+    if "url" in out:
+        out["url"] = jako_text(out["url"], prvni=True)
+    lk = out.get("lektori")
+    if isinstance(lk, (list, dict)):
+        out["lektori"] = _jmena(lk)
+    elif lk is not None and not isinstance(lk, str):
+        out["lektori"] = []
+    return out
+
+
+# Oznámení o zrušení v názvu („POZOR: … SE NEBUDE KONAT", „ZRUŠENO:").
+# Záměrně úzké: „Zrušení společnosti", „zrušení SJM" nebo „odložení věci"
+# jsou běžná témata seminářů. Přesunutá akce se nevyřazuje – pořadatel jí
+# obvykle rovnou změní datum.
+ZRUSENA_RE = re.compile(
+    r"\bnebude\s+konat\b|\bse\s+nekona\b|^zruseno\b|zpravou\s+o\s+zruseni"
+    r"|\b(?:akce|seminar|webinar|konference|prednaska|kurz)\s+(?:je\s+|byla?\s+|bylo\s+)?zrusen[aoy]?\b")
+ZRUSENA_VERZALKY_RE = re.compile(r"\bZRUŠEN[OAÁY]?\b")
+
+
+def je_zrusena(nazev):
+    nazev = str(nazev or "")
+    return bool(ZRUSENA_VERZALKY_RE.search(nazev)
+                or ZRUSENA_RE.search(strip_diacritics(nazev).casefold()))
+
+
 def povoleny_odkaz(url, hosty):
     """Odkaz na akci jen https/http na doméně pořadatele (config `hosty`)."""
     try:
@@ -198,10 +255,16 @@ PREDPONA_FORMY_RE = re.compile(
 
 def normalizuj(raw, org, cfg, zaklad_url):
     """Syrový záznam (z parseru, JSON-LD, iCal nebo AI) na akci pro web.
-    Vrací None, když chybí název nebo datum."""
+    Vrací None, když chybí název nebo datum a u akce, kterou pořadatel
+    v názvu ohlásil jako zrušenou (ČAK ji ve výpisu nechá, jen přepíše
+    název) – z výpisu tak „zmizí" a sloucit ji vyřadí."""
+    raw = ocisti_zaznam(raw)
     nazev = cisty(raw.get("nazev"))
     datum = norm_datum(raw.get("datum"))
     if not nazev or not datum:
+        return None
+    if je_zrusena(nazev):
+        print(f"  [{org}] zrušená akce vynechána: {nazev[:80]}")
         return None
     predpona = PREDPONA_FORMY_RE.match(nazev)
     if predpona and len(nazev) > predpona.end() + 3:
@@ -445,8 +508,8 @@ VYPIS_AI_PROMPT = (
     "u data chybí, doplň podle dneška (nejbližší budoucí). Nic si nevymýšlej, "
     "přepisuj z textu; odkazy ber jen z <…>. Ber jen akce s datem konání "
     "(seminář, přednáška, webinář, konference, kurz, kulatý stůl). Vynech "
-    "akce, které už proběhly, novinky, články, výzvy a granty, nabídky "
-    "studia a výuky pro studenty, uzávěrky přihlášek a nabídky práce."
+    "akce, které už proběhly, zrušené akce, novinky, články, výzvy a granty, "
+    "nabídky studia a výuky pro studenty, uzávěrky přihlášek a nabídky práce."
 )
 
 DETAIL_AI_PROMPT = (
@@ -468,21 +531,35 @@ OBLASTI_AI_PROMPT = (
 
 
 def z_ai_vypisu(text, org, cfg, dnes):
-    if not gemini_enabled() or not text.strip():
+    """Akce z textu výpisu. Při vypnuté AI []; None, když AI výpis
+    nepřečetla – nedala odpověď (limit, výpadek, MAX_TOKENS), odpověď není
+    JSON pole, nebo stránka nemá žádný text (vykresluje ji až skript,
+    anti-bot stránka). To je výpadek čtení, ne výpis bez akcí."""
+    if not gemini_enabled():
         return []
+    if not text.strip():
+        return None
     prompt = VYPIS_AI_PROMPT.format(poradatel=cfg.get("nazev", org), dnes=dnes.isoformat())
     data = extract_json(gemini_generate_raw(prompt, text, max_tokens=16384))
-    return [x for x in data if isinstance(x, dict)] if isinstance(data, list) else []
+    return [x for x in data if isinstance(x, dict)] if isinstance(data, list) else None
 
 
 def z_ai_detailu(text, org, cfg):
-    if not gemini_enabled() or not text.strip():
-        return None
+    """(údaje, nedostupna): údaje ze stránky akce, nebo None. `nedostupna`
+    je True, když AI vůbec nemohla odpovědět (vypnutá, přetížená, bez
+    kvóty) – za to stránka nemůže a pokus se jí nepočítá."""
+    if not gemini_enabled():
+        return None, True
+    if not text.strip():
+        return None, False
     prompt = DETAIL_AI_PROMPT.format(poradatel=cfg.get("nazev", org))
-    data = extract_json(gemini_generate_raw(prompt, text, max_tokens=4096))
+    odpoved = gemini_generate_raw(prompt, text, max_tokens=4096)
+    if not odpoved:
+        return None, ai_pretizena()
+    data = extract_json(odpoved)
     if isinstance(data, list):
         data = data[0] if data and isinstance(data[0], dict) else None
-    return data if isinstance(data, dict) else None
+    return (data if isinstance(data, dict) else None), False
 
 
 def zarad_oblasti(akce, taxonomie):
@@ -512,7 +589,8 @@ def zarad_oblasti(akce, taxonomie):
             if a["id"] not in data:
                 continue
             hodnota = data[a["id"]]
-            a["oblasti"] = taxonomie.normalizuj(hodnota if isinstance(hodnota, list) else [])
+            a["oblasti"] = taxonomie.normalizuj(
+                [x for x in hodnota if isinstance(x, str)] if isinstance(hodnota, list) else [])
             a["oblasti_klic"] = obsah_klic(a)
             hotovo += 1
     print(f"  oblasti: zařazeno {hotovo} z {len(cekaji)} akcí")
@@ -558,11 +636,26 @@ PARSERY = {"cak": parser_cak}
 
 # --- Stažení a sloučení -----------------------------------------------------
 
-def nacti_poradatele(org, cfg, dnes, local=None):
-    """Stáhne výpisy pořadatele a vrátí (akce, zdroj_dat), nebo (None, chyba),
-    když se nepodařilo nic stáhnout ani přečíst."""
+def otisk_vypisu(texty):
+    """Otisk textu výpisů, které by četla AI (s promptem – změna promptu
+    otisk zneplatní)."""
+    return hashlib.sha1("\n\0".join([VYPIS_AI_PROMPT, *texty]).encode("utf-8")).hexdigest()[:16]
+
+
+def nacti_poradatele(org, cfg, dnes, local=None, minule=None):
+    """Stáhne výpisy pořadatele a vrátí (akce, zdroj_dat, otisk), nebo
+    (None, chyba, None), když se nepodařilo nic stáhnout ani přečíst.
+
+    Chybou je i výpadek AI (žádná nebo nečitelná odpověď, stránka bez
+    textu) – akce pořadatele pak zůstanou, jak byly, místo aby zmizely.
+    `otisk` je otisk textu, který četla AI (None, když se AI neptala).
+
+    `minule` = {"otisk": …, "akce": […]} z minulého běhu: když je text
+    výpisu pro AI stejný jako minule, AI se znovu neptá (šetří to kvótu
+    a AI nepřepíše anotace jinými slovy) a vrátí se minulé budoucí akce
+    pořadatele."""
     zdroje = [(local, None)] if local else [(None, u) for u in cfg.get("stranky", [])]
-    syrove, cesta, chyby = [], None, []
+    syrove, cesta, chyby, pro_ai = [], None, [], []
     for soubor, url in zdroje:
         try:
             if soubor:
@@ -605,15 +698,35 @@ def nacti_poradatele(org, cfg, dnes, local=None):
             if nalez:
                 cesta = cesta or "jsonld"
         if not nalez:
-            nalez = z_ai_vypisu(text_stranky(obsah, zaklad), org, cfg, dnes)
-            if nalez:
-                cesta = cesta or "ai"
+            # AI až po stažení všech stránek – podle otisku se pozná, jestli
+            # je vůbec potřeba.
+            pro_ai.append(text_stranky(obsah, zaklad))
+            continue
         syrove += nalez
 
-    if not syrove and chyby and len(chyby) == len(zdroje):
-        return None, "; ".join(chyby)
-    if not syrove and not gemini_enabled():
-        return None, "stránka nemá strojově čitelné akce a AI je vypnutá"
+    otisk, z_minula = None, []
+    if pro_ai:
+        otisk = otisk_vypisu(pro_ai)
+        minule = minule or {}
+        if otisk == minule.get("otisk") and minule.get("akce") is not None:
+            z_minula = [dict(a) for a in minule["akce"] if a.get("datum", "") >= dnes.isoformat()]
+            cesta = cesta or "ai"
+            print(f"  [{org}] výpis se od minula nezměnil – AI se neptám, beru minulé akce")
+        elif gemini_enabled():
+            for text in pro_ai:
+                nalez = z_ai_vypisu(text, org, cfg, dnes)
+                if nalez is None:
+                    print(f"  [{org}] AI výpis nepřečetla – akce zůstávají, jak byly")
+                    return None, "AI výpis nepřečetla (bez odpovědi nebo prázdná stránka)", None
+                syrove += nalez
+                cesta = cesta or "ai"   # i prázdný seznam: AI výpis přečetla
+        else:
+            otisk = None
+
+    if not syrove and not z_minula and chyby and len(chyby) == len(zdroje):
+        return None, "; ".join(chyby), None
+    if not syrove and not z_minula and not cesta and not gemini_enabled():
+        return None, "stránka nemá strojově čitelné akce a AI je vypnutá", None
 
     hranice_od = (dnes - timedelta(days=PROSLE_DNI)).isoformat()
     hranice_do = (dnes + timedelta(days=DOPREDU_DNI)).isoformat()
@@ -625,8 +738,12 @@ def nacti_poradatele(org, cfg, dnes, local=None):
             continue
         videne.add(a["id"])
         akce.append(a)
+    for a in z_minula:   # už normalizované, s id z minula
+        if a.get("id") and a["id"] not in videne:
+            videne.add(a["id"])
+            akce.append(a)
     print(f"  [{org}] akcí: {len(akce)}" + (f" (cesta: {cesta})" if cesta else ""))
-    return akce, cesta
+    return akce, cesta, otisk
 
 
 def _pdf_text(data):
@@ -650,14 +767,16 @@ def odkaz_pozvanky(html, url, hosty):
 
 
 def text_detailu(url, hosty=()):
-    """(html, text) stránky akce. U PDF (pozvánky ÚPV) je html prázdné
-    a text je z PDF; když stránka odkazuje na pozvánku, přidá se k textu
-    i ta."""
+    """(html, text, uplne) stránky akce. U PDF (pozvánky ÚPV) je html
+    prázdné a text je z PDF; když stránka odkazuje na pozvánku, přidá se
+    k textu i ta. `uplne` je False, když pozvánku stáhnout nešlo – u ČAK
+    jsou lektoři a cena jen v ní, tak se stránka zkusí ještě jednou."""
     r = http_get(url)
     if r.content[:5] == b"%PDF-" or "pdf" in r.headers.get("Content-Type", "").lower():
-        return "", _pdf_text(r.content)
+        return "", _pdf_text(r.content), True
     text = text_stranky(r.text, url)
     pozvanka = odkaz_pozvanky(r.text, url, hosty)
+    uplne = True
     if pozvanka:
         try:
             p = http_get(pozvanka)
@@ -665,11 +784,13 @@ def text_detailu(url, hosty=()):
                 text += "\n\n--- POZVÁNKA ---\n" + _pdf_text(p.content)
         except Exception as e:   # bez pozvánky zůstane text stránky
             print(f"    pozvánka {pozvanka}: {e}")
-    return r.text, text[:MAX_TEXT]
+            uplne = False
+    return r.text, text[:MAX_TEXT], uplne
 
 
 # Kolikrát se stránka akce zkusí přečíst. Na co nezbude rozpočet, přijde
-# na řadu další noc (počet pokusů se drží u akce v akce.json).
+# na řadu další noc (počet pokusů se drží u akce v akce.json). Úspěšně
+# přečtená stránka se znovu nečte, i když některý údaj neuvádí.
 DETAIL_POKUSU = 2
 
 
@@ -678,12 +799,42 @@ def potrebuje_detail(a):
             and not (a.get("anotace") and a.get("lektori") and a.get("cena")))
 
 
-def dopln_detaily(akce, config, rozpocet):
+def rozdel_rozpocet(potreby, rozpocet):
+    """Rozpočet detailů mezi pořadatele {org: kolik akcí čeká na detail}.
+    Kdo potřebuje méně než rovný díl, dostane svou potřebu, zbytek se dělí
+    mezi ostatní – nic nepropadne jen kvůli pořadí v configu."""
+    pridel = {o: 0 for o in potreby}
+    zbyva = {o: p for o, p in potreby.items() if p > 0}
+    while zbyva and rozpocet > 0:
+        dil = max(rozpocet // len(zbyva), 1)
+        for o in list(zbyva):
+            d = min(dil, zbyva[o], rozpocet)
+            pridel[o] += d
+            zbyva[o] -= d
+            rozpocet -= d
+            if not zbyva[o]:
+                del zbyva[o]
+            if rozpocet <= 0:
+                break
+    return pridel
+
+
+def dopln_detaily(akce, config, rozpocet, cesta=None):
     """Akcím, kterým ve výpisu chybí anotace, lektoři nebo cena, stáhne
     stránku a doplní je (JSON-LD, jinak AI). Vrací zbytek rozpočtu.
 
-    `rozpocet` je podíl pořadatele na AKCE_MAX_DETAILU (viz main); akce se
-    berou od nejbližších, ty jsou pro kalendář nejdůležitější."""
+    `rozpocet` je příděl pořadatele z AKCE_MAX_DETAILU (viz main); akce se
+    berou od nejbližších, ty jsou pro kalendář nejdůležitější.
+
+    Pokus (`detail_pokusy`) se počítá, když stránku nešlo stáhnout nebo
+    přečíst. Přečtená stránka se označí jako hotová (DETAIL_POKUSU). Když
+    AI vůbec nemohla odpovědět (vypnutá, přetížená, bez kvóty), pokus se
+    nepočítá a další stránky se v tomto běhu nestahují.
+
+    `cesta` je, jak se četl výpis pořadatele. Když ho četla AI, má stránka
+    akce přednost i u místa a formy (AI výpisu je občas přiřadí ze sousední
+    akce); přepsaná pole se zapíšou do `z_detailu`, ať je další čtení
+    výpisu nevrátí."""
     doplneno = 0
     for a in sorted(akce, key=lambda x: x["datum"]):
         if rozpocet <= 0:
@@ -692,19 +843,26 @@ def dopln_detaily(akce, config, rozpocet):
             continue
         cfg = config["poradatele"][a["poradatel"]]
         rozpocet -= 1
-        a["detail_pokusy"] = a.get("detail_pokusy", 0) + 1
+        pokusy = a.get("detail_pokusy", 0)
         try:
-            html, text = text_detailu(a["url"], cfg.get("hosty", []))
+            html, text, uplne = text_detailu(a["url"], cfg.get("hosty", []))
         except Exception as e:   # síť i rozbité PDF – akce zůstane z výpisu
             print(f"    detail {a['url']}: {e}")
+            a["detail_pokusy"] = pokusy + 1
             continue
         kandidati = z_jsonld(html) if html else []
         raw = next((k for k in kandidati if norm_datum(k.get("datum")) == a["datum"]), None)
         if raw is None:
-            raw = z_ai_detailu(text, a["poradatel"], cfg)
+            raw, nedostupna = z_ai_detailu(text, a["poradatel"], cfg)
+            if raw is None and nedostupna:
+                print(f"  [{a['poradatel']}] AI nedostupná – stránky akcí zkusím příště")
+                break
         if not raw:
+            a["detail_pokusy"] = pokusy + 1
             continue
+        a["detail_pokusy"] = DETAIL_POKUSU if uplne else pokusy + 1
         doplneno += 1
+        raw = ocisti_zaznam(raw)
         for pole in ("zacatek", "konec", "misto", "cena", "anotace"):
             if not a.get(pole) and raw.get(pole):
                 a[pole] = norm_cas(raw[pole]) if pole in ("zacatek", "konec") else cisty(raw[pole])
@@ -712,6 +870,21 @@ def dopln_detaily(akce, config, rozpocet):
         if not a.get("lektori") and raw.get("lektori"):
             lk = raw["lektori"]
             a["lektori"] = [cisty(x) for x in (lk if isinstance(lk, list) else [lk]) if cisty(x)][:8]
+        forma_d = raw.get("forma") if raw.get("forma") in FORMY else norm_forma(raw.get("forma"))
+        if cesta == "ai":
+            prepsano = []
+            misto_d = cisty(raw.get("misto"))
+            if misto_d:
+                a["misto"] = misto_d
+                prepsano.append("misto")
+            # „online" z výpisu u akce, jejíž stránka uvádí sál a formu ne.
+            if not forma_d and a.get("forma") == "online" and misto_d:
+                forma_d = norm_forma("", misto_d)
+            if forma_d and forma_d != a.get("forma"):
+                a["forma"] = forma_d
+                prepsano.append("forma")
+            if prepsano:
+                a["z_detailu"] = sorted(set(a.get("z_detailu", [])) | set(prepsano))
         if not a.get("forma"):
             a["forma"] = (raw.get("forma") if raw.get("forma") in FORMY
                           else norm_forma(raw.get("forma"), a.get("misto")))
@@ -720,26 +893,56 @@ def dopln_detaily(akce, config, rozpocet):
     return rozpocet
 
 
-def sloucit(stare, org, nove, cesta, dnes):
+def podezrele_malo(stare, org, nove, cesta, dnes):
+    """Vrátil výpis podezřele málo budoucích akcí proti minulému běhu?
+    Žádnou (u jakékoli cesty – prázdná nebo anti-bot stránka), nebo u AI
+    míň než MIN_POMER. U parseru, iCalu a JSON-LD je menší počet skutečná
+    změna výpisu."""
+    dnes_iso = dnes.isoformat()
+    n_stare = sum(1 for a in stare if a.get("poradatel") == org and a.get("datum", "") >= dnes_iso)
+    n_nove = sum(1 for a in nove if a["datum"] >= dnes_iso)
+    return bool(n_stare) and (not n_nove or (cesta == "ai" and n_nove < n_stare * MIN_POMER))
+
+
+def _jedinecne_url(akce, stranky):
+    pocty = {}
+    for a in akce:
+        if a.get("url"):
+            pocty[a["url"]] = pocty.get(a["url"], 0) + 1
+    return {u for u, n in pocty.items() if n == 1 and u not in stranky}
+
+
+def sloucit(stare, org, nove, cesta, dnes, stranky=()):
     """Akce pořadatele: nové z výpisu + to, co se z minulých běhů drží.
 
     - Proběhlé akce zůstávají do PROSLE_DNI (výpisy je obvykle stáhnou).
     - Budoucí akce, která z výpisu zmizela, pořadatel zrušil nebo stáhl –
-      vypadne. Kromě případu, kdy výpis četla AI a vrátila výrazně míň akcí
-      než minule (MIN_POMER): to je spíš výpadek čtení, tak se staré nechají.
+      vypadne. Kromě případu, kdy výpis nevrátil žádnou budoucí akci nebo
+      ho četla AI a vrátila výrazně míň akcí než minule (podezrele_malo):
+      to je spíš výpadek čtení, tak se staré nechají.
+    - Stará a nová verze se párují podle id, a když se id liší (pořadatel
+      nebo AI upravili název), podle vlastní stránky akce: stejná url
+      (jedinečná mezi starými i novými akcemi, ne výpis pořadatele
+      `stranky`) a stejné datum. Nová verze pak převezme staré id – UID
+      v akce.ics se nemění a akce není v kalendáři dvakrát.
     - Údaje, které nové čtení nemá (lektor, cena, oblasti…), se převezmou
-      ze staré verze téže akce.
+      ze staré verze téže akce. U AI výpisu navíc zůstane dosavadní anotace
+      (AI ji každou noc píše jinými slovy a zařazení do oblastí by se pořád
+      počítalo znovu) a pole opravená ze stránky akce (`z_detailu`).
+      Konec vícedenní akce (datum_do) se u parseru, iCalu a JSON-LD bere
+      jen z výpisu – když ho výpis nemá, akce je jednodenní.
     """
     dnes_iso = dnes.isoformat()
     moje = [a for a in stare if a.get("poradatel") == org]
     podle_id = {a["id"]: a for a in moje}
-    budouci_stare = [a for a in moje if a.get("datum", "") >= dnes_iso]
-    budouci_nove = [a for a in nove if a["datum"] >= dnes_iso]
-    podezrele = (cesta == "ai" and budouci_stare
-                 and len(budouci_nove) < len(budouci_stare) * MIN_POMER)
+    podezrele = podezrele_malo(stare, org, nove, cesta, dnes)
     if podezrele:
-        print(f"  [{org}] POZOR: AI přečetla {len(budouci_nove)} budoucích akcí, "
-              f"minule jich bylo {len(budouci_stare)} – nechávám i ty staré")
+        print(f"  [{org}] POZOR: výpis ({cesta}) vrátil podezřele málo budoucích akcí "
+              f"– nechávám i ty staré")
+    nove_id = {a["id"] for a in nove}
+    url_ok = _jedinecne_url(moje, stranky) & _jedinecne_url(nove, stranky)
+    podle_url = {(b["url"], b.get("datum")): b for b in moje
+                 if b.get("url") in url_ok and b["id"] not in nove_id}
 
     vysledek = {}
     for a in moje:
@@ -747,9 +950,19 @@ def sloucit(stare, org, nove, cesta, dnes):
             vysledek[a["id"]] = a
     for a in nove:
         b = podle_id.get(a["id"])
+        if b is None:
+            b = podle_url.get((a.get("url"), a["datum"]))
+            if b:
+                vysledek.pop(b["id"], None)
+                a["id"] = b["id"]
         if b:
             for k, v in b.items():
-                if k not in a or a[k] in ("", [], None):
+                if k == "datum_do" and cesta != "ai":
+                    continue
+                if cesta == "ai" and v not in ("", [], None) and (
+                        k == "anotace" or k in (b.get("z_detailu") or [])):
+                    a[k] = v
+                elif k not in a or a[k] in ("", [], None):
                     a[k] = v
         vysledek[a["id"]] = a
     return list(vysledek.values())
@@ -758,6 +971,65 @@ def sloucit(stare, org, nove, cesta, dnes):
 def prorezat(akce, dnes):
     hranice = (dnes - timedelta(days=PROSLE_DNI)).isoformat()
     return [a for a in akce if (a.get("datum_do") or a.get("datum") or "") >= hranice]
+
+
+# Obecné označení druhu akce na začátku názvu („Konference: Daňové právo
+# 2026" u PF UK, „Daňové právo 2026" u epravo) – pro hledání téže akce.
+OBECNA_PREDPONA_RE = re.compile(
+    r"^(?:(?:odborna|mezinarodni|vedecka|online)\s+)?"
+    r"(?:konference|seminar|webinar|kulaty stul|prednaska|kurz)\s+(?=\S)")
+POLE_DUPLIKATU = ("misto", "zacatek", "konec", "forma", "lektori", "cena")
+
+
+def klic_akce(nazev):
+    k = klic_nazvu(nazev)
+    return OBECNA_PREDPONA_RE.sub("", k) or k
+
+
+def rozdel_duplicity(akce, config):
+    """Tatáž akce u dvou pořadatelů (epravo prodává vstupenky i na akce
+    jiných): stejné datum, stejný název bez obecné předpony a místo buď
+    u jednoho chybí, nebo je stejné. Vrací (zobrazene, duplikaty).
+
+    Ukáže se záznam pořadatele akce (ne toho s `prodejce` v configu), jinak
+    úplnější; prázdná pole (místo, čas, forma, lektoři, cena) si doplní
+    z duplikátu a jeho odkaz dostane do `take_u`. Duplikát dostane
+    `stejna_jako` = id zobrazeného a v akce.json zůstane zvlášť
+    (`duplikaty`) – nese stav pořadatele (detail_pokusy, oblasti), bez něj
+    by se každou noc četl znovu. Web ani akce.ics ho neukazují."""
+    porad = config.get("poradatele", {})
+    poradi = list(porad)
+
+    def uplnost(a):
+        return sum(1 for k in POLE_DUPLIKATU + ("anotace", "url") if a.get(k))
+
+    skupiny = {}
+    for a in akce:
+        a.pop("stejna_jako", None)
+        a.pop("take_u", None)
+        skupiny.setdefault((a["datum"], klic_akce(a["nazev"])), []).append(a)
+    zobrazene, duplikaty = [], []
+    for skup in skupiny.values():
+        if len({a["poradatel"] for a in skup}) < 2:
+            zobrazene += skup
+            continue
+        skup.sort(key=lambda a: (bool(porad.get(a["poradatel"], {}).get("prodejce")), -uplnost(a),
+                                 poradi.index(a["poradatel"]) if a["poradatel"] in poradi else len(poradi)))
+        hlavni = skup[0]
+        zobrazene.append(hlavni)
+        for b in skup[1:]:
+            m1, m2 = cisty(hlavni.get("misto")).casefold(), cisty(b.get("misto")).casefold()
+            if b["poradatel"] == hlavni["poradatel"] or (m1 and m2 and m1 != m2):
+                zobrazene.append(b)
+                continue
+            b["stejna_jako"] = hlavni["id"]
+            for k in POLE_DUPLIKATU:
+                if not hlavni.get(k) and b.get(k):
+                    hlavni[k] = b[k]
+            if b.get("url"):
+                hlavni.setdefault("take_u", []).append({"poradatel": b["poradatel"], "url": b["url"]})
+            duplikaty.append(b)
+    return zobrazene, duplikaty
 
 
 # --- iCalendar export -----------------------------------------------------
@@ -814,6 +1086,8 @@ def write_ics(output, path=None):
         if odkaz:
             desc.append("")
             desc.append(f"Přihláška: {odkaz}")
+        for t in a.get("take_u") or []:
+            desc.append(f"Také u {porad.get(t['poradatel'], {}).get('zkratka', t['poradatel'])}: {t['url']}")
         lines += [
             "SUMMARY:" + ics_escape(f"{p.get('zkratka', a.get('poradatel'))}: {a['nazev']}"),
             "DESCRIPTION:" + ics_escape("\n".join(desc)),
@@ -856,38 +1130,64 @@ def main():
 
     dnes = datetime.now(PRAHA).date()
     output = load_json(OUTPUT_FILE)
-    akce = [a for a in output.get("akce", []) if isinstance(a, dict) and a.get("id")]
+    # Stav jsou zobrazené akce i skryté duplikáty (rozdel_duplicity); akce
+    # pořadatele, který z configu vypadl, jdou pryč (neměly by štítek).
+    akce = [a for a in output.get("akce", []) + output.get("duplikaty", [])
+            if isinstance(a, dict) and a.get("id") and a.get("poradatel") in config["poradatele"]]
     stav = output.get("poradatele", {})
-    rozpocet = AKCE_MAX_DETAILU
-    # Každý pořadatel dostane stejný díl rozpočtu (nevyčerpaný přechází na
-    # další), ať jeden dlouhý výpis nespotřebuje všechno.
-    zbyva_poradatelu = len([o for o in config["poradatele"] if not jen or o in jen])
+    k_doplneni = {}
     ok = 0
 
     print("Výpisy akcí…")
     for org, cfg in config["poradatele"].items():
         if jen and org not in jen:
             continue
-        nove, cesta = nacti_poradatele(org, cfg, dnes, local.get(org))
         meta = stav.setdefault(org, {})
-        if nove is None:
-            meta["chyba"] = cesta
-            zbyva_poradatelu -= 1
+        # Jeden pořadatel s nečekanou chybou (třeba divná odpověď AI) nesmí
+        # shodit zápis akcí ostatních.
+        try:
+            minule = {"otisk": meta.get("otisk"),
+                      "akce": [a for a in akce if a.get("poradatel") == org]}
+            nove, cesta, otisk = nacti_poradatele(org, cfg, dnes, local.get(org), minule)
+            if nove is None:
+                meta["chyba"] = cesta
+                continue
+            podezrele = podezrele_malo(akce, org, nove, cesta, dnes)
+            # Sloučit napřed: nová verze akce tak převezme, co už se o ní ví
+            # (lektoři, cena, počet pokusů o stránku), a znovu se nestahuje.
+            moje = sloucit(akce, org, nove, cesta, dnes, cfg.get("stranky", []))
+        except Exception as e:
+            print(f"  [{org}] chyba: {type(e).__name__}: {e}")
+            meta["chyba"] = f"{type(e).__name__}: {e}"
             continue
-        # Sloučit napřed: nová verze akce tak převezme, co už se o ní ví
-        # (lektoři, cena, počet pokusů o stránku), a znovu se nestahuje.
-        moje = sloucit(akce, org, nove, cesta, dnes)
         akce = [a for a in akce if a.get("poradatel") != org] + moje
-        podil = rozpocet // max(zbyva_poradatelu, 1)
-        zbyva_poradatelu -= 1
         if org not in local:   # lokální běh je test čtení, ne stahování
-            nadchazejici = [a for a in moje if (a.get("datum_do") or a["datum"]) >= dnes.isoformat()]
-            rozpocet -= podil - dopln_detaily(nadchazejici, config, podil)
+            k_doplneni[org] = (cesta, [a for a in moje
+                                       if (a.get("datum_do") or a["datum"]) >= dnes.isoformat()])
         meta.update({"stazeno": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-                     "cesta": cesta, "chyba": None})
+                     "cesta": cesta,
+                     "chyba": "výpis vrátil podezřele málo akcí – staré akce ponechány"
+                              if podezrele else None})
+        # Otisk jen po úplném čtení – jinak by se výpadek zakonzervoval.
+        if not podezrele and otisk:
+            meta["otisk"] = otisk
+        elif not otisk:
+            meta.pop("otisk", None)
         ok += 1
 
-    akce = prorezat(akce, dnes)
+    # Stránky akcí až po všech výpisech: rozpočet se dělí podle toho, kolik
+    # akcí u kterého pořadatele na detail čeká, a nic nepropadne.
+    pridel = rozdel_rozpocet({org: sum(1 for a in nad if potrebuje_detail(a))
+                              for org, (_, nad) in k_doplneni.items()}, AKCE_MAX_DETAILU)
+    for org, (cesta, nadchazejici) in k_doplneni.items():
+        if not pridel.get(org):
+            continue
+        try:
+            dopln_detaily(nadchazejici, config, pridel[org], cesta)
+        except Exception as e:
+            print(f"  [{org}] stránky akcí: {type(e).__name__}: {e}")
+
+    akce, duplikaty = rozdel_duplicity(prorezat(akce, dnes), config)
     zarad_oblasti(akce, Taxonomie())
     akce.sort(key=lambda a: (a["datum"], a.get("zacatek") or "", a["poradatel"], a["nazev"]))
 
@@ -902,11 +1202,12 @@ def main():
             org: {"nazev": cfg["nazev"], "zkratka": cfg["zkratka"], "barva": cfg.get("barva"),
                   "url": (cfg.get("stranky") or [None])[0],
                   "pocet": sum(1 for a in akce if a["poradatel"] == org and a["datum"] >= dnes.isoformat()),
-                  **{k: stav.get(org, {}).get(k) for k in ("stazeno", "cesta", "chyba")}}
+                  **{k: stav.get(org, {}).get(k) for k in ("stazeno", "cesta", "chyba", "otisk")}}
             for org, cfg in config["poradatele"].items()
         },
         "formy": FORMY,
         "akce": akce,
+        "duplikaty": duplikaty,
     }
     output["ics"] = write_ics(output)
     save_json(OUTPUT_FILE, output)
