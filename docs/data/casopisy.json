@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-25T04:45:20Z",
- "okno_dni": 28,
+ "generated": "2026-09-26T04:46:27Z",
+ "okno_dni": 31,
  "casopisy": [
   {
    "id": "dv",
@@ -113,6 +113,354 @@
  ],
  "polozky": [
   {
+   "id": "Jurisprudence-1051",
+   "casopis": "jurisprudence",
+   "nazev": "Mezi evropským nařízením a českou realitou: analýza čl. 5 European Media Freedom Act a jeho adaptace do českého právního řádu",
+   "url": "https://www.jurisprudence.cz/cz/casopis/mezi-evropskym-narizenim-a-ceskou-realitou-analyza-cl-5-european-media-freedom-act-a-jeho-adaptace-do-ceskeho-pravniho-radu.m-1051.html",
+   "autori": "Iveta Kvardová",
+   "heslo": "European Media Freedom Act",
+   "shrnuti": "Článek analyzuje záruky nezávislosti médií veřejné služby podle čl. 5 evropského nařízení EMFA a porovnává je s aktuální českou legislativou. Zjišťuje, že český právní řád v mnoha ohledech požadavkům nařízení nevyhovuje, zejména kvůli absenci transparentních pravidel pro odvolávání ředitelů a chybějícímu nezávislému dohledovému orgánu. Vládní návrh adaptačního zákona tyto nedostatky neřeší, čímž se Česká republika vystavuje riziku řízení o porušení povinnosti.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "Jurisprudence-1053",
+   "casopis": "jurisprudence",
+   "nazev": "Pozitivní závazky státu při ochraně obětí domácího násilí v judikatuře Ústavního soudu",
+   "url": "https://www.jurisprudence.cz/cz/casopis/pozitivni-zavazky-statu-pri-ochrane-obeti-domaciho-nasili-v-judikature-ustavniho-soudu.m-1053.html",
+   "autori": "Barbora Bulánková",
+   "heslo": "Pozitivní závazky státu",
+   "shrnuti": "Článek se zabývá pozitivními závazky státu a trestněprávní ochranou obětí domácího násilí na základě analýzy judikatury Ústavního soudu. Zkoumá povinnost orgánů veřejné moci efektivně vyšetřovat a chránit zvlášť zranitelné oběti. Autor uzavírá, že Ústavní soud vytváří ústavní standard, který odmítá bagatelizaci a formalistický přístup k těmto případům.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "Jurisprudence-1055",
+   "casopis": "jurisprudence",
+   "nazev": "Ústavný súd Slovenskej republiky ako opomínaný aktér militantnej demokracie",
+   "url": "https://www.jurisprudence.cz/cz/casopis/ustavny-sud-slovenskej-republiky-ako-opominany-akter-militantnej-demokracie.m-1055.html",
+   "autori": "Terézia Lazarová",
+   "heslo": "Militantní demokracie",
+   "shrnuti": "Článek analyzuje roli Ústavního soudu Slovenské republiky jako aktéra militantní demokracie a zkoumá jeho explicitní i implicitní judikaturu v této oblasti. Autorka konstatuje, že soud sice přistupuje k těmto nástrojům spíše opatrně a naráží na procesní limity, avšak nedávná rozhodnutí mohou naznačovat jeho přechod k aktivnějšímu působení.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "Jurisprudence-1057",
+   "casopis": "jurisprudence",
+   "nazev": "Konflikty právních principů v rámci DCFR",
+   "url": "https://www.jurisprudence.cz/cz/casopis/konflikty-pravnich-principu-v-ramci-dcfr.m-1057.html",
+   "autori": "Jiří Novotný",
+   "heslo": "Konflikty právních principů v DCFR",
+   "shrnuti": "Článek se zabývá problematikou konfliktů právních principů v rámci Návrhu společného referenčního rámce (DCFR). Poukazuje na to, že autoři DCFR neposkytují výslovný návod pro řešení těchto střetů. Text proto zkoumá, jakým způsobem byly či mají být vzájemné konflikty principů a interpretace souvisejících pravidel řešeny.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "Jurisprudence-1059",
+   "casopis": "jurisprudence",
+   "nazev": "Monitoring judikatury soudů České republiky",
+   "url": "https://www.jurisprudence.cz/cz/casopis/monitoring-judikatury-soudu-ceske-republiky.m-1059.html",
+   "autori": "Jan Tryzna",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z",
+   "poznamka": "Zdroj zatím nedal text ke shrnutí.",
+   "popis": "Monitoring judikatury soudů České republiky\nAutor: Jan Tryzna\nJurisprudence 4/2026\nRubrika: Monitoring judikatury"
+  },
+  {
+   "id": "Jurisprudence-1061",
+   "casopis": "jurisprudence",
+   "nazev": "Monitoring judikatury Soudního dvora EU a Tribunálu",
+   "url": "https://www.jurisprudence.cz/cz/casopis/monitoring-judikatury-soudniho-dvora-eu-a-tribunalu.m-1061.html",
+   "autori": "Jan Tlamycha",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z",
+   "poznamka": "Zdroj zatím nedal text ke shrnutí.",
+   "popis": "Monitoring judikatury Soudního dvora EU a Tribunálu\nAutor: Jan Tlamycha\nJurisprudence 4/2026\nRubrika: Monitoring judikatury"
+  },
+  {
+   "id": "Jurisprudence-1063",
+   "casopis": "jurisprudence",
+   "nazev": "Monitoring judikatury Evropského soudu pro lidská práva",
+   "url": "https://www.jurisprudence.cz/cz/casopis/monitoring-judikatury-evropskeho-soudu-pro-lidska-prava.m-1063.html",
+   "autori": "Pavla Boučková",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z",
+   "poznamka": "Zdroj zatím nedal text ke shrnutí.",
+   "popis": "Monitoring judikatury Evropského soudu pro lidská práva\nAutor: Pavla Boučková\nJurisprudence 4/2026\nRubrika: Monitoring judikatury"
+  },
+  {
+   "id": "ČPVP-https://journals.muni.cz/cpvp/article/view/42537",
+   "casopis": "cpvp",
+   "nazev": "Přezkum rozhodnutí o ne/připuštění změny žaloby?",
+   "url": "https://journals.muni.cz/cpvp/article/view/42537",
+   "autori": "Petr Lavický, Ivan Tvrdík",
+   "heslo": "Změna žaloby",
+   "shrnuti": "Článek kritizuje judikaturou vytvořenou možnost přezkoumat usnesení o (ne)připuštění změny žaloby až v odvolání proti konečnému rozhodnutí, neboť tato praxe nemá oporu v zákoně a přináší problémy s promlčením či litispendencí. Na základě zahraniční komparace autor navrhuje řešení de lege ferenda, podle něhož by mělo být přípustné napadnout odvoláním pouze usnesení o nepřípustnosti změny žaloby.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "ČPVP-https://journals.muni.cz/cpvp/article/view/41800",
+   "casopis": "cpvp",
+   "nazev": "Nepřijatelnost pod datovou lupou: musíme ji opravit?",
+   "url": "https://journals.muni.cz/cpvp/article/view/41800",
+   "autori": "Šimon Chvojka",
+   "heslo": "Nepřijatelnost kasační stížnosti",
+   "shrnuti": "Článek analyzuje rozhodovací praxi Nejvyššího správního soudu o nepřijatelnosti kasační stížnosti na vzorku přibližně 70 000 řízení z let 2003 až 2024. Zjišťuje nejednotný metodologický přístup soudu, častou rezignaci stěžovatelů na řádné odůvodnění přijatelnosti a nadužívání tzv. čtvrtého důvodu spočívajícího v pochybení krajského soudu. Na tomto základě text navrhuje sjednocení standardu posuzování přijatelnosti a vedení řízení.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "ČPVP-https://journals.muni.cz/cpvp/article/view/42948",
+   "casopis": "cpvp",
+   "nazev": "Rozsudek ve věci Žaves: Analýza a kritická reflexe",
+   "url": "https://journals.muni.cz/cpvp/article/view/42948",
+   "autori": "Ondřej Lipka",
+   "heslo": "Rozsudek Žaves",
+   "shrnuti": "Článek se zabývá analýzou a kritickou reflexí rozsudku rozšířeného senátu Nejvyššího správního soudu ve věci Žaves v kontextu systematiky soudní ochrany a zásahových žalob. Využívá teoretický rozbor i empirický výzkum rozhodovací praxe krajských soudů. Zkoumá dopady a aplikaci problematických pasáží tohoto judikátu v praxi.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "ČPVP-https://journals.muni.cz/cpvp/article/view/42005",
+   "casopis": "cpvp",
+   "nazev": "Od metody k principům – jak aplikace zákazu zneužití práva správními soudy může pomoci s používáním analogie ve veřejném právu",
+   "url": "https://journals.muni.cz/cpvp/article/view/42005",
+   "autori": "Marek Zima",
+   "heslo": "Zneužití práva a analogie",
+   "shrnuti": "Článek se zabývá vztahem mezi zákazem zneužití práva a používáním analogie ve správním soudnictví, přičemž aplikaci zákazu zneužití práva často identifikuje jako teleologickou redukci. Poukazuje na rozpor mezi odmítáním analogie v neprospěch adresáta správy a jejím skutečným využíváním v judikatuře. Autor navrhuje opustit plošný zákaz analogie v neprospěch a zavést vážící test pro zajištění metodologické konzistence při dotváření práva.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "ČPVP-https://journals.muni.cz/cpvp/article/view/41869",
+   "casopis": "cpvp",
+   "nazev": "České soudy a prvních 20 let justičního dialogu ve věcech mezinárodního práva soukromého a procesního",
+   "url": "https://journals.muni.cz/cpvp/article/view/41869",
+   "autori": "Filip Vlček",
+   "heslo": "Mezinárodní právo soukromé",
+   "shrnuti": "Článek poskytuje kvantitativní a kvalitativní analýzu šestnácti předběžných otázek z oblasti mezinárodního práva soukromého a procesního, které české soudy položily Soudnímu dvoru EU v letech 2004 až 2024. Zkoumá aktivitu českých soudců, precedenční potenciál odpovědí Soudního dvora a věcný obsah těchto otázek. Zjištění ukazují, že mezinárodní právo soukromé je po daňovém právu druhým nejčastějším předmětem předběžných otázek českých soudů.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "ČPVP-https://journals.muni.cz/cpvp/article/view/39303",
+   "casopis": "cpvp",
+   "nazev": "Když zákon mlčel: § 7 OZO pohledem právní vědy a Nejvyššího soudu Československé republiky v první polovině 20. století",
+   "url": "https://journals.muni.cz/cpvp/article/view/39303",
+   "autori": "Lukáš Maliňák",
+   "heslo": "§ 7 OZO",
+   "shrnuti": "Článek rozebírá aplikaci § 7 Obecného zákona občanského (OZO) o vyplňování mezer v zákoně v první polovině 20. století z pohledu dobové právní vědy a judikatury Nejvyššího soudu ČSR. Zjišťuje, že zatímco právní věda byla v názorech nejednotná, Nejvyšší soud přistupoval k ustanovení sebevědomě. V praxi pak § 7 aplikoval spíše jako ekvitní obecné pravidlo pro spravedlivější rozhodování než jako přísný nástroj pro prekonání mezer v zákoně.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "ČPVP-https://journals.muni.cz/cpvp/article/view/41565",
+   "casopis": "cpvp",
+   "nazev": "Sufficiently Serious Breach and Legitimate Expectations in European Union Non-Contractual Liability: Doctrinal Clarification and Case-Mapping",
+   "url": "https://journals.muni.cz/cpvp/article/view/41565",
+   "autori": "Jitka Matějková, Ondřej Pavelek, Hana Kelblová",
+   "heslo": "Mimosmluvní odpovědnost EU",
+   "shrnuti": "Článek zkoumá podmínku dostatečně závažného porušení práva v rámci mimosmluvní odpovědnosti EU a členských států se zaměřením na veřejné orgány. Objasňuje vztah mezi tímto porušením a zásadou legítimního očekávání a představuje pětistupňový test k posouzení odpovědnosti založený na judikatuře Soudního dvora. Závěrem konstatuje, že samotná anulace aktu k založení odpovědnosti nestačí, neboť rozhodující je kontextuální posouzení míry uvážení a chování institucí.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "ČPVP-https://journals.muni.cz/cpvp/article/view/44576",
+   "casopis": "cpvp",
+   "nazev": "Profesor Karel Engliš",
+   "url": "https://journals.muni.cz/cpvp/article/view/44576",
+   "autori": "Ladislav Vojáček",
+   "heslo": "Osobnost Karla Engliše",
+   "shrnuti": "Článek připomíná odkaz prof. Karla Engliše, jehož jménem je pojmenována aula Masarykovy univerzity. Autor vyzdvihuje Englišův hluboký přínos jak pro tuto univerzitu, tak pro filozoficky podloženou národohospodářskou vědu a praktickou hospodářskou politiku.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "ČPVP-https://journals.muni.cz/cpvp/article/view/44577",
+   "casopis": "cpvp",
+   "nazev": "Zemřel Karel Schelle – jeden ze zakladatelů Časopisu pro právní vědu a praxi",
+   "url": "https://journals.muni.cz/cpvp/article/view/44577",
+   "autori": "Jaromír Tauchen",
+   "heslo": "Úmrtí Karla Schelleho",
+   "shrnuti": "Článek informuje o úmrtí doc. JUDr. Karla Schelleho, CSc., jenž zemřel 16. května 2026 ve věku 74 let. Byl významným právním historikem, pedagogem a dlouholetým pracovníkem Právnické fakulty Masarykovy univerzity. Text připomíná jeho klíčový přínos české právní historii a vznik Časopisu pro právní vědu a praxi.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "ČPVP-https://journals.muni.cz/cpvp/article/view/44851",
+   "casopis": "cpvp",
+   "nazev": "Začátek dobrý, všechno dobré",
+   "url": "https://journals.muni.cz/cpvp/article/view/44851",
+   "autori": "Jaroslav Benák",
+   "heslo": "Náležitosti odborných článků",
+   "shrnuti": "Článek poučuje o nezbytnosti dodržování struktury odborných textů, konkrétně o nutnosti začleňovat úvod a závěr vedle samotné stati. Redakční rada upozorňuje na častý nešvar autorů, kteří tyto povinné části opomíjejí.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaag013",
+   "casopis": "ijlit",
+   "nazev": "The cambridge handbook of the law, ethics and policy of artificial intelligence",
+   "url": "https://doi.org/10.1093/ijlit/eaag013",
+   "autori": "Sk Iftesham Islam",
+   "heslo": "Právo a etika AI",
+   "shrnuti": "Článek představuje odbornou publikaci \"The Cambridge Handbook of the Law, Ethics and Policy of Artificial Intelligence\" z roku 2025 pod editací Nathalie A. Smuha. Kniha se zabývá právními, etickými a politickými aspekty umelecké inteligence a je dostupná jako Open Access.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "CMLRev-COLA2026072",
+   "casopis": "cmlr",
+   "nazev": "The ‘Internal Market Detour’ for Defending Democracy",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026072",
+   "heslo": "Ochrana demokracie v EU",
+   "shrnuti": "Článek zkoumá přístup EU k ochraně demokracie prostřednictvím legislativy vnitřního trhu na příkladu tří konkrétních předpisů. Analýza ukazuje, že toto právní řešení sice umožňuje EU jednat v oblastech bez výslovných pravomocí, avšak redukuje demokratické aktéry na účastníky trhu. Autor označuje tento postup za „tragickou volbu“, která sice zajišťuje akceschopnost Unie, ale jde na úkor transparentnosti a demokratické expresivity.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "CMLRev-COLA2026073",
+   "casopis": "cmlr",
+   "nazev": "Upcycling and Trade Mark Use under EU Law",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026073",
+   "heslo": "Upcyklace a ochranné známky",
+   "shrnuti": "Článek se zabývá vztahem mezi udržitelnou upcyklací oděvů zachovávající původní ochranné známky a unijním právem duševního vlastnictví. Zkoumá, zda taková činnost vůbec naplňuje zákonnou definici „užívání“ ochranné známky ve smyslu unijní judikatury. Autor dochází k závěru, že mnohé formy upcyklace tuto prahovou hodnotu nedosahují, což umožňuje sladit cíle oběhového hospodářství s ochranou značek bez nutnosti legislativních změn.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "CMLRev-COLA2026074",
+   "casopis": "cmlr",
+   "nazev": "Between International Obligations and Realpolitik: How the EU Responds – And How It Should Respond – To Unlawful Occupations and Annexations",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026074",
+   "heslo": "Nelegální anexe a EU",
+   "shrnuti": "Článek zkoumá reakce Evropské unie na protiprávní okupace a anexe v sousedství ve světle mezinárodních povinností neuznání a neposkytování pomoci. Analýza ukazuje, že implementace těchto povinností je často omezena politickými a strategickými zájmy, což vede k nejednotné praxi. Autor závěrem argumentuje, že EU by měla zaujmout zásadovější a konzistentnější přístup podložený mezinárodním právem.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "CMLRev-COLA2026075",
+   "casopis": "cmlr",
+   "nazev": "On legal formalism in anti-egalitarian times: Slagelse Almennyttige Boligselskab , also known as the ‘Danish Ghetto’ case",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026075",
+   "heslo": "Právní formalismus, dánský ghettový případ",
+   "shrnuti": "Článek analyzuje tzv. dánský ghettový případ (Slagelse Almennyttige Boligselskab) v kontextu anti-egalitářské doby. Zkoumá, jak se v rozhodování soudů projevuje právní formalismus. Poukazuje na důsledky tohoto přístupu pro sociální equality a bydlení.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "CMLRev-COLA2026078",
+   "casopis": "cmlr",
+   "nazev": "The safe country of origin’s legal saga in Alace and Canpelli : A roadmap for the future rather than a groundbreaking judgment",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026078",
+   "heslo": "bezpečný země původu",
+   "shrnuti": "Článek se zabývá právním vývojem a judikaturou týkající se konceptu bezpečné země původu ve věcech Alace a Canpelli. Analyzuje toto rozhodnutí nikoli jako průlomový moment, ale spíše jako cestovní mapu pro budoucí vývoj v této oblasti. Ukazuje směřování azylové právo a rozhodovací praxe v daném kontextu.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "CMLRev-COLA2026079",
+   "casopis": "cmlr",
+   "nazev": "Non-discriminatory access to ‘open’ infrastructure: Google Shopping",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026079",
+   "heslo": "Nediskriminační přístup Google Shopping",
+   "shrnuti": "Článek se zabývá problematikou nediskriminačního přístupu k otevřené infrastruktuře na příkladu služby Google Shopping. Analyzuje soutěžněprávní aspekty a pravidla přístupu k digitálním platformám.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "CMLRev-COLA2026081",
+   "casopis": "cmlr",
+   "nazev": "Global Standards and EU Law: Challenges for the EU Principles of Good Governance . edited by Mariolina Eliantonio, Annalisa Volpato, and Sabrina Röttger-Wirtz (Cheltenham: Edward Elgar, 2025)",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026081",
+   "heslo": "Právo EU a globální standardy",
+   "shrnuti": "Recenzovaná kniha se zabývá výzvami, které globální standardy přinášejí pro unijní zásady řádné správy věcí veřejných. Publikace pod redakcí Marioliny Eliantonio, Annalisy Volpato a Sabriny Röttger-Wirtz vyšla v roce 2025 v nakladatelství Edward Elgar. Analyzuje vztah mezi globálním normativním prostředím a právním řádem Evropské unie.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "CMLRev-COLA2026082",
+   "casopis": "cmlr",
+   "nazev": "Sustainability and EU Migration Law: Tracing the History of a Contemporary Concept. by Alezini Loxa (Cambridge: Cambridge University Press, 2025)",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026082",
+   "heslo": "Udržitelnost a právo EU",
+   "shrnuti": "Článek zkoumá historický vývoj konceptu udržitelnosti v kontextu unijního migračního práva. Sleduje kořeny tohoto současného pojmu a jeho proměny ve vztahu k migrační politice EU. Publikace tak poskytuje hlubší pohled na propojení ekologických či sociálních aspektů udržitelnosti s regulací migrace.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "CMLRev-COLA2026083",
+   "casopis": "cmlr",
+   "nazev": "The Concept of Marriages of Convenience in EU Free Movement Law by Aleksandra Ancite-Jepifánova (Leiden: Brill, 2024)",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026083",
+   "heslo": "Sňatky z účelovosti v EU",
+   "shrnuti": "Článek se zabývá konceptem takzvaných sňatků z účelovosti v kontextu práva Evropské unie na volný pohyb osob. Analyzuje právní rámec, rozhodovací praxi a přístup členských států k tomuto fenoménu. Zkoumá dopady těchto opatření na základní práva občanů EU a jejich rodinných příslušníků.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "CMLRev-COLA2026080",
+   "casopis": "cmlr",
+   "nazev": "Guest Editorial",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026080",
+   "heslo": "Redakční úvodník",
+   "shrnuti": "Text představuje úvodní slovo hostujícího redaktora k odbornému periodiku. Článek neobsahuje konkrétní právní zjištění ani závěry, jelikož slouží pouze jako redakční úvod.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "CMLRev-COLA2026084",
+   "casopis": "cmlr",
+   "nazev": "Violence Against Women under European Human Rights Law: From Supranational Standards to National Realities. edited by Elena Brodealǎ, Ivana Jelić and Silvia Şuteu (Cambridge: Cambridge University Press, 2024)",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026084",
+   "heslo": "Násilí na ženách",
+   "shrnuti": "Recenzovaná kniha vydaná nakladatelstvím Cambridge University Press zkoumá problematiku násilí na ženách z pohledu evropského práva v oblasti lidských práv. Analyzuje přechod od supranacionálních standardů k realitě v jednotlivých národních státech. Sleduje, jak evropský právní rámec ovlivňuje a formuje potírání tohoto fenoménu v praxi.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "CMLRev-COLA2026085",
+   "casopis": "cmlr",
+   "nazev": "Access to justice in the European Integrated Border Management after Hamoudi and WS and Others",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026085",
+   "heslo": "Přístup k spravedlnosti",
+   "shrnuti": "Článek se zabývá otázkou přístupu k soudní ochraně v rámci evropského integrovaného správního managementu hranic se zohledněním judikatury Soudního dvora EU ve věcech Hamoudi a WS a ostatní. Analyzuje, jak jsou práva jednotlivců dotčena činností orgánů, jako je Frontex, a jaké jsou meze a možnosti jejich soudního přezkumu. Závěrem poukazuje na mezery v současném systému právní ochrany a na nutnost posílení účinných opravných prostředků pro dotčené osoby.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "CMLRev-COLA2026086",
+   "casopis": "cmlr",
+   "nazev": "A bridge over troubled waters: The Court of Justice’s attempt to reconcile Member States’ autonomy and the EU social policy agenda by partially annulling the Adequate Minimum Wages Directive",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026086",
+   "heslo": "Minimální mzda EU",
+   "shrnuti": "Článek analyzuje rozsudek Soudního dvora EU týkající se směrnice o přiměřených minimálních mzdách a snahy o skloubení unijní sociální politiky s autonomií členských států. Zkoumá důvody částečného zrušení této směrnice a dopady na rozdělení pravomocí mezi Evropskou unií a státy.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "CMLRev-COLA2026087",
+   "casopis": "cmlr",
+   "nazev": "Balancing national and EU-level enforcement in EU consumer law reform: The case of the UCPD and dark patterns",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.4/COLA2026087",
+   "heslo": "Ochrana spotřebitelů v EU",
+   "shrnuti": "Článek analyzuje připravovanou reformu práva spotřebitelů v EU se zaměřením na Digitální akt o spravedlnosti a problematiku temných vzorců. Kritizuje snahu Evropské komise o centralizaci vymáhání práva prostřednictvím nových legislativních aktů. Závěrem navrhuje zavedení mechanismu sdílení pravomocí podobného soutěžnímu právu spolu s posílením národních spotřebitelských agentur.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "CMLRev-COLA2026088",
+   "casopis": "cmlr",
+   "nazev": "Cumulative application of free movement law and fundamental rights in the ‘derogation situation’: A multidimensional challenge",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.4/COLA2026088",
+   "heslo": "Volný pohyb a základní práva",
+   "shrnuti": "Článek zkoumá interakci mezi právem volného pohybu a Listinou základních práv EU v situacích, kdy členské státy omezují volný pohyb. Poukazuje na rostoucí kumulativní aplikaci norem a narůstající autonomii přezkumu základních práv v judikatuře Soudního dvora. Autor navrhuje strukturovanější metodologický rámec pro posuzování těchto situací, který by zohledňoval věcnou odlišnost norem a logiku lex specialis.",
+   "datum": "2026-09-26",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
    "id": "IIC-10.1007/s40319-026-01776-9",
    "casopis": "iic",
    "nazev": "Sui Generis Right to Non-Original Objects Generated by a Computer Program Under Ukrainian Law: First Impressions and (In)Compatibility with EU Law",
@@ -122,6 +470,17 @@
    "shrnuti": "Článek analyzuje ukrajinské sui generis právo k neoriginálním objektům generovaným počítačovými programy, včetně GenAI. Autor konstatuje v zákoně četné nejasnosti a nedostatek praktických dopadů, přičemž pravděpodobně není v rozporu s právem EU. Doporučuje EU sledovat podobné národní trendy, aby nedocházelo k nadměrnému omezování veřejné domény.",
    "datum": "2026-09-24",
    "first_seen": "2026-09-25T04:44:24Z"
+  },
+  {
+   "id": "ELJ-10.1111/eulj.70029",
+   "casopis": "elj",
+   "nazev": "Reimagining State Aid: Guiding Law and Policy Reform in a Changing World",
+   "url": "https://doi.org/10.1111/eulj.70029",
+   "autori": "Thomas Jaeger",
+   "heslo": "Reforma veřejné podpory",
+   "shrnuti": "Článek se zabývá posunem práva EU v oblasti státní podpory od represivního nástroje k proaktivnímu mechanismu a poukazuje na to, že současný rámec dle článku 107 SFEU je s touto novou funkcí v nesouladu. Autor odhaluje anachronismy a systémové třenice v platné úpravě a navrhuje komplexní reformní agendu, která má definici státní podpory přizpůsobit strategickým cílům a závěrům Letta správy.",
+   "datum": "2026-09-24",
+   "first_seen": "2026-09-26T04:42:59Z"
   },
   {
    "id": "GRUR Int-10.1093/grurint/ikag089",
@@ -338,6 +697,28 @@
    "shrnuti": "Publikace analyzuje kreativní hodnotové řetězce a roli autorského práva v distribuci hodnoty. Autor zkoumá možnosti spravedlivějšího rozdělování zisků a navrhuje řešení, která přesahují rámec samotného autorského práva.",
    "datum": "2026-09-01",
    "first_seen": "2026-09-01T07:38:41Z"
+  },
+  {
+   "id": "JIPLP-10.1093/jiplp/jpag077",
+   "casopis": "jiplp",
+   "nazev": "Plant variety rights: the High Court of England and Wales rules on essentially derived varieties and enforcement against importation of harvested fruit",
+   "url": "https://doi.org/10.1093/jiplp/jpag077",
+   "autori": "Adrián Crespo Velasco",
+   "heslo": "Práva k odrůdám rostlin",
+   "shrnuti": "Článek analyzuje rozsudek anglického High Courtu v případu Nador Cott Protection v Asda Stores ohledně definice podstatně odvozených odrůd a ochrany sklízeného materiálu. Soud rozhodl, že mandarinka 'Tang Gold' není podstatně odvozenou odrůdou 'Nadorcott', a stanovil, že neoprávněné užití množitelského materiálu musí proběhnout v UK, aby bylo relevantní pro britská práva. To omezuje možnosti držitelů práv zastavit dovoz plodů sklízených v zemích, kde nemají zajištěnou ochranu.",
+   "datum": "2026-08-31",
+   "first_seen": "2026-08-31T14:11:41Z"
+  },
+  {
+   "id": "JIPLP-10.1093/jiplp/jpag067",
+   "casopis": "jiplp",
+   "nazev": "Artificial intelligence—a call to recalibrate copyright law?",
+   "url": "https://doi.org/10.1093/jiplp/jpag067",
+   "autori": "Lauri Rechardt",
+   "heslo": "AI a autorské právo",
+   "shrnuti": "Článek zkoumá potřebu úpravy autorského práva v reakci na rozvoj umělé inteligence. Autor argumentuje, že autorské právo bylo historicky adaptabilní a schopno koexistovat s technologickými inovacemi. Hlavním zjištěním je, že regulační zásahy mohou riskovat narušení tržních mechanismů, které umožňují soužití kreativity a inovací.",
+   "datum": "2026-08-31",
+   "first_seen": "2026-08-31T14:11:41Z"
   },
   {
    "id": "Pravnik-2026-2026-9-4056",
@@ -560,26 +941,35 @@
    "popis": "“FRAND Defence III (FRAND-Einwand III)” – Decision of the Federal Court of Justice of Germany (Bundesgerichtshof) 27 January 2026 – Case No. KZR 10/25\nIIC – International Review of Intellectual Property and Competition Law"
   },
   {
-   "id": "JIPLP-10.1093/jiplp/jpag077",
-   "casopis": "jiplp",
-   "nazev": "Plant variety rights: the High Court of England and Wales rules on essentially derived varieties and enforcement against importation of harvested fruit",
-   "url": "https://doi.org/10.1093/jiplp/jpag077",
-   "autori": "Adrián Crespo Velasco",
-   "heslo": "Práva k odrůdám rostlin",
-   "shrnuti": "Článek analyzuje rozsudek anglického High Courtu v případu Nador Cott Protection v Asda Stores ohledně definice podstatně odvozených odrůd a ochrany sklízeného materiálu. Soud rozhodl, že mandarinka 'Tang Gold' není podstatně odvozenou odrůdou 'Nadorcott', a stanovil, že neoprávněné užití množitelského materiálu musí proběhnout v UK, aby bylo relevantní pro britská práva. To omezuje možnosti držitelů práv zastavit dovoz plodů sklízených v zemích, kde nemají zajištěnou ochranu.",
-   "datum": "2026-07-31",
-   "first_seen": "2026-08-31T14:11:41Z"
+   "id": "GRUR Int-10.1093/grurint/ikag086",
+   "casopis": "grur-int",
+   "nazev": "The Threshold of Copyright Protection for a Modular Furniture System",
+   "url": "https://doi.org/10.1093/grurint/ikag086",
+   "heslo": "Autorskoprávní ochrana nábytku",
+   "shrnuti": "Článek se zabývá prahem autorskoprávní ochrany u modulárního nábytkového systému.",
+   "datum": "2026-08-26",
+   "first_seen": "2026-08-27T07:47:27Z"
   },
   {
-   "id": "JIPLP-10.1093/jiplp/jpag067",
-   "casopis": "jiplp",
-   "nazev": "Artificial intelligence—a call to recalibrate copyright law?",
-   "url": "https://doi.org/10.1093/jiplp/jpag067",
-   "autori": "Lauri Rechardt",
-   "heslo": "AI a autorské právo",
-   "shrnuti": "Článek zkoumá potřebu úpravy autorského práva v reakci na rozvoj umělé inteligence. Autor argumentuje, že autorské právo bylo historicky adaptabilní a schopno koexistovat s technologickými inovacemi. Hlavním zjištěním je, že regulační zásahy mohou riskovat narušení tržních mechanismů, které umožňují soužití kreativity a inovací.",
-   "datum": "2026-07-31",
-   "first_seen": "2026-08-31T14:11:41Z"
+   "id": "GRUR Int-10.1093/grurint/ikag078",
+   "casopis": "grur-int",
+   "nazev": "Imprisonment as Punishment for Horizontal Restrictive Arrangements",
+   "url": "https://doi.org/10.1093/grurint/ikag078",
+   "heslo": "Věznění za kartely",
+   "shrnuti": "Článek se zabývá odnětím svobody jako trestem za horizontální omezující dohody. Analýza se zaměřuje na problematiku věznění v kontextu sankcí za kartelové dohody.",
+   "datum": "2026-08-26",
+   "first_seen": "2026-08-26T11:06:33Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaag012",
+   "casopis": "ijlit",
+   "nazev": "Access to uncontaminated data for AI training",
+   "url": "https://doi.org/10.1093/ijlit/eaag012",
+   "autori": "Maurice Chiodo, Henning Grosse Ruse-Khan, Lisa Markschies, Dennis Müller, Rupprecht Podszun, Herbert Zech",
+   "heslo": "Přístup k čistým datům",
+   "shrnuti": "Článek se zabývá problémem znečišťování internetového datového prostředí uměle vytvořeným obsahem, který ohrožuje trénink budoucích modelů umele inteligence a zvýhodňuje zavedené subjekty vlastnící starší nekontaminovaná data. Analýza stávajících právních předpisů, včetně práva hospodářské soutěže a regulace digitálních trhů, ukazuje absenci specifického řešení tohoto problému. Autoři proto zdůrazňují nutnost, aby zákonodárci urgentně řešili spravedlivý přístup k tomuto vzácnému zdroji při současné minimalizaci rizik škodlivého využití.",
+   "datum": "2026-08-19",
+   "first_seen": "2026-09-26T04:42:59Z"
   },
   {
    "id": "JIPLP-10.1093/jiplp/jpag059",
@@ -647,6 +1037,17 @@
    "first_seen": "2026-08-31T14:11:41Z"
   },
   {
+   "id": "IJLIT-10.1093/ijlit/eaag008",
+   "casopis": "ijlit",
+   "nazev": "Making algorithmic transparency enforceable: sufficient intelligibility, technical evidence, and auditability across the EU and the US",
+   "url": "https://doi.org/10.1093/ijlit/eaag008",
+   "autori": "Carlos García-Llorente, Ignacio Olmeda",
+   "heslo": "Algoritmická transparentnost",
+   "shrnuti": "Článek zkoumá algoritmickou netransparentnost jako právně-technický problém, který oslabuje vymahatelnost odpovědnosti v automatizovaném rozhodování v EU a USA. Komparativní analýza ukazuje, že EU uplatňuje preventivní přístup založený na rizicích (včetně nařízení o umeleé inteligenci), zatímco americký rámec je fragmentovaný a spoléhá spíše na dodatečné vymáhání. V závěru studie navrhuje standard „dostatečné srozumitelnosti“ podložený minimálním balíčkem technických důkazů a rizikově přiměřeným ověřovacím schématem pro účinný audit a soudní přezkum.",
+   "datum": "2026-06-05",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
    "id": "JIPLP-10.1093/jiplp/jpag060",
    "casopis": "jiplp",
    "nazev": "A high-level analysis of the role of IP in the cannabis industry",
@@ -656,6 +1057,213 @@
    "shrnuti": "Publikace poskytuje analýzu role duševního vlastnictví v konopném průmyslu. Zaměřuje se na vztah mezi právem IP a cannabis sektorem.",
    "datum": "2026-05-29",
    "first_seen": "2026-08-31T14:11:41Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaag011",
+   "casopis": "ijlit",
+   "nazev": "Rewiring Democracy: How AI Will Transform Our Politics, Government, and Citizenship",
+   "url": "https://doi.org/10.1093/ijlit/eaag011",
+   "autori": "Robert Diab",
+   "heslo": "umělá inteligence a demokracie",
+   "shrnuti": "Článek představuje knihu „Rewiring Democracy“ od Bruce Schneiera a Nathana E. Sanderse, která se zabývá vlivem umělé inteligence na politiku, vládu a občanskou společnost. Autoři v publikaci zkoumají, jakým způsobem nové technologické trendy transformují současné demokratické systémy a jaké výzvy s tím souvisí.",
+   "datum": "2026-05-20",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaag009",
+   "casopis": "ijlit",
+   "nazev": "Beyond optimization: the non-computable core of law and the limits of AI-mediated legal decision-making",
+   "url": "https://doi.org/10.1093/ijlit/eaag009",
+   "autori": "Salvatore Stanizzi",
+   "heslo": "Umělá inteligence v právu",
+   "shrnuti": "Článek zkoumá vztah mezi umělou inteligencí a právním rozhodováním prostřednictvím teorie vyčíslitelnosti a dokazuje, že právní úsudek nelze plně redukovat na algoritmické postupy. Poukazuje na to, že interpretace, proporcionalita a diskreční odůvodnění tvoří nevyčíslitelné jádro práva odpírající se úplné formalizaci. V závěru navrhuje rámec řádného procesu založený na přezkoumatelnosti, smysluplném lidském dohledu a přístupu zohledňujícím limity AI v governance.",
+   "datum": "2026-05-15",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaaf026",
+   "casopis": "ijlit",
+   "nazev": "Regulatory dialogues: Asia-Pacific perspectives in data governance between global standards and regional innovations",
+   "url": "https://doi.org/10.1093/ijlit/eaaf026",
+   "autori": "Julia Hörnle, Han-Wei Liu, Ching-Fu Lin",
+   "heslo": "Digitální governance v Asii",
+   "shrnuti": "Článek zkoumá regulatorní dialogy a přístupy k datové governance v asijsko-pacifickém regionu na pomezí globálních standardů a regionálních inovací. Zaměřuje se na mezinárodní ekonomické právo, technologický vývoj a otázky suverenity. Zjištění poukazují na specifické regionální dynamiky utvářející současnou správu dat.",
+   "datum": "2026-05-15",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaag007",
+   "casopis": "ijlit",
+   "nazev": "Fighting the beast of image-based sexual abuse. Part 2: be strategic and be proactive",
+   "url": "https://doi.org/10.1093/ijlit/eaag007",
+   "autori": "Julia Hörnle",
+   "heslo": "Zneužití intimních obrazů",
+   "shrnuti": "Článek se zabývá technologickými opatřeními proti nekoncenzuálnímu šíření intimních a sexuálních materiálů včetně deepfakes na online platformách. Analýzou britského zákona o online bezpečnosti (OSA 2023) a pokynů regulátora Ofcom zjišťuje, že doporučená opatření jsou příliš reaktivní. Autor proto navrhuje proaktivnější a strategičtější přístup regulace s rozlišením typů platforem.",
+   "datum": "2026-05-08",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaag006",
+   "casopis": "ijlit",
+   "nazev": "Fighting the beast of image-based sexual abuse. Part 1—the criminal law and platform regulation",
+   "url": "https://doi.org/10.1093/ijlit/eaag006",
+   "autori": "Julia Hörnle",
+   "heslo": "Zneužití intimních zobrazení",
+   "shrnuti": "Článek se zabývá problematikou nekonsensuálního šíření intimních a sexuálních snímků včetně deepfakes a analyzuje právní nástroje k jejímu potlačení. Zkoumá novou trestní legislativu a regulaci platforem v USA a ve Velké Británii se zaměřením na jejich vzájemnou interakci. Dochází k závěru, že samotné trestní právo nestačí, a proto je nutná účinná přeshraniční regulace internetových platforem.",
+   "datum": "2026-05-08",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaag002",
+   "casopis": "ijlit",
+   "nazev": "Processing of synthetic data in AI development for healthcare and the definition of personal data in EU law",
+   "url": "https://doi.org/10.1093/ijlit/eaag002",
+   "autori": "Vibeke Binz Vallevik, Anne Kjersti C Befring, Severin Elvatun, Jan Franz Nygård",
+   "heslo": "Syntetická data v GDPR",
+   "shrnuti": "Článek zkoumá, zda by syntetická zdravotnická data využívaná při vývoji umělé inteligence měla být podle GDPR klasifikována jako osobní údaje. Prostřednictvím právní analýzy a empirické studie zaměřené na riziko reidentifikace autor zjišťuje, že syntetická data jsou často anonymní, protože výsledky případných útoků nelze snadno ověřit. Studie závěrem upozorňuje na právní nejistoty ohledně přípustné míry rizika a volá po jasnější regulaci, která by vyvážila ochranu soukromí a inovace ve zdravotnictví.",
+   "datum": "2026-03-03",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaaf019",
+   "casopis": "ijlit",
+   "nazev": "Incident reporting and investigation under the AI act: some insights from aviation",
+   "url": "https://doi.org/10.1093/ijlit/eaaf019",
+   "autori": "Michael Chatzipanagiotis",
+   "heslo": "AI Act aviation",
+   "shrnuti": "Článek zkoumá povinnosti hlášení a vyšetřování incidentů podle aktu o umeleé inteligenci (AI Act) s využitím poznatků z letectví. Navrhuje řadu zlepšení, včetně jasnějších pravidel hlášení, oddělení od odpovědnosti, ochrany oznamovatelů a nezávislého vyšetřování. Klíčovým předpokladem pro úspěšné fungování tohoto systému je vytvoření silné bezpečnostní kultury.",
+   "datum": "2026-02-27",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaag001",
+   "casopis": "ijlit",
+   "nazev": "Judges-in-the-loop? Judicial involvement in human oversight of high-risk decision support systems under the EU AI Act",
+   "url": "https://doi.org/10.1093/ijlit/eaag001",
+   "autori": "Isabella Banks",
+   "heslo": "AI Act a soudci",
+   "shrnuti": "Článek zkoumá dopady zapojení soudců do lidského dohledu nad vysoce rizikovými systémy umelé inteligence podle aktu EU o umelé inteligenci (AI Act). Analyzuje jejich profesní předpoklady, motivace a zkreslení při rozhodování podpořeném AI. Zjišťuje, že samotní soudci na tento dohled nestačí, a navrhuje alternativní způsob jejich zapojení, který lépe chrání základní práva a soudní hodnoty.",
+   "datum": "2026-02-12",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaag004",
+   "casopis": "ijlit",
+   "nazev": "Domestic and international approaches to combating ransomware: between contradiction and coherence",
+   "url": "https://doi.org/10.1093/ijlit/eaag004",
+   "autori": "Tsvetelina J van Benthem, Roxana Radu",
+   "heslo": "Boj proti ransomware",
+   "shrnuti": "Článek zkoumá vnitřní i mezinárodní opatření států proti hrozbě ransomware a jejich vztah k mezinárodnímu právu. Analyticky se zaměřuje na napětí mezi extrateritoriálním vymáháním práva a suverenitou států, jakož i na povinnosti chránit lidská práva. Autor závěrem upozorňuje, že vnitrostátní reakce nesmějí být v rozporu se závazky vyplývajícími z mezinárodního práva.",
+   "datum": "2026-02-05",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaaf022",
+   "casopis": "ijlit",
+   "nazev": "Smart cities and privacy: comparative analysis of Japan and China on the use of facial recognition technology in public spaces",
+   "url": "https://doi.org/10.1093/ijlit/eaaf022",
+   "autori": "Zhijian Wang, Yoshiko Naiki",
+   "heslo": "Rozpoznávání obličejů v",
+   "shrnuti": "Článek se zabývá využitím technologie rozpoznávání obličejů ve veřejných prostorách chytrých měst a srovnává právní regulaci v Evropské unii, Japonsku a Číně. Zkoumá sociální a politické kontexty, které stojí za rozdíly v přístupech těchto jurisdikcí k ochraně osobních údajů.",
+   "datum": "2026-02-04",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaag003",
+   "casopis": "ijlit",
+   "nazev": "The case for contextual copyleft: licensing open-source training data and generative AI",
+   "url": "https://doi.org/10.1093/ijlit/eaag003",
+   "autori": "Grant Shanklin, Emmie Hine, Claudio Novelli, Tyler Schroder, Luciano Floridi",
+   "heslo": "Kontextuální copyleft v AI",
+   "shrnuti": "Článek se zabývá aplikací principů open-source softwaru na trénovací data generativní AI a představuje licenci Contextual Copyleft AI (CCAI), která rozšiřuje licenční povinnosti z dat na výsledné modely. Autoři zkoumají právní proveditelnost, politické souvislosti a přínosy či rizika tohoto přístupu v rámci současného autorského práva. Závěrem konstatují, že licence CCAI může za předpokladu robustní regulace úspěšně chránit hodnoty svobodného software v éře moderní AI.",
+   "datum": "2026-02-04",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaaf020",
+   "casopis": "ijlit",
+   "nazev": "Digital lawmaking: evolving landscape of digital lawmaking and the integration of digital twins",
+   "url": "https://doi.org/10.1093/ijlit/eaaf020",
+   "autori": "Heiko Krüger",
+   "heslo": "Digitální tvorba zákona",
+   "shrnuti": "Článek zkoumá transformaci legislativního procesu v digitální éře se zaměřením na využívání umělé inteligence v parlamentech a absenci uceleného oboru „digitálního zákonodárství“. S využitím mezinárodních příkladů přináší přehled současného stavu digitalizace a zvýšení transparentnosti. Zároveň představuje koncept digitálních dvojčat jako perspektivní nástroj pro budoucí legislativní plánování a monitorování.",
+   "datum": "2026-02-02",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaaf024",
+   "casopis": "ijlit",
+   "nazev": "The new data protection convention 108+ and its importance for Asia",
+   "url": "https://doi.org/10.1093/ijlit/eaaf024",
+   "autori": "Graham Greenleaf",
+   "heslo": "Úmluva 108+ a Asie",
+   "shrnuti": "Článek se zabývá novou globální úmluvou o ochraně osobních údajů (Úmluva 108+) a zkoumá, které asijské státy by k ní mohly přistoupit. Analýza 18 zemí sice identifikuje sedm potenciálních kandidátů, avšak přistoupení je podmíněno zmírněním současných přísných přístupových standardů úmluvy.",
+   "datum": "2026-02-02",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaaf023",
+   "casopis": "ijlit",
+   "nazev": "The evolution of sensitive data governance in international investment law: a dual-jurisdictional study",
+   "url": "https://doi.org/10.1093/ijlit/eaaf023",
+   "autori": "Jiaqi Huang",
+   "heslo": "governance citlivých dat",
+   "shrnuti": "Článek zkoumá vývoj správy citlivých dat v mezinárodním investičním právu se zaměřením na právní úpravu v Číně a USA. Srovnávací analýza odhaluje dva odlišné regulatorní modely, které však sdílejí důraz na ochranu kritické infrastruktury a bezpečnostní revize. Závěrem studie identifikuje dopady na investiční právo a navrhuje cesty ke globální regulatorní konvergenci.",
+   "datum": "2026-01-28",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaaf025",
+   "casopis": "ijlit",
+   "nazev": "The emerging framework for non-personal data protection in India: perils, promises, and lessons for the developing world",
+   "url": "https://doi.org/10.1093/ijlit/eaaf025",
+   "autori": "Neha Mishra, Binit Agarwal",
+   "heslo": "Ochrana neosobních dat",
+   "shrnuti": "Článek analýzuje vznikající rámec Indie pro ochranu neosobních dat, který toto data vnímá jako národní ekonomický zdroj na podporu domácích subjektů a digitální suverenity. Přestože přináší inovativní prvky sdílení, trpí nedostatkem jasnosti ohledně zprostředkovatelů, nedostatečnou ochranou soukromí a právní neistotou pro podnikání. Závěrem zdůrazňuje nutnost přístupu založeného na právech s jasnými mechanismy odpovědnosti pro spravedlivou regulaci v rozvojovém světě.",
+   "datum": "2026-01-28",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaaf030",
+   "casopis": "ijlit",
+   "nazev": "Manipulation: What It Is, Why It’s Bad, What to Do About It",
+   "url": "https://doi.org/10.1093/ijlit/eaaf030",
+   "autori": "M R Leiser",
+   "heslo": "Právní manipulační praktiky",
+   "shrnuti": "Článek představuje knihu Cassiho Sunsteina, která se zabývá definicí manipulace, důvody její škodlivosti ve společnosti a možnými řešeními tohoto problému. Autor zkoumá, jak manipulace ovlivňuje lidské chování a rozhodování v moderním kontextu.",
+   "datum": "2026-01-28",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaaf021",
+   "casopis": "ijlit",
+   "nazev": "Taiwan’s open judgment dilemma in the digital age: the erosion of practical obscurity and its collateral consequences",
+   "url": "https://doi.org/10.1093/ijlit/eaaf021",
+   "autori": "Huei-Ying Hsu",
+   "heslo": "Zveřejňování soudních rozhodnutí",
+   "shrnuti": "Článek se zabývá tchajwanskou praxí neomezeného online zveřejňování soudních rozhodnutí včetně neveřejných či zprošťujících verdiktů. Poukazuje na to, že v digitálním věku tato transparentnost narušuje praktickou anonymitu jednotlivců a vede k vedlejším důsledkům, jako je poškození pověsti či ohrožení bezpečnosti. V závěru autor navrhuje kontextově citlivé reformy pro lepší vyvážení transparentnosti a práva na soukromí.",
+   "datum": "2026-01-27",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaaf029",
+   "casopis": "ijlit",
+   "nazev": "AI and Legal Education: Ethical and Sustainable Approaches",
+   "url": "https://doi.org/10.1093/ijlit/eaaf029",
+   "heslo": "AI v právním vzdělávání",
+   "shrnuti": "Kniha od autora BalanAnila z roku 2025 se zabývá etickými a udržitelnými přístupy k integraci umělé inteligence do právního vzdělávání. Publikace o rozsahu 134 stran zkoumá dopady moderních technologií na výuku práva a nabízí související odborná zjištění a doporučení.",
+   "datum": "2026-01-23",
+   "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaaf018",
+   "casopis": "ijlit",
+   "nazev": "Regulator coherence, capacity, and collaboration: applying lessons from Canada and the UK for fintech regulatory sandboxes",
+   "url": "https://doi.org/10.1093/ijlit/eaaf018",
+   "heslo": "Regulační sandbox fintech",
+   "shrnuti": "Článek analýzou iniciativ v Kanadě a Spojeném království zkoumá klíčové faktory úspěchu fintechových regulačních sandboxů. Poukazuje na to, že pro podporu inovací v bezpečnějším prostředí jsou nepostradatelné regulatorní koherence, kapacita a spolupráce. Zjištění slouží jako doporučení pro další rozvoj regulace fintechu a nových technologií se zohledněním specifického federálního uspořádání.",
+   "datum": "2026-01-12",
+   "first_seen": "2026-09-26T04:42:59Z"
   }
  ]
 }
