@@ -24,9 +24,30 @@ function safeHref(url) {
      title, link, doc (PDF), heslo, shrnuti, poznamka, datum, nove, autori
    u judikatury navíc oblasti, senat, druh, procesni, u časopisů casopis a tag. */
 
-// Novinky na úvodní stránce = poprvé viděné za posledních 24 hodin (sběr
-// běží jednou denně, takže je to úlovek posledního nočního běhu).
-const NOVE_MS = 24 * 60 * 60 * 1000;
+// Novinky na úvodní stránce = úlovek posledního nočního sběru. Nepočítá se
+// od hodin prohlížeče („24 h od teď“): sběr GitHub spouští o hodiny později
+// než ve 2:00 a na web se dostane až po commitu na konci běhu, takže by
+// včerejší úlovek ráno zmizel dřív, než přijde dnešní. Počítá se proto od
+// nejnovějšího prvního výskytu ve všech zdrojích (first_seen = začátek běhu,
+// který položku našel): nové je, co přibylo nejvýš NOVE_OKNO_MS před ním –
+// judikatura i časopisy téže noci (běží zvlášť, hodinu dvě od sebe), včetně
+// ručního běhu přes den, ale už ne předchozí noc (ta je ~24 h před ním).
+// Úlovek tak zůstane vidět, dokud nepřijde další; nejdéle NOVE_MAX_MS
+// (vynechaný běh), pak už nový není.
+const NOVE_OKNO_MS = 16 * 60 * 60 * 1000;
+const NOVE_MAX_MS = 48 * 60 * 60 * 1000;
+
+// Označí nové položky (item.nove) ve výsledcích Promise.allSettled všech zdrojů.
+function oznacNove(results) {
+  let posledni = 0;
+  results.forEach(r => {
+    if (r.status === "fulfilled") r.value.forEach(i => { if (i.prvni > posledni) posledni = i.prvni; });
+  });
+  const od = Math.max(posledni - NOVE_OKNO_MS, Date.now() - NOVE_MAX_MS);
+  results.forEach(r => {
+    if (r.status === "fulfilled") r.value.forEach(i => { i.nove = i.prvni > 0 && i.prvni >= od; });
+  });
+}
 
 function zJson(r) {
   const prvni = Date.parse(r.first_seen || "");
@@ -42,7 +63,8 @@ function zJson(r) {
     poznamka: r.poznamka || "",
     // Raná předběžná otázka z ipcuria ještě zveřejněná není – datum podání.
     datum: r.zverejneno || r.datum || r.first_seen || "",
-    nove: !isNaN(prvni) && Date.now() - prvni < NOVE_MS,
+    prvni: isNaN(prvni) ? 0 : prvni,
+    nove: false,                  // doplní oznacNove()
     autori: "",
     oblasti: r.oblasti || [],
     sdeu: /^sdeu:/.test(r.id || ""),
@@ -71,7 +93,8 @@ function zCasopisu(r) {
     shrnuti: r.shrnuti || "",
     poznamka: r.poznamka || "",
     datum: r.datum || r.first_seen || "",
-    nove: !isNaN(prvni) && Date.now() - prvni < NOVE_MS,
+    prvni: isNaN(prvni) ? 0 : prvni,
+    nove: false,                  // doplní oznacNove()
     autori: r.autori || "",
     casopis: r.casopis || "",
     tag: zkratkaCasopisu(r.casopis)
@@ -404,13 +427,18 @@ function initArchivPrepinac() {
     if (!b || !zdrojeVysledky) return;
     const key = b.dataset.archiv;
     archivVse[key] = !!b.dataset.vse;
-    vykresliZdroje();
+    // Přepínač mění jen seznam svého zdroje – ostatní se nepřekreslují.
+    const idx = FEEDS.findIndex(f => f.key === key);
+    const r = zdrojeVysledky[idx];
+    if (!r || r.status !== "fulfilled") return;
+    renderArchiv(FEEDS[idx], r.value);
+    pripojVychozi(document.getElementById(FEEDS[idx].containerId), key);
     const znovu = document.querySelector("#prepinac-" + key + ' [data-vse="' + b.dataset.vse + '"]');
     if (znovu) znovu.focus();
   });
 }
 
-/* ========== Novinky: posledních 24 hodin ========== */
+/* ========== Novinky: úlovek posledního sběru ========== */
 // Seskupené podle zdroje (v pořadí FEEDS), nad nimi přepínač Vše /
 // Judikatura / Časopisy s počty.
 const FILTRY_NOVINEK = [
@@ -444,8 +472,8 @@ function renderToday(results) {
       f.label + '</span><span class="segment-pocet">' + polozky.filter(f.bere).length + "</span></button>").join("");
   }
   if (polozky.length === 0) {
-    container.innerHTML = '<p class="feed-empty">Za posledních 24 hodin nic nepřibylo. ' +
-      "Sběr běží jednou denně ve 2:00 v noci.</p>";
+    container.innerHTML = '<p class="feed-empty">Poslední sběr nic nového nepřinesl. ' +
+      "Sběr se spouští jednou denně ve 2:00 v noci, GitHub ho často pustí až ráno.</p>";
     return;
   }
   const filtr = FILTRY_NOVINEK.find(f => f.k === novinkyFiltr) || FILTRY_NOVINEK[0];
@@ -458,7 +486,7 @@ function renderToday(results) {
       '<span class="zdroj-nazev">' + esc(f.nazev) + '</span><span class="zdroj-pocet">' + skupina.length +
       "</span></div>" + skupina.map(polozkaHtml).join("") + "</section>";
   }).join("");
-  container.innerHTML = html || '<p class="feed-empty">V téhle části za posledních 24 hodin nic nepřibylo.</p>';
+  container.innerHTML = html || '<p class="feed-empty">V téhle části poslední sběr nic nového nepřinesl.</p>';
 }
 
 function initNovinkyFiltr() {
@@ -477,11 +505,13 @@ function initNovinkyFiltr() {
 }
 
 // Štítek „Můj výběr: IP, IT, senát 23" vedle filtru Novinek – souhrn toho,
-// podle čeho se Novinky řídí. Bez Clerku se nedá nic změnit, tak není.
+// podle čeho se Novinky řídí. Bez Clerku se nedá nic změnit, tak není. Dokud
+// se Clerk načítá, je vidět (výchozí výběr) – stránka se na Clerk u
+// nepřihlášeného nečeká a štítek by se jinak objevil až po odkrytí.
 function vykresliVyberStitek() {
   const el = document.getElementById("vyber-stitek");
   if (!el) return;
-  el.hidden = clerkStav !== "pripraven" || !vyber;
+  el.hidden = clerkStav === "nedostupny" || !vyber;
   if (el.hidden) return;
   el.innerHTML = '<svg class="vyber-stitek-ico" aria-hidden="true"><use href="#icon-check"></use></svg>' +
     "<span>Můj výběr: " + esc(souhrnVyberu(vyber)) + "</span>";
@@ -869,42 +899,47 @@ function zmenyJednani(j) {
 // se vyřízne z hotového hearings.ics podle uid (scraper ho ukládá i do
 // hearings.json), takže stažená událost je do písmene ta, kterou má
 // přihlášený kalendář – a nic se tu neskládá podruhé.
-let icsPromise = null;
+// Stejně se z akce.ics vyřezávají jednotlivé akce (akStahniIcs).
+const icsPromise = {};            // soubor -> promise s textem, stahuje se jednou
 
-function fetchIcs() {
-  if (!icsPromise) {
-    icsPromise = fetch("hearings.ics").then(r => {
+function fetchIcs(soubor) {
+  if (!icsPromise[soubor]) {
+    icsPromise[soubor] = fetch(soubor).then(r => {
       if (!r.ok) throw new Error("HTTP " + r.status);
       return r.text();
     });
   }
-  return icsPromise;
+  return icsPromise[soubor];
 }
 
 // Vlastnosti celého kalendáře (jméno, popis, interval obnovy) do jedné
 // události nepatří – klient by si podle nich založil nový kalendář.
 const ICS_DROP_RE = /^(X-WR-CALNAME|X-WR-CALDESC|REFRESH-INTERVAL|X-PUBLISHED-TTL)/;
 
-function icsForEvent(j) {
-  return fetchIcs().then(ics => {
-    const lines = ics.split(/\r?\n/);
-    const uidAt = lines.findIndex(l => l.startsWith("UID:" + j.uid + "@"));
-    if (uidAt < 0) throw new Error("jednání v hearings.ics není");
-    let od = uidAt, do_ = uidAt;
-    while (od > 0 && lines[od] !== "BEGIN:VEVENT") od--;
-    while (do_ < lines.length && lines[do_] !== "END:VEVENT") do_++;
+// Z textu kalendáře vyřízne jednu událost podle UID (to začíná `uid`
+// a za ním je „@…“) i s hlavičkou kalendáře, ať jde otevřít samostatně.
+function vyrizniUdalost(ics, uid) {
+  const lines = ics.split(/\r?\n/);
+  const uidAt = lines.findIndex(l => l.startsWith("UID:" + uid + "@"));
+  if (uidAt < 0) throw new Error("událost " + uid + " v kalendáři není");
+  let od = uidAt, do_ = uidAt;
+  while (od > 0 && lines[od] !== "BEGIN:VEVENT") od--;
+  while (do_ < lines.length && lines[do_] !== "END:VEVENT") do_++;
 
-    // Hlavička = vše před první událostí, bez vlastností celého kalendáře
-    // (i s jejich zalomenými pokračováními, která začínají mezerou).
-    const head = [];
-    let drop = false;
-    for (const line of lines.slice(0, lines.indexOf("BEGIN:VEVENT"))) {
-      if (line.startsWith(" ")) { if (!drop) head.push(line); continue; }
-      drop = ICS_DROP_RE.test(line);
-      if (!drop) head.push(line);
-    }
-    return head.concat(lines.slice(od, do_ + 1), ["END:VCALENDAR"]).join("\r\n") + "\r\n";
-  });
+  // Hlavička = vše před první událostí, bez vlastností celého kalendáře
+  // (i s jejich zalomenými pokračováními, která začínají mezerou).
+  const head = [];
+  let drop = false;
+  for (const line of lines.slice(0, lines.indexOf("BEGIN:VEVENT"))) {
+    if (line.startsWith(" ")) { if (!drop) head.push(line); continue; }
+    drop = ICS_DROP_RE.test(line);
+    if (!drop) head.push(line);
+  }
+  return head.concat(lines.slice(od, do_ + 1), ["END:VCALENDAR"]).join("\r\n") + "\r\n";
+}
+
+function icsForEvent(j) {
+  return fetchIcs("hearings.ics").then(ics => vyrizniUdalost(ics, j.uid));
 }
 
 // „jednani-3-cmo-25-2026-2026-08-17.ics" – bez diakritiky a mezer, ať se
@@ -1369,27 +1404,9 @@ function akOtevriPop(anchor) {
 }
 
 // Jedna akce jako .ics: vyřízne se z hotového akce.ics podle id.
-let akIcsPromise = null;
 function akStahniIcs(a) {
-  if (!akIcsPromise) akIcsPromise = fetch("akce.ics").then(r => {
-    if (!r.ok) throw new Error("HTTP " + r.status);
-    return r.text();
-  });
-  akIcsPromise.then(ics => {
-    const lines = ics.split(/\r?\n/);
-    const uidAt = lines.findIndex(l => l.startsWith("UID:akce-" + a.id + "@"));
-    if (uidAt < 0) throw new Error("akce v akce.ics není");
-    let od = uidAt, do_ = uidAt;
-    while (od > 0 && lines[od] !== "BEGIN:VEVENT") od--;
-    while (do_ < lines.length && lines[do_] !== "END:VEVENT") do_++;
-    const head = [];
-    let drop = false;
-    for (const line of lines.slice(0, lines.indexOf("BEGIN:VEVENT"))) {
-      if (line.startsWith(" ")) { if (!drop) head.push(line); continue; }
-      drop = ICS_DROP_RE.test(line);
-      if (!drop) head.push(line);
-    }
-    const text = head.concat(lines.slice(od, do_ + 1), ["END:VCALENDAR"]).join("\r\n") + "\r\n";
+  fetchIcs("akce.ics").then(ics => {
+    const text = vyrizniUdalost(ics, "akce-" + a.id);
     const url = URL.createObjectURL(new Blob([text], { type: "text/calendar;charset=utf-8" }));
     const odkaz = document.createElement("a");
     odkaz.href = url;
@@ -1406,9 +1423,15 @@ function akStahniIcs(a) {
   });
 }
 
+// Nadcházející = akce, které Seznam ukáže (den ode dneška v akPodleDne, bez
+// filtrů). Dlouhý kurz, který už začal, v seznamu není, a tak se nepočítá.
 function akPocty() {
   const todayIso = isoOf(new Date());
-  const nadchazejici = (akData.akce || []).filter(a => a && (a.datum_do || a.datum) >= todayIso);
+  const byDay = akPodleDne(false);
+  const nadchazejici = [];
+  Object.keys(byDay).forEach(d => {
+    if (d >= todayIso) byDay[d].forEach(a => { if (nadchazejici.indexOf(a) < 0) nadchazejici.push(a); });
+  });
   document.querySelectorAll("#ak-poradatele .cal-key").forEach(el => {
     const n = nadchazejici.filter(a => a.poradatel === el.dataset.org && akVidi(a)).length;
     el.querySelector(".cal-key-pocet").textContent = n;
@@ -1515,8 +1538,11 @@ function renderAkce(data) {
 }
 
 /* ========== Přihlášení (Clerk) ========== */
-// Clerk se načítá až po vykreslení obsahu; web na něj nečeká a při jeho
-// výpadku (nebo zablokovaném skriptu) běží dál ve výchozím výběru.
+// Skripty Clerku se stahují souběžně s feedy. Na přihlášení web při načtení
+// čeká (nejvýš CLERK_CEKANI_MS) jen tehdy, když tu byl minule někdo
+// přihlášený (příznak v localStorage); nepřihlášenému se stránka ukáže hned
+// a Clerk doběhne za ní. Při výpadku Clerku (nebo zablokovaném skriptu)
+// web běží dál ve výchozím výběru.
 // Publishable key je veřejný a patří do stránky – podle hostitele se volí
 // instance. Tajný klíč sem nikdy nepatří (je jen v GitHub secrets).
 const CLERK_KLICE = {
@@ -1582,7 +1608,10 @@ function initClerk(skripty) {
     .then(() => {
       clerk = window.Clerk;
       clerkStav = "pripraven";
-      clerk.addListener(({ user }) => zmenaUctu(user));
+      // Clerk by posluchače zavolal hned při registraci – první stav ale
+      // vykreslí zmenaUctu(…, true) níž, jinak by se vše vykreslilo dvakrát
+      // (a druhé vykreslení by zavřelo uvítací dialog nového účtu).
+      clerk.addListener(({ user }) => zmenaUctu(user), { skipInitialEmit: true });
       zmenaUctu(clerk.user, true);
       // Stránka otevřená s kotvou #nastaveni: dialog, jakmile je znám účet.
       if (vyberZKotvy) {
@@ -1624,10 +1653,53 @@ function smiVidet(stranka) {
   return emailyUctu(user).some(e => povoleno.indexOf(e) >= 0);
 }
 
+// Příznak v localStorage, že tu minule byl někdo přihlášený, a seznam
+// stránek z JEN_PRO, které jeho účet smí vidět (např. ["kalendar"]). Podle
+// něj se při načtení čeká na Clerk a předem stahují data těch stránek.
+const PRIZNAK_UCTU = "owl:prihlasen";
+
+function zapisPriznakUctu(user) {
+  try {
+    if (user) localStorage.setItem(PRIZNAK_UCTU, JSON.stringify(Object.keys(JEN_PRO).filter(smiVidet)));
+    else localStorage.removeItem(PRIZNAK_UCTU);
+  } catch (e) { /* bez úložiště se čeká pokaždé (viz priznakUctu) */ }
+}
+
+// null = nikdo přihlášený nebyl; bez úložiště raději čekat jako dřív.
+function priznakUctu() {
+  try {
+    const s = localStorage.getItem(PRIZNAK_UCTU);
+    if (s === null) return null;
+    const stranky = JSON.parse(s);
+    return Array.isArray(stranky) ? stranky : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+// Kalendář jednání vidí jen účty z JEN_PRO – ostatním se hearings.json
+// nestahuje ani nevykresluje. Stáhne se, až smiVidet("kalendar") platí
+// (po načtení Clerku nebo po přihlášení), podle příznaku i dřív; vykreslí
+// se jen jednou (renderKalendar přidává posluchače na document).
+let kalendarData = null;          // promise s obsahem hearings.json
+let kalendarVykreslen = false;
+
+function nactiKalendar() {
+  if (!kalendarData) kalendarData = fetchJson("hearings.json").catch(() => null);
+  return kalendarData;
+}
+
+function vykresliKalendarJednou() {
+  if (kalendarVykreslen) return;
+  kalendarVykreslen = true;
+  nactiKalendar().then(renderKalendar);
+}
+
 // Třída na <html> odkryje položky navigace a stránky s data-jen="…".
 function nastavViditelnost() {
   Object.keys(JEN_PRO).forEach(stranka =>
     document.documentElement.classList.toggle("smi-" + stranka, smiVidet(stranka)));
+  if (smiVidet("kalendar")) vykresliKalendarJednou();
   // Když někdo stojí na stránce, kterou už (nebo ještě) nesmí vidět, nebo se
   // naopak přihlásil a adresa míří na jeho stránku, přepočítá se to.
   const cil = pageOf(location.hash);
@@ -1637,6 +1709,7 @@ function nastavViditelnost() {
 function zmenaUctu(user, vzdy) {
   const id = user ? user.id : null;
   nastavViditelnost();
+  zapisPriznakUctu(user);
   if (vzdy || id !== prihlaseny) {
     prihlaseny = id;
     vyber = user ? normalizujVyber((user.unsafeMetadata || {}).owl) : vychoziVyber();
@@ -2222,9 +2295,11 @@ function navigate(hash, push) {
     if (el) el.hidden = (p !== page);
   });
 
+  // Skok bez animace (html má scroll-behavior: smooth) – jinak by se nová
+  // stránka ukázala na pozici té staré a teprve pak odrolovala nahoru.
   const section = page.sections.indexOf(id) >= 0 ? document.getElementById(id) : null;
-  if (section) section.scrollIntoView({ block: "start" });
-  else window.scrollTo(0, 0);
+  if (section) section.scrollIntoView({ block: "start", behavior: "instant" });
+  else window.scrollTo({ top: 0, behavior: "instant" });
   zobrazListu();
 
   if (push) {
@@ -2301,26 +2376,13 @@ function initSkryvaniListy() {
 function initNav() {
   const links = Array.from(document.querySelectorAll("#sidenav a, .pagetabs a"));
 
+  // Zvýrazněná je aktuální stránka (volá navigate). Na sekce uvnitř stránky
+  // navigace neodkazuje, takže na posunu nezáleží.
   function update() {
-    // Sekce se hledají až tady – po přepnutí stránky jsou vidět jiné.
-    const targets = currentPage.sections
-      .map(id => ({ id, el: document.getElementById(id) }))
-      .filter(t => t.el);
-    let current = targets[0];
-    targets.forEach(t => {
-      if (t.el.getBoundingClientRect().top <= 140) current = t;
-    });
-    // U konce stránky zvýrazni poslední položku (sekce dole se nemusí
-    // doscrollovat až k hornímu okraji okna).
-    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
-      current = targets[targets.length - 1];
-    }
-    const active = current ? current.id : "";
     links.forEach(a => {
-      const href = String(a.getAttribute("href") || "").replace(/^#/, "");
-      // Zvýrazněná je aktuální sekce a k ní i její stránka.
-      a.classList.toggle("active", href === active || href === currentPage.id);
-      if (href === currentPage.id) a.setAttribute("aria-current", "page");
+      const on = String(a.getAttribute("href") || "").replace(/^#/, "") === currentPage.id;
+      a.classList.toggle("active", on);
+      if (on) a.setAttribute("aria-current", "page");
       else a.removeAttribute("aria-current");
     });
   }
@@ -2338,7 +2400,6 @@ function initNav() {
     navigate("#prehled", location.hash !== "#prehled");
   });
   window.addEventListener("popstate", () => navigate(location.hash, false));
-  document.addEventListener("scroll", update, { passive: true });
   updateNav = update;
   initPagetabs();
   initSkryvaniListy();
@@ -2375,13 +2436,16 @@ function initApp() {
   // Filtruje se až při vykreslení (vykresliZdroje) – výběr se po přihlášení
   // může změnit a data se kvůli tomu znovu nestahují.
   const feedPromises = FEEDS.map(f => vyberPromise.then(() => nactiZdroj(f)));
-  // Dvoutýdenní přehled a kalendář se generují zvlášť – když chybí, jen se
-  // nevykreslí; zbytek stránky na ně nečeká déle než na feedy.
+  // Dvoutýdenní přehled a kalendář akcí se generují zvlášť – když chybí, jen
+  // se nevykreslí; zbytek stránky na ně nečeká déle než na feedy.
   const digestPromise = fetchJson("digest.json").catch(() => null);
   const clerkSkripty = nactiClerkSkripty();
   clerkSkripty.catch(() => {});   // chybu vyřeší initClerk()
-  const hearingsPromise = fetchJson("hearings.json").catch(() => null);
   const akcePromise = fetchJson("akce.json").catch(() => null);
+  // Kdo tu minule byl přihlášený, na toho se počká (viz níž); smí-li vidět
+  // Kalendář jednání, jeho data se stahují hned (vykreslí se po Clerku).
+  const priznak = priznakUctu();
+  if (priznak && priznak.indexOf("kalendar") >= 0) nactiKalendar();
   initNav();
   initNovinkyFiltr();
   initArchivPrepinac();
@@ -2399,20 +2463,24 @@ function initApp() {
       : Promise.resolve(),
     new Promise(ok => setTimeout(ok, CLERK_CEKANI_MS))
   ]);
-  Promise.all([Promise.allSettled(feedPromises), digestPromise, hearingsPromise, fontsReady, akcePromise])
-    .then(([results, digest, hearings, , akce]) => {
+  Promise.all([Promise.allSettled(feedPromises), digestPromise, fontsReady, akcePromise])
+    .then(([results, digest, , akce]) => {
       zdrojeVysledky = results;
+      oznacNove(results);
       ukazOkna();
       vykresliZdroje();
       vykresliNastaveni();
       renderDigest(digest);
-      renderKalendar(hearings);
       renderAkce(akce);
-      // Stránku odkryjeme, až je známý účet – jinak by přihlášenému
-      // probliknul výchozí výběr a hlavička bez účtu. Na Clerk ale čekáme
-      // jen chvíli; když nestihne, doběhne až po odkrytí.
+      const clerkHotovo = initClerk(clerkSkripty);
+      // Kdo tu minule byl přihlášený, tomu stránku odkryjeme, až je známý
+      // účet – jinak by mu probliknul výchozí výběr a hlavička bez účtu. Na
+      // Clerk ale čekáme jen chvíli; když nestihne, doběhne až po odkrytí.
+      // Nepřihlášený nečeká vůbec: Clerk mu jen doplní tlačítka v hlavičce
+      // a poznámky pod seznamy.
+      if (!priznak) return;
       const cekani = new Promise(ok => setTimeout(ok, CLERK_CEKANI_MS));
-      return Promise.race([initClerk(clerkSkripty), cekani]);
+      return Promise.race([clerkHotovo, cekani]);
     })
     .then(() => {
       // Až teď je jasná výška stránky – otevřeme kotvu z adresy (a přepočítáme

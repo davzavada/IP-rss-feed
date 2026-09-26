@@ -223,6 +223,11 @@ html:not(.smi-kalendar) [data-jen="kalendar"] { display: none !important; }
 .page { display: flex; flex-direction: column; gap: 22px; }
 .page[hidden] { display: none; }
 [id] { scroll-margin-top: calc(var(--head-h) + 24px); }
+/* Kotva stránky (#nsoud, #akce…) v adrese: prohlížeč na ni po odkrytí sám
+   posune, jenže o hlavičku bez lišty záložek – nadpis by na telefonu zajel
+   pod lištu. Stránka začíná nahoře (navigate), takže se posun ořízne na 0.
+   Musí stát až za [id] (nebo mít vyšší specifičnost). */
+.page[id] { scroll-margin-top: 100000px; }
 /* Popis stránky je vidět hned pod nadpisem, ne schovaný pod otazníkem. */
 .page-head { display: flex; flex-direction: column; gap: 6px; }
 .page-title { margin: 0; font-size: 26px; font-weight: 600; letter-spacing: -0.02em; }
