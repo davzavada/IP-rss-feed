@@ -207,9 +207,13 @@ v civilním úseku na IP senáty (seznam senátů a soudců z rozvrhů práce), 
 správního soudnictví MSPH (zvláštní dokument na téže stránce) na žaloby
 proti Úřadu průmyslového vlastnictví – podle žalovaného mezi účastníky
 (`ucastnici_ip`), ne podle senátu. Každý nový přehled porovnává s minulým
-a změny ukládá vedle jednání (na webu jsou v detailu jednání). Účastníky, kteří jsou fyzická osoba, drží
-archiv jen pod iniciálami; kdo je fyzická osoba, rozhoduje AI, a ptá se jí
-po dávkách, ať se odpověď vejde do stropu i s rostoucím archivem. U jména,
+a změny ukládá vedle jednání (na webu jsou v detailu jednání; nová jednání
+se mezi změny neukládají). Z přehledu, který se naparsuje jen zčásti, se nic
+nemaže ani nehlásí jako odvolané a běh skončí varováním. Účastníky, kteří jsou fyzická osoba, drží
+archiv jen pod iniciálami; kdo je fyzická osoba, rozhoduje AI – jednou za
+běh pro všechny přehledy, po dávkách, a jen u jmen, která nezná keš
+`hearings_osoby.json` (osoby v ní jen jako hash, verdikt „firma“ platí
+týden). U jména,
 kde AI nerozhodne, se celé jméno neuloží; jednání si v takovém případě nechá
 účastníky, které mu archiv přiřadil dřív, a úplně nové zůstane jen pod
 spisovou značkou, dokud ho některý běh neklasifikuje. Bez toho by jeden
