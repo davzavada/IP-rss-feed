@@ -2,15 +2,17 @@
 """Právní časopisy: nová čísla a články -> docs/data/casopisy.json.
 
 Každý časopis má v registru CASOPISY stálé id (ukládá se ve výběru
-uživatele) a zkratku, pod kterou se ukazuje. Výstup je okno za čtyři týdny
-podle prvního výskytu (journals_seen.json); zapisuje se jen tehdy, když se
-obsah opravdu změní.
+uživatele) a zkratku, pod kterou se ukazuje. Výstup je okno za měsíc
+(OKNO_DNI) podle prvního výskytu (journals_seen.json): co zdroj dnes vrátil,
+a z archivu to, co už nevypisuje, ale v okně pořád je. Zapisuje se jen tehdy,
+když se obsah opravdu změní.
 """
 
 import copy
 import json
 import os
 import re
+import sys
 import time
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
@@ -31,7 +33,9 @@ from feed_common import (
     gemini_enabled,
     gemini_summarize_pdf,
     gemini_summarize_text,
+    load_json,
     prune_meta_file,
+    save_json,
     summarize_with_cache,
 )
 
@@ -254,11 +258,9 @@ def scrape_upv():
         else:
             journal_name, label = "Duševní vlastnictví", "DV"
 
-        quarter_months = {"1": "01", "01": "01", "2": "04", "02": "04",
-                          "3": "07", "03": "07", "4": "10", "04": "10"}
-        month = quarter_months.get(issue_num, "01")
-        pub_date = datetime.strptime(f"{year}-{month}-01", "%Y-%m-%d").replace(tzinfo=timezone.utc)
-
+        # Den vydání ÚPV neuvádí a začátek čtvrtletí to není – čísla vycházejí
+        # zhruba 2,5 měsíce po něm. Datum proto určí první výskyt (viz
+        # pub_date_odhad v main()); pořadí čísel drží sort_key.
         items.append({
             # Prefix [DV]/[EP] zobrazuje stránka jako štítek – jednotně
             # se štítky článků ([RPT], [MUJLT], [GRUR Int], …).
@@ -267,7 +269,8 @@ def scrape_upv():
             "link": pdf_url,
             "description": f"{journal_name} {issue_num}/{year}\nPDF: {pdf_url}",
             "guid": f"{journal_name}-{issue_num}-{year}",
-            "pub_date": pub_date,
+            "pub_date": datetime.now(timezone.utc),
+            "pub_date_odhad": True,
             "sort_key": (year, issue_num),
             "ai_source": "issue",  # shrnutí se dělá z celého PDF čísla
         })
@@ -673,7 +676,9 @@ def fetch_ojs_rss(feed_url, label, journal_name):
             "pub_date": pub_date or datetime.now(timezone.utc),
             "pub_date_odhad": pub_date is None,
             "ai_source": "article",  # shrnutí se dělá z názvu a anotace
-            "ai_text": f"{title}\n\n{full_desc}".strip(),
+            # Bez anotace AI nic nedostane – ze samotného názvu by si obsah
+            # jen domyslela (viz BEZ_PODKLADU_NOTE).
+            "ai_text": f"{title}\n\n{full_desc}".strip() if full_desc else "",
         })
 
     if too_old:
@@ -775,12 +780,13 @@ def fetch_crossref_journal(issn, label, journal_name):
     """Vrátí nedávné články časopisu z Crossref."""
     since = (datetime.now(timezone.utc)
              - timedelta(days=CROSSREF_LOOKBACK_DAYS)).strftime("%Y-%m-%d")
-    works, videne = [], set()
+    works, videne, chyby = [], set(), []
     for filtr in CROSSREF_FILTRY:
         try:
             nalezene = _crossref_dotaz(issn, filtr, since)
         except requests.RequestException as e:
             print(f"    [diag] {label}: dotaz {filtr} selhal: {e}")
+            chyby.append(e)
             continue
         pridano = 0
         for w in nalezene:
@@ -791,6 +797,10 @@ def fetch_crossref_journal(issn, label, journal_name):
                 pridano += 1
         print(f"    [diag] {label}: {filtr} vrátil {len(nalezene)}, "
               f"z toho nových {pridano}")
+    # Nula článků za měsíc je u čtvrtletníku běžná, nula odpovědí ne – když
+    # neprošel ani jeden dotaz, je to výpadek a main() ho musí vidět.
+    if len(chyby) == len(CROSSREF_FILTRY):
+        raise RuntimeError(f"Crossref nedostupný ({chyby[-1]})")
 
     items = []
     for w in works:
@@ -822,7 +832,10 @@ def fetch_crossref_journal(issn, label, journal_name):
             "guid": f"{label}-{doi}",
             "pub_date": pub_date,
             "ai_source": "article",  # shrnutí se dělá z názvu a abstraktu
-            "ai_text": f"{title}\n\n{abstract}".strip(),
+            # Bez abstraktu nic – shrnutí ze samotného názvu je vymyšlené
+            # (opravy, recenze, rozhodnutí bez podtitulu). Až Crossref
+            # abstrakt doplní, shrnutí vznikne (v cache ještě žádné není).
+            "ai_text": f"{title}\n\n{abstract}".strip() if abstract else "",
         }
         if je_rozhodnuti:
             # Rozhodnutí obvykle nemá abstrakt, zato má na stránce vydavatele
@@ -1000,37 +1013,75 @@ def _rss_autor(item, ns):
 # Crossref umí odpovědět i na jeden DOI. U feedu bez autorů je to jediná
 # cesta, jak se autor dozvědět – stránka článku sedí za Cloudflare.
 CROSSREF_DILO = "https://api.crossref.org/works/{doi}"
-CROSSREF_MAX_DOTAZU = 20      # strop na běh, ať se z toho nestane dávka
+CROSSREF_MAX_DOTAZU = 20      # strop na časopis a běh, ať se z toho nestane dávka
 CROSSREF_PAUZA = 0.2          # vteřin mezi dotazy
 
 
-def doplnit_autory(zaznamy, label):
-    """Dopíše chybějící autory z Crossrefu podle DOI (mění zaznamy na místě)."""
-    chybi = [z for z in zaznamy if z["doi"] and not z["authors"]]
-    if not chybi:
+def _zkratka(it):
+    """Zkratka časopisu z titulku položky („[IIC] …" -> „IIC")."""
+    m = PREFIX_RE.match(it.get("title", ""))
+    return m.group(1) if m else ""
+
+
+def _nastav_autora(it, autori):
+    """Autor do položky i do popisu (ten se skládá s řádkem „Autor:")."""
+    it["authors"] = autori
+    if it.get("popis_casti"):
+        nazev, *radky = it["popis_casti"]
+        it["description"] = popis_polozky(nazev, autori, *radky)
+
+
+def doplnit_autory(items, meta_file=None):
+    """Dopíše autory článkům z feedu, který je nenese (OUP): nejdřív z cache
+    (journals_meta.json), jinak z Crossrefu podle DOI – a uloží je do cache.
+
+    Volá se až na položky v okně (po filter_by_first_seen): feed vypisuje
+    i rok staré články a ptát se na ně každý běh znovu nemá smysl. Strop
+    dotazů platí na časopis a běh, nejnovější články jdou první; na zbytek
+    dojde v dalších bězích, protože co už v cache je, se znovu nehledá.
+    """
+    kandidati = [it for it in items if it.get("doi_autor") and not it.get("authors")]
+    if not kandidati:
         return
-    print(f"    [diag] {label}: {len(chybi)} článků bez autora ve feedu, "
-          f"doplňuji z Crossrefu")
-    doplneno = 0
-    for i, z in enumerate(chybi[:CROSSREF_MAX_DOTAZU]):
-        try:
-            # Bez parametrů: `select` umí jen výpisový endpoint, na dotaz
-            # na jeden DOI odpoví Crossref 400 Bad Request.
-            resp = requests.get(
-                CROSSREF_DILO.format(doi=quote(z["doi"], safe="/")),
-                headers={"User-Agent": CROSSREF_UA}, timeout=30,
-            )
-            resp.raise_for_status()
-            autori = _crossref_autori(resp.json().get("message", {}))
-        except (requests.RequestException, ValueError) as e:
-            print(f"    [diag] {label}: autor k {z['doi']} nepřišel: {e}")
-            continue
+    meta_file = meta_file or META_FILE
+    meta = load_json(meta_file)
+    chybi, zmena = {}, False
+    for it in kandidati:
+        autori = (meta.get(it["guid"]) or {}).get("authors", "")
         if autori:
-            z["authors"] = autori
-            doplneno += 1
-        if i + 1 < len(chybi[:CROSSREF_MAX_DOTAZU]):
-            time.sleep(CROSSREF_PAUZA)
-    print(f"    [diag] {label}: autor doplněn u {doplneno} článků")
+            _nastav_autora(it, autori)
+        else:
+            chybi.setdefault(_zkratka(it), []).append(it)
+
+    for label, polozky in chybi.items():
+        polozky.sort(key=lambda it: it["pub_date"], reverse=True)
+        davka = polozky[:CROSSREF_MAX_DOTAZU]
+        print(f"    [diag] {label}: {len(polozky)} článků v okně bez autora, "
+              f"doplňuji z Crossrefu {len(davka)}")
+        doplneno = 0
+        for i, it in enumerate(davka):
+            if i:
+                time.sleep(CROSSREF_PAUZA)
+            try:
+                # Bez parametrů: `select` umí jen výpisový endpoint, na dotaz
+                # na jeden DOI odpoví Crossref 400 Bad Request.
+                resp = requests.get(
+                    CROSSREF_DILO.format(doi=quote(it["doi_autor"], safe="/")),
+                    headers={"User-Agent": CROSSREF_UA}, timeout=30,
+                )
+                resp.raise_for_status()
+                autori = _crossref_autori(resp.json().get("message", {}))
+            except (requests.RequestException, ValueError) as e:
+                print(f"    [diag] {label}: autor k {it['doi_autor']} nepřišel: {e}")
+                continue
+            if autori:
+                _nastav_autora(it, autori)
+                meta.setdefault(it["guid"], {})["authors"] = autori
+                zmena = True
+                doplneno += 1
+        print(f"    [diag] {label}: autor doplněn u {doplneno} článků")
+    if zmena:
+        save_json(meta_file, meta)
 
 
 def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
@@ -1103,26 +1154,31 @@ def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
             "pub_date": pub_date, "odhad": odhad,
         })
 
-    # Autor musí být znám dřív, než se skládá popis položky.
-    doplnit_autory(zaznamy, label)
-
     items = []
     for z in zaznamy:
         abstract, authors, title = z["abstract"], z["authors"], z["title"]
-        items.append({
+        popis_casti = (title, journal_name, zkratit(abstract))
+        polozka = {
             "title": f"[{label}] {title}",
             "journal_name": journal_name,
             "authors": authors,
             "link": z["link"],
-            "description": popis_polozky(title, authors, journal_name, zkratit(abstract)),
+            "description": popis_polozky(title, authors, *popis_casti[1:]),
             # Stejný tvar guid jako u Crossref, ať se článek po přepnutí zdroje
             # neoznačí podruhé jako nový.
             "guid": f"{label}-{z['doi'] or z['klic']}",
             "pub_date": z["pub_date"],
             "pub_date_odhad": z["odhad"],
             "ai_source": "article",
-            "ai_text": f"{title}\n\n{abstract}".strip(),
-        })
+            # Bez abstraktu nic – ze samotného názvu se shrnovat nemá.
+            "ai_text": f"{title}\n\n{abstract}".strip() if abstract else "",
+        }
+        if z["doi"] and not authors:
+            # Autora feed nenese – doplní ho doplnit_autory() z cache nebo
+            # z Crossrefu, ale až u položek v okně. Popis se pak složí znovu.
+            polozka["doi_autor"] = z["doi"]
+            polozka["popis_casti"] = popis_casti
+        items.append(polozka)
 
     if too_old:
         print(f"    [diag] {label}: {too_old} článků starších než "
@@ -1177,9 +1233,11 @@ BLOKACE_RE = re.compile(
 )
 MIN_TEXT_PRO_AI = 600      # kratší stránka není článek, ale rozcestník
 
-# Co se napíše do sloupce Shrnutí, když nebylo z čeho shrnovat: stránka
-# vydavatele nepustila, nebo položka (zpráva ze semináře) anotaci nemá.
-BEZ_PODKLADU_NOTE = "Zdroj zatím nedal text ke shrnutí."
+# Co se napíše do sloupce Shrnutí, když shrnutí není – ať už stránka
+# vydavatele nepustila, položka (zpráva ze semináře) anotaci nemá, nebo AI
+# selhala. Mluví jen za nás, ne za zdroj (ten text mít může), a důvod
+# neuvádí, protože ho u každé položky neznáme.
+BEZ_PODKLADU_NOTE = "Shrnutí zatím není k dispozici."
 
 # Bez hlaviček Accept posílají někteří vydavatelé osekanou verzi stránky.
 PAGE_HEADERS = {
@@ -1290,10 +1348,10 @@ def enrich_summaries(items):
         # řekne, že jde o rozhodnutí; soud, datum i značka jsou v názvu.
         if not it["tag"] and it.get("ai_fallback_tag"):
             it["tag"] = it["ai_fallback_tag"]
-        # Místo prázdného políčka ve výpisu radši důvod, proč shrnutí není –
-        # ať je poznat, že tam nechybí omylem. Poznámka není konečná: dokud
-        # položka zůstane v okně, zkouší se to při každém běhu znovu. S vypnutou
-        # AI nechybí podklad, ale shrnování, a o tom poznámka nelže.
+        # Místo prázdného políčka ve výpisu poznámka, ať je poznat, že tam
+        # shrnutí nechybí omylem. Není konečná: dokud položka zůstane v okně,
+        # zkouší se to při každém běhu znovu. S vypnutou AI se poznámka
+        # nepíše – shrnovat se nezkoušelo.
         if gemini_enabled():
             it["note"] = "" if it["summary"] else BEZ_PODKLADU_NOTE
     return items
@@ -1328,12 +1386,18 @@ def polozka_json(it):
     return {k: v for k, v in out.items() if v not in ("", None)}
 
 
-def zapis_json(all_items, cesta=None, nyni=None):
+def zapis_json(all_items, cesta=None, nyni=None, navic=()):
     """Zapíše okno časopisů. Jen když se obsah změnil – jinak by každý běh
-    měnil čas a spouštěl commit i nasazení. Vrací True při zápisu."""
+    měnil čas a spouštěl commit i nasazení. Vrací True při zápisu.
+
+    navic – hotové záznamy (tvar polozka_json) doplněné z archivu; zařadí se
+    podle data mezi položky z tohoto běhu."""
     cesta = cesta or OUTPUT
-    obsah = {"okno_dni": WINDOW_DAYS, "casopisy": CASOPISY,
-             "polozky": [polozka_json(it) for it in all_items]}
+    polozky = [polozka_json(it) for it in all_items]
+    if navic:
+        polozky += list(navic)
+        polozky.sort(key=lambda z: z.get("datum", ""), reverse=True)
+    obsah = {"okno_dni": WINDOW_DAYS, "casopisy": CASOPISY, "polozky": polozky}
     if os.path.exists(cesta):
         try:
             with open(cesta, encoding="utf-8") as f:
@@ -1352,16 +1416,18 @@ def zapis_json(all_items, cesta=None, nyni=None):
     return True
 
 
-def archivuj(all_items, adresar=None):
+def archivuj(all_items, adresar=None, zaznamy=()):
     """Zanese položky okna do archivu data/casopisy/RRRR-MM.jsonl (měsíc
     prvního výskytu). Existující záznam se přepíše novějším – i shrnutí, které
     se mezitím zahodilo nebo vzniklo znovu. Cache shrnutí drží déle než okno,
     takže položka v okně o hotové shrnutí nepřijde. Soubor se přepíše, jen
-    když se změní. Vrací počet nově archivovaných položek."""
+    když se změní. Vrací počet nově archivovaných položek.
+
+    zaznamy – hotové záznamy (tvar polozka_json), třeba doplněné z archivu
+    se shrnutím, které mezitím přibylo v cache."""
     adresar = adresar or ARCHIV_DIR
     po_mesicich = {}
-    for it in all_items:
-        z = polozka_json(it)
+    for z in [polozka_json(it) for it in all_items] + list(zaznamy):
         mesic = (z.get("first_seen") or z["datum"])[:7]
         po_mesicich.setdefault(mesic, []).append(z)
     nove = 0
@@ -1390,89 +1456,196 @@ def archivuj(all_items, adresar=None):
     return nove
 
 
+def _mesice(od, do):
+    """Měsíce „RRRR-MM" od data `od` do data `do` včetně."""
+    r, m = od.year, od.month
+    while (r, m) <= (do.year, do.month):
+        yield f"{r:04d}-{m:02d}"
+        r, m = (r + 1, 1) if m == 12 else (r, m + 1)
+
+
+def z_archivu(vynechat, seen, meta, nyni=None, adresar=None):
+    """Záznamy z archivu, které patří do okna, i když je zdroj dnes nevrátil.
+
+    Okno drží položku měsíc od prvního výskytu, ale weby čísel (Právník,
+    Jurisprudence, TLQ, ÚPV) i feed aktuálního čísla OUP vypisují jen poslední
+    číslo a Crossref se ptá jen měsíc zpět podle data vydání. Bez archivu by
+    předchozí číslo zmizelo z webu v den, kdy vyjde nové, a výpadek zdroje by
+    okno vyprázdnil. Bere se jen to, co je pořád ve stavu prvního výskytu
+    s prvním výskytem v okně (vyřazené položky a starý tvar guid se nevrátí).
+
+    Shrnutí a heslo platí z cache (journals_meta.json), když v ní položka je
+    – mohlo mezitím přibýt, nebo být zahozené jako vymyšlené. Nové shrnutí se
+    tu nevytváří: z archivního záznamu není z čeho.
+    """
+    adresar = adresar or ARCHIV_DIR
+    nyni = nyni or datetime.now(timezone.utc)
+    cutoff = nyni - timedelta(days=WINDOW_DAYS)
+    ai = gemini_enabled()
+    out = {}
+    for mesic in _mesice(cutoff, nyni):
+        cesta = os.path.join(adresar, mesic + ".jsonl")
+        if not os.path.exists(cesta):
+            continue
+        with open(cesta, encoding="utf-8") as f:
+            for radek in f:
+                if not radek.strip():
+                    continue
+                z = json.loads(radek)
+                gid = z.get("id")
+                if not gid or gid in vynechat or gid not in seen:
+                    continue
+                try:
+                    prvni = datetime.fromisoformat(seen[gid])
+                except (TypeError, ValueError):
+                    continue
+                if prvni < cutoff:
+                    continue
+                z["first_seen"] = _iso(prvni)
+                cache = meta.get(gid)
+                if cache is not None:
+                    if cache.get("summary"):
+                        z["shrnuti"] = cache["summary"]
+                        z["heslo"] = cache.get("tag") or z.get("heslo", "")
+                    elif z.get("shrnuti"):
+                        # Shrnutí z cache zmizelo – bylo vymyšlené z názvu.
+                        z.pop("shrnuti", None)
+                        z.pop("heslo", None)
+                    if cache.get("authors") and not z.get("autori"):
+                        z["autori"] = cache["authors"]
+                if z.get("shrnuti"):
+                    z.pop("poznamka", None)
+                    z.pop("popis", None)
+                else:
+                    z.setdefault("popis", popis_polozky(z.get("nazev", ""), z.get("autori", "")))
+                    if ai:
+                        z["poznamka"] = BEZ_PODKLADU_NOTE
+                    else:
+                        z.pop("poznamka", None)
+                out[gid] = z
+    return list(out.values())
+
+
+# --- Náběh nového časopisu ---
+# Nový zdroj by při prvním běhu vydal celý feed (u IJLIT půl roku článků) za
+# dnešní novinky – do Novinek i do dvoutýdenního přehledu. Položky, které
+# stav ještě nezná, proto při náběhu dostanou první výskyt o NABEH_POSUN_DNI
+# zpět: zůstanou v okně i v archivu, ale ne v Novinkách (24 h) ani v přehledu
+# (digest.WEEKS = 14 dní). Jen článek se skutečným datem vydání z posledních
+# NABEH_CERSTVE_DNI se bere jako opravdová novinka.
+# Náběh je (a) prvních NABEH_DNI dní od data v ZAVEDENI – kryje i to, že
+# první den feed nevyjde a přijde jen pár článků ze zálohy – a (b) každý
+# časopis, jehož guid stav zatím vůbec nezná (když se na ZAVEDENI zapomene).
+# Obecné pravidlo „starší datum vydání má přednost" to není schválně:
+# Crossref i OUP vydávají čísla se starším datem, která novinkou jsou.
+NABEH_DNI = 3
+NABEH_POSUN_DNI = 15
+NABEH_CERSTVE_DNI = 3
+# Kdy přibyl časopis do registru (zkratka -> datum). Nový časopis sem patří.
+ZAVEDENI = {
+    "IJLIT": "2026-09-25", "JPIL": "2026-09-25", "CMLRev": "2026-09-25",
+    "ELJ": "2026-09-25", "ČPVP": "2026-09-25",
+}
+# Guid většiny zdrojů začíná „<zkratka>-"; tyhle ho mají jinak.
+GUID_PREFIX = {"DV": "Duševní vlastnictví-", "EP": "Evropské právo-", "Právník": "Pravnik-"}
+
+
+def guid_prefix(zkratka):
+    """Začátek guid položek časopisu (podle něj se pozná, co už stav zná)."""
+    return GUID_PREFIX.get(zkratka, f"{zkratka}-")
+
+
+def nabeh_first_seen(seen, nyni=None):
+    """Funkce (položka, teď) -> první výskyt pro filter_by_first_seen, nebo
+    None (= teď) mimo náběh. Rozhoduje se podle stavu před tímto během."""
+    nyni = nyni or datetime.now(timezone.utc)
+    nabeh = set()
+    for zkratka in CASOPIS_PODLE_ZKRATKY:
+        prefix = guid_prefix(zkratka)
+        zaveden = ZAVEDENI.get(zkratka)
+        if zaveden:
+            od = datetime.fromisoformat(zaveden).replace(tzinfo=timezone.utc)
+            if nyni - od < timedelta(days=NABEH_DNI):
+                nabeh.add(zkratka)
+                continue
+        if not any(g.startswith(prefix) for g in seen):
+            nabeh.add(zkratka)
+    if nabeh:
+        print(f"  Náběh (starší obsah se nepočítá jako novinka): {', '.join(sorted(nabeh))}")
+
+    def first_seen_of(it, ted):
+        if _zkratka(it) not in nabeh:
+            return None
+        if (not it.get("pub_date_odhad") and it.get("pub_date")
+                and it["pub_date"] >= ted - timedelta(days=NABEH_CERSTVE_DNI)):
+            return None
+        return ted - timedelta(days=NABEH_POSUN_DNI)
+    return first_seen_of
+
+
+def _zdroj(nazev, fn, selhane, prazdny_je_chyba=False):
+    """Stáhne jeden zdroj; výpadek zapíše do `selhane` a vrátí []."""
+    try:
+        items = fn()
+    except Exception as e:
+        print(f"  CHYBA při stahování {nazev}: {e}")
+        selhane.append(nazev)
+        return []
+    print(f"  Nalezeno {len(items)} položek")
+    if not items and prazdny_je_chyba:
+        # Web čísla vypisuje vždy aspoň aktuální číslo – nic znamená, že se
+        # stránka nestáhla nebo změnila tvar.
+        print(f"  CHYBA: {nazev} nevrátil nic")
+        selhane.append(nazev)
+    return items
+
+
 def main():
     print("Stahuji právní časopisy...")
-    all_items = []
+    all_items, selhane = [], []
 
-    # 1. ÚPV (HTML + PDF čísla)
-    print("  Zdroj: Duševní vlastnictví / Evropské právo (ÚPV)")
-    try:
-        upv = scrape_upv()
-        print(f"  Nalezeno {len(upv)} nejnovějších čísel")
-        all_items.extend(upv)
-    except Exception as e:
-        print(f"  CHYBA při stahování ÚPV: {e}")
+    # Weby čísel (ÚPV, Právník, Jurisprudence, TLQ): prázdný výsledek je chyba.
+    for nazev, fn in [("ÚPV (Duševní vlastnictví / Evropské právo)", scrape_upv),
+                      ("Právník", scrape_pravnik),
+                      ("Jurisprudence", scrape_jurisprudence),
+                      ("The Lawyer Quarterly", scrape_tlq)]:
+        print(f"  Zdroj: {nazev}")
+        all_items.extend(_zdroj(nazev, fn, selhane, prazdny_je_chyba=True))
 
-    # 2. Právník (HTML web ÚSP AV ČR)
-    print("  Zdroj: Právník (ÚSP AV ČR)")
-    try:
-        pravnik = scrape_pravnik()
-        print(f"  Nalezeno {len(pravnik)} článků")
-        all_items.extend(pravnik)
-    except Exception as e:
-        print(f"  CHYBA při stahování Právníka: {e}")
-
-    # 3. Jurisprudence (HTML web, nejnovější číslo z archivu)
-    print("  Zdroj: Jurisprudence (nejnovější číslo)")
-    try:
-        jurisprudence = scrape_jurisprudence()
-        print(f"  Nalezeno {len(jurisprudence)} článků")
-        all_items.extend(jurisprudence)
-    except Exception as e:
-        print(f"  CHYBA při stahování Jurisprudence: {e}")
-
-    # 4. The Lawyer Quarterly (OJS, ale obsah čteme z aktuálního čísla)
-    print("  Zdroj: The Lawyer Quarterly (aktuální číslo)")
-    try:
-        tlq = scrape_tlq()
-        print(f"  Nalezeno {len(tlq)} článků")
-        all_items.extend(tlq)
-    except Exception as e:
-        print(f"  CHYBA při stahování TLQ: {e}")
-
-    # 5. Časopisy na OJS (RPT, MUJLT, ČPVP, JIPITEC)
+    # Časopisy na OJS (RPT, MUJLT, ČPVP, JIPITEC)
     for feed_url, label, journal_name in OJS_SOURCES:
         print(f"  Zdroj: {journal_name} (OJS RSS)")
-        try:
-            ojs_items = fetch_ojs_rss(feed_url, label, journal_name)
-            print(f"  Nalezeno {len(ojs_items)} článků")
-            all_items.extend(ojs_items)
-        except Exception as e:
-            print(f"  CHYBA při stahování {label}: {e}")
+        all_items.extend(_zdroj(label, lambda f=feed_url, l=label, n=journal_name:
+                                fetch_ojs_rss(f, l, n), selhane))
 
-    # 6. Časopisy přes Crossref (QMJIP, GRUR Int, IIC)
+    # Časopisy přes Crossref (QMJIP, GRUR Int, IIC)
     for issn, label, journal_name in CROSSREF_JOURNALS:
         print(f"  Zdroj: {journal_name} (Crossref)")
-        try:
-            cr_items = fetch_crossref_journal(issn, label, journal_name)
-            print(f"  Nalezeno {len(cr_items)} článků")
-            all_items.extend(cr_items)
-        except Exception as e:
-            print(f"  CHYBA při stahování {label}: {e}")
+        all_items.extend(_zdroj(label, lambda i=issn, l=label, n=journal_name:
+                                fetch_crossref_journal(i, l, n), selhane))
 
-    # 7. Časopisy s vlastním RSS vydavatele (se zálohou v Crossref)
+    # Časopisy s vlastním RSS vydavatele (se zálohou v Crossref)
     dalsi = [(nazev, f"{vydavatel} RSS", label,
               lambda f=feed, r=ref, i=issn, l=label, n=nazev, v=vydavatel:
               _rss_nebo_crossref(f, r, i, l, n, v))
              for label, nazev, feed, ref, issn, vydavatel in DALSI_FEEDY]
-    for nazev, zdroj, label, scrape in [
+    zdroje_rss = [
         (JWIP_NAME, "Wiley RSS", JWIP_LABEL, scrape_jwip),
         (JIPLP_NAME, "OUP RSS", JIPLP_LABEL, scrape_jiplp),
-    ] + dalsi:
+    ] + dalsi
+    for nazev, zdroj, label, scrape in zdroje_rss:
         print(f"  Zdroj: {nazev} ({zdroj})")
-        try:
-            rss_items = scrape()
-            print(f"  Nalezeno {len(rss_items)} článků")
-            all_items.extend(rss_items)
-        except Exception as e:
-            print(f"  CHYBA při stahování {label}: {e}")
+        all_items.extend(_zdroj(label, scrape, selhane))
+    pocet_zdroju = 4 + len(OJS_SOURCES) + len(CROSSREF_JOURNALS) + len(zdroje_rss)
 
     # Ponecháme jen položky s prvním výskytem do WINDOW_DAYS zpět (u všech
     # zdrojů). První výskyt sledujeme sami, aby se staré články s přepsaným
     # datem nevracely. Stav se neprořezává: zdroje vypisují i rok staré
     # články a po vypadnutí ze stavu by se vrátily jako nové.
+    # Nový časopis nesmí první běh vysypat celý feed do Novinek (viz náběh).
     all_items = filter_by_first_seen(
-        all_items, lambda i: i["guid"], STATE_FILE, days=WINDOW_DAYS, prune_days=None
+        all_items, lambda i: i["guid"], STATE_FILE, days=WINDOW_DAYS, prune_days=None,
+        first_seen_of=nabeh_first_seen(load_json(STATE_FILE)),
     )
 
     # Zdroje, které datum vydání neuvádějí (weby českých časopisů), dostanou
@@ -1485,21 +1658,43 @@ def main():
     # Sort by date desc
     all_items.sort(key=lambda x: x["pub_date"], reverse=True)
 
+    doplnit_autory(all_items)                # autoři z cache / Crossrefu, jen v okně
     all_items = enrich_summaries(all_items)  # AI shrnutí jen na ponechané
 
     # Cache shrnutí prořízneme podle stavu prvního výskytu, ať neroste donekonečna
     prune_meta_file(META_FILE, STATE_FILE)
 
-    nove = archivuj(all_items)
+    # Co zdroj dnes nevypsal (předchozí číslo, výpadek), ale v okně pořád
+    # je, se vezme z archivu – okno drží položku měsíc od prvního výskytu.
+    doplnene = z_archivu({it["guid"] for it in all_items}, load_json(STATE_FILE),
+                         load_json(META_FILE))
+    if doplnene:
+        print(f"Z archivu doplněno do okna: {len(doplnene)} položek")
+
+    nove = archivuj(all_items, zaznamy=doplnene)
     print(f"Archiv časopisů: {nove} nových položek")
 
-    if zapis_json(all_items):
+    for nazev in selhane:
+        print(f"::warning::Časopisy: zdroj {nazev} selhal (co už v okně bylo, drží archiv)")
+
+    if not all_items and not doplnene and selhane:
+        # Prázdné okno kvůli výpadku se nezapisuje – web by přišel o všechno.
+        print(f"::error::Časopisy: nevyšlo nic, selhalo {len(selhane)} zdrojů – okno nepřepisuji")
+        sys.exit(1)
+
+    if zapis_json(all_items, navic=doplnene):
         print(f"Časopisy zapsány do {OUTPUT}")
     else:
         print("Časopisy beze změny")
 
     for item in all_items[:6]:
         print(f"  {item['title']}")
+
+    # Většina zdrojů dole: běh ať skončí chybou, jinak o tom nikdo neví
+    # (workflow hlásí jen neúspěšný krok). Zapsané je, co se povedlo.
+    if len(selhane) * 2 > pocet_zdroju:
+        print(f"::error::Časopisy: selhalo {len(selhane)} z {pocet_zdroju} zdrojů")
+        sys.exit(1)
 
 
 if __name__ == "__main__":

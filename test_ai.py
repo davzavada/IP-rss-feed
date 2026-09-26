@@ -198,6 +198,15 @@ dotaz()
 check("čekání na minutový limit má strop", max(hodiny.spanky) <= fc.GEMINI_MAX_CEKANI,
       str(hodiny.spanky))
 
+sit, hodiny = priprav({PRVNI: [MINUTOVA(60)] * fc.GEMINI_MAX_RETRIES, DRUHY: [ok("gemma")]})
+text, _ = dotaz()
+check("limit za minutu na všech pokusech → po posledním se nečeká, jde další model",
+      text == "gemma" and hodiny.spanky == [60.0, 60.0]
+      and sit.modely_volani() == [PRVNI] * fc.GEMINI_MAX_RETRIES + [DRUHY],
+      f"{hodiny.spanky} {sit.modely_volani()}")
+check("… a čekání si model zapamatuje pro další volání",
+      fc._stav(PRVNI)["dalsi"] >= hodiny.t + 59, f"{fc._stav(PRVNI)['dalsi']} {hodiny.t}")
+
 # =====================================================================
 print("\n3) Výpadky a chyby")
 # =====================================================================
