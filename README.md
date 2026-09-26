@@ -203,6 +203,14 @@ pro AI.
   ze starého feedu (historie `docs/feed.xml` v gitu, `feed_meta.json`
   a `feed_seen.json`) do archivu a oblasti doplnila dávkově.
 
+Přehled jednání se stahuje každý běh, ale čte (parsuje, klasifikuje AI) jen
+tehdy, když se změnil: otisk dokumentu i filtru senátů (`otisk` u úseku
+v hearings.json) má stejný jako minule → „beze změny“, nic se nezpracuje.
+Neúplně přečtený přehled otisk nedostane, příště se čte znovu. `hearings.json`
+a `.ics` (stejně jako `akce.json` a `akce.ics`) se zapisují, jen když se
+změnil obsah – samotný čas stažení nebo razítko v .ics commit ani nasazení
+webu nevyvolá.
+
 **Kalendář jednání** filtruje přehledy soudů podle `hearings_config.json`:
 v civilním úseku na IP senáty (seznam senátů a soudců z rozvrhů práce), v úseku
 správního soudnictví MSPH (zvláštní dokument na téže stránce) na žaloby

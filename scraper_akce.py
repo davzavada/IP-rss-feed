@@ -54,7 +54,7 @@ from feed_common import (
 )
 from judikatura.taxonomie import Taxonomie
 from scraper_hearings import (
-    VTIMEZONE, extract_json, ics_escape, ics_fold, site_host, strip_diacritics,
+    VTIMEZONE, beze_zmeny, extract_json, ics_escape, ics_fold, site_host, strip_diacritics,
 )
 
 CONFIG_FILE = "akce_config.json"
@@ -1209,6 +1209,16 @@ def main():
         "akce": akce,
         "duplikaty": duplikaty,
     }
+    # Zapisuje se, jen když se obsah opravdu změnil – čas stažení výpisů
+    # a razítko v .ics by jinak každý den vyvolaly commit a nasazení webu.
+    output["ics"] = f"https://{site_host()}/{os.path.basename(ICS_FILE)}"
+    predtim = load_json(OUTPUT_FILE)
+    bez_razitek = lambda d: dict(d or {}, poradatele={
+        k: {x: y for x, y in (v or {}).items() if x != "stazeno"}
+        for k, v in ((d or {}).get("poradatele") or {}).items()})
+    if beze_zmeny(bez_razitek(predtim), bez_razitek(output)):
+        print(f"Hotovo: {len(akce)} akcí, obsah beze změny – {OUTPUT_FILE} nepřepisuji")
+        return
     output["ics"] = write_ics(output)
     save_json(OUTPUT_FILE, output)
     print(f"Hotovo: {len(akce)} akcí -> {OUTPUT_FILE}, {ICS_FILE}")

@@ -963,14 +963,14 @@ rozbity = build_docx([r if i < 4 else r[:3] + [f"sp. zn. {r[3]}".replace("/", "-
                       for i, r in enumerate(radky_12c)], od="16.09.2026", do="30.09.2026")
 prehled_civ = {"usek": "civilni"}
 with s_ai(None):
-    (items, per, _, stav), _ = tichy(s.scrape_jednani, "MS", cfg_ms, prehled_civ,
+    (items, per, _, stav, _), _ = tichy(s.scrape_jednani, "MS", cfg_ms, prehled_civ,
                                      docx_soubor(cely))
 check("úplný přehled má stav ok", stav == s.PREHLED_OK and len(items) == 10, stav)
 arch = {}
 s.mark_ip(items, cfg_ms)
 tichy(s.merge_output, arch, "MS", items, per, None, cfg_ms)
 with s_ai(None):
-    (items, per, _, stav), log = tichy(s.scrape_jednani, "MS", cfg_ms, prehled_civ,
+    (items, per, _, stav, _), log = tichy(s.scrape_jednani, "MS", cfg_ms, prehled_civ,
                                        docx_soubor(rozbity))
 check("neúplný přehled bez AI má stav neuplny", stav == s.PREHLED_NEUPLNY and len(items) == 4,
       f"{stav} {len(items) if items else None}")
@@ -995,7 +995,7 @@ def ai_pet(prompt_text):
 
 
 with s_ai(ai_pet) as sim:
-    (items, _, _, stav), _ = tichy(s.scrape_jednani, "MS", cfg_ms, prehled_civ,
+    (items, _, _, stav, _), _ = tichy(s.scrape_jednani, "MS", cfg_ms, prehled_civ,
                                    docx_soubor(rozbity))
 check("useknutá odpověď AI nad prahem nepřehoupne", stav == s.PREHLED_NEUPLNY
       and len(items) == 6, f"{stav} {len(items)}")
@@ -1028,7 +1028,7 @@ check("docx: očekávané řádky se počítají v tabulce",
 check("docx: přehozené sloupce pozná i počítání v tabulce",
       s.ocekavane_radky(prehozene, s.raw_text_of(prehozene)) == 2)
 with s_ai(None):
-    (items, per, _, stav), log = tichy(s.scrape_jednani, "MS", cfg_ms, {"usek": "spravni"},
+    (items, per, _, stav, _), log = tichy(s.scrape_jednani, "MS", cfg_ms, {"usek": "spravni"},
                                        docx_soubor(build_docx(radky_12c[2:5], od="", do="")))
 check("chybějící období se ohlásí", "::warning::" in log and "období" in log, log)
 check("chybějící období se vezme z dnů naparsovaných jednání",
@@ -1190,7 +1190,7 @@ try:
     pred_text = open(s.OUTPUT_FILE, encoding="utf-8").read()
     pred_ics = open(s.ICS_FILE, encoding="utf-8").read()
     puvodni_scrape = s.scrape_jednani
-    s.scrape_jednani = lambda *a, **k: (None, None, None, s.PREHLED_CHYBA)
+    s.scrape_jednani = lambda *a, **k: (None, None, None, s.PREHLED_CHYBA, None)
     try:
         kod, _ = spust()
     finally:
@@ -1202,11 +1202,11 @@ try:
 
     # Jeden úsek dokument nevydal (není selhání), jeden selhal (je).
     os.remove(s.OUTPUT_FILE)
-    stavy = iter([(None, None, None, s.PREHLED_BEZ_DOKUMENTU)])
-    s.scrape_jednani = lambda court, cfg, prehled, local=None: (
+    stavy = iter([(None, None, None, s.PREHLED_BEZ_DOKUMENTU, None)])
+    s.scrape_jednani = lambda court, cfg, prehled, local=None, minuly=None: (
         next(stavy) if prehled.get("usek") == "spravni"
-        else puvodni_scrape(court, cfg, prehled, local) if court == "MS"
-        else (None, None, None, s.PREHLED_CHYBA))
+        else puvodni_scrape(court, cfg, prehled, local, minuly) if court == "MS"
+        else (None, None, None, s.PREHLED_CHYBA, None))
     try:
         with s_ai(None):
             buf = io.StringIO()
@@ -1227,6 +1227,52 @@ try:
           and "MS/spravni" not in log.split("::warning::Jednání: nepodařilo")[1], log[-400:])
     check("částečné selhání: nenulový kód až po zápisu", kod == 1
           and os.path.exists(s.OUTPUT_FILE), str(kod))
+
+    # Stejný přehled jako minule: nečte se znovu a výstup se nepřepíše.
+    with open(FIX_MS, "rb") as f:
+        docx = f.read()
+    cfg_ms_real = s.load_json(s.CONFIG_FILE)["courts"]["MS"]
+    otisk = s.otisk_prehledu(docx, cfg_ms_real)
+    check("otisk: jiný filtr senátů = jiný otisk",
+          otisk != s.otisk_prehledu(docx, dict(cfg_ms_real, senaty=["99 C"])))
+    puvodni_get, puvodni_odkazy = s.http_get, s.find_document_links
+    s.find_document_links = lambda url: [("https://msp.gov.cz/d/prehled-jednani.docx", "Přehled jednání", "prehled jednani civilni")]
+    s.http_get = lambda url, timeout=60: type("R", (), {"content": docx})()
+    try:
+        vysl, log = tichy(s.scrape_jednani, "MS", cfg_ms_real, {"usek": "civilni", "prefer": ["civiln"]},
+                          None, otisk)
+        check("stejný přehled se nečte znovu",
+              vysl[3] == s.PREHLED_BEZE_ZMENY and vysl[0] is None and "beze změny" in log, str(vysl[3]))
+        vysl, _ = tichy(s.scrape_jednani, "MS", cfg_ms_real, {"usek": "civilni", "prefer": ["civiln"]},
+                        None, "jiny-otisk")
+        check("změněný přehled se čte a vrátí nový otisk",
+              vysl[3] == s.PREHLED_OK and vysl[0] and vysl[4] == otisk, str(vysl[3]))
+    finally:
+        s.http_get, s.find_document_links = puvodni_get, puvodni_odkazy
+
+    # Obsah beze změny (jen jiný čas stažení a generated): soubor se nepřepíše.
+    check("beze_zmeny ignoruje razítka",
+          s.beze_zmeny({"generated": "a", "x": 1}, {"generated": "b", "x": 1})
+          and not s.beze_zmeny({"x": 1}, {"x": 2}))
+    check("čas stažení úseku se nepočítá za změnu",
+          s._bez_stazeno({"MS": {"useky": {"c": {"stazeno": "1", "otisk": "o"}}}})
+          == s._bez_stazeno({"MS": {"useky": {"c": {"stazeno": "2", "otisk": "o"}}}}))
+    s.scrape_jednani = lambda court, cfg, prehled, local=None, minuly=None: (
+        puvodni_scrape(court, cfg, prehled, local, minuly)
+        if court == "MS" and prehled.get("usek") != "spravni"
+        else (None, None, None, s.PREHLED_BEZE_ZMENY, "o"))
+    try:
+        with s_ai(None):
+            kod1, _ = spust("--local-jednani", f"MS={FIX_MS}")
+            pred_text = open(s.OUTPUT_FILE, encoding="utf-8").read()
+            pred_ics = open(s.ICS_FILE, encoding="utf-8").read()
+            kod2, log = spust("--local-jednani", f"MS={FIX_MS}")
+    finally:
+        s.scrape_jednani = puvodni_scrape
+    check("opakovaný běh se stejným obsahem soubory nepřepíše",
+          kod2 in (0, None) and open(s.OUTPUT_FILE, encoding="utf-8").read() == pred_text
+          and open(s.ICS_FILE, encoding="utf-8").read() == pred_ics
+          and "nepřepisuji" in log, f"{kod2} {log[-300:]}")
 finally:
     s.CONFIG_FILE, s.OUTPUT_FILE, s.ICS_FILE, s.OSOBY_KES_FILE = puvodni_cesty
     shutil.rmtree(tmpdir, ignore_errors=True)
