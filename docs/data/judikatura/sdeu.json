@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-25T14:15:21Z",
+ "generated": "2026-09-26T03:29:57Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
@@ -275,6 +275,25 @@
    "procesni": false
   },
   {
+   "id": "sdeu:62026TO0365",
+   "spz": "T-365/26",
+   "ecli": "ECLI:EU:T:2026:591",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-09-23",
+   "zverejneno": "2026-09-23",
+   "first_seen": "2026-09-26T03:29:57Z",
+   "nazev": "Europäisch-Iranische Handelsbank v. Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TO0365",
+   "heslo": "Odklad vykonatelności vyžaduje prokázání vážné újmy",
+   "shrnuti": "Tribunál zamítl návrh na odklad vykonatelnosti aktů o zmrazení fondů a hospodářských zdrojů vůči bankovní instituci. Žadatelka neprokázala existenci vážné a nenapravitelné újmy, neboť dostatečně nedoložila svou finanční situaci ani přímou příčinnou souvislost mezi napadenýmiakty EU a hrozícím ukončením činnosti.",
+   "oblasti": [
+    "spravni",
+    "mps"
+   ],
+   "procesni": true
+  },
+  {
    "id": "sdeu:62024TJ0455",
    "spz": "T-455/24",
    "ecli": "ECLI:EU:T:2026:585",
@@ -514,6 +533,24 @@
     "civilni_proces"
    ],
    "procesni": true
+  },
+  {
+   "id": "sdeu:62025TO0375(01)",
+   "spz": "T-375/25",
+   "ecli": "ECLI:EU:T:2026:582",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-09-21",
+   "zverejneno": "2026-09-21",
+   "first_seen": "2026-09-21T12:00:00Z",
+   "nazev": "Holzeisen v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TO0375(01)",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [],
+   "procesni": false,
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
   },
   {
    "id": "sdeu:62025CJ0437",

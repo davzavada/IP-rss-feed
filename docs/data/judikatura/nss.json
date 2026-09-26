@@ -1,8 +1,280 @@
 {
- "generated": "2026-09-25T14:15:21Z",
+ "generated": "2026-09-26T03:29:57Z",
  "soud": "nss",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "nss:785822",
+   "spz": "7 Azs 167/2026-31",
+   "ecli": "ECLI:CZ:NSS:2026:7.Azs.167.2026.31",
+   "druh": "usnesení",
+   "senat": 7,
+   "rejstrik": "Azs",
+   "datum": "2026-09-25",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-26T03:29:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785822",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785822",
+   "soudce": "Milan Podhrázký",
+   "heslo": "Odkladný účinek kasační stížnosti vyžaduje újmu",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku Městského soudu v Praze, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany, a navrhl přiznání odkladného účinku. Nejvyšší správní soud řešil otázku, zda stěžovatel dostatečně osvědčil hrozbu nepoměrně větší újmy ve smyslu § 73 odst. 2 s. ř. s. Soud dospěl k závěru, že stěžovatel neuvedl konkrétní a podložené skutečnosti ohledně svého zdravotního stavu či sociálních poměrů, a proto návrh na přiznání odkladného účinku zamítl.",
+   "oblasti": [
+    "socialni_cizinci",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:785821",
+   "spz": "7 As 171/2026-12",
+   "ecli": "ECLI:CZ:NSS:2026:7.As.171.2026.12",
+   "druh": "usnesení",
+   "senat": 7,
+   "rejstrik": "As",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-26T03:29:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785821",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785821",
+   "soudce": "Jiřina Chmelová",
+   "heslo": "Úmrtí účastníka v řízení o informacích",
+   "shrnuti": "Žalobce se kasační stížností domáhal přezkumu usnesení Krajského soudu v Praze, kterým byla odmítnuta jeho žaloba na poskytnutí informací. Nejvyšší správní soud řešil, zda lze v řízení o kasační stížnosti pokračovat po úmrtí stěžovatele. Soud dospěl k závěru, že právo na informace je vázáno výhradně na osobu žadatele a přechod na právní nástupce není možný, proto kasační stížnost odmítl.",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:785820",
+   "spz": "4 As 144/2026-34",
+   "ecli": "ECLI:CZ:NSS:2026:4.As.144.2026.34",
+   "druh": "rozsudek",
+   "senat": 4,
+   "rejstrik": "As",
+   "datum": "2026-09-25",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-26T03:29:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785820",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785820",
+   "soudce": "Tomáš Kocourek",
+   "heslo": "Vyvlastnění pozemku vyžaduje posouzení alternativ na městských pozemcích",
+   "shrnuti": "Žalobce se u Nejvyššího správního soudu domáhal zrušení rozhodnutí o omezení vlastnického práva k pozemku zřízením věcného břemene pro umístění kabelu elektrického vedení. Soud řešil otázku, zda správní orgány řádně posoudily možnost alternativního umístění přípojkové skříně na pozemku ve vlastnictví města. Soud dospěl k závěru, že odmítnutí alternativního řešení na obecním pozemku nebylo dostatečně a přesvědčivě odůvodněno.",
+   "oblasti": [
+    "vecna_prava",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785819",
+   "spz": "21 Azs 143/2026-20",
+   "ecli": "ECLI:CZ:NSS:2026:21.Azs.143.2026.20",
+   "druh": "usnesení",
+   "senat": 21,
+   "rejstrik": "Azs",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-26T03:29:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785819",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785819",
+   "soudce": "Radovan Havelec",
+   "heslo": "Soudní přezkum neudělení víza za účelem strpění",
+   "shrnuti": "Žalobce se soudil s Komisí pro rozhodování ve věcech pobytu cizinců ohledně neudělení dlouhodobého víza za účelem strpění. Nejvyšší správní soud řešil otázku, zda je rozhodnutí o neudělení tohoto víza vyloučeno ze soudního přezkumu. Dospěl k závěru, že se jedná o ryze vnitrostátní pobytové oprávnění, na něž se vztahuje zákonná výluka ze soudního přezkumu.",
+   "oblasti": [
+    "spravni",
+    "socialni_cizinci"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785818",
+   "spz": "1 Afs 63/2026-35",
+   "ecli": "ECLI:CZ:NSS:2026:1.Afs.63.2026.35",
+   "druh": "rozsudek",
+   "senat": 1,
+   "rejstrik": "Afs",
+   "datum": "2026-09-25",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-26T03:29:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785818",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785818",
+   "soudce": "Ondřej Bartoš",
+   "heslo": "Vyrozumění o daňovém nedoplatku před exekucí",
+   "shrnuti": "Finanční úřad pro Moravskoslezský kraj podal kasační stížnost proti rozsudku Krajského soudu v Ostravě, kterým byl zrušen exekuční příkaz vydaný bez předchozího vyrozumění daňového subjektu o nedoplatku. Nejvyšší správní soud řešil, zda byla naplněna zákonná výjimka ze zjevné neúčelnosti takového vyrozumění podle daňového řádu. Soud dospěl k závěru, že vyrozumění nebylo zjevně neúčelné, neboť daňový subjekt nebyl nekontaktní a v minulosti dobrovolně hradil část nedoplatků.",
+   "oblasti": [
+    "dane",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785817",
+   "spz": "21 As 30/2026-51",
+   "ecli": "ECLI:CZ:NSS:2026:21.As.30.2026.51",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "As",
+   "datum": "2026-09-25",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-26T03:29:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785817",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785817",
+   "soudce": "Faisal Husseini",
+   "heslo": "Nelegitimní podklady v licenčním řízení vylučují dobrou víru",
+   "shrnuti": "Energetický regulační úřad a FVE ALENA SUN se soudily o stanovení účinků nového rozhodnutí vydaného v obnoveném licenčním řízení, kterým byla původní licence zrušena s účinky ex tunc. Nejvyšší správní soud řešil otázku, zda nedostatek dobré víry žadatele v důsledku předložení nepravdivých podkladů třetích osob odůvodňuje zpětné účinky zrušení licence. Soud dospěl k závěru, že odpovědnost za pravdivost podkladů nese žadatel a za takových okolností účinky rozhodnutí v obnoveném řízení nastávají ode dne právní moci původního rozhodnutí.",
+   "oblasti": [
+    "spravni",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785816",
+   "spz": "7 As 2/2026-39",
+   "ecli": "ECLI:CZ:NSS:2026:7.As.2.2026.39",
+   "druh": "usnesení",
+   "senat": 7,
+   "rejstrik": "As",
+   "datum": "2026-09-25",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-26T03:29:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785816",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785816",
+   "soudce": "Milan Podhrázký",
+   "heslo": "Měření rychlosti a dostatečnost důkazů o přestupku",
+   "shrnuti": "Žalobce se u soudů domáhal zrušení rozhodnutí o uložení pokuty za překročení nejvyšší dovolené rychlosti zjištěné policejním měřidlem. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti a přezkoumatelnosti závěrů krajského soudu ohledně zákonnosti měření a důkazního břemene. Dospěl k závěru, že kasační stížnost je nepřijatelná, neboť napadený rozsudek nevybočuje z ustálené judikatury a správní orgány shromáždily ucelený důkazní celek.",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:785815",
+   "spz": "4 Afs 254/2025-38",
+   "ecli": "ECLI:CZ:NSS:2026:4.Afs.254.2025.38",
+   "druh": "rozsudek",
+   "senat": 4,
+   "rejstrik": "Afs",
+   "datum": "2026-09-25",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-26T03:29:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785815",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785815",
+   "soudce": "Petra Weissová",
+   "heslo": "Zpětné určení rozhodného dne fúze",
+   "shrnuti": "Žalobce se domáhal zrušení rozhodnutí o uložení pokuty za opožděné podání daňového přiznání podfondu, které správce daně posoudil jako prodlení. Nejvyšší správní soud řešil otázku aplikace pravidel pro podání daňového přiznání při zpětném stanovení rozhodného dne fúze na první den kalendářního roku a uzavřel, že takový postup vylučuje použití zvláštní lhůty a zakládá povinnost podat přiznání podle obecných pravidel.",
+   "oblasti": [
+    "dane",
+    "spravni",
+    "korporace"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785814",
+   "spz": "21 As 202/2025-36",
+   "ecli": "ECLI:CZ:NSS:2026:21.As.202.2025.36",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "As",
+   "datum": "2026-09-25",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-26T03:29:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785814",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785814",
+   "soudce": "Radovan Havelec",
+   "heslo": "Doplňkové protihlukové stěny tvoří navazující řízení",
+   "shrnuti": "Spolek Děti Země se u správních soudů bránil proti rozhodnutí Ministerstva dopravy, kterým byl zamítnut jeho rozklad proti povolení změny stavby dálnice D11 spočívající v doplnění protihlukových opatření. Nejvyšší správní soud řešil otázku, zda řízení o povolení dodatečných protihlukových stěn představuje navazující řízení ve smyslu zákona o EIA, v němž má dotčená veřejnost právo účasti. Soud dospěl k závěru, že protihlukové stěny jsou integrální součástí hlavního stavebního záměru, a řízení o jejich povolení tak je navazujícím řízením.",
+   "oblasti": [
+    "stavebni_zp",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785811",
+   "spz": "10 As 70/2026-73",
+   "ecli": "ECLI:CZ:NSS:2026:10.As.70.2026.73",
+   "druh": "rozsudek",
+   "senat": 10,
+   "rejstrik": "As",
+   "datum": "2026-09-25",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-26T03:29:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785811",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785811",
+   "soudce": "Michaela Bejčková",
+   "heslo": "Průzkum území pro úložiště vyžaduje odlišný režim",
+   "shrnuti": "Skupina obcí se žalobou bránila proti rozhodnutí Ministerstva životního prostředí o vytyčení průzkumného území pro zvláštní zásahy do zemské kůry za účelem vybudování úložiště radioaktivních odpadů. Nejvyšší správní soud posuzoval otázku, zda je při povolování tohoto průzkumu nutné poměřovat veřejné zájmy i z pohledu zamýšleného využití území. Soud dospěl k závěru, že na tento typ průzkumu nelze mechanicky aplikovat pravidla platná pro průzkum nerostných ložisek a veřejné zájmy postačí zkoumat primárně z pohledu samotného geologického průzkumu.",
+   "oblasti": [
+    "spravni",
+    "stavebni_zp"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785810",
+   "spz": "10 As 242/2025-54",
+   "ecli": "ECLI:CZ:NSS:2026:10.As.242.2025.54",
+   "druh": "rozsudek",
+   "senat": 10,
+   "rejstrik": "As",
+   "datum": "2026-09-25",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-26T03:29:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785810",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785810",
+   "soudce": "Michaela Bejčková",
+   "heslo": "Odškodnění za protiprávní sterilizaci a důkazní nouze",
+   "shrnuti": "Ministerstvo zdravotnictví se soudilo s žalobkyní o nárok na odškodnění za protiprávní sterilizaci. Soud řešil otázku, zda žalobkyně předložila hájitelná tvrzení o vzniku nároku, jestliže zdravotnická dokumentace byla skartována. Dospěl k závěru, že žalobkyně nárok prokázala a ministerstvo jej spekulacemi nevyvrátilo.",
+   "oblasti": [
+    "skoda",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785205",
+   "spz": "10 As 119/2026-32",
+   "ecli": "ECLI:CZ:NSS:2026:10.As.119.2026.32",
+   "druh": "rozsudek",
+   "senat": 10,
+   "rejstrik": "As",
+   "datum": "2026-09-03",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-26T03:29:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785205",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785205",
+   "soudce": "Vojtěch Šimíček",
+   "heslo": "Uplatnění námitek v řízení o dodatečném povolení",
+   "shrnuti": "Žalobci podali kasační stížnost proti rozsudku krajského soudu, kterým byla zamítnuta jejich žaloba proti rozhodnutí žalovaného o dodatečném povolení stavby. Nejvyšší správní soud řešil otázku povinnosti správních orgánů přihlížet k námitkám z předchozích řízení a otázku doručování v případě zastoupení. Dospěl k závěru, že účastníci musí své námitky vznášet aktivně v každém samostatném řízení a kasační stížnost zamítl.",
+   "oblasti": [
+    "stavebni_zp",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:781764",
+   "spz": "21 As 30/2026-40",
+   "ecli": "ECLI:CZ:NSS:2026:21.As.30.2026.40",
+   "druh": "usnesení",
+   "senat": 21,
+   "rejstrik": "As",
+   "datum": "2026-04-30",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-26T03:29:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/781764",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/781764",
+   "soudce": "Faisal Husseini",
+   "heslo": "Odkladný účinek kasační stížnosti při likvidačních dopadech",
+   "shrnuti": "FVE ALENA SUN se soudila s Energetickým regulačním úřadem o odkladný účinek kasační stížnosti proti rozsudku krajského soudu, kterým byla zamítnuta žaloba proti rozhodnutí o obnově licenčního řízení. Nejvyšší správní soud řešil, zda jsou splněny zákonné podmínky pro přiznání odkladného účinku kasační stížnosti. Soud dospěl k závěru, že okamžitý výkon rozhodnutí by měl pro stěžovatelku likvidační dopady, a proto kasační stížnosti odkladný účinek přiznal.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
+  },
   {
    "id": "nss:785809",
    "spz": "7 As 152/2026-10",
