@@ -10,8 +10,16 @@ Použití:
     python scraper_judikatura.py --soudy nss,us
     SKIP_GEMINI=1 python scraper_judikatura.py    # jen objevování, bez AI
 
-Rozpočet AI na běh: --max-polozek / --max-minut, nebo proměnné
-AI_MAX_POLOZEK a AI_MAX_MINUT (workflow je nastavuje).
+    python scraper_judikatura.py --jen-export     # jen okna pro web z archivu
+
+Rozpočet běhu: --max-polozek (rozborů AI) / --max-minut (celý běh od
+začátku, objevování i AI), nebo proměnné AI_MAX_POLOZEK a AI_MAX_MINUT
+(workflow je nastavuje).
+
+Když některý soud selže (výjimka, web nedal nic použitelného), vypíše to
+jako ::error:: pro GitHub Actions a skončí kódem 1 – až po uložení archivu,
+oken a stav.json, takže commit ve workflow proběhne. Dílčí selhání
+(neúplné hledání, nedostupný doplňkový zdroj) jen ::warning::.
 """
 
 import argparse
@@ -35,15 +43,32 @@ def main():
                     default=int(os.environ.get("AI_MAX_POLOZEK") or 60))
     ap.add_argument("--max-minut", type=float,
                     default=float(os.environ.get("AI_MAX_MINUT") or 20))
+    ap.add_argument("--jen-export", action="store_true",
+                    help="jen znovu zapsat okna pro web z archivu")
     args = ap.parse_args()
 
     soudy = [s.strip() for s in args.soudy.split(",") if s.strip()]
     nezname = [s for s in soudy if s not in ADAPTERY]
     if nezname:
         sys.exit(f"Soud bez adaptéru: {', '.join(nezname)} (umím {', '.join(ADAPTERY)})")
+    if args.jen_export:
+        orchestr.jen_export(soudy)
+        return
     souhrn = orchestr.beh({s: ADAPTERY[s]() for s in soudy}, soudy,
                           max_polozek=args.max_polozek, max_minut=args.max_minut)
     print(f"Hotovo: {souhrn}")
+    sys.exit(ohlas(souhrn))
+
+
+def ohlas(souhrn):
+    """Selhání zdrojů jako anotace GitHub Actions. Vrací návratový kód:
+    1, když některý soud selhal, jinak 0."""
+    for soud, varovani in souhrn.get("varovani", {}).items():
+        for v in varovani:
+            print(f"::warning::Judikatura {soud}: {v}")
+    for soud, chyba in souhrn.get("chyby", {}).items():
+        print(f"::error::Judikatura {soud}: {chyba} (viz data/judikatura/stav.json)")
+    return 1 if souhrn.get("chyby") else 0
 
 
 if __name__ == "__main__":

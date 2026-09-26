@@ -58,7 +58,7 @@ def stav_shrnuti(z):
     stav = z.get("stav") or {}
     if stav.get("duvod") == "bez-textu":
         return "ceka_na_text"
-    if int(stav.get("pokusy") or 0) >= fronta.MAX_POKUSU:
+    if fronta.pokusy_ai(stav) >= fronta.MAX_POKUSU:
         return "nepodarilo"
     return "pripravuje"
 
@@ -113,8 +113,8 @@ class Sklad:
     # --- čtení ---
 
     def nacti(self, nyni=None, mesicu=3):
-        """Načte index a záznamy za posledních `mesicu` měsíců (okna, fronta
-        AI i dohledání desky NS dál nesahají)."""
+        """Načte index a záznamy za posledních `mesicu` měsíců (okna a fronta
+        AI dál nesahají; starší předběžný záznam dohledá `dohledej`)."""
         nyni = nyni or model.ted()
         cesta = os.path.join(self.dir, "index.tsv")
         if os.path.exists(cesta):
@@ -153,6 +153,14 @@ class Sklad:
 
     def ma(self, id_):
         return id_ in self.index
+
+    def dohledej(self, id_):
+        """Načte měsíc, kde záznam podle indexu leží (i starší než načtené
+        měsíce). Vrací záznam, nebo None."""
+        m = self.index.get(id_)
+        if m:
+            self._nacti_mesic(m)
+        return self.zaznamy.get(id_)
 
     def podle_klice(self, spz_klic):
         """Načtené záznamy se stejnou spisovou značkou (deska NS vs. databáze)."""

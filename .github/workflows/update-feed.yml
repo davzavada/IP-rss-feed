@@ -49,12 +49,10 @@ jobs:
               *) scrape=false; duvod='tento cron není 2:00 v Praze (druhý výraz je pro jiný čas roku)' ;;
             esac
           fi
-          digest=false
-          if [ '${{ github.event_name }}' = 'workflow_dispatch' ]; then
-            digest=true
-          elif [ "$scrape" = true ] && [ "$(TZ=Europe/Prague date +%u)" = "1" ]; then
-            digest=true
-          fi
+          # Přehled: denně s DIGEST_AUTO – digest.py sám pozná, jestli je
+          # potřeba (nový týden, minulé selhání, doběhlá rozhodnutí); ruční
+          # spuštění ho napíše načisto (DIGEST_FORCE).
+          digest=$scrape
           echo "scrape=$scrape" >> "$GITHUB_OUTPUT"
           echo "digest=$digest" >> "$GITHUB_OUTPUT"
           echo "jednani=$scrape" >> "$GITHUB_OUTPUT"
@@ -103,33 +101,61 @@ jobs:
         run: python scraper_akce.py
 
       # Přehled čte hotové výstupy (časopisy, okna judikatury), takže běží až po
-      # scraperech – jednou týdně, v pondělí ve 2:00. Ručně spuštěný běh ho udělá taky. DIGEST_FORCE říká
-      # digest.py, ať přehled napíše znovu i tehdy, když se vstup od minula
-      # nezměnil – jednou týdně chceme čerstvý text, ne ten čtrnáct dní starý.
-      - name: Dvoutýdenní přehled (pondělí)
+      # scraperech. Spouští se každý den s DIGEST_AUTO a digest.py napíše nový
+      # jen tehdy, když je potřeba: nový týden (v pondělí), minulý pokus
+      # selhal, nebo mezitím doběhla rozhodnutí, která v přehledu chyběla.
+      # Ručně spuštěný běh ho napíše načisto (DIGEST_FORCE).
+      - name: Dvoutýdenní přehled
         id: prehled
         if: steps.plan.outputs.digest == 'true'
         continue-on-error: true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SKIP_GEMINI: ${{ inputs.skip_gemini }}
-          DIGEST_FORCE: '1'
+          DIGEST_AUTO: '1'
+          DIGEST_FORCE: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
         run: python digest.py
 
       - name: Commit & push
+        id: commit
         if: always() && steps.plan.outputs.scrape == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           # docs/data/judikatura patří workflow judikatura.yml.
           git add docs/ ':!docs/data/judikatura' data/casopisy journals_seen.json journals_meta.json hearings_config.json
+          # Keš klasifikace osob (jen otisky jmen) vzniká prvním během s AI.
+          [ -f hearings_osoby.json ] && git add hearings_osoby.json
           git diff --cached --quiet || git commit -m "Update journals, hearings and events $(date -u +%Y-%m-%d)"
           # Kdyby se main mezitím pohnul (dlouhý běh scraperu), přebasuj a zkus
-          # znovu; u konfliktů v generovaných souborech vyhrává naše novější verze.
-          for i in 1 2 3; do
-            git push && break
-            git pull --rebase -X theirs origin main
+          # znovu. Výstupy jiný běh nepíše (concurrency), takže konflikt znamená
+          # ruční úpravu (hearings_config.json) – tu nepřepisovat, rebase zrušit
+          # a krok shodit; výstupy běhu jdou do artefaktu. Když push nevyjde
+          # ani napočtvrté, krok taky spadne – dřív skončil zeleně bez pushe.
+          for i in 1 2 3 4; do
+            git push && exit 0
+            sleep $(( i * 5 ))
+            if ! git pull --rebase origin main; then
+              git rebase --abort || true
+              echo "::error::Konflikt s ruční úpravou na main – výstupy běhu nejsou pushnuté (artefakt vystupy-behu), ruční úpravy zůstaly."
+              exit 1
+            fi
           done
+          echo "::error::Push se nepovedl ani na čtvrtý pokus – výstupy běhu jsou v artefaktu vystupy-behu."
+          exit 1
+
+      - name: Výstupy běhu jako artefakt
+        if: always() && steps.commit.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: vystupy-behu
+          path: |
+            docs/
+            data/casopisy
+            journals_seen.json
+            journals_meta.json
+            hearings_config.json
+          retention-days: 14
 
       # Commit výše uložil, co se povedlo; selhání se tu jen ohlásí. Jednání
       # (dokumenty na msp.gov.cz) a akce (weby pořadatelů) jen varují, ostatní shodí běh,

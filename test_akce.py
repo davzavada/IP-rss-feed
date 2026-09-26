@@ -142,11 +142,11 @@ def soubor(jmeno, obsah):
 
 puvodni_enabled, puvodni_raw = s.gemini_enabled, s.gemini_generate_raw
 s.gemini_enabled = lambda: False
-akce, cesta = s.nacti_poradatele("CAK", CAK, DNES, soubor("cak.html", JSONLD))
+akce, cesta, _ = s.nacti_poradatele("CAK", CAK, DNES, soubor("cak.html", JSONLD))
 check("JSON-LD bez AI", cesta == "jsonld" and len(akce) == 2, f"{cesta} {akce}")
-akce, cesta = s.nacti_poradatele("UPV", CFG["poradatele"]["UPV"], DNES, soubor("upv.ics", ICS))
+akce, cesta, _ = s.nacti_poradatele("UPV", CFG["poradatele"]["UPV"], DNES, soubor("upv.ics", ICS))
 check("iCal soubor", cesta == "ical" and len(akce) == 3)
-akce, chyba = s.nacti_poradatele("CAK", CAK, DNES, soubor("prazdna.html", "<p>Akce</p>"))
+akce, chyba, _ = s.nacti_poradatele("CAK", CAK, DNES, soubor("prazdna.html", "<p>Akce</p>"))
 check("bez dat a bez AI = chyba, ne prázdný výpis", akce is None and "AI" in chyba, str(chyba))
 
 volani = []
@@ -171,7 +171,7 @@ def fake_ai(prompt, text, max_tokens=8192, timeout=300):
 
 s.gemini_enabled = lambda: True
 s.gemini_generate_raw = fake_ai
-akce, cesta = s.nacti_poradatele("CAK", CAK, DNES, soubor("cak_text.html", "<h1>Akce</h1><p>6. 10.</p>"))
+akce, cesta, otisk = s.nacti_poradatele("CAK", CAK, DNES, soubor("cak_text.html", "<h1>Akce</h1><p>6. 10.</p>"))
 check("AI z textu stránky", cesta == "ai" and [a["nazev"] for a in akce] == ["Nekalá soutěž v online reklamě"],
       f"{cesta} {akce}")
 
@@ -256,8 +256,10 @@ check("předpona formy z názvu pryč",
       n["nazev"].startswith("Advokátní tarif") and n["forma"] == "hybridne", str(n))
 check("předpona bez zbytku názvu zůstane",
       s.normalizuj({"nazev": "Online:", "datum": "2026-10-01"}, "CAK", CAK, "")["nazev"] == "Online:")
-check("ČAK: všechny normalizované",
-      all(s.normalizuj(x, "CAK", CAK, CAK["stranky"][0]) for x in cak))
+norm_cak = [s.normalizuj(x, "CAK", CAK, CAK["stranky"][0]) for x in cak]
+check("ČAK: všechny normalizované kromě zrušené",
+      sum(1 for x in norm_cak if x) == 38
+      and all(s.je_zrusena(x["nazev"]) for x, n in zip(cak, norm_cak) if not n))
 
 check("pozvánka ze stránky akce",
       s.odkaz_pozvanky('<a href="/kalendar/soubor/1215">Pozvánka 30.9.2026 - PREZENČNÍ FORMA.pdf</a>'
@@ -270,8 +272,8 @@ check("pozvánka jen z domény pořadatele",
 print("Stránky akcí")
 puvodni = (s.text_detailu, s.z_ai_detailu)
 stazeno = []
-s.text_detailu = lambda url, hosty=(): (stazeno.append(url) or ("", "text"))
-s.z_ai_detailu = lambda text, org, cfg: {"lektori": ["JUDr. X"], "cena": "990 Kč", "anotace": "O čem to je."}
+s.text_detailu = lambda url, hosty=(): (stazeno.append(url) or ("", "text", True))
+s.z_ai_detailu = lambda text, org, cfg: ({"lektori": ["JUDr. X"], "cena": "990 Kč", "anotace": "O čem to je."}, False)
 cfgd = {"poradatele": {"CAK": CAK}}
 akce_d = [ak(f"D{i}", f"2026-10-0{i + 1}", url=f"https://www.cak.cz/akce/{i}") for i in range(4)]
 zbytek = s.dopln_detaily(akce_d, cfgd, 3)
@@ -280,12 +282,290 @@ check("detail: jen v rozpočtu, od nejbližších", zbytek == 0 and len(stazeno)
 s.dopln_detaily(akce_d, cfgd, 3)
 check("detail: hotové se nestahují znovu, zbylá další noc",
       stazeno[3:] == ["https://www.cak.cz/akce/3"] and akce_d[3]["cena"] == "990 Kč", str(stazeno))
-s.z_ai_detailu = lambda text, org, cfg: None
+s.z_ai_detailu = lambda text, org, cfg: (None, False)
 prazdna = [ak("Bez údajů", "2026-10-01", url="https://www.cak.cz/akce/9")]
 for _ in range(4):
     s.dopln_detaily(prazdna, cfgd, 5)
 check("detail: nejvýš dva pokusy", prazdna[0]["detail_pokusy"] == s.DETAIL_POKUSU)
 s.text_detailu, s.z_ai_detailu = puvodni
+
+# --- Výpadek AI při čtení výpisu ------------------------------------------------
+print("Výpadek AI u výpisu")
+puvodni_pretizena = s.ai_pretizena
+s.gemini_enabled = lambda: True
+stranka = soubor("vypis.html", "<h1>Akce</h1><p>Seminář 6. 10. 2026</p>")
+for popis, odpoved in (("prázdná odpověď", ""), ("text místo JSON", "Omlouvám se, nevím."),
+                       ("JSON objekt místo pole", '{"chyba": 1}')):
+    s.gemini_generate_raw = lambda *a, _o=odpoved, **k: _o
+    akce, chyba, otisk = s.nacti_poradatele("UPV", CFG["poradatele"]["UPV"], DNES, stranka)
+    check(f"AI výpis: {popis} = chyba, ne prázdný výpis", akce is None and "AI" in chyba and otisk is None,
+          f"{akce} {chyba}")
+s.gemini_generate_raw = lambda *a, **k: "ok"
+akce, chyba, _ = s.nacti_poradatele("UPV", CFG["poradatele"]["UPV"], DNES,
+                                    soubor("jen_skript.html", "<script>render()</script>"))
+check("AI výpis: stránka bez textu = chyba", akce is None and chyba, str(chyba))
+s.gemini_generate_raw = lambda *a, **k: "[]"
+akce, cesta, otisk = s.nacti_poradatele("UPV", CFG["poradatele"]["UPV"], DNES, stranka)
+check("AI výpis: „[]“ = přečteno, bez akcí", akce == [] and cesta == "ai" and otisk, f"{akce} {cesta}")
+
+
+def upv(nazev, datum, **kw):
+    return dict({"id": s.akce_id("UPV", datum, nazev), "poradatel": "UPV", "datum": datum,
+                 "nazev": nazev, "lektori": [], "cena": ""}, **kw)
+
+
+stare_upv = [upv("Espacenet", "2026-10-01"), upv("Rešerše", "2026-10-07"), upv("Proběhlá", "2026-09-01")]
+for c in ("ai", "parser", "ical", None):
+    vysl = {a["nazev"] for a in s.sloucit(stare_upv, "UPV", [], c, DNES)}
+    check(f"prázdný výpis ({c}) budoucí akce nesmaže", {"Espacenet", "Rešerše", "Proběhlá"} <= vysl, str(vysl))
+check("podezřele málo: nula u parseru ano, pokles u parseru ne",
+      s.podezrele_malo(stare_upv, "UPV", [], "parser", DNES)
+      and not s.podezrele_malo(stare_upv, "UPV", [upv("Espacenet", "2026-10-01")], "parser", DNES))
+
+# --- Otisk výpisu: nezměněný výpis AI nečte ---------------------------------------
+print("Otisk výpisu")
+volani_vypis = []
+
+
+def ai_vypis(prompt, text, **k):
+    volani_vypis.append(text)
+    return json.dumps([{"nazev": "Espacenet", "datum": "2026-10-01", "anotace": "Nově napsaná anotace."}])
+
+
+s.gemini_generate_raw = ai_vypis
+akce1, cesta1, otisk1 = s.nacti_poradatele("UPV", CFG["poradatele"]["UPV"], DNES, stranka)
+minule = {"otisk": otisk1, "akce": [dict(akce1[0], anotace="Anotace ze stránky akce.", detail_pokusy=2),
+                                    upv("Proběhlá", "2026-09-01")]}
+akce2, cesta2, otisk2 = s.nacti_poradatele("UPV", CFG["poradatele"]["UPV"], DNES, stranka, minule)
+check("otisk: stejný text = AI se neptá, minulé akce", len(volani_vypis) == 1 and cesta2 == "ai"
+      and otisk2 == otisk1 and [a["anotace"] for a in akce2] == ["Anotace ze stránky akce."], str(akce2))
+s.gemini_enabled = lambda: False
+akce2, cesta2, _ = s.nacti_poradatele("UPV", CFG["poradatele"]["UPV"], DNES, stranka, minule)
+check("otisk: stejný text se čte i bez AI", akce2 and cesta2 == "ai", f"{akce2} {cesta2}")
+s.gemini_enabled = lambda: True
+akce3, _, otisk3 = s.nacti_poradatele("UPV", CFG["poradatele"]["UPV"], DNES,
+                                      soubor("vypis2.html", "<h1>Akce</h1><p>Nový text</p>"), minule)
+check("otisk: změněný text = AI čte znovu", len(volani_vypis) == 2 and otisk3 != otisk1)
+vysl = s.sloucit(minule["akce"], "UPV", akce3, "ai", DNES)
+check("AI výpis nepřepíše dosavadní anotaci",
+      next(a for a in vysl if a["nazev"] == "Espacenet")["anotace"] == "Anotace ze stránky akce.")
+vysl = s.sloucit([dict(ak("Trvá", "2026-10-02"), anotace="Stará")], "CAK",
+                 [ak("Trvá", "2026-10-02", anotace="Nová z JSON-LD")], "jsonld", DNES)
+check("strojová data anotaci aktualizují", vysl[0]["anotace"] == "Nová z JSON-LD")
+
+# --- Zrušené akce ------------------------------------------------------------------
+print("Zrušené akce")
+for nazev in ("POZOR: ONLINE SEMINÁŘ: Stavební zákon SE NEBUDE KONAT a bude přesunut na leden 2027.",
+              "ZRUŠENO: Advokátní tarif", "Seminář je zrušen – GDPR v praxi", "Zrušeno: Nekalá soutěž"):
+    check(f"zrušená: {nazev[:30]}", s.normalizuj({"nazev": nazev, "datum": "2026-11-04"}, "CAK", CAK, "") is None)
+for nazev in ("Zrušení a likvidace obchodní korporace", "Zrušení SJM a vypořádání",
+              "Odložení věci v trestním řízení", "Přesunutí sídla do zahraničí",
+              "ZRUŠENÍ SPOLEČNOSTI S LIKVIDACÍ"):
+    check(f"není zrušená: {nazev[:30]}",
+          s.normalizuj({"nazev": nazev, "datum": "2026-11-04"}, "CAK", CAK, "") is not None)
+check("prompt AI vynechává zrušené akce", "zrušené akce" in s.VYPIS_AI_PROMPT)
+
+# --- Přejmenovaná akce drží id ------------------------------------------------------
+print("Přejmenování")
+VYPIS_PF = ["https://www.prf.cuni.cz/events"]
+
+
+def pf_akce(nazev, datum, **kw):
+    return dict({"id": s.akce_id("PFUK", datum, nazev), "poradatel": "PFUK", "datum": datum,
+                 "nazev": nazev, "lektori": [], "cena": ""}, **kw)
+
+
+U = "https://www.prf.cuni.cz/akce/danove-pravo-2026"
+stara = pf_akce("Konference: Daňové právo 2026", "2026-10-02", url=U, anotace="Z detailu.",
+                detail_pokusy=2, oblasti=["dane"], oblasti_klic="k")
+dalsi = [pf_akce(f"P{i}", f"2026-10-1{i}", url=f"https://www.prf.cuni.cz/akce/{i}") for i in range(3)]
+nova = pf_akce("Daňové právo 2026", "2026-10-02", url=U, anotace="")
+vysl = s.sloucit([stara] + dalsi, "PFUK", [dict(nova)] + [dict(x) for x in dalsi], "ai", DNES, VYPIS_PF)
+v = [a for a in vysl if a["datum"] == "2026-10-02"]
+check("přejmenování: stejné id a převzaté údaje",
+      len(v) == 1 and v[0]["id"] == stara["id"] and v[0]["nazev"] == "Daňové právo 2026"
+      and v[0]["detail_pokusy"] == 2 and v[0]["oblasti"] == ["dane"], str(v))
+vysl = s.sloucit([stara] + dalsi, "PFUK", [dict(nova)], "ai", DNES, VYPIS_PF)
+check("přejmenování v režimu „podezřele málo“ bez duplicity",
+      len([a for a in vysl if a["datum"] == "2026-10-02"]) == 1 and len(vysl) == 4, str(vysl))
+spolecna = [dict(nova, url=VYPIS_PF[0]), pf_akce("Jiná", "2026-10-02", url=VYPIS_PF[0])]
+vysl = s.sloucit([dict(stara, url=VYPIS_PF[0])] + dalsi, "PFUK", spolecna + [dict(x) for x in dalsi],
+                 "ai", DNES, VYPIS_PF)
+check("odkaz na výpis nepáruje", stara["id"] not in {a["id"] for a in vysl})
+vysl = s.sloucit([stara] + dalsi, "PFUK", [dict(nova, datum="2026-10-09", id="jine")] + [dict(x) for x in dalsi],
+                 "ai", DNES, VYPIS_PF)
+check("jiné datum nepáruje", "jine" in {a["id"] for a in vysl} and stara["id"] not in {a["id"] for a in vysl})
+
+# --- Konec vícedenní akce --------------------------------------------------------------
+print("Konec akce")
+dvoudenni = ak("Konference", "2026-10-05", datum_do="2026-10-06")
+vysl = s.sloucit([dvoudenni], "CAK", [ak("Konference", "2026-10-05")], "parser", DNES)
+check("parser: zkrácená akce ztratí datum_do", "datum_do" not in vysl[0], str(vysl[0]))
+vysl = s.sloucit([dvoudenni], "CAK", [ak("Konference", "2026-10-05")], "ai", DNES)
+check("AI: vynechané datum_do zůstane", vysl[0].get("datum_do") == "2026-10-06")
+
+# --- Neočekávané typy hodnot ----------------------------------------------------------
+print("Typy hodnot")
+n = s.normalizuj({"nazev": ["Seminář", "GDPR"], "datum": "2026-10-01", "forma": ["online", "prezencne"],
+                  "url": ["https://www.cak.cz/akce/5", "https://www.cak.cz/x"], "misto": {"a": 1},
+                  "cena": 1200, "lektori": [{"name": "JUDr. A"}, "Mgr. B", None]}, "CAK", CAK, "")
+check("normalizuj: seznamy a čísla", n and n["forma"] == "hybridne" and n["url"] == "https://www.cak.cz/akce/5"
+      and n["nazev"] == "Seminář GDPR" and n["misto"] == "" and n["cena"] == "1200"
+      and n["lektori"] == ["JUDr. A", "Mgr. B"], str(n))
+check("normalizuj: forma a url jako slovník",
+      s.normalizuj({"nazev": "X", "datum": "2026-10-01", "forma": {}, "url": {"u": 1}}, "CAK", CAK, "") is not None)
+check("normalizuj: datum jako seznam",
+      s.normalizuj({"nazev": "X", "datum": ["2026-10-01"]}, "CAK", CAK, "")["datum"] == "2026-10-01")
+
+# --- Stránky akcí: počítání pokusů, forma ------------------------------------------------
+print("Pokusy o stránku akce")
+s.text_detailu = lambda url, hosty=(): ("<html></html>", "text stránky", True)
+s.gemini_enabled = lambda: False
+bez_ai = [ak(f"B{i}", f"2026-10-0{i + 1}", url=f"https://www.cak.cz/akce/b{i}") for i in range(3)]
+s.dopln_detaily(bez_ai, cfgd, 5)
+check("bez AI se pokus nepočítá a další stránky se nestahují",
+      all(not a.get("detail_pokusy") for a in bez_ai), str([a.get("detail_pokusy") for a in bez_ai]))
+s.gemini_enabled = lambda: True
+s.gemini_generate_raw = lambda *a, **k: ""
+s.ai_pretizena = lambda: True
+s.dopln_detaily(bez_ai, cfgd, 5)
+check("přetížená AI: pokus se nepočítá", all(not a.get("detail_pokusy") for a in bez_ai))
+s.ai_pretizena = lambda: False
+s.dopln_detaily(bez_ai[:1], cfgd, 5)
+check("AI odmítla stránku (ne přetížení): pokus se počítá", bez_ai[0].get("detail_pokusy") == 1)
+s.gemini_generate_raw = lambda *a, **k: "nejde přečíst"
+s.dopln_detaily(bez_ai[1:2], cfgd, 5)
+check("nečitelná odpověď AI: pokus se počítá", bez_ai[1].get("detail_pokusy") == 1)
+s.gemini_generate_raw = lambda *a, **k: json.dumps({"anotace": "Jen anotace, lektoři ani cena nejsou."})
+s.dopln_detaily(bez_ai[2:], cfgd, 5)
+check("přečtená stránka je hotová, i když údaj chybí",
+      bez_ai[2]["detail_pokusy"] == s.DETAIL_POKUSU and not s.potrebuje_detail(bez_ai[2]))
+s.text_detailu = lambda url, hosty=(): ("<html></html>", "text bez pozvánky", False)
+bez_pozvanky = [ak("P", "2026-10-01", url="https://www.cak.cz/akce/p")]
+s.dopln_detaily(bez_pozvanky, cfgd, 5)
+check("nestažená pozvánka: stránka se zkusí znovu", bez_pozvanky[0]["detail_pokusy"] == 1)
+
+
+def spadne(url, hosty=()):
+    raise OSError("síť")
+
+
+s.text_detailu = spadne
+sit = [ak("S", "2026-10-01", url="https://www.cak.cz/akce/s")]
+s.dopln_detaily(sit, cfgd, 5)
+check("chyba stažení se počítá", sit[0]["detail_pokusy"] == 1)
+
+print("Forma ze stránky akce")
+s.text_detailu = lambda url, hosty=(): ("", "text", True)
+s.z_ai_detailu = lambda text, org, cfg: ({"misto": "Velká geologická posluchárna, Albertov 6", "forma": None,
+                                          "anotace": "A", "lektori": ["X"], "cena": "zdarma"}, False)
+PFC = {"poradatele": {"PFUK": {"nazev": "PF UK", "hosty": ["cuni.cz"]}, "CAK": CAK}}
+chybna = pf_akce("Dezinformace", "2026-10-01", url="https://www.prf.cuni.cz/a/1", forma="online", misto="")
+s.dopln_detaily([chybna], PFC, 5, "ai")
+check("AI výpis: stránka akce opraví formu a místo",
+      chybna["forma"] == "prezencne" and chybna["misto"].startswith("Velká")
+      and set(chybna["z_detailu"]) == {"misto", "forma"}, str(chybna))
+znovu = {k: v for k, v in chybna.items() if k != "z_detailu"}
+znovu.update(forma="online", misto="", anotace="")
+vysl = s.sloucit([chybna], "PFUK", [znovu], "ai", DNES)
+check("oprava ze stránky akce přežije další čtení výpisu",
+      vysl[0]["forma"] == "prezencne" and vysl[0]["misto"].startswith("Velká"), str(vysl[0]))
+z_parseru = ak("Online seminář", "2026-10-01", url="https://www.cak.cz/akce/o", forma="online")
+s.dopln_detaily([z_parseru], cfgd, 5, "parser")
+check("parser: forma z výpisu zůstane", z_parseru["forma"] == "online" and not z_parseru.get("z_detailu"))
+s.z_ai_detailu = lambda text, org, cfg: ({"forma": ["online", "prezencne"], "url": ["x"], "anotace": "B"}, False)
+typy = ak("T", "2026-10-01", url="https://www.cak.cz/akce/t")
+s.dopln_detaily([typy], cfgd, 5)
+check("detail: forma jako seznam nespadne", typy["forma"] == "hybridne", str(typy))
+s.text_detailu, s.z_ai_detailu = puvodni
+s.ai_pretizena = puvodni_pretizena
+
+# --- Rozpočet stránek akcí ----------------------------------------------------------------
+print("Rozpočet")
+check("rozpočet: kdo potřebuje méně, dostane potřebu, zbytek ČAK",
+      s.rozdel_rozpocet({"CAK": 28, "PFUK": 4, "JCP": 0, "UPV": 6}, 80) == {"CAK": 28, "PFUK": 4, "JCP": 0, "UPV": 6})
+r = s.rozdel_rozpocet({"A": 50, "B": 5, "C": 50}, 40)
+check("rozpočet: nedostatek se dělí férově", r["B"] == 5 and sum(r.values()) == 40 and abs(r["A"] - r["C"]) <= 1, str(r))
+check("rozpočet: nic nepotřebuje", s.rozdel_rozpocet({"A": 0}, 80) == {"A": 0})
+
+# --- Tatáž akce u dvou pořadatelů ---------------------------------------------------------
+print("Duplicity")
+DCFG = {"poradatele": {"PFUK": {}, "EPRAVO": {"prodejce": True}, "CAK": {}}}
+pf = {"id": "pf", "poradatel": "PFUK", "datum": "2026-10-02", "nazev": "Konference: Daňové právo 2026",
+      "misto": "", "zacatek": "", "lektori": [], "cena": "", "url": "https://www.prf.cuni.cz/a"}
+ep = {"id": "ep", "poradatel": "EPRAVO", "datum": "2026-10-02", "nazev": "Daňové právo 2026",
+      "misto": "PF UK, místnost 120", "zacatek": "09:00", "konec": "17:00", "lektori": ["A", "B"],
+      "cena": "3 025 Kč", "anotace": "x", "url": "https://www.epravo.cz/e/1"}
+zobr, dup = s.rozdel_duplicity([dict(ep), dict(pf)], DCFG)
+hl = zobr[0] if zobr else {}
+check("duplicita: ukáže se pořadatel, prodejce skrytý",
+      [a["id"] for a in zobr] == ["pf"] and [a["id"] for a in dup] == ["ep"] and dup[0]["stejna_jako"] == "pf",
+      f"{zobr} {dup}")
+check("duplicita: doplněné údaje a odkaz „také u“",
+      hl.get("misto") == "PF UK, místnost 120" and hl.get("zacatek") == "09:00" and hl.get("cena") == "3 025 Kč"
+      and hl.get("take_u") == [{"poradatel": "EPRAVO", "url": "https://www.epravo.cz/e/1"}], str(hl))
+brno = {"id": "c1", "poradatel": "CAK", "datum": "2026-10-02", "nazev": "Seminář: Daňové právo 2026",
+        "misto": "Brno", "lektori": [], "cena": ""}
+zobr, dup = s.rozdel_duplicity([dict(ep), dict(brno)], DCFG)
+check("duplicita: jiné místo = jiná akce", len(zobr) == 2 and not dup)
+zobr, dup = s.rozdel_duplicity([dict(pf), dict(pf, id="pf2")], DCFG)
+check("duplicita: v rámci pořadatele se nespojuje", len(zobr) == 2 and not dup)
+zobr, dup = s.rozdel_duplicity([dict(pf, datum="2026-10-03"), dict(ep)], DCFG)
+check("duplicita: jiný den = jiná akce", len(zobr) == 2 and not dup)
+zobr, dup = s.rozdel_duplicity([dict(pf, stejna_jako="x", take_u=[1])], DCFG)
+check("duplicita: značky z minula se přepočítají", "stejna_jako" not in zobr[0] and "take_u" not in zobr[0])
+
+# --- Celý běh (main) nad lokálními soubory ------------------------------------------------
+print("Celý běh")
+beh = tempfile.mkdtemp()
+cfg_beh = {"poradatele": {
+    "PFUK": {"nazev": "PF UK", "zkratka": "PF UK", "barva": "#6d28d9",
+             "stranky": ["https://www.prf.cuni.cz/events"], "hosty": ["cuni.cz"]},
+    "EPRAVO": {"nazev": "epravo.cz", "zkratka": "epravo", "barva": "#15803d", "prodejce": True,
+               "stranky": ["https://www.epravo.cz/v"], "hosty": ["epravo.cz"]},
+    "UPV": dict(CFG["poradatele"]["UPV"]),
+}}
+stare_beh = [upv("Espacenet", "2026-10-01", oblasti=[]), dict(upv("Vyřazený pořadatel", "2026-10-03"), poradatel="BECK"),
+             dict(pf, oblasti=[]), dict(ep, stejna_jako="pf", oblasti=[])]
+for x in stare_beh:
+    x["oblasti_klic"] = s.obsah_klic(x)
+with open(os.path.join(beh, "config.json"), "w", encoding="utf-8") as f:
+    json.dump(cfg_beh, f)
+with open(os.path.join(beh, "akce.json"), "w", encoding="utf-8") as f:
+    json.dump({"poradatele": {}, "akce": stare_beh[:3], "duplikaty": stare_beh[3:]}, f)
+
+
+class PevnyCas(s.datetime):
+    @classmethod
+    def now(cls, tz=None):
+        return s.datetime(2026, 9, 25, 12, 0, tzinfo=tz)
+
+
+puvodni_beh = (s.CONFIG_FILE, s.OUTPUT_FILE, s.ICS_FILE, sys.argv, s.datetime)
+s.CONFIG_FILE, s.OUTPUT_FILE, s.ICS_FILE = (os.path.join(beh, "config.json"), os.path.join(beh, "akce.json"),
+                                            os.path.join(beh, "akce.ics"))
+s.datetime = PevnyCas
+s.gemini_enabled = lambda: True
+s.gemini_generate_raw = lambda *a, **k: ""   # AI nedostupná
+sys.argv = ["scraper_akce.py", "--local", f"UPV={stranka}"]
+try:
+    s.main()
+finally:
+    s.CONFIG_FILE, s.OUTPUT_FILE, s.ICS_FILE, sys.argv, s.datetime = puvodni_beh
+vystup = s.load_json(os.path.join(beh, "akce.json"))
+with open(os.path.join(beh, "akce.ics"), encoding="utf-8", newline="") as f:
+    ics_beh = f.read().replace("\r\n ", "")
+check("běh: výpadek AI nechá akce pořadatele a zapíše chybu",
+      any(a["nazev"] == "Espacenet" for a in vystup["akce"]) and "AI" in (vystup["poradatele"]["UPV"]["chyba"] or ""),
+      str(vystup["poradatele"]["UPV"]))
+check("běh: akce vyřazeného pořadatele pryč", all(a["poradatel"] in cfg_beh["poradatele"] for a in vystup["akce"]))
+check("běh: duplikát zůstává ve stavu, ne ve výpisu ani v ics",
+      [a["id"] for a in vystup["duplikaty"]] == ["ep"] and all(a["id"] != "ep" for a in vystup["akce"])
+      and "SUMMARY:epravo" not in ics_beh and "Také u epravo: https://www.epravo.cz/e/1" in ics_beh,
+      str(vystup["duplikaty"]))
+check("běh: počet bez duplikátu", vystup["poradatele"]["EPRAVO"]["pocet"] == 0
+      and vystup["poradatele"]["PFUK"]["pocet"] == 1, str(vystup["poradatele"]))
+s.gemini_enabled, s.gemini_generate_raw = puvodni_enabled, puvodni_raw
 
 # --- Skutečný config ----------------------------------------------------------
 print("Config")

@@ -190,8 +190,14 @@ class US:
             if not nove:
                 break
             radky += nove
+        self.varovani = []
+        if celkem and not radky:
+            # Web hlásí výsledky, ale řádky se nepřečetly – změnil se tvar
+            # výpisu. Prázdný „úspěšný" běh by se nikdo nedozvěděl.
+            raise RuntimeError(f"výpis hlásí {celkem} výsledků, přečteno 0 (změna tvaru stránky?)")
         if len(radky) < celkem:
             print(f"    [us] načteno jen {len(radky)} z {celkem} výsledků")
+            self.varovani.append(f"načteno jen {len(radky)} z {celkem} výsledků")
         out = {}
         for r in radky:
             out.setdefault(r["sz"], zaznam_z_radku(r))

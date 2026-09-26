@@ -214,9 +214,78 @@ def parse_jednani_docx(data):
 # --- Parsování přehledu jednání (VS .pdf) ---
 
 def pdf_text(data):
+    """Text PDF po řádcích. Řádky, které ve sloupci „Jména účastníků" jen
+    pokračují zalomeným jménem, se slepí s předchozím (viz
+    zalomene_ucastniky) – jinak by každý kus jména byl samostatná strana."""
     from pypdf import PdfReader
     reader = PdfReader(io.BytesIO(data))
-    return "\n".join(page.extract_text() or "" for page in reader.pages)
+    stranky = []
+    for page in reader.pages:
+        kusy = []
+
+        def visitor(text, cm, tm, font, size):
+            if text and text.strip():
+                kusy.append((tm[4], tm[5], text))
+
+        text = page.extract_text(visitor_text=visitor) or ""
+        stranky.append(spoj_zalomene(text, zalomene_ucastniky(kusy)))
+    return "\n".join(stranky)
+
+
+# Svislá mezera (pt) mezi řádky ve sloupci účastníků, pod kterou jde o
+# zalomení téhož jména. VS sází každého účastníka do vlastního odstavce:
+# uvnitř jména jsou řádky od sebe ~12,4 pt, mezi účastníky ~20,4 pt.
+# Pravý okraj sloupce ani právní forma na konci řádku to neřeknou spolehlivě
+# („Honební společenstvo / Zákupy-Brenná" končí daleko před okrajem, „Marek
+# Vitásek" a „TnG-Air Servis s.r.o." jsou dvě strany).
+ZALOMENI_PT = 16
+
+
+def zalomene_ucastniky(kusy):
+    """Z kusů textu jedné stránky (x, y, text) vrátí dvojice (řádek,
+    pokračování) ve sloupci „Jména účastníků": řádek, který leží těsně pod
+    předchozím (mezera pod ZALOMENI_PT), je zalomený kus téhož jména.
+
+    Sloupec začíná tam, kde v hlavičce stránky stojí „Jména účastníků";
+    bez hlavičky se nic neslepuje (dosavadní chování)."""
+    x_sloupce = next((x for x, _, t in kusy if t.strip().startswith("Jména")), None)
+    if x_sloupce is None:
+        return set()
+    radky = {}
+    for x, y, t in kusy:
+        if x >= x_sloupce - 2:
+            radky.setdefault(round(y, 1), []).append((x, t))
+    serazene = [(y, " ".join(" ".join(t for _, t in sorted(kus)).split()))
+                for y, kus in sorted(radky.items(), reverse=True)]
+    dvojice = set()
+    for (y1, a), (y2, b) in zip(serazene, serazene[1:]):
+        if a and b and 0 < y1 - y2 < ZALOMENI_PT:
+            dvojice.add((a, b))
+    return dvojice
+
+
+def spoj_zalomene(text, dvojice):
+    """Slepí řádek textu s předchozím, když spolu tvoří dvojici (řádek,
+    pokračování) ze zalomene_ucastniky. Předchozí řádek může být i celý
+    záznam („… 09:00 CHMIELNICKI-MLYN" + „LIMITED") – porovnává se konec."""
+    if not dvojice:
+        return text
+    # Mezery se porovnávají pryč: pypdf skládá řádek z kusů jinak, než je
+    # tu skládáme z pozic („Zákupy-Brenná" vs. „Zákupy - Brenná").
+    bez_mezer = lambda t: re.sub(r"\s+", "", t)
+    pokracovani = {}
+    for a, b in dvojice:
+        pokracovani.setdefault(bez_mezer(b), set()).add(bez_mezer(a))
+    out = []
+    for ln in text.splitlines():
+        klic = bez_mezer(ln)
+        if out and klic in pokracovani:
+            predchozi = bez_mezer(out[-1])
+            if any(predchozi.endswith(a) for a in pokracovani[klic]):
+                out[-1] = " ".join(out[-1].split()) + " " + " ".join(ln.split())
+                continue
+        out.append(ln)
+    return "\n".join(out)
 
 
 PDF_SKIP_RE = re.compile(
@@ -269,14 +338,37 @@ def parse_jednani_text(text):
 
 
 def parse_period(text):
-    """„v období od 16.08.2026 do 31.08.2026" -> (iso_od, iso_do)."""
+    """„v období od 16.08.2026 do 31.08.2026" -> (iso_od, iso_do).
+
+    Snese i pomlčku nebo „až" místo „do" („období 16. 9. 2026 – 30. 9.
+    2026"); neplatné nebo obrácené období je None."""
     m = re.search(
-        r"od\s+(\d{1,2}\.\s*\d{1,2}\.\s*\d{4})\s+do\s+(\d{1,2}\.\s*\d{1,2}\.\s*\d{4})",
+        r"(?:\bod|obdob\w*)\s+(?:od\s+)?(\d{1,2}\.\s*\d{1,2}\.\s*\d{4})\s*"
+        r"(?:do|až|-|–)\s*(\d{1,2}\.\s*\d{1,2}\.\s*\d{4})",
         text,
     )
     if not m:
         return None
-    return tuple(czech_date_to_iso(x) for x in m.groups())
+    od, do = (czech_date_to_iso(x) for x in m.groups())
+    if not od or not do or od > do:
+        return None
+    return od, do
+
+
+def obdobi_z_odkazu(url):
+    """Záloha, když hlavička dokumentu období neuvádí v podobě, jakou zná
+    parse_period: MSPH dává období do adresy dokumentu
+    („…/spravni-usek-16-30-9-2026" -> 16.–30. 9. 2026). Bere se jen přesně
+    tahle koncovka a jen platné období, jinak None (VS má stálou adresu)."""
+    m = re.search(r"-(\d{1,2})-(\d{1,2})-(\d{1,2})-(\d{4})/?$", url or "")
+    if not m:
+        return None
+    d1, d2, mes, rok = (int(x) for x in m.groups())
+    try:
+        od, do = date(rok, mes, d1), date(rok, mes, d2)
+    except ValueError:
+        return None
+    return (od.isoformat(), do.isoformat()) if od <= do else None
 
 
 def czech_date_to_iso(s):
@@ -297,8 +389,14 @@ def merge_participant_lines(lines):
     („s r.o."), spojkou, nebo známým titulem či právní formou psanou velkými
     písmeny („Ph.D.", „MBA", „GmbH", „LIMITED") – ty soudy sázejí do vlastního
     odstavce a bez slepení by se v kalendáři objevily jako samostatné strany
-    sporu. Zalomení bez rozpoznatelné přípony („Zákupy-Brenná") rozlepené
-    zůstane; to je jen kosmetika."""
+    sporu.
+
+    Zalomení bez rozpoznatelné přípony („Honební společenstvo / Zákupy-
+    Brenná") se odsud poznat nedá a rozlepené by dalo špatný popisek sporu
+    (kus jména jako protistrana). U PDF VS ho proto slepí už pdf_text podle
+    svislé mezery řádků. Pravidlo „řádek končící právní formou patří
+    k předchozímu" sem nepatří: slepilo by dvě samostatné strany („Marek
+    Vitásek" + „TnG-Air Servis s.r.o.") a osoba by se schovala do firmy."""
     out = []
     for ln in lines:
         ln = " ".join(str(ln).split())
@@ -323,8 +421,10 @@ CONT_RE = re.compile(
 )
 
 # Právní formy a tituly, které se z názvu strany pro krátký popisek odřezávají.
+# Před formou musí být mezera nebo čárka – jinak by se (s IGNORECASE) chytala
+# i koncovka obyčejného slova: „House" -> „Hou" (SE), „Atlas" -> „Atl" (a.s.).
 FORM_RE = re.compile(
-    r"(?:,?\s*(?:spol\.\s*s\s*r\.?\s*o\.?|s\.?\s*r\.?\s*o\.?|a\.?\s*s\.?|k\.?\s*s\.?"
+    r"(?:(?:\s*,\s*|\s+)(?:spol\.\s*s\s*r\.?\s*o\.?|s\.?\s*r\.?\s*o\.?|a\.?\s*s\.?|k\.?\s*s\.?"
     r"|v\.?\s*o\.?\s*s\.?|z\.?\s*s\.?|z\.?\s*ú\.?|o\.?\s*p\.?\s*s\.?|s\.?\s*p\.?"
     r"|GmbH|AG|SE|KG|LIMITED|Ltd\.?|LLC|Inc\.?|N\.V\.|B\.V\.|S\.L\.U\.|Corp\.?"
     r"|v\s+likvidaci|příspěvková\s+organizace|státní\s+podnik))+\s*$",
@@ -567,7 +667,69 @@ def ai_osoby(jmena):
     return osoby, nerozhodnuta
 
 
-def redact_osoby(nova, archiv=()):
+# Rozhodnutí AI „osoba/firma" se pamatují mezi běhy, ať se na tatáž jména
+# (celý archiv) neptá každý den znovu. Soubor leží mimo docs/, nenasazuje se.
+# Fyzické osoby jsou v něm jen jako hash jména – plné jméno se nikam
+# neukládá. Firmy jsou v otevřeném tvaru (tak jako tak jsou na webu) a platí
+# jen FIRMY_PLATNOST_DNU: kdyby AI jednou přehlédla člověka, další dotaz má
+# šanci to napravit. Verdikt „osoba" platí napořád – omyl tím směrem jen
+# zkrátí drobnou firmu. Po změně promptu se firmy zapomenou (`verze`).
+# `rucne_firmy` je ruční seznam jmen, která jsou firma bez ptaní.
+OSOBY_KES_FILE = "hearings_osoby.json"
+FIRMY_PLATNOST_DNU = 7
+
+
+def osoby_kes_verze():
+    return hashlib.sha256(OSOBY_AI_PROMPT.encode("utf-8")).hexdigest()[:12]
+
+
+def osoba_klic(jmeno):
+    """Hash jména fyzické osoby pro keš (jméno samo se neukládá)."""
+    norm = " ".join(str(jmeno).split())
+    return hashlib.sha256(f"owl-osoby|{norm}".encode("utf-8")).hexdigest()
+
+
+def nacti_osoby_kes(path=None):
+    """Načte keš rozhodnutí; po změně promptu zapomene firmy."""
+    try:
+        kes = load_json(path or OSOBY_KES_FILE)
+    except Exception:
+        kes = {}
+    if not isinstance(kes, dict):
+        kes = {}
+    kes.setdefault("osoby", {})
+    kes.setdefault("firmy", {})
+    kes.setdefault("rucne_firmy", [])
+    if kes.get("verze") != osoby_kes_verze():
+        kes["firmy"] = {}
+        kes["verze"] = osoby_kes_verze()
+    return kes
+
+
+def uloz_osoby_kes(kes, path=None, dnes=None):
+    """Uloží keš bez firem, kterým vypršela platnost."""
+    dnes = dnes or date.today()
+    hranice = (dnes - timedelta(days=FIRMY_PLATNOST_DNU)).isoformat()
+    kes["firmy"] = {j: d for j, d in sorted(kes.get("firmy", {}).items())
+                    if d > hranice}
+    kes["osoby"] = dict(sorted(kes.get("osoby", {}).items()))
+    save_json(path or OSOBY_KES_FILE, kes)
+
+
+def verdikt_z_kese(kes, jmeno, dnes):
+    """„osoba", „firma", nebo None (keš o jménu nic platného neví)."""
+    if osoba_klic(jmeno) in kes.get("osoby", {}):
+        return "osoba"
+    if jmeno in (kes.get("rucne_firmy") or []):
+        return "firma"
+    zapsano = (kes.get("firmy") or {}).get(jmeno)
+    hranice = (dnes - timedelta(days=FIRMY_PLATNOST_DNU)).isoformat()
+    if zapsano and zapsano > hranice:
+        return "firma"
+    return None
+
+
+def redact_osoby(nova, archiv=(), kes=None, dnes=None):
     """Účastníky, které AI označí za fyzickou osobu, nahradí iniciálami
     a dopočítá z nich zkrácený název sporu. Mění položky na místě.
 
@@ -579,13 +741,39 @@ def redact_osoby(nova, archiv=()):
     Když AI u jména nerozhodne, uloží se jeho jednání bez účastníků: celé
     jméno se radši nezveřejní a příští běh ho z přehledu soudu načte znovu.
     Archivu se to netýká – ten se z ničeho nedoplní, tak zůstane, jak je.
+
+    S `kes` (viz nacti_osoby_kes) se AI ptá jen na jména, o kterých keš nic
+    platného neví, a její rozhodnutí se do keše zapíšou (nerozhodnutá ne).
+    main ji volá jednou za běh nad jednáními ze všech přehledů najednou.
     """
+    dnes = dnes or date.today()
     polozky = list(nova) + list(archiv)
     jmena = sorted({u for it in polozky for u in it.get("ucastnici") or []
                     if initials(u) != u})
-    osoby, nerozhodnuta = ai_osoby(jmena)
+    osoby, k_dotazu = set(), jmena
+    if kes is not None:
+        k_dotazu = []
+        for j in jmena:
+            verdikt = verdikt_z_kese(kes, j, dnes)
+            if verdikt == "osoba":
+                osoby.add(j)
+            elif verdikt is None:
+                k_dotazu.append(j)
+        print(f"    klasifikace osob: {len(jmena) - len(k_dotazu)} z {len(jmena)} "
+              f"jmen z keše, na {len(k_dotazu)} se ptám AI")
+    ai_osoby_, nerozhodnuta = ai_osoby(k_dotazu)
+    osoby |= ai_osoby_
+    if kes is not None:
+        for j in k_dotazu:
+            if j in nerozhodnuta:
+                continue
+            if j in ai_osoby_:
+                kes["osoby"][osoba_klic(j)] = dnes.isoformat()
+                kes["firmy"].pop(j, None)
+            else:
+                kes["firmy"][j] = dnes.isoformat()
     if nerozhodnuta:
-        print(f"    AI nerozhodla u {len(nerozhodnuta)} z {len(jmena)} jmen, "
+        print(f"    AI nerozhodla u {len(nerozhodnuta)} z {len(k_dotazu)} jmen, "
               "kdo je fyzická osoba – jejich jednání ukládám bez účastníků")
         for it in nova:
             if any(u in nerozhodnuta for u in it.get("ucastnici") or []):
@@ -673,13 +861,27 @@ ROZVRH_AI_PROMPT = (
 )
 
 # Od kdy rozvrh platí – z titulní strany („úplné znění s účinností od
-# 15. 9. 2026", „změna od 1. 9. 2026"). Hledá se v textu bez diakritiky,
-# protože pypdf ji u některých písem rozkládá.
+# 15. 9. 2026", „změna od 1. 9. 2026", „s účinností ode dne 1. října 2026").
+# Hledá se v textu bez diakritiky, protože pypdf ji u některých písem
+# rozkládá.
+MESICE = ("ledna", "unora", "brezna", "dubna", "kvetna", "cervna",
+          "cervence", "srpna", "zari", "rijna", "listopadu", "prosince")
+_DATUM = (r"(\d{1,2})\.\s*(?:(\d{1,2})\.|(" + "|".join(MESICE) + r"))\s*(\d{4})")
+_OD = r"\bod(?:e)?(?:\s+dne)?\s+"
 PLATNOST_RE = re.compile(
-    r"\b(uplne\s+zneni|zmen[ay](?:\s+c\.?\s*\d+)?)[^()]{0,40}?"
-    r"\bod\s+(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})"
+    r"\b(uplne\s+zneni|zmen[ay](?:\s+c\.?\s*\d+)?)[^()]{0,40}?" + _OD + _DATUM
 )
-UCINNOST_RE = re.compile(r"ucinnost\w*\s+od\s+(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})")
+UCINNOST_RE = re.compile(
+    r"(?:ucinnost\w*\s*(?::\s*|" + _OD + r"|ke\s+dni\s+)"
+    r"|\bplatn\w*\s+(?:od(?:e)?(?:\s+dne)?|ke\s+dni)\s+|\bplati\s+" + _OD + r")" + _DATUM
+)
+
+
+def _datum_z_shody(skupiny):
+    """(den, měsíc číslem, měsíc slovem, rok) -> (d, m, r) jako čísla."""
+    d, mes, slovem, rok = skupiny
+    mes = MESICE.index(slovem) + 1 if slovem else int(mes)
+    return int(d), mes, int(rok)
 
 
 def platnost_rozvrhu(text):
@@ -696,13 +898,13 @@ def platnost_rozvrhu(text):
         cislo = re.search(r"c\.?\s*(\d+)$", m.group(1))
         if cislo and druh == "změna":
             druh += f" č. {cislo.group(1)}"
-        d, mes, rok = (int(x) for x in m.groups()[1:])
+        d, mes, rok = _datum_z_shody(m.groups()[1:])
     else:
         m = UCINNOST_RE.search(t)
         if not m:
             return None, None
         druh = "s účinností"
-        d, mes, rok = (int(x) for x in m.groups())
+        d, mes, rok = _datum_z_shody(m.groups())
     try:
         iso = date(rok, mes, d).isoformat()
     except ValueError:
@@ -765,7 +967,23 @@ def rozvrh_z_odpovedi(data):
     return sorted(set(senaty), key=senat_poradi), sorted(soudci), sestavy
 
 
-def update_rozvrh(config, court, pdf_bytes, source_url):
+# Kolik stran od začátku se hledá datum platnosti (titulní list nemusí být
+# první) a kolik znaků IP stránek jde do AI.
+PLATNOST_STRAN = 5
+ROZVRH_AI_ZNAKU = 80000
+
+
+def velka_zmena_senatu(stare, nove):
+    """Změní se seznam IP senátů víc, než je u běžné změny rozvrhu obvyklé?
+    Počítá se oběma směry – AI umí senáty přidat (zastupující senáty VS
+    7. 9. 2026) stejně jako vynechat."""
+    stare, nove = set(stare or []), set(nove or [])
+    if not stare:
+        return False
+    return len(stare ^ nove) > max(3, len(stare) // 2)
+
+
+def update_rozvrh(config, court, pdf_bytes, source_url, popisek_odkazu=None):
     """Z rozvrhu práce (PDF) nechá AI vytáhnout IP senáty a soudce; při
     neúspěchu nechá dosavadní konfiguraci být.
 
@@ -773,7 +991,14 @@ def update_rozvrh(config, court, pdf_bytes, source_url):
     buď má stejný hash, nebo podle titulní strany neplatí od pozdějšího dne
     (`rozvrh_zdroj.platnost_od`). Config tak může být sepsaný ručně podle
     rozvrhu, který scraper nikdy nestáhl, a týdenní kontrola ho nepřepíše
-    starším ani stejným dokumentem. Přepíše ho až rozvrh s pozdějším datem."""
+    starším ani stejným dokumentem. Přepíše ho až rozvrh s pozdějším datem.
+
+    Datum se hledá na prvních PLATNOST_STRAN stranách, a když tam není,
+    v textu odkazu na dokument. Když ho config má a dokument ne, seznam se
+    nepřepisuje (nejde říct, jestli je rozvrh novější) – jen se varuje,
+    a hash se neukládá, ať se dokument čte znovu, dokud config někdo ručně
+    nepotvrdí. Stejně tak se nezapíše výsledek AI, který seznam senátů
+    změní víc než běžná změna rozvrhu (velka_zmena_senatu)."""
     cfg = config["courts"][court]
     digest = hashlib.sha256(pdf_bytes).hexdigest()
     zdroj = cfg.get("rozvrh_zdroj") or {}
@@ -792,8 +1017,15 @@ def update_rozvrh(config, court, pdf_bytes, source_url):
         except Exception:
             texty.append("")
 
-    platnost, platnost_od = platnost_rozvrhu("\n".join(texty[:2]))
+    platnost, platnost_od = platnost_rozvrhu("\n".join(texty[:PLATNOST_STRAN]))
+    if not platnost_od and popisek_odkazu:
+        platnost, platnost_od = platnost_rozvrhu(popisek_odkazu)
     zapsano_od = zdroj.get("platnost_od")
+    if not platnost_od and zapsano_od and "sestavy" in cfg:
+        warning(f"Rozvrh {court}: dokument se změnil, ale datum platnosti v něm "
+                f"není k přečtení – seznam senátů (platný od {zapsano_od}) "
+                f"nechávám, zkontroluj ručně: {source_url}")
+        return False
     if platnost_od and zapsano_od and platnost_od <= zapsano_od and "sestavy" in cfg:
         print(f"  [{court}] rozvrh {platnost} není novější než zapsaný "
               f"({zdroj.get('platnost') or zapsano_od}) – nechávám")
@@ -810,12 +1042,22 @@ def update_rozvrh(config, court, pdf_bytes, source_url):
         print(f"  [{court}] v rozvrhu nejsou stránky s IP klíčovými slovy – nechávám starý seznam")
         return False
 
-    text = "\n\n".join(pages)[:80000]
+    text = "\n\n".join(pages)
+    if len(text) > ROZVRH_AI_ZNAKU:
+        warning(f"Rozvrh {court}: IP stránky mají {len(text)} znaků, do AI jde "
+                f"jen prvních {ROZVRH_AI_ZNAKU} – seznam senátů může být neúplný")
+        text = text[:ROZVRH_AI_ZNAKU]
     prompt = ROZVRH_AI_PROMPT.format(soud=cfg["nazev"])
     raw = gemini_generate_raw(prompt, text, max_tokens=8192)
     senaty, soudci_display, sestavy = rozvrh_z_odpovedi(extract_json(raw))
     if not senaty:
         print(f"  [{court}] AI z rozvrhu nic nevytáhla – nechávám starý seznam")
+        return False
+    if velka_zmena_senatu(cfg.get("senaty"), senaty):
+        warning(f"Rozvrh {court}: AI vrátila seznam senátů hodně odlišný od "
+                f"zapsaného (přibylo {sorted(set(senaty) - set(cfg.get('senaty', [])))}, "
+                f"ubylo {sorted(set(cfg.get('senaty', [])) - set(senaty))}) – "
+                "nezapisuji, zkontroluj ručně")
         return False
 
     cfg["senaty"] = senaty
@@ -928,6 +1170,20 @@ def raw_text_of(data):
     return ""
 
 
+def ai_text_of(data):
+    """Text dokumentu pro AI zálohu. U .docx po řádcích tabulky s oddělenými
+    buňkami („ | ") a odstavci v buňce („; ") – z plochého textu by AI
+    nepoznala, kde končí jeden účastník a začíná další, ani jeden řádek."""
+    if data[:2] == b"PK":
+        tables, text = docx_tables(data)
+        radky = [" | ".join("; ".join(c) for c in row)
+                 for rows in tables for row in rows]
+        if radky:
+            return "\n".join(radky)
+        return text
+    return raw_text_of(data)
+
+
 def expected_rows(text):
     """Kolik jednání dokument nejspíš obsahuje – počítá data ve tvaru
     DD.MM.RRRR, na kterých každý řádek přehledu začíná. Hlavička uvádí
@@ -936,17 +1192,56 @@ def expected_rows(text):
     return max(0, n - (2 if parse_period(text or "") else 0))
 
 
+def ocekavane_radky(data, text):
+    """Kolik jednání dokument nejspíš obsahuje.
+
+    U .docx se počítají řádky tabulek, ve kterých je někde datum – nezávisle
+    na tom, jestli hlavička s obdobím mimo tabulku má tvar, jaký zná
+    parse_period (jinak by se její dvě data přičetla a krátký přehled by
+    pokaždé vypadal neúplný). Přehozené sloupce to pozná pořád: datum je
+    v řádku, jen jinde. U PDF jako dřív expected_rows."""
+    if data[:2] == b"PK":
+        try:
+            tables, _ = docx_tables(data)
+        except Exception:
+            return expected_rows(text)
+        return sum(1 for rows in tables for row in rows
+                   if any(DATE_RE.search(p) for c in row for p in c))
+    return expected_rows(text)
+
+
+# Stav jednoho přehledu po scrape_jednani (čtvrtá hodnota):
+PREHLED_OK = "ok"                 # naparsovaný celý
+PREHLED_NEUPLNY = "neuplny"       # naparsovaná jen část – nic se nemaže
+PREHLED_BEZ_DOKUMENTU = "bez_dokumentu"   # úsek dokument zrovna nevydal
+PREHLED_CHYBA = "chyba"           # stažení/formát/parsování selhalo
+
+
+def warning(zprava):
+    """Varování do logu i do shrnutí běhu v GitHub Actions (anotace
+    ::warning:: se čte ze stdoutu kroku)."""
+    print(f"::warning::{zprava}")
+
+
 def scrape_jednani(court, cfg, prehled, local_file=None):
     """Stáhne (nebo načte lokálně) jeden přehled jednání a naparsuje ho.
 
-    Vrací (items, period, zdroj_url); items je None, když se nepodařilo
-    získat vůbec nic – volající pak nechá dosavadní data být.
+    Vrací (items, period, zdroj_url, stav); items je None, když se
+    nepodařilo získat vůbec nic – volající pak nechá dosavadní data být.
+    `stav` je jedno z PREHLED_*: odliší skutečné selhání od úseku, který
+    dokument zrovna nevydal, a úplný přehled od neúplného.
 
     Kromě parsování hlídá i jeho úplnost: když se z dokumentu naparsuje
     výrazně méně řádků, než kolik je v něm dat, jde nejspíš o změnu formátu
-    a nastupuje AI záloha. Bez téhle kontroly by se částečné selhání
-    (např. přejmenovaný sloupec) projevilo jen tak, že by jednání tiše
-    zmizela.
+    a nastupuje AI záloha. Když nepomůže ani ta, vrátí se, co se naparsovat
+    dalo, se stavem PREHLED_NEUPLNY – volající z takového přehledu nic
+    nemaže (jinak by jednání, která parser nepřečetl, tiše zmizela jako
+    odvolaná).
+
+    Když hlavička období neuvádí v podobě, jakou zná parse_period, vezme se
+    z adresy dokumentu, a nakonec jako rozsah dnů naparsovaných jednání –
+    to jen u úplného deterministického parsování (chybné datum z AI by
+    okno rozšířilo a smazalo jednání, která v přehledu jen nebyla přečtená).
     """
     usek = prehled.get("usek", "")
     tag = f"{court}/{usek}" if usek else court
@@ -970,21 +1265,23 @@ def scrape_jednani(court, cfg, prehled, local_file=None):
                 strict=len(cfg.get("prehledy", [])) > 1,
             )
             if not href:
-                print(f"  [{tag}] na stránce není dokument tohoto úseku" if links
-                      else f"  [{tag}] na stránce nejsou odkazy na dokumenty")
-                return None, None, None
+                if links:
+                    print(f"  [{tag}] na stránce není dokument tohoto úseku")
+                    return None, None, None, PREHLED_BEZ_DOKUMENTU
+                print(f"  [{tag}] na stránce nejsou odkazy na dokumenty")
+                return None, None, None, PREHLED_CHYBA
             print(f"  [{tag}] stahuji: {text or href}")
             data = http_get(href).content
             zdroj = href
         except requests.RequestException as e:
             print(f"  [{tag}] stažení selhalo: {e}")
-            return None, None, None
+            return None, None, None, PREHLED_CHYBA
 
     is_docx = data[:2] == b"PK"
     is_pdf = data[:5] == b"%PDF-"
     if not (is_docx or is_pdf):
         print(f"  [{tag}] neznámý formát dokumentu – přeskočeno")
-        return None, None, None
+        return None, None, None, PREHLED_CHYBA
 
     items, period = [], None
     try:
@@ -995,21 +1292,40 @@ def scrape_jednani(court, cfg, prehled, local_file=None):
 
     items = [it for it in items if it.get("datum")]
     text = raw_text_of(data)
-    ocekavano = expected_rows(text)
-    chybi = ocekavano and len(items) < ocekavano * MIN_PARSE_RATIO
+    ocekavano = ocekavane_radky(data, text)
+    uplny = lambda n: not ocekavano or n >= ocekavano * MIN_PARSE_RATIO
+    chybi = not uplny(len(items))
     if chybi:
         print(f"  [{tag}] POZOR: naparsováno {len(items)} z ~{ocekavano} "
               f"řádků – dokument nejspíš změnil formát")
 
+    z_ai = False
     if (not items or chybi) and gemini_enabled():
         print(f"  [{tag}] zkouším AI parsování")
         try:
-            ai_items = [it for it in parse_jednani_ai(text) if it.get("datum")]
+            ai_items = [it for it in parse_jednani_ai(ai_text_of(data))
+                        if it.get("datum")]
             if len(ai_items) > len(items):
-                items = ai_items
+                items, z_ai = ai_items, True
                 print(f"  [{tag}] AI naparsovala {len(items)} jednání")
         except Exception as e:
             print(f"  [{tag}] AI parsování selhalo: {e}")
+
+    # Úplnost až po AI: i odpověď AI může být useknutá (strop tokenů).
+    stav = PREHLED_OK if uplny(len(items)) else PREHLED_NEUPLNY
+    if items and stav == PREHLED_NEUPLNY:
+        warning(f"Jednání {tag}: naparsováno {len(items)} z ~{ocekavano} řádků – "
+                "ukládám bez mazání a hledání změn, dokument nejspíš změnil formát")
+
+    if items and not period:
+        period = obdobi_z_odkazu(zdroj)
+        odkud = "z adresy dokumentu"
+        if not period and stav == PREHLED_OK and not z_ai:
+            dny = sorted(it["datum"] for it in items)
+            period, odkud = (dny[0], dny[-1]), "podle naparsovaných jednání"
+        warning(f"Jednání {tag}: v hlavičce dokumentu není období"
+                + (f" – beru ho {odkud}: {period[0]} – {period[1]}" if period
+                   else " – bez něj se nehledají změny ani odvolaná jednání"))
 
     for it in items:
         it["usek"] = usek
@@ -1019,7 +1335,9 @@ def scrape_jednani(court, cfg, prehled, local_file=None):
     print(f"  [{tag}] jednání: {len(items)}/{ocekavano or '?'}"
           + (f", období {period[0]} – {period[1]}" if period else "")
           + (f", bez účastníků {bez_stran}" if bez_stran else ""))
-    return (items or None), period, zdroj
+    if not items:
+        return None, period, zdroj, PREHLED_CHYBA
+    return items, period, zdroj, stav
 
 
 # --- Co se v přehledu změnilo od minule ---------------------------------
@@ -1065,6 +1383,13 @@ def porovnej_prehled(stare, nove, v_prehledu, court, usek, dnes):
                       "datum": na or z}
             if z and na:
                 zaznam["z"], zaznam["na"] = z, na
+            elif z:
+                # Odvolané jednání z archivu zmizí, takže stránka ho u
+                # změny nemá odkud dohledat – popisek a hodina jdou s ní.
+                # Bere se z archivu, kde jsou fyzické osoby pod iniciálami.
+                for pole in ("nazev", "hodina"):
+                    if stare_dny[z].get(pole):
+                        zaznam[pole] = stare_dny[z][pole]
             zmeny.append(zaznam)
 
         for den in sorted(set(stare_dny) & set(nove_dny)):
@@ -1135,7 +1460,8 @@ def usek_nazev(cfg, usek):
     return None
 
 
-def merge_output(existing, court, items, period, zdroj_url, cfg):
+def merge_output(existing, court, items, period, zdroj_url, cfg,
+                 mazat=True, redigovat=True):
     """Zanese nový přehled do výstupu.
 
     Ukládají se jen jednání v agendě duševního vlastnictví. Ostatní věci
@@ -1146,6 +1472,14 @@ def merge_output(existing, court, items, period, zdroj_url, cfg):
     z nově vydaného přehledu, který jeho den pokrývá, soud ho odvolal nebo
     přeložil; takový záznam se smaže. Přeložené jednání se vrátí samo pod
     novým datem, jakmile ho soud v některém přehledu vypíše.
+
+    `mazat=False` je pro neúplně naparsovaný přehled: jednání z něj se
+    zapíšou a čerstvé verze nahradí staré, ale nic se nemaže ani nehlásí
+    jako změna – chybějící řádek tu nic neznamená. Období úseku se zapíše
+    i tak (stránka podle něj ukazuje, dokdy je kalendář zveřejněný).
+
+    `redigovat=False`, když volající už fyzické osoby zkrátil sám (main to
+    dělá jednou za běh pro všechny přehledy, viz redact_osoby).
     """
     jednani = [j for j in existing.get("jednani", []) if isinstance(j, dict)]
     # Nahrazuje se vždy jen jeden úsek jednoho soudu – civilní a správní
@@ -1156,23 +1490,26 @@ def merge_output(existing, court, items, period, zdroj_url, cfg):
     # jeho jednání z archivu odejde, ne že se označí za odvolané.
     v_prehledu = {(j.get("spz"), j.get("datum")) for j in items}
     items = [it for it in items if it.get("ip")]
-    # Fyzické osoby mezi účastníky na iniciály až tady – řeší se najednou
-    # pro celý přehled i archiv (viz redact_osoby) a jen pro jednání, co se
-    # opravdu uloží.
-    redact_osoby(items, jednani)
+    # Fyzické osoby mezi účastníky na iniciály – jen pro jednání, co se
+    # opravdu uloží (viz redact_osoby).
+    if redigovat:
+        redact_osoby(items, jednani)
     prevzit_z_archivu(items, jednani)
     od, do = period if period else (None, None)
 
     # Změny se hledají jen v období, které nový přehled pokrývá – mimo něj
     # o jednání nic neříká a jeho nepřítomnost nic neznamená.
-    if period:
+    if period and mazat:
         v_obdobi = [j for j in jednani
                     if j.get("soud") == court and j.get("usek", "") == usek
                     and od <= (j.get("datum") or "") <= do]
         zmeny = porovnej_prehled(v_obdobi, items, v_prehledu, court, usek,
                                  date.today())
         vypis_zmeny(zmeny, court, usek)
-        existing.setdefault("zmeny", []).extend(zmeny)
+        # Nová jednání stránka mezi změnami neukazuje (jsou vidět v mřížce),
+        # tak se do výstupu neukládají – jen do logu.
+        existing.setdefault("zmeny", []).extend(
+            z for z in zmeny if z["typ"] != "nove")
 
     zachovane = []
     for j in jednani:
@@ -1180,7 +1517,7 @@ def merge_output(existing, court, items, period, zdroj_url, cfg):
         if stejny_zdroj and (j.get("spz"), j.get("datum")) in v_prehledu:
             # Přepíše ho čerstvá verze níže – a pokud už IP není, vypadne.
             continue
-        if (stejny_zdroj and period
+        if (stejny_zdroj and period and mazat
                 and od <= (j.get("datum") or "") <= do):
             # Den spadá do nového přehledu, ale jednání v něm není – soud
             # ho odvolal nebo přeložil, takže v kalendáři nemá co dělat.
@@ -1442,7 +1779,7 @@ def main():
                 if data[:5] != b"%PDF-":
                     print(f"  [{court}] rozvrh není PDF ({text or href}) – přeskočeno")
                     continue
-                changed |= update_rozvrh(config, court, data, href)
+                changed |= update_rozvrh(config, court, data, href, text)
             except requests.RequestException as e:
                 print(f"  [{court}] rozvrh nedostupný: {e}")
         if local_rozvrh:
@@ -1459,35 +1796,66 @@ def main():
     output = load_json(OUTPUT_FILE)
     output["jednani"] = [j for j in output.get("jednani", [])
                          if isinstance(j, dict) and j.get("ip")]
-    ok = False
     print("Přehledy jednání…")
+    prehledy, selhaly, neuplne = [], [], []
     for court, cfg in config["courts"].items():
         for prehled in cfg.get("prehledy", [{}]):
             usek = prehled.get("usek", "")
+            tag = f"{court}/{usek}" if usek else court
             local = local_jednani.get(f"{court}:{usek}") or (
                 local_jednani.get(court) if len(cfg.get("prehledy", [{}])) == 1
                 or usek == cfg.get("prehledy", [{}])[0].get("usek") else None)
-            items, period, zdroj = scrape_jednani(court, cfg, prehled, local)
+            items, period, zdroj, stav = scrape_jednani(court, cfg, prehled, local)
+            if stav == PREHLED_CHYBA:
+                selhaly.append(tag)
+            elif stav == PREHLED_NEUPLNY:
+                neuplne.append(tag)
             if items is None:
                 continue
             mark_ip(items, cfg)
-            tag = f"{court}/{usek}" if usek else court
             print(f"  [{tag}] v agendě IP: "
                   f"{sum(1 for it in items if it.get('ip'))} z {len(items)}")
-            merge_output(output, court, items, period, zdroj, cfg)
-            ok = True
+            prehledy.append((court, cfg, items, period, zdroj, stav))
 
-    if not ok and not output.get("jednani"):
-        sys.exit("Nepodařilo se získat žádná jednání.")
+    if not prehledy:
+        # Nic nového – hearings.json ani .ics se nepřepisují, ať se jen
+        # kvůli časovým razítkům nezměnily a stará data se netvářila čerstvě.
+        if selhaly:
+            sys.exit(f"Nepodařilo se získat žádný přehled jednání "
+                     f"(selhalo: {', '.join(selhaly)}) – výstup nechávám.")
+        print("Žádný přehled jednání – výstup nechávám.")
+        return
 
-    # 3) Změny proti minulým přehledům držíme jen měsíc zpět.
-    output["zmeny"] = orez_zmeny(output.get("zmeny", []))
+    # 3) Fyzické osoby na iniciály jednou za běh, nad IP jednáními ze všech
+    #    přehledů a archivem najednou, s keší rozhodnutí z minulých běhů.
+    print("Klasifikace fyzických osob…")
+    kes = nacti_osoby_kes()
+    redact_osoby([it for p in prehledy for it in p[2] if it.get("ip")],
+                 output["jednani"], kes)
+    uloz_osoby_kes(kes)
+
+    for court, cfg, items, period, zdroj, stav in prehledy:
+        merge_output(output, court, items, period, zdroj, cfg,
+                     mazat=stav == PREHLED_OK, redigovat=False)
+
+    # 4) Změny proti minulým přehledům držíme jen měsíc zpět. Nová jednání
+    #    stránka mezi změnami neukazuje – starší záznamy tohoto typu pryč.
+    output["zmeny"] = orez_zmeny([z for z in output.get("zmeny", [])
+                                  if z.get("typ") != "nove"])
 
     zapis_sledovane(output, config)
     output["generated"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     output["ics"] = write_ics(output)
     save_json(OUTPUT_FILE, output)
     print(f"Hotovo: {len(output['jednani'])} IP jednání -> {OUTPUT_FILE}")
+
+    if selhaly:
+        warning(f"Jednání: nepodařilo se získat {', '.join(selhaly)} – "
+                "tyto úseky zůstávají ve stavu z minulého běhu")
+    if selhaly or neuplne:
+        # Až po zápisu, ať se neztratí, co se z ostatních přehledů získat
+        # dalo. Workflow má u kroku continue-on-error a ohlásí to varováním.
+        sys.exit(1)
 
 
 if __name__ == "__main__":

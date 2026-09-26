@@ -8,10 +8,11 @@ dvora EU včetně Tribunálu (AI ji řadí do oblastí práva), články z práv
 a třívěté shrnutí, jednou týdně z toho napíše dvoutýdenní přehled duševního
 vlastnictví a IT.
 
-Web má stránky Novinky (co přibylo za posledních 24 hodin, tedy úlovek
-nočního běhu), Dva týdny v IP a IT (přehled je jeden pro všechny, na výběru
-nezávisí), každý zdroj zvlášť (NS, NSS, ÚS, SDEU, časopisy), Kalendář
-jednání a Kalendář akcí; Můj výběr je dialog z nabídky účtu.
+Web má stránky Novinky (úlovek posledního nočního běhu – počítá se od
+nejnovějšího prvního výskytu v datech, ne od hodin prohlížeče), Dva týdny
+v IP a IT (přehled je jeden pro všechny, na výběru nezávisí), každý zdroj
+zvlášť (NS, NSS, ÚS, SDEU, časopisy), Kalendář jednání a Kalendář akcí;
+Můj výběr je dialog z nabídky účtu.
 
 ## Jak to drží pohromadě
 
@@ -29,13 +30,21 @@ tools/probe_zdroje.py sonda: syrové odpovědi webů soudů pro parsery a testy
 
 Časopisy si vedou **stav prvního výskytu** (`journals_seen.json`): kdy
 položku poprvé viděly. Podle něj drží položku v okně (měsíc)
-a web ji ukáže v Novinkách, když přibyla v posledních 24 hodinách (judikatura
+a web ji ukáže v Novinkách, když přibyla v posledním běhu (judikatura
 totéž dělá přes `first_seen` v archivu). Registr časopisů (`CASOPISY`
 ve `scraper_journals.py`) dává každému stálé id, které se ukládá ve výběru
 uživatele, a zkratku pro štítek; okno `docs/data/casopisy.json` se
-přepisuje, jen když se obsah změní. Stav prvního výskytu se u časopisů
+přepisuje, jen když se obsah změní. Co zdroj přestal vypisovat (předchozí
+číslo, výpadek zdroje), ale v okně podle prvního výskytu pořád je, doplní
+okno z archivu. Stav prvního výskytu se u časopisů
 neprořezává (zdroje vypisují i rok staré články, po vypadnutí ze stavu by se
 vrátily jako nové); cache shrnutí `journals_meta.json` drží jen 120 dní.
+Nový časopis (`ZAVEDENI`, první tři dny, a každý, jehož guid stav ještě
+nezná) nevysype při náběhu celý feed do Novinek: položky dostanou první
+výskyt o 15 dní zpět, takže zůstanou v okně i v archivu, ale ne v Novinkách
+ani v dvoutýdenním přehledu (kromě článků vydaných v posledních třech
+dnech). Zdroj, který selže, se ohlásí jako `::warning::`; když selže
+většina, skončí scraper chybou.
 
 Registr se do `casopisy.json` zapisuje při běhu scraperu; nový časopis
 v registru je proto potřeba do souboru propsat hned (jinak ho dialog Můj
@@ -75,9 +84,11 @@ přetížení, si pokus nepočítá. Pořadí jde vnutit proměnnou `GEMINI_MODE
 **AI shrnutí** se cachují v `*_meta.json` podle stejného klíče a prořezávají
 se spolu se stavem prvního výskytu, takže soubory nerostou donekonečna. Bez
 `GEMINI_API_KEY` scrapery běží dál, jen bez nových shrnutí. Když se k textu
-nedostaneme vůbec (vydavatel stránku nepustil), nevymýšlí se nic a místo
-shrnutí jde do feedu poznámka; dokud je položka v okně, zkouší se to každým
-během znovu. Poznámka mluví jen za nás („shrnutí zatím není"), ne za zdroj.
+nedostaneme vůbec (vydavatel stránku nepustil) nebo článek nemá abstrakt,
+nevymýšlí se nic (ze samotného názvu se neshrnuje) a místo shrnutí jde do
+feedu poznámka; dokud je položka v okně, zkouší se to každým během znovu
+(položky doplněné do okna z archivu berou shrnutí jen z cache). Poznámka
+mluví jen za nás („shrnutí zatím není"), ne za zdroj.
 
 ## Judikatura
 
@@ -117,8 +128,10 @@ pro AI.
 - **Fronta**: AI zpracovává jen rozhodnutí z okna webu, střídavě po soudech.
   Nejdřív to, co spadá do výchozího výběru (senát 23, oblasti IP a IT), pak
   věcná a nakonec procesní rozhodnutí. Když text zatím není, zkouší se znovu
-  po 1, 2, 4… hodinách, nejvýš šestkrát. Běh má rozpočet (`AI_MAX_POLOZEK`,
-  `AI_MAX_MINUT`) a archiv ukládá po každém rozhodnutí.
+  po 1, 2, 4… hodinách a pak při každém běhu (viz níže). Běh má rozpočet
+  (`AI_MAX_POLOZEK`, `AI_MAX_MINUT` – minuty celého běhu od začátku, včetně
+  objevování a přepisu hesel). Archiv i okna se ukládají hned po objevování,
+  archiv pak po každém rozhodnutí a okna znovu na konci, i po přerušení.
 - **Stav shrnutí**: rozhodnutí bez shrnutí má v okně `stav_shrnuti`
   (`pripravuje` – čeká ve frontě, `ceka_na_text` – soud ještě nezveřejnil
   text, `nepodarilo` – vyčerpané pokusy) a větu k němu v `poznamka`. Rámeček
@@ -127,10 +140,14 @@ pro AI.
   vybrané senáty), nebo v něm už jsou podle údajů soudu (NSS, ÚS).
 - **Nejvyšší soud**: databáze (Lotus Domino) padá na 500, když je dotaz moc
   široký. Hledá se proto po rejstřících (Cdo, NSČR, Tdo…), každý dotaz
-  s čerstvou relací; co spadne i napodruhé, rozdělí se po senátech. Text se
+  s čerstvou relací; co server odmítne i napodruhé, rozdělí se po senátech.
+  Timeout nebo odmítnuté spojení je výpadek, ne široký dotaz: po třech za
+  sebou se další dotazy neposílají a hledání má i limit 20 minut. Hledají
+  se i stanoviska kolegií a pléna (Cpjn, Tpjn, Plsn). Text se
   bere ze stránky rozhodnutí, pak z PDF (pypdf), a když PDF nemá textovou
   vrstvu, jde modelu PDF celé. Úřední deska ohlašuje vyhlášené rozsudky
-  dřív, než je databáze zveřejní. Když pak přijde záznam z databáze se
+  dřív, než je databáze zveřejní (bere se jen řádek s PDF – vyhlášení
+  ohlášená předem se objeví až po vyhlášení). Když pak přijde záznam z databáze se
   stejnou spisovou značkou, převezme od desky první výskyt i shrnutí
   a deska se na webu schová.
 - **Nejvyšší správní soud** (vyhledavac.nssoud.cz): formulář ASP.NET
@@ -156,7 +173,9 @@ pro AI.
   dva až tři měsíce po podání, ale s otázkami). Žaloby a kasační opravné
   prostředky se neberou. Název věci a české texty dává InfoCuria podle čísla
   věci; kde český text ještě není (čerstvé rozsudky, Tribunál), bere se
-  z Cellaru česky, anglicky, nebo francouzsky. Odkaz vede na EUR-Lex. Okno
+  z Cellaru česky, anglicky, nebo francouzsky (podle CELEX, jinak podle
+  ECLI – usnesení předsedy Tribunálu s CELEX „(01)“ má Cellar jen pod
+  ECLI). Odkaz vede na EUR-Lex. Okno
   webu je měsíc.
   Doplňkově **ipcuria.eu** (`judikatura/soudy/ipcuria.py`): předběžné otázky
   z duševního vlastnictví a ochrany údajů podané za poslední měsíc, tedy
@@ -167,12 +186,19 @@ pro AI.
   stránky ipcuria; do té doby „Podáno {datum}. Položené otázky zatím nejsou
   zveřejněné.“ (datum podání je u předběžné otázky bez shrnutí vždy).
   Oznámení v ÚV ranou otázku převezme stejně jako databáze NS úřední desku:
-  hotové shrnutí přejde na oznámení, bez shrnutí se oznámení ukáže jako nové.
+  hotové shrnutí přejde na oznámení, bez shrnutí se oznámení ukáže jako nové
+  (raná otázka se dohledá podle indexu, i když je starší než načtené měsíce).
 - Na text rozhodnutí se čeká, dokud je rozhodnutí v okně – zkouší se při
-  každém běhu. Šest pokusů mají jen selhání AI.
+  každém běhu. Šest pokusů mají jen selhání AI; čekání na text má vlastní
+  počítadlo (`stav.pokusy_text`), takže pokusy AI nespotřebuje.
 - **Stav běhu** (zdraví soudů, spotřeba AI po dnech) je v
-  `data/judikatura/stav.json`. `python -m judikatura.kontrola` zkontroluje
-  archiv i okna. Workflow bez ní necommituje.
+  `data/judikatura/stav.json`. Když soud selže (výjimka, web hlásí výsledky
+  a nepřečte se nic, databáze NS nedala nic), je to `chyba`; dílčí selhání
+  (neúplné hledání, nedostupná deska či doplňkový zdroj, dva běhy po sobě
+  nic) jsou `varovani`. Skript je vypíše jako `::error::` / `::warning::`
+  a při chybě skončí kódem 1 – až po uložení všeho, takže workflow commitne
+  a zčervená. `python -m judikatura.kontrola` zkontroluje archiv i okna.
+  Workflow bez ní necommituje.
 - **Migrace**: `python -m judikatura.migrace` převedla shrnutí senátu 23 Cdo
   ze starého feedu (historie `docs/feed.xml` v gitu, `feed_meta.json`
   a `feed_seen.json`) do archivu a oblasti doplnila dávkově.
@@ -182,9 +208,13 @@ v civilním úseku na IP senáty (seznam senátů a soudců z rozvrhů práce), 
 správního soudnictví MSPH (zvláštní dokument na téže stránce) na žaloby
 proti Úřadu průmyslového vlastnictví – podle žalovaného mezi účastníky
 (`ucastnici_ip`), ne podle senátu. Každý nový přehled porovnává s minulým
-a změny ukládá vedle jednání (na webu jsou v detailu jednání). Účastníky, kteří jsou fyzická osoba, drží
-archiv jen pod iniciálami; kdo je fyzická osoba, rozhoduje AI, a ptá se jí
-po dávkách, ať se odpověď vejde do stropu i s rostoucím archivem. U jména,
+a změny ukládá vedle jednání (na webu jsou v detailu jednání; nová jednání
+se mezi změny neukládají). Z přehledu, který se naparsuje jen zčásti, se nic
+nemaže ani nehlásí jako odvolané a běh skončí varováním. Účastníky, kteří jsou fyzická osoba, drží
+archiv jen pod iniciálami; kdo je fyzická osoba, rozhoduje AI – jednou za
+běh pro všechny přehledy, po dávkách, a jen u jmen, která nezná keš
+`hearings_osoby.json` (osoby v ní jen jako hash, verdikt „firma“ platí
+týden). U jména,
 kde AI nerozhodne, se celé jméno neuloží; jednání si v takovém případě nechá
 účastníky, které mu archiv přiřadil dřív, a úplně nové zůstane jen pod
 spisovou značkou, dokud ho některý běh neklasifikuje. Bez toho by jeden
@@ -210,8 +240,9 @@ stránky (odkazy v něm zůstanou, ať AI vrátí i adresu akce; výzvy, granty
 a studijní nabídky vynechá). Akcím, kterým ve výpisu chybí anotace, lektoři
 nebo cena, se stáhne jejich stránka, u PDF (ÚPV) text z PDF a když stránka
 odkazuje na pozvánku (ČAK), i ta. Rozpočet `AKCE_MAX_DETAILU` (80 za běh) se
-dělí mezi pořadatele; na co nezbude, přijde na řadu další noc, nejvýš dva
-pokusy na akci (`detail_pokusy`). Předpony formy v názvu („HYBRIDNÍ FORMA:",
+dělí mezi pořadatele podle toho, kolik akcí na stránku čeká; na co nezbude,
+přijde na řadu další noc, nejvýš dva pokusy na akci (`detail_pokusy`,
+přečtená stránka se znovu nečte, výpadek AI se nepočítá). Předpony formy v názvu („HYBRIDNÍ FORMA:",
 „Online seminář:") jdou do pole `forma`. AI pak každou akci zařadí do 1–3
 oblastí z `docs/data/oblasti.json`, stejně jako judikaturu; znovu se ptá,
 jen když se změní název nebo anotace.
@@ -228,11 +259,16 @@ v každém svém dni, kurz delší než týden jen v den začátku.
   s `id`, `poradatel`, `datum` (+ `datum_do` u vícedenních), `zacatek`,
   `konec`, `nazev`, `misto`, `forma` (`prezencne` / `online` / `hybridne`),
   `lektori`, `cena`, `anotace`, `url` a `oblasti`. Vedle je `akce.ics`
-  k odběru v kalendáři (UID podle `id`).
-- Výpis, který se nepodaří stáhnout, nechá akce pořadatele, jak byly. Budoucí
-  akce, která z výpisu zmizí, vypadne (zrušená) – kromě případu, kdy výpis
-  četla AI a vrátila míň než polovinu akcí proti minulému běhu; to se bere
-  jako výpadek čtení. Proběhlé akce se drží 45 dní.
+  k odběru v kalendáři (UID podle `id`; přejmenovaná akce si ho drží podle
+  své stránky). Tatáž akce u dvou pořadatelů (epravo prodává i akce jiných,
+  `prodejce` v configu) se ukáže jednou; druhý záznam je v `duplikaty`.
+- Výpis, který se nepodaří stáhnout ani přečíst (AI neodpoví), nechá akce
+  pořadatele, jak byly (`chyba`). Výpis, jehož text se od minula nezměnil
+  (`otisk`), AI znovu nečte. Budoucí akce, která z výpisu zmizí nebo ji
+  pořadatel v názvu ohlásí jako zrušenou, vypadne – kromě případu, kdy výpis
+  nevrátil žádnou akci, nebo ho četla AI a vrátila míň než polovinu akcí
+  proti minulému běhu; to se bere jako výpadek čtení. Proběhlé akce se drží
+  45 dní, akce pořadatele vyřazeného z configu vypadnou hned.
 - Weby pořadatelů nejsou z vývojového prostředí vidět. Sonda je stáhne
   (`probe.yml` se zdrojem `akce`, s volbou `ulozit` do `tests/fixtures/probe/`)
   a podle nich jde pro web, kde AI čte špatně, napsat vlastní parser
@@ -246,7 +282,8 @@ v každém svém dni, kurz delší než týden jen v den začátku.
 e-mailu v Clerku, teď jen provozovatel): navigace, záložka i stránka mají
 `data-jen="kalendar"` a bez třídy `smi-kalendar` na `<html>` jsou schované;
 odkaz `#kalendar` ostatní přesměruje na Novinky. Je to jen schování na webu –
-`hearings.json` a `hearings.ics` zůstávají veřejné na své adrese.
+`hearings.json` a `hearings.ics` zůstávají veřejné na své adrese; web
+`hearings.json` stahuje a vykresluje jen účtům, které kalendář vidí.
 
 Přihlášení zajišťuje [Clerk](https://clerk.com) a slouží jen k vlastnímu
 výběru. Bez přihlášení (i při výpadku Clerku) web ukazuje výchozí výběr:
@@ -255,7 +292,10 @@ vlastnictví a IT, všechny časopisy. Nepřihlášenému to web říká pod
 seznamy judikatury a nabízí přihlášení (při výpadku Clerku ne).
 
 - Web je bez buildu, takže Clerk se načítá skriptem z Frontend API instance
-  (`@clerk/clerk-js@6` a komponenty `@clerk/ui@1`), až po vykreslení obsahu.
+  (`@clerk/clerk-js@6` a komponenty `@clerk/ui@1`) souběžně s daty. Na
+  přihlášení stránka při načtení čeká (nejvýš 3 s) jen tehdy, když tu byl
+  minule někdo přihlášený (příznak `owl:prihlasen` v localStorage);
+  nepřihlášenému se ukáže hned.
   Česká lokalizace je v `docs/vendor/clerk-cs-CZ.js`.
 - Publishable key je veřejný a je v `docs/app.js` (`CLERK_KLICE`, podle
   hostitele: produkční instance pro `owl.davidzavada.cz`, jinak vývojová).
@@ -288,14 +328,19 @@ seznamy judikatury a nabízí přihlášení (při výpadku Clerku ne).
 ## Workflow
 
 - `update-feed.yml` – časopisy, kalendář jednání a akce jednou denně ve 2:00
-  pražského času, v pondělí k tomu `digest.py`. Cron má dva výrazy (0:00
+  pražského času, v pondělí k tomu `digest.py` (když se nepovede, zkouší se
+  každý další den, dokud není přehled z tohoto týdne). Cron má dva výrazy (0:00
   a 1:00 UTC) a krok „Naplánovat běh" pustí ten, který v daném čase roku
   odpovídá 2:00 v Praze. Každý scraper je samostatný krok. Když jeden
   spadne, ostatní doběhnou a commit uloží, co se povedlo.
 - `judikatura.yml` – sběr judikatury taky jednou denně ve 2:00 (soudy
   zveřejňují přes den, ráno je hotovo všechno z předchozího dne). Jediný
-  běh má na AI rozpočet až 300 rozhodnutí a 90 minut. Ručně jde pustit
+  běh má rozpočet až 300 rozhodnutí AI a 85 minut celkem (krok má limit 110
+  minut, zbytek je rezerva na poslední volání AI). Ručně jde pustit
   kdykoli, jen pro vybrané soudy, bez AI nebo s jiným rozpočtem.
+  Oba workflow před pushem přebasují na main; při konfliktu (ruční úprava
+  během běhu) rebase zruší, výsledky dají do artefaktu a krok shodí –
+  ruční úpravy nepřepisují.
 - `probe.yml` – jen ručně: stáhne odpovědi webů soudů (formuláře, výpisy,
   detaily, InfoCuria, SPARQL) jako artefakt, s volbou `ulozit` je commitne
   do vybrané větve jako fixtures. Na weby soudů je vidět jen z Actions.
@@ -327,9 +372,9 @@ Stránku stačí otevřít přes libovolný statický server nad `docs/`
 ## Nasazení
 
 Stránku servíruje Vercel: projekt napojený na tohle repo, bez build kroku,
-výstupem je adresář `docs/` (viz `vercel.json`). Nasazuje se jen commit,
-který změní `docs/`, `api/` nebo `vercel.json` (`ignoreCommand`) – commity se
-stavem scraperů mimo `docs/` deploy nespouštějí.
+výstupem je adresář `docs/` (viz `vercel.json`). Nasazuje se jen push,
+který od posledního nasazení změní `docs/`, `api/` nebo `vercel.json`
+(`ignoreCommand`) – commity se stavem scraperů mimo `docs/` deploy nespouštějí.
 
 Jediná funkce na serveru je náhled PDF (`api/pdf.js`). Vyhledávač NSS
 posílá PDF rozhodnutí s `Content-Disposition: attachment`, takže se po

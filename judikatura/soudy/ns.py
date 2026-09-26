@@ -6,12 +6,22 @@ value exceeds maximum allowable size"), a to i podle toho, co se na server
 zrovna posílalo předtím. Proto:
   - dotaz jde po rejstřících (Cdo, Tdo, NSČR…) a vždy s čerstvou session
     (úvodní stránka nastaví cookie, jako to dělá prohlížeč);
-  - když rejstřík spadne i napodruhé, dotaz se rozdělí po senátech;
+  - když rejstřík spadne i napodruhé chybou serveru (HTTP 500 a spol.),
+    dotaz se rozdělí po senátech;
   - co nejde ani po senátech, se zapíše do logu a zkusí příští běh.
+
+Výpadek serveru (timeout, spojení odmítnuté) je jiná věc než příliš široký
+dotaz: po několika síťových selháních za sebou se databáze bere jako
+nedostupná, další dotazy se neposílají a nedělí (jistič), a hledání má
+i celkový časový limit – visící server nesmí sebrat čas ostatním soudům
+a AI. Adaptér vrátí, co se stihlo (i desku), a selhání ohlásí orchestru
+v `chyby` (databáze nedala nic) nebo `varovani` (jen část).
 
 Úřední deska (civilní i trestní kolegium) ohlašuje vyhlášené rozsudky dřív,
 než je databáze zveřejní; záznam z desky pak převezme záznam z databáze se
-stejnou spisovou značkou (orchestr._prevezmi_desku).
+stejnou spisovou značkou (orchestr._prevezmi_predbezne). Deska ohlašuje
+vyhlášení i předem, bez přílohy – bere se jen řádek s PDF a datem, které
+už nastalo.
 
 Tvar stránek odpovídá odpovědím, které stáhla sonda (tests/fixtures/ns/).
 """
@@ -49,14 +59,26 @@ HLAVICKY = {
 # (Tz), příslušnost (Td, Ntd), uznání (Tcu), vazba (Tvo).
 REJSTRIKY_CIVILNI = ("cdo", "icdo", "nscr", "nd", "ncu")
 REJSTRIKY_TRESTNI = ("tdo", "tz", "td", "ntd", "tcu", "tvo")
+# Stanoviska občanskoprávního a trestního kolegia a pléna – značka nemá
+# senát, takže se dotaz po senátech nedělí (a je malý, na 500 nepadá).
+REJSTRIKY_STANOVISKA = ("cpjn", "tpjn", "plsn")
 # Téměř vždy jen procesní rozhodnutí (přikázání věci, určení příslušnosti).
 PROCESNI_REJSTRIKY = {"nd", "td", "ntd"}
 # Senáty pro dělení dotazu, když celý rejstřík spadne.
 SENATY_CIVILNI = tuple(range(20, 34))
 SENATY_TRESTNI = (3, 4, 5, 6, 7, 8, 11, 15)
 POCET = 200          # položek na stránku výsledků
+SITOVYCH_SELHANI = 3  # síťová selhání za sebou -> databáze nedostupná (jistič)
+SENATU_NA_ZKOUSKU = 3  # když spadnou první tři senátní dotazy, dělení se vzdá
+MAX_MINUT = 20       # celkový čas hledání v databázi za běh
+TIMEOUT_UVOD = (10, 30)    # (spojení, odpověď) v sekundách
+TIMEOUT_HLEDANI = (10, 60)
 MIN_TEXT = 2000      # kratší zbytek stránky je jen hlavička, ne odůvodnění
 BEZ_VYSLEDKU = "Nebyly nalezeny žádné výsledky"   # prázdné hledání, žádná chyba
+# „Výsledky 1 - 14 z 14 zobrazovaných dokumentů." nad výpisem
+POCET_RE = re.compile(r"Výsledky\s+\d+\s*-\s*\d+\s+z\s+(\d+)")
+# Značka bez senátu (stanoviska): „Cpjn 202/2025", „Plsn 1/2015"
+REJSTRIK_RE = re.compile(r"^\s*([^\d\s/]+)\s+\d+\s*/")
 # Poučení o citaci, které NS dává nad každé rozhodnutí.
 CITACE_RE = re.compile(r"^Citace rozhodnutí Nejvyššího soudu by měla.*?www\.nsoud\.cz\s*\.?\s*",
                        re.S)
@@ -73,6 +95,17 @@ def abs_url(href, host=HOST):
     if href.startswith("/"):
         href = host + href
     return href.replace(" ", "%20")
+
+
+def pocet_vysledku(html):
+    """Kolik výsledků stránka hlásí; None, když to na ní není."""
+    m = POCET_RE.search(html or "")
+    return int(m.group(1)) if m else None
+
+
+def pocet_radku(html):
+    """Řádky výsledků před výběrem soudu (kvůli kontrole tvaru stránky)."""
+    return len(BeautifulSoup(html or "", "html.parser").select("table#tabl tr a.odk"))
 
 
 def parse_seznam(html):
@@ -103,6 +136,9 @@ def parse_seznam(html):
                 break
         kategorie = row.select_one("td.category")
         senat, rejstrik = model.senat_z_spz(spz)
+        if not rejstrik:
+            m = REJSTRIK_RE.match(spz)
+            rejstrik = m.group(1) if m else ""
         out.append(model.novy_zaznam(
             "ns", f"ns:{unid.upper()}", spz=spz, url=abs_url(odkaz.get("href", "")) or
             DETAIL.format(unid=unid), pdf=pdf, senat=senat, rejstrik=rejstrik,
@@ -199,71 +235,145 @@ class NS:
         self._session_factory = session_factory
         self._deska = deska
         self._texty = {}   # id -> text z detailu (ať se stránka nestahuje dvakrát)
+        self._pripravit_hledani()
+
+    def _pripravit_hledani(self):
+        self.chyby, self.varovani = [], []   # pro orchestr (stav.json, workflow)
+        self._konec = time.monotonic() + MAX_MINUT * 60
+        self._sitova = 0          # síťová selhání za sebou
+        self._nedostupna = False  # jistič: databáze neodpovídá, dál se nezkouší
+        self._selhani = ""        # druh posledního selhání stránky: http / sit / cas
+        self._precteno = 0        # stránky výsledků, které server dal
+        self._neprectene = []     # dotazy, které nešly ani po senátech
 
     # --- hledání ---
 
     def _session(self):
         s = self._session_factory()
         try:
-            s.get(HOST + "/", headers=HLAVICKY, timeout=30)
+            s.get(HOST + "/", headers=HLAVICKY, timeout=TIMEOUT_UVOD)
         except Exception:
             pass
         return s
 
     def _stranka(self, dotaz, start):
         """HTML stránky výsledků (i prázdné „Nebyly nalezeny…"); None, když server
-        ani napodruhé neodpoví stránkou výsledků."""
+        ani napodruhé neodpoví stránkou výsledků. Druh selhání zůstane
+        v `_selhani`: http (server odpověděl chybou – dotaz je nejspíš moc
+        široký), sit (timeout, spojení), cas (vypršel limit hledání)."""
         url = (f"{HLEDANI}?SearchView&Query={quote(dotaz)}&SearchMax=1000"
                f"&SearchOrder=4&Start={start}&Count={POCET}&pohled=1")
+        self._selhani = "http"
         for _ in range(2):
+            if self._nedostupna:
+                self._selhani = "sit"
+                return None
+            if time.monotonic() >= self._konec:
+                self._selhani = "cas"
+                return None
             try:
-                r = self._session().get(url, headers=HLAVICKY, timeout=60)
+                r = self._session().get(url, headers=HLAVICKY, timeout=TIMEOUT_HLEDANI)
             except Exception as e:
                 print(f"    [ns] {dotaz}: {type(e).__name__}")
+                self._selhani = "sit"
+                self._sitova += 1
+                if self._sitova >= SITOVYCH_SELHANI:
+                    print(f"    [ns] databáze {self._sitova}× za sebou neodpověděla – "
+                          "další dotazy vynechávám")
+                    self._nedostupna = True
                 continue
+            self._sitova = 0
             if r.status_code == 200 and ('id="tabl"' in r.text or BEZ_VYSLEDKU in r.text):
+                self._precteno += 1
                 return r.text
+            self._selhani = "http"
             chyba = re.sub(r"<[^>]+>", " ", r.text)
             print(f"    [ns] {dotaz}: {r.status_code} {' '.join(chyba.split())[:90]}")
         return None
 
     def _hledej(self, dotaz, senaty=None):
-        """Všechny stránky výsledků dotazu; při selhání po senátech."""
+        """Všechny stránky výsledků dotazu; když server dotaz odmítne (HTTP
+        chyba), po senátech. Po výpadku spojení se nedělí – další dotazy by
+        dopadly stejně. Vrací (záznamy, jestli se dotaz přečetl celý)."""
         out, start = [], 1
         while True:
             html = self._stranka(dotaz, start)
             if html is None:
-                if senaty:
+                if senaty and self._selhani == "http":
                     print(f"    [ns] {dotaz}: dělím po senátech")
-                    for s in senaty:
-                        out += self._hledej(f"[spzn1]={s} AND {dotaz}")
-                return out
+                    return self._po_senatech(dotaz, senaty, out)
+                self._neprectene.append(dotaz)
+                return out, False
             radky = parse_seznam(html)
+            celkem, pred_vyberem = pocet_vysledku(html), pocet_radku(html)
+            if start == 1 and celkem and not pred_vyberem:
+                # Stránka hlásí výsledky, ale řádky se nepřečetly – změnil se
+                # tvar výpisu. Tiše to projít nesmí.
+                if not any("přečteno 0" in c for c in self.chyby):
+                    self.chyby.append(f"výpis hlásí {celkem} výsledků, přečteno 0 "
+                                      "(změna tvaru stránky?)")
+                self._neprectene.append(dotaz)
+                return out, False
             out += radky
-            if len(radky) < POCET:
-                return out
+            if pred_vyberem < POCET:
+                return out, True
             start += POCET
 
+    def _po_senatech(self, dotaz, senaty, out):
+        cely, prectenych = True, 0
+        for i, s in enumerate(senaty):
+            radky, ok = self._hledej(f"[spzn1]={s} AND {dotaz}")
+            out += radky
+            if not ok:
+                cely = False
+            else:
+                prectenych += 1
+            if not prectenych and i + 1 >= SENATU_NA_ZKOUSKU:
+                # Ani úzké dotazy neprojdou – server je dole, ne dotaz široký.
+                print(f"    [ns] {dotaz}: ani po senátech nic, zbytek vynechávám")
+                self._neprectene.append(f"{dotaz} (zbylé senáty)")
+                return out, False
+        return out, cely
+
     def objev(self, od, do):
-        """Rozhodnutí zveřejněná od `od` (databáze) a vyhlášená na desce."""
+        """Rozhodnutí zveřejněná od `od` (databáze) a vyhlášená na desce
+        (s PDF, vyhlášená od `od` do `do`)."""
+        self._pripravit_hledani()
         nalezene = {}
         datum = domino_datum(od)
+        dotazu = 0
         for rejstriky, senaty in ((REJSTRIKY_CIVILNI, SENATY_CIVILNI),
-                                  (REJSTRIKY_TRESTNI, SENATY_TRESTNI)):
+                                  (REJSTRIKY_TRESTNI, SENATY_TRESTNI),
+                                  (REJSTRIKY_STANOVISKA, None)):
             for rej in rejstriky:
-                for z in self._hledej(f"[spzn2]={rej} AND [datum_predani_na_web]>={datum}", senaty):
+                dotaz = f"[spzn2]={rej} AND [datum_predani_na_web]>={datum}"
+                dotazu += 1
+                radky, _ = self._hledej(dotaz, senaty)
+                for z in radky:
                     nalezene[z["id"]] = z
+        if not self._precteno:
+            self.chyby.append(f"databáze NS nedala výsledky na žádný z {dotazu} dotazů"
+                              + (" (nedostupná)" if self._nedostupna else ""))
+        elif self._neprectene:
+            duvod = (" (spojení vypadlo)" if self._nedostupna
+                     else " (vypršel čas hledání)" if time.monotonic() >= self._konec else "")
+            self.varovani.append(f"databáze NS: nenačteno {len(self._neprectene)} dotazů{duvod}, např. "
+                                 + "; ".join(self._neprectene[:3]))
         for url in DESKY if self._deska else ():
             try:
                 r = self._session_factory().get(url, headers={"User-Agent": USER_AGENT},
                                                 timeout=30)
                 r.raise_for_status()
                 for z in parse_deska(r.text):
-                    if not z["zverejneno"] or z["zverejneno"] >= od.isoformat():
+                    # Předem ohlášené vyhlášení (bez přílohy, s datem, které
+                    # teprve přijde) ještě není rozhodnutí – najde se po něm.
+                    if z["pdf"] and (not z["zverejneno"]
+                                     or od.isoformat() <= z["zverejneno"] <= do.isoformat()):
                         nalezene.setdefault(z["id"], z)
             except Exception as e:
-                print(f"    [ns] úřední deska nedostupná ({url.rsplit('/', 2)[-2]}): "
-                      f"{type(e).__name__}")
+                kolegium = url.rsplit('/', 2)[-2]
+                print(f"    [ns] úřední deska nedostupná ({kolegium}): {type(e).__name__}")
+                self.varovani.append(f"úřední deska nedostupná ({kolegium}): {type(e).__name__}")
         return list(nalezene.values())
 
     # --- detail a text ---
@@ -277,6 +387,10 @@ class NS:
         r = self._session_factory().get(z["url"], headers=HLAVICKY, timeout=30)
         r.raise_for_status()
         d = parse_detail(r.text)
+        if not d["zverejneno"]:
+            # Bez data zveřejnění by se staré rozhodnutí tvářilo jako nové –
+            # orchestr ho odloží na další běh a ohlásí to.
+            raise RuntimeError("detail NS bez data zveřejnění (změna tvaru stránky?)")
         for k in ("datum", "zverejneno", "druh", "ecli"):
             if d[k]:
                 z[k] = d[k]

@@ -39,6 +39,9 @@ jobs:
       - uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          # Špička větve, ne commit z doby spuštění – běh čekající ve frontě
+          # tak začne i s ručními úpravami, které mezitím přibyly.
+          ref: ${{ github.ref }}
           # Kus historie, ať rebase před pushem nemusí dotahovat všechno.
           fetch-depth: 50
 
@@ -68,8 +71,14 @@ jobs:
         if: steps.plan.outputs.run == 'true'
         run: pip install -r requirements.txt
 
-      # Archiv se ukládá po každém rozhodnutí; když krok spadne nebo vyprší,
-      # commit níže uloží aspoň to, co se stihlo.
+      # Archiv i okna se ukládají hned po objevování a archiv pak po každém
+      # rozhodnutí; když krok spadne nebo vyprší, commit níže uloží aspoň to,
+      # co se stihlo. Selhání soudu (výpadek, změna webu) skript ohlásí
+      # ::error:: a kódem 1 až po uložení všeho – job pak zčervená v kroku
+      # „Výsledek sběru“. AI_MAX_MINUT je rozpočet celého běhu od začátku;
+      # 25 minut do limitu kroku je rezerva na poslední volání AI a přepis
+      # hesel. `exec`, ať SIGINT při vypršení kroku dostane přímo Python
+      # (dokončí zápis oken a stav.json).
       - name: Sběr judikatury
         id: sber
         if: steps.plan.outputs.run == 'true'
@@ -80,8 +89,15 @@ jobs:
           SKIP_GEMINI: ${{ inputs.skip_gemini }}
           SOUDY: ${{ inputs.soudy }}
           AI_MAX_POLOZEK: ${{ inputs.max_polozek || '300' }}
-          AI_MAX_MINUT: '90'
-        run: python scraper_judikatura.py
+          AI_MAX_MINUT: '85'
+        run: exec python scraper_judikatura.py
+
+      # Pojistka pro běh ukončený natvrdo (SIGKILL): okna znovu z uloženého
+      # archivu, ať neukazují záznam, který archiv mezitím nahradil.
+      - name: Okna pro web
+        if: always() && steps.plan.outputs.run == 'true' && steps.sber.outcome != 'success'
+        continue-on-error: true
+        run: python scraper_judikatura.py --jen-export
 
       # Rozbitý archiv nebo okno se necommituje – další běh začne z posledního
       # dobrého stavu a selhání přijde jako upozornění.
@@ -91,6 +107,7 @@ jobs:
         run: python -m judikatura.kontrola
 
       - name: Commit & push
+        id: commit
         if: always() && steps.plan.outputs.run == 'true' && steps.kontrola.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
@@ -102,16 +119,34 @@ jobs:
           fi
           git commit -m "Update case law $(date -u +%Y-%m-%d)"
           # Main se mohl mezitím pohnout (feedy, ruční úpravy). Archiv jiný
-          # workflow nepíše, takže rebase projde; kdyby ne, vyhrává tento běh.
+          # workflow nepíše, takže rebase většinou projde. Konflikt znamená
+          # ruční úpravu archivu nebo oken během běhu (ruční heslo, shrnutí) –
+          # tu nepřepisovat (-X theirs by ji smazal): rebase zrušit, výsledky
+          # běhu dát do artefaktu a krok shodit.
           for i in 1 2 3 4; do
             git push && exit 0
             sleep $(( i * 5 ))
-            git pull --rebase -X theirs origin main
+            if ! git pull --rebase origin main; then
+              git rebase --abort || true
+              echo "::error::Konflikt s ručními úpravami na main – výsledky běhu nejsou pushnuté (artefakt judikatura-vysledky), ruční úpravy zůstaly. Další běh práci zopakuje."
+              exit 1
+            fi
           done
+          echo "::error::Push se nepovedl ani na čtvrtý pokus – výsledky běhu jsou v artefaktu judikatura-vysledky."
           exit 1
+
+      - name: Výsledky běhu jako artefakt
+        if: always() && steps.commit.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: judikatura-vysledky
+          path: |
+            data/judikatura
+            docs/data/judikatura
+          retention-days: 14
 
       - name: Výsledek sběru
         if: steps.sber.outcome == 'failure'
         run: |
-          echo "::error::Sběr judikatury skončil chybou – viz krok „Sběr judikatury“ (uložené je commitnuté)."
+          echo "::error::Sběr judikatury skončil chybou nebo některý soud selhal – viz krok „Sběr judikatury“ a data/judikatura/stav.json (co se uložilo, je commitnuté)."
           exit 1

@@ -9,7 +9,8 @@ Free tier nestihne všechno najednou (úvodní dávka, rušné dny), proto:
   - když text zatím není (PDF přikládají soudy s odstupem, žádost
     o předběžnou otázku vyjde týdny po podání), zkouší se znovu po 1, 2,
     4… hodinách a pak při každém běhu, dokud je rozhodnutí v okně;
-  - když selže AI, zkusí se to nejvýš šestkrát.
+  - když selže AI, zkusí se to nejvýš šestkrát. Čekání na text se do toho
+    nepočítá – má vlastní počítadlo (`pokusy_text`), jen pro odklad.
 """
 
 import time
@@ -31,7 +32,7 @@ def potrebuje_ai(z, nyni):
     if ai.get("shrnuti") and int(ai.get("pv") or 0) >= PROMPT_VERZE:
         return False
     stav = z.get("stav") or {}
-    if stav.get("duvod") != "bez-textu" and int(stav.get("pokusy") or 0) >= MAX_POKUSU:
+    if pokusy_ai(stav) >= MAX_POKUSU:
         return False
     dalsi = model.z_iso(stav.get("dalsi_pokus"))
     return not dalsi or dalsi <= nyni
@@ -67,25 +68,54 @@ def _zaporne(s):
     return tuple(-ord(c) for c in s)
 
 
+def pokusy_ai(stav):
+    """Kolik pokusů AI rozhodnutí vyčerpalo. Starší záznamy měly jediné
+    počítadlo i pro čekání na text – to se za pokusy AI nebere."""
+    stav = stav or {}
+    if stav.get("duvod") == "bez-textu" and "pokusy_text" not in stav:
+        return 0
+    return int(stav.get("pokusy") or 0)
+
+
 def odlozit(z, nyni, duvod):
-    """Nepovedlo se (chybí text, AI nedala odpověď) – zkusit později."""
+    """Nepovedlo se (chybí text, AI nedala odpověď) – zkusit později.
+
+    Čekání na text a selhání AI se počítají zvlášť: rozhodnutí, které týdny
+    čekalo na text, má pak pořád všech šest pokusů AI."""
     stav = z.setdefault("stav", {})
-    stav["pokusy"] = int(stav.get("pokusy") or 0) + 1
-    hodin = min(2 ** (stav["pokusy"] - 1), MAX_ODKLAD_H)
+    if "pokusy_text" not in stav:
+        # Starší záznam: jediné počítadlo patřilo čekání na text, když to byl
+        # poslední důvod.
+        text = stav.get("duvod") == "bez-textu"
+        stav["pokusy_text"] = int(stav.get("pokusy") or 0) if text else 0
+        stav["pokusy"] = 0 if text else int(stav.get("pokusy") or 0)
+    klic = "pokusy_text" if duvod == "bez-textu" else "pokusy"
+    stav[klic] = int(stav.get(klic) or 0) + 1
+    hodin = min(2 ** (stav[klic] - 1), MAX_ODKLAD_H)
     stav["dalsi_pokus"] = model.iso(nyni + timedelta(hours=hodin))
     stav["duvod"] = duvod
 
 
 class Rozpocet:
-    """Kolik položek a minut smí AI v jednom běhu zabrat."""
+    """Kolik položek a minut smí jeden běh zabrat. Čas se počítá od začátku
+    běhu (objevování, AI i přepis hesel), ať celý běh stihne limit kroku
+    ve workflow – ten je o rezervu na nejdelší jedno volání AI delší."""
 
-    def __init__(self, max_polozek, max_minut):
+    def __init__(self, max_polozek, max_minut, zacatek=None):
         self.max_polozek = max_polozek
-        self.konec = time.monotonic() + max_minut * 60
+        self.konec = (time.monotonic() if zacatek is None else zacatek) + max_minut * 60
         self.hotovo = 0
 
-    def dalsi(self):
-        return self.hotovo < self.max_polozek and time.monotonic() < self.konec
+    def zbyva(self):
+        """Sekund do konce rozpočtu (záporné po něm)."""
+        return self.konec - time.monotonic()
+
+    def cas(self, rezerva=0):
+        """Zbývá ještě čas (a aspoň `rezerva` sekund navíc)?"""
+        return self.zbyva() > rezerva
+
+    def dalsi(self, rezerva=0):
+        return self.hotovo < self.max_polozek and self.cas(rezerva)
 
     def zapocitej(self):
         self.hotovo += 1

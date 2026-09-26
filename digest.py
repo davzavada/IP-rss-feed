@@ -21,12 +21,24 @@ Aby se AI nevolala zbytečně, ukládá se otisk vstupu (input_hash). Když se
 seznam položek ani jejich shrnutí od minule nezměnily, přehled se negeneruje
 znovu a zůstane ležet ten předchozí. Pravidelný pondělní běh tuhle zkratku
 vypíná přes DIGEST_FORCE=1 – jednou týdně chceme přehled napsat načisto.
+
+DIGEST_AUTO=1 je režim pro denní spouštění: přehled se napíše, jen když
+uložený je z minulého týdne (před pondělím 0:00 pražského času), když
+minulý pokus selhal (`selhalo`), nebo když v něm chyběla rozhodnutí, která
+teprve čekala na AI rozbor (`cekajici`), a vstup se od té doby změnil.
+Výpadek AI v pondělí se tak spraví hned další den.
+
+Když AI přehled nenapíše ani napodruhé, skončí digest.py kódem 1 (workflow
+pak ohlásí chybu) a do uloženého přehledu si poznamená `selhalo`.
 """
 
 import hashlib
 import os
 import re
+import sys
+import time
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 
 from feed_common import (
     DIGEST_PROMPT,
@@ -44,6 +56,15 @@ OUTPUT = os.path.join(DOCS_DIR, "digest.json")
 WEEKS = 2          # okno přehledu (shodné s oknem feedů)
 MAX_ITEMS = 120    # pojistka proti přerostlému promptu
 MAX_SOURCES = 6    # kolik odkazů maximálně necháme u jednoho tématu
+# Když AI nevrátí použitelný přehled, zkusí se to ještě jednou po chvíli
+# (přetížení u Googlu bývá na minuty) – další běh je jinak až za týden.
+DIGEST_OPAKOVANI_S = 300
+PRAHA = ZoneInfo("Europe/Prague")
+# Rozhodnutí, které ještě čeká na AI rozbor, nemá oblasti. Do přehledu se
+# i tak vezme, když je duševní vlastnictví zjevné z účastníků (řízení proti
+# EUIPO / CPVO u Tribunálu). Ostatní se jen spočítají (`cekajici`).
+CEKA_NA_AI = ("pripravuje", "ceka_na_text")
+ZJEVNE_IP_RE = re.compile(r"\b(EUIPO|OHIM|CPVO)\b")
 
 # Verze tvaru výstupu. Vstupuje do otisku, takže když do přehledu přibude
 # další údaj, uložený přehled se tím sám prohlásí za starý a přegeneruje se
@@ -83,18 +104,30 @@ def oblasti_ip_it():
     return {o["id"] for o in oblasti if o.get("vychozi")}
 
 
-def collect_judikatura(now, oldest):
+def collect_judikatura(now, oldest, stats=None):
     """Rozhodnutí z oken judikatury zařazená do oblastí IP/IT. Senát 23 Cdo
-    se nebere celý – jeho obchodní věci do přehledu IP a IT nepatří."""
+    se nebere celý – jeho obchodní věci do přehledu IP a IT nepatří.
+
+    Rozhodnutí, které zatím čeká na AI rozbor, oblasti nemá; vezme se, jen
+    když je IP zjevné z názvu (ZJEVNE_IP_RE), jinak se započítá do
+    stats["cekajici"] – ať je vidět, že v přehledu chybí."""
     oblasti = oblasti_ip_it()
     items = []
+    cekajici = 0
     for key, label, soud in JUDIKATURA:
         data = load_json(os.path.join(DOCS_DIR, "data", "judikatura", f"{soud}.json"))
         found = 0
         for r in data.get("polozky", []):
             vybrano = bool(set(r.get("oblasti") or []) & oblasti)
             since = _first_seen({"x": r.get("first_seen", "").replace("Z", "+00:00")}, "x")
-            if not vybrano or (since and since < oldest):
+            if since and since < oldest:
+                continue
+            if not vybrano and not r.get("oblasti") and r.get("stav_shrnuti") in CEKA_NA_AI:
+                if ZJEVNE_IP_RE.search(r.get("nazev") or ""):
+                    vybrano = True
+                else:
+                    cekajici += 1
+            if not vybrano:
                 continue
             pub_dt = None
             if r.get("zverejneno"):
@@ -117,6 +150,11 @@ def collect_judikatura(now, oldest):
             })
             found += 1
         print(f"  {label}: {found} rozhodnutí z oblastí IP/IT")
+    if cekajici:
+        print(f"  Judikatura: {cekajici} rozhodnutí bez oblastí čeká na AI rozbor "
+              f"– v přehledu chybí")
+    if stats is not None:
+        stats["cekajici"] = cekajici
     return items
 
 
@@ -160,15 +198,16 @@ def collect_casopisy(now, oldest):
     return items
 
 
-def collect_items():
+def collect_items(stats=None):
     """Načte položky ze všech feedů za okno WEEKS, seřazené od nejnovější.
 
     Vrací seznam dictů se zdrojem, názvem, odkazem, datem, heslem a shrnutím.
     Položky bez shrnutí bere taky – model má aspoň název a popis.
+    stats – volitelný dict, do kterého se zapíše počet čekajících rozhodnutí.
     """
     now = datetime.now(timezone.utc)
     oldest = now - timedelta(weeks=WEEKS)
-    items = collect_judikatura(now, oldest)
+    items = collect_judikatura(now, oldest, stats)
 
     items += collect_casopisy(now, oldest)
 
@@ -273,9 +312,38 @@ def parse_digest(raw, items):
     return intro, blocks
 
 
+def zacatek_tydne(now):
+    """Pondělí 0:00 pražského času v týdnu, do kterého patří `now` (UTC)."""
+    mistni = now.astimezone(PRAHA)
+    pondeli = (mistni - timedelta(days=mistni.weekday())).replace(
+        hour=0, minute=0, second=0, microsecond=0)
+    return pondeli.astimezone(timezone.utc)
+
+
+def proc_generovat(previous, ihash, now):
+    """Režim DIGEST_AUTO: důvod, proč přehled napsat znovu, nebo None."""
+    try:
+        generated = datetime.fromisoformat(previous["generated"])
+    except (KeyError, TypeError, ValueError):
+        return "přehled zatím není"
+    if generated.tzinfo is None:
+        generated = generated.replace(tzinfo=timezone.utc)
+    if not previous.get("blocks"):
+        return "uložený přehled je prázdný"
+    if previous.get("selhalo"):
+        return "minulý pokus selhal"
+    if generated < zacatek_tydne(now):
+        return "přehled je z minulého týdne"
+    if previous.get("cekajici") and previous.get("input_hash") != ihash:
+        return "rozhodnutí, která v přehledu chyběla, mezitím mohla projít AI"
+    return None
+
+
 def main():
     print("Sestavuji dvoutýdenní přehled...")
-    items = collect_items()
+    stats = {}
+    items = collect_items(stats)
+    cekajici = stats.get("cekajici", 0)
     print(f"Celkem {len(items)} položek za poslední {WEEKS} týdny")
 
     now = datetime.now(timezone.utc)
@@ -288,13 +356,20 @@ def main():
             "generated": now.isoformat(),
             "from": (now - timedelta(weeks=WEEKS)).date().isoformat(),
             "to": now.date().isoformat(),
-            "total": 0, "covered": 0,
+            "total": 0, "covered": 0, "cekajici": cekajici,
             "intro": "", "blocks": [], "input_hash": ihash,
         })
         print("Žádné položky – přehled je prázdný")
         return
 
-    if previous.get("input_hash") == ihash and previous.get("blocks"):
+    auto = os.environ.get("DIGEST_AUTO", "").strip().lower() in ("1", "true", "yes")
+    if auto and not force_regenerate():
+        duvod = proc_generovat(previous, ihash, now)
+        if not duvod:
+            print("Přehled je aktuální – ponechávám ho")
+            return
+        print(f"Generuji přehled: {duvod}")
+    elif previous.get("input_hash") == ihash and previous.get("blocks"):
         if not force_regenerate():
             print("Vstup se nezměnil – přehled ponechávám beze změny")
             return
@@ -304,13 +379,24 @@ def main():
         print("AI je vypnutá – přehled ponechávám beze změny")
         return
 
-    raw = gemini_generate_raw(DIGEST_PROMPT, digest_input)
-    intro, blocks = parse_digest(raw, items)
+    blocks = []
+    for pokus in range(2):
+        if pokus:
+            print(f"AI nevrátila použitelný přehled – zkusím to znovu za "
+                  f"{DIGEST_OPAKOVANI_S // 60} min")
+            time.sleep(DIGEST_OPAKOVANI_S)
+        raw = gemini_generate_raw(DIGEST_PROMPT, digest_input)
+        intro, blocks = parse_digest(raw, items)
+        if blocks:
+            break
     if not blocks:
         # Prázdný výstup nemá cenu ukládat – starý přehled je pořád lepší
-        # než nic a příští běh to zkusí znovu.
-        print("AI nevrátila použitelný přehled – ponechávám ten předchozí")
-        return
+        # než nic. Selhání se ale poznamená (DIGEST_AUTO to příště zkusí
+        # znovu) a běh skončí chybou, ať o tom přijde upozornění.
+        if previous:
+            save_json(OUTPUT, dict(previous, selhalo=now.isoformat()))
+        print("::error::AI nevrátila použitelný přehled – ponechávám ten předchozí")
+        sys.exit(1)
 
     covered = len({s["title"] for b in blocks for s in b["sources"]})
     save_json(OUTPUT, {
@@ -319,6 +405,7 @@ def main():
         "to": now.date().isoformat(),
         "total": len(items),
         "covered": covered,
+        "cekajici": cekajici,
         "intro": intro,
         "blocks": blocks,
         "input_hash": ihash,

@@ -38,6 +38,9 @@ from judikatura.soudy.web import radky_html
 
 SPARQL = "https://publications.europa.eu/webapi/rdf/sparql"
 CELLAR = "http://publications.europa.eu/resource/celex/{celex}"
+# Usnesení předsedy Tribunálu („62026TO0244(01)") Cellar podle CELEX
+# nevydá, podle ECLI ano.
+CELLAR_ECLI = "http://publications.europa.eu/resource/ecli/{ecli}"
 EURLEX = "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:{celex}"
 INFOCURIA_APP = "https://infocuria.curia.europa.eu"
 INFOCURIA = "https://infocuriaws.curia.europa.eu/elastic-connector/search"
@@ -256,6 +259,7 @@ class SDEU:
         self._session_factory = session_factory
         self._relace = None
         self._texty = {}     # id záznamu -> text z InfoCurie (ať se věc nehledá dvakrát)
+        self._bez_nazvu_dole = False   # InfoCuria při doplňování názvů neodpověděla
 
     def _s(self):
         if self._relace is None:
@@ -273,11 +277,14 @@ class SDEU:
         """Rozhodnutí s datem od `od`, oznámení o předběžných otázkách, která
         přibyla od `od`, a z ipcuria otázky podané za poslední měsíc (web je
         ukazuje až s odstupem, proto delší lhůta než u ostatních)."""
+        self.varovani = []   # pro orchestr (stav.json, workflow)
+        self._bez_nazvu_dole = False
         rozhodnuti = zaznamy_rozhodnuti(self._sparql(dotaz_rozhodnuti(od, do)))
         try:
             otazky = zaznamy_oznameni(self._sparql(dotaz_oznameni(od)))
         except Exception as e:   # oznámení počkají, rozhodnutí ne
             print(f"    [sdeu] oznámení o nových věcech nedostupná ({type(e).__name__})")
+            self.varovani.append(f"oznámení o nových věcech nedostupná ({type(e).__name__})")
             otazky = []
         try:
             r = self._s().get(ipcuria.SEZNAM, headers=HLAVICKY, timeout=60)
@@ -285,6 +292,7 @@ class SDEU:
             rane = zaznamy_ipcurie(ipcuria.parse_seznam(r.text), do - timedelta(days=IPCURIA_DNI))
         except Exception as e:   # doplňkový zdroj – bez něj se jede dál
             print(f"    [sdeu] ipcuria.eu nedostupná ({type(e).__name__})")
+            self.varovani.append(f"ipcuria.eu nedostupná ({type(e).__name__})")
             rane = []
         return rozhodnuti + otazky + rane
 
@@ -304,15 +312,36 @@ class SDEU:
         if text:
             self._texty[z["id"]] = text
 
+    def doplnit_existujici(self, z):
+        """Znovu objevené rozhodnutí bez názvu věci (InfoCuria při prvním
+        objevení neodpověděla): název zkusí doplnit. Vrací True při změně.
+        Rané otázky z ipcuria název mají vždy, NS a spol. ho nemají vůbec –
+        proto jen tady, ne obecně v orchestru. Když InfoCuria neodpoví,
+        v tomto běhu se to dál nezkouší (visící server by běh zdržel)."""
+        if z.get("nazev") or z["id"].startswith(ipcuria.PREFIX) or self._bez_nazvu_dole:
+            return False
+        try:
+            nazev, _ = self._infocuria(z)
+        except Exception:
+            self._bez_nazvu_dole = True
+            raise
+        if nazev:
+            z["nazev"] = nazev
+        return bool(nazev)
+
     def text(self, z):
         """Text: InfoCuria (česky, jinak anglicky či francouzsky), jinak
         Cellar v češtině, angličtině, francouzštině; u předběžné otázky
-        z ipcuria nakonec otázky z její stránky."""
+        z ipcuria nakonec otázky z její stránky. Chybí-li název věci,
+        doplní ho z InfoCurie."""
         celex = (z.get("meta") or {}).get("celex", "")
         text = self._texty.pop(z["id"], "")
         if not text:
             try:
-                text = text_zaznamu(z, self._infocuria(z)[1])
+                nazev, dokumenty = self._infocuria(z)
+                if nazev and not z.get("nazev"):
+                    z["nazev"] = nazev
+                text = text_zaznamu(z, dokumenty)
             except Exception as e:
                 print(f"    [sdeu] {z['spz']}: InfoCuria nedostupná ({type(e).__name__})")
         if len(text) >= MIN_TEXT:
@@ -330,22 +359,28 @@ class SDEU:
         return {"text": text, "zdroj": "ipcuria"} if len(text) >= MIN_TEXT else {}
 
     def _text_cellar(self, z, celex):
-        if not celex:
-            return {}
-        for jazyk in TEXT_JAZYKY:
-            try:
-                r = self._s().get(CELLAR.format(celex=celex), timeout=60, headers=dict(
-                    HLAVICKY, Accept="application/xhtml+xml, text/html;q=0.9",
-                    **{"Accept-Language": jazyk}))
-            except Exception as e:
-                print(f"    [sdeu] {z['spz']}: Cellar nedostupný ({type(e).__name__})")
-                return {}
-            if r.status_code == 404:   # v tom jazyce ještě není
-                continue
-            if r.status_code >= 400:
-                print(f"    [sdeu] {z['spz']}: Cellar {r.status_code}")
-                return {}
-            text = text_z_cellaru(r.text)
-            if len(text) >= MIN_TEXT:
-                return {"text": text, "zdroj": f"cellar-{jazyk}"}
+        """Text z Cellaru podle CELEX, jinak podle ECLI (ECLI mají jen
+        rozhodnutí ze SPARQL, a to ne vždy). CELEX s příponou „(01)"
+        Cellar nezná – tam jde ECLI napřed."""
+        adresy = [CELLAR.format(celex=celex)] if celex else []
+        if z.get("ecli"):
+            ecli = CELLAR_ECLI.format(ecli=z["ecli"])
+            adresy = [ecli] + adresy if "(" in celex else adresy + [ecli]
+        for adresa in adresy:
+            for jazyk in TEXT_JAZYKY:
+                try:
+                    r = self._s().get(adresa, timeout=60, headers=dict(
+                        HLAVICKY, Accept="application/xhtml+xml, text/html;q=0.9",
+                        **{"Accept-Language": jazyk}))
+                except Exception as e:
+                    print(f"    [sdeu] {z['spz']}: Cellar nedostupný ({type(e).__name__})")
+                    return {}
+                if r.status_code == 404:   # v tom jazyce (pod tou adresou) není
+                    continue
+                if r.status_code >= 400:
+                    print(f"    [sdeu] {z['spz']}: Cellar {r.status_code}")
+                    break
+                text = text_z_cellaru(r.text)
+                if len(text) >= MIN_TEXT:
+                    return {"text": text, "zdroj": f"cellar-{jazyk}"}
         return {}

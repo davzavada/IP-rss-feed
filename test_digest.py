@@ -99,6 +99,100 @@ check("odpověď: úvod, jeden blok, čísla mimo rozsah zahodí",
 check("otisk vstupu nese verzi tvaru", digest.FORMAT_VERSION == "4"
       and digest.input_hash(polozky) != digest.input_hash(polozky[1:]))
 
+# =====================================================================
+print("\n3) Rozhodnutí, která ještě čekají na AI rozbor")
+# =====================================================================
+# Bez rozboru nemají oblasti. Věc proti EUIPO je IP i bez nich; ostatní
+# v přehledu chybí, ale počet je vidět.
+okna["sdeu"] += [
+    rozhodnuti("sdeu:T-890/25", [], nazev="Fitmart v. EUIPO (ULTRAPURE)", stav_shrnuti="pripravuje", shrnuti=""),
+    rozhodnuti("sdeu:T-1/26", [], nazev="Alfa v. Rada", stav_shrnuti="pripravuje", shrnuti=""),
+    rozhodnuti("sdeu:T-2/26", [], nazev="Beta v. EUIPO", stav_shrnuti="pripravuje", hodin=24 * 20),
+]
+with open(os.path.join(docs, "data", "judikatura", "sdeu.json"), "w", encoding="utf-8") as f:
+    json.dump({"soud": "sdeu", "generated": iso(1), "polozky": okna["sdeu"]}, f)
+digest.DOCS_DIR = docs
+digest.CASOPISY_JSON = os.path.join(docs, "data", "casopisy.json")
+stats = {}
+try:
+    polozky = digest.collect_items(stats)
+finally:
+    digest.DOCS_DIR, digest.CASOPISY_JSON = puvodni
+guid = [p["guid"] for p in polozky]
+check("čekající věc proti EUIPO do přehledu jde", "sdeu:T-890/25" in guid, str(guid))
+check("jiná čekající věc chybí, ale spočítá se (jen v okně)",
+      "sdeu:T-1/26" not in guid and stats == {"cekajici": 1}, str(stats))
+
+# =====================================================================
+print("\n4) Když AI selže")
+# =====================================================================
+vystup = os.path.join(koren, "digest.json")
+predchozi = {"generated": (ted - timedelta(days=7)).isoformat(), "blocks": [{"title": "Starý"}],
+             "input_hash": "x", "intro": "Starý přehled."}
+with open(vystup, "w", encoding="utf-8") as f:
+    json.dump(predchozi, f)
+volani, spanky = [], []
+puvodni_main = (digest.OUTPUT, digest.gemini_generate_raw, digest.gemini_enabled, digest.time.sleep,
+                digest.DOCS_DIR, digest.CASOPISY_JSON)
+digest.OUTPUT = vystup
+digest.DOCS_DIR, digest.CASOPISY_JSON = docs, os.path.join(docs, "data", "casopisy.json")
+digest.gemini_enabled = lambda: True
+digest.gemini_generate_raw = lambda *a, **k: volani.append(1) or ""
+digest.time.sleep = spanky.append
+os.environ["DIGEST_FORCE"] = "1"
+try:
+    digest.main()
+    kod = 0
+except SystemExit as e:
+    kod = e.code
+with open(vystup, encoding="utf-8") as f:
+    po = json.load(f)
+check("AI selže i napodruhé → kód 1, starý přehled zůstane a nese `selhalo`",
+      kod == 1 and len(volani) == 2 and spanky == [digest.DIGEST_OPAKOVANI_S]
+      and po["blocks"] == predchozi["blocks"] and po.get("selhalo"), f"{kod} {volani} {po}")
+
+volani.clear()
+odpovedi = ["", "PŘEHLED: Úvod.\nTÉMA: Známky\nTEXT: Text.\nZDROJE: 1"]
+digest.gemini_generate_raw = lambda *a, **k: volani.append(1) or odpovedi.pop(0)
+digest.main()
+with open(vystup, encoding="utf-8") as f:
+    po = json.load(f)
+check("napodruhé vyjde → uloží se bez `selhalo`, s počtem čekajících",
+      len(volani) == 2 and po["blocks"][0]["title"] == "Známky" and "selhalo" not in po
+      and po["cekajici"] == 1, str(po))
+
+digest.gemini_enabled = lambda: False
+os.environ.pop("DIGEST_FORCE")
+os.environ["DIGEST_AUTO"] = "1"
+with open(vystup, "w", encoding="utf-8") as f:
+    json.dump(dict(predchozi, selhalo="x"), f)
+try:
+    digest.main()
+    kod = 0
+except SystemExit as e:
+    kod = e.code
+check("s vypnutou AI se nekončí chybou", kod == 0, str(kod))
+os.environ.pop("DIGEST_AUTO")
+(digest.OUTPUT, digest.gemini_generate_raw, digest.gemini_enabled, digest.time.sleep,
+ digest.DOCS_DIR, digest.CASOPISY_JSON) = puvodni_main
+
+# DIGEST_AUTO: kdy se přehled píše znovu.
+pondeli = datetime(2026, 9, 28, 0, 30, tzinfo=timezone.utc)   # 2:30 v Praze
+check("týden začíná v pondělí 0:00 pražského času",
+      digest.zacatek_tydne(pondeli) == datetime(2026, 9, 27, 22, 0, tzinfo=timezone.utc)
+      and digest.zacatek_tydne(pondeli - timedelta(hours=3)) == datetime(2026, 9, 20, 22, 0, tzinfo=timezone.utc))
+tento = {"generated": (pondeli + timedelta(hours=1)).isoformat(), "blocks": [1], "input_hash": "h"}
+check("tento týden hotový a úplný → nic",
+      digest.proc_generovat(tento, "jiny", pondeli + timedelta(days=2)) is None)
+check("pondělní běh o pár minut dřív než před týdnem → přehled je z minulého týdne",
+      digest.proc_generovat(dict(tento, generated=(pondeli + timedelta(minutes=5) - timedelta(days=7)).isoformat()),
+                            "h", pondeli) is not None)
+check("minulý pokus selhal → znovu",
+      digest.proc_generovat(dict(tento, selhalo="x"), "h", pondeli + timedelta(days=1)) is not None)
+check("chyběla čekající rozhodnutí a vstup se změnil → znovu; beze změny ne",
+      digest.proc_generovat(dict(tento, cekajici=3), "jiny", pondeli + timedelta(days=1)) is not None
+      and digest.proc_generovat(dict(tento, cekajici=3), "h", pondeli + timedelta(days=1)) is None)
+
 ok = sum(1 for _, c, _ in results if c)
 print(f"\n{ok}/{len(results)} testů prošlo")
 sys.exit(0 if ok == len(results) else 1)
