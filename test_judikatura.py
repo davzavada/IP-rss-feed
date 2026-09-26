@@ -14,13 +14,17 @@ import base64
 import json
 import os
 import re
+import contextlib
+import io
 import shutil
 import sys
 import tempfile
+import time
 from datetime import date, datetime, timedelta, timezone
 from urllib.parse import parse_qs, urlparse
 
 import feed_common as fc
+import scraper_judikatura
 from judikatura import analyza, fronta, kontrola, mapy, migrace, model, orchestr
 from judikatura.sklad import Sklad, slim
 from judikatura.soudy import ns
@@ -390,6 +394,24 @@ orchestr.prepis_hesel({"ns": FalesnySklad([neprosle])}, NYNI)
 check("po dvou pokusech zůstane dosavadní",
       neprosle["ai"]["hv"] == analyza.HESLO_VERZE and neprosle["ai"]["heslo"] == "Zastavení řízení")
 
+
+def pretizena_davka(parts, system=None, schema=None, max_tokens=8192, timeout=0):
+    volani.append(parts)
+    fc._posledni_pretizeni = True
+    return "", ""
+
+
+fc.ai_volani = pretizena_davka
+obecna = [dict(rozhodnuti, id=f"ns:Q{i}", ai={"heslo": "Zastavení řízení", "shrnuti": SHRNUTI})
+          for i in range(45)]
+volani.clear()
+check("přepis hesel: přetížená AI – skončí po první dávce, další by jen čekaly",
+      orchestr.prepis_hesel({"ns": FalesnySklad(obecna)}, NYNI) == 0 and len(volani) == 1, str(len(volani)))
+fc._posledni_pretizeni = False
+volani.clear()
+orchestr.prepis_hesel({"ns": FalesnySklad(obecna)}, NYNI, rozpocet=fronta.Rozpocet(300, 0))
+check("přepis hesel: po konci rozpočtu běhu se nezačíná", not volani)
+
 # =====================================================================
 print("\n5) Fronta a rozpočet")
 # =====================================================================
@@ -437,6 +459,31 @@ r = fronta.Rozpocet(2, 10)
 r.zapocitej()
 check("rozpočet položek", r.dalsi() and (r.zapocitej() or not r.dalsi()))
 check("rozpočet minut", not fronta.Rozpocet(5, 0).dalsi())
+z = zaznam("ns:t", "2026-09-22T10:00:00Z")
+for _ in range(fronta.MAX_POKUSU + 1):
+    fronta.odlozit(z, NYNI, "bez-textu")
+fronta.odlozit(z, NYNI, "ai-selhani")
+check("čekání na text nevyčerpá pokusy AI – po jednom selhání AI se zkouší dál",
+      fronta.potrebuje_ai(z, NYNI + timedelta(days=2)) and slim(z)["stav_shrnuti"] == "pripravuje"
+      and z["stav"]["pokusy"] == 1 and z["stav"]["pokusy_text"] == fronta.MAX_POKUSU + 1, str(z["stav"]))
+check("odklad po selhání AI podle pokusů AI, ne podle čekání na text",
+      z["stav"]["dalsi_pokus"] == model.iso(NYNI + timedelta(hours=1)))
+z = zaznam("ns:s", "2026-09-22T10:00:00Z", stav={"pokusy": 9, "dalsi_pokus": None, "duvod": "bez-textu"})
+check("starý záznam: pokusy při čekání na text nejsou pokusy AI",
+      fronta.pokusy_ai(z["stav"]) == 0 and slim(z)["stav_shrnuti"] == "ceka_na_text")
+fronta.odlozit(z, NYNI, "ai-selhani")
+check("starý záznam: počítadla se při dalším odkladu rozdělí",
+      z["stav"]["pokusy"] == 1 and z["stav"]["pokusy_text"] == 9
+      and fronta.potrebuje_ai(z, NYNI + timedelta(days=1)), str(z["stav"]))
+check("starý záznam s vyčerpanými pokusy AI zůstane vzdaný",
+      fronta.pokusy_ai({"pokusy": fronta.MAX_POKUSU, "duvod": "ai-selhani"}) == fronta.MAX_POKUSU
+      and slim(zaznam("ns:v", "2026-09-22T10:00:00Z", stav={"pokusy": fronta.MAX_POKUSU,
+                                                           "duvod": "ai-selhani"}))["stav_shrnuti"]
+      == "nepodarilo")
+r = fronta.Rozpocet(5, 1, time.monotonic() - 120)
+check("rozpočet se počítá od začátku běhu (objevování se do něj počítá)", not r.dalsi() and r.zbyva() < 0)
+r = fronta.Rozpocet(5, 10)
+check("rozpočet: rezerva pro přepis hesel", r.dalsi(60) and not r.dalsi(11 * 60) and r.cas())
 
 # =====================================================================
 print("\n6) Běh: objevení, náběh, deska, AI, výpadky")
@@ -638,6 +685,106 @@ fc.ai_volani = falesna_ai(ai_odpoved)
 chyby, varovani = kontrola.zkontroluj(("ns", "nss"), data_dir=BD, web_dir=BW)
 check("archiv po bězích projde kontrolou", not chyby and not varovani, str(chyby + varovani)[:300])
 
+# Přerušený běh: okna se zapíšou hned po objevování a znovu i po výjimce.
+PD2, PW2 = tmpdir(), tmpdir()
+STAV2 = os.path.join(PD2, "stav.json")
+
+
+def beh2(adaptery, nyni, **kw):
+    volani.clear()
+    return orchestr.beh(adaptery, list(adaptery), nyni=nyni, stav_cesta=STAV2, data_dir=PD2, web_dir=PW2, **kw)
+
+
+def okno2(soud="ns"):
+    with open(os.path.join(PW2, f"{soud}.json"), encoding="utf-8") as f:
+        return [p["id"] for p in json.load(f)["polozky"]]
+
+
+deska3 = model.novy_zaznam("ns", "ns:deska:23cdo777/2026", spz="23 Cdo 777 / 2026", senat=23,
+                           rejstrik="Cdo", druh="rozsudek", zverejneno="2026-09-25",
+                           pdf="https://www.nsoud.cz/d777.pdf")
+beh2({"ns": Adapter("ns", [deska3])}, DRUHY_DEN)
+a3 = Adapter("ns", [deska3, objeveny("ns:DB777", "23 Cdo 777/2026"), objeveny("ns:N1", "25 Cdo 1/2026")],
+             detaily={"ns:DB777": {"zverejneno": "2026-09-28"}, "ns:N1": {"zverejneno": "2026-09-28"}})
+
+
+def preruseni(parts, system=None, schema=None, max_tokens=8192, timeout=0):
+    volani.append(parts)
+    raise KeyboardInterrupt
+
+
+fc.ai_volani = preruseni
+try:
+    beh2({"ns": a3}, TRETI_DEN)
+    preruseno = False
+except KeyboardInterrupt:
+    preruseno = True
+fc.ai_volani = falesna_ai(ai_odpoved)
+chyby, _ = kontrola.zkontroluj(("ns",), data_dir=PD2, web_dir=PW2)
+with open(STAV2, encoding="utf-8") as f:
+    stav = json.load(f)
+check("přerušený běh: okno bez nahrazené desky, s novým rozhodnutím; kontrola projde",
+      preruseno and not chyby and "ns:deska:23cdo777/2026" not in okno2() and {"ns:DB777", "ns:N1"} <= set(okno2())
+      and stav["soudy"]["ns"]["nove"] == 2, str(chyby) + str(okno2()))
+sk = Sklad("ns", data_dir=PD2, web_dir=PW2).nacti(TRETI_DEN)
+sk.zaznamy["ns:N1"]["nahrazeno"] = "ns:DB777"
+sk.zmeneno(sk.zaznamy["ns:N1"])
+sk.uloz()
+pred_exportem = kontrola.zkontroluj(("ns",), PD2, PW2)[0]
+orchestr.jen_export(["ns"], TRETI_DEN, data_dir=PD2, web_dir=PW2)
+check("běh ukončený natvrdo: okna znovu z archivu (krok „Okna pro web“)",
+      pred_exportem and not kontrola.zkontroluj(("ns",), PD2, PW2)[0] and "ns:N1" not in okno2())
+
+# Selhání zdroje: do stav.json i jako ::error:: a kód 1, nalezené se přesto uloží.
+a4 = Adapter("ns", [objeveny("ns:Z1", "25 Cdo 9/2026")], detaily={"ns:Z1": {"zverejneno": "2026-09-28"}})
+a4.chyby = ["databáze NS nedala výsledky na žádný z 14 dotazů"]
+a4.varovani = ["úřední deska nedostupná (trestni-kolegium): OSError"]
+souhrn = beh2({"ns": a4}, TRETI_DEN)
+with open(STAV2, encoding="utf-8") as f:
+    stav = json.load(f)
+check("selhání zdroje: chyba ve stav.json i v souhrnu, nalezené se uloží",
+      souhrn["chyby"]["ns"].startswith("databáze NS") and stav["soudy"]["ns"]["chyba"].startswith("databáze NS")
+      and stav["soudy"]["ns"]["varovani"] == a4.varovani and "ns:Z1" in okno2(), str(stav["soudy"]["ns"]))
+vystup = io.StringIO()
+with contextlib.redirect_stdout(vystup):
+    kod = scraper_judikatura.ohlas(souhrn)
+check("scraper: selhání soudu = ::error:: a kód 1, dílčí selhání ::warning::",
+      kod == 1 and "::error::Judikatura ns: databáze NS" in vystup.getvalue()
+      and "::warning::Judikatura ns: úřední deska" in vystup.getvalue(), vystup.getvalue())
+with contextlib.redirect_stdout(io.StringIO()):
+    kod = scraper_judikatura.ohlas({"ai": 0, "chyby": {}, "varovani": {}})
+check("scraper: bez selhání kód 0", kod == 0)
+souhrn = beh2({"nss": Adapter("nss", chyba=RuntimeError("výpis hlásí 92 výsledků, přečteno 0"))}, TRETI_DEN)
+check("výjimka adaptéru je chyba i v souhrnu (pro kód 1)",
+      souhrn["chyby"]["nss"] == "RuntimeError: výpis hlásí 92 výsledků, přečteno 0", str(souhrn))
+prazdny = Adapter("us", [])
+prvni = beh2({"us": prazdny}, TRETI_DEN)
+souhrn = beh2({"us": prazdny}, TRETI_DEN + timedelta(hours=1))
+check("nic nenalezeno dva běhy po sobě = varování (změna webu?)",
+      not prvni["varovani"] and "us" in souhrn["varovani"] and not souhrn["chyby"], str(souhrn))
+a5 = Adapter("us", [model.novy_zaznam("us", "us:1")])
+a5.bez_detailu = {"us:1"}
+souhrn = beh2({"us": a5}, TRETI_DEN + timedelta(hours=2))
+check("detail nedostupný u všech nových = varování, záznam počká",
+      souhrn["us"]["nove"] == 0 and any("detail nedostupný" in v for v in souhrn["varovani"]["us"]), str(souhrn))
+
+
+class AdapterNazvu(Adapter):
+    def doplnit_existujici(self, z):
+        if z.get("nazev"):
+            return False
+        z["nazev"] = "Doplněný název"
+        return True
+
+
+a6 = AdapterNazvu("sdeu", [model.novy_zaznam("sdeu", "sdeu:62025CJ0999", spz="C-999/25", zverejneno="2026-09-27")])
+beh2({"sdeu": a6}, TRETI_DEN)
+prvni_nazev = Sklad("sdeu", data_dir=PD2, web_dir=PW2).nacti(TRETI_DEN).zaznamy["sdeu:62025CJ0999"]["nazev"]
+beh2({"sdeu": a6}, TRETI_DEN + timedelta(hours=1))
+check("znovu objevenému záznamu adaptér doplní, co chybělo (název věci), a uloží se",
+      prvni_nazev == "" and Sklad("sdeu", data_dir=PD2, web_dir=PW2).nacti(TRETI_DEN).zaznamy[
+          "sdeu:62025CJ0999"]["nazev"] == "Doplněný název")
+
 # =====================================================================
 print("\n7) Nejvyšší soud: stránky a hledání")
 # =====================================================================
@@ -669,6 +816,12 @@ check("odkaz na detail a PDF", out[0]["url"] == DETAIL_URL.format(U1)
 check("senát, rejstřík, kategorie", out[0]["senat"] == 23 and out[0]["rejstrik"] == "Cdo"
       and out[0]["meta"]["kategorie"] == "E")
 check("UNID i z odkazu, Nd je procesní podle rejstříku", out[1]["procesni_meta"] and not out[0]["procesni_meta"])
+out = ns.parse_seznam(seznam(radek_seznamu(U1, "Cpjn 202/2025"), radek_seznamu(U2, "Plsn 1/2015")))
+check("stanovisko: rejstřík bez senátu, vlastní pokyn AI",
+      [(z["senat"], z["rejstrik"]) for z in out] == [(None, "Cpjn"), (None, "Plsn")]
+      and analyza.pokyn(dict(out[0], druh="stanovisko")) == analyza.POKYNY["stanovisko_ns"]
+      and analyza.pokyn({"soud": "ns", "druh": "rozsudek", "rejstrik": "Cdo"}) == analyza.POKYNY["obecny"],
+      str([(z["senat"], z["rejstrik"]) for z in out]))
 
 
 def stranka_detailu(telo, heslo="Smluvní pokuta<br>Přípustnost dovolání"):
@@ -801,6 +954,111 @@ check("každý dotaz s čerstvou relací přes úvodní stránku",
       web.volani.count(ns.HOST + "/") == pokusy and web.relaci >= pokusy, f"{web.relaci} relací, {pokusy} dotazů")
 check("stará rozhodnutí z desky se neberou",
       "ns:deska:28cdo3880/2023-II" not in ids and "ns:deska:7tdo677/2026" not in ids)
+check("stanoviska kolegií a pléna (Cpjn, Tpjn, Plsn) se hledají, po senátech se nedělí",
+      all(f"[spzn2]={r} AND [datum_predani_na_web]>=14.09.2026" in [q for q, _ in hledane]
+          for r in ("cpjn", "tpjn", "plsn"))
+      and not any(q.startswith("[spzn1]=") and ("pjn" in q or "plsn" in q) for q, _ in hledane))
+check("úspěšné hledání NS nic nehlásí", not adapter.chyby and not adapter.varovani,
+      str(adapter.chyby + adapter.varovani))
+PRAZDNA_DESKA = {ns.DESKY[0]: Odp(text="<html></html>"), ns.DESKY[1]: Odp(text="<html></html>")}
+
+
+def pocet_hledani(web):
+    return sum(1 for u in web.volani if u.startswith(ns.HLEDANI))
+
+
+# Cdo jde první a nejčastěji padá na 500 – i když předtím nic neprošlo, dělí se.
+def cdo_siroke(dotaz, start):
+    if dotaz.startswith("[spzn2]=cdo"):
+        return Odp(500, "<html><h1>Error</h1>Field is too large (32K)</html>")
+    if dotaz.startswith("[spzn1]=25 AND [spzn2]=cdo"):
+        return Odp(text=seznam(radek_seznamu("5" * 32, "25 Cdo 5/2026")))
+    return Odp(text=PRAZDNE)
+
+
+adapter = ns.NS(session_factory=Web(cdo_siroke, PRAZDNA_DESKA).session)
+ids = [z["id"] for z in adapter.objev(date(2026, 9, 14), date(2026, 9, 24))]
+check("NS: Cdo, které spadne hned první, se rozdělí po senátech",
+      ids == [f"ns:{'5' * 32}"] and not adapter.chyby and not adapter.varovani, str(ids) + str(adapter.chyby))
+
+
+class Visici(Web):
+    """Databáze NS neodpovídá (timeout); deska ano."""
+
+    def get(self, url, **kw):
+        if url.startswith(ns.HLEDANI):
+            self.volani.append(url)
+            raise OSError("Read timed out")
+        return super().get(url, **kw)
+
+
+web = Visici(stranky={ns.DESKY[0]: Odp(text=DESKA_HTML), ns.DESKY[1]: Odp(text="<html></html>")})
+adapter = ns.NS(session_factory=web.session)
+ids = [z["id"] for z in adapter.objev(date(2026, 9, 14), date(2026, 9, 24))]
+check("NS nedostupná: po třech výpadcích spojení se další dotazy neposílají ani nedělí",
+      pocet_hledani(web) == ns.SITOVYCH_SELHANI, str(pocet_hledani(web)))
+check("NS nedostupná: deska se vezme, výpadek je chyba pro orchestr",
+      ids == ["ns:deska:23cdo418/2026"] and len(adapter.chyby) == 1 and "nedostupná" in adapter.chyby[0],
+      str(ids) + str(adapter.chyby))
+web = Web(lambda dotaz, start: Odp(500, "<html>Field is too large (32K)</html>"), PRAZDNA_DESKA)
+adapter = ns.NS(session_factory=web.session)
+adapter.objev(date(2026, 9, 14), date(2026, 9, 24))
+ocekavano = 2 * (len(ns.REJSTRIKY_CIVILNI) + len(ns.REJSTRIKY_TRESTNI) + len(ns.REJSTRIKY_STANOVISKA)) \
+    + 2 * ns.SENATU_NA_ZKOUSKU * (len(ns.REJSTRIKY_CIVILNI) + len(ns.REJSTRIKY_TRESTNI))
+check("NS vrací jen 500: dělení po senátech se po třech neúspěšných vzdá, výpadek je chyba",
+      pocet_hledani(web) == ocekavano and adapter.chyby and "žádný" in adapter.chyby[0],
+      f"{pocet_hledani(web)} vs {ocekavano}: {adapter.chyby}")
+
+
+def jen_cdo_pada(dotaz, start):
+    if "cdo AND" in dotaz and "icdo" not in dotaz:
+        return Odp(500, "<html>Field is too large (32K)</html>")
+    return Odp(text=PRAZDNE)
+
+
+adapter = ns.NS(session_factory=Web(jen_cdo_pada, PRAZDNA_DESKA).session)
+adapter.objev(date(2026, 9, 14), date(2026, 9, 24))
+check("NS: rejstřík, který nejde ani po senátech, je varování (ostatní prošly)",
+      not adapter.chyby and len(adapter.varovani) == 1 and "[spzn2]=cdo" in adapter.varovani[0],
+      str(adapter.chyby + adapter.varovani))
+ZMENENY = seznam(radek_seznamu(U1, "23 Cdo 418/2026")).replace('class="odk"', 'class="odkaz"').replace(
+    "<body>", "<body><h3>Výsledky 1 - 1 z 1 zobrazovaných dokumentů.</h3>")
+adapter = ns.NS(session_factory=Web(lambda dotaz, start: Odp(text=ZMENENY if dotaz.startswith("[spzn2]=cdo")
+                                                            else PRAZDNE), PRAZDNA_DESKA).session)
+adapter.objev(date(2026, 9, 14), date(2026, 9, 24))
+check("NS: výpis hlásí výsledky, ale řádky se nepřečtou = chyba (změna tvaru stránky)",
+      ns.pocet_vysledku(fixture("vysledky_2026-09-23.html")) == 14
+      and any("přečteno 0" in c for c in adapter.chyby), str(adapter.chyby))
+puvodni_max = ns.MAX_MINUT
+ns.MAX_MINUT = 0
+web = Web(stranky=PRAZDNA_DESKA)
+adapter = ns.NS(session_factory=web.session)
+adapter.objev(date(2026, 9, 14), date(2026, 9, 24))
+ns.MAX_MINUT = puvodni_max
+check("NS: po časovém limitu hledání se dotazy neposílají, je to chyba",
+      pocet_hledani(web) == 0 and adapter.chyby, str(adapter.chyby))
+
+
+def dojde_cas(dotaz, start):
+    adapter._konec = 0   # limit vyprší po prvním dotazu
+    return Odp(text=PRAZDNE)
+
+
+web = Web(dojde_cas, PRAZDNA_DESKA)
+adapter = ns.NS(session_factory=web.session)
+adapter.objev(date(2026, 9, 14), date(2026, 9, 24))
+check("NS: když limit vyprší uprostřed, přečtené platí a zbytek je varování",
+      pocet_hledani(web) == 1 and not adapter.chyby and len(adapter.varovani) == 1
+      and "vypršel čas" in adapter.varovani[0], str(adapter.chyby + adapter.varovani))
+DESKA_PREDEM = DESKA_HTML.replace("</table>", (
+    "<tr><td>23 Cdo 999 / 2026</td><td>30.09.2026</td><td></td></tr>"
+    '<tr><td>23 Cdo 998 / 2026</td><td>30.09.2026</td><td><a href="/fileadmin/998.pdf">PDF</a></td></tr>'
+    "<tr><td>23 Cdo 997 / 2026</td><td>23.09.2026</td><td></td></tr></table>"))
+adapter = ns.NS(session_factory=Web(stranky={ns.DESKY[0]: Odp(text=DESKA_PREDEM),
+                                             ns.DESKY[1]: Odp(text="<html></html>")}).session)
+ids = [z["id"] for z in adapter.objev(date(2026, 9, 14), date(2026, 9, 24))]
+check("deska: předem ohlášené vyhlášení a řádek bez PDF se neberou",
+      ids == ["ns:deska:23cdo418/2026"], str(ids))
 ns.POCET = puvodni_pocet
 
 # Skutečné stránky NS, jak je 24. 9. 2026 stáhla sonda (probe.yml).
@@ -847,6 +1105,13 @@ adapter = ns.NS(session_factory=web.session)
 adapter.doplnit(z)
 check("doplnění z detailu", z["zverejneno"] == "2026-09-18" and z["druh"] == "usnesení"
       and z["meta"]["heslo_ns"].startswith("Smluvní pokuta") and z["ecli"])
+z_bez = model.novy_zaznam("ns", f"ns:{U2}", spz="23 Cdo 419/2026", url=DETAIL_URL.format(U2))
+try:
+    ns.NS(session_factory=Web(stranky={z_bez["url"]: Odp(text=stranka_detailu(DLOUHY_TEXT).replace(
+        "Zveřejněno na webu", "Jiný údaj"))}).session).doplnit(z_bez)
+    check("detail NS bez data zveřejnění je chyba (záznam počká)", False)
+except RuntimeError:
+    check("detail NS bez data zveřejnění je chyba (záznam počká)", not z_bez["zverejneno"])
 volani_pred = len(web.volani)
 obsah = adapter.text(z)
 check("text z detailu se podruhé nestahuje",
@@ -1008,6 +1273,18 @@ try:
     check("NSS: stránka bez formuláře je chyba zdroje", False)
 except RuntimeError:
     check("NSS: stránka bez formuláře je chyba zdroje", True)
+adapter = soud_nss.NSS(session_factory=relace(web_nss, []))
+adapter.objev(date(2026, 9, 21), date(2026, 9, 21))
+check("NSS: neúplné dočtení je varování pro orchestr", adapter.varovani == ["načteno jen 60 z 92 výsledků"],
+      str(adapter.varovani))
+puvodni_radky = soud_nss.parse_radky
+soud_nss.parse_radky = lambda html: []
+try:
+    soud_nss.NSS(session_factory=relace(web_nss, [])).objev(date(2026, 9, 21), date(2026, 9, 21))
+    check("NSS: výsledky hlášené, žádný řádek přečtený = chyba zdroje", False)
+except RuntimeError as e:
+    check("NSS: výsledky hlášené, žádný řádek přečtený = chyba zdroje", "přečteno 0" in str(e), str(e))
+soud_nss.parse_radky = puvodni_radky
 
 z = soud_nss.zaznam_z_radku(radky0[0] | {"id": "785620", "cj": "9 As 22/2026-39", "vyrok": "zamítnuto"})
 soud_nss.NSS(session_factory=relace(web_nss, [])).doplnit(z)
@@ -1038,6 +1315,12 @@ check("NSS: znovu zpřístupněné staré rozhodnutí není novinka",
       and model.prvni_vyskyt(z["zverejneno"], NYNI, False) == dt("2024-01-15T12:00:00Z"))
 check("NSS: spor s ÚPV je průmyslové vlastnictví, soudce jménem napřed",
       z["oblasti_meta"] == ["prumyslova_prava"] and z["meta"]["soudce"] == "Jan Novák", str(z["oblasti_meta"]))
+try:
+    soud_nss.NSS(session_factory=relace(lambda m, u, d: Odp(text=nss_detail("15.01.2024", "")), [])).doplnit(
+        model.novy_zaznam("nss", "nss:2", spz="7 As 1/2024-50"))
+    check("NSS: detail bez data zpřístupnění je chyba (záznam počká)", False)
+except RuntimeError:
+    check("NSS: detail bez data zpřístupnění je chyba (záznam počká)", True)
 
 TEXT_NSS = fx("nss", "text_785707.html", binarne=True)
 PDF_URL = soud_nss.HOST + "/DokumentOriginal/Index/1"
@@ -1161,6 +1444,14 @@ try:
     check("ÚS: formulář místo výsledků je chyba zdroje", False)
 except RuntimeError:
     check("ÚS: formulář místo výsledků je chyba zdroje", True)
+puvodni_vysledky = soud_us.parse_vysledky
+soud_us.parse_vysledky = lambda html: ([], 11)
+try:
+    soud_us.US(session_factory=web_us(US_VYSLEDKY, {})).objev(date(2026, 9, 14), date(2026, 9, 24))
+    check("ÚS: výsledky hlášené, žádný řádek přečtený = chyba zdroje", False)
+except RuntimeError as e:
+    check("ÚS: výsledky hlášené, žádný řádek přečtený = chyba zdroje", "přečteno 0" in str(e), str(e))
+soud_us.parse_vysledky = puvodni_vysledky
 obsah = soud_us.US(session_factory=web_us(US_VYSLEDKY, {})).text(nalezene[0])
 check("ÚS: text z trvalé adresy", obsah["zdroj"] == "html" and obsah["text"].startswith("NÁLEZ"))
 
@@ -1217,9 +1508,10 @@ check("SDEU: oznámení o předběžné otázce i s otázkami", "Předběžné o
 zaznam_sdeu = []
 
 
-def web_sdeu(cellar=None, oznameni=True, infocuria=None, ipcuria_web=None):
-    """cellar: {jazyk: html}; infocuria: {číslo věci: odpověď};
-    ipcuria_web: {adresa: html} (bez něj ipcuria.eu neodpovídá)."""
+def web_sdeu(cellar=None, oznameni=True, infocuria=None, ipcuria_web=None, ecli=None):
+    """cellar: {jazyk: html} podle CELEX, ecli: totéž podle ECLI;
+    infocuria: {číslo věci: odpověď}; ipcuria_web: {adresa: html} (bez
+    něj ipcuria.eu neodpovídá)."""
     def odp(metoda, url, data):
         if ipcuria_web is not None and url.startswith(soud_ipcuria.HOST):
             return Odp(text=ipcuria_web[url]) if url in ipcuria_web else Odp(404, "nic")
@@ -1231,6 +1523,9 @@ def web_sdeu(cellar=None, oznameni=True, infocuria=None, ipcuria_web=None):
             return Odp(text=json.dumps((infocuria or {}).get(data["publishedId"], {"searchHits": []})))
         if url.startswith("http://publications.europa.eu/resource/celex/"):
             html = (cellar or {}).get(zaznam_sdeu[-1][3])
+            return Odp(text=html) if html else Odp(404, "nic")
+        if url.startswith("http://publications.europa.eu/resource/ecli/"):
+            html = (ecli or {}).get(zaznam_sdeu[-1][3])
             return Odp(text=html) if html else Odp(404, "nic")
         raise OSError(f"neočekávaná adresa {metoda} {url}")
     return relace(odp, zaznam_sdeu)
@@ -1257,8 +1552,10 @@ def relace_sdeu(**kw):
 nalezene = soud_sdeu.SDEU(session_factory=relace_sdeu()).objev(date(2026, 9, 10), date(2026, 9, 24))
 check("SDEU: objevení – rozhodnutí i předběžné otázky", len(nalezene) == 90
       and sum(z["druh"] == "předběžná otázka" for z in nalezene) == 9)
-nalezene = soud_sdeu.SDEU(session_factory=relace_sdeu(oznameni=False)).objev(date(2026, 9, 10), date(2026, 9, 24))
-check("SDEU: když oznámení nejdou, rozhodnutí se vezmou i tak", len(nalezene) == 81)
+adapter_sdeu = soud_sdeu.SDEU(session_factory=relace_sdeu(oznameni=False))
+nalezene = adapter_sdeu.objev(date(2026, 9, 10), date(2026, 9, 24))
+check("SDEU: když oznámení nejdou, rozhodnutí se vezmou i tak – a je to varování", len(nalezene) == 81
+      and any("oznámení" in v for v in adapter_sdeu.varovani), str(adapter_sdeu.varovani))
 
 INFOCURIA = {"C-151/25": json.loads(fx("sdeu", "infocuria_C-151-25.json")),
              "T-83/22": json.loads(fx("sdeu", "infocuria_T-83-22.json"))}
@@ -1279,6 +1576,48 @@ check("SDEU: bez textu v InfoCurii Cellar česky, anglicky, francouzsky",
       str(zaznam_sdeu))
 check("SDEU: nikde nic = bez textu",
       soud_sdeu.SDEU(session_factory=relace_sdeu(infocuria=INFOCURIA)).text(z) == {})
+CELLAR_FRA = fx("sdeu", "cellar_62025CJ0151_fra.html")
+zaznam_sdeu.clear()
+obsah = soud_sdeu.SDEU(session_factory=relace_sdeu(infocuria=INFOCURIA, ecli={"eng": CELLAR_FRA})).text(z)
+cellar_get = [(x[1].split("/resource/")[1].split("/")[0], x[3]) for x in zaznam_sdeu if x[0] == "GET"]
+check("SDEU: když Cellar podle CELEX nic nemá, zkusí se podle ECLI",
+      obsah.get("zdroj") == "cellar-eng" and cellar_get == [("celex", "ces"), ("celex", "eng"), ("celex", "fra"),
+                                                             ("ecli", "ces"), ("ecli", "eng")], str(cellar_get))
+z = next(z for z in soud_sdeu.zaznamy_rozhodnuti(SPARQL_ROZH) if z["id"] == "sdeu:62026TO0244(01)")
+zaznam_sdeu.clear()
+obsah = soud_sdeu.SDEU(session_factory=relace_sdeu(infocuria=INFOCURIA, ecli={"fra": CELLAR_FRA})).text(z)
+adresy = [x[1] for x in zaznam_sdeu if x[0] == "GET"]
+check("SDEU: usnesení předsedy Tribunálu (CELEX „(01)“) – text podle ECLI, ECLI napřed",
+      obsah.get("zdroj") == "cellar-fra" and z["ecli"] == "ECLI:EU:T:2026:560"
+      and adresy == [soud_sdeu.CELLAR_ECLI.format(ecli="ECLI:EU:T:2026:560")] * 3, str(adresy))
+adapter_sdeu = soud_sdeu.SDEU(session_factory=relace_sdeu(infocuria=INFOCURIA))
+z = next(z for z in soud_sdeu.zaznamy_rozhodnuti(SPARQL_ROZH) if z["id"] == "sdeu:62025CJ0151")
+zaznam_sdeu.clear()
+check("SDEU: znovu objevenému rozhodnutí bez názvu se název doplní (jednou)",
+      adapter_sdeu.doplnit_existujici(z) and z["nazev"] == "Viaudret"
+      and not adapter_sdeu.doplnit_existujici(z) and len(zaznam_sdeu) == 1, str(zaznam_sdeu))
+z = next(z for z in soud_sdeu.zaznamy_rozhodnuti(SPARQL_ROZH) if z["id"] == "sdeu:62025CJ0151")
+adapter_sdeu.text(z)
+check("SDEU: název doplní i stahování textu, když při objevení InfoCuria neodpověděla",
+      z["nazev"] == "Viaudret")
+
+
+def visi(metoda, url, data):
+    raise OSError("InfoCuria visí")
+
+
+adapter_sdeu = soud_sdeu.SDEU(session_factory=lambda: RelaceSdeu(visi, zaznam_sdeu))
+zaznam_sdeu.clear()
+bez = [next(z for z in soud_sdeu.zaznamy_rozhodnuti(SPARQL_ROZH) if z["id"] == i)
+       for i in ("sdeu:62025CJ0151", "sdeu:62026TO0244(01)")]
+selhalo = 0
+for z in bez:
+    try:
+        adapter_sdeu.doplnit_existujici(z)
+    except OSError:
+        selhalo += 1
+check("SDEU: když InfoCuria při doplňování názvů neodpoví, v běhu se to dál nezkouší",
+      selhalo == 1 and len(zaznam_sdeu) == 1, str(zaznam_sdeu))
 check("SDEU: pokyny AI podle druhu",
       analyza.pokyn({"soud": "sdeu", "druh": "stanovisko GA"}) == analyza.POKYNY["stanovisko"]
       and analyza.pokyn({"soud": "sdeu", "druh": "předběžná otázka"}) == analyza.POKYNY["otazka"]
@@ -1375,6 +1714,30 @@ check("rozsudek ve stejné věci ranou otázku nepřevezme",
       orchestr._prevezmi_predbezne(sk, n) and not n.get("ai") and not sk.zaznamy["sdeu:ipc:C-1009/26"]["nahrazeno"])
 sk = sklad_sdeu(oznameni())
 check("raná otázka se nepřidá, když oznámení už je", not orchestr._prevezmi_predbezne(sk, rana()))
+# Oznámení vyjde i čtvrt roku po rané otázce – ta leží v měsíci, který se
+# běžně nenačítá.
+SD, SW = tmpdir(), tmpdir()
+LETO, PODZIM = dt("2026-06-12T08:00:00Z"), dt("2026-09-21T07:00:00Z")
+sk = Sklad("sdeu", data_dir=SD, web_dir=SW).nacti(LETO)
+sk.pridej(zaznam("sdeu:ipc:C-595/26", "2026-06-12T08:00:00Z", soud="sdeu", spz="C-595/26",
+                 druh="předběžná otázka", zverejneno="", ai=HOTOVE_AI))
+sk.uloz()
+sk = Sklad("sdeu", data_dir=SD, web_dir=SW).nacti(PODZIM)
+nenacteno = "sdeu:ipc:C-595/26" not in sk.zaznamy
+cn = model.novy_zaznam("sdeu", "sdeu:62026CN0595", spz="C-595/26", druh="předběžná otázka",
+                       datum="2026-06-02", zverejneno="2026-09-21")
+nove = orchestr.zapis_nalezene(sk, [cn], PODZIM, False)
+sk.uloz()
+sk.exportuj(PODZIM, model.OKNA_DNI["sdeu"])
+arch = Sklad("sdeu", data_dir=SD, web_dir=SW)
+arch.nacti(PODZIM)
+ipc = arch.dohledej("sdeu:ipc:C-595/26")
+cn = arch.dohledej("sdeu:62026CN0595")
+check("oznámení převezme ranou otázku i po víc než třech měsících (měsíc se dohledá podle indexu)",
+      nenacteno and len(nove) == 1 and ipc["nahrazeno"] == "sdeu:62026CN0595"
+      and cn["ai"] == HOTOVE_AI and cn["first_seen"] == "2026-06-12T08:00:00Z"
+      and not arch.v_okne(PODZIM, model.OKNA_DNI["sdeu"])
+      and kontrola.zkontroluj(("sdeu",), SD, SW) == ([], []), str(ipc) + str(cn))
 
 # --- mapy ---
 spatne = [(k, o) for k, v in mapy.nacti("predpisy")["predpisy"].items() for o in v["oblasti"]

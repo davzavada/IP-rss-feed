@@ -120,7 +120,7 @@ def novy_zaznam(soud, id, **pole):
         "datum": "", "zverejneno": "", "first_seen": "",
         "nazev": "", "url": "", "pdf": "", "jazyk": "cs",
         "meta": {}, "oblasti_meta": [], "procesni_meta": False,
-        "ai": None, "stav": {"pokusy": 0, "dalsi_pokus": None, "duvod": None},
+        "ai": None, "stav": {"pokusy": 0, "pokusy_text": 0, "dalsi_pokus": None, "duvod": None},
         "nahrazeno": None, "bootstrap": False,
     }
     z.update(pole)

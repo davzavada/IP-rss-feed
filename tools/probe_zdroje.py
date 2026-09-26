@@ -64,7 +64,8 @@ NS_HLEDANI = NS_HOST + "/Judikatura/judikatura_ns.nsf/$$WebSearch1"
 # Rejstříky NS, které se objevují ve výpisu zveřejněných rozhodnutí. Dotaz
 # jen podle data server shazuje na 500 („Field is too large (32K)"), takže
 # se ptáme po rejstřících a sonda ukáže, které projdou.
-NS_REJSTRIKY = ("cdo", "icdo", "nscr", "nd", "ncu", "tdo", "tz", "td", "tcu", "ntd")
+NS_REJSTRIKY = ("cdo", "icdo", "nscr", "nd", "ncu", "tdo", "tz", "td", "tcu", "ntd",
+                "cpjn", "tpjn", "plsn")
 
 NSS_HOST = "https://vyhledavac.nssoud.cz"
 US_HOST = "https://nalus.usoud.cz"

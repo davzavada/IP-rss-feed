@@ -129,6 +129,9 @@ POKYNY = {
             "konkrétní závěr.",
     "stanovisko": "Jakou odpověď generální advokát navrhuje a proč.",
     "otazka": "Na co se předkládající soud (a ze které země) Soudního dvora ptá.",
+    # Stanovisko kolegia nebo pléna NS (Cpjn, Tpjn, Plsn) – spor v něm není.
+    "stanovisko_ns": "Jakou otázku, v níž se soudy rozcházely, kolegium (plénum) "
+                     "Nejvyššího soudu sjednocovalo a jaký závěr přijalo.",
 }
 
 
@@ -142,6 +145,9 @@ def pokyn(z):
         return POKYNY["sdeu"]
     if z["soud"] == "us":
         return POKYNY["us"]
+    if z["soud"] == "ns" and ("stanovisko" in druh
+                              or (z.get("rejstrik") or "").lower() in ("cpjn", "tpjn", "plsn")):
+        return POKYNY["stanovisko_ns"]
     return POKYNY["obecny"]
 
 
