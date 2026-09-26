@@ -46,7 +46,7 @@ TIMEOUT = 60
 # náhledu PDF, api/pdf.js) – sonda nemá sloužit k ničemu jinému.
 POVOLENE_HOSTY = (
     "nsoud.cz", "nssoud.cz", "usoud.cz", "curia.europa.eu",
-    "publications.europa.eu", "eur-lex.europa.eu", "justice.cz",
+    "publications.europa.eu", "eur-lex.europa.eu", "justice.cz", "msp.gov.cz",
     "davidzavada.cz",
     # pořadatelé vzdělávacích akcí (akce_config.json)
     "cak.cz", "prf.cuni.cz", "jednotaceskychpravniku.cz",
