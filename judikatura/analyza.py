@@ -89,13 +89,24 @@ def ocisti_heslo(heslo):
     return "".join(casti)
 
 
+CESKA_PISMENA = set("áčďéěíňóřšťúůýž")
+
+
+def cizi_pismena(text):
+    """Písmena mimo češtinu – AI občas u cizojazyčného textu vloží do
+    českého slova cizí znak („vykonatelności")."""
+    return any(c.isalpha() and not c.isascii() and c.lower() not in CESKA_PISMENA
+               for c in str(text or ""))
+
+
 def heslo_obecne(heslo):
     """Heslo, ze kterého není poznat, o co ve věci jde (jen procesní
-    institut), nebo je moc dlouhé na jeden řádek."""
+    institut), je moc dlouhé na jeden řádek, nebo má písmena mimo češtinu."""
     h = re.sub(r"\s+", " ", str(heslo or "")).strip().rstrip(".")
     slova = [w for w in re.split(r"[^\w]+", bez_diakritiky(h).lower()) if w]
     return (not slova or all(w in PROCESNI_SLOVA for w in slova)
-            or len(h) > HESLO_MAX_ZNAKU or len(slova) > HESLO_MAX_SLOV)
+            or len(h) > HESLO_MAX_ZNAKU or len(slova) > HESLO_MAX_SLOV
+            or cizi_pismena(h))
 
 SYSTEM = (
     "Jsi asistent českého advokáta. Dostaneš jedno soudní rozhodnutí (případně "
