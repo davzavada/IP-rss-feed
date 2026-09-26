@@ -8,10 +8,11 @@ dvora EU včetně Tribunálu (AI ji řadí do oblastí práva), články z práv
 a třívěté shrnutí, jednou týdně z toho napíše dvoutýdenní přehled duševního
 vlastnictví a IT.
 
-Web má stránky Novinky (co přibylo za posledních 24 hodin, tedy úlovek
-nočního běhu), Dva týdny v IP a IT (přehled je jeden pro všechny, na výběru
-nezávisí), každý zdroj zvlášť (NS, NSS, ÚS, SDEU, časopisy), Kalendář
-jednání a Kalendář akcí; Můj výběr je dialog z nabídky účtu.
+Web má stránky Novinky (úlovek posledního nočního běhu – počítá se od
+nejnovějšího prvního výskytu v datech, ne od hodin prohlížeče), Dva týdny
+v IP a IT (přehled je jeden pro všechny, na výběru nezávisí), každý zdroj
+zvlášť (NS, NSS, ÚS, SDEU, časopisy), Kalendář jednání a Kalendář akcí;
+Můj výběr je dialog z nabídky účtu.
 
 ## Jak to drží pohromadě
 
@@ -29,7 +30,7 @@ tools/probe_zdroje.py sonda: syrové odpovědi webů soudů pro parsery a testy
 
 Časopisy si vedou **stav prvního výskytu** (`journals_seen.json`): kdy
 položku poprvé viděly. Podle něj drží položku v okně (měsíc)
-a web ji ukáže v Novinkách, když přibyla v posledních 24 hodinách (judikatura
+a web ji ukáže v Novinkách, když přibyla v posledním běhu (judikatura
 totéž dělá přes `first_seen` v archivu). Registr časopisů (`CASOPISY`
 ve `scraper_journals.py`) dává každému stálé id, které se ukládá ve výběru
 uživatele, a zkratku pro štítek; okno `docs/data/casopisy.json` se
@@ -246,7 +247,8 @@ v každém svém dni, kurz delší než týden jen v den začátku.
 e-mailu v Clerku, teď jen provozovatel): navigace, záložka i stránka mají
 `data-jen="kalendar"` a bez třídy `smi-kalendar` na `<html>` jsou schované;
 odkaz `#kalendar` ostatní přesměruje na Novinky. Je to jen schování na webu –
-`hearings.json` a `hearings.ics` zůstávají veřejné na své adrese.
+`hearings.json` a `hearings.ics` zůstávají veřejné na své adrese; web
+`hearings.json` stahuje a vykresluje jen účtům, které kalendář vidí.
 
 Přihlášení zajišťuje [Clerk](https://clerk.com) a slouží jen k vlastnímu
 výběru. Bez přihlášení (i při výpadku Clerku) web ukazuje výchozí výběr:
@@ -255,7 +257,10 @@ vlastnictví a IT, všechny časopisy. Nepřihlášenému to web říká pod
 seznamy judikatury a nabízí přihlášení (při výpadku Clerku ne).
 
 - Web je bez buildu, takže Clerk se načítá skriptem z Frontend API instance
-  (`@clerk/clerk-js@6` a komponenty `@clerk/ui@1`), až po vykreslení obsahu.
+  (`@clerk/clerk-js@6` a komponenty `@clerk/ui@1`) souběžně s daty. Na
+  přihlášení stránka při načtení čeká (nejvýš 3 s) jen tehdy, když tu byl
+  minule někdo přihlášený (příznak `owl:prihlasen` v localStorage);
+  nepřihlášenému se ukáže hned.
   Česká lokalizace je v `docs/vendor/clerk-cs-CZ.js`.
 - Publishable key je veřejný a je v `docs/app.js` (`CLERK_KLICE`, podle
   hostitele: produkční instance pro `owl.davidzavada.cz`, jinak vývojová).
