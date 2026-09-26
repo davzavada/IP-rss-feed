@@ -870,6 +870,429 @@ check("VS nesleduje zastupující senáty",
       not {"4 Cmo", "4 Co", "5 Co", "11 Cmo"} & set(config_real["courts"]["VS"]["senaty"]))
 
 # =====================================================================
+print("\n12) Zalomená jména účastníků v PDF VS")
+# =====================================================================
+# VS sází každého účastníka do vlastního odstavce; dlouhé jméno se zalomí.
+# Uvnitř jména jsou řádky od sebe ~12,4 pt, mezi účastníky ~20,4 pt – jen
+# podle toho se dá poznat, že „Zákupy-Brenná" není další strana sporu.
+check("VS: zalomený název spolku je jeden účastník",
+      find(vs_items, "12 Cmo 52/2026")["ucastnici"]
+      == ["Lukáš Vidimský", "Josef Liška", "Honební společenstvo Zákupy-Brenná"],
+      str(find(vs_items, "12 Cmo 52/2026")["ucastnici"]))
+nadacni = find(vs_items, "12 Cmo 2/2026")
+check("VS: jméno zalomené na tři řádky je jeden účastník",
+      nadacni["ucastnici"] == ["Jaroslav Novák",
+                               "Nadační fond Archa - rodiny Löw-Beer a Oskara Schindlera"],
+      str(nadacni["ucastnici"]))
+check("VS: protistrana v popisku je skutečná protistrana, bez „a další“",
+      nadacni["nazev"].startswith("Jaroslav Novák v. Nadační fond Archa - rodiny")
+      and "a další" not in nadacni["nazev"], nadacni["nazev"])
+check("VS: zalomená právní forma velkými písmeny se slepí",
+      find(vs_items, "9 Cmo 5/2026")["ucastnici"][0] == "CHMIELNICKI-MLYN LIMITED",
+      str(find(vs_items, "9 Cmo 5/2026")["ucastnici"]))
+check("VS: samostatní účastníci zůstanou samostatní",
+      find(vs_items, "9 Cmo 26/2026")["ucastnici"]
+      == ["Romana Peniasová", "Bytové družstvo Svitavy"]
+      and find(vs_items, "12 Cmo 55/2026")["ucastnici"]
+      == ["ČSOB Leasing a. s.", "Ing. Ľubomír Miklánek", "Miloš Kubiš"])
+
+# Na syntetických kusech: osoba a firma pod sebou v samostatných odstavcích
+# (mezera 20 pt) se neslepí, i když firma končí právní formou.
+kusy = [(414.7, 664.3, "Jména účastníků"),
+        (414.7, 600.0, "Marek Vitásek"), (414.7, 579.6, "TnG-Air Servis s.r.o."),
+        (414.7, 540.0, "Yunnan Tobacco"), (414.7, 527.6, "International Co. Ltd."),
+        (414.7, 507.2, "Philip Morris Products S.A."),
+        (145.0, 527.6, "MBA")]          # předseda senátu, jiný sloupec
+dvojice = s.zalomene_ucastniky(kusy)
+check("zalomení se pozná podle svislé mezery, ne podle právní formy",
+      dvojice == {("Yunnan Tobacco", "International Co. Ltd.")}, str(dvojice))
+text_vs = "\n".join([
+    "09.09.2026 6 JUDr. Roman Horáček, Ph.D., 1Cmo 40/2026 09:30 Yunnan Tobacco",
+    "International Co. Ltd.", "Philip Morris Products S.A.",
+    "09.09.2026 6 JUDr. Roman Horáček, Ph.D., 1Cmo 51/2025 10:30 Marek Vitásek",
+    "TnG-Air Servis s.r.o."])
+it_vs, _ = s.parse_jednani_text(s.spoj_zalomene(text_vs, dvojice))
+check("slepené jméno dá správný popisek sporu",
+      find(it_vs, "1 Cmo 40/2026")["nazev"]
+      == "Yunnan Tobacco International Co. v. Philip Morris Products S.A.",
+      find(it_vs, "1 Cmo 40/2026")["nazev"])
+check("osoba a firma zůstanou dvě strany",
+      find(it_vs, "1 Cmo 51/2025")["ucastnici"] == ["Marek Vitásek", "TnG-Air Servis s.r.o."],
+      str(find(it_vs, "1 Cmo 51/2025")["ucastnici"]))
+check("bez hlavičky sloupce se nic neslepuje",
+      s.zalomene_ucastniky(kusy[1:]) == set())
+
+# =====================================================================
+print("\n13) Právní forma se neodřízne z konce slova")
+# =====================================================================
+for plny, kratky in (("S&P Sales House s.r.o.", "S&P Sales House"),
+                     ("Atlas s.r.o.", "Atlas"), ("Gas", "Gas"), ("Big Bag", "Big Bag"),
+                     ("OSA z.s.", "OSA"), ("Seznam.cz, a.s.", "Seznam.cz"),
+                     ("Foo,a.s.", "Foo"), ("X spol. s r.o.", "X"),
+                     ("Česká pošta, s.p.", "Česká pošta"), ("ACME s.r.o. v likvidaci", "ACME")):
+    check(f"short_party({plny!r}) = {kratky!r}", s.short_party(plny) == kratky,
+          s.short_party(plny))
+
+# =====================================================================
+print("\n14) Neúplně naparsovaný přehled nic nemaže")
+# =====================================================================
+import contextlib
+import os
+
+
+def tichy(fn, *a, **kw):
+    """Zavolá fn a vrátí (výsledek, výpis na stdout)."""
+    buf = io.StringIO()
+    with contextlib.redirect_stdout(buf):
+        vysledek = fn(*a, **kw)
+    return vysledek, buf.getvalue()
+
+
+def docx_soubor(data):
+    fd, cesta = tempfile.mkstemp(suffix=".docx")
+    with os.fdopen(fd, "wb") as f:
+        f.write(data)
+    return cesta
+
+
+radky_12c = [["%02d.09.2026" % (16 + i), "265", "Mgr. Jana Přibylová", f"12C {20 + i}/2026",
+              "09:00", ["Firma%d a.s." % i, "Jiná%d s.r.o." % i]] for i in range(10)]
+cely = build_docx(radky_12c, od="16.09.2026", do="30.09.2026")
+# Tentýž dokument, jen u šesti řádků soud začal psát značku jinak.
+rozbity = build_docx([r if i < 4 else r[:3] + [f"sp. zn. {r[3]}".replace("/", "-")] + r[4:]
+                      for i, r in enumerate(radky_12c)], od="16.09.2026", do="30.09.2026")
+prehled_civ = {"usek": "civilni"}
+with s_ai(None):
+    (items, per, _, stav), _ = tichy(s.scrape_jednani, "MS", cfg_ms, prehled_civ,
+                                     docx_soubor(cely))
+check("úplný přehled má stav ok", stav == s.PREHLED_OK and len(items) == 10, stav)
+arch = {}
+s.mark_ip(items, cfg_ms)
+tichy(s.merge_output, arch, "MS", items, per, None, cfg_ms)
+with s_ai(None):
+    (items, per, _, stav), log = tichy(s.scrape_jednani, "MS", cfg_ms, prehled_civ,
+                                       docx_soubor(rozbity))
+check("neúplný přehled bez AI má stav neuplny", stav == s.PREHLED_NEUPLNY and len(items) == 4,
+      f"{stav} {len(items) if items else None}")
+check("neúplný přehled se ohlásí jako ::warning::", "::warning::" in log, log)
+s.mark_ip(items, cfg_ms)
+tichy(s.merge_output, arch, "MS", items, per, None, cfg_ms, mazat=stav == s.PREHLED_OK)
+check("z neúplného přehledu se archiv nemaže",
+      len([j for j in arch["jednani"] if j["spz"].startswith("12 C ")]) == 10,
+      str(len(arch["jednani"])))
+check("z neúplného přehledu se nehlásí odvolaná jednání",
+      not [z for z in arch.get("zmeny", []) if z["typ"] == "zruseno"], str(arch.get("zmeny")))
+check("období úseku zůstane zapsané i z neúplného přehledu",
+      arch["courts"]["MS"]["useky"]["civilni"]["obdobi"] == {"od": "2026-09-16",
+                                                            "do": "2026-09-30"})
+
+# AI záloha vrátí víc řádků než parser, ale pořád pod prahem (useknutá
+# odpověď) – přehled je dál neúplný.
+def ai_pet(prompt_text):
+    return json.dumps([{"datum": r[0], "sin": r[1], "predseda": r[2],
+                        "spisova_znacka": r[3], "hodina": r[4], "ucastnici": r[5]}
+                       for r in radky_12c[:6]])
+
+
+with s_ai(ai_pet) as sim:
+    (items, _, _, stav), _ = tichy(s.scrape_jednani, "MS", cfg_ms, prehled_civ,
+                                   docx_soubor(rozbity))
+check("useknutá odpověď AI nad prahem nepřehoupne", stav == s.PREHLED_NEUPLNY
+      and len(items) == 6, f"{stav} {len(items)}")
+check("AI dostane tabulku po řádcích s oddělenými buňkami",
+      sim.dotazy and "12C 20/2026 | 09:00 | Firma0 a.s.; Jiná0 s.r.o." in sim.dotazy[0],
+      sim.dotazy[0][:300] if sim.dotazy else "")
+
+# =====================================================================
+print("\n15) Období přehledu")
+# =====================================================================
+check("období s pomlčkou", s.parse_period("v období 16. 9. 2026 – 30. 9. 2026")
+      == ("2026-09-16", "2026-09-30"))
+check("období od–do jako dřív", s.parse_period("od  16.08.2026  do  31.08.2026")
+      == ("2026-08-16", "2026-08-31"))
+check("obrácené období není období", s.parse_period("od 30.9.2026 do 16.9.2026") is None)
+check("období z adresy MSPH", s.obdobi_z_odkazu(
+    "https://msp.gov.cz/documents/d/mestsky-soud-v-praze/spravni-usek-16-30-9-2026")
+    == ("2026-09-16", "2026-09-30"))
+check("stálá adresa VS období nemá", s.obdobi_z_odkazu(
+    "https://msp.gov.cz/documents/d/vrchni-soud-v-praze/prehled_jednacky_cu") is None)
+check("neplatné datum v adrese období nedá",
+      s.obdobi_z_odkazu("https://x.test/usek-16-31-9-2026") is None)
+
+# Hlavička v neznámém tvaru s jedním datem navíc: řádky se počítají
+# v tabulce, takže krátký přehled nevypadá neúplný.
+jina_hlavicka = build_docx(radky_12c[:1], od="16.09.2026", do="")
+check("docx: očekávané řádky se počítají v tabulce",
+      s.ocekavane_radky(jina_hlavicka, s.raw_text_of(jina_hlavicka)) == 1
+      and s.expected_rows(s.raw_text_of(jina_hlavicka)) == 2)
+check("docx: přehozené sloupce pozná i počítání v tabulce",
+      s.ocekavane_radky(prehozene, s.raw_text_of(prehozene)) == 2)
+with s_ai(None):
+    (items, per, _, stav), log = tichy(s.scrape_jednani, "MS", cfg_ms, {"usek": "spravni"},
+                                       docx_soubor(build_docx(radky_12c[2:5], od="", do="")))
+check("chybějící období se ohlásí", "::warning::" in log and "období" in log, log)
+check("chybějící období se vezme z dnů naparsovaných jednání",
+      stav == s.PREHLED_OK and per == ("2026-09-18", "2026-09-20"), f"{stav} {per}")
+
+# =====================================================================
+print("\n16) Zrušená a nová jednání ve změnách")
+# =====================================================================
+stare_z = [dict(jed("12 C 3/2026", "2026-09-04", hodina="13:00"), nazev="OSA v. X")]
+zm = s.porovnej_prehled(stare_z, [], set(), "MS", "civilni", dnes)
+check("odvolané jednání nese popisek a hodinu",
+      zm and zm[0]["typ"] == "zruseno" and zm[0]["nazev"] == "OSA v. X"
+      and zm[0]["hodina"] == "13:00", str(zm))
+# Nová jednání (celé nové období) se do výstupu neukládají.
+nove_obdobi = {}
+it, per = s.parse_jednani_docx(build_docx(prvni, od="16.08.2026", do="22.08.2026"))
+for x in it:
+    x["usek"] = "civilni"
+s.mark_ip(it, cfg_ms)
+tichy(s.merge_output, nove_obdobi, "MS", it, per, None, cfg_ms)
+check("změny typu „nové“ se do výstupu neukládají",
+      not [z for z in nove_obdobi.get("zmeny", []) if z["typ"] == "nove"],
+      str(nove_obdobi.get("zmeny")))
+
+# =====================================================================
+print("\n17) Keš rozhodnutí AI o fyzických osobách")
+# =====================================================================
+kes_cesta = tempfile.mkstemp(suffix=".json")[1]
+os.remove(kes_cesta)
+kes = s.nacti_osoby_kes(kes_cesta)
+d0 = _date(2026, 9, 1)
+with s_ai('["Ing. Tomáš Seidl"]') as sim:
+    polozky = [{"ucastnici": ["Ing. Tomáš Seidl", "Yunnan Tobacco"]}]
+    tichy(s.redact_osoby, polozky, [], kes, d0)
+check("s keší se napoprvé ptá AI", len(sim.dotazy) == 1)
+s.uloz_osoby_kes(kes, kes_cesta, d0)
+obsah = open(kes_cesta, encoding="utf-8").read()
+check("osoba je v keši jen jako hash", "Seidl" not in obsah and "Tomáš" not in obsah
+      and s.osoba_klic("Ing. Tomáš Seidl") in obsah, obsah)
+check("firma je v keši otevřeně", "Yunnan Tobacco" in obsah, obsah)
+
+kes = s.nacti_osoby_kes(kes_cesta)
+with s_ai(None) as sim:     # AI neběží – keš stačí
+    polozky = [{"ucastnici": ["Ing. Tomáš Seidl", "Yunnan Tobacco"]}]
+    tichy(s.redact_osoby, polozky, [], kes, d0 + _td(days=2))
+check("známá jména se znovu neklasifikují a zkrátí se i bez AI",
+      not sim.dotazy and polozky[0]["ucastnici"] == ["T. S.", "Yunnan Tobacco"],
+      str(polozky[0]))
+with s_ai(None):
+    polozky = [{"ucastnici": ["Ing. Tomáš Seidl", "Yunnan Tobacco"]}]
+    tichy(s.redact_osoby, polozky, [], kes, d0 + _td(days=s.FIRMY_PLATNOST_DNU + 1))
+check("firmě verdikt vyprší – bez AI se pak jednání uloží bez účastníků",
+      polozky[0]["ucastnici"] == [], str(polozky[0]))
+with s_ai("nesmysl") as sim:
+    tichy(s.redact_osoby, [{"ucastnici": ["Nové Jméno"]}], [], kes, d0)
+check("nerozhodnuté jméno se do keše nezapíše",
+      "Nové Jméno" not in kes["firmy"] and s.osoba_klic("Nové Jméno") not in kes["osoby"])
+kes["verze"] = "jiný prompt"
+s.uloz_osoby_kes(kes, kes_cesta, d0)
+kes = s.nacti_osoby_kes(kes_cesta)
+check("po změně promptu se firmy zapomenou, osoby ne",
+      not kes["firmy"] and s.osoba_klic("Ing. Tomáš Seidl") in kes["osoby"])
+kes["rucne_firmy"] = ["Karolína Janáčková"]
+with s_ai(None):
+    polozky = [{"ucastnici": ["Karolína Janáčková"]}]
+    tichy(s.redact_osoby, polozky, [], kes, d0)
+check("ruční firma platí bez ptaní", polozky[0]["ucastnici"] == ["Karolína Janáčková"])
+
+# =====================================================================
+print("\n18) Celý běh (main) nad lokálními dokumenty")
+# =====================================================================
+# Běh v dočasném adresáři s kopií configu: jednou za běh klasifikace osob,
+# neúplný přehled nic nemaže a skončí nenulovým kódem, selhání všeho
+# výstup nepřepíše.
+import shutil
+from datetime import datetime as _dt
+
+tmpdir = tempfile.mkdtemp()
+cfg_tmp = json.load(open(s.CONFIG_FILE))
+cfg_tmp["updated"] = _dt.now().isoformat()      # rozvrhy se nekontrolují
+puvodni_cesty = (s.CONFIG_FILE, s.OUTPUT_FILE, s.ICS_FILE, s.OSOBY_KES_FILE)
+s.CONFIG_FILE = os.path.join(tmpdir, "hearings_config.json")
+s.OUTPUT_FILE = os.path.join(tmpdir, "hearings.json")
+s.ICS_FILE = os.path.join(tmpdir, "hearings.ics")
+s.OSOBY_KES_FILE = os.path.join(tmpdir, "hearings_osoby.json")
+json.dump(cfg_tmp, open(s.CONFIG_FILE, "w"), ensure_ascii=False)
+spravni_docx = docx_soubor(build_docx(upv_rows, od="16.08.2026", do="31.08.2026"))
+
+
+def spust(*argumenty):
+    """Spustí main s argumenty; vrátí (návratový kód, výpis)."""
+    stary_argv = sys.argv
+    sys.argv = ["scraper_hearings.py", *argumenty]
+    kod = 0
+    try:
+        _, log = tichy(s.main)
+    except SystemExit as e:
+        kod, log = e.code, ""
+    finally:
+        sys.argv = stary_argv
+    return kod, log
+
+
+lokalni = ["--local-jednani", f"MS={FIX_MS}", f"MS:spravni={spravni_docx}", f"VS={FIX_VS}"]
+try:
+    with s_ai(lambda text: vsichni([j for j in jmena_dotazu(text)
+                                    if s.initials(j) != j and " " in j
+                                    and not re.search(r"s\.r\.o|a\.s|z\.s|GmbH|AG|Inc|ÚPV|Úřad"
+                                                      r"|Ministerstvo|Firma|Někdo|LIMITED",
+                                                      j)])) as sim:
+        kod, _ = spust(*lokalni)
+    prvni_dotazy = len(sim.dotazy)
+    jmen_celkem = len({j for d in sim.dotazy for j in jmena_dotazu(d)})
+    check("úplný běh skončí nulou", kod == 0, str(kod))
+    check("osoby se klasifikují jednou za běh pro všechny přehledy",
+          prvni_dotazy == -(-jmen_celkem // s.OSOBY_DAVKA),
+          f"volání {prvni_dotazy}, jmen {jmen_celkem}")
+    out1 = json.load(open(s.OUTPUT_FILE))
+    vystup = open(s.OUTPUT_FILE, encoding="utf-8").read() + open(s.ICS_FILE, encoding="utf-8").read()
+    check("celé jméno osoby není ve výstupu", "Seidl" not in vystup and "Baránek" not in vystup)
+    check("keš se uložila mimo docs/", os.path.exists(s.OSOBY_KES_FILE)
+          and "Seidl" not in open(s.OSOBY_KES_FILE, encoding="utf-8").read())
+
+    with s_ai(lambda text: "[]") as sim:
+        kod, _ = spust(*lokalni)
+    check("druhý běh se na známá jména neptá", not sim.dotazy, str(len(sim.dotazy)))
+
+    # Bez AI: celé jméno osoby, o které keš neví, se neuloží.
+    os.remove(s.OSOBY_KES_FILE)
+    os.remove(s.OUTPUT_FILE)
+    with s_ai(None):
+        kod, _ = spust(*lokalni)
+    vystup = open(s.OUTPUT_FILE, encoding="utf-8").read() + open(s.ICS_FILE, encoding="utf-8").read()
+    check("bez AI a bez keše se celé jméno neuloží", "Seidl" not in vystup
+          and "Baránek" not in vystup)
+
+    # Neúplný přehled MS: archiv z něj nic neztratí, běh skončí nenulou až
+    # po zápisu.
+    with s_ai(None):
+        kod, _ = spust("--local-jednani", f"MS={docx_soubor(cely)}",
+                       f"MS:spravni={spravni_docx}", f"VS={FIX_VS}")
+    pred = json.load(open(s.OUTPUT_FILE))
+    ms_pred = sorted(j["spz"] for j in pred["jednani"] if j["soud"] == "MS"
+                     and j["usek"] == "civilni")
+    with s_ai(None):
+        kod, _ = spust("--local-jednani", f"MS={docx_soubor(rozbity)}",
+                       f"MS:spravni={spravni_docx}", f"VS={FIX_VS}")
+    po = json.load(open(s.OUTPUT_FILE))
+    ms_po = sorted(j["spz"] for j in po["jednani"] if j["soud"] == "MS"
+                   and j["usek"] == "civilni")
+    check("neúplný přehled: běh skončí nenulou", kod == 1, str(kod))
+    check("neúplný přehled: z archivu nic nezmizí",
+          len([x for x in ms_pred if re.match(r"12 C 2\d/", x)]) == 10
+          and set(ms_pred) <= set(ms_po), f"před {ms_pred}, po {ms_po}")
+    check("neúplný přehled: nic se nehlásí jako odvolané",
+          not [z for z in po.get("zmeny", []) if z["typ"] == "zruseno"])
+
+    # Všechny přehledy selžou: výstup se nepřepíše, běh skončí chybou.
+    pred_text = open(s.OUTPUT_FILE, encoding="utf-8").read()
+    pred_ics = open(s.ICS_FILE, encoding="utf-8").read()
+    puvodni_scrape = s.scrape_jednani
+    s.scrape_jednani = lambda *a, **k: (None, None, None, s.PREHLED_CHYBA)
+    try:
+        kod, _ = spust()
+    finally:
+        s.scrape_jednani = puvodni_scrape
+    check("když selže všechno, běh skončí chybou", kod not in (0, None), str(kod))
+    check("když selže všechno, výstup se nepřepíše",
+          open(s.OUTPUT_FILE, encoding="utf-8").read() == pred_text
+          and open(s.ICS_FILE, encoding="utf-8").read() == pred_ics)
+
+    # Jeden úsek dokument nevydal (není selhání), jeden selhal (je).
+    os.remove(s.OUTPUT_FILE)
+    stavy = iter([(None, None, None, s.PREHLED_BEZ_DOKUMENTU)])
+    s.scrape_jednani = lambda court, cfg, prehled, local=None: (
+        next(stavy) if prehled.get("usek") == "spravni"
+        else puvodni_scrape(court, cfg, prehled, local) if court == "MS"
+        else (None, None, None, s.PREHLED_CHYBA))
+    try:
+        with s_ai(None):
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                try:
+                    sys.argv = ["scraper_hearings.py", "--local-jednani", f"MS={FIX_MS}"]
+                    s.main()
+                    kod = 0
+                except SystemExit as e:
+                    kod = e.code
+                finally:
+                    sys.argv = ["test_hearings.py"]
+            log = buf.getvalue()
+    finally:
+        s.scrape_jednani = puvodni_scrape
+    check("částečné selhání: varování jmenuje selhaný úsek, ne chybějící dokument",
+          "::warning::Jednání: nepodařilo se získat VS/civilni" in log
+          and "MS/spravni" not in log.split("::warning::Jednání: nepodařilo")[1], log[-400:])
+    check("částečné selhání: nenulový kód až po zápisu", kod == 1
+          and os.path.exists(s.OUTPUT_FILE), str(kod))
+finally:
+    s.CONFIG_FILE, s.OUTPUT_FILE, s.ICS_FILE, s.OSOBY_KES_FILE = puvodni_cesty
+    shutil.rmtree(tmpdir, ignore_errors=True)
+
+# =====================================================================
+print("\n19) Rozvrh bez čitelného data a podezřelý výsledek AI")
+# =====================================================================
+for popis, text in (("datum slovy", "Rozvrh prace 2026 uplne zneni s ucinnosti od 1. rijna 2026 "
+                                    "Senat 1 Cmo autorske pravo"),
+                    ("ode dne", "Rozvrh prace 2026 s ucinnosti ode dne 1. 10. 2026 "
+                                "Senat 1 Cmo autorske pravo")):
+    cfg_r = cfg_rucne()
+    with s_ai(odpoved_rozvrh) as sim:
+        zmena, _ = tichy(s.update_rozvrh, cfg_r, "VS", mini_pdf(text), "https://example.test/r.pdf")
+    check(f"rozvrh s datem ({popis}) se pozná jako novější",
+          zmena and cfg_r["courts"]["VS"]["rozvrh_zdroj"]["platnost_od"] == "2026-10-01",
+          str(cfg_r["courts"]["VS"]["rozvrh_zdroj"]))
+
+cfg_r = cfg_rucne()
+bez_data = mini_pdf("Rozvrh prace 2026 Senat 4 Cmo autorske pravo")
+with s_ai(odpoved_rozvrh) as sim:
+    zmena, log = tichy(s.update_rozvrh, cfg_r, "VS", bez_data, "https://example.test/r.pdf")
+vs = cfg_r["courts"]["VS"]
+check("rozvrh bez data ruční seznam nepřepíše", not zmena and not sim.dotazy
+      and vs["senaty"] == ["1 Cmo"] and vs["sestavy"][0]["agenda"] == "ručně", str(vs))
+check("rozvrh bez data: varování a hash se neuloží (přečte se znovu)",
+      "::warning::" in log and vs["rozvrh_zdroj"]["hash"] is None, log)
+
+cfg_r = cfg_rucne()
+with s_ai(odpoved_rozvrh) as sim:
+    zmena, _ = tichy(s.update_rozvrh, cfg_r, "VS", bez_data, "https://example.test/r.pdf",
+                     "Rozvrh práce – úplné znění s účinností od 1. 10. 2026")
+check("datum se vezme i z textu odkazu", zmena
+      and cfg_r["courts"]["VS"]["rozvrh_zdroj"]["platnost_od"] == "2026-10-01")
+
+vs_senaty = ["1 Cmo", "1 Co", "2 Co", "3 Cmo", "3 Co"]
+check("přidané zastupující senáty (7. 9. 2026) jsou velká změna",
+      s.velka_zmena_senatu(vs_senaty, vs_senaty + ["4 Cmo", "4 Co", "5 Co", "11 Cmo"]))
+check("nové oddělení se dvěma rejstříky velká změna není",
+      not s.velka_zmena_senatu(vs_senaty, vs_senaty + ["6 Cmo", "6 Co"]))
+check("úbytek poloviny senátů je velká změna",
+      s.velka_zmena_senatu(cfg_ms["senaty"], cfg_ms["senaty"][:len(cfg_ms["senaty"]) // 3]))
+cfg_r = cfg_rucne()
+cfg_r["courts"]["VS"]["senaty"] = vs_senaty
+velka = json.dumps({"senaty": [{"senat": k, "predseda": "X Y"} for k in
+                               ["4 Cmo", "4 Co", "5 Co", "11 Cmo", "12 Co"]]})
+with s_ai(velka):
+    zmena, log = tichy(s.update_rozvrh, cfg_r, "VS",
+                       mini_pdf("Rozvrh prace zmena od 1. 10. 2026 Senat 1 Cmo autorske pravo"),
+                       "https://example.test/r.pdf")
+check("podezřele odlišný výsledek AI se nezapíše",
+      not zmena and cfg_r["courts"]["VS"]["senaty"] == vs_senaty and "::warning::" in log, log)
+
+puvodni_znaku = s.ROZVRH_AI_ZNAKU
+s.ROZVRH_AI_ZNAKU = 20
+try:
+    with s_ai(odpoved_rozvrh) as sim:
+        _, log = tichy(s.update_rozvrh, cfg_rucne(), "VS",
+                       mini_pdf("Rozvrh prace zmena od 1. 10. 2026 Senat 1 Cmo autorske pravo"),
+                       "https://example.test/r.pdf")
+finally:
+    s.ROZVRH_AI_ZNAKU = puvodni_znaku
+check("oříznutí vstupu pro AI se ohlásí", "::warning::" in log
+      and sim.dotazy and len(sim.dotazy[0]) == 20, log)
+
+# =====================================================================
 failed = [n for n, ok, _ in results if not ok]
 print(f"\n{len(results) - len(failed)}/{len(results)} testů prošlo")
 if failed:
