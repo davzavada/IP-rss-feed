@@ -54,6 +54,14 @@ jobs:
             digest=true
           elif [ "$scrape" = true ] && [ "$(TZ=Europe/Prague date +%u)" = "1" ]; then
             digest=true
+          elif [ "$scrape" = true ]; then
+            # Pondělní přehled se nepovedl (AI nevrátila text, běh vypadl):
+            # zkusí se každý další den, dokud není z tohoto týdne.
+            vygenerovano=$(grep -m1 '"generated"' docs/digest.json 2>/dev/null | cut -d'"' -f4)
+            pondeli=$(TZ=Europe/Prague date -d "$(TZ=Europe/Prague date -d "-$(( $(TZ=Europe/Prague date +%u) - 1 )) days" +%F) 00:00" +%s)
+            if [ -z "$vygenerovano" ] || [ "$(date -d "$vygenerovano" +%s 2>/dev/null || echo 0)" -lt "$pondeli" ]; then
+              digest=true; duvod="$duvod, přehled z minulého týdne se opakuje"
+            fi
           fi
           echo "scrape=$scrape" >> "$GITHUB_OUTPUT"
           echo "digest=$digest" >> "$GITHUB_OUTPUT"
@@ -103,7 +111,8 @@ jobs:
         run: python scraper_akce.py
 
       # Přehled čte hotové výstupy (časopisy, okna judikatury), takže běží až po
-      # scraperech – jednou týdně, v pondělí ve 2:00. Ručně spuštěný běh ho udělá taky. DIGEST_FORCE říká
+      # scraperech – jednou týdně, v pondělí ve 2:00 (když se nepovede, zkouší
+      # se každý další den téhož týdne). Ručně spuštěný běh ho udělá taky. DIGEST_FORCE říká
       # digest.py, ať přehled napíše znovu i tehdy, když se vstup od minula
       # nezměnil – jednou týdně chceme čerstvý text, ne ten čtrnáct dní starý.
       - name: Dvoutýdenní přehled (pondělí)
@@ -117,6 +126,7 @@ jobs:
         run: python digest.py
 
       - name: Commit & push
+        id: commit
         if: always() && steps.plan.outputs.scrape == 'true'
         run: |
           git config user.name "github-actions[bot]"
@@ -125,11 +135,34 @@ jobs:
           git add docs/ ':!docs/data/judikatura' data/casopisy journals_seen.json journals_meta.json hearings_config.json
           git diff --cached --quiet || git commit -m "Update journals, hearings and events $(date -u +%Y-%m-%d)"
           # Kdyby se main mezitím pohnul (dlouhý běh scraperu), přebasuj a zkus
-          # znovu; u konfliktů v generovaných souborech vyhrává naše novější verze.
-          for i in 1 2 3; do
-            git push && break
-            git pull --rebase -X theirs origin main
+          # znovu. Výstupy jiný běh nepíše (concurrency), takže konflikt znamená
+          # ruční úpravu (hearings_config.json) – tu nepřepisovat, rebase zrušit
+          # a krok shodit; výstupy běhu jdou do artefaktu. Když push nevyjde
+          # ani napočtvrté, krok taky spadne – dřív skončil zeleně bez pushe.
+          for i in 1 2 3 4; do
+            git push && exit 0
+            sleep $(( i * 5 ))
+            if ! git pull --rebase origin main; then
+              git rebase --abort || true
+              echo "::error::Konflikt s ruční úpravou na main – výstupy běhu nejsou pushnuté (artefakt vystupy-behu), ruční úpravy zůstaly."
+              exit 1
+            fi
           done
+          echo "::error::Push se nepovedl ani na čtvrtý pokus – výstupy běhu jsou v artefaktu vystupy-behu."
+          exit 1
+
+      - name: Výstupy běhu jako artefakt
+        if: always() && steps.commit.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: vystupy-behu
+          path: |
+            docs/
+            data/casopisy
+            journals_seen.json
+            journals_meta.json
+            hearings_config.json
+          retention-days: 14
 
       # Commit výše uložil, co se povedlo; selhání se tu jen ohlásí. Jednání
       # (dokumenty na msp.gov.cz) a akce (weby pořadatelů) jen varují, ostatní shodí běh,

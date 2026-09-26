@@ -117,8 +117,10 @@ pro AI.
 - **Fronta**: AI zpracovává jen rozhodnutí z okna webu, střídavě po soudech.
   Nejdřív to, co spadá do výchozího výběru (senát 23, oblasti IP a IT), pak
   věcná a nakonec procesní rozhodnutí. Když text zatím není, zkouší se znovu
-  po 1, 2, 4… hodinách, nejvýš šestkrát. Běh má rozpočet (`AI_MAX_POLOZEK`,
-  `AI_MAX_MINUT`) a archiv ukládá po každém rozhodnutí.
+  po 1, 2, 4… hodinách a pak při každém běhu (viz níže). Běh má rozpočet
+  (`AI_MAX_POLOZEK`, `AI_MAX_MINUT` – minuty celého běhu od začátku, včetně
+  objevování a přepisu hesel). Archiv i okna se ukládají hned po objevování,
+  archiv pak po každém rozhodnutí a okna znovu na konci, i po přerušení.
 - **Stav shrnutí**: rozhodnutí bez shrnutí má v okně `stav_shrnuti`
   (`pripravuje` – čeká ve frontě, `ceka_na_text` – soud ještě nezveřejnil
   text, `nepodarilo` – vyčerpané pokusy) a větu k němu v `poznamka`. Rámeček
@@ -127,10 +129,14 @@ pro AI.
   vybrané senáty), nebo v něm už jsou podle údajů soudu (NSS, ÚS).
 - **Nejvyšší soud**: databáze (Lotus Domino) padá na 500, když je dotaz moc
   široký. Hledá se proto po rejstřících (Cdo, NSČR, Tdo…), každý dotaz
-  s čerstvou relací; co spadne i napodruhé, rozdělí se po senátech. Text se
+  s čerstvou relací; co server odmítne i napodruhé, rozdělí se po senátech.
+  Timeout nebo odmítnuté spojení je výpadek, ne široký dotaz: po třech za
+  sebou se další dotazy neposílají a hledání má i limit 20 minut. Hledají
+  se i stanoviska kolegií a pléna (Cpjn, Tpjn, Plsn). Text se
   bere ze stránky rozhodnutí, pak z PDF (pypdf), a když PDF nemá textovou
   vrstvu, jde modelu PDF celé. Úřední deska ohlašuje vyhlášené rozsudky
-  dřív, než je databáze zveřejní. Když pak přijde záznam z databáze se
+  dřív, než je databáze zveřejní (bere se jen řádek s PDF – vyhlášení
+  ohlášená předem se objeví až po vyhlášení). Když pak přijde záznam z databáze se
   stejnou spisovou značkou, převezme od desky první výskyt i shrnutí
   a deska se na webu schová.
 - **Nejvyšší správní soud** (vyhledavac.nssoud.cz): formulář ASP.NET
@@ -156,7 +162,9 @@ pro AI.
   dva až tři měsíce po podání, ale s otázkami). Žaloby a kasační opravné
   prostředky se neberou. Název věci a české texty dává InfoCuria podle čísla
   věci; kde český text ještě není (čerstvé rozsudky, Tribunál), bere se
-  z Cellaru česky, anglicky, nebo francouzsky. Odkaz vede na EUR-Lex. Okno
+  z Cellaru česky, anglicky, nebo francouzsky (podle CELEX, jinak podle
+  ECLI – usnesení předsedy Tribunálu s CELEX „(01)“ má Cellar jen pod
+  ECLI). Odkaz vede na EUR-Lex. Okno
   webu je měsíc.
   Doplňkově **ipcuria.eu** (`judikatura/soudy/ipcuria.py`): předběžné otázky
   z duševního vlastnictví a ochrany údajů podané za poslední měsíc, tedy
@@ -167,12 +175,19 @@ pro AI.
   stránky ipcuria; do té doby „Podáno {datum}. Položené otázky zatím nejsou
   zveřejněné.“ (datum podání je u předběžné otázky bez shrnutí vždy).
   Oznámení v ÚV ranou otázku převezme stejně jako databáze NS úřední desku:
-  hotové shrnutí přejde na oznámení, bez shrnutí se oznámení ukáže jako nové.
+  hotové shrnutí přejde na oznámení, bez shrnutí se oznámení ukáže jako nové
+  (raná otázka se dohledá podle indexu, i když je starší než načtené měsíce).
 - Na text rozhodnutí se čeká, dokud je rozhodnutí v okně – zkouší se při
-  každém běhu. Šest pokusů mají jen selhání AI.
+  každém běhu. Šest pokusů mají jen selhání AI; čekání na text má vlastní
+  počítadlo (`stav.pokusy_text`), takže pokusy AI nespotřebuje.
 - **Stav běhu** (zdraví soudů, spotřeba AI po dnech) je v
-  `data/judikatura/stav.json`. `python -m judikatura.kontrola` zkontroluje
-  archiv i okna. Workflow bez ní necommituje.
+  `data/judikatura/stav.json`. Když soud selže (výjimka, web hlásí výsledky
+  a nepřečte se nic, databáze NS nedala nic), je to `chyba`; dílčí selhání
+  (neúplné hledání, nedostupná deska či doplňkový zdroj, dva běhy po sobě
+  nic) jsou `varovani`. Skript je vypíše jako `::error::` / `::warning::`
+  a při chybě skončí kódem 1 – až po uložení všeho, takže workflow commitne
+  a zčervená. `python -m judikatura.kontrola` zkontroluje archiv i okna.
+  Workflow bez ní necommituje.
 - **Migrace**: `python -m judikatura.migrace` převedla shrnutí senátu 23 Cdo
   ze starého feedu (historie `docs/feed.xml` v gitu, `feed_meta.json`
   a `feed_seen.json`) do archivu a oblasti doplnila dávkově.
@@ -288,14 +303,19 @@ seznamy judikatury a nabízí přihlášení (při výpadku Clerku ne).
 ## Workflow
 
 - `update-feed.yml` – časopisy, kalendář jednání a akce jednou denně ve 2:00
-  pražského času, v pondělí k tomu `digest.py`. Cron má dva výrazy (0:00
+  pražského času, v pondělí k tomu `digest.py` (když se nepovede, zkouší se
+  každý další den, dokud není přehled z tohoto týdne). Cron má dva výrazy (0:00
   a 1:00 UTC) a krok „Naplánovat běh" pustí ten, který v daném čase roku
   odpovídá 2:00 v Praze. Každý scraper je samostatný krok. Když jeden
   spadne, ostatní doběhnou a commit uloží, co se povedlo.
 - `judikatura.yml` – sběr judikatury taky jednou denně ve 2:00 (soudy
   zveřejňují přes den, ráno je hotovo všechno z předchozího dne). Jediný
-  běh má na AI rozpočet až 300 rozhodnutí a 90 minut. Ručně jde pustit
+  běh má rozpočet až 300 rozhodnutí AI a 85 minut celkem (krok má limit 110
+  minut, zbytek je rezerva na poslední volání AI). Ručně jde pustit
   kdykoli, jen pro vybrané soudy, bez AI nebo s jiným rozpočtem.
+  Oba workflow před pushem přebasují na main; při konfliktu (ruční úprava
+  během běhu) rebase zruší, výsledky dají do artefaktu a krok shodí –
+  ruční úpravy nepřepisují.
 - `probe.yml` – jen ručně: stáhne odpovědi webů soudů (formuláře, výpisy,
   detaily, InfoCuria, SPARQL) jako artefakt, s volbou `ulozit` je commitne
   do vybrané větve jako fixtures. Na weby soudů je vidět jen z Actions.
@@ -327,9 +347,9 @@ Stránku stačí otevřít přes libovolný statický server nad `docs/`
 ## Nasazení
 
 Stránku servíruje Vercel: projekt napojený na tohle repo, bez build kroku,
-výstupem je adresář `docs/` (viz `vercel.json`). Nasazuje se jen commit,
-který změní `docs/`, `api/` nebo `vercel.json` (`ignoreCommand`) – commity se
-stavem scraperů mimo `docs/` deploy nespouštějí.
+výstupem je adresář `docs/` (viz `vercel.json`). Nasazuje se jen push,
+který od posledního nasazení změní `docs/`, `api/` nebo `vercel.json`
+(`ignoreCommand`) – commity se stavem scraperů mimo `docs/` deploy nespouštějí.
 
 Jediná funkce na serveru je náhled PDF (`api/pdf.js`). Vyhledávač NSS
 posílá PDF rozhodnutí s `Content-Disposition: attachment`, takže se po
