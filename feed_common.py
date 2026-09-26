@@ -71,14 +71,18 @@ def save_seen(state_file, seen, prune_days=SEEN_PRUNE_DAYS):
 
 
 def filter_by_first_seen(items, guid_of, state_file, days=OKNO_DNI,
-                         prune_days=SEEN_PRUNE_DAYS):
+                         prune_days=SEEN_PRUNE_DAYS, first_seen_of=None):
     """Ponechá jen položky s prvním výskytem do `days` dní zpět.
 
     Každé ponechané položce nastaví item["is_new"] = True, pokud přibyla
     v posledních 24 hodinách. Stav prvního výskytu zároveň uloží.
 
-    items    – seznam dict položek
-    guid_of  – funkce item -> stabilní identifikátor (str)
+    items         – seznam dict položek
+    guid_of       – funkce item -> stabilní identifikátor (str)
+    first_seen_of – volitelně (item, now) -> datetime: jaký první výskyt
+                    zapsat položce, kterou stav ještě nezná (None = teď).
+                    Hodí se při náběhu nového zdroje, ať se jeho starší
+                    obsah netváří jako novinka.
     """
     seen = load_json(state_file)
     now = datetime.now(timezone.utc)
@@ -90,7 +94,8 @@ def filter_by_first_seen(items, guid_of, state_file, days=OKNO_DNI,
         if not guid:
             continue
         if guid not in seen:
-            seen[guid] = now.isoformat()
+            prvni = first_seen_of(item, now) if first_seen_of else None
+            seen[guid] = (prvni or now).isoformat()
         first_seen = datetime.fromisoformat(seen[guid])
         if first_seen >= cutoff:
             item["is_new"] = is_new(first_seen, now)
@@ -612,8 +617,17 @@ def _zkus_model(model, telo_fn, timeout):
                 _vyrad(model, "denní limit vyčerpán")
                 return "", "dalsi"
             cekej = min(cekani or GEMINI_MIN_INTERVAL * (2 ** pokus), GEMINI_MAX_CEKANI)
-            print(f"    AI {model}: limit za minutu – čekám {cekej:.0f}s")
-            time.sleep(cekej)
+            if pokus + 1 < GEMINI_MAX_RETRIES:
+                print(f"    AI {model}: limit za minutu – čekám {cekej:.0f}s")
+                time.sleep(cekej)
+            else:
+                # Po posledním pokusu se nečeká – položka jde hned na další
+                # model. Čekání si ale model zapamatuje: další volání téhož
+                # modelu počká jen na zbytek (_pockej_na_model).
+                with st["zamek"]:
+                    st["dalsi"] = max(st["dalsi"], time.monotonic() + cekej)
+                print(f"    AI {model}: limit za minutu – zkusím další model "
+                      f"(tento až za {cekej:.0f}s)")
             continue
         if r.status_code == 400 and _klic_neplatny(chyba, zprava):
             _klic_zamitnut = True

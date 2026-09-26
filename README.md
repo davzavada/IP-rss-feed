@@ -33,9 +33,17 @@ a web ji ukáže v Novinkách, když přibyla v posledních 24 hodinách (judika
 totéž dělá přes `first_seen` v archivu). Registr časopisů (`CASOPISY`
 ve `scraper_journals.py`) dává každému stálé id, které se ukládá ve výběru
 uživatele, a zkratku pro štítek; okno `docs/data/casopisy.json` se
-přepisuje, jen když se obsah změní. Stav prvního výskytu se u časopisů
+přepisuje, jen když se obsah změní. Co zdroj přestal vypisovat (předchozí
+číslo, výpadek zdroje), ale v okně podle prvního výskytu pořád je, doplní
+okno z archivu. Stav prvního výskytu se u časopisů
 neprořezává (zdroje vypisují i rok staré články, po vypadnutí ze stavu by se
 vrátily jako nové); cache shrnutí `journals_meta.json` drží jen 120 dní.
+Nový časopis (`ZAVEDENI`, první tři dny, a každý, jehož guid stav ještě
+nezná) nevysype při náběhu celý feed do Novinek: položky dostanou první
+výskyt o 15 dní zpět, takže zůstanou v okně i v archivu, ale ne v Novinkách
+ani v dvoutýdenním přehledu (kromě článků vydaných v posledních třech
+dnech). Zdroj, který selže, se ohlásí jako `::warning::`; když selže
+většina, skončí scraper chybou.
 
 Registr se do `casopisy.json` zapisuje při běhu scraperu; nový časopis
 v registru je proto potřeba do souboru propsat hned (jinak ho dialog Můj
@@ -75,9 +83,11 @@ přetížení, si pokus nepočítá. Pořadí jde vnutit proměnnou `GEMINI_MODE
 **AI shrnutí** se cachují v `*_meta.json` podle stejného klíče a prořezávají
 se spolu se stavem prvního výskytu, takže soubory nerostou donekonečna. Bez
 `GEMINI_API_KEY` scrapery běží dál, jen bez nových shrnutí. Když se k textu
-nedostaneme vůbec (vydavatel stránku nepustil), nevymýšlí se nic a místo
-shrnutí jde do feedu poznámka; dokud je položka v okně, zkouší se to každým
-během znovu. Poznámka mluví jen za nás („shrnutí zatím není"), ne za zdroj.
+nedostaneme vůbec (vydavatel stránku nepustil) nebo článek nemá abstrakt,
+nevymýšlí se nic (ze samotného názvu se neshrnuje) a místo shrnutí jde do
+feedu poznámka; dokud je položka v okně, zkouší se to každým během znovu
+(položky doplněné do okna z archivu berou shrnutí jen z cache). Poznámka
+mluví jen za nás („shrnutí zatím není"), ne za zdroj.
 
 ## Judikatura
 
