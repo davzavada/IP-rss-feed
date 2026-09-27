@@ -32,14 +32,18 @@ function safeHref(url) {
 // který položku našel): nové je, co přibylo nejvýš NOVE_OKNO_MS před ním –
 // judikatura i časopisy téže noci (běží zvlášť, hodinu dvě od sebe), včetně
 // ručního běhu přes den, ale už ne předchozí noc (ta je ~24 h před ním).
-// Úlovek tak zůstane vidět, dokud nepřijde další; nejdéle NOVE_MAX_MS
+// Když poslední sběr nic nenašel, Novinky jsou prázdné: workflow po každém
+// úspěšném sběru zapíše jeho začátek (data/beh-*.json) a počítá se i od něj.
+// Starý úlovek je tak vidět jen do dalšího sběru; nejdéle NOVE_MAX_MS
 // (vynechaný běh), pak už nový není.
 const NOVE_OKNO_MS = 16 * 60 * 60 * 1000;
 const NOVE_MAX_MS = 48 * 60 * 60 * 1000;
+const BEHY = ["data/beh-judikatura.json", "data/beh-casopisy.json"];
 
-// Označí nové položky (item.nove) ve výsledcích Promise.allSettled všech zdrojů.
-function oznacNove(results) {
-  let posledni = 0;
+// Označí nové položky (item.nove) ve výsledcích Promise.allSettled všech zdrojů;
+// behy = časy začátku posledních sběrů (ms).
+function oznacNove(results, behy) {
+  let posledni = Math.max(0, ...(behy || []));
   results.forEach(r => {
     if (r.status === "fulfilled") r.value.forEach(i => { if (i.prvni > posledni) posledni = i.prvni; });
   });
@@ -2442,6 +2446,8 @@ function initApp() {
   const clerkSkripty = nactiClerkSkripty();
   clerkSkripty.catch(() => {});   // chybu vyřeší initClerk()
   const akcePromise = fetchJson("akce.json").catch(() => null);
+  const behyPromise = Promise.all(BEHY.map(u => fetchJson(u)
+    .then(d => Date.parse(d && d.beh || "") || 0).catch(() => 0)));
   // Kdo tu minule byl přihlášený, na toho se počká (viz níž); smí-li vidět
   // Kalendář jednání, jeho data se stahují hned (vykreslí se po Clerku).
   const priznak = priznakUctu();
@@ -2463,10 +2469,10 @@ function initApp() {
       : Promise.resolve(),
     new Promise(ok => setTimeout(ok, CLERK_CEKANI_MS))
   ]);
-  Promise.all([Promise.allSettled(feedPromises), digestPromise, fontsReady, akcePromise])
-    .then(([results, digest, , akce]) => {
+  Promise.all([Promise.allSettled(feedPromises), digestPromise, fontsReady, akcePromise, behyPromise])
+    .then(([results, digest, , akce, behy]) => {
       zdrojeVysledky = results;
-      oznacNove(results);
+      oznacNove(results, behy);
       ukazOkna();
       vykresliZdroje();
       vykresliNastaveni();

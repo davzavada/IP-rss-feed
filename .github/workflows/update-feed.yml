@@ -53,6 +53,7 @@ jobs:
           # potřeba (nový týden, minulé selhání, doběhlá rozhodnutí); ruční
           # spuštění ho napíše načisto (DIGEST_FORCE).
           digest=$scrape
+          echo "zacatek=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
           echo "scrape=$scrape" >> "$GITHUB_OUTPUT"
           echo "digest=$digest" >> "$GITHUB_OUTPUT"
           echo "jednani=$scrape" >> "$GITHUB_OUTPUT"
@@ -122,6 +123,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Kdy časopisy naposledy proběhly (i bez novinek) – web podle toho
+          # pozná, že poslední sběr nic nepřinesl (Novinky jsou pak prázdné).
+          if [ '${{ steps.casopisy.outcome }}' = 'success' ]; then
+            printf '{"beh": "%s"}\n' '${{ steps.plan.outputs.zacatek }}' > docs/data/beh-casopisy.json
+          fi
           # docs/data/judikatura patří workflow judikatura.yml.
           git add docs/ ':!docs/data/judikatura' data/casopisy journals_seen.json journals_meta.json hearings_config.json
           # Keš klasifikace osob (jen otisky jmen) vzniká prvním během s AI.

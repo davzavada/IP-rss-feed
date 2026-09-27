@@ -59,6 +59,7 @@ jobs:
               *) run=false; duvod='tento cron není 2:00 v Praze (druhý výraz je pro jiný čas roku)' ;;
             esac
           fi
+          echo "zacatek=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
           echo "run=$run" >> "$GITHUB_OUTPUT"
           echo "$(TZ=Europe/Prague date '+%a %H:%M %Z') -> $run ($duvod)"
 
@@ -112,7 +113,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Kdy sběr naposledy proběhl (i bez novinek) – web podle toho pozná,
+          # že poslední sběr nic nepřinesl (Novinky jsou pak prázdné).
+          if [ '${{ steps.sber.outcome }}' = 'success' ]; then
+            printf '{"beh": "%s"}\n' '${{ steps.plan.outputs.zacatek }}' > docs/data/beh-judikatura.json
+          fi
           git add data/judikatura docs/data/judikatura
+          [ -f docs/data/beh-judikatura.json ] && git add docs/data/beh-judikatura.json
           if git diff --cached --quiet; then
             echo "Beze změn."
             exit 0
