@@ -3,7 +3,7 @@
 
 Soudy: Nejvyšší soud (všechny senáty), Nejvyšší správní soud, Ústavní soud
 a Soudní dvůr EU (Soudní dvůr i Tribunál). Archiv je v data/judikatura/,
-okna pro web v docs/data/judikatura/ – viz balíček judikatura/ a README.
+okna pro web v docs/data/judikatura/ – viz balíček judikatura/.
 
 Použití:
     python scraper_judikatura.py                  # všechny soudy s adaptérem
