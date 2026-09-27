@@ -333,6 +333,14 @@ for pred, po in (("Předkupní právo k pozemku – dovolání odmítnuto", "Př
                 ("Smlouva o postoupení autorských práv – Řím I", "Smlouva o postoupení autorských práv – Řím I"),
                 ("Smluvní pokuta nad 0,5 % denně – nepřiměřená", "Smluvní pokuta nad 0,5 % denně – nepřiměřená")):
     check(f"výsledek řízení z hesla pryč: {pred!r}", analyza.ocisti_heslo(pred) == po, analyza.ocisti_heslo(pred))
+check("řecké písmeno v českém slově = zaměněný znak",
+      analyza.smisene_pismo("usnesení Vrchnιho soudu v Praze"))
+check("cizí jména v shrnutí nevadí",
+      not analyza.smisene_pismo("Fővárosi Törvényszék; Institutul G. Călinescu; Ľ. H.; řízení"))
+check("heslo s cizím písmenem se přepíše",
+      analyza.heslo_obecne("Odklad vykonatelności vyžaduje prokázání vážné újmy"))
+check("české heslo s diakritikou projde",
+      not analyza.heslo_obecne("Odklad vykonatelnosti vyžaduje prokázání vážné újmy"))
 check("heslo přes jeden řádek je obecné",
       analyza.heslo_obecne("Velmi dlouhé heslo které má určitě víc slov než se vejde na jeden řádek"))
 check("pokyn k heslu je v rozboru i v přepisu",
