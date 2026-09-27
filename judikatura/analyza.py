@@ -9,6 +9,7 @@ obojí; oblasti mimo seznam zahodí.
 import base64
 import json
 import re
+import unicodedata
 
 import feed_common as fc
 from judikatura.model import NAZVY_SOUDU, bez_diakritiky
@@ -97,6 +98,16 @@ def cizi_pismena(text):
     českého slova cizí znak („vykonatelności")."""
     return any(c.isalpha() and not c.isascii() and c.lower() not in CESKA_PISMENA
                for c in str(text or ""))
+
+
+def smisene_pismo(text):
+    """Slovo z latinky s řeckým nebo cyrilským písmenem („Vrchnιho") – AI
+    zaměnila znak. Celá cizí jména (Fővárosi, Călinescu) projdou."""
+    for slovo in re.findall(r"\w+", str(text or "")):
+        pisma = {unicodedata.name(c, "").split(" ")[0] for c in slovo if c.isalpha()}
+        if "LATIN" in pisma and pisma & {"GREEK", "CYRILLIC"}:
+            return True
+    return False
 
 
 def heslo_obecne(heslo):
@@ -251,7 +262,7 @@ def parse(raw, tax):
         oblasti = re.split(r"[,;\n]+", cast("OBLASTI", vse))
         procesni = cast(r"PROCESN[IÍ]", vse)
     shrnuti = fc.bez_pravni_formy(_cist(shrnuti))
-    if len(shrnuti) < MIN_SHRNUTI:
+    if len(shrnuti) < MIN_SHRNUTI or smisene_pismo(shrnuti):
         return None
     return {
         "heslo": ocisti_heslo(fc.bez_pravni_formy(_cist(heslo))),
