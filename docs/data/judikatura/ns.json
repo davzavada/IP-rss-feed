@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-26T03:29:57Z",
+ "generated": "2026-09-27T03:38:41Z",
  "soud": "ns",
  "okno_dni": 31,
  "polozky": [
@@ -73,6 +73,7 @@
    "zverejneno": "2026-09-25",
    "first_seen": "2026-09-26T03:29:57Z",
    "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/D89A93D29EF40AAEC1258E7D004D1538?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/7D57F70D0C97EC2BC1258E7E001B7F86/$file/20%20Cdo%201543_2026.pdf?openElement",
    "heslo": "Doložení vymahatelnosti přihlášené pohledávki v exekuci",
    "shrnuti": "Oprávněná se domáhala zrušení rozhodnutí o rozdělení podstaty a rozhodnutí exekutora kvůli pochybením při přezkumu přihlášek věřitelů, kteří nepředložili exekuční tituly v kvalifikované formě. Nejvyšší soud řešil, zda lze vymahatelnost pohledávky probíhající v jiné exekuci nahradit odkazem na toto řízení, a dospěl k závěru, že věřitel je povinen předložit listiny v kvalifikované podobě přímo v daném exekučním spisu.",
    "oblasti": [
@@ -1267,6 +1268,63 @@
     "vecna_prava"
    ],
    "procesni": true
+  },
+  {
+   "id": "ns:deska:24cdo2250/2026",
+   "spz": "24 Cdo 2250/2026",
+   "druh": "rozsudek",
+   "senat": 24,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-23",
+   "zverejneno": "2026-09-23",
+   "first_seen": "2026-09-23T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_24_Cdo_2250_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_24_Cdo_2250_2026.pdf",
+   "heslo": "Omezení svéprávnosti nezahrnuje aktivní volební právo",
+   "shrnuti": "Navrhovatelka se domáhala zrušení omezení svéprávnosti posuzovaného, popřípadě uplatnění mírnějších opatření. Nejvyšší soud řešil otázku, zda lze posuzovanou osobu omezit v aktivním volebním právu a zda je nutné omezení svéprávnosti při úplné neschopnosti právního jednání. Dospěl k závěru, že aktivní volební právo nelze v důsledku nové právní úpravy omezit, avšak samotné omezení svéprávnosti při trvalé neschopnosti právního jednání je přípustné.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:deska:22cdo2084/2026",
+   "spz": "22 Cdo 2084/2026",
+   "druh": "rozsudek",
+   "senat": 22,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-23",
+   "zverejneno": "2026-09-23",
+   "first_seen": "2026-09-23T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_22_Cdo_2084_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_22_Cdo_2084_2026.pdf",
+   "heslo": "Splatnost kupní ceny při uplatnění předkupního práva státu",
+   "shrnuti": "Česká republika jako Ministerstvo životního prostředí se soudila s Mgr. et Mgr. Kamilem Jungem o nahrazení projevu vůle k uzavření kupní smlouvy v rámci výkonu zákonného předkupního práva. Nejvyšší soud řešil otázku, zda je při uplatnění předkupního práva státu na ochranu přírody a krajiny možné jednostranně modifikovat lhůtu splatnosti kupní ceny oproti původní smlouvě s odkazem na pravidla hospodaření s majetkem státu. Rozhodl, že podmínky původního převodu jsou pro stát splnitelné a lhůtu splatnosti nelze svévolně prodlužovat.",
+   "oblasti": [
+    "zavazky",
+    "vecna_prava",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:deska:22cdo1811/2026",
+   "spz": "22 Cdo 1811/2026",
+   "druh": "rozsudek",
+   "senat": 22,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-23",
+   "zverejneno": "2026-09-23",
+   "first_seen": "2026-09-23T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_22_Cdo_1811_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_22_Cdo_1811_2026.pdf",
+   "heslo": "Mimořádné vydržení pozemku a započtení držby",
+   "shrnuti": "Barbara Dezortová se soudila s Českou republikou - Státním pozemkovým úřadem o určení vlastnického práva k pozemku vydržením. Nejvyšší soud řešil otázku započtení držby právního předchůdce do vydržecí doby a předpokladů držby a uzavřel, že odvolací soud pochybil, když se nezabýval možným započtením doby držby právního předchůdce a předčasně uzavřel otázku zániku držby.",
+   "oblasti": [
+    "vecna_prava"
+   ],
+   "procesni": false
   },
   {
    "id": "ns:deska:3tz21/2026",

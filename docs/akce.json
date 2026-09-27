@@ -1,35 +1,38 @@
 {
-  "generated": "2026-09-26T05:11:18+00:00",
+  "generated": "2026-09-27T05:07:20+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 39,
-      "stazeno": "2026-09-26T04:47:59+00:00",
+      "pocet": 38,
+      "stazeno": "2026-09-27T05:05:40+00:00",
       "cesta": "parser",
-      "chyba": null
+      "chyba": null,
+      "otisk": null
     },
     "PFUK": {
       "nazev": "Právnická fakulta UK",
       "zkratka": "PF UK",
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
-      "pocet": 4,
-      "stazeno": "2026-09-26T04:48:19+00:00",
+      "pocet": 5,
+      "stazeno": "2026-09-27T05:05:45+00:00",
       "cesta": "ai",
-      "chyba": null
+      "chyba": null,
+      "otisk": "073e720143520a76"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
       "zkratka": "JČP",
       "barva": "#1d4ed8",
       "url": "https://jednotaceskychpravniku.cz/vzdelavaci-akce/",
-      "pocet": 6,
-      "stazeno": "2026-09-26T04:48:25+00:00",
+      "pocet": 5,
+      "stazeno": "2026-09-27T05:05:50+00:00",
       "cesta": "ai",
-      "chyba": null
+      "chyba": null,
+      "otisk": "9a8688a700638ea9"
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
@@ -37,9 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 7,
-      "stazeno": "2026-09-26T04:53:48+00:00",
+      "stazeno": "2026-09-27T05:05:54+00:00",
       "cesta": "ai",
-      "chyba": null
+      "chyba": null,
+      "otisk": "42422ee3336d81d4"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -47,9 +51,10 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-09-26T04:58:17+00:00",
+      "stazeno": "2026-09-27T05:05:58+00:00",
       "cesta": "ai",
-      "chyba": null
+      "chyba": null,
+      "otisk": "18d20c7ee3ecdc1d"
     },
     "UPV": {
       "nazev": "Úřad průmyslového vlastnictví",
@@ -57,9 +62,10 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 6,
-      "stazeno": "2026-09-26T05:07:49+00:00",
+      "stazeno": "2026-09-27T05:06:07+00:00",
       "cesta": "ai",
-      "chyba": null
+      "chyba": null,
+      "otisk": "99e3d66f28db3328"
     }
   },
   "formy": {
@@ -114,7 +120,7 @@
       "datum": "2026-09-29",
       "zacatek": "13:00",
       "konec": "16:00",
-      "nazev": "Obrana dědice proti vydědění (online - živé vysílání)",
+      "nazev": "Obrana dědice proti vydědění (online - živé vysílání) - 29.9.2026",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -128,7 +134,34 @@
       "oblasti": [
         "rodina_dedictvi"
       ],
-      "oblasti_klic": "e5724c5873e6"
+      "oblasti_klic": "d29263824df1"
+    },
+    {
+      "id": "4673209472a87cbe6b1c",
+      "poradatel": "PFUK",
+      "datum": "2026-09-30",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Debata o problémech sociálních sítí a jejich řešeních",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [
+        "Věra Jourová",
+        "Monika Hanych",
+        "Josef Holý",
+        "Bob Kartous",
+        "Lukáš Mikulecký",
+        "František Tichý"
+      ],
+      "cena": "zdarma",
+      "anotace": "Debata věnovaná aktuálním problémům sociálních sítí a možnostem jejich řešení.",
+      "url": "https://www.prf.cuni.cz/aktuality/debata-o-problemech-socialnich-siti-a-jejich-resenich",
+      "detail_pokusy": 2,
+      "oblasti": [
+        "osobnost_media",
+        "it"
+      ],
+      "oblasti_klic": "da1ad48d6c59"
     },
     {
       "id": "fa6e622fde8295b44159",
@@ -215,40 +248,12 @@
       "detail_pokusy": 1
     },
     {
-      "id": "b9e2d560119e93a19c42",
-      "poradatel": "EPRAVO",
-      "datum": "2026-10-01",
-      "zacatek": "09:00",
-      "konec": "15:00",
-      "nazev": "Trestní právo daňové",
-      "misto": "online",
-      "forma": "prezencne",
-      "lektori": [
-        "Simona Hornochová",
-        "Ondřej Trubač",
-        "Petra Vítková",
-        "Vladimír Suchý",
-        "Radka Čihulková",
-        "Patrik Koželuha",
-        "Tereza Svobodová",
-        "Michal Polák"
-      ],
-      "cena": "3 975 Kč s DPH",
-      "anotace": "Odborná konference zaměřená na trestní právo daňové.",
-      "url": "https://www.epravo.cz/eshop/trestni-pravo-danove-1-10-2026-1558.html",
-      "oblasti": [
-        "trestni",
-        "dane"
-      ],
-      "oblasti_klic": "806e0b5d282c"
-    },
-    {
       "id": "de352d9afec3a4acc5e9",
       "poradatel": "EPRAVO",
       "datum": "2026-10-01",
       "zacatek": "09:00",
       "konec": "15:00",
-      "nazev": "Trestní právo daňové (online - živé vysílání)",
+      "nazev": "Trestní právo daňové (online - živé vysílání) - 1.10.2026",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -269,7 +274,35 @@
         "trestni",
         "dane"
       ],
-      "oblasti_klic": "b1e458e88c3e"
+      "oblasti_klic": "281fef481f64"
+    },
+    {
+      "id": "b9e2d560119e93a19c42",
+      "poradatel": "EPRAVO",
+      "datum": "2026-10-01",
+      "zacatek": "09:00",
+      "konec": "15:00",
+      "nazev": "Trestní právo daňové - 1.10.2026",
+      "misto": "online",
+      "forma": "prezencne",
+      "lektori": [
+        "Simona Hornochová",
+        "Ondřej Trubač",
+        "Petra Vítková",
+        "Vladimír Suchý",
+        "Radka Čihulková",
+        "Patrik Koželuha",
+        "Tereza Svobodová",
+        "Michal Polák"
+      ],
+      "cena": "3 975 Kč s DPH",
+      "anotace": "Odborná konference zaměřená na trestní právo daňové.",
+      "url": "https://www.epravo.cz/eshop/trestni-pravo-danove-1-10-2026-1558.html",
+      "oblasti": [
+        "trestni",
+        "dane"
+      ],
+      "oblasti_klic": "1cd2301c29bd"
     },
     {
       "id": "cae8aba7ce3fabead818",
@@ -317,7 +350,7 @@
       "datum": "2026-10-02",
       "zacatek": "",
       "konec": "",
-      "nazev": "Konference: Daňové právo 2026",
+      "nazev": "Konference: Daňové právo 2026 (2. 10.)",
       "misto": "",
       "forma": "prezencne",
       "lektori": [],
@@ -327,7 +360,7 @@
       "oblasti": [
         "dane"
       ],
-      "oblasti_klic": "78c45f9f68cb",
+      "oblasti_klic": "72b1dfc27882",
       "detail_pokusy": 2
     },
     {
@@ -336,7 +369,7 @@
       "datum": "2026-10-02",
       "zacatek": "09:00",
       "konec": "17:00",
-      "nazev": "Daňové právo 2026",
+      "nazev": "Daňové právo 2026 - 2.10.2026",
       "misto": "Univerzita Karlova, Právnická fakulta, místnost 120",
       "forma": "prezencne",
       "lektori": [
@@ -355,7 +388,7 @@
       "oblasti": [
         "dane"
       ],
-      "oblasti_klic": "1e9d9c0cb9bd"
+      "oblasti_klic": "cdf8eb28dad6"
     },
     {
       "id": "364a39e68b03338f4de0",
@@ -426,7 +459,7 @@
       "datum": "2026-10-06",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Rozvodová novela a soudní praxe – 9 měsíců poté (online - živé vysílání)",
+      "nazev": "Rozvodová novela a soudní praxe – 9 měsíců poté (online - živé vysílání) - 6.10.2026",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -439,7 +472,7 @@
       "oblasti": [
         "rodina_dedictvi"
       ],
-      "oblasti_klic": "be1ef601c974"
+      "oblasti_klic": "10062ca27ac1"
     },
     {
       "id": "89b461d4d068dde91957",
@@ -494,11 +527,14 @@
       "anotace": "Odborná akce zaměřená na judikaturu správních soudů jako pramen správního práva.",
       "url": "https://www.prf.cuni.cz/aktuality/judikatura-spravnich-soudu-jako-pramen-spravniho-prava-smerem-k-systemu-common-law",
       "datum_do": "2026-10-09",
-      "detail_pokusy": 1,
+      "detail_pokusy": 2,
       "oblasti": [
         "spravni"
       ],
-      "oblasti_klic": "60412bcee548"
+      "oblasti_klic": "60412bcee548",
+      "z_detailu": [
+        "misto"
+      ]
     },
     {
       "id": "5349f79eda390145c9eb",
@@ -527,7 +563,7 @@
       "datum": "2026-10-08",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Velká novela stavebního zákona (online - živé vysílání)",
+      "nazev": "Velká novela stavebního zákona (online - živé vysílání) - 8.10.2026",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -540,7 +576,7 @@
       "oblasti": [
         "stavebni_zp"
       ],
-      "oblasti_klic": "0ae87ab60a8b"
+      "oblasti_klic": "5ba736f7985b"
     },
     {
       "id": "7d186c6632ba0e36d0b4",
@@ -548,7 +584,7 @@
       "datum": "2026-10-08",
       "zacatek": "13:00",
       "konec": "16:00",
-      "nazev": "Marketing a akvizice klientů s podporou AI (online - živé vysílání)",
+      "nazev": "Marketing a akvizice klientů s podporou AI (online - živé vysílání) - 8.10.2026",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -559,7 +595,7 @@
       "url": "https://www.epravo.cz/eshop/marketing-a-akvizice-klientu-s-podporou-ai-online-zive-vysilani-8-10-2026-1423.html",
       "detail_pokusy": 1,
       "oblasti": [],
-      "oblasti_klic": "5c2365de9653"
+      "oblasti_klic": "89a608018f38"
     },
     {
       "id": "2c194d1bc534e86fd602",
@@ -654,7 +690,7 @@
       "lektori": [
         "JUDr. Tomáš Fabík, advokát"
       ],
-      "cena": "1800 Kč",
+      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
       "anotace": "Umělá inteligence se stala běžnou součástí praxe, školení se zaměřuje na její využití pro právníky.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/umela-inteligence-a-jeji-vyuziti-v-praxi-pravniku/",
       "oblasti": [
@@ -756,7 +792,7 @@
       "misto": "",
       "forma": "prezencne",
       "lektori": [
-        "prof. JUDr. Jan Kuklík, DrSc."
+        "prof. JUDr. Jan Kuklík, DrSc., vedoucí katedry právních dějin PF UK"
       ],
       "cena": "zdarma",
       "anotace": "Přednáška mapuje pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Antonína Suma.",
@@ -859,7 +895,7 @@
       "konec": "",
       "nazev": "Hudební plagiát",
       "misto": "Jazz Dock, Praha",
-      "forma": "prezencne",
+      "forma": "online",
       "lektori": [],
       "cena": "pro členy zdarma, pro nečleny 1000 Kč",
       "anotace": "Seminář se zabývá problematikou hudebního plagiátu z hlediska muzikologického, autorskoprávního a procesního.",
@@ -951,9 +987,9 @@
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
       "forma": "prezencne",
       "lektori": [
-        "Mgr. Michal Králík, Ph.D."
+        "Mgr. Michal Králík, Ph.D., soudce NS ČR"
       ],
-      "cena": "1800 Kč",
+      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
       "anotace": "Seminář zaměřený na aktuální otázky věcných práv.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/aktualni-otazky-vecnych-prav/",
       "oblasti": [
@@ -980,27 +1016,6 @@
         "vecna_prava"
       ],
       "oblasti_klic": "aa9fab8c88fb",
-      "detail_pokusy": 1
-    },
-    {
-      "id": "fb9e0b07bef20e8e759f",
-      "poradatel": "CAK",
-      "datum": "2026-11-04",
-      "zacatek": "09:00",
-      "konec": "13:00",
-      "nazev": "POZOR: ONLINE SEMINÁŘ: Stavební zákon aktuálně v r. 2026 a výhledy pro příští rok SE NEBUDE KONAT a bude přesunut na leden 2027. Zaregistrovaní účastníci byli obesláni zprávou o zrušení.",
-      "misto": "Praha, ONLINE SEMINÁŘ",
-      "forma": "online",
-      "lektori": [
-        "JUDr. Vladimíra Sedláčková"
-      ],
-      "cena": "650,- Kč",
-      "anotace": "Seminář se zabývá přehledem základních změn stavebního zákona po zásadní novele, institucionálními změnami a novinkami ve stavebním řádu, hmotném právu a soudním přezkumu.",
-      "url": "https://www.cak.cz/akce/1317",
-      "oblasti": [
-        "stavebni_zp"
-      ],
-      "oblasti_klic": "4edf0919e668",
       "detail_pokusy": 1
     },
     {
@@ -1077,12 +1092,15 @@
       "nazev": "Slovní pohotovost advokáta - jak reagovat pod tlakem",
       "misto": "Praha 1, Národní 10, palác Dunaj",
       "forma": "prezencne",
-      "lektori": [],
-      "cena": "",
-      "anotace": "",
+      "lektori": [
+        "PhDr. Miloslav Hrubý"
+      ],
+      "cena": "1.100,- Kč včetně DPH",
+      "anotace": "Advokátní profese klade vysoké nároky na výkon, odpovědnost i zvládání tlaku. Tento seminář Vám nabídne konkrétní nástroje, jak si udržet vnitřní stabilitu, energii a dlouhodobou profesní výkonnost.",
       "url": "https://www.cak.cz/akce/1334",
       "oblasti": [],
-      "oblasti_klic": "99cc9b28900c"
+      "oblasti_klic": "2d0a2236c586",
+      "detail_pokusy": 2
     },
     {
       "id": "d01f09aabd04af0f716d",
@@ -1093,14 +1111,17 @@
       "nazev": "Změna a zánik závazku",
       "misto": "Praha, ONLINE SEMINÁŘ",
       "forma": "online",
-      "lektori": [],
-      "cena": "",
-      "anotace": "",
+      "lektori": [
+        "JUDr. Petr Čech, Ph.D., LL.M."
+      ],
+      "cena": "1.100,- Kč včetně DPH",
+      "anotace": "Odborný seminář se zaměřuje na změnu a zánik závazků, včetně postoupení pohledávek, započtení, odstoupení od smlouvy a dalších způsobů zániku závazku.",
       "url": "https://www.cak.cz/akce/1244",
       "oblasti": [
         "zavazky"
       ],
-      "oblasti_klic": "4dde9c664a65"
+      "oblasti_klic": "f1d7aa8dc04c",
+      "detail_pokusy": 2
     },
     {
       "id": "2265fad160f5006426f5",
@@ -1111,14 +1132,17 @@
       "nazev": "Aktuální otázky trestní odpovědnosti právnických osob a řízení proti nim",
       "misto": "Praha 1, Národní 10, palác Dunaj",
       "forma": "prezencne",
-      "lektori": [],
-      "cena": "",
-      "anotace": "",
+      "lektori": [
+        "JUDr. Pavel Zelenka"
+      ],
+      "cena": "1.100,- Kč včetně DPH",
+      "anotace": "Seminář je primárně věnován změnám zákona o trestní odpovědnosti právnických osob a řízení proti nim v souvislosti s novelami a změnami trestního zákoníku a řádu. Vychází z aktuální soudní judikatury, praxe a odborné literatury.",
       "url": "https://www.cak.cz/akce/1243",
       "oblasti": [
         "trestni"
       ],
-      "oblasti_klic": "234a941fd542"
+      "oblasti_klic": "1fce3b96f128",
+      "detail_pokusy": 2
     },
     {
       "id": "cbe8fc9d7960cf134fc0",
@@ -1132,7 +1156,7 @@
       "lektori": [
         "JUDr. Irena Holcová, advokátka"
       ],
-      "cena": "1800 Kč",
+      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
       "anotace": "Seminář se zabývá průnikem autorského práva a umělé inteligence.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/autorske-pravo-a-umela-inteligence/",
       "oblasti": [
@@ -1150,12 +1174,15 @@
       "nazev": "Advokát 50+",
       "misto": "YMCA, Praha 1",
       "forma": "prezencne",
-      "lektori": [],
-      "cena": "",
-      "anotace": "",
+      "lektori": [
+        "Mgr. et Mgr. Alicja Ewa Leix, Ph.D."
+      ],
+      "cena": "1750 Kč",
+      "anotace": "Seminář o specifických problémech, se kterými se v pokročilejším věku potýkají vysokofunkční lidé v náročné advokátní profesi. Cílem je nabídnout funkční informace pro sestavení vlastního programu k udržení výkonnosti a profesní výhody.",
       "url": "https://www.cak.cz/akce/1333",
       "oblasti": [],
-      "oblasti_klic": "0d7a190fb6b9"
+      "oblasti_klic": "666d40601a8e",
+      "detail_pokusy": 2
     },
     {
       "id": "861165ac77c35a437453",
@@ -1166,14 +1193,19 @@
       "nazev": "Odčinění újmy na zdraví a jiné nemateriální újmy",
       "misto": "Brno, hybridní forma (prezenčně v Kleinově paláci / online v aplikaci Cisco Webex)",
       "forma": "hybridne",
-      "lektori": [],
-      "cena": "",
-      "anotace": "",
+      "lektori": [
+        "JUDr. Jaromír Jirsa"
+      ],
+      "cena": "1.050,- Kč včetně DPH",
+      "anotace": "Přednáška bude zaměřena na problematiku náhrady nemajetkové újmy za zásahy do přirozených práv člověka i právnických osob se zvláštním zaměřením na náhradu újmy na zdraví. Komentovány budou konkrétní nálezy Ústavního soudu a procesní stránka sporů.",
       "url": "https://www.cak.cz/akce/1304",
       "oblasti": [
-        "skoda"
+        "skoda",
+        "osobnost_media",
+        "ustavni"
       ],
-      "oblasti_klic": "927e30a14eb6"
+      "oblasti_klic": "9087a58af58e",
+      "detail_pokusy": 2
     },
     {
       "id": "3c8c55624cf144b82d56",
@@ -1184,15 +1216,19 @@
       "nazev": "Neplatnost rezervačních smluv v realitní praxi z pohledu aktuální judikatury",
       "misto": "Praha, ONLINE SEMINÁŘ",
       "forma": "online",
-      "lektori": [],
-      "cena": "",
-      "anotace": "",
+      "lektori": [
+        "JUDr. Tomáš Philippi"
+      ],
+      "cena": "650,- Kč včetně DPH",
+      "anotace": "Mnoho smluvních ujednání v rezervačních smlouvách je dnes soudy označováno za neplatné, což může vést ke sporu o vrácení záloh či vzniku bezdůvodného obohacení. Školení nabízí ucelený přehled současné judikatury a její praktické dopady do každodenní realitní praxe.",
       "url": "https://www.cak.cz/akce/1320",
       "oblasti": [
         "zavazky",
+        "skoda",
         "vecna_prava"
       ],
-      "oblasti_klic": "3e6ba2a09438"
+      "oblasti_klic": "5964dc6204a1",
+      "detail_pokusy": 2
     },
     {
       "id": "2daad3d85271fbc45d34",
@@ -1203,14 +1239,17 @@
       "nazev": "Umělá inteligence v advokátní praxi, od základů až po takřka plnohodnotného právního asistenta",
       "misto": "Brno, ONLINE SEMINÁŘ",
       "forma": "online",
-      "lektori": [],
-      "cena": "",
-      "anotace": "",
+      "lektori": [
+        "JUDr. Daniel Pospíšil, Ph.D."
+      ],
+      "cena": "650,- Kč včetně DPH",
+      "anotace": "Seminář představuje praktické způsoby, jak efektivně a bezpečně integrovat umělou inteligenci do každodenních pracovních procesů v advokátní praxi. Lektor se zaměří na AI nástroje pro práci s právními texty, přípravu podání, analýzu judikatury a automatizaci procesů.",
       "url": "https://www.cak.cz/akce/1302",
       "oblasti": [
         "it"
       ],
-      "oblasti_klic": "de4dd48511ef"
+      "oblasti_klic": "dfaea5579c41",
+      "detail_pokusy": 2
     },
     {
       "id": "652d0acc4c735879e7b9",
@@ -1221,12 +1260,16 @@
       "nazev": "Přesvědčivé právní psaní I: Jak si získat čtenáře na svou stranu?",
       "misto": "Brno, Kleinův palác - IV. poschodí, přednášková místnost",
       "forma": "prezencne",
-      "lektori": [],
-      "cena": "",
-      "anotace": "",
+      "lektori": [
+        "Mgr. Michaela Bejčková",
+        "Mgr. Štěpán Janků"
+      ],
+      "cena": "650,- Kč",
+      "anotace": "Soudci i psychologové se už roky shodují na jedné věci: při přesvědčování nezáleží jen na tom, jak silné máme argumenty, ale i zda je umíme dobře podat. Právě o tom bude tento seminář.",
       "url": "https://www.cak.cz/akce/1335",
       "oblasti": [],
-      "oblasti_klic": "12733e9d9e49"
+      "oblasti_klic": "5475fcdf5054",
+      "detail_pokusy": 2
     },
     {
       "id": "3042b4084a246c9b573e",
@@ -1237,14 +1280,17 @@
       "nazev": "Společné jmění manželů 2026 aktuálně - č. 4",
       "misto": "Praha 1, Národní 10, palác Dunaj",
       "forma": "prezencne",
-      "lektori": [],
-      "cena": "",
-      "anotace": "",
+      "lektori": [
+        "Mgr. Michal Králík, Ph.D."
+      ],
+      "cena": "1.100,- Kč včetně DPH",
+      "anotace": "Cyklus čtyř celodenních přednášek v roce 2026 navazuje na dřívější projekt přednášek ke společnému jmění manželů podrobnějším a aktualizovaným rozborem dílčích témat s využitím nové judikatury.",
       "url": "https://www.cak.cz/akce/1248",
       "oblasti": [
         "rodina_dedictvi"
       ],
-      "oblasti_klic": "697bc410c53b"
+      "oblasti_klic": "d3c43c3ed48b",
+      "detail_pokusy": 2
     },
     {
       "id": "9bc4344e6235aa49a53e",
@@ -1255,14 +1301,17 @@
       "nazev": "Zákoník práce aktuálně a novinky pro rok 2027",
       "misto": "Praha 1, Národní 10, palác Dunaj",
       "forma": "prezencne",
-      "lektori": [],
-      "cena": "",
-      "anotace": "",
+      "lektori": [
+        "JUDr. Dominik Brůha, Ph.D."
+      ],
+      "cena": "650,- Kč",
+      "anotace": "Seminář pro advokáty zaměřený na aktuální stav pracovněprávních předpisů ke konci roku 2026, transparentní odměňování od roku 2027, novou úpravu platformové práce a aktuální judikaturu.",
       "url": "https://www.cak.cz/akce/1312",
       "oblasti": [
         "pracovni"
       ],
-      "oblasti_klic": "28266d84bfe1"
+      "oblasti_klic": "17a4b80e90ec",
+      "detail_pokusy": 2
     },
     {
       "id": "3aaaaca2e25abadf2d35",
@@ -1274,9 +1323,9 @@
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
       "forma": "prezencne",
       "lektori": [
-        "JUDr. Josef Holejšovský, Ph.D."
+        "JUDr. Josef Holejšovský, Ph.D., soudce Vrchního soudu v Praze"
       ],
-      "cena": "1800 Kč",
+      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
       "anotace": "Odborná přednáška zaměřená na soudní přezkum rozhodnutí orgánů společností s ručením omezeným a akciových společností.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/soudni-prezkum-rozhodnuti-organu-s-r-o-a-a-s-vcetne-neplatnosti-usneseni-valne-hromady/",
       "oblasti": [
@@ -1293,14 +1342,18 @@
       "nazev": "Překážka věci pravomocně rozhodnuté v soudní judikatuře",
       "misto": "Brno, hybridní forma (prezenčně v Kleinově paláci / online v aplikaci Cisco Webex)",
       "forma": "hybridne",
-      "lektori": [],
-      "cena": "",
-      "anotace": "",
+      "lektori": [
+        "doc. JUDr. Petr Lavický, Ph.D.",
+        "JUDr. Bohumil Dvořák, Ph.D., LL.M."
+      ],
+      "cena": "1.050,- Kč včetně DPH",
+      "anotace": "Seminář nabízí důkladnou analýzu institutu právní moci a překážky věci pravomocně rozhodnuté v soudobé české judikatuře na podkladu množství rozhodnutí Nejvyššího či Ústavního soudu.",
       "url": "https://www.cak.cz/akce/1328",
       "oblasti": [
         "civilni_proces"
       ],
-      "oblasti_klic": "914fb0936788"
+      "oblasti_klic": "9b6b05cdc206",
+      "detail_pokusy": 2
     },
     {
       "id": "f97966821605a4f31e79",
@@ -1311,14 +1364,17 @@
       "nazev": "Rok 2026 v trestním právu - aktuální problémy a jejich řešení",
       "misto": "Praha 1, Národní 10, palác Dunaj",
       "forma": "prezencne",
-      "lektori": [],
-      "cena": "",
-      "anotace": "",
+      "lektori": [
+        "prof. JUDr. Tomáš Gřivna, Ph.D."
+      ],
+      "cena": "1.100,- Kč",
+      "anotace": "Seminář se zabývá novelizací trestních předpisů pro rok 2026, přelomovými trestními rozhodnutími justice a přípravou na tzv. dětský certifikát.",
       "url": "https://www.cak.cz/akce/1307",
       "oblasti": [
         "trestni"
       ],
-      "oblasti_klic": "720a3f569d0a"
+      "oblasti_klic": "815388d62769",
+      "detail_pokusy": 2
     },
     {
       "id": "93ae527e86b364d81ce2",
@@ -1329,15 +1385,19 @@
       "nazev": "Aktuální vybrané otázky z rodinného práva (novelizace, praktické souvislosti) se zaměřením na procesní právo, konfliktní rodičovské spory, určování a popírání rodičovství, výživné a stejnopohlavní páry",
       "misto": "Praha 1, Národní 10, palác Dunaj",
       "forma": "prezencne",
-      "lektori": [],
-      "cena": "",
-      "anotace": "",
+      "lektori": [
+        "doc. JUDr. Renáta Šínová, Ph.D.",
+        "Mgr. Veronika Solis"
+      ],
+      "cena": "1.100,- Kč včetně DPH",
+      "anotace": "Seminář pro advokáty zaměřený na aktuální otázky z rodinného práva, procesní souvislosti, konfliktní rodičovské spory, určování rodičovství, výživné a stejnopohlavní páry.",
       "url": "https://www.cak.cz/akce/1305",
       "oblasti": [
         "rodina_dedictvi",
         "civilni_proces"
       ],
-      "oblasti_klic": "b9cac22dba89"
+      "oblasti_klic": "ba400172212d",
+      "detail_pokusy": 2
     },
     {
       "id": "09db632102d36da071d4",
@@ -1348,14 +1408,17 @@
       "nazev": "Bytové spoluvlastnictví a společenství vlastníků jednotek",
       "misto": "Praha, ONLINE SEMINÁŘ",
       "forma": "online",
-      "lektori": [],
-      "cena": "",
-      "anotace": "",
+      "lektori": [
+        "JUDr. Pavlína Brzobohatá"
+      ],
+      "cena": "1.100,- Kč včetně DPH",
+      "anotace": "Seminář přináší podrobný výklad občanského zákoníku v části upravující bytové spoluvlastnictví a správu domu a pozemku vlastníků jednotek se zaměřením na judikaturu Nejvyššího soudu.",
       "url": "https://www.cak.cz/akce/1318",
       "oblasti": [
         "vecna_prava"
       ],
-      "oblasti_klic": "17750f52cc7f"
+      "oblasti_klic": "fe2f1502e30f",
+      "detail_pokusy": 2
     },
     {
       "id": "2c0e81f58aa1afd8a243",
@@ -1366,16 +1429,20 @@
       "nazev": "Výběr z obchodněprávní judikatury za rok 2026",
       "misto": "Brno, ONLINE SEMINÁŘ",
       "forma": "online",
-      "lektori": [],
-      "cena": "",
-      "anotace": "",
+      "lektori": [
+        "JUDr. Petr Čech, LL.M., Ph.D."
+      ],
+      "cena": "900,- Kč včetně DPH",
+      "anotace": "Online seminář zaměřený na výběr z obchodněprávní judikatury za rok 2026 včetně obecných témat, obchodních korporací a smluvního práva.",
       "url": "https://www.cak.cz/akce/1329",
       "oblasti": [
-        "korporace",
-        "zavazky"
+        "zavazky",
+        "korporace"
       ],
-      "oblasti_klic": "5e252fb5cf04"
+      "oblasti_klic": "946a3027f156",
+      "detail_pokusy": 2
     }
   ],
+  "duplikaty": [],
   "ics": "https://owl.davidzavada.cz/akce.ics"
 }
