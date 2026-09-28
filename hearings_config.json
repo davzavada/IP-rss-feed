@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-21T00:04:26+00:00",
+  "updated": "2026-09-28T05:06:42+00:00",
   "note": "IP senáty MSPH a VS Praha podle rozvrhů práce. Senát = číslo soudního oddělení + rejstřík, jak se objevuje ve spisové značce. Podle `senaty` se filtrují jednání; `sestavy` říkají, kdo senátům předsedá, kdo v nich sedí a co soudí (patička kalendáře), `sestavy_navic` jsou senáty jen pro patičku, podle kterých se nefiltruje. Seznamy jsou sepsané ručně podle rozvrhu v `rozvrh_zdroj` (`platnost`, `platnost_od`); scraper_hearings.py je jednou týdně přepíše AI extrakcí, až soud vyvěsí rozvrh s pozdějším datem platnosti. Předběžná opatření (rejstřík Nc) se nepoznávají podle čísla senátu – to je u Nc číslo rejstříku, ne oddělení – ale podle předsedy senátu ze seznamu `soudci`. Žaloby proti Úřadu průmyslového vlastnictví (úsek správního soudnictví MSPH, vlastní dokument v `prehledy`) se nepoznávají podle senátu vůbec, ale podle žalovaného: jednání, kde je mezi účastníky některý ze vzorů `ucastnici_ip`, je IP v kterémkoli senátu a úseku obou soudů. Vzory se porovnávají bez diakritiky a velikosti písmen, jako celá slova.",
   "courts": {
     "MS": {
@@ -93,8 +93,8 @@
         "popis": "Rozvrh práce MSPH 2026, Spr 2828/2025, úplné znění s účinností od 15. 9. 2026 (sepsáno ručně). Sporné věci: specializace Věci senátní (průmyslové vlastnictví, ochrana názvu – rozhoduje senát) a Nekalá soutěž a pověst, Autorské právo, Kolektivní správci (samosoudce); oddělení 2 a 10 bez nápadu, 3 s 30 % nápadu, 9+32, 12, 41 a 73 s plným nápadem; starší věci 1 Cm, 21 Cm (Přibylová) a 32 C, 37 C (Liška). Předběžná opatření: body XI. 1. A) „PO duševní vlastnictví\" a XII. 1. A) „PO autorské právo\" týchž oddělení – poznávají se podle předsedy senátu. Žaloby proti ÚPV: úsek správního soudnictví, oddělení 15 A a 18 A, která soudí i ostatní správní agendu – filtr proto nejde podle senátu, ale podle žalovaného, viz `ucastnici_ip`.",
         "platnost": "úplné znění od 15. 9. 2026",
         "platnost_od": "2026-09-15",
-        "url": null,
-        "hash": null,
+        "url": "https://msp.gov.cz/documents/d/mestsky-soud-v-praze/zmena-c-1-rp-ms-v-praze-pro-rok-2026",
+        "hash": "f16934baae696329fbc402b5db839396d75967d18c16dcfdb6c6b967ebed3948",
         "aktualizovano": "2026-09-24T11:42:35+00:00"
       },
       "sestavy": [

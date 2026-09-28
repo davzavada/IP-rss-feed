@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-27T05:04:54Z",
+ "generated": "2026-09-28T05:06:37Z",
  "okno_dni": 31,
  "casopisy": [
   {
@@ -951,16 +951,6 @@
    "popis": "“FRAND Defence III (FRAND-Einwand III)” – Decision of the Federal Court of Justice of Germany (Bundesgerichtshof) 27 January 2026 – Case No. KZR 10/25\nIIC – International Review of Intellectual Property and Competition Law"
   },
   {
-   "casopis": "grur-int",
-   "datum": "2026-08-26",
-   "first_seen": "2026-08-27T07:47:27Z",
-   "heslo": "Autorskoprávní ochrana nábytku",
-   "id": "GRUR Int-10.1093/grurint/ikag086",
-   "nazev": "The Threshold of Copyright Protection for a Modular Furniture System",
-   "shrnuti": "Článek se zabývá prahem autorskoprávní ochrany u modulárního nábytkového systému.",
-   "url": "https://doi.org/10.1093/grurint/ikag086"
-  },
-  {
    "id": "IJLIT-10.1093/ijlit/eaag012",
    "casopis": "ijlit",
    "nazev": "Access to uncontaminated data for AI training",
@@ -990,8 +980,8 @@
    "id": "JIPLP-10.1093/jiplp/jpag079",
    "nazev": "Australia-European Union Free Trade Agreement negotiations conclude: implications for Australian and EU geographical indications",
    "popis": "Australia-European Union Free Trade Agreement negotiations conclude: implications for Australian and EU geographical indications\nAutor: Paula Zito, Andrea Zappalaglio\nJournal of Intellectual Property Law & Practice\nThis article analyses the recent conclusion of the Australia-European Union Free Trade Agreement and its significance for the future of geographical indications protection in Australia and the European Union. It examines how the Agreement may shape the development and harmonisation of intellectua...",
-   "url": "https://doi.org/10.1093/jiplp/jpag079",
-   "poznamka": "Shrnutí zatím není k dispozici."
+   "poznamka": "Shrnutí zatím není k dispozici.",
+   "url": "https://doi.org/10.1093/jiplp/jpag079"
   },
   {
    "id": "JIPLP-10.1093/jiplp/jpag059",
@@ -1262,6 +1252,7 @@
    "casopis": "ijlit",
    "nazev": "AI and Legal Education: Ethical and Sustainable Approaches",
    "url": "https://doi.org/10.1093/ijlit/eaaf029",
+   "autori": "Alexander Yu Krouglov",
    "heslo": "AI v právním vzdělávání",
    "shrnuti": "Kniha od autora BalanAnila z roku 2025 se zabývá etickými a udržitelnými přístupy k integraci umělé inteligence do právního vzdělávání. Publikace o rozsahu 134 stran zkoumá dopady moderních technologií na výuku práva a nabízí související odborná zjištění a doporučení.",
    "datum": "2026-01-23",
@@ -1272,6 +1263,7 @@
    "casopis": "ijlit",
    "nazev": "Regulator coherence, capacity, and collaboration: applying lessons from Canada and the UK for fintech regulatory sandboxes",
    "url": "https://doi.org/10.1093/ijlit/eaaf018",
+   "autori": "UnyimeAbasi Odong",
    "heslo": "Regulační sandbox fintech",
    "shrnuti": "Článek analýzou iniciativ v Kanadě a Spojeném království zkoumá klíčové faktory úspěchu fintechových regulačních sandboxů. Poukazuje na to, že pro podporu inovací v bezpečnějším prostředí jsou nepostradatelné regulatorní koherence, kapacita a spolupráce. Zjištění slouží jako doporučení pro další rozvoj regulace fintechu a nových technologií se zohledněním specifického federálního uspořádání.",
    "datum": "2026-01-12",
