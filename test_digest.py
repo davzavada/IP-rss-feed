@@ -96,6 +96,12 @@ intro, bloky = digest.parse_digest(raw, polozky)
 check("odpověď: úvod, jeden blok, čísla mimo rozsah zahodí",
       intro == "Dva týdny ve znamení známek." and len(bloky) == 1 and len(bloky[0]["sources"]) == 2,
       f"{intro!r} {bloky}")
+raw = ("PŘEHLED: Úvod.\nTÉMA: Známky\nTEXT: Text o známkách.\nZDROjed: 1, 2\n\n"
+       "TÉMA: Data\nTEXT: Text o datech. Zdroje: 2\n\nTÉMA: Kód\nTEXT: Z hlediska zdrojů: nic.\nZDROJ: 1\n")
+intro, bloky = digest.parse_digest(raw, polozky)
+check("zkomolená značka zdrojů (ZDROjed:, Zdroje: na konci věty) se pozná",
+      [b["text"] for b in bloky] == ["Text o známkách.", "Text o datech.", "Z hlediska zdrojů: nic."]
+      and [len(b["sources"]) for b in bloky] == [2, 1, 1], str(bloky))
 check("otisk vstupu nese verzi tvaru", digest.FORMAT_VERSION == "4"
       and digest.input_hash(polozky) != digest.input_hash(polozky[1:]))
 
