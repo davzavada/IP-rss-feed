@@ -258,6 +258,12 @@ def _clean(text):
     return bez_pravni_formy(re.sub(r"\s+", " ", text).strip())
 
 
+# Značka zdrojů. Model ji občas zkomolí („ZDROJ:“, „Zdroje:“, „ZDROjed:“)
+# nebo ji napíše na konec věty místo na nový řádek – bere se proto cokoli, co
+# začíná na ZDROJ a končí dvojtečkou. Velké Z drží stranou „zdrojů:“ uprostřed věty.
+_ZDROJE_RE = r"(?:^|(?<=\s))(?-i:Z)DROJ\w*\s*:"
+
+
 def parse_digest(raw, items):
     """Rozparsuje odpověď (PŘEHLED / TÉMA / TEXT / ZDROJE) na intro a bloky.
 
@@ -281,14 +287,14 @@ def parse_digest(raw, items):
         title = _clean(chunk.split("\n", 1)[0])
         rest = chunk.split("\n", 1)[1] if "\n" in chunk else ""
 
-        mt = re.search(r"TEXT\s*:\s*(.*?)(?=\n\s*ZDROJE\s*:|$)", rest,
+        mt = re.search(r"TEXT\s*:\s*(.*?)(?=\s*" + _ZDROJE_RE + r"|$)", rest,
                        re.DOTALL | re.IGNORECASE)
         text = _clean(mt.group(1)) if mt else _clean(rest)
         if not title or not text:
             continue
 
         sources = []
-        ms = re.search(r"ZDROJE\s*:\s*(.*)", rest, re.IGNORECASE)
+        ms = re.search(_ZDROJE_RE + r"\s*(.*)", rest, re.IGNORECASE | re.MULTILINE)
         if ms:
             used = []
             for num in re.findall(r"\d+", ms.group(1)):
