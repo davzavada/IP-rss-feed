@@ -1,8 +1,207 @@
 {
- "generated": "2026-09-26T03:29:57Z",
+ "generated": "2026-09-28T03:37:20Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "sdeu:62026CN0754",
+   "spz": "C-754/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-08",
+   "zverejneno": "2026-09-28",
+   "first_seen": "2026-09-28T03:37:20Z",
+   "nazev": "Ville de Bruxelles",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0754",
+   "heslo": "Zákaz diskriminace a parkovací poplatky pro veřejné nemovitosti",
+   "shrnuti": "Belgický soud Cour d'appel de Bruxelles se Soudního dvora EU ptá, zda zásada zákazu diskriminace a svoboda usazování brání tomu, aby obecní vyhláška zpoplatnila parkovací místa v nemovitosti sloužící úkolům veřejné služby, kterou vlastní německá spolková země, pokud taková vyhláška nezpoplatňuje srovnatelné nemovitosti sloužící úkolům veřejné služby v tuzemsku.",
+   "oblasti": [
+    "spravni",
+    "ustavni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0722",
+   "spz": "C-722/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-02",
+   "zverejneno": "2026-09-28",
+   "first_seen": "2026-09-28T03:37:20Z",
+   "nazev": "Komise pro rozhodování ve věcech pobytu cizinců",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0722",
+   "heslo": "Pobyt cizinců: výpověď směrnice o hledání zaměstnání",
+   "shrnuti": "Krajský soud v Brně se Soudního dvora EU ptá, zda je výčet důvodů pro zamítnutí žádosti o povolení k pobytu za účelem hledání zaměstnání dle směrnice 2016/801 taxativní, a zda unijní právo brání tomu, aby členský stát zamítl žádost podanou několik měsíců po ukončení studia z důvodu nesplnění účelu předchozího pobytu.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0714",
+   "spz": "C-714/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-01",
+   "zverejneno": "2026-09-28",
+   "first_seen": "2026-09-28T03:37:20Z",
+   "nazev": "Consumer Rights Recovery",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0714",
+   "heslo": "Výpůjční úroková sazba na náklady úvěru a informační povinnosti",
+   "shrnuti": "Polský soud Sąd Rejonowy dla Warszawy-Woli w Warszawie se Soudního dvora EU dotazuje na výklad směrnice o smlouvách o spotřebitelském úvěru v souvislosti s uplatněním výpůjční úrokové sazby na náklady financované z úvěru. Zkoumá, zda takový postup představuje porušení informačních povinností věřitele a jaké důsledky z toho plynou pro vnitrostátní sankce a jejich přezkum z úřední povinnosti.",
+   "oblasti": [
+    "spotrebitel",
+    "finance",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0694",
+   "spz": "C-694/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-06-25",
+   "zverejneno": "2026-09-28",
+   "first_seen": "2026-09-28T03:37:20Z",
+   "nazev": "Iepirkumu uzraudzības birojs",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0694",
+   "heslo": "Vyloučení uchazeče za soutěžní delikt před pravomocným rozhodnutím",
+   "shrnuti": "Lotyšský Nejvyšší soud se v rámci předběžné otázky ptá Soudního dvora EU, zda směrnice o zadávání veřejných zakázek ve spojení s Listinou základních práv umožňuje vyloučit hospodářský subjekt ze zadávacího řízení na základě nepravomocného rozhodnutí o porušení soutěžních pravidel, jaká je přípustná doba takového vyloučení a zda lze podmínit obnovení spolehlivosti úhradou pokuty a nebráněním se žalobou.",
+   "oblasti": [
+    "verejne_zakazky",
+    "soutez"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0666",
+   "spz": "C-666/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-06-16",
+   "zverejneno": "2026-09-28",
+   "first_seen": "2026-09-28T03:37:20Z",
+   "nazev": "Belplant II",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0666",
+   "heslo": "Pesticidy a zásada obezřetnosti v městských oblastech",
+   "shrnuti": "Belgická Conseil d'État se Soudního dvora EU ptá, zda směrnice 2009/128 o udržitelném používání pesticidů a zásada obezřetnosti umožňují v převážně městské oblasti plošně zakázat používání přípravků na ochranu rostlin s výjimkou specifických kategorií látek. Žádá o výklad unijního práva v souvislosti s obecným zákazem schváleným v Regionu Brusel - hlavní město.",
+   "oblasti": [
+    "stavebni_zp",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0660",
+   "spz": "C-660/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-06-16",
+   "zverejneno": "2026-09-28",
+   "first_seen": "2026-09-28T03:37:20Z",
+   "nazev": "International Card Services",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0660",
+   "heslo": "Zpracování biometrických údajů a fotografií v GDPR",
+   "shrnuti": "Nizozemský Nejvyšší soud se v rámci předběžné otázky ptá Soudního dvora EU, zda pořízení a uložení fotografie obličeje k identifikaci představuje zpracování biometrických údajů či údajů odhalujících rasový nebo etnický původ podle GDPR. Dále se dotazuje, zda unijní předpisy o praní peněz vyžadují po povinných osobách uchovávání kopie dokladu totožnosti včetně fotografie.",
+   "oblasti": [
+    "gdpr",
+    "finance"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0642",
+   "spz": "C-642/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-06-08",
+   "zverejneno": "2026-09-28",
+   "first_seen": "2026-09-28T03:37:20Z",
+   "nazev": "EW Discover",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0642",
+   "heslo": "Výklad pojmů zavazadlo a náklad podle Montrealské úmluvy",
+   "shrnuti": "Rakouský soud Landesgericht für Zivilrechtssachen Graz se v řízení mezi osobou XN a EW Discover dotazuje Soudního dvora EU na výklad ustanovení Montrealské úmluvy týkajících se pojmů odbavené zavazadlo, neodbavené zavazadlo a náklad ve vztahu k předmětu (zapalovači), který byl cestujícímu odebrán při bezpečnostní kontrole a předán pracovníkům odbavovací přepážky. Dále řeší otázku působnosti zprostředkovatelů a případné použití vnitrostátního práva.",
+   "oblasti": [
+    "spotrebitel",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0639",
+   "spz": "C-639/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-06-09",
+   "zverejneno": "2026-09-28",
+   "first_seen": "2026-09-28T03:37:20Z",
+   "nazev": "Česká správa sociálního zabezpečení",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0639",
+   "heslo": "Výpočet dílčí starobní dávky a zohlednění dob pojištění",
+   "shrnuti": "Krajský soud v Brně se Soudního dvora EU ptá na výklad čl. 46 a čl. 47 odst. 1 písm. d) nařízení Rady (EHS) č. 1408/71 ve vztahu ke způsobu zohlednění dob pojištění získaných v jiném členském státě při výpočtu dílčí starobní dávky. Zajímá ho, zda postačuje jejich zohlednění jako vyloučených dob, či zda je nutné jim přiřadit výdělkové prvky odvozené podle vnitrostátních právních předpisů.",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0638",
+   "spz": "C-638/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-06-11",
+   "zverejneno": "2026-09-28",
+   "first_seen": "2026-09-28T03:37:20Z",
+   "nazev": "Swedbank",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0638",
+   "heslo": "Státní podpora a solidární příspěvek úvěrových institucí",
+   "shrnuti": "Lotyšský ústavní soud se ptá Soudního dvora EU, zda úleva ze solidárního příspěvku pro úvěrové instituce představuje státní podporu ve smyslu čl. 107 odst. 1 SFEU, zda ji lze případně odůvodnit logikou systému a jaké jsou důsledky pro vnitrostátní právo s ohledem na unijní právo.",
+   "oblasti": [
+    "soutez",
+    "finance",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0579",
+   "spz": "C-579/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-05-28",
+   "zverejneno": "2026-09-28",
+   "first_seen": "2026-09-28T03:37:20Z",
+   "nazev": "Ovisegur",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0579",
+   "heslo": "Zadavatel a vyloučení nabídky pro nesplnění povinností",
+   "shrnuti": "Portugalský nejvyšší správní soud se Soudního dvora EU táže, zda směrnice o zadávání veřejných zakázek brání vnitrostátní úpravě, která umožňuje či přikazuje vyloučit nabídku v případě, kdy je nesplnění pracovních či ekologických povinností pouze pravděpodobné.",
+   "oblasti": [
+    "verejne_zakazky",
+    "pracovni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0433",
+   "spz": "C-433/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-05-04",
+   "zverejneno": "2026-09-28",
+   "first_seen": "2026-09-28T03:37:20Z",
+   "nazev": "Paskuła",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0433",
+   "heslo": "Výpočet úroků z nákladů úvěru a sankce",
+   "shrnuti": "Polský soud Sąd Rejonowy dla Krakowa-Śródmieścia w Krakowie se Soudního dvora EU dotazuje na výklad směrnice o spotřebitelském úvěru ve vztahu k povinnosti uvést správnou roční procentní sazbu nákladů, povaze sankcí za porušení hmotněprávních norem a k prekluzi práva spotřebitele uplatnit sankci bezúročnosti.",
+   "oblasti": [
+    "spotrebitel",
+    "finance"
+   ],
+   "procesni": true
+  },
   {
    "id": "sdeu:ipc:C-1009/26",
    "spz": "C-1009/26",
