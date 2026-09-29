@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-28T03:37:20Z",
+ "generated": "2026-09-29T04:12:31Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
@@ -201,6 +201,24 @@
     "finance"
    ],
    "procesni": true
+  },
+  {
+   "id": "sdeu:62026TO0436(01)",
+   "spz": "T-436/26",
+   "ecli": "ECLI:EU:T:2026:592",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-09-25",
+   "zverejneno": "2026-09-25",
+   "first_seen": "2026-09-25T12:00:00Z",
+   "nazev": "HI v. Parlament",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TO0436(01)",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [],
+   "procesni": false,
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
   },
   {
    "id": "sdeu:ipc:C-1009/26",

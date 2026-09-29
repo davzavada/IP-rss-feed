@@ -1,8 +1,29 @@
 {
- "generated": "2026-09-26T03:29:57Z",
+ "generated": "2026-09-29T04:12:31Z",
  "soud": "nss",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "nss:785176",
+   "spz": "9 As 120/2026-26",
+   "ecli": "ECLI:CZ:NSS:2026:9.As.120.2026.26",
+   "druh": "usnesení",
+   "senat": 9,
+   "rejstrik": "As",
+   "datum": "2026-09-03",
+   "zverejneno": "2026-09-29",
+   "first_seen": "2026-09-29T04:12:31Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785176",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785176",
+   "soudce": "Tomáš Herc",
+   "heslo": "Kasační stížnost proti rozhodnutí o poplatku",
+   "shrnuti": "Žalobce podal kasační stížnost proti usnesení krajského soudu o nepřiznání osvobození od soudních poplatků a zamítnutí návrhu na ustanovení zástupce. Nejvyšší správní soud řešil přípustnost takové kasační stížnosti. Dospěl k závěru, že kasační stížnost je nepřípustná, a proto ji odmítl.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
+  },
   {
    "id": "nss:785822",
    "spz": "7 Azs 167/2026-31",
