@@ -1,15 +1,15 @@
 {
-  "generated": "2026-09-28T05:07:50.587890+00:00",
-  "from": "2026-09-14",
-  "to": "2026-09-28",
-  "total": 40,
-  "covered": 11,
-  "cekajici": 1,
-  "intro": "Sledované období přineslo řadu rozhodnutí Soudního dvora EU a Tribunálu týkajících se ochranných známek, zejména posuzování pravděpodobnosti záměny a absolutních důvodů neplatnosti. Dále se objevily zajímavé podněty v oblasti ochrany osobních údajů, autorského práva v mezinárodním kontextu a regulace umělé inteligence či médií.",
+  "generated": "2026-09-29T05:33:50.831140+00:00",
+  "from": "2026-09-15",
+  "to": "2026-09-29",
+  "total": 76,
+  "covered": 13,
+  "cekajici": 2,
+  "intro": "Sledované období přineslo řadu rozhodnutí unijních soudů v oblasti ochranných známek zaměřených na posuzování rozlišovací způsobilosti a pravděpodobnosti záměny. Pozornost byla věnována také otázkám autorského práva, transferu technologií a dopadům moderních technologií včetně umělé inteligence na právo duševního vlastnictví.",
   "blocks": [
     {
-      "title": "Pravděpodobnost záměny ochranných známek",
-      "text": "Tribunál a Nejvyšší správní soud řešily v několika případech otázku pravděpodobnosti záměny a rozlišovací způsobilosti označení. Soudy potvrdily, že slabou rozlišovací schopnost nebo popisný charakter (např. u označení FITNESS či ULTRADRY) je nutno při hodnocení záměny pečlivě zohlednit, zatímco u jiných známek shledaly existenci záměny na základě vizuální a fonetické podobnosti.",
+      "title": "Posouzení podobnosti ochranných známek",
+      "text": "Tribunál EU a Nejvyšší správní soud se v několika rozhodnutích zabývaly otázkou pravděpodobnosti záměny ochranných známek a posouzením jejich rozlišovací způsobilosti. Judikatura potvrzuje nutnost zohlednit slabou rozlišovací způsobilost starších známek a stupeň pozornosti relevantní veřejnosti při hodnocení kolizí označení.",
       "sources": [
         {
           "src": "sdeu",
@@ -43,6 +43,19 @@
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
+          "title": "T-467/25 – Absara Industrial v. EUIPO - Hansgrohe (KROMAT)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0467"
+        }
+      ]
+    },
+    {
+      "title": "Rozhodování o absolutních důvodech",
+      "text": "Tribunál v řadě věcí přezkoumal rozhodnutí EUIPO týkající se zamítnutí přihlášek ochranných známek pro popisnost či nedostatek rozlišovací způsobilosti. Potvrdil, že označení mající charakter propagačních sdělení nebo popisující vlastnosti a účel zboží nemohou požit monopolní ochrany.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
           "title": "T-890/25 – Fitmart v. EUIPO (ULTRAPURE)",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0890"
         },
@@ -52,32 +65,19 @@
           "tag": "",
           "title": "T-827/25 – Cobra Golf v. EUIPO (ULTRADRY)",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0827"
-        }
-      ]
-    },
-    {
-      "title": "Ochrana osobních údajů a GDPR",
-      "text": "Nizozemský Nejvyšší soud se obrátil na SDEU s předběžnou otázkou ohledně kvalifikace biometrických údajů a fotografií při identifikaci podle GDPR. Generální advokát rovněž navrhl, že souhlas s předáním údajů neurčeným „partnerům“ pro přímý marketing bez znalosti totožnosti příjemce nesplňuje požadavky na transparentnost a informovaný souhlas.",
-      "sources": [
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "C-660/26 – International Card Services",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0660"
         },
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "C-317/25 – Groupe Canal +",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0317"
+          "title": "T-509/25 – Société des produits Nestlé v. EUIPO - European Food (FITNESS)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0509"
         }
       ]
     },
     {
-      "title": "Autorské právo a mezinárodní prvky",
-      "text": "Soudní dvůr EU objasnil, že otázka formální platnosti smlouvy o postoupení autorských práv spadá do oblasti smluvních závazků a řídí se nařízením Řím I. Odborná literatura se mezitím věnovala otázkám autorskoprávní ochrany generativní AI a sui generis právům k neoriginálním výstupům.",
+      "title": "Autorské právo a mezinárodní právo",
+      "text": "Soudní dvůr EU v rozsudku C-176/25 potvrdil, že otázka formální platnosti smlouvy o postoupení autorských práv spadá do oblasti smluvních závazků řídících se nařízením Řím I. Odborná literatura se současně věnuje výzvám spojeným s generativní umělou inteligencí a autorskosprávní ochranou výtvorů.",
       "sources": [
         {
           "src": "sdeu",
@@ -96,12 +96,26 @@
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "Denying Authorship Status to AI Is Not Unconstitutional",
-          "link": "https://doi.org/10.1093/grurint/ikag083"
+          "tag": "JWIP",
+          "title": "Inventorship in the age of AI: Legal challenges and potential solutions",
+          "link": "https://doi.org/10.1111/jwip.70014"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JWIP",
+          "title": "How much human contribution is needed for “ownership” of AI‐generated content: A comparison of copyright determination for generative AI in China and the United States",
+          "link": "https://doi.org/10.1111/jwip.70011"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JWIP",
+          "title": "Exploring remuneration mechanisms for copyrighted works in generative AI systems",
+          "link": "https://doi.org/10.1111/jwip.70027"
         }
       ]
     }
   ],
-  "input_hash": "103f112ab439273060035ae8a27fbaddc81a54ffd4e98bc0d7fd3fd80510dd3b"
+  "input_hash": "fda43118235a000026fb4384242dfc7a2311e36f0ead2e2c52a4feb4c5da247c"
 }
