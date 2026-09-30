@@ -386,6 +386,51 @@ check("záloha nese i název se soudem a značkou",
       and "Hanoi" in iic["IIC-10.1007/s40319-026-01772-y"]["ai_text"],
       iic["IIC-10.1007/s40319-026-01772-y"]["ai_text"])
 
+# Springer do Crossrefu abstrakty IIC často nedeponuje; doplní je jeho
+# vyhledávací feed podle DOI. Co abstrakt má, zůstane, jak je.
+_clanek = {"DOI": "10.1007/s40319-026-01780-X", "title": ["Designing Justice"],
+           "author": [{"given": "Seun", "family": "Lari-Williams"}],
+           "created": {"date-parts": [[2026, 9, 29]]}}
+_odpovedi = {"from-created-date": [_clanek, _rozhodnuti, _s_anotaci], "from-pub-date": []}
+iic = s.fetch_crossref_journal("0018-9855", "IIC", "IIC")
+
+
+class _Feed:
+    content = """<?xml version="1.0"?><rss version="2.0"><channel>
+<item><title>Designing Justice</title>
+<link>https://link.springer.com/article/10.1007/s40319-026-01780-x</link>
+<description>&lt;p&gt;A dispute system design framework for copyright.&lt;/p&gt;</description>
+<pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate></item>
+<item><title>LUFFMAN</title>
+<link>https://link.springer.com/article/10.1007/s40319-026-01772-y</link>
+<description>Jiný text.</description></item>
+</channel></rss>""".encode()
+
+    def raise_for_status(self):
+        pass
+
+
+s.requests.get = lambda *a, **k: _Feed()
+iic = {i["guid"]: i for i in s.doplnit_abstrakty(iic, "https://feed.test", "", "IIC", "IIC")}
+_dj = iic["IIC-10.1007/s40319-026-01780-X"]
+check("abstrakt chybějící v Crossrefu se doplní z feedu",
+      _dj["ai_text"] == "Designing Justice\n\nA dispute system design framework for copyright."
+      and "dispute system design" in _dj["description"], str(_dj))
+check("abstrakt z Crossrefu feed nepřepíše",
+      "Jiný text" not in iic["IIC-10.1007/s40319-026-01772-y"]["ai_text"])
+check("bez shody ve feedu položka zůstane bez abstraktu",
+      iic["IIC-10.1007/s40319-026-01772-z"]["ai_text"] == "")
+
+
+def _nedostupny(*a, **k):
+    raise s.requests.ConnectionError("403")
+
+
+s.requests.get = _nedostupny
+_bez = [{"guid": "IIC-10.1/x", "link": "https://doi.org/10.1/x", "ai_text": "", "title": "[IIC] X"}]
+check("nedostupný feed nic nerozbije",
+      s.doplnit_abstrakty(_bez, "https://feed.test", "", "IIC", "IIC") == _bez)
+
 # =====================================================================
 print("\n7) Stránka, která místo obsahu vrátí chybu, nesmí jít do AI")
 # =====================================================================
