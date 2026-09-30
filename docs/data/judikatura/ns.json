@@ -1,8 +1,84 @@
 {
- "generated": "2026-09-27T03:38:41Z",
+ "generated": "2026-09-30T03:57:37Z",
  "soud": "ns",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "ns:FF24EE29A72A2DB8C1258E81004D5ABC",
+   "spz": "21 Cdo 395/2026",
+   "ecli": "ECLI:CZ:NS:2026:21.CDO.395.2026.1",
+   "druh": "usnesení",
+   "senat": 21,
+   "rejstrik": "Cdo",
+   "datum": "2026-08-18",
+   "zverejneno": "2026-09-29",
+   "first_seen": "2026-09-30T03:57:37Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/FF24EE29A72A2DB8C1258E81004D5ABC?openDocument",
+   "heslo": "Ztráta majetku státu jako předpoklad odpovědnosti za škodu",
+   "shrnuti": "Ústav pro studium totalitních režimů se žalobou domáhal po své bývalé zaměstnankyni náhrady škody za odvod a penále zaplacené do státního rozpočtu za porušení rozpočtové kázně. Nejvyšší soud řešil otázku, zda organizační složce státu vzniká škoda zaplacením pokuty do státního rozpočtu, a dospěl k závěru, že jelikož jde o interní přesun finančních prostředků v rámci jednoho subjektu (státu), k majetkové újmě nedošlo a žaloba není důvodná.",
+   "oblasti": [
+    "pracovni",
+    "skoda"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:F62EFEDFCE94BC2AC1258E81004D5AAF",
+   "spz": "21 Cdo 2525/2025",
+   "ecli": "ECLI:CZ:NS:2026:21.CDO.2525.2025.1",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "Cdo",
+   "datum": "2026-08-28",
+   "zverejneno": "2026-09-29",
+   "first_seen": "2026-09-30T03:57:37Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/F62EFEDFCE94BC2AC1258E81004D5AAF?openDocument",
+   "heslo": "Neuposlechnutí pokynu k opuštění pracoviště jako porušení kázně",
+   "shrnuti": "Žalobkyně se domáhala určení neplatnosti okamžitého zrušení pracovního poměru a náhrady mzdy poté, co byla propuštěna za odmítnutí protiepidemických opatření a nerespektování pokynu opustit pracoviště. Nejvyšší soud řešil otázku posouzení intenzity porušení pracovní povinnosti a dospěl k závěru, že úmyslné neuposlechnutí oprávněného pokynu zaměstnavatele k opuštění pracoviště představuje zvlášť hrubé porušení pracovních povinností, které odůvodňuje okamžité zrušení pracovního poměru.",
+   "oblasti": [
+    "pracovni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:C54A1EC38EC76D3FC1258E81004D5AA7",
+   "spz": "27 Cdo 1472/2025",
+   "ecli": "ECLI:CZ:NS:2026:27.CDO.1472.2025.1",
+   "druh": "usnesení",
+   "senat": 27,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-10",
+   "zverejneno": "2026-09-29",
+   "first_seen": "2026-09-30T03:57:37Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/C54A1EC38EC76D3FC1258E81004D5AA7?openDocument",
+   "heslo": "Místo dodání zboží určuje mezinárodní příslušnost",
+   "shrnuti": "Žalobkyně se domáhala po žalované náhrady škody z vadného zboží, přičemž soudy obou stupňů odmítly mezinárodní příslušnost českých soudů a řízení zastavily. Nejvyšší soud řešil otázku výkladu místa dodání podle nařízení Brusel I bis a dospěl k závěru, že rozhodující je smluvní ujednání stran o dodání ze skladu v cizině. Dovolání žalobkyně proto jako nepřípustné odmítl.",
+   "oblasti": [
+    "civilni_proces",
+    "mps",
+    "zavazky"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:085AB8C0112CFC3FC1258E81004D5AC0",
+   "spz": "21 Cdo 1458/2026",
+   "ecli": "ECLI:CZ:NS:2026:21.CDO.1458.2026.1",
+   "druh": "usnesení",
+   "senat": 21,
+   "rejstrik": "Cdo",
+   "datum": "2026-08-18",
+   "zverejneno": "2026-09-29",
+   "first_seen": "2026-09-30T03:57:37Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/085AB8C0112CFC3FC1258E81004D5AC0?openDocument",
+   "heslo": "Posouzení intenzity porušení pracovních povinností při výpovědi",
+   "shrnuti": "Žalobce se soudil s Vzdělávacím institutem pro Moravu o neplatnost výpovědi z pracovního poměru dané pro porušení povinností. Nejvyšší soud řešil přípustnost dovolání a otázku správnosti hodnocení intenzity porušení pracovní povinnosti odvolacím soudem. Dovolání odmítl s tím, že závěry odvolacího soudu jsou plně v souladu s ustálenou judikaturou.",
+   "oblasti": [
+    "pracovni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
   {
    "id": "ns:FFDCC529F6AF5D0CC1258E7D004D152C",
    "spz": "22 Nd 379/2026",
@@ -972,6 +1048,25 @@
    "procesni": true
   },
   {
+   "id": "ns:deska:23cdo189/2026",
+   "spz": "23 Cdo 189/2026",
+   "druh": "rozsudek",
+   "senat": 23,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-24T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_23_Cdo_189_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_23_Cdo_189_2026.pdf",
+   "heslo": "Rozsudek pro zmeškání a částečný přezkum",
+   "shrnuti": "Žalobce se domáhal určení vlastnického práva k nemovitostem vůči žalovanému a žalovanému Institutu systémových řešení. Nejvyšší soud řešil otázku posouzení důvodnosti žaloby při vydání rozsudku pro zmeškání a možnost jeho částečného potvrzení a uzavřel, že soud musí vycházet pouze ze žalobních tvrzení a může rozhodnout částečně.",
+   "oblasti": [
+    "civilni_proces",
+    "zavazky"
+   ],
+   "procesni": true
+  },
+  {
    "id": "ns:8D62E0A1AC96B7C7C1258E7C002E492B",
    "spz": "7 Tdo 706/2026",
    "ecli": "ECLI:CZ:NS:2026:7.TDO.706.2026.1",
@@ -1284,6 +1379,26 @@
    "shrnuti": "Navrhovatelka se domáhala zrušení omezení svéprávnosti posuzovaného, popřípadě uplatnění mírnějších opatření. Nejvyšší soud řešil otázku, zda lze posuzovanou osobu omezit v aktivním volebním právu a zda je nutné omezení svéprávnosti při úplné neschopnosti právního jednání. Dospěl k závěru, že aktivní volební právo nelze v důsledku nové právní úpravy omezit, avšak samotné omezení svéprávnosti při trvalé neschopnosti právního jednání je přípustné.",
    "oblasti": [
     "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:deska:23cdo1630/2025",
+   "spz": "23 Cdo 1630/2025",
+   "druh": "rozsudek",
+   "senat": 23,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-23",
+   "zverejneno": "2026-09-23",
+   "first_seen": "2026-09-23T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_23_Cdo_1630_2025.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_23_Cdo_1630_2025.pdf",
+   "heslo": "Oprava chybných metadat v registru smluv",
+   "shrnuti": "Moravskoslezský kraj a Dopravní podnik Ostrava se soudili s firmou FIRESTA-Fišer, rekonstrukce, stavby o zaplacení smluvní pokuty z veřejné zakázky na rekonstrukce mostů. Nejvyšší soud řešil otázku, zda lze chybný údaj o ceně v metadatech v registru smluv dodatečně opravit po uplynutí tříměsíční lhůty jako chybu v psaní či počtech. Rozhodl, že nesprávné uvedení ceny v metadatech v důsledku chybného úsudku o rozsahu údajů není chybou v psaní či počtech, a proto smlouva zanikla zrušením od počátku.",
+   "oblasti": [
+    "spravni",
+    "zavazky",
     "civilni_proces"
    ],
    "procesni": false

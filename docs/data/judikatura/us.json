@@ -1,8 +1,92 @@
 {
- "generated": "2026-09-29T04:12:31Z",
+ "generated": "2026-09-30T03:57:37Z",
  "soud": "us",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "us:4-925-26_2",
+   "spz": "IV. ÚS 925/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.925.26.2",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-16",
+   "zverejneno": "2026-09-29",
+   "first_seen": "2026-09-30T03:57:37Z",
+   "nazev": "Advokátní tajemství v daňovém řízení",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-925-26_2",
+   "soudce": "Zdeněk Kühn",
+   "heslo": "Advokátní tajemství v daňovém řízení",
+   "shrnuti": "Stěžovatelka napadala rozsudek Nejvyššího správního soudu kvůli neuznání nákladů na právní služby v daňovém řízení. Ústavní soud shledal porušení práva na ochranu advokátního tajemství, protože správce daně i přes absenci vážných pochybností (za rok 2016) a bez poskytnutí mírnějších možností prokazování (za rok 2017) vyžadoval zpřístupnění obsahu právních služeb. Nejvyšší správní soud pochybil, když nedocenil ústavní význam advokátního tajemství a jeho aplikaci omezil jen na vybraná odvětví.",
+   "oblasti": [
+    "zavazky",
+    "spravni",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:4-1391-26_1",
+   "spz": "IV. ÚS 1391/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.1391.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-16",
+   "zverejneno": "2026-09-29",
+   "first_seen": "2026-09-30T03:57:37Z",
+   "nazev": "Nesprávné posouzení dovolacích otázek Nejvyšším soudem",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-1391-26_1",
+   "soudce": "Michal Bartoň",
+   "heslo": "Nejvyšší soud musí přezkoumat řádně vymezené dovolací otázky",
+   "shrnuti": "Stěžovatelé napadli usnesení Nejvyššího soudu, kterým bylo odmítnuto jejich dovolání pro nepřípustnost. Ústavní soud shledal porušení práva na soudní ochranu podle čl. 36 odst. 1 Listiny základních práv a svobod, protože Nejvyšší soud některé dovolací otázky zkreslil a u jiných nesprávně uzavřel, že se jich stěžovatelé nedomáhali, ačkoliv tvořily součást žaloby. Ústavní soud proto napadené usnesení zrušil.",
+   "oblasti": [
+    "civilni_proces",
+    "ustavni",
+    "zavazky"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:3-848-26_1",
+   "spz": "III. ÚS 848/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.848.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-10",
+   "zverejneno": "2026-09-29",
+   "first_seen": "2026-09-30T03:57:37Z",
+   "nazev": "Podání stížnosti jménem právnické osoby jinou osobou",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-848-26_1",
+   "soudce": "Daniela Zemanová",
+   "heslo": "Zastoupení právnické osoby a přístup k soudu",
+   "shrnuti": "Stěžovatelka napadla usnesení soudu, kterým byla zamítnuta její stížnost proti zajištění finančních prostředků z důvodu podání neoprávněnou osobou. Ústavní soud shledal porušení práva na soudní ochranu podle čl. 36 odst. 1 Listiny, protože soud měl v případě pochybností o oprávnění jednatele či zástupce vyzvat stěžovatelku k odstranění nedostatku podání, namísto jeho okamžitého zamítnutí.",
+   "oblasti": [
+    "civilni_proces",
+    "ustavni",
+    "trestni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:1-3430-25_3",
+   "spz": "I. ÚS 3430/25",
+   "ecli": "ECLI:CZ:US:2026:1.US.3430.25.3",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-03",
+   "zverejneno": "2026-09-29",
+   "first_seen": "2026-09-30T03:57:37Z",
+   "nazev": "Nejlepší zájem dítěte v kontextu mezinárodního únosu",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-3430-25_3",
+   "soudce": "Tomáš Langášek",
+   "heslo": "Mezinárodní únos dítěte a nejlepší zájem v péči",
+   "shrnuti": "Stěžovatelé napadli rozhodnutí obecných soudů o úpravě péče a bydliště nezletilého a o zastavení řízení o navrácení, neboť matka se dopustila mezinárodního únosu dítěte na Slovensko a soudy podle nich toto jednání aprobovaly. Ústavní soud ústavní stížnosti zamítl a konstatoval, že soudy řádně zohlednily nejlepší zájem nezletilého, který má přednost před snahou o sankcionování chybujícího rodiče, a nedopustily se porušení základních práv.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "mps",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
   {
    "id": "us:Pl-17-26_2",
    "spz": "Pl. ÚS 17/26",
