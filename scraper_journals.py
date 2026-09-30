@@ -1084,8 +1084,9 @@ def doplnit_autory(items, meta_file=None):
         save_json(meta_file, meta)
 
 
-def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
-    """Vrátí nedávné články časopisu z RSS vydavatele (Wiley, OUP)."""
+def _rss_zaznamy(feed_url, label, referer=""):
+    """Stáhne feed vydavatele a vrátí jeho články jako prosté záznamy
+    (název, DOI, odkaz, autoři, abstrakt, datum)."""
     # Na holý požadavek vracela Wiley 403. Feed je veřejný, jen se chce
     # ohlásit jako prohlížeč, který o RSS opravdu žádá – proto Accept
     # a Referer z webu časopisu.
@@ -1154,8 +1155,20 @@ def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
             "pub_date": pub_date, "odhad": odhad,
         })
 
+    if too_old:
+        print(f"    [diag] {label}: {too_old} článků starších než "
+              f"{RSS_MAX_AGE_DAYS} dní přeskočeno")
+    if bez_doi:
+        # Bez DOI se guid skládá z odkazu, takže by se článek při přepnutí
+        # na Crossref označil podruhé jako nový. Ať je to vidět v logu.
+        print(f"    [diag] {label}: {bez_doi} článků bez DOI ve feedu")
+    return zaznamy
+
+
+def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
+    """Vrátí nedávné články časopisu z RSS vydavatele (Wiley, OUP)."""
     items = []
-    for z in zaznamy:
+    for z in _rss_zaznamy(feed_url, label, referer):
         abstract, authors, title = z["abstract"], z["authors"], z["title"]
         popis_casti = (title, journal_name, zkratit(abstract))
         polozka = {
@@ -1179,14 +1192,6 @@ def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
             polozka["doi_autor"] = z["doi"]
             polozka["popis_casti"] = popis_casti
         items.append(polozka)
-
-    if too_old:
-        print(f"    [diag] {label}: {too_old} článků starších než "
-              f"{RSS_MAX_AGE_DAYS} dní přeskočeno")
-    if bez_doi:
-        # Bez DOI se guid skládá z odkazu, takže by se článek při přepnutí
-        # na Crossref označil podruhé jako nový. Ať je to vidět v logu.
-        print(f"    [diag] {label}: {bez_doi} článků bez DOI ve feedu")
     return items
 
 
@@ -1201,6 +1206,46 @@ def _rss_nebo_crossref(feed_url, referer, issn, label, journal_name, zdroj):
         reason = f"feed nedostupný ({e})"
     print(f"    [diag] {label}: RSS {zdroj} – {reason}, beru Crossref")
     return fetch_crossref_journal(issn, label, journal_name)
+
+
+# Springer do Crossrefu abstrakty u IIC často nedeponuje, na webu je ale
+# článek má – a vypisuje je i jeho vyhledávací feed. Z Crossrefu se bere
+# dál všechno ostatní (podtitul poznávající rozhodnutí, autoři, datum),
+# feed jen doplní chybějící abstrakt podle DOI. Když feed z GitHub Actions
+# neprojde (kontrola prohlížeče), zůstane u Crossrefu, jak byl.
+#   {zkratka: (feed, stránka časopisu pro Referer)}
+ABSTRAKTY_Z_FEEDU = {
+    "IIC": ("https://link.springer.com/search.rss?facet-content-type=Article"
+            "&facet-journal-id=40319&sortBy=newestFirst",
+            "https://link.springer.com/journal/40319"),
+}
+
+
+def doplnit_abstrakty(items, feed_url, referer, label, journal_name):
+    """Položkám z Crossrefu bez abstraktu ho doplní z feedu vydavatele."""
+    bez = [it for it in items if not it.get("ai_text")]
+    if not bez:
+        return items
+    try:
+        zaznamy = _rss_zaznamy(feed_url, label, referer)
+    except Exception as e:
+        print(f"    [diag] {label}: feed s abstrakty nedostupný ({e})")
+        return items
+    abstrakty = {z["doi"]: z["abstract"] for z in zaznamy if z["doi"] and z["abstract"]}
+    doplneno = 0
+    for it in bez:
+        abstract = abstrakty.get(it["link"].removeprefix("https://doi.org/").lower())
+        if not abstract:
+            continue
+        title = PREFIX_RE.sub("", it["title"])
+        it["description"] = popis_polozky(title, it.get("authors", ""), journal_name,
+                                          zkratit(abstract))
+        # U rozhodnutí je to záloha ke stránce vydavatele, u článku podklad.
+        it["ai_text"] = f"{title}\n\n{abstract}"
+        doplneno += 1
+    print(f"    [diag] {label}: abstrakt z feedu doplněn u {doplneno} "
+          f"z {len(bez)} položek bez abstraktu")
+    return items
 
 
 def scrape_jwip():
@@ -1621,8 +1666,11 @@ def main():
     # Časopisy přes Crossref (QMJIP, GRUR Int, IIC)
     for issn, label, journal_name in CROSSREF_JOURNALS:
         print(f"  Zdroj: {journal_name} (Crossref)")
-        all_items.extend(_zdroj(label, lambda i=issn, l=label, n=journal_name:
-                                fetch_crossref_journal(i, l, n), selhane))
+        items = _zdroj(label, lambda i=issn, l=label, n=journal_name:
+                       fetch_crossref_journal(i, l, n), selhane)
+        if label in ABSTRAKTY_Z_FEEDU:
+            items = doplnit_abstrakty(items, *ABSTRAKTY_Z_FEEDU[label], label, journal_name)
+        all_items.extend(items)
 
     # Časopisy s vlastním RSS vydavatele (se zálohou v Crossref)
     dalsi = [(nazev, f"{vydavatel} RSS", label,
