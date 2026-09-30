@@ -1,15 +1,15 @@
 {
-  "generated": "2026-09-29T05:33:50.831140+00:00",
-  "from": "2026-09-15",
-  "to": "2026-09-29",
-  "total": 76,
-  "covered": 13,
+  "generated": "2026-09-30T05:19:24.077556+00:00",
+  "from": "2026-09-16",
+  "to": "2026-09-30",
+  "total": 75,
+  "covered": 14,
   "cekajici": 2,
-  "intro": "Sledované období přineslo řadu rozhodnutí unijních soudů v oblasti ochranných známek zaměřených na posuzování rozlišovací způsobilosti a pravděpodobnosti záměny. Pozornost byla věnována také otázkám autorského práva, transferu technologií a dopadům moderních technologií včetně umělé inteligence na právo duševního vlastnictví.",
+  "intro": "Sledované období přineslo řadu rozhodnutí Soudního dvora EU a Tribunálu týkajících se posuzování pravděpodobnosti záměny a rozlišovací způsobilosti ochranných známek. Domácí i evropská judikatura a odborná literatura se rovněž věnovaly otázkám autorského práva, ochrany osobních údajů v digitálním prostředí a dopadům umělé inteligence.",
   "blocks": [
     {
-      "title": "Posouzení podobnosti ochranných známek",
-      "text": "Tribunál EU a Nejvyšší správní soud se v několika rozhodnutích zabývaly otázkou pravděpodobnosti záměny ochranných známek a posouzením jejich rozlišovací způsobilosti. Judikatura potvrzuje nutnost zohlednit slabou rozlišovací způsobilost starších známek a stupeň pozornosti relevantní veřejnosti při hodnocení kolizí označení.",
+      "title": "Posouzení záměny ochranných známek",
+      "text": "Tribunál a Nejvyšší správní soud řešily v několika případech otázku pravděpodobnosti záměny a rozlišovací způsobilosti označení. Pro praxi to znamená nutnost zohledňovat slabou rozlišovací způsobilost starších známek a stupeň pozornosti relevantní veřejnosti při rešerších a namítacích řízeních.",
       "sources": [
         {
           "src": "sdeu",
@@ -43,19 +43,6 @@
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "T-467/25 – Absara Industrial v. EUIPO - Hansgrohe (KROMAT)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0467"
-        }
-      ]
-    },
-    {
-      "title": "Rozhodování o absolutních důvodech",
-      "text": "Tribunál v řadě věcí přezkoumal rozhodnutí EUIPO týkající se zamítnutí přihlášek ochranných známek pro popisnost či nedostatek rozlišovací způsobilosti. Potvrdil, že označení mající charakter propagačních sdělení nebo popisující vlastnosti a účel zboží nemohou požit monopolní ochrany.",
-      "sources": [
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
           "title": "T-890/25 – Fitmart v. EUIPO (ULTRAPURE)",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0890"
         },
@@ -65,19 +52,32 @@
           "tag": "",
           "title": "T-827/25 – Cobra Golf v. EUIPO (ULTRADRY)",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0827"
+        }
+      ]
+    },
+    {
+      "title": "Ochrana osobních údajů",
+      "text": "Soudní dvůr EU se zabýval otázkou, zda souhlas s předáním údajů neurčeným partnerům pro přímý marketing postačuje bez znalosti totožnosti příjemce. Pro praxi správců dat to znamená nutnost získat specifický a informovaný souhlas předem.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "C-660/26 – International Card Services",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0660"
         },
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "T-509/25 – Société des produits Nestlé v. EUIPO - European Food (FITNESS)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0509"
+          "title": "C-317/25 – Groupe Canal +",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0317"
         }
       ]
     },
     {
-      "title": "Autorské právo a mezinárodní právo",
-      "text": "Soudní dvůr EU v rozsudku C-176/25 potvrdil, že otázka formální platnosti smlouvy o postoupení autorských práv spadá do oblasti smluvních závazků řídících se nařízením Řím I. Odborná literatura se současně věnuje výzvám spojeným s generativní umělou inteligencí a autorskosprávní ochranou výtvorů.",
+      "title": "Autorské právo a smluvní vztahy",
+      "text": "SDEU řešil otázku formální platnosti smlouvy o postoupení autorských práv v kontextu unijních nařízení. Bylo potvrzeno, že tato otázka spadá pod nařízení Řím I pro smluvní závazky.",
       "sources": [
         {
           "src": "sdeu",
@@ -85,6 +85,19 @@
           "tag": "",
           "title": "C-176/25 – Steizer",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0176"
+        }
+      ]
+    },
+    {
+      "title": "Umělá inteligence a právo",
+      "text": "Odborná literatura a zahraniční studie se zaměřily na výzvy spojené s generativní umělou inteligencí, autorskými odměnami a určením původcovství. Tyto analýzy upozorňují na rostoucí potřebu adaptace právních rámců na obsah generovaný AI.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IJLIT",
+          "title": "The cambridge handbook of the law, ethics and policy of artificial intelligence",
+          "link": "https://doi.org/10.1093/ijlit/eaag013"
         },
         {
           "src": "journals",
@@ -117,5 +130,5 @@
       ]
     }
   ],
-  "input_hash": "fda43118235a000026fb4384242dfc7a2311e36f0ead2e2c52a4feb4c5da247c"
+  "input_hash": "4f9da4199c4681e3199c25b0145e39a131427ff17e8196b2bf29fb5ee3741290"
 }
