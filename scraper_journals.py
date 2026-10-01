@@ -414,6 +414,9 @@ JURISPRUDENCE_ISSUE_RE = re.compile(r"/cz/casopis/archiv/(\d+)-(\d{4})/?$")
 JURISPRUDENCE_ARTICLE_RE = re.compile(r"/cz/casopis/[^/]+\.m-(\d+)\.html")
 JURISPRUDENCE_MAX_ITEMS = 25   # obsah jednoho čísla, ne celý ročník
 JURISPRUDENCE_TRY_ISSUES = 2   # nejnovější číslo a jedno předchozí
+# Monitoring judikatury je jen pro předplatitele a anotaci nemá – stránka
+# nedá nic, z čeho by šlo shrnovat (sonda 1. 10. 2026).
+JURISPRUDENCE_RUBRIKY_BEZ_OBSAHU = {"Monitoring judikatury"}
 
 
 def _jurisprudence_issue_pages():
@@ -506,6 +509,7 @@ def _jurisprudence_articles(soup, page_url):
                 # Anotaci má až stránka článku – stáhne se lazy, jen když se
                 # pro položku opravdu generuje shrnutí (viz enrich_summaries).
                 "ai_source": "page",
+                "bez_obsahu": rubrika in JURISPRUDENCE_RUBRIKY_BEZ_OBSAHU,
             })
 
     if not items:
@@ -1332,6 +1336,14 @@ MIN_TEXT_PRO_AI = 600      # kratší stránka není článek, ale rozcestník
 # selhala. Mluví jen za nás, ne za zdroj (ten text mít může), a důvod
 # neuvádí, protože ho u každé položky neznáme.
 BEZ_PODKLADU_NOTE = "Shrnutí zatím není k dispozici."
+# Položky, které obsah z principu mít nebudou: Monitoring judikatury
+# Jurisprudence (jen pro předplatitele), zprávy z akcí v Právníku (bez
+# anotace). Zjistí se jednou, uloží do cache (bez_obsahu) a stránka se pak
+# už znovu nestahuje.
+BEZ_OBSAHU_NOTE = "Obsah není dostupný."
+# Rubriky Právníka, jejichž články anotaci nemají; platí, jen když stránka
+# opravdu nic nedala.
+PRAVNIK_RUBRIKY_BEZ_OBSAHU = {"Z vědeckého života"}
 
 # Bez hlaviček Accept posílají někteří vydavatelé osekanou verzi stránky.
 PAGE_HEADERS = {
@@ -1346,6 +1358,15 @@ def page_author(soup):
     obsah čísla ho nenese – a stránka se stejně stahuje kvůli shrnutí."""
     el = soup.select_one("article .meta.author, .magazineDetail .meta.author")
     return clean_authors(el.get_text(" ", strip=True)) if el else ""
+
+
+def page_rubrika(soup):
+    """Rubrika ze stránky článku Právníka (`<li><strong>Rubrika:</strong> …`)."""
+    for li in soup.select("ul.meta li"):
+        text = " ".join(li.get_text(" ", strip=True).split())
+        if text.startswith("Rubrika:"):
+            return text.removeprefix("Rubrika:").strip()
+    return ""
 
 
 def fetch_page(url, limit=6000):
@@ -1382,9 +1403,11 @@ def enrich_summaries(items):
         # Autora nese u některých zdrojů až stránka článku (Právník). Když
         # ho položka nemá a není ani v cache, stránku si vyžádáme i tehdy,
         # když už shrnutí máme.
+        if cached.get("bez_obsahu"):
+            return False
         chybi_autor = (it.get("ai_source") == "page" and not it.get("authors")
                        and not cached.get("authors"))
-        return not cached.get("summary") or chybi_autor
+        return not cached.get("summary") or chybi_autor or it.get("bez_obsahu")
 
     def summarize(it, cached):
         g = it["guid"]
@@ -1392,6 +1415,11 @@ def enrich_summaries(items):
         summary, tag = "", ""
         # Rozhodnutí otištěné v časopise se shrnuje jinak než článek.
         prompt = it.get("ai_prompt") or JOURNAL_ARTICLE_PROMPT
+        if it.get("bez_obsahu"):
+            # Rubrika bez obsahu je známá už z výpisu – nic nestahovat,
+            # jen si to zapamatovat.
+            print(f"    [diag] {g}: rubrika bez obsahu, nestahuji")
+            return {"bez_obsahu": True}
         if it.get("ai_source") == "article" and it.get("ai_text") and not cached.get("summary"):
             print(f"    [diag] {g}: článek, ai_text {len(it['ai_text'])} znaků")
             summary, tag = gemini_summarize_text(it["ai_text"], prompt)
@@ -1403,6 +1431,9 @@ def enrich_summaries(items):
                     it["authors"] = page_author(soup)
                     if it["authors"]:
                         got["authors"] = it["authors"]
+                if not text and page_rubrika(soup) in PRAVNIK_RUBRIKY_BEZ_OBSAHU:
+                    print(f"    [diag] {g}: rubrika {page_rubrika(soup)!r} bez anotace")
+                    got["bez_obsahu"] = True
             except Exception as e:
                 print(f"  CHYBA stahování stránky {it['title']}: {e}")
             # Stránka nemusí pustit (Springer za kontrolou prohlížeče) ani mít
@@ -1434,7 +1465,7 @@ def enrich_summaries(items):
 
     items = summarize_with_cache(
         items, META_FILE, lambda it: it["guid"], summarize, needs_call,
-        fields=("summary", "tag", "authors"),
+        fields=("summary", "tag", "authors", "bez_obsahu"),
     )
     for it in items:
         # U rozhodnutí je plný text jen na stránce vydavatele, a ta se ne vždy
@@ -1447,7 +1478,8 @@ def enrich_summaries(items):
         # zkouší se to při každém běhu znovu. S vypnutou AI se poznámka
         # nepíše – shrnovat se nezkoušelo.
         if gemini_enabled():
-            it["note"] = "" if it["summary"] else BEZ_PODKLADU_NOTE
+            it["note"] = ("" if it["summary"] else
+                          BEZ_OBSAHU_NOTE if it["bez_obsahu"] else BEZ_PODKLADU_NOTE)
     return items
 
 
@@ -1613,7 +1645,8 @@ def z_archivu(vynechat, seen, meta, nyni=None, adresar=None):
                 else:
                     z.setdefault("popis", popis_polozky(z.get("nazev", ""), z.get("autori", "")))
                     if ai:
-                        z["poznamka"] = BEZ_PODKLADU_NOTE
+                        z["poznamka"] = (BEZ_OBSAHU_NOTE if (cache or {}).get("bez_obsahu")
+                                         else BEZ_PODKLADU_NOTE)
                     else:
                         z.pop("poznamka", None)
                 out[gid] = z
