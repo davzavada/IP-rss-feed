@@ -55,13 +55,13 @@
    }
   }
  },
- "aktualizovano": "2026-10-01T04:07:42Z",
+ "aktualizovano": "2026-10-01T04:39:12Z",
  "soudy": {
   "ns": {
    "chyba": "databáze NS nedala výsledky na žádný z 14 dotazů (nedostupná)",
    "nalezeno": 0,
    "nove": 0,
-   "objev": "2026-10-01T04:07:42Z",
+   "objev": "2026-10-01T04:39:12Z",
    "varovani": [
     "úřední deska nedostupná (obcanskopravni-a-obchodni-kolegium): ConnectionError",
     "úřední deska nedostupná (trestni-kolegium): ConnectionError"
@@ -70,7 +70,7 @@
   "nss": {
    "chyba": "ReadTimeout",
    "detail": "HTTPSConnectionPool(host='vyhledavac.nssoud.cz', port=443): Read timed out. (read timeout=30)",
-   "objev": "2026-10-01T04:07:42Z"
+   "objev": "2026-10-01T04:39:12Z"
   },
   "sdeu": {
    "chyba": null,
