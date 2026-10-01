@@ -68,6 +68,16 @@ jobs:
         if: steps.plan.outputs.scrape == 'true'
         run: pip install -r requirements.txt
 
+      # Springer pouští stránky článků (podklad ke shrnutí IIC) jen prohlížeči,
+      # který projde kontrolou JavaScriptu. Když instalace selže, časopisy
+      # doběhnou i bez něj, jen IIC bez abstraktu zůstane bez shrnutí.
+      - name: Prohlížeč pro Springer
+        if: steps.plan.outputs.scrape == 'true'
+        continue-on-error: true
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
       # Judikaturu (NS, NSS, ÚS, SDEU) sbírá judikatura.yml. Každý scraper je
       # samostatný krok: když jeden spadne, ostatní doběhnou a commit uloží,
       # co se povedlo.
