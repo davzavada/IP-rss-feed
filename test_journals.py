@@ -62,6 +62,9 @@ check("guid drží stabilní id článku", monitoring["guid"] == "Jurisprudence-
 check("odkaz míří na stránku článku",
       monitoring["link"].endswith("monitoring-judikatury-evropskeho-soudu-pro-lidska-prava.m-1011.html"),
       monitoring["link"])
+check("Monitoring judikatury je bez obsahu (jen pro předplatitele), stati ne",
+      monitoring["bez_obsahu"] and not items[0]["bez_obsahu"],
+      str([(i["title"][:40], i["bez_obsahu"]) for i in items]))
 
 # Prázdná stránka nesmí projít jako „číslo bez článků" – volající pak zkusí
 # další stránku místo toho, aby vydal prázdný feed.
@@ -530,6 +533,56 @@ check("bez podkladu se AI vůbec nevolá", poslano == [], str(poslano))
 check("bez podkladu dostane položka poznámku",
       zprava["note"] == s.BEZ_PODKLADU_NOTE and not zprava["summary"], str(zprava))
 
+# Položky, které obsah z principu mít nebudou, se zjistí jednou, uloží do
+# cache a dál se nestahují; poznámka řekne, že obsah není dostupný.
+_stazeno = []
+
+
+def _stranka(text):
+    def get(url, *a, **k):
+        _stazeno.append(url)
+        return _Resp(text)
+    return get
+
+
+with open("tests/fixtures/pravnik_2026-9_clanek.html", encoding="utf-8") as f:
+    _pravnik_stat = f.read()
+check("rubrika ze stránky článku Právníka",
+      s.page_rubrika(BeautifulSoup(_pravnik_stat, "html.parser")) == "Stati")
+_z_akce = ('<html><body><ul class="meta"><li><strong>Právník</strong> 9/2026</li>'
+           '<li><strong>Rubrika:</strong> Z vědeckého života</li></ul></body></html>')
+s.META_FILE = os.path.join(meta_dir, "bez_obsahu.json")
+s.requests.get = _stranka(_z_akce)
+akce = dict(zprava, guid="Pravnik-2026-2026-9-4062", summary="", note="")
+s.enrich_summaries([akce])
+check("zpráva z akce bez anotace: poznámka, že obsah není dostupný",
+      akce["note"] == s.BEZ_OBSAHU_NOTE and not akce["summary"] and poslano == [],
+      str(akce))
+_stazeno.clear()
+akce = dict(zprava, guid="Pravnik-2026-2026-9-4062", summary="", note="", authors="X")
+s.enrich_summaries([akce])
+check("podruhé se stránka zprávy z akce nestahuje",
+      _stazeno == [] and akce["note"] == s.BEZ_OBSAHU_NOTE, str(_stazeno))
+
+# Stať ze stejné rubriky, která anotaci má, se shrne normálně.
+s.requests.get = _stranka(_pravnik_stat.replace("Stati", "Z vědeckého života"))
+stat = dict(zprava, guid="Pravnik-2026-2026-9-4001", summary="", note="")
+s.enrich_summaries([stat])
+check("rubrika bez obsahu neplatí, když stránka anotaci má",
+      stat["summary"] and not stat["note"], str(stat))
+
+poslano.clear()
+_stazeno.clear()
+mon = {"guid": "Jurisprudence-1059", "title": "[Jurisprudence] Monitoring judikatury",
+       "link": "https://www.jurisprudence.test/m-1059.html", "authors": "Jan Tryzna",
+       "description": "Monitoring", "pub_date": datetime(2026, 9, 26, tzinfo=timezone.utc),
+       "ai_source": "page", "bez_obsahu": True}
+s.enrich_summaries([mon])
+check("Monitoring judikatury se vůbec nestahuje a dostane poznámku",
+      _stazeno == [] and poslano == [] and mon["note"] == s.BEZ_OBSAHU_NOTE, str(mon))
+check("bez obsahu se uloží do cache",
+      fc.load_json(s.META_FILE)["Jurisprudence-1059"] == {"bez_obsahu": True})
+
 # =====================================================================
 print("\nVýstup pro web (docs/data/casopisy.json)")
 # =====================================================================
@@ -789,6 +842,20 @@ check("doplněný záznam má shrnutí z cache, zahozené shrnutí zmizí",
       okno["Pravnik-2026-2026-8-3"].get("shrnuti") == "Nové shrnutí."
       and "shrnuti" not in okno["Pravnik-2026-2026-8-2"] and okno["Pravnik-2026-2026-8-2"].get("popis"),
       str(okno["Pravnik-2026-2026-8-2"]))
+# Záznam z archivu (zdroj ho už nevypisuje) bere poznámku podle cache.
+_arch_dir = tempfile.mkdtemp(prefix="archiv-bez-obsahu-")
+with open(os.path.join(_arch_dir, ted.strftime("%Y-%m") + ".jsonl"), "w", encoding="utf-8") as f:
+    for _gid in ("Jurisprudence-1059", "Jurisprudence-1050"):
+        f.write(json.dumps({"id": _gid, "nazev": "Monitoring", "datum": "2026-09-26"}) + "\n")
+_ai_bylo = s.gemini_enabled
+s.gemini_enabled = lambda: True
+_z = {z["id"]: z for z in s.z_archivu(
+    set(), {"Jurisprudence-1059": ted.isoformat(), "Jurisprudence-1050": ted.isoformat()},
+    {"Jurisprudence-1059": {"bez_obsahu": True}}, nyni=ted, adresar=_arch_dir)}
+s.gemini_enabled = _ai_bylo
+check("záznam z archivu bez obsahu nese poznámku, že obsah není dostupný",
+      _z["Jurisprudence-1059"].get("poznamka") == s.BEZ_OBSAHU_NOTE
+      and _z["Jurisprudence-1050"].get("poznamka") == s.BEZ_PODKLADU_NOTE, str(_z))
 check("okno je seřazené podle data",
       [p["datum"] for p in okno.values()] == sorted((p["datum"] for p in okno.values()), reverse=True))
 with open(s.STATE_FILE, encoding="utf-8") as f:
