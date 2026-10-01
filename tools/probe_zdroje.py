@@ -365,6 +365,10 @@ SPRINGER_FEEDY = {
                              "&facet-journal-id=40319&sortBy=newestFirst",
     "springer_feed_holy": SPRINGER + "/search.rss?facet-journal-id=40319",
     "springer_feed_kanal": SPRINGER + "/search.rss?facet-journal-id=40319&channel-name=IIC",
+    "springer_feed_hledani": SPRINGER + "/search.rss?query=&content-type=Article"
+                             "&advancedSearch=true&journal=IIC+-+International+Review+of"
+                             "+Intellectual+Property+and+Competition+Law&date=m3"
+                             "&sortBy=newestFirst",
 }
 HLAVICKY_RSS = {
     "Accept": "application/rss+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.5",
@@ -384,6 +388,59 @@ def sonda_springer(s, den):
     ukaz(s.stahni("springer_feed_html_hlavicky", SPRINGER_FEEDY["springer_feed_puvodni"]))
     ukaz(s.stahni("springer_casopis", SPRINGER + "/journal/40319/articles"))
     ukaz(s.stahni("springer_clanek", SPRINGER + "/article/10.1007/s40319-026-01781-y"))
+    sonda_springer_prohlizec(s)
+
+
+def sonda_springer_prohlizec(s):
+    """Stránku článku načte headless Chromium (projde kontrolou JavaScriptu?)
+    a vypíše, jestli v ní je abstrakt."""
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        print("  springer_prohlizec           přeskočeno – chybí playwright")
+        return
+    url = SPRINGER + "/article/10.1007/s40319-026-01781-y"
+    zaznam = {"nazev": "springer_prohlizec", "metoda": "chromium", "url": url}
+    start = time.monotonic()
+    try:
+        with sync_playwright() as p:
+            prohlizec = p.chromium.launch()
+            stranka = prohlizec.new_page(user_agent=USER_AGENT, locale="en-US")
+            odpoved = stranka.goto(url, wait_until="networkidle", timeout=TIMEOUT * 1000)
+            # Kontrola může stránku po vyřešení znovu načíst.
+            stranka.wait_for_timeout(5000)
+            html = stranka.content()
+            nadpis = stranka.title()
+            abstrakt = stranka.evaluate("""() => {
+                const sel = ['section[data-title="Abstract"]', '#Abs1-content', '#Abs1'];
+                for (const s of sel) { const e = document.querySelector(s);
+                    if (e) return e.innerText; }
+                const m = document.querySelector('meta[name="dc.description"]');
+                return m ? 'meta: ' + m.content : '';
+            }""")
+            # Feed ve stejné relaci (cookie z prošlé kontroly).
+            feed = stranka.request.get(SPRINGER_FEEDY["springer_feed_hledani"],
+                                       headers=HLAVICKY_RSS)
+            feed_typ, feed_text = feed.headers.get("content-type", ""), feed.text()
+            prohlizec.close()
+    except Exception as e:
+        zaznam.update(chyba=f"{type(e).__name__}: {e}"[:300])
+        s.souhrn.append(zaznam)
+        print(f"  springer_prohlizec           CHYBA {zaznam['chyba'][:200]}")
+        return
+    with open(os.path.join(s.vystup, "springer_prohlizec.html"), "w", encoding="utf-8") as f:
+        f.write(html)
+    zaznam.update(status=odpoved.status if odpoved else None, velikost=len(html),
+                  nadpis=nadpis, abstrakt=abstrakt[:500],
+                  trvani_s=round(time.monotonic() - start, 1))
+    s.souhrn.append(zaznam)
+    print(f"  springer_prohlizec           {zaznam['status']}  {len(html):>9} B  "
+          f"{zaznam['trvani_s']:>5}s  titulek {nadpis[:80]!r}")
+    print(f"  {'':28} abstrakt: {abstrakt[:300]!r}")
+    with open(os.path.join(s.vystup, "springer_prohlizec_feed.txt"), "w", encoding="utf-8") as f:
+        f.write(feed_text)
+    print(f"  springer_prohlizec_feed      {feed.status}  {len(feed_text):>9} B  {feed_typ[:40]}")
+    print(f"  {'':28} {feed_text[:300]!r}")
 
 
 SONDY = {"ns": sonda_ns, "nss": sonda_nss, "us": sonda_us, "sdeu": sonda_sdeu,

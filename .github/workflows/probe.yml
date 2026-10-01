@@ -46,6 +46,14 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      # Springer pouští stránky jen prohlížeči, který projde kontrolou
+      # JavaScriptu – sonda zkouší, jestli na to stačí headless Chromium.
+      - name: Prohlížeč pro sondu Springeru
+        if: contains(inputs.soudy, 'springer')
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
       # Vstupy jdou do skriptu přes proměnné, ne přes příkazovou řádku –
       # text z formuláře se tak nikdy nevykoná jako shell.
       - name: Sonda
