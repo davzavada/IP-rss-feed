@@ -356,8 +356,100 @@ def sonda_akce(s, den):
             s.stahni(f"akce_{org.lower()}_{i}", url)
 
 
+# Feed IIC, ze kterého scraper_journals.py doplňuje abstrakty chybějící
+# v Crossrefu. Z Actions vracel místo RSS HTML – sonda ukáže, která adresa
+# a které hlavičky projdou a jestli je za kontrolou prohlížeče celý web.
+SPRINGER = "https://link.springer.com"
+SPRINGER_FEEDY = {
+    "springer_feed_puvodni": SPRINGER + "/search.rss?facet-content-type=Article"
+                             "&facet-journal-id=40319&sortBy=newestFirst",
+    "springer_feed_holy": SPRINGER + "/search.rss?facet-journal-id=40319",
+    "springer_feed_kanal": SPRINGER + "/search.rss?facet-journal-id=40319&channel-name=IIC",
+    "springer_feed_hledani": SPRINGER + "/search.rss?query=&content-type=Article"
+                             "&advancedSearch=true&journal=IIC+-+International+Review+of"
+                             "+Intellectual+Property+and+Competition+Law&date=m3"
+                             "&sortBy=newestFirst",
+}
+HLAVICKY_RSS = {
+    "Accept": "application/rss+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.5",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Referer": SPRINGER + "/journal/40319",
+}
+
+
+def sonda_springer(s, den):
+    """Varianty feedu IIC a pro srovnání stránka časopisu a článku."""
+    def ukaz(r):
+        if r is not None:
+            print(f"  {'':28} {r.text[:200]!r}")
+
+    for nazev, url in SPRINGER_FEEDY.items():
+        ukaz(s.stahni(nazev, url, headers=HLAVICKY_RSS))
+    ukaz(s.stahni("springer_feed_html_hlavicky", SPRINGER_FEEDY["springer_feed_puvodni"]))
+    ukaz(s.stahni("springer_casopis", SPRINGER + "/journal/40319/articles"))
+    ukaz(s.stahni("springer_clanek", SPRINGER + "/article/10.1007/s40319-026-01781-y"))
+    sonda_springer_prohlizec(s)
+
+
+def sonda_springer_prohlizec(s):
+    """Stránku článku načte headless Chromium (projde kontrolou JavaScriptu?)
+    a vypíše, jestli v ní je abstrakt."""
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        print("  springer_prohlizec           přeskočeno – chybí playwright")
+        return
+    url = SPRINGER + "/article/10.1007/s40319-026-01781-y"
+    zaznam = {"nazev": "springer_prohlizec", "metoda": "chromium", "url": url}
+    start = time.monotonic()
+    try:
+        with sync_playwright() as p:
+            prohlizec = p.chromium.launch()
+            stranka = prohlizec.new_page(user_agent=USER_AGENT, locale="en-US")
+            odpoved = stranka.goto(url, wait_until="domcontentloaded", timeout=TIMEOUT * 1000)
+            # Kontrolní stránka stále něco načítá (networkidle nenastane) a po
+            # vyřešení stránku znovu načte – dát jí čas a čekat na abstrakt.
+            try:
+                stranka.wait_for_selector("#Abs1, section[data-title='Abstract']",
+                                          timeout=30000)
+            except Exception:
+                pass
+            html = stranka.content()
+            nadpis = stranka.title()
+            abstrakt = stranka.evaluate("""() => {
+                const sel = ['section[data-title="Abstract"]', '#Abs1-content', '#Abs1'];
+                for (const s of sel) { const e = document.querySelector(s);
+                    if (e) return e.innerText; }
+                const m = document.querySelector('meta[name="dc.description"]');
+                return m ? 'meta: ' + m.content : '';
+            }""")
+            # Feed ve stejné relaci (cookie z prošlé kontroly).
+            feed = stranka.request.get(SPRINGER_FEEDY["springer_feed_hledani"],
+                                       headers=HLAVICKY_RSS)
+            feed_typ, feed_text = feed.headers.get("content-type", ""), feed.text()
+            prohlizec.close()
+    except Exception as e:
+        zaznam.update(chyba=f"{type(e).__name__}: {e}"[:300])
+        s.souhrn.append(zaznam)
+        print(f"  springer_prohlizec           CHYBA {zaznam['chyba'][:200]}")
+        return
+    with open(os.path.join(s.vystup, "springer_prohlizec.html"), "w", encoding="utf-8") as f:
+        f.write(html)
+    zaznam.update(status=odpoved.status if odpoved else None, velikost=len(html),
+                  nadpis=nadpis, abstrakt=abstrakt[:500],
+                  trvani_s=round(time.monotonic() - start, 1))
+    s.souhrn.append(zaznam)
+    print(f"  springer_prohlizec           {zaznam['status']}  {len(html):>9} B  "
+          f"{zaznam['trvani_s']:>5}s  titulek {nadpis[:80]!r}")
+    print(f"  {'':28} abstrakt: {abstrakt[:300]!r}")
+    with open(os.path.join(s.vystup, "springer_prohlizec_feed.txt"), "w", encoding="utf-8") as f:
+        f.write(feed_text)
+    print(f"  springer_prohlizec_feed      {feed.status}  {len(feed_text):>9} B  {feed_typ[:40]}")
+    print(f"  {'':28} {feed_text[:300]!r}")
+
+
 SONDY = {"ns": sonda_ns, "nss": sonda_nss, "us": sonda_us, "sdeu": sonda_sdeu,
-         "akce": sonda_akce}
+         "akce": sonda_akce, "springer": sonda_springer}
 
 
 def vychozi_den():

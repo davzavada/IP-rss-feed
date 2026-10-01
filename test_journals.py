@@ -386,50 +386,61 @@ check("záloha nese i název se soudem a značkou",
       and "Hanoi" in iic["IIC-10.1007/s40319-026-01772-y"]["ai_text"],
       iic["IIC-10.1007/s40319-026-01772-y"]["ai_text"])
 
-# Springer do Crossrefu abstrakty IIC často nedeponuje; doplní je jeho
-# vyhledávací feed podle DOI. Co abstrakt má, zůstane, jak je.
+# Springer do Crossrefu abstrakty IIC často nedeponuje; podklad doplní
+# stránka článku načtená prohlížečem (z Actions jinak jen kontrola).
 _clanek = {"DOI": "10.1007/s40319-026-01780-X", "title": ["Designing Justice"],
            "author": [{"given": "Seun", "family": "Lari-Williams"}],
            "created": {"date-parts": [[2026, 9, 29]]}}
 _odpovedi = {"from-created-date": [_clanek, _rozhodnuti, _s_anotaci], "from-pub-date": []}
 iic = s.fetch_crossref_journal("0018-9855", "IIC", "IIC")
 
+# Skutečná stránka editorialu IIC, jak ji 1. 10. 2026 stáhlo headless
+# Chromium z Actions (sonda): abstrakt nemá, celý text ano.
+with open("tests/fixtures/springer_iic_editorial_2026-10-01.html", encoding="utf-8") as f:
+    _editorial = f.read()
+_abs, _text = s.springer_text(_editorial)
+check("editorial bez abstraktu: abstrakt prázdný, text článku ano",
+      _abs == "" and _text.startswith("On 23 July 2026 the Commission issued its largest fine"),
+      _text[:120])
+check("text článku bez značek poznámek a oříznutý",
+      "Footnote" not in _text and len(_text) <= s.SPRINGER_TEXT_MAX, str(len(_text)))
+check("stránka kontroly prohlížeče nic nedá",
+      s.springer_text("<html><body>Client Challenge</body></html>") == ("", ""))
+_s_abstraktem = ("<section data-title='Abstract'><div class='c-article-section__content'>"
+                 "<p>A dispute system design framework for copyright.</p></div></section>"
+                 "<div class='main-content'><p>Body.</p></div>")
+check("abstrakt ze sekce Abstract",
+      s.springer_text(_s_abstraktem)[0] == "A dispute system design framework for copyright.")
 
-class _Feed:
-    content = """<?xml version="1.0"?><rss version="2.0"><channel>
-<item><title>Designing Justice</title>
-<link>https://link.springer.com/article/10.1007/s40319-026-01780-x</link>
-<description>&lt;p&gt;A dispute system design framework for copyright.&lt;/p&gt;</description>
-<pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate></item>
-<item><title>LUFFMAN</title>
-<link>https://link.springer.com/article/10.1007/s40319-026-01772-y</link>
-<description>Jiný text.</description></item>
-</channel></rss>""".encode()
-
-    def raise_for_status(self):
-        pass
+_stazene = []
 
 
-s.requests.get = lambda *a, **k: _Feed()
-iic = {i["guid"]: i for i in s.doplnit_abstrakty(iic, "https://feed.test", "", "IIC", "IIC")}
+def _stahni(urls):
+    _stazene.extend(urls)
+    return {s.SPRINGER_CLANEK + "10.1007/s40319-026-01780-X": _s_abstraktem,
+            s.SPRINGER_CLANEK + "10.1007/s40319-026-01772-z": "<p>Client Challenge</p>"}
+
+
+_meta = {"IIC-10.1007/s40319-026-01772-z": {}}
+iic = {i["guid"]: i for i in s.doplnit_ze_stranek(iic, "IIC", "IIC", _meta, stahni=_stahni)}
 _dj = iic["IIC-10.1007/s40319-026-01780-X"]
-check("abstrakt chybějící v Crossrefu se doplní z feedu",
+check("abstrakt chybějící v Crossrefu se doplní ze stránky",
       _dj["ai_text"] == "Designing Justice\n\nA dispute system design framework for copyright."
       and "dispute system design" in _dj["description"], str(_dj))
-check("abstrakt z Crossrefu feed nepřepíše",
-      "Jiný text" not in iic["IIC-10.1007/s40319-026-01772-y"]["ai_text"])
-check("bez shody ve feedu položka zůstane bez abstraktu",
+check("stránka se nenačítá u položky, která abstrakt má",
+      s.SPRINGER_CLANEK + "10.1007/s40319-026-01772-y" not in _stazene, str(_stazene))
+check("nenačtená stránka nechá položku bez podkladu",
       iic["IIC-10.1007/s40319-026-01772-z"]["ai_text"] == "")
 
-
-def _nedostupny(*a, **k):
-    raise s.requests.ConnectionError("403")
-
-
-s.requests.get = _nedostupny
 _bez = [{"guid": "IIC-10.1/x", "link": "https://doi.org/10.1/x", "ai_text": "", "title": "[IIC] X"}]
-check("nedostupný feed nic nerozbije",
-      s.doplnit_abstrakty(_bez, "https://feed.test", "", "IIC", "IIC") == _bez)
+_stazene.clear()
+check("položka se shrnutím v cache se znovu nenačítá",
+      s.doplnit_ze_stranek(_bez, "IIC", "IIC", {"IIC-10.1/x": {"summary": "S."}},
+                           stahni=_stahni) == _bez and not _stazene)
+check("editorial dostane jako podklad text článku",
+      s.doplnit_ze_stranek(
+          [dict(_bez[0])], "IIC", "IIC", {},
+          stahni=lambda u: {u[0]: _editorial})[0]["ai_text"].startswith("X\n\nOn 23 July 2026"))
 
 # =====================================================================
 print("\n7) Stránka, která místo obsahu vrátí chybu, nesmí jít do AI")
