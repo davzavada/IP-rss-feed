@@ -23,6 +23,8 @@ import time
 from datetime import date, datetime, timedelta, timezone
 from urllib.parse import parse_qs, urlparse
 
+import requests
+
 import feed_common as fc
 import scraper_judikatura
 from judikatura import analyza, fronta, kontrola, mapy, migrace, model, orchestr
@@ -762,6 +764,47 @@ check("scraper: selhání soudu = ::error:: a kód 1, dílčí selhání ::warni
 with contextlib.redirect_stdout(io.StringIO()):
     kod = scraper_judikatura.ohlas({"ai": 0, "chyby": {}, "varovani": {}})
 check("scraper: bez selhání kód 0", kod == 0)
+# Výpadek webu soudu (spojení, timeout): prvních 36 h jen varování, pak chyba.
+PD3 = tmpdir()
+STAV3 = os.path.join(PD3, "stav.json")
+
+
+def beh3(adaptery, nyni):
+    return orchestr.beh(adaptery, list(adaptery), nyni=nyni, stav_cesta=STAV3, data_dir=PD3, web_dir=tmpdir())
+
+
+def stav3(soud):
+    with open(STAV3, encoding="utf-8") as f:
+        return json.load(f)["soudy"][soud]
+
+
+timeout = requests.exceptions.ReadTimeout("Read timed out. (read timeout=30)")
+souhrn = beh3({"nss": Adapter("nss", chyba=timeout), "us": Adapter("us", [])}, TRETI_DEN)
+vystup = io.StringIO()
+with contextlib.redirect_stdout(vystup):
+    kod = scraper_judikatura.ohlas(souhrn)
+check("výpadek webu soudu: jen varování a kód 0, odkdy je ve stav.json",
+      kod == 0 and not souhrn["chyby"] and "nss" in souhrn["vypadky"]
+      and "::warning::Judikatura nss: ReadTimeout" in vystup.getvalue()
+      and stav3("nss")["nedostupny_od"] == model.iso(TRETI_DEN), vystup.getvalue() + str(souhrn))
+souhrn = beh3({"nss": Adapter("nss", chyba=timeout)}, TRETI_DEN + timedelta(days=1))
+check("výpadek druhý den: pořád varování, začátek výpadku zůstává",
+      not souhrn["chyby"] and stav3("nss")["nedostupny_od"] == model.iso(TRETI_DEN), str(souhrn))
+souhrn = beh3({"nss": Adapter("nss", chyba=timeout)}, TRETI_DEN + timedelta(days=2))
+with contextlib.redirect_stdout(io.StringIO()):
+    kod = scraper_judikatura.ohlas(souhrn)
+check("výpadek třetí den: chyba a kód 1",
+      kod == 1 and souhrn["chyby"]["nss"].startswith("web soudu nedostupný od") and not souhrn["vypadky"], str(souhrn))
+beh3({"nss": Adapter("nss", [])}, TRETI_DEN + timedelta(days=3))
+souhrn = beh3({"nss": Adapter("nss", chyba=timeout)}, TRETI_DEN + timedelta(days=4))
+check("po úspěšném běhu se výpadek počítá znovu",
+      not souhrn["chyby"] and stav3("nss")["nedostupny_od"] == model.iso(TRETI_DEN + timedelta(days=4)), str(souhrn))
+a5 = Adapter("ns", [])
+a5.chyby = ["databáze NS nedala výsledky na žádný z 14 dotazů (nedostupná)"]
+a5.nedostupny = True
+souhrn = beh3({"ns": a5}, TRETI_DEN)
+check("NS nedostupná (jistič adaptéru) = výpadek, ne chyba",
+      not souhrn["chyby"] and "databáze NS" in souhrn["vypadky"]["ns"], str(souhrn))
 souhrn = beh2({"nss": Adapter("nss", chyba=RuntimeError("výpis hlásí 92 výsledků, přečteno 0"))}, TRETI_DEN)
 check("výjimka adaptéru je chyba i v souhrnu (pro kód 1)",
       souhrn["chyby"]["nss"] == "RuntimeError: výpis hlásí 92 výsledků, přečteno 0", str(souhrn))
@@ -1006,7 +1049,8 @@ ids = [z["id"] for z in adapter.objev(date(2026, 9, 14), date(2026, 9, 24))]
 check("NS nedostupná: po třech výpadcích spojení se další dotazy neposílají ani nedělí",
       pocet_hledani(web) == ns.SITOVYCH_SELHANI, str(pocet_hledani(web)))
 check("NS nedostupná: deska se vezme, výpadek je chyba pro orchestr",
-      ids == ["ns:deska:23cdo418/2026"] and len(adapter.chyby) == 1 and "nedostupná" in adapter.chyby[0],
+      ids == ["ns:deska:23cdo418/2026"] and len(adapter.chyby) == 1 and "nedostupná" in adapter.chyby[0]
+      and adapter.nedostupny,
       str(ids) + str(adapter.chyby))
 web = Web(lambda dotaz, start: Odp(500, "<html>Field is too large (32K)</html>"), PRAZDNA_DESKA)
 adapter = ns.NS(session_factory=web.session)

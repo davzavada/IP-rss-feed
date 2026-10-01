@@ -19,7 +19,8 @@ začátku, objevování i AI), nebo proměnné AI_MAX_POLOZEK a AI_MAX_MINUT
 Když některý soud selže (výjimka, web nedal nic použitelného), vypíše to
 jako ::error:: pro GitHub Actions a skončí kódem 1 – až po uložení archivu,
 oken a stav.json, takže commit ve workflow proběhne. Dílčí selhání
-(neúplné hledání, nedostupný doplňkový zdroj) jen ::warning::.
+(neúplné hledání, nedostupný doplňkový zdroj) jen ::warning::, stejně jako
+výpadek webu soudu, dokud netrvá déle než orchestr.VYPADEK_TOLERANCE.
 """
 
 import argparse
@@ -62,10 +63,12 @@ def main():
 
 def ohlas(souhrn):
     """Selhání zdrojů jako anotace GitHub Actions. Vrací návratový kód:
-    1, když některý soud selhal, jinak 0."""
+    1, když některý soud selhal, jinak 0 (i při krátkém výpadku webu soudu)."""
     for soud, varovani in souhrn.get("varovani", {}).items():
         for v in varovani:
             print(f"::warning::Judikatura {soud}: {v}")
+    for soud, vypadek in souhrn.get("vypadky", {}).items():
+        print(f"::warning::Judikatura {soud}: {vypadek}")
     for soud, chyba in souhrn.get("chyby", {}).items():
         print(f"::error::Judikatura {soud}: {chyba} (viz data/judikatura/stav.json)")
     return 1 if souhrn.get("chyby") else 0

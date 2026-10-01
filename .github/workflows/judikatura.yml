@@ -74,9 +74,10 @@ jobs:
 
       # Archiv i okna se ukládají hned po objevování a archiv pak po každém
       # rozhodnutí; když krok spadne nebo vyprší, commit níže uloží aspoň to,
-      # co se stihlo. Selhání soudu (výpadek, změna webu) skript ohlásí
+      # co se stihlo. Selhání soudu (změna webu, chyba) skript ohlásí
       # ::error:: a kódem 1 až po uložení všeho – job pak zčervená v kroku
-      # „Výsledek sběru“. AI_MAX_MINUT je rozpočet celého běhu od začátku;
+      # „Výsledek sběru“. Výpadek webu soudu (neodpovídá) je prvních 36 h jen
+      # ::warning:: – ostatní soudy se uloží a běh zůstane zelený. AI_MAX_MINUT je rozpočet celého běhu od začátku;
       # 25 minut do limitu kroku je rezerva na poslední volání AI a přepis
       # hesel. `exec`, ať SIGINT při vypršení kroku dostane přímo Python
       # (dokončí zápis oken a stav.json).
