@@ -27,7 +27,7 @@ END:DAYLIGHT
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:akce-b07ba5dc0b19453a4596@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20260925T190000
 DTEND;TZID=Europe/Prague:20260925T201000
 SUMMARY:PF UK: Dezinformace a boj s nimi z pohledu mezinárodního práva
@@ -46,7 +46,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-26b349de8c038e714b32@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20260926T160000
 DTEND;TZID=Europe/Prague:20260926T170000
 SUMMARY:JČP: Popravy a popraviště\, a popravní nástroje z pohledu prá
@@ -63,7 +63,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-4673209472a87cbe6b1c@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;VALUE=DATE:20260930
 DTEND;VALUE=DATE:20261001
 SUMMARY:PF UK: Debata o problémech sociálních sítí a jejich řešeníc
@@ -81,7 +81,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-fa6e622fde8295b44159@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;VALUE=DATE:20260930
 DTEND;VALUE=DATE:20261003
 SUMMARY:PF UK: Odborná konference Pracovní právo 2026 s podtitulem „Pr
@@ -98,7 +98,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-91102010e8a932edcd76@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20260930T100000
 DTEND;TZID=Europe/Prague:20260930T140000
 SUMMARY:ČAK: Advokátní tarif a jiné způsoby odměňování - aplikace 
@@ -116,7 +116,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-4cde32af8986db2ec746@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261001T090000
 DTEND;TZID=Europe/Prague:20261001T160000
 SUMMARY:ČAK: Rozvodová novela a věci péče soudu o nezletilé
@@ -132,7 +132,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-93973b841bf8a134fa0c@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261001T090000
 DTEND;TZID=Europe/Prague:20261001T160000
 SUMMARY:ČAK: Společné jmění manželů 2026 aktuálně - část 3.
@@ -146,44 +146,8 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:akce-de352d9afec3a4acc5e9@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
-DTSTART;TZID=Europe/Prague:20261001T090000
-DTEND;TZID=Europe/Prague:20261001T150000
-SUMMARY:epravo: Trestní právo daňové (online - živé vysílání) - 1.
- 10.2026
-DESCRIPTION:Pořadatel: epravo.cz\nForma: Online\nLektoři: Simona Hornocho
- vá\, Ondřej Trubač\, Petra Vítková\, Vladimír Suchý\, Radka Čihulk
- ová\, Patrik Koželuha\, Tereza Svobodová\, Michal Polák\nCena: 3 975 K
- č s DPH\n\nOnline kurz zaměřený na problematiku trestního práva daň
- ového.\n\nPřihláška: https://www.epravo.cz/eshop/trestni-pravo-danove-
- online-zive-vysilani-1-10-2026-1557.html
-LOCATION:online
-URL:https://www.epravo.cz/eshop/trestni-pravo-danove-online-zive-vysilani-1
- -10-2026-1557.html
-STATUS:CONFIRMED
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:akce-b9e2d560119e93a19c42@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
-DTSTART;TZID=Europe/Prague:20261001T090000
-DTEND;TZID=Europe/Prague:20261001T150000
-SUMMARY:epravo: Trestní právo daňové - 1.10.2026
-DESCRIPTION:Pořadatel: epravo.cz\nForma: Prezenčně\nLektoři: Simona Hor
- nochová\, Ondřej Trubač\, Petra Vítková\, Vladimír Suchý\, Radka Č
- ihulková\, Patrik Koželuha\, Tereza Svobodová\, Michal Polák\nCena: 3 
- 975 Kč s DPH\n\nOdborná konference zaměřená na trestní právo daňov
- é.\n\nPřihláška: https://www.epravo.cz/eshop/trestni-pravo-danove-1-10
- -2026-1558.html
-LOCATION:online
-URL:https://www.epravo.cz/eshop/trestni-pravo-danove-1-10-2026-1558.html
-STATUS:CONFIRMED
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:akce-cae8aba7ce3fabead818@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261001T090000
 DTEND;TZID=Europe/Prague:20261001T100000
 SUMMARY:ÚPV: Databáze Espacenet
@@ -198,7 +162,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-f4ff8b91a21e227037c8@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261001T100000
 DTEND;TZID=Europe/Prague:20261001T140000
 SUMMARY:ČAK: Povinnosti advokátů podle AML předpisů
@@ -212,26 +176,25 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:akce-89da18e6be1ce243ec1f@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
-DTSTART;TZID=Europe/Prague:20261002T090000
-DTEND;TZID=Europe/Prague:20261002T170000
-SUMMARY:epravo: Daňové právo 2026 - 2.10.2026
-DESCRIPTION:Pořadatel: epravo.cz\nForma: Prezenčně\nLektoři: Mgr. Karel
-  Šimek\, prof. JUDr. Ing. Michal Radvan\, Ph.D.\, JUDr. Lucie Fuksová\, 
- Mgr. et Mgr. Jan Oliva\, LL.M.\, Mgr. Václav Čepelák\, Mgr. Tomáš Roz
- ehnal\, Ph.D.\, JUDr. Ing. Jiří Kappel\, Ph.D.\, Mgr. Ing. Lenka Bursík
- ová\nCena: 3 025 Kč s DPH\n\nKonference věnovaná aktuálním otázkám
-  daňového práva pro rok 2026.\n\nPřihláška: https://www.epravo.cz/es
- hop/danove-pravo-2026-2-10-2026-1549.html
-LOCATION:Univerzita Karlova\, Právnická fakulta\, místnost 120
-URL:https://www.epravo.cz/eshop/danove-pravo-2026-2-10-2026-1549.html
+UID:akce-21619ba6d7034ba71275@owl.davidzavada.cz
+DTSTAMP:20261001T053426Z
+DTSTART;TZID=Europe/Prague:20261001T160000
+DTEND;TZID=Europe/Prague:20261001T170000
+SUMMARY:JČP: Popravy a popraviště\, a popravní nástroje z pohledu prá
+ vní archeologie
+DESCRIPTION:Pořadatel: Jednota českých právníků\nLektoři: doc. JUDr.
+  Vilém Knoll\, Ph.D.\nCena: zdarma\n\nPřednáška z pohledu právní arc
+ heologie zaměřená na historii poprav\, popravišť a popravních nástr
+ ojů.\n\nPřihláška: https://jednotaceskychpravniku.cz/prednasky/popravy
+ -a-popraviste-a-popravni-nastroje-z-pohledu-pravni-archeologie/
+URL:https://jednotaceskychpravniku.cz/prednasky/popravy-a-popraviste-a-popr
+ avni-nastroje-z-pohledu-pravni-archeologie/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-325dab32d43b405e73b3@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261002T090000
 DTEND;TZID=Europe/Prague:20261002T170000
 SUMMARY:PF UK: Konference: Daňové právo 2026
@@ -241,7 +204,8 @@ DESCRIPTION:Pořadatel: Právnická fakulta UK\nForma: Prezenčně\nLektoř
  . Tomáš Rozehnal\, Ph.D.\, JUDr. Ing. Jiří Kappel\, Ph.D.\, Mgr. Ing. 
  Lenka Bursíková\nCena: 3 025 Kč s DPH\n\nOdborná konference na téma d
  aňového práva.\n\nPřihláška: https://www.prf.cuni.cz/aktuality/konfe
- rence-danove-pravo-2026-2-10
+ rence-danove-pravo-2026-2-10\nTaké u epravo: https://www.epravo.cz/eshop/
+ danove-pravo-2026-2-10-2026-1549.html
 LOCATION:Univerzita Karlova\, Právnická fakulta\, místnost 120
 URL:https://www.prf.cuni.cz/aktuality/konference-danove-pravo-2026-2-10
 STATUS:CONFIRMED
@@ -249,7 +213,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-364a39e68b03338f4de0@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261005T160000
 DTEND;TZID=Europe/Prague:20261005T173000
 SUMMARY:ČAK: Kurz právnické angličtiny - podzim 2026
@@ -265,11 +229,11 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-e38a829b465f1b99a1fd@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261005T180000
 DTEND;TZID=Europe/Prague:20261005T193000
-SUMMARY:PF UK: Public Lecture “Living in Truth and and the Law: Belarus C
- ase”
+SUMMARY:PF UK: Public Lecture “Living in Truth and the Law: Belarus Case
+ ”
 DESCRIPTION:Pořadatel: Právnická fakulta UK\nForma: Prezenčně\nLektoř
  i: Maksim Znak\nCena: zdarma\n\nVeřejná přednáška na téma práva a s
  ituace v Bělorusku.\n\nPřihláška: https://www.prf.cuni.cz/aktuality/pu
@@ -283,7 +247,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-5e8cfca396cb86801971@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261006T090000
 DTEND;TZID=Europe/Prague:20261006T160000
 SUMMARY:ČAK: Významná judikatura Nejvyššího soudu České republiky a
@@ -301,11 +265,10 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-55bbda7805f52d834bff@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261006T090000
 DTEND;TZID=Europe/Prague:20261006T120000
-SUMMARY:epravo: Rozvodová novela a soudní praxe – 9 měsíců poté (on
- line - živé vysílání) - 6.10.2026
+SUMMARY:epravo: Rozvodová novela a soudní praxe – 9 měsíců poté
 DESCRIPTION:Pořadatel: epravo.cz\nForma: Online\nLektoři: JUDr. Jaromír 
  Jirsa\nCena: 3 975 Kč s DPH\n\nSeminář přináší čerstvé poznatky z
   rozhodovací praxe českých soudů 9 měsíců po účinnosti tzv. Rozvo
@@ -322,7 +285,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-89b461d4d068dde91957@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261006T091500
 DTEND;TZID=Europe/Prague:20261006T110000
 SUMMARY:ÚPV: Važte si svých inovací! Ochraňte si je!
@@ -337,7 +300,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-feaf5b4f18256d445ba2@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261007T090000
 DTEND;TZID=Europe/Prague:20261007T160000
 SUMMARY:ČAK: Mediace - nástroj pro mimosoudní řešení sporů
@@ -352,7 +315,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-0bcd64be40267356297b@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;VALUE=DATE:20261008
 DTEND;VALUE=DATE:20261010
 SUMMARY:PF UK: Judikatura (správních soudů) jako pramen správního prá
@@ -369,7 +332,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-5349f79eda390145c9eb@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261008T090000
 DTEND;TZID=Europe/Prague:20261008T160000
 SUMMARY:ČAK: Nájem bytu a domu a prostor za účelem podnikání dle OZ
@@ -386,11 +349,10 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-1f6c98c3afa9098c4af8@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261008T090000
 DTEND;TZID=Europe/Prague:20261008T120000
-SUMMARY:epravo: Velká novela stavebního zákona (online - živé vysílá
- ní) - 8.10.2026
+SUMMARY:epravo: Velká novela stavebního zákona
 DESCRIPTION:Pořadatel: epravo.cz\nForma: Online\nLektoři: Vojtěch Faltus
  \nCena: 3 975 Kč\n\nOnline seminář k velké novele stavebního zákona.
  \n\nPřihláška: https://www.epravo.cz/eshop/velka-novela-stavebniho-zako
@@ -403,11 +365,10 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-7d186c6632ba0e36d0b4@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261008T130000
 DTEND;TZID=Europe/Prague:20261008T160000
-SUMMARY:epravo: Marketing a akvizice klientů s podporou AI (online - živ
- é vysílání) - 8.10.2026
+SUMMARY:epravo: Marketing a akvizice klientů s podporou AI
 DESCRIPTION:Pořadatel: epravo.cz\nForma: Online\nLektoři: Mgr. Miroslav C
  hochola\, LL.M.\, MBA\nCena: 3 975 Kč s DPH\n\nWebinář zaměřený na v
  yužití umele inteligence v marketingu a akvizici klientů.\n\nPřihláš
@@ -421,12 +382,11 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-b6600b58d6fcdb9902a3@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261009T090000
 DTEND;TZID=Europe/Prague:20261009T120000
 SUMMARY:epravo: Energetické a stavební právo: Komunitní energetika a ak
- tuální legislativní změny v energetice (online – živé vysílání)
-  - 9.10.2026
+ tuální legislativní změny v energetice
 DESCRIPTION:Pořadatel: epravo.cz\nForma: Online\nLektoři: Mgr. Robert Por
  ubský\, LL.M.\, Mgr. Ivo Skolil\, Mgr. František Korbel\, Ph.D.\nCena: 3
   975 Kč s DPH\n\nOdborné online školení zaměřené na komunitní ener
@@ -443,7 +403,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-2c194d1bc534e86fd602@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261012T093000
 DTEND;TZID=Europe/Prague:20261012T123000
 SUMMARY:ÚPV: Ochrana designu
@@ -457,8 +417,26 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:akce-7bec9b3658dca9714f8e@owl.davidzavada.cz
+DTSTAMP:20261001T053426Z
+DTSTART;TZID=Europe/Prague:20261012T120000
+DTEND;TZID=Europe/Prague:20261012T140000
+SUMMARY:PF UK: Tax Solidarity within the European Union and its Dark Side
+DESCRIPTION:Pořadatel: Právnická fakulta UK\nForma: Prezenčně\nLektoř
+ i: Pietro Selicato\, Giuseppe Marino\n\nWorkshop se zabývá daňovou soli
+ daritou v Evropské unii\, jejími právními základy a politickými tenz
+ emi v souvislosti s národní fiskální autonomií a demokratickým zasto
+ upením.\n\nPřihláška: https://www.prf.cuni.cz/aktuality/tax-solidarity
+ -within-european-union-and-its-dark-side
+LOCATION:učebně č. 38 Právnické fakulty Univerzity Karlovy
+URL:https://www.prf.cuni.cz/aktuality/tax-solidarity-within-european-union-
+ and-its-dark-side
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:akce-7a296fe46ab105ed4e99@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261012T163000
 DTEND;TZID=Europe/Prague:20261012T180000
 SUMMARY:ČAK: Pololetní kurz právnické angličtiny pro pokročilé - ř
@@ -475,8 +453,28 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:akce-4ad3b2736db2752b80ea@owl.davidzavada.cz
+DTSTAMP:20261001T053426Z
+DTSTART;TZID=Europe/Prague:20261013T090000
+DTEND;TZID=Europe/Prague:20261013T110000
+SUMMARY:epravo: Když přijde policie: součinnost společnosti – co mus
+ íte\, co můžete a co raději nedělat
+DESCRIPTION:Pořadatel: epravo.cz\nForma: Online\nLektoři: JUDr. Jakub Še
+ frna\nCena: 2 975 Kč s DPH\n\nOnline seminar o součinnosti společnosti 
+ s policií a právech a povinnostech při policejním zásahu.\n\nPřihlá
+ ška: https://www.epravo.cz/eshop/kdyz-prijde-policie-soucinnost-spolecnos
+ ti-co-musite-co-muzete-a-co-radeji-nedelat-online-zive-vysilani-13-10-2026
+ -1590.html
+LOCATION:online
+URL:https://www.epravo.cz/eshop/kdyz-prijde-policie-soucinnost-spolecnosti-
+ co-musite-co-muzete-a-co-radeji-nedelat-online-zive-vysilani-13-10-2026-15
+ 90.html
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:akce-ebf7539fdeafefcbdeaa@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261014T090000
 DTEND;TZID=Europe/Prague:20261014T160000
 SUMMARY:ČAK: Stanovení výživného ve specifických rodinných situacíc
@@ -495,7 +493,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-8a844123d50e426f295c@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261014T090000
 DTEND;TZID=Europe/Prague:20261014T130000
 SUMMARY:ČAK: Využití umělé inteligence v advokátní praxi\, od zákla
@@ -512,16 +510,20 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-910d12f8f28cdfed6ef4@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261014T100000
-DTEND;TZID=Europe/Prague:20261014T110000
+DTEND;TZID=Europe/Prague:20261014T143000
 SUMMARY:JČP: Umělá inteligence a její využití v praxi právníků
 DESCRIPTION:Pořadatel: Jednota českých právníků\nForma: Prezenčně\n
- Lektoři: JUDr. Tomáš Fabík\nCena: Základní cena: 1800 Kč Cena se sl
- evou: 1200 Kč\n\nUmělá inteligence se stala běžnou součástí praxe\
- , školení se zaměřuje na její využití pro právníky.\n\nPřihláš
- ka: https://jednotaceskychpravniku.cz/prednasky/umela-inteligence-a-jeji-v
- yuziti-v-praxi-pravniku/
+ Lektoři: JUDr. Tomáš Fabík\, advokát\nCena: Základní cena: 1800 Kč
+  Cena se slevou: 1200 Kč\n\nUmělá inteligence se stala běžnou součá
+ stí praxe\, školení se zaměřuje na její využití pro právníky.\n\
+ nPřihláška: https://jednotaceskychpravniku.cz/prednasky/umela-inteligen
+ ce-a-jeji-vyuziti-v-praxi-pravniku/\nTaké u epravo: https://www.epravo.cz
+ /top/aktualne/umela-inteligence-a-jeji-vyuziti-v-praxi-pravniku-121726.htm
+ l
+LOCATION:Justiční akademie\, Hybernská 1006/18\, Nové Město\, 110 00 P
+ raha 1
 URL:https://jednotaceskychpravniku.cz/prednasky/umela-inteligence-a-jeji-vy
  uziti-v-praxi-pravniku/
 STATUS:CONFIRMED
@@ -529,7 +531,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-3fa18144bb0e8f0a6ee6@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261015T130000
 DTEND;TZID=Europe/Prague:20261015T160000
 SUMMARY:ČAK: Odpovědnost advokáta za újmu způsobenou při výkonu advo
@@ -546,7 +548,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-a487a2169997d0455fdc@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261020T090000
 DTEND;TZID=Europe/Prague:20261020T130000
 SUMMARY:ČAK: Medzinárodné sankcie v advokátskej praxi: aktuálne výzvy
@@ -565,7 +567,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-15ddae46d4dfe45a3ecf@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261020T090000
 DTEND;TZID=Europe/Prague:20261020T160000
 SUMMARY:ČAK: Veřejné zakázky
@@ -583,7 +585,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-dfd85bf383100cdfedd6@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261020T090000
 DTEND;TZID=Europe/Prague:20261020T100000
 SUMMARY:ÚPV: Databáze TMView
@@ -598,7 +600,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-2b2f621a6adadae257eb@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261020T160000
 DTEND;TZID=Europe/Prague:20261020T170000
 SUMMARY:JČP: Pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Anton
@@ -615,7 +617,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-e5d0e97370d4e542e83b@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261022T090000
 DTEND;TZID=Europe/Prague:20261022T130000
 SUMMARY:ČAK: Povinnosti advokátů podle AML předpisů
@@ -630,7 +632,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-6b98be9406816af4b1c3@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261022T090000
 DTEND;TZID=Europe/Prague:20261022T150000
 SUMMARY:ČAK: Rozvodová novela
@@ -646,7 +648,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-7517079112779456df38@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261022T090000
 DTEND;TZID=Europe/Prague:20261022T100000
 SUMMARY:ÚPV: Databáze Patentscope
@@ -661,7 +663,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-4022e3cfe296f3b5e2f4@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261023T093000
 DTEND;TZID=Europe/Prague:20261023T123000
 SUMMARY:ČAK: Praktické zkušenosti s rodinnou novelou účinnou od 1. 1. 
@@ -682,7 +684,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-5603bd46d6c4b416225d@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261023T130000
 DTEND;TZID=Europe/Prague:20261023T140000
 SUMMARY:ALAI: Hudební plagiát
@@ -697,7 +699,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-b390d311ffd8d569645c@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261027T090000
 DTEND;TZID=Europe/Prague:20261027T093000
 SUMMARY:ÚPV: Databáze Madrid Monitor
@@ -713,7 +715,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-00df13debafc19ec10fd@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261030T093000
 DTEND;TZID=Europe/Prague:20261030T163000
 SUMMARY:ČAK: Mezinárodní kolokvium k 70. výročí Úmluvy CMR
@@ -732,7 +734,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-a78bf6a336f262f521a2@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261103T090000
 DTEND;TZID=Europe/Prague:20261103T130000
 SUMMARY:ČAK: Využití umělé inteligence v advokátní praxi\, od zákla
@@ -750,7 +752,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-5692bd6fcaf704de9b11@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261103T090000
 DTEND;TZID=Europe/Prague:20261103T140000
 SUMMARY:JČP: Aktuální otázky věcných práv
@@ -768,7 +770,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-4237a1f311147eeeba9f@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261104T090000
 DTEND;TZID=Europe/Prague:20261104T160000
 SUMMARY:ČAK: Katastr nemovitostí: komplexní přehled pro advokátní pra
@@ -786,7 +788,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-bec74046b63f7ec0a4b0@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261105T090000
 DTEND;TZID=Europe/Prague:20261105T160000
 SUMMARY:ČAK: Jak se rozvodová novela projevila v praxi (téměř) rok po 
@@ -805,7 +807,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-c80032dffec294c8d45c@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261105T090000
 DTEND;TZID=Europe/Prague:20261105T160000
 SUMMARY:ČAK: Mediace - nástroj pro mimosoudní řešení sporů
@@ -821,7 +823,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-07d098081d52fc885a7d@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261110T090000
 DTEND;TZID=Europe/Prague:20261110T130000
 SUMMARY:ČAK: Pojištění profesní odpovědnosti - příklady z praxe
@@ -837,7 +839,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-abd33de52a6b3fad3565@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261110T090000
 DTEND;TZID=Europe/Prague:20261110T160000
 SUMMARY:ČAK: Slovní pohotovost advokáta - jak reagovat pod tlakem
@@ -854,7 +856,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-d01f09aabd04af0f716d@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261112T090000
 DTEND;TZID=Europe/Prague:20261112T160000
 SUMMARY:ČAK: Změna a zánik závazku
@@ -870,7 +872,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-2265fad160f5006426f5@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261119T090000
 DTEND;TZID=Europe/Prague:20261119T160000
 SUMMARY:ČAK: Aktuální otázky trestní odpovědnosti právnických osob 
@@ -888,15 +890,15 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-cbe8fc9d7960cf134fc0@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261119T090000
 DTEND;TZID=Europe/Prague:20261119T140000
 SUMMARY:JČP: Autorské právo a umělá inteligence
 DESCRIPTION:Pořadatel: Jednota českých právníků\nForma: Prezenčně\n
- Lektoři: JUDr. Irena Holcová\nCena: Základní cena: 1800 Kč Cena se sl
- evou: 1200 Kč\n\nSeminář se zabývá průnikem autorského práva a um
- ělé inteligence.\n\nPřihláška: https://jednotaceskychpravniku.cz/pred
- nasky/autorske-pravo-a-umela-inteligence/
+ Lektoři: JUDr. Irena Holcová\, advokátka\nCena: Základní cena: 1800 K
+ č Cena se slevou: 1200 Kč\n\nSeminář se zabývá průnikem autorského
+  práva a umělé inteligence.\n\nPřihláška: https://jednotaceskychprav
+ niku.cz/prednasky/autorske-pravo-a-umela-inteligence/
 LOCATION:Justiční akademie\, Hybernská 1006/18\, Nové Město\, 110 00 P
  raha 1
 URL:https://jednotaceskychpravniku.cz/prednasky/autorske-pravo-a-umela-inte
@@ -906,7 +908,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-6770faa1e10d86fc6b0c@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261120T093000
 DTEND;TZID=Europe/Prague:20261120T150000
 SUMMARY:ČAK: Advokát 50+
@@ -924,7 +926,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-861165ac77c35a437453@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261125T090000
 DTEND;TZID=Europe/Prague:20261125T160000
 SUMMARY:ČAK: Odčinění újmy na zdraví a jiné nemateriální újmy
@@ -943,7 +945,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-3c8c55624cf144b82d56@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261126T090000
 DTEND;TZID=Europe/Prague:20261126T130000
 SUMMARY:ČAK: Neplatnost rezervačních smluv v realitní praxi z pohledu a
@@ -962,7 +964,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-2daad3d85271fbc45d34@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261201T090000
 DTEND;TZID=Europe/Prague:20261201T130000
 SUMMARY:ČAK: Umělá inteligence v advokátní praxi\, od základů až po
@@ -981,7 +983,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-652d0acc4c735879e7b9@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261203T090000
 DTEND;TZID=Europe/Prague:20261203T130000
 SUMMARY:ČAK: Přesvědčivé právní psaní I: Jak si získat čtenáře 
@@ -999,7 +1001,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-3042b4084a246c9b573e@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261203T090000
 DTEND;TZID=Europe/Prague:20261203T160000
 SUMMARY:ČAK: Společné jmění manželů 2026 aktuálně - č. 4
@@ -1016,7 +1018,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-9bc4344e6235aa49a53e@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261210T090000
 DTEND;TZID=Europe/Prague:20261210T130000
 SUMMARY:ČAK: Zákoník práce aktuálně a novinky pro rok 2027
@@ -1033,7 +1035,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-3aaaaca2e25abadf2d35@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261210T090000
 DTEND;TZID=Europe/Prague:20261210T140000
 SUMMARY:JČP: Soudní přezkum rozhodnutí orgánů s.r.o. a a.s. (včetně
@@ -1054,7 +1056,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-6c0cb9e845731b7ab848@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261215T090000
 DTEND;TZID=Europe/Prague:20261215T160000
 SUMMARY:ČAK: Překážka věci pravomocně rozhodnuté v soudní judikatu
@@ -1074,7 +1076,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-f97966821605a4f31e79@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261215T090000
 DTEND;TZID=Europe/Prague:20261215T160000
 SUMMARY:ČAK: Rok 2026 v trestním právu - aktuální problémy a jejich 
@@ -1091,7 +1093,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-93ae527e86b364d81ce2@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261216T090000
 DTEND;TZID=Europe/Prague:20261216T160000
 SUMMARY:ČAK: Aktuální vybrané otázky z rodinného práva (novelizace\,
@@ -1111,7 +1113,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-09db632102d36da071d4@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261217T090000
 DTEND;TZID=Europe/Prague:20261217T160000
 SUMMARY:ČAK: Bytové spoluvlastnictví a společenství vlastníků jednot
@@ -1129,7 +1131,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:akce-2c0e81f58aa1afd8a243@owl.davidzavada.cz
-DTSTAMP:20260930T051923Z
+DTSTAMP:20261001T053426Z
 DTSTART;TZID=Europe/Prague:20261217T090000
 DTEND;TZID=Europe/Prague:20261217T160000
 SUMMARY:ČAK: Výběr z obchodněprávní judikatury za rok 2026

@@ -1,63 +1,62 @@
 {
-  "generated": "2026-09-30T05:19:24.077556+00:00",
-  "from": "2026-09-16",
-  "to": "2026-09-30",
-  "total": 75,
-  "covered": 14,
-  "cekajici": 2,
-  "intro": "Sledované období přineslo řadu rozhodnutí Soudního dvora EU a Tribunálu týkajících se posuzování pravděpodobnosti záměny a rozlišovací způsobilosti ochranných známek. Domácí i evropská judikatura a odborná literatura se rovněž věnovaly otázkám autorského práva, ochrany osobních údajů v digitálním prostředí a dopadům umělé inteligence.",
+  "generated": "2026-10-01T05:34:26.754998+00:00",
+  "from": "2026-09-17",
+  "to": "2026-10-01",
+  "total": 82,
+  "covered": 9,
+  "cekajici": 3,
+  "intro": "Sledované období přineslo řadu rozhodnutí Soudního dvora EU týkajících se důkazů o řádném užívání ochranných známek a posuzování pravděpodobnosti záměny. V oblasti IT a digitálních služeb se judikatura i odborná literatura zaměřily na otázky ochrany osobních údajů, smluvní kvalifikaci postoupení autorských práv a aplikaci Aktu o digitálních službách.",
   "blocks": [
     {
-      "title": "Posouzení záměny ochranných známek",
-      "text": "Tribunál a Nejvyšší správní soud řešily v několika případech otázku pravděpodobnosti záměny a rozlišovací způsobilosti označení. Pro praxi to znamená nutnost zohledňovat slabou rozlišovací způsobilost starších známek a stupeň pozornosti relevantní veřejnosti při rešerších a namítacích řízeních.",
+      "title": "Důkazy užívání ochranných známek",
+      "text": "Tribunál EU v několika rozhodnutích detailně posuzoval požadavky na prokázání řádného užívání ochranných známek a přípustnost mírně pozměněných podob označení. Pro praxi to znamená nutnost pečlivě shromažďovat důkazy, jako jsou faktury a propagační materiály, přičemž drobná úprava vizuální podoby bez ztráty rozlišovací způsobilosti nebrání úspěšné obraně známky.",
       "sources": [
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "T-409/25 – Bitmain Technologies v. EUIPO - Advanced New Technologies (ANTMINER)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0409"
+          "title": "T-258/25 – Telefónica Germany v. EUIPO - ePlus (e.plus+)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0258"
         },
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "T-232/25 – Deva v. EUIPO - Novartis (Devatis)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0232"
+          "title": "T-257/25 – Telefónica Germany v. EUIPO - ePlus (e plus)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0257"
         },
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "T-231/25 – Deva v. EUIPO - Novartis (Devatis)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0231"
-        },
-        {
-          "src": "nss",
-          "label": "NSS",
-          "tag": "",
-          "title": "9 As 8/2026-69",
-          "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785485"
+          "title": "T-256/25 – Telefónica Germany v. EUIPO - ePlus (E-PLUS GRUPPE)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0256"
         },
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "T-890/25 – Fitmart v. EUIPO (ULTRAPURE)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0890"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-827/25 – Cobra Golf v. EUIPO (ULTRADRY)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0827"
+          "title": "T-255/25 – Telefónica Germany v. EUIPO - ePlus (e plus)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0255"
         }
       ]
     },
     {
-      "title": "Ochrana osobních údajů",
-      "text": "Soudní dvůr EU se zabýval otázkou, zda souhlas s předáním údajů neurčeným partnerům pro přímý marketing postačuje bez znalosti totožnosti příjemce. Pro praxi správců dat to znamená nutnost získat specifický a informovaný souhlas předem.",
+      "title": "Autorská práva a Řím I",
+      "text": "Soudní dvůr EU v rozhodnutí C-176/25 potvrdil, že otázka formální platnosti smlouvy o postoupení autorských práv spadá do smluvních vztahů a řídí se nařízením Řím I. Pro autorskoprávní praxi to přináší jasné pravidlo pro určování rozhodného práva při mezinárodních převodech práv.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "C-176/25 – Steizer",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0176"
+        }
+      ]
+    },
+    {
+      "title": "Zpracování biometrických údajů",
+      "text": "Generální advokát u SDEU se v kauze C-317/25 vyjádřil k požadavkům na souhlas se zpracováním údajů pro marketingové účely a nizozemský soud předložil předběžnou otázku ohledně biometrických fotografií (C-660/26). Tyto podněty zdůrazňují přísné unijní nároky na transparentnost a informovaný souhlas podle GDPR.",
       "sources": [
         {
           "src": "sdeu",
@@ -76,59 +75,25 @@
       ]
     },
     {
-      "title": "Autorské právo a smluvní vztahy",
-      "text": "SDEU řešil otázku formální platnosti smlouvy o postoupení autorských práv v kontextu unijních nařízení. Bylo potvrzeno, že tato otázka spadá pod nařízení Řím I pro smluvní závazky.",
+      "title": "Ochranné známky a záměna",
+      "text": "České a evropské soudy se zabývaly posuzováním pravděpodobnosti záměny mezi označeními s podobnými slovními prvky. Rozhodnutí Nejvyššího správního soudu a Tribunálu EU potvrzují, že existence vizuální či fonetické podobnosti vede k zamítnutí přihlášek, což klade důraz na důkladnou rešerši před podáním známky.",
       "sources": [
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "C-176/25 – Steizer",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0176"
-        }
-      ]
-    },
-    {
-      "title": "Umělá inteligence a právo",
-      "text": "Odborná literatura a zahraniční studie se zaměřily na výzvy spojené s generativní umělou inteligencí, autorskými odměnami a určením původcovství. Tyto analýzy upozorňují na rostoucí potřebu adaptace právních rámců na obsah generovaný AI.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IJLIT",
-          "title": "The cambridge handbook of the law, ethics and policy of artificial intelligence",
-          "link": "https://doi.org/10.1093/ijlit/eaag013"
+          "title": "T-477/25 – T-Head (Shanghai) v. EUIPO - Head Technology (T-HEAD)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0477"
         },
         {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "Sui Generis Right to Non-Original Objects Generated by a Computer Program Under Ukrainian Law: First Impressions and (In)Compatibility with EU Law",
-          "link": "https://doi.org/10.1007/s40319-026-01776-9"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JWIP",
-          "title": "Inventorship in the age of AI: Legal challenges and potential solutions",
-          "link": "https://doi.org/10.1111/jwip.70014"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JWIP",
-          "title": "How much human contribution is needed for “ownership” of AI‐generated content: A comparison of copyright determination for generative AI in China and the United States",
-          "link": "https://doi.org/10.1111/jwip.70011"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JWIP",
-          "title": "Exploring remuneration mechanisms for copyrighted works in generative AI systems",
-          "link": "https://doi.org/10.1111/jwip.70027"
+          "src": "nss",
+          "label": "NSS",
+          "tag": "",
+          "title": "9 As 8/2026-69",
+          "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785485"
         }
       ]
     }
   ],
-  "input_hash": "4f9da4199c4681e3199c25b0145e39a131427ff17e8196b2bf29fb5ee3741290"
+  "input_hash": "d62421c7f70cf6439f37da92a99ce827c09d8d9a01549795d385057654207bdc"
 }

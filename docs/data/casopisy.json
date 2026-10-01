@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-30T05:18:40Z",
+ "generated": "2026-10-01T05:33:44Z",
  "okno_dni": 31,
  "casopisy": [
   {
@@ -112,6 +112,50 @@
   }
  ],
  "polozky": [
+  {
+   "id": "IIC-10.1007/s40319-026-01781-y",
+   "casopis": "iic",
+   "nazev": "Can the Digital Markets Act Turn the Tide Against Big Tech?",
+   "url": "https://doi.org/10.1007/s40319-026-01781-y",
+   "autori": "Jasper van den Boom",
+   "datum": "2026-09-30",
+   "first_seen": "2026-10-01T05:33:30Z",
+   "poznamka": "Shrnutí zatím není k dispozici.",
+   "popis": "Can the Digital Markets Act Turn the Tide Against Big Tech?\nAutor: Jasper van den Boom\nIIC – International Review of Intellectual Property and Competition Law"
+  },
+  {
+   "id": "MUJLT-https://journals.muni.cz/mujlt/article/view/42629",
+   "casopis": "mujlt",
+   "nazev": "Esports and the Digital Services Act: Functional Classification of Gaming, Tournament and Streaming Services",
+   "url": "https://journals.muni.cz/mujlt/article/view/42629",
+   "autori": "Matúš Mesarčík",
+   "heslo": "eSports a Akt o digitálních službách (DSA)",
+   "shrnuti": "Článek zkoumá, jak se evropský Akt o digitálních službách (DSA) aplikuje na komplexní ekosystém elektronických sportů prostřednictvím funkčních kategorií zprostředkovatelských služeb. Hlavním právním problémem je tzv. funkční segmentace, kdy různé součásti her, turnajů a streamování spadají pod odlišné právní režimy. Studie mapuje hranice použitelnosti DSA a identifikuje specifické otázky compliance, včetně moderování obsahu, ochrany nezletilých a vztahu regulace k soukromé správě integrity.",
+   "datum": "2026-09-30",
+   "first_seen": "2026-10-01T05:33:30Z"
+  },
+  {
+   "id": "MUJLT-https://journals.muni.cz/mujlt/article/view/43027",
+   "casopis": "mujlt",
+   "nazev": "Data Protection and Cybersecurity Governance for eVTOL Systems in the UAE: Comparative Lessons from the EU and US.",
+   "url": "https://journals.muni.cz/mujlt/article/view/43027",
+   "autori": "Sumaiya Firoz Nomani, Dr Mohammad Rababa, Dr Hussain Al-Ahmad, Dr Husameldin Mukhtar, Dr Nasirudeen Muhammad, Dr Saad Ali Amin, Burkhard Schafer",
+   "heslo": "Regulace eVTOL a data",
+   "shrnuti": "Článek analyzuje výzvy v oblasti ochranu osobních údajů a kybernetické bezpečnosti při zavádění systémů eVTOL ve Spojených arabských emirátech. Zkoumá nepřipravenost stávajících právních předpisů SAE a využívá srovnání s přístupy Evropské unie a Spojených států. Autor závěrem konstatuje, že pro zajištění bezpečnosti a důvěry je nezbytné zavést specifické standardy správy dat a posílit kybernetickou bezpečnost.",
+   "datum": "2026-09-30",
+   "first_seen": "2026-10-01T05:33:30Z"
+  },
+  {
+   "id": "MUJLT-https://journals.muni.cz/mujlt/article/view/43681",
+   "casopis": "mujlt",
+   "nazev": "Shut Down, Sued, and Silenced: Strategic Suppression Tactics of Technology Corporations",
+   "url": "https://journals.muni.cz/mujlt/article/view/43681",
+   "autori": "Lee Raudsepp, Kristjan Kikerpill",
+   "heslo": "Moc technologických korporací",
+   "shrnuti": "Článek zkoumá strategie, kterými velké technologické společnosti (GAFAM) potlačují nesouhlas, neutralizují kritiky a brání se odpovědnosti. Na základě analýzy 61 mediálně sledovaných případů z let 2017–2025 identifikuje využívání právního zastrašování, odvetného propouštění či regulačních stížností. Zjištění ukazují, že tyto kroky společně vytvářejí systém potlačování, který odrazuje kritiky, vyčerpává jejich zdroje a negativně ovlivňuje demokratickou diskuzi.",
+   "datum": "2026-09-30",
+   "first_seen": "2026-10-01T05:33:30Z"
+  },
   {
    "id": "IIC-10.1007/s40319-026-01754-1",
    "casopis": "iic",
