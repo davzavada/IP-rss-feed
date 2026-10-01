@@ -406,9 +406,14 @@ def sonda_springer_prohlizec(s):
         with sync_playwright() as p:
             prohlizec = p.chromium.launch()
             stranka = prohlizec.new_page(user_agent=USER_AGENT, locale="en-US")
-            odpoved = stranka.goto(url, wait_until="networkidle", timeout=TIMEOUT * 1000)
-            # Kontrola může stránku po vyřešení znovu načíst.
-            stranka.wait_for_timeout(5000)
+            odpoved = stranka.goto(url, wait_until="domcontentloaded", timeout=TIMEOUT * 1000)
+            # Kontrolní stránka stále něco načítá (networkidle nenastane) a po
+            # vyřešení stránku znovu načte – dát jí čas a čekat na abstrakt.
+            try:
+                stranka.wait_for_selector("#Abs1, section[data-title='Abstract']",
+                                          timeout=30000)
+            except Exception:
+                pass
             html = stranka.content()
             nadpis = stranka.title()
             abstrakt = stranka.evaluate("""() => {
