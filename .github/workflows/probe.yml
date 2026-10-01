@@ -12,13 +12,13 @@ on:
   workflow_dispatch:
     inputs:
       soudy:
-        description: 'Zdroje oddělené čárkou (ns,nss,us,sdeu,akce,springer; - = žádný, jen adresy)'
+        description: 'Zdroje oddělené čárkou (ns,nss,us,sdeu,akce,springer,oup; - = žádný, jen adresy)'
         default: 'ns,nss,us,sdeu'
       datum:
         description: 'Den pro dotazy podle data (RRRR-MM-DD, prázdné = včera)'
         default: ''
       url:
-        description: 'Další adresy ke stažení, oddělené mezerou (jen weby zdrojů a Owl)'
+        description: 'Další adresy ke stažení, oddělené mezerou (jen weby zdrojů, časopisů a Owl)'
         default: ''
       ulozit:
         description: 'Commitnout odpovědi do větve jako fixtures (ne do main)'
@@ -46,10 +46,10 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      # Springer pouští stránky jen prohlížeči, který projde kontrolou
+      # Springer a OUP pouštějí stránky jen prohlížeči, který projde kontrolou
       # JavaScriptu – sonda zkouší, jestli na to stačí headless Chromium.
-      - name: Prohlížeč pro sondu Springeru
-        if: contains(inputs.soudy, 'springer')
+      - name: Prohlížeč pro sondu (Springer, OUP)
+        if: contains(inputs.soudy, 'springer') || contains(inputs.soudy, 'oup')
         run: |
           pip install playwright
           python -m playwright install --with-deps chromium

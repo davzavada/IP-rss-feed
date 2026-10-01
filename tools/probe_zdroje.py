@@ -51,6 +51,8 @@ POVOLENE_HOSTY = (
     # pořadatelé vzdělávacích akcí (akce_config.json)
     "cak.cz", "prf.cuni.cz", "jednotaceskychpravniku.cz",
     "epravo.cz", "alai.cz", "upv.gov.cz",
+    # časopisy, u kterých se ladí podklad ke shrnutí
+    "ilaw.cas.cz", "jurisprudence.cz", "academic.oup.com", "doi.org",
 )
 
 HLAVICKY = {
@@ -392,15 +394,33 @@ def sonda_springer(s, den):
 
 
 def sonda_springer_prohlizec(s):
-    """Stránku článku načte headless Chromium (projde kontrolou JavaScriptu?)
-    a vypíše, jestli v ní je abstrakt."""
+    """Stránku článku Springeru načte headless Chromium."""
+    prohlizec_stahni(s, "springer_prohlizec",
+                     SPRINGER + "/article/10.1007/s40319-026-01781-y",
+                     "#Abs1, section[data-title='Abstract'], div.main-content")
+
+
+# GRUR Int (OUP) je za Cloudflare („Just a moment…", 403) a Crossref
+# u části položek abstrakt nemá.
+OUP_CLANEK = "https://academic.oup.com/grurint/advance-article/doi/10.1093/grurint/ikag092/8829082"
+
+
+def sonda_oup(s, den):
+    """Stránku článku GRUR Int prostým požadavkem a headless Chromiem."""
+    s.stahni("oup_clanek", OUP_CLANEK)
+    prohlizec_stahni(s, "oup_prohlizec", OUP_CLANEK,
+                     "section.abstract, .article-body, .widget-ArticleFulltext")
+
+
+def prohlizec_stahni(s, nazev, url, selektor):
+    """Stránku načte headless Chromium (projde kontrolou JavaScriptu?),
+    uloží ji a vypíše titulek a začátek obsahu podle selektoru."""
     try:
         from playwright.sync_api import sync_playwright
     except ImportError:
-        print("  springer_prohlizec           přeskočeno – chybí playwright")
+        print(f"  {nazev:28} přeskočeno – chybí playwright")
         return
-    url = SPRINGER + "/article/10.1007/s40319-026-01781-y"
-    zaznam = {"nazev": "springer_prohlizec", "metoda": "chromium", "url": url}
+    zaznam = {"nazev": nazev, "metoda": "chromium", "url": url}
     start = time.monotonic()
     try:
         with sync_playwright() as p:
@@ -408,48 +428,35 @@ def sonda_springer_prohlizec(s):
             stranka = prohlizec.new_page(user_agent=USER_AGENT, locale="en-US")
             odpoved = stranka.goto(url, wait_until="domcontentloaded", timeout=TIMEOUT * 1000)
             # Kontrolní stránka stále něco načítá (networkidle nenastane) a po
-            # vyřešení stránku znovu načte – dát jí čas a čekat na abstrakt.
+            # vyřešení stránku znovu načte – dát jí čas a čekat na obsah.
             try:
-                stranka.wait_for_selector("#Abs1, section[data-title='Abstract']",
-                                          timeout=30000)
+                stranka.wait_for_selector(selektor, timeout=45000)
             except Exception:
                 pass
             html = stranka.content()
             nadpis = stranka.title()
-            abstrakt = stranka.evaluate("""() => {
-                const sel = ['section[data-title="Abstract"]', '#Abs1-content', '#Abs1'];
-                for (const s of sel) { const e = document.querySelector(s);
-                    if (e) return e.innerText; }
-                const m = document.querySelector('meta[name="dc.description"]');
-                return m ? 'meta: ' + m.content : '';
-            }""")
-            # Feed ve stejné relaci (cookie z prošlé kontroly).
-            feed = stranka.request.get(SPRINGER_FEEDY["springer_feed_hledani"],
-                                       headers=HLAVICKY_RSS)
-            feed_typ, feed_text = feed.headers.get("content-type", ""), feed.text()
+            obsah = stranka.evaluate(
+                "sel => { const e = document.querySelector(sel); return e ? e.innerText : ''; }",
+                selektor)
             prohlizec.close()
     except Exception as e:
         zaznam.update(chyba=f"{type(e).__name__}: {e}"[:300])
         s.souhrn.append(zaznam)
-        print(f"  springer_prohlizec           CHYBA {zaznam['chyba'][:200]}")
+        print(f"  {nazev:28} CHYBA {zaznam['chyba'][:200]}")
         return
-    with open(os.path.join(s.vystup, "springer_prohlizec.html"), "w", encoding="utf-8") as f:
+    with open(os.path.join(s.vystup, nazev + ".html"), "w", encoding="utf-8") as f:
         f.write(html)
     zaznam.update(status=odpoved.status if odpoved else None, velikost=len(html),
-                  nadpis=nadpis, abstrakt=abstrakt[:500],
+                  nadpis=nadpis, obsah=obsah[:500],
                   trvani_s=round(time.monotonic() - start, 1))
     s.souhrn.append(zaznam)
-    print(f"  springer_prohlizec           {zaznam['status']}  {len(html):>9} B  "
+    print(f"  {nazev:28} {zaznam['status']}  {len(html):>9} B  "
           f"{zaznam['trvani_s']:>5}s  titulek {nadpis[:80]!r}")
-    print(f"  {'':28} abstrakt: {abstrakt[:300]!r}")
-    with open(os.path.join(s.vystup, "springer_prohlizec_feed.txt"), "w", encoding="utf-8") as f:
-        f.write(feed_text)
-    print(f"  springer_prohlizec_feed      {feed.status}  {len(feed_text):>9} B  {feed_typ[:40]}")
-    print(f"  {'':28} {feed_text[:300]!r}")
+    print(f"  {'':28} obsah: {obsah[:300]!r}")
 
 
 SONDY = {"ns": sonda_ns, "nss": sonda_nss, "us": sonda_us, "sdeu": sonda_sdeu,
-         "akce": sonda_akce, "springer": sonda_springer}
+         "akce": sonda_akce, "springer": sonda_springer, "oup": sonda_oup}
 
 
 def vychozi_den():
