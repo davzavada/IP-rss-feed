@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T05:34:26+00:00",
+  "generated": "2026-10-01T08:11:59+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 37,
-      "stazeno": "2026-10-01T05:33:54+00:00",
+      "stazeno": "2026-10-01T08:11:45+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,7 +18,7 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 4,
-      "stazeno": "2026-10-01T05:33:58+00:00",
+      "stazeno": "2026-10-01T08:11:47+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "6118b5f860bfc354"
@@ -28,11 +28,11 @@
       "zkratka": "JČP",
       "barva": "#1d4ed8",
       "url": "https://jednotaceskychpravniku.cz/vzdelavaci-akce/",
-      "pocet": 6,
-      "stazeno": "2026-10-01T05:34:04+00:00",
+      "pocet": 5,
+      "stazeno": "2026-10-01T08:11:51+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "c0265eefe2f15b47"
+      "otisk": "fbb1733b6c8e2af7"
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 5,
-      "stazeno": "2026-10-01T05:34:09+00:00",
+      "stazeno": "2026-10-01T08:11:56+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "475847eb961c4466"
+      "otisk": "79cecc64c457c5d1"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-10-01T05:34:10+00:00",
+      "stazeno": "2026-10-01T08:11:58+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "18d20c7ee3ecdc1d"
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 6,
-      "stazeno": "2026-10-01T05:34:10+00:00",
+      "stazeno": "2026-10-01T08:11:59+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "99e3d66f28db3328"
@@ -264,24 +264,6 @@
       ],
       "oblasti_klic": "996033cec175",
       "detail_pokusy": 1
-    },
-    {
-      "id": "21619ba6d7034ba71275",
-      "poradatel": "JCP",
-      "datum": "2026-10-01",
-      "zacatek": "16:00",
-      "konec": "",
-      "nazev": "Popravy a popraviště, a popravní nástroje z pohledu právní archeologie",
-      "misto": "",
-      "forma": "",
-      "lektori": [
-        "doc. JUDr. Vilém Knoll, Ph.D."
-      ],
-      "cena": "zdarma",
-      "anotace": "Přednáška z pohledu právní archeologie zaměřená na historii poprav, popravišť a popravních nástrojů.",
-      "url": "https://jednotaceskychpravniku.cz/prednasky/popravy-a-popraviste-a-popravni-nastroje-z-pohledu-pravni-archeologie/",
-      "oblasti": [],
-      "oblasti_klic": "893687fc0c16"
     },
     {
       "id": "325dab32d43b405e73b3",
@@ -697,9 +679,9 @@
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
       "forma": "prezencne",
       "lektori": [
-        "JUDr. Tomáš Fabík, advokát"
+        "JUDr. Tomáš Fabík"
       ],
-      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
+      "cena": "1800 Kč",
       "anotace": "Umělá inteligence se stala běžnou součástí praxe, školení se zaměřuje na její využití pro právníky.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/umela-inteligence-a-jeji-vyuziti-v-praxi-pravniku/",
       "oblasti": [
@@ -1004,7 +986,7 @@
       "lektori": [
         "Mgr. Michal Králík, Ph.D."
       ],
-      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
+      "cena": "1800 Kč",
       "anotace": "Seminář zaměřený na aktuální otázky věcných práv.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/aktualni-otazky-vecnych-prav/",
       "oblasti": [
@@ -1169,9 +1151,9 @@
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
       "forma": "prezencne",
       "lektori": [
-        "JUDr. Irena Holcová, advokátka"
+        "JUDr. Irena Holcová"
       ],
-      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
+      "cena": "1800 Kč",
       "anotace": "Seminář se zabývá průnikem autorského práva a umělé inteligence.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/autorske-pravo-a-umela-inteligence/",
       "oblasti": [
@@ -1340,7 +1322,7 @@
       "lektori": [
         "JUDr. Josef Holejšovský, Ph.D."
       ],
-      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
+      "cena": "1800 Kč",
       "anotace": "Odborná přednáška zaměřená na soudní přezkum rozhodnutí orgánů společností s ručením omezeným a akciových společností.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/soudni-prezkum-rozhodnuti-organu-s-r-o-a-a-s-vcetne-neplatnosti-usneseni-valne-hromady/",
       "oblasti": [

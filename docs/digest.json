@@ -1,16 +1,23 @@
 {
-  "generated": "2026-10-01T05:34:26.754998+00:00",
+  "generated": "2026-10-01T08:11:59.455060+00:00",
   "from": "2026-09-17",
   "to": "2026-10-01",
   "total": 82,
-  "covered": 9,
+  "covered": 13,
   "cekajici": 3,
-  "intro": "Sledované období přineslo řadu rozhodnutí Soudního dvora EU týkajících se důkazů o řádném užívání ochranných známek a posuzování pravděpodobnosti záměny. V oblasti IT a digitálních služeb se judikatura i odborná literatura zaměřily na otázky ochrany osobních údajů, smluvní kvalifikaci postoupení autorských práv a aplikaci Aktu o digitálních službách.",
+  "intro": "Sledované období přineslo řadu rozhodnutí Soudního dvora EU týkajících se dokazování řádného užívání ochranných známek a posuzování pravděpodobnosti záměny. V oblasti IT a datové regulace se pozornost soustředila na otázky zpracování biometrických údajů podle GDPR, uchovávání IP adres a aplikaci unijních předpisů na digitální služby.",
   "blocks": [
     {
       "title": "Důkazy užívání ochranných známek",
-      "text": "Tribunál EU v několika rozhodnutích detailně posuzoval požadavky na prokázání řádného užívání ochranných známek a přípustnost mírně pozměněných podob označení. Pro praxi to znamená nutnost pečlivě shromažďovat důkazy, jako jsou faktury a propagační materiály, přičemž drobná úprava vizuální podoby bez ztráty rozlišovací způsobilosti nebrání úspěšné obraně známky.",
+      "text": "Tribunál EU v několika rozsudcích detailně vymezil požadavky na prokázání řádného užívání ochranných známek v řízeních o zrušení. Potvrdil, že drobná grafická obměna bez ztráty rozlišovací způsobilosti nebrání uznání užívání, avšak předložené důkazy musí přesně odpovídat zapsaným kategoriím zboží a služeb. Pro praxi to znamená nutnost pečlivé evidenci reálného obchodního užívání značky.",
       "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-800/25 – Athleta v. EUIPO - Sports Group Denmark (ATHLETA)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0800"
+        },
         {
           "src": "sdeu",
           "label": "SDEU",
@@ -42,21 +49,8 @@
       ]
     },
     {
-      "title": "Autorská práva a Řím I",
-      "text": "Soudní dvůr EU v rozhodnutí C-176/25 potvrdil, že otázka formální platnosti smlouvy o postoupení autorských práv spadá do smluvních vztahů a řídí se nařízením Řím I. Pro autorskoprávní praxi to přináší jasné pravidlo pro určování rozhodného práva při mezinárodních převodech práv.",
-      "sources": [
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "C-176/25 – Steizer",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0176"
-        }
-      ]
-    },
-    {
       "title": "Zpracování biometrických údajů",
-      "text": "Generální advokát u SDEU se v kauze C-317/25 vyjádřil k požadavkům na souhlas se zpracováním údajů pro marketingové účely a nizozemský soud předložil předběžnou otázku ohledně biometrických fotografií (C-660/26). Tyto podněty zdůrazňují přísné unijní nároky na transparentnost a informovaný souhlas podle GDPR.",
+      "text": "Generální advokát SDEU se vyjadřoval k otázce, zda pořízení a uložení fotografie obličeje pro identifikační účely představuje zpracování biometrických údajů dle GDPR. Rovněž zdůraznil, že souhlas s předáním údajů neurčitým partnerům pro přímý marketing bez znalosti jejich totožnosti nepostačuje. Pro správce dat to znamená přísnější nároky na transparentnost a získávání specifických souhlasů.",
       "sources": [
         {
           "src": "sdeu",
@@ -75,8 +69,8 @@
       ]
     },
     {
-      "title": "Ochranné známky a záměna",
-      "text": "České a evropské soudy se zabývaly posuzováním pravděpodobnosti záměny mezi označeními s podobnými slovními prvky. Rozhodnutí Nejvyššího správního soudu a Tribunálu EU potvrzují, že existence vizuální či fonetické podobnosti vede k zamítnutí přihlášek, což klade důraz na důkladnou rešerši před podáním známky.",
+      "title": "Pravděpodobnost záměny známek",
+      "text": "České i unijní soudy opakovaně posuzovaly otázku pravděpodobnosti záměny mezi ochrannými známkami se shodnými či podobnými slovními prvky. NSS potvrdil závěry o záměnitelnosti českých označení, zatímco Tribunál EU se zabýval vlivem nízké podobnosti a vysoké pozornosti spotřebitelů na vyloučení propojení značek. Tyto judikáty slouží jako vodítko pro strategické podávání námitek v přihlašovacím řízení.",
       "sources": [
         {
           "src": "sdeu",
@@ -86,6 +80,27 @@
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0477"
         },
         {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-409/25 – Bitmain Technologies v. EUIPO - Advanced New Technologies (ANTMINER)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0409"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-232/25 – Deva v. EUIPO - Novartis (Devatis)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0232"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-231/25 – Deva v. EUIPO - Novartis (Devatis)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0231"
+        },
+        {
           "src": "nss",
           "label": "NSS",
           "tag": "",
@@ -93,7 +108,20 @@
           "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785485"
         }
       ]
+    },
+    {
+      "title": "Postoupení autorských práv",
+      "text": "Soudní dvůr EU řešil kolizní otázky v oblasti autorského práva a potvrdil, že formální platnost smlouvy o postoupení autorských práv spadá pod nařízení Řím I pro smluvní závazky. Toto rozhodnutí přináší větší právní jistotu při přeshraničních převodech autorských práv a určování rozhodného práva. Pro autorskoprávní praxi jde o důležitý výklad při strukturování mezinárodních licenčních a převodních smluv.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "C-176/25 – Steizer",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0176"
+        }
+      ]
     }
   ],
-  "input_hash": "d62421c7f70cf6439f37da92a99ce827c09d8d9a01549795d385057654207bdc"
+  "input_hash": "7e5d378a1178105ca1b3790f0be0bf2247e84b47ede1d8e30218ede1791fb246"
 }
