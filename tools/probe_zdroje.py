@@ -356,8 +356,38 @@ def sonda_akce(s, den):
             s.stahni(f"akce_{org.lower()}_{i}", url)
 
 
+# Feed IIC, ze kterého scraper_journals.py doplňuje abstrakty chybějící
+# v Crossrefu. Z Actions vracel místo RSS HTML – sonda ukáže, která adresa
+# a které hlavičky projdou a jestli je za kontrolou prohlížeče celý web.
+SPRINGER = "https://link.springer.com"
+SPRINGER_FEEDY = {
+    "springer_feed_puvodni": SPRINGER + "/search.rss?facet-content-type=Article"
+                             "&facet-journal-id=40319&sortBy=newestFirst",
+    "springer_feed_holy": SPRINGER + "/search.rss?facet-journal-id=40319",
+    "springer_feed_kanal": SPRINGER + "/search.rss?facet-journal-id=40319&channel-name=IIC",
+}
+HLAVICKY_RSS = {
+    "Accept": "application/rss+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.5",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Referer": SPRINGER + "/journal/40319",
+}
+
+
+def sonda_springer(s, den):
+    """Varianty feedu IIC a pro srovnání stránka časopisu a článku."""
+    def ukaz(r):
+        if r is not None:
+            print(f"  {'':28} {r.text[:200]!r}")
+
+    for nazev, url in SPRINGER_FEEDY.items():
+        ukaz(s.stahni(nazev, url, headers=HLAVICKY_RSS))
+    ukaz(s.stahni("springer_feed_html_hlavicky", SPRINGER_FEEDY["springer_feed_puvodni"]))
+    ukaz(s.stahni("springer_casopis", SPRINGER + "/journal/40319/articles"))
+    ukaz(s.stahni("springer_clanek", SPRINGER + "/article/10.1007/s40319-026-01781-y"))
+
+
 SONDY = {"ns": sonda_ns, "nss": sonda_nss, "us": sonda_us, "sdeu": sonda_sdeu,
-         "akce": sonda_akce}
+         "akce": sonda_akce, "springer": sonda_springer}
 
 
 def vychozi_den():
