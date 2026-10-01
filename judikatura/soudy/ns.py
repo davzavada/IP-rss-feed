@@ -239,6 +239,7 @@ class NS:
 
     def _pripravit_hledani(self):
         self.chyby, self.varovani = [], []   # pro orchestr (stav.json, workflow)
+        self.nedostupny = False   # pro orchestr: chyba je výpadek webu, ne změna webu
         self._konec = time.monotonic() + MAX_MINUT * 60
         self._sitova = 0          # síťová selhání za sebou
         self._nedostupna = False  # jistič: databáze neodpovídá, dál se nezkouší
@@ -354,6 +355,7 @@ class NS:
         if not self._precteno:
             self.chyby.append(f"databáze NS nedala výsledky na žádný z {dotazu} dotazů"
                               + (" (nedostupná)" if self._nedostupna else ""))
+            self.nedostupny = self._nedostupna
         elif self._neprectene:
             duvod = (" (spojení vypadlo)" if self._nedostupna
                      else " (vypršel čas hledání)" if time.monotonic() >= self._konec else "")

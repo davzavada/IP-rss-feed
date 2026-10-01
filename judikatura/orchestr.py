@@ -2,7 +2,9 @@
 
 Soudy běží izolovaně: když jeden zdroj spadne, ostatní doběhnou a jeho
 selhání se zapíše do data/judikatura/stav.json (a scraper_judikatura.py ho
-ohlásí nenulovým kódem). Archiv i okna pro web se ukládají hned po
+ohlásí nenulovým kódem). Výpadek webu soudu (neodpovídá, timeout) je do
+VYPADEK_TOLERANCE jen varování – soudy občas na pár hodin vypadnou a další
+běh rozhodnutí dohledá (LOOKBACK_DNI). Archiv i okna pro web se ukládají hned po
 objevování, archiv pak po každé položce AI a okna znovu na konci (i když
 běh přeruší výjimka nebo Ctrl+C), takže přerušený běh nepřijde ani o nová
 rozhodnutí, ani o hotová shrnutí.
@@ -14,6 +16,8 @@ import time
 import traceback
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
+
+import requests
 
 import feed_common as fc
 from judikatura import analyza, fronta, model
@@ -27,6 +31,11 @@ PACIFIK = ZoneInfo("America/Los_Angeles")   # free-tier limity se resetují o p�
 # Kolik minut rozpočtu nechat přepisu hesel, když AI fronta vyčerpá čas
 # (nejvýš desetina rozpočtu – krátké ruční běhy ať AI neodříznou).
 HESLA_REZERVA_MIN = 5
+# Jak dlouho smí být web soudu nedostupný, než se z varování stane chyba:
+# 36 h = první dva denní běhy varují, třetí po sobě shodí workflow.
+VYPADEK_TOLERANCE = timedelta(hours=36)
+# Výjimky, které znamenají nedostupný web (ne změnu webu nebo chybu v kódu).
+SITOVE_CHYBY = (requests.ConnectionError, requests.Timeout, ConnectionError, TimeoutError)
 
 
 def zapis_nalezene(sklad, nalezene, nyni, bootstrap, adapter=None, odlozene=None):
@@ -295,6 +304,18 @@ def _zdravi_soudu(adapter, nalezene, nove, odlozene, predtim):
     return chyby, varovani
 
 
+def _vypadek(soud, zdravi, souhrn, chyba, predtim, nyni):
+    """Web soudu nedostupný: zapamatuje si, odkdy (`nedostupny_od` ve
+    stav.json), a do VYPADEK_TOLERANCE ho hlásí jen jako výpadek (varování),
+    potom jako chybu."""
+    od = predtim.get("nedostupny_od") if model.z_iso(predtim.get("nedostupny_od")) else model.iso(nyni)
+    zdravi["nedostupny_od"] = od
+    if nyni - model.z_iso(od) < VYPADEK_TOLERANCE:
+        souhrn["vypadky"][soud] = f"{chyba} – web soudu nedostupný od {od}, příští běh to zkusí znovu"
+    else:
+        souhrn["chyby"][soud] = f"web soudu nedostupný od {od}: {chyba}"[:300]
+
+
 def _ulozit_a_exportovat(sklady, nyni):
     for soud, sklad in sklady.items():
         sklad.uloz()
@@ -313,14 +334,15 @@ def jen_export(soudy, nyni=None, data_dir=None, web_dir=None):
 def beh(adaptery, soudy, nyni=None, max_polozek=60, max_minut=20, stav_cesta=None,
         data_dir=None, web_dir=None):
     """Celý běh pro vybrané soudy. Vrací souhrn (pro výpis a testy);
-    `souhrn["chyby"]` a `souhrn["varovani"]` jsou selhání zdrojů po soudech.
+    `souhrn["chyby"]` a `souhrn["varovani"]` jsou selhání zdrojů po soudech,
+    `souhrn["vypadky"]` krátké výpadky webů soudů (jen varování).
 
     `max_minut` je rozpočet celého běhu od jeho začátku – objevování, AI
     i přepisu hesel."""
     nyni = nyni or model.ted()
     rozpocet = fronta.Rozpocet(max_polozek, max_minut, time.monotonic())
     tax = Taxonomie()
-    sklady, zdravi, souhrn = {}, {}, {"chyby": {}, "varovani": {}}
+    sklady, zdravi, souhrn = {}, {}, {"chyby": {}, "varovani": {}, "vypadky": {}}
     predtim = nacti_stav(stav_cesta).get("soudy") or {}
     for soud in soudy:
         kw = {}
@@ -341,7 +363,11 @@ def beh(adaptery, soudy, nyni=None, max_polozek=60, max_minut=20, stav_cesta=Non
             traceback.print_exc()
             zdravi[soud] = {"objev": model.iso(nyni), "chyba": type(e).__name__,
                             "detail": str(e)[:300]}
-            souhrn["chyby"][soud] = f"{type(e).__name__}: {e}"[:300]
+            if isinstance(e, SITOVE_CHYBY):
+                _vypadek(soud, zdravi[soud], souhrn, f"{type(e).__name__}: {e}"[:200],
+                         predtim.get(soud) or {}, nyni)
+            else:
+                souhrn["chyby"][soud] = f"{type(e).__name__}: {e}"[:300]
             continue
         odlozene = []
         nove = zapis_nalezene(sklad, nalezene, nyni, bootstrap, adapter, odlozene)
@@ -355,7 +381,9 @@ def beh(adaptery, soudy, nyni=None, max_polozek=60, max_minut=20, stav_cesta=Non
         if varovani:
             zdravi[soud]["varovani"] = varovani
             souhrn["varovani"][soud] = varovani
-        if chyby:
+        if chyby and getattr(adapter, "nedostupny", False):
+            _vypadek(soud, zdravi[soud], souhrn, "; ".join(chyby), predtim.get(soud) or {}, nyni)
+        elif chyby:
             souhrn["chyby"][soud] = "; ".join(chyby)
         souhrn[soud] = {"nalezeno": len(nalezene), "nove": len(nove)}
         print(f"[{soud}] nalezeno {len(nalezene)}, nových {len(nove)}")
