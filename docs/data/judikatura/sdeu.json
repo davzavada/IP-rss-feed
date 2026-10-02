@@ -1,8 +1,221 @@
 {
- "generated": "2026-10-01T04:07:42Z",
+ "generated": "2026-10-02T04:02:02Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "sdeu:62025CJ0522",
+   "spz": "C-522/25",
+   "ecli": "ECLI:EU:C:2026:811",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-10-01",
+   "zverejneno": "2026-10-01",
+   "first_seen": "2026-10-02T04:02:02Z",
+   "nazev": "Krone Commercial Vehicle e. a. v. Parlament a Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0522",
+   "heslo": "Přípustnost žaloby na úpravu emisních norem",
+   "shrnuti": "Soudní dvůr řešil, zda výrobci přívěsů splňují podmínky přípustnosti žaloby na neplatnost unijního nařízení o emisních normách CO2 pro těžká užitková vozidla. Rozhodl, že žaloba byla nepřípustná, protože navrhovatelé nebyli napadeným legislativním aktem individuálně dotčeni ve smyslu Smlouvy o fungování Evropské unie.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62025CJ0459",
+   "spz": "C-459/25",
+   "ecli": "ECLI:EU:C:2026:810",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-10-01",
+   "zverejneno": "2026-10-01",
+   "first_seen": "2026-10-02T04:02:02Z",
+   "nazev": "Woonstichting Lieven de Key",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0459",
+   "heslo": "Zneužívající ujednání o nákladech řízení ve spotřebitelských smlouvách",
+   "shrnuti": "Soudní dvůr EU řešil otázku, zda směrnice 93/13 brání tomu, aby byla spotřebiteli, u něhož bylo zneužívající ujednání o náhradě veškerých soudních výdajů shledáno neplatným, uložena náhrada nákladů řízení podle obecného vnitrostátního procesního práva. Rozhodl, že unijní právo nebrání použití obecných vnitrostátních procesních pravidel o nákladech řízení, pokud taková pravidla respektují zásadu efektivity a neodrazují spotřebitele od uplatňování jeho práv.",
+   "oblasti": [
+    "spotrebitel",
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0249",
+   "spz": "C-249/25",
+   "ecli": "ECLI:EU:C:2026:806",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-10-01",
+   "zverejneno": "2026-10-01",
+   "first_seen": "2026-10-02T04:02:02Z",
+   "nazev": "Jilin",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0249",
+   "heslo": "Pozastavení azylového řízení osobám požívajícím dočasné ochrany",
+   "shrnuti": "Soudní dvůr EU posuzoval, zda unijní právo brání vnitrostátní praxi automatického pozastavování posuzování žádostí o mezinárodní ochranu podaných osobami, které již požívají dočasné ochrany. Rozhodl, že plošné a automatické pozastavení těchto řízení po celou dobu dočasné ochrany je nepřípustné, avšak orgány členského státu mohou ve výjimečných případech posuzování dočasně odložit, pokud je to nutné k řešení objektivní nemožnosti dodržet zákonné lhůty.",
+   "oblasti": [
+    "spravni",
+    "socialni_cizinci"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0209",
+   "spz": "C-209/25",
+   "ecli": "ECLI:EU:C:2026:804",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-10-01",
+   "zverejneno": "2026-10-01",
+   "first_seen": "2026-10-02T04:02:02Z",
+   "nazev": "Premium Food Kebab",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0209",
+   "heslo": "Zneužití práva na pevnou náhradu při opožděné platbě",
+   "shrnuti": "Soudní dvůr EU řešil, zda vnitrostátní soud může zamítnout návrh věřitele na zaplacení pevné minimální částky 40 eur za opožděnou platbu podle směrnice 2011/7 z důvodu zneužití práva. Rozhodl, že unijní právo nevylučuje zamítnutí takového nároku při porušení zásady zákazů zneužití práva. K prokázání zneužití je však nutná jak existence objektivních okolností, že nebylo dosaženo cíle směrnice, tak subjektivní prvek spočívající v umělém vytvoření podmínek pro získání výhody.",
+   "oblasti": [
+    "zavazky",
+    "spotrebitel",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0131",
+   "spz": "C-131/25",
+   "ecli": "ECLI:EU:C:2026:808",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-10-01",
+   "zverejneno": "2026-10-01",
+   "first_seen": "2026-10-02T04:02:02Z",
+   "nazev": "Dris",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0131",
+   "heslo": "Kvóty pro studenty nerezidenty při studiu lékařství",
+   "shrnuti": "Soudní dvůr EU posuzoval slučitelnost belgické právní úpravy regulující přístup nerezidentů ke studiu lékařství prostřednictvím kvót. Rozhodl, že unijní právo brání takové úpravě, která bez zohlednění skutečné a efektivní vazby na stát (jako je absolvování střední školy na jeho území) podřazuje pod kvóty i uchazeče s bydlištěm v jiném členském státě.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0020",
+   "spz": "C-20/25",
+   "ecli": "ECLI:EU:C:2026:809",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-10-01",
+   "zverejneno": "2026-10-01",
+   "first_seen": "2026-10-02T04:02:02Z",
+   "nazev": "Apc Europe a další v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0020",
+   "heslo": "Přípustnost žaloby na nečinnost ohledně přezkumu opatření",
+   "shrnuti": "Soudní dvůr EU posuzoval, zda je přípustná žaloba na nečinnost proti odmítnutí Evropské komise přezkoumat zákaz používání živočišných produktů v krmivech. Soudní dvůr konstatoval, že odmítnutí Komise zahájit přezkum či předložit návrh opatření nepředstavuje napadnutelný akt ve smyslu Smlouvy o fungování Evropské unie.",
+   "oblasti": [
+    "spravni",
+    "spotrebitel",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62025CC0697",
+   "spz": "C-697/25",
+   "ecli": "ECLI:EU:C:2026:807",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-10-01",
+   "zverejneno": "2026-10-01",
+   "first_seen": "2026-10-02T04:02:02Z",
+   "nazev": "Appenzell",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0697",
+   "heslo": "Platební rozkaz správního orgánu bez přezkumu není rozhodnutím",
+   "shrnuti": "Generální advokát navrhuje, aby Soudní dvůr EU rozhodl, že švýcarský platební rozkaz vydaný správním úřadem v rámci vymáhání pohledávky bez exekučního titulu nelze považovat za soudní rozhodnutí ve smyslu Luganské úmluvy II. Tento úřad totiž neplní soudní funkce, nepodléhá požadavkům nezávislosti, nevede kontradiktorní řízení a neprovádí meritorní přezkum nároku. Doručení takového platebního rozkazu proto nezakládá vykonatelný titul, který by bylo možné uznat v jiném státě.",
+   "oblasti": [
+    "mps",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0347",
+   "spz": "C-347/25",
+   "ecli": "ECLI:EU:C:2026:805",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-10-01",
+   "zverejneno": "2026-10-01",
+   "first_seen": "2026-10-02T04:02:02Z",
+   "nazev": "Zapp",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0347",
+   "heslo": "Zákaz regresního nároku podniku na pokutu",
+   "shrnuti": "Generální advokát navrhuje, že článek 101 SFEU brání tomu, aby se podnik, kterému byla uložena pokuta za porušení pravidel hospodářské soutěže, domáhal náhrady této finanční újmy po členovi svého řídícího orgánu. Takový regresní nárok by oslabil plnou účinnost a odrazující účinek pokut ukládaných za porušení unijního práva hospodářské soutěže. Odpověď se nemění ani v případě existence pojištění odpovědnosti za škodu způsobenou při výkonu funkce (D&O).",
+   "oblasti": [
+    "soutez",
+    "zavazky",
+    "skoda"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0012",
+   "spz": "C-12/25",
+   "ecli": "ECLI:EU:C:2026:803",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-10-01",
+   "zverejneno": "2026-10-01",
+   "first_seen": "2026-10-02T04:02:02Z",
+   "nazev": "Bisdom Gent",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0012",
+   "heslo": "Vystoupení z církve a výmaz z matriki",
+   "shrnuti": "Generální advokát navrhuje, že osoba, která byla pokřtěna jako nezletilý a po zletilosti se chce distancovat od náboženského společenství, má v zásadě právo na výmaz svých osobních údajů z křestní matriky podle nařízení GDPR. Toto právo však může být omezeno, pokud správce prokáže závažné oprávněné důvody, nebo pokud je zpracování nezbytné pro účely archivace či historického výzkumu za dodržení vhodných záruk. Samotná postranní poznámka a přeškrtnutí údajů tak, aby zůstaly čitelné, nepředstavují řádný výmaz ve smyslu nařízení.",
+   "oblasti": [
+    "zavazky",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CJ0855",
+   "spz": "C-855/24",
+   "ecli": "ECLI:EU:C:2026:802",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-10-01",
+   "zverejneno": "2026-10-01",
+   "first_seen": "2026-10-02T04:02:02Z",
+   "nazev": "Crown Holdings a Crown Cork & Seal Deutschland Holdings v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0855",
+   "heslo": "Přerozdělení kartelového případu Komisi po lhůtě",
+   "shrnuti": "Soudní dvůr řešil kasační opravný prostředek proti rozsudku Tribunálu týkajícímu se přerozdělení kartelového případu z vnitrostátního orgánu pro hospodářskou soutěž na Evropskou komisi po uplynutí orientační lhůty. Soudní dvůr dospěl k závěru, že Komise neporušila pravidla chování obsažená v oznámení o spolupráci ani právo na řádnou správu, protože podstatná změna skutkových okolností v podobě restrukturalizace podniků odůvodňovala pozdní přerozdělení případu. Kasační opravný prostředek proto v plném rozsahu zamítl.",
+   "oblasti": [
+    "soutez",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CJ0845",
+   "spz": "C-845/24",
+   "ecli": "ECLI:EU:C:2026:801",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-10-01",
+   "zverejneno": "2026-10-01",
+   "first_seen": "2026-10-02T04:02:02Z",
+   "nazev": "Silgan Holdings a další v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0845",
+   "heslo": "Zahájení řízení Komisí a příslušnost úřadů",
+   "shrnuti": "Soudní dvůr EU řešil kasační opravný prostředek týkající se pravomoci Evropské komise zahájit řízení o kartelové dohodě poté, co již věc projednával vnitrostátní orgán pro hospodářskou soutěž. Rozhodl, že Komise může případ převzít a odjmout jej vnitrostátnímu orgánu, pokud je to nezbytné k zajištění účinného uplatňování pravidel hospodářské soutěže, přičemž plně dodrží zásady řádné správy a proporcionality.",
+   "oblasti": [
+    "soutez",
+    "spravni"
+   ],
+   "procesni": false
+  },
   {
    "id": "sdeu:62025TJ0800",
    "spz": "T-800/25",
@@ -995,6 +1208,25 @@
    "oblasti": [
     "spravni",
     "spotrebitel"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62026CO0035",
+   "spz": "C-35/26",
+   "ecli": "ECLI:EU:C:2026:782",
+   "druh": "usnesení",
+   "rejstrik": "C",
+   "datum": "2026-09-23",
+   "zverejneno": "2026-09-23",
+   "first_seen": "2026-09-23T12:00:00Z",
+   "nazev": "HH v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CO0035",
+   "heslo": "Zamítnutí pourvoi proti rozhodnutí o výběrovém řízení",
+   "shrnuti": "Soudní dvůr EU řešil pourvoi podaný proti rozsudku Tribunálu, kterým byl zamítnut žalobcův návrh na zrušení rozhodnutí o nezapsání jeho jména na rezervní seznam v rámci všeobecného výběrového řízení. Soudní dvůr shledal všechny uplatněné důvody pourvoi za manifestně nedůvodné a pourvoi v celém rozsahu odmítl.",
+   "oblasti": [
+    "pracovni",
+    "spravni"
    ],
    "procesni": false
   },

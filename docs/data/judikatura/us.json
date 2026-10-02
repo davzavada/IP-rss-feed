@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-01T04:07:42Z",
+ "generated": "2026-10-02T04:02:02Z",
  "soud": "us",
  "okno_dni": 31,
  "polozky": [
@@ -361,12 +361,13 @@
    "first_seen": "2026-10-01T04:07:42Z",
    "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-2453-26_1",
    "soudce": "Kateřina Ronovská",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Předběžné opatření a odkladný účinek ve správním soudnictví",
+   "shrnuti": "Stěžovatelka napadla usnesení městského soudu, kterým byly odmítnuty její návrhy na vydání předběžného opatření a přiznání odkladného účinku žalobě proti kárnému opatření. Ústavní soud shledal stížnost zjevně neopodstatněnou, neboť napadené rozhodnutí bylo řádně odůvodněno a stěžovatelčina argumentace směšovala pojmy žalobních typů a subsidiární povahu zásahové žaloby. Ústavní soud proto ústavní stížnost odmítl.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
   },
   {
    "id": "us:1-2423-26_1",
