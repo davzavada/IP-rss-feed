@@ -60,9 +60,16 @@
     "vstup": 220686,
     "vystup": 2714
    }
+  },
+  "2026-10-02": {
+   "gemini-flash-lite-latest": {
+    "volani": 41,
+    "vstup": 370959,
+    "vystup": 8582
+   }
   }
  },
- "aktualizovano": "2026-10-02T04:02:02Z",
+ "aktualizovano": "2026-10-02T14:48:00Z",
  "soudy": {
   "ns": {
    "chyba": "databáze NS nedala výsledky na žádný z 14 dotazů (nedostupná)",
@@ -76,10 +83,10 @@
    ]
   },
   "nss": {
-   "chyba": "ConnectionError",
-   "detail": "HTTPSConnectionPool(host='vyhledavac.nssoud.cz', port=443): Max retries exceeded with url: / (Caused by NewConnectionError(\"HTTPSConnection(host='vyhledavac.nssoud.cz', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\"))",
-   "nedostupny_od": "2026-10-02T04:02:02Z",
-   "objev": "2026-10-02T04:02:02Z"
+   "chyba": null,
+   "nalezeno": 213,
+   "nove": 42,
+   "objev": "2026-10-02T14:48:00Z"
   },
   "sdeu": {
    "chyba": null,
