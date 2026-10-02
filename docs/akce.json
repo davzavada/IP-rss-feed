@@ -1,13 +1,13 @@
 {
-  "generated": "2026-10-01T08:11:59+00:00",
+  "generated": "2026-10-02T05:21:17+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 37,
-      "stazeno": "2026-10-01T08:11:45+00:00",
+      "pocet": 34,
+      "stazeno": "2026-10-02T05:20:58+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,10 +18,10 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 4,
-      "stazeno": "2026-10-01T08:11:47+00:00",
+      "stazeno": "2026-10-02T05:21:02+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "6118b5f860bfc354"
+      "otisk": "a93e629a037c0b57"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
@@ -29,10 +29,10 @@
       "barva": "#1d4ed8",
       "url": "https://jednotaceskychpravniku.cz/vzdelavaci-akce/",
       "pocet": 5,
-      "stazeno": "2026-10-01T08:11:51+00:00",
+      "stazeno": "2026-10-02T05:21:08+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "fbb1733b6c8e2af7"
+      "otisk": "1f1f0e071287da8c"
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 5,
-      "stazeno": "2026-10-01T08:11:56+00:00",
+      "stazeno": "2026-10-02T05:21:14+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "79cecc64c457c5d1"
+      "otisk": "9aa7a5f9ce8e2999"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-10-01T08:11:58+00:00",
+      "stazeno": "2026-10-02T05:21:16+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "18d20c7ee3ecdc1d"
@@ -61,8 +61,8 @@
       "zkratka": "ÚPV",
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
-      "pocet": 6,
-      "stazeno": "2026-10-01T08:11:59+00:00",
+      "pocet": 5,
+      "stazeno": "2026-10-02T05:21:16+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "99e3d66f28db3328"
@@ -271,7 +271,7 @@
       "datum": "2026-10-02",
       "zacatek": "09:00",
       "konec": "17:00",
-      "nazev": "Konference: Daňové právo 2026",
+      "nazev": "Konference: Daňové právo 2026 (2. 10.)",
       "misto": "Univerzita Karlova, Právnická fakulta, místnost 120",
       "forma": "prezencne",
       "lektori": [
@@ -290,14 +290,8 @@
       "oblasti": [
         "dane"
       ],
-      "oblasti_klic": "78c45f9f68cb",
-      "detail_pokusy": 2,
-      "take_u": [
-        {
-          "poradatel": "EPRAVO",
-          "url": "https://www.epravo.cz/eshop/danove-pravo-2026-2-10-2026-1549.html"
-        }
-      ]
+      "oblasti_klic": "72b1dfc27882",
+      "detail_pokusy": 2
     },
     {
       "id": "364a39e68b03338f4de0",
@@ -368,7 +362,7 @@
       "datum": "2026-10-06",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Rozvodová novela a soudní praxe – 9 měsíců poté",
+      "nazev": "Rozvodová novela a soudní praxe – 9 měsíců poté (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -385,7 +379,7 @@
         "rodina_dedictvi",
         "ustavni"
       ],
-      "oblasti_klic": "7d2b83c7601c"
+      "oblasti_klic": "ccbcbeeabc87"
     },
     {
       "id": "89b461d4d068dde91957",
@@ -476,7 +470,7 @@
       "datum": "2026-10-08",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Velká novela stavebního zákona",
+      "nazev": "Velká novela stavebního zákona (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -489,7 +483,7 @@
       "oblasti": [
         "stavebni_zp"
       ],
-      "oblasti_klic": "1e315946aac0"
+      "oblasti_klic": "0ae87ab60a8b"
     },
     {
       "id": "7d186c6632ba0e36d0b4",
@@ -497,7 +491,7 @@
       "datum": "2026-10-08",
       "zacatek": "13:00",
       "konec": "16:00",
-      "nazev": "Marketing a akvizice klientů s podporou AI",
+      "nazev": "Marketing a akvizice klientů s podporou AI (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -508,7 +502,7 @@
       "url": "https://www.epravo.cz/eshop/marketing-a-akvizice-klientu-s-podporou-ai-online-zive-vysilani-8-10-2026-1423.html",
       "detail_pokusy": 1,
       "oblasti": [],
-      "oblasti_klic": "45638bf1708e"
+      "oblasti_klic": "5c2365de9653"
     },
     {
       "id": "b6600b58d6fcdb9902a3",
@@ -516,7 +510,7 @@
       "datum": "2026-10-09",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Energetické a stavební právo: Komunitní energetika a aktuální legislativní změny v energetice",
+      "nazev": "Energetické a stavební právo: Komunitní energetika a aktuální legislativní změny v energetice (online – živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -532,10 +526,10 @@
         "misto"
       ],
       "oblasti": [
-        "stavebni_zp",
-        "spravni"
+        "spravni",
+        "stavebni_zp"
       ],
-      "oblasti_klic": "c939e2bb0f0d"
+      "oblasti_klic": "5e34338218f2"
     },
     {
       "id": "2c194d1bc534e86fd602",
@@ -608,7 +602,7 @@
       "datum": "2026-10-13",
       "zacatek": "09:00",
       "konec": "11:00",
-      "nazev": "Když přijde policie: součinnost společnosti – co musíte, co můžete a co raději nedělat",
+      "nazev": "Když přijde policie: součinnost společnosti – co musíte, co můžete a co raději nedělat (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -622,10 +616,9 @@
         "misto"
       ],
       "oblasti": [
-        "trestni",
-        "spravni"
+        "trestni"
       ],
-      "oblasti_klic": "9e275223b9ca"
+      "oblasti_klic": "3bed1b795ee6"
     },
     {
       "id": "ebf7539fdeafefcbdeaa",
@@ -679,11 +672,11 @@
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
       "forma": "prezencne",
       "lektori": [
-        "JUDr. Tomáš Fabík"
+        "JUDr. Tomáš Fabík, advokát"
       ],
-      "cena": "1800 Kč",
+      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
       "anotace": "Umělá inteligence se stala běžnou součástí praxe, školení se zaměřuje na její využití pro právníky.",
-      "url": "https://jednotaceskychpravniku.cz/prednasky/umela-inteligence-a-jeji-vyuziti-v-praxi-pravniku/",
+      "url": "https://jednotaceskychpravniku.cz/prednasky/umela-intelligence-a-jeji-vyuziti-v-praxi-pravniku/",
       "oblasti": [
         "it"
       ],
@@ -789,7 +782,7 @@
       "misto": "",
       "forma": "prezencne",
       "lektori": [
-        "prof. JUDr. Jan Kuklík, DrSc."
+        "prof. JUDr. Jan Kuklík, DrSc., vedoucí katedry právních dějin PF UK"
       ],
       "cena": "zdarma",
       "anotace": "Přednáška mapuje pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Antonína Suma.",
@@ -984,9 +977,9 @@
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
       "forma": "prezencne",
       "lektori": [
-        "Mgr. Michal Králík, Ph.D."
+        "Mgr. Michal Králík, Ph.D., soudce NS ČR"
       ],
-      "cena": "1800 Kč",
+      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
       "anotace": "Seminář zaměřený na aktuální otázky věcných práv.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/aktualni-otazky-vecnych-prav/",
       "oblasti": [
@@ -1151,9 +1144,9 @@
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
       "forma": "prezencne",
       "lektori": [
-        "JUDr. Irena Holcová"
+        "JUDr. Irena Holcová, advokátka"
       ],
-      "cena": "1800 Kč",
+      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
       "anotace": "Seminář se zabývá průnikem autorského práva a umělé inteligence.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/autorske-pravo-a-umela-inteligence/",
       "oblasti": [
@@ -1320,9 +1313,9 @@
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
       "forma": "prezencne",
       "lektori": [
-        "JUDr. Josef Holejšovský, Ph.D."
+        "JUDr. Josef Holejšovský, Ph.D., soudce Vrchního soudu v Praze"
       ],
-      "cena": "1800 Kč",
+      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
       "anotace": "Odborná přednáška zaměřená na soudní přezkum rozhodnutí orgánů společností s ručením omezeným a akciových společností.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/soudni-prezkum-rozhodnuti-organu-s-r-o-a-a-s-vcetne-neplatnosti-usneseni-valne-hromady/",
       "oblasti": [
@@ -1441,34 +1434,6 @@
     }
   ],
   "duplikaty": [
-    {
-      "id": "89da18e6be1ce243ec1f",
-      "poradatel": "EPRAVO",
-      "datum": "2026-10-02",
-      "zacatek": "09:00",
-      "konec": "17:00",
-      "nazev": "Daňové právo 2026",
-      "misto": "Univerzita Karlova, Právnická fakulta, místnost 120",
-      "forma": "prezencne",
-      "lektori": [
-        "Mgr. Karel Šimek",
-        "prof. JUDr. Ing. Michal Radvan, Ph.D.",
-        "JUDr. Lucie Fuksová",
-        "Mgr. et Mgr. Jan Oliva, LL.M.",
-        "Mgr. Václav Čepelák",
-        "Mgr. Tomáš Rozehnal, Ph.D.",
-        "JUDr. Ing. Jiří Kappel, Ph.D.",
-        "Mgr. Ing. Lenka Bursíková"
-      ],
-      "cena": "3 025 Kč s DPH",
-      "anotace": "Konference věnovaná aktuálním otázkám daňového práva pro rok 2026.",
-      "url": "https://www.epravo.cz/eshop/danove-pravo-2026-2-10-2026-1549.html",
-      "oblasti": [
-        "dane"
-      ],
-      "oblasti_klic": "cdf8eb28dad6",
-      "stejna_jako": "325dab32d43b405e73b3"
-    },
     {
       "id": "e97dacc1ad6762ebfc3c",
       "poradatel": "EPRAVO",

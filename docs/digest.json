@@ -1,15 +1,15 @@
 {
-  "generated": "2026-10-01T08:11:59.455060+00:00",
-  "from": "2026-09-17",
-  "to": "2026-10-01",
-  "total": 82,
-  "covered": 13,
-  "cekajici": 3,
-  "intro": "Sledované období přineslo řadu rozhodnutí Soudního dvora EU týkajících se dokazování řádného užívání ochranných známek a posuzování pravděpodobnosti záměny. V oblasti IT a datové regulace se pozornost soustředila na otázky zpracování biometrických údajů podle GDPR, uchovávání IP adres a aplikaci unijních předpisů na digitální služby.",
+  "generated": "2026-10-02T05:21:17.955511+00:00",
+  "from": "2026-09-18",
+  "to": "2026-10-02",
+  "total": 81,
+  "covered": 22,
+  "cekajici": 2,
+  "intro": "Sledované období přineslo řadu rozhodnutí Soudního dvora EU týkajících se dokazování řádného užívání ochranných známek a posuzování pravděpodobnosti jejich záměny. Domácí i evropská judikatura a odborná literatura se rovněž věnovaly aktuálním otázkám autorského práva, digitálních platforem, ochrany osobních údajů a vlivu umělé inteligence na právo duševního vlastnictví.",
   "blocks": [
     {
-      "title": "Důkazy užívání ochranných známek",
-      "text": "Tribunál EU v několika rozsudcích detailně vymezil požadavky na prokázání řádného užívání ochranných známek v řízeních o zrušení. Potvrdil, že drobná grafická obměna bez ztráty rozlišovací způsobilosti nebrání uznání užívání, avšak předložené důkazy musí přesně odpovídat zapsaným kategoriím zboží a služeb. Pro praxi to znamená nutnost pečlivé evidenci reálného obchodního užívání značky.",
+      "title": "Důkazy o užívání známek",
+      "text": "Soudní dvůr EU v řadě rozsudků potvrdil, že pro úspěšnou obranu či zrušení ochranných známek je nutné předložit konkrétní a průkazné doložení reálného obchodního užívání. Změny v podobě známek, jako je odstranění okrajových prvků, přitom nemění jejich rozlišovací způsobilost, pokud zůstává zachován celkový charakter označení.",
       "sources": [
         {
           "src": "sdeu",
@@ -17,6 +17,13 @@
           "tag": "",
           "title": "T-800/25 – Athleta v. EUIPO - Sports Group Denmark (ATHLETA)",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0800"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-494/25 – Van Eck Associates v. EUIPO - Vector (MARKETVECTOR)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0494"
         },
         {
           "src": "sdeu",
@@ -49,28 +56,8 @@
       ]
     },
     {
-      "title": "Zpracování biometrických údajů",
-      "text": "Generální advokát SDEU se vyjadřoval k otázce, zda pořízení a uložení fotografie obličeje pro identifikační účely představuje zpracování biometrických údajů dle GDPR. Rovněž zdůraznil, že souhlas s předáním údajů neurčitým partnerům pro přímý marketing bez znalosti jejich totožnosti nepostačuje. Pro správce dat to znamená přísnější nároky na transparentnost a získávání specifických souhlasů.",
-      "sources": [
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "C-660/26 – International Card Services",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0660"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "C-317/25 – Groupe Canal +",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0317"
-        }
-      ]
-    },
-    {
-      "title": "Pravděpodobnost záměny známek",
-      "text": "České i unijní soudy opakovaně posuzovaly otázku pravděpodobnosti záměny mezi ochrannými známkami se shodnými či podobnými slovními prvky. NSS potvrdil závěry o záměnitelnosti českých označení, zatímco Tribunál EU se zabýval vlivem nízké podobnosti a vysoké pozornosti spotřebitelů na vyloučení propojení značek. Tyto judikáty slouží jako vodítko pro strategické podávání námitek v přihlašovacím řízení.",
+      "title": "Záměnost a posuzování známek",
+      "text": "Tribunál i české správní soudy se opakovaně zabývaly otázkou pravděpodobnosti záměny mezi staršími a nově přihlašovanými ochrannými známkami. Judikatura potvrzuje, že nízká podobnost označení ve spojení s vysokou pozorností odborné veřejnosti může existenci záměny vyloučit, zatímco sémantická a vizuální shoda vede k zamítnutí přihlášek.",
       "sources": [
         {
           "src": "sdeu",
@@ -78,6 +65,13 @@
           "tag": "",
           "title": "T-477/25 – T-Head (Shanghai) v. EUIPO - Head Technology (T-HEAD)",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0477"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-302/25 – Van Eck Associates v. EUIPO - Vector (MARKETVECTOR INDEXES)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0302"
         },
         {
           "src": "sdeu",
@@ -110,8 +104,8 @@
       ]
     },
     {
-      "title": "Postoupení autorských práv",
-      "text": "Soudní dvůr EU řešil kolizní otázky v oblasti autorského práva a potvrdil, že formální platnost smlouvy o postoupení autorských práv spadá pod nařízení Řím I pro smluvní závazky. Toto rozhodnutí přináší větší právní jistotu při přeshraničních převodech autorských práv a určování rozhodného práva. Pro autorskoprávní praxi jde o důležitý výklad při strukturování mezinárodních licenčních a převodních smluv.",
+      "title": "Autorská práva a kolize",
+      "text": "Soudní dvůr EU se zabýval určením rozhodného práva pro postoupení autorských práv a potvrdil, že tato otázka spadá pod smluvní nařízení Řím I. Odborná literatura se současně zaměřila na výzvy spojené s generativní umělou inteligencí, autorskými odměnami a ochranou práv v digitálním prostředí.",
       "sources": [
         {
           "src": "sdeu",
@@ -119,9 +113,84 @@
           "tag": "",
           "title": "C-176/25 – Steizer",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0176"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "Sui Generis Right to Non-Original Objects Generated by a Computer Program Under Ukrainian Law: First Impressions and (In)Compatibility with EU Law",
+          "link": "https://doi.org/10.1007/s40319-026-01776-9"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JWIP",
+          "title": "How much human contribution is needed for “ownership” of AI‐generated content: A comparison of copyright determination for generative AI in China and the United States",
+          "link": "https://doi.org/10.1111/jwip.70011"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JWIP",
+          "title": "Exploring remuneration mechanisms for copyrighted works in generative AI systems",
+          "link": "https://doi.org/10.1111/jwip.70027"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JWIP",
+          "title": "Do deepfakes, digital replicas and human digital twins justify personality rights?",
+          "link": "https://doi.org/10.1111/jwip.70020"
+        }
+      ]
+    },
+    {
+      "title": "Digitální služby a platformy",
+      "text": "Odborné články analyzovaly dopady Aktu o digitálních trzích (DMA) a Aktu o digitálních službách (DSA) na regulaci velkých technologických společností a elektronických sportů. Pozornost byla věmována také funkční segmentaci zprostředkovatelských služeb a novým povinnostem poskytovatelů v online prostředí.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "Can the Digital Markets Act Turn the Tide Against Big Tech?",
+          "link": "https://doi.org/10.1007/s40319-026-01781-y"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "MUJLT",
+          "title": "Esports and the Digital Services Act: Functional Classification of Gaming, Tournament and Streaming Services",
+          "link": "https://journals.muni.cz/mujlt/article/view/42629"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "MUJLT",
+          "title": "Shut Down, Sued, and Silenced: Strategic Suppression Tactics of Technology Corporations",
+          "link": "https://journals.muni.cz/mujlt/article/view/43681"
+        }
+      ]
+    },
+    {
+      "title": "Ochrana osobních údajů",
+      "text": "Nizozemský soud předložil Soudnímu dvoru EU předběžnou otázku týkající se kvalifikace fotografií a biometrických údajů dle GDPR. Francouzská Státní rada mezitím řešila zákonnost plošného uchovávání IP adres a přístupu k nim pro účely potírání kriminality na internetu.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "C-660/26 – International Card Services",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0660"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "“Data Collection Under HADOPI Law” – Decision of the Council of State of France (Conseil d’ètat) 30 April 2026 – Case No. 433539",
+          "link": "https://doi.org/10.1007/s40319-026-01771-0"
         }
       ]
     }
   ],
-  "input_hash": "7e5d378a1178105ca1b3790f0be0bf2247e84b47ede1d8e30218ede1791fb246"
+  "input_hash": "b086ee2c9f8a5e8fec141d78f0dd195694855806947ca7999c56389b5718e0b9"
 }
