@@ -31,6 +31,7 @@
   --badge-indigo-bg: hsl(239 84% 67% / 0.13);  --badge-indigo-fg: hsl(244 55% 41%);
   --badge-teal-bg: hsl(173 80% 36% / 0.12);    --badge-teal-fg: hsl(175 84% 25%);
   --badge-rose-bg: hsl(347 77% 50% / 0.11);    --badge-rose-fg: hsl(345 70% 40%);
+  --badge-violet-bg: hsl(271 81% 56% / 0.11);  --badge-violet-fg: hsl(272 72% 47%);
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -60,6 +61,7 @@
     --badge-indigo-bg: hsl(234 89% 74% / 0.16); --badge-indigo-fg: hsl(230 94% 82%);
     --badge-teal-bg: hsl(173 80% 40% / 0.16);   --badge-teal-fg: hsl(172 66% 55%);
     --badge-rose-bg: hsl(347 77% 50% / 0.16);   --badge-rose-fg: hsl(351 95% 76%);
+    --badge-violet-bg: hsl(271 81% 56% / 0.18); --badge-violet-fg: hsl(270 95% 80%);
   }
 }
 
@@ -109,9 +111,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 .head-right { margin-left: auto; display: flex; align-items: center; gap: 14px; }
 
 /* ===== Rozvržení: navigace vlevo, obsah uprostřed =====
-   Obsah má nejvýš 1040 px. Na širokém okně (od 1600 px) je vpravo
-   stejně široký prázdný sloupec jako navigace vlevo, takže obsah stojí
-   přesně na středu okna a neroztahuje se doprava. */
+   Obsah má nejvýš 1040 px a stojí na středu prostoru vedle navigace
+   (jako Dawmain) – vpravo žádný prázdný sloupec, takže na užším okně
+   nevznikne úzká mezera vlevo a široká vpravo. */
 .rozvrh { display: grid; grid-template-columns: minmax(0, 1fr); }
 main { min-width: 0; padding: 32px 48px 48px; }
 .obsah { max-width: 1040px; margin-inline: auto; }
@@ -128,8 +130,7 @@ main { min-width: 0; padding: 32px 48px 48px; }
   .pagetabs-lista { display: none; }
 }
 @media (min-width: 1600px) {
-  .rozvrh { grid-template-columns: 260px minmax(0, 1fr) 260px; }
-  main { padding-inline: 0; }
+  .rozvrh { grid-template-columns: 260px minmax(0, 1fr); }
 }
 
 /* Boční navigace (shadcn Sidebar). Názvy se nezalamují – dvouřádková
@@ -302,6 +303,14 @@ html:not(.smi-kalendar) [data-jen="kalendar"] { display: none !important; }
   font-size: 13px; color: var(--muted-foreground);
 }
 .polozka-ident { color: var(--fg-2); }
+/* Typ rozhodnutí: předběžná otázka, rozsudek a stanovisko GA jako barevný
+   štítek; ostatní (usnesení, nález, článek) zůstávají šedým textem. */
+.druh-stitek {
+  padding: 1px 7px; border-radius: 4px; font-size: 12px; line-height: 18px; font-weight: 500;
+}
+.druh-otazka { background: var(--badge-amber-bg); color: var(--badge-amber-fg); }
+.druh-rozsudek { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
+.druh-stanovisko { background: var(--badge-violet-bg); color: var(--badge-violet-fg); }
 .meta-vec { display: inline-flex; gap: 8px; min-width: 0; }
 .polozka-datum { margin-left: auto; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .polozka-hlava { display: flex; align-items: baseline; gap: 4px 14px; flex-wrap: wrap; }
@@ -317,7 +326,12 @@ html:not(.smi-kalendar) [data-jen="kalendar"] { display: none !important; }
 .odkaz-text { color: var(--faint); }
 .odkaz-text:hover { color: var(--active-fg); }
 .polozka-vec { display: none; font-size: 13px; color: var(--muted-foreground); }
-.polozka-shrnuti { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--fg-2); text-wrap: pretty; }
+/* Na desktopu do bloku s českým dělením slov (lang="cs" na <html>), ať
+   v řádcích nezůstávají velké mezery; na telefonu zarovnání doleva. */
+.polozka-shrnuti {
+  margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--fg-2); text-wrap: pretty;
+  text-align: justify; hyphens: auto; -webkit-hyphens: auto;
+}
 .polozka-shrnuti.note { color: var(--muted-foreground); font-style: italic; }
 .odkaz {
   display: inline-flex; align-items: center; font-size: 12px; font-weight: 500;
@@ -723,6 +737,7 @@ html.is-loading body { visibility: hidden; }
   .polozka-vec { display: block; }
   .titul-odkaz { pointer-events: auto; }
   .titul-sipka { display: inline; }
+  .polozka-shrnuti { text-align: left; hyphens: manual; -webkit-hyphens: manual; }
   /* Zdroje přehledu pod sebou, každý na jeden řádek. */
   .digest-block { padding: 18px 0; }
   .digest-title { font-size: 17px; }

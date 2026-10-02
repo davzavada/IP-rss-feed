@@ -184,6 +184,16 @@ function pripravPolozku(item, key) {
 
 const TECKA = '<span aria-hidden="true">·</span>';
 
+// Barevný štítek pro typy, které je dobré rozlišit na první pohled
+// (hlavně u SDEU): předběžná otázka, rozsudek, stanovisko GA.
+function druhTrida(druh) {
+  const s = String(druh || "").toLowerCase();
+  if (/předběžn|otázk/.test(s)) return "druh-stitek druh-otazka";
+  if (/rozsud/.test(s)) return "druh-stitek druh-rozsudek";
+  if (/stanovisk|\bga$|\bag$/.test(s)) return "druh-stitek druh-stanovisko";
+  return "";
+}
+
 // Na desktopu jsou odkazy nenápadný šedý text hned za titulkem. Na telefonu
 // je místo nich odkazem na zdroj samotný titulek (viz polozkaHtml).
 function odkazyHtml(p) {
@@ -198,7 +208,10 @@ function odkazyHtml(p) {
 function polozkaHtml(p) {
   const meta = [];
   if (p.ident) meta.push('<span class="polozka-ident">' + esc(p.ident) + "</span>");
-  if (p.druhText) meta.push("<span>" + esc(p.druhText) + "</span>");
+  if (p.druhText) {
+    const trida = druhTrida(p.druhText);
+    meta.push("<span" + (trida ? ' class="' + trida + '"' : "") + ">" + esc(p.druhText) + "</span>");
+  }
   let html = '<article class="polozka"><div class="polozka-meta">' + meta.join(TECKA);
   if (p.vecText) {
     html += '<span class="meta-vec">' + (meta.length ? TECKA : "") + "<span>" + esc(p.vecText) + "</span></span>";
