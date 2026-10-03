@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-02T05:20:51Z",
+ "generated": "2026-10-03T05:04:15Z",
  "okno_dni": 31,
  "casopisy": [
   {
@@ -780,17 +780,6 @@
    "first_seen": "2026-09-02T21:47:16Z"
   },
   {
-   "id": "IIC-10.1007/s40319-026-01766-x",
-   "casopis": "iic",
-   "nazev": "Yaniv Benhamou: Creative Value Chains – Copyright and Beyond for a Better Value Distribution – Bristol University Press, 2026. 274 pp. ISBN 978-1529249521. GBP 29.99",
-   "url": "https://doi.org/10.1007/s40319-026-01766-x",
-   "autori": "Peter Ling",
-   "heslo": "Kreativní hodnotové řetězce",
-   "shrnuti": "Publikace analyzuje kreativní hodnotové řetězce a roli autorského práva v distribuci hodnoty. Autor zkoumá možnosti spravedlivějšího rozdělování zisků a navrhuje řešení, která přesahují rámec samotného autorského práva.",
-   "datum": "2026-09-01",
-   "first_seen": "2026-09-01T07:38:41Z"
-  },
-  {
    "id": "IJLIT-10.1093/ijlit/eaag012",
    "casopis": "ijlit",
    "nazev": "Access to uncontaminated data for AI training",
@@ -1052,6 +1041,83 @@
    "shrnuti": "Článek zkoumá problematiku soudních příkazů (injunctions) a vymáhání patentů v transatlantické perspektivě. Analyticky se zaměřuje na rozdíly a souvislosti v přístupech k patentové ochraně mezi odlišnými právními řády.",
    "datum": "2026-05-08",
    "first_seen": "2026-09-29T05:30:25Z"
+  },
+  {
+   "id": "JPIL-10.1080/17441048.2026.2637708",
+   "casopis": "jpil",
+   "nazev": "Extension of consumer protection in EU private international law",
+   "url": "https://doi.org/10.1080/17441048.2026.2637708",
+   "autori": "Aleksandrs Fillers",
+   "heslo": "Ochrana spotřebitele",
+   "shrnuti": "Článek se zabývá rozšířením spotřebitelské ochrany v rámci evropského práva mezinárodního soukromého. Zkoumá aktuální legislativní trendy a jejich dopady na řešení přeshraničních spotřebitelských sporů. Hlavním závěrem je hodnocení posílení práv spotřebitelů a míry právní jistoty v unijním prostředí.",
+   "datum": "2026-05-08",
+   "first_seen": "2026-09-18T05:03:46Z"
+  },
+  {
+   "id": "JPIL-10.1080/17441048.2026.2637722",
+   "casopis": "jpil",
+   "nazev": "Navigating the residence for sole traders and other natural persons under the 2005 Hague Choice of Court Convention",
+   "url": "https://doi.org/10.1080/17441048.2026.2637722",
+   "autori": "Andreas Hermann",
+   "heslo": "Haagská úmluva o volbě soudu",
+   "shrnuti": "Článek se zabývá určením bydliště OSVČ a dalších fyzických osob v kontextu Haagské úmluvy o volbě soudu z roku 2005. Zkoumá výkladové problémy spojené s tímto pojmem a analyzuje dopady na mezinárodní příslušnost soudů.",
+   "datum": "2026-05-08",
+   "first_seen": "2026-09-18T05:03:46Z"
+  },
+  {
+   "id": "JPIL-10.1080/17441048.2026.2637724",
+   "casopis": "jpil",
+   "nazev": "Decoding the oracle: Statutory interpretation in the conflict of laws",
+   "url": "https://doi.org/10.1080/17441048.2026.2637724",
+   "autori": "Ross R-S Pey",
+   "heslo": "Výklad zákona v mezinárodním právu soukromém",
+   "shrnuti": "Článek se zabývá problematikou výkladu stanov a právních předpisů v kontextu konfliktu norem mezinárodního práva soukromého. Analýza zkoumá metody a přístupy k dekódování zákonných ustanovení při řešení kolizních situací. Text nabízí hlubší pohled na aplikaci interpretačních pravidel v přeshraničních právních sporech.",
+   "datum": "2026-05-08",
+   "first_seen": "2026-09-18T05:03:46Z"
+  },
+  {
+   "id": "JPIL-10.1080/17441048.2026.2637788",
+   "casopis": "jpil",
+   "nazev": "Foreign law, appellate review and mixed legal traditions in Quebec",
+   "url": "https://doi.org/10.1080/17441048.2026.2637788",
+   "autori": "Guillaume Laganière",
+   "heslo": "cizí právo, odvolací přezkum, kanadské právo",
+   "shrnuti": "Článek se zabývá problematikou aplikace cizího práva a odvolacího přezkumu v kontextu smíšených právních tradic v Québecu. Zkoumá specifika a postupy při řešení právních otázekpřesahujících hranice jedné jurisdikce. Výsledky přibližují fungování odvolacího přezkumu v tomto specifickém právním prostředí.",
+   "datum": "2026-05-08",
+   "first_seen": "2026-09-18T05:03:46Z"
+  },
+  {
+   "id": "JPIL-10.1080/17441048.2026.2643019",
+   "casopis": "jpil",
+   "nazev": "State international responsibility for breach of private international law treaties",
+   "url": "https://doi.org/10.1080/17441048.2026.2643019",
+   "autori": "Zeno Crespi Reghizzi",
+   "heslo": "Mezinárodní odpovědnost států",
+   "shrnuti": "Článek se zabývá mezinárodní odpovědností států za porušení smluv z oblasti mezinárodního práva soukromého. Zkoumá právní důsledky a závěry plynoucí z porušení těchto závazků na mezinárodní úrovni.",
+   "datum": "2026-05-08",
+   "first_seen": "2026-09-18T05:03:46Z"
+  },
+  {
+   "id": "JPIL-10.1080/17441048.2026.2643023",
+   "casopis": "jpil",
+   "nazev": "Choice of law rules under pressure – the growing power of state interests and vested rights in private international law",
+   "url": "https://doi.org/10.1080/17441048.2026.2643023",
+   "autori": "Felix Berner",
+   "heslo": "Mezinárodní právo soukromé",
+   "shrnuti": "Článek zkoumá současný tlak na kolizní normy v mezinárodním právu soukromém se zaměřením na rostoucí vliv státních zájmů a nabytých práv. Analýza se zabývá tím, jak tyto faktory mění tradiční přístupy k určování rozhodného práva. Výsledky poukazují na proměnu rovnováhy mezi soukromými právy a veřejnými zájmy států.",
+   "datum": "2026-05-08",
+   "first_seen": "2026-09-18T05:03:46Z"
+  },
+  {
+   "id": "JPIL-10.1080/17441048.2026.2647530",
+   "casopis": "jpil",
+   "nazev": "Charting a path towards harmonisation of privilege rules: a two-stage uniform choice of law rule for privilege in international arbitration",
+   "url": "https://doi.org/10.1080/17441048.2026.2647530",
+   "autori": "Darius Chan Sasiy Krishnan",
+   "heslo": "Kolizní úprava privilegia",
+   "shrnuti": "Článek se zabývá harmonizací pravidel profesní mlčenlivosti a právních privilegií v kontextu mezinárodní arbitráže. Navrhuje zavedení dvoustupňové jednotné kolizní normy, která by řešila otázky uplatnění těchto privilegií přes hranice států. Cílem je sjednotit dosavadní nejednotnou praxi a poskytnout rozhodčím tribunálům jasnější rámec pro řešení sporných otázek mlčenlivosti.",
+   "datum": "2026-05-08",
+   "first_seen": "2026-09-18T05:03:46Z"
   },
   {
    "id": "IJLIT-10.1093/ijlit/eaag007",
