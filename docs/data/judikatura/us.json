@@ -1,8 +1,47 @@
 {
- "generated": "2026-10-02T04:02:02Z",
+ "generated": "2026-10-03T03:46:48Z",
  "soud": "us",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "us:2-2554-26_1",
+   "spz": "II. ÚS 2554/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2554.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-10-02",
+   "first_seen": "2026-10-03T03:46:48Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2554-26_1",
+   "soudce": "Martin Smolek",
+   "heslo": "Přezkum prozatímního rozhodnutí o péči o děti",
+   "shrnuti": "Stěžovatel napadal prozatímní rozhodnutí o úpravě poměrů nezletilých dětí, zejména omezení péče na území České republiky a stanovené výživné. Ústavní soud shledal ústavní stížnost zjevně neopodstatněnou, neboť napadené rozhodnutí bylo dočasné povahy a sledovalo nejlepší zájem dětí v situaci konfliktu rodičů. Zásah do práv stěžovatele nebyl shledán v rozporu s ústavním pořádkem.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:2-2471-26_1",
+   "spz": "II. ÚS 2471/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2471.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-08-31",
+   "zverejneno": "2026-10-02",
+   "first_seen": "2026-10-03T03:46:48Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2471-26_1",
+   "soudce": "Pavel Šámal",
+   "heslo": "Zájem dítěte a prozatímní rozhodnutí o škole",
+   "shrnuti": "Stěžovatel napadal usnesení obvodního soudu, kterým bylo vydáno prozatímní rozhodnutí nahrazující jeho souhlas se zápisem nezletilého do základní školy. Ústavní soud stížnost odmítl jako zjevně neopodstatněnou, neboť obvodní soud sice pochybil, když stěžovateli nedoručil návrh před vydáním rozhodnutí, avšak toto pochybení v daném případě převážil nejlepší zájem nezletilého na zajištění stabilního prostředí pro zahájení školní docházky.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
   {
    "id": "us:4-2305-26_1",
    "spz": "IV. ÚS 2305/26",

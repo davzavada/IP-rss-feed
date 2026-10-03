@@ -1,8 +1,103 @@
 {
- "generated": "2026-09-30T03:57:37Z",
+ "generated": "2026-10-03T03:46:48Z",
  "soud": "ns",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "ns:deska:30cdo239/2026/",
+   "spz": "30 Cdo 239/2026/",
+   "druh": "rozsudek",
+   "senat": 30,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-02",
+   "zverejneno": "2026-10-02",
+   "first_seen": "2026-10-03T03:46:48Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_30_Cdo_239_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_30_Cdo_239_2026.pdf",
+   "heslo": "Složitost řízení při určení přiměřeného zadostiučinění",
+   "shrnuti": "Žalobce se domáhá přiměřeného zadostiučinění za nemajetkovou újmu způsobenou nepřiměřenou délkou řízení proti České republice – Ministerstvu spravedlnosti. Nejvyšší soud řešil otázku, zda se odvolací soud řádně vypořádal s kritériem složitosti řízení při stanovení výše zadostiučinění. Rozhodl, že napadené rozhodnutí je neúplné a nesprávné, protože odvolací soud toto kritérimum opomněl hodnotit.",
+   "oblasti": [
+    "skoda",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:deska:33cdo717/2026",
+   "spz": "33 Cdo 717/2026",
+   "druh": "rozsudek",
+   "senat": 33,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-01",
+   "zverejneno": "2026-10-01",
+   "first_seen": "2026-10-03T03:46:48Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_33_Cdo_717_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_33_Cdo_717_2026.pdf",
+   "heslo": "Počátek promlčecí doby bezdůvodného obohacení z neplatného pojištění",
+   "shrnuti": "Žalobkyně se domáhala po žalované zaplacení částky představující rozdíl mezi zaplaceným pojistným a vyplaceným odkupným z neplatné smlouvy o investičním životním pojištění. Soud řešil otázku počátku běhu subjektivní promlčecí doby pro vydání bezdůvodného obohacení ve vztahu ke konverzi smlouvy a dospěl k závěru, že samotné získání chybějících informací při změně smlouvy nezakládá bez dalšího prokazatelnou vědomost o neplatnosti a vzniku bezdůvodného obohacení.",
+   "oblasti": [
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:deska:30cdo1848/2026",
+   "spz": "30 Cdo 1848/2026",
+   "druh": "rozsudek",
+   "senat": 30,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-09-30",
+   "first_seen": "2026-10-03T03:46:48Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_30_Cdo_1848_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_30_Cdo_1848_2026.pdf",
+   "heslo": "Použití čestných prohlášení namísto výslechu svědků",
+   "shrnuti": "Žalobce se domáhal náhrady škody a nemajetkové újmy za nezákonné trestní stíhání proti České republice. Nejvyšší soud řešil otázku přípustnosti dokazování čestnými prohlášeními a rozhodl, že soud se nemůže bez dalšího spokojit s písemným prohlášením namísto výslechu svědka, pokud je obsah prohlášení protistranou řádně zpochybněn.",
+   "oblasti": [
+    "skoda",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:deska:24cdo2285/2026",
+   "spz": "24 Cdo 2285/2026",
+   "druh": "rozsudek",
+   "senat": 24,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-09-30",
+   "first_seen": "2026-10-03T03:46:48Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_24_Cdo_2285_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_24_Cdo_2285_2026.pdf",
+   "heslo": "Svědek závěti musí znát totožnost zůstavitele",
+   "shrnuti": "Žalobkyně se domáhala určení dědického práva a napadla pravost a platnost závěti pozůstalé po zůstaviteli, kterou žalovaná předložila jako jediný dědický titul. Nejvyšší soud řešil otázku, zda svědek alografní závěti musí znát totožnost zůstavitele a zda lze odmítnout písmoznalecký posudek pouze na základě předběžného závěru o věrohodnosti svědků. Dospěl k závěru, že svědek musí zůstavitele osobně znát nebo mu musí být řádně prokázána jeho totožnost, a že návrh na písmoznalecký posudek nelze bez dalšího odmítnout.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:deska:21cdo3223/2024",
+   "spz": "21 Cdo 3223/2024",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-09-30",
+   "first_seen": "2026-10-03T03:46:48Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_21_Cdo_3223_2024.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_21_Cdo_3223_2024.pdf",
+   "heslo": "Žádost o předčasný důchod nevylučuje nárok na náhradu mzdy",
+   "shrnuti": "Žalobce se domáhal po městě Žatec náhrady platu z důvodu neplatného rozvázání pracovního poměru. Nejvyšší soud řešil otázku, zda podání žádosti o předčasný starobní důchod bez dalšího prokazuje neochotu zaměstnance dále pracovat. Dospěl k závěru, že tuto vůli nelze automaticky předpokládat a je nutno zkoumat konkrétní důvody a okolnosti podání žádosti.",
+   "oblasti": [
+    "pracovni",
+    "socialni_cizinci"
+   ],
+   "procesni": false
+  },
   {
    "id": "ns:FF24EE29A72A2DB8C1258E81004D5ABC",
    "spz": "21 Cdo 395/2026",
@@ -78,6 +173,45 @@
     "civilni_proces"
    ],
    "procesni": true
+  },
+  {
+   "id": "ns:deska:24cdo1432/2026",
+   "spz": "24 Cdo 1432/2026",
+   "druh": "rozsudek",
+   "senat": 24,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-29",
+   "zverejneno": "2026-09-29",
+   "first_seen": "2026-09-29T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_24_Cdo_1432_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_24_Cdo_1432_2026.pdf",
+   "heslo": "Zajištění rodiny nenahrazuje prohlášení o závěti",
+   "shrnuti": "Žalobkyně se domáhala určení, že je dědičkou ze zákona po svém otci, přičemž zpochybňovala platnost závěti, kterou zůstavitel odkázal majetek své manželce a dalším dvěma dětem. Nejvyšší soud řešil otázku, zda pouhé konstatování zůstavitele o snaze zajistit rodinu naplňuje zákonný požadavěk na výslovné prohlášení o závěti před svědky, a dospěl k závěru, že takový projev vůle není dostatečný, neboť neprokazuje, že listina obsahuje poslední vůli zůstavitele.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:deska:24cdo1196/2026",
+   "spz": "24 Cdo 1196/2026",
+   "druh": "rozsudek",
+   "senat": 24,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-29",
+   "zverejneno": "2026-09-29",
+   "first_seen": "2026-09-29T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_24_Cdo_1196_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_24_Cdo_1196_2026.pdf",
+   "heslo": "Určení vlastnictví dědiců k majetku neprojednanému v pozůstalosti",
+   "shrnuti": "Žalobci se domáhali proti České republice – Úřadu pro zastupování státu ve věcech majetkových určení spoluvlastnického práva k pozemku, který nebyl projednán v pozůstalostním řízení po jejich právním předchůdci. Nejvyšší soud řešil otázku, zda lze v takovém sporu určovacím výrokem stanovit konkrétní podíly dědiců, a dospěl k závěru, že určení podílů jednotlivých dědiců k majetku, který nebyl sporným aktivem pozůstalosti, nelze obcházet mimo dědické řízení; o vypořádání takového majetku musí rozhodnout dědický soud v dodatečném projednání pozůstalosti.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "vecna_prava",
+    "civilni_proces"
+   ],
+   "procesni": false
   },
   {
    "id": "ns:FFDCC529F6AF5D0CC1258E7D004D152C",
@@ -1046,6 +1180,26 @@
     "civilni_proces"
    ],
    "procesni": true
+  },
+  {
+   "id": "ns:deska:25cdo2578/2025",
+   "spz": "25 Cdo 2578/2025",
+   "druh": "rozsudek",
+   "senat": 25,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-09-24",
+   "first_seen": "2026-09-24T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_25_Cdo_2578_2025.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_25_Cdo_2578_2025.pdf",
+   "heslo": "Zanedbání zakročovací povinnosti a souběžné příčiny škody",
+   "shrnuti": "Žalobce se domáhal náhrady škody a nemajetkové újmy po statutárním městě Hradec Králové kvůli zranění způsobenému pádem větve ze stromu rostoucího na pozemku žalovaného, do něhož byl dlouhodobě zaklesnut strom z cizího pozemku. Nejvyšší soud řešil otázku posouzení prevenční povinnosti formou opomenutí, existence příčinné souvislosti a spoluúčasti poškozeného, přičemž dospěl k závěru, že soudy nižších stupňů nesprávně posoudily otázku protiprávního opomenutí žalovaného podle § 2901 občanského zákoníku a kauzálního nexo, a proto jejich rozhodnutí zrušil.",
+   "oblasti": [
+    "skoda",
+    "zavazky",
+    "vecna_prava"
+   ],
+   "procesni": false
   },
   {
    "id": "ns:deska:23cdo189/2026",

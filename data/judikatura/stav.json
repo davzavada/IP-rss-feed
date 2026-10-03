@@ -63,42 +63,38 @@
   },
   "2026-10-02": {
    "gemini-flash-lite-latest": {
-    "volani": 41,
-    "vstup": 370959,
-    "vystup": 8582
+    "volani": 51,
+    "vstup": 494893,
+    "vystup": 10756
    }
   }
  },
- "aktualizovano": "2026-10-02T14:48:00Z",
+ "aktualizovano": "2026-10-03T03:46:48Z",
  "soudy": {
   "ns": {
    "chyba": "databáze NS nedala výsledky na žádný z 14 dotazů (nedostupná)",
-   "nalezeno": 0,
+   "nalezeno": 13,
    "nedostupny_od": "2026-10-02T04:02:02Z",
-   "nove": 0,
-   "objev": "2026-10-02T04:02:02Z",
-   "varovani": [
-    "úřední deska nedostupná (obcanskopravni-a-obchodni-kolegium): ConnectionError",
-    "úřední deska nedostupná (trestni-kolegium): ConnectionError"
-   ]
+   "nove": 8,
+   "objev": "2026-10-03T03:46:48Z"
   },
   "nss": {
    "chyba": null,
-   "nalezeno": 213,
-   "nove": 42,
-   "objev": "2026-10-02T14:48:00Z"
+   "nalezeno": 189,
+   "nove": 0,
+   "objev": "2026-10-03T03:46:48Z"
   },
   "sdeu": {
    "chyba": null,
    "nalezeno": 73,
-   "nove": 12,
-   "objev": "2026-10-02T04:02:02Z"
+   "nove": 0,
+   "objev": "2026-10-03T03:46:48Z"
   },
   "us": {
    "chyba": null,
-   "nalezeno": 79,
-   "nove": 0,
-   "objev": "2026-10-02T04:02:02Z"
+   "nalezeno": 81,
+   "nove": 2,
+   "objev": "2026-10-03T03:46:48Z"
   }
  }
 }
