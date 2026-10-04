@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-03T03:46:48Z",
+ "generated": "2026-10-04T04:17:05Z",
  "soud": "ns",
  "okno_dni": 31,
  "polozky": [
@@ -5162,97 +5162,6 @@
    "oblasti": [
     "zavazky",
     "skoda"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:FFF5FB02427047D9C1258E66004D4A66",
-   "spz": "23 Cdo 1596/2026",
-   "druh": "usnesení",
-   "senat": 23,
-   "rejstrik": "Cdo",
-   "datum": "2026-08-18",
-   "zverejneno": "2026-09-02",
-   "first_seen": "2026-09-02T21:42:03Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/50DC9C05321CCFB9C1258E67001BEFB4/$file/23%20Cdo%201596_2026.pdf?openElement",
-   "heslo": "Dluh z úvěru a ručení: vymezení přípustnosti dovolání",
-   "shrnuti": "AB – CREDIT se domáhala od J. P., V. V., Z. B., J. F. a J. Z. zaplacení dluhu z úvěrové smlouvy a z titulu ručení. Nejvyšší soud rozhodl, že dovolání je nepřípustné, neboť postrádá obligatorní náležitosti v podobě řádného vymezení konkrétní právní otázky a předpokladů přípustnosti podle § 237 o. s. ř.",
-   "oblasti": [
-    "civilni_proces",
-    "zavazky"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:D5CA16696ACC60F7C1258E66004D4A5D",
-   "spz": "23 Cdo 1399/2026",
-   "druh": "usnesení",
-   "senat": 23,
-   "rejstrik": "Cdo",
-   "datum": "2026-07-29",
-   "zverejneno": "2026-09-02",
-   "first_seen": "2026-09-02T21:42:03Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/CC6218546AE56EB5C1258E67001BDD00/$file/23%20Cdo%201399_2026.pdf?openElement",
-   "heslo": "Nevděk vyžaduje zjevné porušení dobrých mravů",
-   "shrnuti": "M. Č. se soudil s L. Č. o určení vlastnického práva k nemovitostem v souvislosti s odvoláním daru pro nevděk. Soud řešil správnost vymezení přípustnosti dovolání a podmínky pro revokaci daru. Podle soudu musí nevděk spočívat v objektivně zjevném porušení dobrých mravů, nikoliv pouze v subjektivním pocitu dárce.",
-   "oblasti": [
-    "zavazky",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:C1060943FB834763C1258E66004D4A58",
-   "spz": "23 Cdo 1717/2026",
-   "druh": "usnesení",
-   "senat": 23,
-   "rejstrik": "Cdo",
-   "datum": "2026-08-11",
-   "zverejneno": "2026-09-02",
-   "first_seen": "2026-09-02T21:42:03Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/8B87D313D170844FC1258E67001BF53D/$file/23%20Cdo%201717_2026.pdf?openElement",
-   "heslo": "Obstrukční podání jako zneužití procesních práv",
-   "shrnuti": "P. R. žaloval Českou republiku o zaplacení 310 000 Kč a následně podal dovolání proti rozhodnutím soudů první a druhé instance. Soud řešil přípustnost dovolání a povinnost zaplatit soudní poplatek v kontextu opakovaného podávání neopodůvodněných podání. Nejvyšší soud řízení zastavil, protože žalobce neuhradil poplatek a svým obstrukčním postupem zneužíval procesní práva.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:84833B9E60205C5FC1258E66004D4A52",
-   "spz": "23 Cdo 328/2026",
-   "druh": "usnesení",
-   "senat": 23,
-   "rejstrik": "Cdo",
-   "datum": "2026-07-29",
-   "zverejneno": "2026-09-02",
-   "first_seen": "2026-09-02T21:42:03Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/5847ED22DA302764C1258E67001BFFCE/$file/23%20Cdo%20328_2026.pdf?openElement",
-   "heslo": "Úplatná zápůjčka je službou podle Brusel I bis",
-   "shrnuti": "D. N. žaloval R. B. o zaplacení částek 670 000 Kč a 95 000 EUR z několika smluv o zápůjčce. Soud řešil, zda je úplatná smlouva o zápůjčce mezi fyzickými osobami jednajícími mimo podnikatelskou činnost pro účely nařízení Brusel I bis smlouvou o poskytování služeb. Podle soudu takovou smlouvu je třeba kvalifikovat jako smlouvu o poskytování služeb, neboť poskytnutí peněžních prostředků za úplatu ve formě úroků naplňuje znaky činnosti za úplatu.",
-   "oblasti": [
-    "mps",
-    "zavazky",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:14D3D73BC62E458AC1258E66004D4A61",
-   "spz": "23 Cdo 618/2026",
-   "druh": "usnesení",
-   "senat": 23,
-   "rejstrik": "Cdo",
-   "datum": "2026-07-30",
-   "zverejneno": "2026-09-02",
-   "first_seen": "2026-09-02T21:42:03Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/6675EF004C056429C1258E67001C0353/$file/23%20Cdo%20618_2026.pdf?openElement",
-   "heslo": "Nezpůsobilost jednat lze prokázat posudkem",
-   "shrnuti": "L. Š. se soudila s R. G. o určení vlastnického práva k nemovitostem z důvodu neplatnosti darovací smlouvy. Soud řešil, zda lze závěr o neschopnosti osoby právně jednat ve smyslu § 581 o. z. založit pouze na znaleckém posudku a zdravotnické dokumentaci. Nejvyšší soud rozhodl, že v případě specifického zdravotního stavu (např. Alzheimerovy choroby) je takový postup přípustný a nemusí být doplněn o další důkazy.",
-   "oblasti": [
-    "zavazky",
-    "vecna_prava",
-    "civilni_proces"
    ],
    "procesni": false
   }
