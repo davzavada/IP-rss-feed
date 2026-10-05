@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-04T05:37:07+00:00",
+  "generated": "2026-10-05T05:22:02+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 34,
-      "stazeno": "2026-10-04T05:36:53+00:00",
+      "stazeno": "2026-10-05T05:20:35+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,7 +18,7 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 5,
-      "stazeno": "2026-10-04T05:36:55+00:00",
+      "stazeno": "2026-10-05T05:20:37+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "7a56b299c2855d84"
@@ -29,10 +29,10 @@
       "barva": "#1d4ed8",
       "url": "https://jednotaceskychpravniku.cz/vzdelavaci-akce/",
       "pocet": 6,
-      "stazeno": "2026-10-04T05:37:00+00:00",
+      "stazeno": "2026-10-05T05:20:58+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "4fb4b2fc93d97cb0"
+      "otisk": "628655b98b28c2ad"
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 5,
-      "stazeno": "2026-10-04T05:37:05+00:00",
+      "stazeno": "2026-10-05T05:21:23+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "c25198d3b0980c94"
+      "otisk": "dbe66eca6ab58036"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-10-04T05:37:06+00:00",
+      "stazeno": "2026-10-05T05:21:25+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "18d20c7ee3ecdc1d"
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 5,
-      "stazeno": "2026-10-04T05:37:07+00:00",
+      "stazeno": "2026-10-05T05:21:26+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "99e3d66f28db3328"
@@ -329,6 +329,29 @@
       "oblasti": [],
       "oblasti_klic": "4fad9e9afb8b",
       "detail_pokusy": 1
+    },
+    {
+      "id": "70aca52465c761aadac3",
+      "poradatel": "JCP",
+      "datum": "2026-10-05",
+      "zacatek": "16:00",
+      "konec": "18:00",
+      "nazev": "Popravy a popraviště, a popravní nástroje z pohledu právní archeologie",
+      "misto": "Právnická fakulta UK v Praze, přízemí dv. č. 38",
+      "forma": "prezencne",
+      "lektori": [
+        "doc. JUDr. Vilém Knoll, Ph.D."
+      ],
+      "cena": "zdarma",
+      "anotace": "Přednáška o popravách, popravištích a popravních nástrojích z pohledu právní archeologie.",
+      "url": "https://jednotaceskychpravniku.cz/prednasky/popravy-a-popraviste-a-popravni-nastroje-z-pohledu-pravni-archeologie/",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "forma",
+        "misto"
+      ],
+      "oblasti": [],
+      "oblasti_klic": "344e8e4c6ac7"
     },
     {
       "id": "e38a829b465f1b99a1fd",
@@ -713,19 +736,13 @@
       "lektori": [
         "JUDr. Tomáš Fabík"
       ],
-      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
+      "cena": "1800 Kč",
       "anotace": "Umělá inteligence se stala běžnou součástí praxe, školení se zaměřuje na její využití pro právníky.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/umela-inteligence-a-jeji-vyuziti-v-praxi-pravniku/",
       "oblasti": [
         "it"
       ],
-      "oblasti_klic": "7a3c4a224320",
-      "take_u": [
-        {
-          "poradatel": "EPRAVO",
-          "url": "https://www.epravo.cz/top/aktualne/umela-inteligence-a-jeji-vyuziti-v-praxi-pravniku-121726.html"
-        }
-      ]
+      "oblasti_klic": "7a3c4a224320"
     },
     {
       "id": "3fa18144bb0e8f0a6ee6",
@@ -1018,7 +1035,7 @@
       "lektori": [
         "Mgr. Michal Králík, Ph.D."
       ],
-      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
+      "cena": "1800 Kč",
       "anotace": "Seminář zaměřený na aktuální otázky věcných práv.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/aktualni-otazky-vecnych-prav/",
       "oblasti": [
@@ -1185,7 +1202,7 @@
       "lektori": [
         "JUDr. Irena Holcová"
       ],
-      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
+      "cena": "1800 Kč",
       "anotace": "Seminář se zabývá průnikem autorského práva a umělé inteligence.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/autorske-pravo-a-umela-inteligence/",
       "oblasti": [
@@ -1354,31 +1371,13 @@
       "lektori": [
         "JUDr. Josef Holejšovský, Ph.D."
       ],
-      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
+      "cena": "1800 Kč",
       "anotace": "Odborná přednáška zaměřená na soudní přezkum rozhodnutí orgánů společností s ručením omezeným a akciových společností.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/soudni-prezkum-rozhodnuti-organu-s-r-o-a-a-s-vcetne-neplatnosti-usneseni-valne-hromady/",
       "oblasti": [
         "korporace"
       ],
       "oblasti_klic": "5ee3cb7f3d4e"
-    },
-    {
-      "id": "3d4a1a6006b4a35e10c2",
-      "poradatel": "JCP",
-      "datum": "2026-12-11",
-      "zacatek": "16:00",
-      "konec": "",
-      "nazev": "Popravy a popraviště, a popravní nástroje z pohledu právní archeologie",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [
-        "doc. JUDr. Vilém Knoll, Ph.D."
-      ],
-      "cena": "zdarma",
-      "anotace": "Jedná se o prémiovou (bezplatnou) přednášku.",
-      "url": "https://jednotaceskychpravniku.cz/prednasky/popravy-a-popraviste-a-popravni-nastroje-z-pohledu-pravni-archeologie/",
-      "oblasti": [],
-      "oblasti_klic": "dcba3a7855e0"
     },
     {
       "id": "6c0cb9e845731b7ab848",
@@ -1490,29 +1489,6 @@
       "detail_pokusy": 2
     }
   ],
-  "duplikaty": [
-    {
-      "id": "e97dacc1ad6762ebfc3c",
-      "poradatel": "EPRAVO",
-      "datum": "2026-10-14",
-      "zacatek": "10:00",
-      "konec": "14:30",
-      "nazev": "Umělá inteligence a její využití v praxi právníků",
-      "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
-      "forma": "hybridne",
-      "lektori": [
-        "Mgr. Tomáš Fabík"
-      ],
-      "cena": "",
-      "anotace": "Vzdělávací akce pořádaná Jednotou českých právníků zaměřená na umělou inteligenci a její využití v praxi právníků.",
-      "url": "https://www.epravo.cz/top/aktualne/umela-inteligence-a-jeji-vyuziti-v-praxi-pravniku-121726.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "forma",
-        "misto"
-      ],
-      "stejna_jako": "910d12f8f28cdfed6ef4"
-    }
-  ],
+  "duplikaty": [],
   "ics": "https://owl.davidzavada.cz/akce.ics"
 }

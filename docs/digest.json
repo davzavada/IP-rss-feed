@@ -1,15 +1,15 @@
 {
-  "generated": "2026-10-04T05:37:07.865402+00:00",
-  "from": "2026-09-20",
-  "to": "2026-10-04",
-  "total": 79,
-  "covered": 14,
+  "generated": "2026-10-05T05:22:02.650460+00:00",
+  "from": "2026-09-21",
+  "to": "2026-10-05",
+  "total": 78,
+  "covered": 18,
   "cekajici": 2,
-  "intro": "Sledované období přineslo řadu rozhodnutí Soudního dvora EU a Tribunálu zaměřených na dokazování řádného užívání ochranných známek a posuzování pravděpodobnosti záměny. Domácí judikatura se zabývala podobností výrobků a služeb v oblasti označení či vymezením pravidel pro nekalou soutěž a ochranu známek.",
+  "intro": "Sledované období přineslo řadu rozhodnutí Soudního dvora EU a vnitrostátních soudů zaměřených na dokazování řádného užívání a posuzování pravděpodobnosti záměny ochranných známek. Odborná literatura se vedle toho věnovala aktuálním výzvám v oblasti regulace digitálních služeb, umělé inteligence a autorského práva.",
   "blocks": [
     {
       "title": "Dokazování užívání ochranných známek",
-      "text": "Tribunál v několika rozhodnutích detailně posuzoval, jaké důkazy – jako jsou faktury, propagační materiály či katalogy – postačují k prokázání řádného užívání ochranných známek pro konkrétní třídy zboží a služeb. Judikatura potvrzuje, že mírné pozměnění podoby známky bez ztráty rozlišovací způsobilosti nebrání uznání jejího užívání. Pro praxi to znamená nutnost pečlivě archivovat důkazy o reálném obchodním uplatnění pro každou jednotlivou kategorii.",
+      "text": "Tribunál EU a vnitrostátní soudy v několika rozhodnutích detailně posuzovaly, jaké důkazy postačují k prokázání reálného obchodního užívání starších ochranných známek pro specifické kategorie zboží a služeb. Pro praxi to znamená nutnost pečlivě shromažďovat a strukturovat faktury, propagační materiály či smlouvy odpovídající přesně zapsaným třídám.",
       "sources": [
         {
           "src": "sdeu",
@@ -17,6 +17,13 @@
           "tag": "",
           "title": "T-800/25 – Athleta v. EUIPO - Sports Group Denmark (ATHLETA)",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0800"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-494/25 – Van Eck Associates v. EUIPO - Vector (MARKETVECTOR)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0494"
         },
         {
           "src": "sdeu",
@@ -49,8 +56,8 @@
       ]
     },
     {
-      "title": "Pravděpodobnost záměny označení",
-      "text": "Soudy na evropské i vnitrostátní úrovni řešily posuzování pravděpodobnosti záměny mezi ochrannými známkami při shodných či podobných prvcích. Důraz je kladen na celkový dojem, pozornost relevantní veřejnosti a sémantickou či vizuální podobnost srovnávaných označení. Pro přihlašovatele to představuje nutnost provádět důkladné rešerše předem, aby se předešlo zamítnutí přihlášek.",
+      "title": "Záměna a podobnost známek",
+      "text": "Soudy řešily otázky pravděpodobnosti záměny mezi označeními v oblasti telekomunikací, financí či maloobchodu a vymezily hranice podobnosti mezi odlišnými kategoriemi výrobků a služeb. Tyto závěry poskytují vodítko pro strategické plánování portfolia ochranných známek a obranu proti námitkám.",
       "sources": [
         {
           "src": "nss",
@@ -58,13 +65,6 @@
           "tag": "",
           "title": "2 As 191/2025-74",
           "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786052"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-494/25 – Van Eck Associates v. EUIPO - Vector (MARKETVECTOR)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0494"
         },
         {
           "src": "sdeu",
@@ -88,41 +88,81 @@
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0409"
         },
         {
-          "src": "nss",
-          "label": "NSS",
+          "src": "sdeu",
+          "label": "SDEU",
           "tag": "",
-          "title": "9 As 8/2026-69",
-          "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785485"
+          "title": "T-232/25 – Deva v. EUIPO - Novartis (Devatis)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0232"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-231/25 – Deva v. EUIPO - Novartis (Devatis)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0231"
         }
       ]
     },
     {
-      "title": "Zánik a zpochybnění známek",
-      "text": "Tribunál se zabýval také případy podání přihlášek v zlé víře, kdy existoval dřívější smluvní vztah mezi účastníky, či dopady brexitu na zohlednění dřívějších britských práv v unijních řízeních. Ukazuje se, že časové rozhodné momenty a poctivé jednání při podání přihlášek hrají klíčovou roli v úspěšnosti opozic.",
+      "title": "Postoupení autorských práv",
+      "text": "Soudní dvor EU se zabýval určením rozhodného práva pro formální platnost smlouvy o postoupení autorských práv v mezinárodním kontextu. Rozhodnutí potvrdilo, že tyto otázky spadají do režimu nařízení Řím I pro smluvní závazky.",
       "sources": [
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "T-683/25 – Freie Sachsen v. EUIPO - von Sachsen (PROVIDENTIAE MEMOR)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0683"
+          "title": "C-176/25 – Steizer",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0176"
+        }
+      ]
+    },
+    {
+      "title": "Regulace digitálních služeb a trhů",
+      "text": "Odborné články rozebraly aplikaci Aktu o digitálních trzích (DMA) a Aktu o digitálních službách (DSA) na specifické sektory, jako jsou eSports či velké technologické platformy. Pro praxi přinášejí pohled na rostoucí nároky na compliance a moderování obsahu.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "Can the Digital Markets Act Turn the Tide Against Big Tech?",
+          "link": "https://doi.org/10.1007/s40319-026-01781-y"
         },
         {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-564/25 – Reinwald a HK Evolution v. EUIPO - International Nutrition Research Center (MAP)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0564"
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "MUJLT",
+          "title": "Esports and the Digital Services Act: Functional Classification of Gaming, Tournament and Streaming Services",
+          "link": "https://journals.muni.cz/mujlt/article/view/42629"
+        }
+      ]
+    },
+    {
+      "title": "Umělá inteligence a autorské právo",
+      "text": "Publikační výstupy se zaměřily na otázky odměňování autorů za užití jejich děl v systémech generativní umelecké inteligence a na problematiku určení původcovství u výtvorů vytvořených AI. Tyto analýzy reflektují přetrvávající legislativní nejistotu a potřebu adaptace právního rámce.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JWIP",
+          "title": "Inventorship in the age of AI: Legal challenges and potential solutions",
+          "link": "https://doi.org/10.1111/jwip.70014"
         },
         {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-294/21 – Joules v. EUIPO - Star Gold (Jules Gents)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62021TJ0294"
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JWIP",
+          "title": "How much human contribution is needed for “ownership” of AI‐generated content: A comparison of copyright determination for generative AI in China and the United States",
+          "link": "https://doi.org/10.1111/jwip.70011"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JWIP",
+          "title": "Exploring remuneration mechanisms for copyrighted works in generative AI systems",
+          "link": "https://doi.org/10.1111/jwip.70027"
         }
       ]
     }
   ],
-  "input_hash": "786a7c1d4da11dd48cfeec8bcca332c8ee384a0c274733602108883cc68fdf5e"
+  "input_hash": "748e054c9d5eb4c00cabb3cd8bb5a9239e15019e8b8b372401125e43bbc414ac"
 }

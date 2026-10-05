@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-28T05:06:42+00:00",
+  "updated": "2026-10-05T05:20:29+00:00",
   "note": "IP senáty MSPH a VS Praha podle rozvrhů práce. Senát = číslo soudního oddělení + rejstřík, jak se objevuje ve spisové značce. Podle `senaty` se filtrují jednání; `sestavy` říkají, kdo senátům předsedá, kdo v nich sedí a co soudí (patička kalendáře), `sestavy_navic` jsou senáty jen pro patičku, podle kterých se nefiltruje. Seznamy jsou sepsané ručně podle rozvrhu v `rozvrh_zdroj` (`platnost`, `platnost_od`); scraper_hearings.py je jednou týdně přepíše AI extrakcí, až soud vyvěsí rozvrh s pozdějším datem platnosti. Předběžná opatření (rejstřík Nc) se nepoznávají podle čísla senátu – to je u Nc číslo rejstříku, ne oddělení – ale podle předsedy senátu ze seznamu `soudci`. Žaloby proti Úřadu průmyslového vlastnictví (úsek správního soudnictví MSPH, vlastní dokument v `prehledy`) se nepoznávají podle senátu vůbec, ale podle žalovaného: jednání, kde je mezi účastníky některý ze vzorů `ucastnici_ip`, je IP v kterémkoli senátu a úseku obou soudů. Vzory se porovnávají bez diakritiky a velikosti písmen, jako celá slova.",
   "courts": {
     "MS": {
