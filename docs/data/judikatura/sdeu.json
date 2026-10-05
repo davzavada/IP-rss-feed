@@ -1,8 +1,133 @@
 {
- "generated": "2026-10-02T04:02:02Z",
+ "generated": "2026-10-05T04:01:41Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "sdeu:62026CN0815",
+   "spz": "C-815/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-23",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-05T04:01:41Z",
+   "nazev": "Elering",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0815",
+   "heslo": "Omezení dlouhodobých přenosových práv v elektroenergetice",
+   "shrnuti": "Estonský správní soud se Soudního dvora EU táže, zda unijní pravidla pro přidělování kapacity na dlouhodobém trhu opravňují provozovatele přenosové soustavy omezit jak fyzická, tak finanční přenosová práva za účelem zajištění provozní bezpečnosti. V navazujících otázkách zkoumá, zda takové omezení finančních práv vyžaduje objektivní příčinnou souvislost s fyzikálními limity soustavy a zda je vyloučeno, pokud tato práva nemají vliv na fyzický provoz či slouží k odvrácení finanční odpovědnosti provozovatele.",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0752",
+   "spz": "C-752/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-08",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-05T04:01:41Z",
+   "nazev": "Anorì",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0752",
+   "heslo": "Elektronické doručení rozhodnutí o mezinárodní ochraně",
+   "shrnuti": "Řecký soud se ptá Soudního dvora EU, zda je vnitrostátní úprava doručování rozhodnutí o mezinárodní ochraně e-mailem s fikcí doručení po 48 hodinách bez ověření přijetí slučitelná s právem na účinnou právní ochranu a směrnicí 2013/32/EU. Dále řeší otázku porušení zásady rovnocennosti a efektivity, dopad souhlasu žadatele s elektronickou komunikací a vyvratitelnost této fikce, včetně problematiky zařazení zprávy do nevyžádané pošty.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni",
+    "ustavni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0747",
+   "spz": "C-747/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-07",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-05T04:01:41Z",
+   "nazev": "Carrefour II",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0747",
+   "heslo": "Nepřímé zdanění snižování základního kapitálu",
+   "shrnuti": "Francouzská Conseil d’État se Soudního dvora EU předběžně táže, zda určité druhy daní z operací zahrnujících snížení základního kapitálu a odkup vlastních cenných papírů za účelem jejich umoření představují nepřímé zdanění ve smyslu směrnice 2008/7/ES, a zda tato směrnice brání takovému zdanění.",
+   "oblasti": [
+    "dane",
+    "korporace"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0734",
+   "spz": "C-734/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-02",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-05T04:01:41Z",
+   "nazev": "Barloux",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0734",
+   "heslo": "Určení data účinnosti rozvodu spadá pod rozhodné právo",
+   "shrnuti": "Francouzský kasační soud se Soudního dvora EU ptá, zda stanovení data účinnosti rozvodu manželů ve vztahu k jejich majetku spadá do věcné působnosti nařízení č. 1259/2010 o rozhodném právu ve věcech rozvodu a rozluky. Jde o to, zda se na tuto otázku uplatní právo určené tímto nařízením.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "mps"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0685",
+   "spz": "C-685/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-06-24",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-05T04:01:41Z",
+   "nazev": "Lanieta",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0685",
+   "heslo": "Vypořádání neplatné spotřebitelské smlouvy o úvěru",
+   "shrnuti": "Polský soud Sąd Okregowy w Słupsku se táže Soudního dvora EU na výklad směrnice 93/13/EHS ve vztahu k okamžiku splatnosti nároků a způsobům vypořádání po prohlášení hypoteční smlouvy za neplatnou kvůli zneužívajícím ujednáním.",
+   "oblasti": [
+    "spotrebitel",
+    "zavazky",
+    "finance"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0592",
+   "spz": "C-592/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-06-02",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-05T04:01:41Z",
+   "nazev": "Inspectoratul pentru Situaţii de Urgenţă Neron Lupaşcu Buzău",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0592",
+   "heslo": "Nemoc v referenčním období pro pracovní dobu",
+   "shrnuti": "Rumunský soud Curtea de Apel Ploiești se v řízení mezi osobat QB a Inspectoratul pentru Situaţii de Urgenţă „Neron Lupaşcu“ Buzău a dalšími ptá Soudního dvora EU, zda směrnice 2003/88/ES o některých aspektech úpravy pracovní doby vyžaduje, aby doby dočasné pracovní neschopnosti byly považovány za neutrální při výpočtu průměrné týdenní pracovní doby a přesčasů.",
+   "oblasti": [
+    "pracovni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0533",
+   "spz": "C-533/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-05-20",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-05T04:01:41Z",
+   "nazev": "Municipiul Galaţi",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0533",
+   "heslo": "Zrušení dokladu o osobním stavu a odnětí občanství",
+   "shrnuti": "Rumunský soud Judecătoria Galaţi se Soudního dvora EU ptá, zda články 20 a 21 SFEU a články 7 a 45 Listiny brání vnitrostátní právní úpravě umožňující zrušení dokladu o osobním stavu a následné odnětí státního občanství osobám, které jednaly v dobré víře a nabyly práva podle pokynů orgánů veřejné moci.",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true
+  },
   {
    "id": "sdeu:62025CJ0522",
    "spz": "C-522/25",

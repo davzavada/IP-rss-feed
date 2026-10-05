@@ -74,34 +74,41 @@
     "vstup": 385878,
     "vystup": 8737
    }
+  },
+  "2026-10-04": {
+   "gemini-flash-lite-latest": {
+    "volani": 8,
+    "vstup": 21915,
+    "vystup": 1299
+   }
   }
  },
- "aktualizovano": "2026-10-04T04:17:05Z",
+ "aktualizovano": "2026-10-05T04:01:41Z",
  "soudy": {
   "ns": {
    "chyba": "databáze NS nedala výsledky na žádný z 14 dotazů (nedostupná)",
-   "nalezeno": 9,
+   "nalezeno": 7,
    "nedostupny_od": "2026-10-02T04:02:02Z",
    "nove": 0,
-   "objev": "2026-10-04T04:17:05Z"
+   "objev": "2026-10-05T04:01:41Z"
   },
   "nss": {
    "chyba": null,
-   "nalezeno": 204,
-   "nove": 42,
-   "objev": "2026-10-04T04:17:05Z"
+   "nalezeno": 190,
+   "nove": 0,
+   "objev": "2026-10-05T04:01:41Z"
   },
   "sdeu": {
    "chyba": null,
-   "nalezeno": 62,
-   "nove": 0,
-   "objev": "2026-10-04T04:17:05Z"
+   "nalezeno": 56,
+   "nove": 7,
+   "objev": "2026-10-05T04:01:41Z"
   },
   "us": {
    "chyba": null,
-   "nalezeno": 81,
+   "nalezeno": 58,
    "nove": 0,
-   "objev": "2026-10-04T04:17:05Z"
+   "objev": "2026-10-05T04:01:41Z"
   }
  }
 }
