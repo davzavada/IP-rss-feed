@@ -23,6 +23,9 @@
   --primary-fg: #ffffff;
   --switch-off: #d4d4d8;
   --shadow-raised: 0 1px 2px rgb(0 0 0 / 0.08);
+  /* Plovoucí okna (bublina kalendáře) – stejný stín jako menu účtu v Dawmainu;
+     tenký prstýnek drží okraj i v tmavém režimu. */
+  --shadow-pop: 0 0 0 1px rgb(0 0 0 / 0.06), 0 16px 36px -8px rgb(0 0 0 / 0.22);
   --head-h: 60px;
   /* Odstíny štítků (soft badge) – zároveň barvy soudů v navigaci a nadpisech. */
   --badge-green-bg: hsl(142 76% 36% / 0.12);   --badge-green-fg: hsl(142 72% 25%);
@@ -55,6 +58,7 @@
     --primary-fg: #09090b;
     --switch-off: #3f3f46;
     --shadow-raised: 0 1px 2px rgb(0 0 0 / 0.4);
+    --shadow-pop: 0 0 0 1px rgb(255 255 255 / 0.08), 0 16px 36px -8px rgb(0 0 0 / 0.7);
     --badge-green-bg: hsl(142 71% 45% / 0.16);  --badge-green-fg: hsl(142 69% 58%);
     --badge-blue-bg: hsl(217 91% 60% / 0.16);   --badge-blue-fg: hsl(213 94% 68%);
     --badge-amber-bg: hsl(38 92% 50% / 0.16);   --badge-amber-fg: hsl(43 96% 56%);
@@ -304,9 +308,10 @@ html:not(.smi-kalendar) [data-jen="kalendar"] { display: none !important; }
 }
 .polozka-ident { color: var(--fg-2); }
 /* Typ rozhodnutí: předběžná otázka, rozsudek a stanovisko GA jako barevný
-   štítek; ostatní (usnesení, nález, článek) zůstávají šedým textem. */
+   štítek; ostatní (usnesení, nález, článek) zůstávají šedým textem. Štítky
+   mají všude (i v Dawmainu) 12/500, 1 × 7 px a zaoblení 6 px. */
 .druh-stitek {
-  padding: 1px 7px; border-radius: 4px; font-size: 12px; line-height: 18px; font-weight: 500;
+  padding: 1px 7px; border-radius: 6px; font-size: 12px; line-height: 18px; font-weight: 500;
 }
 .druh-otazka { background: var(--badge-amber-bg); color: var(--badge-amber-fg); }
 .druh-rozsudek { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
@@ -452,11 +457,10 @@ a.digest-source:hover { border-color: var(--faint); text-decoration: none; }
 .cal-pop {
   position: absolute; z-index: 30; width: min(360px, calc(100vw - 32px));
   background: var(--card); color: var(--foreground); border-radius: 12px;
-  box-shadow: 0 16px 40px rgb(0 0 0 / 0.16), 0 2px 6px rgb(0 0 0 / 0.08);
+  box-shadow: var(--shadow-pop);
   padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 14px;
 }
 .cal-pop[hidden] { display: none; }
-@media (prefers-color-scheme: dark) { .cal-pop { border: 1px solid var(--border); } }
 .cal-pop-lista { display: flex; justify-content: flex-end; margin: -4px -6px -6px 0; }
 .cal-pop-close {
   width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
@@ -483,8 +487,8 @@ a.digest-source:hover { border-color: var(--faint); text-decoration: none; }
 .btn:hover { background: var(--accent); text-decoration: none; }
 .btn-hlavni { background: var(--primary); color: var(--primary-fg); border-color: var(--primary); }
 .btn-hlavni:hover { background: var(--primary); opacity: 0.88; }
-.btn:disabled { opacity: 0.4; cursor: default; }
-.btn-hlavni:disabled:hover { opacity: 0.4; }
+.btn:disabled { opacity: 0.5; cursor: default; }
+.btn-hlavni:disabled:hover { opacity: 0.5; }
 .btn[hidden] { display: none; }
 /* Změna proti minulému přehledu – u jednání v bublině. */
 .cal-zmena {
@@ -513,7 +517,7 @@ a.digest-source:hover { border-color: var(--faint); text-decoration: none; }
   display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
   font-size: 13px; color: var(--muted-foreground);
 }
-.cal-soud { font-size: 12px; font-weight: 500; padding: 1px 7px; border-radius: 5px; }
+.cal-soud { font-size: 12px; font-weight: 500; padding: 1px 7px; border-radius: 6px; }
 .cal-soud-ms { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
 .cal-soud-vs { background: var(--badge-green-bg); color: var(--badge-green-fg); }
 .cal-spz { color: var(--fg-2); }
@@ -687,6 +691,18 @@ html:has(.dialog[open]) { overflow: hidden; }
 .ucet-btn-hlavni { background: var(--primary); color: var(--primary-fg); border-color: var(--primary); }
 .ucet-btn-hlavni:hover { background: var(--primary); opacity: .88; }
 .ucet-user { display: inline-flex; align-items: center; min-width: 30px; min-height: 30px; }
+/* Obrázek účtu od Clerku 30 px – stejně velký jako avatar v Dawmainu
+   (Clerk sám kreslí 28 px). Třída cl-… je Clerkova stálá třída pro styly. */
+.ucet-user .cl-userButtonAvatarBox { width: 30px; height: 30px; }
+/* Korunka placené verze – stejná jako v Dawmainu: jantarový kroužek 16 px
+   vpravo nahoře s bílou korunkou, prstýnek v barvě hlavičky. Placená verze
+   zatím není; až bude, stačí .ucet-user dát atribut data-pro. */
+.ucet-user[data-pro] { position: relative; }
+.ucet-user[data-pro]::after {
+  content: ""; position: absolute; top: -5px; right: -6px; width: 16px; height: 16px;
+  border-radius: 50%; pointer-events: none; box-shadow: 0 0 0 2px var(--background);
+  background: #e9a23b url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z' fill='%23fff' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 10px no-repeat;
+}
 /* Ikona Můj výběr v nabídce účtu (Clerk) – velikostí jako jeho vlastní. */
 .ucet-menu-ico { width: 16px; height: 16px; display: block; }
 
