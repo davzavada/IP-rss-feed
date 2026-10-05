@@ -1,8 +1,92 @@
 {
- "generated": "2026-10-05T04:01:41Z",
+ "generated": "2026-10-05T10:03:39Z",
  "soud": "nss",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "nss:786088",
+   "spz": "8 Azs 126/2026-30",
+   "ecli": "ECLI:CZ:NSS:2026:8.Azs.126.2026.30",
+   "druh": "rozsudek",
+   "senat": 8,
+   "rejstrik": "Azs",
+   "datum": "2026-10-05",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-05T10:03:39Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786088",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786088",
+   "soudce": "Michal Bobek",
+   "heslo": "Faktická nevědomost z doručení fikcí není vážný důvod",
+   "shrnuti": "Žalobkyně se soudila s Komisí pro rozhodování ve věcech pobytu cizinců ohledně zastavení řízení o prodloužení pobytu kvůli nedostavení se k výslechu. Nejvyšší správní soud řešil otázku, zda je faktická nevědomost o předvolání doručeném fikcí vážným důvodem pro neúčast. Dospěl k závěru, že sama o sobě vážným důvodem není.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:786087",
+   "spz": "9 As 184/2025-39",
+   "ecli": "ECLI:CZ:NSS:2026:9.As.184.2025.39",
+   "druh": "rozsudek",
+   "senat": 9,
+   "rejstrik": "As",
+   "datum": "2026-10-02",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-05T10:03:39Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786087",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786087",
+   "soudce": "Petr Pospíšil",
+   "heslo": "Totožnost skutku při upřesnění doby a řidiče",
+   "shrnuti": "Společnost Bossink Nutzfahrzeuge se u Nejvyššího správního soudu bránila proti kasační stížnosti Ministerstva dopravy ohledně porušení zásady ne bis in idem v přestupkovém řízení. Soud řešil otázku, zda upřesnění doby spáchání přestupku a totožnosti řidiče při silniční kontrole narušuje totožnost skutku. Dospěl k závěru, že podstata skutku spočívající v nezajištění řádného vedení záznamů o době řízení zůstala zachována, a proto šlo o totožný skutek.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:786086",
+   "spz": "8 Ao 1/2026-38",
+   "ecli": "ECLI:CZ:NSS:2026:8.Ao.1.2026.38",
+   "druh": "usnesení",
+   "senat": 8,
+   "rejstrik": "Ao",
+   "datum": "2026-10-05",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-05T10:03:39Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786086",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786086",
+   "soudce": "Pavel Molek",
+   "heslo": "Místní příslušnost k přezkumu územního opatření",
+   "shrnuti": "Město Moravský Beroun podalo k Nejvyššímu správnímu soudu návrh na zrušení části Změny č. 2 Územního rozvojového plánu a územního opatření vydaného Vládou České republiky. Soud řešil otázku věcné příslušnosti k přezkumu územního opatření za situace, kdy speciální příslušnost soudu dosud nenabyla účinnosti. Soud rozhodl, že k přezkumu územního opatření je věcně a místně příslušný Městský soud v Praze, kam tuto část návrhu postoupil, zatímco návrh na zrušení části územního rozvojového plánu vyloučil k samostatnému projednání.",
+   "oblasti": [
+    "spravni",
+    "stavebni_zp"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:786085",
+   "spz": "8 Afs 1/2026-27",
+   "ecli": "ECLI:CZ:NSS:2026:8.Afs.1.2026.27",
+   "druh": "rozsudek",
+   "senat": 8,
+   "rejstrik": "Afs",
+   "datum": "2026-10-05",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-05T10:03:39Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786085",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786085",
+   "soudce": "Radim Kadlčák",
+   "heslo": "Nevrácení dotace: prekluze práva na penále",
+   "shrnuti": "Společnost PEGISAN se soudila s Ministerstvem zemědělství kvůli uložení povinnosti zaplatit penále za opožděné vrácení dotace. Nejvyšší správní soud řešil otázku počátku běhu prekluzivní lhůty pro uložení penále a dospěl k závěru, že čtyřletá prekluzivní lhůta začíná běžet dnem následujícím po marném uplynutí lhůty k vrácení dotace.",
+   "oblasti": [
+    "spravni",
+    "zavazky"
+   ],
+   "procesni": false
+  },
   {
    "id": "nss:786053",
    "spz": "7 Afs 221/2025-51",
