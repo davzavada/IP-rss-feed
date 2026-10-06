@@ -348,6 +348,20 @@ def bez_pravni_formy(text):
     return _ZKRATKA_RE.sub(lambda m: m.group("jmeno"), text)
 
 
+# Měkké i po k na konci slova („pohledávki", „záruki") – AI občas splete
+# koncovku. České slovo tak končit nemá, cizí slova a jména (s velkým
+# písmenem) zůstanou.
+_KI_VYJIMKY = {"khaki", "wiki", "tiki", "reiki", "saki", "raki"}
+_KI_RE = re.compile(r"\b([a-záčďéěíňóřšťúůýž]{2,})ki\b")
+
+
+def oprav_koncovku_ki(text):
+    """„pohledávki" -> „pohledávky"."""
+    if not text:
+        return text or ""
+    return _KI_RE.sub(lambda m: m.group(0) if m.group(0) in _KI_VYJIMKY else m.group(1) + "ky", text)
+
+
 def parse_ai_response(raw):
     """Rozparsuje odpověď modelu ve tvaru 'HESLO: ...' + 'SHRNUTÍ: ...'.
 
@@ -361,7 +375,7 @@ def parse_ai_response(raw):
     heslo = ""
     mh = re.search(r"HESLO:\s*(.*?)\s*(?=SHRNUT[IÍ]:|$)", raw, re.IGNORECASE | re.DOTALL)
     if mh:
-        heslo = clean(mh.group(1)).rstrip(".")
+        heslo = oprav_koncovku_ki(clean(mh.group(1)).rstrip("."))
     ms = re.search(r"SHRNUT[IÍ]:\s*(.*)", raw, re.IGNORECASE | re.DOTALL)
     if ms:
         summary = ms.group(1)
@@ -369,7 +383,7 @@ def parse_ai_response(raw):
         summary = raw[mh.end():]
     else:
         summary = raw
-    return clean(summary), heslo
+    return oprav_koncovku_ki(clean(summary)), heslo
 
 
 # --- Klient: výběr modelu, limity, zálohy ---

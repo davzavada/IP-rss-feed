@@ -261,11 +261,11 @@ def parse(raw, tax):
         shrnuti = cast(r"SHRNUT[IÍ]", vse)
         oblasti = re.split(r"[,;\n]+", cast("OBLASTI", vse))
         procesni = cast(r"PROCESN[IÍ]", vse)
-    shrnuti = fc.bez_pravni_formy(_cist(shrnuti))
+    shrnuti = fc.oprav_koncovku_ki(fc.bez_pravni_formy(_cist(shrnuti)))
     if len(shrnuti) < MIN_SHRNUTI or smisene_pismo(shrnuti):
         return None
     return {
-        "heslo": ocisti_heslo(fc.bez_pravni_formy(_cist(heslo))),
+        "heslo": ocisti_heslo(fc.oprav_koncovku_ki(fc.bez_pravni_formy(_cist(heslo)))),
         "shrnuti": shrnuti,
         "oblasti": tax.normalizuj([_cist(o) for o in oblasti or [] if _cist(o)]),
         "procesni": _ano(procesni),
@@ -333,7 +333,7 @@ def prepis_hesla_davku(zaznamy):
     platna = {z["id"] for z in zaznamy}
     out = {}
     for id_, heslo in data.items():
-        heslo = ocisti_heslo(fc.bez_pravni_formy(_cist(heslo)))
+        heslo = ocisti_heslo(fc.oprav_koncovku_ki(fc.bez_pravni_formy(_cist(heslo))))
         if id_ in platna and not heslo_obecne(heslo):
             out[id_] = heslo
     return out

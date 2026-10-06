@@ -335,6 +335,12 @@ for pred, po in (("Předkupní právo k pozemku – dovolání odmítnuto", "Př
                 ("Smlouva o postoupení autorských práv – Řím I", "Smlouva o postoupení autorských práv – Řím I"),
                 ("Smluvní pokuta nad 0,5 % denně – nepřiměřená", "Smluvní pokuta nad 0,5 % denně – nepřiměřená")):
     check(f"výsledek řízení z hesla pryč: {pred!r}", analyza.ocisti_heslo(pred) == po, analyza.ocisti_heslo(pred))
+for pred, po in (("Zneužití procesního nástupnictví při postoupení pohledávki",
+                  "Zneužití procesního nástupnictví při postoupení pohledávky"),
+                 ("zrušení peněžité záruki. Dále", "zrušení peněžité záruky. Dále"),
+                 ("Helsinki, khaki a wiki zůstanou", "Helsinki, khaki a wiki zůstanou"),
+                 ("kino, ski, kilo", "kino, ski, kilo")):
+    check(f"měkké i po k na konci slova: {pred!r}", fc.oprav_koncovku_ki(pred) == po, fc.oprav_koncovku_ki(pred))
 check("řecké písmeno v českém slově = zaměněný znak",
       analyza.smisene_pismo("usnesení Vrchnιho soudu v Praze"))
 check("cizí jména v shrnutí nevadí",
