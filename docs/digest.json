@@ -1,16 +1,23 @@
 {
-  "generated": "2026-10-05T05:22:02.650460+00:00",
-  "from": "2026-09-21",
-  "to": "2026-10-05",
-  "total": 78,
-  "covered": 18,
-  "cekajici": 2,
-  "intro": "Sledované období přineslo řadu rozhodnutí Soudního dvora EU a vnitrostátních soudů zaměřených na dokazování řádného užívání a posuzování pravděpodobnosti záměny ochranných známek. Odborná literatura se vedle toho věnovala aktuálním výzvám v oblasti regulace digitálních služeb, umělé inteligence a autorského práva.",
+  "generated": "2026-10-06T06:07:07.087447+00:00",
+  "from": "2026-09-22",
+  "to": "2026-10-06",
+  "total": 83,
+  "covered": 10,
+  "cekajici": 1,
+  "intro": "Sledované období přineslo řadu rozhodnutí Soudního dvora EU a českých soudů zaměřených na ochranné známky, zejména posuzování jejich řádného užívání a pravděpodobnosti záměny. Odborná literatura se rovněž věnovala aktuálním výzvám v oblasti digitálních služeb, umělé inteligence a ochraně osobních údajů.",
   "blocks": [
     {
-      "title": "Dokazování užívání ochranných známek",
-      "text": "Tribunál EU a vnitrostátní soudy v několika rozhodnutích detailně posuzovaly, jaké důkazy postačují k prokázání reálného obchodního užívání starších ochranných známek pro specifické kategorie zboží a služeb. Pro praxi to znamená nutnost pečlivě shromažďovat a strukturovat faktury, propagační materiály či smlouvy odpovídající přesně zapsaným třídám.",
+      "title": "Podobnost ochranných známek",
+      "text": "Nejvyšší správní soud potvrdil, že mezi textilními výrobky a maloobchodním prodejem oděvů zpravidla není podobnost, zatímco v jiném sporu shledal pravděpodobnost záměny u označení Mailboxde.cz. Soudní dvůr EU se v řadě rozsudků zabýval prokazováním řádného užívání ochranných známek a posuzováním záměny u zamítnutých přihlášek. Pro praxi to znamená nutnost pečlivě dokládat reálné obchodní užívání pro konkrétní třídy výrobků a služeb.",
       "sources": [
+        {
+          "src": "nss",
+          "label": "NSS",
+          "tag": "",
+          "title": "2 As 191/2025-74",
+          "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786052"
+        },
         {
           "src": "sdeu",
           "label": "SDEU",
@@ -24,47 +31,6 @@
           "tag": "",
           "title": "T-494/25 – Van Eck Associates v. EUIPO - Vector (MARKETVECTOR)",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0494"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-258/25 – Telefónica Germany v. EUIPO - ePlus (e.plus+)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0258"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-257/25 – Telefónica Germany v. EUIPO - ePlus (e plus)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0257"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-256/25 – Telefónica Germany v. EUIPO - ePlus (E-PLUS GRUPPE)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0256"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-255/25 – Telefónica Germany v. EUIPO - ePlus (e plus)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0255"
-        }
-      ]
-    },
-    {
-      "title": "Záměna a podobnost známek",
-      "text": "Soudy řešily otázky pravděpodobnosti záměny mezi označeními v oblasti telekomunikací, financí či maloobchodu a vymezily hranice podobnosti mezi odlišnými kategoriemi výrobků a služeb. Tyto závěry poskytují vodítko pro strategické plánování portfolia ochranných známek a obranu proti námitkám.",
-      "sources": [
-        {
-          "src": "nss",
-          "label": "NSS",
-          "tag": "",
-          "title": "2 As 191/2025-74",
-          "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786052"
         },
         {
           "src": "sdeu",
@@ -84,28 +50,14 @@
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "T-409/25 – Bitmain Technologies v. EUIPO - Advanced New Technologies (ANTMINER)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0409"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-232/25 – Deva v. EUIPO - Novartis (Devatis)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0232"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-231/25 – Deva v. EUIPO - Novartis (Devatis)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0231"
+          "title": "T-258/25 – Telefónica Germany v. EUIPO - ePlus (e.plus+)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0258"
         }
       ]
     },
     {
-      "title": "Postoupení autorských práv",
-      "text": "Soudní dvor EU se zabýval určením rozhodného práva pro formální platnost smlouvy o postoupení autorských práv v mezinárodním kontextu. Rozhodnutí potvrdilo, že tyto otázky spadají do režimu nařízení Řím I pro smluvní závazky.",
+      "title": "Autorská práva a Řím I",
+      "text": "Soudní dvůr EU rozhodl, že otázka formální platnosti smlouvy o postoupení autorských práv spadá do oblasti smluvních závazků a řídí se nařízením Řím I, nikoliv nařízením Řím II. Odborné články se mezitím zaměřily na mechanismy odměňování autorů za užití děl v systémech generativní umeělé inteligence. Tyto závěry poskytují důležitá vodítka pro přeshraniční licenční praxi a smluvní struktury v oblasti IT a autorského práva.",
       "sources": [
         {
           "src": "sdeu",
@@ -113,12 +65,19 @@
           "tag": "",
           "title": "C-176/25 – Steizer",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0176"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JWIP",
+          "title": "Exploring remuneration mechanisms for copyrighted works in generative AI systems",
+          "link": "https://doi.org/10.1111/jwip.70027"
         }
       ]
     },
     {
-      "title": "Regulace digitálních služeb a trhů",
-      "text": "Odborné články rozebraly aplikaci Aktu o digitálních trzích (DMA) a Aktu o digitálních službách (DSA) na specifické sektory, jako jsou eSports či velké technologické platformy. Pro praxi přinášejí pohled na rostoucí nároky na compliance a moderování obsahu.",
+      "title": "Regulace digitálních trhů",
+      "text": "Odborná literatura rozebrala dopady Aktu o digitálních trzích (DMA) a Aktu o digitálních službách (DSA) na technologické platformy a elektronické sporty. Analýzy upozorňují na výzvy v oblasti dohledu, vymáhání práva a funkční segmentace streamovacích či herních služeb. Provozovatelé digitálních platforem tak musí věnovat zvýšenou pozornost správné kategorizaci svých služeb a unijním požadavkům na compliance.",
       "sources": [
         {
           "src": "journals",
@@ -135,34 +94,7 @@
           "link": "https://journals.muni.cz/mujlt/article/view/42629"
         }
       ]
-    },
-    {
-      "title": "Umělá inteligence a autorské právo",
-      "text": "Publikační výstupy se zaměřily na otázky odměňování autorů za užití jejich děl v systémech generativní umelecké inteligence a na problematiku určení původcovství u výtvorů vytvořených AI. Tyto analýzy reflektují přetrvávající legislativní nejistotu a potřebu adaptace právního rámce.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JWIP",
-          "title": "Inventorship in the age of AI: Legal challenges and potential solutions",
-          "link": "https://doi.org/10.1111/jwip.70014"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JWIP",
-          "title": "How much human contribution is needed for “ownership” of AI‐generated content: A comparison of copyright determination for generative AI in China and the United States",
-          "link": "https://doi.org/10.1111/jwip.70011"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JWIP",
-          "title": "Exploring remuneration mechanisms for copyrighted works in generative AI systems",
-          "link": "https://doi.org/10.1111/jwip.70027"
-        }
-      ]
     }
   ],
-  "input_hash": "748e054c9d5eb4c00cabb3cd8bb5a9239e15019e8b8b372401125e43bbc414ac"
+  "input_hash": "1ac117f4e780f583c294ce828b09ccf8f2839ac8de16e0da4aaf9ae35698356f"
 }
