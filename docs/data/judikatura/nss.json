@@ -1,8 +1,52 @@
 {
- "generated": "2026-10-05T10:03:39Z",
+ "generated": "2026-10-06T04:50:58Z",
  "soud": "nss",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "nss:786094",
+   "spz": "2 Azs 146/2026-26",
+   "ecli": "ECLI:CZ:NSS:2026:2.Azs.146.2026.26",
+   "druh": "usnesení",
+   "senat": 2,
+   "rejstrik": "Azs",
+   "datum": "2026-10-05",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-06T04:50:58Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786094",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786094",
+   "soudce": "Eva Šonková",
+   "heslo": "Odmítnutí kasační stížnosti pro nesplnění zastoupení",
+   "shrnuti": "Žalobkyně se soudila s Ministerstvem vnitra na ochranu před nezákonným zásahem spočívajícím ve vrácení žádosti o dočasnou ochranu. Nejvyšší správní soud řešil otázku nesplnění povinného zastoupení advokátem v řízení o kasační stížnosti. Jelikož stěžovatelka ani přes výzvu soudu neodstranila nedostatek podmínky řízení a nedoložila zastoupení, soud kasační stížnost odmítl.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:786089",
+   "spz": "4 Azs 272/2025-31",
+   "ecli": "ECLI:CZ:NSS:2026:4.Azs.272.2025.31",
+   "druh": "usnesení",
+   "senat": 4,
+   "rejstrik": "Azs",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-06T04:50:58Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786089",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786089",
+   "soudce": "Petra Weissová",
+   "heslo": "Nepřípustnost kasační stížnosti směřující proti přezkumným závěrům",
+   "shrnuti": "Ministerstvo zahraničních věcí podalo kasační stížnost proti rozsudku Městského soudu v Praze, kterým bylo zrušeno rozhodnutí o zastavení řízení o zaměstnaneckých kartách cizinců. Nejvyšší správní soud řešil přípustnost kasační stížnosti, která napadala hmotněprávní závěry soudu namísto jeho závěru o nepřezkoumatelnosti správního rozhodnutí. Soud kasační stížnost odmítl jako nepřípustnou, protože směřovala proti jiným důvodům, než které tvořily nosné rozhodovací důvody napadeného rozsudku.",
+   "oblasti": [
+    "socialni_cizinci",
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
+  },
   {
    "id": "nss:786088",
    "spz": "8 Azs 126/2026-30",

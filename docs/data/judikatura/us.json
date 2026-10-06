@@ -1,8 +1,242 @@
 {
- "generated": "2026-10-03T03:46:48Z",
+ "generated": "2026-10-06T04:50:58Z",
  "soud": "us",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "us:4-2632-26_1",
+   "spz": "IV. ÚS 2632/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.2632.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-15",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-06T04:50:58Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2632-26_1",
+   "soudce": "Lucie Dolanská Bányaiová",
+   "heslo": "Prodloužení prozatímního rozhodnutí umožňuje odvolání",
+   "shrnuti": "Stěžovatelka napadala prozatímní rozhodnutí o úpravě poměrů nezletilých dětí, aniž by jí byla dána možnost se vyjádřit. Ústavní soud neshledal porušení základních práv, neboť ústavní stížnost odmítl pro předčasnost z důvodu existence dosud nevyužitého řádného opravného prostředku. Napadené rozhodnutí má povahu prodloužení předchozího prozatímního rozhodnutí, proti kterému je odvolání přípustné.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:4-2616-26_1",
+   "spz": "IV. ÚS 2616/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.2616.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-23",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-06T04:50:58Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2616-26_1",
+   "soudce": "Michal Bartoň",
+   "heslo": "Změna prozatímního rozhodnutí připouští odvolání",
+   "shrnuti": "Stěžovatelka napadala prozatímní rozhodnutí o úpravě styku s nezletilým dítětem. Ústavní soud stížnost odmítl pro nepřípustnost, protože rozhodnutí soudu představovalo změnu předchozího prozatímního rozhodnutí, proti které je přípustné odvolání. Nesprávné poučení soudu o nepřípustnosti opravného prostředku přitom stěžovatelce prodlužuje lhůtu k podání odvolání.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:4-2536-26_1",
+   "spz": "IV. ÚS 2536/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.2536.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-06T04:50:58Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2536-26_1",
+   "soudce": "Zdeněk Kühn",
+   "heslo": "Zásah Ústavního soudu do prozatímních rozhodnutí o péči",
+   "shrnuti": "Stěžovatelka napadala usnesení obvodního soudu, kterým bylo vydáno prozatímní rozhodnutí o péči otce k nezletilým dětem a zamítnuty její návrhy na asistovanou péči a výživné. Ústavní soud shledal stížnost zjevně neopodstatněnou, neboť napadené rozhodnutí mělo zákonný podklad, nebylo projevem svévole a obecný soud řádně zohlednil nejlepší zájem dětí i aktuální rodinnou situaci.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:4-2521-26_1",
+   "spz": "IV. ÚS 2521/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.2521.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-06T04:50:58Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2521-26_1",
+   "soudce": "Zdeněk Kühn",
+   "heslo": "Moderace nákladů řízení v širším pracovněprávním sporu",
+   "shrnuti": "Stěžovatel napadal usnesení obecných soudů o náhradě nákladů řízení po zpětvzetí žaloby o náhradu škody na zdraví utrpěného při školní praxi. Ústavní soud neshledal porušení základních práv stěžovatele, neboť soudy zohlednily jeho sociální situaci a nákladový výrok částečně moderovaly. Ústavní stížnost byla odmítnuta zčásti pro nepřípustnost, zčásti pro nepříslušnost a zčásti jako zjevně neopodstatněná.",
+   "oblasti": [
+    "skoda",
+    "pracovni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:4-2346-26_1",
+   "spz": "IV. ÚS 2346/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.2346.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-06T04:50:58Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2346-26_1",
+   "soudce": "Michal Bartoň",
+   "heslo": "Přezkum prozatímního rozhodnutí o úpravě poměrů dětí",
+   "shrnuti": "Stěžovatelka napadla usnesení soudu, kterým byl zamítnut její návrh na vydání prozatímního rozhodnutí o střídavé péči k nezletilému dítěti. Ústavní soud neshledal porušení základních práv stěžovatelky, neboť napadené rozhodnutí bylo vydáno příslušným orgánem, mělo zákonný podklad, nebylo projevem svévole a soud řádně odůvodnil nutnost nejprve objasnit psychický stav stěžovatelky a poměry pro obnovení vztahu s dítětem. Ústavní stížnost proto odmítl jako zjevně neopodstatněnou.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-2136-26_1",
+   "spz": "III. ÚS 2136/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.2136.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-22",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-06T04:50:58Z",
+   "nazev": "Právo advokáta v postavení zmocněnce tvrzené zvlášť zranitelné oběti na odměnu a náhradu hotových výdajů při odložení věci",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-2136-26_1",
+   "soudce": "Veronika Křesťanová",
+   "heslo": "Zpětné odebrání statusu oběti nevylučuje odměnu zmocněnce",
+   "shrnuti": "Stěžovatel napadal usnesení orgánů činných v trestním řízení, jimiž mu nebyla přiznána odměna a náhrada hotových výdajů za zastupování zvlášť zranitelné oběti v trestním řízení, které skončilo odložením věci. Ústavní soud shledal porušení práva na spravedlivý proces zaručeného v čl. 36 odst. 1 Listiny základních práv a svobod, neboť status oběti a s ním spojené právo na bezplatné zastoupení nelze oznamovateli odebrat zpětně jen proto, že se v řízení neprokázalo spáchání trestného činu.",
+   "oblasti": [
+    "trestni",
+    "skoda"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-1931-26_1",
+   "spz": "III. ÚS 1931/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.1931.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-06T04:50:58Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-1931-26_1",
+   "soudce": "Daniela Zemanová",
+   "heslo": "Prozatímní úprava péče při konfliktu rodičů",
+   "shrnuti": "Stěžovatelka napadla prozatímní rozhodnutí soudu o střídavé péči k nezletilé dceři a namítala porušení svých ústavních práv, podjatost soudu a nesprávné zastoupení. Ústavní soud shledal, že napadené rozhodnutí bylo vydáno v souladu se zákonem a v nejlepším zájmu dítěte. Ústavní stížnost odmítl jako zjevně neopodstatněnou.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:2-1515-26_1",
+   "spz": "II. ÚS 1515/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.1515.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-16",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-06T04:50:58Z",
+   "nazev": "Neodůvodnění usnesení Nejvyššího soudu o odkladu právní moci dovoláním napadeného rozhodnutí",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-1515-26_1",
+   "soudce": "Martin Smolek",
+   "heslo": "Odůvodnění odkladu právní moci v exekuci",
+   "shrnuti": "Stěžovatelka napadla usnesení Nejvyššího soudu o odkladu právní moci usnesení o zastavení exekuce. Ústavní soud shledal porušení práva na soudní ochranu podle čl. 36 odst. 1 Listiny, protože Nejvyšší soud řádně nevypořádal námitky stěžovatelky zpochybňující hrozbu závažné újmy a ztráty pořadí věřitele.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:1-2366-26_1",
+   "spz": "I. ÚS 2366/26",
+   "ecli": "ECLI:CZ:US:2026:1.US.2366.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-08-28",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-06T04:50:58Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-2366-26_1",
+   "soudce": "Tomáš Langášek",
+   "heslo": "Trestní odpovědnost za dotační podvod při soukromém užívání vozidel",
+   "shrnuti": "Stěžovatelka napadala odsouzení za dotační podvod a poškození finančních zájmů Evropské unie s poukazem na medializaci případu, deformaci důkazů a nesprávnou právní kvalifikaci. Ústavní soud neshledal porušení základních práv stěžovatelky, neboť obecné soudy svá rozhodnutí řádně odůvodnily a skutkový stav byl spolehlivě prokázán. Ústavní stížnost proto odmítl pro zjevnou neopodstatněnost.",
+   "oblasti": [
+    "trestni",
+    "skoda"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:1-2311-26_1",
+   "spz": "I. ÚS 2311/26",
+   "ecli": "ECLI:CZ:US:2026:1.US.2311.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-01",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-06T04:50:58Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-2311-26_1",
+   "soudce": "Kateřina Ronovská",
+   "heslo": "Přezkum prozatímního rozhodnutí o péči",
+   "shrnuti": "Stěžovatelka napadla usnesení Okresního soudu ve Frýdku-Místku o prozatímní úpravě poměrů nezletilého dítěte, neboť namítala porušení svých základních práv a nepřiměřenost zásahu bez změny poměrů. Ústavní soud ústavní stížnost odmítl jako zjevně neopodstatněnou, protože napadené rozhodnutí obstálo v testu omezeného přezkumu prozatímních opatření a neprojevila se v něm svévole. Ústavní soud neshledal důvod pro zásah do prozatímní úpravy, jež má zajistit stabilizaci a předvídatelnost v situaci hlubokého konfliktu rodičů.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:1-1955-26_1",
+   "spz": "I. ÚS 1955/26",
+   "ecli": "ECLI:CZ:US:2026:1.US.1955.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-08-24",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-06T04:50:58Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-1955-26_1",
+   "soudce": "Dita Řepková",
+   "heslo": "Náhrada nákladů v řízení o vypořádání spoluvlastnictví",
+   "shrnuti": "Stěžovatel napadal výroky o náhradě nákladů řízení v rozsudku Krajského soudu v Brně, kterým bylo rozhodnuto o zrušení a vypořádání podílového spoluvlastnictví. Ústavní soud neshledal porušení základních práv stěžovatele, neboť rozhodnutí o nákladech řízení nedosahují ústavní roviny a obecný soud se námitkami zabýval. Ústavní stížnost byla odmítnuta jako zjevně neopodstatněná.",
+   "oblasti": [
+    "vecna_prava",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:1-1542-26_1",
+   "spz": "I. ÚS 1542/26",
+   "ecli": "ECLI:CZ:US:2026:1.US.1542.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-23",
+   "zverejneno": "2026-10-05",
+   "first_seen": "2026-10-06T04:50:58Z",
+   "nazev": "Doba stanovená pro trvání vazby podle § 73aa t. ř.",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-1542-26_1",
+   "soudce": "Dita Řepková",
+   "heslo": "Doba trvání opatření nahrazujících vazbu",
+   "shrnuti": "Stěžovatel napadal usnesení vrchního soudu, kterým bylo vyhověno stížnosti státního zástupce a zrušeno usnesení o zamítnutí jeho návrhu na zrušení peněžité záruki. Namítal nesprávný výklad § 73aa trestního řádu ve spojení s § 72a trestního řádu ohledně maximální přípustné doby trvání opatření nahrazujících vazbu. Ústavní soud shledal postup vrchního soudu ústavně konformním a stížnost zamítl.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
   {
    "id": "us:2-2554-26_1",
    "spz": "II. ÚS 2554/26",
@@ -41,6 +275,25 @@
     "civilni_proces"
    ],
    "procesni": false
+  },
+  {
+   "id": "us:2-2357-26_1",
+   "spz": "II. ÚS 2357/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2357.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-23",
+   "zverejneno": "2026-10-02",
+   "first_seen": "2026-10-02T12:00:00Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2357-26_1",
+   "soudce": "Pavel Šámal",
+   "heslo": "Zásah do péče předběžným opatřením vyžaduje naléhavost",
+   "shrnuti": "Stěžovatelka napadla usnesení soudu, kterým byl zamítnut její návrh na vydání prozatímního rozhodnutí o úpravě péče o děti a výživného. Ústavní soud neshledal porušení základních práv stěžovatelky ani nezletilých dětí, neboť rozhodnutí soudu bylo řádně odůvodněno a vydáno v souladu se zájmem dětí. Ústavní stížnost proto odmítl pro zjevnou neopodstatněnost.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": true
   },
   {
    "id": "us:4-2305-26_1",
