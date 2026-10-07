@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T06:07:06+00:00",
+  "generated": "2026-10-07T05:43:34+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 33,
-      "stazeno": "2026-10-06T06:04:19+00:00",
+      "stazeno": "2026-10-07T05:39:42+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,7 +18,7 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 5,
-      "stazeno": "2026-10-06T06:04:23+00:00",
+      "stazeno": "2026-10-07T05:39:43+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "c748dca00ea13f4d"
@@ -28,44 +28,44 @@
       "zkratka": "JČP",
       "barva": "#1d4ed8",
       "url": "https://jednotaceskychpravniku.cz/vzdelavaci-akce/",
-      "pocet": 6,
-      "stazeno": "2026-10-06T06:05:54+00:00",
+      "pocet": 5,
+      "stazeno": "2026-10-07T05:40:07+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "9a6435a2c66df43a"
+      "otisk": "718ad8f77331096c"
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
       "zkratka": "epravo",
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
-      "pocet": 6,
-      "stazeno": "2026-10-06T06:05:59+00:00",
+      "pocet": 5,
+      "stazeno": "2026-10-07T05:40:21+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "93c7791130240e86"
+      "otisk": "b2550144f402299b"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
       "zkratka": "ALAI",
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
-      "pocet": 1,
-      "stazeno": "2026-10-06T06:06:00+00:00",
+      "pocet": 2,
+      "stazeno": "2026-10-07T05:41:16+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "18d20c7ee3ecdc1d"
+      "otisk": "791ee633882cb34d"
     },
     "UPV": {
       "nazev": "Úřad průmyslového vlastnictví",
       "zkratka": "ÚPV",
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
-      "pocet": 5,
-      "stazeno": "2026-10-06T06:06:01+00:00",
+      "pocet": 4,
+      "stazeno": "2026-10-07T05:42:45+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "99e3d66f28db3328"
+      "otisk": "c1c06ddcab9bc05d"
     }
   },
   "formy": {
@@ -567,7 +567,7 @@
       ],
       "cena": "3 975 Kč",
       "anotace": "Online seminář k velké novele stavebního zákona.",
-      "url": "https://www.epravo.cz/eshop/velka-novela-stavebni-zakona-online-zive-vysilani-8-10-2026-1594.html",
+      "url": "https://www.epravo.cz/eshop/velka-novela-stavebniho-zakona-online-zive-vysilani-8-10-2026-1594.html",
       "detail_pokusy": 1,
       "oblasti": [
         "stavebni_zp"
@@ -787,7 +787,7 @@
       "lektori": [
         "JUDr. Tomáš Fabík"
       ],
-      "cena": "1200 Kč",
+      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
       "anotace": "Umělá inteligence se stala běžnou součástí praxe, školení se zaměřuje na její využití pro právníky.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/umela-inteligence-a-jeji-vyuziti-v-praxi-pravniku/",
       "oblasti": [
@@ -845,6 +845,27 @@
         "dane"
       ],
       "oblasti_klic": "64446543f2a3"
+    },
+    {
+      "id": "adef4c8386a4dc48ba94",
+      "poradatel": "CAK",
+      "datum": "2026-10-16",
+      "zacatek": "13:00",
+      "konec": "17:00",
+      "nazev": "Umělá inteligence v advokátní praxi, od základů až po takřka plnohodnotného právního asistenta",
+      "misto": "Liberec, CLA Czech Republic",
+      "forma": "prezencne",
+      "lektori": [
+        "JUDr. Daniel Pospíšil, Ph.D."
+      ],
+      "cena": "650,- Kč včetně DPH",
+      "anotace": "Během praktické části budou představeny konkrétní způsoby, jak lze umělou inteligenci efektivně, bezpečně a v souladu s právními předpisy integrovat do každodenních pracovních procesů v advokátní kanceláři.",
+      "url": "https://www.cak.cz/akce/1340",
+      "detail_pokusy": 2,
+      "oblasti": [
+        "it"
+      ],
+      "oblasti_klic": "128aa47b201b"
     },
     {
       "id": "a487a2169997d0455fdc",
@@ -1144,7 +1165,7 @@
       "lektori": [
         "Mgr. Michal Králík, Ph.D."
       ],
-      "cena": "1200 Kč",
+      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
       "anotace": "Seminář zaměřený na aktuální otázky věcných práv.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/aktualni-otazky-vecnych-prav/",
       "oblasti": [
@@ -1311,7 +1332,7 @@
       "lektori": [
         "JUDr. Irena Holcová"
       ],
-      "cena": "1200 Kč",
+      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
       "anotace": "Seminář se zabývá průnikem autorského práva a umělé inteligence.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/autorske-pravo-a-umela-inteligence/",
       "oblasti": [
@@ -1338,6 +1359,28 @@
       "oblasti": [],
       "oblasti_klic": "666d40601a8e",
       "detail_pokusy": 2
+    },
+    {
+      "id": "b1bd7d54280e546a9399",
+      "poradatel": "ALAI",
+      "datum": "2026-11-25",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Galavečer ALAI",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [],
+      "cena": "1500 Kč",
+      "anotace": "Na galakoncertu bude předána Cena Jana Löwenbacha za mimořádný přínos teorii nebo praxi autorského práva a zazní ve světové premiéře tři smyčcové kvartety následované slavnostní recepcí.",
+      "url": "https://www.alai.cz/index.php?uid=106",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "forma"
+      ],
+      "oblasti": [
+        "autorske"
+      ],
+      "oblasti_klic": "072726d060c7"
     },
     {
       "id": "861165ac77c35a437453",
@@ -1480,7 +1523,7 @@
       "lektori": [
         "JUDr. Josef Holejšovský, Ph.D."
       ],
-      "cena": "1200 Kč",
+      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
       "anotace": "Odborná přednáška zaměřená na soudní přezkum rozhodnutí orgánů společností s ručením omezeným a akciových společností.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/soudni-prezkum-rozhodnuti-organu-s-r-o-a-a-s-vcetne-neplatnosti-usneseni-valne-hromady/",
       "oblasti": [
