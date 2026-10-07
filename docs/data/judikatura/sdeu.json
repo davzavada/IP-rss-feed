@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-05T04:01:41Z",
+ "generated": "2026-10-07T04:16:54Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
@@ -809,6 +809,25 @@
     "civilni_proces"
    ],
    "procesni": false
+  },
+  {
+   "id": "sdeu:62026CO0460",
+   "spz": "C-460/26",
+   "ecli": "ECLI:EU:C:2026:797",
+   "druh": "usnesení",
+   "rejstrik": "C",
+   "datum": "2026-09-29",
+   "zverejneno": "2026-09-29",
+   "first_seen": "2026-09-29T12:00:00Z",
+   "nazev": "Polsko v. Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CO0460",
+   "heslo": "Nalehavost odkladu provádění mezinárodní dohody",
+   "shrnuti": "Polská republika podala návrh na odklad provádění rozhodnutí o podpisu a prozatímním provádění Prozatímní dohody o obchodu mezi EU a Mercosurem. Soudní dvůr EU návrh zamítl, protože navrhovatelka neprokázala splnění podmínky naléhavosti, tedy vznik vážné a nenapravitelné újmy.",
+   "oblasti": [
+    "spravni",
+    "mps"
+   ],
+   "procesni": true
   },
   {
    "id": "sdeu:62026CN0754",
