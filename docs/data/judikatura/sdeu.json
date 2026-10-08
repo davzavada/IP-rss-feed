@@ -1,8 +1,195 @@
 {
- "generated": "2026-10-07T04:16:54Z",
+ "generated": "2026-10-08T04:28:59Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "sdeu:62026TJ0086",
+   "spz": "T-86/26",
+   "ecli": "ECLI:EU:T:2026:645",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-10-07",
+   "first_seen": "2026-10-08T04:28:59Z",
+   "nazev": "Abacco’s v. EUIPO - Restaurant Abac (ABACCO'S STEAKHOUSE)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TJ0086",
+   "heslo": "Nebezpečí záměny ochranných známek ABACCO'S STEAKHOUSE a ABAC",
+   "shrnuti": "Tribunál posuzoval, zda existuje pravděpodobnost záměny mezi figurativní ochrannou známkou Evropské unie ABACCO'S STEAKHOUSE a starší španělskou slovní ochrannou známkou ABAC pro shodné služby ve třídě 43. Dospěl k závěru, že vzhledem k vizuální a fonetické podobnosti, shodě služeb a zvýšené rozlišovací schopnosti starší známky existuje na španělském trhu nebezpečí záměny.",
+   "oblasti": [
+    "prumyslova_prava"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62026TJ0009",
+   "spz": "T-9/26",
+   "ecli": "ECLI:EU:T:2026:641",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-10-07",
+   "first_seen": "2026-10-08T04:28:59Z",
+   "nazev": "Milestone Sportswear v. EUIPO - John Peter (MID season For When It's Not Quite Cold Not Quite Warm)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TJ0009",
+   "heslo": "Popisné a rozlišovací způsobilost ochranné známky",
+   "shrnuti": "Tribunál posuzoval, zda figurální ochranná známka obsahující slovní prvky odkazující na přechodné období a teplotní vlastnosti oblečení je popisná a postrádá rozlišovací způsobilost. Dospěl k závěru, že odvolací orgán nesprávně vyhodnotil význam slovního spojení a existenci přímé souvislosti s dotčeným zbožím. Proto napadené rozhodnutí EUIPO zrušil.",
+   "oblasti": [
+    "prumyslova_prava"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0807",
+   "spz": "T-807/25",
+   "ecli": "ECLI:EU:T:2026:639",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-10-07",
+   "first_seen": "2026-10-08T04:28:59Z",
+   "nazev": "Boguslayev v. Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0807",
+   "heslo": "Proražení sankcí vyžaduje nové důkazy po zrušení",
+   "shrnuti": "Tribunál řešil, zda Rada mohla platně udržet jméno stěžotale na seznamu sankcí bez předložení nových důkazů poté, co předchozí akty soud zrušil. Soud rozhodl, že Rada po zrušení aktů nemohla bez nových důkazů a na základě stejných motivů jméno stěžovatele opětovně zapsat, a proto napadené akty zrušil.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0773",
+   "spz": "T-773/25",
+   "ecli": "ECLI:EU:T:2026:638",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-10-07",
+   "first_seen": "2026-10-08T04:28:59Z",
+   "nazev": "Finanzamt für Großbetriebe",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0773",
+   "heslo": "Zpětné vystavení faktury u třístranných obchodů nemá zpětný účinek",
+   "shrnuti": "Tribunál rozhodoval o otázce, zda vystavení faktury s poznámkou daň odvede zákazník několik let po uskutečnění dodání může vyvolat právní účinky režimu zjednodušení pro třístranné obchody ex nunc. Soud dospěl k závěru, že takové dodatečné vystavení faktury nevyvolává právní účinky tohoto režimu, takže částka opravy DPH nemůže být vykázána za probíhající ani budoucí zdaňovací období.",
+   "oblasti": [
+    "dane"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0631",
+   "spz": "T-631/25",
+   "ecli": "ECLI:EU:T:2026:644",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-10-07",
+   "first_seen": "2026-10-08T04:28:59Z",
+   "nazev": "Salumanus v. EUIPO - Heyoptics (lightoptics)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0631",
+   "heslo": "Ochranná známka EU vyžaduje důkaz autorství",
+   "shrnuti": "Tribunál zamítl žalobu na zrušení rozhodnutí odvolacího senátu EUIPO, kterým byla zamítnuta návrh na prohlášení neplatnosti ochranné známky EU. Žalobce neprokázal, že je autorem staršího označení chráněného autorským právem, ani neprokázal zlou víru majitele napadené ochranné známky v době podání přihlášky.",
+   "oblasti": [
+    "prumyslova_prava",
+    "autorske"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0559",
+   "spz": "T-559/25",
+   "ecli": "ECLI:EU:T:2026:643",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-10-07",
+   "first_seen": "2026-10-08T04:28:59Z",
+   "nazev": "Fiber Experts Deutschland v. EUIPO (FIBER EXPERTS)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0559",
+   "heslo": "Slovní spojení označující odbornost postrádá rozlišovací způsobilost",
+   "shrnuti": "Tribunál přezkoumal rozhodnutí Úřadu Evropské unie pro duševní vlastnictví ohledně zápisu slovní ochranné známky FIBER EXPERTS. Dospěl k závěru, že označení je pro většinu dotčených výrobků a služeb chápáno jako propagační sdělení odkazující na odbornost v oblasti vláken, a proto postrádá rozlišovací způsobilost. Z toho důvodu žalobkyni částečně vyhověl a napadené rozhodnutí zrušil pouze ohledně služeb zábavy a sportu pro nedostatek odůvodnění.",
+   "oblasti": [
+    "prumyslova_prava",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0529",
+   "spz": "T-529/25",
+   "ecli": "ECLI:EU:T:2026:640",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-10-07",
+   "first_seen": "2026-10-08T04:28:59Z",
+   "nazev": "Prestige Rijwielen",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0529",
+   "heslo": "Díly kol v různých zásilkách tvoří kompletní výrobek",
+   "shrnuti": "Tribunál rozhodoval o otázce, zda lze díly elektrických jízdních kol dovážené postupně v průběhu několika měsíců a deklarované samostatně považovat za kompletní výrobek v rozloženém stavu podle pravidla pro výklad kombinované nomenklatury. Soud dospěl k závěru, že takové díly musí být považovány za kompletní výrobek, pokud z objektivních skutečností vyplývá, že tvoří jeden celek a zahrnují všechny podstatné součásti.",
+   "oblasti": [
+    "dane",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0408",
+   "spz": "T-408/25",
+   "ecli": "ECLI:EU:T:2026:646",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-10-07",
+   "first_seen": "2026-10-08T04:28:59Z",
+   "nazev": "JS v. Parlament",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0408",
+   "heslo": "Přeřazení agenta do nižšího grade po zániku funkce",
+   "shrnuti": "Tribunál řešil zákonnost rozhodnutí Evropského parlamentu o přeřazení bývalého generálního tajemníka politické skupiny na nižší grade a novou funkci po skončení jeho mandátu. Rozhodl, že žaloba je nedůvodná, neboť dotčený úředník nemá nárok na zachování konkrétní funkce a instituce jednala v mezích svého širokého posuzovacího oprávnění v zájmu služby.",
+   "oblasti": [
+    "pracovni",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0371",
+   "spz": "T-371/25",
+   "ecli": "ECLI:EU:T:2026:637",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-10-07",
+   "first_seen": "2026-10-08T04:28:59Z",
+   "nazev": "Dentek Oral Care v. EUIPO - Jeronimo Martins Polska (dentix)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0371",
+   "heslo": "Slabě rozlišovací prvek nevytváří nebezpečí záměny",
+   "shrnuti": "Tribunál posuzoval, zda existuje pravděpodobnost záměny mezi ochrannou známkou EU dentix a dřívějšími ochrannými známkami DENTEK. Dospěl k závěru, že společný prvek dent má ve vztahu k dentálním výrobkům slabou rozlišovací schopnost a vzhledem k odlišným koncům slov a slabé podobnosti neexistuje na straně veřejnosti nebezpečí záměny.",
+   "oblasti": [
+    "prumyslova_prava"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024TJ0203",
+   "spz": "T-203/24",
+   "ecli": "ECLI:EU:T:2026:642",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-10-07",
+   "first_seen": "2026-10-08T04:28:59Z",
+   "nazev": "Zalando v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0203",
+   "heslo": "Ochrana obchodních zájmů odůvodňuje odmítnutí přístupu k dokumentům",
+   "shrnuti": "Soudní dvůr EU posuzoval žalobu podanou společností Zalando na rozhodnutí Komise, kterým byla zamítnuta žádost o přístup k dokumentům týkajícím se výpočtu počtu aktivních příjemců pro účely stanovení dohledového poplatku podle nařízení o digitálních službách. Tribunál dospěl k závěru, že Komise nepochybila, když přístup k dokumentům odepřela s ohledem na ochranu obchodních zájmů třetích stran a ochranu probíhajících soudních řízení. Žalobu v celém rozsahu zamítl.",
+   "oblasti": [
+    "spravni",
+    "it",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
   {
    "id": "sdeu:62026CN0815",
    "spz": "C-815/26",
@@ -826,6 +1013,24 @@
    "oblasti": [
     "spravni",
     "mps"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62023CO0509",
+   "spz": "C-509/23",
+   "ecli": "ECLI:EU:C:2026:798",
+   "druh": "usnesení",
+   "rejstrik": "C",
+   "datum": "2026-09-29",
+   "zverejneno": "2026-09-29",
+   "first_seen": "2026-09-29T12:00:00Z",
+   "nazev": "Laimz",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62023CO0509",
+   "heslo": "Oprava zřejmé nesprávnosti v rozsudku Soudního dvora",
+   "shrnuti": "Soudní dvůr rozhodoval o návrhu na opravu zřejmé nesprávnosti v úvodní části svého dřívějšího rozsudku ve věci Laimz proti Izložu un azartspēļu uzraudzības inspekcija. Soudní dvůr úředně opravil nepřesnosti v citaci dotčených právních předpisů v úvodním přehledu.",
+   "oblasti": [
+    "spravni"
    ],
    "procesni": true
   },
