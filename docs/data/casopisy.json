@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-07T05:39:36Z",
+ "generated": "2026-10-08T05:47:45Z",
  "okno_dni": 31,
  "casopisy": [
   {
@@ -112,6 +112,17 @@
   }
  ],
  "polozky": [
+  {
+   "id": "IJLIT-10.1093/ijlit/eaag015",
+   "casopis": "ijlit",
+   "nazev": "Bad is often best: rethinking the Digital Millennium Copyright Act in the age of algorithmic copyright enforcement",
+   "url": "https://doi.org/10.1093/ijlit/eaag015",
+   "autori": "Taysir Awad",
+   "heslo": "Algoritmické vymáhání autorského práva",
+   "shrnuti": "Článek zkoumá snahy amerického průmětu o úpravu zákona DMCA s cílem přísněji odpovědnit poskytovatele služeb za porušování autorských práv pomocí umělé inteligence. Zpochybňuje předpoklad, že algoritmické filtrování je spolehlivé, a upozorňuje na rizika přehnané cenzury a potlačování legálního projevu. Dochází k závěru, že zachování stávajícího rámce DMCA je nejvhodnější pro ochranu inovací i svobody projevu.",
+   "datum": "2026-10-08",
+   "first_seen": "2026-10-08T05:47:33Z"
+  },
   {
    "id": "Pravnik-2026-2026-10-4065",
    "casopis": "pravnik",
@@ -366,17 +377,6 @@
    "popis": "Monitoring judikatury Evropského soudu pro lidská práva\nAutor: Pavla Boučková\nJurisprudence 4/2026\nRubrika: Monitoring judikatury"
   },
   {
-   "id": "IJLIT-10.1093/ijlit/eaag013",
-   "casopis": "ijlit",
-   "nazev": "The cambridge handbook of the law, ethics and policy of artificial intelligence",
-   "url": "https://doi.org/10.1093/ijlit/eaag013",
-   "autori": "Sk Iftesham Islam",
-   "heslo": "Právo a etika AI",
-   "shrnuti": "Článek představuje odbornou publikaci \"The Cambridge Handbook of the Law, Ethics and Policy of Artificial Intelligence\" z roku 2025 pod editací Nathalie A. Smuha. Kniha se zabývá právními, etickými a politickými aspekty umelecké inteligence a je dostupná jako Open Access.",
-   "datum": "2026-09-26",
-   "first_seen": "2026-09-26T04:42:59Z"
-  },
-  {
    "id": "ELJ-10.1111/eulj.70029",
    "casopis": "elj",
    "nazev": "Reimagining State Aid: Guiding Law and Policy Reform in a Changing World",
@@ -407,6 +407,17 @@
    "shrnuti": "Článek se zabývá podmínkami, za kterých mohou poskytovatelé elektronických komunikací uchovávat osobní údaje.",
    "datum": "2026-09-23",
    "first_seen": "2026-09-23T23:33:21Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaag013",
+   "casopis": "ijlit",
+   "nazev": "The cambridge handbook of the law, ethics and policy of artificial intelligence",
+   "url": "https://doi.org/10.1093/ijlit/eaag013",
+   "autori": "Sk Iftesham Islam",
+   "heslo": "Právo a etika AI",
+   "shrnuti": "Článek představuje odbornou publikaci \"The Cambridge Handbook of the Law, Ethics and Policy of Artificial Intelligence\" z roku 2025 pod editací Nathalie A. Smuha. Kniha se zabývá právními, etickými a politickými aspekty umelecké inteligence a je dostupná jako Open Access.",
+   "datum": "2026-09-23",
+   "first_seen": "2026-09-26T04:42:59Z"
   },
   {
    "id": "GRUR Int-10.1093/grurint/ikag092",
@@ -614,22 +625,12 @@
    "first_seen": "2026-09-11T04:42:59Z"
   },
   {
-   "id": "CMLRev-COLA2026078",
+   "id": "CMLRev-COLA2026082",
    "casopis": "cmlr",
-   "nazev": "The safe country of origin’s legal saga in Alace and Canpelli : A roadmap for the future rather than a groundbreaking judgment",
-   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026078",
-   "heslo": "bezpečný země původu",
-   "shrnuti": "Článek se zabývá právním vývojem a judikaturou týkající se konceptu bezpečné země původu ve věcech Alace a Canpelli. Analyzuje toto rozhodnutí nikoli jako průlomový moment, ale spíše jako cestovní mapu pro budoucí vývoj v této oblasti. Ukazuje směřování azylové právo a rozhodovací praxe v daném kontextu.",
-   "datum": "2026-09-11",
-   "first_seen": "2026-09-11T04:42:59Z"
-  },
-  {
-   "id": "CMLRev-COLA2026079",
-   "casopis": "cmlr",
-   "nazev": "Non-discriminatory access to ‘open’ infrastructure: Google Shopping",
-   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026079",
-   "heslo": "Nediskriminační přístup Google Shopping",
-   "shrnuti": "Článek se zabývá problematikou nediskriminačního přístupu k otevřené infrastruktuře na příkladu služby Google Shopping. Analyzuje soutěžněprávní aspekty a pravidla přístupu k digitálním platformám.",
+   "nazev": "Sustainability and EU Migration Law: Tracing the History of a Contemporary Concept. by Alezini Loxa (Cambridge: Cambridge University Press, 2025)",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026082",
+   "heslo": "Udržitelnost a právo EU",
+   "shrnuti": "Článek zkoumá historický vývoj konceptu udržitelnosti v kontextu unijního migračního práva. Sleduje kořeny tohoto současného pojmu a jeho proměny ve vztahu k migrační politice EU. Publikace tak poskytuje hlubší pohled na propojení ekologických či sociálních aspektů udržitelnosti s regulací migrace.",
    "datum": "2026-09-11",
    "first_seen": "2026-09-11T04:42:59Z"
   },
@@ -644,12 +645,12 @@
    "first_seen": "2026-09-11T04:42:59Z"
   },
   {
-   "id": "CMLRev-COLA2026082",
+   "id": "CMLRev-COLA2026078",
    "casopis": "cmlr",
-   "nazev": "Sustainability and EU Migration Law: Tracing the History of a Contemporary Concept. by Alezini Loxa (Cambridge: Cambridge University Press, 2025)",
-   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026082",
-   "heslo": "Udržitelnost a právo EU",
-   "shrnuti": "Článek zkoumá historický vývoj konceptu udržitelnosti v kontextu unijního migračního práva. Sleduje kořeny tohoto současného pojmu a jeho proměny ve vztahu k migrační politice EU. Publikace tak poskytuje hlubší pohled na propojení ekologických či sociálních aspektů udržitelnosti s regulací migrace.",
+   "nazev": "The safe country of origin’s legal saga in Alace and Canpelli : A roadmap for the future rather than a groundbreaking judgment",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026078",
+   "heslo": "bezpečný země původu",
+   "shrnuti": "Článek se zabývá právním vývojem a judikaturou týkající se konceptu bezpečné země původu ve věcech Alace a Canpelli. Analyzuje toto rozhodnutí nikoli jako průlomový moment, ale spíše jako cestovní mapu pro budoucí vývoj v této oblasti. Ukazuje směřování azylové právo a rozhodovací praxe v daném kontextu.",
    "datum": "2026-09-11",
    "first_seen": "2026-09-11T04:42:59Z"
   },
@@ -664,16 +665,6 @@
    "first_seen": "2026-09-11T04:42:59Z"
   },
   {
-   "id": "CMLRev-COLA2026080",
-   "casopis": "cmlr",
-   "nazev": "Guest Editorial",
-   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026080",
-   "heslo": "Redakční úvodník",
-   "shrnuti": "Text představuje úvodní slovo hostujícího redaktora k odbornému periodiku. Článek neobsahuje konkrétní právní zjištění ani závěry, jelikož slouží pouze jako redakční úvod.",
-   "datum": "2026-09-11",
-   "first_seen": "2026-09-11T04:42:59Z"
-  },
-  {
    "id": "CMLRev-COLA2026084",
    "casopis": "cmlr",
    "nazev": "Violence Against Women under European Human Rights Law: From Supranational Standards to National Realities. edited by Elena Brodealǎ, Ivana Jelić and Silvia Şuteu (Cambridge: Cambridge University Press, 2024)",
@@ -684,12 +675,32 @@
    "first_seen": "2026-09-11T04:42:59Z"
   },
   {
-   "id": "CMLRev-COLA2026085",
+   "id": "CMLRev-COLA2026079",
    "casopis": "cmlr",
-   "nazev": "Access to justice in the European Integrated Border Management after Hamoudi and WS and Others",
-   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026085",
-   "heslo": "Přístup k spravedlnosti",
-   "shrnuti": "Článek se zabývá otázkou přístupu k soudní ochraně v rámci evropského integrovaného správního managementu hranic se zohledněním judikatury Soudního dvora EU ve věcech Hamoudi a WS a ostatní. Analyzuje, jak jsou práva jednotlivců dotčena činností orgánů, jako je Frontex, a jaké jsou meze a možnosti jejich soudního přezkumu. Závěrem poukazuje na mezery v současném systému právní ochrany a na nutnost posílení účinných opravných prostředků pro dotčené osoby.",
+   "nazev": "Non-discriminatory access to ‘open’ infrastructure: Google Shopping",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026079",
+   "heslo": "Nediskriminační přístup Google Shopping",
+   "shrnuti": "Článek se zabývá problematikou nediskriminačního přístupu k otevřené infrastruktuře na příkladu služby Google Shopping. Analyzuje soutěžněprávní aspekty a pravidla přístupu k digitálním platformám.",
+   "datum": "2026-09-11",
+   "first_seen": "2026-09-11T04:42:59Z"
+  },
+  {
+   "id": "CMLRev-COLA2026080",
+   "casopis": "cmlr",
+   "nazev": "Guest Editorial",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026080",
+   "heslo": "Redakční úvodník",
+   "shrnuti": "Text představuje úvodní slovo hostujícího redaktora k odbornému periodiku. Článek neobsahuje konkrétní právní zjištění ani závěry, jelikož slouží pouze jako redakční úvod.",
+   "datum": "2026-09-11",
+   "first_seen": "2026-09-11T04:42:59Z"
+  },
+  {
+   "id": "CMLRev-COLA2026088",
+   "casopis": "cmlr",
+   "nazev": "Cumulative application of free movement law and fundamental rights in the ‘derogation situation’: A multidimensional challenge",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.4/COLA2026088",
+   "heslo": "Volný pohyb a základní práva",
+   "shrnuti": "Článek zkoumá interakci mezi právem volného pohybu a Listinou základních práv EU v situacích, kdy členské státy omezují volný pohyb. Poukazuje na rostoucí kumulativní aplikaci norem a narůstající autonomii přezkumu základních práv v judikatuře Soudního dvora. Autor navrhuje strukturovanější metodologický rámec pro posuzování těchto situací, který by zohledňoval věcnou odlišnost norem a logiku lex specialis.",
    "datum": "2026-09-11",
    "first_seen": "2026-09-11T04:42:59Z"
   },
@@ -704,22 +715,22 @@
    "first_seen": "2026-09-11T04:42:59Z"
   },
   {
+   "id": "CMLRev-COLA2026085",
+   "casopis": "cmlr",
+   "nazev": "Access to justice in the European Integrated Border Management after Hamoudi and WS and Others",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026085",
+   "heslo": "Přístup k spravedlnosti",
+   "shrnuti": "Článek se zabývá otázkou přístupu k soudní ochraně v rámci evropského integrovaného správního managementu hranic se zohledněním judikatury Soudního dvora EU ve věcech Hamoudi a WS a ostatní. Analyzuje, jak jsou práva jednotlivců dotčena činností orgánů, jako je Frontex, a jaké jsou meze a možnosti jejich soudního přezkumu. Závěrem poukazuje na mezery v současném systému právní ochrany a na nutnost posílení účinných opravných prostředků pro dotčené osoby.",
+   "datum": "2026-09-11",
+   "first_seen": "2026-09-11T04:42:59Z"
+  },
+  {
    "id": "CMLRev-COLA2026087",
    "casopis": "cmlr",
    "nazev": "Balancing national and EU-level enforcement in EU consumer law reform: The case of the UCPD and dark patterns",
    "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.4/COLA2026087",
    "heslo": "Ochrana spotřebitelů v EU",
    "shrnuti": "Článek analyzuje připravovanou reformu práva spotřebitelů v EU se zaměřením na Digitální akt o spravedlnosti a problematiku temných vzorců. Kritizuje snahu Evropské komise o centralizaci vymáhání práva prostřednictvím nových legislativních aktů. Závěrem navrhuje zavedení mechanismu sdílení pravomocí podobného soutěžnímu právu spolu s posílením národních spotřebitelských agentur.",
-   "datum": "2026-09-11",
-   "first_seen": "2026-09-11T04:42:59Z"
-  },
-  {
-   "id": "CMLRev-COLA2026088",
-   "casopis": "cmlr",
-   "nazev": "Cumulative application of free movement law and fundamental rights in the ‘derogation situation’: A multidimensional challenge",
-   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.4/COLA2026088",
-   "heslo": "Volný pohyb a základní práva",
-   "shrnuti": "Článek zkoumá interakci mezi právem volného pohybu a Listinou základních práv EU v situacích, kdy členské státy omezují volný pohyb. Poukazuje na rostoucí kumulativní aplikaci norem a narůstající autonomii přezkumu základních práv v judikatuře Soudního dvora. Autor navrhuje strukturovanější metodologický rámec pro posuzování těchto situací, který by zohledňoval věcnou odlišnost norem a logiku lex specialis.",
    "datum": "2026-09-11",
    "first_seen": "2026-09-11T04:42:59Z"
   },

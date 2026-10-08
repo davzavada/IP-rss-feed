@@ -1,15 +1,15 @@
 {
-  "generated": "2026-10-07T05:43:34.609038+00:00",
-  "from": "2026-09-23",
-  "to": "2026-10-07",
-  "total": 82,
-  "covered": 15,
-  "cekajici": 1,
-  "intro": "Sledované období přineslo řadu rozhodnutí Soudního dvora EU týkajících se dokazování řádného užívání ochranných známek a posuzování pravděpodobnosti záměny. České i evropské soudy a odborná literatura se dále zabývaly otázkami autorského práva, digitálních služeb, umělé inteligence a ochrany osobních údajů.",
+  "generated": "2026-10-08T05:55:34.608409+00:00",
+  "from": "2026-09-24",
+  "to": "2026-10-08",
+  "total": 86,
+  "covered": 8,
+  "cekajici": 2,
+  "intro": "Sledované období přineslo řadu rozhodnutí Soudního dvora EU týkajících se dokazování řádného užívání a rozlišovací způsobilosti ochranných známek. V oblasti IT a dat se soudy zabývaly ochranou obchodních zájmů při přístupu k dokumentům digitálních platforem a unijní regulací.",
   "blocks": [
     {
       "title": "Důkazy užívání ochranných známek",
-      "text": "Tribunál SDEU v řadě rozsudků potvrdil, jaké materiály lze uznat jako řádný důkaz užívání ochranných známek (např. u telekomunikačních služeb či finančních produktů), a vymezil, že drobné úpravy designu nemění rozlišovací způsobilost. Pro praxi to znamená nutnost pečlivě shromažďovat obchodní dokumentaci a faktury prokazující reálné užívání pro konkrétní třídy zboží a služeb.",
+      "text": "Tribunál v několika rozhodnutích vymezil požadavky na prokazování řádného užívání unijních ochranných známek pro telekomunikační služby či oděvy. Potvrdil, že mírné pozměnění prvků nebo vynechání grafiky nemusí nutně vést ke ztrátě rozlišovací způsobilosti. Pro praxi to znamená nutnost pečlivě shromažďovat faktury, propagační materiály a obchodní dokumentaci odpovídající konkrétním třídám služeb.",
       "sources": [
         {
           "src": "sdeu",
@@ -17,13 +17,6 @@
           "tag": "",
           "title": "T-800/25 – Athleta v. EUIPO - Sports Group Denmark (ATHLETA)",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0800"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-494/25 – Van Eck Associates v. EUIPO - Vector (MARKETVECTOR)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0494"
         },
         {
           "src": "sdeu",
@@ -56,42 +49,34 @@
       ]
     },
     {
-      "title": "Rozhodování o záměně známek",
-      "text": "Tribunál SDEU posuzoval v několika věcech (např. ANTMINER či Devatis) existenci pravděpodobnosti záměny a vliv stupně pozornosti relevantní veřejnosti na posouzení spojení mezi ochrannými známkami. Pro přihlašovatele to znamená, že nízká podobnost označení a vysoká odborná pozornost spotřebitelů mohou vyloučit záměnu i propojení známek.",
+      "title": "Přístup k dokumentům platforem",
+      "text": "Tribunál zamítl žalobu společnosti Zalando na zpřístupnění dokumentů Evropské komise týkajících se výpočtu aktivních příjemců podle nařízení o digitálních službách. Soud potvrdil, że ochrana obchodních zájmů třetích stran a probíhajících řízení je legitimním důvodem pro odmítnutí přístupu. Rozhodnutí posiluje pozici regulátora při utajování citlivých dat velkých online platforem.",
       "sources": [
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "T-477/25 – T-Head (Shanghai) v. EUIPO - Head Technology (T-HEAD)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0477"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-409/25 – Bitmain Technologies v. EUIPO - Advanced New Technologies (ANTMINER)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0409"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-232/25 – Deva v. EUIPO - Novartis (Devatis)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0232"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-231/25 – Deva v. EUIPO - Novartis (Devatis)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0231"
+          "title": "T-203/24 – Zalando v. Komise",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0203"
         }
       ]
     },
     {
-      "title": "Smluvní právo a autorská práva",
-      "text": "Soudní dvůr EU v případech jako C-176/25 potvrdil, že otázka formální platnosti smlouvy o postoupení autorských práv spadá do oblasti smluvních závazků dle nařízení Řím I. Pro praxi to představuje jasné vodítko pro určování rozhodného práva při mezinárodních převodech autorských práv.",
+      "title": "Ochrana soukromí skutečných majitelů",
+      "text": "Nejvyšší soud řešil otázku práva na znepřístupnění údajů o skutečných majitelích v evidenci s ohledem na ochranu osobních údajů. Rozhodl, že soud takovému návrhu vyhoví, neboť plný veřejný přístup k údajům nepřípustně zasahuje do základních práv garantovaných unijním právem. Pro praxi to představuje významný nástroj pro ochranu soukromí osob zapsaných v evidenci.",
+      "sources": [
+        {
+          "src": "nsoud",
+          "label": "NS",
+          "tag": "",
+          "title": "27 Cdo 1749/2025",
+          "link": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/02DB293C6ADFC78BC1258E89004D5A86?openDocument"
+        }
+      ]
+    },
+    {
+      "title": "Kolizní normy pro autorská práva",
+      "text": "Soudní dvůr EU rozhodl, že otázka formální platnosti smlouvy o postoupení autorských práv spadá do oblasti smluvních závazků. V sporech s mezinárodním prvkem se tak tato problematika řídí nařízením Řím I, a nikoliv právem státu, kde dochází k uplatňování ochrany. To zajišťuje větší předvídatelnost při přeshraničním převodu autorských práv.",
       "sources": [
         {
           "src": "sdeu",
@@ -101,47 +86,7 @@
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0176"
         }
       ]
-    },
-    {
-      "title": "Ochrana osobních údajů",
-      "text": "Nejvyšší správní soud dovodil, že subjekt údajů nemá aktivní legitimaci k podání žaloby proti zastavení přestupkového řízení Úřadu pro ochranu osobních údajů. SDEU navíc v kauze C-660/26 řeší předběžnou otázku týkající se kvalifikace pořizování fotografií a biometrických údajů dle GDPR.",
-      "sources": [
-        {
-          "src": "nss",
-          "label": "NSS",
-          "tag": "",
-          "title": "6 As 25/2026-35",
-          "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/782899"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "C-660/26 – International Card Services",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0660"
-        }
-      ]
-    },
-    {
-      "title": "Regulace digitálních trhů a služeb",
-      "text": "Odborná literatura rozebrala aplikaci Aktu o digitálních trzích (DMA) a Aktu o digitálních službách (DSA) na specifické sektory, jako jsou eSports či potlačení tržní nadvlády Big Tech. Pro praxi tyto analýzy přibližují výzvy spojené s unijní ex ante regulací a vymáháním práva.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "Can the Digital Markets Act Turn the Tide Against Big Tech?",
-          "link": "https://doi.org/10.1007/s40319-026-01781-y"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "MUJLT",
-          "title": "Esports and the Digital Services Act: Functional Classification of Gaming, Tournament and Streaming Services",
-          "link": "https://journals.muni.cz/mujlt/article/view/42629"
-        }
-      ]
     }
   ],
-  "input_hash": "0f635e7544d3b47ecd59de08d1094431c2bbaf42e1ad8ff58b9331568c974b58"
+  "input_hash": "7f9e1cc61d04388e8f545e026cef271e7d149a41b593169f58b149be4663ac94"
 }

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-07T05:43:34+00:00",
+  "generated": "2026-10-08T05:55:34+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 33,
-      "stazeno": "2026-10-07T05:39:42+00:00",
+      "stazeno": "2026-10-08T05:47:52+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,32 +18,32 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 5,
-      "stazeno": "2026-10-07T05:39:43+00:00",
+      "stazeno": "2026-10-08T05:48:00+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "c748dca00ea13f4d"
+      "otisk": "27699bc9acea4471"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
       "zkratka": "JČP",
       "barva": "#1d4ed8",
       "url": "https://jednotaceskychpravniku.cz/vzdelavaci-akce/",
-      "pocet": 5,
-      "stazeno": "2026-10-07T05:40:07+00:00",
+      "pocet": 6,
+      "stazeno": "2026-10-08T05:48:13+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "718ad8f77331096c"
+      "otisk": "7ed7b4c3215037d6"
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
       "zkratka": "epravo",
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
-      "pocet": 5,
-      "stazeno": "2026-10-07T05:40:21+00:00",
+      "pocet": 6,
+      "stazeno": "2026-10-08T05:48:35+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "b2550144f402299b"
+      "otisk": "679ca7fae5c4c95d"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -53,7 +53,7 @@
       "pocet": 2,
       "stazeno": "2026-10-07T05:41:16+00:00",
       "cesta": "ai",
-      "chyba": null,
+      "chyba": "HTTPSConnectionPool(host='www.alai.cz', port=443): Max retries exceeded with url: /index.php?up (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.alai.cz', port=443) at 0x7f8f17c78290>, 'Connection to www.alai.cz timed out. (connect timeout=60)'))",
       "otisk": "791ee633882cb34d"
     },
     "UPV": {
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-10-07T05:42:45+00:00",
+      "stazeno": "2026-10-08T05:49:37+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "c1c06ddcab9bc05d"
@@ -554,44 +554,51 @@
       "oblasti_klic": "06e2b7244824"
     },
     {
-      "id": "1f6c98c3afa9098c4af8",
+      "id": "740b2f109edca52eeaf2",
       "poradatel": "EPRAVO",
       "datum": "2026-10-08",
-      "zacatek": "09:00",
+      "zacatek": "09:30",
       "konec": "12:00",
-      "nazev": "Velká novela stavebního zákona (online - živé vysílání)",
-      "misto": "online",
-      "forma": "online",
+      "nazev": "Jak zapojit investora do developerského projektu a neztratit kontrolu",
+      "misto": "Pobřežní 394/12, Praha 8 – Karlín",
+      "forma": "prezencne",
       "lektori": [
-        "Vojtěch Faltus"
+        "Pavel Kropáček",
+        "Patrik Novák",
+        "Petr Sefzig",
+        "Radim Boháč"
       ],
-      "cena": "3 975 Kč",
-      "anotace": "Online seminář k velké novele stavebního zákona.",
-      "url": "https://www.epravo.cz/eshop/velka-novela-stavebniho-zakona-online-zive-vysilani-8-10-2026-1594.html",
-      "detail_pokusy": 1,
+      "cena": "3 900 Kč bez DPH",
+      "anotace": "Advokátní kancelář Eversheds Sutherland vás zve na druhý ze tří seminářů série Developerský podzim 2026 zaměřený na fázi financování a vstupu investora.",
+      "url": "https://www.epravo.cz/top/aktualne/pozvanka-jak-zapojit-investora-do-developerskeho-projektu-a-neztratit-kontrolu-121732.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
       "oblasti": [
-        "stavebni_zp"
+        "korporace",
+        "vecna_prava",
+        "finance"
       ],
-      "oblasti_klic": "0ae87ab60a8b"
+      "oblasti_klic": "e9ea62498dc9"
     },
     {
-      "id": "7d186c6632ba0e36d0b4",
-      "poradatel": "EPRAVO",
+      "id": "0ae848ce6557b5845ce4",
+      "poradatel": "JCP",
       "datum": "2026-10-08",
-      "zacatek": "13:00",
-      "konec": "16:00",
-      "nazev": "Marketing a akvizice klientů s podporou AI (online - živé vysílání)",
-      "misto": "online",
+      "zacatek": "16:00",
+      "konec": "",
+      "nazev": "Popravy a popraviště, a popravní nástroje z pohledu právní archeologie",
+      "misto": "",
       "forma": "online",
       "lektori": [
-        "Mgr. Miroslav Chochola, LL.M., MBA"
+        "doc. JUDr. Vilém Knoll, Ph.D."
       ],
-      "cena": "3 975 Kč s DPH",
-      "anotace": "Webinář zaměřený na využití umele inteligence v marketingu a akvizici klientů.",
-      "url": "https://www.epravo.cz/eshop/marketing-a-akvizice-klientu-s-podporou-ai-online-zive-vysilani-8-10-2026-1423.html",
-      "detail_pokusy": 1,
+      "cena": "zdarma",
+      "anotace": "Přednáška z pohledu právní archeologie zaměřená na popravy, popraviště a popravní nástroje.",
+      "url": "https://jednotaceskychpravniku.cz/prednasky/popravy-a-popraviste-a-popravni-nastroje-z-pohledu-pravni-archeologie/",
       "oblasti": [],
-      "oblasti_klic": "5c2365de9653"
+      "oblasti_klic": "25c40bee33f1"
     },
     {
       "id": "b6600b58d6fcdb9902a3",
@@ -783,11 +790,11 @@
       "konec": "14:30",
       "nazev": "Umělá inteligence a její využití v praxi právníků",
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
-      "forma": "prezencne",
+      "forma": "online",
       "lektori": [
         "JUDr. Tomáš Fabík"
       ],
-      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
+      "cena": "1800 Kč",
       "anotace": "Umělá inteligence se stala běžnou součástí praxe, školení se zaměřuje na její využití pro právníky.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/umela-inteligence-a-jeji-vyuziti-v-praxi-pravniku/",
       "oblasti": [
@@ -800,6 +807,80 @@
           "url": "https://www.epravo.cz/top/aktualne/umela-inteligence-a-jeji-vyuziti-v-praxi-pravniku-121726.html"
         }
       ]
+    },
+    {
+      "id": "0a3ed22ad9772a3f1b9b",
+      "poradatel": "EPRAVO",
+      "datum": "2026-10-14",
+      "zacatek": "13:00",
+      "konec": "16:00",
+      "nazev": "AI v due diligence a nemovitostních transakcích",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "Mgr. Miroslav Chochola, LL.M., MBA"
+      ],
+      "cena": "3 975 Kč s DPH",
+      "anotace": "Online seminář o využití umele inteligence v due diligence a nemovitostních transakcích.",
+      "url": "https://www.epravo.cz/eshop/ai-v-due-diligence-a-nemovitostnich-transakcich-online-zive-vysilani-14-10-2026-1578.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "it",
+        "korporace",
+        "vecna_prava"
+      ],
+      "oblasti_klic": "2d4d7030ad76"
+    },
+    {
+      "id": "aa9c80274cf185bd33ff",
+      "poradatel": "EPRAVO",
+      "datum": "2026-10-15",
+      "zacatek": "09:00",
+      "konec": "12:00",
+      "nazev": "EU regulace a retail",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "Mgr. Alena Šíchová",
+        "Mgr. Petr Opluštil"
+      ],
+      "cena": "3 975 Kč s DPH",
+      "anotace": "Online živé vysílání zaměřené na evropskou regulaci a oblast retailu.",
+      "url": "https://www.epravo.cz/eshop/eu-regulace-a-retail-online-zive-vysilani-15-10-2026-1621.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "spotrebitel",
+        "spravni"
+      ],
+      "oblasti_klic": "21db7e834c84"
+    },
+    {
+      "id": "5292fbdeae5658d853d8",
+      "poradatel": "PFUK",
+      "datum": "2026-10-15",
+      "zacatek": "10:00",
+      "konec": "11:30",
+      "nazev": "Přednáška: Jak reagovat v krizových situacích? Seznamte se s metodou USB",
+      "misto": "místnost č. 120",
+      "forma": "prezencne",
+      "lektori": [
+        "Petr Bárta"
+      ],
+      "cena": "zdarma",
+      "anotace": "Přednáška věnovaná bezpečnosti v prostředí vysokých škol a praktickému zvládání krizových situací nabízí ucelený přehled prevence i přímé reakce na hrozbu aktivního útočníka.",
+      "url": "https://www.prf.cuni.cz/aktuality/prednaska-jak-reagovat-v-krizovych-situacich-seznamte-se-s-metodou-usb",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [],
+      "oblasti_klic": "3ea4f64a16cf"
     },
     {
       "id": "3fa18144bb0e8f0a6ee6",
@@ -821,6 +902,30 @@
       ],
       "oblasti_klic": "07d37cdb92fb",
       "detail_pokusy": 1
+    },
+    {
+      "id": "984d43f4bf019ed24b6b",
+      "poradatel": "CAK",
+      "datum": "2026-10-15",
+      "zacatek": "17:00",
+      "konec": "19:00",
+      "nazev": "Diskusní setkání na téma \"Podmínka za zneužívání dětí: ojedinělý exces nebo systémový problém?\" POZOR: ZMĚNA DOBY KONÁNÍ OD 17:00 DO 19:00 HODIN.",
+      "misto": "Praha, Palác Dunaj - aula",
+      "forma": "prezencne",
+      "lektori": [
+        "Mgr. Martin Lýsek",
+        "doc. PhDr. Ludmila Čírtková CSc.",
+        "JUDr. Daniel Bartoň, LL.M., Ph.D.",
+        "JUDr. Andrea Procházková, Ph.D."
+      ],
+      "cena": "zdarma",
+      "anotace": "Diskusní setkání se zabývá otázkou, zda jsou podmíněné tresty za zneužívání dětí ojedinělým excesem nebo systémovým problémem justice. Akce přináší pohled expertů z řad advokacie, justice a forenzní psychologie na rozhodování soudů v těchto případech.",
+      "url": "https://www.cak.cz/akce/1341",
+      "detail_pokusy": 2,
+      "oblasti": [
+        "trestni"
+      ],
+      "oblasti_klic": "1547339c4ff5"
     },
     {
       "id": "7c35d89213f478c432a9",
@@ -938,7 +1043,7 @@
       "konec": "",
       "nazev": "Pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Antonína Suma",
       "misto": "",
-      "forma": "prezencne",
+      "forma": "online",
       "lektori": [
         "prof. JUDr. Jan Kuklík, DrSc."
       ],
@@ -947,34 +1052,6 @@
       "url": "https://jednotaceskychpravniku.cz/prednasky/pohnute-osudy-osobniho-tajemnika-jana-masaryka-judr-antonina-suma/",
       "oblasti": [],
       "oblasti_klic": "e20df259cbad"
-    },
-    {
-      "id": "72b652d7544689dd0901",
-      "poradatel": "PFUK",
-      "datum": "2026-10-21",
-      "zacatek": "16:00",
-      "konec": "",
-      "nazev": "Přednášky a jejich budoucnost",
-      "misto": "místnost 100",
-      "forma": "prezencne",
-      "lektori": [
-        "prof. JUDr. Radim Boháč, Ph.D.",
-        "doc. JUDr. Miroslav Sedláček, LL.M., Ph.D.",
-        "JUDr. Klára Hurychová, Ph.D.",
-        "JUDr. Mgr. Marek Dvořák, Ph.D.",
-        "prof. JUDr. Michal Skřejpek, DrSc.",
-        "JUDr. Mgr. Michal Urban, Ph.D.",
-        "Aneta Smetanová"
-      ],
-      "cena": "",
-      "anotace": "Setkání je otevřeným prostorem pro diskusi o podobě přednášek, jejich roli ve výuce a o tom, jak by se měly do budoucna proměňovat.",
-      "url": "https://www.prf.cuni.cz/aktuality/prednasky-a-jejich-budoucnost",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [],
-      "oblasti_klic": "37ee4eb0f928"
     },
     {
       "id": "e5d0e97370d4e542e83b",
@@ -1161,11 +1238,11 @@
       "konec": "14:00",
       "nazev": "Aktuální otázky věcných práv",
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
-      "forma": "prezencne",
+      "forma": "online",
       "lektori": [
         "Mgr. Michal Králík, Ph.D."
       ],
-      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
+      "cena": "1800 Kč",
       "anotace": "Seminář zaměřený na aktuální otázky věcných práv.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/aktualni-otazky-vecnych-prav/",
       "oblasti": [
@@ -1328,11 +1405,11 @@
       "konec": "14:00",
       "nazev": "Autorské právo a umělá inteligence",
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
-      "forma": "prezencne",
+      "forma": "online",
       "lektori": [
         "JUDr. Irena Holcová"
       ],
-      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
+      "cena": "1800 Kč",
       "anotace": "Seminář se zabývá průnikem autorského práva a umělé inteligence.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/autorske-pravo-a-umela-inteligence/",
       "oblasti": [
@@ -1519,11 +1596,11 @@
       "konec": "14:00",
       "nazev": "Soudní přezkum rozhodnutí orgánů s.r.o. a a.s. (včetně neplatnosti usnesení valné hromady)",
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
-      "forma": "prezencne",
+      "forma": "online",
       "lektori": [
         "JUDr. Josef Holejšovský, Ph.D."
       ],
-      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
+      "cena": "1800 Kč",
       "anotace": "Odborná přednáška zaměřená na soudní přezkum rozhodnutí orgánů společností s ručením omezeným a akciových společností.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/soudni-prezkum-rozhodnuti-organu-s-r-o-a-a-s-vcetne-neplatnosti-usneseni-valne-hromady/",
       "oblasti": [
