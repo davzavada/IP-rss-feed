@@ -107,33 +107,40 @@
     "vstup": 558392,
     "vystup": 14208
    }
+  },
+  "2026-10-08": {
+   "gemini-flash-lite-latest": {
+    "volani": 101,
+    "vstup": 906221,
+    "vystup": 21490
+   }
   }
  },
- "aktualizovano": "2026-10-08T04:28:59Z",
+ "aktualizovano": "2026-10-09T04:32:48Z",
  "soudy": {
   "ns": {
    "chyba": null,
-   "nalezeno": 169,
-   "nove": 21,
-   "objev": "2026-10-08T04:28:59Z"
+   "nalezeno": 206,
+   "nove": 37,
+   "objev": "2026-10-09T04:32:48Z"
   },
   "nss": {
    "chyba": null,
-   "nalezeno": 234,
-   "nove": 9,
-   "objev": "2026-10-08T04:28:59Z"
+   "nalezeno": 271,
+   "nove": 28,
+   "objev": "2026-10-09T04:32:48Z"
   },
   "sdeu": {
    "chyba": null,
-   "nalezeno": 56,
-   "nove": 11,
-   "objev": "2026-10-08T04:28:59Z"
+   "nalezeno": 76,
+   "nove": 20,
+   "objev": "2026-10-09T04:32:48Z"
   },
   "us": {
    "chyba": null,
-   "nalezeno": 104,
-   "nove": 33,
-   "objev": "2026-10-08T04:28:59Z"
+   "nalezeno": 89,
+   "nove": 15,
+   "objev": "2026-10-09T04:32:48Z"
   }
  }
 }

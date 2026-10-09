@@ -1,8 +1,237 @@
 {
- "generated": "2026-10-08T04:28:59Z",
+ "generated": "2026-10-09T04:32:48Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "sdeu:62025CJ0572",
+   "spz": "C-572/25",
+   "ecli": "ECLI:EU:C:2026:842",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-10-08",
+   "zverejneno": "2026-10-08",
+   "first_seen": "2026-10-09T04:32:48Z",
+   "nazev": "Brasserie Nationale a Munhowen v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0572",
+   "heslo": "Komunikace koncentrace pro renvies vyžaduje aktivní předání",
+   "shrnuti": "Soudní dvůr EU se zabýval výkladem pojmu komunikace koncentrace pro účely podání žádosti o renvies z vnitrostátního orgánu na Evropskou komisi podle článku 22 nařízení č. 139/2004 o kontrole spojování podniků. Rozhodl, že běh patnáctidenní lhůty začíná až aktivním předáním dostatečných informací umožňujících předběžné posouzení dopadů koncentrace. Pouhá známost existence transakce nestačí a nezakládá povinnost úřadů k vlastní aktivní rešerši.",
+   "oblasti": [
+    "soutez",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0224",
+   "spz": "C-224/25",
+   "ecli": "ECLI:EU:C:2026:840",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-10-08",
+   "zverejneno": "2026-10-08",
+   "first_seen": "2026-10-09T04:32:48Z",
+   "nazev": "La Maison de l’Union syndicale v. Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0224",
+   "heslo": "Odborová organizace nemá legitimaci k napadení povýšení",
+   "shrnuti": "Soudní dvůr EU posuzoval pourvoi odborové organizace proti usnesení Tribunálu, kterým byl odmítnut její návrh na částečné zrušení rozhodnutí o povýšení úředníků. Soudní dvůr konstatoval, že odborová organizace nebyla osobně dotčena rozhodnutím ve smyslu článku 263 čtvrtého pododstavce SFEU, neboť se na ni nevztahovala žádná z výjimek zakládajících její aktivní legitimaci. Z toho důvodu Soudní dvůr pourvoi v celém rozsahu zamítl.",
+   "oblasti": [
+    "pracovni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0173",
+   "spz": "C-173/25",
+   "ecli": "ECLI:EU:C:2026:841",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-10-08",
+   "zverejneno": "2026-10-08",
+   "first_seen": "2026-10-09T04:32:48Z",
+   "nazev": "Agropalma Holdings a další v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0173",
+   "heslo": "Porručení rozhodnutí o státních podporách",
+   "shrnuti": "Soudní dvůr řešil porruční proti rozsudku Tribunálu, kterým byl zamítnut návrh na zrušení rozhodnutí Evropské komise týkajícího se režimu státní podpory ve formě daňových výhod v rámci zóny volného obchodu na Madeirě. Soudní dvůr neshledal uplatněné důvody kasačního opravného prostředku důvodnými a pourvoi v celém rozsahu zamítl.",
+   "oblasti": [
+    "soutez",
+    "spravni",
+    "dane"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0057",
+   "spz": "C-57/25",
+   "ecli": "ECLI:EU:C:2026:844",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-10-08",
+   "zverejneno": "2026-10-08",
+   "first_seen": "2026-10-09T04:32:48Z",
+   "nazev": "Komise v. Estonsko (Protection juridictionnelle dans le code des visas)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0057",
+   "heslo": "Odepření soudního přezkumu vízových rozhodnutí porušuje unijní právo",
+   "shrnuti": "Evropská komise podala žaloba pro nesplnění povinnosti proti Estonsku kvůli tomu, že jeho právní předpisy neumožňovaly podat soudní žalobu proti rozhodnutí o odmítnutí, zrušení nebo platnosti krátkodobého víza. Soudní dvůr EU konstatoval, že estonská právní úprava porušuje unijní kodex o vízech ve spojení s právem na účinnou právní ochranu podle Listiny základních práv EU, neboť negarantuje přístup k nezávislému soudu.",
+   "oblasti": [
+    "spravni",
+    "socialni_cizinci"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0390",
+   "spz": "C-390/25",
+   "ecli": "ECLI:EU:C:2026:835",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-10-08",
+   "zverejneno": "2026-10-08",
+   "first_seen": "2026-10-09T04:32:48Z",
+   "nazev": "HUS-yhtymä",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0390",
+   "heslo": "Poměrná váha kritérií v soutěžním dialogu",
+   "shrnuti": "Generální advokát navrhuje, že v rámci soutěžního dialogu může veřejný zadavatel poměrnou váhu kritérií vyjádřenou v oznámení pomocí rozmezí definitivně upřesnit až ve výzvě k podání konečných nabídek. Současně však uvádí, že takové rozmezí musí předem určovat konečné pořadí kritérií, jinak není slučitelné se směrnicí 2014/24.",
+   "oblasti": [
+    "verejne_zakazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0222",
+   "spz": "C-222/25",
+   "ecli": "ECLI:EU:C:2026:837",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-10-08",
+   "zverejneno": "2026-10-08",
+   "first_seen": "2026-10-09T04:32:48Z",
+   "nazev": "Rahapesu Andmebüroo",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0222",
+   "heslo": "Zpracování údajů finanční zpravodajskou jednotkou a právo na přístup",
+   "shrnuti": "Generální advokátka navrhuje, že zpracování osobních údajů finanční zpravodajskou jednotkou v rámci předcházení praní peněz spadá pod směrnici 2016/680 jako zpracování příslušným orgánem. Úplné omezení práva subjektu údajů na přístup až do zničení údajů je přípustné pouze tehdy, pokud vnitrostátní předpisy stanoví jasná a přesná pravidla s odpovídajícími zárukami. Finanční zpravodajská jednotka může v zájmu utajení odmítnout sdělit důvody omezení, avšak subjekt údajů musí být vždy informován o možnosti využít nepřímý přístup prostřednictvím dozorového úřadu.",
+   "oblasti": [
+    "gdpr",
+    "spravni",
+    "finance"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CJ0872",
+   "spz": "C-872/24",
+   "ecli": "ECLI:EU:C:2026:843",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-10-08",
+   "zverejneno": "2026-10-08",
+   "first_seen": "2026-10-09T04:32:48Z",
+   "nazev": "Digi România",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0872",
+   "heslo": "Smluvní pokuta a předčasné ukončení ve spotřebitelských smlouvách",
+   "shrnuti": "Soudní dvůr EU rozhodl, že směrnice o zneužívajících ujednáních ve spotřebitelských smlouvách se vztahuje na smlouvy o poskytování služeb elektronických komunikací, včetně ujednání o smluvních pokutách za prodlení a náhradách za předčasné ukončení. Vnitrostátní soud je povinen použití zneužívajícího ujednání bez náhrady vyloučit, avšak nesmí jednostranně snižovat výši nepřiměřené smluvní pokuty. Kvalifikace náhrady za předčasné ukončení jako úplaty za službu pro účely DPH navíc nevylučuje přezkum její zneužívající povahy podle spotřebitelské směrnice.",
+   "oblasti": [
+    "spotrebitel",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CJ0808",
+   "spz": "C-808/24",
+   "ecli": "ECLI:EU:C:2026:836",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-10-08",
+   "zverejneno": "2026-10-08",
+   "first_seen": "2026-10-09T04:32:48Z",
+   "nazev": "Zálečta",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0808",
+   "heslo": "Definice pracovní doby nezakládá sama právo na náhradu škody",
+   "shrnuti": "Soudní dvůr EU rozhodl, že čl. 2 bod 1 směrnice 2003/88 o pracovní době sám o sobě nepřiznává práva jednotlivcům, a proto jeho samotné porušení nezakládá nárok na náhradu škody vůči státu. Nárok na náhradu nemajetkové újmy může vzniknout při porušení maximální délky týdenní pracovní doby podle čl. 6 písm. b) této směrnice. Výše takové náhrady se pak určuje v závislosti na skutečně utrpěné újmě v příčinné souvislosti s tímto porušením, nikoli pouze podle délky trvání nesprávného nezapočítávání pracovní pohotovosti.",
+   "oblasti": [
+    "pracovni",
+    "skoda",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CJ0571",
+   "spz": "C-571/24",
+   "ecli": "ECLI:EU:C:2026:839",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-10-08",
+   "zverejneno": "2026-10-08",
+   "first_seen": "2026-10-09T04:32:48Z",
+   "nazev": "Kreis Bergstraße",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0571",
+   "heslo": "Sloučení rodiny uprchlíka dosáhnuvšího plnoletosti",
+   "shrnuti": "Soudní dvůr EU se zabýval otázkou, zda tříměsíční lhůta pro podání žádosti o sloučení rodiny s nezletilým uprchlíkem, který v průběhu azylového řízení dosáhl plnoletosti, platí bez výjimky i v případech, kdy toto období uplynulo před vyhlášením klíčového judikátu a dřívější vnitrostátní praxe podání takové žádosti neumožňovala. Rozhodl, že žádost musí být podána v přiměřené lhůtě, jejíž přiměřenost je nutno posuzovat s ohledem na veškeré okolnosti konkrétního případu, včetně dřívější nemožnosti uspět s žádostí.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CJ0482",
+   "spz": "C-482/24",
+   "ecli": "ECLI:EU:C:2026:833",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-10-08",
+   "zverejneno": "2026-10-08",
+   "first_seen": "2026-10-09T04:32:48Z",
+   "nazev": "Global 8 Airlines v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0482",
+   "heslo": "Zařazení letadla na seznam sankcí představuje napadnutelný akt",
+   "shrnuti": "Soudní dvůr EU řešil kasační opravný prostředek proti usnesení Tribunálu, kterým byla odmítnuta žaloba na neplatnost rozhodnutí Evropské komise o zařazení letadel žalobce na seznam letadel podléhajících zákazu letů nad územím Unie. Soudní dvůr dospěl k závěru, že Tribunál pochybil, když neprovedl konkrétní analýzu obsahu sporného rozhodnutí a nesprávně dovodil, že toto rozhodnutí nevyvolává závazné právní účinky. Zrušil proto napadené usnesení a vrátil věc Tribunálu k dalším úkonům.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CC0893",
+   "spz": "C-893/24",
+   "ecli": "ECLI:EU:C:2026:834",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-10-08",
+   "zverejneno": "2026-10-08",
+   "first_seen": "2026-10-09T04:32:48Z",
+   "nazev": "AL v. Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CC0893",
+   "heslo": "Soudní přezkum disciplinární sankce vyžaduje úplnou proporcionalitu",
+   "shrnuti": "Generální advokát navrhuje zrušit rozsudek Tribunálu, protože při přezkumu přiměřenosti disciplinární sankce zbavení funkce nesprávně uplatnil standard omezeného přezkumu namísto úplného soudního přezkumu vyžadovaného právem na účinnou právní ochranu. Tribunál navíc vycházel ze skutkového stavu, který byl zčásti překonán dřívějším rozsudkem Soudního dvora týkajícím se téže osoby. Z těchto důvodů je třetímu důvodu kasačního opravného prostředku třeba vyhovět.",
+   "oblasti": [
+    "pracovni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62023CJ0706",
+   "spz": "C-706/23",
+   "ecli": "ECLI:EU:C:2026:832",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-10-08",
+   "zverejneno": "2026-10-08",
+   "first_seen": "2026-10-09T04:32:48Z",
+   "nazev": "Şcoala gimnazială « Mihai Eminescu »",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62023CJ0706",
+   "heslo": "Souběh pracovních smluv a výpočet náhrady za dovolenou",
+   "shrnuti": "Soudní dvůr EU posuzoval otázku, zda unijní právo brání vnitrostátní úpravě, která při souběhu pracovní smlouvy na dobu neurčitou a plný úvazek a smlouvy na dobu určitou a částečný úvazek nezohledňuje druhou smlouvu při výpočtu náhrady platu za dovolenou a přiznání příspěvku na stravování. Rozhodl, že vnitrostátní úprava a praxe v tomto rozsahu odporují směrnici 2003/88 a zásadě zákazu diskriminace. Zaměstnanci musí mít na základě obou smluv nárok na zohlednění odpracované doby i příslušných složek odměny.",
+   "oblasti": [
+    "pracovni"
+   ],
+   "procesni": false
+  },
   {
    "id": "sdeu:62026TJ0086",
    "spz": "T-86/26",
@@ -529,6 +758,44 @@
    "procesni": false
   },
   {
+   "id": "sdeu:62026CO0464",
+   "spz": "C-464/26",
+   "ecli": "ECLI:EU:C:2026:816",
+   "druh": "usnesení",
+   "rejstrik": "C",
+   "datum": "2026-10-01",
+   "zverejneno": "2026-10-01",
+   "first_seen": "2026-10-01T12:00:00Z",
+   "nazev": "Kowalski v. EUIPO",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CO0464",
+   "heslo": "Nepřípustnost odbočení v řízení o dovolání",
+   "shrnuti": "Soudní dvůr posuzoval žádost o povolení k projednání kasačního opravného prostředku proti rozhodnutí Tribunálu ve věci ochranných známek EU. Zjistil, že stěžovatel řádně neidentifikoval napadená ustanovení ani sporné pasáže rozhodnutí a neprokázal, že by věc vyvolávala otázku významnou pro jednotu či vývoj unijního práva. Proto Soudní dvůr rozhodl, že se odvolání nepřipouští k meritornímu projednání.",
+   "oblasti": [
+    "prumyslova_prava",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CO0438",
+   "spz": "C-438/26",
+   "ecli": "ECLI:EU:C:2026:814",
+   "druh": "usnesení",
+   "rejstrik": "C",
+   "datum": "2026-10-01",
+   "zverejneno": "2026-10-01",
+   "first_seen": "2026-10-01T12:00:00Z",
+   "nazev": "BlueNord Energy Denmark v. Commission e.a",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CO0438",
+   "heslo": "Neexistující přímý zájem na vedlejším účastenství",
+   "shrnuti": "Soudní dvůr řešil odvolání proti usnesení Tribunálu, kterým byla zamítnuta žádost o vedlejší účastenství v řízení o žalobě na neplatnost individuálního rozhodnutí o příspěvku na kapacitu vstřikování oxidu uhličitého. Soudní dvůr potvrdil, že subjekt, jehož právní postavení by nebylo přímo dotčeno případným zrušením napadeného rozhodnutí, nemá na výsledku řízení přímý a stávající zájem.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
    "id": "sdeu:62025TJ0800",
    "spz": "T-800/25",
    "ecli": "ECLI:EU:T:2026:617",
@@ -993,6 +1260,121 @@
    "shrnuti": "Tribunál posuzoval, zda lze v řízení o námitkách proti přihlášce ochranné známky EU zohlednit dřívější britské ochranné známky poté, co skončilo přechodné období po vystoupení Spojeného království z Evropské unie. Soud rozhodl, že existence relativního důvodu pro zamítnutí přihlášky se posuzuje i k datu rozhodnutí úřadu, a jelikož britské známky již nepožívají ochrany v členském státě EU, nelze k nim nadále přihlížet.",
    "oblasti": [
     "prumyslova_prava",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CO0835",
+   "spz": "C-835/25",
+   "ecli": "ECLI:EU:C:2026:822",
+   "druh": "usnesení",
+   "rejstrik": "C",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-09-30",
+   "first_seen": "2026-09-30T12:00:00Z",
+   "nazev": "Llamazares Obles a další v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CO0835",
+   "heslo": "Nejistota ohledně povinnosti Komise zahájit řízení o nesplnění povinnosti",
+   "shrnuti": "Soudní dvůr EU posuzoval odvolání proti usnesení Tribunálu, kterým byl odmítnut jako nepřípustný žaloba na nečinnost podaná jednotlivci proti Komisi kvůli jejímu nezasáhnutí vůči Španělsku ohledně pracovních podmínek. Soudní dvůr potvrdil, že jednotlivci nemohou nutit Komisi k zahájení řízení o nesplnění povinnosti podle Sámce o TFUE a odvolání zamítl.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62025CO0834",
+   "spz": "C-834/25",
+   "ecli": "ECLI:EU:C:2026:821",
+   "druh": "usnesení",
+   "rejstrik": "C",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-09-30",
+   "first_seen": "2026-09-30T12:00:00Z",
+   "nazev": "Piqueras a další v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CO0834",
+   "heslo": "Žaloba na nečinnost ohledně řízení o nesplnění povinnosti",
+   "shrnuti": "Soudní dvůr řešil, zda fyzické osoby mohou napadnout nečinnost Komise spočívající v nezahájení řízení o nesplnění povinnosti proti členskému státu. Rozhodl, že takový recours en carence je nepřípustný, neboť dotčené osoby nejsou adresáty případných aktů z takového řízení.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CO0833",
+   "spz": "C-833/25",
+   "ecli": "ECLI:EU:C:2026:820",
+   "druh": "usnesení",
+   "rejstrik": "C",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-09-30",
+   "first_seen": "2026-09-30T12:00:00Z",
+   "nazev": "Pérez Moreno a další v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CO0833",
+   "heslo": "Přípastnost žaloby na nečinnost proti Komisi",
+   "shrnuti": "Soudní dvůr řešil, zda mohou fyzické osoby podat žalobu na nečinnost proti Evropské komisi kvůli jejímu odmítnutí zahájit řízení o nesplnění povinnosti proti členskému státu. Rozhodl, že taková žaloba je nepřípasná, protože Komise není povinna zahájit toto řízení a její případná nečinnost vůči podnětu jednotlivce nemá účinky měnící jeho právní postavení. Proto potvrdil odmítnutí kasačního opravného prostředku.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces",
+    "pracovni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62025CO0832",
+   "spz": "C-832/25",
+   "ecli": "ECLI:EU:C:2026:819",
+   "druh": "usnesení",
+   "rejstrik": "C",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-09-30",
+   "first_seen": "2026-09-30T12:00:00Z",
+   "nazev": "Sánchez Teruel a další v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CO0832",
+   "heslo": "Příslušnost k žalobě na nečinnost proti Komisi",
+   "shrnuti": "Soudní dvůr řešil, zda fyzické osoby mohou podat žalobu na nečinnost proti Evropské komisi kvůli jejímu odmítnutí zahájit řízení o nesplnění povinnosti proti členskému státu. Potvrdil, že taková žaloba je nepřípustná, neboť Komise není povinna takové řízení zahájit a její případná nečinnost vůči státu nemá vůči jednotlivcům závazné právní účinky.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62025CO0831",
+   "spz": "C-831/25",
+   "ecli": "ECLI:EU:C:2026:818",
+   "druh": "usnesení",
+   "rejstrik": "C",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-09-30",
+   "first_seen": "2026-09-30T12:00:00Z",
+   "nazev": "Carrasco González a další v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CO0831",
+   "heslo": "Nepřípustnost žaloby na nečinnost proti nezahájení řízení",
+   "shrnuti": "Soudní dvůr řešil kasační opravný prostředek proti usnesení Tribunálu, kterým byl odmítnut návrh na zahájení řízení o nečinnosti Evropské komise pro nezasáhnutí vůči členskému státu. Soudní dvůr potvrdil, že fyzické nebo právnické osoby nejsou aktivně legitimovány k podání žaloby na nečinnost směřující k tomu, aby Komise zahájila řízení o nesplnění povinnosti podle Smlouvy o fungování EU, neboť taková opatření vůči nim nemají závazné právní účinky. Proto je kasační opravný prostředek zcela nedůvodný a Tribunál rozhodl správně.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CO0830",
+   "spz": "C-830/25",
+   "ecli": "ECLI:EU:C:2026:817",
+   "druh": "usnesení",
+   "rejstrik": "C",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-09-30",
+   "first_seen": "2026-09-30T12:00:00Z",
+   "nazev": "Manso Fuentes a další v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CO0830",
+   "heslo": "Žaloba na nečinnost proti nezahájení řízení je nepřípustná",
+   "shrnuti": "Soudní dvůr řešil kitting ohledně přípustnosti kasačního opravného termínu proti usnesení Tribunálu, kterým byl odmítnut návrh na zahájení řízení o nečinnosti Evropské komise. Soudní dvůr potvrdil, že jednotlivci nejsou aktivně legitimováni k podání žaloby na nečinnost směřující proti odmítnutí Komise zahájit řízení o nesplnění povinnosti proti členskému státu. Proto byl pourvoi zamítnut jako zjevně neopodstatněný.",
+   "oblasti": [
+    "spravni",
     "civilni_proces"
    ],
    "procesni": false
