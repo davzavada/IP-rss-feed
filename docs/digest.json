@@ -1,15 +1,28 @@
 {
-  "generated": "2026-10-08T05:55:34.608409+00:00",
-  "from": "2026-09-24",
-  "to": "2026-10-08",
-  "total": 86,
-  "covered": 8,
+  "generated": "2026-10-09T05:53:02.517930+00:00",
+  "from": "2026-09-25",
+  "to": "2026-10-09",
+  "total": 85,
+  "covered": 10,
   "cekajici": 2,
-  "intro": "Sledované období přineslo řadu rozhodnutí Soudního dvora EU týkajících se dokazování řádného užívání a rozlišovací způsobilosti ochranných známek. V oblasti IT a dat se soudy zabývaly ochranou obchodních zájmů při přístupu k dokumentům digitálních platforem a unijní regulací.",
+  "intro": "Sledované období přineslo významná rozhodnutí unijních i vnitrostátních soudů, která se zaměřila na limity ochranných známek ve vztahu k základním právům, prokazování jejich užívání a na oblast ochrany osobních údajů. Pozornost byla věnována také dopadům digitální regulace, včetně Aktu o digitálních službách a výzvám spojeným s technologiemi a umělou inteligencí.",
   "blocks": [
     {
-      "title": "Důkazy užívání ochranných známek",
-      "text": "Tribunál v několika rozhodnutích vymezil požadavky na prokazování řádného užívání unijních ochranných známek pro telekomunikační služby či oděvy. Potvrdil, že mírné pozměnění prvků nebo vynechání grafiky nemusí nutně vést ke ztrátě rozlišovací způsobilosti. Pro praxi to znamená nutnost pečlivě shromažďovat faktury, propagační materiály a obchodní dokumentaci odpovídající konkrétním třídám služeb.",
+      "title": "Svoboda projevu a ochranné známky",
+      "text": "Soudní dvůr EU rozhodl, že svoboda projevu může představovat řádný důvod ospravedlnidlující užití označení shodného či podobného známce s reputací, pokud při poměřování zájmů převáží. V praxi to znamená, že vlastníci slavných ochranných známek musí v některých kontextech tolerovat užití svých značek třetími osobami ve veřejném zájmu.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "“Inter IKEA Systems” – Decision of the Court of Justice of the European Union (Grand Chamber) 8 September 2026 – Case No. C-298/23",
+          "link": "https://doi.org/10.1007/s40319-026-01787-6"
+        }
+      ]
+    },
+    {
+      "title": "Důkazy o užívání známek",
+      "text": "Tribunál EU vydal řadu rozsudků týkajících se prokazování řádného užívání ochranných známek, zejména u telekomunikačních služeb a starších registrací. Pro praxi z toho vyplývá nutnost disponovat robustními a specifickými důkazy (faktury, propagační materiály) pro každou jednotlivou třídu zboží a služeb.",
       "sources": [
         {
           "src": "sdeu",
@@ -49,44 +62,39 @@
       ]
     },
     {
-      "title": "Přístup k dokumentům platforem",
-      "text": "Tribunál zamítl žalobu společnosti Zalando na zpřístupnění dokumentů Evropské komise týkajících se výpočtu aktivních příjemců podle nařízení o digitálních službách. Soud potvrdil, że ochrana obchodních zájmů třetích stran a probíhajících řízení je legitimním důvodem pro odmítnutí přístupu. Rozhodnutí posiluje pozici regulátora při utajování citlivých dat velkých online platforem.",
+      "title": "Přístup k údajům a GDPR",
+      "text": "Judikatura se věnovala také otázkám zpracování údajů finančními zpravodajskými jednotkami, biometrickým fotografiím či znepřístupnění údajů o skutečných majitelích v důsledku ochrany soukromí. Pro praxi tyto závěry vymezují přísnější meze pro nakládání s citlivými údaji a rozsah práv subjektů údajů.",
       "sources": [
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "T-203/24 – Zalando v. Komise",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0203"
-        }
-      ]
-    },
-    {
-      "title": "Ochrana soukromí skutečných majitelů",
-      "text": "Nejvyšší soud řešil otázku práva na znepřístupnění údajů o skutečných majitelích v evidenci s ohledem na ochranu osobních údajů. Rozhodl, že soud takovému návrhu vyhoví, neboť plný veřejný přístup k údajům nepřípustně zasahuje do základních práv garantovaných unijním právem. Pro praxi to představuje významný nástroj pro ochranu soukromí osob zapsaných v evidenci.",
-      "sources": [
+          "title": "C-222/25 – Rahapesu Andmebüroo",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0222"
+        },
         {
           "src": "nsoud",
           "label": "NS",
           "tag": "",
           "title": "27 Cdo 1749/2025",
           "link": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/02DB293C6ADFC78BC1258E89004D5A86?openDocument"
-        }
-      ]
-    },
-    {
-      "title": "Kolizní normy pro autorská práva",
-      "text": "Soudní dvůr EU rozhodl, že otázka formální platnosti smlouvy o postoupení autorských práv spadá do oblasti smluvních závazků. V sporech s mezinárodním prvkem se tak tato problematika řídí nařízením Řím I, a nikoliv právem státu, kde dochází k uplatňování ochrany. To zajišťuje větší předvídatelnost při přeshraničním převodu autorských práv.",
-      "sources": [
+        },
+        {
+          "src": "nss",
+          "label": "NSS",
+          "tag": "",
+          "title": "6 As 25/2026-35",
+          "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/782899"
+        },
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "C-176/25 – Steizer",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0176"
+          "title": "C-660/26 – International Card Services",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0660"
         }
       ]
     }
   ],
-  "input_hash": "7f9e1cc61d04388e8f545e026cef271e7d149a41b593169f58b149be4663ac94"
+  "input_hash": "8cfbf83e207c72bc30d8ec75ee01213069bdb13038934bdd6f1ddd9e8e01ca50"
 }
