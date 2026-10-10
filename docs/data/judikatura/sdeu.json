@@ -1,8 +1,47 @@
 {
- "generated": "2026-10-09T04:32:48Z",
+ "generated": "2026-10-10T04:18:20Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "sdeu:62026TO0505",
+   "spz": "T-505/26",
+   "ecli": "ECLI:EU:T:2026:657",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-10-09",
+   "zverejneno": "2026-10-09",
+   "first_seen": "2026-10-10T04:18:20Z",
+   "nazev": "Sanofi R&D Vaccins v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TO0505",
+   "heslo": "Přístup k dokumentům o vakcínách proti COVID-19",
+   "shrnuti": "Soudní dvůr EU (Tribunál) zamítl návrh na odklad vykonatelnosti rozhodnutí Evropské komise, kterým bylo vyhověno žádosti o širší přístup k nákupním smlouvám na vakcíny proti COVID-19 včetně ustanovení o odškodnění. Žadatel neprokázal existenci důvodnosti (fumus boni juris), neboť dostatečně nedoložil, že by zveřejnění dotčené klauzule konkrétně a reálně ohrozilo jeho obchodní zájmy.",
+   "oblasti": [
+    "spravni",
+    "it",
+    "skoda"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62026CJ0108",
+   "spz": "C-108/26",
+   "ecli": "ECLI:EU:C:2026:838",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-10-08",
+   "zverejneno": "2026-10-08",
+   "first_seen": "2026-10-10T04:18:20Z",
+   "nazev": "D (Décision relative à la gestion du trafic aérien) ",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CJ0108",
+   "heslo": "Rozhodnutí řízení letového provozu není mimořádnou okolností",
+   "shrnuti": "Soudní dvůr řešil, zda rozhodnutí řízení letového provozu může samo o sobě představovat mimořádnou okolnost zprošťující leteckého dopravce povinnosti platit náhradu škody cestujícím. Rozhodl, že samotné rozhodnutí o řízení letového provozu nestačí, ale je nutné zkoumat důvod, na němž se zakládá, zda představuje mimořádnou okolnost. Zároveň potvrdil, že taková okolnost se může týkat i předchozího letu při rotaci letadla, pokud existuje přímá příčinná souvislost.",
+   "oblasti": [
+    "spotrebitel",
+    "spravni"
+   ],
+   "procesni": false
+  },
   {
    "id": "sdeu:62025CJ0572",
    "spz": "C-572/25",
@@ -420,6 +459,43 @@
    "procesni": false
   },
   {
+   "id": "sdeu:62025TO0886",
+   "spz": "T-886/25",
+   "ecli": "ECLI:EU:T:2026:632",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-10-06",
+   "zverejneno": "2026-10-06",
+   "first_seen": "2026-10-06T12:00:00Z",
+   "nazev": "De Masi v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TO0886",
+   "heslo": "Odpověď na parlamentní otázku jako napadnutelný akt",
+   "shrnuti": "Tribunál posuzoval žalobu na neplatnost podanou poslancem Evropského parlamentu proti odpovědi Komise na jeho parlamentní otázku ohledně kontaktů její předsedkyně se zbrojními podniky. Dospěl k závěru, že napadený akt neobsahuje částečné odepření odpovědi, ale představuje řádnou odpověď, a proto nemá povahu napadnutelného aktu ve smyslu článku 263 SFEU. Žalobu proto odmítl jako nepřípustnou.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62025TO0650",
+   "spz": "T-650/25",
+   "ecli": "ECLI:EU:T:2026:636",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-10-06",
+   "zverejneno": "2026-10-06",
+   "first_seen": "2026-10-06T12:00:00Z",
+   "nazev": "Vacu Activ Marcin Leśniak v. EUIPO - Lakhomoff a AR Group Roman Tchir (VACUACTIVUS)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TO0650",
+   "heslo": "Přihláška ochranné známky v zlé víře",
+   "shrnuti": "Tribunál řešil otázku, zda byla napadena platnost ochranné známky Evropské unie z důvodu podání v zlé víře, přičemž dospěl k závěru, že žalobce přihlášku podal bez úmyslu ji užívat, pouze za účelem bránit třetím osobám v podnikání, a proto žalobu zamítl.",
+   "oblasti": [
+    "prumyslova_prava"
+   ],
+   "procesni": false
+  },
+  {
    "id": "sdeu:62026CN0815",
    "spz": "C-815/26",
    "druh": "předběžná otázka",
@@ -541,6 +617,85 @@
    "shrnuti": "Rumunský soud Judecătoria Galaţi se Soudního dvora EU ptá, zda články 20 a 21 SFEU a články 7 a 45 Listiny brání vnitrostátní právní úpravě umožňující zrušení dokladu o osobním stavu a následné odnětí státního občanství osobám, které jednaly v dobré víře a nabyly práva podle pokynů orgánů veřejné moci.",
    "oblasti": [
     "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62025TO0699",
+   "spz": "T-699/25",
+   "ecli": "ECLI:EU:T:2026:627",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-10-02",
+   "zverejneno": "2026-10-02",
+   "first_seen": "2026-10-02T12:00:00Z",
+   "nazev": "Vakorin v. Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TO0699",
+   "heslo": "Příslušnost Tribunálu k rozhodnutí o omezujících opatřeních vůči Rusku",
+   "shrnuti": "Tribunál rozhodoval o žalobě na neplatnost ustanovení unijních předpisů o omezujících opatřeních přijatých v souvislosti s situací na Ukrajině, která zakazují uznání a výkon rozhodčího nálezu v řízení mezi investory a státy. Soud dospěl k závěru, že částečně není příslušný k přezkumu napadeného rozhodnutí Rady přijatého v rámci společné zahraniční a bezpečnostní politiky, neboť nejde o individuální omezující opatření, a ve zbývající části žalobu odmítl jako nepřípustnou pro nedostatek aktivní legitimace žalobce, protože napadené akty vyžadují vnitrostátní prováděcí opatření.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni",
+    "zavazky"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62025TO0698",
+   "spz": "T-698/25",
+   "ecli": "ECLI:EU:T:2026:626",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-10-02",
+   "zverejneno": "2026-10-02",
+   "first_seen": "2026-10-02T12:00:00Z",
+   "nazev": "Zhukova v. Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TO0698",
+   "heslo": "Přípustnost žaloby proti sankčním opatřením o rozhodčím řízení",
+   "shrnuti": "Tribunál řešil, zda je přípustná žaloba na neplatnost ustanovení omezujících uznání a výkon rozhodčích nálezů v investičních sporech vůči Rusku. Rozhodl, že žaloba je nepřípustná, neboť napadená obecně závazná opatření vyžadují vnitrostátní prováděcí akt a stěžovatelka nesplňuje podmínky individuální ani přímé dotčenosti.",
+   "oblasti": [
+    "spravni",
+    "mps",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62025TO0655",
+   "spz": "T-655/25",
+   "ecli": "ECLI:EU:T:2026:625",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-10-02",
+   "zverejneno": "2026-10-02",
+   "first_seen": "2026-10-02T12:00:00Z",
+   "nazev": "Shelkov v. Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TO0655",
+   "heslo": "Omezení pravomoci Tribunálu a nepřípustnost žaloby na unijní sankce",
+   "shrnuti": "Tribunal řešil otázku své pravomoci k přezkumu obecných sankčních předpisů v oblasti SZBP a otázku aktivní legitimace investora k podání žaloby na neplatnost napadených ustanovení. Rozhodl, že k přezkumu obecných opatření v rámci SZBP nemá ve většině případů pravomoc a žaloba je nepřípustná, protože žalobce nebyl osobně dotčen a napadené akty vyžadují přijetí prováděcích opatření.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62025TO0640",
+   "spz": "T-640/25",
+   "ecli": "ECLI:EU:T:2026:628",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-10-02",
+   "zverejneno": "2026-10-02",
+   "first_seen": "2026-10-02T12:00:00Z",
+   "nazev": "Ber v. Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TO0640",
+   "heslo": "Omezení pravomoci Tribunálu a nepřípustnost žaloby proti sankčním opatřením",
+   "shrnuti": "Tribunál rozhodoval o žalobě na neplatnost ustanovení unijních předpisů o omezujících opatřeních v souvislosti s Ukrajinou, která zakazují uznání a výkon rozhodčích nálezů v investičních sporech. Soud konstatoval, že nemá pravomoc přezkoumávat obecná opatření Společné zahraniční a bezpečnostní politiky, a žalobu v této části odmítl pro nedostatkem pravomoci. Ve zbývající části žalobu odmítl jako nepřípustnou, neboť žalobce nebyl napadenými akty individuálně dotčen a napadené regulatorní akty vyžadují vnitrostátní prováděcí opatření.",
+   "oblasti": [
+    "spravni",
+    "mps",
+    "civilni_proces"
    ],
    "procesni": true
   },
@@ -758,6 +913,24 @@
    "procesni": false
   },
   {
+   "id": "sdeu:62026TO0307",
+   "spz": "T-307/26",
+   "ecli": "ECLI:EU:T:2026:621",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-10-01",
+   "zverejneno": "2026-10-01",
+   "first_seen": "2026-10-01T12:00:00Z",
+   "nazev": "Austrian Airlines",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TO0307",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [],
+   "procesni": false,
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
+  },
+  {
    "id": "sdeu:62026CO0464",
    "spz": "C-464/26",
    "ecli": "ECLI:EU:C:2026:816",
@@ -792,6 +965,25 @@
    "oblasti": [
     "spravni",
     "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CO0110",
+   "spz": "C-110/26",
+   "ecli": "ECLI:EU:C:2026:815",
+   "druh": "usnesení",
+   "rejstrik": "C",
+   "datum": "2026-10-01",
+   "zverejneno": "2026-10-01",
+   "first_seen": "2026-10-01T12:00:00Z",
+   "nazev": "Orlina",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CO0110",
+   "heslo": "Nepřípustnost předběžné otázky pro nedostatek skutkových údajů",
+   "shrnuti": "Soudní dvůr EU odmítl žádost o rozhodnutí o předběžné otázce jako zjevně nepřípustnou, protože vnitrostátní soud v rozporu s jednacím řádem dostatečně nevysvětlil skutkový a právní rámec sporu ani důvody pro podání žádosti. V předložené věci tak nebylo možné poskytnout užitečnou odpověď na položené otázky týkající se přidělování věcí soudcům.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
    ],
    "procesni": true
   },
