@@ -1,13 +1,13 @@
 {
-  "generated": "2026-10-09T05:53:02+00:00",
+  "generated": "2026-10-10T05:36:54+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 33,
-      "stazeno": "2026-10-09T05:52:08+00:00",
+      "pocet": 34,
+      "stazeno": "2026-10-10T05:35:24+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,7 +18,7 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 4,
-      "stazeno": "2026-10-09T05:52:11+00:00",
+      "stazeno": "2026-10-10T05:35:26+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "36035afe4cc9abca"
@@ -29,10 +29,10 @@
       "barva": "#1d4ed8",
       "url": "https://jednotaceskychpravniku.cz/vzdelavaci-akce/",
       "pocet": 5,
-      "stazeno": "2026-10-09T05:52:20+00:00",
+      "stazeno": "2026-10-10T05:35:32+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "ff40821e73c89c8a"
+      "otisk": "2badb690e58b6ad6"
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 5,
-      "stazeno": "2026-10-09T05:52:32+00:00",
+      "stazeno": "2026-10-10T05:35:45+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "e1ee2766f721683c"
+      "otisk": "da67d04ee5de48cb"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -53,7 +53,7 @@
       "pocet": 2,
       "stazeno": "2026-10-09T05:52:33+00:00",
       "cesta": "ai",
-      "chyba": null,
+      "chyba": "HTTPSConnectionPool(host='www.alai.cz', port=443): Max retries exceeded with url: /index.php?up (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.alai.cz', port=443) at 0x7fd44fdb4080>, 'Connection to www.alai.cz timed out. (connect timeout=60)'))",
       "otisk": "791ee633882cb34d"
     },
     "UPV": {
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-10-09T05:52:34+00:00",
+      "stazeno": "2026-10-10T05:36:47+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "c1c06ddcab9bc05d"
@@ -765,9 +765,9 @@
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
       "forma": "prezencne",
       "lektori": [
-        "JUDr. Tomáš Fabík"
+        "JUDr. Tomáš Fabík, advokát"
       ],
-      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
+      "cena": "1800 Kč",
       "anotace": "Umělá inteligence se stala běžnou součástí praxe, školení se zaměřuje na její využití pro právníky.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/umela-inteligence-a-jeji-vyuziti-v-praxi-pravniku/",
       "oblasti": [
@@ -1057,14 +1057,14 @@
         "forma",
         "misto"
       ],
+      "oblasti": [],
+      "oblasti_klic": "b995ca6d9163",
       "take_u": [
         {
           "poradatel": "JCP",
           "url": "https://jednotaceskychpravniku.cz/prednasky/pohnute-osudy-osobniho-tajemnika-jana-masaryka-judr-antonina-suma/"
         }
-      ],
-      "oblasti": [],
-      "oblasti_klic": "b995ca6d9163"
+      ]
     },
     {
       "id": "e5d0e97370d4e542e83b",
@@ -1253,15 +1253,38 @@
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
       "forma": "prezencne",
       "lektori": [
-        "Mgr. Michal Králík, Ph.D."
+        "Mgr. Michal Králík, Ph.D., soudce NS ČR"
       ],
-      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
+      "cena": "1800 Kč",
       "anotace": "Seminář zaměřený na aktuální otázky věcných práv.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/aktualni-otazky-vecnych-prav/",
       "oblasti": [
         "vecna_prava"
       ],
       "oblasti_klic": "8bf414542fab"
+    },
+    {
+      "id": "d999e57cb77f9ed40a01",
+      "poradatel": "CAK",
+      "datum": "2026-11-04",
+      "zacatek": "09:00",
+      "konec": "11:00",
+      "nazev": "Advokátní úschovy po novele 2025: nové povinnosti, kontrolní mechanismy a bezpečný postup advokáta",
+      "misto": "Praha 1, Národní 10, palác Dunaj",
+      "forma": "prezencne",
+      "lektori": [
+        "JUDr. Monika Novotná",
+        "JUDr. Robert Němec, LL.M."
+      ],
+      "cena": "zdarma",
+      "anotace": "Seminář se zabývá dopady novely zákona o advokacii č. 73/2025 Sb. na advokátní úschovy, novými povinnostmi, kontrolními mechanismy a fungováním Garančního fondu ČAK. Cílem je poskytnout advokátům praktický návod pro bezpečné nastavení úschov v praxi.",
+      "url": "https://www.cak.cz/akce/1343",
+      "detail_pokusy": 2,
+      "oblasti": [
+        "zavazky",
+        "finance"
+      ],
+      "oblasti_klic": "7496062c580f"
     },
     {
       "id": "4237a1f311147eeeba9f",
@@ -1441,9 +1464,9 @@
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
       "forma": "prezencne",
       "lektori": [
-        "JUDr. Irena Holcová"
+        "JUDr. Irena Holcová, advokátka"
       ],
-      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
+      "cena": "1800 Kč",
       "anotace": "Seminář se zabývá průnikem autorského práva a umělé inteligence.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/autorske-pravo-a-umela-inteligence/",
       "oblasti": [
@@ -1481,7 +1504,7 @@
       "misto": "Právnická fakulta UK, přízemí dv. č. 38",
       "forma": "prezencne",
       "lektori": [
-        "Mgr. Ondřej Běhal"
+        "Mgr. Ondřej Běhal, podnikový právník"
       ],
       "cena": "",
       "anotace": "Přednáška bude praktický pohled interního právníka, působícího v energetickém sektoru, na téma kybernetické bezpečnosti...",
@@ -1657,9 +1680,9 @@
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
       "forma": "prezencne",
       "lektori": [
-        "JUDr. Josef Holejšovský, Ph.D."
+        "JUDr. Josef Holejšovský, Ph.D., soudce Vrchního soudu v Praze"
       ],
-      "cena": "Základní cena: 1800 Kč Cena se slevou: 1200 Kč",
+      "cena": "1800 Kč",
       "anotace": "Odborná přednáška zaměřená na soudní přezkum rozhodnutí orgánů společností s ručením omezeným a akciových společností.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/soudni-prezkum-rozhodnuti-organu-s-r-o-a-a-s-vcetne-neplatnosti-usneseni-valne-hromady/",
       "oblasti": [
@@ -1779,6 +1802,25 @@
   ],
   "duplikaty": [
     {
+      "id": "2b2f621a6adadae257eb",
+      "poradatel": "JCP",
+      "datum": "2026-10-20",
+      "zacatek": "16:00",
+      "konec": "",
+      "nazev": "Pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Antonína Suma",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [
+        "prof. JUDr. Jan Kuklík, DrSc., vedoucí katedry právních dějin PF UK"
+      ],
+      "cena": "zdarma",
+      "anotace": "Přednáška mapuje pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Antonína Suma.",
+      "url": "https://jednotaceskychpravniku.cz/prednasky/pohnute-osudy-osobniho-tajemnika-jana-masaryka-judr-antonina-suma/",
+      "oblasti": [],
+      "oblasti_klic": "e20df259cbad",
+      "stejna_jako": "c7c4a353a8a970aca67f"
+    },
+    {
       "id": "f5e482b4a0eacb1f6076",
       "poradatel": "PFUK",
       "datum": "2026-10-14",
@@ -1820,25 +1862,6 @@
         "misto"
       ],
       "stejna_jako": "910d12f8f28cdfed6ef4"
-    },
-    {
-      "id": "2b2f621a6adadae257eb",
-      "poradatel": "JCP",
-      "datum": "2026-10-20",
-      "zacatek": "16:00",
-      "konec": "",
-      "nazev": "Pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Antonína Suma",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [
-        "prof. JUDr. Jan Kuklík, DrSc."
-      ],
-      "cena": "zdarma",
-      "anotace": "Přednáška mapuje pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Antonína Suma.",
-      "url": "https://jednotaceskychpravniku.cz/prednasky/pohnute-osudy-osobniho-tajemnika-jana-masaryka-judr-antonina-suma/",
-      "oblasti": [],
-      "oblasti_klic": "e20df259cbad",
-      "stejna_jako": "c7c4a353a8a970aca67f"
     }
   ],
   "ics": "https://owl.davidzavada.cz/akce.ics"

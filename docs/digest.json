@@ -1,15 +1,15 @@
 {
-  "generated": "2026-10-09T05:53:02.517930+00:00",
-  "from": "2026-09-25",
-  "to": "2026-10-09",
-  "total": 85,
-  "covered": 10,
-  "cekajici": 2,
-  "intro": "Sledované období přineslo významná rozhodnutí unijních i vnitrostátních soudů, která se zaměřila na limity ochranných známek ve vztahu k základním právům, prokazování jejich užívání a na oblast ochrany osobních údajů. Pozornost byla věnována také dopadům digitální regulace, včetně Aktu o digitálních službách a výzvám spojeným s technologiemi a umělou inteligencí.",
+  "generated": "2026-10-10T05:36:54.175879+00:00",
+  "from": "2026-09-26",
+  "to": "2026-10-10",
+  "total": 88,
+  "covered": 14,
+  "cekajici": 4,
+  "intro": "Sledované období přineslo významná rozhodnutí unijních soudů ohledně ochranných známek, přístupu k dokumentům a ochrany údajů, podpořená odbornými debatami o regulaci umělé inteligence a digitálních služeb. Judikatura se zaměřila na posuzování rozlišovací způsobilosti, zlé víry při podávání přihlášek a vyvažování práv duševního vlastnictví se svobodou projevu.",
   "blocks": [
     {
       "title": "Svoboda projevu a ochranné známky",
-      "text": "Soudní dvůr EU rozhodl, že svoboda projevu může představovat řádný důvod ospravedlnidlující užití označení shodného či podobného známce s reputací, pokud při poměřování zájmů převáží. V praxi to znamená, že vlastníci slavných ochranných známek musí v některých kontextech tolerovat užití svých značek třetími osobami ve veřejném zájmu.",
+      "text": "Soudní dvůr EU potvrdil, že svoboda projevu třetí osoby může představovat řádný důvod ospravedlňující užití označení shodného či podobného známce s reputací. Pro praxi to znamená nutnost vyvažovat exkluzivní práva vlastníků známek s veřejným zájmem a kontextem projevů.",
       "sources": [
         {
           "src": "journals",
@@ -21,50 +21,16 @@
       ]
     },
     {
-      "title": "Důkazy o užívání známek",
-      "text": "Tribunál EU vydal řadu rozsudků týkajících se prokazování řádného užívání ochranných známek, zejména u telekomunikačních služeb a starších registrací. Pro praxi z toho vyplývá nutnost disponovat robustními a specifickými důkazy (faktury, propagační materiály) pro každou jednotlivou třídu zboží a služeb.",
+      "title": "Ochrana údajů a přístup",
+      "text": "Soudní orgány se zabývaly přístupem k dokumentům a zpracováním údajů finančními či dohledovými institucemi, přičemž potvrdily prioritu ochrany obchodních zájmů a probíhajících řízení. Pro praxi to posiluje pozici úřadů při odepírání citlivých informací žadatelům.",
       "sources": [
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "T-800/25 – Athleta v. EUIPO - Sports Group Denmark (ATHLETA)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0800"
+          "title": "T-505/26 – Sanofi R&D Vaccins v. Komise",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TO0505"
         },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-258/25 – Telefónica Germany v. EUIPO - ePlus (e.plus+)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0258"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-257/25 – Telefónica Germany v. EUIPO - ePlus (e plus)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0257"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-256/25 – Telefónica Germany v. EUIPO - ePlus (E-PLUS GRUPPE)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0256"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-255/25 – Telefónica Germany v. EUIPO - ePlus (e plus)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0255"
-        }
-      ]
-    },
-    {
-      "title": "Přístup k údajům a GDPR",
-      "text": "Judikatura se věnovala také otázkám zpracování údajů finančními zpravodajskými jednotkami, biometrickým fotografiím či znepřístupnění údajů o skutečných majitelích v důsledku ochrany soukromí. Pro praxi tyto závěry vymezují přísnější meze pro nakládání s citlivými údaji a rozsah práv subjektů údajů.",
-      "sources": [
         {
           "src": "sdeu",
           "label": "SDEU",
@@ -80,21 +46,89 @@
           "link": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/02DB293C6ADFC78BC1258E89004D5A86?openDocument"
         },
         {
-          "src": "nss",
-          "label": "NSS",
+          "src": "sdeu",
+          "label": "SDEU",
           "tag": "",
-          "title": "6 As 25/2026-35",
-          "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/782899"
+          "title": "T-203/24 – Zalando v. Komise",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0203"
+        }
+      ]
+    },
+    {
+      "title": "AI a budoucí autorské právo",
+      "text": "Odborná literatura a stanoviska Max Planck Institutu reagují na nástup generativní umělé inteligence návrhy na zákonné výjimky pro web-scraping a spravedlivou odměnu tvůrců. Pro praxi to signalizuje blížící se legislativní tlak na nové kolektivní i smluvní modely odměňování.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "Position Statement of the Max Planck Institute of 25 June 2026 on the Future Copyright Framework in Times of Generative AI",
+          "link": "https://doi.org/10.1093/grurint/ikag093"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "QMJIP",
+          "title": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
+          "link": "https://doi.org/10.4337/qmjip.2026.03.01"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JWIP",
+          "title": "Exploring remuneration mechanisms for copyrighted works in generative AI systems",
+          "link": "https://doi.org/10.1111/jwip.70027"
+        }
+      ]
+    },
+    {
+      "title": "Rozlišovací způsobilost známek",
+      "text": "Tribunál EU v řadě případů přezkoumával zápisy ochranných známek a potvrdil, že popisná sdělení nebo slabě rozlišitelné prvky nepožívají monopolní ochrany. Pro přihlašovatele to znamená nutnost pečlivě volit rozlišovací prvky a dokládat reálné užívání v obchodu.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-86/26 – Abacco’s v. EUIPO - Restaurant Abac (ABACCO'S STEAKHOUSE)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TJ0086"
         },
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "C-660/26 – International Card Services",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0660"
+          "title": "T-9/26 – Milestone Sportswear v. EUIPO - John Peter (MID season For When It's Not Quite Cold Not Quite Warm)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TJ0009"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-631/25 – Salumanus v. EUIPO - Heyoptics (lightoptics)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0631"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-559/25 – Fiber Experts Deutschland v. EUIPO (FIBER EXPERTS)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0559"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-371/25 – Dentek Oral Care v. EUIPO - Jeronimo Martins Polska (dentix)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0371"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-800/25 – Athleta v. EUIPO - Sports Group Denmark (ATHLETA)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0800"
         }
       ]
     }
   ],
-  "input_hash": "8cfbf83e207c72bc30d8ec75ee01213069bdb13038934bdd6f1ddd9e8e01ca50"
+  "input_hash": "25aed84e111d1bce5cb8ba2d93c75b639e8f44abd941099fa9668713beacc88f"
 }
