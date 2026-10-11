@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T05:36:54+00:00",
+  "generated": "2026-10-11T05:31:11+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 34,
-      "stazeno": "2026-10-10T05:35:24+00:00",
+      "stazeno": "2026-10-11T05:30:42+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -17,11 +17,11 @@
       "zkratka": "PF UK",
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
-      "pocet": 4,
-      "stazeno": "2026-10-10T05:35:26+00:00",
+      "pocet": 5,
+      "stazeno": "2026-10-11T05:30:50+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "36035afe4cc9abca"
+      "otisk": "9633c1a1f68b4ec7"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
@@ -29,10 +29,10 @@
       "barva": "#1d4ed8",
       "url": "https://jednotaceskychpravniku.cz/vzdelavaci-akce/",
       "pocet": 5,
-      "stazeno": "2026-10-10T05:35:32+00:00",
+      "stazeno": "2026-10-11T05:30:55+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "2badb690e58b6ad6"
+      "otisk": "a3d36cadcfc6e797"
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 5,
-      "stazeno": "2026-10-10T05:35:45+00:00",
+      "stazeno": "2026-10-11T05:31:00+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "da67d04ee5de48cb"
+      "otisk": "265e68cdc14b1173"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,9 +51,9 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 2,
-      "stazeno": "2026-10-09T05:52:33+00:00",
+      "stazeno": "2026-10-11T05:31:02+00:00",
       "cesta": "ai",
-      "chyba": "HTTPSConnectionPool(host='www.alai.cz', port=443): Max retries exceeded with url: /index.php?up (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.alai.cz', port=443) at 0x7fd44fdb4080>, 'Connection to www.alai.cz timed out. (connect timeout=60)'))",
+      "chyba": null,
       "otisk": "791ee633882cb34d"
     },
     "UPV": {
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-10-10T05:36:47+00:00",
+      "stazeno": "2026-10-11T05:31:02+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "c1c06ddcab9bc05d"
@@ -765,7 +765,7 @@
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
       "forma": "prezencne",
       "lektori": [
-        "JUDr. Tomáš Fabík, advokát"
+        "JUDr. Tomáš Fabík"
       ],
       "cena": "1800 Kč",
       "anotace": "Umělá inteligence se stala běžnou součástí praxe, školení se zaměřuje na její využití pro právníky.",
@@ -1067,6 +1067,35 @@
       ]
     },
     {
+      "id": "72b652d7544689dd0901",
+      "poradatel": "PFUK",
+      "datum": "2026-10-21",
+      "zacatek": "16:00",
+      "konec": "",
+      "nazev": "Přednášky a jejich budoucnost",
+      "misto": "místnosti 100",
+      "forma": "prezencne",
+      "lektori": [
+        "prof. JUDr. Radim Boháč, Ph.D.",
+        "doc. JUDr. Miroslav Sedláček, LL.M., Ph.D.",
+        "JUDr. Klára Hurychová, Ph.D.",
+        "JUDr. Mgr. Marek Dvořák, Ph.D.",
+        "prof. JUDr. Michal Skřejpek, DrSc.",
+        "JUDr. Mgr. Michal Urban, Ph.D.",
+        "Aneta Smetanová"
+      ],
+      "cena": "zdarma",
+      "anotace": "Setkání je otevřeným prostorem pro akademickou obec k diskusi o podobě přednášek, jejich roli ve výuce a o tom, jak by se měly do budoucna proměňovat.",
+      "url": "https://www.prf.cuni.cz/aktuality/prednasky-a-jejich-budoucnost",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "forma",
+        "misto"
+      ],
+      "oblasti": [],
+      "oblasti_klic": "8c59300a9387"
+    },
+    {
       "id": "e5d0e97370d4e542e83b",
       "poradatel": "CAK",
       "datum": "2026-10-22",
@@ -1253,7 +1282,7 @@
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
       "forma": "prezencne",
       "lektori": [
-        "Mgr. Michal Králík, Ph.D., soudce NS ČR"
+        "Mgr. Michal Králík, Ph.D."
       ],
       "cena": "1800 Kč",
       "anotace": "Seminář zaměřený na aktuální otázky věcných práv.",
@@ -1464,7 +1493,7 @@
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
       "forma": "prezencne",
       "lektori": [
-        "JUDr. Irena Holcová, advokátka"
+        "JUDr. Irena Holcová"
       ],
       "cena": "1800 Kč",
       "anotace": "Seminář se zabývá průnikem autorského práva a umělé inteligence.",
@@ -1504,7 +1533,7 @@
       "misto": "Právnická fakulta UK, přízemí dv. č. 38",
       "forma": "prezencne",
       "lektori": [
-        "Mgr. Ondřej Běhal, podnikový právník"
+        "Mgr. Ondřej Běhal"
       ],
       "cena": "",
       "anotace": "Přednáška bude praktický pohled interního právníka, působícího v energetickém sektoru, na téma kybernetické bezpečnosti...",
@@ -1680,7 +1709,7 @@
       "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
       "forma": "prezencne",
       "lektori": [
-        "JUDr. Josef Holejšovský, Ph.D., soudce Vrchního soudu v Praze"
+        "JUDr. Josef Holejšovský, Ph.D."
       ],
       "cena": "1800 Kč",
       "anotace": "Odborná přednáška zaměřená na soudní přezkum rozhodnutí orgánů společností s ručením omezeným a akciových společností.",
@@ -1802,25 +1831,6 @@
   ],
   "duplikaty": [
     {
-      "id": "2b2f621a6adadae257eb",
-      "poradatel": "JCP",
-      "datum": "2026-10-20",
-      "zacatek": "16:00",
-      "konec": "",
-      "nazev": "Pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Antonína Suma",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [
-        "prof. JUDr. Jan Kuklík, DrSc., vedoucí katedry právních dějin PF UK"
-      ],
-      "cena": "zdarma",
-      "anotace": "Přednáška mapuje pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Antonína Suma.",
-      "url": "https://jednotaceskychpravniku.cz/prednasky/pohnute-osudy-osobniho-tajemnika-jana-masaryka-judr-antonina-suma/",
-      "oblasti": [],
-      "oblasti_klic": "e20df259cbad",
-      "stejna_jako": "c7c4a353a8a970aca67f"
-    },
-    {
       "id": "f5e482b4a0eacb1f6076",
       "poradatel": "PFUK",
       "datum": "2026-10-14",
@@ -1862,6 +1872,25 @@
         "misto"
       ],
       "stejna_jako": "910d12f8f28cdfed6ef4"
+    },
+    {
+      "id": "2b2f621a6adadae257eb",
+      "poradatel": "JCP",
+      "datum": "2026-10-20",
+      "zacatek": "16:00",
+      "konec": "",
+      "nazev": "Pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Antonína Suma",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [
+        "prof. JUDr. Jan Kuklík, DrSc."
+      ],
+      "cena": "zdarma",
+      "anotace": "Přednáška mapuje pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Antonína Suma.",
+      "url": "https://jednotaceskychpravniku.cz/prednasky/pohnute-osudy-osobniho-tajemnika-jana-masaryka-judr-antonina-suma/",
+      "oblasti": [],
+      "oblasti_klic": "e20df259cbad",
+      "stejna_jako": "c7c4a353a8a970aca67f"
     }
   ],
   "ics": "https://owl.davidzavada.cz/akce.ics"

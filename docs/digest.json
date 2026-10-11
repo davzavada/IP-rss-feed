@@ -1,15 +1,28 @@
 {
-  "generated": "2026-10-10T05:36:54.175879+00:00",
-  "from": "2026-09-26",
-  "to": "2026-10-10",
+  "generated": "2026-10-11T05:31:11.714943+00:00",
+  "from": "2026-09-27",
+  "to": "2026-10-11",
   "total": 88,
-  "covered": 14,
-  "cekajici": 4,
-  "intro": "Sledované období přineslo významná rozhodnutí unijních soudů ohledně ochranných známek, přístupu k dokumentům a ochrany údajů, podpořená odbornými debatami o regulaci umělé inteligence a digitálních služeb. Judikatura se zaměřila na posuzování rozlišovací způsobilosti, zlé víry při podávání přihlášek a vyvažování práv duševního vlastnictví se svobodou projevu.",
+  "covered": 10,
+  "cekajici": 2,
+  "intro": "Sledované období přineslo řadu významných rozhodnutí Soudního dvora EU a unijního Tribunálu v oblasti ochranných známek, přístupu k dokumentům a ochrany údajů. Odborná literatura se intenzivně věnovala výzvám autorského práva v éře generativní umělé inteligence a novým regulačním trendům v digitálním prostředí.",
   "blocks": [
     {
+      "title": "Přístup k dokumentům a smlouvám",
+      "text": "Tribunál zamítl návrh na odklad vykonatelnosti rozhodnutí Komise, kterým byl umožněn širší přístup k nákupním smlouvám na vakcíny proti COVID-19. Žadatel neprokázal, že by zveřejnění klauzulí o odškodnění konkrétně ohrozilo jeho obchodní zájmy. Pro praxi to znamená, že ochrana obchodního tajemství v kontextu veřejných zakázek vyžaduje velmi konkrétní a reálné doložení hrozící újmy.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-505/26 – Sanofi R&D Vaccins v. Komise",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TO0505"
+        }
+      ]
+    },
+    {
       "title": "Svoboda projevu a ochranné známky",
-      "text": "Soudní dvůr EU potvrdil, že svoboda projevu třetí osoby může představovat řádný důvod ospravedlňující užití označení shodného či podobného známce s reputací. Pro praxi to znamená nutnost vyvažovat exkluzivní práva vlastníků známek s veřejným zájmem a kontextem projevů.",
+      "text": "Soudní dvůr EU v rozsudku ve věci Inter IKEA Systems rozhodl, že svoboda projevu třetí osoby může představovat řádný důvod ospravedlňující užití označení shodného nebo podobného známce s reputací. Vnitrostátní soudy musí v každém případě pečlivě poměřovat kolidující zájmy včetně kontextu veřejného zájmu a úmyslu uživatele. Tento závěr přináší důležitý korektiv do výlučných práv vlastníků silných ochranných známek.",
       "sources": [
         {
           "src": "journals",
@@ -21,42 +34,8 @@
       ]
     },
     {
-      "title": "Ochrana údajů a přístup",
-      "text": "Soudní orgány se zabývaly přístupem k dokumentům a zpracováním údajů finančními či dohledovými institucemi, přičemž potvrdily prioritu ochrany obchodních zájmů a probíhajících řízení. Pro praxi to posiluje pozici úřadů při odepírání citlivých informací žadatelům.",
-      "sources": [
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-505/26 – Sanofi R&D Vaccins v. Komise",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TO0505"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "C-222/25 – Rahapesu Andmebüroo",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0222"
-        },
-        {
-          "src": "nsoud",
-          "label": "NS",
-          "tag": "",
-          "title": "27 Cdo 1749/2025",
-          "link": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/02DB293C6ADFC78BC1258E89004D5A86?openDocument"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-203/24 – Zalando v. Komise",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0203"
-        }
-      ]
-    },
-    {
-      "title": "AI a budoucí autorské právo",
-      "text": "Odborná literatura a stanoviska Max Planck Institutu reagují na nástup generativní umělé inteligence návrhy na zákonné výjimky pro web-scraping a spravedlivou odměnu tvůrců. Pro praxi to signalizuje blížící se legislativní tlak na nové kolektivní i smluvní modely odměňování.",
+      "title": "Autorské právo a generativní AI",
+      "text": "Odborná stanoviska a studie se zaměřily na budoucí podobu autorského práva v éře generativní umělé inteligence a navrhují zavedení specifických licenčních mechanismů či zákonných výjimek pro trénink AI. Diskutuje se rovněž otázka spravedlivé odměny tvůrců a nastavení kolektivní správy pro výstupy generované umělou inteligencí. Pro praxi to představuje podstatný impuls k probíhajícím debatám o legislativním uchopení AI.",
       "sources": [
         {
           "src": "journals",
@@ -82,53 +61,52 @@
       ]
     },
     {
-      "title": "Rozlišovací způsobilost známek",
-      "text": "Tribunál EU v řadě případů přezkoumával zápisy ochranných známek a potvrdil, že popisná sdělení nebo slabě rozlišitelné prvky nepožívají monopolní ochrany. Pro přihlašovatele to znamená nutnost pečlivě volit rozlišovací prvky a dokládat reálné užívání v obchodu.",
+      "title": "Evropská regulace digitálních trhů",
+      "text": "Odborná literatura hodnotí potenciál Aktu o digitálních trzích (DMA) při prolomení tržní nadvlády velkých technologických společností a doplňuje jej o analýzy aplikace Aktu o digitálních službách (DSA) na specifické sektory, jako jsou eSports. Ukazuje se, že navzdory ambiciózním ex ante nástrijům čelí tato regulace výzvám v oblasti vymáhání a kapacit orgánů dohledu. Pro poskytovatele digitálních služeb to znamená nutnost pečlivé compliance a sledování vývoje správní praxe.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "Can the Digital Markets Act Turn the Tide Against Big Tech?",
+          "link": "https://doi.org/10.1007/s40319-026-01781-y"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "MUJLT",
+          "title": "Esports and the Digital Services Act: Functional Classification of Gaming, Tournament and Streaming Services",
+          "link": "https://journals.muni.cz/mujlt/article/view/42629"
+        }
+      ]
+    },
+    {
+      "title": "Ochrana údajů a přístup",
+      "text": "Generální advokát SDEU posuzoval otázky zpracování údajů finanční zpravodajskou jednotkou a meze práva na přístup podle unijních předpisů. Vnitrostátní soudy a Tribunál se mezitím zabývaly také případy znepřístupnění údajů o skutečném majiteli kvůli ochraně soukromí či odmítnutím přístupu k dokumentům regulátorů. Judikatura tak nadále vymezuje tenkou hranici mezi efektivním výkonem veřejné moci a ochranou základních práv subjektů.",
       "sources": [
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "T-86/26 – Abacco’s v. EUIPO - Restaurant Abac (ABACCO'S STEAKHOUSE)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TJ0086"
+          "title": "C-222/25 – Rahapesu Andmebüroo",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0222"
+        },
+        {
+          "src": "nsoud",
+          "label": "NS",
+          "tag": "",
+          "title": "27 Cdo 1749/2025",
+          "link": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/02DB293C6ADFC78BC1258E89004D5A86?openDocument"
         },
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "T-9/26 – Milestone Sportswear v. EUIPO - John Peter (MID season For When It's Not Quite Cold Not Quite Warm)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TJ0009"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-631/25 – Salumanus v. EUIPO - Heyoptics (lightoptics)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0631"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-559/25 – Fiber Experts Deutschland v. EUIPO (FIBER EXPERTS)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0559"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-371/25 – Dentek Oral Care v. EUIPO - Jeronimo Martins Polska (dentix)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0371"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-800/25 – Athleta v. EUIPO - Sports Group Denmark (ATHLETA)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0800"
+          "title": "T-203/24 – Zalando v. Komise",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0203"
         }
       ]
     }
   ],
-  "input_hash": "25aed84e111d1bce5cb8ba2d93c75b639e8f44abd941099fa9668713beacc88f"
+  "input_hash": "0e18536db361206c3475c93e33cc0ad8bf3f1e21d9f09d4904589a2e45ea4b6e"
 }
