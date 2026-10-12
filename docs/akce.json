@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T05:31:11+00:00",
+  "generated": "2026-10-12T05:41:25+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 34,
-      "stazeno": "2026-10-11T05:30:42+00:00",
+      "stazeno": "2026-10-12T05:41:05+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,7 +18,7 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 5,
-      "stazeno": "2026-10-11T05:30:50+00:00",
+      "stazeno": "2026-10-12T05:41:06+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "9633c1a1f68b4ec7"
@@ -29,21 +29,21 @@
       "barva": "#1d4ed8",
       "url": "https://jednotaceskychpravniku.cz/vzdelavaci-akce/",
       "pocet": 5,
-      "stazeno": "2026-10-11T05:30:55+00:00",
+      "stazeno": "2026-10-12T05:41:11+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "a3d36cadcfc6e797"
+      "otisk": "cf79b864e95b1c26"
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
       "zkratka": "epravo",
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
-      "pocet": 5,
-      "stazeno": "2026-10-11T05:31:00+00:00",
+      "pocet": 6,
+      "stazeno": "2026-10-12T05:41:17+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "265e68cdc14b1173"
+      "otisk": "a0a2932be72833d9"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 2,
-      "stazeno": "2026-10-11T05:31:02+00:00",
+      "stazeno": "2026-10-12T05:41:18+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "791ee633882cb34d"
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-10-11T05:31:02+00:00",
+      "stazeno": "2026-10-12T05:41:18+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "c1c06ddcab9bc05d"
@@ -601,6 +601,35 @@
       "oblasti_klic": "25c40bee33f1"
     },
     {
+      "id": "bd6823b2cca4f36bd031",
+      "poradatel": "EPRAVO",
+      "datum": "2026-10-12",
+      "zacatek": "09:30",
+      "konec": "12:00",
+      "nazev": "Jak zapojit investora do developerského projektu a neztratit kontrolu",
+      "misto": "Pobřežní 394/12, Praha 8 – Karlín",
+      "forma": "prezencne",
+      "lektori": [
+        "Pavel Kropáček",
+        "Patrik Novák",
+        "Petr Sefzig",
+        "Radim Boháč"
+      ],
+      "cena": "3 900 Kč bez DPH",
+      "anotace": "Druhý ze tří seminářů série Developerský podzim 2026 se zaměřuje na fázi financování a vstup investora do developerského projektu.",
+      "url": "https://www.epravo.cz/top/aktualne/pozvanka-jak-zapojit-investora-do-developerskeho-projektu-a-neztratit-kontrolu-121732.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "zavazky",
+        "korporace",
+        "vecna_prava"
+      ],
+      "oblasti_klic": "b7f3bbfde556"
+    },
+    {
       "id": "2c194d1bc534e86fd602",
       "poradatel": "UPV",
       "datum": "2026-10-12",
@@ -767,7 +796,7 @@
       "lektori": [
         "JUDr. Tomáš Fabík"
       ],
-      "cena": "1800 Kč",
+      "cena": "1200 Kč",
       "anotace": "Umělá inteligence se stala běžnou součástí praxe, školení se zaměřuje na její využití pro právníky.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/umela-inteligence-a-jeji-vyuziti-v-praxi-pravniku/",
       "oblasti": [
@@ -1273,24 +1302,25 @@
       "detail_pokusy": 1
     },
     {
-      "id": "5692bd6fcaf704de9b11",
+      "id": "9a22045dc60281f66a17",
       "poradatel": "JCP",
       "datum": "2026-11-03",
       "zacatek": "09:30",
-      "konec": "14:00",
-      "nazev": "Aktuální otázky věcných práv",
-      "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
+      "konec": "",
+      "nazev": "Vybrané otázky společného jmění manželů v aktuální rozhodovací praxi Nejvyššího soudu ČR a Ústavního soudu ČR",
+      "misto": "",
       "forma": "prezencne",
       "lektori": [
         "Mgr. Michal Králík, Ph.D."
       ],
-      "cena": "1800 Kč",
-      "anotace": "Seminář zaměřený na aktuální otázky věcných práv.",
-      "url": "https://jednotaceskychpravniku.cz/prednasky/aktualni-otazky-vecnych-prav/",
+      "cena": "1200 Kč",
+      "anotace": "Seminář bude zaměřen na vybrané...",
+      "url": "https://jednotaceskychpravniku.cz/prednasky/vybrane-otazky-spolecneho-jmeni-manzelu-v-aktualni-rozhodovaci-praxi-nejvyssiho-soudu-cr-a-ustavniho-soudu-cr/",
       "oblasti": [
-        "vecna_prava"
+        "rodina_dedictvi",
+        "ustavni"
       ],
-      "oblasti_klic": "8bf414542fab"
+      "oblasti_klic": "66411bf1d0da"
     },
     {
       "id": "d999e57cb77f9ed40a01",
@@ -1495,7 +1525,7 @@
       "lektori": [
         "JUDr. Irena Holcová"
       ],
-      "cena": "1800 Kč",
+      "cena": "1200 Kč",
       "anotace": "Seminář se zabývá průnikem autorského práva a umělé inteligence.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/autorske-pravo-a-umela-inteligence/",
       "oblasti": [
@@ -1711,7 +1741,7 @@
       "lektori": [
         "JUDr. Josef Holejšovský, Ph.D."
       ],
-      "cena": "1800 Kč",
+      "cena": "1200 Kč",
       "anotace": "Odborná přednáška zaměřená na soudní přezkum rozhodnutí orgánů společností s ručením omezeným a akciových společností.",
       "url": "https://jednotaceskychpravniku.cz/prednasky/soudni-prezkum-rozhodnuti-organu-s-r-o-a-a-s-vcetne-neplatnosti-usneseni-valne-hromady/",
       "oblasti": [
@@ -1831,6 +1861,25 @@
   ],
   "duplikaty": [
     {
+      "id": "2b2f621a6adadae257eb",
+      "poradatel": "JCP",
+      "datum": "2026-10-20",
+      "zacatek": "16:00",
+      "konec": "",
+      "nazev": "Pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Antonína Suma",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [
+        "prof. JUDr. Jan Kuklík, DrSc."
+      ],
+      "cena": "zdarma",
+      "anotace": "Přednáška mapuje pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Antonína Suma.",
+      "url": "https://jednotaceskychpravniku.cz/prednasky/pohnute-osudy-osobniho-tajemnika-jana-masaryka-judr-antonina-suma/",
+      "oblasti": [],
+      "oblasti_klic": "e20df259cbad",
+      "stejna_jako": "c7c4a353a8a970aca67f"
+    },
+    {
       "id": "f5e482b4a0eacb1f6076",
       "poradatel": "PFUK",
       "datum": "2026-10-14",
@@ -1872,25 +1921,6 @@
         "misto"
       ],
       "stejna_jako": "910d12f8f28cdfed6ef4"
-    },
-    {
-      "id": "2b2f621a6adadae257eb",
-      "poradatel": "JCP",
-      "datum": "2026-10-20",
-      "zacatek": "16:00",
-      "konec": "",
-      "nazev": "Pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Antonína Suma",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [
-        "prof. JUDr. Jan Kuklík, DrSc."
-      ],
-      "cena": "zdarma",
-      "anotace": "Přednáška mapuje pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Antonína Suma.",
-      "url": "https://jednotaceskychpravniku.cz/prednasky/pohnute-osudy-osobniho-tajemnika-jana-masaryka-judr-antonina-suma/",
-      "oblasti": [],
-      "oblasti_klic": "e20df259cbad",
-      "stejna_jako": "c7c4a353a8a970aca67f"
     }
   ],
   "ics": "https://owl.davidzavada.cz/akce.ics"
