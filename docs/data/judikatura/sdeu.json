@@ -1,8 +1,329 @@
 {
- "generated": "2026-10-10T04:18:20Z",
+ "generated": "2026-10-12T04:18:26Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "sdeu:62026CN0923",
+   "spz": "C-923/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-08-13",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-12T04:18:26Z",
+   "nazev": "Agenzia delle Entrate – Direzione provinciale di Como",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0923",
+   "heslo": "Zdanění zahraničních nemovitostí a volný pohyb kapitálu",
+   "shrnuti": "Italský soud se ptá Soudního dvora EU, zda články 63 a 65 SFEU brání vnitrostátní úpravě, která pro účely výpočtu základu daně z nemovitostí rozlišuje mezi nemovitostmi v EU/EHP a ve třetích zemích tím, že u prvních z nich používá katastrální hodnotu a u druhých pořizovací či tržní hodnotu.",
+   "oblasti": [
+    "dane",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0868",
+   "spz": "C-868/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-08-04",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-12T04:18:26Z",
+   "nazev": "AlbaniaBeg Ambient",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0868",
+   "heslo": "Uznání rozhodnutí třetího státu a pojem rozhodnutí",
+   "shrnuti": "Italský odvolací soud v Římě se Soudního dvora EU dotazuje, zda pojem „rozhodnutí“ podle článku 32 nařízení Rady č. 44/2001 zahrnuje také rozhodnutí soudu členského státu o uznání a prohlášení vykonatelnosti rozhodnutí vydaného ve třetím státě.",
+   "oblasti": [
+    "mps",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0848",
+   "spz": "C-848/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-31",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-12T04:18:26Z",
+   "nazev": "Hoist Italia",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0848",
+   "heslo": "Posouzení úvěruschopnosti spotřebitele a sankce za porušení",
+   "shrnuti": "Italský soud Tribunale di Busto Arsizio se Soudního dvora EU táže, zda úprava směrnice o spotřebitelském úvěru brání vnitrostátnímu režimu, podle něhož se spotřebitel může domáhat odpovědnosti za porušení povinnosti posoudit úvěruschopnost pouze žalobou na náhradu škody proti původnímu věřiteli.",
+   "oblasti": [
+    "spotrebitel",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62026CN0845",
+   "spz": "C-845/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-30",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-12T04:18:26Z",
+   "nazev": "Atlas Aerospace",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0845",
+   "heslo": "Předběžná otázka k výkladu nařízení SAFE a veřejným zakázkám",
+   "shrnuti": "Italský Tribunale Amministrativo Regionale per il Lazio se Soudního dvora EU ptá, zda je veřejný zadavatel vázán povolením k investici vydaným jiným členským státem podle nařízení SAFE, anebo zda může účastníka řízení z důvodů národní bezpečnosti odmítnout.",
+   "oblasti": [
+    "verejne_zakazky",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0843",
+   "spz": "C-843/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-30",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-12T04:18:26Z",
+   "nazev": "Ies a Atlas Aerospace",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0843",
+   "heslo": "Vyloučení subjektů kontrolovaných třetí zemí v zadávání",
+   "shrnuti": "Italský soud Tribunale Amministrativo Regionale per il Lazio se v řízení mezi společnostmi Ies Ingegneria Elettronica Sistemi a Atlas Aerospace a Ministerstvem obrany táže Soudního dvora EU na výklad pravidel pro vyloučení hospodářských subjektů kontrolovaných třetí zemí v rámci nařízení SAFE. Dále se dotazuje, zda se tato pravidla vztahují i na subjekty poskytující kapacity uchazeči a jaká je závaznost povolení investice vydaného jiným členským státem.",
+   "oblasti": [
+    "verejne_zakazky"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0836",
+   "spz": "C-836/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-28",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-12T04:18:26Z",
+   "nazev": "Global Starnet",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0836",
+   "heslo": "Zvýšení odvodu z hazardních her a svoboda usazování",
+   "shrnuti": "Italská Consiglio di Stato se Soudního dvora EU táže, zda články 49 a 56 SFEU a zásada legitimního očekávání brání vnitrostátní úpravě, která postupně zvýšila jednotný odvod z provozování hazardních her prostřednictvím zařízení VLT ze 4 % na 8,6 %.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0832",
+   "spz": "C-832/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-28",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-12T04:18:26Z",
+   "nazev": "Autostrade per l’Italia",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0832",
+   "heslo": "Neznížení ceny za službu jako nekalá praktika",
+   "shrnuti": "Italská Consiglio di Stato se Soudního dvora EU ptá, zda směrnice 2005/29/ES o nekalých obchodních praktikách brání výkladům, podle nichž nesnížení smluvní ceny za službu v případě její zhoršené kvality a absenci alternativ pro spotřebitele představuje nekalou obchodní praktiku.",
+   "oblasti": [
+    "spotrebitel",
+    "nekala_soutez"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0791",
+   "spz": "C-791/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-13",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-12T04:18:26Z",
+   "nazev": "Eni Plenitude",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0791",
+   "heslo": "Mimořádný odvod v energetice a unie",
+   "shrnuti": "Italský soud se ptá Soudního dvora EU, zda unijní právo včetně nařízení Rady 2022/1854, pravidel státních podpor a Listiny základních práv brání italskému mimořádnému odvodu zatěžujícímu subjekty v odvětví energetiky. Společnost Eni Plenitude vedla spory s daňovými úřady ohledně tohoto odvodu. Předkládající soud má pochybnosti o slučitelnosti vnitrostátní úpravy s unijním právem.",
+   "oblasti": [
+    "dane",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0779",
+   "spz": "C-779/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-13",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-12T04:18:26Z",
+   "nazev": "BNP Paribas",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0779",
+   "heslo": "Neutralita zdanění dividend mateřských společností",
+   "shrnuti": "Francouzská Conseil d’État se Soudního dvora EU ptá, zda cíl neutrality podle směrnice 2011/96/EU brání vnitrostátní úpravě, která pro účely zdanění zohledňuje dividendy přijaté od dceřiných společností z jiných členských států při stanovení základu odvozeného od odměn za práci. Dále se táže, zda případné omezení lze odůvodnit ustanoveními čl. 4 odst. 3 této směrnice.",
+   "oblasti": [
+    "dane",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0777",
+   "spz": "C-777/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-13",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-12T04:18:26Z",
+   "nazev": "Fonkder",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0777",
+   "heslo": "Zákaz provozu vozidel a volný pohyb zboží",
+   "shrnuti": "Gerechtshof Den Haag v Nizozemsku se Soudního dvora EU ptá, zda členský stát porušuje volný pohyb zboží podle článků 34, 35 a 36 SFEU, pokud zakazuje provoz vozidel se služební registrační značkou z určitého členského státu z důvodů, které se liší od důvodů uplatňovaných u značek z jiných členských států.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0753",
+   "spz": "C-753/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-08",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-12T04:18:26Z",
+   "nazev": "Vanlideur",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0753",
+   "heslo": "Posouzení žádosti o azyl při ochraně jinde",
+   "shrnuti": "Holandský Raad van State se Soudního dvora EU dotazuje na výklad pravidel pro posouzení žádosti o mezinárodní ochranu v situaci, kdy žadatel již získal ochranu v jiném členském státě, avšak do něj nemůže být vrácen kvůli hrozbě nelidského zacházení. Ptá se zejména na rozsah povinného přezkumu, nutnost žádat o odnětí statusu v původním státě a na možnost vydání rozhodnutí o navrácení.",
+   "oblasti": [
+    "socialni_cizinci"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0741",
+   "spz": "C-741/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-06",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-12T04:18:26Z",
+   "nazev": "KMG Rompetrol Services Center",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0741",
+   "heslo": "Solidární příspěvek pro propojené společnosti v energetice",
+   "shrnuti": "Rumunský soud Curtea de Apel Bucureşti se Soudního dvora EU ptá, zda článek 15 nařízení (EU) 2022/1854 a zásada proporcionality brání vnitrostátní úpravě, která rozšiřuje povinnost úhrady solidárního příspěvku na propojené společnosti, jež sice samy nepůsobí v odvětvích surové ropy, zemního plynu, uhlí a rafinace, ale získávají příjmy ze vztahů s osobami v těchto odvětvích působícími.",
+   "oblasti": [
+    "dane",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0740",
+   "spz": "C-740/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-06",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-12T04:18:26Z",
+   "nazev": "KMG Rompetrol Development",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0740",
+   "heslo": "Solidární příspěvek pro propojené společnosti v energetice",
+   "shrnuti": "Rumunský soud Curtea de Apel Bucureşti se Soudního dvora EU dotazuje, zda článek 15 nařízení (EU) 2022/1854 o intervenci v mimořádné situaci s cílem řešit vysoké ceny energie a zásada proporcionality brání vnitrostátní úpravě, která rozšiřuje povinnost úhrady solidárního příspěvku i na propojené společnosti, jež samy nepůsobí v dotčených energetických odvětvích.",
+   "oblasti": [
+    "dane",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0733",
+   "spz": "C-733/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-06",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-12T04:18:26Z",
+   "nazev": "Glass Machinery Reconditioners",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0733",
+   "heslo": "Výraz řízení o výkonu rozhodnutí a promlčení",
+   "shrnuti": "Belgický Nejvyšší soud se Soudního dvora EU dotazuje, zda pojem řízení o výkonu rozhodnutí podle nařízení Brusel Ia zahrnuje také promlčení žaloby na výkon rozhodnutí vydaného v jiném členském státě.",
+   "oblasti": [
+    "mps",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0725",
+   "spz": "C-725/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-02",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-12T04:18:26Z",
+   "nazev": "Romagnetics",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0725",
+   "heslo": "Předběžná otázka k úpravě převodních cen a tržnímu odstupu",
+   "shrnuti": "Rumunský soud Curtea de Apel Oradea se ptá Soudního dvora EU, zda články o volném pohybu kapitálu a vnitřním trhu brání vnitrostátní právní úpravě ukládající daňovým orgánům provádět úpravu převodních cen na hodnotu mediánu rozpětí srovnatelných transakcí.",
+   "oblasti": [
+    "dane"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0702",
+   "spz": "C-702/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-05-15",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-12T04:18:26Z",
+   "nazev": "Mitcris Turism Plus",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0702",
+   "heslo": "Odepření odpočtu DPH a daňový únik",
+   "shrnuti": "Rumunský soud Tribunalul Bihor se Soudního dvora EU dotazuje, zda unijní právo, zejména směrnice o DPH a zásada loajální spolupráce, brání vnitrostátní praxi, která daňovému poplatníkovi odpírá nárok na odpočet DPH a ukládá dodatečné daňové povinnosti na základě pouhých podezření z daňového úniku dodavatelů, jež nebyla potvrzena v trestním řízení.",
+   "oblasti": [
+    "dane",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0658",
+   "spz": "C-658/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-06-15",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-12T04:18:26Z",
+   "nazev": "Endesa Energía",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0658",
+   "heslo": "Pojem obchodní transakce a bezdůvodné obohacení správního orgánu",
+   "shrnuti": "Španělský nejvyšší soud se ptá Soudního dvora EU, zda se pojem obchodní transakce podle směrnice 2011/7/EU o postupu proti opožděným platbám vztahuje na případy, kdy je podniku přiznána náhrada z titulu bezdůvodného obohacení za plnění poskytnuté správnímu orgánu mimo rámec smlouvy či správního aktu.",
+   "oblasti": [
+    "spravni",
+    "zavazky"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0622",
+   "spz": "C-622/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-06-09",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-12T04:18:26Z",
+   "nazev": "Modeños",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0622",
+   "heslo": "Důkazní břemeno a nepřímá diskriminace žen v důchodech",
+   "shrnuti": "Španělský soud Tribunal Superior de Justicia de Galicia se Soudního dvora EU ptá, zda předložené statistiky o zaměstnanosti a důchodech postačují k unesení důkazního břemene ohledně nepřímé diskriminace žen při posuzování nároku na starobní důchod. Dále se táže, zda vnitrostátní podmínka specifické doby pojištění představuje zakázanou diskriminaci na základě pohlaví ve smyslu unijních předpisů.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni"
+   ],
+   "procesni": true
+  },
   {
    "id": "sdeu:62026TO0505",
    "spz": "T-505/26",

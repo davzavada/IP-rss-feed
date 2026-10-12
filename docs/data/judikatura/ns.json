@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-11T03:58:00Z",
+ "generated": "2026-10-12T04:18:26Z",
  "soud": "ns",
  "okno_dni": 31,
  "polozky": [
@@ -9302,62 +9302,6 @@
    "shrnuti": "V. S. žaloval A. V. o určení neúčinnosti právního jednání. Soud řešil zejména otázku, zda může být věřitel zkrácen i tzv. ekvivalentním právním jednáním. Vzhledem k rozporům v judikatuře Nejvyššího soudu rozhodl senát o postoupení věci k rozhodnutí velkému senátu.",
    "oblasti": [
     "zavazky",
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:B7F0C0D32CBE09CFC1258E6E004D333B",
-   "spz": "23 Cdo 686/2026",
-   "druh": "usnesení",
-   "senat": 23,
-   "rejstrik": "Cdo",
-   "datum": "2026-08-26",
-   "zverejneno": "2026-09-10",
-   "first_seen": "2026-09-10T21:31:30Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/B7F0C0D32CBE09CFC1258E6E004D333B?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/A73497E8704F3339C1258E6E004D41FF/$file/23%20Cdo%20686_2026.pdf?openElement",
-   "heslo": "Nevyužitelná dokumentace není majetkovým prospěchem",
-   "shrnuti": "P. B. se soudil s Martinem Prokešem o vrácení zálohy za nedokončenou projektovou dokumentaci. Soud řešil, zda částečně předaná, ale prakticky nevyužitelná dokumentace představovala pro žalobce majetkový prospěch. Nejvyšší soud potvrdil, že takové plnění nepředstavuje majetkový prospěch a při určení výše náhrady za bezdůvodné obohacení lze vycházet ze smluvené ceny.",
-   "oblasti": [
-    "zavazky",
-    "skoda"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:0A939852534E0534C1258E6E004D32E6",
-   "spz": "23 Cdo 2050/2026",
-   "druh": "usnesení",
-   "senat": 23,
-   "rejstrik": "Cdo",
-   "datum": "2026-08-19",
-   "zverejneno": "2026-09-10",
-   "first_seen": "2026-09-10T21:31:30Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/0A939852534E0534C1258E6E004D32E6?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/DD3090505133238CC1258E6F001B8936/$file/23%20Cdo%202050_2026.pdf?openElement",
-   "heslo": "Odklad vykonatelnosti u nákladů řízení není přípustný",
-   "shrnuti": "B. F. žaloval J. Č. o nahrazení projevu vůle k uzavření kupní smlouvy o převodu nemovitostí. Nejvyšší soud řešil návrh žalobce na odklad vykonatelnosti a právní moci rozsudku odvolacího soudu, kterým byla žaloba zamítnuta. Soud návrh zamítl, neboť odklad u nákladů řízení není přípustný a u věci samotné nebyla prokázána hrozba závažné újmy.",
-   "oblasti": [
-    "vecna_prava",
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:61C9600725A71A0FC1258E6E0015FE2D",
-   "spz": "23 Cdo 1309/2026",
-   "druh": "usnesení",
-   "senat": 23,
-   "rejstrik": "Cdo",
-   "datum": "2026-08-18",
-   "zverejneno": "2026-09-10",
-   "first_seen": "2026-09-10T04:24:39Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/61C9600725A71A0FC1258E6E0015FE2D?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/DBFBC4545FA8EB48C1258E6E001B8932/$file/23%20Cdo%201309_2026.pdf?openElement",
-   "heslo": "Riziko insolvence odůvodňuje odklad vykonatelnosti",
-   "shrnuti": "Lesy České republiky soudily International Auctions o zaplacení částky 55 505 000 Kč. Soud řešil návrh žalované na odklad vykonatelnosti rozsudku z důvodu hrozící závažné újmy v podobě rizika insolvence. Nejvyšší soud návrhu vyhověl a vykonatelnost rozsudku odložil do právní moci rozhodnutí o podaném dovolání.",
-   "oblasti": [
     "civilni_proces"
    ],
    "procesni": true
