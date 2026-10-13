@@ -34,8 +34,8 @@ jobs:
           # Kus historie, ať rebase před pushem nemusí dotahovat všechno.
           fetch-depth: 50
 
-      # Jeden běh denně ve 2:00: časopisy a jednání; v pondělí navíc
-      # dvoutýdenní přehled, ať je hotový na začátek týdne. Ruční spuštění
+      # Jeden běh denně ve 2:00: časopisy a jednání; 1. dne v měsíci navíc
+      # měsíční přehled za uplynulý měsíc. Ruční spuštění
       # stáhne všechno a přehled přegeneruje.
       - name: Naplánovat běh
         id: plan
@@ -50,7 +50,7 @@ jobs:
             esac
           fi
           # Přehled: denně s DIGEST_AUTO – digest.py sám pozná, jestli je
-          # potřeba (nový týden, minulé selhání, doběhlá rozhodnutí); ruční
+          # potřeba (nový měsíc, minulé selhání, doběhlá rozhodnutí); ruční
           # spuštění ho napíše načisto (DIGEST_FORCE).
           digest=$scrape
           echo "zacatek=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
@@ -113,10 +113,10 @@ jobs:
 
       # Přehled čte hotové výstupy (časopisy, okna judikatury), takže běží až po
       # scraperech. Spouští se každý den s DIGEST_AUTO a digest.py napíše nový
-      # jen tehdy, když je potřeba: nový týden (v pondělí), minulý pokus
+      # jen tehdy, když je potřeba: nový měsíc (1. dne v měsíci), minulý pokus
       # selhal, nebo mezitím doběhla rozhodnutí, která v přehledu chyběla.
       # Ručně spuštěný běh ho napíše načisto (DIGEST_FORCE).
-      - name: Dvoutýdenní přehled
+      - name: Měsíční přehled
         id: prehled
         if: steps.plan.outputs.digest == 'true'
         continue-on-error: true

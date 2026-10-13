@@ -464,11 +464,11 @@ const FILTRY_NOVINEK = [
   { k: "cas", label: "Časopisy", bere: i => i._src === "journals" }
 ];
 let novinkyFiltr = "vse";
-let novinkyVysledky = null;       // poslední profiltrované výsledky zdrojů
+let novinkyVse = false;           // true = i mimo můj výběr (přepínač Můj výběr / Vše)
 
-// `results` jsou výsledky Promise.allSettled nad položkami jednotlivých feedů.
-function renderToday(results) {
-  novinkyVysledky = results;
+// Vykreslí úlovek posledního sběru ze stažených zdrojů (zdrojeVysledky).
+function renderToday() {
+  const results = zdrojeVysledky;
   const container = document.getElementById("feed-today");
   const prepinac = document.getElementById("novinky-filtr");
   const pocet = document.getElementById("nav-pocet");
@@ -477,11 +477,19 @@ function renderToday(results) {
     failed("feed-today");
     return;
   }
-  const polozky = [];
-  results.forEach(r => {
-    if (r.status === "fulfilled") r.value.forEach(item => { if (item.nove) polozky.push(item); });
+  const vsechny = [], mine = [];
+  results.forEach((r, idx) => {
+    if (r.status !== "fulfilled") return;
+    const filtr = FEEDS[idx].filtr;
+    r.value.forEach(item => {
+      if (!item.nove) return;
+      vsechny.push(item);
+      if (!filtr || filtr(item)) mine.push(item);
+    });
   });
-  if (pocet) pocet.textContent = polozky.length || "";
+  const polozky = novinkyVse ? vsechny : mine;
+  if (pocet) pocet.textContent = mine.length || "";
+  vykresliRozsahNovinek(vsechny.length > 0);
   if (prepinac) {
     prepinac.hidden = polozky.length === 0;
     prepinac.innerHTML = FILTRY_NOVINEK.map(f =>
@@ -489,8 +497,11 @@ function renderToday(results) {
       f.label + '</span><span class="segment-pocet">' + polozky.filter(f.bere).length + "</span></button>").join("");
   }
   if (polozky.length === 0) {
-    container.innerHTML = '<p class="feed-empty">Poslední sběr nic nového nepřinesl. ' +
-      "Sběr se spouští jednou denně ve 2:00 v noci, GitHub ho často pustí až ráno.</p>";
+    container.innerHTML = vsechny.length
+      ? '<p class="feed-empty feed-empty-box">Podle vašeho výběru poslední sběr nic nového nepřinesl. ' +
+        '<button type="button" class="odkaz-tlacitko" data-novinky-vse="1">Přepněte na Vše.</button></p>'
+      : '<p class="feed-empty">Poslední sběr nic nového nepřinesl. ' +
+        "Sběr se spouští jednou denně ve 2:00 v noci, GitHub ho často pustí až ráno.</p>";
     return;
   }
   const filtr = FILTRY_NOVINEK.find(f => f.k === novinkyFiltr) || FILTRY_NOVINEK[0];
@@ -506,32 +517,50 @@ function renderToday(results) {
   container.innerHTML = html || '<p class="feed-empty">V téhle části poslední sběr nic nového nepřinesl.</p>';
 }
 
+function prekresliNovinky() {
+  renderToday();
+  pripojVychozi(document.getElementById("feed-today"), "today");
+}
+
 function initNovinkyFiltr() {
   const prepinac = document.getElementById("novinky-filtr");
   if (prepinac) prepinac.addEventListener("click", e => {
     const b = e.target.closest("button[data-filtr]");
-    if (!b || !novinkyVysledky) return;
+    if (!b || !zdrojeVysledky) return;
     novinkyFiltr = b.dataset.filtr;
-    renderToday(novinkyVysledky);
-    pripojVychozi(document.getElementById("feed-today"), "today");
+    prekresliNovinky();
     const znovu = prepinac.querySelector('[data-filtr="' + novinkyFiltr + '"]');
     if (znovu) znovu.focus();
   });
-  const stitek = document.getElementById("vyber-stitek");
-  if (stitek) stitek.addEventListener("click", otevriVyber);
+  // Přepínač Můj výběr / Vše i „Přepněte na Vše." pod prázdným seznamem.
+  document.addEventListener("click", e => {
+    const b = e.target.closest("button[data-novinky-vse]");
+    if (!b || !zdrojeVysledky) return;
+    novinkyVse = !!b.dataset.novinkyVse;
+    prekresliNovinky();
+    const znovu = document.querySelector('#novinky-rozsah [data-novinky-vse="' + b.dataset.novinkyVse + '"]');
+    if (znovu) znovu.focus();
+  });
+  const upravit = document.getElementById("novinky-upravit");
+  if (upravit) upravit.addEventListener("click", otevriVyber);
 }
 
-// Štítek „Můj výběr: IP, IT, senát 23" vedle filtru Novinek – souhrn toho,
-// podle čeho se Novinky řídí. Bez Clerku se nedá nic změnit, tak není. Dokud
-// se Clerk načítá, je vidět (výchozí výběr) – stránka se na Clerk u
-// nepřihlášeného nečeká a štítek by se jinak objevil až po odkrytí.
-function vykresliVyberStitek() {
-  const el = document.getElementById("vyber-stitek");
-  if (!el) return;
-  el.hidden = clerkStav === "nedostupny" || !vyber;
-  if (el.hidden) return;
-  el.innerHTML = '<svg class="vyber-stitek-ico" aria-hidden="true"><use href="#icon-check"></use></svg>' +
-    "<span>Můj výběr: " + esc(souhrnVyberu(vyber)) + "</span>";
+// Přepínač „Můj výběr: IP, IT, senát 23 | Vše" vedle filtru Novinek – první
+// volba je zároveň souhrn toho, podle čeho se Novinky řídí. Ikonka vedle
+// otevře Můj výběr; bez Clerku se nedá nic změnit, tak není. Dokud se Clerk
+// načítá, je vidět (výchozí výběr) – stránka se na Clerk u nepřihlášeného
+// nečeká a ikonka by se jinak objevila až po odkrytí.
+function vykresliRozsahNovinek(jeCo) {
+  const obal = document.getElementById("novinky-rozsah-obal");
+  const el = document.getElementById("novinky-rozsah");
+  const upravit = document.getElementById("novinky-upravit");
+  if (!obal || !el) return;
+  obal.hidden = !jeCo || !vyber;
+  if (obal.hidden) return;
+  el.innerHTML = [["", "Můj výběr: " + souhrnVyberu(vyber)], ["1", "Vše"]].map(([k, label]) =>
+    '<button type="button" data-novinky-vse="' + k + '" aria-pressed="' + (!!k === novinkyVse) + '">' +
+    esc(label) + "</button>").join("");
+  if (upravit) upravit.hidden = clerkStav === "nedostupny";
 }
 
 // Krátce: výchozí oblasti jako „IP, IT", jinak jejich názvy (nejvýš dvě)
@@ -592,11 +621,6 @@ function vykresliStavShrnuti() {
 function vykresliZdroje() {
   if (!zdrojeVysledky) return;
   vykresliStavShrnuti();
-  const filtrovane = zdrojeVysledky.map((r, idx) => {
-    const f = FEEDS[idx];
-    if (r.status !== "fulfilled" || !f.filtr) return r;
-    return { status: "fulfilled", value: r.value.filter(f.filtr) };
-  });
   FEEDS.forEach((f, idx) => {
     const r = zdrojeVysledky[idx];
     if (r.status === "rejected") {
@@ -608,9 +632,7 @@ function vykresliZdroje() {
     renderArchiv(f, r.value);
     pripojVychozi(document.getElementById(f.containerId), f.key);
   });
-  renderToday(filtrovane);
-  pripojVychozi(document.getElementById("feed-today"), "today");
-  vykresliVyberStitek();
+  prekresliNovinky();
   // „Moje oblasti" v Kalendáři akcí se řídí týmž výběrem.
   akPrekresli();
 }
@@ -621,12 +643,13 @@ const KARTY_S_VYBEREM = ["nsoud", "nss", "us", "sdeu", "today"];
 
 function pripojVychozi(el, key) {
   if (!el || clerkStav !== "pripraven" || prihlaseny || KARTY_S_VYBEREM.indexOf(key) < 0) return;
+  if (key === "today" && novinkyVse) return;   // Vše výběr nebere v potaz
   el.insertAdjacentHTML("beforeend", '<p class="vychozi-pozn">Ve výchozím nastavení se ukazují jen ' +
     "rozhodnutí z oblasti IP a IT" + (key === "nsoud" ? " a všechna rozhodnutí senátu 23 Cdo" : "") +
     '. Chcete-li vlastní výběr, <a href="#nastaveni">přihlaste se</a> a nastavte si ho.</p>');
 }
 
-/* ========== Dvoutýdenní přehled (digest.json) ========== */
+/* ========== Měsíc v IP a IT (digest.json) ========== */
 
 // Klíč zdroje pouštíme do class jen z uzavřeného seznamu – ať se přes data
 // z JSONu nedá do stránky propašovat cizí třída.
@@ -1648,7 +1671,8 @@ function clerkNedostupny(e) {
   clerkStav = "nedostupny";
   vykresliUcet();
   vykresliNastaveni();
-  vykresliVyberStitek();
+  // Bez Clerku zmizí ikonka Upravit výběr vedle přepínače Novinek.
+  if (zdrojeVysledky) prekresliNovinky();
 }
 
 // Výběr se přepíná jen při přihlášení a odhlášení (jiný účet). Změny
@@ -2265,10 +2289,10 @@ function initNastaveni() {
 /* ========== Stránky a navigace ========== */
 // Obsah je rozdělený na stránky; přepíná se podle adresy (#kotva).
 // Kotvy sekcí zůstávají platné – odkaz na #dnesni otevře Novinky.
-// Dvoutýdenní přehled i každý zdroj mají vlastní stránku.
+// Měsíční přehled i každý zdroj mají vlastní stránku.
 const PAGES = [
   { id: "prehled",  sections: ["dnesni"] },
-  { id: "dvatydny", sections: [] },
+  { id: "mesic",    sections: [] },
   { id: "nsoud",    sections: [] },
   { id: "nss",      sections: [] },
   { id: "us",       sections: [] },
@@ -2279,8 +2303,9 @@ const PAGES = [
 ];
 // Kotvy z uložených odkazů: dřív byly všechny zdroje na jedné stránce
 // „Všechno nové" a SDEU se jmenoval cjeu. Můj výběr byl stránkou #nastaveni –
-// teď je to dialog, kotva ho otevře nad Novinkami.
-const STARE_KOTVY = { recentni: "nsoud", cjeu: "sdeu", nastaveni: "prehled" };
+// teď je to dialog, kotva ho otevře nad Novinkami. Dvoutýdenní přehled
+// (#dvatydny) nahradil Měsíc v IP a IT.
+const STARE_KOTVY = { recentni: "nsoud", cjeu: "sdeu", nastaveni: "prehled", dvatydny: "mesic" };
 let vyberZKotvy = false;
 
 let currentPage = PAGES[0];
@@ -2453,7 +2478,7 @@ function initApp() {
   // Filtruje se až při vykreslení (vykresliZdroje) – výběr se po přihlášení
   // může změnit a data se kvůli tomu znovu nestahují.
   const feedPromises = FEEDS.map(f => vyberPromise.then(() => nactiZdroj(f)));
-  // Dvoutýdenní přehled a kalendář akcí se generují zvlášť – když chybí, jen
+  // Měsíční přehled a kalendář akcí se generují zvlášť – když chybí, jen
   // se nevykreslí; zbytek stránky na ně nečeká déle než na feedy.
   const digestPromise = fetchJson("digest.json").catch(() => null);
   const clerkSkripty = nactiClerkSkripty();

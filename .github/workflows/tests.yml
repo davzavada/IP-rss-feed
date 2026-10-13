@@ -49,7 +49,7 @@ jobs:
         run: python test_judikatura.py
       - name: Testy AI klienta
         run: python test_ai.py
-      - name: Testy dvoutýdenního přehledu
+      - name: Testy měsíčního přehledu
         run: python test_digest.py
       # Náhled PDF (api/pdf.js) je funkce Vercelu v Node.
       - uses: actions/setup-node@v5

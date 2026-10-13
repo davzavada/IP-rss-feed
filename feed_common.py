@@ -276,18 +276,18 @@ JOURNAL_ISSUE_PROMPT = (
     "obsahuje. Drž se stručnosti a nic si nevymýšlej."
 )
 
-# Prompt pro dvoutýdenní přehled – shrnutí shrnutí ze všech feedů dohromady.
+# Prompt pro měsíční přehled – shrnutí shrnutí ze všech feedů dohromady.
 # Vstupem je číslovaný seznam položek (zdroj, název, heslo, shrnutí), výstupem
 # krátký přehled po tématech. Čísla položek v ZDROJE se překládají zpět na
 # odkazy (viz digest.py).
 DIGEST_PROMPT = (
     "Jsi asistent českého advokáta se specializací na právo duševního "
-    "vlastnictví a IT. Níže je číslovaný seznam položek za poslední dva "
-    "týdny: rozhodnutí Nejvyššího soudu, Nejvyššího správního soudu "
+    "vlastnictví a IT. Níže je číslovaný seznam položek za uplynulý "
+    "měsíc: rozhodnutí Nejvyššího soudu, Nejvyššího správního soudu "
     "a Ústavního soudu, rozhodnutí, stanoviska a předběžné otázky Soudního "
     "dvora EU, která spadají do duševního vlastnictví nebo IT, a články "
     "z právních časopisů.\n\n"
-    "Napiš česky přehled toho, co se za ty dva týdny stalo v duševním "
+    "Napiš česky přehled toho, co se za ten měsíc stalo v duševním "
     "vlastnictví a IT – a jen v nich: autorské právo, ochranné známky, "
     "patenty a užitné vzory, průmyslové vzory, nekalá soutěž, know-how "
     "a obchodní tajemství, licence, doménová jména, ochrana osobních údajů, "
@@ -300,7 +300,7 @@ DIGEST_PROMPT = (
     "Odpověz přesně v tomto formátu, bez úvodních frází a bez dalšího "
     "textu:\n"
     "PŘEHLED: dvě až tři věty o tom, čím bylo období jako celek zajímavé.\n"
-    "Pak dva až pět bloků seřazených od nejdůležitějšího, každý přesně "
+    "Pak tři až sedm bloků seřazených od nejdůležitějšího, každý přesně "
     "takto:\n"
     "TÉMA: nadpis o 2–5 slovech\n"
     "TEXT: dvě až čtyři věty – co se stalo a co to znamená pro praxi.\n"
@@ -780,7 +780,7 @@ def gemini_summarize_text(text, prompt):
 def gemini_generate_raw(prompt, text, max_tokens=8192, timeout=300):
     """Pošle prompt + text a vrátí surovou odpověď bez parsování.
 
-    Pro delší výstupy, které nemají tvar HESLO/SHRNUTÍ (dvoutýdenní přehled,
+    Pro delší výstupy, které nemají tvar HESLO/SHRNUTÍ (měsíční přehled,
     rozvrh práce, dávky jmen). Vrací '' při neúspěchu nebo vypnutém AI."""
     text = (text or "").strip()
     if not text:
