@@ -1,8 +1,157 @@
 {
- "generated": "2026-10-11T03:58:00Z",
+ "generated": "2026-10-13T05:27:23Z",
  "soud": "nss",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "nss:786331",
+   "spz": "7 As 26/2026-58",
+   "ecli": "ECLI:CZ:NSS:2026:7.As.26.2026.58",
+   "druh": "rozsudek",
+   "senat": 7,
+   "rejstrik": "As",
+   "datum": "2026-10-12",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-13T05:27:23Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786331",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786331",
+   "soudce": "Milan Podhrázký",
+   "heslo": "Naplněná kapacita třídy odůvodňuje zamítnutí přestupu",
+   "shrnuti": "Znělka nezletilá žákyně zastoupená zákonnými zástupci se soudila s Krajským úřadem Královéhradeckého kraje o zákonnost rozhodnutí, jímž nebylo povoleno její zařazení do třetího ročníku základní školy zřízené pro žáky s vadami řeči. Nejvyšší správní soud řešil právní otázku, zda lze žádost o přestup žáka se speciálními vzdělávacími potřebami zamítnout výhradně z důvodu naplněné kapacity třídy, aniž by ředitelka školy či odvolací orgán sami řešili navýšení kapacity nebo zřízení další třídy. Soud dospěl k závěru, že naplnění zákonného limitu počtu žáků ve třídě je oprávněným důvodem k zamítnutí přestupu a otázky spojené s organizací sítě škol a navyšováním kapacity spadají do samostatné působnosti zřizovatele, nikoliv do pravomoci ředitelky v řízení o přestupu.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:786313",
+   "spz": "6 As 125/2026-48",
+   "ecli": "ECLI:CZ:NSS:2026:6.As.125.2026.48",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "As",
+   "datum": "2026-10-08",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-13T05:27:23Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786313",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786313",
+   "soudce": "Veronika Juřičková",
+   "heslo": "Nutná komunikační potřeba účelové komunikace při souhlasu vlastníka",
+   "shrnuti": "Nejvyšší správní soud postoupil věc rozšířenému senátu kvůli rozporu v judikatuře ohledně toho, zda je nutné zkoumat znak nutné komunikační potřeby i v situaci, kdy vlastník cesty s jejím veřejným užíváním výslovně souhlasí. Šestý senát zastává názor, že při trvajícím souhlasu vlastníka s veřejným věnováním cesty odpadá důvod pro zkoumání nutné komunikační potřeby, neboť by to nepřípustně omezovalo autonomii jeho vůle.",
+   "oblasti": [
+    "spravni",
+    "vecna_prava",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:769121",
+   "spz": "2 Azs 213/2025-59",
+   "ecli": "ECLI:CZ:NSS:2026:2.Azs.213.2025.59",
+   "druh": "rozsudek",
+   "senat": 2,
+   "rejstrik": "Azs",
+   "datum": "2026-01-29",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-13T05:27:23Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/769121",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/769121",
+   "soudce": "Eva Šonková",
+   "heslo": "Zneplatnění průkazu pojištěnce nelze napadnout zásahovou žalobou",
+   "shrnuti": "Žalobkyně se u soudu domáhala ochrany před nezákonným zásahem spočívajícím ve zneplatnění průkazu pojištěnce Všeobecnou zdravotní pojišťovnou České republiky. Nejvyšší správní soud řešil otázku přípustnosti zásahové žaloby v situaci, kdy lze podat návrh na vydání rozhodnutí o účasti ve zdravotním pojištění. Dospěl k závěru, že žaloba na ochranu před nezákonným zásahem je nepřípustná, neboť pojištěnec má k dispozici jiné právní prostředky nápravy.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:769113",
+   "spz": "2 As 180/2024-32",
+   "ecli": "ECLI:CZ:NSS:2026:2.As.180.2024.32",
+   "druh": "rozsudek",
+   "senat": 2,
+   "rejstrik": "As",
+   "datum": "2026-01-29",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-13T05:27:23Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/769113",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/769113",
+   "soudce": "Eva Šonková",
+   "heslo": "Pojištění odpovědnosti v zadávacím řízení a přímý účinek směrnice",
+   "shrnuti": "Zdravotnická záchranná služba Plzeňského kraje se soudila s Ministerstvem pro místní rozvoj kvůli nevyplacení části dotace za požadavek pojištění odpovědnosti dodavatelů. Nejvyšší správní soud řešil, zda se veřejný zadavatel může přímo dovolat čl. 58 odst. 3 směrnice o zadávání veřejných zakázek, který takové kritérium umožňuje, přestože jej český zákon o zadávání veřejných zakázek neobsahuje. Soud dospěl k závěru, že toto ustanovení má přímý účinek a zadavatel je oprávněn je aplikovat.",
+   "oblasti": [
+    "verejne_zakazky",
+    "zavazky",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:747351",
+   "spz": "2 Afs 25/2024-42",
+   "ecli": "ECLI:CZ:NSS:2025:2.Afs.25.2024.42",
+   "druh": "rozsudek",
+   "senat": 2,
+   "rejstrik": "Afs",
+   "datum": "2025-11-27",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-13T05:27:23Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/747351",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/747351",
+   "soudce": "Eva Šonková",
+   "heslo": "Původ dovážených trubek a úprava za studena",
+   "shrnuti": "Generální ředitelství cel a Moravia Systems se soudily o doměření antidumpingového cla na dovoz bezešvých trubek z Indie, u nichž celní orgány zpochybnily deklarovaný indický původ a dovodily čínský původ. Nejvyšší správní soud řešil otázku, zda zpracování trubek za studena z položky 7304 11 HS na položku 7304 41 HS bez změny tarifního čísla zakládá indický původ zboží. S odkazem na rozsudek Soudního dvora ve věci CS STEEL soud dospěl k závěru, že takové zpracování nestačí pro získání nového původu, pokud nedošlo k tarifnímu skoku.",
+   "oblasti": [
+    "dane",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:747324",
+   "spz": "2 Afs 235/2024-46",
+   "ecli": "ECLI:CZ:NSS:2025:2.Afs.235.2024.46",
+   "druh": "rozsudek",
+   "senat": 2,
+   "rejstrik": "Afs",
+   "datum": "2025-11-26",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-13T05:27:23Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/747324",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/747324",
+   "soudce": "Eva Šonková",
+   "heslo": "Osvobození dodání dopravního prostředku vyžaduje souvislost přepravy",
+   "shrnuti": "Skupina registrovaná k dani z přidané hodnoty se u Nejvyššího správního soudu domáhala zrušení rozhodnutí Odvolacího finančního ředitelství, kterým byly zamítnuty její odvolání proti dodatečným platebním výměrům na DPH. Soud řešil otázku, zda pro uplatnění osvobození od daně při dodání nového dopravního prostředku do jiného členského státu postačuje pouhé zjištění, že vozidla fyzicky opustila území státu, aniž by byla doložena věcná a časová souvislost přepravy s deklarovanou transakcí. Soud dospěl k závěru, že daňový subjekt musí prokazatelně doložit intrakomunitární vazbu mezi dodavatelem a odběratelem a přepravu nelze paušálně přičítat deklarovanému plnění bez prokázané souvislosti.",
+   "oblasti": [
+    "dane"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:746747",
+   "spz": "2 As 284/2024-52",
+   "ecli": "ECLI:CZ:NSS:2025:2.As.284.2024.52",
+   "druh": "rozsudek",
+   "senat": 2,
+   "rejstrik": "As",
+   "datum": "2025-10-31",
+   "zverejneno": "2026-10-12",
+   "first_seen": "2026-10-13T05:27:23Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/746747",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/746747",
+   "soudce": "Eva Šonková",
+   "heslo": "Veřejné užívání účelové komunikace vyžaduje prokázání",
+   "shrnuti": "Stěžovatelka se soudila s Krajským úřadem Jihomoravského kraje o zrušení rozhodnutí, kterým jí bylo nařízeno odstranit pevnou překážku z pozemní komunikace. Nejvyšší správní soud řešil otázku, zda správní orgány dostatečně prokázaly znaky veřejně přístupné účelové komunikace, zejména konkludentní souhlas a faktické užívání veřejností. Dospěl k závěru, že obecné užívání nebylo řádně zjištěno, a proto rozsudek krajského soudu i rozhodnutí správního orgánu zrušil.",
+   "oblasti": [
+    "vecna_prava",
+    "spravni"
+   ],
+   "procesni": false
+  },
   {
    "id": "nss:786292",
    "spz": "6 Azs 214/2026-33",
