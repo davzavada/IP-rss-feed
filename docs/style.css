@@ -151,17 +151,6 @@ main { min-width: 0; padding: 32px 48px 48px; }
 #sidenav a:hover { background: var(--accent); color: var(--foreground); }
 #sidenav a.active { background: var(--active-bg); color: var(--active-fg); font-weight: 500; }
 #sidenav a:focus-visible { outline-offset: -2px; }
-/* Měsíční shrnutí je za paywallem – šedá položka se zámkem, nikam nevede. */
-.nav-zamceno {
-  display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 7px;
-  color: var(--faint); white-space: nowrap; cursor: not-allowed;
-}
-.nav-zamceno > .nav-ico { color: var(--switch-off); }
-.nav-zamceno > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-.nav-zamek {
-  width: 13px; height: 13px; flex: none; margin-left: auto; color: var(--faint);
-  fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-}
 /* Ikony jsou kreslené tahem, ne výplní – nastavení je společné. */
 .nav-ico {
   width: 16px; height: 16px; flex: none;
@@ -207,11 +196,6 @@ main { min-width: 0; padding: 32px 48px 48px; }
 .pagetabs a:hover { color: var(--foreground); background: var(--accent); }
 .pagetabs a.active { background: var(--active-bg); color: var(--active-fg); font-weight: 500; }
 .pagetabs a:focus-visible { outline-offset: -2px; }
-.pagetabs-zamceno {
-  flex: none; display: flex; align-items: center; gap: 5px; white-space: nowrap;
-  padding: 6px 11px; border-radius: 8px; font-size: 14px; color: var(--faint); cursor: not-allowed;
-}
-.pagetabs-zamceno .nav-zamek { margin-left: 0; }
 .pagetabs-sep { flex: none; width: 1px; height: 18px; margin-inline: 4px; background: var(--border); }
 .pagetabs.dalsi-vpravo { mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
 .pagetabs.dalsi-vlevo { mask-image: linear-gradient(to left, #000 calc(100% - 32px), transparent); }
@@ -248,20 +232,19 @@ html:not(.smi-kalendar) [data-jen="kalendar"] { display: none !important; }
 }
 .odkaz-tlacitko:hover { text-decoration: underline; text-underline-offset: 3px; }
 
-/* Lišta nad Novinkami: filtr a vedle něj souhrn výběru. */
+/* Lišta nad Novinkami: filtr typu a vedle něj přepínač Můj výběr / Vše
+   s ikonkou, která výběr otevře. */
 .page-lista { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .page-lista:not(:has(> :not([hidden]))) { display: none; }
-.vyber-stitek {
-  display: flex; align-items: center; gap: 6px; font-size: 13px; padding: 5px 11px;
-  border: 1px solid var(--border); border-radius: 999px; background: var(--background);
-  color: var(--fg-2); cursor: pointer;
+.novinky-rozsah { display: flex; align-items: center; gap: 6px; }
+.novinky-rozsah[hidden] { display: none; }
+.ikona-tlacitko {
+  width: 30px; height: 30px; flex: none; display: flex; align-items: center; justify-content: center;
+  border: 0; border-radius: 7px; background: none; color: var(--muted-foreground); cursor: pointer;
 }
-.vyber-stitek[hidden] { display: none; }
-.vyber-stitek:hover { border-color: var(--faint); background: var(--panel); color: var(--foreground); }
-.vyber-stitek-ico {
-  width: 13px; height: 13px; flex: none; color: var(--link);
-  fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round;
-}
+.ikona-tlacitko:hover { background: var(--accent); color: var(--foreground); }
+.ikona-tlacitko[hidden] { display: none; }
+.ikona-tlacitko .nav-ico { width: 15px; height: 15px; }
 
 /* Přepínač segmentů (shadcn Tabs): Vše / Judikatura / Časopisy
    a v kalendáři 3 týdny / Seznam. */

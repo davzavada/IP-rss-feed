@@ -28,10 +28,6 @@
 
 <svg style="display:none" aria-hidden="true">
   <!-- Ikony navigace. Společné nastavení tahu je na .nav-ico. -->
-  <symbol id="icon-sparkles" viewBox="0 0 24 24">
-    <path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9Z"></path>
-    <path d="M18 3v4M20 5h-4"></path>
-  </symbol>
   <symbol id="icon-clock" viewBox="0 0 24 24">
     <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
   </symbol>
@@ -89,9 +85,6 @@
     <rect x="3" y="5" width="18" height="16" rx="2"></rect>
     <path d="M16 3v4M8 3v4M3 10h18M7 14h10M7 17h6"></path>
   </symbol>
-  <symbol id="icon-lock" viewBox="0 0 24 24">
-    <rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
-  </symbol>
   <symbol id="icon-ticket" viewBox="0 0 24 24">
     <path d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4Z"></path><path d="M13 5v2M13 11v2M13 17v0"></path>
   </symbol>
@@ -114,9 +107,7 @@
 <nav id="sidenav" aria-label="Navigace na stránce">
   <div class="nav-group">
     <a href="#prehled"><svg class="nav-ico" aria-hidden="true"><use href="#icon-clock"></use></svg><span>Novinky</span><span class="nav-pocet" id="nav-pocet"></span></a>
-    <a href="#dvatydny"><svg class="nav-ico" aria-hidden="true"><use href="#icon-sparkles"></use></svg><span>Dva týdny v IP a IT</span></a>
-    <!-- Měsíční shrnutí je za paywallem: zatím jen zamčená položka, nikam nevede. -->
-    <span class="nav-zamceno" aria-disabled="true" title="Dostupné v placené verzi"><svg class="nav-ico" aria-hidden="true"><use href="#icon-calendar-text"></use></svg><span>Shrnutí za poslední měsíc</span><svg class="nav-zamek" aria-label="zamčeno"><use href="#icon-lock"></use></svg></span>
+    <a href="#mesic"><svg class="nav-ico" aria-hidden="true"><use href="#icon-calendar-text"></use></svg><span>Měsíc v IP a IT</span></a>
   </div>
   <div class="nav-group">
     <span class="nav-label" id="nav-archiv">Archiv podle zdroje · poslední měsíc</span>
@@ -138,8 +129,7 @@
 <div class="pagetabs-lista">
 <nav class="pagetabs" aria-label="Přepínání stránek">
   <a href="#prehled">Novinky</a>
-  <a href="#dvatydny" title="Dva týdny v IP a IT">2 týdny</a>
-  <span class="pagetabs-zamceno" aria-disabled="true" title="Shrnutí za poslední měsíc – v placené verzi"><span>Měsíc</span><svg class="nav-zamek" aria-label="zamčeno"><use href="#icon-lock"></use></svg></span>
+  <a href="#mesic" title="Měsíc v IP a IT">Měsíc</a>
   <span class="pagetabs-sep" aria-hidden="true"></span>
   <a href="#nsoud" title="Nejvyšší soud">NS</a>
   <a href="#nss" title="Nejvyšší správní soud">NSS</a>
@@ -161,16 +151,20 @@
   </div>
   <div class="page-lista" id="novinky-lista">
     <div class="segment" id="novinky-filtr" role="group" aria-label="Filtr novinek" hidden></div>
-    <!-- Souhrn výběru; kliknutím se otevře Můj výběr (nepřihlášenému přihlášení). -->
-    <button type="button" class="vyber-stitek" id="vyber-stitek" title="Upravit výběr" hidden></button>
+    <!-- Můj výběr (se souhrnem) / Vše; ikonka vedle otevře Můj výběr
+         (nepřihlášenému přihlášení). -->
+    <div class="novinky-rozsah" id="novinky-rozsah-obal" hidden>
+      <div class="segment" id="novinky-rozsah" role="group" aria-label="Rozsah novinek"></div>
+      <button type="button" class="ikona-tlacitko" id="novinky-upravit" title="Upravit výběr" aria-label="Upravit výběr" hidden><svg class="nav-ico" aria-hidden="true"><use href="#icon-sliders"></use></svg></button>
+    </div>
   </div>
   <div class="feed" id="feed-today"><p class="loading">Načítám...</p></div>
 </section>
 
-<section class="page" id="dvatydny" hidden>
+<section class="page" id="mesic" hidden>
   <div class="page-head">
-    <h2 class="page-title">Dva týdny v IP a IT</h2>
-    <p class="page-desc jen-d">Přehled toho podstatného z duševního vlastnictví a IT za poslední dva týdny. Píše ho AI z rozhodnutí všech soudů v oblastech IP a IT a z článků v časopisech – na vašem výběru nezávisí. Nový vychází každé pondělí ráno.</p>
+    <h2 class="page-title">Měsíc v IP a IT</h2>
+    <p class="page-desc jen-d">Přehled toho podstatného z duševního vlastnictví a IT za uplynulý měsíc. Vychází vždy 1. dne v měsíci. Píše ho AI z rozhodnutí všech soudů v oblastech IP a IT a z článků v časopisech – na vašem výběru nezávisí.</p>
     <p class="page-desc jen-m" id="digest-obdobi-m"></p>
   </div>
   <p class="digest-meta" id="digest-meta" hidden></p>
@@ -253,7 +247,7 @@
   <div class="dialog-hlava">
     <div class="dialog-nadpis">
       <h2 id="vyber-titulek">Můj výběr</h2>
-      <p id="vyber-podtitul">Co se vám ukáže v Novinkách a na stránkách soudů. Dva týdny v IP a IT jsou pro všechny stejné.</p>
+      <p id="vyber-podtitul">Co se vám ukáže v Novinkách a na stránkách soudů. Měsíc v IP a IT je pro všechny stejný.</p>
     </div>
     <button type="button" class="dialog-zavrit" id="vyber-zavrit" aria-label="Zavřít"><svg class="nav-ico" aria-hidden="true"><use href="#icon-x"></use></svg></button>
   </div>

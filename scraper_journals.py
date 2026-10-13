@@ -1655,7 +1655,7 @@ def z_archivu(vynechat, seen, meta, nyni=None, adresar=None):
 
 # --- Náběh nového časopisu ---
 # Nový zdroj by při prvním běhu vydal celý feed (u IJLIT půl roku článků) za
-# dnešní novinky – do Novinek i do dvoutýdenního přehledu. Položky, které
+# dnešní novinky – do Novinek i do měsíčního přehledu. Položky, které
 # stav ještě nezná, proto při náběhu dostanou první výskyt o NABEH_POSUN_DNI
 # zpět: zůstanou v okně i v archivu, ale ne v Novinkách (24 h) ani v přehledu
 # (digest.WEEKS = 14 dní). Jen článek se skutečným datem vydání z posledních
