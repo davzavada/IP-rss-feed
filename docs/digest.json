@@ -1,15 +1,15 @@
 {
-  "generated": "2026-10-12T05:41:26.112460+00:00",
-  "from": "2026-09-28",
-  "to": "2026-10-12",
-  "total": 88,
-  "covered": 6,
+  "generated": "2026-10-13T06:38:58.001589+00:00",
+  "from": "2026-09-29",
+  "to": "2026-10-13",
+  "total": 55,
+  "covered": 4,
   "cekajici": 2,
-  "intro": "Sledované období přineslo významná rozhodnutí unijních soudů k problematice ochranných známek a přístupu k dokumentům podle digitálních předpisů. Odborná literatura se intenzivně věnovala otázkám generativní umělé inteligence, autorského práva a regulaci digitálních platforem.",
+  "intro": "Sledované období přineslo významná rozhodnutí unijních soudů v oblasti ochranných známek, autorského práva a regulace digitálních platforem. Pozornost byla upřena také na problematiku generativní umělé inteligence, ochranu osobních údajů a dopady nových unijních předpisů, jako je Akt o digitálních službách.",
   "blocks": [
     {
-      "title": "Ochrana známek a svoboda projevu",
-      "text": "Soudní dvůr EU rozhodl, že svoboda projevu třetí osoby může představovat řádný důvod ospravedlňující užití označení shodného nebo podobného známce s reputací. Vnitrostátní soudy musí při posuzování kolize řádně zohlednit kontext veřejného zájmu a úmysl uživatele.",
+      "title": "Ochranné známky a svoboda projevu",
+      "text": "Soudní dvůr EU v případu Inter IKEA Systems rozhodl, že svoboda projevu třetí osoby může představovat řádný důvod odůvodňující užití označení shodného nebo podobného známce s reputací. Pro praxi to znamená, že vnitrostátní soudy musí při kolizi práv pečlivě poměřovat zájmy vlastníka známky s kontextem veřejného zájmu.",
       "sources": [
         {
           "src": "journals",
@@ -21,16 +21,22 @@
       ]
     },
     {
-      "title": "Přístup k dokumentům a platformy",
-      "text": "Tribunál potvrdil rozhodnutí Evropské komise o odepření přístupu k dokumentům týkajícím se výpočtu aktivních příjemců podle nařízení o digitálních službách. Ochrana obchodních zájmů třetích stran a probíhajících řízení představuje legitimní důvod pro utajení těchto informací.",
+      "title": "Autorské právo a generativní AI",
+      "text": "Odborné stanovisko Max Planck Institutu reaguje na výzvy generativní umelecké inteligence a navrhuje zavedení zákonné výjimky pro trénink AI formou web-scrapingu spojené s právem na spravedlivou odměnu. Pro tvůrce to představuje krok k lepší ochraně jejich děl v digitálním prostředí, zatímco pro poskytovatele AI to znamená nutnost přizpůsobit se kolektivním modelům odměňování.",
       "sources": [
         {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-505/26 – Sanofi R&D Vaccins v. Komise",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TO0505"
-        },
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "Position Statement of the Max Planck Institute of 25 June 2026 on the Future Copyright Framework in Times of Generative AI",
+          "link": "https://doi.org/10.1093/grurint/ikag093"
+        }
+      ]
+    },
+    {
+      "title": "Přístup k dokumentům dle DSA",
+      "text": "Tribunál potvrdil rozhodnutí Evropské komise, která odmítla společnosti Zalando přístup k dokumentům o výpočtu aktivních příjemců podle nařízení o digitálních službách. Rozhodnutí posiluje ochranu obchodních zájmů třetích stran a probíhajících správních či soudních řízení před neuváženým zveřejněním citlivých dat.",
+      "sources": [
         {
           "src": "sdeu",
           "label": "SDEU",
@@ -41,28 +47,8 @@
       ]
     },
     {
-      "title": "Autorské právo a AI",
-      "text": "Odborná literatura a stanoviska Max Planck Institutu reagují na výzvy generativní umělé inteligence a navrhují zavedení zákonných výjimek pro trénink AI spojených s právem na spravedlivou odměnu. Pro zpřístupňování výstupů AI se doporučuje systém povinné kolektivní správy.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "Position Statement of the Max Planck Institute of 25 June 2026 on the Future Copyright Framework in Times of Generative AI",
-          "link": "https://doi.org/10.1093/grurint/ikag093"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "QMJIP",
-          "title": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
-          "link": "https://doi.org/10.4337/qmjip.2026.03.01"
-        }
-      ]
-    },
-    {
-      "title": "Evidující osoby a soukromí",
-      "text": "Nejvyšší soud rozhodl, že evidující osoba má právo na znepřístupnění údajů o skutečném majiteli v případech, kdy veřejný přístup neproporcionálně zasahuje do základních práv na ochranu soukromí. Rozhodnutí reaguje na přetrvávající unijní judikaturu v této oblasti.",
+      "title": "Ochrana údajů a skuteční majitelé",
+      "text": "Nejvyšší soud se zabýval evidencí skutečných majitelů a rozhodl o vyhovění návrhu na znepřístupnění údajů s ohledem na ochranu soukromí. Pro praxi to přináší posílení základních práv subjektů údajů v návaznosti na neplatnost dřívější plošné unijní úpravy veřejného přístupu.",
       "sources": [
         {
           "src": "nsoud",
@@ -74,5 +60,5 @@
       ]
     }
   ],
-  "input_hash": "f8dcf85a80a24d2309796e2c33b594728d17f7efc5535341cbfb3d18c8ae5397"
+  "input_hash": "dde008f84548f6012b5594371462625f9dc062507cc3980f04541bef4ea37197"
 }

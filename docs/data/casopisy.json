@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T05:40:56Z",
+ "generated": "2026-10-13T06:37:11Z",
  "okno_dni": 31,
  "casopisy": [
   {
@@ -113,6 +113,49 @@
  ],
  "polozky": [
   {
+   "id": "IJLIT-10.1093/ijlit/eaag014",
+   "casopis": "ijlit",
+   "nazev": "Artificial intelligence in the military domain: challenges and an adaptive multilevel governance framework",
+   "url": "https://doi.org/10.1093/ijlit/eaag014",
+   "autori": "Victor Habib Lantyer",
+   "heslo": "Regulace vojenské AI",
+   "shrnuti": "Článek zkoumá mezery v mezinárodním právu týkajícím se autonomních zbraní a poukazuje na nedostatečnost nezávazných nástrojů při regulaci vojenské umelecké inteligence. Navrhuje adaptivní víceúrovňový the rámec (MILAI-GOV), který kombinuje závazné smlouvy, povinná hodnocení dopadů, audity a odstupňované kontroly rizik. Cílem tohoto normativního návrhu je zajistit smysluplnou lidskou kontrolu a jasné přičtení odpovědnosti napříč různými úrovněmi governance.",
+   "datum": "2026-10-13",
+   "first_seen": "2026-10-13T06:36:56Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaag017",
+   "casopis": "ijlit",
+   "nazev": "Sexual content, platform governance, and the Digital Services Act",
+   "url": "https://doi.org/10.1093/ijlit/eaag017",
+   "autori": "Carlotta Rigotti",
+   "heslo": "Regulace sexuálního obsahu",
+   "shrnuti": "Článek zkoumá, jak nařízení o digitálních službách (DSA) upravuje šíření sexuálního obsahu na internetu v kontextu nových technologií a rozdílných přístupů poskytovatelů služeb. Analýza se zaměřuje na čtyři dimenze – jasnost, ochranu, prevenci a koordinaci – s cílem chránit oběti online abuse a podpořit tvůrce obsahu. Závěry přispívají k vytvoření sex-pozitivního rámce pro správu online platforem.",
+   "datum": "2026-10-13",
+   "first_seen": "2026-10-13T06:36:56Z"
+  },
+  {
+   "id": "IIC-10.1007/s40319-026-01788-5",
+   "casopis": "iic",
+   "nazev": "“RRC Sports” – Decision of the Court of Justice of the European Union (Fifth Chamber) 15 July 2026 – Case No. C-209/23",
+   "url": "https://doi.org/10.1007/s40319-026-01788-5",
+   "heslo": "Sportovní agenti",
+   "shrnuti": "Soudní dvůr Evropské unie rozhodl dne 15. července 2026 ve věci C-209/23 týkající se předpisů mezinárodní sportovní federace pro činnost sportovních agentů. Zabýval se otázkou, zda tyto předpisy neporušují pravidla hospodářské soutěže (čl. 101 a 102 SFEU), volný pohyb služeb (čl. 56 SFEU) a ochranu osobních údajů (GDPR). Rozhodl, že napadená pravidla jsou v příslušném rozsahu nepřípustná, neboť omezují soutěž, představují možné zneužití dominantního postavení, neoprávněně omezují svobodu poskytování služeb a porovnávají se s ochranou osobních údajů bez naplnění podmínek proporcionality a sledování legítmních cílů ve veřejném zájmu.",
+   "datum": "2026-10-12",
+   "first_seen": "2026-10-13T06:36:56Z"
+  },
+  {
+   "id": "IIC-10.1007/s40319-026-01782-x",
+   "casopis": "iic",
+   "nazev": "Equity and Technology Transfer in International Intellectual Property Law",
+   "url": "https://doi.org/10.1007/s40319-026-01782-x",
+   "autori": "Emmanuel Kolawole Oke",
+   "heslo": "Equity a transfer technologií",
+   "shrnuti": "Článek zkoumá roli principu equity (spravedlnosti) v mezinárodním právu duševního vlastnictví, kde dosud chybělo hlubší teoretické zakotvení. Analyticky popisuje, jak rozvojové státy využívají tento princip k prosazování ustanovení o přenosu technologií i mimo tradiční fóra, jako jsou WTO či WIPO. Nakonec kriticky hodnotí reálný přínos těchto ustanovení pro posílení spravedlnosti v globálním systému duševního vlastnictví a zlepšení života obyvatel v rozvojových zemích.",
+   "datum": "2026-10-12",
+   "first_seen": "2026-10-13T06:36:56Z"
+  },
+  {
    "id": "JWIP-10.1111/jwip.70040",
    "casopis": "jwip",
    "nazev": "Primal intellectual property rights: Re‐envisioning modern paradigms through a protodesmic perspective",
@@ -145,17 +188,6 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "IJLIT-10.1093/ijlit/eaag015",
-   "casopis": "ijlit",
-   "nazev": "Bad is often best: rethinking the Digital Millennium Copyright Act in the age of algorithmic copyright enforcement",
-   "url": "https://doi.org/10.1093/ijlit/eaag015",
-   "autori": "Taysir Awad",
-   "heslo": "Algoritmické vymáhání autorského práva",
-   "shrnuti": "Článek zkoumá snahy amerického průmětu o úpravu zákona DMCA s cílem přísněji odpovědnit poskytovatele služeb za porušování autorských práv pomocí umělé inteligence. Zpochybňuje předpoklad, že algoritmické filtrování je spolehlivé, a upozorňuje na rizika přehnané cenzury a potlačování legálního projevu. Dochází k závěru, že zachování stávajícího rámce DMCA je nejvhodnější pro ochranu inovací i svobody projevu.",
-   "datum": "2026-10-08",
-   "first_seen": "2026-10-08T05:47:33Z"
-  },
-  {
    "id": "IIC-10.1007/s40319-026-01787-6",
    "casopis": "iic",
    "nazev": "“Inter IKEA Systems” – Decision of the Court of Justice of the European Union (Grand Chamber) 8 September 2026 – Case No. C-298/23",
@@ -164,6 +196,17 @@
    "shrnuti": "Soudní dvůr Evropské unie (velký senát) rozhodl dne 8. září 2026 ve věci C-298/23, Inter IKEA Systems. Zabýval se otázkou, zda svoboda projevu třetí osoby může představovat řádný důvod ve smyslu unijních předpisů o ochranných známkách, který odůvodňuje užití označení shodného nebo podobného známce s reputací. Soud dospěl k závěru, že svoboda projevu může takovým důvodem být, pokud při poměřování zájmů převáží nad exkluzivními právy vlastníka ochranné známky, přičemž vnitrostátní soud musí zohlednit veškeré okolnosti případu včetně úmyslu uživatele, kontext veřejného zájmu a dopad na vlastníka známky.",
    "datum": "2026-10-08",
    "first_seen": "2026-10-09T05:51:52Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaag015",
+   "casopis": "ijlit",
+   "nazev": "Bad is often best: rethinking the Digital Millennium Copyright Act in the age of algorithmic copyright enforcement",
+   "url": "https://doi.org/10.1093/ijlit/eaag015",
+   "autori": "Taysir Awad",
+   "heslo": "Algoritmické vymáhání autorského práva",
+   "shrnuti": "Článek zkoumá snahy amerického průmětu o úpravu zákona DMCA s cílem přísněji odpovědnit poskytovatele služeb za porušování autorských práv pomocí umělé inteligence. Zpochybňuje předpoklad, že algoritmické filtrování je spolehlivé, a upozorňuje na rizika přehnané cenzury a potlačování legálního projevu. Dochází k závěru, že zachování stávajícího rámce DMCA je nejvhodnější pro ochranu inovací i svobody projevu.",
+   "datum": "2026-10-07",
+   "first_seen": "2026-10-08T05:47:33Z"
   },
   {
    "id": "Pravnik-2026-2026-10-4065",
@@ -254,46 +297,13 @@
    "first_seen": "2026-10-07T05:39:14Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.03",
+   "id": "QMJIP-10.4337/qmjip.2026.03.05",
    "casopis": "qmjip",
-   "nazev": "Exploring the boundaries of pre-infringement copyright review obligations for Chinese online platforms: a comparative study of the Chinese, UK and US systems",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.03",
-   "autori": "Mengna Liang",
-   "heslo": "autorské právo platforem",
-   "shrnuti": "Článek zkoumá povinnost čínských online platforem předcházet porušování autorských práv a porovnává přístupy v Číně, Spojeném království a USA. S ohledem na nedostatečnost tradičního institutu bezpečného přístavu navrhuje pro Čínu povinný model filtrace inspirovaný právem EU. V závěru představuje hodnotící rámec kombinující formální a materiální požadavky, podle něhož mají platformy vynakládat přiměřené úsilí.",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
-  },
-  {
-   "id": "QMJIP-10.4337/qmjip.2026.03.00",
-   "casopis": "qmjip",
-   "nazev": "Seeing intellectual property in colour",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.00",
-   "autori": "Johanna Gibson",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z",
-   "poznamka": "Shrnutí zatím není k dispozici.",
-   "popis": "Seeing intellectual property in colour\nAutor: Johanna Gibson\nQueen Mary Journal of Intellectual Property"
-  },
-  {
-   "id": "QMJIP-10.4337/qmjip.2026.03.01",
-   "casopis": "qmjip",
-   "nazev": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.01",
-   "autori": "Martin Senftleben",
-   "heslo": "AI a autorské právo",
-   "shrnuti": "Článek se zabývá otázkou spravedlivé odměny pro tvůrce za použití jejich děl při vývoji generativní AI. Porovnává současný trend individuálního licencování s výhodami kolektivních přístupů zohledňujících výstupy AI. Nakonec hodnotí různé regulační možnosti s ohledem na nutnost spravedlivé odměny a zároveň širokého přístupu k trénovacím datům.",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
-  },
-  {
-   "id": "QMJIP-10.4337/qmjip.2026.03.04",
-   "casopis": "qmjip",
-   "nazev": "The demise of IPRs through the rise of BBNJ: the small matter of patent disclosure of origin requirements",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.04",
-   "autori": "Tanya Wagenaar",
-   "heslo": "BBNJ a patentová práva",
-   "shrnuti": "Článek se zabývá vlivem nové dohody BBNJ na práva duševního vlastnictví a požadavky na disclosure of origin (DOR) při biotechnologickém využití mořských genetických zdrojů. Ačkoli byly odkazy na duševní vlastnictví z konečného znění dohody postupně odstraněny, nedávno přijatá smlouva WIPO zavádí mezinárodní požadavky DOR. Tyto nové předpisy by mohly ideálně doplnit mechanismy dohody BBNJ a podpořit spravedlivé sdílení přínosů mezi státy.",
+   "nazev": "Thinking about originality: creativity in legal research",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.05",
+   "autori": "Chris Dent",
+   "heslo": "Originalita právního výzkumu",
+   "shrnuti": "Článek zkoumá kreativitu v akademickém právním výzkumu se zohledněním vlivu umelecké inteligence a poznatků z psychologie. Srovnává doktrinální a socio-právní výzkum s různými pojetími kreativity a dokazuje, že právní výzkum je ve své podstatě kreativní. Závěrem propojuje toto zjištění s konceptem autority a testem originality v současném autorském právu.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -309,6 +319,28 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
+   "id": "QMJIP-10.4337/qmjip.2026.03.01",
+   "casopis": "qmjip",
+   "nazev": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.01",
+   "autori": "Martin Senftleben",
+   "heslo": "AI a autorské právo",
+   "shrnuti": "Článek se zabývá otázkou spravedlivé odměny pro tvůrce za použití jejich děl při vývoji generativní AI. Porovnává současný trend individuálního licencování s výhodami kolektivních přístupů zohledňujících výstupy AI. Nakonec hodnotí různé regulační možnosti s ohledem na nutnost spravedlivé odměny a zároveň širokého přístupu k trénovacím datům.",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z"
+  },
+  {
+   "id": "QMJIP-10.4337/qmjip.2026.03.00",
+   "casopis": "qmjip",
+   "nazev": "Seeing intellectual property in colour",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.00",
+   "autori": "Johanna Gibson",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z",
+   "poznamka": "Shrnutí zatím není k dispozici.",
+   "popis": "Seeing intellectual property in colour\nAutor: Johanna Gibson\nQueen Mary Journal of Intellectual Property"
+  },
+  {
    "id": "QMJIP-10.4337/qmjip.2026.03.06",
    "casopis": "qmjip",
    "nazev": "New pharmaceutical product and patent term extension in China",
@@ -320,13 +352,24 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.05",
+   "id": "QMJIP-10.4337/qmjip.2026.03.03",
    "casopis": "qmjip",
-   "nazev": "Thinking about originality: creativity in legal research",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.05",
-   "autori": "Chris Dent",
-   "heslo": "Originalita právního výzkumu",
-   "shrnuti": "Článek zkoumá kreativitu v akademickém právním výzkumu se zohledněním vlivu umelecké inteligence a poznatků z psychologie. Srovnává doktrinální a socio-právní výzkum s různými pojetími kreativity a dokazuje, že právní výzkum je ve své podstatě kreativní. Závěrem propojuje toto zjištění s konceptem autority a testem originality v současném autorském právu.",
+   "nazev": "Exploring the boundaries of pre-infringement copyright review obligations for Chinese online platforms: a comparative study of the Chinese, UK and US systems",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.03",
+   "autori": "Mengna Liang",
+   "heslo": "autorské právo platforem",
+   "shrnuti": "Článek zkoumá povinnost čínských online platforem předcházet porušování autorských práv a porovnává přístupy v Číně, Spojeném království a USA. S ohledem na nedostatečnost tradičního institutu bezpečného přístavu navrhuje pro Čínu povinný model filtrace inspirovaný právem EU. V závěru představuje hodnotící rámec kombinující formální a materiální požadavky, podle něhož mají platformy vynakládat přiměřené úsilí.",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z"
+  },
+  {
+   "id": "QMJIP-10.4337/qmjip.2026.03.04",
+   "casopis": "qmjip",
+   "nazev": "The demise of IPRs through the rise of BBNJ: the small matter of patent disclosure of origin requirements",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.04",
+   "autori": "Tanya Wagenaar",
+   "heslo": "BBNJ a patentová práva",
+   "shrnuti": "Článek se zabývá vlivem nové dohody BBNJ na práva duševního vlastnictví a požadavky na disclosure of origin (DOR) při biotechnologickém využití mořských genetických zdrojů. Ačkoli byly odkazy na duševní vlastnictví z konečného znění dohody postupně odstraněny, nedávno přijatá smlouva WIPO zavádí mezinárodní požadavky DOR. Tyto nové předpisy by mohly ideálně doplnit mechanismy dohody BBNJ a podpořit spravedlivé sdílení přínosů mezi státy.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -632,17 +675,6 @@
    "shrnuti": "Článek analyzuje propojení biologických vlastností cibule, zejména cytoplasmatické mužské sterility, s formálními právy duševního vlastnictví. Ukazuje, že šlechtění cibule využívá vícevrstvý systém kontroly zahrnující patenty, šlechtářská práva a technologické nástroje. Autor zkoumá, jak tyto mechanismy kumulativně ovlivňují svobodu šlechtění a rovnováhu mezi podněty k inovacím a přístupem k genetickým zdrojům.",
    "datum": "2026-09-14",
    "first_seen": "2026-09-14T23:48:58Z"
-  },
-  {
-   "id": "GRUR Int-10.1093/grurint/ikag085",
-   "casopis": "grur-int",
-   "nazev": "When the Opt-Out Fails: Unfair Competition Law and the Control of AI Training Inputs in the EU",
-   "url": "https://doi.org/10.1093/grurint/ikag085",
-   "autori": "Fernando Ravelo Guillén",
-   "heslo": "Kontrola vstupů AI",
-   "shrnuti": "Článek analyzuje neúčinnost mechanismu „opt-out“ při kontrole dat pro trénink AI v důsledku ztráty sledovatelnosti původu děl. Autor konstatuje, že transparentnost podle AI Actu tento problém plně nevyřeší. Navrhuje proto využít právo nepoctivé konkurence jako doplňkový nástroj k obnovení efektivní kontroly nad vstupy do AI.",
-   "datum": "2026-09-11",
-   "first_seen": "2026-09-11T21:39:15Z"
   },
   {
    "id": "JWIP-10.1111/jwip.70010",
