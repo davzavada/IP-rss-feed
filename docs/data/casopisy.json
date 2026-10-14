@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-13T06:37:11Z",
+ "generated": "2026-10-14T04:38:10Z",
  "okno_dni": 31,
  "casopisy": [
   {
@@ -113,26 +113,15 @@
  ],
  "polozky": [
   {
-   "id": "IJLIT-10.1093/ijlit/eaag014",
+   "id": "IJLIT-10.1093/ijlit/eaag018",
    "casopis": "ijlit",
-   "nazev": "Artificial intelligence in the military domain: challenges and an adaptive multilevel governance framework",
-   "url": "https://doi.org/10.1093/ijlit/eaag014",
-   "autori": "Victor Habib Lantyer",
-   "heslo": "Regulace vojenské AI",
-   "shrnuti": "Článek zkoumá mezery v mezinárodním právu týkajícím se autonomních zbraní a poukazuje na nedostatečnost nezávazných nástrojů při regulaci vojenské umelecké inteligence. Navrhuje adaptivní víceúrovňový the rámec (MILAI-GOV), který kombinuje závazné smlouvy, povinná hodnocení dopadů, audity a odstupňované kontroly rizik. Cílem tohoto normativního návrhu je zajistit smysluplnou lidskou kontrolu a jasné přičtení odpovědnosti napříč různými úrovněmi governance.",
-   "datum": "2026-10-13",
-   "first_seen": "2026-10-13T06:36:56Z"
-  },
-  {
-   "id": "IJLIT-10.1093/ijlit/eaag017",
-   "casopis": "ijlit",
-   "nazev": "Sexual content, platform governance, and the Digital Services Act",
-   "url": "https://doi.org/10.1093/ijlit/eaag017",
-   "autori": "Carlotta Rigotti",
-   "heslo": "Regulace sexuálního obsahu",
-   "shrnuti": "Článek zkoumá, jak nařízení o digitálních službách (DSA) upravuje šíření sexuálního obsahu na internetu v kontextu nových technologií a rozdílných přístupů poskytovatelů služeb. Analýza se zaměřuje na čtyři dimenze – jasnost, ochranu, prevenci a koordinaci – s cílem chránit oběti online abuse a podpořit tvůrce obsahu. Závěry přispívají k vytvoření sex-pozitivního rámce pro správu online platforem.",
-   "datum": "2026-10-13",
-   "first_seen": "2026-10-13T06:36:56Z"
+   "nazev": "Regulation, trust, and GenAI adoption: a comparative analysis of the EU and US approaches",
+   "url": "https://doi.org/10.1093/ijlit/eaag018",
+   "autori": "Miloslava Plachkinova, Ace Vo, Katia Guerra",
+   "heslo": "Regulace a přijetí GenAI",
+   "shrnuti": "Článek porovnává vliv odlišných regulačních prostředí v EU a USA na důvěru veřejnosti a přijetí generativní umelecké inteligence (GenAI). Využívá rozšířený model akceptace technologií a empirická data od 369 respondentů k zjištění, že vnímaná regulace zvyšuje důvěru v obou regionech bez významných rozdílů. Výsledky ukazují, že důvěra a vnímaná užitečnost jsou nejsilnějšími předpoklady pro záměr chování a skutečné používání GenAI, přičemž role důvěry se mezi USA a EU v dílčích aspektech liší.",
+   "datum": "2026-10-14",
+   "first_seen": "2026-10-14T04:38:08Z"
   },
   {
    "id": "IIC-10.1007/s40319-026-01788-5",
@@ -152,6 +141,28 @@
    "autori": "Emmanuel Kolawole Oke",
    "heslo": "Equity a transfer technologií",
    "shrnuti": "Článek zkoumá roli principu equity (spravedlnosti) v mezinárodním právu duševního vlastnictví, kde dosud chybělo hlubší teoretické zakotvení. Analyticky popisuje, jak rozvojové státy využívají tento princip k prosazování ustanovení o přenosu technologií i mimo tradiční fóra, jako jsou WTO či WIPO. Nakonec kriticky hodnotí reálný přínos těchto ustanovení pro posílení spravedlnosti v globálním systému duševního vlastnictví a zlepšení života obyvatel v rozvojových zemích.",
+   "datum": "2026-10-12",
+   "first_seen": "2026-10-13T06:36:56Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaag014",
+   "casopis": "ijlit",
+   "nazev": "Artificial intelligence in the military domain: challenges and an adaptive multilevel governance framework",
+   "url": "https://doi.org/10.1093/ijlit/eaag014",
+   "autori": "Victor Habib Lantyer",
+   "heslo": "Regulace vojenské AI",
+   "shrnuti": "Článek zkoumá mezery v mezinárodním právu týkajícím se autonomních zbraní a poukazuje na nedostatečnost nezávazných nástrojů při regulaci vojenské umelecké inteligence. Navrhuje adaptivní víceúrovňový the rámec (MILAI-GOV), který kombinuje závazné smlouvy, povinná hodnocení dopadů, audity a odstupňované kontroly rizik. Cílem tohoto normativního návrhu je zajistit smysluplnou lidskou kontrolu a jasné přičtení odpovědnosti napříč různými úrovněmi governance.",
+   "datum": "2026-10-12",
+   "first_seen": "2026-10-13T06:36:56Z"
+  },
+  {
+   "id": "IJLIT-10.1093/ijlit/eaag017",
+   "casopis": "ijlit",
+   "nazev": "Sexual content, platform governance, and the Digital Services Act",
+   "url": "https://doi.org/10.1093/ijlit/eaag017",
+   "autori": "Carlotta Rigotti",
+   "heslo": "Regulace sexuálního obsahu",
+   "shrnuti": "Článek zkoumá, jak nařízení o digitálních službách (DSA) upravuje šíření sexuálního obsahu na internetu v kontextu nových technologií a rozdílných přístupů poskytovatelů služeb. Analýza se zaměřuje na čtyři dimenze – jasnost, ochranu, prevenci a koordinaci – s cílem chránit oběti online abuse a podpořit tvůrce obsahu. Závěry přispívají k vytvoření sex-pozitivního rámce pro správu online platforem.",
    "datum": "2026-10-12",
    "first_seen": "2026-10-13T06:36:56Z"
   },
@@ -297,24 +308,24 @@
    "first_seen": "2026-10-07T05:39:14Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.05",
+   "id": "QMJIP-10.4337/qmjip.2026.03.04",
    "casopis": "qmjip",
-   "nazev": "Thinking about originality: creativity in legal research",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.05",
-   "autori": "Chris Dent",
-   "heslo": "Originalita právního výzkumu",
-   "shrnuti": "Článek zkoumá kreativitu v akademickém právním výzkumu se zohledněním vlivu umelecké inteligence a poznatků z psychologie. Srovnává doktrinální a socio-právní výzkum s různými pojetími kreativity a dokazuje, že právní výzkum je ve své podstatě kreativní. Závěrem propojuje toto zjištění s konceptem autority a testem originality v současném autorském právu.",
+   "nazev": "The demise of IPRs through the rise of BBNJ: the small matter of patent disclosure of origin requirements",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.04",
+   "autori": "Tanya Wagenaar",
+   "heslo": "BBNJ a patentová práva",
+   "shrnuti": "Článek se zabývá vlivem nové dohody BBNJ na práva duševního vlastnictví a požadavky na disclosure of origin (DOR) při biotechnologickém využití mořských genetických zdrojů. Ačkoli byly odkazy na duševní vlastnictví z konečného znění dohody postupně odstraněny, nedávno přijatá smlouva WIPO zavádí mezinárodní požadavky DOR. Tyto nové předpisy by mohly ideálně doplnit mechanismy dohody BBNJ a podpořit spravedlivé sdílení přínosů mezi státy.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.02",
+   "id": "QMJIP-10.4337/qmjip.2026.03.06",
    "casopis": "qmjip",
-   "nazev": "Warhol v Goldsmith and the shrinking canvas of fair use: a comparative critique of artistic expression in US and UK copyright law",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.02",
-   "autori": "W Oshada Rodrigo",
-   "heslo": "Transformativní užití autorského práva",
-   "shrnuti": "Článek srovnává americkou doktrínu fair use a britské výjimky z autorského práva v kontextu nedávného rozhodnutí ve věci Warhol v. Goldsmith a dalších případů. Autor kritizuje zpřísňování pravidel a nadřazování tržní substituce, což omezuje svobodu tvorby, remixovou kulturu i uměleckou inovaci. Jako řešení, které lépe reflektuje současné digitální formy umění, navrhuje nový čtyřkrokový test založený na expresivním pluralismu.",
+   "nazev": "New pharmaceutical product and patent term extension in China",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.06",
+   "autori": "Weiwei Han",
+   "heslo": "prodloužení patentu v Číně",
+   "shrnuti": "Článek se zabývá systémem prodloužení platnosti patentů na léčiva v Číně v kontextu nedávných legislativních změn z roku 2024. Analýzou prováděcích předpisů a pokynů pro zkoumání patentů přibližuje aktuální vývoj a poskytuje klíčové poznatky pro domácí i zahraniční subjektu usilující o maximalizaci přínosů tohoto systému.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -330,24 +341,13 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.00",
+   "id": "QMJIP-10.4337/qmjip.2026.03.05",
    "casopis": "qmjip",
-   "nazev": "Seeing intellectual property in colour",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.00",
-   "autori": "Johanna Gibson",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z",
-   "poznamka": "Shrnutí zatím není k dispozici.",
-   "popis": "Seeing intellectual property in colour\nAutor: Johanna Gibson\nQueen Mary Journal of Intellectual Property"
-  },
-  {
-   "id": "QMJIP-10.4337/qmjip.2026.03.06",
-   "casopis": "qmjip",
-   "nazev": "New pharmaceutical product and patent term extension in China",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.06",
-   "autori": "Weiwei Han",
-   "heslo": "prodloužení patentu v Číně",
-   "shrnuti": "Článek se zabývá systémem prodloužení platnosti patentů na léčiva v Číně v kontextu nedávných legislativních změn z roku 2024. Analýzou prováděcích předpisů a pokynů pro zkoumání patentů přibližuje aktuální vývoj a poskytuje klíčové poznatky pro domácí i zahraniční subjektu usilující o maximalizaci přínosů tohoto systému.",
+   "nazev": "Thinking about originality: creativity in legal research",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.05",
+   "autori": "Chris Dent",
+   "heslo": "Originalita právního výzkumu",
+   "shrnuti": "Článek zkoumá kreativitu v akademickém právním výzkumu se zohledněním vlivu umelecké inteligence a poznatků z psychologie. Srovnává doktrinální a socio-právní výzkum s různými pojetími kreativity a dokazuje, že právní výzkum je ve své podstatě kreativní. Závěrem propojuje toto zjištění s konceptem autority a testem originality v současném autorském právu.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -363,13 +363,24 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.04",
+   "id": "QMJIP-10.4337/qmjip.2026.03.00",
    "casopis": "qmjip",
-   "nazev": "The demise of IPRs through the rise of BBNJ: the small matter of patent disclosure of origin requirements",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.04",
-   "autori": "Tanya Wagenaar",
-   "heslo": "BBNJ a patentová práva",
-   "shrnuti": "Článek se zabývá vlivem nové dohody BBNJ na práva duševního vlastnictví a požadavky na disclosure of origin (DOR) při biotechnologickém využití mořských genetických zdrojů. Ačkoli byly odkazy na duševní vlastnictví z konečného znění dohody postupně odstraněny, nedávno přijatá smlouva WIPO zavádí mezinárodní požadavky DOR. Tyto nové předpisy by mohly ideálně doplnit mechanismy dohody BBNJ a podpořit spravedlivé sdílení přínosů mezi státy.",
+   "nazev": "Seeing intellectual property in colour",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.00",
+   "autori": "Johanna Gibson",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z",
+   "poznamka": "Shrnutí zatím není k dispozici.",
+   "popis": "Seeing intellectual property in colour\nAutor: Johanna Gibson\nQueen Mary Journal of Intellectual Property"
+  },
+  {
+   "id": "QMJIP-10.4337/qmjip.2026.03.02",
+   "casopis": "qmjip",
+   "nazev": "Warhol v Goldsmith and the shrinking canvas of fair use: a comparative critique of artistic expression in US and UK copyright law",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.02",
+   "autori": "W Oshada Rodrigo",
+   "heslo": "Transformativní užití autorského práva",
+   "shrnuti": "Článek srovnává americkou doktrínu fair use a britské výjimky z autorského práva v kontextu nedávného rozhodnutí ve věci Warhol v. Goldsmith a dalších případů. Autor kritizuje zpřísňování pravidel a nadřazování tržní substituce, což omezuje svobodu tvorby, remixovou kulturu i uměleckou inovaci. Jako řešení, které lépe reflektuje současné digitální formy umění, navrhuje nový čtyřkrokový test založený na expresivním pluralismu.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
