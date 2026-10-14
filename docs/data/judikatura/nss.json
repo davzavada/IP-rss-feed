@@ -1,8 +1,71 @@
 {
- "generated": "2026-10-13T05:27:23Z",
+ "generated": "2026-10-14T03:31:07Z",
  "soud": "nss",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "nss:786341",
+   "spz": "22 Azs 68/2026-38",
+   "ecli": "ECLI:CZ:NSS:2026:22.Azs.68.2026.38",
+   "druh": "rozsudek",
+   "senat": 22,
+   "rejstrik": "Azs",
+   "datum": "2026-10-13",
+   "zverejneno": "2026-10-13",
+   "first_seen": "2026-10-14T03:31:07Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786341",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786341",
+   "soudce": "Jitka Zavřelová",
+   "heslo": "Nebezpečí pro veřejný pořádek vyžaduje individualizované hodnocení",
+   "shrnuti": "Ministerstvo vnitra podalo kasační stížnost proti rozsudku Městského soudu v Praze, kterým bylo vyhověno žalobě na ochranu před nezákonným zásahem spočívajícím ve zrušení termínu pro pořízení biometrických údajů a zániku registrace k pobytu. Nejvyšší správní soud řešil otázku rozsahu soudního přezkumu a posouzení neurčitého právního pojmu nebezpečí pro veřejný pořádek u nenárokového pobytového oprávnění. Dospěl k závěru, že závěr o hrozbě pro veřejný pořádek musí být podložen řádným a individualizovaným hodnocením konkrétních skutkových okolností.",
+   "oblasti": [
+    "spravni",
+    "socialni_cizinci"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785400",
+   "spz": "7 As 170/2026-6",
+   "ecli": "ECLI:CZ:NSS:2026:7.As.170.2026.6",
+   "druh": "usnesení",
+   "senat": 7,
+   "rejstrik": "As",
+   "datum": "2026-09-11",
+   "zverejneno": "2026-10-13",
+   "first_seen": "2026-10-14T03:31:07Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785400",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785400",
+   "soudce": "Milan Podhrázký",
+   "heslo": "Zjevné zneužití práva podáváním sériových podání",
+   "shrnuti": "Žalobce podal kasační stížnost proti usnesení krajského soudu, kterým byla odmítnuta jeho žaloba proti rozhodnutí Krajského státního zastupitelství v Praze o odmítnutí žádosti o poskytnutí informací. Nejvyšší správní soud řešil, zda kasační stížnost představuje zjevné zneužití práva. Soud dospěl k závěru, že stěžovatel opakovaně podává rozsáhlá podání s totožnými tvrzeními bez věcné vazby na napadené rozhodnutí, a kasační stížnost proto odmítl.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:746358",
+   "spz": "9 Ads 92/2025-60",
+   "ecli": "ECLI:CZ:NSS:2025:9.Ads.92.2025.60",
+   "druh": "usnesení",
+   "senat": 9,
+   "rejstrik": "Ads",
+   "datum": "2025-10-23",
+   "zverejneno": "2026-10-13",
+   "first_seen": "2026-10-14T03:31:07Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/746358",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/746358",
+   "soudce": "Barbara Pořízková",
+   "heslo": "Rozhodnutí bez jednání při kombinaci zrušení a věcného posouzení",
+   "shrnuti": "Nejvyšší správní soud postoupil věc rozšířenému senátu k řešení otázky, zda je vadou řízení, pokud krajský soud rozhodne bez jednání za situace, kdy nemá souhlas účastníků, ruší správní rozhodnutí pro nepřezkoumatelnost a současně věcně posuzuje některé žalobní námitky. K odstranění rozporné judikatury má rozšířený senát posoudit, zda takový postup představuje vadu zatěžující řízení, k níž je nutno přihlížet z úřední povinnosti, či zda je relevantní pouze k námitce účastníka.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
+  },
   {
    "id": "nss:786331",
    "spz": "7 As 26/2026-58",
