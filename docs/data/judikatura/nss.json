@@ -1,8 +1,135 @@
 {
- "generated": "2026-10-14T03:31:07Z",
+ "generated": "2026-10-15T03:10:38Z",
  "soud": "nss",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "nss:786367",
+   "spz": "7 As 49/2026-29",
+   "ecli": "ECLI:CZ:NSS:2026:7.As.49.2026.29",
+   "druh": "rozsudek",
+   "senat": 7,
+   "rejstrik": "As",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-14",
+   "first_seen": "2026-10-15T03:10:38Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786367",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786367",
+   "soudce": "Jiřina Chmelová",
+   "heslo": "Dodatečné povolení stavby vyžaduje splnění podmínek památkové péče",
+   "shrnuti": "Společnost Quintero podala kasační stížnost proti rozsudku Městského soudu v Praze, kterým byla zamítnuta její žaloba proti rozhodnutí Magistrátu hl. m. Prahy o zamítnutí žádosti o dodatečné povolení stavebních úprav. Nejvyšší správní soud řešil, zda byly řádně vypořádány námitky stěžovatelky ohledně přezkoumatelnosti stanovisek a srovnatelnosti s okolními stavbami. Dospěl k závěru, že kasační stížnost není důvodná, neboť správní orgány i městský soud postupovaly v souladu se zákonem.",
+   "oblasti": [
+    "stavebni_zp",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:786366",
+   "spz": "21 Azs 148/2026-25",
+   "ecli": "ECLI:CZ:NSS:2026:21.Azs.148.2026.25",
+   "druh": "usnesení",
+   "senat": 21,
+   "rejstrik": "Azs",
+   "datum": "2026-10-13",
+   "zverejneno": "2026-10-14",
+   "first_seen": "2026-10-15T03:10:38Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786366",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786366",
+   "soudce": "Radovan Havelec",
+   "heslo": "Opožděná kasační stížnost ve správním soudnictví",
+   "shrnuti": "Stěžovatelka se žalobou domáhala zrušení rozhodnutí Policie České republiky, Ředitelství služby cizinecké policie o uložení správního vyhoštění, přičemž Městský soud v Praze její žalobu zamítl. Nejvyšší správní soud řešil otázku včasnosti podané kasační stížnosti s ohledem na doručení rozhodnutí fikcí. Soud dospěl k závěru, že kasační stížnost byla podána po marném uplynutí zákonné lhůty, a proto ji jako opožděnou odmítl.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:786365",
+   "spz": "21 Ads 11/2026-38",
+   "ecli": "ECLI:CZ:NSS:2026:21.Ads.11.2026.38",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "Ads",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-14",
+   "first_seen": "2026-10-15T03:10:38Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786365",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786365",
+   "soudce": "Tomáš Rychlý",
+   "heslo": "Soudní přezkum systemizace služebních míst ve státní službě",
+   "shrnuti": "Státní zaměstnankyně podala kasační stížnost proti rozsudku městského soudu, kterým byla zamítnuta její žaloba proti odvolání ze služebního místa z důvodu změny systemizace. Nejvyšší správní soud řešil otázku přezkoumatelnosti důvodů systemizace a existence případné šikany či diskriminace zaměstnance. Dospěl k závěru, že soudy přezkoumávají pouze to, zda byla systemizace zákonná a nebyla-li zjevně účelová, přičemž stěžovatelka neprokázala šikanózní postup služebního úřadu.",
+   "oblasti": [
+    "pracovni",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:786362",
+   "spz": "2 Afs 230/2025-43",
+   "ecli": "ECLI:CZ:NSS:2026:2.Afs.230.2025.43",
+   "druh": "rozsudek",
+   "senat": 2,
+   "rejstrik": "Afs",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-14",
+   "first_seen": "2026-10-15T03:10:38Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786362",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786362",
+   "soudce": "Tomáš Kocourek",
+   "heslo": "Náhrada cestovních výdajů představuje zastřenou mzdu",
+   "shrnuti": "CZ BASTAV se soudila s Odvolacím finančním ředitelstvím ohledně dodatečného vyměření daně z příjmů ze závislé činnosti kvůli vyplácení náhrad cestovních výdajů zaměstnancům. Nejvyšší správní soud řešil, zda platby formálně označené jako náhrady cestovních výdajů byly skutečně těmito náhradami, či zda šlo o zastřenou mzdu. Soud dospěl k závěru, že vymezení místa výkonu práce bylo fiktivní a vyplacené částky představovaly zdanitelnou mzdu.",
+   "oblasti": [
+    "dane",
+    "zavazky",
+    "pracovni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:786356",
+   "spz": "4 As 174/2026-99",
+   "ecli": "ECLI:CZ:NSS:2026:4.As.174.2026.99",
+   "druh": "usnesení",
+   "senat": 4,
+   "rejstrik": "As",
+   "datum": "2026-10-12",
+   "zverejneno": "2026-10-14",
+   "first_seen": "2026-10-15T03:10:38Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786356",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786356",
+   "soudce": "Aleš Roztočil",
+   "heslo": "Odkladný účinek kasační stížnosti proti zrušení povolení skládky",
+   "shrnuti": "Český svaz ochránců přírody Zelená Čáslav se soudil s Ministerstvem životního prostředí a osobou zúčastněnou na řízení AVE CZ odpadové hospodářství ohledně změny integrovaného povolení pro skládku nebezpečných odpadů. Nejvyšší správní soud řešil, zda jsou splněny podmínky pro přiznání odkladného účinku kasační stížnosti podané provozovatelem skládky proti rozsudku krajského soudu, který zrušil povolení provozu. Soud dospěl k závěru, že zájem na ochraně životního prostředí a zajištění včasné soudní ochrany veřejnosti převažuje nad tvrzenou ekonomickou újmou stěžovatele, a proto návrh na přiznání odkladného účinku zamítl.",
+   "oblasti": [
+    "spravni",
+    "stavebni_zp"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:786355",
+   "spz": "7 Afs 274/2025-39",
+   "ecli": "ECLI:CZ:NSS:2026:7.Afs.274.2025.39",
+   "druh": "rozsudek",
+   "senat": 7,
+   "rejstrik": "Afs",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-14",
+   "first_seen": "2026-10-15T03:10:38Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786355",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786355",
+   "soudce": "Jiřina Chmelová",
+   "heslo": "Zastavení řízení o daňovém přiznání neregistrovaného",
+   "shrnuti": "Hygi družstvo podalo kasační stížnost proti rozsudku krajského soudu, kterým byla zamítnuta žaloba proti rozhodnutí Odvolacího finančního ředitelství o zastavení řízení o daňových přiznáních k DPH. Nejvyšší správní soud řešil otázku, zda správce daně mohl zastavit řízení o podaných daňových přiznáních subjektu, u něhož bylo v jiném řízení pravomocně uzavřeno, že se nestal plátcem DPH. Soud dospěl k závěru, že jestliže subjekt neprokázal splnění podmínek pro registraci a nestal se plátcem daně, nebyl osobou povinnou podat daňové přiznání, a správce daně proto postupoval správně, když taková řízení zastavil.",
+   "oblasti": [
+    "dane",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
   {
    "id": "nss:786341",
    "spz": "22 Azs 68/2026-38",

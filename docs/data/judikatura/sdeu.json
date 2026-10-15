@@ -1,8 +1,261 @@
 {
- "generated": "2026-10-12T04:18:26Z",
+ "generated": "2026-10-15T03:10:38Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "sdeu:ipc:C-1094/26",
+   "spz": "C-1094/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-10-06",
+   "first_seen": "2026-10-15T03:10:38Z",
+   "nazev": "Martlek",
+   "url": "https://curia.europa.eu/juris/liste.jsf?num=C-1094/26&language=cs",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "prumyslova_prava",
+    "autorske",
+    "gdpr"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Podáno 6. 10. 2026. Položené otázky zatím nejsou zveřejněné."
+  },
+  {
+   "id": "sdeu:ipc:C-1092/26",
+   "spz": "C-1092/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-10-06",
+   "first_seen": "2026-10-15T03:10:38Z",
+   "nazev": "Ebenger",
+   "url": "https://curia.europa.eu/juris/liste.jsf?num=C-1092/26&language=cs",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "prumyslova_prava",
+    "autorske",
+    "gdpr"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Podáno 6. 10. 2026. Položené otázky zatím nejsou zveřejněné."
+  },
+  {
+   "id": "sdeu:ipc:C-1091/26",
+   "spz": "C-1091/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-10-06",
+   "first_seen": "2026-10-15T03:10:38Z",
+   "nazev": "Vesen",
+   "url": "https://curia.europa.eu/juris/liste.jsf?num=C-1091/26&language=cs",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "prumyslova_prava",
+    "autorske",
+    "gdpr"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Podáno 6. 10. 2026. Položené otázky zatím nejsou zveřejněné."
+  },
+  {
+   "id": "sdeu:62026TO0483",
+   "spz": "T-483/26",
+   "ecli": "ECLI:EU:T:2026:675",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-14",
+   "first_seen": "2026-10-15T03:10:38Z",
+   "nazev": "Larimart v. EDA",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TO0483",
+   "heslo": "Zrušení napadeného aktu činí předběžné opatření bezpředmětným",
+   "shrnuti": "Tribunál řešil návrh na nařízení předběžného opatření spočívajícího v pozastavení výkonu rozhodnutí o zadání veřejné zakázky. Vzhledem k tomu, že Agentura evropské obrany napadené rozhodnutí zrušila, dospěl Tribunál k závěru, že návrh na předběžné opatření je bez předmětu, a proto o něm již není namístě rozhodovat.",
+   "oblasti": [
+    "verejne_zakazky",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62025TJ0814",
+   "spz": "T-814/25",
+   "ecli": "ECLI:EU:T:2026:668",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-14",
+   "first_seen": "2026-10-15T03:10:38Z",
+   "nazev": "Holding Tourisme v. EUIPO - Agora (MAGORA)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0814",
+   "heslo": "Záměna slovních a obrazových ochranných známek",
+   "shrnuti": "Tribunál posuzoval, zda existuje pravděpodobnost záměny mezi přihlašovanou slovní ochrannou známkou MAGORA a dřívější starší obrazovou ochrannou známkou GRUPO AGORA ve španělském kontextu. Dospěl k závěru, že mezi označeními existuje vizuální i fonetická podobnost a pro část veřejnosti jde o zaměnitelné označení, a proto žalobu zamítl.",
+   "oblasti": [
+    "prumyslova_prava",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0770",
+   "spz": "T-770/25",
+   "ecli": "ECLI:EU:T:2026:672",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-14",
+   "first_seen": "2026-10-15T03:10:38Z",
+   "nazev": "Adema v. CPVO (Roat)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0770",
+   "heslo": "Nezbytnost doložit novou charakteristiku odrůdy rostlin",
+   "shrnuti": "Tribunál posuzoval žalobu na zrušení rozhodnutí Odvolacího senátu Odrůdového úřadu Společenství ve věci zamítnutí žádosti o zapsání odrůdy jablek. Soud konstatoval, že úřad nepochybil, pokud nepřihlédl k údajně nové charakteristice raného vývoje vybarvení, neboť žalobce nepředložil spolehlivá technická data k prokázání, že se tato vlastnost podstatně liší od již zavedených znaků v testovacím protokolu. Žalobu proto v celém rozsahu zamítl.",
+   "oblasti": [
+    "prumyslova_prava",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0569",
+   "spz": "T-569/25",
+   "ecli": "ECLI:EU:T:2026:666",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-14",
+   "first_seen": "2026-10-15T03:10:38Z",
+   "nazev": "X-GmbH",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0569",
+   "heslo": "Dobrý víra v režim ziskové přirážky v DPH",
+   "shrnuti": "Soudní dvůr EU posuzoval, zda zásada efektivity brání vnitrostátní praxi, podle níž se dobrá víra obchodníka ohledně podmínek režimu ziskové přirážky posuzuje až mimo řízení o stanovení daně ve zvláštním spravedlivostním řízení. Rozhodl, že článek 314 směrnice o DPH takové vnitrostátní praxi brání, pokud by nadměrně ztěžovala výkon práv přiznaných unijním právem. Společnost X-GmbH tak uspěla s tvrzením o rozporu s unijním právem.",
+   "oblasti": [
+    "dane",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0561",
+   "spz": "T-561/25",
+   "ecli": "ECLI:EU:T:2026:667",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-14",
+   "first_seen": "2026-10-15T03:10:38Z",
+   "nazev": "Talas v. Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0561",
+   "heslo": "Předpoklad spojení s režimem u předních podnikatelů",
+   "shrnuti": "Tribunál řešil žalobu na anulaci aktů Rady o zachování omezujících opatření vůči syrským podnikatelům napojeným na dřívější režim. Dospěl k závěru, že Rada právem usoudila, že navrhovatel zůstává předním podnikatelem spojeným s bývalým režimem, a žalobu zamítl.",
+   "oblasti": [
+    "spravni",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0506",
+   "spz": "T-506/25",
+   "ecli": "ECLI:EU:T:2026:674",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-14",
+   "first_seen": "2026-10-15T03:10:38Z",
+   "nazev": "GY v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0506",
+   "heslo": "Odebrání rodinných přídavků kvůli chybějícím údajům",
+   "shrnuti": "Tribunál řešil žalobu na zrušení rozhodnutí Komise, kterým byla zrušena nárok na rodinné přídavky a související dávky a nařízeno vrácení přeplatků, protože žalobce neposkytl kontaktní a bankovní údaje své bývalé manželky, která měla děti v péči. Soud konstatoval, že Komise nepochybila, neboť žalobce nesplňoval podmínky pro přímé pobírání přídavků a měl zákonnou povinnost potřebné údaje poskytnout. Žalobu proto v celém rozsahu zamítl.",
+   "oblasti": [
+    "pracovni",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0451",
+   "spz": "T-451/25",
+   "ecli": "ECLI:EU:T:2026:669",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-14",
+   "first_seen": "2026-10-15T03:10:38Z",
+   "nazev": "Mega Pop v. EUIPO - Apple (FIND MY CAR)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0451",
+   "heslo": "Zápis převodu ochranné známky nenastoluje zpětně procesní práva",
+   "shrnuti": "Tribunál řešil otázku, zda se nový vlastník ochranné známky se sídlem na Ukrajině může v odvolacím řízení před EUIPO úspěšně dovolávat prodloužení lhůt zavedeného rozhodnutím výkonného ředitele EUIPO, jestliže k převodu a zápisu do rejstříku došlo až po uplynutí původní čtyřměsíční lhůty pro podání odůvodnění odvolání. Soud konstatoval, že zápis převodu nemá zpětné účinky a nový vlastník vstupuje do řízení ve stavu, v němž se nacházelo ke dni zápisu, takže nemůže těžit z prodloužení lhůty, která již uplynula. Žaloba byla v plném rozsahu zamítnuta.",
+   "oblasti": [
+    "prumyslova_prava",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0205",
+   "spz": "T-205/25",
+   "ecli": "ECLI:EU:T:2026:671",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-14",
+   "first_seen": "2026-10-15T03:10:38Z",
+   "nazev": "Rizza v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0205",
+   "heslo": "Ochrana inspekčních kroků ospravedlňuje odepření přístupu",
+   "shrnuti": "Žalobce se domáhal zrušení rozhodnutí Evropské komise, kterým mu byl částečně odepřen přístup k formuláři žádosti o vzájemnou pomoc mezi vnitrostátními orgány pro hospodářskou soutěž. Tribunál konstatoval, že zpřístupnění lhůt a dílčích přípravných kroků inspekce by mohlo ohrozit cíl probíhajících šetření, a žalobu v celém rozsahu zamítl.",
+   "oblasti": [
+    "spravni",
+    "soutez",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024TJ0537",
+   "spz": "T-537/24",
+   "ecli": "ECLI:EU:T:2026:673",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-14",
+   "first_seen": "2026-10-15T03:10:38Z",
+   "nazev": "GC v. SRB",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0537",
+   "heslo": "Zkušební doba zrušeného místa vyžaduje původní požadavky",
+   "shrnuti": "Tribunál řešil, zda rozhodnutí o propuštění zaměstnance na konci zkušební doby bylo zatíženo zjevnou nesprávností posouzení, když byl hodnocen podle požadavků na jinou pracovní pozici, než na jakou byl přijat a aniž byl o změně informován. Soud konstatoval, že zaměstnavatel pochybil, když zaměstnance řádně neinformoval o změně podmínek a hodnotil jej podle odlišné pozice, a proto napadené rozhodnutí zrušil a přiznal odškodnění.",
+   "oblasti": [
+    "pracovni",
+    "spravni",
+    "skoda"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024TJ0134",
+   "spz": "T-134/24",
+   "ecli": "ECLI:EU:T:2026:670",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-14",
+   "first_seen": "2026-10-15T03:10:38Z",
+   "nazev": "Technius v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0134",
+   "heslo": "Určení velmi velké platformy vyžaduje spolehlivé údaje",
+   "shrnuti": "Tribunál řešil otázku platnosti a legality rozhodnutí Evropské komise, kterým byla platforma Stripchat označena za velmi velkou on-line platformu podle nařízení (EU) 2022/2065 o digitálních službách. Dospěl k závěru, že Komise postupovala správně, když vycházela z údajů o unikátních návštěvníkech poskytnutých třetí stranou a odmítla metodiku žalobkyně, a žalobu v plném rozsahu zamítl.",
+   "oblasti": [
+    "it",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
   {
    "id": "sdeu:62026CN0923",
    "spz": "C-923/26",
@@ -780,6 +1033,26 @@
    "procesni": false
   },
   {
+   "id": "sdeu:62026CO0122",
+   "spz": "C-122/26",
+   "ecli": "ECLI:EU:C:2026:829",
+   "druh": "usnesení",
+   "rejstrik": "C",
+   "datum": "2026-10-06",
+   "zverejneno": "2026-10-06",
+   "first_seen": "2026-10-06T12:00:00Z",
+   "nazev": "DT v. Eulex Kosovo",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CO0122",
+   "heslo": "Přijatelnost kasačního opravného prostředku ve věcech SZBP",
+   "shrnuti": "Soudní dvůr EU posuzoval návrh na uznání přijatelnosti kasačního opravného prostředku směřujícího proti rozsudku Tribunálu, kterým byla zamítnuta žaloba na náhradu újmy a prohlášení protiprávnosti výpovědi pracovní smlouvy zaměstnance mise Eulex Kosovo. Soudní dvůr uznal kasační opravný prostředek za zčásti přijatelný, jelikož některé z uplatněných důvodů nastolují otázky významné pro jednotu, soulad nebo další vývoj unijního práva ohledně rozsahu soudního přezkumu a povinnosti náležité péče v rámci společné zahraniční a bezpečnostní politiky.",
+   "oblasti": [
+    "spravni",
+    "pracovni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
    "id": "sdeu:62025TO0886",
    "spz": "T-886/25",
    "ecli": "ECLI:EU:T:2026:632",
@@ -813,6 +1086,26 @@
    "shrnuti": "Tribunál řešil otázku, zda byla napadena platnost ochranné známky Evropské unie z důvodu podání v zlé víře, přičemž dospěl k závěru, že žalobce přihlášku podal bez úmyslu ji užívat, pouze za účelem bránit třetím osobám v podnikání, a proto žalobu zamítl.",
    "oblasti": [
     "prumyslova_prava"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CO0667",
+   "spz": "C-667/24",
+   "ecli": "ECLI:EU:C:2026:831",
+   "druh": "usnesení",
+   "rejstrik": "C",
+   "datum": "2026-10-06",
+   "zverejneno": "2026-10-06",
+   "first_seen": "2026-10-06T12:00:00Z",
+   "nazev": "AMCO",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CO0667",
+   "heslo": "Ochrana spotřebitele brání překážce věci jugaté při absenci přezkumu",
+   "shrnuti": "Soudní dvůr EU posuzoval slučitelnost vnitrostátní úpravy, která v exekučním řízení neumožňuje přezkoumat zneužívající povahu smluvních podmínek v ručitelském smlouvě s odkazem na implicitní autoritu věci jugaté, ačkoliv otázka nebyla dříve zkoumána. Rozhodl, že směrnice o nepřiměřených podmínkách ve spotřebitelských smlouvách brání takové úpravě, pokud spotřebiteli znemožňuje účinnou ochranu práv. Okolnost, že spotřebitel v době původního řízení nevěděl o svém postavení, je na tom irelevantní.",
+   "oblasti": [
+    "spotrebitel",
+    "zavazky",
+    "civilni_proces"
    ],
    "procesni": false
   },
