@@ -1,13 +1,13 @@
 {
-  "generated": "2026-10-14T04:39:00+00:00",
+  "generated": "2026-10-15T04:21:38+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 36,
-      "stazeno": "2026-10-14T04:38:17+00:00",
+      "pocet": 34,
+      "stazeno": "2026-10-15T04:20:47+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -17,21 +17,21 @@
       "zkratka": "PF UK",
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
-      "pocet": 8,
-      "stazeno": "2026-10-14T04:38:23+00:00",
+      "pocet": 10,
+      "stazeno": "2026-10-15T04:20:53+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "69c24c65d2f408fc"
+      "otisk": "077c3d0ae77e17f8"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
       "zkratka": "JČP",
       "barva": "#1d4ed8",
       "url": "https://jednotaceskychpravniku.cz/vzdelavaci-akce/",
-      "pocet": 6,
+      "pocet": 5,
       "stazeno": "2026-10-14T04:38:28+00:00",
       "cesta": "ai",
-      "chyba": null,
+      "chyba": "403 Client Error: Forbidden for url: https://jednotaceskychpravniku.cz/vzdelavaci-akce/",
       "otisk": "af44eceb0fc539df"
     },
     "EPRAVO": {
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 5,
-      "stazeno": "2026-10-14T04:38:32+00:00",
+      "stazeno": "2026-10-15T04:20:58+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "e9cfdcf4cd50f367"
+      "otisk": "b46557269ede9149"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 2,
-      "stazeno": "2026-10-14T04:38:36+00:00",
+      "stazeno": "2026-10-15T04:20:59+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "791ee633882cb34d"
@@ -61,11 +61,11 @@
       "zkratka": "ÚPV",
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
-      "pocet": 3,
-      "stazeno": "2026-10-14T04:38:37+00:00",
+      "pocet": 7,
+      "stazeno": "2026-10-15T04:21:02+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "c1c06ddcab9bc05d"
+      "otisk": "d11aa97d850abcf0"
     }
   },
   "formy": {
@@ -781,29 +781,25 @@
       "oblasti_klic": "f05771e05bfb"
     },
     {
-      "id": "a92db8ed78a8a5ab4668",
-      "poradatel": "EPRAVO",
+      "id": "776fbe1f1e6b9082e660",
+      "poradatel": "PFUK",
       "datum": "2026-10-15",
-      "zacatek": "09:00",
-      "konec": "11:00",
-      "nazev": "Pracovní síla z Asie bez rizika: Osvědčené Filipíny a speciální vládní projekt Indonésie pro velké průmyslové podniky",
-      "misto": "online",
-      "forma": "online",
-      "lektori": [
-        "Mgr. Petra Silovská"
-      ],
-      "cena": "2 975 Kč s DPH",
-      "anotace": "Online živé vysílání zaměřené na bezrizikový nábor pracovní síly z Filipín a Indonésie pro velké průmyslové podniky.",
-      "url": "https://www.epravo.cz/eshop/pracovni-sila-z-asie-bez-rizika-osvedcene-filipiny-a-specialni-vladni-projekt-indonesie-pro-velke-prumyslove-podniky-online-zive-vysilani-15-10-2026-1591.html",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Signal Festival na půdě Právnické fakulty",
+      "misto": "Právnická fakulta UK, vstupní vestibul",
+      "forma": "prezencne",
+      "lektori": [],
+      "cena": "",
+      "anotace": "Prezentace Signal Festivalu na Právnické fakultě UK.",
+      "url": "https://www.prf.cuni.cz/aktuality/signal-festival-na-pude-pravnicke-fakulty",
+      "datum_do": "2026-10-18",
       "detail_pokusy": 2,
       "z_detailu": [
         "misto"
       ],
-      "oblasti": [
-        "pracovni",
-        "socialni_cizinci"
-      ],
-      "oblasti_klic": "173ebd02890c"
+      "oblasti": [],
+      "oblasti_klic": "b00886542e8c"
     },
     {
       "id": "5292fbdeae5658d853d8",
@@ -1098,6 +1094,27 @@
       "oblasti_klic": "b12612460d80"
     },
     {
+      "id": "7b39a990296e7af75e72",
+      "poradatel": "PFUK",
+      "datum": "2026-10-21",
+      "zacatek": "09:00",
+      "konec": "16:00",
+      "nazev": "Podzimní knižní trh právnické literatury",
+      "misto": "vstupní hala Právnické fakulty UK, tzv. „bazénu“",
+      "forma": "hybridne",
+      "lektori": [],
+      "cena": "",
+      "anotace": "Trh zaměřený na prezentaci a prodej právnické literatury.",
+      "url": "https://www.prf.cuni.cz/aktuality/podzimni-knizni-trh-pravnicke-literatury-1",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "forma",
+        "misto"
+      ],
+      "oblasti": [],
+      "oblasti_klic": "d791639fd8c3"
+    },
+    {
       "id": "72b652d7544689dd0901",
       "poradatel": "PFUK",
       "datum": "2026-10-21",
@@ -1184,7 +1201,7 @@
       ],
       "cena": "3 975 Kč s DPH",
       "anotace": "Seminář k praktickým dopadům velké novely stavebního zákona se zaměřením na přechodná ustanovení.",
-      "url": "https://www.epravo.cz/eshop/velka-novela-stavebni-zakona-i-predsazena-ucinnost-a-prechodna-ustanoveni-online-zive-vysilani-22-10-2026-1597.html",
+      "url": "https://www.epravo.cz/eshop/velka-novela-stavebniho-zakona-i-predsazena-ucinnost-a-prechodna-ustanoveni-online-zive-vysilani-22-10-2026-1597.html",
       "detail_pokusy": 2,
       "z_detailu": [
         "misto"
@@ -1212,6 +1229,33 @@
         "prumyslova_prava"
       ],
       "oblasti_klic": "572798c73375"
+    },
+    {
+      "id": "31e09294502cdf11a350",
+      "poradatel": "EPRAVO",
+      "datum": "2026-10-23",
+      "zacatek": "09:00",
+      "konec": "12:00",
+      "nazev": "Velká novela stavebního zákona II – Integrace a reforma veřejné správy",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "Mgr. František Korbel, Ph.D.",
+        "Mgr. Jan Fikar",
+        "Mgr. Dáša Krupová"
+      ],
+      "cena": "3 975 Kč s DPH",
+      "anotace": "Online živé vysílání k druhé části velké novely stavebního zákona zaměřené na integraci a reformu veřejné správy.",
+      "url": "https://www.epravo.cz/eshop/velka-novela-stavebniho-zakona-ii-integrace-a-reforma-verejne-spravy-online-zive-vysilani-23-10-2026-1598.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "stavebni_zp",
+        "spravni"
+      ],
+      "oblasti_klic": "67ff79f575c2"
     },
     {
       "id": "ba4a938f156055d29e30",
@@ -1356,6 +1400,26 @@
         "prumyslova_prava"
       ],
       "oblasti_klic": "4503568d8acc"
+    },
+    {
+      "id": "8bbcbfcb920b8e376b46",
+      "poradatel": "PFUK",
+      "datum": "2026-10-29",
+      "zacatek": "18:00",
+      "konec": "19:30",
+      "nazev": "Science Café UK | Nový závod o vesmír: jakou roli v něm hraje jaderná energie?",
+      "misto": "Kampus Hybernská A.3 (budova „A“, 3. patro, A.3 Sál), Hybernská 4, Praha 1",
+      "forma": "prezencne",
+      "lektori": [],
+      "cena": "",
+      "anotace": "Neformální diskuse Science Café o využití jaderné energie v moderním vesmírném závodě.",
+      "url": "https://www.prf.cuni.cz/aktuality/science-cafe-uk-novy-zavod-o-vesmir-jakou-roli-v-nem-hraje-jaderna-energie",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [],
+      "oblasti_klic": "78842de6afef"
     },
     {
       "id": "00df13debafc19ec10fd",
@@ -1664,6 +1728,28 @@
       "oblasti_klic": "8b3f3843c355"
     },
     {
+      "id": "d35e09047bf85194b2a8",
+      "poradatel": "UPV",
+      "datum": "2026-11-19",
+      "zacatek": "09:00",
+      "konec": "10:00",
+      "nazev": "Evropský patentový rejstřík",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [],
+      "cena": "zdarma",
+      "anotace": "Online seminář zaměřený na Evropský patentový rejstřík.",
+      "url": "https://upv.gov.cz/files/uploads/seminare2026/1911_epr.pdf",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "prumyslova_prava"
+      ],
+      "oblasti_klic": "2f26f9bafd37"
+    },
+    {
       "id": "6770faa1e10d86fc6b0c",
       "poradatel": "CAK",
       "datum": "2026-11-20",
@@ -1681,6 +1767,28 @@
       "oblasti": [],
       "oblasti_klic": "666d40601a8e",
       "detail_pokusy": 2
+    },
+    {
+      "id": "1c3e544eeb40fd8a2f65",
+      "poradatel": "UPV",
+      "datum": "2026-11-24",
+      "zacatek": "09:30",
+      "konec": "12:30",
+      "nazev": "Ochrana technických řešení",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [],
+      "cena": "zdarma",
+      "anotace": "Online seminář zaměřený na ochranu technických řešení.",
+      "url": "https://upv.gov.cz/files/uploads/seminare2026/2411_ochrana_technickych_reseni.pdf",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "prumyslova_prava"
+      ],
+      "oblasti_klic": "bca0fc74305a"
     },
     {
       "id": "7a2f5a435eb2facb90cf",
@@ -1798,6 +1906,28 @@
       "detail_pokusy": 2
     },
     {
+      "id": "d90a16beb277cacc9b00",
+      "poradatel": "UPV",
+      "datum": "2026-11-26",
+      "zacatek": "09:30",
+      "konec": "12:30",
+      "nazev": "Ochranné známky",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [],
+      "cena": "zdarma",
+      "anotace": "Online seminář zaměřený na ochranné známky.",
+      "url": "https://upv.gov.cz/files/uploads/seminare2026/2611_ochranne_znamky.pdf",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "prumyslova_prava"
+      ],
+      "oblasti_klic": "efbdf6f75139"
+    },
+    {
       "id": "2daad3d85271fbc45d34",
       "poradatel": "CAK",
       "datum": "2026-12-01",
@@ -1858,6 +1988,28 @@
       ],
       "oblasti_klic": "d3c43c3ed48b",
       "detail_pokusy": 2
+    },
+    {
+      "id": "0bc6d0024a662c8371af",
+      "poradatel": "UPV",
+      "datum": "2026-12-03",
+      "zacatek": "10:00",
+      "konec": "11:00",
+      "nazev": "SME Fund 2026",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [],
+      "cena": "zdarma",
+      "anotace": "Online seminář zaměřený na téma SME Fund 2026.",
+      "url": "https://upv.gov.cz/files/uploads/seminare2026/0312_smefund2026.pdf",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "prumyslova_prava"
+      ],
+      "oblasti_klic": "01b02ced921c"
     },
     {
       "id": "b5bd3ab762c24dba84ff",
