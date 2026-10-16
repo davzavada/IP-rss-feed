@@ -1,15 +1,15 @@
 {
-  "generated": "2026-10-14T04:39:00.812616+00:00",
+  "generated": "2026-10-16T04:17:04.440401+00:00",
   "from": "2026-09-01",
   "to": "2026-09-30",
-  "total": 86,
-  "covered": 11,
+  "total": 85,
+  "covered": 12,
   "cekajici": 2,
-  "intro": "Uplynulý měsíc přinesl řadu rozhodnutí unijních soudů v oblasti ochranných známek, která zpřesňují posuzování rozlišovací způsobilosti a pravděpodobnosti záměny. Pozornost byla věnována také průniku duševního vlastnictví a nových technologií, zejména v kontextu umělé inteligence, digitálních platforem a ochrany osobních údajů.",
+  "intro": "Uplynulý měsíc přinesl řadu významných rozhodnutí unijních soudů v oblasti ochranných známek, která se zaměřila na posuzování pravděpodobnosti záměny, popisnosti a zlé víry. Judikatura a odborná literatura se rovněž intenzivně věnovaly aktuálním výzvám v oblasti umělé inteligence, autorského práva a ochrany osobních údajů.",
   "blocks": [
     {
-      "title": "Posouzení záměny ochranných známek",
-      "text": "Soudy a úřady se opakovaně zabývaly otázkou pravděpodobnosti záměny označení a posuzováním jejich rozlišovací způsobilosti. Judikatura potvrzuje, že popisná či slabě rozlišitelná označení neposkytují svým majitelům silnou ochranu a je nutné je zohlednit při celkovém hodnocení kolizí.",
+      "title": "Posuzování záměny ochranných známek",
+      "text": "Tribunál EU a Nejvyšší správní soud se v několika rozhodnutích zabývaly kritérii pro určení pravděpodobnosti záměny mezi ochrannými známkami. Potvrdily, že při hodnocení je nutné zohlednit stupeň podobnosti označení, pozornost relevantní veřejnosti a případnou slabou rozlišovací způsobilost starších práv. Pro praxi to znamená nutnost pečlivé rešerše a střízlivého hodnocení silných stránek namítaných starších známek.",
       "sources": [
         {
           "src": "sdeu",
@@ -35,8 +35,35 @@
       ]
     },
     {
-      "title": "Regulace AI a autorské právo",
-      "text": "Odborná literatura a zahraniční praxe se intenzivně věnují otázkám autorskoprávní ochrany a původcovství u výtvorů generovaných umělou inteligencí. Ukazuje se, že odmítnutí přiznat status autora AI je ústavně obhajitelné, přičemž roste tlak na řešení spravedlivých odměn pro autory.",
+      "title": "Absolutní důvody zamítnutí známek",
+      "text": "Tribunál EU ve svém rozhodovací praxi důsledně uplatňoval pravidla pro odmítnutí zápisu označení, která jsou popisná nebo představují pouhá banální propagační sdělení. Označení přímo popisující vlastnosti nebo účel výrobků, jakož i slogany chválící jejich kvalitu, postrádají rozlišovací způsobilost. Přihlašovatelé by tak měli volit spíše distinktivnější, méně popisnė prvky.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-890/25 – Fitmart v. EUIPO (ULTRAPURE)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0890"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-827/25 – Cobra Golf v. EUIPO (ULTRADRY)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0827"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-509/25 – Société des produits Nestlé v. EUIPO - European Food (FITNESS)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0509"
+        }
+      ]
+    },
+    {
+      "title": "Umělá inteligence a autorské právo",
+      "text": "Odborná literatura se zaměřila na otázky právní ochrany výtvorů generovaných umělou inteligencí a na mechanismy odměňování autorů. Diskutuje se míra nezbytného lidského přispění pro vznik autorského díla a kompatibilita národních sui generis práv s právem EU. Pro praxi to představuje rostoucí potřebu smluvně ošetřit vstupy a výstupy generativní AI.",
       "sources": [
         {
           "src": "journals",
@@ -56,14 +83,21 @@
           "src": "journals",
           "label": "Časopis",
           "tag": "JWIP",
+          "title": "How much human contribution is needed for “ownership” of AI‐generated content: A comparison of copyright determination for generative AI in China and the United States",
+          "link": "https://doi.org/10.1111/jwip.70011"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JWIP",
           "title": "Exploring remuneration mechanisms for copyrighted works in generative AI systems",
           "link": "https://doi.org/10.1111/jwip.70027"
         }
       ]
     },
     {
-      "title": "Ochrana osobních údajů v online prostředí",
-      "text": "Judikatura a předběžné otázky se zaměřily na přísné posuzování souhlasu se zpracováním údajů pro marketingové účely a na problematiku uchovávání IP adres. Pro praxi to znamená nutnost získávat specifický a informovaný souhlas a zajistit oddělené uchovávání citlivých dat.",
+      "title": "Zpracování údajů a GDPR",
+      "text": "Soudní dvůr EU řešil otázky týkající se kvalifikace fotografií obličeje a biometrických údajů v kontextu GDPR a unijních předpisů proti praní peněz. Generální advokát rovněž upozornil na nedostatečnost obecného souhlasu s předáváním údajů neurčeným partnerům pro účely marketingu. Správci údajů tak musí zajistit vysoce specifický a informovaný souhlas.",
       "sources": [
         {
           "src": "sdeu",
@@ -73,13 +107,6 @@
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0660"
         },
         {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "“Data Collection Under HADOPI Law” – Decision of the Council of State of France (Conseil d’ètat) 30 April 2026 – Case No. 433539",
-          "link": "https://doi.org/10.1007/s40319-026-01771-0"
-        },
-        {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
@@ -87,33 +114,7 @@
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0317"
         }
       ]
-    },
-    {
-      "title": "Soudní příslušnost u telekomunikací",
-      "text": "Nejvyšší správní soud potvrdil, že spory o uzavření smlouvy o přístupu k mobilním sítím mají soukromoprávní povahu. K jejich přezkumu tak nejsou dána pravomocná oprávnění správních soudů, ale věc náleží do občanského soudního řízení.",
-      "sources": [
-        {
-          "src": "nss",
-          "label": "NSS",
-          "tag": "",
-          "title": "9 As 21/2026-65",
-          "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785612"
-        }
-      ]
-    },
-    {
-      "title": "Padělání elektronických plateb",
-      "text": "Nejvyšší soud se zabýval trestněprávní rovinou IT a konstatoval, že neoprávněné vyplnění a odeslání elektronického platebního příkazu po překonání autentizačních prvků naplňuje znaky padělání platebního prostředku. Tento závěr posiluje trestněprávní ochranu bezhotovostních transakcí.",
-      "sources": [
-        {
-          "src": "nsoud",
-          "label": "NS",
-          "tag": "",
-          "title": "8 Tdo 705/2026",
-          "link": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/7C94DBFF844179E6C1258E76004D432A?openDocument"
-        }
-      ]
     }
   ],
-  "input_hash": "6ddba758c8a4cc8a50432fea876de22f4fcfe29c0a5946e6883f97a59b6cda8d"
+  "input_hash": "9d8144fd6c40e4117fdae0f50394a5ee561c73b2ee5443407893b61403c54561"
 }
