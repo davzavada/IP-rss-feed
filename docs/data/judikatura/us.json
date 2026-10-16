@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-14T03:31:07Z",
+ "generated": "2026-10-16T03:06:17Z",
  "soud": "us",
  "okno_dni": 31,
  "polozky": [
@@ -5156,66 +5156,6 @@
     "skoda"
    ],
    "procesni": true
-  },
-  {
-   "id": "us:2-1971-26_3",
-   "spz": "II. ÚS 1971/26",
-   "ecli": "ECLI:CZ:US:2026:2.US.1971.26.3",
-   "druh": "nález",
-   "rejstrik": "ÚS",
-   "datum": "2026-08-31",
-   "zverejneno": "2026-09-14",
-   "first_seen": "2026-09-14T12:00:00Z",
-   "nazev": "Právo vyjádřit se k prozatímnímu rozhodnutí",
-   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-1971-26_3",
-   "soudce": "Martin Smolek",
-   "heslo": "Prozatímní úprava péče vyžaduje vyjádření rodiče i dítěte",
-   "shrnuti": "Stěžovatelka napadla usnesení o prozatímním rozhodnutí, kterým byla upravena péče o nezletilou dceru pro období prázdnin. Ústavní soud shledal porušení práva na soudní ochranu a principu rovnosti účastníků, protože obecný soud neposkytl stěžovatelce možnost se k návrhu vyjádřit a nezjistil aktuální názor nezletilé. Vzhledem k tomu, že napadené rozhodnutí mezitím pozbylo účinků, Ústavní soud omezil svůj výrok na konstatování porušení práv.",
-   "oblasti": [
-    "rodina_dedictvi",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "us:2-1101-26_2",
-   "spz": "II. ÚS 1101/26",
-   "ecli": "ECLI:CZ:US:2026:2.US.1101.26.2",
-   "druh": "nález",
-   "rejstrik": "ÚS",
-   "datum": "2026-08-31",
-   "zverejneno": "2026-09-14",
-   "first_seen": "2026-09-14T12:00:00Z",
-   "nazev": "Přezkoumatelnost rozhodnutí o předběžném opatření",
-   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-1101-26_2",
-   "soudce": "Martin Smolek",
-   "heslo": "Předběžné opatření o styku vyžaduje zjištění názoru dítěte",
-   "shrnuti": "Stěžovatelé napadli usnesení obecných soudů, kterými byla zamítnuta jejich žádost o nařízení předběžného opatření k úpravě styku s nezletilým pravnukem. Ústavní soud shledal porušení práva na spravedlivý proces, protože soudy svá rozhodnutí zatížily nepřezkoumatelností a dostatečně se nevypořádaly s uplatněnými argumenty týkajícími se nejlepšího zájmu dítěte a věku stěžovatelů, přičemž rovněž opomněly zjistit názor nezletilého.",
-   "oblasti": [
-    "rodina_dedictvi",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "us:1-1029-26_1",
-   "spz": "I. ÚS 1029/26",
-   "ecli": "ECLI:CZ:US:2026:1.US.1029.26.1",
-   "druh": "nález",
-   "rejstrik": "ÚS",
-   "datum": "2026-09-01",
-   "zverejneno": "2026-09-14",
-   "first_seen": "2026-09-14T12:00:00Z",
-   "nazev": "Ústavní výchova dítěte až jako poslední možnost",
-   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-1029-26_1",
-   "soudce": "Dita Řepková",
-   "heslo": "Ústavní výchova je krajním opatřením",
-   "shrnuti": "Stěžovatel napadal rozhodnutí obecných soudů o nařízení ústavní výchovy nezletilé a o úpravě styku, přičemž tvrdil, že šlo o nepřiměřený zásah do jeho práva na péči a výchovu dítěte. Ústavní soud ústavní stížnost v meritorní části zamítl, neboť dospěl k závěru, že nařízení ústavní výchovy bylo krajním a přiměřeným opatřením v nejlepším zájmu nezletilé s ohledem na její závažné ohrožení způsobené manipulací ze strany stěžovatele a odmítáním matky. Ve zbývajících částech byla ústavní stížnost odmítnuta pro nepřípustnost a opožděnost.",
-   "oblasti": [
-    "rodina_dedictvi",
-    "ustavni"
-   ],
-   "procesni": false
   }
  ]
 }
