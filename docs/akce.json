@@ -1,13 +1,13 @@
 {
-  "generated": "2026-10-16T04:17:04+00:00",
+  "generated": "2026-10-17T04:08:29+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 32,
-      "stazeno": "2026-10-16T04:16:34+00:00",
+      "pocet": 30,
+      "stazeno": "2026-10-17T04:08:17+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -17,11 +17,11 @@
       "zkratka": "PF UK",
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
-      "pocet": 10,
-      "stazeno": "2026-10-16T04:16:40+00:00",
+      "pocet": 9,
+      "stazeno": "2026-10-17T04:08:21+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "cd424e069d50982c"
+      "otisk": "832c8a6d5e8d50f9"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 5,
-      "stazeno": "2026-10-16T04:16:46+00:00",
+      "stazeno": "2026-10-17T04:08:25+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "578631f0319c56ae"
+      "otisk": "43cd4d61c3235c61"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 2,
-      "stazeno": "2026-10-16T04:16:48+00:00",
+      "stazeno": "2026-10-17T04:08:26+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "791ee633882cb34d"
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 7,
-      "stazeno": "2026-10-16T04:16:48+00:00",
+      "stazeno": "2026-10-17T04:08:27+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "d11aa97d850abcf0"
@@ -914,27 +914,21 @@
       "oblasti_klic": "128aa47b201b"
     },
     {
-      "id": "a487a2169997d0455fdc",
-      "poradatel": "CAK",
+      "id": "c44aed0be13b44d1b20f",
+      "poradatel": "PFUK",
       "datum": "2026-10-20",
-      "zacatek": "09:00",
-      "konec": "13:00",
-      "nazev": "Medzinárodné sankcie v advokátskej praxi: aktuálne výzvy, riziká a praktické riešenia",
-      "misto": "Praha, ONLINE SEMINÁŘ",
-      "forma": "online",
-      "lektori": [
-        "JUDr. Martin Jacko",
-        "JUDr. Mária Porubská Tökölyová"
-      ],
-      "cena": "650,- Kč včetně DPH",
-      "anotace": "Webinář poskytne praktický prehľad aktuálneho sankčného režimu Európskej únie s dôrazom na poskytovanie právnych služieb, výklad relevantných ustanovení nariadení EÚ a otázky compliance, due diligence a prevencie obchádzania sankcií.",
-      "url": "https://www.cak.cz/akce/1321",
-      "oblasti": [
-        "spravni",
-        "finance"
-      ],
-      "oblasti_klic": "9ae28c4ca08f",
-      "detail_pokusy": 1
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Pozvánka na přednášku: Pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Antonína Suma",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [],
+      "cena": "",
+      "anotace": "",
+      "url": "https://www.prf.cuni.cz/aktuality/pozvanka-na-prednasku-pohnute-osudy-osobni-tajemnika-jana-masaryka-judr-antonina-suma",
+      "detail_pokusy": 1,
+      "oblasti": [],
+      "oblasti_klic": "7f01411a872d"
     },
     {
       "id": "15ddae46d4dfe45a3ecf",
@@ -1044,29 +1038,6 @@
       "url": "https://jednotaceskychpravniku.cz/prednasky/pohnute-osudy-osobniho-tajemnika-jana-masaryka-judr-antonina-suma/",
       "oblasti": [],
       "oblasti_klic": "e20df259cbad"
-    },
-    {
-      "id": "c7c4a353a8a970aca67f",
-      "poradatel": "PFUK",
-      "datum": "2026-10-20",
-      "zacatek": "16:00",
-      "konec": "18:00",
-      "nazev": "Pozvánka na přednášku: Pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Antonína Suma",
-      "misto": "Právnická fakulta Univerzity Karlovy, náměstí Curieových 901/7, Staré Město, 110 00 Praha1, 1. patro, dv. č. 117",
-      "forma": "hybridne",
-      "lektori": [
-        "prof. JUDr. Jan Kuklík, DrSc."
-      ],
-      "cena": "zdarma",
-      "anotace": "Přednáška o pohnutých osudech osobního tajemníka Jana Masaryka JUDr. Antonína Suma.",
-      "url": "https://www.prf.cuni.cz/aktuality/pozvanka-na-prednasku-pohnute-osudy-osobniho-tajemnika-jana-masaryka-judr-antonina-suma",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "forma",
-        "misto"
-      ],
-      "oblasti": [],
-      "oblasti_klic": "b12612460d80"
     },
     {
       "id": "7b39a990296e7af75e72",
@@ -1297,7 +1268,7 @@
       "misto": "místnost č. 407",
       "forma": "prezencne",
       "lektori": [
-        "Dr. Marlene Anzenberger"
+        "Marlene Anzenberger"
       ],
       "cena": "zdarma",
       "anotace": "Seminář se zabývá teorií principů Roberta Alexyho a představuje nový pohled na aplikaci principů prostřednictvím trojího způsobu posouzení okolností. Autorka zpochybňuje rigidní oddělení subsumpce a vážení a rozšiřuje možnosti hodnocení právních okolností.",
@@ -1451,7 +1422,7 @@
       "datum": "2026-10-30",
       "zacatek": "",
       "konec": "",
-      "nazev": "Camp Peira 2026 (přihlášky do 11. 10. 2026)",
+      "nazev": "Camp Peira 2026",
       "misto": "",
       "forma": "prezencne",
       "lektori": [],
@@ -1461,10 +1432,9 @@
       "datum_do": "2026-11-01",
       "detail_pokusy": 2,
       "oblasti": [
-        "spravni",
         "mps"
       ],
-      "oblasti_klic": "61711553905f"
+      "oblasti_klic": "192fbcf80b9d"
     },
     {
       "id": "00df13debafc19ec10fd",
