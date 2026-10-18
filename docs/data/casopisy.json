@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-17T04:08:12Z",
+ "generated": "2026-10-18T04:14:29Z",
  "okno_dni": 31,
  "casopisy": [
   {
@@ -372,24 +372,13 @@
    "first_seen": "2026-10-07T05:39:14Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.06",
+   "id": "QMJIP-10.4337/qmjip.2026.03.04",
    "casopis": "qmjip",
-   "nazev": "New pharmaceutical product and patent term extension in China",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.06",
-   "autori": "Weiwei Han",
-   "heslo": "prodloužení patentu v Číně",
-   "shrnuti": "Článek se zabývá systémem prodloužení platnosti patentů na léčiva v Číně v kontextu nedávných legislativních změn z roku 2024. Analýzou prováděcích předpisů a pokynů pro zkoumání patentů přibližuje aktuální vývoj a poskytuje klíčové poznatky pro domácí i zahraniční subjektu usilující o maximalizaci přínosů tohoto systému.",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
-  },
-  {
-   "id": "QMJIP-10.4337/qmjip.2026.03.01",
-   "casopis": "qmjip",
-   "nazev": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.01",
-   "autori": "Martin Senftleben",
-   "heslo": "AI a autorské právo",
-   "shrnuti": "Článek se zabývá otázkou spravedlivé odměny pro tvůrce za použití jejich děl při vývoji generativní AI. Porovnává současný trend individuálního licencování s výhodami kolektivních přístupů zohledňujících výstupy AI. Nakonec hodnotí různé regulační možnosti s ohledem na nutnost spravedlivé odměny a zároveň širokého přístupu k trénovacím datům.",
+   "nazev": "The demise of IPRs through the rise of BBNJ: the small matter of patent disclosure of origin requirements",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.04",
+   "autori": "Tanya Wagenaar",
+   "heslo": "BBNJ a patentová práva",
+   "shrnuti": "Článek se zabývá vlivem nové dohody BBNJ na práva duševního vlastnictví a požadavky na disclosure of origin (DOR) při biotechnologickém využití mořských genetických zdrojů. Ačkoli byly odkazy na duševní vlastnictví z konečného znění dohody postupně odstraněny, nedávno přijatá smlouva WIPO zavádí mezinárodní požadavky DOR. Tyto nové předpisy by mohly ideálně doplnit mechanismy dohody BBNJ a podpořit spravedlivé sdílení přínosů mezi státy.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -405,6 +394,17 @@
    "popis": "Seeing intellectual property in colour\nAutor: Johanna Gibson\nQueen Mary Journal of Intellectual Property"
   },
   {
+   "id": "QMJIP-10.4337/qmjip.2026.03.05",
+   "casopis": "qmjip",
+   "nazev": "Thinking about originality: creativity in legal research",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.05",
+   "autori": "Chris Dent",
+   "heslo": "Originalita právního výzkumu",
+   "shrnuti": "Článek zkoumá kreativitu v akademickém právním výzkumu se zohledněním vlivu umelecké inteligence a poznatků z psychologie. Srovnává doktrinální a socio-právní výzkum s různými pojetími kreativity a dokazuje, že právní výzkum je ve své podstatě kreativní. Závěrem propojuje toto zjištění s konceptem autority a testem originality v současném autorském právu.",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z"
+  },
+  {
    "id": "QMJIP-10.4337/qmjip.2026.03.02",
    "casopis": "qmjip",
    "nazev": "Warhol v Goldsmith and the shrinking canvas of fair use: a comparative critique of artistic expression in US and UK copyright law",
@@ -412,6 +412,17 @@
    "autori": "W Oshada Rodrigo",
    "heslo": "Transformativní užití autorského práva",
    "shrnuti": "Článek srovnává americkou doktrínu fair use a britské výjimky z autorského práva v kontextu nedávného rozhodnutí ve věci Warhol v. Goldsmith a dalších případů. Autor kritizuje zpřísňování pravidel a nadřazování tržní substituce, což omezuje svobodu tvorby, remixovou kulturu i uměleckou inovaci. Jako řešení, které lépe reflektuje současné digitální formy umění, navrhuje nový čtyřkrokový test založený na expresivním pluralismu.",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z"
+  },
+  {
+   "id": "QMJIP-10.4337/qmjip.2026.03.01",
+   "casopis": "qmjip",
+   "nazev": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.01",
+   "autori": "Martin Senftleben",
+   "heslo": "AI a autorské právo",
+   "shrnuti": "Článek se zabývá otázkou spravedlivé odměny pro tvůrce za použití jejich děl při vývoji generativní AI. Porovnává současný trend individuálního licencování s výhodami kolektivních přístupů zohledňujících výstupy AI. Nakonec hodnotí různé regulační možnosti s ohledem na nutnost spravedlivé odměny a zároveň širokého přístupu k trénovacím datům.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -427,24 +438,13 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.05",
+   "id": "QMJIP-10.4337/qmjip.2026.03.06",
    "casopis": "qmjip",
-   "nazev": "Thinking about originality: creativity in legal research",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.05",
-   "autori": "Chris Dent",
-   "heslo": "Originalita právního výzkumu",
-   "shrnuti": "Článek zkoumá kreativitu v akademickém právním výzkumu se zohledněním vlivu umelecké inteligence a poznatků z psychologie. Srovnává doktrinální a socio-právní výzkum s různými pojetími kreativity a dokazuje, že právní výzkum je ve své podstatě kreativní. Závěrem propojuje toto zjištění s konceptem autority a testem originality v současném autorském právu.",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
-  },
-  {
-   "id": "QMJIP-10.4337/qmjip.2026.03.04",
-   "casopis": "qmjip",
-   "nazev": "The demise of IPRs through the rise of BBNJ: the small matter of patent disclosure of origin requirements",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.04",
-   "autori": "Tanya Wagenaar",
-   "heslo": "BBNJ a patentová práva",
-   "shrnuti": "Článek se zabývá vlivem nové dohody BBNJ na práva duševního vlastnictví a požadavky na disclosure of origin (DOR) při biotechnologickém využití mořských genetických zdrojů. Ačkoli byly odkazy na duševní vlastnictví z konečného znění dohody postupně odstraněny, nedávno přijatá smlouva WIPO zavádí mezinárodní požadavky DOR. Tyto nové předpisy by mohly ideálně doplnit mechanismy dohody BBNJ a podpořit spravedlivé sdílení přínosů mezi státy.",
+   "nazev": "New pharmaceutical product and patent term extension in China",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.06",
+   "autori": "Weiwei Han",
+   "heslo": "prodloužení patentu v Číně",
+   "shrnuti": "Článek se zabývá systémem prodloužení platnosti patentů na léčiva v Číně v kontextu nedávných legislativních změn z roku 2024. Analýzou prováděcích předpisů a pokynů pro zkoumání patentů přibližuje aktuální vývoj a poskytuje klíčové poznatky pro domácí i zahraniční subjektu usilující o maximalizaci přínosů tohoto systému.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -841,81 +841,81 @@
    "first_seen": "2026-09-29T05:30:25Z"
   },
   {
-   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/454",
-   "casopis": "jipitec",
-   "nazev": "From National to European – And Back Again: Fixing the Flaws of the New Approach",
-   "url": "https://www.jipitec.eu/jipitec/en/article/view/454",
-   "autori": "Olia Kanevskaia",
-   "heslo": "Harmonizované normy",
-   "shrnuti": "Článek se zabývá problematikou evropského „Nového přístupu“ a zkoumá dvě hlavní výzvy v oblasti transparentnosti: přístup k procesu tvorby norem a přístup k samotným harmonizovaným normám. Poukazuje na to, že do tohoto soukromoprávního procesu jsou občanská společnost a veřejný zájem zapojeny nedostatečně. Autor argumentuje, že řešení těchto evropských problémů závisí na národních institucích a vnitrostátních normalizačních organizacích, jejichž prostřednictvím je nutné zajistit lepší účast a odpovědnost.",
-   "datum": "2026-06-09",
-   "first_seen": "2026-10-17T04:06:24Z"
-  },
-  {
-   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/452",
-   "casopis": "jipitec",
-   "nazev": "Editorial",
-   "url": "https://www.jipitec.eu/jipitec/en/article/view/452",
    "autori": "Annalisa Volpato, Mariolina Eliantonio, Michèle Finck",
+   "casopis": "jipitec",
+   "datum": "2026-06-09",
+   "first_seen": "2026-10-17T04:06:24Z",
    "heslo": "harmonizované normy AI",
+   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/452",
+   "nazev": "Editorial",
    "shrnuti": "Tento úvodník k mimořádnému vydání časopisu JIPITEC se zaměřuje na problematiku harmonizovaných norem v oblasti regulace umelecké inteligence (AI). Článek představuje hlavní témata a příspěvky týkající se sjednocování technických standardů s novým právním rámcem pro AI.",
-   "datum": "2026-06-09",
-   "first_seen": "2026-10-17T04:06:24Z"
+   "url": "https://www.jipitec.eu/jipitec/en/article/view/452"
   },
   {
-   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/455",
-   "casopis": "jipitec",
-   "nazev": "The Politics of Standardising Ethics. The IEEE Initiative and the Governance of AI",
-   "url": "https://www.jipitec.eu/jipitec/en/article/view/455",
-   "autori": "Simone Casiraghi, Niels van Dijk",
-   "heslo": "Etické normy AI",
-   "shrnuti": "Článek zkoumá standardizaci umělé inteligence na příkladu normy IEEE 7000-2021 a její vztah k připravovanému Aktu o AI. Autoři ukazují, že proces standardizace mění etiku v technický inženýrský požadavek, což přináší problémy s reprezentací a vymahatelností. V závěru navrhují oddělení pravomocí mezi tvůrci rizik a hodnotiteli a větší zapojení občanské společnosti.",
-   "datum": "2026-06-09",
-   "first_seen": "2026-10-17T04:06:24Z"
-  },
-  {
-   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/453",
-   "casopis": "jipitec",
-   "nazev": "Decision Problems for Regulatees under the EU AI Act: Contested Values, Uncertain Evidence, and the Limits of Standardisation",
-   "url": "https://www.jipitec.eu/jipitec/en/article/view/453",
    "autori": "Alessio Tartaro, Arvin Obnasca, Enrico Panai",
+   "casopis": "jipitec",
+   "datum": "2026-06-09",
+   "first_seen": "2026-10-17T04:06:24Z",
    "heslo": "EU AI Act a standardizace",
+   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/453",
+   "nazev": "Decision Problems for Regulatees under the EU AI Act: Contested Values, Uncertain Evidence, and the Limits of Standardisation",
    "shrnuti": "Článek se zabývá rozhodovacími problémy subjektů regulovaných aktem EU o umělé inteligenci při naplňování požadavků na vysoce rizikové systémy pomocí harmonizovaných norem. Autor konstatuje, že oblast AI je poznamenána spornými hodnotami a nejistými důkazy, což omezuje schopnost tradiční standardizace poskytnout jednoznačná řešení a ohrožuje efektivitu regulace. Jako řešení se navrhuje doplnit standardizaci procedurálním přístupem v podobě dokumentovaných případů shody, což zvýší auditovatelnost a transparentnost rozhodování.",
-   "datum": "2026-06-09",
-   "first_seen": "2026-10-17T04:06:24Z"
+   "url": "https://www.jipitec.eu/jipitec/en/article/view/453"
   },
   {
-   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/458",
+   "autori": "Olia Kanevskaia",
    "casopis": "jipitec",
-   "nazev": "Harmonising Consensus: The (Geo)political Economy of Standardisation in the AI Act",
-   "url": "https://www.jipitec.eu/jipitec/en/article/view/458",
-   "autori": "Marta Cantero Gamito",
-   "heslo": "Standardizace AI aktu",
-   "shrnuti": "Článek zkoumá vliv geopolitických dynamik na standardizaci umělé inteligence se zaměřením na evropský akt o AI. Analýza ukazuje, že spoléhání na technické normy přináší strukturální zranitelnosti a omezuje schopnost EU prosazovat její normativní vliv globálně. Závěry poukazují na propast mezi regulatorními ambicemi EU a realitou mezinárodního ekosystému standardizace, což ohrožuje dlouhodobou soudržnost a vliv této regulace.",
    "datum": "2026-06-09",
-   "first_seen": "2026-10-17T04:06:24Z"
+   "first_seen": "2026-10-17T04:06:24Z",
+   "heslo": "Harmonizované normy",
+   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/454",
+   "nazev": "From National to European – And Back Again: Fixing the Flaws of the New Approach",
+   "shrnuti": "Článek se zabývá problematikou evropského „Nového přístupu“ a zkoumá dvě hlavní výzvy v oblasti transparentnosti: přístup k procesu tvorby norem a přístup k samotným harmonizovaným normám. Poukazuje na to, že do tohoto soukromoprávního procesu jsou občanská společnost a veřejný zájem zapojeny nedostatečně. Autor argumentuje, že řešení těchto evropských problémů závisí na národních institucích a vnitrostátních normalizačních organizacích, jejichž prostřednictvím je nutné zajistit lepší účast a odpovědnost.",
+   "url": "https://www.jipitec.eu/jipitec/en/article/view/454"
   },
   {
-   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/456",
+   "autori": "Simone Casiraghi, Niels van Dijk",
    "casopis": "jipitec",
-   "nazev": "The Role of the European Commission in the Control of Harmonised Standards Under the AI Act and the Challenges of “Opacity”",
-   "url": "https://www.jipitec.eu/jipitec/en/article/view/456",
+   "datum": "2026-06-09",
+   "first_seen": "2026-10-17T04:06:24Z",
+   "heslo": "Etické normy AI",
+   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/455",
+   "nazev": "The Politics of Standardising Ethics. The IEEE Initiative and the Governance of AI",
+   "shrnuti": "Článek zkoumá standardizaci umělé inteligence na příkladu normy IEEE 7000-2021 a její vztah k připravovanému Aktu o AI. Autoři ukazují, že proces standardizace mění etiku v technický inženýrský požadavek, což přináší problémy s reprezentací a vymahatelností. V závěru navrhují oddělení pravomocí mezi tvůrci rizik a hodnotiteli a větší zapojení občanské společnosti.",
+   "url": "https://www.jipitec.eu/jipitec/en/article/view/455"
+  },
+  {
    "autori": "Mariolina Eliantonio",
-   "heslo": "Harmonizované normy AI Act",
-   "shrnuti": "Článek se zabývá rolí Evropské komize při kontrole harmonizovaných norem vytvářených pro účely aktu o umele inteligenci (AI Act). Analyzuje napětí mezi normotvornou činností soukromých subjektů a ochranou základních lidských práv. Závěrem varuje před nedostatečnou kontrolou ze strany Komise a zdůrazňuje nutnost důkladného přezkumu norem s ohledem na legitimitu unijního právního řádu.",
+   "casopis": "jipitec",
    "datum": "2026-06-09",
-   "first_seen": "2026-10-17T04:06:24Z"
+   "first_seen": "2026-10-17T04:06:24Z",
+   "heslo": "Harmonizované normy AI Act",
+   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/456",
+   "nazev": "The Role of the European Commission in the Control of Harmonised Standards Under the AI Act and the Challenges of “Opacity”",
+   "shrnuti": "Článek se zabývá rolí Evropské komize při kontrole harmonizovaných norem vytvářených pro účely aktu o umele inteligenci (AI Act). Analyzuje napětí mezi normotvornou činností soukromých subjektů a ochranou základních lidských práv. Závěrem varuje před nedostatečnou kontrolou ze strany Komise a zdůrazňuje nutnost důkladného přezkumu norem s ohledem na legitimitu unijního právního řádu.",
+   "url": "https://www.jipitec.eu/jipitec/en/article/view/456"
   },
   {
-   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/457",
-   "casopis": "jipitec",
-   "nazev": "Trustworthy AI Through Standards? The Role and the Implications of Harmonised Standards for Fundamental Rights Protection in the AI Act",
-   "url": "https://www.jipitec.eu/jipitec/en/article/view/457",
    "autori": "Elvira M.R. Oliva",
-   "heslo": "Harmonizované normy v AI Act",
-   "shrnuti": "Článek zkoumá roli harmonizovaných technických norem při ochraně základních práv v kontextu aktu o umelecké inteligenci (AI Act) a domněnky shody pro vysoce rizikové systémy. Analyzuje delegování pravomocí na evropské normalizační organizace a jejich schopnost řešit rizika týkající se základních práv. Autor dochází k závěru, že harmonizované normy jsou strukturálně nevhodné k zajištění účinné ochrany základních práv před riziky spojenými s AI.",
+   "casopis": "jipitec",
    "datum": "2026-06-09",
-   "first_seen": "2026-10-17T04:06:24Z"
+   "first_seen": "2026-10-17T04:06:24Z",
+   "heslo": "Harmonizované normy v AI Act",
+   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/457",
+   "nazev": "Trustworthy AI Through Standards? The Role and the Implications of Harmonised Standards for Fundamental Rights Protection in the AI Act",
+   "shrnuti": "Článek zkoumá roli harmonizovaných technických norem při ochraně základních práv v kontextu aktu o umelecké inteligenci (AI Act) a domněnky shody pro vysoce rizikové systémy. Analyzuje delegování pravomocí na evropské normalizační organizace a jejich schopnost řešit rizika týkající se základních práv. Autor dochází k závěru, že harmonizované normy jsou strukturálně nevhodné k zajištění účinné ochrany základních práv před riziky spojenými s AI.",
+   "url": "https://www.jipitec.eu/jipitec/en/article/view/457"
+  },
+  {
+   "autori": "Marta Cantero Gamito",
+   "casopis": "jipitec",
+   "datum": "2026-06-09",
+   "first_seen": "2026-10-17T04:06:24Z",
+   "heslo": "Standardizace AI aktu",
+   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/458",
+   "nazev": "Harmonising Consensus: The (Geo)political Economy of Standardisation in the AI Act",
+   "shrnuti": "Článek zkoumá vliv geopolitických dynamik na standardizaci umělé inteligence se zaměřením na evropský akt o AI. Analýza ukazuje, že spoléhání na technické normy přináší strukturální zranitelnosti a omezuje schopnost EU prosazovat její normativní vliv globálně. Závěry poukazují na propast mezi regulatorními ambicemi EU a realitou mezinárodního ekosystému standardizace, což ohrožuje dlouhodobou soudržnost a vliv této regulace.",
+   "url": "https://www.jipitec.eu/jipitec/en/article/view/458"
   },
   {
    "id": "JWIP-10.1111/jwip.70028",
@@ -1247,70 +1247,70 @@
    "first_seen": "2026-09-29T05:30:25Z"
   },
   {
-   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/447",
-   "casopis": "jipitec",
-   "nazev": "EU Copyright Law, Artificial Intelligence and ‘Transformative Use’ of Works: The Case of 3D Reconstruction",
-   "url": "https://www.jipitec.eu/jipitec/en/article/view/447",
    "autori": "Theodoros Chiou, Leander Stähler",
-   "heslo": "AI a autorské právo",
-   "shrnuti": "Článek se zabývá autorskoprávními dopady umělé inteligence, konkrétně technikami 3D rekonstrukce, které generují 3D vizuální obsah z 2D vstupů podle unijního práva. Analýza se zaměřuje na reprodukční právo, zákonné výjimky a otázku, zda lze výstupy považovat za odvozená díla či takzvané transformativní užití. Závěry naznačují určité scénáře, za nichž trénink a implementace těchto technologií nemusí představovat porušení autorských práv.",
+   "casopis": "jipitec",
    "datum": "2026-01-06",
-   "first_seen": "2026-10-17T04:06:24Z"
+   "first_seen": "2026-10-17T04:06:24Z",
+   "heslo": "AI a autorské právo",
+   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/447",
+   "nazev": "EU Copyright Law, Artificial Intelligence and ‘Transformative Use’ of Works: The Case of 3D Reconstruction",
+   "shrnuti": "Článek se zabývá autorskoprávními dopady umělé inteligence, konkrétně technikami 3D rekonstrukce, které generují 3D vizuální obsah z 2D vstupů podle unijního práva. Analýza se zaměřuje na reprodukční právo, zákonné výjimky a otázku, zda lze výstupy považovat za odvozená díla či takzvané transformativní užití. Závěry naznačují určité scénáře, za nichž trénink a implementace těchto technologií nemusí představovat porušení autorských práv.",
+   "url": "https://www.jipitec.eu/jipitec/en/article/view/447"
   },
   {
-   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/446",
-   "casopis": "jipitec",
-   "nazev": "Public or Private Communication? Categorising WhatsApp’s and Telegram’s Group Chat and Channel Functionalities under the DSA",
-   "url": "https://www.jipitec.eu/jipitec/en/article/view/446",
-   "autori": "Sarah Eskens",
-   "heslo": "Akt o digitálních službách",
-   "shrnuti": "Článek se zabývá právní klasifikací skupinových chatů a kanálů aplikací WhatsApp a Telegram podle Aktu o digitálních službách (DSA). Autor analyzuje, zda tyto funkce představují síťový přenos, caching či hosting, a zda spadají do kategorie online platforem. Závěrem upozorňuje na mezeru v DSA, neboť některé poloveřejné soukromé chaty mohou způsobovat veřejné škody, aniž by podléhaly přísnějším povinnostem platforem.",
-   "datum": "2025-12-22",
-   "first_seen": "2026-10-17T04:06:24Z"
-  },
-  {
-   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/450",
-   "casopis": "jipitec",
-   "nazev": "Lawfulness Requirements to the Storage of Customer Data in the Digital Product Passport",
-   "url": "https://www.jipitec.eu/jipitec/en/article/view/450",
-   "autori": "Diogo Sasdelli, Thomas J. Lampoltshammer",
-   "heslo": "Digitální pas produktu",
-   "shrnuti": "Článek se zabývá právními požadavky na uchovávání zákaznických údajů v rámci Digitálního pasu produktu (DPP) zavedeného nařízením o ekodesignu (ESPR). Analyticky se zaměřuje na výklad pojmů „výslovný souhlas“ a „zákazník“ a na otázku sankcí v případě porušení předpisů s ohledem na zásadu ne bis in idem. Studie na závěr předkládá konkrétní řešení pro identifikované právní výzvy.",
-   "datum": "2025-12-22",
-   "first_seen": "2026-10-17T04:06:24Z"
-  },
-  {
-   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/448",
-   "casopis": "jipitec",
-   "nazev": "Portraits as Trademarks: A Doctrinal and Practical Analysis of EUIPO Case Law on Facial Image Signs",
-   "url": "https://www.jipitec.eu/jipitec/en/article/view/448",
-   "autori": "Barna Arnold Keserű",
-   "heslo": "Portréty jako ochranné známky",
-   "shrnuti": "Článek zkoumá způsobilost fotorealistických lidských obličejů sloužit jako platné ochranné známky Evropské unie s důrazem na rozhodovací praxi úřadu EUIPO a judikaturu. Analýza hodnotí rozlišovací způsobilost, meze ochrany a střet osobnostních práv s komerčním původem. Závěry ukazují, že ačkoliv jsou tyto známky postupně přijímány, jejich registrace přináší teoretické a praktické výzvy vyžadující pečlivé právní posouzení.",
-   "datum": "2025-12-22",
-   "first_seen": "2026-10-17T04:06:24Z"
-  },
-  {
-   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/445",
-   "casopis": "jipitec",
-   "nazev": "Individual Rights in the AI Act - The Rights to Lodge a Complaint and to Explanation of the Decision-Making Process in Individual Cases",
-   "url": "https://www.jipitec.eu/jipitec/en/article/view/445",
-   "autori": "Gerrit Hornung, Hendrik Link",
-   "heslo": "Práva v AI Actu",
-   "shrnuti": "Článek se zabývá dvěma novými individuálními právy zavedenými v konečném znění aktu o umělé inteligenci (AI Act), konkrétně právem podat stížnost a právem na vysvětlení rozhodnutí. Autor vítá posílení ochrany základních práv, zároveň však upozorňuje, že jejich konkrétní implementace vyvolává nové otázky ve vztahu k vnitřnímu systému AI Actu a nařízení GDPR.",
-   "datum": "2025-12-22",
-   "first_seen": "2026-10-17T04:06:24Z"
-  },
-  {
-   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/444",
-   "casopis": "jipitec",
-   "nazev": "Editorial",
-   "url": "https://www.jipitec.eu/jipitec/en/article/view/444",
    "autori": "Karin Sein",
-   "heslo": "Editorial JIPITEC",
-   "shrnuti": "Tento text představuje úvodník (editorial) třetího vydání šestnáctého ročníku odborného časopisu JIPITEC, jehož autorkou je Karin Sein. Článek uvádí jednotlivé příspěvky a tematicky zaštiťuje obsah tohoto čísla zaměřeného na právo informačních technologií.",
+   "casopis": "jipitec",
    "datum": "2025-12-22",
-   "first_seen": "2026-10-17T04:06:24Z"
+   "first_seen": "2026-10-17T04:06:24Z",
+   "heslo": "Editorial JIPITEC",
+   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/444",
+   "nazev": "Editorial",
+   "shrnuti": "Tento text představuje úvodník (editorial) třetího vydání šestnáctého ročníku odborného časopisu JIPITEC, jehož autorkou je Karin Sein. Článek uvádí jednotlivé příspěvky a tematicky zaštiťuje obsah tohoto čísla zaměřeného na právo informačních technologií.",
+   "url": "https://www.jipitec.eu/jipitec/en/article/view/444"
+  },
+  {
+   "autori": "Gerrit Hornung, Hendrik Link",
+   "casopis": "jipitec",
+   "datum": "2025-12-22",
+   "first_seen": "2026-10-17T04:06:24Z",
+   "heslo": "Práva v AI Actu",
+   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/445",
+   "nazev": "Individual Rights in the AI Act - The Rights to Lodge a Complaint and to Explanation of the Decision-Making Process in Individual Cases",
+   "shrnuti": "Článek se zabývá dvěma novými individuálními právy zavedenými v konečném znění aktu o umělé inteligenci (AI Act), konkrétně právem podat stížnost a právem na vysvětlení rozhodnutí. Autor vítá posílení ochrany základních práv, zároveň však upozorňuje, že jejich konkrétní implementace vyvolává nové otázky ve vztahu k vnitřnímu systému AI Actu a nařízení GDPR.",
+   "url": "https://www.jipitec.eu/jipitec/en/article/view/445"
+  },
+  {
+   "autori": "Sarah Eskens",
+   "casopis": "jipitec",
+   "datum": "2025-12-22",
+   "first_seen": "2026-10-17T04:06:24Z",
+   "heslo": "Akt o digitálních službách",
+   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/446",
+   "nazev": "Public or Private Communication? Categorising WhatsApp’s and Telegram’s Group Chat and Channel Functionalities under the DSA",
+   "shrnuti": "Článek se zabývá právní klasifikací skupinových chatů a kanálů aplikací WhatsApp a Telegram podle Aktu o digitálních službách (DSA). Autor analyzuje, zda tyto funkce představují síťový přenos, caching či hosting, a zda spadají do kategorie online platforem. Závěrem upozorňuje na mezeru v DSA, neboť některé poloveřejné soukromé chaty mohou způsobovat veřejné škody, aniž by podléhaly přísnějším povinnostem platforem.",
+   "url": "https://www.jipitec.eu/jipitec/en/article/view/446"
+  },
+  {
+   "autori": "Barna Arnold Keserű",
+   "casopis": "jipitec",
+   "datum": "2025-12-22",
+   "first_seen": "2026-10-17T04:06:24Z",
+   "heslo": "Portréty jako ochranné známky",
+   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/448",
+   "nazev": "Portraits as Trademarks: A Doctrinal and Practical Analysis of EUIPO Case Law on Facial Image Signs",
+   "shrnuti": "Článek zkoumá způsobilost fotorealistických lidských obličejů sloužit jako platné ochranné známky Evropské unie s důrazem na rozhodovací praxi úřadu EUIPO a judikaturu. Analýza hodnotí rozlišovací způsobilost, meze ochrany a střet osobnostních práv s komerčním původem. Závěry ukazují, že ačkoliv jsou tyto známky postupně přijímány, jejich registrace přináší teoretické a praktické výzvy vyžadující pečlivé právní posouzení.",
+   "url": "https://www.jipitec.eu/jipitec/en/article/view/448"
+  },
+  {
+   "autori": "Diogo Sasdelli, Thomas J. Lampoltshammer",
+   "casopis": "jipitec",
+   "datum": "2025-12-22",
+   "first_seen": "2026-10-17T04:06:24Z",
+   "heslo": "Digitální pas produktu",
+   "id": "JIPITEC-https://www.jipitec.eu/jipitec/en/article/view/450",
+   "nazev": "Lawfulness Requirements to the Storage of Customer Data in the Digital Product Passport",
+   "shrnuti": "Článek se zabývá právními požadavky na uchovávání zákaznických údajů v rámci Digitálního pasu produktu (DPP) zavedeného nařízením o ekodesignu (ESPR). Analyticky se zaměřuje na výklad pojmů „výslovný souhlas“ a „zákazník“ a na otázku sankcí v případě porušení předpisů s ohledem na zásadu ne bis in idem. Studie na závěr předkládá konkrétní řešení pro identifikované právní výzvy.",
+   "url": "https://www.jipitec.eu/jipitec/en/article/view/450"
   }
  ]
 }

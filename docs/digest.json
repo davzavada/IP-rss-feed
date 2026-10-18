@@ -1,15 +1,15 @@
 {
-  "generated": "2026-10-17T04:08:29.561139+00:00",
+  "generated": "2026-10-18T04:14:50.930993+00:00",
   "from": "2026-09-01",
   "to": "2026-09-30",
-  "total": 82,
-  "covered": 15,
+  "total": 74,
+  "covered": 14,
   "cekajici": 2,
-  "intro": "Uplynulý měsíc přinesl řadu rozhodnutí unijních soudů v oblasti ochranných známek, která zpřesňují posuzování rozlišovací způsobilosti a pravděpodobnosti záměny. Pozornost byla věnována také průniku duševního vlastnictví a IT s umělou inteligencí, ochranou osobních údajů a smluvním právem.",
+  "intro": "Uplynulý měsíc přinesl řadu zajímavých judikátů i odborných pohledů se zaměřením na ochranné známky, digitální služby a umělou inteligenci. Soudní dvůr EU, vnitrostátní soudy i odborná literatura se intenzivně zabývali nejen posuzováním pravděpodobnosti záměny označení, ale také aktuálními výzvami v oblasti autorského práva, ochrany soukromí a technologií AI.",
   "blocks": [
     {
-      "title": "Posuzování pravděpodobnosti záměny známek",
-      "text": "Tribunál EU a Nejvyšší správní soud potvrdily, že při hodnocení pravděpodobnosti záměny je nutné zohlednit stupeň podobnosti označení i celkovou rozlišovací způsobilost. Soudy v konkrétních případech shodně dovodily existenci záměny u slovních či obrazových prvků s průměrnou podobností, zatímco nízká podobnost a vysoká pozornost veřejnosti propojení známek vylučují. Pro praxi to znamená nutnost pečlivě analyzovat kontext a rozlišovací způsobilost starších práv při rešersších.",
+      "title": "Pravděpodobnost záměny známek",
+      "text": "Soudní dvůr EU a Nejvyšší správní soud se v nedávných rozhodnutích zabývaly posuzováním pravděpodobnosti záměny mezi ochrannými známkami. Ukázalo se, že nízký stupeň podobnosti označení spolu s vysokou pozorností veřejnosti mohou spolehlivě vyloučit existenci nebezpečí záměny či propojení značek. Pro praxi to znamená nutnost pečlivě vyhodnocovat vizuální, fonetickou i sémantickou stránku přihlašovaných označení.",
       "sources": [
         {
           "src": "sdeu",
@@ -17,6 +17,13 @@
           "tag": "",
           "title": "T-409/25 – Bitmain Technologies v. EUIPO - Advanced New Technologies (ANTMINER)",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0409"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-232/25 – Deva v. EUIPO - Novartis (Devatis)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0232"
         },
         {
           "src": "sdeu",
@@ -31,46 +38,39 @@
           "tag": "",
           "title": "9 As 8/2026-69",
           "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785485"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-467/25 – Absara Industrial v. EUIPO - Hansgrohe (KROMAT)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0467"
         }
       ]
     },
     {
-      "title": "Ochranné známky a popisnost",
-      "text": "Tribunál EU se zabýval absolutními důvody pro zamítnutí zápisu ochranných známek z důvodu jejich popisnosti. Potvrdil, že označení přímo popisující vlastnosti nebo účel výrobků, stejně jako banální propagační sdělení postrádající rozlišovací způsobilost, nelze zapsat. Pro praxi jde o jasné vymezení hranic pro volbu marketingových sloganů a popisných názvů produktů.",
+      "title": "Ochrana osobních údajů",
+      "text": "Soudní dvůr EU a generální advokát se zaměřili na přísné posuzování souhlasu se zpracováním osobních údajů pro účely marketingu či klasifikaci biometrik. Ukazuje se, že paušální souhlas s předáním údajů neurčitým partnerům nebo nejasné uchovávání IP adres a fotografií neobstojí. Pro správce dat to představuje povinnost zajistit transparentní a specifický souhlas předem.",
       "sources": [
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "T-890/25 – Fitmart v. EUIPO (ULTRAPURE)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0890"
+          "title": "C-660/26 – International Card Services",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0660"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "“Data Collection Under HADOPI Law” – Decision of the Council of State of France (Conseil d’ètat) 30 April 2026 – Case No. 433539",
+          "link": "https://doi.org/10.1007/s40319-026-01771-0"
         },
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "T-827/25 – Cobra Golf v. EUIPO (ULTRADRY)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0827"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-509/25 – Société des produits Nestlé v. EUIPO - European Food (FITNESS)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0509"
+          "title": "C-317/25 – Groupe Canal +",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0317"
         }
       ]
     },
     {
-      "title": "Umělá inteligence a autorství",
-      "text": "Odborná literatura a analýzy se zaměřily na výzvy spojené s generativní umělou inteligencí v oblasti patentů a autorského práva. Diskutuje se zejména otázka lidského přispění nutného pro vznik ochrany a zavádění specifických sui generis práv pro negenerativní objekty. Pro praxi to představuje rostoucí potřebu řešit vlastnická práva k výtvorům generovaným AI.",
+      "title": "Umělá inteligence a právo",
+      "text": "Odborná literatura přinesla hlubší pohled na regulaci výtvorů generovaných umělou inteligencí a problematiku autorství či odměňování. Diskutuje se otázka sui generis práv k neoriginálním objektům z AI i hranice lidského přispění nutného pro autorskoprávní ochranu. Tyto trendy naznačují budoucí nutnost adaptace stávajícího právního rámce na technologickou realitu.",
       "sources": [
         {
           "src": "journals",
@@ -110,32 +110,25 @@
       ]
     },
     {
-      "title": "Ochrana osobních údajů a GDPR",
-      "text": "Generální advokát a soudní orgány řešily otázky zpracování biometrických údajů, fotografií a plošného uchovávání IP adres. Klíčovým závěrem je požadavek na specifický a informovaný souhlas pro marketingové účely a přísné limity pro přístup k údajům. Pro IT a online platformy to znamená nutnost revidovat postupy při získávání souhlasů uživatelů.",
+      "title": "Smluvní vztahy a IT",
+      "text": "V oblasti IT a digitálních služeb se soudy vymezovaly vůči povaze některých smluv a transakčních otázek. Například smlouvy o přístupu k mobilním sítím byly jednoznačně identifikovány jako soukromoprávní, jejichž přezkum náleží občanským soudům. Zjištění přinášejí větší jistotu při určování příslušnosti orgánů pro řešení telekomunikačních sporů.",
       "sources": [
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "C-660/26 – International Card Services",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0660"
+          "title": "C-176/25 – Steizer",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0176"
         },
         {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "“Data Collection Under HADOPI Law” – Decision of the Council of State of France (Conseil d’ètat) 30 April 2026 – Case No. 433539",
-          "link": "https://doi.org/10.1007/s40319-026-01771-0"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
+          "src": "nss",
+          "label": "NSS",
           "tag": "",
-          "title": "C-317/25 – Groupe Canal +",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0317"
+          "title": "9 As 21/2026-65",
+          "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785612"
         }
       ]
     }
   ],
-  "input_hash": "e8a701e0a615f72b6e093db5677aecbee0818c5cf6dec2af564a9660b754b00f"
+  "input_hash": "ab4e9e6c4752b424674d680a7b54ebefb942d52af85466d2d59ac0cc2be910ae"
 }
