@@ -1,15 +1,15 @@
 {
-  "generated": "2026-10-18T04:14:50.930993+00:00",
+  "generated": "2026-10-19T04:24:10.604337+00:00",
   "from": "2026-09-01",
   "to": "2026-09-30",
-  "total": 74,
-  "covered": 14,
+  "total": 73,
+  "covered": 15,
   "cekajici": 2,
-  "intro": "Uplynulý měsíc přinesl řadu zajímavých judikátů i odborných pohledů se zaměřením na ochranné známky, digitální služby a umělou inteligenci. Soudní dvůr EU, vnitrostátní soudy i odborná literatura se intenzivně zabývali nejen posuzováním pravděpodobnosti záměny označení, ale také aktuálními výzvami v oblasti autorského práva, ochrany soukromí a technologií AI.",
+  "intro": "Uplynulý měsíc přinesl řadu významných rozhodnutí i odborných analýz v oblasti duševního vlastnictví a IT, se zvláštním důrazem na pravidla ochranných známek, regulaci umělé inteligence a ochranu osobních údajů. Soudní dvůr EU, vnitrostátní soudy i odborná literatura se zaměřily na posuzování pravděpodobnosti záměny označení, kolizní normy v autorském právu a aktuální výzvy spojené s digitálními technologiemi.",
   "blocks": [
     {
-      "title": "Pravděpodobnost záměny známek",
-      "text": "Soudní dvůr EU a Nejvyšší správní soud se v nedávných rozhodnutích zabývaly posuzováním pravděpodobnosti záměny mezi ochrannými známkami. Ukázalo se, že nízký stupeň podobnosti označení spolu s vysokou pozorností veřejnosti mohou spolehlivě vyloučit existenci nebezpečí záměny či propojení značek. Pro praxi to znamená nutnost pečlivě vyhodnocovat vizuální, fonetickou i sémantickou stránku přihlašovaných označení.",
+      "title": "Posouzení záměny ochranných známek",
+      "text": "Soudní dvůr EU a vnitrostátní soudy se v několika případech zabývaly otázkou pravděpodobnosti záměny ochranných známek a konstatovaly, že nízký stupeň podobnosti označení ve spojení s vysokou pozorností veřejnosti vylučuje jejich propojení. Nejvyšší správní soud rovněž potvrdil existenci záměny u sporných slovních označení z hlediska sémantického, fonetického i vizuálního. Pro praxi to znamená nutnost pečlivého testování rozlišovací způsobilosti při rešersích před přihlášením známky.",
       "sources": [
         {
           "src": "sdeu",
@@ -42,35 +42,8 @@
       ]
     },
     {
-      "title": "Ochrana osobních údajů",
-      "text": "Soudní dvůr EU a generální advokát se zaměřili na přísné posuzování souhlasu se zpracováním osobních údajů pro účely marketingu či klasifikaci biometrik. Ukazuje se, že paušální souhlas s předáním údajů neurčitým partnerům nebo nejasné uchovávání IP adres a fotografií neobstojí. Pro správce dat to představuje povinnost zajistit transparentní a specifický souhlas předem.",
-      "sources": [
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "C-660/26 – International Card Services",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0660"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "“Data Collection Under HADOPI Law” – Decision of the Council of State of France (Conseil d’ètat) 30 April 2026 – Case No. 433539",
-          "link": "https://doi.org/10.1007/s40319-026-01771-0"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "C-317/25 – Groupe Canal +",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0317"
-        }
-      ]
-    },
-    {
-      "title": "Umělá inteligence a právo",
-      "text": "Odborná literatura přinesla hlubší pohled na regulaci výtvorů generovaných umělou inteligencí a problematiku autorství či odměňování. Diskutuje se otázka sui generis práv k neoriginálním objektům z AI i hranice lidského přispění nutného pro autorskoprávní ochranu. Tyto trendy naznačují budoucí nutnost adaptace stávajícího právního rámce na technologickou realitu.",
+      "title": "AI a otázky duševního vlastnictví",
+      "text": "Odborná literatura a analýzy se intenzivně věnovaly výzvám, které přináší generativní umělá inteligence do autorského a patentového práva. Diskutována byla zejména otázka určení původcovství u výtvorů generovaných AI, potřeba spravedlivých mechanismů odměňování autorů a kompatibilita národních sui generis práv s právem EU. Pro praxi tyto závěry ukazují na rostoucí tlak na legislativní úpravu a nutnost sledovat mezinárodní trendy v oblasti GenAI.",
       "sources": [
         {
           "src": "journals",
@@ -110,8 +83,35 @@
       ]
     },
     {
-      "title": "Smluvní vztahy a IT",
-      "text": "V oblasti IT a digitálních služeb se soudy vymezovaly vůči povaze některých smluv a transakčních otázek. Například smlouvy o přístupu k mobilním sítím byly jednoznačně identifikovány jako soukromoprávní, jejichž přezkum náleží občanským soudům. Zjištění přinášejí větší jistotu při určování příslušnosti orgánů pro řešení telekomunikačních sporů.",
+      "title": "Ochrana osobních údajů a IP adresy",
+      "text": "Zahraniční soudní praxe a předběžné otázky se dotkly citlivých témat zpracování biometrických údajů a plošného uchovávání IP adres. Francouzská Státní rada například konstatovala nezákonnost plošného uchovávání IP adres bez dostatečných záruk odděleného uchovávání a soudního schválení. Pro oblast IT a compliance jde o zásadní připomínku přísných požadavků na proporcionalitu a ochranu soukromí při zpracování digitálních stop uživatelů.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "C-660/26 – International Card Services",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0660"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "Conditions for Retaining Personal Data by Electronic Communications Operators",
+          "link": "https://doi.org/10.1093/grurint/ikag089"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "“Data Collection Under HADOPI Law” – Decision of the Council of State of France (Conseil d’ètat) 30 April 2026 – Case No. 433539",
+          "link": "https://doi.org/10.1007/s40319-026-01771-0"
+        }
+      ]
+    },
+    {
+      "title": "Rozhodné právo pro autorská práva",
+      "text": "Soudní dvůr EU řešil otázku, zda se formální platnost smlouvy o postoupení autorských práv řídí nařízením Řím I pro smluvní závazky, nebo nařízením Řím II. Soud rozhodl, že tato problematika spadá do oblasti smluvních vztahů, a uplatní se tak nařízení Řím I. Toto rozhraničení přináší větší právní jistotu pro smluvní praxi a přeshraniční transakce s autorskými právy.",
       "sources": [
         {
           "src": "sdeu",
@@ -119,6 +119,19 @@
           "tag": "",
           "title": "C-176/25 – Steizer",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0176"
+        }
+      ]
+    },
+    {
+      "title": "Digitální služby a elektronické platby",
+      "text": "Vnitrostátní soudy řešily specifické právní otázky v oblasti IT a digitálního prostředí, včetně právní povahy smluv o přístupu k mobilním sítím či trestněprávní kvalifikace zneužití elektronického platebního příkazu. Nejvyšší soud potvrdil, že odeslání platebního příkazu po překonání autentizačních prvků naplňuje znaky padělání platebního prostředku. Tyto závěry poskytují důležitý výkladový rámec pro zajištění bezpečnosti digitálních transakcí a elektronických služeb.",
+      "sources": [
+        {
+          "src": "nsoud",
+          "label": "NS",
+          "tag": "",
+          "title": "8 Tdo 705/2026",
+          "link": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/7C94DBFF844179E6C1258E76004D432A?openDocument"
         },
         {
           "src": "nss",
@@ -130,5 +143,5 @@
       ]
     }
   ],
-  "input_hash": "ab4e9e6c4752b424674d680a7b54ebefb942d52af85466d2d59ac0cc2be910ae"
+  "input_hash": "13213921b0e3d18ffe3365aa3b6084282ac88d1a08876404369ae39a6aff0470"
 }

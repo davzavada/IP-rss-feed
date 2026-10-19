@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-18T04:14:50+00:00",
+  "generated": "2026-10-19T04:24:10+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 30,
-      "stazeno": "2026-10-18T04:14:35+00:00",
+      "stazeno": "2026-10-19T04:23:54+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,7 +18,7 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 9,
-      "stazeno": "2026-10-18T04:14:36+00:00",
+      "stazeno": "2026-10-19T04:23:55+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "832c8a6d5e8d50f9"
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-10-18T04:14:40+00:00",
+      "stazeno": "2026-10-19T04:24:00+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "2dfa5ada6580b72e"
+      "otisk": "c68917b981ef2c03"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 2,
-      "stazeno": "2026-10-18T04:14:42+00:00",
+      "stazeno": "2026-10-19T04:24:01+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "791ee633882cb34d"
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 7,
-      "stazeno": "2026-10-18T04:14:42+00:00",
+      "stazeno": "2026-10-19T04:24:02+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "d11aa97d850abcf0"
@@ -1177,34 +1177,6 @@
       "oblasti_klic": "572798c73375"
     },
     {
-      "id": "dcdbd7183ab3f08eefd4",
-      "poradatel": "EPRAVO",
-      "datum": "2026-10-22",
-      "zacatek": "17:00",
-      "konec": "19:00",
-      "nazev": "Diskuzní čtvrtek nad trestním právem",
-      "misto": "online",
-      "forma": "online",
-      "lektori": [
-        "Jakub Drápal",
-        "Pavla Augustinová",
-        "Vladimír Hackl",
-        "Filip Seifert",
-        "Tomáš Gřivna"
-      ],
-      "cena": "zdarma",
-      "anotace": "Bezplatné online živé vysílání zaměřené na aktuální otázky z oblasti trestního práva.",
-      "url": "https://www.epravo.cz/top/aktualne/pozvanka-zdarma-diskuzni-ctvrtek-nad-trestnim-pravem-online-zive-vysilani-22102026-121736.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "trestni"
-      ],
-      "oblasti_klic": "5e1e2aba34cf"
-    },
-    {
       "id": "31e09294502cdf11a350",
       "poradatel": "EPRAVO",
       "datum": "2026-10-23",
@@ -1727,6 +1699,37 @@
       ],
       "oblasti_klic": "f1d7aa8dc04c",
       "detail_pokusy": 2
+    },
+    {
+      "id": "fe409db7cfa3af11afc0",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-18",
+      "zacatek": "09:00",
+      "konec": "15:30",
+      "nazev": "TaxForum daňové a účetní novinky pro rok 2027",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "Jan Kotala",
+        "Michal Škrabiš",
+        "Lukáš Eisenwort",
+        "Miroslav Skopec",
+        "Jan Tecl",
+        "Radim Hanák",
+        "Marie Eim",
+        "Jakub Beran"
+      ],
+      "cena": "zdarma",
+      "anotace": "Online konference zaměřená na daňové a účetní novinky pro rok 2027 ve spolupráci s EKP Advisory.",
+      "url": "https://www.epravo.cz/top/aktualne/pozvanka-taxforum-danove-a-ucetni-novinky-pro-rok-2027-online-zive-vysilani-18112026-registrace-zdarma-121763.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "dane"
+      ],
+      "oblasti_klic": "ee55074c706e"
     },
     {
       "id": "2265fad160f5006426f5",
