@@ -1,8 +1,386 @@
 {
- "generated": "2026-10-19T03:14:08Z",
+ "generated": "2026-10-20T03:22:51Z",
  "soud": "nss",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "nss:786541",
+   "spz": "21 As 153/2026-16",
+   "ecli": "ECLI:CZ:NSS:2026:21.As.153.2026.16",
+   "druh": "usnesení",
+   "senat": 21,
+   "rejstrik": "As",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-20T03:22:51Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786541",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786541",
+   "soudce": "Faisal Husseini",
+   "heslo": "Zastavení řízení o kasační stížnosti pro její zpětvzetí",
+   "shrnuti": "Krajské ředitelství policie hlavního města Prahy podalo kasační stížnost proti rozsudku Městského soudu v Praze, avšak ji následně vzalo zpět. Nejvyšší správní soud se zabýval procesním následkem tohoto zpětvzetí a řízení zastavil. Jelikož byla kasační stížnost vzata zpět v plném rozsahu, soud řízení zastavil podle § 47 písm. a) zákona č. 150/2002 Sb., soudního řádu správního.",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:786540",
+   "spz": "6 Afs 161/2026-41",
+   "ecli": "ECLI:CZ:NSS:2026:6.Afs.161.2026.41",
+   "druh": "rozsudek",
+   "senat": 6,
+   "rejstrik": "Afs",
+   "datum": "2026-10-16",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-20T03:22:51Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786540",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786540",
+   "soudce": "Štěpán Výborný",
+   "heslo": "Evidovanou spotřebu topných olejů nelze zakládat na odhadu",
+   "shrnuti": "Tomáš Vaněk se žalobou domáhal zrušení rozhodnutí Generálního ředitelství cel, kterým mu byly zamítnuty odvolání proti dodatečným platebním výměrům na spotřební daň z minerálních olejů. Nejvyšší správní soud řešil otázku, zda žalobce řádně prokazoval skutečnou spotřebu lehkého topného oleje, a dospěl k závěru, že vedená evidence trpěla nepřesnostmi a odhady, pročež nárok na vrácení daně oprávněně zanikl.",
+   "oblasti": [
+    "dane",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:786539",
+   "spz": "6 As 135/2026-38",
+   "ecli": "ECLI:CZ:NSS:2026:6.As.135.2026.38",
+   "druh": "rozsudek",
+   "senat": 6,
+   "rejstrik": "As",
+   "datum": "2026-10-16",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-20T03:22:51Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786539",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786539",
+   "soudce": "Štěpán Výborný",
+   "heslo": "Zkušenost dodavatele jako hodnoticí kritérium kvality",
+   "shrnuti": "Městská část Praha 10 se soudila s Úřadem pro ochranu hospodářské soutěže kvůli zákonnosti kritéria hodnocení veřejné zakázky na správu zeleně, které hodnotilo dotazníky spokojenosti s dřívějšími službami dodavatele. Soud řešil, zda toto kritérium představovalo nepřípustné hodnocení kvalifikace namísto kvality a zda mělo dostatečnou vazbu na předmět zakázky. Nejvyšší správní soud dospěl k závěru, že zkušenost dodavatele jako celku může být legitimním kritériem kvality, pokud má vazbu na předmět zakázky a odráží úroveň dřívějšího plnění.",
+   "oblasti": [
+    "verejne_zakazky",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:786536",
+   "spz": "6 Azs 225/2026-9",
+   "ecli": "ECLI:CZ:NSS:2026:6.Azs.225.2026.9",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Azs",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-20T03:22:51Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786536",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786536",
+   "soudce": "Filip Dienstbier",
+   "heslo": "Zastavení řízení o kasační stížnosti pro zpětvzetí",
+   "shrnuti": "Ministerstvo vnitra podalo kasační stížnost proti rozsudku Městského soudu v Praze v řízení na ochranu před nezákonným zásahem spočívajícím ve vrácení žádosti o dočasnou ochranu. Stěžovatel vzal svou kasační stížnost zpět. Nejvyšší správní soud proto řízení o kasační stížnosti zastavil.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:786535",
+   "spz": "8 Afs 195/2025-54",
+   "ecli": "ECLI:CZ:NSS:2026:8.Afs.195.2025.54",
+   "druh": "rozsudek",
+   "senat": 8,
+   "rejstrik": "Afs",
+   "datum": "2026-10-19",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-20T03:22:51Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786535",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786535",
+   "soudce": "Pavel Molek",
+   "heslo": "Zajišťovací příkaz a podmínky jeho vydání",
+   "shrnuti": "Společnost RAMBROK SERVICES podala kasační stížnost proti rozsudku Městského soudu v Praze, kterým byla zamítnuta její žaloba proti rozhodnutí Odvolacího finančního ředitelství o zajišťovacím příkazu na DPH. Nejvyšší správní soud řešil otázku, zda byly splněny zákonné podmínky pro vydání zajišťovacího příkazu a zda daňové orgány dostatečně odůvodnily obavu o budoucí dobytnost daně a nebezpečí z prodlení. Soud dospěl k závěru, že napadené rozhodnutí je zákonné, neboť byly zjištěny dostatečné indicie o zapojení stěžovatelky do obchodu zatíženého podvodem na DPH a současně existovala silná obava o nedobytnost daně vzhledem k její likvidní majetkové struktuře.",
+   "oblasti": [
+    "dane",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:786531",
+   "spz": "Nao 153/2026-16",
+   "ecli": "ECLI:CZ:NSS:2026:Nao.153.2026.16",
+   "druh": "usnesení",
+   "datum": "2026-10-19",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-20T03:22:51Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786531",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786531",
+   "soudce": "Václav Štencel",
+   "heslo": "Námitka podjatosti v pravomocně skončené věci",
+   "shrnuti": "Žalobkyně se u Nejvyššího správního soudu domáhala vyloučení soudců Krajského soudu v Ústí nad Labem v řízení o žalobě proti rozhodnutí Finančního úřadu pro Liberecký kraj. Soud řešil otázku, zda lze projednat námitku podjatosti v již pravomocně skončeném řízení. Rozhodl, že po právní moci rozhodnutí o zastavení řízení již není splněna podmínka existence neskončené věci, a proto se námitka odmítá.",
+   "oblasti": [
+    "spravni",
+    "dane",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:786530",
+   "spz": "6 Ads 178/2026-39",
+   "ecli": "ECLI:CZ:NSS:2026:6.Ads.178.2026.39",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Ads",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-20T03:22:51Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786530",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786530",
+   "soudce": "Filip Dienstbier",
+   "heslo": "Nedoložení zastoupení advokátem v kasačním řízení",
+   "shrnuti": "Žalobci podali kasační stížnost proti usnesení Krajského soudu v Ústí nad Labem ve věci státní sociální podpory. Nejvyšší správní soud řešil otázku splnění podmínky povinného zastoupení v řízení o kasační stížnosti. Protože stěžovatelé ani přes výzvu soudu nedoložili plnou moc udělenou advokátovi ani neprokázali příslušné vzdělání, soud kasační stížnost odmítl.",
+   "oblasti": [
+    "socialni_cizinci",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:786529",
+   "spz": "6 As 209/2026-14",
+   "ecli": "ECLI:CZ:NSS:2026:6.As.209.2026.14",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "As",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-20T03:22:51Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786529",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786529",
+   "soudce": "Štěpán Výborný",
+   "heslo": "Odmítnutí kasační stížnosti pro chybějící zastoupení",
+   "shrnuti": "Žalobce podal kasační stížnost proti usnesení Krajského soudu v Plzni, kterým bylo zastaveno řízení o jeho žalobě na ochranu před nečinností či ve věci svobodného přístupu k informacím. Nejvyšší správní soud řešil otázku splnění podmínky povinného zastoupení advokátem v řízení o kasační stížnosti. Protože stěžovatel přes výzvu soudu nedoložil plnou moc advokáta ani vysokoškolské právnické vzdělání, Nejvyšší správní soud kasační stížnost odmítl.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:786528",
+   "spz": "6 Azs 193/2026-26",
+   "ecli": "ECLI:CZ:NSS:2026:6.Azs.193.2026.26",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Azs",
+   "datum": "2026-10-15",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-20T03:22:51Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786528",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786528",
+   "soudce": "Veronika Juřičková",
+   "heslo": "Závěr o ochraně v zemi původu vyžaduje podklady",
+   "shrnuti": "Ministerstvo vnitra odmítlo udělit mezinárodní ochranu žadateli, který čelil výhrůzkám ze strany rodiny své manželky v Turecku. Krajský soud rozhodnutí zrušil pro nedostatek podkladů o dostupnosti a efektivitě policejní ochrany v zemi původu. Nejvyšší správní soud kasační stížnost ministerstva odmítl pro nepřijatelnost a potvrdil, že závěry o státní ochraně a vnitřním přesídlení musí být řádně podloženy konkrétními informacemi o zemi původu.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:786527",
+   "spz": "6 Azs 200/2026-34",
+   "ecli": "ECLI:CZ:NSS:2026:6.Azs.200.2026.34",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Azs",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-20T03:22:51Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786527",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786527",
+   "soudce": "Štěpán Výborný",
+   "heslo": "Odmítnnutí kasační stížnosti pro neodstranění vad",
+   "shrnuti": "Žalobce se soudil s Policií České republiky, Ředitelstvím služby cizinecké policie, ohledně pobytu cizinců. Soud řešil otázku, zda lze kasační stížnost odmítnout, pokud stěžovatel ve stanovené lhůtě neodstranil její vady. Soud rozhodl, že kasační stížnost se v takovém případě odmítá podle § 37 odst. 5 ve spojení s § 120 s. ř. s.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:786526",
+   "spz": "6 Azs 185/2026-64",
+   "ecli": "ECLI:CZ:NSS:2026:6.Azs.185.2026.64",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Azs",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-20T03:22:51Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786526",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786526",
+   "soudce": "Veronika Juřičková",
+   "heslo": "Odmítnutí vojenské služby jako důvod azylu",
+   "shrnuti": "Žalobce se soudil s Ministerstvem vnitra o udělení mezinárodní ochrany, přičemž namítal obavy z trestu za odmítnutí vojenské služby a nesplacený dluh v zemi původu. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti směřující proti posouzení věrohodnosti azylového příběhu a branné povinnosti. Dospěl k závěru, že kasační stížnost je nepřijatelná, neboť branná povinnost je legitimním požadavkem státu a žadatel neprokázal azylově relevantní důvody pronásledování.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:786525",
+   "spz": "21 Afs 27/2026-57",
+   "ecli": "ECLI:CZ:NSS:2026:21.Afs.27.2026.57",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "Afs",
+   "datum": "2026-10-16",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-20T03:22:51Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786525",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786525",
+   "soudce": "Faisal Husseini",
+   "heslo": "Trestní řízení nestaví prekluzivní lhůtu pro stanovení daně",
+   "shrnuti": "Společnost PAPENO 2 se u Nejvyššího správního soudu domáhala zrušení rozhodnutí Odvolacího finančního ředitelství, kterým byla zastavena řízení o jejích dodatečných daňových přiznáních. Soud řešil otázku, zda probíhající trestní řízení a pozdější zabrání věci (peněžních prostředků) ve prospěch státu staví prekluzivní lhůtu pro stanovení daně podle § 148 odst. 4 písm. b) daňového řádu. Soud dospěl k závěru, že trestní řízení nestaví prekluzivní lhůtu pro stanovení daně, protože výsledek trestního řízení nebyl nezbytnou otázkou pro správné stanovení daně a kasační stížnost zamítl.",
+   "oblasti": [
+    "dane",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:786524",
+   "spz": "21 Afs 37/2026-39",
+   "ecli": "ECLI:CZ:NSS:2026:21.Afs.37.2026.39",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "Afs",
+   "datum": "2026-10-16",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-20T03:22:51Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786524",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786524",
+   "soudce": "Faisal Husseini",
+   "heslo": "Stanovení daně podle pomůcek v restaurační činnosti",
+   "shrnuti": "Společnost HACIENDA MEXICANA se s Odvolacím finančním ředitelstvím soudila ohledně doměření daně z přidané hodnoty za použití pomůcek. Nejvyšší správní soud řešil otázku, zda byly splněny podmínky pro stanovení daně podle pomůcek a zda daň byla stanovena spolehlivě s ohledem na stěžovatelkou předložený znalecký posudek a srovnání s konkurenty. Soud dospěl k závěru, že daňové orgány postupovaly správně, neboť účetnictví stěžovatelky bylo neprůkazné, a stěžovatelka neprokázala nepřiměřenost stanovené daně.",
+   "oblasti": [
+    "dane",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:786515",
+   "spz": "21 As 1/2026-62",
+   "ecli": "ECLI:CZ:NSS:2026:21.As.1.2026.62",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "As",
+   "datum": "2026-10-16",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-20T03:22:51Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786515",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786515",
+   "soudce": "Faisal Husseini",
+   "heslo": "Stanovení průzkumného území pro hlubinné úložiště",
+   "shrnuti": "Obec Temelín podala kasační stížnost proti rozsudku městského soudu, kterým byla zamítnuta její žaloba proti rozhodnutí Ministerstva životního prostředí o stanovení průzkumného území pro zvláštní zásahy do zemské kůry v lokalitě Janoch. Nejvyšší správní soud řešil otázku, zda správní orgány měly již v této fázi komplexně posoudit veřejné zájmy a dopady případné budoucí výstavby hlubinného úložiště. Soud dospěl k závěru, že takové posouzení by bylo předčasné, neboť průzkumné území slouží pouze k ověření geologických podmínek a kasační stížnost zamítl.",
+   "oblasti": [
+    "spravni",
+    "stavebni_zp"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:785307",
+   "spz": "6 As 175/2026-15",
+   "ecli": "ECLI:CZ:NSS:2026:6.As.175.2026.15",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "As",
+   "datum": "2026-09-08",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-20T03:22:51Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785307",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785307",
+   "soudce": "Filip Dienstbier",
+   "heslo": "Zastavení řízení o kasační stížnosti pro nezaplacení poplatku",
+   "shrnuti": "Žalobce se kasační stížností domáhal zrušení usnesení krajského soudu ve věci poskytnutí informací. Nejvyšší správní soud řešil otázku splnění podmínek řízení o kasační stížnosti po nezaplacení soudního poplatku ve stanovené lhůtě. Protože stěžovatel poplatek neuhradil, soud řízení zastavil.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:784295",
+   "spz": "8 Afs 195/2025-48",
+   "ecli": "ECLI:CZ:NSS:2026:8.Afs.195.2025.48",
+   "druh": "usnesení",
+   "senat": 8,
+   "rejstrik": "Afs",
+   "datum": "2026-08-04",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-20T03:22:51Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784295",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784295",
+   "soudce": "Pavel Molek",
+   "heslo": "Doručení předvolání k jednání zástupci",
+   "shrnuti": "Rozšířený senát Nejvyššího správního soudu řešil otázku, zda je nutné v soudním řízení doručovat předvolání k jednání vedle zástupce vždy i samotnému zastoupenému účastníkovi. Rozhodl, že předvolání k jednání není nutné doručovat zastoupenému účastníkovi, ledaže musí při jednání osobně vykonat nezastupitelný úkon. Samotné doručení předvolání pouze zástupci tak nepředstavuje vadu řízení.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:782920",
+   "spz": "6 As 34/2026-44",
+   "ecli": "ECLI:CZ:NSS:2026:6.As.34.2026.44",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "As",
+   "datum": "2026-06-17",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-20T03:22:51Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/782920",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/782920",
+   "soudce": "Veronika Juřičková",
+   "heslo": "Konflikt verzí skutku nebrání zjištění stavu bez pochybností",
+   "shrnuti": "Žalobce se kasační stížností domáhal zrušení rozsudku Krajského soudu v Ostravě – pobočky v Olomouci, kterým byla zamítnuta jeho žaloba proti rozhodnutí Krajského úřadu Olomouckého kraje o přestupku. Nejvyšší správní soud řešil otázku, zda správní orgány řádně zjistily skutkový stav věci při protichůdných výpovědích účastníků konfliktu. Soud dospěl k závěru, že existence dvou verzí děje nevylučuje možnost upřednostnit věrohodnější verzi podpořenou dalšími důkazy.",
+   "oblasti": [
+    "spravni",
+    "skoda"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:781361",
+   "spz": "8 Afs 195/2025-40",
+   "ecli": "ECLI:CZ:NSS:2026:8.Afs.195.2025.40",
+   "druh": "usnesení",
+   "senat": 8,
+   "rejstrik": "Afs",
+   "datum": "2026-04-20",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-20T03:22:51Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/781361",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/781361",
+   "soudce": "Pavel Molek",
+   "heslo": "Doručení předvolání k jednání zastoupenému účastníkovi",
+   "shrnuti": "Společnost RAMBROK SERVICES podala kasační stížnost proti rozsudku Městského soudu v Praze, který zamítl její žalobu proti rozhodnutí Odvolacího finančního ředitelství o zajišťovacím příkazu. Nejvyšší správní soud postoupil věc rozšířenému senátu kvůli rozporné judikatuře ohledně toho, zda soud musí předvolání k jednání doručit vždy i zastoupenému účastníkovi, či zda postačí doručení pouze jeho zástupci, pokud účastník nemá osobně vykonat nezastupitelný úkon. Rozšířený senát má tuto otázku sjednotit.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
+  },
   {
    "id": "nss:786482",
    "spz": "6 Azs 215/2026-44",
@@ -8540,404 +8918,6 @@
     "spravni"
    ],
    "procesni": false
-  },
-  {
-   "id": "nss:785621",
-   "spz": "4 Afs 103/2024-56",
-   "ecli": "ECLI:CZ:NSS:2026:4.Afs.103.2024.56",
-   "druh": "rozsudek",
-   "senat": 4,
-   "rejstrik": "Afs",
-   "datum": "2026-05-21",
-   "zverejneno": "2026-09-18",
-   "first_seen": "2026-09-18T12:00:00Z",
-   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785621",
-   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785621",
-   "soudce": "Petra Weissová",
-   "heslo": "Prekluze odvodu dotace závisí na povaze nesrovnalosti",
-   "shrnuti": "Ministerstvo financí podalo kasační stížnost proti rozsudku Krajského soudu v Ostravě – pobočka v Olomouci, kterým bylo zrušeno rozhodnutí o odvodu za porušení rozpočtové kázně kvůli uplynutí prekluzivní lhůty podle unijního práva. Nejvyšší správní soud řešil otázku správného určení počátku běhu prekluzivní lhůty pro vydání rozhodnutí podle nařízení Rady (ES, Euratom) č. 2988/95. Dospěl k závěru, že napadený rozsudek je nepřezkoumatelný pro nedostatek důvodů, neboť krajský soud opomněl posoudit povahu nesrovnalosti a další související skutkové okolnosti.",
-   "oblasti": [
-    "spravni",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "nss:785616",
-   "spz": "4 As 160/2026-22",
-   "ecli": "ECLI:CZ:NSS:2026:4.As.160.2026.22",
-   "druh": "usnesení",
-   "senat": 4,
-   "rejstrik": "As",
-   "datum": "2026-09-17",
-   "zverejneno": "2026-09-18",
-   "first_seen": "2026-09-18T12:00:00Z",
-   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785616",
-   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785616",
-   "soudce": "Tomáš Kocourek",
-   "heslo": "Poskytování informací: lhůta ke kasační stížnosti",
-   "shrnuti": "Žalobce podal kasační stížnost proti usnesení Krajského soudu v Brně, kterým byla odmítnuta jeho žaloba proti rozhodnutí Krajského úřadu Jihomoravského kraje ve věci poskytování informací. Nejvyšší správní soud řešil otázku včasnosti podání kasační stížnosti. Dospěl k závěru, že stěžovatel podal stížnost až po uplynutí zákonné dvoutýdenní lhůty, a proto ji podle § 46 odst. 1 písm. b) ve spojení s § 120 soudního řádu správního odmítl jako opožděnou.",
-   "oblasti": [
-    "spravni",
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "nss:785612",
-   "spz": "9 As 21/2026-65",
-   "ecli": "ECLI:CZ:NSS:2026:9.As.21.2026.65",
-   "druh": "rozsudek",
-   "senat": 9,
-   "rejstrik": "As",
-   "datum": "2026-09-18",
-   "zverejneno": "2026-09-18",
-   "first_seen": "2026-09-18T12:00:00Z",
-   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785612",
-   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785612",
-   "soudce": "Radan Malík",
-   "heslo": "Smlouva o přístupu k mobilní síti je soukromoprávní",
-   "shrnuti": "Uniphone se soudila s Českým telekomunikačním úřadem ohledně jeho rozhodnutí o návrzích na uložení povinnosti operátorů uzavřít smlouvu o přístupu k mobilním sítím. Soud řešil otázku, zda přezkum takových rozhodnutí náleží správním soudům, nebo soudům v občanském soudním řízení. Dospěl k závěru, že jde o spor o obsah soukromoprávní smlouvy, a proto k jeho přezkumu nejsou pravomocné správní soudy.",
-   "oblasti": [
-    "it",
-    "zavazky",
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "nss:785610",
-   "spz": "21 As 231/2025-38",
-   "ecli": "ECLI:CZ:NSS:2026:21.As.231.2025.38",
-   "druh": "rozsudek",
-   "senat": 21,
-   "rejstrik": "As",
-   "datum": "2026-09-18",
-   "zverejneno": "2026-09-18",
-   "first_seen": "2026-09-18T12:00:00Z",
-   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785610",
-   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785610",
-   "soudce": "Radovan Havelec",
-   "heslo": "Zónové posouzení přípravku lze zpochybnit jen vědecky",
-   "shrnuti": "Společnost JT Agro Ireland Limited se u Nejvyššího správního soudu bránila proti zamítnutí žádosti o povolení přípravku na ochranu rostlin na trh v České republice. Soud řešil otázku, zda správní orgány mohou odmítnout povolení přípravku na základě zpochybnění kvality posouzení provedeného zónovým členským státem poukazem na zastaralost metodiky. Dospěl k závěru, že takový postup není v rozporu se zónovým posouzením přípustný, pokud nejsou dány konkrétní vědecké poznatky o nepřijatelném riziku, a rozsudek městského soudu i rozhodnutí správních orgánů zrušil.",
-   "oblasti": [
-    "spravni",
-    "stavebni_zp"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "nss:785609",
-   "spz": "21 Afs 207/2025-38",
-   "ecli": "ECLI:CZ:NSS:2026:21.Afs.207.2025.38",
-   "druh": "rozsudek",
-   "senat": 21,
-   "rejstrik": "Afs",
-   "datum": "2026-09-18",
-   "zverejneno": "2026-09-18",
-   "first_seen": "2026-09-18T12:00:00Z",
-   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785609",
-   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785609",
-   "soudce": "Radovan Havelec",
-   "heslo": "Neprovedení důkazu o doručení je nutné odůvodnit",
-   "shrnuti": "Žalobkyně se žalobou domáhala zrušení rozhodnutí Odvolacího finančního ředitelství, kterým bylo zamítnuto její odvolání proti rozhodnutí o zastavení odvolacího řízení pro opožděnost, přičemž Nejvyšší správní soud řešil otázku, zda krajský soud pochybil, když bez řádného odůvodnění odmítl provést důkazy navržené k zpochybnění data doručení písemnosti. Nejvyšší správní soud dospěl k závěru, že krajský soud pochybil, neboť neprovedení důkazů řádně nezdůvodnil, a proto jeho rozsudek zrušil a vrátil mu věc k dalšímu řízení.",
-   "oblasti": [
-    "dane",
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "nss:785607",
-   "spz": "5 As 139/2025-50",
-   "ecli": "ECLI:CZ:NSS:2026:5.As.139.2025.50",
-   "druh": "rozsudek",
-   "senat": 5,
-   "rejstrik": "As",
-   "datum": "2026-09-18",
-   "zverejneno": "2026-09-18",
-   "first_seen": "2026-09-18T12:00:00Z",
-   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785607",
-   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785607",
-   "soudce": "Jakub Camrda",
-   "heslo": "Výjimka z ochrany přírody předchází vodoprávnímu povolení",
-   "shrnuti": "Žalobce se soudil s Ministerstvem zemědělství a dalšími účastníky o zrušení rozhodnutí o změně povolení k nakládání s vodami na vodním díle Nové Mlýny. Soud řešil otázku, zda je pravomocné rozhodnutí o výjimkách podle zákona o ochraně přírody a krajiny nezbytným podkladem pro vydání takového vodoprávního povolení. Nejvyšší správní soud potvrdil, že výjimky zohledňující ochranu přírody musí být pravomocné ještě před vydáním navazujícího vodoprávního povolení.",
-   "oblasti": [
-    "stavebni_zp",
-    "spravni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "nss:785590",
-   "spz": "2 Afs 132/2026-68",
-   "ecli": "ECLI:CZ:NSS:2026:2.Afs.132.2026.68",
-   "druh": "usnesení",
-   "senat": 2,
-   "rejstrik": "Afs",
-   "datum": "2026-09-17",
-   "zverejneno": "2026-09-18",
-   "first_seen": "2026-09-18T12:00:00Z",
-   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785590",
-   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785590",
-   "soudce": "Václav Štencel",
-   "heslo": "Lhůtu k úhradě soudního poplatku nelze prominout",
-   "shrnuti": "V řízení o kasační stížnosti se LESCUS Cetkovice a Odvolací finanční ředitelství soudili o daň z přidané hodnoty. Nejvyšší správní soud řešil, zda lze prominout zmeškání lhůty k úhradě soudního poplatku. Soud rozhodl, že lhůta k zaplacení poplatku je propadná a nelze ji dodatečně prominout, a proto řízení o kasační stížnosti zastavil.",
-   "oblasti": [
-    "dane",
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "nss:785579",
-   "spz": "7 As 114/2026-37",
-   "ecli": "ECLI:CZ:NSS:2026:7.As.114.2026.37",
-   "druh": "usnesení",
-   "senat": 7,
-   "rejstrik": "As",
-   "datum": "2026-09-10",
-   "zverejneno": "2026-09-18",
-   "first_seen": "2026-09-18T12:00:00Z",
-   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785579",
-   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785579",
-   "soudce": "Jiřina Chmelová",
-   "heslo": "Kasační stížnost proti nedoručenému usnesení je předčasná",
-   "shrnuti": "Žalobkyně se žalobou domáhala ochrany před nezákonným zásahem katastrálního úřadu, kterou krajský soud odmítl pro opožděnost. Nejvyšší správní soud řešil otázku přípustnosti kasační stížnosti podané proti rozhodnutí, které nebylo řádně doručeno v důsledku úmrtí účastníka před doručením. Rozhodl, že kasační stížnost je předčasná a odmítl ji, protože usnesení krajského soudu dosud nenabylo právní moci.",
-   "oblasti": [
-    "civilni_proces",
-    "spravni"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "nss:785410",
-   "spz": "6 As 181/2025-28",
-   "ecli": "ECLI:CZ:NSS:2026:6.As.181.2025.28",
-   "druh": "rozsudek",
-   "senat": 6,
-   "rejstrik": "As",
-   "datum": "2026-09-10",
-   "zverejneno": "2026-09-18",
-   "first_seen": "2026-09-18T12:00:00Z",
-   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785410",
-   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785410",
-   "soudce": "Filip Dienstbier",
-   "heslo": "Spolku stačí tvrdit zásah do práv",
-   "shrnuti": "Spolek podal žalobu proti rozhodnutí Magistrát města Brna o povolení uzavírky silnice a stanovení objízdné trasy, kterou Krajský soud v Brně odmítl pro nedostatek aktivní procesní legitimace. Nejvyšší správní soud kasační stížnosti stěžovatel vyhověl a usnesení krajského soudu zrušil. Dovodil, že spolek plausibilně tvrdil zásah do svých práv a aktivní legitimace byla dána.",
-   "oblasti": [
-    "civilni_proces",
-    "spravni"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "nss:785403",
-   "spz": "7 Azs 172/2025-28",
-   "ecli": "ECLI:CZ:NSS:2026:7.Azs.172.2025.28",
-   "druh": "rozsudek",
-   "senat": 7,
-   "rejstrik": "Azs",
-   "datum": "2026-09-11",
-   "zverejneno": "2026-09-18",
-   "first_seen": "2026-09-18T12:00:00Z",
-   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785403",
-   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785403",
-   "soudce": "Milan Podhrázký",
-   "heslo": "Hrozba posouzená při vyhoštění se znovu nezkoumá",
-   "shrnuti": "Žalobce se u Nejvyššího správního soudu domáhal zrušení rozsudku Městského soudu v Praze, kterým byla zamítnuta jeho žaloba proti rozhodnutí Komise pro rozhodování ve věcech pobytu cizinců o zrušení platnosti povolení k trvalému pobytu. Soud řešil otázku, zda správní orgán musí při zrušení trvalého pobytu podle § 77 odst. 2 písm. g) zákona o pobytu cizinců vždy zkoumat aktuální hrozbu pro veřejný pořádek, a dospěl k závěru, že toto posouzení je již obsaženo v předchozím rozhodnutí o vyhoštění, takže se nepožaduje jeho opětovné provádění.",
-   "oblasti": [
-    "socialni_cizinci",
-    "spravni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "nss:785242",
-   "spz": "8 As 89/2026-42",
-   "ecli": "ECLI:CZ:NSS:2026:8.As.89.2026.42",
-   "druh": "usnesení",
-   "senat": 8,
-   "rejstrik": "As",
-   "datum": "2026-09-04",
-   "zverejneno": "2026-09-18",
-   "first_seen": "2026-09-18T12:00:00Z",
-   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785242",
-   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785242",
-   "soudce": "Pavel Molek",
-   "heslo": "Nepřesnosti v příkazovém bloku nebrání záznamu bodů",
-   "shrnuti": "Žalobce se soudil s Krajským úřadem Jihočeského kraje ohledně odmítnutí námitk proti záznamu bodů v registru řidičů. Nejvyšší správní soud řešil, zda záměna registračních značek nákladního vozidla a přívěsu a nesprávné označení vozidla jako tahače činí příkazový blok nezpůsobilým podkladem pro záznam bodů. Dospěl k závěru, že nikoli, neboť z příkazového bloku bylo i přes tyto nepřesnosti jednoznačně patrné, kdo, kdy, kde a jakého přestupku se žalobce dopustil.",
-   "oblasti": [
-    "spravni",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "nss:785238",
-   "spz": "8 As 49/2026-26",
-   "ecli": "ECLI:CZ:NSS:2026:8.As.49.2026.26",
-   "druh": "rozsudek",
-   "senat": 8,
-   "rejstrik": "As",
-   "datum": "2026-09-04",
-   "zverejneno": "2026-09-18",
-   "first_seen": "2026-09-18T12:00:00Z",
-   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785238",
-   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785238",
-   "soudce": "Pavel Molek",
-   "heslo": "Povinnost záchranářské uličky vzniká s dopravním omezením",
-   "shrnuti": "Žalobce se kasační stížností domáhal zrušení rozsudku krajského soudu, kterým byla zamítnuta jeho žaloba proti rozhodnutí žalovaného o uložení pokuty za přestupek podle § 125c odst. 1 písm. k) zákona o silničním provozu. Nejvyšší správní soud řešil otázku, zda je povinnost vytvořit a udržovat prostor pro průjezd vozidel s právem přednostní jízdy podle § 41 odst. 8 téhož zákona podmíněna aktuální přítomností takového vozidla. Dospěl k závěru, že jde o preventivní povinnost, která vzniká bezprostředně se vznikem dopravního omezení, a proto žalobce spáchal přestupek již samotným vjezdem do tohoto prostoru bez ohledu na to, zda jím v daném okamžiku projíždělo vozidlo s právem přednostní jízdy.",
-   "oblasti": [
-    "spravni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "nss:785161",
-   "spz": "8 As 201/2025-40",
-   "ecli": "ECLI:CZ:NSS:2026:8.As.201.2025.40",
-   "druh": "rozsudek",
-   "senat": 8,
-   "rejstrik": "As",
-   "datum": "2026-09-03",
-   "zverejneno": "2026-09-18",
-   "first_seen": "2026-09-18T12:00:00Z",
-   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785161",
-   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785161",
-   "soudce": "Ondřej Bartoš",
-   "heslo": "Reklama na léčivo: vnitřně rozporný rozsudek je nepřezkoumatelný",
-   "shrnuti": "IBSA PHARMA se u Městského soudu v Praze bránila žalobou proti rozhodnutí Ministerstva zdravotnictví o přestupku na úseku reklamy na humánní léčivý přípravek Syntroxine. Nejvyšší správní soud řešil přezkoumatelnost rozsudku městského soudu a otázku souladu reklamních tvrzení s údajil v souhrnu údajů o přípravku. Dospěl k závěru, že napadený rozsudek je vnitřně rozporný a nepřezkoumatelný, proto jej zrušil a vrátil k dalšímu řízení.",
-   "oblasti": [
-    "spravni",
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "nss:785160",
-   "spz": "2 As 89/2026-31",
-   "ecli": "ECLI:CZ:NSS:2026:2.As.89.2026.31",
-   "druh": "rozsudek",
-   "senat": 2,
-   "rejstrik": "As",
-   "datum": "2026-09-03",
-   "zverejneno": "2026-09-18",
-   "first_seen": "2026-09-18T12:00:00Z",
-   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785160",
-   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785160",
-   "soudce": "Václav Štencel",
-   "heslo": "Změna plochy na zeleň vyžaduje konkrétní odůvodnění",
-   "shrnuti": "Statutární město Brno podalo kasační stížnost proti rozsudku Krajského soudu v Brně, kterým byl zrušen územní plán v části týkající se pozemků vlastněných žalobkyní. Nejvyšší správní soud řešil otázku, zda obec řádně odůvodnila změnu funkčního využití pozemků z rekreace na zeleň a zda takový zásah obstojí v testu proporcionality. Soud dospěl k závěru, že obec neprokázala dostatečné a konkrétní důvody pro tak zásadní omezení vlastnického práva, a proto kasační stížnost zamítl.",
-   "oblasti": [
-    "spravni",
-    "vecna_prava",
-    "ustavni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "nss:785141",
-   "spz": "22 As 76/2026-50",
-   "ecli": "ECLI:CZ:NSS:2026:22.As.76.2026.50",
-   "druh": "rozsudek",
-   "senat": 22,
-   "rejstrik": "As",
-   "datum": "2026-09-03",
-   "zverejneno": "2026-09-18",
-   "first_seen": "2026-09-18T12:00:00Z",
-   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785141",
-   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/785141",
-   "soudce": "Jan Kratochvíl",
-   "heslo": "Tisková zpráva soudu není výkonem veřejné správy",
-   "shrnuti": "Žalobci napadli žalobou na ochranu před nezákonným zásahem zveřejnění tiskové zprávy Nejvyššího soudu týkající se výsledku jejich soudního sporu. Nejvyšší správní soud řešil otázku, zda Nejvyšší soud nebo jeho předseda vystupují při vydávání tiskových zpráv jako správní orgán. Dospěl k závěru, že nikoliv, neboť nejde o autoritativní působení do právní sféry osob v oblasti veřejné správy, a žalobu proto odmítl s odkazem na příslušnost civilních soudů.",
-   "oblasti": [
-    "civilni_proces",
-    "spravni"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "nss:784792",
-   "spz": "Na 112/2026-6",
-   "ecli": "ECLI:CZ:NSS:2026:Na.112.2026.6",
-   "druh": "usnesení",
-   "datum": "2026-08-25",
-   "zverejneno": "2026-09-18",
-   "first_seen": "2026-09-18T12:00:00Z",
-   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784792",
-   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784792",
-   "soudce": "Tomáš Rychlý",
-   "heslo": "Pomoc obětem trestných činů a věcná příslušnost",
-   "shrnuti": "Žalobce podal u Nejvyššího správního soudu žalobu proti rozhodnutí Ministerstva spravedlnosti o zamítnutí žádosti o peněžitou pomoc obětem trestných činů. Soud řešil otázku svou věcné a místní příslušnosti k projednání této žaloby. Rozhodl, že k řízení není příslušný, a věc postoupil Městskému soudu v Praze jako soudu věcně a místně příslušnému.",
-   "oblasti": [
-    "spravni",
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "nss:784778",
-   "spz": "10 Azs 94/2026-38",
-   "ecli": "ECLI:CZ:NSS:2026:10.Azs.94.2026.38",
-   "druh": "rozsudek",
-   "senat": 10,
-   "rejstrik": "Azs",
-   "datum": "2026-08-21",
-   "zverejneno": "2026-09-18",
-   "first_seen": "2026-09-18T12:00:00Z",
-   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784778",
-   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784778",
-   "soudce": "Michaela Bejčková",
-   "heslo": "Nulová kvóta umožňuje nepřijmout žádost o kartu",
-   "shrnuti": "Žalobce se žalobou na ochranu před nezákonným zásahem domáhal u Městského soudu v Praze zrušení postupu Generálního konzulátu České republiky v Drážďanech, který zrušil jeho přidělený termín k podání žádosti o zaměstnaneckou kartu z důvodu nulové kvóty pro občany Vietnamské socialistické republiky. Městský soud žalobě vyhověl s tím, že konzulát měl žádost nabrat a vydat usnesení o nepřijatelnosti. Nejvyšší správní soud kasační stížnosti konzulátu vyhověl a rozsudek městského soudu zrušil s právním závěrem, že zastupitelský úřad nebyl povinen umožnit podání žádosti, pokud byla její nepřijatelnost na základě nulové kvóty zřejmá a žadatel nemohl nic namítnout.",
-   "oblasti": [
-    "spravni",
-    "socialni_cizinci"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "nss:784681",
-   "spz": "2 As 138/2026-24",
-   "ecli": "ECLI:CZ:NSS:2026:2.As.138.2026.24",
-   "druh": "usnesení",
-   "senat": 2,
-   "rejstrik": "As",
-   "datum": "2026-08-19",
-   "zverejneno": "2026-09-18",
-   "first_seen": "2026-09-18T12:00:00Z",
-   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784681",
-   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784681",
-   "soudce": "Václav Štencel",
-   "heslo": "Lhůta ke kasační stížnosti běží od fikce doručení",
-   "shrnuti": "Žalobce podal kasační stížnost proti usnesení Krajského soudu v Ústí nad Labem – pobočky v Liberci, přičemž Nejvyšší správní soud řešil otázku včasnosti tohoto podání. Soud dospěl k závěru, že kasační stížnost byla podána po uplynutí zákonné dvoutýdenní lhůty počítané od fikce doručení, a proto ji podle § 46 odst. 1 písm. b) ve spojení s § 120 s. ř. s. odmítl.",
-   "oblasti": [
-    "spravni",
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "nss:783988",
-   "spz": "8 As 89/2026-37",
-   "ecli": "ECLI:CZ:NSS:2026:8.As.89.2026.37",
-   "druh": "usnesení",
-   "senat": 8,
-   "rejstrik": "As",
-   "datum": "2026-07-22",
-   "zverejneno": "2026-09-18",
-   "first_seen": "2026-09-18T12:00:00Z",
-   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/783988",
-   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/783988",
-   "soudce": "Pavel Molek",
-   "heslo": "Existenční újma u bodového systému odůvodňuje odkladný účinek",
-   "shrnuti": "Žalobce se soudil s Krajským úřadem Jihočeského kraje o přiznání odkladného účinku kasační stížnosti proti rozsudku krajského soudu, kterým byla zamítnuta žaloba proti rozhodnutí o potvrzení dosažení 12 bodů v registru řidičů. Nejvyšší správní soud řešil otázku, zda jsou splněny zákonné podmínky pro přiznání odkladného účinku. Dospěl k závěru, že podmínky splněny jsou, neboť výkon rozhodnutí by pro žalobce znamenal existenční újmu a žalovaný neprokázal rozpor s důležitým veřejným zájmem, a proto kasační stížnosti odkladný účinek přiznal.",
-   "oblasti": [
-    "spravni",
-    "civilni_proces"
-   ],
-   "procesni": true
   }
  ]
 }

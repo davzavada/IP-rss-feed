@@ -1,8 +1,27 @@
 {
- "generated": "2026-10-19T03:14:08Z",
+ "generated": "2026-10-20T03:22:51Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "sdeu:ipc:C-1116/26",
+   "spz": "C-1116/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-10-14",
+   "first_seen": "2026-10-20T03:22:51Z",
+   "url": "https://curia.europa.eu/juris/liste.jsf?num=C-1116/26&language=cs",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "prumyslova_prava",
+    "autorske",
+    "gdpr"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Podáno 14. 10. 2026. Položené otázky zatím nejsou zveřejněné."
+  },
   {
    "id": "sdeu:62026CN0838",
    "spz": "C-838/26",
