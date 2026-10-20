@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-19T04:24:10+00:00",
+  "generated": "2026-10-20T04:34:57+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 30,
-      "stazeno": "2026-10-19T04:23:54+00:00",
+      "stazeno": "2026-10-20T04:34:38+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,7 +18,7 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 9,
-      "stazeno": "2026-10-19T04:23:55+00:00",
+      "stazeno": "2026-10-20T04:34:39+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "832c8a6d5e8d50f9"
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-10-19T04:24:00+00:00",
+      "stazeno": "2026-10-20T04:34:46+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "c68917b981ef2c03"
+      "otisk": "e0ad4b7e877903c7"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 2,
-      "stazeno": "2026-10-19T04:24:01+00:00",
+      "stazeno": "2026-10-20T04:34:47+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "791ee633882cb34d"
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 7,
-      "stazeno": "2026-10-19T04:24:02+00:00",
+      "stazeno": "2026-10-20T04:34:47+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "d11aa97d850abcf0"
@@ -952,31 +952,6 @@
       "detail_pokusy": 1
     },
     {
-      "id": "93d1f6249c0d0df239b1",
-      "poradatel": "EPRAVO",
-      "datum": "2026-10-20",
-      "zacatek": "09:00",
-      "konec": "11:30",
-      "nazev": "Transfer pricing a DPH: Kdy podléhá úprava převodních cen DPH?",
-      "misto": "online",
-      "forma": "online",
-      "lektori": [
-        "Petr Tomeš",
-        "Michael Pleva"
-      ],
-      "cena": "3 975 Kč s DPH",
-      "anotace": "Odborné online školení zaměřené na vztah mezi převodními cenami (transfer pricing) a daní z přidané hodnoty.",
-      "url": "https://www.epravo.cz/eshop/transfer-pricing-a-dph-kdy-podleha-uprava-prevodnich-cen-dph-online-zive-vysilani-20-10-2026-1608.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "dane"
-      ],
-      "oblasti_klic": "3ea0a00b3727"
-    },
-    {
       "id": "dfd85bf383100cdfedd6",
       "poradatel": "UPV",
       "datum": "2026-10-20",
@@ -994,32 +969,6 @@
         "prumyslova_prava"
       ],
       "oblasti_klic": "e3890266b80a"
-    },
-    {
-      "id": "ad80e63330741943cc41",
-      "poradatel": "EPRAVO",
-      "datum": "2026-10-20",
-      "zacatek": "13:00",
-      "konec": "14:30",
-      "nazev": "AI governance v praxi",
-      "misto": "online",
-      "forma": "online",
-      "lektori": [
-        "JUDr. Jana Vorlíček Soukupová, Ph.D.",
-        "JUDr. Jiří Maršál",
-        "JUDr. Jiří Švejda"
-      ],
-      "cena": "3 975 Kč s DPH",
-      "anotace": "Kurz zaměřený na praktickou implementaci správy a regulace umele inteligence.",
-      "url": "https://www.epravo.cz/eshop/ai-governance-v-praxi-online-zive-vysilani-20-10-2026-1611.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "it"
-      ],
-      "oblasti_klic": "a102989d5a58"
     },
     {
       "id": "2b2f621a6adadae257eb",
@@ -1488,6 +1437,31 @@
       "detail_pokusy": 1
     },
     {
+      "id": "e73f4429e7f25f7b0d1b",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-03",
+      "zacatek": "09:00",
+      "konec": "12:00",
+      "nazev": "Transparentní odměňování: last call",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "Tomáš Procházka",
+        "Kateřina Demová"
+      ],
+      "cena": "3 975 Kč",
+      "anotace": "Online živé vysílání k tématu transparentního odměňování.",
+      "url": "https://www.epravo.cz/eshop/transparentni-odmenovani-last-call-online-zive-vysilani-3-11-2026-1622.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "pracovni"
+      ],
+      "oblasti_klic": "00c760990a3a"
+    },
+    {
       "id": "9a22045dc60281f66a17",
       "poradatel": "JCP",
       "datum": "2026-11-03",
@@ -1507,6 +1481,30 @@
         "ustavni"
       ],
       "oblasti_klic": "66411bf1d0da"
+    },
+    {
+      "id": "c0bfe4c610a9e128027a",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-03",
+      "zacatek": "13:00",
+      "konec": "16:00",
+      "nazev": "AI v advokátní kanceláři: od hraček k procesům",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "Mgr. Miroslav Chochola, LL.M., MBA"
+      ],
+      "cena": "3 975 Kč",
+      "anotace": "Kurz zaměřený na praktické využití umele inteligence v procesech advokátní kanceláře.",
+      "url": "https://www.epravo.cz/eshop/ai-v-advokatni-kancelari-od-hracek-k-procesum-online-zive-vysilani-3-11-2026-1580.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "it"
+      ],
+      "oblasti_klic": "d64e7fce8280"
     },
     {
       "id": "d999e57cb77f9ed40a01",
