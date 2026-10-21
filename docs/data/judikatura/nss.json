@@ -1,8 +1,216 @@
 {
- "generated": "2026-10-20T03:22:51Z",
+ "generated": "2026-10-21T03:17:45Z",
  "soud": "nss",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "nss:786590",
+   "spz": "Nao 167/2026-55",
+   "ecli": "ECLI:CZ:NSS:2026:Nao.167.2026.55",
+   "druh": "usnesení",
+   "datum": "2026-10-20",
+   "zverejneno": "2026-10-20",
+   "first_seen": "2026-10-21T03:17:45Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786590",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786590",
+   "soudce": "Jiřina Chmelová",
+   "heslo": "Postup v řízení nezakládá podjatost soudce",
+   "shrnuti": "Žalobce podal námitku podjatosti proti soudkyni Krajského soudu v Ústí nad Labem – pobočky v Liberci Mgr. Karolíně Tylové, LL.M., v řízení o žalobě proti rozhodnutí Krajského úřadu Libereckého kraje. Nejvyšší správní soud řešil, zda lze postup soudce v řízení považovat za důvod k jeho vyloučení pro podjatost. Dospěl k závěru, že okolnosti spočívající v postupu soudu v řízení nejsou důvodem k vyloučení soudce.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:786588",
+   "spz": "4 Azs 197/2025-41",
+   "ecli": "ECLI:CZ:NSS:2026:4.Azs.197.2025.41",
+   "druh": "usnesení",
+   "senat": 4,
+   "rejstrik": "Azs",
+   "datum": "2026-10-19",
+   "zverejneno": "2026-10-20",
+   "first_seen": "2026-10-21T03:17:45Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786588",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786588",
+   "soudce": "Petra Weissová",
+   "heslo": "Bezúčelné vzdělávací aktivity vylučují prodloužení pobytu",
+   "shrnuti": "Žalobkyně podala kasační stížnost proti rozsudku Městského soudu v Praze, kterým byla zamítnuta její žaloba proti rozhodnutí Komise pro rozhodování ve věcech pobytu cizinců o neprodloužení platnosti povolení k dlouhodobému pobytu. Nejvyšší správní soud řešil otázku, zda formální a bezúčelné absolvování jazykových kurzů naplňuje zákonný důvod jiné závažné překážky pobytu cizince. Soud dospěl k závěru, že takové jednání, které nesměřuje k původně deklarovanému účelu studia na vysoké škole, představuje závažnou překážku pobytu, a kasační stížnost odmítl pro nepřijatelnost.",
+   "oblasti": [
+    "socialni_cizinci",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:786587",
+   "spz": "4 Azs 138/2026-27",
+   "ecli": "ECLI:CZ:NSS:2026:4.Azs.138.2026.27",
+   "druh": "usnesení",
+   "senat": 4,
+   "rejstrik": "Azs",
+   "datum": "2026-10-16",
+   "zverejneno": "2026-10-20",
+   "first_seen": "2026-10-21T03:17:45Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786587",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786587",
+   "soudce": "Aleš Roztočil",
+   "heslo": "Strach z věřitelů neodůvodňuje mezinárodní ochranu",
+   "shrnuti": "Žalobkyně se kasační stížností domáhala zrušení rozsudku Městského soudu v Praze, kterým byla zamiítnuta její žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Nejvyšší správní soud řešil otázku, zda obavy z vymáhání dluhů v zemi původu a přítomnost partnera v České republice zakládají důvod pro poskytnutí mezinárodní ochrany. Dospěl k závěru, že ekonomické potíže, soukromé dluhy a neřešení situace prostřednictvím státních orgánů země původu nepředstavují důvod pro udělení azylu či doplňkové ochrany, a proto kasační stížnost odmítl pro nepřijatelnost.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:786586",
+   "spz": "4 Afs 158/2026-26",
+   "ecli": "ECLI:CZ:NSS:2026:4.Afs.158.2026.26",
+   "druh": "usnesení",
+   "senat": 4,
+   "rejstrik": "Afs",
+   "datum": "2026-10-16",
+   "zverejneno": "2026-10-20",
+   "first_seen": "2026-10-21T03:17:45Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786586",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786586",
+   "soudce": "Jiří Palla",
+   "heslo": "Zpětvzetí kasační stížnosti důvodem zastavení řízení",
+   "shrnuti": "Žalobce se soudil s Finančním úřadem pro Jihomoravský kraj ohledně žaloby na určení povinnosti přednostně projednat daňovou věc. Nejvyšší správní soud řešil procesní důsledky zpětvzetí kasační stížnosti a řízení zastavil, protože stěžovatel vzal svůj návrh zpět.",
+   "oblasti": [
+    "dane",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:786557",
+   "spz": "5 As 143/2026-36",
+   "ecli": "ECLI:CZ:NSS:2026:5.As.143.2026.36",
+   "druh": "rozsudek",
+   "senat": 5,
+   "rejstrik": "As",
+   "datum": "2026-10-19",
+   "zverejneno": "2026-10-20",
+   "first_seen": "2026-10-21T03:17:45Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786557",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786557",
+   "soudce": "Viktor Kučera",
+   "heslo": "Odstranění reklamního zařízení v ochranném pásmu nevyžaduje povolení",
+   "shrnuti": "Společnost BigBoard Praha se soudila s Ministerstvem dopravy za účasti Ředitelství silnic a dálnic o určení nezákonnosti odstranění reklamního zařízení. Soud řešil otázku, zda odstranění reklamního zařízení v ochranném pásmu pozemní komunikace vyžaduje povolení podle stavebního zákona. Soud dospěl k závěru, že úprava v zákoně o pozemních komunikacích je komplexní a autonomní a aplikaci stavebního zákona vylučuje.",
+   "oblasti": [
+    "spravni",
+    "vecna_prava",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:786556",
+   "spz": "Nao 159/2026-108",
+   "ecli": "ECLI:CZ:NSS:2026:Nao.159.2026.108",
+   "druh": "usnesení",
+   "datum": "2026-10-15",
+   "zverejneno": "2026-10-20",
+   "first_seen": "2026-10-21T03:17:45Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786556",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786556",
+   "soudce": "Lenka Matyášová",
+   "heslo": "Postup v řízení nezakládá podjatost soudce",
+   "shrnuti": "Žalobce namítal podjatost soudce Krajského soudu v Plzni Mgr. Jana Šmakala s odkazem na nesprávný postup soudu a odlišné lhůty k vyjádření. Nejvyšší správní soud konstatoval, že postup soudce v řízení není důvodem pro jeho vyloučení podle § 8 odst. 1 s. ř. s., a proto rozhodl, že dotčený soudce není z projednávání věci vyloučen.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:786553",
+   "spz": "5 As 171/2026-17",
+   "ecli": "ECLI:CZ:NSS:2026:5.As.171.2026.17",
+   "druh": "usnesení",
+   "senat": 5,
+   "rejstrik": "As",
+   "datum": "2026-10-15",
+   "zverejneno": "2026-10-20",
+   "first_seen": "2026-10-21T03:17:45Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786553",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786553",
+   "soudce": "Viktor Kučera",
+   "heslo": "Nesplnění povinného zastoupení advokátem vede k odmítnutí kasační stížnosti",
+   "shrnuti": "Žalobkyně podala kasační stížnost proti usnesení Městského soudu v Praze, kterým byla odmítnuta její žaloba proti rozhodnutím České advokátní komory o neurčení advokáta. Nejvyšší správní soud řešil, zda je důvodná žádost o prodloužení lhůty k doložení povinného zastoupení, když stěžovatelka opětovně požádala o určení advokáta. Soud rozhodl, že opakovaná žádost o určení advokáta není vážným omluvitelným důvodem pro prodloužení lhůty, a kasační stížnost odmítl pro nesplnění podmínky povinného zastoupení.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:786550",
+   "spz": "5 Ads 166/2026-13",
+   "ecli": "ECLI:CZ:NSS:2026:5.Ads.166.2026.13",
+   "druh": "usnesení",
+   "senat": 5,
+   "rejstrik": "Ads",
+   "datum": "2026-10-15",
+   "zverejneno": "2026-10-20",
+   "first_seen": "2026-10-21T03:17:45Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786550",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786550",
+   "soudce": "Lenka Matyášová",
+   "heslo": "Zastavení řízení o kasační stížnosti pro nezaplacení poplatku",
+   "shrnuti": "Žalobce podal kasační stížnost proti usnesení Městského soudu v Praze, kterým byla jeho žaloba proti rozhodnutí Oborové zdravotní pojišťovny zaměstnanců bank, pojišťoven a stavebnictví odmítnuta pro nepřípustnost. Nejvyšší správní soud řešil otázku následků neuhrazení soudního poplatku po marném uplynutí lhůty. Protože stěžovatel soudní poplatek ve stanovené lhůtě neuhradil, soud řízení o kasační stížnosti zastavil.",
+   "oblasti": [
+    "socialni_cizinci",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:786549",
+   "spz": "5 As 125/2026-32",
+   "ecli": "ECLI:CZ:NSS:2026:5.As.125.2026.32",
+   "druh": "usnesení",
+   "senat": 5,
+   "rejstrik": "As",
+   "datum": "2026-10-15",
+   "zverejneno": "2026-10-20",
+   "first_seen": "2026-10-21T03:17:45Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786549",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786549",
+   "soudce": "Lenka Matyášová",
+   "heslo": "Opožděná kasační stížnost vede k odmítnutí",
+   "shrnuti": "Žalobkyně Symfonie Capital Advisors se soudila s Českým telekomunikačním úřadem o kasační stížnost proti usnesení o odmítnutí žaloby. Nejvyšší správní soud řešil, zda byla kasační stížnost podána v zákonné dvoutýdenní lhůtě. Soud dospěl k závěru, že stěžovatelka podala stížnost po lhůtě, a proto ji odmítnutím vyřídil.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:786548",
+   "spz": "6 Afs 64/2026-49",
+   "ecli": "ECLI:CZ:NSS:2026:6.Afs.64.2026.49",
+   "druh": "rozsudek",
+   "senat": 6,
+   "rejstrik": "Afs",
+   "datum": "2026-10-16",
+   "zverejneno": "2026-10-20",
+   "first_seen": "2026-10-21T03:17:45Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786548",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/786548",
+   "soudce": "Filip Dienstbier",
+   "heslo": "Daňová uznatelnost výdajů z prodeje nemovitosti",
+   "shrnuti": "Odvolací finanční ředitelství podalo kasační stížnost proti rozsudku Městského soudu v Praze, kterým bylo zrušeno rozhodnutí o doměření daně z příjmů fyzických osob. Nejvyšší správní soud řešil přezkoumatelnost rozhodnutí odvolacího orgánu ve vztahu k posouzení daňové uznatelnosti výdajů a zákazu dvojího zdanění. Kasační stížnost zamítl, protože odůvodnění žalovaného trpělo vnitřní rozporností a nedostatky při posouzení souvislosti výdajů s příjmem.",
+   "oblasti": [
+    "dane",
+    "spravni"
+   ],
+   "procesni": false
+  },
   {
    "id": "nss:786541",
    "spz": "21 As 153/2026-16",
