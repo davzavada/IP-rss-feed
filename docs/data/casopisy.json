@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-20T04:34:33Z",
+ "generated": "2026-10-21T04:26:11Z",
  "okno_dni": 31,
  "casopisy": [
   {
@@ -372,15 +372,15 @@
    "first_seen": "2026-10-07T05:39:14Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.01",
+   "id": "QMJIP-10.4337/qmjip.2026.03.00",
    "casopis": "qmjip",
-   "nazev": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.01",
-   "autori": "Martin Senftleben",
-   "heslo": "AI a autorské právo",
-   "shrnuti": "Článek se zabývá otázkou spravedlivé odměny pro tvůrce za použití jejich děl při vývoji generativní AI. Porovnává současný trend individuálního licencování s výhodami kolektivních přístupů zohledňujících výstupy AI. Nakonec hodnotí různé regulační možnosti s ohledem na nutnost spravedlivé odměny a zároveň širokého přístupu k trénovacím datům.",
+   "nazev": "Seeing intellectual property in colour",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.00",
+   "autori": "Johanna Gibson",
    "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
+   "first_seen": "2026-10-10T05:34:45Z",
+   "poznamka": "Shrnutí zatím není k dispozici.",
+   "popis": "Seeing intellectual property in colour\nAutor: Johanna Gibson\nQueen Mary Journal of Intellectual Property"
   },
   {
    "id": "QMJIP-10.4337/qmjip.2026.03.06",
@@ -405,17 +405,6 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.05",
-   "casopis": "qmjip",
-   "nazev": "Thinking about originality: creativity in legal research",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.05",
-   "autori": "Chris Dent",
-   "heslo": "Originalita právního výzkumu",
-   "shrnuti": "Článek zkoumá kreativitu v akademickém právním výzkumu se zohledněním vlivu umelecké inteligence a poznatků z psychologie. Srovnává doktrinální a socio-právní výzkum s různými pojetími kreativity a dokazuje, že právní výzkum je ve své podstatě kreativní. Závěrem propojuje toto zjištění s konceptem autority a testem originality v současném autorském právu.",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
-  },
-  {
    "id": "QMJIP-10.4337/qmjip.2026.03.04",
    "casopis": "qmjip",
    "nazev": "The demise of IPRs through the rise of BBNJ: the small matter of patent disclosure of origin requirements",
@@ -423,6 +412,17 @@
    "autori": "Tanya Wagenaar",
    "heslo": "BBNJ a patentová práva",
    "shrnuti": "Článek se zabývá vlivem nové dohody BBNJ na práva duševního vlastnictví a požadavky na disclosure of origin (DOR) při biotechnologickém využití mořských genetických zdrojů. Ačkoli byly odkazy na duševní vlastnictví z konečného znění dohody postupně odstraněny, nedávno přijatá smlouva WIPO zavádí mezinárodní požadavky DOR. Tyto nové předpisy by mohly ideálně doplnit mechanismy dohody BBNJ a podpořit spravedlivé sdílení přínosů mezi státy.",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z"
+  },
+  {
+   "id": "QMJIP-10.4337/qmjip.2026.03.05",
+   "casopis": "qmjip",
+   "nazev": "Thinking about originality: creativity in legal research",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.05",
+   "autori": "Chris Dent",
+   "heslo": "Originalita právního výzkumu",
+   "shrnuti": "Článek zkoumá kreativitu v akademickém právním výzkumu se zohledněním vlivu umelecké inteligence a poznatků z psychologie. Srovnává doktrinální a socio-právní výzkum s různými pojetími kreativity a dokazuje, že právní výzkum je ve své podstatě kreativní. Závěrem propojuje toto zjištění s konceptem autority a testem originality v současném autorském právu.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -438,15 +438,15 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.00",
+   "id": "QMJIP-10.4337/qmjip.2026.03.01",
    "casopis": "qmjip",
-   "nazev": "Seeing intellectual property in colour",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.00",
-   "autori": "Johanna Gibson",
+   "nazev": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.01",
+   "autori": "Martin Senftleben",
+   "heslo": "AI a autorské právo",
+   "shrnuti": "Článek se zabývá otázkou spravedlivé odměny pro tvůrce za použití jejich děl při vývoji generativní AI. Porovnává současný trend individuálního licencování s výhodami kolektivních přístupů zohledňujících výstupy AI. Nakonec hodnotí různé regulační možnosti s ohledem na nutnost spravedlivé odměny a zároveň širokého přístupu k trénovacím datům.",
    "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z",
-   "poznamka": "Shrnutí zatím není k dispozici.",
-   "popis": "Seeing intellectual property in colour\nAutor: Johanna Gibson\nQueen Mary Journal of Intellectual Property"
+   "first_seen": "2026-10-10T05:34:45Z"
   },
   {
    "id": "IIC-10.1007/s40319-026-01781-y",

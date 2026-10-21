@@ -1,13 +1,13 @@
 {
-  "generated": "2026-10-20T04:34:57+00:00",
+  "generated": "2026-10-21T04:26:36+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 30,
-      "stazeno": "2026-10-20T04:34:38+00:00",
+      "pocet": 29,
+      "stazeno": "2026-10-21T04:26:17+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -17,18 +17,18 @@
       "zkratka": "PF UK",
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
-      "pocet": 9,
-      "stazeno": "2026-10-20T04:34:39+00:00",
+      "pocet": 7,
+      "stazeno": "2026-10-21T04:26:21+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "832c8a6d5e8d50f9"
+      "otisk": "a571c64365da8ec9"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
       "zkratka": "JČP",
       "barva": "#1d4ed8",
       "url": "https://jednotaceskychpravniku.cz/vzdelavaci-akce/",
-      "pocet": 5,
+      "pocet": 4,
       "stazeno": "2026-10-14T04:38:28+00:00",
       "cesta": "ai",
       "chyba": "403 Client Error: Forbidden for url: https://jednotaceskychpravniku.cz/vzdelavaci-akce/",
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-10-20T04:34:46+00:00",
+      "stazeno": "2026-10-21T04:26:27+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "e0ad4b7e877903c7"
+      "otisk": "697519706e0ac4c5"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 2,
-      "stazeno": "2026-10-20T04:34:47+00:00",
+      "stazeno": "2026-10-21T04:26:32+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "791ee633882cb34d"
@@ -61,8 +61,8 @@
       "zkratka": "ÚPV",
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
-      "pocet": 7,
-      "stazeno": "2026-10-20T04:34:47+00:00",
+      "pocet": 6,
+      "stazeno": "2026-10-21T04:26:32+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "d11aa97d850abcf0"
@@ -1294,7 +1294,7 @@
       ],
       "cena": "zdarma",
       "anotace": "Setkání a diskuse na téma Gender Pay Gap se zaměří na rozdíly v odměňování žen a mužů, jejich právní souvislosti a praktické dopady.",
-      "url": "https://www.prf.cuni.cz/aktuality/proc-zeny-v-cesku-stale-vydelavaji-mene-nez-muzi",
+      "url": "https://www.prf.cuni.cz/aktuality/proc-zeny-v-cesku-stale-vydelavaji-mene-než-muzi",
       "detail_pokusy": 2,
       "z_detailu": [
         "misto"
@@ -1364,26 +1364,6 @@
       ],
       "oblasti": [],
       "oblasti_klic": "78842de6afef"
-    },
-    {
-      "id": "483625287ad1b47aa5df",
-      "poradatel": "PFUK",
-      "datum": "2026-10-30",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "Camp Peira 2026",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [],
-      "cena": "",
-      "anotace": "Camp Peira nabízí studentům jedinečnou možnost zažít mezinárodní humanitární právo v praxi. V realistické simulaci krizových situací si vyzkouší řešení úkolů, s nimiž se setkávají vojáci, humanitární pracovníci či právní experti v reálných konfliktních zónách.",
-      "url": "https://www.prf.cuni.cz/aktuality/camp-peira-2026-prihlasky-do-11-10-2026",
-      "datum_do": "2026-11-01",
-      "detail_pokusy": 2,
-      "oblasti": [
-        "mps"
-      ],
-      "oblasti_klic": "192fbcf80b9d"
     },
     {
       "id": "00df13debafc19ec10fd",
@@ -1466,9 +1446,9 @@
       "poradatel": "JCP",
       "datum": "2026-11-03",
       "zacatek": "09:30",
-      "konec": "",
+      "konec": "14:30",
       "nazev": "Vybrané otázky společného jmění manželů v aktuální rozhodovací praxi Nejvyššího soudu ČR a Ústavního soudu ČR",
-      "misto": "",
+      "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
       "forma": "prezencne",
       "lektori": [
         "Mgr. Michal Králík, Ph.D., soudce NS ČR"
@@ -1480,7 +1460,13 @@
         "rodina_dedictvi",
         "ustavni"
       ],
-      "oblasti_klic": "66411bf1d0da"
+      "oblasti_klic": "66411bf1d0da",
+      "take_u": [
+        {
+          "poradatel": "EPRAVO",
+          "url": "https://www.epravo.cz/top/aktualne/vybrane-otazky-spolecneho-jmeni-manzelu-v-aktualni-rozhodovaci-praxi-nejvyssiho-soudu-cr-a-ustavniho-soudu-cr-121773.html"
+        }
+      ]
     },
     {
       "id": "c0bfe4c610a9e128027a",
@@ -2227,6 +2213,29 @@
       "detail_pokusy": 2
     }
   ],
-  "duplikaty": [],
+  "duplikaty": [
+    {
+      "id": "a5f115cdc51b009e2efa",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-03",
+      "zacatek": "09:30",
+      "konec": "14:30",
+      "nazev": "Vybrané otázky společného jmění manželů v aktuální rozhodovací praxi Nejvyššího soudu ČR a Ústavního soudu ČR",
+      "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
+      "forma": "hybridne",
+      "lektori": [
+        "Mgr. Michal Králík"
+      ],
+      "cena": "",
+      "anotace": "Vzdělávací akce pořádaná Jednotou českých právníků zaměřená na vybrané otázky společného jmění manželů.",
+      "url": "https://www.epravo.cz/top/aktualne/vybrane-otazky-spolecneho-jmeni-manzelu-v-aktualni-rozhodovaci-praxi-nejvyssiho-soudu-cr-a-ustavniho-soudu-cr-121773.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "forma",
+        "misto"
+      ],
+      "stejna_jako": "9a22045dc60281f66a17"
+    }
+  ],
   "ics": "https://owl.davidzavada.cz/akce.ics"
 }
