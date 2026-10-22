@@ -1,8 +1,290 @@
 {
- "generated": "2026-10-20T03:22:51Z",
+ "generated": "2026-10-22T03:16:17Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "sdeu:62025TJ0786",
+   "spz": "T-786/25",
+   "ecli": "ECLI:EU:T:2026:688",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-10-21",
+   "first_seen": "2026-10-22T03:16:17Z",
+   "nazev": "Novomatic v. EUIPO - Euro Games Technology (EXTRA STARS)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0786",
+   "heslo": "Nezamějestelnost ochranných známek se shodným prvkem",
+   "shrnuti": "Tribunál posuzoval, zda existuje pravděpodobnost záměny mezi obrazovými ochrannými známkami obsahujícími společný slovní prvek stars. Dospěl k závěru, že navzdory totožnosti či podobnosti goods and services a průměrné rozlišovací schopnosti starší známky neexistuje pravděpodobnost záměny, neboť dotčená označení vykazují pouze nízký stupeň vizuální, fonetické a koncepční podobnosti.",
+   "oblasti": [
+    "prumyslova_prava",
+    "spotrebitel"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0541",
+   "spz": "T-541/25",
+   "ecli": "ECLI:EU:T:2026:687",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-10-21",
+   "first_seen": "2026-10-22T03:16:17Z",
+   "nazev": "Qingdao Ecopure Filter v. EUIPO - Waterdrop Microdrink (Waterdrop)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0541",
+   "heslo": "Shodná ochranná známka přihlášená ve zlé víře",
+   "shrnuti": "Tribunál posuzoval, zda byla napadena ochranná známka Evropské unie přihlášena ve zlé víře podle čl. 59 odst. 1 písm. b) nařízení (EU) 2017/1001. Dospěl k závěru, že přihlášení téměř totožné ochranné známky krátce po uplynutí ochranné lhůty pro dřívější známku, aniž by existoval legitimní obchodní důvod či prokázané rozšíření podnikatelské činnosti, svědčí o úmyslu obejít povinnost prokázat skutečné užívání dřívější známky, což naplňuje znaky přihlášky ve zlé víře.",
+   "oblasti": [
+    "prumyslova_prava"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0513",
+   "spz": "T-513/25",
+   "ecli": "ECLI:EU:T:2026:694",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-10-21",
+   "first_seen": "2026-10-22T03:16:17Z",
+   "nazev": "Volotea v. EUIPO - ITA Airways (VOLARE)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0513",
+   "heslo": "Kódované věrnostní karty vykazují určitou podobnost",
+   "shrnuti": "Soudní dvůr EU posuzoval žalobu na zrušení rozhodnutí odvolacího senátu EUIPO ve věci zápisu obrazové ochranné známky obsahující prvek VOLARE. Dospěl k závěru, že kódované věrnostní karty ve třídě 9 a vydávání hodnotových tokenů pro věrnostní systémy ve třídě 36 vykazují určitou míru vzájemné doplňkovosti a podobnosti s dřívějšími staršími ochrannými známkami. V tomto rozsahu proto napadené rozhodnutí částečně zrušil.",
+   "oblasti": [
+    "prumyslova_prava"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0479",
+   "spz": "T-479/25",
+   "ecli": "ECLI:EU:T:2026:689",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-10-21",
+   "first_seen": "2026-10-22T03:16:17Z",
+   "nazev": "Kharkovsky v. Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0479",
+   "heslo": "Anulování sankcí vyžaduje podložené důkazy o podpoře",
+   "shrnuti": "Tribunál řešil otázku, zda Rada dostatečně prokázala, že stěžovatel podporoval ruské akce ohrožující Ukrajinu a účastnil se násilností. Soud rozhodl, že předložené důkazy neprokázaly jeho roli zástupce či člena dotčené kozácké unie, a proto nařízení o zmrazení fondů v jeho případě zrušil.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0383",
+   "spz": "T-383/25",
+   "ecli": "ECLI:EU:T:2026:684",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-10-21",
+   "first_seen": "2026-10-22T03:16:17Z",
+   "nazev": "Segelbootwartung",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0383",
+   "heslo": "Dovoz dopravního prostředku a vznik DPH",
+   "shrnuti": "Soudní dvůr EU rozhodl, že protiprávní vstup dopravního prostředku ze třetí země do Unie nepředstavuje dovoz podléhající DPH, pokud je prokázáno, že nebyl určen k použití na tomto území a byl vyvezen zpět, aniž byl skutečně použit. Dále stanovil, že provedení údržby a oprav na zboží před zpětným vývozem nepředstavuje použití zboží vedoucí k zániku nároku na zánik celního dluhu, pokud tyto práce mohly být povoleny jako zušlechťovací operace.",
+   "oblasti": [
+    "spravni",
+    "dane"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0199",
+   "spz": "T-199/25",
+   "ecli": "ECLI:EU:T:2026:686",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-10-21",
+   "first_seen": "2026-10-22T03:16:17Z",
+   "nazev": "IO v. EIB",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0199",
+   "heslo": "Odmítnutí stížnosti na obtěžování pro absenci důkazů",
+   "shrnuti": "Žalobce napadl rozhodnutí Evropské investiční banky, kterým byla odmítnuta jeho stížnost na psychické obtěžování ze strany kolegy pro nedostatek prima facie důkazů. Tribunál žalobu zamítl s tím, že namítané skutečnosti neprokazují nevhodné chování naplňující znaky psychického obtěžování a banka nepochybila, když neprovedla hloubkové šetření.",
+   "oblasti": [
+    "pracovni",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0129",
+   "spz": "T-129/25",
+   "ecli": "ECLI:EU:T:2026:693",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-10-21",
+   "first_seen": "2026-10-22T03:16:17Z",
+   "nazev": "Novavax v. EUIPO - Brill International (MATRIX-M)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0129",
+   "heslo": "Nebezpečí záměny ochranných známek MATRIX-M a MATRIX OCULAR",
+   "shrnuti": "Tribunál posuzoval, zda existuje nebezpečí záměny mezi slovní ochrannou známkou MATRIX-M a starší obrazovou ochrannou známkou MATRIX OCULAR pro zboží ve třídě 5. Dospěl k závěru, že přes nízkou stupeň podobnosti dotčeného zboží a vyšší pozornost veřejnosti existuje nadprůměrná vizuální a vysoká fonetická i koncepční podobnost, což odůvodňuje nebezpečí záměny.",
+   "oblasti": [
+    "prumyslova_prava"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0128",
+   "spz": "T-128/25",
+   "ecli": "ECLI:EU:T:2026:692",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-10-21",
+   "first_seen": "2026-10-22T03:16:17Z",
+   "nazev": "Novavax v. EUIPO - Brill International (MATRIX-C)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0128",
+   "heslo": "Podobnost ochranných známek MATRIX-C a MATRIX OCULAR",
+   "shrnuti": "Tribunál posuzoval žalobu na zrušení rozhodnutí EUIPO, kterým byla zamítnuta přihláška ochranné známky MATRIX-C pro pravděpodobnost záměny s dřívější ochrannou známkou MATRIX OCULAR. Tribunál potvrdil, že přes nízkou míru podobnosti dotčených zboží a vyšší pozornost veřejnosti existuje pravděpodobnost záměny vzhledem k nadprůměrné vizuální a vysoké fonetické i konceptuální podobnosti obou označení. Žalobu Novavax proto zamítl.",
+   "oblasti": [
+    "prumyslova_prava"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0127",
+   "spz": "T-127/25",
+   "ecli": "ECLI:EU:T:2026:691",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-10-21",
+   "first_seen": "2026-10-22T03:16:17Z",
+   "nazev": "Novavax v. EUIPO - Brill International (MATRIX-V)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0127",
+   "heslo": "Záměna ochranných známek a podobnost zboží",
+   "shrnuti": "Tribunál řešil otázku, zda existuje pravděpodobnost záměny mezi slovní ochrannou známkou MATRIX-V a dřívější obrazovou ochrannou známkou MATRIX OCULAR pro zboží ve třídě 5. Soud dospěl k závěru, že přes nízkou míru podobnosti dotčeného zboží a vyšší míru pozornosti veřejnosti existuje vizuální, fonetická i konceptuální podobnost, která odůvodňuje závěr o pravděpodobnosti záměny.",
+   "oblasti": [
+    "prumyslova_prava"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0126",
+   "spz": "T-126/25",
+   "ecli": "ECLI:EU:T:2026:690",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-10-21",
+   "first_seen": "2026-10-22T03:16:17Z",
+   "nazev": "Novavax v. EUIPO - Brill International (MATRIX-A)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0126",
+   "heslo": "Nebezpečí záměny ochranných známek MATRIX-A a MATRIX OCULAR",
+   "shrnuti": "Tribunál posuzoval žalobu na zrušení rozhodnutí odvolacího senátu EUIPO, kterým byla zamítnuta přihláška ochranné známky EU pro slovní označení MATRIX-A kvůli nebezpečí záměny s dřívější starší obrazovou ochrannou známkou MATRIX OCULAR. Soud potvrdil závěr o nízkém stupni podobnosti dotčených výrobků v třídě 5, nadprůměrné vizuální podobnosti a vysoké fonetické i koncepční podobnosti. Žalobu proto v celém rozsahu zamítl.",
+   "oblasti": [
+    "prumyslova_prava",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TC0903",
+   "spz": "T-903/25",
+   "ecli": "ECLI:EU:T:2026:683",
+   "druh": "stanovisko GA",
+   "rejstrik": "T",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-10-21",
+   "first_seen": "2026-10-22T03:16:17Z",
+   "nazev": "Grotta Nuova",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TC0903",
+   "heslo": "Jedno plnění umělce představuje dodání zboží",
+   "shrnuti": "Generální advokát navrhuje, že komplexní plnění spočívající v koncepci a realizaci umělecké instalace v areálu školy tvoří jediné plnění, které je nutno kvalifikovat jako dodání zboží. Předmětem takového plnění je dodání uměleckého díla za předpokladu, že všechny dílčí prvky tvořící hlavní plnění splňují příslušná kritéria původní plastiky. Rozlišení mezi uměleckým dílem a tradičním řemeslným výrobkem závisí na tom, zda se věc nachází v konkurenčním stavu s jinými výrobky.",
+   "oblasti": [
+    "dane",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TC0028",
+   "spz": "T-28/25",
+   "ecli": "ECLI:EU:T:2026:682",
+   "druh": "stanovisko GA",
+   "rejstrik": "T",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-10-21",
+   "first_seen": "2026-10-22T03:16:17Z",
+   "nazev": "Hauptzollamt A",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TC0028",
+   "heslo": "Náklady na design a nákupní provize v celní hodnotě",
+   "shrnuti": "Generální advokát navrhl, že náklady na nehmotná plnění spočívající v designu tiskových podkladů poskytnutých kupujícím a nákupní provize související s pořízením materiálů obsažených v dováženém zboží se musí zahrnout do hodnoty těchto materiálů pro účely určení celní hodnoty. Zároveň uvedl, že zařazení zboží jako soupravy podle kombinované nomenklatury neznamená, že se pro celní účely považuje za jeden nedělitelný celek. Tyto závěry vycházejí z výkladu celního kodexu Unie a příslušných pravidel pro úpravu celní hodnoty.",
+   "oblasti": [
+    "spravni",
+    "dane",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024TJ0519",
+   "spz": "T-519/24",
+   "ecli": "ECLI:EU:T:2026:696",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-10-21",
+   "first_seen": "2026-10-22T03:16:17Z",
+   "nazev": "FT v. FEI",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0519",
+   "heslo": "Přezkum výběrového řízení a posouzení kvalifikace",
+   "shrnuti": "Tribunál řešil žalobu zaměstnance Evropského investičního fondu na zrušení rozhodnutí o nevybrání na vedoucí pozici a na náhradu škody. Soud žalobu v celém rozsahu zamítl, neboť žalobce neprokázal, že by výběrová komise dopustila zjevných nesprávností při posouzení jeho kvalifikace a zásluh ve srovnání s úspěšným kandidátem.",
+   "oblasti": [
+    "pracovni",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024TJ0475",
+   "spz": "T-475/24",
+   "ecli": "ECLI:EU:T:2026:695",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-10-21",
+   "first_seen": "2026-10-22T03:16:17Z",
+   "nazev": "FD v. FEI",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0475",
+   "heslo": "Předvýběr v náborovém řízení vylučuje hodnocení podle pohlaví",
+   "shrnuti": "Žalobce napadl rozhodnutí o svém vyřazení z předvýběrové fáze v několika náborových řízeních na vedoucí pozice u Evropského investičního fondu. Tribunál konstatoval, že žalobce neprokázal existenci zjevných nesprávných posouzení ze strany výběrové komise ani to, že by jeho pohlaví bylo zohledněno při hodnocení, jelikož k vyřazení vedlo dosažení nedostatečného hodnocení u povinných kritérií. Žalobu proto v celém rozsahu zamítl.",
+   "oblasti": [
+    "pracovni",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024TJ0471",
+   "spz": "T-471/24",
+   "ecli": "ECLI:EU:T:2026:685",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-10-21",
+   "first_seen": "2026-10-22T03:16:17Z",
+   "nazev": "FC v. FEI",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0471",
+   "heslo": "Omezení odborné praxe ve výběrovém řízení",
+   "shrnuti": "Tribunál řešil žalobu na zrušení rozhodnutí o zamítnutí uchazečovy přihlášky z důvodu překročení maximální požadované délky odborné praxe stanovené v oznámení o volném pracovním místě. Soud konstatoval, že požadavek na určitou délku praxe sleduje legitimní cíle personální politiky, jako je vyvážená struktura platových stupňů a obměna zaměstnanců, a proto žalobu v celém rozsahu zamítl.",
+   "oblasti": [
+    "pracovni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
   {
    "id": "sdeu:ipc:C-1116/26",
    "spz": "C-1116/26",
@@ -10,6 +292,7 @@
    "rejstrik": "C",
    "datum": "2026-10-14",
    "first_seen": "2026-10-20T03:22:51Z",
+   "nazev": "Network Research Belgium",
    "url": "https://curia.europa.eu/juris/liste.jsf?num=C-1116/26&language=cs",
    "heslo": "",
    "shrnuti": "",
