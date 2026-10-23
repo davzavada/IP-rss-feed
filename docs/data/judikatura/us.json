@@ -1,8 +1,124 @@
 {
- "generated": "2026-10-21T03:17:45Z",
+ "generated": "2026-10-23T03:21:59Z",
  "soud": "us",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "us:4-2479-25_2",
+   "spz": "IV. ÚS 2479/25",
+   "ecli": "ECLI:CZ:US:2026:4.US.2479.25.2",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-22",
+   "zverejneno": "2026-10-22",
+   "first_seen": "2026-10-23T03:21:59Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2479-25_2",
+   "soudce": "Josef Baxa",
+   "heslo": "Vyloučení věci v trestním řízení nekrátí práva poškozených",
+   "shrnuti": "Stěžovatelé jako poškození napadali rozhodnutí o vyloučení části trestní věci k samostatnému projednání, neboť se obávali ztráty možnosti uspokojit své nároky ze zajištěného majetku. Ústavní soud neshledal porušení jejich základních práv, protože vyloučení věci bylo řádně odůvodněno snahou o urychlení řízení a stěžovatelům nebrání uplatnit nároky na náhradu újmy ani v samostatném řízení. Ústavní stížnosti proto odmítl jako zjevně neopodstatněné.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:4-2189-26_1",
+   "spz": "IV. ÚS 2189/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.2189.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-17",
+   "zverejneno": "2026-10-22",
+   "first_seen": "2026-10-23T03:21:59Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2189-26_1",
+   "soudce": "Michal Bartoň",
+   "heslo": "Lhůta pro projev vůle obce podat ústavní stížnost",
+   "shrnuti": "Stěžovatel napadal rozsudky správních soudů týkající se územního plánu a namítal porušení práva na samosprávu. Ústavní soud stížnost odmítl pro neodstraněné vady, neboť zastupitelstvo obce doložilo usnesení o podání ústavní stížnosti až po uplynutí dvouměsíční lhůty.",
+   "oblasti": [
+    "ustavni",
+    "stavebni_zp",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:4-2034-26_1",
+   "spz": "IV. ÚS 2034/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.2034.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-16",
+   "zverejneno": "2026-10-22",
+   "first_seen": "2026-10-23T03:21:59Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2034-26_1",
+   "soudce": "Lucie Dolanská Bányaiová",
+   "heslo": "Počátek promlčecí doby nároku na bolestné",
+   "shrnuti": "Stěžovatel napadal rozhodnutí soudů týkající se promlčení jeho nároku na bolestné v důsledku dopravní nehody. Ústavní soud neshledal porušení stěžovatelových základních práv, neboť obecné soudy postupovaly správně, když počátek běhu subjektivní promlčecí doby odvíjely od okamžiku, kdy se bolestivý stav ustálil. Ústavní stížnost byla odmítnuta jako zjevně neopodstatněná.",
+   "oblasti": [
+    "skoda",
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:2-3428-25_1",
+   "spz": "II. ÚS 3428/25",
+   "ecli": "ECLI:CZ:US:2026:2.US.3428.25.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-16",
+   "zverejneno": "2026-10-22",
+   "first_seen": "2026-10-23T03:21:59Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-3428-25_1",
+   "soudce": "Jiří Přibáň",
+   "heslo": "Nezpůsobilost nových důkazů obnovit trestní řízení",
+   "shrnuti": "Stěžovatel napadal usnesení obecných soudů, kterými byl zamítnut jeho návrh na obnovu trestního řízení. Ústavní soud neshledal porušení jeho práva na spravedlivý proces, protože navrhované důkazy nebyly způsobilé změnit skutkový stav věci a závěry soudů byly ústavně souladné. Ústavní stížnost byla odmítnuta jako zjevně neopodstatněná.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:2-2286-26_1",
+   "spz": "II. ÚS 2286/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2286.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-16",
+   "zverejneno": "2026-10-22",
+   "first_seen": "2026-10-23T03:21:59Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2286-26_1",
+   "soudce": "Pavel Šámal",
+   "heslo": "Přezkum hodnocení důkazů a výše škody",
+   "shrnuti": "Stěžovatelka napadala odsouzení za přečin vyhrožování úřední osobě a poškození cizí věci, přičemž namítala nesprávné hodnocení důkazů, existenci opomenutých důkazů a nesprávné stanovení výše škody. Ústavní soud neshledal porušení základních práv stěžovatelky, neboť obecné soudy své závěry řádně a srozumitelně odůvodnily. Ústavní stížnost byla proto odmítnuta jako zjevně neopodstatněná.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:2-2119-25_1",
+   "spz": "II. ÚS 2119/25",
+   "ecli": "ECLI:CZ:US:2026:2.US.2119.25.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-16",
+   "zverejneno": "2026-10-22",
+   "first_seen": "2026-10-23T03:21:59Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2119-25_1",
+   "soudce": "Pavel Šámal",
+   "heslo": "Přezkum utajených důvodů zamítnutí státního občanství",
+   "shrnuti": "Stěžovatel napadal rozhodnutí Ministerstva vnitra a ministra vnitra o zamítnutí žádosti o udělení státního občanství z bezpečnostních důvodů. Ústavní soud konstatoval, že právo na udělení státního občanství není zaručeno a utajená stanoviska bezpečnostních sborů dostatečně odůvodňují závěr o bezpečnostním riziku. Ústavní stížnost proto odmítl jako zjevně neopodstatněnou.",
+   "oblasti": [
+    "spravni",
+    "ustavni",
+    "socialni_cizinci"
+   ],
+   "procesni": false
+  },
   {
    "id": "us:4-2703-26_1",
    "spz": "IV. ÚS 2703/26",
@@ -5483,230 +5599,6 @@
    "oblasti": [
     "rodina_dedictvi",
     "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "us:Pl-10-26_2",
-   "spz": "Pl. ÚS 10/26",
-   "ecli": "ECLI:CZ:US:2026:Pl.US.10.26.2",
-   "druh": "nález",
-   "rejstrik": "ÚS",
-   "datum": "2026-09-09",
-   "zverejneno": "2026-09-21",
-   "first_seen": "2026-09-21T12:00:00Z",
-   "nazev": "Obnovené řízení po rozsudku ESLP ve věci Krpelík proti ČR - právo na obhajobu",
-   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=Pl-10-26_2",
-   "soudce": "Tomáš Langášek",
-   "heslo": "Poučení o obhajobě musí odpovídat mentálnímu postižení",
-   "shrnuti": "Stěžovatel napadal odsuzující rozsudky v trestní věci, v níž byl usvědčen na základě doznání učiněného bez přítomnosti obhájce. Ústavní soud shledal porušení práva na obhajobu zaručeného v čl. 40 odst. 3 Listiny základních práv a svobod, neboť stěžovatel nebyl v přípravném řízení s ohledem na své mentální postižení poučen o právu na právní pomoc způsobem odpovídajícím jeho situaci a doznání bylo použito jako klíčový důkaz.",
-   "oblasti": [
-    "trestni",
-    "ustavni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "us:4-465-26_1",
-   "spz": "IV. ÚS 465/26",
-   "ecli": "ECLI:CZ:US:2026:4.US.465.26.1",
-   "druh": "nález",
-   "rejstrik": "ÚS",
-   "datum": "2026-09-09",
-   "zverejneno": "2026-09-21",
-   "first_seen": "2026-09-21T12:00:00Z",
-   "nazev": "Odměna zmocněnce v adhezním řízení v případě uspokojení nároku poškozeného na základě dohody s obviněným",
-   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-465-26_1",
-   "soudce": "Michal Bartoň",
-   "heslo": "Úhrada škody před rozsudkem nekrátí náklady poškozeného",
-   "shrnuti": "Stěžovatel napadal rozhodnutí obecných soudů, jimiž mu byla odepřena plná náhrada nákladů na zmocněnce v adhezním řízení kvůli tomu, že obviněná uhradila škodu ještě před vynesením odsuzujícího rozsudku, a proto chyběl formální adhezní výrok. Ústavní soud shledal porušení práva na soudní ochranu podle čl. 36 odst. 1 Listiny. Dospěl k závěru, že formalistický výklad advokátního tarifu vedoucí ke krácení nákladů poškozeného pouze na základě časového okamžiku úhrady škody představuje nepřípustný přepjatý formalismus.",
-   "oblasti": [
-    "trestni",
-    "skoda",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "us:4-2303-26_1",
-   "spz": "IV. ÚS 2303/26",
-   "ecli": "ECLI:CZ:US:2026:4.US.2303.26.1",
-   "druh": "usnesení",
-   "rejstrik": "ÚS",
-   "datum": "2026-08-25",
-   "zverejneno": "2026-09-21",
-   "first_seen": "2026-09-21T12:00:00Z",
-   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2303-26_1",
-   "soudce": "Michal Bartoň",
-   "heslo": "Souběžně podané dovolání činí ústavní stížnost předčasnou",
-   "shrnuti": "Stěžovatel napadal rozhodnutí obecných soudů o úpravě styku a rodičovské odpovědnosti s tvrzením, že porušují jeho právo na spravedlivý proces a ochranu rodinného života. Ústavní soud neshledal porušení základních práv, neboť stěžovatel podal současně s ústavní stížností také dovolání, o kterém dosud nebylo rozhodnuto. Ústavní stížnost proto odmítl pro předčasnost a nepřípustnost kvůli nedodržení principu subsidiarity.",
-   "oblasti": [
-    "rodina_dedictvi",
-    "civilni_proces",
-    "ustavni"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "us:4-1666-26_1",
-   "spz": "IV. ÚS 1666/26",
-   "ecli": "ECLI:CZ:US:2026:4.US.1666.26.1",
-   "druh": "nález",
-   "rejstrik": "ÚS",
-   "datum": "2026-09-09",
-   "zverejneno": "2026-09-21",
-   "first_seen": "2026-09-21T12:00:00Z",
-   "nazev": "Rozhodnutí o osvobození od soudních poplatků",
-   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-1666-26_1",
-   "soudce": "Zdeněk Kühn",
-   "heslo": "Opačné rozhodnutí o osvobození od poplatku vyžaduje odůvodnění",
-   "shrnuti": "Stěžovatelé napadli usnesení obecných soudů, kterými jim nebylo přiznáno osvobození od soudního poplatku za odvolání. Ústavní soud shledal porušení práva na soudní ochranu podle čl. 36 odst. 1 Listiny základních práv a svobod. Soudy totiž za skutkově a právně obdobného stavu rozhodly o totožných žadatelích opačně než v dřívějším řízení, aniž by nesoulad v rozhodování přesvědčivě odůvodnily.",
-   "oblasti": [
-    "civilni_proces",
-    "ustavni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "us:4-1549-26_1",
-   "spz": "IV. ÚS 1549/26",
-   "ecli": "ECLI:CZ:US:2026:4.US.1549.26.1",
-   "druh": "nález",
-   "rejstrik": "ÚS",
-   "datum": "2026-09-09",
-   "zverejneno": "2026-09-21",
-   "first_seen": "2026-09-21T12:00:00Z",
-   "nazev": "Řádné odůvodnění rozhodnutí o odkladu právní moci rozsudku",
-   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-1549-26_1",
-   "soudce": "Lucie Dolanská Bányaiová",
-   "heslo": "Odklad právní moci vyžaduje posouzení práv třetích osob",
-   "shrnuti": "Stěžovatelé napadli usnesení Nejvyššího soudu o odkladu právní moci rozsudku pro nedostatek řádného odůvodnění a nevypořádání se s podmínkou nedotčení práv třetích osob. Ústavní soud shledal porušení práva stěžovatelů na soudní ochranu podle čl. 36 odst. 1 Listiny základních práv a svobod, protože napadené usnesení postipovalo v rozporu se zákonnými požadavky a bylo nepřezkoumatelné. Z tohoto důvodu ústavní stížnosti vyhověl a napadené usnesení zrušil.",
-   "oblasti": [
-    "civilni_proces",
-    "ustavni"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "us:3-767-26_1",
-   "spz": "III. ÚS 767/26",
-   "ecli": "ECLI:CZ:US:2026:3.US.767.26.1",
-   "druh": "usnesení",
-   "rejstrik": "ÚS",
-   "datum": "2026-08-12",
-   "zverejneno": "2026-09-21",
-   "first_seen": "2026-09-21T12:00:00Z",
-   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-767-26_1",
-   "soudce": "Milan Hulmák",
-   "heslo": "Sebeobrana a dokazování u pokusu vraždy",
-   "shrnuti": "Stěžovatel napadal odsouzení za pokus zločinu vraždy a namítal porušení práva na spravedlivý proces kvůli vadnému dokazování a nevypořádání se s námitkami ohledně časové osy a sebeobrany. Ústavní soud neshledal porušení základních práv, neboť obecné soudy své závěry řádně odůvodnily a nešlo o svévoli. Ústavní stížnost byla částečně odmítnuta jako nepříslušná a částečně jako zjevně neopodstatněná.",
-   "oblasti": [
-    "trestni",
-    "civilni_proces",
-    "ustavni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "us:2-999-26_2",
-   "spz": "II. ÚS 999/26",
-   "ecli": "ECLI:CZ:US:2026:2.US.999.26.2",
-   "druh": "nález",
-   "rejstrik": "ÚS",
-   "datum": "2026-09-07",
-   "zverejneno": "2026-09-21",
-   "first_seen": "2026-09-21T12:00:00Z",
-   "nazev": "Náležité odůvodnění rozhodnutí o náhradě nákladů exekuce při zastavení řízení",
-   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-999-26_2",
-   "soudce": "Jiří Přibáň",
-   "heslo": "Náhrada nákladů exekuce vyžaduje přezkoumatelné odůvodnění",
-   "shrnuti": "Stěžovatel napadal rozhodnutí odvolacího soudu, jímž mu nebylo při zastavení exekuce přiznáno právo na náhradu nákladů exekuce. Ústavní soud shledal porušení práva na soudní ochranu a práva vlastnického, protože napadené rozhodnutí postrádá řádné a přezkoumatelné odůvodnění ohledně nároku na náklady exekuce. Odvolací soud sice konstatoval, že k náhradě již došlo, ale neposkytl pro to řádný právní titul, čímž založil nepřezkoumatelnost rozhodnutí.",
-   "oblasti": [
-    "civilni_proces",
-    "ustavni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "us:2-1922-26_1",
-   "spz": "II. ÚS 1922/26",
-   "ecli": "ECLI:CZ:US:2026:2.US.1922.26.1",
-   "druh": "nález",
-   "rejstrik": "ÚS",
-   "datum": "2026-09-09",
-   "zverejneno": "2026-09-21",
-   "first_seen": "2026-09-21T12:00:00Z",
-   "nazev": "Výklad § 1042 občanského zákoníku a odmítnutí dovolání pro vady, kterými netrpělo",
-   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-1922-26_1",
-   "soudce": "Veronika Křesťanová",
-   "heslo": "Vlastnická žaloba podle § 1042 občanského zákoníku",
-   "shrnuti": "Stěžovatel napadal rozhodnutí soudů, která mu zakázala činit podání a vést řízení vycházející z odevzdací listiny, a odmítnutí svého dovolání. Ústavní soud shledal porušení stěžovatelova práva na soudní ochranu podle čl. 36 odst. 1 Listiny, protože Nejvyšší soud nesprávně odmítl dovolání pro vady a obecné soudy podaly neústavní výklad § 1042 občanského zákoníku. Ústavní stížnost byla v této části důvodná a napadená rozhodnutí byla zrušena, ve zbylém rozsahu byla odmítnuta.",
-   "oblasti": [
-    "vecna_prava",
-    "civilni_proces",
-    "ustavni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "us:2-1140-25_2",
-   "spz": "II. ÚS 1140/25",
-   "ecli": "ECLI:CZ:US:2026:2.US.1140.25.2",
-   "druh": "nález",
-   "rejstrik": "ÚS",
-   "datum": "2026-09-08",
-   "zverejneno": "2026-09-21",
-   "first_seen": "2026-09-21T12:00:00Z",
-   "nazev": "Neústavnost rozlišování mezi odměnou advokáta a advokáta - opatrovníka",
-   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-1140-25_2",
-   "soudce": "Jiří Přibáň",
-   "heslo": "Nižší odměna ustanoveného advokáta je libovůle",
-   "shrnuti": "Stěžovatel napadal rozhodnutí obecných soudů o přiznání nižší odměny za výkon funkce opatrovníka podle § 9 odst. 7 advokátního tarifu. Ústavní soud shledal porušení práva na rovnost, práva podnikat a práva na soudní ochranu, protože rozlišování mezi odměnou zvoleného a ustanoveného advokáta představuje nedůvodnou libovůli. Návrh na zrušení ustanovení byl částečně zastaven vzhledem k již dřívějšímu zrušení v jiném řízení a částečně odmítnut.",
-   "oblasti": [
-    "civilni_proces",
-    "ustavni",
-    "zavazky"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "us:1-273-26_1",
-   "spz": "I. ÚS 273/26",
-   "ecli": "ECLI:CZ:US:2026:1.US.273.26.1",
-   "druh": "usnesení",
-   "rejstrik": "ÚS",
-   "datum": "2026-08-12",
-   "zverejneno": "2026-09-21",
-   "first_seen": "2026-09-21T12:00:00Z",
-   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-273-26_1",
-   "soudce": "Dita Řepková",
-   "heslo": "Zástava vložená po zahájení insolvence nezakládá zajištění",
-   "shrnuti": "Stěžovatelka napadala rozhodnutí obecných soudů, která ji v insolvenčním řízení odepřela postavení zajištěného věřitele, protože vklad smluvního zástavního práva do katastru nemovitostí byl povolen až po zahájení insolvenčního řízení. Ústavní soud shledal ústavní stížnost zjevně neopodstatněnou, neboť výklad § 109 odst. 1 písm. b) insolvenčního zákona podaný obecnými soudy a Nejvyšším soudem je ústavně konformní a sleduje legitimní cíl ochrany kolektivního uspokojování věřitelů.",
-   "oblasti": [
-    "insolvence",
-    "vecna_prava",
-    "zavazky"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "us:1-1767-26_1",
-   "spz": "I. ÚS 1767/26",
-   "ecli": "ECLI:CZ:US:2026:1.US.1767.26.1",
-   "druh": "nález",
-   "rejstrik": "ÚS",
-   "datum": "2026-09-08",
-   "zverejneno": "2026-09-21",
-   "first_seen": "2026-09-21T12:00:00Z",
-   "nazev": "Přiměřenost ochranného léčení",
-   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-1767-26_1",
-   "soudce": "Tomáš Langášek",
-   "heslo": "Ústavní ochranné léčení vyžaduje posouzení přiměřenosti trvání",
-   "shrnuti": "Stěžovatel napadal rozhodnutí o změně formy ochranného psychiatrického léčení z ambulantní na ústavní. Ústavní soud shledal porušení práva na osobní svobodu, protože obecné soudy dostatečně neposoudily přiměřenost a konkrétní nebezpečnost ve světle dlouhé doby trvání léčení a dřívějšího propuštění. Napadená rozhodnutí proto zrušil.",
-   "oblasti": [
-    "trestni",
-    "ustavni",
-    "skoda"
    ],
    "procesni": false
   }

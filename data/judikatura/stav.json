@@ -1,12 +1,5 @@
 {
  "ai": {
-  "2026-10-07": {
-   "gemini-flash-lite-latest": {
-    "volani": 73,
-    "vstup": 558392,
-    "vystup": 14208
-   }
-  },
   "2026-10-08": {
    "gemini-flash-lite-latest": {
     "volani": 101,
@@ -109,37 +102,40 @@
     "vstup": 381980,
     "vystup": 7238
    }
+  },
+  "2026-10-22": {
+   "gemini-flash-lite-latest": {
+    "volani": 78,
+    "vstup": 1070531,
+    "vystup": 16290
+   }
   }
  },
- "aktualizovano": "2026-10-22T03:16:17Z",
+ "aktualizovano": "2026-10-23T03:21:59Z",
  "soudy": {
   "ns": {
    "chyba": null,
-   "nalezeno": 157,
-   "nove": 20,
-   "objev": "2026-10-22T03:16:17Z",
-   "varovani": [
-    "úřední deska nedostupná (obcanskopravni-a-obchodni-kolegium): HTTPError",
-    "úřední deska nedostupná (trestni-kolegium): HTTPError"
-   ]
+   "nalezeno": 162,
+   "nove": 21,
+   "objev": "2026-10-23T03:21:59Z"
   },
   "nss": {
-   "chyba": "ConnectionError",
-   "detail": "HTTPSConnectionPool(host='vyhledavac.nssoud.cz', port=443): Max retries exceeded with url: / (Caused by NewConnectionError(\"HTTPSConnection(host='vyhledavac.nssoud.cz', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\"))",
-   "nedostupny_od": "2026-10-22T03:16:17Z",
-   "objev": "2026-10-22T03:16:17Z"
+   "chyba": null,
+   "nalezeno": 217,
+   "nove": 26,
+   "objev": "2026-10-23T03:21:59Z"
   },
   "sdeu": {
    "chyba": null,
-   "nalezeno": 64,
-   "nove": 15,
-   "objev": "2026-10-22T03:16:17Z"
+   "nalezeno": 89,
+   "nove": 27,
+   "objev": "2026-10-23T03:21:59Z"
   },
   "us": {
    "chyba": null,
-   "nalezeno": 143,
-   "nove": 0,
-   "objev": "2026-10-22T03:16:17Z"
+   "nalezeno": 129,
+   "nove": 6,
+   "objev": "2026-10-23T03:21:59Z"
   }
  }
 }
