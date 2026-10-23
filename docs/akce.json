@@ -1,13 +1,13 @@
 {
-  "generated": "2026-10-22T04:25:42+00:00",
+  "generated": "2026-10-23T04:30:09+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 29,
-      "stazeno": "2026-10-22T04:25:04+00:00",
+      "pocet": 27,
+      "stazeno": "2026-10-23T04:29:52+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -17,11 +17,11 @@
       "zkratka": "PF UK",
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
-      "pocet": 9,
-      "stazeno": "2026-10-22T04:25:09+00:00",
+      "pocet": 8,
+      "stazeno": "2026-10-23T04:29:56+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "8c8b24b8d9835081"
+      "otisk": "6e465e6c079b1569"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-10-22T04:25:14+00:00",
+      "stazeno": "2026-10-23T04:30:01+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "70ff08797660a3bf"
+      "otisk": "a379a0c49342a9f7"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 2,
-      "stazeno": "2026-10-22T04:25:15+00:00",
+      "stazeno": "2026-10-23T04:30:02+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "791ee633882cb34d"
@@ -61,8 +61,8 @@
       "zkratka": "ÚPV",
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
-      "pocet": 6,
-      "stazeno": "2026-10-22T04:25:19+00:00",
+      "pocet": 5,
+      "stazeno": "2026-10-23T04:30:02+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "fba0589c410d9352"
@@ -1100,33 +1100,6 @@
       "oblasti_klic": "572798c73375"
     },
     {
-      "id": "31e09294502cdf11a350",
-      "poradatel": "EPRAVO",
-      "datum": "2026-10-23",
-      "zacatek": "09:00",
-      "konec": "12:00",
-      "nazev": "Velká novela stavebního zákona II – Integrace a reforma veřejné správy",
-      "misto": "online",
-      "forma": "online",
-      "lektori": [
-        "Mgr. František Korbel, Ph.D.",
-        "Mgr. Jan Fikar",
-        "Mgr. Dáša Krupová"
-      ],
-      "cena": "3 975 Kč s DPH",
-      "anotace": "Online živé vysílání k druhé části velké novely stavebního zákona zaměřené na integraci a reformu veřejné správy.",
-      "url": "https://www.epravo.cz/eshop/velka-novela-stavebniho-zakona-ii-integrace-a-reforma-verejne-spravy-online-zive-vysilani-23-10-2026-1598.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "stavebni_zp",
-        "spravni"
-      ],
-      "oblasti_klic": "67ff79f575c2"
-    },
-    {
       "id": "ba4a938f156055d29e30",
       "poradatel": "PFUK",
       "datum": "2026-10-23",
@@ -1631,25 +1604,6 @@
       "oblasti_klic": "5da820844ae0"
     },
     {
-      "id": "47f08806e8242cb69691",
-      "poradatel": "PFUK",
-      "datum": "2026-11-05",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "Michal Urban | Jak (ne)používat AI ve studiu",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [
-        "Michal Urban"
-      ],
-      "cena": "",
-      "anotace": "Setkání nabídne praktický pohled na využití AI při vyhledávání informací, práci s odbornými texty, přípravě na semináře a zkoušky nebo při psaní seminárních a kvalifikačních prací.",
-      "url": "https://www.prf.cuni.cz/aktuality/michal-urban-jak-nepouzivat-ai-ve-studiu",
-      "detail_pokusy": 2,
-      "oblasti": [],
-      "oblasti_klic": "b0d1635d31b4"
-    },
-    {
       "id": "112ae55fa8739d4fd099",
       "poradatel": "CAK",
       "datum": "2026-11-05",
@@ -1711,6 +1665,33 @@
       ],
       "oblasti_klic": "c3f75d9c9d6b",
       "detail_pokusy": 1
+    },
+    {
+      "id": "de69c1a8d3df1386aafc",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-05",
+      "zacatek": "09:00",
+      "konec": "12:00",
+      "nazev": "Velká novela stavebního zákona III – Změny v územním plánování",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "Mgr. František Korbel, Ph.D.",
+        "Mgr. Jana Šimková",
+        "Mgr. Denisa Vaňková",
+        "Mgr. Karolína Panattoni"
+      ],
+      "cena": "3 975 Kč",
+      "anotace": "Online živé vysílání o změnách v územním plánování po velké novele stavebního zákona.",
+      "url": "https://www.epravo.cz/eshop/velka-novela-stavebniho-zakona-iii-zmeny-v-uzemnim-planovani-online-zive-vysilani-5-11-2026-1600.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "stavebni_zp"
+      ],
+      "oblasti_klic": "1bfc6a91e8af"
     },
     {
       "id": "07d098081d52fc885a7d",
