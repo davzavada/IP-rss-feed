@@ -1,8 +1,27 @@
 {
- "generated": "2026-10-23T03:21:59Z",
+ "generated": "2026-10-24T03:15:39Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "sdeu:62025CC0497",
+   "spz": "C-497/25",
+   "ecli": "ECLI:EU:C:2026:901",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-10-22",
+   "zverejneno": "2026-10-22",
+   "first_seen": "2026-10-24T03:15:39Z",
+   "nazev": "Maxima LT",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0497",
+   "heslo": "Dvojí zdanění ve smyslu směrnice vyžaduje skutečné uložení daně",
+   "shrnuti": "Generální advokátka navrhuje, aby Soudní dvůr rozhodl, že pojem dvojí zdanění podle směrnice o mechanismech řešení daňových sporů se nepoužije na situaci, kdy tytéž příjmy podléhají daňovým režimům dvou členských států, avšak v jednom z nich jsou od daně osvobozeny. Podmínkou vzniku dvojího zdanění je skutečný výběr daně v dotčených státech, nikoli pouze abstraktní souběh daňových pravomocí.",
+   "oblasti": [
+    "dane",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
   {
    "id": "sdeu:62025CJ0548",
    "spz": "C-548/25",
@@ -825,6 +844,24 @@
    "poznamka": "Podáno 14. 10. 2026. Položené otázky zatím nejsou zveřejněné."
   },
   {
+   "id": "sdeu:62026TO0154",
+   "spz": "T-154/26",
+   "ecli": "ECLI:EU:T:2026:681",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-10-19",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-19T12:00:00Z",
+   "nazev": "Flightright",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TO0154",
+   "heslo": "Zpětvzetí návrhu odůvodňuje vyškrtnutí věci",
+   "shrnuti": "Tribunál rozhodl o vyškrtnutí věci ze svého rejstříku poté, co vnitrostátní soud vzal zpět svou žádost o rozhodnutí o předběžné otázce z důvodu skončení sporu ve věci samé. Řízení tak bylo ukončeno bez meritorního pronášení právního závěru.",
+   "oblasti": [
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
    "id": "sdeu:62026CN0838",
    "spz": "C-838/26",
    "druh": "předběžná otázka",
@@ -965,6 +1002,25 @@
     "zavazky"
    ],
    "procesni": true
+  },
+  {
+   "id": "sdeu:62024TO0384",
+   "spz": "T-384/24",
+   "ecli": "ECLI:EU:T:2026:678",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-10-16",
+   "zverejneno": "2026-10-16",
+   "first_seen": "2026-10-16T12:00:00Z",
+   "nazev": "Sharif v. Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TO0384",
+   "heslo": "Zachování sankcí při rodinném vazebním kritériu",
+   "shrnuti": "Tribunál rozhodoval o žalobě na anutláci rozhodnutí Rady o prodloužení omezujících opatření vůči osobám spojeným s rodinami v Syrii a o náhradu škody. Soud shledal, že žalobce neprokázal existenci chybného posouzení ani neexistenci rizika obcházení sankcí prostřednictvím rodinných vazeb. Proto Tribunál žalobu v celém rozsahu jako manifestně neopodstatněnou zamítl.",
+   "oblasti": [
+    "spravni",
+    "skoda"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:ipc:C-1094/26",
