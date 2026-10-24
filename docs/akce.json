@@ -1,13 +1,13 @@
 {
-  "generated": "2026-10-23T04:30:09+00:00",
+  "generated": "2026-10-24T04:21:16+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 27,
-      "stazeno": "2026-10-23T04:29:52+00:00",
+      "pocet": 26,
+      "stazeno": "2026-10-24T04:20:58+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -17,11 +17,11 @@
       "zkratka": "PF UK",
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
-      "pocet": 8,
-      "stazeno": "2026-10-23T04:29:56+00:00",
+      "pocet": 5,
+      "stazeno": "2026-10-24T04:21:01+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "6e465e6c079b1569"
+      "otisk": "bb2a6bd265c84d44"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
@@ -40,21 +40,21 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-10-23T04:30:01+00:00",
+      "stazeno": "2026-10-24T04:21:06+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "a379a0c49342a9f7"
+      "otisk": "e82c179d95f93d00"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
       "zkratka": "ALAI",
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
-      "pocet": 2,
-      "stazeno": "2026-10-23T04:30:02+00:00",
+      "pocet": 1,
+      "stazeno": "2026-10-24T04:21:08+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "791ee633882cb34d"
+      "otisk": "bcaac79500eef517"
     },
     "UPV": {
       "nazev": "Úřad průmyslového vlastnictví",
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 5,
-      "stazeno": "2026-10-23T04:30:02+00:00",
+      "stazeno": "2026-10-24T04:21:09+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "fba0589c410d9352"
@@ -1313,26 +1313,6 @@
       "oblasti_klic": "78842de6afef"
     },
     {
-      "id": "483625287ad1b47aa5df",
-      "poradatel": "PFUK",
-      "datum": "2026-10-30",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "Camp Peira 2026 (přihlášky do 11. 10. 2026)",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [
-        "Sojková Machoň"
-      ],
-      "cena": "",
-      "anotace": "Camp Peira nabízí studentům jedinečnou možnost zažít mezinárodní humanitární právo v praxi v realistické simulaci krizových situací.",
-      "url": "https://www.prf.cuni.cz/aktuality/camp-peira-2026-prihlasky-do-11-10-2026",
-      "datum_do": "2026-11-01",
-      "detail_pokusy": 2,
-      "oblasti": [],
-      "oblasti_klic": "f0e58cd6c7cb"
-    },
-    {
       "id": "00df13debafc19ec10fd",
       "poradatel": "CAK",
       "datum": "2026-10-30",
@@ -1391,29 +1371,6 @@
         "spravni"
       ],
       "oblasti_klic": "b6f142812084"
-    },
-    {
-      "id": "d7e70b8c955d24aeda6b",
-      "poradatel": "PFUK",
-      "datum": "2026-11-02",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "Noc fakulty 2026",
-      "misto": "Právnická fakulta Univerzity Karlovy, náměstí Curieových 7, Praha 1",
-      "forma": "prezencne",
-      "lektori": [
-        "Klára Tichá"
-      ],
-      "cena": "zdarma",
-      "anotace": "Největší studentský multižánrový festival v České republice opět promění budovu Právnické fakulty Univerzity Karlovy v centrum vědění, kultury a zábavy.",
-      "url": "https://www.prf.cuni.cz/aktuality/noc-fakulty-2026",
-      "datum_do": "2026-11-04",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [],
-      "oblasti_klic": "53f3804e407b"
     },
     {
       "id": "a78bf6a336f262f521a2",
@@ -1484,7 +1441,7 @@
       "take_u": [
         {
           "poradatel": "EPRAVO",
-          "url": "https://www.epravo.cz/top/aktualne/vybrane-otazky-spolecneho-jmeni-manzelu-v-aktualni-rozhodovaci-praxi-nejvyssiho-soudu-cr-a-ustavniho-soudu-cr-121773.html"
+          "url": "https://www.epravo.cz/top/aktualne/vybrane-otazky-spolecneho-jmeni-manzelu-v-aktualni-rozhodovaci-praxi-nejvyssiho-soudu-cr-a-ustavni-soudu-cr-121773.html"
         }
       ]
     },
@@ -1602,6 +1559,25 @@
         "finance"
       ],
       "oblasti_klic": "5da820844ae0"
+    },
+    {
+      "id": "2a7910afd16d5370cccc",
+      "poradatel": "PFUK",
+      "datum": "2026-11-05",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Jak (ne)používat AI ve studiu",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [
+        "Michal Urban"
+      ],
+      "cena": "",
+      "anotace": "Setkání nabídne praktický pohled na využití AI při vyhledávání informací, práci s odbornými texty, přípravě na semináře a zkoušky nebo při psaní seminárních a kvalifikačních prací. Půjde o besedu vyučujícího s jedním až dvěma studujícími.",
+      "url": "https://www.prf.cuni.cz/aktuality/jak-nepouzivat-ai-ve-studiu",
+      "detail_pokusy": 2,
+      "oblasti": [],
+      "oblasti_klic": "169687125631"
     },
     {
       "id": "112ae55fa8739d4fd099",
@@ -2300,7 +2276,7 @@
       ],
       "cena": "",
       "anotace": "Vzdělávací akce pořádaná Jednotou českých právníků zaměřená na vybrané otázky společného jmění manželů.",
-      "url": "https://www.epravo.cz/top/aktualne/vybrane-otazky-spolecneho-jmeni-manzelu-v-aktualni-rozhodovaci-praxi-nejvyssiho-soudu-cr-a-ustavniho-soudu-cr-121773.html",
+      "url": "https://www.epravo.cz/top/aktualne/vybrane-otazky-spolecneho-jmeni-manzelu-v-aktualni-rozhodovaci-praxi-nejvyssiho-soudu-cr-a-ustavni-soudu-cr-121773.html",
       "detail_pokusy": 2,
       "z_detailu": [
         "forma",

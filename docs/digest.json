@@ -1,15 +1,28 @@
 {
-  "generated": "2026-10-23T04:30:09.285778+00:00",
+  "generated": "2026-10-24T04:21:16.946283+00:00",
   "from": "2026-09-01",
   "to": "2026-09-30",
-  "total": 60,
-  "covered": 11,
+  "total": 57,
+  "covered": 13,
   "cekajici": 1,
-  "intro": "Sledované období přineslo řadu zajímavých podnětů v oblasti ochranných známek, kde soudy řešily pravděpodobnost záměny a limity posuzování podobnosti označení. Výrazná pozornost byla věnována také problematice umělé inteligence ve vztahu k autorskému právu a patentům, jakož i aktuálním otázkám ochrany osobních údajů a digitálních služeb.",
+  "intro": "Uplynulé období přineslo řadu zajímavých podnětů z oblasti duševního vlastnictví a IT, včetně judikatury Soudního dvora EU k autorskému právu, ochranným známkám a ochraně údajů. Odborná literatura se intenzivně věnovala výzvám spojeným s umělou inteligencí, novým médiím a ochraně osobnostních práv v digitálním věku.",
   "blocks": [
     {
-      "title": "Pravděpodobnost záměny známek",
-      "text": "Soudní dvůr EU a vnitrostátní soudy se zabývaly posuzováním pravděpodobnosti záměny ochranných známek a dopadem stupně jejich podobnosti na rozhodování o zápisu. Z judikatury vyplývá, že nízká podobnost označení a vysoká pozornost veřejnosti mohou spolehlivě vyloučit existenci spojení mezi známkami. Pro praxi to znamená nutnost pečlivě vyvažovat vizuální, fonetická i sémantická hlediska při přípravě přihlášek.",
+      "title": "Autorská práva a Řím I",
+      "text": "Soudní dvor EU rozhodl, že otázka formální platnosti smlouvy o postoupení autorských práv spadá do oblasti smluvních vztahů, a proto se řídí nařízením Řím I, nikoliv nařízením Řím II. Pro praxi to znamená jasné určité pravidlo pro volbu rozhodného práva při převodu autorských práv v mezinárodních sporech.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "C-176/25 – Steizer",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0176"
+        }
+      ]
+    },
+    {
+      "title": "Podobnost a záměna známek",
+      "text": "Tribunál EU se zabýval posuzováním pravděpodobnosti záměny ochranných známek a konstatoval, že při nízkém stupni podobnosti označení a vyšší pozornosti veřejnosti nelze dovodit jejich spojení. Tyto rozsudky poskytují vodítko pro přihlašovatele ochranných známek a vymezují hranice úspěšnosti námitek před EUIPO.",
       "sources": [
         {
           "src": "sdeu",
@@ -31,19 +44,12 @@
           "tag": "",
           "title": "T-231/25 – Deva v. EUIPO - Novartis (Devatis)",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0231"
-        },
-        {
-          "src": "nss",
-          "label": "NSS",
-          "tag": "",
-          "title": "9 As 8/2026-69",
-          "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/785485"
         }
       ]
     },
     {
-      "title": "Umělá inteligence a IP",
-      "text": "Odborná literatura se intenzivně zaměřila na výzvy, které umělá inteligence přináší do autorského práva a patentového řízení, zejména s ohledem na určení autorství a odměňování tvůrců. Analýzy porovnávají různé národní přístupy k rozsahu nutného lidského přispění pro vznik ochrany generovaného obsahu. Pro praxi tyto závěry naznačují potřebu obezřetnosti při využívání výtvorů generovaných AI, které často postrádají jednonásobný právní rámec.",
+      "title": "Umělá inteligence a autorství",
+      "text": "Odborné články rozebraly právní výzvy spojené se zapojením umělé inteligence do tvůrčího a patentového procesu či otázku odměňování autorů za díla užitá v systémech GenAI. Pro praxi to otevírá debatu o nutnosti přizpůsobení autorskoprávních a patentových standardů technologické realitě.",
       "sources": [
         {
           "src": "journals",
@@ -83,8 +89,8 @@
       ]
     },
     {
-      "title": "Ochrana osobních údajů v IT",
-      "text": "Unijní a odborná fóra řešila specifické otázky zpracování citlivých údajů, včetně biometrických dat a fotografií obličeje pro identifikační účely podle GDPR. Pozornost byla upřena rovněž na přísné podmínky retence osobních údajů ze strany poskytovatelů elektronických komunikací. Pro praxi to představuje nutnost striktního dodržování zásad minimalizace a zákonnosti při zpracování digitálních identifikačních záznamů.",
+      "title": "Ochrana osobních údajů",
+      "text": "Soudní dvor EU obdržel předběžnou otázku týkající se posouzení pořizování a ukládání fotografií obličeje pro identifikační účely jako zpracování biometrických údajů dle GDPR. Výsledek tohoto řízení ovlivní praxi povinných osob při plnění požadavků proti praní špinavých peněz.",
       "sources": [
         {
           "src": "sdeu",
@@ -92,16 +98,42 @@
           "tag": "",
           "title": "C-660/26 – International Card Services",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0660"
+        }
+      ]
+    },
+    {
+      "title": "Osobnostní práva a deepfakes",
+      "text": "Odborná literatura se zaměřila na otázku, zda rozvoj deepfakes, digitálních replik a lidských digitálních dvojčat opodstatňuje posílení osobnostních práv. Analýzy poukazují na rostoucí potřebu adaptace stávající legislativy na moderní digitální technologie.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JWIP",
+          "title": "Gregorini v. Shyamalan: Can Access Trump Similarity in a Globalised Digital Age?",
+          "link": "https://doi.org/10.1111/jwip.70012"
         },
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "Conditions for Retaining Personal Data by Electronic Communications Operators",
-          "link": "https://doi.org/10.1093/grurint/ikag089"
+          "tag": "JWIP",
+          "title": "Do deepfakes, digital replicas and human digital twins justify personality rights?",
+          "link": "https://doi.org/10.1111/jwip.70020"
+        }
+      ]
+    },
+    {
+      "title": "Regulace médií a EMFA",
+      "text": "Analýza odborného tisku poukázala na to, že český právní řád v mnoha ohledech nevyhovuje požadavkům evropského nařízení European Media Freedom Act (EMFA) na nezávislost médií. To pro Českou republiku představuje riziko zahájení řízení o porušení povinnosti ze strany Evropské komise.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "Jurisprudence",
+          "title": "Mezi evropským nařízením a českou realitou: analýza čl. 5 European Media Freedom Act a jeho adaptace do českého právního řádu",
+          "link": "https://www.jurisprudence.cz/cz/casopis/mezi-evropskym-narizenim-a-ceskou-realitou-analyza-cl-5-european-media-freedom-act-a-jeho-adaptace-do-ceskeho-pravniho-radu.m-1051.html"
         }
       ]
     }
   ],
-  "input_hash": "ed1148a112532590531eebe969d49a36acb3ae992bf074557f1da1e6a3663540"
+  "input_hash": "c75d9298c15a0f62536747889ca63830eab6e97ad1e38799c460a3c30765a847"
 }
