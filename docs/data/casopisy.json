@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-24T04:20:51Z",
+ "generated": "2026-10-25T05:33:53Z",
  "okno_dni": 31,
  "casopisy": [
   {
@@ -112,6 +112,17 @@
   }
  ],
  "polozky": [
+  {
+   "id": "JIPLP-10.1093/jiplp/jpag084",
+   "casopis": "jiplp",
+   "nazev": "Ex parte President and the future of compulsory copyright licensing of textbooks in South Africa",
+   "url": "https://doi.org/10.1093/jiplp/jpag084",
+   "autori": "Thato Moloto",
+   "heslo": "nucená licence učebnic",
+   "shrnuti": "Článek analyzuje rozhodnutí Ústavního soudu Jihoafrické republiky ve věci *Ex parte President*, které označilo bezplatnou reprodukci celých učebnic za nekonstituční vyvlastnění majetku. Dále zkoumá vztah tohoto rozsudku k rozhodnutí Copyright Tribunal ve věci *Allcopy v Phillips*, jež upřednostnilo veřejný zájem na přístupu ke studijním materiálům formou nucené licence. Obě rozhodnutí přistupují ke autorskému právu jako k omezitelnému vlastnictví, avšak liší se v pohledu na to, zda může přístup ke vzdělávání nahradit trh držitele práv.",
+   "datum": "2026-10-25",
+   "first_seen": "2026-10-25T05:33:15Z"
+  },
   {
    "id": "GRUR Int-10.1093/grurint/ikag100",
    "casopis": "grur-int",
@@ -471,15 +482,15 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.00",
+   "id": "QMJIP-10.4337/qmjip.2026.03.06",
    "casopis": "qmjip",
-   "nazev": "Seeing intellectual property in colour",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.00",
-   "autori": "Johanna Gibson",
+   "nazev": "New pharmaceutical product and patent term extension in China",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.06",
+   "autori": "Weiwei Han",
+   "heslo": "prodloužení patentu v Číně",
+   "shrnuti": "Článek se zabývá systémem prodloužení platnosti patentů na léčiva v Číně v kontextu nedávných legislativních změn z roku 2024. Analýzou prováděcích předpisů a pokynů pro zkoumání patentů přibližuje aktuální vývoj a poskytuje klíčové poznatky pro domácí i zahraniční subjektu usilující o maximalizaci přínosů tohoto systému.",
    "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z",
-   "poznamka": "Shrnutí zatím není k dispozici.",
-   "popis": "Seeing intellectual property in colour\nAutor: Johanna Gibson\nQueen Mary Journal of Intellectual Property"
+   "first_seen": "2026-10-10T05:34:45Z"
   },
   {
    "id": "QMJIP-10.4337/qmjip.2026.03.05",
@@ -504,15 +515,15 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.01",
+   "id": "QMJIP-10.4337/qmjip.2026.03.00",
    "casopis": "qmjip",
-   "nazev": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.01",
-   "autori": "Martin Senftleben",
-   "heslo": "AI a autorské právo",
-   "shrnuti": "Článek se zabývá otázkou spravedlivé odměny pro tvůrce za použití jejich děl při vývoji generativní AI. Porovnává současný trend individuálního licencování s výhodami kolektivních přístupů zohledňujících výstupy AI. Nakonec hodnotí různé regulační možnosti s ohledem na nutnost spravedlivé odměny a zároveň širokého přístupu k trénovacím datům.",
+   "nazev": "Seeing intellectual property in colour",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.00",
+   "autori": "Johanna Gibson",
    "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
+   "first_seen": "2026-10-10T05:34:45Z",
+   "poznamka": "Shrnutí zatím není k dispozici.",
+   "popis": "Seeing intellectual property in colour\nAutor: Johanna Gibson\nQueen Mary Journal of Intellectual Property"
   },
   {
    "id": "QMJIP-10.4337/qmjip.2026.03.02",
@@ -526,13 +537,13 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.06",
+   "id": "QMJIP-10.4337/qmjip.2026.03.01",
    "casopis": "qmjip",
-   "nazev": "New pharmaceutical product and patent term extension in China",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.06",
-   "autori": "Weiwei Han",
-   "heslo": "prodloužení patentu v Číně",
-   "shrnuti": "Článek se zabývá systémem prodloužení platnosti patentů na léčiva v Číně v kontextu nedávných legislativních změn z roku 2024. Analýzou prováděcích předpisů a pokynů pro zkoumání patentů přibližuje aktuální vývoj a poskytuje klíčové poznatky pro domácí i zahraniční subjektu usilující o maximalizaci přínosů tohoto systému.",
+   "nazev": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.01",
+   "autori": "Martin Senftleben",
+   "heslo": "AI a autorské právo",
+   "shrnuti": "Článek se zabývá otázkou spravedlivé odměny pro tvůrce za použití jejich děl při vývoji generativní AI. Porovnává současný trend individuálního licencování s výhodami kolektivních přístupů zohledňujících výstupy AI. Nakonec hodnotí různé regulační možnosti s ohledem na nutnost spravedlivé odměny a zároveň širokého přístupu k trénovacím datům.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -713,6 +724,28 @@
    "first_seen": "2026-09-26T04:42:59Z"
   },
   {
+   "id": "JIPLP-10.1093/jiplp/jpag087",
+   "casopis": "jiplp",
+   "nazev": "Patent licensees’ standing to sue for patent infringement considering the nature of patents: the Canadian perspective",
+   "url": "https://doi.org/10.1093/jiplp/jpag087",
+   "autori": "Shuji Sumi",
+   "heslo": "Právo licencanta žalovat",
+   "shrnuti": "Článek zkoumá oprávnění patentových licencentů žalovat pro porušení patentu v Kanadě a srovnává je s úpravou ve Spojeném království, Austrálii a na Novém Zélandu. Analýzou kanadské judikatury autor ukazuje, že specifická povaha kanadských patentů umožňuje přiznat toto právo širokému okruhu licencentů. Díky tomu je kanadský režim výhodný pro licencenty, avšak ztěžuje patentovým vlastníkům kontrolu nad těmito soudními řízeními.",
+   "datum": "2026-09-25",
+   "first_seen": "2026-10-25T05:33:15Z"
+  },
+  {
+   "id": "JIPLP-10.1093/jiplp/jpag092",
+   "casopis": "jiplp",
+   "nazev": "Infantilized by law: why consistency no longer matters",
+   "url": "https://doi.org/10.1093/jiplp/jpag092",
+   "autori": "Mladen Vukmir",
+   "heslo": "Právní infantilizace",
+   "shrnuti": "Článek se zabývá proměnou postavení dospělých účastníků soudních řízení (litigantů), kteří jsou právním systémem de facto stavěni na roveň dětem či nesvéprávným osobám. Autor poukazuje na to, že právo pro tyto osoby vytváří náhradní ochranu a zbavuje je vlastní odpovědnosti. Tento trend představuje znepokojivý posun v chápání právní způsobilosti dospělých.",
+   "datum": "2026-09-25",
+   "first_seen": "2026-10-25T05:33:15Z"
+  },
+  {
    "id": "IIC-10.1007/s40319-026-01776-9",
    "casopis": "iic",
    "nazev": "Sui Generis Right to Non-Original Objects Generated by a Computer Program Under Ukrainian Law: First Impressions and (In)Compatibility with EU Law",
@@ -724,16 +757,6 @@
    "first_seen": "2026-09-25T04:44:24Z"
   },
   {
-   "id": "GRUR Int-10.1093/grurint/ikag089",
-   "casopis": "grur-int",
-   "nazev": "Conditions for Retaining Personal Data by Electronic Communications Operators",
-   "url": "https://doi.org/10.1093/grurint/ikag089",
-   "heslo": "Retence osobních údajů",
-   "shrnuti": "Článek se zabývá podmínkami, za kterých mohou poskytovatelé elektronických komunikací uchovávat osobní údaje.",
-   "datum": "2026-09-23",
-   "first_seen": "2026-09-23T23:33:21Z"
-  },
-  {
    "id": "IJLIT-10.1093/ijlit/eaag013",
    "casopis": "ijlit",
    "nazev": "The cambridge handbook of the law, ethics and policy of artificial intelligence",
@@ -743,6 +766,71 @@
    "shrnuti": "Článek představuje odbornou publikaci \"The Cambridge Handbook of the Law, Ethics and Policy of Artificial Intelligence\" z roku 2025 pod editací Nathalie A. Smuha. Kniha se zabývá právními, etickými a politickými aspekty umelecké inteligence a je dostupná jako Open Access.",
    "datum": "2026-09-23",
    "first_seen": "2026-09-26T04:42:59Z"
+  },
+  {
+   "id": "JIPLP-10.1093/jiplp/jpag085",
+   "casopis": "jiplp",
+   "nazev": "Gaps in Nigeria’s artificial intelligence and intellectual property legal and policy frameworks and the need for synergy: a comparative analysis",
+   "url": "https://doi.org/10.1093/jiplp/jpag085",
+   "autori": "Ifeoluwa Ayokunle Olubiyi",
+   "heslo": "Umělá inteligence a duševní vlastnictví",
+   "shrnuti": "Článek analýzou nigérijských strategických dokumentů pro umělou inteligenci a duševní vlastnictví z roku 2025 poukazuje na jejich vzájemnou neprovázanost a existenci regulačních mezer. Na základě srovnání se zahraničními jurisdikcemi autor dospívá k závěru, že je nutná koordinovaná reforma obou rámců, která zajistí právní jistotu pro inovátory a podpoří socioekonomický rozvoj Nigérie.",
+   "datum": "2026-09-16",
+   "first_seen": "2026-10-25T05:33:15Z"
+  },
+  {
+   "id": "JIPLP-10.1093/jiplp/jpag081",
+   "casopis": "jiplp",
+   "nazev": "The Return of the Stone—seminal guide to EU design law reaches its third edition",
+   "url": "https://doi.org/10.1093/jiplp/jpag081",
+   "autori": "Darren Smyth",
+   "heslo": "Právo průmyslových vzorů EU",
+   "shrnuti": "Článek představuje třetí vydání odborné příručky Davida Stona zaměřené na právo průmyslových vzorů v Evropské unii. Kniha vydaná nakladatelstvím Oxford University Press v roce 2025 poskytuje komplexní přehled pro právní praxi v rozsahu 688 stran.",
+   "datum": "2026-09-16",
+   "first_seen": "2026-10-25T05:33:15Z"
+  },
+  {
+   "id": "JIPLP-10.1093/jiplp/jpag082",
+   "casopis": "jiplp",
+   "nazev": "AI hallucinations, commercial misinformation and user liability under Chinese unfair competition law: Alibaba v Li",
+   "url": "https://doi.org/10.1093/jiplp/jpag082",
+   "autori": "Tian Lu",
+   "heslo": "AI halucinace a nekalá soutěž",
+   "shrnuti": "Článek se zabývá odpovědností provozovatele monetizovaného účtu za šíření dezinformací generovaných umělou inteligencí ohledně korporátních vazeb společnosti Alibaba v Číně. Soud rozhodl, že publikování obsahu bez minimální kontroly a viditelného označení AI představuje nekalou soutěž, a to bez ohledu na zanedbatelný finanční příjem z článku.",
+   "datum": "2026-09-15",
+   "first_seen": "2026-10-25T05:33:15Z"
+  },
+  {
+   "id": "CMLRev-10.54648/cola2026070",
+   "casopis": "cmlr",
+   "nazev": "Unravelling the place of services of general economic interest under EU law through waste management: Mixed lessons from Interzero",
+   "url": "https://doi.org/10.54648/cola2026070",
+   "autori": "Daniele Gallo",
+   "datum": "2026-08-01",
+   "first_seen": "2026-10-24T04:20:13Z",
+   "poznamka": "Shrnutí zatím není k dispozici.",
+   "popis": "Unravelling the place of services of general economic interest under EU law through waste management: Mixed lessons from Interzero\nAutor: Daniele Gallo\nCommon Market Law Review"
+  },
+  {
+   "id": "CMLRev-10.54648/cola2026063",
+   "casopis": "cmlr",
+   "nazev": "Survey of literature",
+   "url": "https://doi.org/10.54648/cola2026063",
+   "datum": "2026-08-01",
+   "first_seen": "2026-10-24T04:20:13Z",
+   "poznamka": "Shrnutí zatím není k dispozici.",
+   "popis": "Survey of literature\nCommon Market Law Review"
+  },
+  {
+   "id": "CMLRev-10.54648/cola2026087",
+   "casopis": "cmlr",
+   "nazev": "Balancing national and EU-level enforcement in EU consumer law reform: The case of the UCPD and dark patterns",
+   "url": "https://doi.org/10.54648/cola2026087",
+   "autori": "Martin Milán Csirszki, András Tóth",
+   "heslo": "Ochrana spotřebitelů v EU",
+   "shrnuti": "Článek analýzuje připravovanou reformu práva spotřebitelů EU včetně návrhu Digital Fairness Act a centrální přístup Evropské komise k řešení problémů digitální ekonomiky. Zpochybňuje vhodnost nových legislativních aktů a centralizace pravomocí. Namísto toho navrhuje model sdílení pravomocí podobný soutěžnímu právu a posílení národních spotřebitelských agentur.",
+   "datum": "2026-08-01",
+   "first_seen": "2026-10-24T04:20:13Z"
   },
   {
    "id": "CMLRev-10.54648/cola2026088",
@@ -767,57 +855,15 @@
    "popis": "EU External Relations and the Power of Law: Liber Amicorum in Honour of Marise Cremona edited by Kenneth A Armstrong, Joanne Scott and Anne Thies (Oxford: Hart Publishing, 2024)\nAutor: Allan Rosas\nCommon Market Law Review"
   },
   {
-   "id": "CMLRev-10.54648/cola2026063",
+   "id": "CMLRev-10.54648/cola2026067",
    "casopis": "cmlr",
-   "nazev": "Survey of literature",
-   "url": "https://doi.org/10.54648/cola2026063",
-   "datum": "2026-08-01",
-   "first_seen": "2026-10-24T04:20:13Z",
-   "poznamka": "Shrnutí zatím není k dispozici.",
-   "popis": "Survey of literature\nCommon Market Law Review"
-  },
-  {
-   "id": "CMLRev-10.54648/cola2026087",
-   "casopis": "cmlr",
-   "nazev": "Balancing national and EU-level enforcement in EU consumer law reform: The case of the UCPD and dark patterns",
-   "url": "https://doi.org/10.54648/cola2026087",
-   "autori": "Martin Milán Csirszki, András Tóth",
-   "heslo": "Ochrana spotřebitelů v EU",
-   "shrnuti": "Článek analýzuje připravovanou reformu práva spotřebitelů EU včetně návrhu Digital Fairness Act a centrální přístup Evropské komise k řešení problémů digitální ekonomiky. Zpochybňuje vhodnost nových legislativních aktů a centralizace pravomocí. Namísto toho navrhuje model sdílení pravomocí podobný soutěžnímu právu a posílení národních spotřebitelských agentur.",
+   "nazev": "Legal imaginations of the AI Act: A constitutional perspective on the pre-emption of Member State competence",
+   "url": "https://doi.org/10.54648/cola2026067",
+   "autori": "Michèle Finck",
+   "heslo": "AI Act a kompetence",
+   "shrnuti": "Článek z ústavní perspektivy analýzuje vliv aktu o umělé inteligenci (AI Act) na vnitrostátní regulační autonomii členských států EU. Autor poukazuje na to, že hlavní přínos předpisu nespočívá v podrobných povinnostech pro určitou část systémů, ale v rozsáhlé harmonizaci a vytlačení národních regulací s cílem zabránit roztříštěnosti trhu. Závěrem vyzývá k přehodnocení vnímání AI Actu primárně jako nástroje tržní integrace v geostrategickém kontextu.",
    "datum": "2026-08-01",
    "first_seen": "2026-10-24T04:20:13Z"
-  },
-  {
-   "id": "CMLRev-10.54648/cola2026069",
-   "casopis": "cmlr",
-   "nazev": "Editorial comments: The governance of Union membership",
-   "url": "https://doi.org/10.54648/cola2026069",
-   "datum": "2026-08-01",
-   "first_seen": "2026-10-24T04:20:13Z",
-   "poznamka": "Shrnutí zatím není k dispozici.",
-   "popis": "Editorial comments: The governance of Union membership\nCommon Market Law Review"
-  },
-  {
-   "id": "CMLRev-10.54648/cola2026062",
-   "casopis": "cmlr",
-   "nazev": "Energy solidarity in the competition law toolbox after Orlen v Commission: Alive and dead until observed",
-   "url": "https://doi.org/10.54648/cola2026062",
-   "autori": "Miłosz Malaga",
-   "datum": "2026-08-01",
-   "first_seen": "2026-10-24T04:20:13Z",
-   "poznamka": "Shrnutí zatím není k dispozici.",
-   "popis": "Energy solidarity in the competition law toolbox after Orlen v Commission: Alive and dead until observed\nAutor: Miłosz Malaga\nCommon Market Law Review"
-  },
-  {
-   "id": "CMLRev-10.54648/cola2026068",
-   "casopis": "cmlr",
-   "nazev": "Fundamental principles or fundamental rights? Identity-based refusal under the European Investigation Order after Bissilli",
-   "url": "https://doi.org/10.54648/cola2026068",
-   "autori": "Lou Vanbeselaere",
-   "datum": "2026-08-01",
-   "first_seen": "2026-10-24T04:20:13Z",
-   "poznamka": "Shrnutí zatím není k dispozici.",
-   "popis": "Fundamental principles or fundamental rights? Identity-based refusal under the European Investigation Order after Bissilli\nAutor: Lou Vanbeselaere\nCommon Market Law Review"
   },
   {
    "id": "CMLRev-10.54648/cola2026059",
@@ -831,6 +877,17 @@
    "first_seen": "2026-10-24T04:20:13Z"
   },
   {
+   "id": "CMLRev-10.54648/cola2026062",
+   "casopis": "cmlr",
+   "nazev": "Energy solidarity in the competition law toolbox after Orlen v Commission: Alive and dead until observed",
+   "url": "https://doi.org/10.54648/cola2026062",
+   "autori": "Miłosz Malaga",
+   "datum": "2026-08-01",
+   "first_seen": "2026-10-24T04:20:13Z",
+   "poznamka": "Shrnutí zatím není k dispozici.",
+   "popis": "Energy solidarity in the competition law toolbox after Orlen v Commission: Alive and dead until observed\nAutor: Miłosz Malaga\nCommon Market Law Review"
+  },
+  {
    "id": "CMLRev-10.54648/cola2026061",
    "casopis": "cmlr",
    "nazev": "EU jurisdictional law and antitrust follow-on damages claims against a parent company as an anchor defendant: Athenian Brewery",
@@ -842,15 +899,14 @@
    "popis": "EU jurisdictional law and antitrust follow-on damages claims against a parent company as an anchor defendant: Athenian Brewery\nAutor: Anna Piszcz\nCommon Market Law Review"
   },
   {
-   "id": "CMLRev-10.54648/cola2026070",
+   "id": "CMLRev-10.54648/cola2026069",
    "casopis": "cmlr",
-   "nazev": "Unravelling the place of services of general economic interest under EU law through waste management: Mixed lessons from Interzero",
-   "url": "https://doi.org/10.54648/cola2026070",
-   "autori": "Daniele Gallo",
+   "nazev": "Editorial comments: The governance of Union membership",
+   "url": "https://doi.org/10.54648/cola2026069",
    "datum": "2026-08-01",
    "first_seen": "2026-10-24T04:20:13Z",
    "poznamka": "Shrnutí zatím není k dispozici.",
-   "popis": "Unravelling the place of services of general economic interest under EU law through waste management: Mixed lessons from Interzero\nAutor: Daniele Gallo\nCommon Market Law Review"
+   "popis": "Editorial comments: The governance of Union membership\nCommon Market Law Review"
   },
   {
    "id": "CMLRev-10.54648/cola2026065",
@@ -886,15 +942,15 @@
    "first_seen": "2026-10-24T04:20:13Z"
   },
   {
-   "id": "CMLRev-10.54648/cola2026067",
+   "id": "CMLRev-10.54648/cola2026068",
    "casopis": "cmlr",
-   "nazev": "Legal imaginations of the AI Act: A constitutional perspective on the pre-emption of Member State competence",
-   "url": "https://doi.org/10.54648/cola2026067",
-   "autori": "Michèle Finck",
-   "heslo": "AI Act a kompetence",
-   "shrnuti": "Článek z ústavní perspektivy analýzuje vliv aktu o umělé inteligenci (AI Act) na vnitrostátní regulační autonomii členských států EU. Autor poukazuje na to, že hlavní přínos předpisu nespočívá v podrobných povinnostech pro určitou část systémů, ale v rozsáhlé harmonizaci a vytlačení národních regulací s cílem zabránit roztříštěnosti trhu. Závěrem vyzývá k přehodnocení vnímání AI Actu primárně jako nástroje tržní integrace v geostrategickém kontextu.",
+   "nazev": "Fundamental principles or fundamental rights? Identity-based refusal under the European Investigation Order after Bissilli",
+   "url": "https://doi.org/10.54648/cola2026068",
+   "autori": "Lou Vanbeselaere",
    "datum": "2026-08-01",
-   "first_seen": "2026-10-24T04:20:13Z"
+   "first_seen": "2026-10-24T04:20:13Z",
+   "poznamka": "Shrnutí zatím není k dispozici.",
+   "popis": "Fundamental principles or fundamental rights? Identity-based refusal under the European Investigation Order after Bissilli\nAutor: Lou Vanbeselaere\nCommon Market Law Review"
   },
   {
    "id": "JWIP-10.1111/jwip.70010",
@@ -1125,6 +1181,39 @@
    "shrnuti": "Článek se zabývá průnikem práva duševního vlastnictví a daňové oblasti v kontextu globálního obchodu. Analyticky se zaměřuje na výzvy a příležitosti, které tato problematika přináší. Závěry textu reflektují aktuální stav a specifika tohoto mezinárodního tématu.",
    "datum": "2026-06-02",
    "first_seen": "2026-09-29T05:30:25Z"
+  },
+  {
+   "id": "JIPLP-10.1093/jiplp/jpag054",
+   "casopis": "jiplp",
+   "nazev": "Protection of industrial designs in Bangladesh: compatibility with international standards, South Asian and other best practices",
+   "url": "https://doi.org/10.1093/jiplp/jpag054",
+   "autori": "Mohammad Towhidul Islam, Abuzar Gifari",
+   "heslo": "Ochrana průmytských vzorů",
+   "shrnuti": "Článek zkoumá právní rámec ochrany průmyslových vzorů v Bangladéši po přijetí nového zákona z roku 2023 a hodnotí jeho kompatibilitu s mezinárodními standardy a regionální praxí v jižní Asii. Porovnává přístupy jednotlivých států k materiálním otázkám, vyřizování přihlášek i řešení porušování práv a poukazuje na odlišnosti mezi jurisdikcemi. Závěrem konstatuje, že navzdory pokroku přetrvávají v Bangladéši nedostatky v oblasti vymahatelnosti, regionální harmonizace a reakce na nové technologie, jako je umělá inteligence.",
+   "datum": "2026-06-01",
+   "first_seen": "2026-10-25T05:33:15Z"
+  },
+  {
+   "id": "JIPLP-10.1093/jiplp/jpag056",
+   "casopis": "jiplp",
+   "nazev": "Global design law—from Geneva with love",
+   "url": "https://doi.org/10.1093/jiplp/jpag056",
+   "autori": "Henning Hartwig",
+   "heslo": "Mezinárodní průmyslový vzor",
+   "shrnuti": "Anotace představuje odborný komentář k The Hague Agreement on International Design Registrations od autorů Roberta Mirka Stutze a Evelyne Feller, vydaný v roce 2026 nakladatelstvím Edward Elgar Publishing. Kniha se zabývá globálním právem v oblasti mezinárodního zápisu designu v rámci edice Elgar Commentaries in Intellectual Property Law.",
+   "datum": "2026-05-30",
+   "first_seen": "2026-10-25T05:33:15Z"
+  },
+  {
+   "id": "JIPLP-10.1093/jiplp/jpag055",
+   "casopis": "jiplp",
+   "nazev": "Disclosure-driven uncertainty in China’s antibody drug patent examination: enablement, support and a roadmap for foreign applicants",
+   "url": "https://doi.org/10.1093/jiplp/jpag055",
+   "autori": "Shi Chen, Yanqiu Hou",
+   "heslo": "Patenty protilátek v Číně",
+   "shrnuti": "Článek analýzou čínského patentového práva a praxe zkoumá nejistotu při posuzování dostatečnosti popisu a podpory nároků u protilátek, jejíž standardy jsou dosud přizpůsobeny spíše chemickým léčivům. Autoři zjišťují, že pravidla trpí nestabilitou, přísným přezkumem funkčních nároků a prolínáním nedostatků popisu s posouzením inventivní činnosti. Závěrem předkládají praktický harmonogram pro zahraniční přihlašovatele zahrnující včasné doložení experimentálních dat, odstupňovanou strukturu nároků a strategickou reakci na úřední výzvy.",
+   "datum": "2026-05-29",
+   "first_seen": "2026-10-25T05:33:15Z"
   },
   {
    "id": "JWIP-10.1111/jwip.70027",

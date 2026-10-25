@@ -1,15 +1,15 @@
 {
-  "generated": "2026-10-24T04:21:16.946283+00:00",
+  "generated": "2026-10-25T05:34:06.062105+00:00",
   "from": "2026-09-01",
   "to": "2026-09-30",
-  "total": 57,
-  "covered": 13,
+  "total": 56,
+  "covered": 12,
   "cekajici": 1,
-  "intro": "Uplynulé období přineslo řadu zajímavých podnětů z oblasti duševního vlastnictví a IT, včetně judikatury Soudního dvora EU k autorskému právu, ochranným známkám a ochraně údajů. Odborná literatura se intenzivně věnovala výzvám spojeným s umělou inteligencí, novým médiím a ochraně osobnostních práv v digitálním věku.",
+  "intro": "Uplynulý měsíc přinesl řadu podnětných poznatků z oblasti duševního vlastnictví a IT, v nichž dominovaly otázky generativní inteligence, ochranných známek a mezinárodního kolizního práva. Soudní dvůr EU a Tribunál se zaměřily na posuzování pravděpodobnosti záměny ochranných známek a určení rozhodného práva pro postoupení autorských práv, zatímco odborná literatura reflektovala výzvy spojené s AI a digitálními technologiemi.",
   "blocks": [
     {
-      "title": "Autorská práva a Řím I",
-      "text": "Soudní dvor EU rozhodl, že otázka formální platnosti smlouvy o postoupení autorských práv spadá do oblasti smluvních vztahů, a proto se řídí nařízením Řím I, nikoliv nařízením Řím II. Pro praxi to znamená jasné určité pravidlo pro volbu rozhodného práva při převodu autorských práv v mezinárodních sporech.",
+      "title": "Určení práva pro autorská práva",
+      "text": "Soudní dvůr EU rozhodl, že otázka formální platnosti smlouvy o postoupení autorských práv spadá do oblasti smluvních závazků. Pro praxi to znamená, že se tato problematika posuzuje podle nařízení Řím I, nikoliv podle lex loci protectionis dle nařízení Řím II.",
       "sources": [
         {
           "src": "sdeu",
@@ -21,8 +21,8 @@
       ]
     },
     {
-      "title": "Podobnost a záměna známek",
-      "text": "Tribunál EU se zabýval posuzováním pravděpodobnosti záměny ochranných známek a konstatoval, že při nízkém stupni podobnosti označení a vyšší pozornosti veřejnosti nelze dovodit jejich spojení. Tyto rozsudky poskytují vodítko pro přihlašovatele ochranných známek a vymezují hranice úspěšnosti námitek před EUIPO.",
+      "title": "Posuzování podobnosti ochranných známek",
+      "text": "Tribunál ve svých rozhodnutích potvrdil, že nízký stupeň podobnosti označení ve spojení s vysokou pozorností veřejnosti vylučuje existenci spojení či záměny ochranných známek. Pro přihlašovatele to znamená, že specializovaná veřejnost a odlišnost produktů hrají klíčovou roli při obraně proti námitkám.",
       "sources": [
         {
           "src": "sdeu",
@@ -49,7 +49,7 @@
     },
     {
       "title": "Umělá inteligence a autorství",
-      "text": "Odborné články rozebraly právní výzvy spojené se zapojením umělé inteligence do tvůrčího a patentového procesu či otázku odměňování autorů za díla užitá v systémech GenAI. Pro praxi to otevírá debatu o nutnosti přizpůsobení autorskoprávních a patentových standardů technologické realitě.",
+      "text": "Odborná literatura se intenzivně zabývala otázkami původcovství, autorské odměny a nutné míry lidské tvořivosti u výtvorů generovaných AI. Pro praxi to otevírá debatu o nastavení budoucích licenčních modelů a právní ochraně generovaného obsahu.",
       "sources": [
         {
           "src": "journals",
@@ -89,21 +89,8 @@
       ]
     },
     {
-      "title": "Ochrana osobních údajů",
-      "text": "Soudní dvor EU obdržel předběžnou otázku týkající se posouzení pořizování a ukládání fotografií obličeje pro identifikační účely jako zpracování biometrických údajů dle GDPR. Výsledek tohoto řízení ovlivní praxi povinných osob při plnění požadavků proti praní špinavých peněz.",
-      "sources": [
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "C-660/26 – International Card Services",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0660"
-        }
-      ]
-    },
-    {
-      "title": "Osobnostní práva a deepfakes",
-      "text": "Odborná literatura se zaměřila na otázku, zda rozvoj deepfakes, digitálních replik a lidských digitálních dvojčat opodstatňuje posílení osobnostních práv. Analýzy poukazují na rostoucí potřebu adaptace stávající legislativy na moderní digitální technologie.",
+      "title": "Ochrana osobnosti a deepfakes",
+      "text": "Odborné články analyzovaly dopady moderních technologií, jako jsou deepfakes, digitální repliky a digitální dvojčata, na stávající rámec osobnostních práv. Pro praxi to signalizuje rostoucí potřebu adaptace právní úpravy na nové hrozby v digitálním prostředí.",
       "sources": [
         {
           "src": "journals",
@@ -122,18 +109,18 @@
       ]
     },
     {
-      "title": "Regulace médií a EMFA",
-      "text": "Analýza odborného tisku poukázala na to, že český právní řád v mnoha ohledech nevyhovuje požadavkům evropského nařízení European Media Freedom Act (EMFA) na nezávislost médií. To pro Českou republiku představuje riziko zahájení řízení o porušení povinnosti ze strany Evropské komise.",
+      "title": "Náklady řízení o průmyslových vzorech",
+      "text": "Generální advokát se vyjádřil k autonomnímu systému nákladů řízení před Úřadem EU pro duševní vlastnictví. Pro praxi to znamená, že náklady na právní zastoupení v těchto věcech nelze v navazujících vnitrostátních řízeních požadovat nad rámec unijních sazeb.",
       "sources": [
         {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "Jurisprudence",
-          "title": "Mezi evropským nařízením a českou realitou: analýza čl. 5 European Media Freedom Act a jeho adaptace do českého právního řádu",
-          "link": "https://www.jurisprudence.cz/cz/casopis/mezi-evropskym-narizenim-a-ceskou-realitou-analyza-cl-5-european-media-freedom-act-a-jeho-adaptace-do-ceskeho-pravniho-radu.m-1051.html"
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "C-573/25 – Suzhou Anri Child Products",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0573"
         }
       ]
     }
   ],
-  "input_hash": "c75d9298c15a0f62536747889ca63830eab6e97ad1e38799c460a3c30765a847"
+  "input_hash": "b27d3795b8b25370a46204a3aa37b86feb219b0829f57dfc8f6292c0faa667e2"
 }

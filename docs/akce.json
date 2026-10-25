@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-24T04:21:16+00:00",
+  "generated": "2026-10-25T05:34:05+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 26,
-      "stazeno": "2026-10-24T04:20:58+00:00",
+      "stazeno": "2026-10-25T05:33:58+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,7 +18,7 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 5,
-      "stazeno": "2026-10-24T04:21:01+00:00",
+      "stazeno": "2026-10-25T05:33:59+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bb2a6bd265c84d44"
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-10-24T04:21:06+00:00",
+      "stazeno": "2026-10-25T05:34:04+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "e82c179d95f93d00"
+      "otisk": "a71e7764e006f677"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-10-24T04:21:08+00:00",
+      "stazeno": "2026-10-25T05:34:05+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 5,
-      "stazeno": "2026-10-24T04:21:09+00:00",
+      "stazeno": "2026-10-25T05:34:05+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "fba0589c410d9352"
@@ -1441,7 +1441,7 @@
       "take_u": [
         {
           "poradatel": "EPRAVO",
-          "url": "https://www.epravo.cz/top/aktualne/vybrane-otazky-spolecneho-jmeni-manzelu-v-aktualni-rozhodovaci-praxi-nejvyssiho-soudu-cr-a-ustavni-soudu-cr-121773.html"
+          "url": "https://www.epravo.cz/top/aktualne/vybrane-otazky-spolecneho-jmeni-manzelu-v-aktualni-rozhodovaci-praxi-nejvyssiho-soudu-cr-a-ustavniho-soudu-cr-121773.html"
         }
       ]
     },
@@ -2276,7 +2276,7 @@
       ],
       "cena": "",
       "anotace": "Vzdělávací akce pořádaná Jednotou českých právníků zaměřená na vybrané otázky společného jmění manželů.",
-      "url": "https://www.epravo.cz/top/aktualne/vybrane-otazky-spolecneho-jmeni-manzelu-v-aktualni-rozhodovaci-praxi-nejvyssiho-soudu-cr-a-ustavni-soudu-cr-121773.html",
+      "url": "https://www.epravo.cz/top/aktualne/vybrane-otazky-spolecneho-jmeni-manzelu-v-aktualni-rozhodovaci-praxi-nejvyssiho-soudu-cr-a-ustavniho-soudu-cr-121773.html",
       "detail_pokusy": 2,
       "z_detailu": [
         "forma",
