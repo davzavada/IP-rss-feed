@@ -1,8 +1,44 @@
 {
- "generated": "2026-10-25T05:32:51Z",
+ "generated": "2026-10-26T05:39:13Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "sdeu:62026CN0760",
+   "spz": "C-760/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-09",
+   "zverejneno": "2026-10-26",
+   "first_seen": "2026-10-26T05:39:13Z",
+   "nazev": "Association belgo-palestinienne ASBL a další",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0760",
+   "heslo": "Vývoz zboží dvojího užití a kontrola tranzitu",
+   "shrnuti": "Belgický soud cour d'appel de Bruxelles se Soudního dvora EU předběžnou otázkou táže, zda je nařízení (EU) 2021/821 o kontrole vývozu zboží dvojího užití slučitelné s mezinárodními závazky a právem Unie v rozsahu, v jakém omezuje možnost členského státu zakázat tranzit takového zboží. Dále se táže, zda může členský stát takový tranzit zakázat na základě článku 351 SFEU za účelem dodržení úmluvy o genocidě a ženevských úmluv.",
+   "oblasti": [
+    "spravni",
+    "mps"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0727",
+   "spz": "C-727/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-02",
+   "zverejneno": "2026-10-26",
+   "first_seen": "2026-10-26T05:39:13Z",
+   "nazev": "Vital Products",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0727",
+   "heslo": "Výklad pojmů potravinářská přídatná látka",
+   "shrnuti": "Německý soud Bayerischer Verwaltungsgerichtshof se Soudního dvora EU ptá na výklad pojmů potravinářská přídatná látka a pomocná látka podle nařízení (ES) č. 1333/2008, konkrétně zda musí látka plnit technologickou funkci v konečném produktu a jaké jsou podmínky pro její odstranění.",
+   "oblasti": [
+    "spravni",
+    "spotrebitel"
+   ],
+   "procesni": true
+  },
   {
    "id": "sdeu:62025CC0497",
    "spz": "C-497/25",
@@ -4018,277 +4054,6 @@
    "poznamka": "Čeká na zveřejnění textu rozhodnutí."
   },
   {
-   "id": "sdeu:ipc:C-1009/26",
-   "spz": "C-1009/26",
-   "druh": "předběžná otázka",
-   "rejstrik": "C",
-   "datum": "2026-09-11",
-   "first_seen": "2026-09-24T15:56:03Z",
-   "nazev": "TikTok Information Technologies UK",
-   "url": "https://curia.europa.eu/juris/liste.jsf?num=C-1009/26&language=cs",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [
-    "prumyslova_prava",
-    "autorske",
-    "gdpr"
-   ],
-   "procesni": false,
-   "stav_shrnuti": "ceka_na_text",
-   "poznamka": "Podáno 11. 9. 2026. Položené otázky zatím nejsou zveřejněné."
-  },
-  {
-   "id": "sdeu:62025CJ0600",
-   "spz": "C-600/25",
-   "ecli": "ECLI:EU:C:2026:794",
-   "druh": "rozsudek",
-   "rejstrik": "C",
-   "datum": "2026-09-24",
-   "zverejneno": "2026-09-24",
-   "first_seen": "2026-09-24T12:00:00Z",
-   "nazev": "Ministerstvo na zemedelieto i hranite a další",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0600",
-   "heslo": "Ztráta půdy změnou zákona může být vyšší mocí",
-   "shrnuti": "Soudní dvůr EU rozhodl, že ztráta práva užívat zemědělskou půdu v důsledku legislativní změny může představovat vyšší moc nebo výjimečnou okolnost ve smyslu nařízení č. 1974/2006, pokud šlo o nepředvídatelnou událost a příjemce podpory učinil veškerá rozumná opatření. Dále konstatoval, že fakultativní povaha tohoto ustanovení nezakládá práva jednotlivcům, a proto nevede k odpovědnosti členského státu za škodu. Částečné převzetí výčtu případů vyšší moci do vnitrostátního práva tak nepředstavuje dostatečně závažné porušení unijního práva.",
-   "oblasti": [
-    "spravni",
-    "zavazky",
-    "skoda"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "sdeu:62025CJ0511",
-   "spz": "C-511/25",
-   "ecli": "ECLI:EU:C:2026:783",
-   "druh": "rozsudek",
-   "rejstrik": "C",
-   "datum": "2026-09-24",
-   "zverejneno": "2026-09-24",
-   "first_seen": "2026-09-24T12:00:00Z",
-   "nazev": "Prokoda",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0511",
-   "heslo": "Diskreční doložku lze uplatnit i u zbytkového kritéria",
-   "shrnuti": "Soudní dvůr řešil, zda se členský stát může v rámci diskrečního oprávnění podle čl. 17 odst. 1 nařízení Dublin III odchýlit od určení příslušného státu i v případě, že byl příslušný stát určen podle zbytkového kritéria podle čl. 3 odst. 2 prvního pododstavce tohoto nařízení. Soud rozhodl, že diskreční oprávnění lze uplatnit i v této situaci, neboť rozsah působnosti ustanovení není omezen pouze na případy určení příslušného státu podle kritérií v kapitole III nařízení.",
-   "oblasti": [
-    "socialni_cizinci",
-    "spravni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "sdeu:62025CJ0503",
-   "spz": "C-503/25",
-   "ecli": "ECLI:EU:C:2026:795",
-   "druh": "rozsudek",
-   "rejstrik": "C",
-   "datum": "2026-09-24",
-   "zverejneno": "2026-09-24",
-   "first_seen": "2026-09-24T12:00:00Z",
-   "nazev": "Acciaierie d’Italia",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0503",
-   "heslo": "Podnik v mimořádné správě je podnikem v obtížích",
-   "shrnuti": "Soudní dvůr EU řešil, zda unijní právo státních podpor brání vnitrostátní úpravě vylučující podniky v režimu mimořádné správy z podpory pro energeticky náročné podniky. Rozhodl, že unijní právo takové vnitrostátní úpravě nebrání. Podnik v režimu mimořádné správy totiž spadá pod pojem podnik v obtížích.",
-   "oblasti": [
-    "soutez",
-    "spravni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "sdeu:62025CJ0381",
-   "spz": "C-381/25",
-   "ecli": "ECLI:EU:C:2026:793",
-   "druh": "rozsudek",
-   "rejstrik": "C",
-   "datum": "2026-09-24",
-   "zverejneno": "2026-09-24",
-   "first_seen": "2026-09-24T12:00:00Z",
-   "nazev": "Gexx aeroSol",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0381",
-   "heslo": "Předem zaslaná nabídka: smlouva mimo obchodní prostory",
-   "shrnuti": "Soudní dvůr EU řešil otázku, zda se jedná o smlouvu uzavřenou mimo obchodní prostory ve smyslu směrnice 2011/83, pokud spotřebitel přijme nabídku obchodníka za jeho fyzické přítomnosti mimo obchodní prostory poté, co mu byla nabídka předem zaslána. Rozhodl, že taková smlouva představuje smlouvu uzavřenou mimo obchodní prostory bez ohledu na to, zda byla nabídka učiněna za přítomnosti stran, nebo předem zaslána, jelikož spotřebitel může být v okamžiku jejího přijetí vystaven psychologickému nátlaku.",
-   "oblasti": [
-    "spotrebitel",
-    "zavazky"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "sdeu:62025CJ0369",
-   "spz": "C-369/25",
-   "ecli": "ECLI:EU:C:2026:791",
-   "druh": "rozsudek",
-   "rejstrik": "C",
-   "datum": "2026-09-24",
-   "zverejneno": "2026-09-24",
-   "first_seen": "2026-09-24T12:00:00Z",
-   "nazev": "Trenitalia a INPS",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0369",
-   "heslo": "Směrnice 91/533 chrání jen právo na informace",
-   "shrnuti": "Soudní dvůr EU rozhodl, že pojem „práva“ v čl. 8 odst. 1 směrnice 91/533 se vztahuje pouze na práva vyplývající z této směrnice, jako je právo na obdržení informačního dokumentu o pracovních podmínkách. Pod tento pojem tak nespadají samotná práva z pracovní smlouvy nebo pracovního poměru, s nimiž má být zaměstnanec seznámen.",
-   "oblasti": [
-    "pracovni",
-    "spravni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "sdeu:62025CJ0300",
-   "spz": "C-300/25",
-   "ecli": "ECLI:EU:C:2026:787",
-   "druh": "rozsudek",
-   "rejstrik": "C",
-   "datum": "2026-09-24",
-   "zverejneno": "2026-09-24",
-   "first_seen": "2026-09-24T12:00:00Z",
-   "nazev": "Duftošek",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0300",
-   "heslo": "Zrušení spoluvlastnictví manželů spadá pod nařízení",
-   "shrnuti": "Soudní dvůr EU posuzoval, zda žaloba na zrušení a vypořádání podílového spoluvlastnictví k nemovitosti nabyté manželi s režimem oddělených jmění spadá do působnosti nařízení (EU) 2016/1103 o majetkových poměrech v manželství. Rozhodl, že taková žaloba podaná po zrušení manželství do této oblasti spadá.",
-   "oblasti": [
-    "rodina_dedictvi",
-    "mps",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "sdeu:62025CJ0190",
-   "spz": "C-190/25",
-   "ecli": "ECLI:EU:C:2026:786",
-   "druh": "rozsudek",
-   "rejstrik": "C",
-   "datum": "2026-09-24",
-   "zverejneno": "2026-09-24",
-   "first_seen": "2026-09-24T12:00:00Z",
-   "nazev": "Zelabrich",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0190",
-   "heslo": "Uznání církevní neplatnosti manželství nezakládá litispendenci",
-   "shrnuti": "Soudní dvůr EU posuzoval, zda řízení o uznání občanskoprávních účinků rozhodnutí církevního soudu o neplatnosti manželství podle Lateránského konkordátu spadá pod pojem řízení o prohlášení manželství za neplatné ve smyslu nařízení Rady č. 2201/2003. Rozhodl, že takové řízení nepředstavuje řízení o prohlášení manželství za neplatné zakládající překážku litispendence.",
-   "oblasti": [
-    "mps",
-    "rodina_dedictvi",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "sdeu:62025CJ0176",
-   "spz": "C-176/25",
-   "ecli": "ECLI:EU:C:2026:785",
-   "druh": "rozsudek",
-   "rejstrik": "C",
-   "datum": "2026-09-24",
-   "zverejneno": "2026-09-24",
-   "first_seen": "2026-09-24T12:00:00Z",
-   "nazev": "Steizer",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0176",
-   "heslo": "Postoupení autorských práv spadá pod Řím I",
-   "shrnuti": "Soudní dvůr řešil, zda se otázka formální platnosti smlouvy o postoupení autorských práv v rámci sporu o náhradu škody z porušení těchto práva řídí právem pro smluvní závazky dle nařízení Řím I, nebo právem země, kde je uplatňována ochrana dle nařízení Řím II. Rozhodl, že tato otázka spadá do oblasti smluvních vztahů, a proto se řídí nařízením Řím I.",
-   "oblasti": [
-    "autorske",
-    "zavazky",
-    "mps"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "sdeu:62025CJ0151",
-   "spz": "C-151/25",
-   "ecli": "ECLI:EU:C:2026:789",
-   "druh": "rozsudek",
-   "rejstrik": "C",
-   "datum": "2026-09-24",
-   "zverejneno": "2026-09-24",
-   "first_seen": "2026-09-24T12:00:00Z",
-   "nazev": "Viaudret",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0151",
-   "heslo": "Prodloužení povolení vyžaduje účast veřejnosti",
-   "shrnuti": "Soudní dvůr EU řešil výklad Aarhuské úmluvy ve vztahu k povinnosti zajistit účast veřejnosti při prodloužení platnosti povolení k provozování větrného parku. Rozhodl, že čl. 6 odst. 1 a 10 této úmluvy brání vnitrostátní právní úpravě, která z řízení o prodloužení takového povolení o deset let zcela vylučuje fázi účasti veřejnosti.",
-   "oblasti": [
-    "stavebni_zp",
-    "spravni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "sdeu:62025CC0573",
-   "spz": "C-573/25",
-   "ecli": "ECLI:EU:C:2026:792",
-   "druh": "stanovisko GA",
-   "rejstrik": "C",
-   "datum": "2026-09-24",
-   "zverejneno": "2026-09-24",
-   "first_seen": "2026-09-24T12:00:00Z",
-   "nazev": "Suzhou Anri Child Products",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0573",
-   "heslo": "Náklady řízení o vzoru jen v unijních sazbách",
-   "shrnuti": "Generální advokát navrhuje odmítnout předběžné otázky jako nepřípustné, neboť řízení o prohlášení neplatnosti průmyslového vzoru před Úřadem Evropské unie pro duševní vlastnictví stále probíhají a pravidla o nákladech v nařízeních pro vzory Společenství tvoří vyčerpávající a autonomní systém. Podpůrně uvádí, že náklady na právní zastoupení v těchto řízeních nelze v probíhajícím vnitrostátním řízení o předběžném opatření požadovat nad rámec sazeb stanovených unijním právem pro řízení před úřadem.",
-   "oblasti": [
-    "prumyslova_prava",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "sdeu:62025CC0538",
-   "spz": "C-538/25",
-   "ecli": "ECLI:EU:C:2026:790",
-   "druh": "stanovisko GA",
-   "rejstrik": "C",
-   "datum": "2026-09-24",
-   "zverejneno": "2026-09-24",
-   "first_seen": "2026-09-24T12:00:00Z",
-   "nazev": "Flugzeugherstellerin",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0538",
-   "heslo": "Pojem zboží dvojího užití vyžaduje široký výklad",
-   "shrnuti": "Generální advokátka navrhuje, aby Soudní dvůr vyložil pojem zboží dvojího užití široce, neboť to odpovídá aktuálnímu bezpečnostnímu a strategickému kontextu. Pro posouzení, zda lze zboží použít i pro vojenské účely, postačuje, že je objektivně způsobilé k takovému použití (například k výcviku vojenských pilotů), přičemž okolnosti jako konečný uživatel nebo situace v zemi určení jsou relevantní až v rámci následného povolovacího řízení.",
-   "oblasti": [
-    "spravni",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "sdeu:62025CC0122",
-   "spz": "C-122/25",
-   "ecli": "ECLI:EU:C:2026:788",
-   "druh": "stanovisko GA",
-   "rejstrik": "C",
-   "datum": "2026-09-24",
-   "zverejneno": "2026-09-24",
-   "first_seen": "2026-09-24T12:00:00Z",
-   "nazev": "BASF a Nouryon Functional Chemicals v. Komise",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0122",
-   "heslo": "Toxicita pro reprodukci nevyžaduje přímý účinek na plod",
-   "shrnuti": "Generální advokát navrhuje zamítnout první část prvního důvodu kasačního opravného prostředku. Dospěl k závěru, že Tribunál nepochybil při výkladu kritérií pro klasifikaci látek jako toxických pro reprodukci podle nařízení (ES) č. 1272/2008. Podle jeho názoru pojem vnitřní a specifická vlastnost nevyžaduje existenci přímého účinku látky na plod, pokud je prokázána příčinná souvislost mezi vnitřní vlastností látky a nepříznivými účinky bez toho, že by šlo o nespecifický sekundární důsledek jiné toxicity.",
-   "oblasti": [
-    "spravni",
-    "skoda"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "sdeu:62024CJ0900",
-   "spz": "C-900/24",
-   "ecli": "ECLI:EU:C:2026:784",
-   "druh": "rozsudek",
-   "rejstrik": "C",
-   "datum": "2026-09-24",
-   "zverejneno": "2026-09-24",
-   "first_seen": "2026-09-24T12:00:00Z",
-   "nazev": "SVB",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0900",
-   "heslo": "Tříletá lhůta k napadení zdražení tepla odporuje směrnici",
-   "shrnuti": "Soudní dvůr EU rozhodoval o tom, zda směrnice o zneužívajících ujednáních ve spotřebitelských smlouvách brání vnitrostátní praxi, podle níž se spotřebitel může dovolávat neplatnosti zvyšování cen tepelné energie jen ve lhůtě tří let od obdržení vyúčtování. Dále posuzoval, zda tato směrnice brání tomu, aby dodavatel energie mohl jednostranně a s účinkem do budoucna změnit ujednání o změně ceny, které bylo prohlášeno za neplatné. Soud dospěl k závěru, že unijní právo takové vnitrostátní úpravě a praxi ve všech uvedených ohledech brání.",
-   "oblasti": [
-    "spotrebitel",
-    "zavazky"
-   ],
-   "procesni": false
-  },
-  {
    "id": "sdeu:62026TO0365",
    "spz": "T-365/26",
    "ecli": "ECLI:EU:T:2026:591",
@@ -4306,25 +4071,6 @@
     "mps"
    ],
    "procesni": true
-  },
-  {
-   "id": "sdeu:62024TJ0455",
-   "spz": "T-455/24",
-   "ecli": "ECLI:EU:T:2026:585",
-   "druh": "rozsudek",
-   "rejstrik": "T",
-   "datum": "2026-09-23",
-   "zverejneno": "2026-09-23",
-   "first_seen": "2026-09-24T15:56:03Z",
-   "nazev": "Advanz Pharma v. Komise",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0455",
-   "heslo": "Řízení o prodloužení nebrání zrušení podmíněné registrace",
-   "shrnuti": "Tribunál řešil otázku, zda Evropská komise může zahájit a dokončit řízení o zrušení podmíněné registrace léčivého přípravku podle článku 20 nařízení (ES) č. 726/2004 v době, kdy probíhá řízení o prodloužení platnosti této registrace. Soud dospěl k závěru, že probíhající řízení o prodloužení nebrání Komisi v zahájení a dokončení řízení o přezkumu a zrušení registrace z důvodů ochrany veřejného zdraví, a žalobu zamítl.",
-   "oblasti": [
-    "spravni",
-    "spotrebitel"
-   ],
-   "procesni": false
   }
  ]
 }
