@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-25T05:34:05+00:00",
+  "generated": "2026-10-26T05:40:59+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 26,
-      "stazeno": "2026-10-25T05:33:58+00:00",
+      "stazeno": "2026-10-26T05:40:44+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,7 +18,7 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 5,
-      "stazeno": "2026-10-25T05:33:59+00:00",
+      "stazeno": "2026-10-26T05:40:45+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bb2a6bd265c84d44"
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-10-25T05:34:04+00:00",
+      "stazeno": "2026-10-26T05:40:51+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "a71e7764e006f677"
+      "otisk": "73d4c05a6484fd22"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-10-25T05:34:05+00:00",
+      "stazeno": "2026-10-26T05:40:52+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 5,
-      "stazeno": "2026-10-25T05:34:05+00:00",
+      "stazeno": "2026-10-26T05:40:53+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "fba0589c410d9352"
@@ -1199,31 +1199,6 @@
       "oblasti_klic": "f12a8b5fcce2"
     },
     {
-      "id": "5713adf78cb958f06338",
-      "poradatel": "EPRAVO",
-      "datum": "2026-10-26",
-      "zacatek": "13:00",
-      "konec": "15:00",
-      "nazev": "Nový zákon o kritické infrastruktuře v praxi: Dopadne i na vaši organizaci?",
-      "misto": "online",
-      "forma": "online",
-      "lektori": [
-        "JUDr. Jakub Klodwig, Ph.D."
-      ],
-      "cena": "2 975 Kč",
-      "anotace": "Seminář představuje nový zákon o kritické infrastruktuře a jeho prováděcí předpisy, které mění pojetí ochrany na odolnost a kontinuitu poskytování základních služeb. Nabízí praktický návod, jak vyhodnotit dopad na organizaci, provést samoposouzení a připravit se na nové povinnosti.",
-      "url": "https://www.epravo.cz/eshop/novy-zakon-o-kriticke-infrastrukture-v-praxi-dopadne-i-na-vasi-organizaci-online-zive-vysilani-26-10-2026-1629.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "spravni",
-        "it"
-      ],
-      "oblasti_klic": "885717932308"
-    },
-    {
       "id": "d4857af12081075c4297",
       "poradatel": "PFUK",
       "datum": "2026-10-26",
@@ -1668,6 +1643,31 @@
         "stavebni_zp"
       ],
       "oblasti_klic": "1bfc6a91e8af"
+    },
+    {
+      "id": "53cb164d1051852bd1c0",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-06",
+      "zacatek": "09:00",
+      "konec": "12:00",
+      "nazev": "Velká novela stavebního zákona IV – Změny v povolování záměrů",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "Mgr. František Korbel, Ph.D.",
+        "JUDr. Jiří Buryan, Ph.D."
+      ],
+      "cena": "3 975 Kč s DPH",
+      "anotace": "Online živé vysílání zaměřené na změny v povolování záměrů dle velké novely stavebního zákona.",
+      "url": "https://www.epravo.cz/eshop/velka-novela-stavebniho-zakona-iv-zmeny-v-povolovani-zameru-online-zive-vysilani-6-11-2026-1601.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "stavebni_zp"
+      ],
+      "oblasti_klic": "a8a21c8bd266"
     },
     {
       "id": "07d098081d52fc885a7d",
