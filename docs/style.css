@@ -591,7 +591,6 @@ a.digest-source:hover { border-color: var(--faint); text-decoration: none; }
   border: 1px solid var(--border); border-radius: 6px; padding: 3px 7px;
 }
 .sled-dalsi { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13px; }
-.sled-stav { white-space: nowrap; }
 .sled-kdy { font-weight: 600; font-variant-numeric: tabular-nums; }
 .sled-rel { color: var(--muted-foreground); }
 .sled-pozn, .sled-prazdno, .sled-chyba { margin: 0; font-size: 13px; color: var(--muted-foreground); }

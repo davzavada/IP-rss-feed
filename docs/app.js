@@ -1110,8 +1110,6 @@ function sledKartaHtml(s) {
   const posledni = jednani[jednani.length - 1];
   const dnes = isoOf(new Date());
   const dalsi = jednani.find(j => j.datum >= dnes);
-  const h = sledHistorie[k];
-  const stav = h && h.stav === "ok" && h.data.stav ? h.data.stav : "";
   const url = infosoudUrl(posledni || rizeniProOdkaz(s));
   const puvodni = posledni ? caseName(posledni) : "Řízení " + s.spz;
   // Při přejmenování je místo názvu pole; Enter nebo odchod z pole uloží,
@@ -1127,7 +1125,7 @@ function sledKartaHtml(s) {
     "<div>" + nazev +
     '<div class="cal-radek-meta"><span class="cal-soud cal-soud-' + s.soud.toLowerCase() + '">' + esc(s.soud) + "</span>" +
     '<span class="cal-spz">' + esc(s.spz) + "</span>" +
-    (stav ? '<span class="sled-stav">· ' + esc(stav) + "</span>" : "") + "</div></div>" +
+    "</div></div>" +
     '<button type="button" class="sled-ikona" data-prejmenuj="' + esc(k) + '" aria-label="Přejmenovat" title="Přejmenovat">' +
     '<svg class="nav-ico" aria-hidden="true"><use href="#icon-pencil"></use></svg></button>' +
     '<button type="button" class="sled-ikona" data-pin="' + esc(k) + '" aria-label="Přestat sledovat" title="Přestat sledovat">' +
