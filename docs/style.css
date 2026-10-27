@@ -561,12 +561,23 @@ a.digest-source:hover { border-color: var(--faint); text-decoration: none; }
 .sled-karta-hlava { display: flex; gap: 8px; align-items: start; }
 .sled-karta-hlava > div { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
 .sled-nazev { font-weight: 600; line-height: 1.3; color: var(--foreground); overflow-wrap: anywhere; }
-.sled-odepnout {
+.sled-ikona {
   flex: none; display: inline-flex; padding: 3px; border: 0; border-radius: 4px;
   background: none; color: var(--faint); cursor: pointer;
 }
-.sled-odepnout:hover { background: var(--accent); color: var(--foreground); }
+.sled-ikona:hover { background: var(--accent); color: var(--foreground); }
+.sled-ikona .nav-ico { width: 14px; height: 14px; }
+/* Tužka je vidět jen u karty pod myší (a vždy na dotykovém displeji). */
+@media (hover: hover) {
+  .sled-ikona[data-prejmenuj] { opacity: 0; }
+  .sled-karta:hover .sled-ikona[data-prejmenuj], .sled-ikona[data-prejmenuj]:focus-visible { opacity: 1; }
+}
+.sled-jmeno-pole {
+  width: 100%; font-size: 14px; font-weight: 600; color: var(--foreground); background: var(--background);
+  border: 1px solid var(--border); border-radius: 6px; padding: 3px 7px;
+}
 .sled-dalsi { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13px; }
+.sled-stav { white-space: nowrap; }
 .sled-kdy { font-weight: 600; font-variant-numeric: tabular-nums; }
 .sled-rel { color: var(--muted-foreground); }
 .sled-pozn, .sled-prazdno, .sled-chyba { margin: 0; font-size: 13px; color: var(--muted-foreground); }

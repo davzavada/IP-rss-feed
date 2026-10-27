@@ -939,7 +939,9 @@ function zmenyJednani(j) {
 /* ========== Sledovaná řízení ========== */
 // Řízení si člověk připne špendlíkem u jednání nebo přidá podle spisové
 // značky (i když zatím nemá nařízené jednání). Seznam je uložený v Clerku
-// vedle výběru jako user.unsafeMetadata.owl_rizeni: [{"soud":"MS","spz":"9 C 10/2024"}].
+// vedle výběru jako user.unsafeMetadata.owl_rizeni:
+// [{"soud":"MS","spz":"9 C 10/2024","nazev":"Intergram – vysílání"}]; vlastní
+// název je nepovinný, bez něj se řízení jmenuje podle sporu z přehledu soudu.
 // Lišta u kalendáře ukazuje u každého řízení další jednání z hearings.json
 // a průběh řízení z InfoSoudu (přes api/infosoud.js – prohlížeč se na
 // InfoSoud zeptat nemůže): zahájení, „…" a poslední tři události.
@@ -950,6 +952,8 @@ const SLED_NAHORE = 3;            // kolik posledních událostí je vidět vžd
 let sledovana = [];               // [{soud, spz}], nejnověji přidané nahoře
 let sledChyba = "";               // nepovedené uložení
 let sledRozbalene = {};           // klíč -> true, když je vidět celá historie
+let sledPrejmenovava = null;      // klíč řízení, kterému se právě píše název
+const SLED_NAZEV_MAX = 80;
 const sledHistorie = {};          // klíč -> {stav: "nacitam"|"ok"|"chyba", data}
 
 function klicRizeni(o) {
@@ -977,7 +981,9 @@ function nactiSledovana(user) {
   ulozene.forEach(s => {
     const spz = s && normalizujSpz(s.spz);
     if (!spz || SLED_SOUDY.indexOf(s.soud) < 0) return;
-    if (!vysledek.some(x => x.soud === s.soud && x.spz === spz)) vysledek.push({ soud: s.soud, spz });
+    if (vysledek.some(x => x.soud === s.soud && x.spz === spz)) return;
+    const nazev = typeof s.nazev === "string" ? s.nazev.trim().slice(0, SLED_NAZEV_MAX) : "";
+    vysledek.push(nazev ? { soud: s.soud, spz, nazev } : { soud: s.soud, spz });
   });
   return vysledek;
 }
@@ -1107,21 +1113,27 @@ function sledKartaHtml(s) {
   const h = sledHistorie[k];
   const stav = h && h.stav === "ok" && h.data.stav ? h.data.stav : "";
   const url = infosoudUrl(posledni || rizeniProOdkaz(s));
-  let html = '<div class="sled-karta"><div class="sled-karta-hlava"><div>' +
-    '<a class="sled-nazev" href="' + esc(url) + '" target="_blank" rel="noopener" title="Otevřít v InfoSoudu">' +
-    esc(posledni ? caseName(posledni) : "Řízení " + s.spz) + "</a>" +
+  const puvodni = posledni ? caseName(posledni) : "Řízení " + s.spz;
+  // Při přejmenování je místo názvu pole; Enter nebo odchod z pole uloží,
+  // Esc vrátí původní, prázdné pole vrátí název podle sporu.
+  const nazev = sledPrejmenovava === k
+    ? '<form class="sled-jmeno" data-jmeno="' + esc(k) + '"><input class="sled-jmeno-pole" maxlength="' + SLED_NAZEV_MAX +
+      '" value="' + esc(s.nazev || "") + '" placeholder="' + esc(puvodni) + '" aria-label="Vlastní název řízení"></form>'
+    : '<a class="sled-nazev" href="' + esc(url) + '" target="_blank" rel="noopener" title="' +
+      esc(s.nazev ? puvodni + " – otevřít v InfoSoudu" : "Otevřít v InfoSoudu") + '">' + esc(s.nazev || puvodni) + "</a>";
+  let html = '<div class="sled-karta"><div class="sled-karta-hlava"><div>' + nazev +
     '<div class="cal-radek-meta"><span class="cal-soud cal-soud-' + s.soud.toLowerCase() + '">' + esc(s.soud) + "</span>" +
     '<span class="cal-spz">' + esc(s.spz) + "</span>" +
-    (stav ? '<span aria-hidden="true">·</span><span>' + esc(stav) + "</span>" : "") + "</div></div>" +
-    '<button type="button" class="sled-odepnout" data-pin="' + esc(k) + '" aria-label="Přestat sledovat" title="Přestat sledovat">' +
+    (stav ? '<span class="sled-stav">· ' + esc(stav) + "</span>" : "") + "</div></div>" +
+    '<button type="button" class="sled-ikona" data-prejmenuj="' + esc(k) + '" aria-label="Přejmenovat" title="Přejmenovat">' +
+    '<svg class="nav-ico" aria-hidden="true"><use href="#icon-pencil"></use></svg></button>' +
+    '<button type="button" class="sled-ikona" data-pin="' + esc(k) + '" aria-label="Přestat sledovat" title="Přestat sledovat">' +
     '<svg class="nav-ico" aria-hidden="true"><use href="#icon-x"></use></svg></button></div>';
   if (dalsi) {
     const zmena = zmenyJednani(dalsi).some(z => z.typ !== "nove");
     html += '<div class="sled-dalsi"><span class="sled-kdy">' + esc(kratkeDatum(dalsi.datum) + (dalsi.hodina ? " " + dalsi.hodina : "")) +
       '</span><span class="sled-rel">' + esc(zaKolik(dalsi.datum) + (dalsi.sin ? " · síň " + dalsi.sin : "")) + "</span>" +
       (zmena ? '<span class="cal-zmena">změna</span>' : "") + "</div>";
-  } else {
-    html += '<p class="sled-pozn">Žádné nařízené jednání v přehledech soudu.</p>';
   }
   return html + historieHtml(s) + "</div>";
 }
@@ -1154,7 +1166,15 @@ function renderSled() {
   let html = sledChyba ? '<p class="sled-chyba">' + esc(sledChyba) + "</p>" : "";
   html += sledovana.length ? sledovana.map(sledKartaHtml).join("")
     : '<p class="sled-prazdno">Zatím nic nesledujete. Připněte jednání špendlíkem, nebo přidejte řízení podle spisové značky tlačítkem +.</p>';
+  // Rozepsaný název přežije překreslení (např. když dorazí historie).
+  const pole = el.querySelector(".sled-jmeno-pole");
+  const rozepsano = pole && sledPrejmenovava ? { text: pole.value, aktivni: document.activeElement === pole } : null;
   el.innerHTML = html;
+  const nove = rozepsano && el.querySelector(".sled-jmeno-pole");
+  if (nove) {
+    nove.value = rozepsano.text;
+    if (rozepsano.aktivni) nove.focus();
+  }
 }
 
 function sledFormular(otevrit) {
@@ -1182,12 +1202,54 @@ function sledPridej(e) {
   sledFormular(false);
 }
 
+// Uloží vlastní název (prázdný = zpět na název podle sporu).
+function sledPrejmenuj(k, text) {
+  if (sledPrejmenovava !== k) return;
+  sledPrejmenovava = null;
+  const nazev = String(text || "").trim().slice(0, SLED_NAZEV_MAX);
+  const s = sledovana.find(x => klicRizeni(x) === k);
+  if (!s || (s.nazev || "") === nazev) { renderSled(); return; }
+  ulozSledovana(sledovana.map(x => {
+    if (x !== s) return x;
+    return nazev ? { soud: x.soud, spz: x.spz, nazev } : { soud: x.soud, spz: x.spz };
+  }));
+}
+
+function sledPosluchaci() {
+  const el = document.getElementById("sled-seznam");
+  el.addEventListener("submit", e => {
+    const f = e.target.closest("[data-jmeno]");
+    if (!f) return;
+    e.preventDefault();
+    sledPrejmenuj(f.dataset.jmeno, f.querySelector("input").value);
+  });
+  el.addEventListener("focusout", e => {
+    const f = e.target.closest("[data-jmeno]");
+    if (f) sledPrejmenuj(f.dataset.jmeno, e.target.value);
+  });
+  el.addEventListener("keydown", e => {
+    if (e.key !== "Escape" || !e.target.closest("[data-jmeno]")) return;
+    // Esc nesmí zavřít i bublinu kalendáře.
+    e.stopPropagation();
+    sledPrejmenovava = null;
+    renderSled();
+  });
+}
+
 // Kliky ve sledování (špendlíky, lišta); true = klik vyřízený.
 function sledKlik(e) {
   const pin = e.target.closest("[data-pin]");
   if (pin) {
     const i = pin.dataset.pin.indexOf("|");
     prepniSledovani(pin.dataset.pin.slice(0, i), pin.dataset.pin.slice(i + 1));
+    return true;
+  }
+  const prejmenuj = e.target.closest("[data-prejmenuj]");
+  if (prejmenuj) {
+    sledPrejmenovava = prejmenuj.dataset.prejmenuj;
+    renderSled();
+    const pole = document.querySelector("#sled-seznam .sled-jmeno-pole");
+    if (pole) { pole.focus(); pole.select(); }
     return true;
   }
   const rozbal = e.target.closest("[data-rozbal]");
@@ -1504,6 +1566,7 @@ function renderKalendar(data) {
   window.addEventListener("resize", () => { if (calPopKey) closeCalPop(); });
 
   document.getElementById("sled-pridat").addEventListener("submit", sledPridej);
+  sledPosluchaci();
 
   renderCalPocty();
   redrawCal();
