@@ -1,8 +1,28 @@
 {
- "generated": "2026-10-26T05:39:13Z",
+ "generated": "2026-10-27T05:50:03Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "sdeu:ipc:C-1141/26",
+   "spz": "C-1141/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-10-22",
+   "first_seen": "2026-10-27T05:50:03Z",
+   "nazev": "Your Personal Driver III",
+   "url": "https://curia.europa.eu/juris/liste.jsf?num=C-1141/26&language=cs",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "prumyslova_prava",
+    "autorske",
+    "gdpr"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Podáno 22. 10. 2026. Položené otázky zatím nejsou zveřejněné."
+  },
   {
    "id": "sdeu:62026CN0760",
    "spz": "C-760/26",
@@ -896,6 +916,26 @@
     "civilni_proces"
    ],
    "procesni": true
+  },
+  {
+   "id": "sdeu:62025CO0842",
+   "spz": "C-842/25",
+   "ecli": "ECLI:EU:C:2026:877",
+   "druh": "usnesení",
+   "rejstrik": "C",
+   "datum": "2026-10-19",
+   "zverejneno": "2026-10-19",
+   "first_seen": "2026-10-19T12:00:00Z",
+   "nazev": "Sollán",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CO0842",
+   "heslo": "Příkaz k úhradě a přezkum zneužívajících clauses",
+   "shrnuti": "Soudní dvůr EU rozhodl, že unijní právo nebrání vnitrostátní úpravě, která soudci v řízení o platebním rozkazu umožňuje přezkoumat doložky bez předchozího slyšení spotřebitele a navrhnout snížení dluhu bez vyslovení neplatnosti, pokud spotřebitel může uplatnit svá práva v navazujícím řízení.",
+   "oblasti": [
+    "spotrebitel",
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": false
   },
   {
    "id": "sdeu:62026CN0838",
@@ -4032,43 +4072,6 @@
    "oblasti": [
     "spotrebitel",
     "finance"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "sdeu:62026TO0436(01)",
-   "spz": "T-436/26",
-   "ecli": "ECLI:EU:T:2026:592",
-   "druh": "usnesení",
-   "rejstrik": "T",
-   "datum": "2026-09-25",
-   "zverejneno": "2026-09-25",
-   "first_seen": "2026-09-25T12:00:00Z",
-   "nazev": "HI v. Parlament",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TO0436(01)",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "ceka_na_text",
-   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
-  },
-  {
-   "id": "sdeu:62026TO0365",
-   "spz": "T-365/26",
-   "ecli": "ECLI:EU:T:2026:591",
-   "druh": "usnesení",
-   "rejstrik": "T",
-   "datum": "2026-09-23",
-   "zverejneno": "2026-09-23",
-   "first_seen": "2026-09-26T03:29:57Z",
-   "nazev": "Europäisch-Iranische Handelsbank v. Rada",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TO0365",
-   "heslo": "Odklad vykonatelnosti vyžaduje prokázání vážné újmy",
-   "shrnuti": "Tribunál zamítl návrh na odklad vykonatelnosti aktů o zmrazení fondů a hospodářských zdrojů vůči bankovní instituci. Žadatelka neprokázala existenci vážné a nenapravitelné újmy, neboť dostatečně nedoložila svou finanční situaci ani přímou příčinnou souvislost mezi napadenými akty EU a hrozícím ukončením činnosti.",
-   "oblasti": [
-    "spravni",
-    "mps"
    ],
    "procesni": true
   }

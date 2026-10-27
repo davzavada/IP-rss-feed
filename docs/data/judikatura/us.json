@@ -1,8 +1,174 @@
 {
- "generated": "2026-10-26T05:39:13Z",
+ "generated": "2026-10-27T05:50:03Z",
  "soud": "us",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "us:Pl-3-26_1",
+   "spz": "Pl. ÚS 3/26",
+   "ecli": "ECLI:CZ:US:2026:Pl.US.3.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-26",
+   "first_seen": "2026-10-27T05:50:03Z",
+   "nazev": "Ústavnost pořádkové lhůty dle zákona o obchodních korporacích",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=Pl-3-26_1",
+   "soudce": "Michal Bartoň",
+   "heslo": "Pořádková lhůta k jmenování znalce není neústavní",
+   "shrnuti": "Krajský soud v Brně navrhl zrušení patnáctidenní pořádkové lhůty pro jmenování znalce pro účely přezkumu zprávy o vztazích dle zákona o obchodních korporacích pro obavu z porušení práva na spravedlivý proces. Ústavní soud návrh zamítl a konstatoval, že jde o pořádkovou lhůtu, jejíž uplynutí nezpůsobuje zánik práv ani zásah do ústavních práv účastníků. Soud musí vždy upřednostnit ochranu ústavních práv účastníků řízení před dodržením této lhůty.",
+   "oblasti": [
+    "korporace",
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:Pl-25-25_1",
+   "spz": "Pl. ÚS 25/25",
+   "ecli": "ECLI:CZ:US:2026:Pl.US.25.25.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-10-26",
+   "first_seen": "2026-10-27T05:50:03Z",
+   "nazev": "Církevní restituce – konflikt tvrzených právních titulů konfiskace",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=Pl-25-25_1",
+   "soudce": "Pavel Šámal",
+   "heslo": "Konfiskace podle Benešových dekretů a restituční výluka",
+   "shrnuti": "Stěžovatelka napadla rozhodnutí civilních soudů, jimiž byla zamítnuta její určovací žaloba o vlastnictví majetku. Ústavní soud shledal porušení práva na soudní ochranu, neboť soudy řádně neposoudily, zda dřívější konfiskační akt vůbec vyvolal zamýšlené právní účinky.",
+   "oblasti": [
+    "zavazky",
+    "vecna_prava",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:4-1847-26_1",
+   "spz": "IV. ÚS 1847/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.1847.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-26",
+   "first_seen": "2026-10-27T05:50:03Z",
+   "nazev": "Nesprávné odmítnutí kasační stížnosti pro opožděnost",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-1847-26_1",
+   "soudce": "Michal Bartoň",
+   "heslo": "Nesprávná doručenka a fikce doručení v soudním řízení",
+   "shrnuti": "Stěžovatel napadal usnesení Nejvyššího správního soudu o odmítnutí kasační stížnosti pro opožděnost, k němuž došlo na základě chybného data na doručence. Ústavní soud shledal porušení práva na přístup k soudu, neboť stěžovatel v dobré víře vycházel z údajů na výzvě k vyzvednutí i z doložky právní moci a Nejvyšší správní soud měl nesrovnalosti ve spise zohlednit.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-3045-25_2",
+   "spz": "III. ÚS 3045/25",
+   "ecli": "ECLI:CZ:US:2026:3.US.3045.25.2",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-08",
+   "zverejneno": "2026-10-26",
+   "first_seen": "2026-10-27T05:50:03Z",
+   "nazev": "Postavení zvláště zranitelné oběti a posuzování žádosti o mezinárodní ochranu",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-3045-25_2",
+   "soudce": "Jan Svatoň",
+   "heslo": "Posouzení opakované žádosti o azyl zohledňuje zranitelnost oběti",
+   "shrnuti": "Stěžovatelka napadala rozhodnutí o neudělení mezinárodní ochrany a odmítnutí její opakované žádosti, přičemž namítala opomenutí svého zranitelného postavení jako oběti genderově podmíněného násilí. Ústavní soud shledal porušení práva na lidskou důstojnost a spravedlivý proces, protože orgány nevěnovaly pozornost její zranitelnosti a nedostatečně posoudily aktuální situaci v zemi původu i reálnost vnitřního přesídlení.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-2383-25_1",
+   "spz": "III. ÚS 2383/25",
+   "ecli": "ECLI:CZ:US:2026:3.US.2383.25.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-08",
+   "zverejneno": "2026-10-26",
+   "first_seen": "2026-10-27T05:50:03Z",
+   "nazev": "Zásadní nerespektování pravidel výkladu projevu vůle smluvních stran",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-2383-25_1",
+   "soudce": "Milan Hulmák",
+   "heslo": "Advokátní úschova a splnění kupní ceny",
+   "shrnuti": "Stěžovatel napadal rozhodnutí, jimiž byla zamítnuta jeho žaloba na určení vlastnického práva k nemovitosti, kterou převedl na kupujícího, jenž složil kupní cenu do advokátní úschovy, odkud mu však peníze nebyly vyplaceny. Ústavní soud shledal porušení práva na soudní ochranu a autonomii vůle, protože obecné soudy řádně nevyložily smluvní ujednání a vůli stran ohledně okamžiku splnění kupní ceny a mechanicky aplikovaly závěry o trojstranných svěřeneckých smlouvách.",
+   "oblasti": [
+    "zavazky",
+    "vecna_prava",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:2-2315-26_2",
+   "spz": "II. ÚS 2315/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2315.26.2",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-10-26",
+   "first_seen": "2026-10-27T05:50:03Z",
+   "nazev": "Vzdání se práva odporu proti trestnímu příkazu z obavy jako důvod nutné obhajoby",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2315-26_2",
+   "soudce": "Pavel Šámal",
+   "heslo": "Vzdání se odporu proti trestnímu příkazu bez obhájce",
+   "shrnuti": "Stěžovatelka napadala postup soudu, který trval na jejím vzdání se práva odporu proti trestnímu příkazu učiněném bez přítomnosti obhájce v situaci ohrožení vazbou. Ústavní soud shledal porušení práva na soudní ochranu, na právní pomoc a na obhajobu, protože stěžovatelka se vzdala práva v procesní tísni a bez řádné právní pomoci. Trestní příkaz se tak považuje za napadený včas podaným odprotem.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:1-2254-26_1",
+   "spz": "I. ÚS 2254/26",
+   "ecli": "ECLI:CZ:US:2026:1.US.2254.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-10-26",
+   "first_seen": "2026-10-27T05:50:03Z",
+   "nazev": "Odměna zmocněnce v případě uspokojení nároku poškozeného na základě dohody s obviněným",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-2254-26_1",
+   "soudce": "Kateřina Ronovská",
+   "heslo": "Dohoda o náhradě škody zakládá odměnu zmocněnce",
+   "shrnuti": "Stěžovatelka napadla usnesení obecných soudů, jimiž jí byla krácena odměna zmocněkyně poškozeného v trestním řízení z důvodu, že k úhradě nároku došlo na základě dohody s obviněným před vydáním odsuzujícího rozsudku. Ústavní soud shledal porušení práva na soudní ochranu podle čl. 36 odst. 1 Listiny, neboť odmítnutí zohlednit dobrovolné plnění představuje přepjatý formalismus a neodůvodněně znevýhodňuje zmocněnce oběti.",
+   "oblasti": [
+    "civilni_proces",
+    "skoda",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:1-1200-26_1",
+   "spz": "I. ÚS 1200/26",
+   "ecli": "ECLI:CZ:US:2026:1.US.1200.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-15",
+   "zverejneno": "2026-10-26",
+   "first_seen": "2026-10-27T05:50:03Z",
+   "nazev": "Nepřezkoumatelnost rozhodnutí odvolacího soudu a opomenuté vyjádření účastníka",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-1200-26_1",
+   "soudce": "Dita Řepková",
+   "heslo": "Nepřezkoumatelnost rozhodnutí o předběžném opatření porušuje proces",
+   "shrnuti": "Stěžovatel napadal usnesení odvolacího soudu, kterým bylo změněno rozhodnutí soudu prvního stupně o předběžném opatření a jeho návrh byl zamítnut. Ústavní soud shledal porušení práva na spravedlivý proces, práva být slyšen a zásady rovnosti účastníků, protože napadené rozhodnutí bylo nepřezkoumatelné a odvolací soud zcela opomenul vyjádření stěžovatele k odvolání. Návrh na zrušení rozhodnutí byl však zamítnut, neboť v mezidobí došlo k vydání nové prozatímní úpravy poměrů.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
   {
    "id": "us:4-2518-26_1",
    "spz": "IV. ÚS 2518/26",
