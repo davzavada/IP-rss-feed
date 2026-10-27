@@ -516,6 +516,94 @@ a.digest-source:hover { border-color: var(--faint); text-decoration: none; }
   font-size: 13px; color: var(--fg-3);
 }
 
+/* ===== Sledovaná řízení =====
+   Lišta vedle kalendáře jednání (v užším okně nad ním). Sledované řízení
+   poznáte jen podle barvy špendlíku; řádky ani štítky se nezvýrazňují. */
+.obsah:has(> #kalendar:not([hidden])) { max-width: 1340px; }
+.cal-rozlozeni { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: start; }
+.cal-hlavni { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.sled { order: -1; border: 1px solid var(--border); border-radius: 10px; background: var(--panel); display: flex; flex-direction: column; min-width: 0; }
+@media (min-width: 1280px) {
+  .cal-rozlozeni { grid-template-columns: minmax(0, 1fr) 300px; gap: 32px; }
+  .sled { order: 0; position: sticky; top: calc(var(--head-h) + 16px); max-height: calc(100vh - var(--head-h) - 32px); }
+}
+.sled-hlava { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 12px 10px 10px 14px; }
+.sled-titul { margin: 0; display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; }
+.sled-titul .nav-ico { color: var(--badge-amber-fg); fill: currentColor; }
+.sled-pocet { font-size: 12px; font-weight: 400; color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
+.sled-plus {
+  display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px;
+  border: 0; border-radius: 6px; background: none; color: var(--fg-3); cursor: pointer;
+}
+.sled-plus:hover, .sled-plus[aria-expanded="true"] { background: var(--accent); color: var(--foreground); }
+/* Rozbalený formulář: svislá čára se otočí a z + je −. */
+.sled-plus-svisla { transform-origin: 12px 12px; transition: transform 0.2s ease; }
+.sled-plus[aria-expanded="true"] .sled-plus-svisla { transform: rotate(90deg); }
+.sled-pridat { display: flex; flex-direction: column; gap: 6px; padding: 0 8px 10px; }
+.sled-pridat[hidden] { display: none; }
+.sled-pridat-radek { display: flex; gap: 6px; }
+.sled-pridat-radek input, .sled-pridat-radek select {
+  min-width: 0; font-size: 13px; color: var(--foreground); background: var(--background);
+  border: 1px solid var(--border); border-radius: 8px; padding: 6px 9px;
+}
+.sled-pridat-radek input { flex: 1; }
+.sled-pridat-radek .btn { padding: 6px 12px; }
+/* Vlastní šipka selectu – systémová sedí moc u kraje. */
+.sled-select { position: relative; display: inline-flex; flex: none; }
+.sled-select select { appearance: none; -webkit-appearance: none; padding-right: 26px; cursor: pointer; }
+.sled-select::after {
+  content: ""; position: absolute; right: 10px; top: 50%; width: 6px; height: 6px; margin-top: -5px;
+  border-right: 1.5px solid var(--muted-foreground); border-bottom: 1.5px solid var(--muted-foreground);
+  transform: rotate(45deg); pointer-events: none;
+}
+.sled-seznam { display: flex; flex-direction: column; gap: 6px; padding: 0 8px 8px; overflow: auto; }
+.sled-karta { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; }
+.sled-karta-hlava { display: flex; gap: 8px; align-items: start; }
+.sled-karta-hlava > div { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.sled-nazev { font-weight: 600; line-height: 1.3; color: var(--foreground); overflow-wrap: anywhere; }
+.sled-odepnout {
+  flex: none; display: inline-flex; padding: 3px; border: 0; border-radius: 4px;
+  background: none; color: var(--faint); cursor: pointer;
+}
+.sled-odepnout:hover { background: var(--accent); color: var(--foreground); }
+.sled-dalsi { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13px; }
+.sled-kdy { font-weight: 600; font-variant-numeric: tabular-nums; }
+.sled-rel { color: var(--muted-foreground); }
+.sled-pozn, .sled-prazdno, .sled-chyba { margin: 0; font-size: 13px; color: var(--muted-foreground); }
+.sled-prazdno { padding: 14px 6px; text-align: center; }
+.sled-chyba { color: var(--badge-rose-fg); padding: 0 6px; }
+.sled-historie {
+  list-style: none; margin: 0; padding: 0 0 0 12px; border-left: 2px solid var(--border);
+  display: flex; flex-direction: column; gap: 6px; font-size: 12.5px; color: var(--muted-foreground);
+}
+.sled-historie li { position: relative; }
+.sled-historie li::before {
+  content: ""; position: absolute; left: -19px; top: 5px; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--card); border: 2px solid var(--faint);
+}
+.sled-historie li.sled-bude { color: var(--fg-2); }
+.sled-historie li.sled-bude::before { border-color: var(--badge-amber-fg); background: var(--badge-amber-fg); }
+.sled-historie li.sled-zruseno { text-decoration: line-through; }
+.sled-datum { font-variant-numeric: tabular-nums; }
+.sled-historie li.sled-vic::before { display: none; }
+.sled-vic button { padding: 0; border: 0; background: none; color: var(--link); cursor: pointer; font-size: inherit; }
+.sled-vic button:hover { text-decoration: underline; text-underline-offset: 2px; }
+/* Špendlík u jednání (seznam, bublina) – mění se jen jeho barva. */
+.cal-pin {
+  display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px;
+  margin-top: -4px; padding: 0; border: 0; border-radius: 6px; background: none; color: var(--faint); cursor: pointer;
+}
+.cal-pin:hover { background: var(--accent); color: var(--foreground); }
+.cal-pin[aria-pressed="true"] { color: var(--badge-amber-fg); }
+.cal-pin[aria-pressed="true"] .nav-ico { fill: currentColor; }
+.cal-pin-pop { margin: 0 0 0 auto; width: 34px; height: 34px; }
+.cal-radek-akce { align-items: center; }
+.cal-key-sled { border-color: var(--border); color: var(--fg-3); background: var(--background); }
+.cal-key-sled .nav-ico { width: 13px; height: 13px; }
+.cal-key-sled[aria-pressed="true"] { background: var(--badge-amber-bg); color: var(--badge-amber-fg); border-color: transparent; }
+.cal-key-sled[aria-pressed="true"] .nav-ico { fill: currentColor; }
+@media (prefers-reduced-motion: reduce) { .sled-plus-svisla { transition: none; } }
+
 /* ===== Kalendář akcí =====
    Stejné třídy jako kalendář jednání; barvu pořadatele nese proměnná --org
    (z akce.json), pozadí štítků se z ní míchá. */
@@ -750,11 +838,13 @@ html.is-loading body { visibility: hidden; }
   .cal-mesic { display: none !important; }
   .cal-seznam { display: flex !important; gap: 18px; }
   .cal-den-hlava { padding-bottom: 8px; gap: 8px; }
-  .cal-radek { grid-template-columns: 48px minmax(0, 1fr) 36px; gap: 12px; padding: 12px 0; }
+  .cal-radek { grid-template-columns: 48px minmax(0, 1fr) auto 36px; gap: 12px; padding: 12px 0; }
   .cal-radek-cas { padding-top: 0; }
   .cal-radek-telo { gap: 4px; }
   .cal-radek-meta { gap: 6px; }
-  .cal-radek-akce { display: none; }
+  /* Z akcí zůstává jen špendlík, InfoSoud otevírá ikona vedle. */
+  .cal-radek-akce > :not(.cal-pin) { display: none; }
+  .cal-pin { margin-top: 4px; }
   .cal-radek-ikona { display: flex; }
   /* Akce: přepínač oblastí a pořadatelé zůstávají, pohled je jen seznam. */
   #akce .cal-toolbar { display: flex; }

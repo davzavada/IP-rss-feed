@@ -51,9 +51,11 @@ jobs:
         run: python test_ai.py
       - name: Testy měsíčního přehledu
         run: python test_digest.py
-      # Náhled PDF (api/pdf.js) je funkce Vercelu v Node.
+      # Náhled PDF (api/pdf.js) a průběh řízení (api/infosoud.js) jsou funkce Vercelu v Node.
       - uses: actions/setup-node@v5
         with:
           node-version: '22'
       - name: Testy náhledu PDF
         run: node --test tests/test_pdf_api.js
+      - name: Testy průběhu řízení z InfoSoudu
+        run: node --test tests/test_infosoud_api.js

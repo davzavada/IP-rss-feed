@@ -728,6 +728,7 @@ let calStart = null;     // pondělí prvního zobrazeného týdne (Date)
 let calPohled = "mesic"; // mesic | seznam
 let calSoudy = { MS: true, VS: true };
 let calPopKey = null;    // co je rozkliknuté: "datum#idx"
+let calJenSledovana = false; // filtr „Sledovaná“ v liště kalendáře
 
 // ISO datum z lokálního Date – toISOString by přes UTC ukrajovalo den.
 function isoOf(d) {
@@ -789,6 +790,7 @@ function calEventsByDay() {
   const byDay = {};
   (calData.jednani || []).forEach(j => {
     if (!j || !j.datum || !calSoudy[j.soud] || !j.ip) return;
+    if (calJenSledovana && !jeSledovane(j)) return;
     (byDay[j.datum] = byDay[j.datum] || []).push(j);
   });
   Object.values(byDay).forEach(list => list.sort(
@@ -896,7 +898,8 @@ function renderCalSeznam() {
         '<div class="cal-radek-meta">' + meta.join("") + "</div></div>" +
         '<div class="cal-radek-akce"><a class="odkaz" href="' + url + '" target="_blank" rel="noopener">InfoSoud ↗</a>' +
         (j.uid ? '<button type="button" class="odkaz cal-ics" data-date="' + iso + '" data-idx="' + idx +
-          '" title="Uložit tohle jednání jako událost do vlastního kalendáře">.ics</button>' : "") + "</div>" +
+          '" title="Uložit tohle jednání jako událost do vlastního kalendáře">.ics</button>' : "") +
+        pinHtml(j, "cal-pin") + "</div>" +
         '<a class="cal-radek-ikona" href="' + url + '" target="_blank" rel="noopener" title="Otevřít v InfoSoudu" ' +
         'aria-label="Otevřít v InfoSoudu"><svg class="nav-ico" aria-hidden="true"><use href="#icon-court"></use></svg></a></div>';
     }).join("") + "</div>").join("");
@@ -931,6 +934,273 @@ function zmenaText(z) {
 function zmenyJednani(j) {
   return (calData.zmeny || []).filter(z =>
     z.soud === j.soud && z.spz === j.spz && z.datum === j.datum);
+}
+
+/* ========== Sledovaná řízení ========== */
+// Řízení si člověk připne špendlíkem u jednání nebo přidá podle spisové
+// značky (i když zatím nemá nařízené jednání). Seznam je uložený v Clerku
+// vedle výběru jako user.unsafeMetadata.owl_rizeni: [{"soud":"MS","spz":"9 C 10/2024"}].
+// Lišta u kalendáře ukazuje u každého řízení další jednání z hearings.json
+// a průběh řízení z InfoSoudu (přes api/infosoud.js – prohlížeč se na
+// InfoSoud zeptat nemůže): zahájení, „…" a poslední tři události.
+const SLED_SOUDY = ["MS", "VS"];
+const SPZ_RE = /^(\d{1,4}) ([A-Za-z]{1,6}) (\d{1,6})\/(\d{4})$/;
+const SLED_NAHORE = 3;            // kolik posledních událostí je vidět vždy
+
+let sledovana = [];               // [{soud, spz}], nejnověji přidané nahoře
+let sledChyba = "";               // nepovedené uložení
+let sledRozbalene = {};           // klíč -> true, když je vidět celá historie
+const sledHistorie = {};          // klíč -> {stav: "nacitam"|"ok"|"chyba", data}
+
+function klicRizeni(o) {
+  return o.soud + "|" + o.spz;
+}
+
+function jeSledovane(j) {
+  return sledovana.some(s => s.soud === j.soud && s.spz === j.spz);
+}
+
+// „9  c 10 / 2024" -> „9 C 10/2024"; null, když to značka není. Rejstřík
+// se píše jako v přehledech soudu (C, Cm, Cmo, Nc…).
+function normalizujSpz(text) {
+  const t = String(text || "").trim().replace(/\s*\/\s*/, "/").replace(/\s+/g, " ");
+  const m = SPZ_RE.exec(t);
+  if (!m) return null;
+  const r = m[2].charAt(0).toUpperCase() + m[2].slice(1).toLowerCase();
+  return Number(m[1]) + " " + r + " " + Number(m[3]) + "/" + m[4];
+}
+
+function nactiSledovana(user) {
+  const ulozene = user && (user.unsafeMetadata || {}).owl_rizeni;
+  if (!Array.isArray(ulozene)) return [];
+  const vysledek = [];
+  ulozene.forEach(s => {
+    const spz = s && normalizujSpz(s.spz);
+    if (!spz || SLED_SOUDY.indexOf(s.soud) < 0) return;
+    if (!vysledek.some(x => x.soud === s.soud && x.spz === spz)) vysledek.push({ soud: s.soud, spz });
+  });
+  return vysledek;
+}
+
+// Uloží seznam do účtu. Web se změní hned; když uložení selže, vrátí se
+// předchozí stav a lišta řekne proč.
+function ulozSledovana(novy) {
+  const user = clerk && clerk.user;
+  if (!user) return;
+  const predtim = sledovana;
+  sledovana = novy;
+  sledChyba = "";
+  prekresliSledovani();
+  const meta = Object.assign({}, user.unsafeMetadata);
+  if (novy.length) meta.owl_rizeni = novy;
+  else delete meta.owl_rizeni;
+  user.update({ unsafeMetadata: meta }).catch(() => {
+    sledovana = predtim;
+    sledChyba = "Nepodařilo se uložit – zkuste to znovu.";
+    prekresliSledovani();
+  });
+}
+
+function prepniSledovani(soud, spz) {
+  const k = soud + "|" + spz;
+  if (sledovana.some(s => klicRizeni(s) === k)) ulozSledovana(sledovana.filter(s => klicRizeni(s) !== k));
+  else ulozSledovana([{ soud, spz }].concat(sledovana));
+}
+
+// Po změně seznamu: lišta, špendlíky a při filtru „Sledovaná" i kalendář.
+// Bez filtru se mřížka nepřekresluje, ať nezmizí otevřená bublina.
+function prekresliSledovani() {
+  if (!calData) return;
+  if (calJenSledovana) redrawCal();
+  else {
+    renderCalSeznam();
+    document.querySelectorAll("#cal-pop .cal-pin").forEach(b => {
+      const [soud, spz] = b.dataset.pin.split("|");
+      nastavPin(b, sledovana.some(s => s.soud === soud && s.spz === spz));
+    });
+  }
+  renderSled();
+}
+
+function nastavPin(b, zapnuto) {
+  b.setAttribute("aria-pressed", String(zapnuto));
+  b.title = zapnuto ? "Přestat sledovat řízení" : "Sledovat řízení";
+}
+
+function pinHtml(j, trida) {
+  if (!j.spz) return "";
+  const zapnuto = jeSledovane(j);
+  return '<button type="button" class="' + trida + '" data-pin="' + esc(klicRizeni(j)) + '" aria-pressed="' + zapnuto +
+    '" aria-label="Sledovat řízení" title="' + (zapnuto ? "Přestat sledovat řízení" : "Sledovat řízení") + '">' +
+    '<svg class="nav-ico" aria-hidden="true"><use href="#icon-pripinacek"></use></svg></button>';
+}
+
+// Jednání sledovaného řízení z hearings.json (bez ohledu na filtry).
+function jednaniRizeni(s) {
+  return (calData.jednani || []).filter(j => j && j.soud === s.soud && j.spz === s.spz && j.datum)
+    .sort((a, b) => a.datum.localeCompare(b.datum) || minutesOf(a.hodina) - minutesOf(b.hodina));
+}
+
+// Údaje pro odkaz na InfoSoud i u řízení, které v hearings.json není.
+function rizeniProOdkaz(s) {
+  const m = SPZ_RE.exec(s.spz);
+  return { soud: s.soud, cislo_senatu: m[1], rejstrik: m[2], bc: m[3], rocnik: m[4] };
+}
+
+function nactiHistorii(s) {
+  const k = klicRizeni(s);
+  if (sledHistorie[k]) return;
+  sledHistorie[k] = { stav: "nacitam" };
+  fetch("/api/infosoud?soud=" + encodeURIComponent(s.soud) + "&spz=" + encodeURIComponent(s.spz))
+    .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(data => { sledHistorie[k] = { stav: "ok", data }; },
+          e => { console.warn("InfoSoud " + k + ":", e); sledHistorie[k] = { stav: "chyba" }; })
+    .then(() => { if (sledovana.some(x => klicRizeni(x) === k)) renderSled(); });
+}
+
+// „15. 3." v letošním roce, jinak „15. 3. 2021".
+function kratkeDatum(iso) {
+  const d = dateOf(iso);
+  return d.getDate() + ". " + (d.getMonth() + 1) + "." +
+    (d.getFullYear() !== new Date().getFullYear() ? " " + d.getFullYear() : "");
+}
+
+// Průběh řízení: události z InfoSoudu a jednání z přehledů soudu.
+// Delší historie se zkrátí na první položku, „…" a poslední tři.
+function historieHtml(s) {
+  const k = klicRizeni(s);
+  const h = sledHistorie[k];
+  if (!h || h.stav === "nacitam") return '<p class="sled-pozn">Načítám průběh z InfoSoudu…</p>';
+  if (h.stav === "chyba") return '<p class="sled-pozn">Průběh řízení se z InfoSoudu teď nepodařilo načíst.</p>';
+  const dnes = isoOf(new Date());
+  const polozky = (h.data.udalosti || []).map(u => ({ datum: u.datum, text: u.nazev, zruseno: u.zruseno }));
+  // Nařízení jednání v InfoSoudu nese den, kdy ho soud nařídil; samo
+  // jednání (den a čas) je z přehledu soudu.
+  jednaniRizeni(s).forEach(j => polozky.push({ datum: j.datum, text: "Jednání" + (j.hodina ? " v " + j.hodina : "") }));
+  polozky.sort((a, b) => a.datum.localeCompare(b.datum));
+  if (!polozky.length) {
+    return '<p class="sled-pozn">' + (h.data.nalezeno ? "InfoSoud k řízení zatím nemá žádné události."
+      : "InfoSoud řízení s touto značkou nenašel.") + "</p>";
+  }
+  const li = p => '<li class="' + (p.datum >= dnes ? "sled-bude" : "") + (p.zruseno ? " sled-zruseno" : "") + '">' +
+    '<span class="sled-datum">' + esc(kratkeDatum(p.datum)) + "</span> " + esc(p.text) + "</li>";
+  let html;
+  const skryto = polozky.length - 1 - SLED_NAHORE;
+  if (skryto <= 0) html = polozky.map(li).join("");
+  else if (sledRozbalene[k]) {
+    html = polozky.map(li).join("") + '<li class="sled-vic"><button type="button" data-rozbal="' + esc(k) +
+      '">Sbalit historii</button></li>';
+  } else {
+    html = li(polozky[0]) + '<li class="sled-vic"><button type="button" data-rozbal="' + esc(k) +
+      '" title="Zobrazit celou historii">… ' + esc(tvar(skryto, "další úkon", "další úkony", "dalších úkonů")) +
+      "</button></li>" + polozky.slice(-SLED_NAHORE).map(li).join("");
+  }
+  return '<ul class="sled-historie">' + html + "</ul>";
+}
+
+function sledKartaHtml(s) {
+  const k = klicRizeni(s);
+  const jednani = jednaniRizeni(s);
+  const posledni = jednani[jednani.length - 1];
+  const dnes = isoOf(new Date());
+  const dalsi = jednani.find(j => j.datum >= dnes);
+  const h = sledHistorie[k];
+  const stav = h && h.stav === "ok" && h.data.stav ? h.data.stav : "";
+  const url = infosoudUrl(posledni || rizeniProOdkaz(s));
+  let html = '<div class="sled-karta"><div class="sled-karta-hlava"><div>' +
+    '<a class="sled-nazev" href="' + esc(url) + '" target="_blank" rel="noopener" title="Otevřít v InfoSoudu">' +
+    esc(posledni ? caseName(posledni) : "Řízení " + s.spz) + "</a>" +
+    '<div class="cal-radek-meta"><span class="cal-soud cal-soud-' + s.soud.toLowerCase() + '">' + esc(s.soud) + "</span>" +
+    '<span class="cal-spz">' + esc(s.spz) + "</span>" +
+    (stav ? '<span aria-hidden="true">·</span><span>' + esc(stav) + "</span>" : "") + "</div></div>" +
+    '<button type="button" class="sled-odepnout" data-pin="' + esc(k) + '" aria-label="Přestat sledovat" title="Přestat sledovat">' +
+    '<svg class="nav-ico" aria-hidden="true"><use href="#icon-x"></use></svg></button></div>';
+  if (dalsi) {
+    const zmena = zmenyJednani(dalsi).some(z => z.typ !== "nove");
+    html += '<div class="sled-dalsi"><span class="sled-kdy">' + esc(kratkeDatum(dalsi.datum) + (dalsi.hodina ? " " + dalsi.hodina : "")) +
+      '</span><span class="sled-rel">' + esc(zaKolik(dalsi.datum) + (dalsi.sin ? " · síň " + dalsi.sin : "")) + "</span>" +
+      (zmena ? '<span class="cal-zmena">změna</span>' : "") + "</div>";
+  } else {
+    html += '<p class="sled-pozn">Žádné nařízené jednání v přehledech soudu.</p>';
+  }
+  return html + historieHtml(s) + "</div>";
+}
+
+// Kostra lišty – vkládá ji renderKalendar, obsah plní renderSled.
+function sledHtml() {
+  return '<aside class="sled" id="sled" aria-labelledby="sled-titul">' +
+    '<div class="sled-hlava"><h3 class="sled-titul" id="sled-titul">' +
+      '<svg class="nav-ico" aria-hidden="true"><use href="#icon-pripinacek"></use></svg>Sledovaná řízení' +
+      '<span class="sled-pocet" id="sled-pocet"></span></h3>' +
+      '<button type="button" class="sled-plus" id="sled-plus" aria-expanded="false" aria-controls="sled-pridat" ' +
+        'aria-label="Přidat řízení" title="Sledovat řízení podle spisové značky">' +
+        '<svg class="nav-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path>' +
+        '<path class="sled-plus-svisla" d="M12 5v14"></path></svg></button></div>' +
+    '<form class="sled-pridat" id="sled-pridat" hidden>' +
+      '<div class="sled-pridat-radek">' +
+        '<span class="sled-select"><select id="sled-soud" aria-label="Soud">' +
+          SLED_SOUDY.map(s => "<option>" + s + "</option>").join("") + "</select></span>" +
+        '<input id="sled-spz" placeholder="41 Cm 12/2026" autocomplete="off" aria-label="Spisová značka">' +
+        '<button type="submit" class="btn btn-hlavni">Přidat</button></div>' +
+      '<p class="sled-pozn" id="sled-hlaska" hidden></p></form>' +
+    '<div class="sled-seznam" id="sled-seznam"></div></aside>';
+}
+
+function renderSled() {
+  const el = document.getElementById("sled-seznam");
+  if (!el) return;
+  document.getElementById("sled-pocet").textContent = sledovana.length || "";
+  sledovana.forEach(nactiHistorii);
+  let html = sledChyba ? '<p class="sled-chyba">' + esc(sledChyba) + "</p>" : "";
+  html += sledovana.length ? sledovana.map(sledKartaHtml).join("")
+    : '<p class="sled-prazdno">Zatím nic nesledujete. Připněte jednání špendlíkem, nebo přidejte řízení podle spisové značky tlačítkem +.</p>';
+  el.innerHTML = html;
+}
+
+function sledFormular(otevrit) {
+  const form = document.getElementById("sled-pridat");
+  form.hidden = !otevrit;
+  document.getElementById("sled-plus").setAttribute("aria-expanded", String(otevrit));
+  document.getElementById("sled-hlaska").hidden = true;
+  if (otevrit) document.getElementById("sled-spz").focus();
+}
+
+function sledPridej(e) {
+  e.preventDefault();
+  const pole = document.getElementById("sled-spz");
+  const hlaska = document.getElementById("sled-hlaska");
+  const spz = normalizujSpz(pole.value);
+  if (!spz) {
+    hlaska.textContent = "Zadejte značku ve tvaru 41 Cm 12/2026.";
+    hlaska.hidden = false;
+    pole.focus();
+    return;
+  }
+  const soud = document.getElementById("sled-soud").value;
+  if (!sledovana.some(s => s.soud === soud && s.spz === spz)) ulozSledovana([{ soud, spz }].concat(sledovana));
+  pole.value = "";
+  sledFormular(false);
+}
+
+// Kliky ve sledování (špendlíky, lišta); true = klik vyřízený.
+function sledKlik(e) {
+  const pin = e.target.closest("[data-pin]");
+  if (pin) {
+    const i = pin.dataset.pin.indexOf("|");
+    prepniSledovani(pin.dataset.pin.slice(0, i), pin.dataset.pin.slice(i + 1));
+    return true;
+  }
+  const rozbal = e.target.closest("[data-rozbal]");
+  if (rozbal) {
+    sledRozbalene[rozbal.dataset.rozbal] = !sledRozbalene[rozbal.dataset.rozbal];
+    renderSled();
+    return true;
+  }
+  if (e.target.closest("#sled-plus")) {
+    sledFormular(document.getElementById("sled-pridat").hidden);
+    return true;
+  }
+  return false;
 }
 
 /* ========== Jedno jednání jako .ics ========== */
@@ -1063,6 +1333,7 @@ function calPopHtml(j, datum, idx) {
     html += '<button type="button" class="btn cal-ics" data-date="' + esc(datum) + '" data-idx="' + idx +
       '" title="Uložit tohle jednání jako událost do vlastního kalendáře">Stáhnout .ics</button>';
   }
+  html += pinHtml(j, "cal-pin cal-pin-pop");
   return html + "</div>";
 }
 
@@ -1143,7 +1414,8 @@ function renderKalendar(data) {
     '" data-soud="' + s + '" aria-pressed="true" title="Skrýt nebo zobrazit jednání ' + nazev + '">' +
     '<span class="cal-key-dot"></span><span>' + s + '</span><span class="cal-key-pocet" id="cal-pocet-' + s +
     '"></span></button>';
-  container.innerHTML =
+  // Vedle kalendáře lišta se sledovanými řízeními (v užším okně nad ním).
+  container.innerHTML = '<div class="cal-rozlozeni"><div class="cal-hlavni">' +
     '<div class="cal-toolbar">' +
       '<div class="segment" id="cal-pohled" role="group" aria-label="Zobrazení">' +
         '<button type="button" data-pohled="mesic" aria-pressed="true">3 týdny</button>' +
@@ -1151,6 +1423,9 @@ function renderKalendar(data) {
       "</div>" +
       // Klikací barevné štítky – legenda mřížky a filtr v jednom.
       stitek("MS", "Městského soudu v Praze") + stitek("VS", "Vrchního soudu v Praze") +
+      '<button type="button" class="cal-key cal-key-sled" id="cal-jen-sled" aria-pressed="false" ' +
+        'title="Ukázat jen jednání ve sledovaných řízeních">' +
+        '<svg class="nav-ico" aria-hidden="true"><use href="#icon-pripinacek"></use></svg><span>Sledovaná</span></button>' +
     "</div>" +
     '<div class="cal-mesic" id="cal-mesic">' +
       '<div class="cal-nav">' +
@@ -1164,7 +1439,8 @@ function renderKalendar(data) {
         '<div class="cal-pop" id="cal-pop" role="dialog" aria-label="Detail jednání" hidden></div>' +
       "</div>" +
     "</div>" +
-    '<div class="cal-seznam" id="cal-seznam"></div>';
+    '<div class="cal-seznam" id="cal-seznam"></div></div>' +
+    sledHtml() + "</div>";
 
   // Na telefonu není poznámka pod seznamem – dokdy soudy jednání
   // zveřejnily, stojí v popisu stránky.
@@ -1189,7 +1465,12 @@ function renderKalendar(data) {
     calPohled = b.dataset.pohled;
     redrawCal();
   });
-  container.querySelectorAll(".cal-key").forEach(el => {
+  document.getElementById("cal-jen-sled").addEventListener("click", e => {
+    calJenSledovana = !calJenSledovana;
+    e.currentTarget.setAttribute("aria-pressed", String(calJenSledovana));
+    redrawCal();
+  });
+  container.querySelectorAll(".cal-key[data-soud]").forEach(el => {
     el.addEventListener("click", () => {
       calSoudy[el.dataset.soud] = !calSoudy[el.dataset.soud];
       el.setAttribute("aria-pressed", String(calSoudy[el.dataset.soud]));
@@ -1197,6 +1478,7 @@ function renderKalendar(data) {
     });
   });
   container.addEventListener("click", e => {
+    if (sledKlik(e)) return;
     const chip = e.target.closest(".cal-chip");
     if (chip) {
       const key = chip.dataset.date + "#" + chip.dataset.idx;
@@ -1221,8 +1503,11 @@ function renderKalendar(data) {
   });
   window.addEventListener("resize", () => { if (calPopKey) closeCalPop(); });
 
+  document.getElementById("sled-pridat").addEventListener("submit", sledPridej);
+
   renderCalPocty();
   redrawCal();
+  renderSled();
 }
 
 /* ========== Kalendář akcí ========== */
@@ -1754,6 +2039,9 @@ function zmenaUctu(user, vzdy) {
   if (vzdy || id !== prihlaseny) {
     prihlaseny = id;
     vyber = user ? normalizujVyber((user.unsafeMetadata || {}).owl) : vychoziVyber();
+    sledovana = nactiSledovana(user);
+    sledChyba = "";
+    prekresliSledovani();
     // Nový účet začíná na první záložce a bez rozpracovaných změn.
     vyberTab = "oblasti";
     koncept = null;
