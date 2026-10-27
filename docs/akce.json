@@ -1,13 +1,13 @@
 {
-  "generated": "2026-10-26T05:40:59+00:00",
+  "generated": "2026-10-27T05:51:44+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 26,
-      "stazeno": "2026-10-26T05:40:44+00:00",
+      "pocet": 27,
+      "stazeno": "2026-10-27T05:51:19+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -17,11 +17,11 @@
       "zkratka": "PF UK",
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
-      "pocet": 5,
-      "stazeno": "2026-10-26T05:40:45+00:00",
+      "pocet": 6,
+      "stazeno": "2026-10-27T05:51:23+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "bb2a6bd265c84d44"
+      "otisk": "0cbf53ecfa9bb6b3"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-10-26T05:40:51+00:00",
+      "stazeno": "2026-10-27T05:51:28+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "73d4c05a6484fd22"
+      "otisk": "31a2c5285984a8cf"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-10-26T05:40:52+00:00",
+      "stazeno": "2026-10-27T05:51:29+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 5,
-      "stazeno": "2026-10-26T05:40:53+00:00",
+      "stazeno": "2026-10-27T05:51:30+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "fba0589c410d9352"
@@ -1288,6 +1288,24 @@
       "oblasti_klic": "78842de6afef"
     },
     {
+      "id": "890d59385d7e6c603387",
+      "poradatel": "PFUK",
+      "datum": "2026-10-30",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Camp Peira 2026",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [],
+      "cena": "",
+      "anotace": "Camp Peira nabízí studentům jedinečnou možnost zažít mezinárodní humanitární právo v praxi. V realistické simulaci krizových situací si vyzkouší surovou zkušenost z první ruky, kdy budou pod tlakem času i okolností řešit úkoly v reálných konfliktních zónách.",
+      "url": "https://www.prf.cuni.cz/aktuality/camp-peira-2026-prihlasky-do-11-10-2026",
+      "datum_do": "2026-11-01",
+      "detail_pokusy": 2,
+      "oblasti": [],
+      "oblasti_klic": "1105970a9429"
+    },
+    {
       "id": "00df13debafc19ec10fd",
       "poradatel": "CAK",
       "datum": "2026-10-30",
@@ -1555,6 +1573,25 @@
       "oblasti_klic": "169687125631"
     },
     {
+      "id": "47f08806e8242cb69691",
+      "poradatel": "PFUK",
+      "datum": "2026-11-05",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Michal Urban | Jak (ne)používat AI ve studiu",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [
+        "Michal Urban"
+      ],
+      "cena": "",
+      "anotace": "Setkání nabídne praktický pohled na využití AI při vyhledávání informací, práci s odbornými texty, přípravě na semináře a zkoušky nebo při psaní seminárních a kvalifikačních prací. Půjde o besedu vyučujícího s jedním až dvěma studujícími, do které se samozřejmě bude moci zapojit i publikum se svými otázkami a zkušenostmi.",
+      "url": "https://www.prf.cuni.cz/aktuality/michal-urban-jak-nepouzivat-ai-ve-studiu",
+      "detail_pokusy": 2,
+      "oblasti": [],
+      "oblasti_klic": "11f693cd58b4"
+    },
+    {
       "id": "112ae55fa8739d4fd099",
       "poradatel": "CAK",
       "datum": "2026-11-05",
@@ -1710,6 +1747,28 @@
       "oblasti": [],
       "oblasti_klic": "2d0a2236c586",
       "detail_pokusy": 2
+    },
+    {
+      "id": "f7ed884e530b86616090",
+      "poradatel": "CAK",
+      "datum": "2026-11-12",
+      "zacatek": "09:00",
+      "konec": "14:00",
+      "nazev": "Vybrané otázky společného jmění manželů v aktuální rozhodovací praxi Nejvyššího soudu a Ústavního soudu České republiky",
+      "misto": "Ústí nad Labem, Clarion Congress Hotel",
+      "forma": "prezencne",
+      "lektori": [
+        "Mgr. Michal Králík, Ph.D."
+      ],
+      "cena": "1.590,- Kč včetně DPH",
+      "anotace": "Seminář je zaměřen na vybrané otázki SJM z hlediska současné aktuální rozhodovací praxe Nejvyššího a Ústavního soudu a aktuálních praktických problémů.",
+      "url": "https://www.cak.cz/akce/1377",
+      "detail_pokusy": 2,
+      "oblasti": [
+        "rodina_dedictvi",
+        "ustavni"
+      ],
+      "oblasti_klic": "e0abb4bb7d6f"
     },
     {
       "id": "d01f09aabd04af0f716d",

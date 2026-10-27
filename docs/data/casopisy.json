@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26T05:40:34Z",
+ "generated": "2026-10-27T05:51:14Z",
  "okno_dni": 31,
  "casopisy": [
   {
@@ -113,6 +113,105 @@
  ],
  "polozky": [
   {
+   "id": "ČPVP-https://journals.muni.cz/cpvp/article/view/45695",
+   "casopis": "cpvp",
+   "nazev": "Profesor Dobroslav Krejčí",
+   "url": "https://journals.muni.cz/cpvp/article/view/45695",
+   "autori": "Ladislav Vojáček",
+   "heslo": "Dobroslav Krejčí",
+   "shrnuti": "Článek představuje profesora Dobroslava Krejčího jako významnou osobnost a vlastence starého ražení, jejíž odkaz připomínají vzpomínky současníků. Autor textu přibližuje Krejčího morální profil a odkazuje na jeho profesní dráhu v oblasti statistiky a akademického působení.",
+   "datum": "2026-10-27",
+   "first_seen": "2026-10-27T05:50:36Z"
+  },
+  {
+   "id": "ČPVP-https://journals.muni.cz/cpvp/article/view/43840",
+   "casopis": "cpvp",
+   "nazev": "Co nezavazuje, není neměnné",
+   "url": "https://journals.muni.cz/cpvp/article/view/43840",
+   "autori": "Ivan Tvrdík",
+   "heslo": "Závaznost soudního rozhodnutí",
+   "shrnuti": "Článek se zabývá rozsahem materiální právní moci civilních rozhodnutí se zaměřením na otázku, zda se závaznost vztahuje i na předběžné otázky. Kritizuje rozhodovací praxi českého Nejvyššího soudu, zejména tzv. teorii identity skutku rozšiřující závaznost nad rámec samotného výroku. S využitím srovnávací analýzy s německou a rakouskou literaturou autor dokládá rozpor tohoto přístupu s platným procesním právem.",
+   "datum": "2026-10-27",
+   "first_seen": "2026-10-27T05:50:36Z"
+  },
+  {
+   "id": "ČPVP-https://journals.muni.cz/cpvp/article/view/42541",
+   "casopis": "cpvp",
+   "nazev": "(Ne)úplnost a (ne)závaznost rozpočtu v režimu dispozitivní úpravy ceny díla",
+   "url": "https://journals.muni.cz/cpvp/article/view/42541",
+   "autori": "Patrik Sysel",
+   "heslo": "cena díla rozpočtem",
+   "shrnuti": "Článek analyzuje výchozí právní režim rozpočtu u smlouvy o dílo podle občanského zákoníku v situaci, kdy si strany sjednají cenu rozpočtem bez dalšího upřesnění. Poukazuje na nejasnosti, vnitřní rozpory a absenci logického systému v dispozitivní úpravě úplnosti a závaznosti rozpočtu. S využitím metodologicky korektního výkladu, historického kontextu a zahraničních souvislostí se autor pokouší tuto spornou oblast uspokojivě vyložit.",
+   "datum": "2026-10-27",
+   "first_seen": "2026-10-27T05:50:36Z"
+  },
+  {
+   "id": "ČPVP-https://journals.muni.cz/cpvp/article/view/42716",
+   "casopis": "cpvp",
+   "nazev": "Osobnostní práva a generovaný text napodobující písemný projev osobní povahy",
+   "url": "https://journals.muni.cz/cpvp/article/view/42716",
+   "autori": "Martin Petr Erlebach",
+   "heslo": "Osobnostní práva AI",
+   "shrnuti": "Článek se zabývá využitím písemných projevů osobní povahy při trénování AI systémů schopných napodobovat konkrétní osoby. Analýza se zaměřuje na ochranu osobnostních práv podle českého i evropského práva v kontextu těchto generovaných výstupů. Autor identifikuje mezery v platné právní úpravě, navrhuje její zlepšení a nabízí výzkumný základ použitelný rovněž pro oblast deepfakes.",
+   "datum": "2026-10-27",
+   "first_seen": "2026-10-27T05:50:36Z"
+  },
+  {
+   "id": "ČPVP-https://journals.muni.cz/cpvp/article/view/43215",
+   "casopis": "cpvp",
+   "nazev": "Jak vykládat ústavu? Metodologie výkladu ústavního práva",
+   "url": "https://journals.muni.cz/cpvp/article/view/43215",
+   "autori": "Michal Kovalčík",
+   "heslo": "Výklad ústavy",
+   "shrnuti": "Článek se zabývá metodologií výkladu českého ústavního práva a propojuje domácí doktrínu se zahraničními debatami a judikaturou Ústavního soudu. Autor dochází k závěru, že metody ústavního výkladu se od výkladu běžných zákonů neliší svým základem, ale odlišují se vahou jednotlivých metod a specifiky plynoucími z povahy ústavy. Systematický přístup k této interpretaci je přitom klíčový pro správné posouzení soudních rozhodnutí v(/při) řešení aktuálních společenských a technologických výzev.",
+   "datum": "2026-10-27",
+   "first_seen": "2026-10-27T05:50:36Z"
+  },
+  {
+   "id": "ČPVP-https://journals.muni.cz/cpvp/article/view/43349",
+   "casopis": "cpvp",
+   "nazev": "Anonymita nebo peníze: jak české dezinformační weby (ne)dodržují zákony",
+   "url": "https://journals.muni.cz/cpvp/article/view/43349",
+   "autori": "Tina Mizerová",
+   "heslo": "Financování dezinformačních webů",
+   "shrnuti": "Článek zkoumá finanční příjmy českých dezinformačních webů a míru dodržování platných právních předpisů. Na základě právní a obsahové analýzy se zaměřuje na online reklamu, neoznačenou reklamu a čtenářské příspěvky ve vztahu k české i evropské regulaci. Zjišťuje, jak tyto weby zmíněné zdroje financování využívají a zda při tom neporušují zákon.",
+   "datum": "2026-10-27",
+   "first_seen": "2026-10-27T05:50:36Z"
+  },
+  {
+   "id": "ČPVP-https://journals.muni.cz/cpvp/article/view/41821",
+   "casopis": "cpvp",
+   "nazev": "Soudci mezi zdrženlivostí a lidskostí: Ex parte komunikace v teorii a praxi",
+   "url": "https://journals.muni.cz/cpvp/article/view/41821",
+   "autori": "Jan Chmel, Jan Novotný",
+   "heslo": "Ex parte komunikace",
+   "shrnuti": "Článek se zabývá jednostrannou komunikací soudců s účastníky řízení a vymezuje její hranice z hlediska práva i etiky. Analyzuje principy spravedlivého procesu a přináší výsledky dotazníkového šetření mezi českými soudci. Zjištění ukazují, že praxe sice tuto komunikaci nevylučuje zcela, ale přistupuje k ní velmi zdrženlivě.",
+   "datum": "2026-10-27",
+   "first_seen": "2026-10-27T05:50:36Z"
+  },
+  {
+   "id": "ČPVP-https://journals.muni.cz/cpvp/article/view/45696",
+   "casopis": "cpvp",
+   "nazev": "Neúplné, ex parte, nezávazné, neanonymní",
+   "url": "https://journals.muni.cz/cpvp/article/view/45696",
+   "autori": "Jaroslav Benák",
+   "heslo": "Role právních akademiků",
+   "shrnuti": "Článek porovnává pozici advokátů a soudců, kteří jsou ve svých vyjádřeních limitováni profesní odpovědností a mlčenlivostí, s postavením akademiků. Akademici píšící o právu těmito povinnostmi vázáni nejsou, což však podle autora neznamená, že by měli jednodušší život.",
+   "datum": "2026-10-27",
+   "first_seen": "2026-10-27T05:50:36Z"
+  },
+  {
+   "id": "JIPITEC-https://www.jipitec.eu/jipitec/article/view/469",
+   "casopis": "jipitec",
+   "nazev": "The Future of Privacy Law? A Comment on Solove/Hartzog’s ‘Kafka in the Age of AI and the Futility of Privacy as Control’",
+   "url": "https://www.jipitec.eu/jipitec/article/view/469",
+   "autori": "Mark Fenwick, Paulius Jurcys, Timo Minssen, Marcelo Corrales Compagnucci",
+   "heslo": "Ochrana soukromí v éře AI",
+   "shrnuti": "Článek reaguje na tezi Solovea a Hartzoga o neúčinnosti konceptu „soukromí jako kontroly“ v době umělé inteligence. Autoři namítají, že tato kritika podceňuje potenciál přepracovaného modelu individuální kontroly, který by měl být kombinován s robustními strukturálními zárukami. Docházejí k závěru, že efektivní správa soukromí vyžaduje vzájemně se doplňující propojení posílené osobní autonomie a silných institucionálních opatření.",
+   "datum": "2026-10-26",
+   "first_seen": "2026-10-27T05:50:36Z"
+  },
+  {
    "id": "JIPITEC-https://www.jipitec.eu/jipitec/article/view/468",
    "casopis": "jipitec",
    "nazev": "The Concept of Lawful Access and Its Implications for User Freedoms in the EU Copyright Acquis: Opinion of the European Copyright Society",
@@ -211,17 +310,6 @@
    "popis": "Use of the Same Motif in an AI-Generated Image Does Not Infringe Copyright\nGRUR International"
   },
   {
-   "id": "GRUR Int-10.1093/grurint/ikag100",
-   "casopis": "grur-int",
-   "nazev": "Who Can Keep a Secret? Mapping Trust and Trustworthiness in the UPC’s Transparency and Confidentiality Decisions",
-   "url": "https://doi.org/10.1093/grurint/ikag100",
-   "autori": "Daanish Naithani, Esther van Zimmeren",
-   "heslo": "Důvěra a transparentnost u UPC",
-   "shrnuti": "Článek zkoumá, jak Jednotný patentový soud (UPC) vyvažuje transparentnost a ochranu důvěrných informací ve své rozhodovací praxi. Na základě konceptů důvěry a analýzy judikatury ukazuje, že kultura soudu je v principu otevřená, avšak v praxi podmíněná. V závěru nabízí interpretační rámec pro budoucí rozhodování soudu.",
-   "datum": "2026-10-23",
-   "first_seen": "2026-10-24T04:20:13Z"
-  },
-  {
    "id": "GRUR Int-10.1093/grurint/ikag102",
    "casopis": "grur-int",
    "nazev": "When Gatekeeper Status Travels",
@@ -231,6 +319,17 @@
    "first_seen": "2026-10-24T04:20:13Z",
    "poznamka": "Shrnutí zatím není k dispozici.",
    "popis": "When Gatekeeper Status Travels\nAutor: Heiko Richter\nGRUR International"
+  },
+  {
+   "id": "GRUR Int-10.1093/grurint/ikag100",
+   "casopis": "grur-int",
+   "nazev": "Who Can Keep a Secret? Mapping Trust and Trustworthiness in the UPC’s Transparency and Confidentiality Decisions",
+   "url": "https://doi.org/10.1093/grurint/ikag100",
+   "autori": "Daanish Naithani, Esther van Zimmeren",
+   "heslo": "Důvěra a transparentnost u UPC",
+   "shrnuti": "Článek zkoumá, jak Jednotný patentový soud (UPC) vyvažuje transparentnost a ochranu důvěrných informací ve své rozhodovací praxi. Na základě konceptů důvěry a analýzy judikatury ukazuje, že kultura soudu je v principu otevřená, avšak v praxi podmíněná. V závěru nabízí interpretační rámec pro budoucí rozhodování soudu.",
+   "datum": "2026-10-23",
+   "first_seen": "2026-10-24T04:20:13Z"
   },
   {
    "id": "GRUR Int-10.1093/grurint/ikag098",
@@ -569,24 +668,13 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.03",
+   "id": "QMJIP-10.4337/qmjip.2026.03.04",
    "casopis": "qmjip",
-   "nazev": "Exploring the boundaries of pre-infringement copyright review obligations for Chinese online platforms: a comparative study of the Chinese, UK and US systems",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.03",
-   "autori": "Mengna Liang",
-   "heslo": "autorské právo platforem",
-   "shrnuti": "Článek zkoumá povinnost čínských online platforem předcházet porušování autorských práv a porovnává přístupy v Číně, Spojeném království a USA. S ohledem na nedostatečnost tradičního institutu bezpečného přístavu navrhuje pro Čínu povinný model filtrace inspirovaný právem EU. V závěru představuje hodnotící rámec kombinující formální a materiální požadavky, podle něhož mají platformy vynakládat přiměřené úsilí.",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
-  },
-  {
-   "id": "QMJIP-10.4337/qmjip.2026.03.05",
-   "casopis": "qmjip",
-   "nazev": "Thinking about originality: creativity in legal research",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.05",
-   "autori": "Chris Dent",
-   "heslo": "Originalita právního výzkumu",
-   "shrnuti": "Článek zkoumá kreativitu v akademickém právním výzkumu se zohledněním vlivu umelecké inteligence a poznatků z psychologie. Srovnává doktrinální a socio-právní výzkum s různými pojetími kreativity a dokazuje, že právní výzkum je ve své podstatě kreativní. Závěrem propojuje toto zjištění s konceptem autority a testem originality v současném autorském právu.",
+   "nazev": "The demise of IPRs through the rise of BBNJ: the small matter of patent disclosure of origin requirements",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.04",
+   "autori": "Tanya Wagenaar",
+   "heslo": "BBNJ a patentová práva",
+   "shrnuti": "Článek se zabývá vlivem nové dohody BBNJ na práva duševního vlastnictví a požadavky na disclosure of origin (DOR) při biotechnologickém využití mořských genetických zdrojů. Ačkoli byly odkazy na duševní vlastnictví z konečného znění dohody postupně odstraněny, nedávno přijatá smlouva WIPO zavádí mezinárodní požadavky DOR. Tyto nové předpisy by mohly ideálně doplnit mechanismy dohody BBNJ a podpořit spravedlivé sdílení přínosů mezi státy.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -602,13 +690,24 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.04",
+   "id": "QMJIP-10.4337/qmjip.2026.03.05",
    "casopis": "qmjip",
-   "nazev": "The demise of IPRs through the rise of BBNJ: the small matter of patent disclosure of origin requirements",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.04",
-   "autori": "Tanya Wagenaar",
-   "heslo": "BBNJ a patentová práva",
-   "shrnuti": "Článek se zabývá vlivem nové dohody BBNJ na práva duševního vlastnictví a požadavky na disclosure of origin (DOR) při biotechnologickém využití mořských genetických zdrojů. Ačkoli byly odkazy na duševní vlastnictví z konečného znění dohody postupně odstraněny, nedávno přijatá smlouva WIPO zavádí mezinárodní požadavky DOR. Tyto nové předpisy by mohly ideálně doplnit mechanismy dohody BBNJ a podpořit spravedlivé sdílení přínosů mezi státy.",
+   "nazev": "Thinking about originality: creativity in legal research",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.05",
+   "autori": "Chris Dent",
+   "heslo": "Originalita právního výzkumu",
+   "shrnuti": "Článek zkoumá kreativitu v akademickém právním výzkumu se zohledněním vlivu umelecké inteligence a poznatků z psychologie. Srovnává doktrinální a socio-právní výzkum s různými pojetími kreativity a dokazuje, že právní výzkum je ve své podstatě kreativní. Závěrem propojuje toto zjištění s konceptem autority a testem originality v současném autorském právu.",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z"
+  },
+  {
+   "id": "QMJIP-10.4337/qmjip.2026.03.03",
+   "casopis": "qmjip",
+   "nazev": "Exploring the boundaries of pre-infringement copyright review obligations for Chinese online platforms: a comparative study of the Chinese, UK and US systems",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.03",
+   "autori": "Mengna Liang",
+   "heslo": "autorské právo platforem",
+   "shrnuti": "Článek zkoumá povinnost čínských online platforem předcházet porušování autorských práv a porovnává přístupy v Číně, Spojeném království a USA. S ohledem na nedostatečnost tradičního institutu bezpečného přístavu navrhuje pro Čínu povinný model filtrace inspirovaný právem EU. V závěru představuje hodnotící rámec kombinující formální a materiální požadavky, podle něhož mají platformy vynakládat přiměřené úsilí.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -723,83 +822,6 @@
    "first_seen": "2026-09-29T05:30:25Z"
   },
   {
-   "id": "Jurisprudence-1051",
-   "casopis": "jurisprudence",
-   "nazev": "Mezi evropským nařízením a českou realitou: analýza čl. 5 European Media Freedom Act a jeho adaptace do českého právního řádu",
-   "url": "https://www.jurisprudence.cz/cz/casopis/mezi-evropskym-narizenim-a-ceskou-realitou-analyza-cl-5-european-media-freedom-act-a-jeho-adaptace-do-ceskeho-pravniho-radu.m-1051.html",
-   "autori": "Iveta Kvardová",
-   "heslo": "European Media Freedom Act",
-   "shrnuti": "Článek analyzuje záruky nezávislosti médií veřejné služby podle čl. 5 evropského nařízení EMFA a porovnává je s aktuální českou legislativou. Zjišťuje, že český právní řád v mnoha ohledech požadavkům nařízení nevyhovuje, zejména kvůli absenci transparentních pravidel pro odvolávání ředitelů a chybějícímu nezávislému dohledovému orgánu. Vládní návrh adaptačního zákona tyto nedostatky neřeší, čímž se Česká republika vystavuje riziku řízení o porušení povinnosti.",
-   "datum": "2026-09-26",
-   "first_seen": "2026-09-26T04:42:59Z"
-  },
-  {
-   "id": "Jurisprudence-1053",
-   "casopis": "jurisprudence",
-   "nazev": "Pozitivní závazky státu při ochraně obětí domácího násilí v judikatuře Ústavního soudu",
-   "url": "https://www.jurisprudence.cz/cz/casopis/pozitivni-zavazky-statu-pri-ochrane-obeti-domaciho-nasili-v-judikature-ustavniho-soudu.m-1053.html",
-   "autori": "Barbora Bulánková",
-   "heslo": "Pozitivní závazky státu",
-   "shrnuti": "Článek se zabývá pozitivními závazky státu a trestněprávní ochranou obětí domácího násilí na základě analýzy judikatury Ústavního soudu. Zkoumá povinnost orgánů veřejné moci efektivně vyšetřovat a chránit zvlášť zranitelné oběti. Autor uzavírá, že Ústavní soud vytváří ústavní standard, který odmítá bagatelizaci a formalistický přístup k těmto případům.",
-   "datum": "2026-09-26",
-   "first_seen": "2026-09-26T04:42:59Z"
-  },
-  {
-   "id": "Jurisprudence-1055",
-   "casopis": "jurisprudence",
-   "nazev": "Ústavný súd Slovenskej republiky ako opomínaný aktér militantnej demokracie",
-   "url": "https://www.jurisprudence.cz/cz/casopis/ustavny-sud-slovenskej-republiky-ako-opominany-akter-militantnej-demokracie.m-1055.html",
-   "autori": "Terézia Lazarová",
-   "heslo": "Militantní demokracie",
-   "shrnuti": "Článek analyzuje roli Ústavního soudu Slovenské republiky jako aktéra militantní demokracie a zkoumá jeho explicitní i implicitní judikaturu v této oblasti. Autorka konstatuje, že soud sice přistupuje k těmto nástrojům spíše opatrně a naráží na procesní limity, avšak nedávná rozhodnutí mohou naznačovat jeho přechod k aktivnějšímu působení.",
-   "datum": "2026-09-26",
-   "first_seen": "2026-09-26T04:42:59Z"
-  },
-  {
-   "id": "Jurisprudence-1057",
-   "casopis": "jurisprudence",
-   "nazev": "Konflikty právních principů v rámci DCFR",
-   "url": "https://www.jurisprudence.cz/cz/casopis/konflikty-pravnich-principu-v-ramci-dcfr.m-1057.html",
-   "autori": "Jiří Novotný",
-   "heslo": "Konflikty právních principů v DCFR",
-   "shrnuti": "Článek se zabývá problematikou konfliktů právních principů v rámci Návrhu společného referenčního rámce (DCFR). Poukazuje na to, že autoři DCFR neposkytují výslovný návod pro řešení těchto střetů. Text proto zkoumá, jakým způsobem byly či mají být vzájemné konflikty principů a interpretace souvisejících pravidel řešeny.",
-   "datum": "2026-09-26",
-   "first_seen": "2026-09-26T04:42:59Z"
-  },
-  {
-   "id": "Jurisprudence-1059",
-   "casopis": "jurisprudence",
-   "nazev": "Monitoring judikatury soudů České republiky",
-   "url": "https://www.jurisprudence.cz/cz/casopis/monitoring-judikatury-soudu-ceske-republiky.m-1059.html",
-   "autori": "Jan Tryzna",
-   "datum": "2026-09-26",
-   "first_seen": "2026-09-26T04:42:59Z",
-   "poznamka": "Obsah není dostupný.",
-   "popis": "Monitoring judikatury soudů České republiky\nAutor: Jan Tryzna\nJurisprudence 4/2026\nRubrika: Monitoring judikatury"
-  },
-  {
-   "id": "Jurisprudence-1061",
-   "casopis": "jurisprudence",
-   "nazev": "Monitoring judikatury Soudního dvora EU a Tribunálu",
-   "url": "https://www.jurisprudence.cz/cz/casopis/monitoring-judikatury-soudniho-dvora-eu-a-tribunalu.m-1061.html",
-   "autori": "Jan Tlamycha",
-   "datum": "2026-09-26",
-   "first_seen": "2026-09-26T04:42:59Z",
-   "poznamka": "Obsah není dostupný.",
-   "popis": "Monitoring judikatury Soudního dvora EU a Tribunálu\nAutor: Jan Tlamycha\nJurisprudence 4/2026\nRubrika: Monitoring judikatury"
-  },
-  {
-   "id": "Jurisprudence-1063",
-   "casopis": "jurisprudence",
-   "nazev": "Monitoring judikatury Evropského soudu pro lidská práva",
-   "url": "https://www.jurisprudence.cz/cz/casopis/monitoring-judikatury-evropskeho-soudu-pro-lidska-prava.m-1063.html",
-   "autori": "Pavla Boučková",
-   "datum": "2026-09-26",
-   "first_seen": "2026-09-26T04:42:59Z",
-   "poznamka": "Obsah není dostupný.",
-   "popis": "Monitoring judikatury Evropského soudu pro lidská práva\nAutor: Pavla Boučková\nJurisprudence 4/2026\nRubrika: Monitoring judikatury"
-  },
-  {
    "id": "JIPLP-10.1093/jiplp/jpag087",
    "casopis": "jiplp",
    "nazev": "Patent licensees’ standing to sue for patent infringement considering the nature of patents: the Canadian perspective",
@@ -820,28 +842,6 @@
    "shrnuti": "Článek se zabývá proměnou postavení dospělých účastníků soudních řízení (litigantů), kteří jsou právním systémem de facto stavěni na roveň dětem či nesvéprávným osobám. Autor poukazuje na to, že právo pro tyto osoby vytváří náhradní ochranu a zbavuje je vlastní odpovědnosti. Tento trend představuje znepokojivý posun v chápání právní způsobilosti dospělých.",
    "datum": "2026-09-25",
    "first_seen": "2026-10-25T05:33:15Z"
-  },
-  {
-   "id": "ELJ-10.1111/eulj.70029",
-   "casopis": "elj",
-   "nazev": "Reimagining State Aid: Guiding Law and Policy Reform in a Changing World",
-   "url": "https://doi.org/10.1111/eulj.70029",
-   "autori": "Thomas Jaeger",
-   "heslo": "Reforma veřejné podpory",
-   "shrnuti": "Článek se zabývá posunem práva EU v oblasti státní podpory od represivního nástroje k proaktivnímu mechanismu a poukazuje na to, že současný rámec dle článku 107 SFEU je s touto novou funkcí v nesouladu. Autor odhaluje anachronismy a systémové třenice v platné úpravě a navrhuje komplexní reformní agendu, která má definici státní podpory přizpůsobit strategickým cílům a závěrům Letta správy.",
-   "datum": "2026-09-24",
-   "first_seen": "2026-09-26T04:42:59Z"
-  },
-  {
-   "id": "IJLIT-10.1093/ijlit/eaag013",
-   "casopis": "ijlit",
-   "nazev": "The cambridge handbook of the law, ethics and policy of artificial intelligence",
-   "url": "https://doi.org/10.1093/ijlit/eaag013",
-   "autori": "Sk Iftesham Islam",
-   "heslo": "Právo a etika AI",
-   "shrnuti": "Článek představuje odbornou publikaci \"The Cambridge Handbook of the Law, Ethics and Policy of Artificial Intelligence\" z roku 2025 pod editací Nathalie A. Smuha. Kniha se zabývá právními, etickými a politickými aspekty umelecké inteligence a je dostupná jako Open Access.",
-   "datum": "2026-09-23",
-   "first_seen": "2026-09-26T04:42:59Z"
   },
   {
    "id": "JIPLP-10.1093/jiplp/jpag085",
@@ -877,39 +877,6 @@
    "first_seen": "2026-10-25T05:33:15Z"
   },
   {
-   "id": "CMLRev-10.54648/cola2026088",
-   "casopis": "cmlr",
-   "nazev": "Cumulative application of free movement law and fundamental rights in the ‘derogation situation’: A multidimensional challenge",
-   "url": "https://doi.org/10.54648/cola2026088",
-   "autori": "Morgan De Walsche",
-   "heslo": "Volný pohyb a základní práva",
-   "shrnuti": "Článek zkoumá kumulativní aplikaci práva volného pohybu a Listiny základních práv EU v situacích, kdy členské státy omezují volný pohyb. Analyzuje současnou judikaturu Soudního dvora EU, která směřuje k normativnímu vrstvení a rostoucí autonomii přezkumu základních práv. V závěru navrhuje strukturovaný metodologický rámec pro posuzování těchto situací a proporcionality omezujících opatření.",
-   "datum": "2026-08-01",
-   "first_seen": "2026-10-24T04:20:13Z"
-  },
-  {
-   "id": "CMLRev-10.54648/cola2026066",
-   "casopis": "cmlr",
-   "nazev": "EU External Relations and the Power of Law: Liber Amicorum in Honour of Marise Cremona edited by Kenneth A Armstrong, Joanne Scott and Anne Thies (Oxford: Hart Publishing, 2024)",
-   "url": "https://doi.org/10.54648/cola2026066",
-   "autori": "Allan Rosas",
-   "datum": "2026-08-01",
-   "first_seen": "2026-10-24T04:20:13Z",
-   "poznamka": "Shrnutí zatím není k dispozici.",
-   "popis": "EU External Relations and the Power of Law: Liber Amicorum in Honour of Marise Cremona edited by Kenneth A Armstrong, Joanne Scott and Anne Thies (Oxford: Hart Publishing, 2024)\nAutor: Allan Rosas\nCommon Market Law Review"
-  },
-  {
-   "id": "CMLRev-10.54648/cola2026070",
-   "casopis": "cmlr",
-   "nazev": "Unravelling the place of services of general economic interest under EU law through waste management: Mixed lessons from Interzero",
-   "url": "https://doi.org/10.54648/cola2026070",
-   "autori": "Daniele Gallo",
-   "datum": "2026-08-01",
-   "first_seen": "2026-10-24T04:20:13Z",
-   "poznamka": "Shrnutí zatím není k dispozici.",
-   "popis": "Unravelling the place of services of general economic interest under EU law through waste management: Mixed lessons from Interzero\nAutor: Daniele Gallo\nCommon Market Law Review"
-  },
-  {
    "id": "CMLRev-10.54648/cola2026067",
    "casopis": "cmlr",
    "nazev": "Legal imaginations of the AI Act: A constitutional perspective on the pre-emption of Member State competence",
@@ -932,15 +899,15 @@
    "first_seen": "2026-10-24T04:20:13Z"
   },
   {
-   "id": "CMLRev-10.54648/cola2026061",
+   "id": "CMLRev-10.54648/cola2026070",
    "casopis": "cmlr",
-   "nazev": "EU jurisdictional law and antitrust follow-on damages claims against a parent company as an anchor defendant: Athenian Brewery",
-   "url": "https://doi.org/10.54648/cola2026061",
-   "autori": "Anna Piszcz",
+   "nazev": "Unravelling the place of services of general economic interest under EU law through waste management: Mixed lessons from Interzero",
+   "url": "https://doi.org/10.54648/cola2026070",
+   "autori": "Daniele Gallo",
    "datum": "2026-08-01",
    "first_seen": "2026-10-24T04:20:13Z",
    "poznamka": "Shrnutí zatím není k dispozici.",
-   "popis": "EU jurisdictional law and antitrust follow-on damages claims against a parent company as an anchor defendant: Athenian Brewery\nAutor: Anna Piszcz\nCommon Market Law Review"
+   "popis": "Unravelling the place of services of general economic interest under EU law through waste management: Mixed lessons from Interzero\nAutor: Daniele Gallo\nCommon Market Law Review"
   },
   {
    "id": "CMLRev-10.54648/cola2026062",
@@ -952,6 +919,60 @@
    "first_seen": "2026-10-24T04:20:13Z",
    "poznamka": "Shrnutí zatím není k dispozici.",
    "popis": "Energy solidarity in the competition law toolbox after Orlen v Commission: Alive and dead until observed\nAutor: Miłosz Malaga\nCommon Market Law Review"
+  },
+  {
+   "id": "CMLRev-10.54648/cola2026065",
+   "casopis": "cmlr",
+   "nazev": "Brussels II-ter: Cross-border Marriage Dissolution, Parental Responsibility Disputes and Child Abduction in the EU by Nigel Lowe, Costanza Honorati, Michael Hellner (Cambridge: Intersentia, 2024)",
+   "url": "https://doi.org/10.54648/cola2026065",
+   "autori": "Chiara Berneri",
+   "datum": "2026-08-01",
+   "first_seen": "2026-10-24T04:20:13Z",
+   "poznamka": "Shrnutí zatím není k dispozici.",
+   "popis": "Brussels II-ter: Cross-border Marriage Dissolution, Parental Responsibility Disputes and Child Abduction in the EU by Nigel Lowe, Costanza Honorati, Michael Hellner (Cambridge: Intersentia, 2024)\nAutor: Chiara Berneri\nCommon Market Law Review"
+  },
+  {
+   "id": "CMLRev-10.54648/cola2026068",
+   "casopis": "cmlr",
+   "nazev": "Fundamental principles or fundamental rights? Identity-based refusal under the European Investigation Order after Bissilli",
+   "url": "https://doi.org/10.54648/cola2026068",
+   "autori": "Lou Vanbeselaere",
+   "datum": "2026-08-01",
+   "first_seen": "2026-10-24T04:20:13Z",
+   "poznamka": "Shrnutí zatím není k dispozici.",
+   "popis": "Fundamental principles or fundamental rights? Identity-based refusal under the European Investigation Order after Bissilli\nAutor: Lou Vanbeselaere\nCommon Market Law Review"
+  },
+  {
+   "id": "CMLRev-10.54648/cola2026069",
+   "casopis": "cmlr",
+   "nazev": "Editorial comments: The governance of Union membership",
+   "url": "https://doi.org/10.54648/cola2026069",
+   "datum": "2026-08-01",
+   "first_seen": "2026-10-24T04:20:13Z",
+   "poznamka": "Shrnutí zatím není k dispozici.",
+   "popis": "Editorial comments: The governance of Union membership\nCommon Market Law Review"
+  },
+  {
+   "id": "CMLRev-10.54648/cola2026088",
+   "casopis": "cmlr",
+   "nazev": "Cumulative application of free movement law and fundamental rights in the ‘derogation situation’: A multidimensional challenge",
+   "url": "https://doi.org/10.54648/cola2026088",
+   "autori": "Morgan De Walsche",
+   "heslo": "Volný pohyb a základní práva",
+   "shrnuti": "Článek zkoumá kumulativní aplikaci práva volného pohybu a Listiny základních práv EU v situacích, kdy členské státy omezují volný pohyb. Analyzuje současnou judikaturu Soudního dvora EU, která směřuje k normativnímu vrstvení a rostoucí autonomii přezkumu základních práv. V závěru navrhuje strukturovaný metodologický rámec pro posuzování těchto situací a proporcionality omezujících opatření.",
+   "datum": "2026-08-01",
+   "first_seen": "2026-10-24T04:20:13Z"
+  },
+  {
+   "id": "CMLRev-10.54648/cola2026066",
+   "casopis": "cmlr",
+   "nazev": "EU External Relations and the Power of Law: Liber Amicorum in Honour of Marise Cremona edited by Kenneth A Armstrong, Joanne Scott and Anne Thies (Oxford: Hart Publishing, 2024)",
+   "url": "https://doi.org/10.54648/cola2026066",
+   "autori": "Allan Rosas",
+   "datum": "2026-08-01",
+   "first_seen": "2026-10-24T04:20:13Z",
+   "poznamka": "Shrnutí zatím není k dispozici.",
+   "popis": "EU External Relations and the Power of Law: Liber Amicorum in Honour of Marise Cremona edited by Kenneth A Armstrong, Joanne Scott and Anne Thies (Oxford: Hart Publishing, 2024)\nAutor: Allan Rosas\nCommon Market Law Review"
   },
   {
    "id": "CMLRev-10.54648/cola2026064",
@@ -976,15 +997,15 @@
    "first_seen": "2026-10-24T04:20:13Z"
   },
   {
-   "id": "CMLRev-10.54648/cola2026065",
+   "id": "CMLRev-10.54648/cola2026061",
    "casopis": "cmlr",
-   "nazev": "Brussels II-ter: Cross-border Marriage Dissolution, Parental Responsibility Disputes and Child Abduction in the EU by Nigel Lowe, Costanza Honorati, Michael Hellner (Cambridge: Intersentia, 2024)",
-   "url": "https://doi.org/10.54648/cola2026065",
-   "autori": "Chiara Berneri",
+   "nazev": "EU jurisdictional law and antitrust follow-on damages claims against a parent company as an anchor defendant: Athenian Brewery",
+   "url": "https://doi.org/10.54648/cola2026061",
+   "autori": "Anna Piszcz",
    "datum": "2026-08-01",
    "first_seen": "2026-10-24T04:20:13Z",
    "poznamka": "Shrnutí zatím není k dispozici.",
-   "popis": "Brussels II-ter: Cross-border Marriage Dissolution, Parental Responsibility Disputes and Child Abduction in the EU by Nigel Lowe, Costanza Honorati, Michael Hellner (Cambridge: Intersentia, 2024)\nAutor: Chiara Berneri\nCommon Market Law Review"
+   "popis": "EU jurisdictional law and antitrust follow-on damages claims against a parent company as an anchor defendant: Athenian Brewery\nAutor: Anna Piszcz\nCommon Market Law Review"
   },
   {
    "id": "CMLRev-10.54648/cola2026063",
@@ -1006,27 +1027,6 @@
    "shrnuti": "Článek analýzuje připravovanou reformu práva spotřebitelů EU včetně návrhu Digital Fairness Act a centrální přístup Evropské komise k řešení problémů digitální ekonomiky. Zpochybňuje vhodnost nových legislativních aktů a centralizace pravomocí. Namísto toho navrhuje model sdílení pravomocí podobný soutěžnímu právu a posílení národních spotřebitelských agentur.",
    "datum": "2026-08-01",
    "first_seen": "2026-10-24T04:20:13Z"
-  },
-  {
-   "id": "CMLRev-10.54648/cola2026069",
-   "casopis": "cmlr",
-   "nazev": "Editorial comments: The governance of Union membership",
-   "url": "https://doi.org/10.54648/cola2026069",
-   "datum": "2026-08-01",
-   "first_seen": "2026-10-24T04:20:13Z",
-   "poznamka": "Shrnutí zatím není k dispozici.",
-   "popis": "Editorial comments: The governance of Union membership\nCommon Market Law Review"
-  },
-  {
-   "id": "CMLRev-10.54648/cola2026068",
-   "casopis": "cmlr",
-   "nazev": "Fundamental principles or fundamental rights? Identity-based refusal under the European Investigation Order after Bissilli",
-   "url": "https://doi.org/10.54648/cola2026068",
-   "autori": "Lou Vanbeselaere",
-   "datum": "2026-08-01",
-   "first_seen": "2026-10-24T04:20:13Z",
-   "poznamka": "Shrnutí zatím není k dispozici.",
-   "popis": "Fundamental principles or fundamental rights? Identity-based refusal under the European Investigation Order after Bissilli\nAutor: Lou Vanbeselaere\nCommon Market Law Review"
   },
   {
    "id": "JWIP-10.1111/jwip.70010",
