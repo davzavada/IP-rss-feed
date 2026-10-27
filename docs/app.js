@@ -1121,7 +1121,10 @@ function sledKartaHtml(s) {
       '" value="' + esc(s.nazev || "") + '" placeholder="' + esc(puvodni) + '" aria-label="Vlastní název řízení"></form>'
     : '<a class="sled-nazev" href="' + esc(url) + '" target="_blank" rel="noopener" title="' +
       esc(s.nazev ? puvodni + " – otevřít v InfoSoudu" : "Otevřít v InfoSoudu") + '">' + esc(s.nazev || puvodni) + "</a>";
-  let html = '<div class="sled-karta"><div class="sled-karta-hlava"><div>' + nazev +
+  let html = '<div class="sled-karta" data-k="' + esc(k) + '"><div class="sled-karta-hlava">' +
+    '<button type="button" class="sled-uchop" data-uchop="' + esc(k) + '" aria-label="Přesunout (šipky nahoru a dolů)" ' +
+    'title="Přetažením změníte pořadí"><svg class="nav-ico" aria-hidden="true"><use href="#icon-grip"></use></svg></button>' +
+    "<div>" + nazev +
     '<div class="cal-radek-meta"><span class="cal-soud cal-soud-' + s.soud.toLowerCase() + '">' + esc(s.soud) + "</span>" +
     '<span class="cal-spz">' + esc(s.spz) + "</span>" +
     (stav ? '<span class="sled-stav">· ' + esc(stav) + "</span>" : "") + "</div></div>" +
@@ -1161,6 +1164,9 @@ function sledHtml() {
 function renderSled() {
   const el = document.getElementById("sled-seznam");
   if (!el) return;
+  // Během přetahování se nepřekresluje (karta by zmizela pod prstem);
+  // co mezitím přišlo, se vykreslí po puštění.
+  if (sledTah) { sledTah.prekreslit = true; return; }
   document.getElementById("sled-pocet").textContent = sledovana.length || "";
   sledovana.forEach(nactiHistorii);
   let html = sledChyba ? '<p class="sled-chyba">' + esc(sledChyba) + "</p>" : "";
@@ -1215,8 +1221,68 @@ function sledPrejmenuj(k, text) {
   }));
 }
 
+/* Pořadí: kartu jde přetáhnout za úchyt (myší i prstem – pointer events,
+   HTML5 drag and drop na dotykových displejích nefunguje), nebo úchyt
+   vybrat a posouvat šipkami. Karty se přeskládávají rovnou v DOM, nové
+   pořadí se uloží po puštění. */
+let sledTah = null;               // {karta, id, prekreslit}
+
+function sledPoradiZDom() {
+  const klice = Array.from(document.querySelectorAll("#sled-seznam .sled-karta")).map(k => k.dataset.k);
+  const nove = klice.map(k => sledovana.find(s => klicRizeni(s) === k)).filter(Boolean);
+  if (nove.length !== sledovana.length) return;
+  if (nove.some((s, i) => s !== sledovana[i])) ulozSledovana(nove);
+}
+
+function sledTahPosun(e) {
+  if (!sledTah || e.pointerId !== sledTah.id) return;
+  const karta = sledTah.karta;
+  const ostatni = Array.from(karta.parentNode.querySelectorAll(".sled-karta")).filter(k => k !== karta);
+  // Karta jde před první, jejíž střed je pod ukazatelem; jinak na konec.
+  const pred = ostatni.find(k => {
+    const r = k.getBoundingClientRect();
+    return e.clientY < r.top + r.height / 2;
+  });
+  if (pred) { if (karta.nextElementSibling !== pred) karta.parentNode.insertBefore(karta, pred); }
+  else if (ostatni.length && karta !== karta.parentNode.lastElementChild) karta.parentNode.appendChild(karta);
+}
+
+function sledTahKonec(e) {
+  if (!sledTah || e.pointerId !== sledTah.id) return;
+  const { karta, prekreslit } = sledTah;
+  sledTah = null;
+  karta.classList.remove("sled-tazena");
+  sledPoradiZDom();
+  if (prekreslit) renderSled();
+}
+
 function sledPosluchaci() {
   const el = document.getElementById("sled-seznam");
+  el.addEventListener("pointerdown", e => {
+    const uchop = e.target.closest("[data-uchop]");
+    if (!uchop || e.button !== 0 || sledovana.length < 2) return;
+    e.preventDefault();
+    uchop.setPointerCapture(e.pointerId);
+    sledTah = { karta: uchop.closest(".sled-karta"), id: e.pointerId, prekreslit: false };
+    sledTah.karta.classList.add("sled-tazena");
+  });
+  el.addEventListener("pointermove", sledTahPosun);
+  el.addEventListener("pointerup", sledTahKonec);
+  el.addEventListener("pointercancel", sledTahKonec);
+  el.addEventListener("keydown", e => {
+    const uchop = e.target.closest("[data-uchop]");
+    if (!uchop || (e.key !== "ArrowUp" && e.key !== "ArrowDown")) return;
+    e.preventDefault();
+    const k = uchop.dataset.uchop;
+    const i = sledovana.findIndex(s => klicRizeni(s) === k);
+    const j = i + (e.key === "ArrowUp" ? -1 : 1);
+    if (i < 0 || j < 0 || j >= sledovana.length) return;
+    const nove = sledovana.slice();
+    [nove[i], nove[j]] = [nove[j], nove[i]];
+    ulozSledovana(nove);
+    const znovu = el.querySelector('[data-uchop="' + CSS.escape(k) + '"]');
+    if (znovu) znovu.focus();
+  });
   el.addEventListener("submit", e => {
     const f = e.target.closest("[data-jmeno]");
     if (!f) return;
