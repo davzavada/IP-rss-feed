@@ -1,8 +1,697 @@
 {
- "generated": "2026-10-27T05:50:03Z",
+ "generated": "2026-10-28T06:28:32Z",
  "soud": "us",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "us:4-2735-26_1",
+   "spz": "IV. ÚS 2735/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.2735.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-23",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2735-26_1",
+   "soudce": "Zdeněk Kühn",
+   "heslo": "Bagatelní věci postrádají ústavněprávní rozměr",
+   "shrnuti": "Stěžovatel napadal rozhodnutí městského soudu o částečném zamítnutí žaloby na náhradu škody na vozidle. Ústavní soud shledal stížnost zjeveně neopodstatněnou, neboť šlo o bagatelní věc bez ústavněprávního přesahu a soudy řádně odůvodnily způsob výpočtu škody. Ústavní stížnost byla proto odmítnuta.",
+   "oblasti": [
+    "skoda",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:4-2721-26_1",
+   "spz": "IV. ÚS 2721/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.2721.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-16",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2721-26_1",
+   "soudce": "Zdeněk Kühn",
+   "heslo": "Ústavní stížnost proti odložení věci vyžaduje vyčerpání dohledu",
+   "shrnuti": "Stěžovatel napadal postup policie a státního zastupitelství spočívající v odložení jeho trestního oznámení. Ústavní soud ústavní stížnost odmítl jako nepřípustnou, protože stěžovatel nevyčerpal všechny procesní prostředky, konkrétně nevyčkal na vyřízení podnětu k výkonu dohledu. Podání podnětu pouhý měsíc před podáním ústavní stížnosti nezakládá výjimku z přípustnosti pro průtahy.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:4-2692-26_1",
+   "spz": "IV. ÚS 2692/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.2692.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-23",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2692-26_1",
+   "soudce": "Zdeněk Kühn",
+   "heslo": "Odměna advokáta za návrh na doplnění dokazování",
+   "shrnuti": "Stěžovatel napadal rozhodnutí o nepřiznání odměny za některé úkony právní služby v trestním řízení. Ústavní soud ústavní stížnost odmítl pro zjevnou neopodstatněnost vzhledem k bagatelní povaze sporu a absenci mimořádných okolností. Závěry obecných soudů o povaze návrhů na doplnění dokazování shledal řádně odůvodněnými.",
+   "oblasti": [
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:4-2593-26_1",
+   "spz": "IV. ÚS 2593/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.2593.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-16",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2593-26_1",
+   "soudce": "Zdeněk Kühn",
+   "heslo": "Včasnost platby soudního poplatku bezhotovostním převodem",
+   "shrnuti": "Stěžovatelka napadala usnesení obecných soudů o zastavení odvolacího řízení pro nezaplacení soudního poplatku ve lhůtě a rozhodnutí Nejvyššího soudu, přičemž tvrdila, že poplatek uhradila v poslední den lhůty a soudy zatížily řízení přepjatým formalismem. Ústavní soud neshledal porušení práva na soudní ochranu, neboť stěžovatelka nese odpovědnost za včasné připsání poplatku na účet soudu a platba byla připsána až po lhůtě. Ústavní stížnost proto zčásti odmítl jako nepřípustnou a zčásti jako zjevně neopodstatněnou.",
+   "oblasti": [
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:4-2436-26_1",
+   "spz": "IV. ÚS 2436/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.2436.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-23",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2436-26_1",
+   "soudce": "Zdeněk Kühn",
+   "heslo": "Zánik obhajoby a nárok na odměnu po smrti obviněného",
+   "shrnuti": "Stěžovatel napadal usnesení Nejvyššího státního zastupitelství, kterým mu nebyla přiznána odměna za úkony právní služby provedené po smrti obviněného a za některé další úkony. Ústavní soud shledal ústavní stížnost zjevně neopodstatněnou a potvrdil, že zmocnění ustanoveného obhájce a nárok na odměnu za úkony obhajoby zanikají okamžikem smrti obviněného, bez ohledu na pozdější formální zastavení trestního stíhání.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:4-2419-26_1",
+   "spz": "IV. ÚS 2419/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.2419.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2419-26_1",
+   "soudce": "Lucie Dolanská Bányaiová",
+   "heslo": "Snížení rychlosti dopravní značkou je méně intenzivní zásah",
+   "shrnuti": "Stěžovatelka napadala rozhodnutí správních soudů, které zamítly její návrh na nepoužití opatření obecné povahy stanovující místní úpravu rychlosti v přestupkovém řízení. Ústavní soud stížnost odmítl jako zjevně neopodstatněnou, neboť soudy postupovaly ústavně konformně, když shledaly odůvodnění opatření dostatečným a snížení rychlosti označily za přiměřené a méně intenzivní dopravní omezení.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:4-2376-26_1",
+   "spz": "IV. ÚS 2376/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.2376.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2376-26_1",
+   "soudce": "Lucie Dolanská Bányaiová",
+   "heslo": "Přezkum hodnocení důkazů v ústavním řízení",
+   "shrnuti": "Stěžovatel napadal odsuzující rozhodnutí v trestní věci pro porušení základních práv a principu presumpce neviny kvůli nesprávnému hodnocení důkazů. Ústavní soud neshledal porušení žádného z jeho základních práv, neboť obecné soudy postupovaly při hodnocení důkazů logicky a ústavně konformně. Ústavní stížnost proto odmítl jako zjevně neopodstatněnou.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:4-2347-26_1",
+   "spz": "IV. ÚS 2347/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.2347.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2347-26_1",
+   "soudce": "Lucie Dolanská Bányaiová",
+   "heslo": "Zavinění k účasti na organizované zločinecké skupině",
+   "shrnuti": "Stěžovatel napadal odsuzující rozsudky pro daňový podvod a účast na organizované zločinecké skupině s tvrzením o extrémním nesouladu skutkových zjištění a opomenutých důkazech. Ústavní soud neshledal porušení základních práv stěžovatele, neboť obecné soudy své závěry řádně a logicky odůvodnily. Ústavní stížnost proto zčásti odmítl pro nepříslušnost a zčásti jako zjevně neopodstatněnou.",
+   "oblasti": [
+    "trestni",
+    "dane"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:4-2276-26_1",
+   "spz": "IV. ÚS 2276/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.2276.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2276-26_1",
+   "soudce": "Lucie Dolanská Bányaiová",
+   "heslo": "Trvání vazby vyžaduje zesílené důvody",
+   "shrnuti": "Stěžovatel napadal rozhodnutí o zamítnutí žádosti o propuštění z vazby a setrvání ve vazbě. Ústavní soud neshledal porušení základních práv stěžovatele, protože obecné soudy dostatečně odůvodnily trvání útěkové i předstižné vazby, přičemž zohlednily doktrínu zesílených důvodů vazby a posun v trestním řízení. Ústavní stížnost proto odmítl jako zjevně neopodstatněnou.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:4-2134-26_1",
+   "spz": "IV. ÚS 2134/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.2134.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2134-26_1",
+   "soudce": "Lucie Dolanská Bányaiová",
+   "heslo": "Zajištění budoucích výnosů z trestné činnosti u třetí osoby",
+   "shrnuti": "Stěžovatelka napadala zajištění poměrné části budoucích finančních prostředků z podnikatelské činnosti v trestní věci jejího dřívějšího dodavatele, neboť tvrdila, že není trestně stíhána a jde o nepřiměřený zásah do jejího vlastnického práva. Ústavní soud shledal ústavní stížnost zjevně neopodstatněnou, protože zajištění má zákonný podklad, je dočasným zajišťovacím institutem a vzhledem k personálnímu propojení a povaze věci nebylo shledáno svévolným či nepřiměřeným.",
+   "oblasti": [
+    "trestni",
+    "skoda"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-550-26_1",
+   "spz": "III. ÚS 550/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.550.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-550-26_1",
+   "soudce": "Daniela Zemanová",
+   "heslo": "Náhrada nákladů při zastoupení členem statutárního orgánu",
+   "shrnuti": "Spotřební družstvo Jednota Kadaň napadlo rozhodnutí o náhradě nákladů řízení, neboť soudy odmítly přiznat odměnu za právní zastoupení advokátem, který je současně členem představenstva stěžovatele. Ústavní soud neshledal porušení základních práv stěžovatele a ústavní stížnost odmítl pro zjevnou neopodstatněnost, protože závěry obecných soudů o neúčelnosti takto vynaložených nákladů byly ústavně konformní a podložené racionální úvahou.",
+   "oblasti": [
+    "civilni_proces",
+    "korporace"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-407-26_1",
+   "spz": "III. ÚS 407/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.407.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-01",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-407-26_1",
+   "soudce": "Daniela Zemanová",
+   "heslo": "Zadání veřejné zakázky představuje ohrožovací přestupek",
+   "shrnuti": "Stěžovatel napadal rozhodnutí správních soudů a Úřadu pro ochranu hospodářské soutěže týkající se přestupku v zadávání veřejných zakázek, přičemž namítal porušení zásad správního trestání a presumpce neviny. Ústavní soud ústavní stížnost odmítl jako zjevně neopodstatněnou, neboť neshledal porušení stěžovatelových základních práv a potvrdil, že dotčené ustanovení zákona o zadávání veřejných zakázek zakotvuje ohrožovací, nikoliv poruchový přestupek.",
+   "oblasti": [
+    "verejne_zakazky",
+    "spravni",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-2877-26_1",
+   "spz": "III. ÚS 2877/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.2877.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-2877-26_1",
+   "soudce": "Veronika Křesťanová",
+   "heslo": "Předčasná ústavní stížnost při podaném návrhu na doplnění",
+   "shrnuti": "Stěžovatelka napadala rozhodnutí obecných soudů v řízení o výživném pro nezletilého, neboť nebylo rozhodnuto o vyúčtování výživného za určité období. Ústavní soud stěžovatelčinu ústavní stížnost odmítl jako nepřípustnou a předčasnou, protože dosud nerozhodl městský soud o jejím návrhu na doplnění rozsudku podle občanského soudního řádu. Stěžovatelka tak před podáním ústavní stížnosti nevyčerpala všechny procesní prostředky k ochraně svých práv.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:3-2734-26_1",
+   "spz": "III. ÚS 2734/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.2734.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-2734-26_1",
+   "soudce": "Veronika Křesťanová",
+   "heslo": "Zpochybnění odborných stavebních závěrů vyžaduje konkrétní argumentaci",
+   "shrnuti": "Stěžovatel napadal rozhodnutí správních soudů a správních orgánů týkající se povolení stavby sousedního rodinného domu a výjimky z odstupových vzdáleností, přičemž tvrdil porušení svých vlastnických práv a práva na soudní ochranu. Ústavní soud shledal ústavní stížnost zjevně neopodstatněnou, neboť obecné soudy i správní orgány se všemi námitkami stěžovatele řádně a srozumitelně vypořádaly a stěžovatel neuvedl dostatečně konkrétní tvrzení k zpochybnění odborných závěrů.",
+   "oblasti": [
+    "spravni",
+    "stavebni_zp",
+    "vecna_prava"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-2649-26_1",
+   "spz": "III. ÚS 2649/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.2649.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-2649-26_1",
+   "soudce": "Veronika Křesťanová",
+   "heslo": "Přípustnost zásahové žaloby proti rozhodnutí o vedení řízení",
+   "shrnuti": "Stěžovatelka napadala rozhodnutí správního soudu a Nejvyššího správního soudu, kterými byla odmítnuta její žaloba na ochranu před nezákonným zásahem směřující proti nenařízení ústního jednání v přestupkovém řízení vedeném Ministerstvem spravedlnosti. Ústavní soud neshledal porušení práva na soudní ochranu, protože dílčí procesní rozhodnutí o vedení řízení jsou ze soudního přezkumu vyloučena a ochrana je zajištěna v rámci přezkumu konečného rozhodnutí. Ústavní stížnost proto odmítl jako zjevně neopodstatněnou.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:3-2530-26_1",
+   "spz": "III. ÚS 2530/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.2530.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-10",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-2530-26_1",
+   "soudce": "Daniela Zemanová",
+   "heslo": "Rozšíření styku předběžným opatřením v zájmu dítěte",
+   "shrnuti": "Stěžovatelka napadala usnesení o předběžném opatření, kterým byl rozšířen styk vedlejší účastnice s nezletilým o jeden den v měsíci. Ústavní soud neshledal porušení základních práv stěžovatelky, neboť šlo o umírněnou dočasnou úpravu mající oporu v řádném odůvodnění soudu. Ústavní stížnost proto odmítl jako zjevně neopodstatněnou.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-2473-26_1",
+   "spz": "III. ÚS 2473/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.2473.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-23",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-2473-26_1",
+   "soudce": "Daniela Zemanová",
+   "heslo": "Vyloučení soudce pro podjatost",
+   "shrnuti": "Soudkyně Ústavního soudu předložila věc k rozhodnutí o svém vyloučení z důvodu, že v předcházejících letech působila jako soudkyně Nejvyššího správního soudu a stěžovatelka namítala její zaujatost. Ústavní soud rozhodl, že soudkyně není z projednávání a rozhodování věci vyloučena, neboť k věci ani k účastníkům nemá žádný poměr, který by dosahoval takové intenzity, aby zakládal důvodné pochybnosti o její nepodjatosti.",
+   "oblasti": [
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:3-2431-26_1",
+   "spz": "III. ÚS 2431/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.2431.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-10",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-2431-26_1",
+   "soudce": "Daniela Zemanová",
+   "heslo": "Pobyt cizinců a přiměřenost zásahu do rodinného života",
+   "shrnuti": "Stěžovatelka napadala rozhodnutí o uložení povinnosti opustit území a navazující soudní rozhodnutí s odkazem na porušení práva na ochranu soukromého a rodinného života. Ústavní soud stížnost odmítl jako zjevně neopodstatněnou, neboť obecné soudy a správní orgány dostatečně posoudily přiměřenost zásahu a zohlednily dočasnost případného odloučení i možnost podání žádosti o pobyt ze zahraničí. K porušení práva na soudní ochranu nedošlo ani neprovedením opožděného výslechu manžela.",
+   "oblasti": [
+    "socialni_cizinci",
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-2392-26_1",
+   "spz": "III. ÚS 2392/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.2392.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-2392-26_1",
+   "soudce": "Veronika Křesťanová",
+   "heslo": "Uložení pokuty za maření styku vyžaduje adekvátní motivaci dítěte",
+   "shrnuti": "Stěžovatelka napadla rozhodnutí o uložení pokut za neuskutečněné styky s nezletilou dcerou a o potvrzení jmenování kolizního opatrovníka. Ústavní soud stížnost odmítl jako zjevně neopodstatněnou a částečně nepřípustnou, neboť obecné soudy řádně odůvodnily nedostatečné výchovné úsilí matky a opatrovníka nelze napadnout samostatnou ústavní stížností.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-1861-26_2",
+   "spz": "III. ÚS 1861/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.1861.26.2",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-23",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-1861-26_2",
+   "soudce": "Daniela Zemanová",
+   "heslo": "Pochybnosti o nepodjatosti soudce musí dosáhnout odpovídající intenzity",
+   "shrnuti": "Ústavní soud rozhodoval o námitce podjatosti vznesené vedlejším účastníkem vůči členům senátu. Dospěl k závěru, že neexistují objektivní důvody ani potřebná intenzita poměru k věci či účastníkům, neboť dotčení soudci k nim nemají žádný osobní ani přátelský vztah. Námitka byla proto shledána nedůvodnou.",
+   "oblasti": [
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:3-1744-26_1",
+   "spz": "III. ÚS 1744/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.1744.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-1744-26_1",
+   "soudce": "Jan Svatoň",
+   "heslo": "Dovolání vyžaduje vymezení přípustnosti k jednotlivým otázkám",
+   "shrnuti": "Stěžovatel napadal rozhodnutí soudů týkající se zamítnutí návrhu na zastavení exekuce započtením. Ústavní soud shledal ústavní stížnost zjevně neopodstatněnou, protože Nejvyšší soud správně odmítl dovolání pro absenci vymezení přípustnosti k hmotněprávní otázce a k porušení práva na projednání věci nedošlo. Městský soud navíc stěžovatele nezatížil překvapivým rozhodnutím, neboť otázka platnosti smluvní pokuty byla v řízení diskutována a stěžovatel na ni mohl reagovat.",
+   "oblasti": [
+    "civilni_proces",
+    "zavazky"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:3-1646-26_1",
+   "spz": "III. ÚS 1646/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.1646.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-29",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-1646-26_1",
+   "soudce": "Daniela Zemanová",
+   "heslo": "Ustanovení opatrovníka nezletilým v ústavní stížnosti",
+   "shrnuti": "Stěžovatelka napadla rozsudek Městského soudu v Praze týkající se péče o nezletilé děti a výživného. Ústavní soud v této fázi rozhodl pouze o ustanovení opatrovníka pro nezletilé vedlejší účastníky řízení z důvodu možné kolize zájmů s rodiči.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:3-1561-26_1",
+   "spz": "III. ÚS 1561/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.1561.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-10",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-1561-26_1",
+   "soudce": "Daniela Zemanová",
+   "heslo": "Péče o dítě vyžaduje zohlednění jeho nejlepšího zájmu",
+   "shrnuti": "Stěžovatel napadal rozhodnutí o zamítnutí návrhu na změnu péče o nezletilou dceru a namítal porušení svých procesních práv a práva na spravedlivý proces. Ústavní soud shledal ústavní stížnost zčásti nepřípustnou a zčásti zjevně neopodstatněnou, neboť obecné soudy postupovaly v nejlepším zájmu dítěte a případná dílčí procesní pochybení nedosáhla intenzity protiústavnosti.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-1288-26_1",
+   "spz": "III. ÚS 1288/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.1288.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-16",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-1288-26_1",
+   "soudce": "Jan Svatoň",
+   "heslo": "Neodůvodněnost znaleckého posudku neprokazuje opomenutý důkaz",
+   "shrnuti": "Stěžovatel v ústavní stížnosti namítal porušení svých základních práv kvůli neprovedení znaleckého posudku a údajnému extrémnímu nesouladu v trestním řízení. Ústavní soud shledal stížnost zjevně neopodstatněnou, neboť obecné soudy postupovaly v souladu s procesními předpisy a navržený důkaz řádně vyhodnotily jako nadbytečný. K porušení práva na spravedlivý proces ani presumpce neviny nedošlo.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:2-3157-25_2",
+   "spz": "II. ÚS 3157/25",
+   "ecli": "ECLI:CZ:US:2026:2.US.3157.25.2",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-3157-25_2",
+   "soudce": "Martin Smolek",
+   "heslo": "Přezkum korupční trestné činnosti a zákonnost odposlechů",
+   "shrnuti": "Stěžovatelé napadali odsuzující rozsudky za korupční trestnou činnost a ovlivňování veřejných zakázek, přičemž namítali porušení práva na spravedlivý proces, nezákonnost odposlechů, nesprávné složení senátu a podjatost. Ústavní soud neshledal porušení základních práv stěžovatelů, neboť obecné soudy své závěry ústavně konformně odůvodnily a dřívější závěry o zákonnosti odposlechů obstály. Ústavní stížnosti proto odmítl jako zjevně neopodstatněné.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces",
+    "verejne_zakazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:2-2742-26_1",
+   "spz": "II. ÚS 2742/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2742.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2742-26_1",
+   "soudce": "Pavel Šámal",
+   "heslo": "Odmítnutí ústavní stížnosti pro neodstranění vad zastoupení",
+   "shrnuti": "Stěžovatelka napadla usnesení Nejvyššího správního soudu ústavní stížností, aniž byla zastoupena advokátem. Ústavní soud stížnost odmítl pro neodstranění vad plné moci a zastoupení, neboť stěžovatelka žádala o určení advokáta až ke konci lhůty a na podmínky byla opakovaně upozorněna.",
+   "oblasti": [
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:2-2663-26_1",
+   "spz": "II. ÚS 2663/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2663.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-15",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2663-26_1",
+   "soudce": "Veronika Křesťanová",
+   "heslo": "Odmítnutí ústavní stížnosti pro nedodržení lhůty",
+   "shrnuti": "Stěžovatel napadal rozhodnutí v restitučních a občanskoprávních věcech a namítal porušení práva na spravedlivý proces. Ústavní soud stížnost odmítl jako opožděnou, protože byla podána po zákonné lhůtě. Zabývat se dalšími podmínkami řízení či vyzývat k odstranění vad bylo pro zmeškání lhůty nadbytečné.",
+   "oblasti": [
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:2-2606-26_1",
+   "spz": "II. ÚS 2606/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2606.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-16",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2606-26_1",
+   "soudce": "Veronika Křesťanová",
+   "heslo": "Náhrada nákladů při zpětvzetí žaloby na ochranu proti nečinnosti",
+   "shrnuti": "Stěžovatel napadal usnesení krajského soudu o nepřiznání náhrady nákladů řízení po zpětvzetí žaloby proti nečinnosti správního orgánu. Ústavní soud konstatoval, že spor o náhradu nákladů v bagatelní výši nedosahuje ústavněprávní intenzity porušení základních práv, a proto ústavní stížnost odmítl jako zjevně neopodstatněnou.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:2-2543-26_1",
+   "spz": "II. ÚS 2543/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2543.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-29",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2543-26_1",
+   "soudce": "Pavel Šámal",
+   "heslo": "Opakované podávání blanketní ústavní stížnosti bez odstranění vad",
+   "shrnuti": "Stěžovatel napadal usnesení Městského soudu v Praze blanketní ústavní stížností, aniž by včas doložil důvody své pracovní neschopnosti či doplnil náležitosti podání. Ústavní soud stížnost odmítl pro neodstraněné vady, neboť stěžovatel byl jakožto právní profesionál již dříve mnohokrát poučen o zákonných požadavcích na podání.",
+   "oblasti": [
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:2-2526-26_1",
+   "spz": "II. ÚS 2526/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2526.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-16",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2526-26_1",
+   "soudce": "Martin Smolek",
+   "heslo": "Osvobození od soudních poplatků a důkazní břemeno",
+   "shrnuti": "Stěžovatel napadal rozhodnutí o nepřiznání osvobození od soudních poplatků, přičemž namítal porušení práva na spravedlivý proces kvůli údajnému hodnocení negativních skutečností, překvapivosti rozhodnutí a opomenutým důkazům. Ústavní soud neshledal porušení základních právech a stížnost odmítl jako zjevně neopodstatněnou, neboť břemeno tvrzení a důkazní břemeno ohledně osobních a majetkových poměrů zatěžuje žadatele, který je povinen své poměry doložit úplně a věrohodně.",
+   "oblasti": [
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:2-2210-26_1",
+   "spz": "II. ÚS 2210/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2210.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-16",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2210-26_1",
+   "soudce": "Jiří Přibáň",
+   "heslo": "Naléhavý právní zájem na určení neplatnosti smlouvy",
+   "shrnuti": "Stěžovatelka napadala rozhodnutí obecných soudů, které zamítly její žalobu na určení neplatnosti smluv o zápůjčce pro nedostatek naléhavého právního zájmu. Ústavní soud neshledal porušení základních práv stěžovatelky, neboť závěry Nejvyššího soudu a nižších soudů o absenci naléhavého právního zájmu byly řádně odůvodněny a odpovídají ustálené judikatuře. Ústavní stížnost byla proto odmítnuta jako zjevně neopodstatněná.",
+   "oblasti": [
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:1-89-26_1",
+   "spz": "I. ÚS 89/26",
+   "ecli": "ECLI:CZ:US:2026:1.US.89.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-21",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-89-26_1",
+   "soudce": "Dita Řepková",
+   "heslo": "Předčasná ústavní stížnost při probíhajícím odvolacím řízení",
+   "shrnuti": "Stěžovatelka napadla usnesení krajského soudu, jímž bylo v pozůstalostním řízení zrušeno rozhodnutí okresního soudu. Ústavní soud ústavní stížnost odmítl jako nepřípustnou, protože stěžovatelka v průběhu řízení před Ústavním soudem podala odvolání proti navazujícímu rozhodnutí okresního soudu. Zásah Ústavního soudu by v takové fázi předjímal výsledek řádného opravného prostředku.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:1-2715-26_1",
+   "spz": "I. ÚS 2715/26",
+   "ecli": "ECLI:CZ:US:2026:1.US.2715.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-16",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-2715-26_1",
+   "soudce": "Jan Wintr",
+   "heslo": "Předčasnost ústavní stížnosti podané z opatrnosti spolu s dovoláním",
+   "shrnuti": "Stěžovatel T-Mobile Czech Republic napadl usnesení Městského soudu v Praze a současně podal dovolání. Ústavní soud ústavní stížnost odmítl pro nepřípustnost jako předčasnou, protože o podaném dovolání dosud nerozhodl Nejvyšší soud a je nutno vyčkat jeho závěru.",
+   "oblasti": [
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:1-2654-26_1",
+   "spz": "I. ÚS 2654/26",
+   "ecli": "ECLI:CZ:US:2026:1.US.2654.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-21",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-2654-26_1",
+   "soudce": "Dita Řepková",
+   "heslo": "Ústavní stížnost proti nákladům při souběžném dovolání",
+   "shrnuti": "Stěžovatelky RegioJet a STUDENT AGENCY napadly ústavní stížností výroky odvolacího soudu o náhradě nákladů řízení. Ústavní soud stížnost odmítl jako předčasnou a nepřípustnou, protože stěžovatelky podaly také dovolání ve věci samé, jehož výsledek může ovlivnit i otázku nákladů řízení. Ústavní soud dodal, že po skončení dovolacího řízení budou moci stěžovatelky podat novou ústavní stížnost.",
+   "oblasti": [
+    "civilni_proces",
+    "nekala_soutez"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "us:1-2038-26_1",
+   "spz": "I. ÚS 2038/26",
+   "ecli": "ECLI:CZ:US:2026:1.US.2038.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-10",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-2038-26_1",
+   "soudce": "Tomáš Langášek",
+   "heslo": "Zdravotní postižení dítěte odůvodňuje výjimku ze střídavé péče",
+   "shrnuti": "Stěžovatel napadal rozhodnutí soudů o úpravě péče o své nezletilé děti a rozsahu styku s nimi. Ústavní soud shledal ústavní stížnost zjevně neopodstatněnou, neboť obecné soudy svá rozhodnutí řádně odůvodnily a přihlédly k nejlepšímu zájmu dětí, specifické rodinné situaci včetně závažného zdravotního postižení mladšího sourozence a přání staršího dítěte.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:1-1969-26_1",
+   "spz": "I. ÚS 1969/26",
+   "ecli": "ECLI:CZ:US:2026:1.US.1969.26.1",
+   "druh": "usnesení",
+   "rejstrik": "ÚS",
+   "datum": "2026-09-09",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-28T06:28:32Z",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-1969-26_1",
+   "soudce": "Kateřina Ronovská",
+   "heslo": "Úprava péče o dítě zohledňuje jeho vývoj",
+   "shrnuti": "Stěžovatel napadal rozhodnutí soudů o úpravě péče o nezletilého dítěte, kterými byla stanovena asymetrická střídavá péče bez pevného harmonogramu budoucího přechodu na rovnoměrný režim. Ústavní soud neshledal porušení stěžovatelových základních práv, neboť obecné soudy své závěry řádně odůvodnily nízkým věkem dítěte, jeho fixací na matku a specifickými osobnostními zvlátnostmi na základě zprávy klinické psycholožky. Ústavní stížnost proto odmítl jako zjevně neopodstatněnou.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
   {
    "id": "us:Pl-3-26_1",
    "spz": "Pl. ÚS 3/26",
