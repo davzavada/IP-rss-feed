@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-27T05:51:44+00:00",
+  "generated": "2026-10-28T06:30:50+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 27,
-      "stazeno": "2026-10-27T05:51:19+00:00",
+      "stazeno": "2026-10-28T06:29:19+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,10 +18,10 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 6,
-      "stazeno": "2026-10-27T05:51:23+00:00",
+      "stazeno": "2026-10-28T06:29:24+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "0cbf53ecfa9bb6b3"
+      "otisk": "bfef3511d13f693f"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
@@ -39,11 +39,11 @@
       "zkratka": "epravo",
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
-      "pocet": 6,
-      "stazeno": "2026-10-27T05:51:28+00:00",
+      "pocet": 7,
+      "stazeno": "2026-10-28T06:29:30+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "31a2c5285984a8cf"
+      "otisk": "73f05a2be2130a8b"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -53,7 +53,7 @@
       "pocet": 1,
       "stazeno": "2026-10-27T05:51:29+00:00",
       "cesta": "ai",
-      "chyba": null,
+      "chyba": "HTTPSConnectionPool(host='www.alai.cz', port=443): Max retries exceeded with url: /index.php?up (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.alai.cz', port=443) at 0x72b17ce1e630>, 'Connection to www.alai.cz timed out. (connect timeout=60)'))",
       "otisk": "bcaac79500eef517"
     },
     "UPV": {
@@ -61,8 +61,8 @@
       "zkratka": "ÚPV",
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
-      "pocet": 5,
-      "stazeno": "2026-10-27T05:51:30+00:00",
+      "pocet": 4,
+      "stazeno": "2026-10-28T06:30:31+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "fba0589c410d9352"
@@ -1288,24 +1288,6 @@
       "oblasti_klic": "78842de6afef"
     },
     {
-      "id": "890d59385d7e6c603387",
-      "poradatel": "PFUK",
-      "datum": "2026-10-30",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "Camp Peira 2026",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [],
-      "cena": "",
-      "anotace": "Camp Peira nabízí studentům jedinečnou možnost zažít mezinárodní humanitární právo v praxi. V realistické simulaci krizových situací si vyzkouší surovou zkušenost z první ruky, kdy budou pod tlakem času i okolností řešit úkoly v reálných konfliktních zónách.",
-      "url": "https://www.prf.cuni.cz/aktuality/camp-peira-2026-prihlasky-do-11-10-2026",
-      "datum_do": "2026-11-01",
-      "detail_pokusy": 2,
-      "oblasti": [],
-      "oblasti_klic": "1105970a9429"
-    },
-    {
       "id": "00df13debafc19ec10fd",
       "poradatel": "CAK",
       "datum": "2026-10-30",
@@ -1366,6 +1348,29 @@
       "oblasti_klic": "b6f142812084"
     },
     {
+      "id": "d7e70b8c955d24aeda6b",
+      "poradatel": "PFUK",
+      "datum": "2026-11-02",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Noc fakulty 2026",
+      "misto": "Právnická fakulta Univerzity Karlovy, náměstí Curieových 7, Praha 1",
+      "forma": "prezencne",
+      "lektori": [
+        "Klára Tichá"
+      ],
+      "cena": "zdarma",
+      "anotace": "Jubilejní 10. ročník největšího studentského multižánrového festivalu v ČR promění budovu Právnické fakulty UK v centrum vědění, kultury a zábavy.",
+      "url": "https://www.prf.cuni.cz/aktuality/noc-fakulty-2026",
+      "datum_do": "2026-11-04",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [],
+      "oblasti_klic": "eb04a46c8a4c"
+    },
+    {
       "id": "a78bf6a336f262f521a2",
       "poradatel": "CAK",
       "datum": "2026-11-03",
@@ -1410,6 +1415,36 @@
         "pracovni"
       ],
       "oblasti_klic": "00c760990a3a"
+    },
+    {
+      "id": "9f79fb24e647dae39b08",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-03",
+      "zacatek": "09:30",
+      "konec": "12:00",
+      "nazev": "Jak zapojit investora do developerského projektu a neztratit kontrolu",
+      "misto": "Pobřežní 394/12, Praha 8 – Karlín",
+      "forma": "prezencne",
+      "lektori": [
+        "Pavel Kropáček",
+        "Patrik Novák",
+        "Petr Sefzig",
+        "Radim Boháč"
+      ],
+      "cena": "3 900 Kč bez DPH",
+      "anotace": "Druhý ze tří seminářů série Developerský podzim 2026 od Eversheds Sutherland zaměřený na fázi financování a vstupu investora.",
+      "url": "https://www.epravo.cz/top/aktualne/pozvanka-jak-zapojit-investora-do-developerskeho-projektu-a-neztratit-kontrolu-121732.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "forma",
+        "misto"
+      ],
+      "oblasti": [
+        "zavazky",
+        "korporace",
+        "vecna_prava"
+      ],
+      "oblasti_klic": "bec14d55a419"
     },
     {
       "id": "9a22045dc60281f66a17",
@@ -1749,6 +1784,26 @@
       "detail_pokusy": 2
     },
     {
+      "id": "2fb52c1636396f8f9649",
+      "poradatel": "PFUK",
+      "datum": "2026-11-11",
+      "zacatek": "12:15",
+      "konec": "15:00",
+      "nazev": "Jak propagovat svoje projekty a služby prakticky s AI",
+      "misto": "Celetná 13, Praha 1",
+      "forma": "prezencne",
+      "lektori": [],
+      "cena": "",
+      "anotace": "Praktický workshop zaměřený na využití umělé inteligence při tvorbě obsahu, marketingové komunikace a plánování propagace. Ukážeme si práci s ChatGPT, Canvou a tvorbu 30denního obsahového plánu.",
+      "url": "https://www.prf.cuni.cz/aktuality/jak-propagovat-svoje-projekty-a-sluzby-prakticky-s-ai",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [],
+      "oblasti_klic": "ca4c2228794f"
+    },
+    {
       "id": "f7ed884e530b86616090",
       "poradatel": "CAK",
       "datum": "2026-11-12",
@@ -1998,28 +2053,6 @@
       "detail_pokusy": 2
     },
     {
-      "id": "ebf9e484b3b2075ad242",
-      "poradatel": "CAK",
-      "datum": "2026-11-26",
-      "zacatek": "09:00",
-      "konec": "16:00",
-      "nazev": "Aktuální změna trestní legislativy",
-      "misto": "Zlín, Interhotel Zlín",
-      "forma": "prezencne",
-      "lektori": [
-        "Mgr. Martin Lýsek",
-        "JUDr. Jan Skřipský, Ph.D."
-      ],
-      "cena": "1.694,- Kč včetně DPH",
-      "anotace": "Seminář je zaměřen na aktuální změny trestní legislativy účinné od 1. 1. 2026 provedené zákonem č. 270/2025 Sb. a dalšími novelami.",
-      "url": "https://www.cak.cz/akce/1345",
-      "detail_pokusy": 2,
-      "oblasti": [
-        "trestni"
-      ],
-      "oblasti_klic": "ef4387c6b6bd"
-    },
-    {
       "id": "3c8c55624cf144b82d56",
       "poradatel": "CAK",
       "datum": "2026-11-26",
@@ -2063,6 +2096,28 @@
         "prumyslova_prava"
       ],
       "oblasti_klic": "efbdf6f75139"
+    },
+    {
+      "id": "b5bd2f9cec9733032c90",
+      "poradatel": "CAK",
+      "datum": "2026-11-27",
+      "zacatek": "09:00",
+      "konec": "16:00",
+      "nazev": "Aktuální změna trestní legislativy (původní termín 26.11.2026)",
+      "misto": "Zlín, Interhotel Zlín",
+      "forma": "prezencne",
+      "lektori": [
+        "Mgr. Martin Lýsek",
+        "JUDr. Jan Skřipský, Ph.D."
+      ],
+      "cena": "1.694,- Kč včetně DPH",
+      "anotace": "Seminář pro advokáty zaměřený na aktuální změny trestních předpisů účinné od 1. 1. 2026 provedené zákonem č. 270/2025 Sb. a dalšími novelami.",
+      "url": "https://www.cak.cz/akce/1345",
+      "detail_pokusy": 2,
+      "oblasti": [
+        "trestni"
+      ],
+      "oblasti_klic": "e1e96803995b"
     },
     {
       "id": "2daad3d85271fbc45d34",
