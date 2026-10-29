@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-28T06:30:50+00:00",
+  "generated": "2026-10-29T06:40:44+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 27,
-      "stazeno": "2026-10-28T06:29:19+00:00",
+      "stazeno": "2026-10-29T06:40:36+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,7 +18,7 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 6,
-      "stazeno": "2026-10-28T06:29:24+00:00",
+      "stazeno": "2026-10-29T06:40:37+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bfef3511d13f693f"
@@ -39,11 +39,11 @@
       "zkratka": "epravo",
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
-      "pocet": 7,
-      "stazeno": "2026-10-28T06:29:30+00:00",
+      "pocet": 6,
+      "stazeno": "2026-10-29T06:40:42+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "73f05a2be2130a8b"
+      "otisk": "0959d601089f3a58"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,9 +51,9 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-10-27T05:51:29+00:00",
+      "stazeno": "2026-10-29T06:40:44+00:00",
       "cesta": "ai",
-      "chyba": "HTTPSConnectionPool(host='www.alai.cz', port=443): Max retries exceeded with url: /index.php?up (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.alai.cz', port=443) at 0x72b17ce1e630>, 'Connection to www.alai.cz timed out. (connect timeout=60)'))",
+      "chyba": null,
       "otisk": "bcaac79500eef517"
     },
     "UPV": {
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-10-28T06:30:31+00:00",
+      "stazeno": "2026-10-29T06:40:44+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "fba0589c410d9352"
@@ -1415,36 +1415,6 @@
         "pracovni"
       ],
       "oblasti_klic": "00c760990a3a"
-    },
-    {
-      "id": "9f79fb24e647dae39b08",
-      "poradatel": "EPRAVO",
-      "datum": "2026-11-03",
-      "zacatek": "09:30",
-      "konec": "12:00",
-      "nazev": "Jak zapojit investora do developerského projektu a neztratit kontrolu",
-      "misto": "Pobřežní 394/12, Praha 8 – Karlín",
-      "forma": "prezencne",
-      "lektori": [
-        "Pavel Kropáček",
-        "Patrik Novák",
-        "Petr Sefzig",
-        "Radim Boháč"
-      ],
-      "cena": "3 900 Kč bez DPH",
-      "anotace": "Druhý ze tří seminářů série Developerský podzim 2026 od Eversheds Sutherland zaměřený na fázi financování a vstupu investora.",
-      "url": "https://www.epravo.cz/top/aktualne/pozvanka-jak-zapojit-investora-do-developerskeho-projektu-a-neztratit-kontrolu-121732.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "forma",
-        "misto"
-      ],
-      "oblasti": [
-        "zavazky",
-        "korporace",
-        "vecna_prava"
-      ],
-      "oblasti_klic": "bec14d55a419"
     },
     {
       "id": "9a22045dc60281f66a17",
