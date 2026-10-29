@@ -1,8 +1,92 @@
 {
- "generated": "2026-10-28T06:28:32Z",
+ "generated": "2026-10-29T06:39:54Z",
  "soud": "nss",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "nss:784491",
+   "spz": "21 Azs 269/2025-29",
+   "ecli": "ECLI:CZ:NSS:2026:21.Azs.269.2025.29",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "Azs",
+   "datum": "2026-08-11",
+   "zverejneno": "2026-10-29",
+   "first_seen": "2026-10-29T06:39:54Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784491",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784491",
+   "soudce": "Faisal Husseini",
+   "heslo": "Manžel cizince je osobou zúčastněnou na řízení",
+   "shrnuti": "Stěžovatelka podala žalobu proti rozhodnutí Ministerstva zahraničních věcí o neudělení krátkodobého schengenského víza z důvodu účelového manželství, kterou Městský soud v Praze zamítl. Nejvyšší správní soud řešil, zda je manžel stěžovatelky osobou zúčastněnou na řízení, kterou měl soud aktivně vyrozumět. Soud dospěl k závěru, že manžel je osobou zúčastněnou na řízení a soud jej musí vyrozumět, neboť může být rozhodnutím přímo dotčen na svých právech.",
+   "oblasti": [
+    "socialni_cizinci",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:784134",
+   "spz": "21 As 80/2025-136",
+   "ecli": "ECLI:CZ:NSS:2026:21.As.80.2025.136",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "As",
+   "datum": "2026-07-29",
+   "zverejneno": "2026-10-29",
+   "first_seen": "2026-10-29T06:39:54Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/784134",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/784134",
+   "soudce": "Faisal Husseini",
+   "heslo": "Předvýběr variant ministerstvem nezavazuje k vyloučení alternativ",
+   "shrnuti": "Obec Hrobce a další se u Krajského soudu v Ústí nad Labem domáhali zrušení opatření obecné povahy, kterým byla vydána aktualizace zásad územního rozvoje vymezující koridor pro vysokorychlostní trať. Krajský soud jejich návrh zamítl a dovodil, že předvýběr variant provedený ministerstvem je pro pořizovatele závazný. Nejvyšší správní soud na základě kasační stížnosti rozsudek krajského soudu zrušil s tím, že předvýběr ministerstva nezavazuje pořizovatele k tomu, aby předem vyloučil posouzení jiných rozumných alternativ včetně dřívější územní rezervy.",
+   "oblasti": [
+    "stavebni_zp",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:783772",
+   "spz": "21 As 257/2025-45",
+   "ecli": "ECLI:CZ:NSS:2026:21.As.257.2025.45",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "As",
+   "datum": "2026-07-16",
+   "zverejneno": "2026-10-29",
+   "first_seen": "2026-10-29T06:39:54Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/783772",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/783772",
+   "soudce": "Faisal Husseini",
+   "heslo": "Zařazení orné půdy do chráněné krajinné oblasti",
+   "shrnuti": "Žalobce se soudil s Ministerstvem životního prostředí kvůli zařazení svého pozemku do Chráněné krajinné oblasti Soutok. Nejvyšší správní soud řešil otázku legality tohoto zařazení a přípustnosti smluvní ochrany a dospěl k závěru, že orná půda tvoří nedílnou součást předmětu ochrany krajiny a smluvní ochrana nebyla v daném území proveditelná.",
+   "oblasti": [
+    "stavebni_zp",
+    "vecna_prava"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:783430",
+   "spz": "21 As 239/2025-30",
+   "ecli": "ECLI:CZ:NSS:2026:21.As.239.2025.30",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "As",
+   "datum": "2026-06-30",
+   "zverejneno": "2026-10-29",
+   "first_seen": "2026-10-29T06:39:54Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/783430",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/783430",
+   "soudce": "Faisal Husseini",
+   "heslo": "Nedostatečné odůvodnění změny územního plánu",
+   "shrnuti": "Obec Kunčice pod Ondřejníkem podala kasační stížnost proti rozsudku Krajského soudu v Ostravě, kterým bylo zrušeno opatření obecné povahy v části týkající se změny územního plánu a vynětí pozemku navrhovatelky ze zastavěného území. Nejvyšší správní soud řešil otázku, zda bylo odůvodnění změny územního plánu dostatečné s ohledem na pasivitu vlastnice pozemku. Kasační soud dospěl k závěru, že odůvodnění neobsahovalo přezkoumatelné důvody pro vyňatí pozemku a změnu jeho funkčního využití, a proto kasační stížnost zamítl.",
+   "oblasti": [
+    "stavebni_zp",
+    "vecna_prava"
+   ],
+   "procesni": false
+  },
   {
    "id": "nss:786847",
    "spz": "4 As 224/2024-44",
