@@ -517,8 +517,9 @@ _VOLBY_Z_CHYBY = (
 
 
 def _kvota_z_chyby(chyba):
-    """Z těla 429 vytáhne (denní limit?, nulová kvóta?, čekání v s)."""
-    denni = nulova = False
+    """Z těla 429 vytáhne (denní limit?, nulová kvóta?, limit vstupních
+    tokenů?, čekání v s)."""
+    denni = nulova = tokeny = False
     cekani = None
     for d in chyba.get("details") or []:
         typ = d.get("@type", "")
@@ -527,13 +528,15 @@ def _kvota_z_chyby(chyba):
                 jmeno = f"{v.get('quotaId', '')} {v.get('quotaMetric', '')}".lower()
                 if "perday" in jmeno or "per_day" in jmeno:
                     denni = True
+                if "inputtoken" in jmeno or "input_token" in jmeno:
+                    tokeny = True
                 if str(v.get("quotaValue", "")).strip() == "0":
                     nulova = True
         elif typ.endswith("RetryInfo"):
             m = re.match(r"([\d.]+)s", str(d.get("retryDelay", "")))
             if m:
                 cekani = float(m.group(1))
-    return denni, nulova, cekani
+    return denni, nulova, tokeny, cekani
 
 
 def _zapis_spotrebu(model, data):
@@ -623,12 +626,20 @@ def _zkus_model(model, telo_fn, timeout):
             pass
         zprava = re.sub(r"\s+", " ", str(chyba.get("message") or r.text))[:200]
         if r.status_code == 429:
-            denni, nulova, cekani = _kvota_z_chyby(chyba)
+            denni, nulova, tokeny, cekani = _kvota_z_chyby(chyba)
             if nulova:
                 _vyrad(model, "na free tieru není")
                 return "", "dalsi"
             if denni:
                 _vyrad(model, "denní limit vyčerpán")
+                return "", "dalsi"
+            if tokeny and pokus:
+                # Limit vstupních tokenů za minutu i po odpočinutí celé
+                # minuty: dotaz je na tenhle model moc velký (Gemma má na
+                # free tieru malý limit) a čekání nepomůže – jinak by se
+                # dlouhé rozhodnutí bralo za přetížení a nekončilo by nikdy.
+                print(f"    AI {model}: vstup je na limit tokenů za minutu moc dlouhý, "
+                      "zkusím další model")
                 return "", "dalsi"
             cekej = min(cekani or GEMINI_MIN_INTERVAL * (2 ** pokus), GEMINI_MAX_CEKANI)
             if pokus + 1 < GEMINI_MAX_RETRIES:

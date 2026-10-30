@@ -20,6 +20,11 @@ from judikatura import model
 from judikatura.analyza import PROMPT_VERZE
 
 MAX_POKUSU = 6
+# Kolikrát po sobě smí položka narazit jen na „přetíženou" AI, než se to
+# začne počítat jako pokus. Přetížení za položku obvykle nemůže, ale když
+# se opakuje u ní pořád (jeden model ji blokuje, druhý na ni nestačí),
+# fronta by se na ní točila donekonečna.
+MAX_PRETIZENI = 3
 # Sběr běží jednou denně; odklad kratší než den zajistí, že se to zkusí
 # při každém běhu, i když ten další začne o pár minut dřív.
 MAX_ODKLAD_H = 20
@@ -66,6 +71,16 @@ def sestav(sklady, nyni, tax):
 def _zaporne(s):
     """Řazení od nejnovějšího v rámci stabilního vzestupného sortu."""
     return tuple(-ord(c) for c in s)
+
+
+def pretizeni(z, nyni):
+    """AI byla jen přetížená. Pokus se nepočítá – dokud se to u položky
+    neopakuje MAX_PRETIZENI-krát po sobě; pak už je to selhání."""
+    stav = z.setdefault("stav", {})
+    stav["pretizeni"] = int(stav.get("pretizeni") or 0) + 1
+    if stav["pretizeni"] >= MAX_PRETIZENI:
+        stav["pretizeni"] = 0
+        odlozit(z, nyni, "ai-selhani")
 
 
 def pokusy_ai(stav):

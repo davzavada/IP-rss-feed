@@ -190,9 +190,10 @@ def zpracuj_ai(sklady, adaptery, nyni, tax, rozpocet, rezerva=0):
             break
         elif fc.ai_pretizena():
             # Přetížené modely (5xx, limity) – za to rozhodnutí taky nemůže,
-            # pokus se nepočítá a zkusí se to v dalším běhu.
+            # pokus se nepočítá a zkusí se to v dalším běhu. Když se to ale
+            # u téže položky opakuje, započítá se (fronta.pretizeni).
             print(f"    [diag] {z['id']}: AI přetížená, pokus se nepočítá")
-            continue
+            fronta.pretizeni(z, nyni)
         else:
             fronta.odlozit(z, nyni, "ai-selhani")
         sklad.zmeneno(z)

@@ -207,6 +207,19 @@ check("limit za minutu na všech pokusech → po posledním se nečeká, jde dal
 check("… a čekání si model zapamatuje pro další volání",
       fc._stav(PRVNI)["dalsi"] >= hodiny.t + 59, f"{fc._stav(PRVNI)['dalsi']} {hodiny.t}")
 
+TOKENY = lambda s=40: kvota("GenerateContentInputTokensPerModelPerMinute-FreeTier", "15000", s)
+sit, hodiny = priprav({PRVNI: [Odp(200, {"promptFeedback": {"blockReason": "PROHIBITED_CONTENT"}})],
+                       DRUHY: [TOKENY(40), TOKENY(10)]})
+text, _ = dotaz()
+check("limit tokenů za minutu i po čekání = vstup je na model moc velký, nebere se jako přetížení",
+      text == "" and not fc.ai_pretizena() and hodiny.spanky == [40.0]
+      and sit.modely_volani() == [PRVNI, DRUHY, DRUHY],
+      f"{hodiny.spanky} {sit.modely_volani()} {fc.ai_pretizena()}")
+
+sit, hodiny = priprav({PRVNI: [TOKENY(20), ok("po čekání")]})
+check("limit tokenů napoprvé je běžné čekání", dotaz()[0] == "po čekání" and hodiny.spanky == [20.0],
+      str(hodiny.spanky))
+
 # =====================================================================
 print("\n3) Výpadky a chyby")
 # =====================================================================

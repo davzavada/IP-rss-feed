@@ -675,6 +675,12 @@ z3 = archiv("nss")["nss:3"]
 check("přetížená AI: pokus se rozhodnutí nepočítá a zkusí se příště",
       len(volani) == 1 and z3["stav"]["pokusy"] == 0 and not z3["stav"]["dalsi_pokus"] and not z3.get("ai"),
       str(z3["stav"]))
+for hodin in (24, 48):
+    beh({"nss": pretizene}, TRETI_DEN + timedelta(hours=hodin))
+z3 = archiv("nss")["nss:3"]
+check("přetížená AI potřetí po sobě u téže položky = počítá se jako pokus",
+      z3["stav"]["pokusy"] == 1 and z3["stav"]["duvod"] == "ai-selhani" and z3["stav"]["pretizeni"] == 0,
+      str(z3["stav"]))
 fc._posledni_pretizeni = False
 fc.ai_volani = falesna_ai(ai_odpoved)
 fc._klic_zamitnut = True
