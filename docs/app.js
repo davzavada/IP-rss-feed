@@ -145,8 +145,8 @@ function pdfHref(item) {
 }
 
 // Položka ze zdroje (už převedená přes zJson / zCasopisu) jako řádek
-// seznamu. Pořadí čtení: značka · druh · název věci → heslo jako titulek →
-// shrnutí → oblasti; datum a odkazy stojí stranou.
+// seznamu. Pořadí čtení: značka · druh · název věci → heslo jako titulek
+// s ikonkami → shrnutí → oblasti; datum stojí stranou.
 function velkym(s) {
   s = String(s || "");
   return s ? s.charAt(0).toUpperCase() + s.slice(1) : "";
@@ -165,9 +165,9 @@ function zdrojLabel(url) {
 function pripravPolozku(item, key) {
   item._src = key;
   if (key === "journals") {
-    // „IIC · Liliia Oprysk · Článek" – autoři patří ke zkratce časopisu.
+    // „IIC · Liliia Oprysk" – autoři patří ke zkratce časopisu.
     item.ident = [item.tag, item.autori].filter(Boolean).join(" · ");
-    item.druhText = "Článek";
+    item.druhText = "";
     item.titul = item.title.replace(/^\[[^\]]+\]\s*/, "");
     item.vecText = "";
     item.stitky = item.heslo ? [item.heslo] : [];
@@ -194,15 +194,48 @@ function druhTrida(druh) {
   return "";
 }
 
-// Na desktopu jsou odkazy nenápadný šedý text hned za titulkem. Na telefonu
-// je místo nich odkazem na zdroj samotný titulek (viz polozkaHtml).
-function odkazyHtml(p) {
+// Ikonky za titulkem: PDF rozhodnutí, otevřít u zdroje a jiskra u shrnutí,
+// které napsala AI. Stojí uvnitř titulku za nezlomitelnou mezerou, takže
+// u víceřádkového názvu zůstanou na posledním řádku.
+const IKONA_AI = '<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0l1.6 4.4L14 6 9.6 7.6 8 12 6.4 7.6 2 6l4.4-1.6zM13 10l.8 2.2L16 13l-2.2.8L13 16l-.8-2.2L10 13l2.2-.8z"/></svg>';
+const IKONA_OTEVRIT = '<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M9.5 2.5h4v4M13.5 2.5 7.5 8.5M12 9.5v3a1 1 0 0 1-1 1H3.5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg>';
+const IKONA_PDF = '<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M4 1.75h5.5L12.5 4.75v9.5H4z"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" d="M9.25 1.75v3.25h3.25M6 8.5h4.5M6 11h3"/></svg>';
+
+// Odkud AI shrnutí dělala – časopisy z názvu a abstraktu, soudy z textu.
+function aiPopisek(p) {
+  return "Shrnutí napsal automaticky model Gemini z " +
+    (p._src === "journals" ? "názvu a abstraktu článku" : "textu rozhodnutí") +
+    ". Před zveřejněním ho nekontroluji.";
+}
+
+function ikonyHtml(p) {
   const doc = pdfHref(p);
   const zdroj = safeHref(p.link);
   let html = "";
-  if (doc) html += '<a class="odkaz-text" href="' + doc + '" target="_blank" rel="noopener">PDF</a>';
-  if (zdroj) html += '<a class="odkaz-text" href="' + zdroj + '" target="_blank" rel="noopener">' + zdrojLabel(p.link) + " ↗</a>";
+  if (doc) {
+    html += '<a class="ikona-odkaz" href="' + doc + '" target="_blank" rel="noopener" title="PDF" aria-label="PDF">' +
+      IKONA_PDF + "</a>";
+  }
+  if (zdroj) {
+    const kde = zdrojLabel(p.link);
+    const popis = kde === "Zdroj" ? "Otevřít u zdroje" : "Otevřít v " + kde;
+    html += '<a class="ikona-odkaz" href="' + zdroj + '" target="_blank" rel="noopener" title="' + popis +
+      '" aria-label="' + popis + '">' + IKONA_OTEVRIT + "</a>";
+  }
+  if (p.shrnuti) {
+    html += '<span class="ikona-ai" role="img" aria-label="Shrnutí AI" title="' + esc(aiPopisek(p)) + '">' +
+      IKONA_AI + "</span>";
+  }
   return html;
+}
+
+// Vysvětlení jiskry pod seznamem – ikona sama nic neříká a na telefonu
+// se na ni nedá najet.
+function aiPoznamkaHtml(items) {
+  if (!items.some(i => i.shrnuti)) return "";
+  return '<p class="ai-poznamka">' + IKONA_AI + " Shrnutí označená touto ikonou napsal automaticky " +
+    "model Gemini – u článků z názvu a abstraktu, u rozhodnutí z jejich textu. Před zveřejněním je " +
+    "nekontroluji, takže můžou obsahovat chyby. :)</p>";
 }
 
 function polozkaHtml(p) {
@@ -217,18 +250,15 @@ function polozkaHtml(p) {
     html += '<span class="meta-vec">' + (meta.length ? TECKA : "") + "<span>" + esc(p.vecText) + "</span></span>";
   }
   html += '<span class="polozka-datum">' + esc(czDate(p.datum)) + "</span></div>";
-  // Odkaz ještě na samotný dokument (PDF rozhodnutí) – shrnutí je jen
-  // shrnutí. Obojí se otevře v nové kartě, ať čtenář nepřijde o místo.
-  const odkazy = odkazyHtml(p);
-  // Titulek vede na zdroj – klikací je jen na telefonu, kde za ním odkazy
-  // nejsou (na desktopu ho CSS nechá jako prostý text).
+  // Titulek vede na zdroj, za ním ikonky (PDF, otevřít, AI). Vše se
+  // otevře v nové kartě, ať čtenář nepřijde o místo.
   const zdroj = safeHref(p.link);
   const titul = zdroj
-    ? '<a class="titul-odkaz" href="' + zdroj + '" target="_blank" rel="noopener">' + esc(p.titul) +
-      '<span class="titul-sipka" aria-hidden="true"> ↗</span></a>'
+    ? '<a class="titul-odkaz" href="' + zdroj + '" target="_blank" rel="noopener">' + esc(p.titul) + "</a>"
     : esc(p.titul);
-  html += '<div class="polozka-hlava"><h3 class="polozka-titul">' + titul + "</h3>" +
-    (odkazy ? '<span class="polozka-odkazy-text">' + odkazy + "</span>" : "") + "</div>";
+  const ikony = ikonyHtml(p);
+  html += '<div class="polozka-hlava"><h3 class="polozka-titul">' + titul +
+    (ikony ? '&nbsp;<span class="polozka-ikony">' + ikony + "</span>" : "") + "</h3></div>";
   if (p.vecText) html += '<div class="polozka-vec">' + esc(p.vecText) + "</div>";
   // Bez shrnutí ještě může být poznámka, proč žádné není – třeba že u žádosti
   // o předběžnou otázku zatím nejsou zveřejněné otázky.
@@ -429,7 +459,8 @@ function renderArchiv(f, vsechny) {
   }
   const items = (vse ? vsechny : mine).slice().sort(podleData);
   if (items.length) {
-    container.innerHTML = '<div class="zdroj">' + items.map(polozkaHtml).join("") + "</div>";
+    container.innerHTML = '<div class="zdroj">' + items.map(polozkaHtml).join("") + "</div>" +
+      aiPoznamkaHtml(items);
   } else if (!vse && vsechny.length) {
     container.innerHTML = '<p class="feed-empty feed-empty-box">Za sledované období tu podle vašeho výběru nic není. ' +
       '<button type="button" class="odkaz-tlacitko" data-archiv="' + f.key + '" data-vse="1">Přepněte na Vše.</button></p>';
@@ -514,7 +545,9 @@ function renderToday() {
       '<span class="zdroj-nazev">' + esc(f.nazev) + '</span><span class="zdroj-pocet">' + skupina.length +
       "</span></div>" + skupina.map(polozkaHtml).join("") + "</section>";
   }).join("");
-  container.innerHTML = html || '<p class="feed-empty">V téhle části poslední sběr nic nového nepřinesl.</p>';
+  container.innerHTML = html
+    ? html + aiPoznamkaHtml(polozky.filter(filtr.bere))
+    : '<p class="feed-empty">V téhle části poslední sběr nic nového nepřinesl.</p>';
 }
 
 function prekresliNovinky() {
@@ -692,7 +725,10 @@ function renderDigest(data) {
   }
   const obdobiM = document.getElementById("digest-obdobi-m");
   if (obdobiM) obdobiM.textContent = obdobi;
-  let html = '<div class="digest-bloky">';
+  // Přehled celý píše AI – řekne to hned nahoře, i na telefonu.
+  let html = '<p class="ai-poznamka ai-poznamka-nahore">' + IKONA_AI + " Přehled napsal automaticky model " +
+    "Gemini ze shrnutí rozhodnutí a článků. Před zveřejněním ho nekontroluji, takže může obsahovat chyby.</p>";
+  html += '<div class="digest-bloky">';
   data.blocks.forEach(b => {
     html += '<div class="digest-block">';
     html += '<h3 class="digest-title">' + esc(b.title || "") + "</h3>";

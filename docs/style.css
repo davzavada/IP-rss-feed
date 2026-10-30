@@ -306,13 +306,27 @@ html:not(.smi-kalendar) [data-jen="kalendar"] { display: none !important; }
   margin: 0; font-size: 16px; font-weight: 600; line-height: 1.35;
   letter-spacing: -0.01em; text-wrap: pretty; overflow-wrap: anywhere;
 }
-/* Titulek je odkazem na zdroj jen na telefonu; na desktopu je prostý text
-   (odkazy jsou hned za ním). */
-.titul-odkaz { color: inherit; text-decoration: none; pointer-events: none; }
-.titul-sipka { display: none; color: var(--faint); font-weight: 400; }
-.polozka-odkazy-text { display: flex; align-items: baseline; gap: 10px; font-size: 12.5px; white-space: nowrap; }
-.odkaz-text { color: var(--faint); }
-.odkaz-text:hover { color: var(--active-fg); }
+/* Titulek je odkazem na zdroj; za ním šedé ikonky (PDF, otevřít, AI).
+   Jsou uvnitř nadpisu za nezlomitelnou mezerou, takže u víceřádkového
+   názvu zůstanou na jeho posledním řádku. */
+.titul-odkaz { color: inherit; text-decoration: none; }
+.titul-odkaz:hover { text-decoration: underline; text-decoration-color: var(--faint); text-underline-offset: 3px; }
+.polozka-ikony {
+  display: inline-flex; align-items: center; gap: 6px; margin-left: 2px;
+  vertical-align: -1px; font-weight: 400; white-space: nowrap;
+}
+.polozka-ikony svg { display: block; width: 14px; height: 14px; }
+.ikona-odkaz { display: inline-flex; padding: 2px; margin: -2px; border-radius: 5px; color: var(--faint); }
+.ikona-odkaz:hover { color: var(--active-fg); background: var(--muted); }
+.ikona-ai { display: inline-flex; color: var(--faint); cursor: help; }
+.ikona-ai svg { width: 13px; height: 13px; }
+/* Vysvětlení jiskry pod seznamem (a nad měsíčním přehledem). */
+.ai-poznamka {
+  margin: 4px 0 0; padding: 12px 14px; border-radius: 8px; background: var(--muted);
+  font-size: 13px; line-height: 1.55; color: var(--muted-foreground); text-wrap: pretty;
+}
+.ai-poznamka svg { width: 12px; height: 12px; vertical-align: -1px; color: var(--faint); }
+.ai-poznamka-nahore { margin: 0 0 4px; }
 .polozka-vec { display: none; font-size: 13px; color: var(--muted-foreground); }
 /* Na desktopu do bloku s českým dělením slov (lang="cs" na <html>), ať
    v řádcích nezůstávají velké mezery; na telefonu zarovnání doleva. */
@@ -841,13 +855,10 @@ html.is-loading body { visibility: hidden; }
   .feed { gap: 18px; }
   .zdroj-hlava { gap: 8px; padding-bottom: 8px; }
 
-  /* Datum na řádku se značkou, název věci pod titulkem. Odkazem na zdroj
-     je sám titulek (se šipkou), tlačítka PDF a Zdroj tu nejsou. */
+  /* Datum na řádku se značkou, název věci pod titulkem. */
   .polozka { padding: 16px 0; }
-  .polozka-meta .meta-vec, .polozka-odkazy-text { display: none; }
+  .polozka-meta .meta-vec { display: none; }
   .polozka-vec { display: block; }
-  .titul-odkaz { pointer-events: auto; }
-  .titul-sipka { display: inline; }
   .polozka-shrnuti { text-align: left; hyphens: manual; -webkit-hyphens: manual; }
   /* Zdroje přehledu pod sebou, každý na jeden řádek. */
   .digest-block { padding: 18px 0; }
