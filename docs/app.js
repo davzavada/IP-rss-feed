@@ -194,19 +194,12 @@ function druhTrida(druh) {
   return "";
 }
 
-// Ikonky za titulkem: PDF rozhodnutí, otevřít u zdroje a jiskra u shrnutí,
-// které napsala AI. Stojí uvnitř titulku za nezlomitelnou mezerou, takže
-// u víceřádkového názvu zůstanou na posledním řádku.
+// Ikonky za titulkem: PDF rozhodnutí a otevřít u zdroje. Stojí uvnitř
+// titulku za nezlomitelnou mezerou, takže u víceřádkového názvu zůstanou
+// na posledním řádku. Že shrnutí píše AI, říká jiskra u nadpisu stránky.
 const IKONA_AI = '<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0l1.6 4.4L14 6 9.6 7.6 8 12 6.4 7.6 2 6l4.4-1.6zM13 10l.8 2.2L16 13l-2.2.8L13 16l-.8-2.2L10 13l2.2-.8z"/></svg>';
 const IKONA_OTEVRIT = '<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M9.5 2.5h4v4M13.5 2.5 7.5 8.5M12 9.5v3a1 1 0 0 1-1 1H3.5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg>';
 const IKONA_PDF = '<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M4 1.75h5.5L12.5 4.75v9.5H4z"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" d="M9.25 1.75v3.25h3.25M6 8.5h4.5M6 11h3"/></svg>';
-
-// Odkud AI shrnutí dělala – časopisy z názvu a abstraktu, soudy z textu.
-function aiPopisek(p) {
-  return "Shrnutí napsal automaticky model Gemini z " +
-    (p._src === "journals" ? "názvu a abstraktu článku" : "textu rozhodnutí") +
-    ". Před zveřejněním ho nekontroluji.";
-}
 
 function ikonyHtml(p) {
   const doc = pdfHref(p);
@@ -222,20 +215,16 @@ function ikonyHtml(p) {
     html += '<a class="ikona-odkaz" href="' + zdroj + '" target="_blank" rel="noopener" title="' + popis +
       '" aria-label="' + popis + '">' + IKONA_OTEVRIT + "</a>";
   }
-  if (p.shrnuti) {
-    html += '<span class="ikona-ai" role="img" aria-label="Shrnutí AI" title="' + esc(aiPopisek(p)) + '">' +
-      IKONA_AI + "</span>";
-  }
   return html;
 }
 
-// Vysvětlení jiskry pod seznamem – ikona sama nic neříká a na telefonu
-// se na ni nedá najet.
+// Vysvětlení jiskry u nadpisu, pod seznamem – ikona sama nic neříká
+// a na telefonu se na ni nedá najet.
 function aiPoznamkaHtml(items) {
   if (!items.some(i => i.shrnuti)) return "";
-  return '<p class="ai-poznamka">' + IKONA_AI + " Shrnutí označená touto ikonou napsal automaticky " +
-    "model Gemini – u článků z názvu a abstraktu, u rozhodnutí z jejich textu. Před zveřejněním je " +
-    "nekontroluji, takže můžou obsahovat chyby. :)</p>";
+  return '<p class="ai-poznamka">' + IKONA_AI + " Všechna shrnutí tu píše automaticky AI (model Gemini) – " +
+    "u článků z názvu a abstraktu, u rozhodnutí z jejich textu. Před zveřejněním je nekontroluji, " +
+    "takže můžou obsahovat chyby. :)</p>";
 }
 
 function polozkaHtml(p) {
@@ -578,8 +567,7 @@ function initNovinkyFiltr() {
   if (upravit) upravit.addEventListener("click", otevriVyber);
 }
 
-// Přepínač „Můj výběr: IP, IT, senát 23 | Vše" vedle filtru Novinek – první
-// volba je zároveň souhrn toho, podle čeho se Novinky řídí. Ikonka vedle
+// Přepínač „Můj výběr | Vše" vedle filtru Novinek. Ikonka vedle
 // otevře Můj výběr; bez Clerku se nedá nic změnit, tak není. Dokud se Clerk
 // načítá, je vidět (výchozí výběr) – stránka se na Clerk u nepřihlášeného
 // nečeká a ikonka by se jinak objevila až po odkrytí.
@@ -590,23 +578,10 @@ function vykresliRozsahNovinek(jeCo) {
   if (!obal || !el) return;
   obal.hidden = !jeCo || !vyber;
   if (obal.hidden) return;
-  el.innerHTML = [["", "Můj výběr: " + souhrnVyberu(vyber)], ["1", "Vše"]].map(([k, label]) =>
+  el.innerHTML = [["", "Můj výběr"], ["1", "Vše"]].map(([k, label]) =>
     '<button type="button" data-novinky-vse="' + k + '" aria-pressed="' + (!!k === novinkyVse) + '">' +
     esc(label) + "</button>").join("");
   if (upravit) upravit.hidden = clerkStav === "nedostupny";
-}
-
-// Krátce: výchozí oblasti jako „IP, IT", jinak jejich názvy (nejvýš dvě)
-// nebo počet; za nimi senáty NS.
-function souhrnVyberu(v) {
-  const oblasti = OBLASTI_SEZNAM.filter(o => stavOblasti(v, o.id) === "true").map(o => o.id);
-  let text = "";
-  if (oblasti.length && JSON.stringify(oblasti) === JSON.stringify(VYCHOZI_OBLASTI)) text = "IP, IT";
-  else if (oblasti.length && oblasti.length <= 2) text = oblasti.map(id => OBLASTI[id]).join(", ");
-  else if (oblasti.length) text = tvar(oblasti.length, "oblast", "oblasti", "oblastí");
-  const senaty = souhrnSenatu(v);
-  if (senaty !== "žádný senát") text += (text ? ", " : "") + senaty;
-  return text || "nic";
 }
 
 // Stažené položky zdrojů (výsledky Promise.allSettled). Při změně výběru se

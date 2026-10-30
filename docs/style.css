@@ -318,8 +318,9 @@ html:not(.smi-kalendar) [data-jen="kalendar"] { display: none !important; }
 .polozka-ikony svg { display: block; width: 14px; height: 14px; }
 .ikona-odkaz { display: inline-flex; padding: 2px; margin: -2px; border-radius: 5px; color: var(--faint); }
 .ikona-odkaz:hover { color: var(--active-fg); background: var(--muted); }
-.ikona-ai { display: inline-flex; color: var(--faint); cursor: help; }
-.ikona-ai svg { width: 13px; height: 13px; }
+/* Jiskra u nadpisu stránky: shrnutí tady píše AI. */
+.nadpis-ai { display: inline-flex; vertical-align: 0.15em; color: var(--faint); cursor: help; }
+.nadpis-ai svg { width: 16px; height: 16px; }
 /* Vysvětlení jiskry pod seznamem (a nad měsíčním přehledem). */
 .ai-poznamka {
   margin: 4px 0 0; padding: 12px 14px; border-radius: 8px; background: var(--muted);
