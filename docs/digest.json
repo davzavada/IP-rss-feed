@@ -1,82 +1,15 @@
 {
-  "generated": "2026-10-27T05:51:44.552315+00:00",
+  "generated": "2026-10-30T06:42:30.981673+00:00",
   "from": "2026-09-01",
   "to": "2026-09-30",
-  "total": 40,
-  "covered": 9,
-  "cekajici": 1,
-  "intro": "Uplynulé období přineslo řadu odborných analýz zaměřených na vliv umělé inteligence na autorské a patentové právo, ochranu osobnosti v digitálním věku a nové otázky kolem zpracování biometrických údajů dle GDPR. Pozornost byla věnována také vymáhání duševního vlastnictví v moderních prostředích, jako je metaverse či online platformy.",
+  "total": 2,
+  "covered": 2,
+  "cekajici": 0,
+  "intro": "Uplynulý měsíc přinesl odbornou reflexi v oblasti autorského práva, se zaměřením na efektivnější řešení sporů v digitálním prostředí a propojení duševního vlastnictví s lidskými právy. Diskutována byla zejména potřeba reformy mechanismů vymáhání práva na online platformách a širší pohled na kulturní dědictví skrze mezinárodní úmluvy.",
   "blocks": [
     {
-      "title": "Umělá inteligence a autorství",
-      "text": "Odborné články rozebraly právní výzvy spojené s generativní AI, včetně určení původcovství v patentovém právu a požadavků na lidskou tvůrčí práci pro vznik autorské ochrany. Diskutovány byly také mechanismy spravedlivého odměňování autorů za díla užitá v systémech AI, což je klíčové pro nastavení budoucích licenčních smluv.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JWIP",
-          "title": "Inventorship in the age of AI: Legal challenges and potential solutions",
-          "link": "https://doi.org/10.1111/jwip.70014"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JWIP",
-          "title": "How much human contribution is needed for “ownership” of AI‐generated content: A comparison of copyright determination for generative AI in China and the United States",
-          "link": "https://doi.org/10.1111/jwip.70011"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JWIP",
-          "title": "Exploring remuneration mechanisms for copyrighted works in generative AI systems",
-          "link": "https://doi.org/10.1111/jwip.70027"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JWIP",
-          "title": "When it comes to the use of AI in the inventive process: Is there room to confirm the subjective inventorship standard in a world of objective patentability criteria?",
-          "link": "https://doi.org/10.1111/jwip.70019"
-        }
-      ]
-    },
-    {
-      "title": "Osobnostní práva a deepfakes",
-      "text": "Analýzy se zaměřily na to, zda rozvoj deepfakes, digitálních replik a lidských digitálních dvojčat odůvodňuje posílení osobnostních práv a ochrany podobizny v globálním digitálním věku. Pro praxi to znamená nutnost bedlivě sledovat vývoj v oblasti ochrany identity a reputace.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JWIP",
-          "title": "Gregorini v. Shyamalan: Can Access Trump Similarity in a Globalised Digital Age?",
-          "link": "https://doi.org/10.1111/jwip.70012"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JWIP",
-          "title": "Do deepfakes, digital replicas and human digital twins justify personality rights?",
-          "link": "https://doi.org/10.1111/jwip.70020"
-        }
-      ]
-    },
-    {
-      "title": "Biometrické údaje v GDPR",
-      "text": "Nizozemský soud předložil Soudnímu dvoru EU předběžnou otázku týkající se právní kvalifikace fotografií obličeje a jejich ukládání za účelem identifikace. Výsledek řízení objasní, zda takové postupy spadají pod přísnější režim zpracování biometrických údajů podle GDPR.",
-      "sources": [
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "C-660/26 – International Card Services",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0660"
-        }
-      ]
-    },
-    {
-      "title": "IP v metaverzu a platformách",
-      "text": "Odborná literatura se věnovala efektivnímu vymáhání práv duševního vlastnictví na herních platformách v metaverzu a v kontextu algoritmického vymáhání. Pro praxi to přináší pohled na nové institucionální rámce a nutnost adaptace licenčních a vymáhacích strategií pro virtualizovaná prostředí.",
+      "title": "Řešení autorských sporů",
+      "text": "Odborná studie analyzuje nedostatky současných mechanismů pro řešení sporů v kreativním sektoru, jako jsou vysoké náklady a netransparentnost. V kontextu digitálních platforem a algoritmického vymáhání práva navruje nový rámec pro spravedlivější institucionální uspořádání. Pro praxi to otevírá debatu o efektivnějších alternativních způsobech řešení sporů v online prostředí.",
       "sources": [
         {
           "src": "journals",
@@ -84,16 +17,22 @@
           "tag": "IIC",
           "title": "Designing Justice in the Creative Sector: A Dispute System Design Framework for Copyright Dispute Resolution",
           "link": "https://doi.org/10.1007/s40319-026-01754-1"
-        },
+        }
+      ]
+    },
+    {
+      "title": "Autorské právo a paměť",
+      "text": "Článek zkoumá problematiku kulturního dědictví a koloniality paměti ve vztahu k autorskému právu. Navrhuje překonat standardní autorskoprávní výjimky skrze uplatnění práva na pamatování podle mezinárodních paktů o lidských právech. Pro právní praxi to představuje podnět k hlubšímu propojení oblasti duševního vlastnictví s ochranou lidských práv.",
+      "sources": [
         {
           "src": "journals",
           "label": "Časopis",
           "tag": "JWIP",
-          "title": "Enforcing intellectual property rights in metaverse gaming platforms: The next steps for the EU's metaverse agenda",
-          "link": "https://doi.org/10.1111/jwip.70022"
+          "title": "The coloniality of memory and cultural heritage: From copyright exceptions to a right to remember under Article 15 of the ICESCR",
+          "link": "https://doi.org/10.1111/jwip.70037"
         }
       ]
     }
   ],
-  "input_hash": "e8888111722243e41da0e3f625223e64fd8d75812ed053930158f3ae270cb23e"
+  "input_hash": "e1d743ace2fbf14c43117df797692fd1fb0c148f9d857feb689c8ee4c8a6d75b"
 }

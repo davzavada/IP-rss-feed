@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-29T06:40:44+00:00",
+  "generated": "2026-10-30T06:42:30+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 27,
-      "stazeno": "2026-10-29T06:40:36+00:00",
+      "stazeno": "2026-10-30T06:42:10+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -17,11 +17,11 @@
       "zkratka": "PF UK",
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
-      "pocet": 6,
-      "stazeno": "2026-10-29T06:40:37+00:00",
+      "pocet": 5,
+      "stazeno": "2026-10-30T06:42:14+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "bfef3511d13f693f"
+      "otisk": "7b1bb81969c140dd"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-10-29T06:40:42+00:00",
+      "stazeno": "2026-10-30T06:42:20+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "0959d601089f3a58"
+      "otisk": "59e24f35cffc161c"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-10-29T06:40:44+00:00",
+      "stazeno": "2026-10-30T06:42:21+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -62,10 +62,10 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-10-29T06:40:44+00:00",
+      "stazeno": "2026-10-30T06:42:24+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "fba0589c410d9352"
+      "otisk": "45f0e28f589d7dcd"
     }
   },
   "formy": {
@@ -1348,29 +1348,6 @@
       "oblasti_klic": "b6f142812084"
     },
     {
-      "id": "d7e70b8c955d24aeda6b",
-      "poradatel": "PFUK",
-      "datum": "2026-11-02",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "Noc fakulty 2026",
-      "misto": "Právnická fakulta Univerzity Karlovy, náměstí Curieových 7, Praha 1",
-      "forma": "prezencne",
-      "lektori": [
-        "Klára Tichá"
-      ],
-      "cena": "zdarma",
-      "anotace": "Jubilejní 10. ročník největšího studentského multižánrového festivalu v ČR promění budovu Právnické fakulty UK v centrum vědění, kultury a zábavy.",
-      "url": "https://www.prf.cuni.cz/aktuality/noc-fakulty-2026",
-      "datum_do": "2026-11-04",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [],
-      "oblasti_klic": "eb04a46c8a4c"
-    },
-    {
       "id": "a78bf6a336f262f521a2",
       "poradatel": "CAK",
       "datum": "2026-11-03",
@@ -1710,6 +1687,32 @@
         "stavebni_zp"
       ],
       "oblasti_klic": "a8a21c8bd266"
+    },
+    {
+      "id": "ac332da12ff6550aac06",
+      "poradatel": "PFUK",
+      "datum": "2026-11-09",
+      "zacatek": "09:00",
+      "konec": "11:30",
+      "nazev": "Proměny a aktuální otázky mediálního práva",
+      "misto": "Právnická fakulta UK, nám. Curieových 901/7, Praha 1, místnost 412",
+      "forma": "prezencne",
+      "lektori": [
+        "JUDr. Miroslava Večeř, Ph.D., LL.M.",
+        "JUDr. Ing. Martin Adamec, LL.M., Ph.D.",
+        "Mgr. Daniel Burda"
+      ],
+      "cena": "",
+      "anotace": "Kulatý stůl nabídne prostor pro odbornou diskusi nad současným vývojem mediálního práva a otázkami, které v této oblasti přináší dynamické proměny mediálního prostředí.",
+      "url": "https://www.prf.cuni.cz/aktuality/promeny-a-aktualni-otazky-medialniho-prava",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "osobnost_media"
+      ],
+      "oblasti_klic": "9c4b0bf13c81"
     },
     {
       "id": "07d098081d52fc885a7d",
@@ -2163,7 +2166,7 @@
       "lektori": [],
       "cena": "zdarma",
       "anotace": "Online seminář zaměřený na téma SME Fund 2026.",
-      "url": "https://upv.gov.cz/files/uploads/seminare2026/0312_smefund2026.pdf",
+      "url": "https://upv.gov.cz/files/uploads/seminare2026/0312_smefund.pdf",
       "detail_pokusy": 2,
       "z_detailu": [
         "misto"
