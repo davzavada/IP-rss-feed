@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-29T06:39:54Z",
+ "generated": "2026-10-30T06:40:19Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
@@ -878,6 +878,25 @@
     "civilni_proces"
    ],
    "procesni": false
+  },
+  {
+   "id": "sdeu:62025CO0266",
+   "spz": "C-266/25",
+   "ecli": "ECLI:EU:C:2026:880",
+   "druh": "usnesení",
+   "rejstrik": "C",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-10-21",
+   "first_seen": "2026-10-21T12:00:00Z",
+   "nazev": "I-Sete",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CO0266",
+   "heslo": "Oprava zjevné nesprávnosti v rozsudku",
+   "shrnuti": "Soudní dvůr EU rozhodoval o návrhu na opravu zjevné nesprávnosti v dřívějším rozsudku týkajícím se výkladu vnitrostátních právních předpisů v oblasti veřejných zakázek. Soudní dvůr vydal usnesení, kterým na základě návrhu členského státu opravil nepřesnosti v bodech, jež se týkaly znění dotčených ustanovení portugalského zákona o zvláštních opatřeních v oblasti zadávání veřejných zakázek.",
+   "oblasti": [
+    "verejne_zakazky",
+    "spravni"
+   ],
+   "procesni": true
   },
   {
    "id": "sdeu:ipc:C-1116/26",
