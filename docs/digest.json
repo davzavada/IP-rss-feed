@@ -1,38 +1,11 @@
 {
-  "generated": "2026-10-30T06:42:30.981673+00:00",
+  "generated": "2026-10-31T06:31:55.122825+00:00",
   "from": "2026-09-01",
   "to": "2026-09-30",
-  "total": 2,
-  "covered": 2,
+  "total": 0,
+  "covered": 0,
   "cekajici": 0,
-  "intro": "Uplynulý měsíc přinesl odbornou reflexi v oblasti autorského práva, se zaměřením na efektivnější řešení sporů v digitálním prostředí a propojení duševního vlastnictví s lidskými právy. Diskutována byla zejména potřeba reformy mechanismů vymáhání práva na online platformách a širší pohled na kulturní dědictví skrze mezinárodní úmluvy.",
-  "blocks": [
-    {
-      "title": "Řešení autorských sporů",
-      "text": "Odborná studie analyzuje nedostatky současných mechanismů pro řešení sporů v kreativním sektoru, jako jsou vysoké náklady a netransparentnost. V kontextu digitálních platforem a algoritmického vymáhání práva navruje nový rámec pro spravedlivější institucionální uspořádání. Pro praxi to otevírá debatu o efektivnějších alternativních způsobech řešení sporů v online prostředí.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "Designing Justice in the Creative Sector: A Dispute System Design Framework for Copyright Dispute Resolution",
-          "link": "https://doi.org/10.1007/s40319-026-01754-1"
-        }
-      ]
-    },
-    {
-      "title": "Autorské právo a paměť",
-      "text": "Článek zkoumá problematiku kulturního dědictví a koloniality paměti ve vztahu k autorskému právu. Navrhuje překonat standardní autorskoprávní výjimky skrze uplatnění práva na pamatování podle mezinárodních paktů o lidských právech. Pro právní praxi to představuje podnět k hlubšímu propojení oblasti duševního vlastnictví s ochranou lidských práv.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JWIP",
-          "title": "The coloniality of memory and cultural heritage: From copyright exceptions to a right to remember under Article 15 of the ICESCR",
-          "link": "https://doi.org/10.1111/jwip.70037"
-        }
-      ]
-    }
-  ],
-  "input_hash": "e1d743ace2fbf14c43117df797692fd1fb0c148f9d857feb689c8ee4c8a6d75b"
+  "intro": "",
+  "blocks": [],
+  "input_hash": "2dd694ef30f6ef76bdac0a56eb384e37d0e349d75133bfae26b909601a066c7b"
 }

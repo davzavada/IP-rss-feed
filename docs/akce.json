@@ -1,13 +1,13 @@
 {
-  "generated": "2026-10-30T06:42:30+00:00",
+  "generated": "2026-10-31T06:31:55+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 27,
-      "stazeno": "2026-10-30T06:42:10+00:00",
+      "pocet": 26,
+      "stazeno": "2026-10-31T06:31:18+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -17,11 +17,11 @@
       "zkratka": "PF UK",
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
-      "pocet": 5,
-      "stazeno": "2026-10-30T06:42:14+00:00",
+      "pocet": 9,
+      "stazeno": "2026-10-31T06:31:22+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "7b1bb81969c140dd"
+      "otisk": "512d7fcccfc25980"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-10-30T06:42:20+00:00",
+      "stazeno": "2026-10-31T06:31:27+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "59e24f35cffc161c"
+      "otisk": "912114d5a03b2ce0"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-10-30T06:42:21+00:00",
+      "stazeno": "2026-10-31T06:31:28+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-10-30T06:42:24+00:00",
+      "stazeno": "2026-10-31T06:31:28+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "45f0e28f589d7dcd"
@@ -1348,6 +1348,29 @@
       "oblasti_klic": "b6f142812084"
     },
     {
+      "id": "d7e70b8c955d24aeda6b",
+      "poradatel": "PFUK",
+      "datum": "2026-11-02",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Noc fakulty 2026",
+      "misto": "Právnická fakulta Univerzity Karlovy, náměstí Curieových 7, Praha 1",
+      "forma": "prezencne",
+      "lektori": [
+        "Klára Tichá"
+      ],
+      "cena": "zdarma",
+      "anotace": "Největší studentský multižánrový festival v České republice proměňuje budovu Právnické fakulty UK v centrum vědění, kultury a zábavy. Nabízí odborný program plný přednášek a workshopů i kulturní a společenský program včetně koncertů a divadla.",
+      "url": "https://www.prf.cuni.cz/aktuality/noc-fakulty-2026",
+      "datum_do": "2026-11-04",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [],
+      "oblasti_klic": "516ac4f26f30"
+    },
+    {
       "id": "a78bf6a336f262f521a2",
       "poradatel": "CAK",
       "datum": "2026-11-03",
@@ -1514,6 +1537,26 @@
       "oblasti_klic": "34f42a588ef4"
     },
     {
+      "id": "83d0a1eef4d4f643a4b6",
+      "poradatel": "PFUK",
+      "datum": "2026-11-04",
+      "zacatek": "11:00",
+      "konec": "14:00",
+      "nazev": "Veletrh odborných praxí na Právnické fakultě UK",
+      "misto": "v bazénu",
+      "forma": "prezencne",
+      "lektori": [],
+      "cena": "zdarma",
+      "anotace": "Přijďte objevit možnosti odborné praxe na veletrh, kde se představí poskytovatelé z různých oblastí práva, ministerstev, soudů či neziskových organizací. Akce je určena studentům všech ročníků pro získání praktických zkušeností.",
+      "url": "https://www.prf.cuni.cz/aktuality/veletrh-odbornych-praxi-na-pravnicke-fakulte-uk",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [],
+      "oblasti_klic": "f1b0487ebe07"
+    },
+    {
       "id": "0876313aa4dd8481e24f",
       "poradatel": "CAK",
       "datum": "2026-11-04",
@@ -1553,25 +1596,6 @@
       "detail_pokusy": 2,
       "oblasti": [],
       "oblasti_klic": "169687125631"
-    },
-    {
-      "id": "47f08806e8242cb69691",
-      "poradatel": "PFUK",
-      "datum": "2026-11-05",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "Michal Urban | Jak (ne)používat AI ve studiu",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [
-        "Michal Urban"
-      ],
-      "cena": "",
-      "anotace": "Setkání nabídne praktický pohled na využití AI při vyhledávání informací, práci s odbornými texty, přípravě na semináře a zkoušky nebo při psaní seminárních a kvalifikačních prací. Půjde o besedu vyučujícího s jedním až dvěma studujícími, do které se samozřejmě bude moci zapojit i publikum se svými otázkami a zkušenostmi.",
-      "url": "https://www.prf.cuni.cz/aktuality/michal-urban-jak-nepouzivat-ai-ve-studiu",
-      "detail_pokusy": 2,
-      "oblasti": [],
-      "oblasti_klic": "11f693cd58b4"
     },
     {
       "id": "112ae55fa8739d4fd099",
@@ -1689,30 +1713,25 @@
       "oblasti_klic": "a8a21c8bd266"
     },
     {
-      "id": "ac332da12ff6550aac06",
+      "id": "42468bd459e26f313d73",
       "poradatel": "PFUK",
       "datum": "2026-11-09",
-      "zacatek": "09:00",
-      "konec": "11:30",
-      "nazev": "Proměny a aktuální otázky mediálního práva",
-      "misto": "Právnická fakulta UK, nám. Curieových 901/7, Praha 1, místnost 412",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Týden fakulty",
+      "misto": "Právnická fakulta UK",
       "forma": "prezencne",
-      "lektori": [
-        "JUDr. Miroslava Večeř, Ph.D., LL.M.",
-        "JUDr. Ing. Martin Adamec, LL.M., Ph.D.",
-        "Mgr. Daniel Burda"
-      ],
+      "lektori": [],
       "cena": "",
-      "anotace": "Kulatý stůl nabídne prostor pro odbornou diskusi nad současným vývojem mediálního práva a otázkami, které v této oblasti přináší dynamické proměny mediálního prostředí.",
-      "url": "https://www.prf.cuni.cz/aktuality/promeny-a-aktualni-otazky-medialniho-prava",
+      "anotace": "Týden fakulty nabízí studujícím, vyučujícím i dalším členům akademické obce příležitost setkat se jinak než při běžné výuce, sdílet zkušenosti a diskutovat o aktuálních tématech.",
+      "url": "https://www.prf.cuni.cz/aktuality/tyden-fakulty",
+      "datum_do": "2026-11-13",
       "detail_pokusy": 2,
       "z_detailu": [
         "misto"
       ],
-      "oblasti": [
-        "osobnost_media"
-      ],
-      "oblasti_klic": "9c4b0bf13c81"
+      "oblasti": [],
+      "oblasti_klic": "6d1da04e69ad"
     },
     {
       "id": "07d098081d52fc885a7d",
@@ -1820,6 +1839,67 @@
       "detail_pokusy": 2
     },
     {
+      "id": "854dd9f9555a1d631c00",
+      "poradatel": "PFUK",
+      "datum": "2026-11-12",
+      "zacatek": "17:00",
+      "konec": "19:00",
+      "nazev": "Diskuzní čtvrtek na PFUK | Agresivní jednání v silničním provozu a jeho trestní postih – nad návrhem legislativních změn",
+      "misto": "Právnická fakulta Univerzity Karlovy, Nám. Curieových 901/7, Praha 1, č. dv. 117, nebo online",
+      "forma": "hybridne",
+      "lektori": [
+        "JUDr. Bc. Jiří Říha, Ph.D.",
+        "Plk. Mgr. Michal Hodboď",
+        "Bc. Roman Budský, MBA",
+        "PhDr. Mgr. Michal Walter",
+        "Mgr. Pavel Dubský",
+        "PhDr. Pavel Řezáč, Ph.D., MBA"
+      ],
+      "cena": "",
+      "anotace": "Náplní diskuzního setkání je agresivita v silničním provozu a možnosti jejího postihu, zejména s ohledem na chystané změny trestního zákoníku spočívající v zavedení nového trestného činu ohrožení silničního provozu.",
+      "url": "https://www.prf.cuni.cz/aktuality/diskuzni-ctvrtek-na-pfuk-agresivni-jednani-v-silnicnim-provozu-a-jeho-trestni-postih-nad",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "forma",
+        "misto"
+      ],
+      "oblasti": [
+        "trestni"
+      ],
+      "oblasti_klic": "6466ea0d9ce4"
+    },
+    {
+      "id": "87b634e4ed40b4d9824c",
+      "poradatel": "PFUK",
+      "datum": "2026-11-13",
+      "zacatek": "09:00",
+      "konec": "",
+      "nazev": "The EU Inc.: A New Challenge for Company Law in Europe?",
+      "misto": "Právnická fakulta Univerzity Karlovy v Praze, místnost 120",
+      "forma": "prezencne",
+      "lektori": [
+        "Prof. Caroline Coupet",
+        "Prof. Jesper Lau Hansen",
+        "Prof. Katarzyna Bilewska",
+        "Prof. Corrado Malberti",
+        "Prof. Kristián Csach",
+        "Prof. Sebastian Mock",
+        "dr. Klára Hurychová",
+        "doc. Bohumil Havel"
+      ],
+      "cena": "700 Kč bez DPH (847 Kč vč. DPH)",
+      "anotace": "Mezinárodní konference se zaměří na návrh tzv. EU Inc. a jeho možné dopady na evropské a národní právo obchodních korporací. Program nabídne národní reporty odborníků z různých evropských jurisdikcí a následnou plenární panelovou diskusi.",
+      "url": "https://www.prf.cuni.cz/aktuality/eu-inc-a-new-challenge-company-law-europe",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "korporace"
+      ],
+      "oblasti_klic": "f704b5a1ae43"
+    },
+    {
       "id": "fe409db7cfa3af11afc0",
       "poradatel": "EPRAVO",
       "datum": "2026-11-18",
@@ -1849,6 +1929,34 @@
         "dane"
       ],
       "oblasti_klic": "ee55074c706e"
+    },
+    {
+      "id": "4db4b6ee544ee5596c55",
+      "poradatel": "PFUK",
+      "datum": "2026-11-18",
+      "zacatek": "09:00",
+      "konec": "16:30",
+      "nazev": "Juridikum PF UK pořádá seminář Nový stavební zákon v kostce",
+      "misto": "Právnická fakulta Univerzity Karlovy",
+      "forma": "hybridne",
+      "lektori": [
+        "doc. JUDr. Martina Franková, Ph.D.",
+        "JUDr. Petr Svoboda, Ph.D.",
+        "JUDr. Petra Humlíčková, Ph.D.",
+        "JUDr. Michal Sobotka, Ph.D."
+      ],
+      "cena": "",
+      "anotace": "Seminář nabízí srozumitelný přehled nadcházejících změn ve stavebním právu a poskytuje praktický vhled do nového nastavení stavební správy a povolovacích procesů.",
+      "url": "https://www.prf.cuni.cz/aktuality/juridikum-pf-uk-porada-seminar-novy-stavebni-zakon-v-kostce-0",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "forma",
+        "misto"
+      ],
+      "oblasti": [
+        "stavebni_zp"
+      ],
+      "oblasti_klic": "9bb23f7bc2d5"
     },
     {
       "id": "2265fad160f5006426f5",
