@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-30T06:40:19Z",
+ "generated": "2026-10-31T06:30:30Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
@@ -22,6 +22,25 @@
    "procesni": false,
    "stav_shrnuti": "ceka_na_text",
    "poznamka": "Podáno 22. 10. 2026. Položené otázky zatím nejsou zveřejněné."
+  },
+  {
+   "id": "sdeu:62026TO0179",
+   "spz": "T-179/26",
+   "ecli": "ECLI:EU:T:2026:699",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-10-26",
+   "zverejneno": "2026-10-26",
+   "first_seen": "2026-10-26T12:00:00Z",
+   "nazev": "Falaleiev v. Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TO0179",
+   "heslo": "Přijetí aktu před podáním žaloby vylučuje nečinnost",
+   "shrnuti": "Tribunal řešil otázku, zda podání žaloby na nečinnost je přípustné v situaci, kdy Rada EU rozhodla o udržení sankčního seznamu ještě před podáním žaloby. Soud dospěl k závěru, že přijetím takových aktů Rada zaujala stanovisko k výzvě k jednání, čímž odpadla nečinnost instituce. Proto je žaloba na nečinnost nepřípustná.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
   },
   {
    "id": "sdeu:62026CN0760",
@@ -3876,43 +3895,6 @@
     "civilni_proces"
    ],
    "procesni": false
-  },
-  {
-   "id": "sdeu:62026CO0460",
-   "spz": "C-460/26",
-   "ecli": "ECLI:EU:C:2026:797",
-   "druh": "usnesení",
-   "rejstrik": "C",
-   "datum": "2026-09-29",
-   "zverejneno": "2026-09-29",
-   "first_seen": "2026-09-29T12:00:00Z",
-   "nazev": "Polsko v. Rada",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CO0460",
-   "heslo": "Nalehavost odkladu provádění mezinárodní dohody",
-   "shrnuti": "Polská republika podala návrh na odklad provádění rozhodnutí o podpisu a prozatímním provádění Prozatímní dohody o obchodu mezi EU a Mercosurem. Soudní dvůr EU návrh zamítl, protože navrhovatelka neprokázala splnění podmínky naléhavosti, tedy vznik vážné a nenapravitelné újmy.",
-   "oblasti": [
-    "spravni",
-    "mps"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "sdeu:62023CO0509",
-   "spz": "C-509/23",
-   "ecli": "ECLI:EU:C:2026:798",
-   "druh": "usnesení",
-   "rejstrik": "C",
-   "datum": "2026-09-29",
-   "zverejneno": "2026-09-29",
-   "first_seen": "2026-09-29T12:00:00Z",
-   "nazev": "Laimz",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62023CO0509",
-   "heslo": "Oprava zřejmé nesprávnosti v rozsudku Soudního dvora",
-   "shrnuti": "Soudní dvůr rozhodoval o návrhu na opravu zřejmé nesprávnosti v úvodní části svého dřívějšího rozsudku ve věci Laimz proti Izložu un azartspēļu uzraudzības inspekcija. Soudní dvůr úředně opravil nepřesnosti v citaci dotčených právních předpisů v úvodním přehledu.",
-   "oblasti": [
-    "spravni"
-   ],
-   "procesni": true
   }
  ]
 }
