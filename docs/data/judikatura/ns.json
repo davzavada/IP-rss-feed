@@ -1,8 +1,110 @@
 {
- "generated": "2026-10-31T06:30:30Z",
+ "generated": "2026-11-01T07:01:28Z",
  "soud": "ns",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "ns:D798E7ACF65A92F6C1258EA100528ABB",
+   "spz": "22 Cdo 2324/2026",
+   "ecli": "ECLI:CZ:NS:2026:22.CDO.2324.2026.1",
+   "druh": "usnesení",
+   "senat": 22,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-10-31",
+   "first_seen": "2026-11-01T07:01:28Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/D798E7ACF65A92F6C1258EA100528ABB?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/7D5FE6F2E7969BADC1258EA10052AC75/$file/22%20Cdo%202324_2026.pdf?openElement",
+   "heslo": "Určení neplatnosti dohody o vypořádání SJM",
+   "shrnuti": "Žalobkyně se domáhala určení neplatnosti dohody o vypořádání společného jmění manželů proti žalovanému. Nejvyšší soud řešil otázku přípustnosti určovací žaloby za trvání řízení o vypořádání SJM a dospěl k závěru, že taková žaloba je nepřípustná pro absenci naléhavého právního zájmu, neboť platnost dohody lze posoudit jako předběžnou otázku v probíhajícím řízení o vypořádání SJM.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:D61F7070D3B3E7EAC1258EA100528AC0",
+   "spz": "22 Cdo 240/2026 - II.",
+   "ecli": "ECLI:CZ:NS:2026:22.CDO.240.2026.3",
+   "druh": "rozsudek",
+   "senat": 22,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-06",
+   "zverejneno": "2026-10-31",
+   "first_seen": "2026-11-01T07:01:28Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/D61F7070D3B3E7EAC1258EA100528AC0?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/F45D356D79F6D380C1258EA10052AF4E/$file/22%20Cdo%20240_2026.pdf?openElement",
+   "heslo": "Valorizace vnosu se váže ke dni zániku SJM",
+   "shrnuti": "Žalobkyně se domáhala vypořádání společného jmění manželů po rozvodu manželství. Nejvyšší soud řešil otázku, zda se valorizace vnosu podle § 742 odst. 2 občanského zákoníku provádí ke dni zániku společného jmění, nebo ke dni rozhodnutí soudu, a dospěl k závěru, že rozhodným okamžikem je den zániku společného jmění.",
+   "oblasti": [
+    "zavazky",
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:8A38C7D317FB08BBC1258EA100528AAB",
+   "spz": "24 Cdo 1609/2026 24 Cdo 1610/2026",
+   "ecli": "ECLI:CZ:NS:2026:24.CDO.1609.2026.1",
+   "druh": "usnesení",
+   "senat": 24,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-01",
+   "zverejneno": "2026-10-31",
+   "first_seen": "2026-11-01T07:01:28Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/8A38C7D317FB08BBC1258EA100528AAB?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/1AC217216715E1CCC1258EA10052EBEE/$file/24%20Cdo%201609_2026.pdf?openElement",
+   "heslo": "Zmeškání lhůty k žalobě o vyvlastnění",
+   "shrnuti": "Žalobce se domáhal v občanském soudním řízení nahrazení rozhodnutí o náhradě za vyvlastnění pozemku. Nejvyšší soud řešil otázku včasnosti žaloby a aplikace zkrácené patnáctidenní lhůty podle liniového zákona a dospěl k závěru, že žaloba podaná po této lhůtě je opožděná a její zmeškání nelze prominout.",
+   "oblasti": [
+    "vecna_prava",
+    "civilni_proces",
+    "stavebni_zp"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:84DAB6357F40BAC4C1258EA100528AB5",
+   "spz": "22 Cdo 2088/2026",
+   "ecli": "ECLI:CZ:NS:2026:22.CDO.2088.2026.1",
+   "druh": "usnesení",
+   "senat": 22,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-10-31",
+   "first_seen": "2026-11-01T07:01:28Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/84DAB6357F40BAC4C1258EA100528AB5?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/08EECC2607AF0B4FC1258EA10052A9CB/$file/22%20Cdo%202088_2026.pdf?openElement",
+   "heslo": "Přípustnost dovolání vyžaduje řádné vymezení právní otázky",
+   "shrnuti": "Žalobce a žalovaná se soudili o zrušení a vypořádání podílového spoluvlastnictví k nemovitostem. Nejvyšší soud řešil přípustnost dovolání žalované, která napadala právní posouzení příjmů z prostituce a jejich vliv na společný majetek. Dovolání odmítl, protože dovolatelka řádně nevymezila předpoklady přípustnosti ani dovolací důvody ve vztahu k napadenému rozhodnutí.",
+   "oblasti": [
+    "vecna_prava",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:17608AF3CEEE93F0C1258EA100528AA5",
+   "spz": "22 Cdo 1952/2026",
+   "ecli": "ECLI:CZ:NS:2026:22.CDO.1952.2026.1",
+   "druh": "usnesení",
+   "senat": 22,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-29",
+   "zverejneno": "2026-10-31",
+   "first_seen": "2026-11-01T07:01:28Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/17608AF3CEEE93F0C1258EA100528AA5?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/6F6033D9F692B4EDC1258EA10052A660/$file/22%20Cdo%201952_2026.pdf?openElement",
+   "heslo": "Nezbytnou cestu nelze povolit při existenci osobní služebnosti",
+   "shrnuti": "Žalobkyně se domáhala povolení nezbytné cesty přes pozemek žalovaného, ačkoliv měla přístup ke svým nemovitostem zajištěn na základě osobní služebnosti. Nejvyšší soud řešil otázku, zda lze nezbytnou cestu povolit za situace, kdy existuje přístup přes osobní služebnost. Dospěl k závěru, že má-li vlastník nemovitosti zajištěn přístup k veřejné cesty na základě osobní služebnosti v rozsahu umožňujícím obvyklé užívání, podmínky pro povolení nezbytné cesty nejsou splněny.",
+   "oblasti": [
+    "vecna_prava",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
   {
    "id": "ns:B1BDB170AD1B7380C1258EA00052B999",
    "spz": "33 Cdo 1317/2025",
@@ -876,6 +978,26 @@
    "oblasti": [
     "civilni_proces",
     "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:deska:33cdo757/2026",
+   "spz": "33 Cdo 757/2026",
+   "druh": "rozsudek",
+   "senat": 33,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-27",
+   "zverejneno": "2026-10-27",
+   "first_seen": "2026-10-27T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_33_Cdo_757_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_33_Cdo_757_2026.pdf",
+   "heslo": "Poplatek za nesplnění studijních podmínek ve spotřebitelské smlouvě",
+   "shrnuti": "Vysoká škola ekonomie a managementu se soudila s Luisou Madžovou o zaplacení doplatku školného a administrativního poplatku kvůli předčasnému ukončení studia. Nejvyšší soud řešil přiměřenost smluvních ujednání ve spotřebitelské smlouvě a vliv registrace vnitřních předpisů vysoké školy. Dospěl k závěru, že soudy musí komplexně posoudit významnou nerovnováhu a transparentnost poplatků a že absence registrace vnitřního předpisu nemá sama o sobě vliv na platnost soukromoprávního závazku.",
+   "oblasti": [
+    "spotrebitel",
+    "zavazky",
+    "civilni_proces"
    ],
    "procesni": false
   },
@@ -10436,208 +10558,6 @@
    "oblasti": [
     "pracovni",
     "socialni_cizinci"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:F56773812476C84EC1258E82004D2C04",
-   "spz": "20 Ncu 140/2026",
-   "ecli": "ECLI:CZ:NS:2026:20.NCU.140.2026.1",
-   "druh": "rozsudek",
-   "senat": 20,
-   "rejstrik": "Ncu",
-   "datum": "2026-09-15",
-   "zverejneno": "2026-09-30",
-   "first_seen": "2026-09-30T12:00:00Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/F56773812476C84EC1258E82004D2C04?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/02F42CDFBA581F13C1258E870033DA07/$file/20%20Ncu%20140_2026.pdf?openElement",
-   "heslo": "Uznání cizího rozhodnutí o rozvodu manželství",
-   "shrnuti": "Navrhovatelka se domáhala uznání rozhodnutí švýcarského soudu o rozvodu manželství na území České republiky. Nejvyšší soud řešil, zda jsou splněny zákonné podmínky pro uznání takového cizího rozhodnutí podle zákona o mezinárodním právu soukromém. Dospěl k závěru, že nebrání-li uznání žádná překážka a jsou splněny všechny podmínky, návrhu na uznání se vyhoví.",
-   "oblasti": [
-    "mps",
-    "rodina_dedictvi",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:B4F52CD68CA901C9C1258E82004D2C31",
-   "spz": "20 Ncu 114/2026",
-   "ecli": "ECLI:CZ:NS:2026:20.NCU.114.2026.1",
-   "druh": "rozsudek",
-   "senat": 20,
-   "rejstrik": "Ncu",
-   "datum": "2026-08-18",
-   "zverejneno": "2026-09-30",
-   "first_seen": "2026-09-30T12:00:00Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/B4F52CD68CA901C9C1258E82004D2C31?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/2FD52506E674D166C1258E870033CC9C/$file/20%20Ncu%20114_2026.pdf?openElement",
-   "heslo": "Uznání cizího rozhodnutí o rozvodu",
-   "shrnuti": "Navrhovatelka se domáhala uznání rozsudku soudu v USA, kterým bylo rozvedeno její manželství s manželem. Nejvyšší soud řešil, zda jsou splněny podmínky pro uznání cizího rozhodnutí o rozvodu manželství na území České republiky. Dospěl k závěru, že rozhodnutí splňuje všechny zákonné požadavky a nebrání mu žádná překážka, proto návrhu vyhověl.",
-   "oblasti": [
-    "mps",
-    "rodina_dedictvi"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:774B7BFE48435B1AC1258E82004D2C1A",
-   "spz": "20 Ncu 77/2026",
-   "ecli": "ECLI:CZ:NS:2026:20.NCU.77.2026.1",
-   "druh": "usnesení",
-   "senat": 20,
-   "rejstrik": "Ncu",
-   "datum": "2026-09-08",
-   "zverejneno": "2026-09-30",
-   "first_seen": "2026-09-30T12:00:00Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/774B7BFE48435B1AC1258E82004D2C1A?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/65CEA0BD252AF46EC1258E870033F029/$file/20%20Ncu%2077_2026.pdf?openElement",
-   "heslo": "Odmítnutí návrhu na uznání cizího rozhodnutí pro vady podání",
-   "shrnuti": "Navrhovatelka podala u Nejvyššího soudu návrh na uznání cizího rozhodnutí o rozvodu manželství, aniž by k němu doložila potřebné listiny. Soud řešil otázku následků neodstranění vad podání a rozhodl, že návrh odmítá, protože navrhovatelka jej řádně nedoplnila ani přes výzvu soudu.",
-   "oblasti": [
-    "mps",
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:758C2F4686435B38C1258E82004D2C1E",
-   "spz": "20 Ncu 153/2026",
-   "ecli": "ECLI:CZ:NS:2026:20.NCU.153.2026.1",
-   "druh": "rozsudek",
-   "senat": 20,
-   "rejstrik": "Ncu",
-   "datum": "2026-09-15",
-   "zverejneno": "2026-09-30",
-   "first_seen": "2026-09-30T12:00:00Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/758C2F4686435B38C1258E82004D2C1E?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/609B05C28B9ED380C1258E870033DED6/$file/20%20Ncu%20153_2026.pdf?openElement",
-   "heslo": "Uznání cizího rozhodnutí o rozvodu manželství",
-   "shrnuti": "Navrhovatelka se domáhala uznání cizího soudního rozhodnutí o rozvod manželství na území České republiky. Nejvyšší soud posuzoval, zda cizí rozhodnutí splňuje zákonné podmínky pro uznání podle zákona o mezinárodním právu soukromém. Dospěl k závěru, že rozhodnutí nabyté právní moci v cizině neodporuje českému právnímu řádu ani překážkám bránícím uznání, a proto návrhu vyhověl.",
-   "oblasti": [
-    "mps",
-    "rodina_dedictvi",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:6C36EA144405F342C1258E82004D2C09",
-   "spz": "20 Ncu 88/2026",
-   "ecli": "ECLI:CZ:NS:2026:20.NCU.88.2026.1",
-   "druh": "rozsudek",
-   "senat": 20,
-   "rejstrik": "Ncu",
-   "datum": "2026-09-14",
-   "zverejneno": "2026-09-30",
-   "first_seen": "2026-09-30T12:00:00Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/6C36EA144405F342C1258E82004D2C09?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/4D5A03C4733E54CDC1258E870033F767/$file/20%20Ncu%2088_2026.pdf?openElement",
-   "heslo": "Uznání cizího rozhodnutí o rozvodu",
-   "shrnuti": "Navrhovatel se domáhal uznání rozhodnutí cizího soudu o rozvodu manželství na území České republiky. Nejvyšší soud řešil, zda jsou splněny zákonné podmínky pro uznání cizího rozhodnutí ve věcech manželských. Dospěl k závěru, že rozhodnutí vyhovuje všem podmínkám zákona o mezinárodním právu soukromém a nebrání mu žádná překážka, proto návrhu vyhověl.",
-   "oblasti": [
-    "mps",
-    "rodina_dedictvi"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:59A4A50E4A7EBE7FC1258E82004D2C25",
-   "spz": "20 Ncu 55/2026",
-   "ecli": "ECLI:CZ:NS:2026:20.NCU.55.2026.1",
-   "druh": "rozsudek",
-   "senat": 20,
-   "rejstrik": "Ncu",
-   "datum": "2026-09-14",
-   "zverejneno": "2026-09-30",
-   "first_seen": "2026-09-30T12:00:00Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/59A4A50E4A7EBE7FC1258E82004D2C25?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/229DFE6FBDAD8322C1258E870033E3FF/$file/20%20Ncu%2055_2026.pdf?openElement",
-   "heslo": "Uznání cizího rozhodnutí o rozvodu manželství",
-   "shrnuti": "Navrhovatelka se domáhala uznání rozsudku kanadského soudu o rozvodu jejího manželství na území České republiky. Nejvyšší soud řešil, zda jsou splněny zákonné podmínky pro uznání cizího rozhodnutí ve věcech manželských dle zákona o mezinárodním právu soukromém. Jelikož nebyly shledány žádné překážky bránící uznání a návrh vyhověl všem zákonným požadavkům, soud návrhu na uznání rozvodu vyhověl.",
-   "oblasti": [
-    "mps",
-    "rodina_dedictvi"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:2418925703C4BFD2C1258E82004D2C28",
-   "spz": "20 Ncu 128/2026",
-   "ecli": "ECLI:CZ:NS:2026:20.NCU.128.2026.1",
-   "druh": "rozsudek",
-   "senat": 20,
-   "rejstrik": "Ncu",
-   "datum": "2026-09-15",
-   "zverejneno": "2026-09-30",
-   "first_seen": "2026-09-30T12:00:00Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/2418925703C4BFD2C1258E82004D2C28?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/0EDD00460CA8F8C7C1258E870033D4B6/$file/20%20Ncu%20128_2026.pdf?openElement",
-   "heslo": "Uznání cizího rozhodnutí o rozvodu manželství",
-   "shrnuti": "Navrhovatelka se domáhala uznání rozsudku cizího soudu o rozvodu manželství na území České republiky. Nejvyšší soud řešil, zda jsou splněny zákonné podmínky pro uznání cizího rozhodnutí ve věcech manželských. Dospěl k závěru, že podmínky byly splněny, a proto návrhu vyhověl.",
-   "oblasti": [
-    "mps",
-    "rodina_dedictvi"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:1B89EE8E9680FB05C1258E82004D2C2B",
-   "spz": "27 Cdo 470/2026",
-   "ecli": "ECLI:CZ:NS:2026:27.CDO.470.2026.1",
-   "druh": "rozsudek",
-   "senat": 27,
-   "rejstrik": "Cdo",
-   "datum": "2026-08-26",
-   "zverejneno": "2026-09-30",
-   "first_seen": "2026-09-30T12:00:00Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/1B89EE8E9680FB05C1258E82004D2C2B?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/534260C5FE734652C1258E870033FD66/$file/27%20Cdo%20470_2026.pdf?openElement",
-   "heslo": "Splatnost doplatku protiplnění a úroky z prodlení při vytěsnění",
-   "shrnuti": "Žalobce se domáhal po společnosti VINCI CONSTRUCTION S.A.S. zaplacení úroků z prodlení z doplatku protiplnění za přechod zaknihovaných akcií. Nejvyšší soud řešil, kdy nastává splatnost doplatku protiplnění a zda vzniká právo na úroky z prodlení od zápisu vlastnického práva na majetkovém účtu. Rozhodl, že přiměřené protiplnění za zaknihované akcie je splatné bez zbytečného odkladu po zápisu vlastnického práva a hlavní akcionář je v prodlení již od tohoto okamžiku.",
-   "oblasti": [
-    "korporace",
-    "zavazky"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:0DE4A3A0C43C5B6FC1258E82004D2C13",
-   "spz": "20 Ncu 80/2025",
-   "ecli": "ECLI:CZ:NS:2026:20.NCU.80.2025.1",
-   "druh": "rozsudek",
-   "senat": 20,
-   "rejstrik": "Ncu",
-   "datum": "2026-09-15",
-   "zverejneno": "2026-09-30",
-   "first_seen": "2026-09-30T12:00:00Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/0DE4A3A0C43C5B6FC1258E82004D2C13?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/11BD88EF54B21D67C1258E870033F208/$file/20%20Ncu%2080_2025.pdf?openElement",
-   "heslo": "Uznání cizího rozhodnutí o rozvodu manželství",
-   "shrnuti": "Navrhovatelka se domáhala uznání rozsudku soudu ve Spojených státech amerických, kterým bylo rozvedeno její manželství. Nejvyšší soud řešil, zda jsou splněny podmínky pro uznání cizího rozhodnutí o rozvodu manželství na území České republiky podle zákona o mezinárodním právu soukromém. Dospěl k závěru, že podmínky splněny jsou, a proto cizí rozhodnutí v rozsahu týkajícím se rozvodu uznal.",
-   "oblasti": [
-    "mps",
-    "rodina_dedictvi"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:0A1524B4F3E6793DC1258E82004D2C10",
-   "spz": "20 Ncu 59/2026",
-   "ecli": "ECLI:CZ:NS:2026:20.NCU.59.2026.1",
-   "druh": "rozsudek",
-   "senat": 20,
-   "rejstrik": "Ncu",
-   "datum": "2026-06-18",
-   "zverejneno": "2026-09-30",
-   "first_seen": "2026-09-30T12:00:00Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/0A1524B4F3E6793DC1258E82004D2C10?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/3421D8314C4E8F07C1258E870033EA31/$file/20%20Ncu%2059_2026.pdf?openElement",
-   "heslo": "Uznání cizího rozhodnutí o rozvodu manželství",
-   "shrnuti": "Navrhovatel se domáhal uznání cizího rozsudku o rozvodu manželství vydaného soudem ve Spojených státech amerických. Nejvyšší soud řešil, zda jsou splněny zákonné podmínky pro uznání takového rozhodnutí na území České republiky. Protože cizí rozhodnutí vyhovovalo všem zákonným podmínkám a nebránily tomu žádné překážky, Nejvyšší soud návrhu vyhověl a rozsudek uznal.",
-   "oblasti": [
-    "mps",
-    "rodina_dedictvi"
    ],
    "procesni": false
   }
