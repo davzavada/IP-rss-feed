@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-31T06:30:58Z",
+ "generated": "2026-11-01T07:02:20Z",
  "okno_dni": 31,
  "casopisy": [
   {
@@ -112,6 +112,16 @@
   }
  ],
  "polozky": [
+  {
+   "id": "GRUR Int-10.1093/grurint/ikag105",
+   "casopis": "grur-int",
+   "nazev": "Exclusive Jurisdiction of the UPC During the Transitional Period Unless Opted Out",
+   "url": "https://doi.org/10.1093/grurint/ikag105",
+   "datum": "2026-10-31",
+   "first_seen": "2026-11-01T07:02:13Z",
+   "poznamka": "Shrnutí zatím není k dispozici.",
+   "popis": "Exclusive Jurisdiction of the UPC During the Transitional Period Unless Opted Out\nGRUR International"
+  },
   {
    "id": "JPIL-10.1080/17441048.2026.2706310",
    "casopis": "jpil",
@@ -863,28 +873,6 @@
    "first_seen": "2026-10-07T05:39:14Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.03",
-   "casopis": "qmjip",
-   "nazev": "Exploring the boundaries of pre-infringement copyright review obligations for Chinese online platforms: a comparative study of the Chinese, UK and US systems",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.03",
-   "autori": "Mengna Liang",
-   "heslo": "autorské právo platforem",
-   "shrnuti": "Článek zkoumá povinnost čínských online platforem předcházet porušování autorských práv a porovnává přístupy v Číně, Spojeném království a USA. S ohledem na nedostatečnost tradičního institutu bezpečného přístavu navrhuje pro Čínu povinný model filtrace inspirovaný právem EU. V závěru představuje hodnotící rámec kombinující formální a materiální požadavky, podle něhož mají platformy vynakládat přiměřené úsilí.",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
-  },
-  {
-   "id": "QMJIP-10.4337/qmjip.2026.03.00",
-   "casopis": "qmjip",
-   "nazev": "Seeing intellectual property in colour",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.00",
-   "autori": "Johanna Gibson",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z",
-   "poznamka": "Shrnutí zatím není k dispozici.",
-   "popis": "Seeing intellectual property in colour\nAutor: Johanna Gibson\nQueen Mary Journal of Intellectual Property"
-  },
-  {
    "id": "QMJIP-10.4337/qmjip.2026.03.04",
    "casopis": "qmjip",
    "nazev": "The demise of IPRs through the rise of BBNJ: the small matter of patent disclosure of origin requirements",
@@ -892,28 +880,6 @@
    "autori": "Tanya Wagenaar",
    "heslo": "BBNJ a patentová práva",
    "shrnuti": "Článek se zabývá vlivem nové dohody BBNJ na práva duševního vlastnictví a požadavky na disclosure of origin (DOR) při biotechnologickém využití mořských genetických zdrojů. Ačkoli byly odkazy na duševní vlastnictví z konečného znění dohody postupně odstraněny, nedávno přijatá smlouva WIPO zavádí mezinárodní požadavky DOR. Tyto nové předpisy by mohly ideálně doplnit mechanismy dohody BBNJ a podpořit spravedlivé sdílení přínosů mezi státy.",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
-  },
-  {
-   "id": "QMJIP-10.4337/qmjip.2026.03.02",
-   "casopis": "qmjip",
-   "nazev": "Warhol v Goldsmith and the shrinking canvas of fair use: a comparative critique of artistic expression in US and UK copyright law",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.02",
-   "autori": "W Oshada Rodrigo",
-   "heslo": "Transformativní užití autorského práva",
-   "shrnuti": "Článek srovnává americkou doktrínu fair use a britské výjimky z autorského práva v kontextu nedávného rozhodnutí ve věci Warhol v. Goldsmith a dalších případů. Autor kritizuje zpřísňování pravidel a nadřazování tržní substituce, což omezuje svobodu tvorby, remixovou kulturu i uměleckou inovaci. Jako řešení, které lépe reflektuje současné digitální formy umění, navrhuje nový čtyřkrokový test založený na expresivním pluralismu.",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
-  },
-  {
-   "id": "QMJIP-10.4337/qmjip.2026.03.05",
-   "casopis": "qmjip",
-   "nazev": "Thinking about originality: creativity in legal research",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.05",
-   "autori": "Chris Dent",
-   "heslo": "Originalita právního výzkumu",
-   "shrnuti": "Článek zkoumá kreativitu v akademickém právním výzkumu se zohledněním vlivu umelecké inteligence a poznatků z psychologie. Srovnává doktrinální a socio-právní výzkum s různými pojetími kreativity a dokazuje, že právní výzkum je ve své podstatě kreativní. Závěrem propojuje toto zjištění s konceptem autority a testem originality v současném autorském právu.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -929,6 +895,50 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
+   "id": "QMJIP-10.4337/qmjip.2026.03.03",
+   "casopis": "qmjip",
+   "nazev": "Exploring the boundaries of pre-infringement copyright review obligations for Chinese online platforms: a comparative study of the Chinese, UK and US systems",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.03",
+   "autori": "Mengna Liang",
+   "heslo": "autorské právo platforem",
+   "shrnuti": "Článek zkoumá povinnost čínských online platforem předcházet porušování autorských práv a porovnává přístupy v Číně, Spojeném království a USA. S ohledem na nedostatečnost tradičního institutu bezpečného přístavu navrhuje pro Čínu povinný model filtrace inspirovaný právem EU. V závěru představuje hodnotící rámec kombinující formální a materiální požadavky, podle něhož mají platformy vynakládat přiměřené úsilí.",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z"
+  },
+  {
+   "id": "QMJIP-10.4337/qmjip.2026.03.05",
+   "casopis": "qmjip",
+   "nazev": "Thinking about originality: creativity in legal research",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.05",
+   "autori": "Chris Dent",
+   "heslo": "Originalita právního výzkumu",
+   "shrnuti": "Článek zkoumá kreativitu v akademickém právním výzkumu se zohledněním vlivu umelecké inteligence a poznatků z psychologie. Srovnává doktrinální a socio-právní výzkum s různými pojetími kreativity a dokazuje, že právní výzkum je ve své podstatě kreativní. Závěrem propojuje toto zjištění s konceptem autority a testem originality v současném autorském právu.",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z"
+  },
+  {
+   "id": "QMJIP-10.4337/qmjip.2026.03.02",
+   "casopis": "qmjip",
+   "nazev": "Warhol v Goldsmith and the shrinking canvas of fair use: a comparative critique of artistic expression in US and UK copyright law",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.02",
+   "autori": "W Oshada Rodrigo",
+   "heslo": "Transformativní užití autorského práva",
+   "shrnuti": "Článek srovnává americkou doktrínu fair use a britské výjimky z autorského práva v kontextu nedávného rozhodnutí ve věci Warhol v. Goldsmith a dalších případů. Autor kritizuje zpřísňování pravidel a nadřazování tržní substituce, což omezuje svobodu tvorby, remixovou kulturu i uměleckou inovaci. Jako řešení, které lépe reflektuje současné digitální formy umění, navrhuje nový čtyřkrokový test založený na expresivním pluralismu.",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z"
+  },
+  {
+   "id": "QMJIP-10.4337/qmjip.2026.03.00",
+   "casopis": "qmjip",
+   "nazev": "Seeing intellectual property in colour",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.00",
+   "autori": "Johanna Gibson",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z",
+   "poznamka": "Shrnutí zatím není k dispozici.",
+   "popis": "Seeing intellectual property in colour\nAutor: Johanna Gibson\nQueen Mary Journal of Intellectual Property"
+  },
+  {
    "id": "QMJIP-10.4337/qmjip.2026.03.06",
    "casopis": "qmjip",
    "nazev": "New pharmaceutical product and patent term extension in China",
@@ -938,50 +948,6 @@
    "shrnuti": "Článek se zabývá systémem prodloužení platnosti patentů na léčiva v Číně v kontextu nedávných legislativních změn z roku 2024. Analýzou prováděcích předpisů a pokynů pro zkoumání patentů přibližuje aktuální vývoj a poskytuje klíčové poznatky pro domácí i zahraniční subjektu usilující o maximalizaci přínosů tohoto systému.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
-  },
-  {
-   "id": "IIC-10.1007/s40319-026-01781-y",
-   "casopis": "iic",
-   "nazev": "Can the Digital Markets Act Turn the Tide Against Big Tech?",
-   "url": "https://doi.org/10.1007/s40319-026-01781-y",
-   "autori": "Jasper van den Boom",
-   "heslo": "Akt o digitálních trzích",
-   "shrnuti": "Článek hodnotí, zda dokáže Akt o digitálních trzích (DMA) prolomit tržní nadvládu velkých technologických společností tam, kde tradiční soutěžní právo selhalo kvůli neefektivním nápravným opatřením. Přestože DMA nabízí proaktivní nástroje ex ante regulace a specifická rozhodnutí, čelí výzvám v oblasti dohledu, vymáhání a kapacit Evropské komise. Autor uzavírá, že skutečnou změnu nepřinesou rekordní pokuty, ale postupné zpřesňování pravidel a zapojení soukromého vymáhání.",
-   "datum": "2026-09-30",
-   "first_seen": "2026-10-01T05:33:30Z"
-  },
-  {
-   "id": "MUJLT-https://journals.muni.cz/mujlt/article/view/42629",
-   "casopis": "mujlt",
-   "nazev": "Esports and the Digital Services Act: Functional Classification of Gaming, Tournament and Streaming Services",
-   "url": "https://journals.muni.cz/mujlt/article/view/42629",
-   "autori": "Matúš Mesarčík",
-   "heslo": "eSports a Akt o digitálních službách (DSA)",
-   "shrnuti": "Článek zkoumá, jak se evropský Akt o digitálních službách (DSA) aplikuje na komplexní ekosystém elektronických sportů prostřednictvím funkčních kategorií zprostředkovatelských služeb. Hlavním právním problémem je tzv. funkční segmentace, kdy různé součásti her, turnajů a streamování spadají pod odlišné právní režimy. Studie mapuje hranice použitelnosti DSA a identifikuje specifické otázky compliance, včetně moderování obsahu, ochrany nezletilých a vztahu regulace k soukromé správě integrity.",
-   "datum": "2026-09-30",
-   "first_seen": "2026-10-01T05:33:30Z"
-  },
-  {
-   "id": "MUJLT-https://journals.muni.cz/mujlt/article/view/43027",
-   "casopis": "mujlt",
-   "nazev": "Data Protection and Cybersecurity Governance for eVTOL Systems in the UAE: Comparative Lessons from the EU and US.",
-   "url": "https://journals.muni.cz/mujlt/article/view/43027",
-   "autori": "Sumaiya Firoz Nomani, Dr Mohammad Rababa, Dr Hussain Al-Ahmad, Dr Husameldin Mukhtar, Dr Nasirudeen Muhammad, Dr Saad Ali Amin, Burkhard Schafer",
-   "heslo": "Regulace eVTOL a data",
-   "shrnuti": "Článek analyzuje výzvy v oblasti ochranu osobních údajů a kybernetické bezpečnosti při zavádění systémů eVTOL ve Spojených arabských emirátech. Zkoumá nepřipravenost stávajících právních předpisů SAE a využívá srovnání s přístupy Evropské unie a Spojených států. Autor závěrem konstatuje, že pro zajištění bezpečnosti a důvěry je nezbytné zavést specifické standardy správy dat a posílit kybernetickou bezpečnost.",
-   "datum": "2026-09-30",
-   "first_seen": "2026-10-01T05:33:30Z"
-  },
-  {
-   "id": "MUJLT-https://journals.muni.cz/mujlt/article/view/43681",
-   "casopis": "mujlt",
-   "nazev": "Shut Down, Sued, and Silenced: Strategic Suppression Tactics of Technology Corporations",
-   "url": "https://journals.muni.cz/mujlt/article/view/43681",
-   "autori": "Lee Raudsepp, Kristjan Kikerpill",
-   "heslo": "Moc technologických korporací",
-   "shrnuti": "Článek zkoumá strategie, kterými velké technologické společnosti (GAFAM) potlačují nesouhlas, neutralizují kritiky a brání se odpovědnosti. Na základě analýzy 61 mediálně sledovaných případů z let 2017–2025 identifikuje využívání právního zastrašování, odvetného propouštění či regulačních stížností. Zjištění ukazují, že tyto kroky společně vytvářejí systém potlačování, který odrazuje kritiky, vyčerpává jejich zdroje a negativně ovlivňuje demokratickou diskuzi.",
-   "datum": "2026-09-30",
-   "first_seen": "2026-10-01T05:33:30Z"
   },
   {
    "id": "JIPLP-10.1093/jiplp/jpag087",

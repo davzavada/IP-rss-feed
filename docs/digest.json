@@ -1,11 +1,85 @@
 {
-  "generated": "2026-10-31T06:31:55.122825+00:00",
-  "from": "2026-09-01",
-  "to": "2026-09-30",
-  "total": 0,
-  "covered": 0,
-  "cekajici": 0,
-  "intro": "",
-  "blocks": [],
-  "input_hash": "2dd694ef30f6ef76bdac0a56eb384e37d0e349d75133bfae26b909601a066c7b"
+  "generated": "2026-11-01T07:02:35.877166+00:00",
+  "from": "2026-10-01",
+  "to": "2026-10-31",
+  "total": 168,
+  "covered": 7,
+  "cekajici": 3,
+  "intro": "Sledované období přineslo významné rozhodnutí Soudního dvora EU k financování služeb kolektivní správy a řadu podnětných odborných textů k regulaci umělé inteligence, autorskému právu a ochraně osobních údajů. Judikatura i odborná literatura se intenzivně věnovaly interpretaci evropských předpisů včetně AI Actu a Aktu o digitálních službách.",
+  "blocks": [
+    {
+      "title": "Financování kolektivní správy",
+      "text": "Soudní dvůr EU rozhodl, že organizace kolektivní správy nesmí financovat sociální či kulturní služby pro ne-nositele práv formou plošných srážek z příjmů z výkonu práv před jejich rozdělením. Takové financování je přípustné pouze z nerozdělitelných částek, což posiluje ochranu vlastníků práv. Pro praxi to znamená nutnost revidovat modely přerozdělování vybraných finančních prostředků.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "C-840/24 – VG Wort (Bénéficiaire des services fournis par une société de gestion collective) ",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0840"
+        }
+      ]
+    },
+    {
+      "title": "Autorské právo a umělá inteligence",
+      "text": "Odborná literatura a stanoviska Max Planck Institutu se zaměřila na výzvy generativní AI a navrhují zavedení zákonné výjimky pro trénink AI spojené s právem na spravedlivou odměnu. Diskutuje se také o nutnosti kolektivní správy pro zpřístupňování AI výstupů. Pro praxi to představuje podklad pro budoucí nastavování licenčních modelů a smluvních vztahů s autory.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "Copyright and Generative AI: Guidance from Economic Incentive Theory for a Nuanced Regime for Author Remuneration",
+          "link": "https://doi.org/10.1007/s40319-026-01784-9"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "Position Statement of the Max Planck Institute of 25 June 2026 on the Future Copyright Framework in Times of Generative AI",
+          "link": "https://doi.org/10.1093/grurint/ikag093"
+        }
+      ]
+    },
+    {
+      "title": "Ochranné známky a zlá víra",
+      "text": "Tribunál EU potvrdil, že přihláška téměř totožné ochranné známky krátce po uplynutí ochranné lhůty dřívější známky bez legitimního obchodního důvodu naplňuje znaky přihlášky ve zlé víře. Rozhodnutí cílí na snahu obejít povinnost prokazovat skutečné užívání starších známek. Pro praxi to znamená přísnější posuzování strategických přihlášek obdobných označení.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-541/25 – Qingdao Ecopure Filter v. EUIPO - Waterdrop Microdrink (Waterdrop)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0541"
+        }
+      ]
+    },
+    {
+      "title": "Akt o digitálních službách",
+      "text": "Tribunál posuzoval aplikaci pravidel Aktu o digitálních službách na online platformy a velmi velké platformy s důrazem na využívání spolehlivých údajů o návštěvnosti a ochranu obchodních zájmů. Odborné texty zároveň analyzují mezeru v regulaci poloveřejných chatů a moderování obsahu. Pro provozovatele platforem to znamená nutnost přesné evidence uživatelů a obezřetnosti při plnění regulačních povinností.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-134/24 – Technius v. Komise",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0134"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-203/24 – Zalando v. Komise",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0203"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JIPITEC",
+          "title": "Public or Private Communication? Categorising WhatsApp’s and Telegram’s Group Chat and Channel Functionalities under the DSA",
+          "link": "https://www.jipitec.eu/jipitec/article/view/446"
+        }
+      ]
+    }
+  ],
+  "input_hash": "c974a22cede6a6042321b2638ef50e35b248e6ba240b69c6eecb46fb5a7c4622"
 }
