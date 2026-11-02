@@ -1,28 +1,15 @@
 {
-  "generated": "2026-11-01T07:02:35.877166+00:00",
+  "generated": "2026-11-02T07:02:26.317475+00:00",
   "from": "2026-10-01",
   "to": "2026-10-31",
-  "total": 168,
-  "covered": 7,
+  "total": 157,
+  "covered": 8,
   "cekajici": 3,
-  "intro": "Sledované období přineslo významné rozhodnutí Soudního dvora EU k financování služeb kolektivní správy a řadu podnětných odborných textů k regulaci umělé inteligence, autorskému právu a ochraně osobních údajů. Judikatura i odborná literatura se intenzivně věnovaly interpretaci evropských předpisů včetně AI Actu a Aktu o digitálních službách.",
+  "intro": "Uplynulý měsíc přinesl řadu významných podnětů v oblasti autorského práva, ochranných známek a regulace digitálních technologií. Pozornost byla upřena zejména na problematiku generativní umělecké inteligence, interpretaci unijních předpisů o digitálních trzích a službách a na rozhodovací praxi soudů v oblasti duševního vlastnictví.",
   "blocks": [
     {
-      "title": "Financování kolektivní správy",
-      "text": "Soudní dvůr EU rozhodl, že organizace kolektivní správy nesmí financovat sociální či kulturní služby pro ne-nositele práv formou plošných srážek z příjmů z výkonu práv před jejich rozdělením. Takové financování je přípustné pouze z nerozdělitelných částek, což posiluje ochranu vlastníků práv. Pro praxi to znamená nutnost revidovat modely přerozdělování vybraných finančních prostředků.",
-      "sources": [
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "C-840/24 – VG Wort (Bénéficiaire des services fournis par une société de gestion collective) ",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0840"
-        }
-      ]
-    },
-    {
-      "title": "Autorské právo a umělá inteligence",
-      "text": "Odborná literatura a stanoviska Max Planck Institutu se zaměřila na výzvy generativní AI a navrhují zavedení zákonné výjimky pro trénink AI spojené s právem na spravedlivou odměnu. Diskutuje se také o nutnosti kolektivní správy pro zpřístupňování AI výstupů. Pro praxi to představuje podklad pro budoucí nastavování licenčních modelů a smluvních vztahů s autory.",
+      "title": "Autorské právo a AI",
+      "text": "Odborná literatura a stanoviska institucí se intenzivně zabývají otázkou odměňování autorů za užití jejich děl při trénování generativní umělecké inteligence. Doporučuje se zavést systém profitově založené kompenzace a zákonné výjimky spojené s právem na spravedlivou odměnu. Pro praxi to znamená nutnost přípravy nových licenčních schémat a zapojení kolektivní správy.",
       "sources": [
         {
           "src": "journals",
@@ -37,12 +24,19 @@
           "tag": "GRUR Int",
           "title": "Position Statement of the Max Planck Institute of 25 June 2026 on the Future Copyright Framework in Times of Generative AI",
           "link": "https://doi.org/10.1093/grurint/ikag093"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "QMJIP",
+          "title": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
+          "link": "https://doi.org/10.4337/qmjip.2026.03.01"
         }
       ]
     },
     {
       "title": "Ochranné známky a zlá víra",
-      "text": "Tribunál EU potvrdil, že přihláška téměř totožné ochranné známky krátce po uplynutí ochranné lhůty dřívější známky bez legitimního obchodního důvodu naplňuje znaky přihlášky ve zlé víře. Rozhodnutí cílí na snahu obejít povinnost prokazovat skutečné užívání starších známek. Pro praxi to znamená přísnější posuzování strategických přihlášek obdobných označení.",
+      "text": "Tribunál SDEU potvrdil, že přihláška ochranné známky podaná krátce po uplynutí ochranné lhůty dřívější známky bez legitimního obchodního důvodu naplňuje znaky přihlášky ve zlé víře. Pro praxi to představuje důležité varování před zneužíváním procedurálních lhůt k obcházení povinnosti prokazovat užívání starších značek.",
       "sources": [
         {
           "src": "sdeu",
@@ -55,7 +49,7 @@
     },
     {
       "title": "Akt o digitálních službách",
-      "text": "Tribunál posuzoval aplikaci pravidel Aktu o digitálních službách na online platformy a velmi velké platformy s důrazem na využívání spolehlivých údajů o návštěvnosti a ochranu obchodních zájmů. Odborné texty zároveň analyzují mezeru v regulaci poloveřejných chatů a moderování obsahu. Pro provozovatele platforem to znamená nutnost přesné evidence uživatelů a obezřetnosti při plnění regulačních povinností.",
+      "text": "Judikatura a odborné analýzy se zaměřují na prověřování povinností velkých online platforem a poskytovatelů služeb podle Aktu o digitálních službách. Soudy potvrzují správnost postupu při určování velmi velkých platforem na základě spolehlivých údajů třetích stran. Pro praxi to znamená přísnější dohled a nutnost robustního plnění regulatorních povinností.",
       "sources": [
         {
           "src": "sdeu",
@@ -70,16 +64,29 @@
           "tag": "",
           "title": "T-203/24 – Zalando v. Komise",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0203"
+        }
+      ]
+    },
+    {
+      "title": "Ochrana osobních údajů",
+      "text": "Soudní dvůr EU a generální advokáti se zabývají výkladem přísných pravidel pro automatizované profilování a omezení práva na přístup k údajům. Pro praxi to znamená nutnost přehodnocení algoritmických rozhodovacích procesů vůči spotřebitelům a zajištění doložení právních důvodů.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "C-568/25 – Universal Versand",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0568"
         },
         {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JIPITEC",
-          "title": "Public or Private Communication? Categorising WhatsApp’s and Telegram’s Group Chat and Channel Functionalities under the DSA",
-          "link": "https://www.jipitec.eu/jipitec/article/view/446"
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "C-222/25 – Rahapesu Andmebüroo",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0222"
         }
       ]
     }
   ],
-  "input_hash": "c974a22cede6a6042321b2638ef50e35b248e6ba240b69c6eecb46fb5a7c4622"
+  "input_hash": "8e7d498a61e7acccc7cceeb739fb5cb0f472633d4a0326d4d2348d329801a0ca"
 }
