@@ -1,8 +1,132 @@
 {
- "generated": "2026-11-02T07:00:13Z",
+ "generated": "2026-11-03T07:25:11Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "sdeu:62026CN0891",
+   "spz": "C-891/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-08-05",
+   "zverejneno": "2026-11-03",
+   "first_seen": "2026-11-03T07:25:11Z",
+   "nazev": "Société Dean & Simmons France a další",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0891",
+   "heslo": "Zákaz nikotinových výrobků a volný pohyb",
+   "shrnuti": "Francouzská Conseil d’État se Soudního dvora EU ptá, zda vnitrostátní úprava zakazující nabízení, prodej a použití výrobků pro orální užití s obsahem nikotinu z důvodu ochrany zdraví může bez porušení článků 34, 35, 49 a 56 SFEU obecně zakazovat i jejich výrobu, přepravu, dovoz, vývoz a držení určené pro trh v jiném členském státě.",
+   "oblasti": [
+    "spravni",
+    "zavazky"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0816",
+   "spz": "C-816/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-23",
+   "zverejneno": "2026-11-03",
+   "first_seen": "2026-11-03T07:25:11Z",
+   "nazev": "Picuso",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0816",
+   "heslo": "Předběžná otázka o pravidlech nabývání státního občanství",
+   "shrnuti": "Italský Ústavní soud se ptá Soudního dvora EU, zda články 9 SEU a 20 SFEU brání italské právní úpravě státního občanství, která stanoví překážky pro jeho nabytí od samého počátku osobám narozeným v zahraničí, které mají jiné státní občanství.",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0806",
+   "spz": "C-806/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-20",
+   "zverejneno": "2026-11-03",
+   "first_seen": "2026-11-03T07:25:11Z",
+   "nazev": "Manchester United Fanatics Klub",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0806",
+   "heslo": "Autorské právo a umělá inteligence: výklad směrnic",
+   "shrnuti": "Maďarský soud Pécsi Törvényszék se v řízení mezi Manchester United Fanatics Klub Magyarország a Google Ireland táže Soudního dvora EU na výklad směrnic o autorském právu ve vztahu k chatbotům založeným na velkých jazykových modelech (LLM), jejich trénování, tokenizaci a generování odpovědí ze zdrojů tiskových publikací.",
+   "oblasti": [
+    "autorske",
+    "it"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0805",
+   "spz": "C-805/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-17",
+   "zverejneno": "2026-11-03",
+   "first_seen": "2026-11-03T07:25:11Z",
+   "nazev": "Rossmann Magyarország",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0805",
+   "heslo": "Předběžná otázka o regulaci ziskové marže a úrocích",
+   "shrnuti": "Maďarský soud Kúria se v řízení mezi společnostmi Rossmann Magyarország a Fejér Vármegyei Kormányhivatal dotazuje Soudního dvora EU, zda je unijním právům slučitelná vnitrostátní úprava regulující ziskové marže a zásoby drogistického zboží a zda je nutné přiznat úroky z prodlení při vrácení neoprávněně uložené pokuty.",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0773",
+   "spz": "C-773/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-09",
+   "zverejneno": "2026-11-03",
+   "first_seen": "2026-11-03T07:25:11Z",
+   "nazev": "Füget",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0773",
+   "heslo": "Sankce soudu za nedodržení lhůty a unijní právo",
+   "shrnuti": "Maďarský soud Szegedi Törvényszék se Soudního dvora EU dotazuje, zda je s unijní zásadou efektivity a požadavkem nezávislosti soudů slučitelná vnitrostátní úprava ukládající soudu povinnost zaplatit peněžitou náhradu za nedodržení zákonné lhůty k provedení úkonu.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0715",
+   "spz": "C-715/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-01",
+   "zverejneno": "2026-11-03",
+   "first_seen": "2026-11-03T07:25:11Z",
+   "nazev": "Szabadszentkirály Község Önkormányzata a další",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0715",
+   "heslo": "Běh promlčecí lhůty při nesrovnalostech v dotacích",
+   "shrnuti": "Maďarský soud Pécsi Törvényszék se v řízení mezi obcemi a centrem pro rozvoj dotazoval Soudního dvora EU na výklad čl. 3 odst. 1 nařízení č. 2988/95 ohledně počátku a délky promlčecí lhůty u nesrovnalostí při zadávání veřejných zakázek v rámci dotovaných projektů. Zejména chtěl vědět, zda lze na dotovaný projekt aplikovat pojem víceletého programu a kdy se takový program považuje za definitivně ukončený.",
+   "oblasti": [
+    "spravni",
+    "verejne_zakazky",
+    "finance"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0691",
+   "spz": "C-691/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-06-24",
+   "zverejneno": "2026-11-03",
+   "first_seen": "2026-11-03T07:25:11Z",
+   "nazev": "Alphavet",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0691",
+   "heslo": "Strpění užívání ochranné známky a zánik práva",
+   "shrnuti": "Maďarský soud Kúria se v řízení mezi společnostmi Alphavet a Tolnagro Állatgyógyászati Szolgáltató és Kereskedelmi táže Soudního dvora EU na výklad směrnice o ochranných známkách ve vztahu k důsledkům strpění užívání pozdější ochranné známky po dobu pěti let a jejímu případnému zániku.",
+   "oblasti": [
+    "prumyslova_prava"
+   ],
+   "procesni": true
+  },
   {
    "id": "sdeu:ipc:C-1141/26",
    "spz": "C-1141/26",
@@ -2942,85 +3066,6 @@
    "shrnuti": "Rumunský soud Judecătoria Galaţi se Soudního dvora EU ptá, zda články 20 a 21 SFEU a články 7 a 45 Listiny brání vnitrostátní právní úpravě umožňující zrušení dokladu o osobním stavu a následné odnětí státního občanství osobám, které jednaly v dobré víře a nabyly práva podle pokynů orgánů veřejné moci.",
    "oblasti": [
     "spravni"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "sdeu:62025TO0699",
-   "spz": "T-699/25",
-   "ecli": "ECLI:EU:T:2026:627",
-   "druh": "usnesení",
-   "rejstrik": "T",
-   "datum": "2026-10-02",
-   "zverejneno": "2026-10-02",
-   "first_seen": "2026-10-02T12:00:00Z",
-   "nazev": "Vakorin v. Rada",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TO0699",
-   "heslo": "Příslušnost Tribunálu k rozhodnutí o omezujících opatřeních vůči Rusku",
-   "shrnuti": "Tribunál rozhodoval o žalobě na neplatnost ustanovení unijních předpisů o omezujících opatřeních přijatých v souvislosti s situací na Ukrajině, která zakazují uznání a výkon rozhodčího nálezu v řízení mezi investory a státy. Soud dospěl k závěru, že částečně není příslušný k přezkumu napadeného rozhodnutí Rady přijatého v rámci společné zahraniční a bezpečnostní politiky, neboť nejde o individuální omezující opatření, a ve zbývající části žalobu odmítl jako nepřípustnou pro nedostatek aktivní legitimace žalobce, protože napadené akty vyžadují vnitrostátní prováděcí opatření.",
-   "oblasti": [
-    "civilni_proces",
-    "spravni",
-    "zavazky"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "sdeu:62025TO0698",
-   "spz": "T-698/25",
-   "ecli": "ECLI:EU:T:2026:626",
-   "druh": "usnesení",
-   "rejstrik": "T",
-   "datum": "2026-10-02",
-   "zverejneno": "2026-10-02",
-   "first_seen": "2026-10-02T12:00:00Z",
-   "nazev": "Zhukova v. Rada",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TO0698",
-   "heslo": "Přípustnost žaloby proti sankčním opatřením o rozhodčím řízení",
-   "shrnuti": "Tribunál řešil, zda je přípustná žaloba na neplatnost ustanovení omezujících uznání a výkon rozhodčích nálezů v investičních sporech vůči Rusku. Rozhodl, že žaloba je nepřípustná, neboť napadená obecně závazná opatření vyžadují vnitrostátní prováděcí akt a stěžovatelka nesplňuje podmínky individuální ani přímé dotčenosti.",
-   "oblasti": [
-    "spravni",
-    "mps",
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "sdeu:62025TO0655",
-   "spz": "T-655/25",
-   "ecli": "ECLI:EU:T:2026:625",
-   "druh": "usnesení",
-   "rejstrik": "T",
-   "datum": "2026-10-02",
-   "zverejneno": "2026-10-02",
-   "first_seen": "2026-10-02T12:00:00Z",
-   "nazev": "Shelkov v. Rada",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TO0655",
-   "heslo": "Omezení pravomoci Tribunálu a nepřípustnost žaloby na unijní sankce",
-   "shrnuti": "Tribunal řešil otázku své pravomoci k přezkumu obecných sankčních předpisů v oblasti SZBP a otázku aktivní legitimace investora k podání žaloby na neplatnost napadených ustanovení. Rozhodl, že k přezkumu obecných opatření v rámci SZBP nemá ve většině případů pravomoc a žaloba je nepřípustná, protože žalobce nebyl osobně dotčen a napadené akty vyžadují přijetí prováděcích opatření.",
-   "oblasti": [
-    "spravni",
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "sdeu:62025TO0640",
-   "spz": "T-640/25",
-   "ecli": "ECLI:EU:T:2026:628",
-   "druh": "usnesení",
-   "rejstrik": "T",
-   "datum": "2026-10-02",
-   "zverejneno": "2026-10-02",
-   "first_seen": "2026-10-02T12:00:00Z",
-   "nazev": "Ber v. Rada",
-   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TO0640",
-   "heslo": "Omezení pravomoci Tribunálu a nepřípustnost žaloby proti sankčním opatřením",
-   "shrnuti": "Tribunál rozhodoval o žalobě na neplatnost ustanovení unijních předpisů o omezujících opatřeních v souvislosti s Ukrajinou, která zakazují uznání a výkon rozhodčích nálezů v investičních sporech. Soud konstatoval, že nemá pravomoc přezkoumávat obecná opatření Společné zahraniční a bezpečnostní politiky, a žalobu v této části odmítl pro nedostatkem pravomoci. Ve zbývající části žalobu odmítl jako nepřípustnou, neboť žalobce nebyl napadenými akty individuálně dotčen a napadené regulatorní akty vyžadují vnitrostátní prováděcí opatření.",
-   "oblasti": [
-    "spravni",
-    "mps",
-    "civilni_proces"
    ],
    "procesni": true
   }

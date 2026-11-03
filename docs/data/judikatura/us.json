@@ -1,8 +1,91 @@
 {
- "generated": "2026-11-01T07:01:28Z",
+ "generated": "2026-11-03T07:25:11Z",
  "soud": "us",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "us:2-2367-26_1",
+   "spz": "II. ÚS 2367/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2367.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-11-03",
+   "first_seen": "2026-11-03T07:25:11Z",
+   "nazev": "Překvapivé rozhodnutí odvolacího soudu o odkázání poškozeného s nárokem na náhradu újmy na občanskoprávní řízení",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2367-26_1",
+   "soudce": "Jiří Přibáň",
+   "heslo": "Zákaz překvapivých rozhodnutí při odkázání poškozeného",
+   "shrnuti": "Stěžovatel napadal rozsudek odvolacího soudu, kterým byl odkázán se zbytkem nároku na náhradu nemajetkové újmy za ztížení společenského uplatnění do občanskoprávního řízení. Ústavní soud shledal porušení práva na soudní ochranu a na ochranu tělesné a psychické integrity, protože odvolací soud založil rozhodnutí na závěru o nekompetentnosti znalce, aniž by účastníkům umožnil se k této otázce vyjádřit, čímž vydal nepřípustné překvapivé rozhodnutí a vystavil zvlášť zranitelnou oběť další viktimizaci.",
+   "oblasti": [
+    "civilni_proces",
+    "trestni",
+    "skoda"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:2-2127-26_1",
+   "spz": "II. ÚS 2127/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2127.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-11-03",
+   "first_seen": "2026-11-03T07:25:11Z",
+   "nazev": "Změna rozhodnutí o místní příslušnosti soudu ve věci péče o nezletilého",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2127-26_1",
+   "soudce": "Martin Smolek",
+   "heslo": "Měnící rozhodnutí o místní příslušnosti vyžaduje kontradiktornost",
+   "shrnuti": "Ústavní soud vyhověl ústavní stížnosti stěžovatele a zrušil usnesení Městského soudu v Praze o místní příslušnosti ve věci péče o nezletilého. Odvolací soud porušil právo stěžovatele na soudní ochranu, rovnost účastníků a zákonného soudce, když změnil rozhodnutí soudu prvního stupně na základě nových tvrzení a důkazů matky, aniž je stěžovateli doručil a umožnil mu se k nim vyjádřit.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:1-1439-26_1",
+   "spz": "I. ÚS 1439/26",
+   "ecli": "ECLI:CZ:US:2026:1.US.1439.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-11-03",
+   "first_seen": "2026-11-03T07:25:11Z",
+   "nazev": "Nedostatečné odůvodnění rozhodnutí Nejvyššího soudu",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=1-1439-26_1",
+   "soudce": "Tomáš Langášek",
+   "heslo": "Dědic může žádat celé plnění ve prospěch všech",
+   "shrnuti": "Stěžovatelka napadala rozhodnutí soudů, která zamítla její žalobu na zaplacení vypořádacího podílu pro nedostatek aktivní legitimace. Ústavní soud shledal porušení práva na soudní ochranu podle čl. 36 odst. 1 Listiny základních práv a svobod, protože odůvodnění Nejvyššího soudu bylo nedostatečné a vnitřně rozporné ohledně možnosti aplikace ustálené judikatury k uplatnění pohledávky dědici. Ústavní stížnost v této části vyhověl a usnesení Nejvyššího soudu zrušil, ve zbývající části ji odmítl pro nepřípustnost.",
+   "oblasti": [
+    "civilni_proces",
+    "rodina_dedictvi",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-2449-26_1",
+   "spz": "III. ÚS 2449/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.2449.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-11-02",
+   "first_seen": "2026-11-03T07:25:11Z",
+   "nazev": "Záměrné nerozhodnutí soudu o návrhu na zastavení exekuce k výkonu rozhodnutí na ochranu rušené držby z důvodu vyčkání skončení petitorního řízení",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-2449-26_1",
+   "soudce": "Veronika Křesťanová",
+   "heslo": "Nečinnost exekučního soudu vyčkávajícího na petitorní řízení",
+   "shrnuti": "Stěžovatel napadal průtahy Městského soudu v Brně, který odmítal rozhodnout o návrhu na zastavení exekuce a vyčkával na skončení souběžného petitorního řízení. Ústavní soud shledal porušení práva na projednání věci bez zbytečných průtahů a práva na soudní ochranu, protože probíhající petitorní řízení nemůže být důvodem k nečinnosti exekučního soudu ohledně vykonatelného exekučního titulu z posesorního řízení.",
+   "oblasti": [
+    "civilni_proces",
+    "vecna_prava"
+   ],
+   "procesni": false
+  },
   {
    "id": "us:4-2735-26_1",
    "spz": "IV. ÚS 2735/26",
@@ -5417,64 +5500,6 @@
     "civilni_proces"
    ],
    "procesni": false
-  },
-  {
-   "id": "us:2-2554-26_1",
-   "spz": "II. ÚS 2554/26",
-   "ecli": "ECLI:CZ:US:2026:2.US.2554.26.1",
-   "druh": "usnesení",
-   "rejstrik": "ÚS",
-   "datum": "2026-09-09",
-   "zverejneno": "2026-10-02",
-   "first_seen": "2026-10-03T03:46:48Z",
-   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2554-26_1",
-   "soudce": "Martin Smolek",
-   "heslo": "Přezkum prozatímního rozhodnutí o péči o děti",
-   "shrnuti": "Stěžovatel napadal prozatímní rozhodnutí o úpravě poměrů nezletilých dětí, zejména omezení péče na území České republiky a stanovené výživné. Ústavní soud shledal ústavní stížnost zjevně neopodstatněnou, neboť napadené rozhodnutí bylo dočasné povahy a sledovalo nejlepší zájem dětí v situaci konfliktu rodičů. Zásah do práv stěžovatele nebyl shledán v rozporu s ústavním pořádkem.",
-   "oblasti": [
-    "rodina_dedictvi",
-    "civilni_proces",
-    "ustavni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "us:2-2471-26_1",
-   "spz": "II. ÚS 2471/26",
-   "ecli": "ECLI:CZ:US:2026:2.US.2471.26.1",
-   "druh": "usnesení",
-   "rejstrik": "ÚS",
-   "datum": "2026-08-31",
-   "zverejneno": "2026-10-02",
-   "first_seen": "2026-10-03T03:46:48Z",
-   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2471-26_1",
-   "soudce": "Pavel Šámal",
-   "heslo": "Zájem dítěte a prozatímní rozhodnutí o škole",
-   "shrnuti": "Stěžovatel napadal usnesení obvodního soudu, kterým bylo vydáno prozatímní rozhodnutí nahrazující jeho souhlas se zápisem nezletilého do základní školy. Ústavní soud stížnost odmítl jako zjevně neopodstatněnou, neboť obvodní soud sice pochybil, když stěžovateli nedoručil návrh před vydáním rozhodnutí, avšak toto pochybení v daném případě převážil nejlepší zájem nezletilého na zajištění stabilního prostředí pro zahájení školní docházky.",
-   "oblasti": [
-    "rodina_dedictvi",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "us:2-2357-26_1",
-   "spz": "II. ÚS 2357/26",
-   "ecli": "ECLI:CZ:US:2026:2.US.2357.26.1",
-   "druh": "usnesení",
-   "rejstrik": "ÚS",
-   "datum": "2026-09-23",
-   "zverejneno": "2026-10-02",
-   "first_seen": "2026-10-02T12:00:00Z",
-   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2357-26_1",
-   "soudce": "Pavel Šámal",
-   "heslo": "Zásah do péče předběžným opatřením vyžaduje naléhavost",
-   "shrnuti": "Stěžovatelka napadla usnesení soudu, kterým byl zamítnut její návrh na vydání prozatímního rozhodnutí o úpravě péče o děti a výživného. Ústavní soud neshledal porušení základních práv stěžovatelky ani nezletilých dětí, neboť rozhodnutí soudu bylo řádně odůvodněno a vydáno v souladu se zájmem dětí. Ústavní stížnost proto odmítl pro zjevnou neopodstatněnost.",
-   "oblasti": [
-    "rodina_dedictvi",
-    "civilni_proces"
-   ],
-   "procesni": true
   }
  ]
 }
