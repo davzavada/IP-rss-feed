@@ -1,92 +1,51 @@
 {
-  "generated": "2026-11-02T07:02:26.317475+00:00",
+  "generated": "2026-11-03T07:25:57.643027+00:00",
   "from": "2026-10-01",
   "to": "2026-10-31",
-  "total": 157,
-  "covered": 8,
-  "cekajici": 3,
-  "intro": "Uplynulý měsíc přinesl řadu významných podnětů v oblasti autorského práva, ochranných známek a regulace digitálních technologií. Pozornost byla upřena zejména na problematiku generativní umělecké inteligence, interpretaci unijních předpisů o digitálních trzích a službách a na rozhodovací praxi soudů v oblasti duševního vlastnictví.",
+  "total": 156,
+  "covered": 3,
+  "cekajici": 2,
+  "intro": "Uplynulý měsíc přinesl řadu významných judikátů i odborných analýz v oblasti duševního vlastnictví a IT, se zvláštním důrazem na výzvy spojené s umělou inteligencí, ochranou autorských práv a fungováním digitálních platforem. Soudní dvůr EU a národní soudy se zabývaly otázkami kolektivní správy, ochranných známek a odpovědnosti v digitálním prostředí.",
   "blocks": [
     {
-      "title": "Autorské právo a AI",
-      "text": "Odborná literatura a stanoviska institucí se intenzivně zabývají otázkou odměňování autorů za užití jejich děl při trénování generativní umělecké inteligence. Doporučuje se zavést systém profitově založené kompenzace a zákonné výjimky spojené s právem na spravedlivou odměnu. Pro praxi to znamená nutnost přípravy nových licenčních schémat a zapojení kolektivní správy.",
+      "title": "Financování kolektivní správy",
+      "text": "Soudní dvůr EU rozhodl, že organizace kolektivní správy nemohou financovat sociální či kulturní služby pro ne-nositele práv srážkami z příjmů z výkonu práv před jejich rozdělením, ale pouze z nerozdělitelných částek. Toto rozhodnutí posiluje ochranu vlastníků práv a jejich nároků na spravedlivou odměnu.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "C-840/24 – VG Wort (Bénéficiaire des services fournis par une société de gestion collective) ",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0840"
+        }
+      ]
+    },
+    {
+      "title": "Svoboda projevu a známky",
+      "text": "Velký senát SDEU judikoval, že svoboda projevu třetí osoby může představovat řádný důvod ospravedlňující užití označení shodného či podobného se známkou s reputací. Vnitrostátní soudy tak musí při kolizi práv pečlivě poměřovat zájmy vlastníka známky a kontext veřejného zájmu.",
       "sources": [
         {
           "src": "journals",
           "label": "Časopis",
           "tag": "IIC",
-          "title": "Copyright and Generative AI: Guidance from Economic Incentive Theory for a Nuanced Regime for Author Remuneration",
-          "link": "https://doi.org/10.1007/s40319-026-01784-9"
-        },
+          "title": "“Inter IKEA Systems” – Decision of the Court of Justice of the European Union (Grand Chamber) 8 September 2026 – Case No. C-298/23",
+          "link": "https://doi.org/10.1007/s40319-026-01787-6"
+        }
+      ]
+    },
+    {
+      "title": "Selektivní distribuce kosmetiky",
+      "text": "Český Nejvyšší soud potvrdil, že kritéria selektivního distribučního systému luxusní kosmetiky vylučující dřívější porušovatele ochranných známek nepředstavují zakázané omezení hospodářské soutěže. Judikát poskytuje vyšší právní jistotu pro nastavení distribučních sítí prémiových značek v praxi.",
+      "sources": [
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "Position Statement of the Max Planck Institute of 25 June 2026 on the Future Copyright Framework in Times of Generative AI",
-          "link": "https://doi.org/10.1093/grurint/ikag093"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "QMJIP",
-          "title": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
-          "link": "https://doi.org/10.4337/qmjip.2026.03.01"
-        }
-      ]
-    },
-    {
-      "title": "Ochranné známky a zlá víra",
-      "text": "Tribunál SDEU potvrdil, že přihláška ochranné známky podaná krátce po uplynutí ochranné lhůty dřívější známky bez legitimního obchodního důvodu naplňuje znaky přihlášky ve zlé víře. Pro praxi to představuje důležité varování před zneužíváním procedurálních lhůt k obcházení povinnosti prokazovat užívání starších značek.",
-      "sources": [
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-541/25 – Qingdao Ecopure Filter v. EUIPO - Waterdrop Microdrink (Waterdrop)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0541"
-        }
-      ]
-    },
-    {
-      "title": "Akt o digitálních službách",
-      "text": "Judikatura a odborné analýzy se zaměřují na prověřování povinností velkých online platforem a poskytovatelů služeb podle Aktu o digitálních službách. Soudy potvrzují správnost postupu při určování velmi velkých platforem na základě spolehlivých údajů třetích stran. Pro praxi to znamená přísnější dohled a nutnost robustního plnění regulatorních povinností.",
-      "sources": [
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-134/24 – Technius v. Komise",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0134"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-203/24 – Zalando v. Komise",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0203"
-        }
-      ]
-    },
-    {
-      "title": "Ochrana osobních údajů",
-      "text": "Soudní dvůr EU a generální advokáti se zabývají výkladem přísných pravidel pro automatizované profilování a omezení práva na přístup k údajům. Pro praxi to znamená nutnost přehodnocení algoritmických rozhodovacích procesů vůči spotřebitelům a zajištění doložení právních důvodů.",
-      "sources": [
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "C-568/25 – Universal Versand",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0568"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "C-222/25 – Rahapesu Andmebüroo",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0222"
+          "tag": "IIC",
+          "title": "“Chanel” – Decision of the Supreme Court of the Czech Republic (Nejvyšší soud) 30 April 2025 – Case No. 23 Cdo 1504/2024",
+          "link": "https://doi.org/10.1007/s40319-026-01792-9"
         }
       ]
     }
   ],
-  "input_hash": "8e7d498a61e7acccc7cceeb739fb5cb0f472633d4a0326d4d2348d329801a0ca"
+  "input_hash": "060d9820775ff0da367bcd8f14ba26e6e59d051b93ffeec160847b48850b7b19"
 }

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T07:02:26+00:00",
+  "generated": "2026-11-03T07:25:57+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 26,
-      "stazeno": "2026-11-02T07:02:14+00:00",
+      "stazeno": "2026-11-03T07:25:36+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -17,11 +17,11 @@
       "zkratka": "PF UK",
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
-      "pocet": 9,
-      "stazeno": "2026-11-02T07:02:15+00:00",
+      "pocet": 6,
+      "stazeno": "2026-11-03T07:25:40+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "512d7fcccfc25980"
+      "otisk": "daf6b4b33b58ecf2"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-11-02T07:02:24+00:00",
+      "stazeno": "2026-11-03T07:25:46+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "c4e56f32cae644c3"
+      "otisk": "f5c131bb01370142"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-11-02T07:02:25+00:00",
+      "stazeno": "2026-11-03T07:25:47+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-11-02T07:02:26+00:00",
+      "stazeno": "2026-11-03T07:25:47+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "45f0e28f589d7dcd"
@@ -1392,31 +1392,6 @@
       "detail_pokusy": 1
     },
     {
-      "id": "e73f4429e7f25f7b0d1b",
-      "poradatel": "EPRAVO",
-      "datum": "2026-11-03",
-      "zacatek": "09:00",
-      "konec": "12:00",
-      "nazev": "Transparentní odměňování: last call",
-      "misto": "online",
-      "forma": "online",
-      "lektori": [
-        "Tomáš Procházka",
-        "Kateřina Demová"
-      ],
-      "cena": "3 975 Kč",
-      "anotace": "Online živé vysílání k tématu transparentního odměňování.",
-      "url": "https://www.epravo.cz/eshop/transparentni-odmenovani-last-call-online-zive-vysilani-3-11-2026-1622.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "pracovni"
-      ],
-      "oblasti_klic": "00c760990a3a"
-    },
-    {
       "id": "9a22045dc60281f66a17",
       "poradatel": "JCP",
       "datum": "2026-11-03",
@@ -1435,37 +1410,7 @@
         "rodina_dedictvi",
         "ustavni"
       ],
-      "oblasti_klic": "66411bf1d0da",
-      "take_u": [
-        {
-          "poradatel": "EPRAVO",
-          "url": "https://www.epravo.cz/top/aktualne/vybrane-otazky-spolecneho-jmeni-manzelu-v-aktualni-rozhodovaci-praxi-nejvyssiho-soudu-cr-a-ustavniho-soudu-cr-121773.html"
-        }
-      ]
-    },
-    {
-      "id": "c0bfe4c610a9e128027a",
-      "poradatel": "EPRAVO",
-      "datum": "2026-11-03",
-      "zacatek": "13:00",
-      "konec": "16:00",
-      "nazev": "AI v advokátní kanceláři: od hraček k procesům",
-      "misto": "online",
-      "forma": "online",
-      "lektori": [
-        "Mgr. Miroslav Chochola, LL.M., MBA"
-      ],
-      "cena": "3 975 Kč",
-      "anotace": "Kurz zaměřený na praktické využití umele inteligence v procesech advokátní kanceláře.",
-      "url": "https://www.epravo.cz/eshop/ai-v-advokatni-kancelari-od-hracek-k-procesum-online-zive-vysilani-3-11-2026-1580.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "it"
-      ],
-      "oblasti_klic": "d64e7fce8280"
+      "oblasti_klic": "66411bf1d0da"
     },
     {
       "id": "d999e57cb77f9ed40a01",
@@ -1713,27 +1658,6 @@
       "oblasti_klic": "a8a21c8bd266"
     },
     {
-      "id": "42468bd459e26f313d73",
-      "poradatel": "PFUK",
-      "datum": "2026-11-09",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "Týden fakulty",
-      "misto": "Právnická fakulta UK",
-      "forma": "prezencne",
-      "lektori": [],
-      "cena": "",
-      "anotace": "Týden fakulty nabízí studujícím, vyučujícím i dalším členům akademické obce příležitost setkat se jinak než při běžné výuce, sdílet zkušenosti a diskutovat o aktuálních tématech.",
-      "url": "https://www.prf.cuni.cz/aktuality/tyden-fakulty",
-      "datum_do": "2026-11-13",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [],
-      "oblasti_klic": "6d1da04e69ad"
-    },
-    {
       "id": "07d098081d52fc885a7d",
       "poradatel": "CAK",
       "datum": "2026-11-10",
@@ -1774,6 +1698,58 @@
       "oblasti": [],
       "oblasti_klic": "2d0a2236c586",
       "detail_pokusy": 2
+    },
+    {
+      "id": "9595043d4c7dffdb9b52",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-10",
+      "zacatek": "10:00",
+      "konec": "12:00",
+      "nazev": "Vyhráli jste volby. Jak neprohrát u soudu? Co by měl každý zastupitel vědět, než poprvé zvedne ruku",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "JUDr. Petr Toman, LL.M.",
+        "Radek Voňavka"
+      ],
+      "cena": "2 975 Kč",
+      "anotace": "Online kurz pro zastupitele o tom, co by měli vědět, aby se vyhnuli soudním sporům.",
+      "url": "https://www.epravo.cz/eshop/vyhrali-jste-volby-jak-neprohrat-u-soudu-co-by-mel-kazdy-zastupitel-vedet-nez-poprve-zvedne-ruku-online-zive-vysilani-10-11-2026-1645.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "spravni",
+        "ustavni"
+      ],
+      "oblasti_klic": "9e1fd64f9dd6"
+    },
+    {
+      "id": "170e199f4bca57c1dda8",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-10",
+      "zacatek": "13:00",
+      "konec": "16:00",
+      "nazev": "Jak získat pracovníky z Asie: Filipíny, Indonésie a Mongolsko krok za krokem",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "Mgr. Petra Silovská",
+        "Tomáš Zelený"
+      ],
+      "cena": "3 975 Kč",
+      "anotace": "Online živé vysílání o procesu získávání pracovníků z vybraných asijských zemí.",
+      "url": "https://www.epravo.cz/eshop/jak-ziskat-pracovniky-z-asie-filipiny-indonesie-a-mongolsko-krok-za-krokem-online-zive-vysilani-10-11-2026-1640.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "pracovni",
+        "socialni_cizinci"
+      ],
+      "oblasti_klic": "44c9ec8e088a"
     },
     {
       "id": "2fb52c1636396f8f9649",
@@ -2456,29 +2432,6 @@
       "detail_pokusy": 2
     }
   ],
-  "duplikaty": [
-    {
-      "id": "a5f115cdc51b009e2efa",
-      "poradatel": "EPRAVO",
-      "datum": "2026-11-03",
-      "zacatek": "09:30",
-      "konec": "14:30",
-      "nazev": "Vybrané otázky společného jmění manželů v aktuální rozhodovací praxi Nejvyššího soudu ČR a Ústavního soudu ČR",
-      "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
-      "forma": "hybridne",
-      "lektori": [
-        "Mgr. Michal Králík"
-      ],
-      "cena": "",
-      "anotace": "Vzdělávací akce pořádaná Jednotou českých právníků zaměřená na vybrané otázky společného jmění manželů.",
-      "url": "https://www.epravo.cz/top/aktualne/vybrane-otazky-spolecneho-jmeni-manzelu-v-aktualni-rozhodovaci-praxi-nejvyssiho-soudu-cr-a-ustavniho-soudu-cr-121773.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "forma",
-        "misto"
-      ],
-      "stejna_jako": "9a22045dc60281f66a17"
-    }
-  ],
+  "duplikaty": [],
   "ics": "https://owl.davidzavada.cz/akce.ics"
 }
