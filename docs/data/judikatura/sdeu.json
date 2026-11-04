@@ -1,8 +1,47 @@
 {
- "generated": "2026-11-03T07:25:11Z",
+ "generated": "2026-11-04T07:07:28Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "sdeu:62025CC0250",
+   "spz": "C-250/25",
+   "ecli": "ECLI:EU:C:2026:919",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-03",
+   "zverejneno": "2026-11-03",
+   "first_seen": "2026-11-04T07:07:28Z",
+   "nazev": "Like Company",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0250",
+   "heslo": "Použití tiskové publikace chatbitem s umělou inteligencí",
+   "shrnuti": "Generální advokát navrhuje, aby Soudní dvůr EU v řízení o předběžné otázce rozhodl, že použití tiskové publikace online chatbitem s umělou inteligencí prostřednictvím technologie Retrieval-Augmented Generation (RAG) spadá pod právo nakladatelů dle článku 15(1) směrnice 2019/790, pokud chatbot obchází účinná technická opatření nebo pokud je forma vyjadřování v publikaci v odpovědi chatbistu rozeznatelná do té míry, že uživatel může nahradit přístup k původnímu článku. Otázky týkající se trénování velkých jazykových modelů (LLM) navrhuje prohlásit za nepřípustné, neboť jsou v daném sporu hypotetické.",
+   "oblasti": [
+    "autorske",
+    "it",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CJ0583",
+   "spz": "C-583/24",
+   "ecli": "ECLI:EU:C:2026:920",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-03",
+   "zverejneno": "2026-11-03",
+   "first_seen": "2026-11-04T07:07:28Z",
+   "nazev": "Tagu",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0583",
+   "heslo": "Přiměřenost trestu jako důvod odmítnutí evropského zatýkacího rozkazu",
+   "shrnuti": "Soudní dvůr řešil, zda vykonávající justiční orgán může odmítnout vykonat evropský zatýkací rozkaz kvůli údajné nepřiměřenosti uloženého trestu odnětí svobody ve vztahu ke konkrétnímu trestnému činu. Rozhodl, že takové odmítnutí je možné pouze tehdy, pokud právní úprava nebo praxe vystavujícího státu zjevně a závažně porušuje zásadu přiměřenosti trestu a neexistuje tam efektivní soudní přezkum k nápravě. Samotná existence rozdílů v trestních sazbách mezi členskými státy přitom takové porušení nedokazuje.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
   {
    "id": "sdeu:62026CN0891",
    "spz": "C-891/26",
