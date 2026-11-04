@@ -1,13 +1,13 @@
 {
-  "generated": "2026-11-03T07:25:57+00:00",
+  "generated": "2026-11-04T07:09:01+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 26,
-      "stazeno": "2026-11-03T07:25:36+00:00",
+      "pocet": 25,
+      "stazeno": "2026-11-04T07:08:42+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,7 +18,7 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 6,
-      "stazeno": "2026-11-03T07:25:40+00:00",
+      "stazeno": "2026-11-04T07:08:43+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "daf6b4b33b58ecf2"
@@ -28,7 +28,7 @@
       "zkratka": "JČP",
       "barva": "#1d4ed8",
       "url": "https://jednotaceskychpravniku.cz/vzdelavaci-akce/",
-      "pocet": 4,
+      "pocet": 3,
       "stazeno": "2026-10-14T04:38:28+00:00",
       "cesta": "ai",
       "chyba": "403 Client Error: Forbidden for url: https://jednotaceskychpravniku.cz/vzdelavaci-akce/",
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-11-03T07:25:46+00:00",
+      "stazeno": "2026-11-04T07:08:48+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "f5c131bb01370142"
+      "otisk": "dc9405e270ce5de0"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-11-03T07:25:47+00:00",
+      "stazeno": "2026-11-04T07:08:54+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-11-03T07:25:47+00:00",
+      "stazeno": "2026-11-04T07:08:55+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "45f0e28f589d7dcd"
@@ -1457,31 +1457,6 @@
       "detail_pokusy": 1
     },
     {
-      "id": "709a75f867dff9189ed8",
-      "poradatel": "EPRAVO",
-      "datum": "2026-11-04",
-      "zacatek": "09:00",
-      "konec": "12:00",
-      "nazev": "Agenturní zaměstnávání a outsourcing v praxi: hranice nelegálního zprostředkování zaměstnání",
-      "misto": "online",
-      "forma": "online",
-      "lektori": [
-        "JUDr. Jáchym Stolička",
-        "JUDr. Vojtěch Dobeš"
-      ],
-      "cena": "3 975 Kč",
-      "anotace": "Online živé vysílání o hranicích nelegálního zprostředkování zaměstnání v rámci agenturního zaměstnávání a outsourcingu.",
-      "url": "https://www.epravo.cz/eshop/agenturni-zamestnavani-a-outsourcing-v-praxi-hranice-nelegalniho-zprostredkovani-zamestnani-online-zive-vysilani-4-11-2026-1596.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "pracovni"
-      ],
-      "oblasti_klic": "34f42a588ef4"
-    },
-    {
       "id": "83d0a1eef4d4f643a4b6",
       "poradatel": "PFUK",
       "datum": "2026-11-04",
@@ -1750,6 +1725,30 @@
         "socialni_cizinci"
       ],
       "oblasti_klic": "44c9ec8e088a"
+    },
+    {
+      "id": "3daca2d5b26e2e58ef6c",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-11",
+      "zacatek": "09:00",
+      "konec": "12:00",
+      "nazev": "Veřejné zakázky pro mírně pokročilé – 2. díl: Hodnocení nabídek (nastavení kritérií, provedení hodnocení), vyloučení dodavatelů a vyřizování námitek/návrhů",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "JUDr. Jiří Harnach"
+      ],
+      "cena": "3 975 Kč",
+      "anotace": "Druhý díl semináře o veřejných zakázkách zaměřený na hodnocení nabídek a vyřizování námitek.",
+      "url": "https://www.epravo.cz/eshop/verejne-zakazky-pro-mirne-pokrocile-2-dil-hodnoceni-nabidek-nastaveni-kriterii-provedeni-hodnoceni-vylouceni-dodavatelu-a-vyrizovani-namitek-navrhu-online-zive-vysilani-11-11-2026-1615.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "verejne_zakazky"
+      ],
+      "oblasti_klic": "fde7d6fc86dd"
     },
     {
       "id": "2fb52c1636396f8f9649",

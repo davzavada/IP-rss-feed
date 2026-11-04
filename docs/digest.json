@@ -1,41 +1,123 @@
 {
-  "generated": "2026-11-03T07:25:57.643027+00:00",
+  "generated": "2026-11-04T07:09:01.853794+00:00",
   "from": "2026-10-01",
   "to": "2026-10-31",
   "total": 156,
-  "covered": 3,
+  "covered": 14,
   "cekajici": 2,
-  "intro": "Uplynulý měsíc přinesl řadu významných judikátů i odborných analýz v oblasti duševního vlastnictví a IT, se zvláštním důrazem na výzvy spojené s umělou inteligencí, ochranou autorských práv a fungováním digitálních platforem. Soudní dvůr EU a národní soudy se zabývaly otázkami kolektivní správy, ochranných známek a odpovědnosti v digitálním prostředí.",
+  "intro": "Sledované období přineslo řadu významných rozhodnutí soudů a odborných analýz v oblasti duševního vlastnictví a IT, se zvláštním důrazem na výzvy spojené s generativní umělou inteligencí, ochranou osobních údajů a unijní regulací digitálních platforem. Judikatura a literatura se zaměřily na nastavení spravedlivých licenčních modelů, vyvažování exkluzivních práv s fundamentálními svobodami a na praktickou aplikaci nových právních rámců.",
   "blocks": [
     {
-      "title": "Financování kolektivní správy",
-      "text": "Soudní dvůr EU rozhodl, že organizace kolektivní správy nemohou financovat sociální či kulturní služby pro ne-nositele práv srážkami z příjmů z výkonu práv před jejich rozdělením, ale pouze z nerozdělitelných částek. Toto rozhodnutí posiluje ochranu vlastníků práv a jejich nároků na spravedlivou odměnu.",
+      "title": "Autorské právo a AI",
+      "text": "Odborná literatura a stanoviska institucí, jako je Max Planck Institut, se intenzivně zabývají problematikou odměňování autorů za užití děl při trénování generativní AI a navrhují zavádět kolektivní licenční mechanismy spojené s právem na spravedlivou odměnu. Soudní dvůr EU se mezitím zabýval financováním sociálních a kulturních služeb kolektivních správců a potvrdil, že takové výdaje nelze plošně hradit ze srážek z příjmů z výkonu práv před jejich rozdělením nositelům.",
       "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "Copyright and Generative AI: Guidance from Economic Incentive Theory for a Nuanced Regime for Author Remuneration",
+          "link": "https://doi.org/10.1007/s40319-026-01784-9"
+        },
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
           "title": "C-840/24 – VG Wort (Bénéficiaire des services fournis par une société de gestion collective) ",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0840"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "Position Statement of the Max Planck Institute of 25 June 2026 on the Future Copyright Framework in Times of Generative AI",
+          "link": "https://doi.org/10.1093/grurint/ikag093"
         }
       ]
     },
     {
-      "title": "Svoboda projevu a známky",
-      "text": "Velký senát SDEU judikoval, že svoboda projevu třetí osoby může představovat řádný důvod ospravedlňující užití označení shodného či podobného se známkou s reputací. Vnitrostátní soudy tak musí při kolizi práv pečlivě poměřovat zájmy vlastníka známky a kontext veřejného zájmu.",
+      "title": "Regulace digitálních služeb",
+      "text": "Soudní dvůr EU a Tribunál řešily klíčové otázky aplikace Aktu o digitálních službách (DSA), včetně potvrzení správnosti postupu Evropské komise při určování velmi velkých online platforem na základě spolehlivých údajů třetích stran. Odborné studie se rovněž zaměřily na právní klasifikaci funkcí aplikací typu WhatsApp a Telegram či na účinnost mechanismů mimosoudního řešení sporů při blokování uživatelů.",
       "sources": [
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "IIC",
-          "title": "“Inter IKEA Systems” – Decision of the Court of Justice of the European Union (Grand Chamber) 8 September 2026 – Case No. C-298/23",
-          "link": "https://doi.org/10.1007/s40319-026-01787-6"
+          "tag": "JIPITEC",
+          "title": "Social Media Bans and the Digital Services Act: A Critical Analysis of Statement of Reasons and Online Dispute Resolution",
+          "link": "https://www.jipitec.eu/jipitec/article/view/467"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-134/24 – Technius v. Komise",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0134"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JIPITEC",
+          "title": "Public or Private Communication? Categorising WhatsApp’s and Telegram’s Group Chat and Channel Functionalities under the DSA",
+          "link": "https://www.jipitec.eu/jipitec/article/view/446"
         }
       ]
     },
     {
-      "title": "Selektivní distribuce kosmetiky",
-      "text": "Český Nejvyšší soud potvrdil, že kritéria selektivního distribučního systému luxusní kosmetiky vylučující dřívější porušovatele ochranných známek nepředstavují zakázané omezení hospodářské soutěže. Judikát poskytuje vyšší právní jistotu pro nastavení distribučních sítí prémiových značek v praxi.",
+      "title": "Ochrana osobních údajů",
+      "text": "Generální advokát SDEU se vyslovil k zákazu automatizovaného rozhodování a profilování bonity, které může zabránit uzavření smlouvy, a zdůraznil, že důkazní břemeno ohledně nezbytnosti nese správce údajů. V českém prostředí Nejvyšší správní soud řešil procesní otázky týkající se aktivní legitimace subjektů údajů v přestupkových řízeních a přípustnosti zásahových žalob proti vyřízení žádostí o výmaz.",
+      "sources": [
+        {
+          "src": "nss",
+          "label": "NSS",
+          "tag": "",
+          "title": "22 As 151/2026-24",
+          "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786691"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "C-568/25 – Universal Versand",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0568"
+        },
+        {
+          "src": "nss",
+          "label": "NSS",
+          "tag": "",
+          "title": "6 As 25/2026-35",
+          "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/782899"
+        }
+      ]
+    },
+    {
+      "title": "Právo ochranných známek",
+      "text": "Tribunál SDEU vydal řadu rozsudků týkajících se posuzování nebezpečí záměny ochranných známek, přičemž řešil i případy přihlášek podaných ve zlé víře s úmyslem obejít povinnost prokazovat skutečné užívání starších práv. Český Nejvyšší správní soud se zabýval posuzováním podobnosti mezi textilními výrobky a službami maloobchodního prodeje oděvů v rámci námitkového řízení.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-541/25 – Qingdao Ecopure Filter v. EUIPO - Waterdrop Microdrink (Waterdrop)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0541"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-129/25 – Novavax v. EUIPO - Brill International (MATRIX-M)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0129"
+        },
+        {
+          "src": "nss",
+          "label": "NSS",
+          "tag": "",
+          "title": "2 As 191/2025-74",
+          "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786052"
+        }
+      ]
+    },
+    {
+      "title": "Hospodářská soutěž a distribuční sítě",
+      "text": "Nejvyšší soud se zabýval otázkou selektivního distribučního systému v oblasti luxusní kosmetiky a potvrdil, že kritéria vylučující prodejce s historií porušování ochranných známek nebo bez kamenných prodejen nepředstavují zakázané omezení hospodářské soutěže. SDEU a odborná literatura se věnovaly také pravidlům pro sportovní agenti a dopadům unijních soutěžních pravidel na trhy.",
       "sources": [
         {
           "src": "journals",
@@ -43,9 +125,16 @@
           "tag": "IIC",
           "title": "“Chanel” – Decision of the Supreme Court of the Czech Republic (Nejvyšší soud) 30 April 2025 – Case No. 23 Cdo 1504/2024",
           "link": "https://doi.org/10.1007/s40319-026-01792-9"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "“RRC Sports” – Decision of the Court of Justice of the European Union (Fifth Chamber) 15 July 2026 – Case No. C-209/23",
+          "link": "https://doi.org/10.1007/s40319-026-01788-5"
         }
       ]
     }
   ],
-  "input_hash": "060d9820775ff0da367bcd8f14ba26e6e59d051b93ffeec160847b48850b7b19"
+  "input_hash": "08fef9b494d83ce4b16da1e22309b64664b0dbc6c294178b861b8b1e6e4407f8"
 }
