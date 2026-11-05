@@ -1,96 +1,41 @@
 {
-  "generated": "2026-11-04T07:09:01.853794+00:00",
+  "generated": "2026-11-05T07:39:14.613185+00:00",
   "from": "2026-10-01",
   "to": "2026-10-31",
-  "total": 156,
-  "covered": 14,
+  "total": 155,
+  "covered": 5,
   "cekajici": 2,
-  "intro": "Sledované období přineslo řadu významných rozhodnutí soudů a odborných analýz v oblasti duševního vlastnictví a IT, se zvláštním důrazem na výzvy spojené s generativní umělou inteligencí, ochranou osobních údajů a unijní regulací digitálních platforem. Judikatura a literatura se zaměřily na nastavení spravedlivých licenčních modelů, vyvažování exkluzivních práv s fundamentálními svobodami a na praktickou aplikaci nových právních rámců.",
+  "intro": "Uplynulý měsíc přinesl řadu významných rozhodnutí Soudního dvora EU a Tribunálu v oblasti ochranných známek a autorského práva, včetně klíčových rozsudků k výjimkám či kolektivní správě. Odborná literatura se intenzivně věnovala také regulaci umělé inteligence, aktům o digitálních službách a trzích a aktuálním výzvám v patentovém právu.",
   "blocks": [
     {
-      "title": "Autorské právo a AI",
-      "text": "Odborná literatura a stanoviska institucí, jako je Max Planck Institut, se intenzivně zabývají problematikou odměňování autorů za užití děl při trénování generativní AI a navrhují zavádět kolektivní licenční mechanismy spojené s právem na spravedlivou odměnu. Soudní dvůr EU se mezitím zabýval financováním sociálních a kulturních služeb kolektivních správců a potvrdil, že takové výdaje nelze plošně hradit ze srážek z příjmů z výkonu práv před jejich rozdělením nositelům.",
+      "title": "Financování služeb kolektivní správy",
+      "text": "Soudní dvůr EU rozhodl, že organizace kolektivní správy nesmějí financovat sociální či kulturní služby pro ne-nositele práv z příjmů z výkonu práv před jejich rozdělením, ale pouze z nerozdělitelných částek. Pro praxi to znamená nutnost úpravy přerozdělovacích mechanismů kolektivních správců.",
       "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "Copyright and Generative AI: Guidance from Economic Incentive Theory for a Nuanced Regime for Author Remuneration",
-          "link": "https://doi.org/10.1007/s40319-026-01784-9"
-        },
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
           "title": "C-840/24 – VG Wort (Bénéficiaire des services fournis par une société de gestion collective) ",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0840"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "Position Statement of the Max Planck Institute of 25 June 2026 on the Future Copyright Framework in Times of Generative AI",
-          "link": "https://doi.org/10.1093/grurint/ikag093"
         }
       ]
     },
     {
-      "title": "Regulace digitálních služeb",
-      "text": "Soudní dvůr EU a Tribunál řešily klíčové otázky aplikace Aktu o digitálních službách (DSA), včetně potvrzení správnosti postupu Evropské komise při určování velmi velkých online platforem na základě spolehlivých údajů třetích stran. Odborné studie se rovněž zaměřily na právní klasifikaci funkcí aplikací typu WhatsApp a Telegram či na účinnost mechanismů mimosoudního řešení sporů při blokování uživatelů.",
+      "title": "Výjimka svobody projevu",
+      "text": "Velký senát SDEU potvrdil, že svoboda projevu třetí osoby může představovat řádný důvod ospravedlňující užití označení shodného nebo podobného známce s reputací. Vnitrostátní soudy tak musí při kolizi práv pečlivě poměřovat zájmy vlastníka známky a veřejný zájem na svobodě projevu.",
       "sources": [
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "JIPITEC",
-          "title": "Social Media Bans and the Digital Services Act: A Critical Analysis of Statement of Reasons and Online Dispute Resolution",
-          "link": "https://www.jipitec.eu/jipitec/article/view/467"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-134/24 – Technius v. Komise",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0134"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "JIPITEC",
-          "title": "Public or Private Communication? Categorising WhatsApp’s and Telegram’s Group Chat and Channel Functionalities under the DSA",
-          "link": "https://www.jipitec.eu/jipitec/article/view/446"
+          "tag": "IIC",
+          "title": "“Inter IKEA Systems” – Decision of the Court of Justice of the European Union (Grand Chamber) 8 September 2026 – Case No. C-298/23",
+          "link": "https://doi.org/10.1007/s40319-026-01787-6"
         }
       ]
     },
     {
-      "title": "Ochrana osobních údajů",
-      "text": "Generální advokát SDEU se vyslovil k zákazu automatizovaného rozhodování a profilování bonity, které může zabránit uzavření smlouvy, a zdůraznil, že důkazní břemeno ohledně nezbytnosti nese správce údajů. V českém prostředí Nejvyšší správní soud řešil procesní otázky týkající se aktivní legitimace subjektů údajů v přestupkových řízeních a přípustnosti zásahových žalob proti vyřízení žádostí o výmaz.",
-      "sources": [
-        {
-          "src": "nss",
-          "label": "NSS",
-          "tag": "",
-          "title": "22 As 151/2026-24",
-          "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786691"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "C-568/25 – Universal Versand",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0568"
-        },
-        {
-          "src": "nss",
-          "label": "NSS",
-          "tag": "",
-          "title": "6 As 25/2026-35",
-          "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/782899"
-        }
-      ]
-    },
-    {
-      "title": "Právo ochranných známek",
-      "text": "Tribunál SDEU vydal řadu rozsudků týkajících se posuzování nebezpečí záměny ochranných známek, přičemž řešil i případy přihlášek podaných ve zlé víře s úmyslem obejít povinnost prokazovat skutečné užívání starších práv. Český Nejvyšší správní soud se zabýval posuzováním podobnosti mezi textilními výrobky a službami maloobchodního prodeje oděvů v rámci námitkového řízení.",
+      "title": "Zlá víra při přihlášce známky",
+      "text": "Tribunál EU konstatoval, že přihlášení téměř totožné ochranné známky krátce po uplynutí ochranné lhůty bez legitimního obchodního důvodu představuje přihlášku ve zlé víře. Tento závěr posiluje pozici dřívějších vlastníků proti účelovému obcházení povinnosti prokazovat skutečné užívání známky.",
       "sources": [
         {
           "src": "sdeu",
@@ -98,43 +43,35 @@
           "tag": "",
           "title": "T-541/25 – Qingdao Ecopure Filter v. EUIPO - Waterdrop Microdrink (Waterdrop)",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0541"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-129/25 – Novavax v. EUIPO - Brill International (MATRIX-M)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0129"
-        },
-        {
-          "src": "nss",
-          "label": "NSS",
-          "tag": "",
-          "title": "2 As 191/2025-74",
-          "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786052"
         }
       ]
     },
     {
-      "title": "Hospodářská soutěž a distribuční sítě",
-      "text": "Nejvyšší soud se zabýval otázkou selektivního distribučního systému v oblasti luxusní kosmetiky a potvrdil, že kritéria vylučující prodejce s historií porušování ochranných známek nebo bez kamenných prodejen nepředstavují zakázané omezení hospodářské soutěže. SDEU a odborná literatura se věnovaly také pravidlům pro sportovní agenti a dopadům unijních soutěžních pravidel na trhy.",
+      "title": "Autorské právo a zpravodajství",
+      "text": "SDEU vymezil, že texty zveřejněné na sociálních sítích mohou požívat autorskoprávní ochrany, pokud jsou duševním výtvorem. Vnitrostátní právo sice může omezit zpravodajskou výjimku na krátké úryvky, nesmí však plně zakazovat jakýkoliv finanční prospěch z jejich užití.",
       "sources": [
         {
           "src": "journals",
           "label": "Časopis",
           "tag": "IIC",
-          "title": "“Chanel” – Decision of the Supreme Court of the Czech Republic (Nejvyšší soud) 30 April 2025 – Case No. 23 Cdo 1504/2024",
-          "link": "https://doi.org/10.1007/s40319-026-01792-9"
-        },
+          "title": "“Gândul Media Network” – Decision of the Court of Justice of the European Union (Second Chamber) 3 September 2026 – Case No. C-598/24",
+          "link": "https://doi.org/10.1007/s40319-026-01789-4"
+        }
+      ]
+    },
+    {
+      "title": "Znepřístupnění údajů o majitelích",
+      "text": "Nejvyšší soud rozhodl, že evidující osoba má právo na znepřístupnění údajů o skutečných majitelích v příslušné evidenci. Veřejný přístup k těmto údajům totiž představuje neproporcionální zásah do základních práv na ochranu soukromí a osobních údajů.",
+      "sources": [
         {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "“RRC Sports” – Decision of the Court of Justice of the European Union (Fifth Chamber) 15 July 2026 – Case No. C-209/23",
-          "link": "https://doi.org/10.1007/s40319-026-01788-5"
+          "src": "nsoud",
+          "label": "NS",
+          "tag": "",
+          "title": "27 Cdo 1749/2025",
+          "link": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/02DB293C6ADFC78BC1258E89004D5A86?openDocument"
         }
       ]
     }
   ],
-  "input_hash": "08fef9b494d83ce4b16da1e22309b64664b0dbc6c294178b861b8b1e6e4407f8"
+  "input_hash": "c99a5148eeb16be01702e62f57f06cc3b59e52c99702f746688b3f7cd96e97de"
 }

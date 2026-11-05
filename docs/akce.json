@@ -1,13 +1,13 @@
 {
-  "generated": "2026-11-04T07:09:01+00:00",
+  "generated": "2026-11-05T07:39:14+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 25,
-      "stazeno": "2026-11-04T07:08:42+00:00",
+      "pocet": 21,
+      "stazeno": "2026-11-05T07:38:46+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,10 +18,10 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 6,
-      "stazeno": "2026-11-04T07:08:43+00:00",
+      "stazeno": "2026-11-05T07:38:57+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "daf6b4b33b58ecf2"
+      "otisk": "242d98d604b028cb"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-11-04T07:08:48+00:00",
+      "stazeno": "2026-11-05T07:39:02+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "dc9405e270ce5de0"
+      "otisk": "01e6e4e207473901"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-11-04T07:08:54+00:00",
+      "stazeno": "2026-11-05T07:39:03+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-11-04T07:08:55+00:00",
+      "stazeno": "2026-11-05T07:39:04+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "45f0e28f589d7dcd"
@@ -1560,54 +1560,6 @@
       "detail_pokusy": 1
     },
     {
-      "id": "c80032dffec294c8d45c",
-      "poradatel": "CAK",
-      "datum": "2026-11-05",
-      "zacatek": "09:00",
-      "konec": "16:00",
-      "nazev": "Mediace - nástroj pro mimosoudní řešení sporů",
-      "misto": "Brno, Kleinův palác - IV. poschodí, přednášková místnost",
-      "forma": "prezencne",
-      "lektori": [
-        "JUDr. Hana Lenghartová"
-      ],
-      "cena": "1.050,- Kč včetně DPH",
-      "anotace": "Seminář se zabývá pravidly a principy mediačního procesu, rolí mediátora a zapojením advokátů do mediace.",
-      "url": "https://www.cak.cz/akce/1300",
-      "oblasti": [
-        "civilni_proces"
-      ],
-      "oblasti_klic": "c3f75d9c9d6b",
-      "detail_pokusy": 1
-    },
-    {
-      "id": "de69c1a8d3df1386aafc",
-      "poradatel": "EPRAVO",
-      "datum": "2026-11-05",
-      "zacatek": "09:00",
-      "konec": "12:00",
-      "nazev": "Velká novela stavebního zákona III – Změny v územním plánování",
-      "misto": "online",
-      "forma": "online",
-      "lektori": [
-        "Mgr. František Korbel, Ph.D.",
-        "Mgr. Jana Šimková",
-        "Mgr. Denisa Vaňková",
-        "Mgr. Karolína Panattoni"
-      ],
-      "cena": "3 975 Kč",
-      "anotace": "Online živé vysílání o změnách v územním plánování po velké novele stavebního zákona.",
-      "url": "https://www.epravo.cz/eshop/velka-novela-stavebniho-zakona-iii-zmeny-v-uzemnim-planovani-online-zive-vysilani-5-11-2026-1600.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "stavebni_zp"
-      ],
-      "oblasti_klic": "1bfc6a91e8af"
-    },
-    {
       "id": "53cb164d1051852bd1c0",
       "poradatel": "EPRAVO",
       "datum": "2026-11-06",
@@ -1732,7 +1684,7 @@
       "datum": "2026-11-11",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Veřejné zakázky pro mírně pokročilé – 2. díl: Hodnocení nabídek (nastavení kritérií, provedení hodnocení), vyloučení dodavatelů a vyřizování námitek/návrhů",
+      "nazev": "Veřejné zakázky pro mírně pokročilé – 2. díl: Hodnocení nabídek",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -1748,7 +1700,7 @@
       "oblasti": [
         "verejne_zakazky"
       ],
-      "oblasti_klic": "fde7d6fc86dd"
+      "oblasti_klic": "b03cc843f335"
     },
     {
       "id": "2fb52c1636396f8f9649",
@@ -1769,6 +1721,31 @@
       ],
       "oblasti": [],
       "oblasti_klic": "ca4c2228794f"
+    },
+    {
+      "id": "456e9256978c8952890d",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-11",
+      "zacatek": "13:00",
+      "konec": "16:00",
+      "nazev": "AI v litigaci: od analýzy spisu k návrhu podání",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "Mgr. Miroslav Chochola, LL.M., MBA"
+      ],
+      "cena": "3 975 Kč",
+      "anotace": "Seminář o využití umele inteligence v litigaci od analýzy spisu až po návrh podání.",
+      "url": "https://www.epravo.cz/eshop/ai-v-litigaci-od-analyzy-spisu-k-navrhu-podani-online-zive-vysilani-11-11-2026-1581.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "it",
+        "civilni_proces"
+      ],
+      "oblasti_klic": "1f904aa3c800"
     },
     {
       "id": "f7ed884e530b86616090",
@@ -2195,6 +2172,28 @@
       ],
       "oblasti_klic": "dfaea5579c41",
       "detail_pokusy": 2
+    },
+    {
+      "id": "e4561a0d5c44ecdf6f62",
+      "poradatel": "PFUK",
+      "datum": "2026-12-02",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Workshop: Rovnost a transparentnost v odměňování",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [
+        "doc. JUDr. Jakub Tomšej, Ph.D.",
+        "JUDr. Lucie Přenosilová"
+      ],
+      "cena": "",
+      "anotace": "Workshop nabídne přehled připravované legislativy, jejích praktických dopadů i aktuálních otázek spojených se zásadou stejné odměny za stejnou práci nebo práci stejné hodnoty. Účastníci se seznámí s novými informačními povinnostmi zaměstnavatelů a reportováním rozdílů v odměňování žen a mužů.",
+      "url": "https://www.prf.cuni.cz/aktuality/workshop-rovnost-a-transparentnost-v-odmenovani-0",
+      "detail_pokusy": 2,
+      "oblasti": [
+        "pracovni"
+      ],
+      "oblasti_klic": "cb98b4836f47"
     },
     {
       "id": "652d0acc4c735879e7b9",
