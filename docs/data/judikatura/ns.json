@@ -1,8 +1,515 @@
 {
- "generated": "2026-11-04T07:07:28Z",
+ "generated": "2026-11-05T07:36:16Z",
  "soud": "ns",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "ns:E73FEBF72D073488C1258EA50052B9FA",
+   "spz": "5 Tdo 31/2026",
+   "ecli": "ECLI:CZ:NS:2026:5.TDO.31.2026.1",
+   "druh": "usnesení",
+   "senat": 5,
+   "rejstrik": "Tdo",
+   "datum": "2026-07-28",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/E73FEBF72D073488C1258EA50052B9FA?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/49188029AC36268FC1258EA6002132E6/$file/5%20Tdo%2031_2026.pdf?openElement",
+   "heslo": "Dotační podvod a poškození zájmů unie",
+   "shrnuti": "Obviněný podal dovolání proti rozsudku odvolacího soudu, kterým byl uznán vinným zločinem dotačního podvodu a poškození finančních zájmů Evropských společenství. Nejvyšší soud řešil otázku naplnění znaků těchto trestných činů a dodržení závazného právního názoru při novém projednání věci a dospěl k závěru, že dovolání je zjevně neopodstatněné. Proto bylo dovolání obviněného podle § 265i odst. 1 písm. e) tr. ř. odmítnuto.",
+   "oblasti": [
+    "trestni",
+    "verejne_zakazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:E6309345B64569ECC1258EA50052BA2D",
+   "spz": "6 Tdo 671/2026",
+   "ecli": "ECLI:CZ:NS:2026:6.TDO.671.2026.1",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Tdo",
+   "datum": "2026-09-02",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/E6309345B64569ECC1258EA50052BA2D?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/A52A7882A15248FFC1258EA600215343/$file/6%20Tdo%20671_2026.pdf?openElement",
+   "heslo": "Hodnocení důkazů nezakládá dovolací důvod",
+   "shrnuti": "Obviněný podal dovolání proti rozsudku odvolacího soudu, kterým byl uznán vinným přečinem krádeže a zločinem neoprávněného opatření, padělání a pozměnění platebního prostředku. Nejvyšší soud řešil otázku naplnění dovolacích důvodů ve vztahu k hodnocení důkazů, procesní použitelnosti podání vysvětlení a právnímu posouzení znaku „bez souhlasu“. Dovolání obviněného odmítl jako zjevně neopodstatněné.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:D25F3B6F164AE617C1258EA50052B9E1",
+   "spz": "8 Tdo 748/2026",
+   "ecli": "ECLI:CZ:NS:2026:8.TDO.748.2026.1",
+   "druh": "usnesení",
+   "senat": 8,
+   "rejstrik": "Tdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/D25F3B6F164AE617C1258EA50052B9E1?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/E5BB3860DD08C2CAC1258EA600218FE5/$file/8%20Tdo%20748_2026.pdf?openElement",
+   "heslo": "Přechovávání dětské pornografie dětmi mladšími patnácti let",
+   "shrnuti": "Opatrovník nezletilého dítěte mladšího patnácti let podal dovolání proti rozsudku odvolacího soudu, kterým bylo potvrzeno uložení opatření napomenutí s výstrahou za čin jinak trestný výroba a jiné nakládání s dětskou pornografií. Nejvyšší soud řešil otázku přípustnosti dovolání a naplnění skutkové podstaty přechovávání dětské pornografie nezletilým. Dovolání odmítl jako nepřípustné, protože napadené rozhodnutí je v souladu s ustálenou judikaturou a dovolatel namítal spíše skutkový stav než právní otázky.",
+   "oblasti": [
+    "trestni",
+    "socialni_cizinci"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:CAAEC9584CC74CEFC1258EA50052B9E7",
+   "spz": "4 Tdo 879/2026",
+   "ecli": "ECLI:CZ:NS:2026:4.TDO.879.2026.1",
+   "druh": "usnesení",
+   "senat": 4,
+   "rejstrik": "Tdo",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/CAAEC9584CC74CEFC1258EA50052B9E7?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/C4F6FCDB6AED71CFC1258EA600211B30/$file/4%20Tdo%20879_2026.pdf?openElement",
+   "heslo": "Týrání ve společném obydlí a znásilnění",
+   "shrnuti": "Obviněný K. Z. podal dovolání proti odsuzujícímu rozsudku za týrání osoby žijící ve společném obydlí a znásilnění, přičemž namítal porušení práva na obhajobu a nedostatečnou individualizaci dílčích sexuálních útoků. Nejvyšší soud konstatoval, že opakované sexuální ataky v rámci domácího násilí jsou součástí trvajícího týrání a nevyžadují detailní časové vymezování každého útoku, a proto dovolání odmítl jako zjevně neopodstatněné.",
+   "oblasti": [
+    "trestni",
+    "rodina_dedictvi"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:B69BDE1BB34FDE95C1258EA50052BA0B",
+   "spz": "5 Tdo 618/2026",
+   "ecli": "ECLI:CZ:NS:2026:5.TDO.618.2026.1",
+   "druh": "usnesení",
+   "senat": 5,
+   "rejstrik": "Tdo",
+   "datum": "2026-07-28",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/B69BDE1BB34FDE95C1258EA50052BA0B?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/C2CF68DFF164F9FBC1258EA60021398D/$file/5%20Tdo%20618_2026.pdf?openElement",
+   "heslo": "Vydírání a výtržnictví spáchané na veřejnosti",
+   "shrnuti": "Dovolatel se soudil o vinu za zločin vydírání a přečin výtržnictví, kterých se dopustil fyzickým napadením poškozené a ohrožováním nožem na chodbě bytového domu před přítomnými svědky. Nejvyšší soud řešil otázku naplnění znaků trestného činu výtržnictví, spáchání činu se zbraní a veřejně a dospěl k závěru, že dovolání je zjevně neopodstatněné.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:B6222BB8933BEBE4C1258EA50052BA48",
+   "spz": "6 Tdo 597/2026",
+   "ecli": "ECLI:CZ:NS:2026:6.TDO.597.2026.1",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Tdo",
+   "datum": "2026-08-18",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/B6222BB8933BEBE4C1258EA50052BA48?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/B373C0C65FDB1CBAC1258EA600214A69/$file/6%20Tdo%20597_2026.pdf?openElement",
+   "heslo": "Podílnictví a zavinění formou nepřímého úmyslu",
+   "shrnuti": "Obviněný M. J. se dovoláním domáhal zrušení usnesení Městského soudu v Praze, kterým bylo potvrzeno odsouzení za přečin podílnictví. Nejvyšší soud řešil otázku posouzení subjektivní stránky a vědomosti o trestném původu převzaté věci a dospěl k závěru, že zavinění ve formě nepřímého úmyslu lze dovodit z okolností případu a vztahů mezi pachateli. Dovolání bylo odmítnuto jako podané z jiného důvodu.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:B1ABBAA57D9FBCBBC1258EA50052B98E",
+   "spz": "8 Tdo 340/2026",
+   "ecli": "ECLI:CZ:NS:2026:8.TDO.340.2026.1",
+   "druh": "usnesení",
+   "senat": 8,
+   "rejstrik": "Tdo",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/B1ABBAA57D9FBCBBC1258EA50052B98E?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/C9C94C1B26E38A1EC1258EA60021863E/$file/8%20Tdo%20340_2026.pdf?openElement",
+   "heslo": "Stav bezbrannosti u sexuálního útoku lze dovodit ze strnutí",
+   "shrnuti": "Obviněný se podal dovolání proti usnesení odvolacího soudu, kterým bylo potvrzeno jeho odsouzení za přečin sexuálního útoku. Nejvyšší soud řešil otázku naplnění znaku bezbrannosti oběti v důsledku šokové reakce (zamrznutí) při masáži. Dovolání obviněného odmítl jako zjevně neopodstatněné s tím, že stav bezbrannosti byl spolehlivě prokázán.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:AD0F35E4672D8A34C1258EA50052BA3F",
+   "spz": "6 Tdo 596/2026",
+   "ecli": "ECLI:CZ:NS:2026:6.TDO.596.2026.1",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Tdo",
+   "datum": "2026-08-18",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/AD0F35E4672D8A34C1258EA50052BA3F?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/6CED063EB7769F4EC1258EA600213EA0/$file/6%20Tdo%20596_2026.pdf?openElement",
+   "heslo": "Běh promlčecí doby u pokračujícího trestného činu",
+   "shrnuti": "Nejvyšší soud rozhodoval o dovolání obviněného odsouzeného za zločin krádeže spáchaný formou pokračující trestné činnosti. Řešil otázku, zda uplynula promlčecí doba trestní odpovědnosti ve vztahu ke všem dílčím útokům a zda je možné aplikovat závěry o promlčení z jiného skutku. Soud dospěl k závěru, že promlčecí doba u pokračujícího trestného činu běží od dokončení posledního dílčího útoku a vzhledem k opakovanému přerušení trestní odpovědnosti neuplynula.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:AA11E262E24CB096C1258EA50052BA11",
+   "spz": "6 Tdo 809/2026",
+   "ecli": "ECLI:CZ:NS:2026:6.TDO.809.2026.1",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Tdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/AA11E262E24CB096C1258EA50052BA11?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/B4F30EECCFC921E3C1258EA600217E68/$file/6%20Tdo%20809_2026.pdf?openElement",
+   "heslo": "Jízda s osobou na kapotě představuje násilí",
+   "shrnuti": "Obviněný se soudil o své odsouzení za zvlášť závažný zločin násilí proti úřední osobě, kterého se dopustil tím, že při pokusu ujet z místa kontroly autem zachytil mysliveckou stráž a pokračoval v jízdě s poškozeným na kapotě. Nejvyšší soud řešil otázku naplnění objektivní a subjektivní stránky trestného činu a přezkoumatelnosti peněžitého trestu. Dovolání odmítl jako zjevně neopodstatněné, neboť soudy správně dovodily nepřímý úmysl obviněného z jeho způsobu jízdy a vědomého ohrožení fyzické integrity poškozeného.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:A8880B5C0F3555B3C1258EA50052B9D0",
+   "spz": "11 Tdo 775/2026",
+   "ecli": "ECLI:CZ:NS:2026:11.TDO.775.2026.1",
+   "druh": "usnesení",
+   "senat": 11,
+   "rejstrik": "Tdo",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/A8880B5C0F3555B3C1258EA50052B9D0?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/2CFEEA29A46251B8C1258EA600210D08/$file/11%20Tdo%20775_2026.pdf?openElement",
+   "heslo": "Skutkové námitky nelze uplatnit v dovolání",
+   "shrnuti": "Obviněná podala dovolání proti usnesení odvolacího soudu, kterým bylo potvrzeno její odsouzení za drogovou trestnou činnost a maření výkonu úředního rozhodnutí. Nejvyšší soud řešil, zda lze v dovolacím řízení přezkoumávat hodnocení důkazů a odmítnutí provedení navrhovaných důkazů soudy nižších stupňů. Dovolání odmítl, neboť uplatněné námitky směřovaly pouze do skutkových zjištění a neodpovídaly uplatněnému dovolacímu důvodu.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:9D6C81903D14A951C1258EA50052BA1C",
+   "spz": "6 Tdo 716/2026",
+   "ecli": "ECLI:CZ:NS:2026:6.TDO.716.2026.1",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Tdo",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/9D6C81903D14A951C1258EA50052BA1C?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/3A08F67BCB31B04AC1258EA600215E57/$file/6%20Tdo%20716_2026.pdf?openElement",
+   "heslo": "Změna senátu pro opakovaný nesouhlas s odvolacím soudem",
+   "shrnuti": "Obviněný podal dovolání proti odsuzujícímu rozsudku za znásilnění, týrání osoby žijící ve společném obydlí a nedovolenou výrobu omamných látek, v němž namítal porušení práva na zákonného soudce kvůli změně senátu podle § 262 tr. ř. a zpochybňoval věrohodnost poškozené. Nejvyšší soud konstatoval, že postup odvolacího soudu byl důvodný s ohledem na dřívější vnitřně rozporuplné závěry soudu prvního stupně, a dovolání odmítl jako zjevně neopodstatněné.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:9B38193F48B8395AC1258EA50052B9D6",
+   "spz": "8 Tdo 799/2026",
+   "ecli": "ECLI:CZ:NS:2026:8.TDO.799.2026.1",
+   "druh": "usnesení",
+   "senat": 8,
+   "rejstrik": "Tdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/9B38193F48B8395AC1258EA50052B9D6?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/888B61B0B95E8E2CC1258EA6002193EC/$file/8%20Tdo%20799_2026.pdf?openElement",
+   "heslo": "Dovolání do výroku o trestu v trestním řízení",
+   "shrnuti": "Obviněný podal dovolání proti usnesení Krajského soudu v Brně, kterým bylo zamítnuto jeho odvolání proti odsuzujícímu rozsudku za přečin ohrožení pod vlivem návykové látky. Nejvyšší soud řešil, zda námitky směřující proti výši a přiměřenosti uloženého trestu naplňují uplatněné dovolací důvody. Dovolání odmítl, neboť námitky nepřiměřenosti trestu nelze podřadit pod zákonné dovolací důvody a uložený trest nebyl extrémně přísný.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:974F881807BD38BDC1258EA50052BA03",
+   "spz": "6 Tdo 703/2026",
+   "ecli": "ECLI:CZ:NS:2026:6.TDO.703.2026.1",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Tdo",
+   "datum": "2026-09-15",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/974F881807BD38BDC1258EA50052BA03?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/C89406610538B5B0C1258EA600215975/$file/6%20Tdo%20703_2026.pdf?openElement",
+   "heslo": "Nepřípustnost námitek proti přiměřenosti trestu v dovolání",
+   "shrnuti": "Obviněný podal dovolání proti usnesení odvolacího soudu, kterým bylo rozhodnuto o jeho odvolání v trestní věci usmrcení z nedbalosti. Nejvyšší soud řešil otázku, zda námitky směřující proti druhu a výměře uloženého trestu lze podřadit pod uplatněné dovolací důvody. Dospěl k závěru, že takové námitky neodpovídají zákonným dovolacím důvodům a dovolání odmítl.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:88C1018A4D0CDE6AC1258EA50052B9C2",
+   "spz": "8 Tdo 841/2026",
+   "ecli": "ECLI:CZ:NS:2026:8.TDO.841.2026.1",
+   "druh": "usnesení",
+   "senat": 8,
+   "rejstrik": "Tdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/88C1018A4D0CDE6AC1258EA50052B9C2?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/6AB95CE3727FE9DAC1258EA60021A25C/$file/8%20Tdo%20841_2026.pdf?openElement",
+   "heslo": "Zavinění u křivého obvinění a jeho prokazování",
+   "shrnuti": "Obviněná podala dovolání proti odsuzujícímu rozsudku za přečin ohrožování výchovy dítěte a křivého obvinění, přičemž namítala absenci subjektivní stránky a neprovedení navržených důkazů. Nejvyšší soud konstatoval, že soudy nižších stupňů řádně zjistily skutkový stav a vyvodily přímý úmysl obviněné na základě provedených důkazů a znaleckých posudků. Dovolání proto odmítl jako zjevně neopodstatněné.",
+   "oblasti": [
+    "trestni",
+    "rodina_dedictvi"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:8180C3C136535655C1258EA50052B9DC",
+   "spz": "11 Tcu 119/2026",
+   "ecli": "ECLI:CZ:NS:2026:11.TCU.119.2026.1",
+   "druh": "usnesení",
+   "senat": 11,
+   "rejstrik": "Tcu",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/8180C3C136535655C1258EA50052B9DC?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/358861FF86614E93C1258EA600210A50/$file/11%20Tcu%20119_2026.pdf?openElement",
+   "heslo": "Uznání cizozemského odsouzení občana České republiky",
+   "shrnuti": "Ministerstvo spravedlnosti navrhlo, aby se na odsouzení občana České republiky německým soudem hledí jako na odsouzení soudem České republiky. Nejvyšší soud posoudil splnění zákonných podmínek včetně oboustranné trestnosti a závažnosti činu a návrhu zcela vyhověl. Na cizozemské rozhodnutí se tak hledí jako na odsouzení tuzemským soudem.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:7040BA711B90B754C1258EA50052BA35",
+   "spz": "6 Tdo 755/2026",
+   "ecli": "ECLI:CZ:NS:2026:6.TDO.755.2026.1",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Tdo",
+   "datum": "2026-09-15",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/7040BA711B90B754C1258EA50052BA35?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/BBA32831D7A1BF95C1258EA6002178AE/$file/6%20Tdo%20755_2026.pdf?openElement",
+   "heslo": "Vymáhání dluhu násilím naplňuje znaky vydírání",
+   "shrnuti": "Obviněný podal dovolání proti usnesení odvolacího soudu, kterým bylo rozhodnuto o jeho odsouzení za zločin vydírání spáchaný s použitím zbraně a s hrozbou značné škody. Nejvyšší soud řešil otázku naplnění znaků vydírání a způsobu určení výše škody při násilném vymáhání peněžitých prostředků. Dovolání odmítl jako zjevně neopodstatněné s tím, že ani existující pohledávku nelze vymáhat násilím a celková požadovaná částka představuje škodu bez ohledu na případný právní nárok.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:6BB468E2A9A93AFBC1258EA50052B9B7",
+   "spz": "8 Tdo 812/2026",
+   "ecli": "ECLI:CZ:NS:2026:8.TDO.812.2026.1",
+   "druh": "usnesení",
+   "senat": 8,
+   "rejstrik": "Tdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/6BB468E2A9A93AFBC1258EA50052B9B7?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/4817D746A23CC3E6C1258EA60021971C/$file/8%20Tdo%20812_2026.pdf?openElement",
+   "heslo": "Mimořádné snížení trestu při prohlášení viny není nárokové",
+   "shrnuti": "Obviněný se domáhal v dovolání mimořádného snížení trestu odnětí svobody pod dolní hranici zákonné trestní sazby a kombinace trestu s peněžitým trestem. Nejvyšší soud konstatoval, že aplikace fakultativního institutu mimořádného snížení trestu závisí na úvaze soudu a nelze se jí úspěšně domáhat v dovolacím řízení. Dovolání proto podle § 265i odst. 1 písm. b) tr. ř. odmítl.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:63E979323F38DB20C1258EA50052B99F",
+   "spz": "4 Tdo 955/2026",
+   "ecli": "ECLI:CZ:NS:2026:4.TDO.955.2026.1",
+   "druh": "usnesení",
+   "senat": 4,
+   "rejstrik": "Tdo",
+   "datum": "2026-10-20",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/63E979323F38DB20C1258EA50052B99F?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/C982067C00BEEEC2C1258EA600212860/$file/4%20Tdo%20955_2026.pdf?openElement",
+   "heslo": "Použití zbraně při vydírání vyžaduje její demonstrativní ukázání",
+   "shrnuti": "Obviněný se soudil o dovolání proti odsouzení za zločin vydírání spáchaný se zbraní. Nejvyšší soud řešil, zda byly naplněny znaky skutkové podstaty vydírání a použití zbraně, a uzavřel, že pro naplnění kvalifikované skutkové podstaty postačí, má-li pachatel zbraň u sebe a demonstrativně ji ukáže k zesílení nátlaku.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:426A77BF7B22F6D7C1258EA50052B9AA",
+   "spz": "4 Tdo 872/2026",
+   "ecli": "ECLI:CZ:NS:2026:4.TDO.872.2026.1",
+   "druh": "usnesení",
+   "senat": 4,
+   "rejstrik": "Tdo",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/426A77BF7B22F6D7C1258EA50052B9AA?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/79623196FA428AC5C1258EA6002111F9/$file/4%20Tdo%20872_2026.pdf?openElement",
+   "heslo": "Zpronevěra peněz svěřených na nákup nemovitostí",
+   "shrnuti": "Obviněný se sice bránil dovoláním proti odsouzení za zločin zpronevěry, kterého se dopustil nepřevodem bytů a nevrácením peněz svěřených mu poškozeným na nákup nemovitostí, ale Nejvyšší soud jeho dovolání odmítl jako zjevně neopodstatněné. Soud konstatoval, že skutková zjištění soudů nižších stupňů nebyla v extrémním rozporu s důkazy a že obviněný pouze neúspěšně opakoval svou obhajobu ohledně hodnocení důkazů a subjektivní stránky.",
+   "oblasti": [
+    "trestni",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:3F3EA88C7CDF4001C1258EA50052B9F0",
+   "spz": "6 Tdo 719/2026",
+   "ecli": "ECLI:CZ:NS:2026:6.TDO.719.2026.1",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Tdo",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/3F3EA88C7CDF4001C1258EA50052B9F0?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/CE312B1E018ADAFFC1258EA6002168B5/$file/6%20Tdo%20719_2026.pdf?openElement",
+   "heslo": "Dovolací námitky proti hodnocení důkazů",
+   "shrnuti": "Obviněný R. B. podal dovolání proti usnesení Krajského soudu v Praze, kterým bylo rozhodnuto o jeho odvolání v trestní věci přečinu podvodu. Nejvyšší soud řešil otázku, zda uplatněné námitky směřující proti hodnocení důkazů a skutkovým zjištěním naplňují zvolené dovolací důvody. Dospěl k závěru, že dovolání bylo podáno z jiného důvodu, než stanoví zákon, a proto je podle § 265i odst. 1 písm. b) tr. ř. odmítl.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:37720992A0AC116AC1258EA50052BA24",
+   "spz": "6 Tdo 726/2026",
+   "ecli": "ECLI:CZ:NS:2026:6.TDO.726.2026.1",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Tdo",
+   "datum": "2026-09-15",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/37720992A0AC116AC1258EA50052BA24?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/93917DBDD21906F4C1258EA600217097/$file/6%20Tdo%20726_2026.pdf?openElement",
+   "heslo": "Řidič pod vlivem alkoholu odpovídá za nehodu",
+   "shrnuti": "Obviněný podal dovolání proti usnesení odvolacího soudu, kterým bylo potvrzeno jeho odsouzení za ohrožení pod vlivem návykové látky, těžké ublížení na zdraví z nedbalosti a maření výkonu úředního rozhodnutí. Nejvyšší soud se zabýval otázkou přezkoumatelnosti skutkových zjištění a hodnocení důkazů v dovolacím řízení a dospěl k závěru, že dovolání je zjevně neopodstatněné. Proto bylo dovolání podle § 265i odst. 1 písm. e) tr. ř. odmítnuto.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:1B187EC0EC94B523C1258EA50052B9A5",
+   "spz": "11 Tcu 117/2026",
+   "ecli": "ECLI:CZ:NS:2026:11.TCU.117.2026.1",
+   "druh": "usnesení",
+   "senat": 11,
+   "rejstrik": "Tcu",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/1B187EC0EC94B523C1258EA50052B9A5?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/F35B80DA8CDFFC60C1258EA6002107D7/$file/11%20Tcu%20117_2026.pdf?openElement",
+   "heslo": "Uznání cizozemského odsouzení občana republiky",
+   "shrnuti": "Ministerstvo spravedlnosti podalo návrh na rozhodnutí, že se na odsouzení občana České republiky německým soudem hledí jako na odsouzení soudem České republiky. Nejvyšší soud řešil, zda jsou splněny zákonné podmínky pro takové uznání. Dospěl k závěru, že podmínky oboustranné trestnosti, závažnosti činu i druhu uloženého trestu jsou splněny, a návrhu vyhověl.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:1A3575E686767AB1C1258EA50052B999",
+   "spz": "4 Tdo 919/2026",
+   "ecli": "ECLI:CZ:NS:2026:4.TDO.919.2026.1",
+   "druh": "usnesení",
+   "senat": 4,
+   "rejstrik": "Tdo",
+   "datum": "2026-10-20",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/1A3575E686767AB1C1258EA50052B999?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/EA70E3970B2ED66AC1258EA600212407/$file/4%20Tdo%20919_2026.pdf?openElement",
+   "heslo": "Příčinnou souvislost lze dovodit bez znaleckého posudku",
+   "shrnuti": "Obviněný se domáhal zrušení odsuzujícího rozsudku pro ublížení na zdraví a namítal absenci znaleckého posudku k mechanismu vzniku zranění a nesprávné hodnocení důkazů. Nejvyšší soud konstatoval, že námitky směřovaly pouze do skutkových zjištění a hodnocení důkazů, které neodpovídají uplatněným dovolacím důvodům. Dovolání proto odmítl jako podané z jiného důvodu.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:18EA5EA2C6245DD1C1258EA50052B9C8",
+   "spz": "8 Tdo 819/2026",
+   "ecli": "ECLI:CZ:NS:2026:8.TDO.819.2026.1",
+   "druh": "usnesení",
+   "senat": 8,
+   "rejstrik": "Tdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-11-05T07:36:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/18EA5EA2C6245DD1C1258EA50052B9C8?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/8C405D48AFC8DD35C1258EA600219DDB/$file/8%20Tdo%20819_2026.pdf?openElement",
+   "heslo": "Zastavení trestního stíhání pro těžkou chorobu",
+   "shrnuti": "Nejvyšší státní zástupkyně podala dovolání v neprospěch obviněného proti usnesení o zastavení trestního stíhání pro těžkou chorobu. Nejvyšší soud řešil otázku, zda soud může v rámci přezkumu obžaloby obstarat znalecký posudek a zda byl naplněn důvod pro zastavení stíhání. Dovolání odmítl s tím, že postup soudu byl správný a závěry o trvalém vyloučení účasti před soudem byly podloženy znaleckým posudkem.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:D2A3CB26A2B949C9C1258EA5002F9F0B",
+   "spz": "21 Cdo 1913/2026",
+   "ecli": "ECLI:CZ:NS:2026:21.CDO.1913.2026.1",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-06",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-10-14T12:00:00Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/D2A3CB26A2B949C9C1258EA5002F9F0B?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/84F996B23069A25AC1258EA5002FAF00/$file/21%20cdo%201913_2026.pdf?openElement",
+   "heslo": "Úraz způsobený pádem při mdlobě je pracovním úrazem",
+   "shrnuti": "Žalobkyně se domáhala po žalovaném odškodnění za úraz, který utrpěla, když v práci omdlela a při pádu na betonovou podlahu si poranila hlavu. Soudy nižších stupňů žalobu zamítly s tím, že nešlo o pracovní úraz, protože mdloba byla způsobena vnitřními faktory zaměstnankyně. Nejvyšší soud však dospěl k závěru, že úraz vzniklý nárazem na podlahu při pádu je pracovním úrazem bez ohledu na to, co pád zapříčinilo, a rozhodnutí soudů zrušil.",
+   "oblasti": [
+    "pracovni",
+    "skoda"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:A5A8E2125B9B4CAFC1258EA50052B9BD",
+   "spz": "4 Tz 22/2026",
+   "ecli": "ECLI:CZ:NS:2026:4.TZ.22.2026.1",
+   "druh": "rozsudek",
+   "senat": 4,
+   "rejstrik": "Tz",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-11-04",
+   "first_seen": "2026-10-08T04:28:59Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/A5A8E2125B9B4CAFC1258EA50052B9BD?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/74E4D380D3D0B78EC1258EA600212CB2/$file/4%20Tz%2022_2026.pdf?openElement",
+   "heslo": "Kombinace trestů v trestním příkazu",
+   "shrnuti": "Ministr spravedlnosti podal stížnost pro porušení zákona ve prospěch obviněného Adama Janeky proti pravomocnému trestnímu příkazu, kterým mu byl vedle trestu odnětí svobody uložen také peněžitý trest. Nejvyšší soud řešil otázku, zda taková kombinace trestů v trestním příkazu nepřekračuje zákonný limit stanovený v § 314e odst. 5 trestního řádu. Soud dospěl k závěru, že zákon byl porušen, neboť součet trestu odnětí svobody a peněžitého trestu (přepočteného na dny) nesmí přesáhnout jeden rok.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
   {
    "id": "ns:D47FE85815458994C1258EA40052B9C3",
    "spz": "33 Cdo 2687/2025",
@@ -1116,6 +1623,25 @@
    "oblasti": [
     "rodina_dedictvi",
     "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:deska:21cdo1428/2025",
+   "spz": "21 Cdo 1428/2025",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-30",
+   "zverejneno": "2026-10-30",
+   "first_seen": "2026-10-30T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_21_Cdo_1428_2025.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_21_Cdo_1428_2025.pdf",
+   "heslo": "Dohoda o pracovní pohotovosti není podmínkou jejího vzniku",
+   "shrnuti": "Žalobce pracující u žalované Vězeňské služby se domáhal odměny za pracovní pohotovost, kterou držel na základě svého zařazení do plánu vyrozumění a svozu podle vnitřního předpisu. Nejvyšší soud řešil otázku, zda lze uložení povinností vnitřním předpisem vykládat jako dohodu o pracovní pohotovosti. Dovolací soud uzavřel, že uzavření dohody není definičním znakem pracovní pohotovosti a nárok na odměnu vzniká i bez ní, jsou-li splněny zákonné znaky.",
+   "oblasti": [
+    "pracovni",
+    "civilni_proces"
    ],
    "procesni": false
   },
@@ -6456,25 +6982,6 @@
    "procesni": false
   },
   {
-   "id": "ns:deska:21cdo1913/2026",
-   "spz": "21 Cdo 1913/2026",
-   "druh": "rozsudek",
-   "senat": 21,
-   "rejstrik": "Cdo",
-   "datum": "2026-10-14",
-   "zverejneno": "2026-10-14",
-   "first_seen": "2026-10-14T12:00:00Z",
-   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_21_Cdo_1913_2026.pdf",
-   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_21_Cdo_1913_2026.pdf",
-   "heslo": "Úraz způsobený pádem při mdlobě je pracovním úrazem",
-   "shrnuti": "Žalobkyně se domáhala po žalovaném odškodnění za úraz, který utrpěla, když v práci omdlela a při pádu na betonovou podlahu si poranila hlavu. Soudy nižších stupňů žalobu zamítly s tím, že nešlo o pracovní úraz, protože mdloba byla způsobena vnitřními faktory zaměstnankyně. Nejvyšší soud však dospěl k závěru, že úraz vzniklý nárazem na podlahu při pádu je pracovním úrazem bez ohledu na to, co pád zapříčinilo, a rozhodnutí soudů zrušil.",
-   "oblasti": [
-    "pracovni",
-    "skoda"
-   ],
-   "procesni": false
-  },
-  {
    "id": "ns:F1B3AB5E08FE8D95C1258E8F004D24D8",
    "spz": "28 Cdo 2208/2026",
    "ecli": "ECLI:CZ:NS:2026:28.CDO.2208.2026.1",
@@ -8582,25 +9089,6 @@
     "civilni_proces"
    ],
    "procesni": true
-  },
-  {
-   "id": "ns:deska:4tz22/2026",
-   "spz": "4 Tz 22/2026",
-   "druh": "rozsudek",
-   "senat": 4,
-   "rejstrik": "Tz",
-   "datum": "2026-10-07",
-   "zverejneno": "2026-10-07",
-   "first_seen": "2026-10-08T04:28:59Z",
-   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_trestni/Vyhlas._zneni_rozsudku_4_Tz_22_2026.pdf",
-   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_trestni/Vyhlas._zneni_rozsudku_4_Tz_22_2026.pdf",
-   "heslo": "Kombinace trestů v trestním příkazu",
-   "shrnuti": "Ministr spravedlnosti podal stížnost pro porušení zákona ve prospěch obviněného Adama Janeky proti pravomocnému trestnímu příkazu, kterým mu byl vedle trestu odnětí svobody uložen také peněžitý trest. Nejvyšší soud řešil otázku, zda taková kombinace trestů v trestním příkazu nepřekračuje zákonný limit stanovený v § 314e odst. 5 trestního řádu. Soud dospěl k závěru, že zákon byl porušen, neboť součet trestu odnětí svobody a peněžitého trestu (přepočteného na dny) nesmí přesáhnout jeden rok.",
-   "oblasti": [
-    "trestni",
-    "civilni_proces"
-   ],
-   "procesni": false
   },
   {
    "id": "ns:FFD79B1BD53C7DB2C1258E89004D5ABA",
