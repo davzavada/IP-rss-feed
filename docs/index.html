@@ -92,6 +92,9 @@
     <circle cx="10" cy="12" r="2"></circle>
     <circle cx="18" cy="18" r="2"></circle>
   </symbol>
+  <symbol id="icon-filter" viewBox="0 0 24 24">
+    <path d="M4 5h16l-6 7.5V19l-4-2v-4.5z"></path>
+  </symbol>
   <symbol id="icon-calendar-text" viewBox="0 0 24 24">
     <rect x="3" y="5" width="18" height="16" rx="2"></rect>
     <path d="M16 3v4M8 3v4M3 10h18M7 14h10M7 17h6"></path>
@@ -166,6 +169,7 @@
          (nepřihlášenému přihlášení). -->
     <div class="novinky-rozsah" id="novinky-rozsah-obal" hidden>
       <div class="segment" id="novinky-rozsah" role="group" aria-label="Rozsah novinek"></div>
+      <button type="button" class="ikona-tlacitko filtr-oblasti-btn" data-filtr-oblasti="today" title="Filtr podle zaměření" aria-label="Filtr podle zaměření" aria-haspopup="true" aria-expanded="false" hidden><svg class="nav-ico" aria-hidden="true"><use href="#icon-filter"></use></svg><span class="filtr-oblasti-pocet" hidden></span></button>
       <button type="button" class="ikona-tlacitko" id="novinky-upravit" title="Upravit výběr" aria-label="Upravit výběr" hidden><svg class="nav-ico" aria-hidden="true"><use href="#icon-sliders"></use></svg></button>
     </div>
   </div>
@@ -187,7 +191,10 @@
     <h2 class="page-title">Nejvyšší soud&nbsp;<span class="nadpis-ai" role="img" aria-label="Píše AI" title="Shrnutí na této stránce píše automaticky AI (model Gemini). Před zveřejněním je nekontroluji."><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0l1.6 4.4L14 6 9.6 7.6 8 12 6.4 7.6 2 6l4.4-1.6zM13 10l.8 2.2L16 13l-2.2.8L13 16l-.8-2.2L10 13l2.2-.8z"/></svg></span></h2>
     <p class="page-desc" id="popis-nsoud"></p>
   </div>
-  <div class="segment archiv-prepinac" id="prepinac-nsoud" role="group" aria-label="Co ukázat" hidden></div>
+  <div class="archiv-lista">
+    <div class="segment archiv-prepinac" id="prepinac-nsoud" role="group" aria-label="Co ukázat" hidden></div>
+    <button type="button" class="ikona-tlacitko filtr-oblasti-btn" data-filtr-oblasti="nsoud" title="Filtr podle zaměření" aria-label="Filtr podle zaměření" aria-haspopup="true" aria-expanded="false" hidden><svg class="nav-ico" aria-hidden="true"><use href="#icon-filter"></use></svg><span class="filtr-oblasti-pocet" hidden></span></button>
+  </div>
   <div class="card-stav" id="stav-nsoud" role="status" hidden></div>
   <div class="feed" id="feed-nsoud"><p class="loading">Načítám...</p></div>
 </section>
@@ -197,7 +204,10 @@
     <h2 class="page-title">Nejvyšší správní soud&nbsp;<span class="nadpis-ai" role="img" aria-label="Píše AI" title="Shrnutí na této stránce píše automaticky AI (model Gemini). Před zveřejněním je nekontroluji."><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0l1.6 4.4L14 6 9.6 7.6 8 12 6.4 7.6 2 6l4.4-1.6zM13 10l.8 2.2L16 13l-2.2.8L13 16l-.8-2.2L10 13l2.2-.8z"/></svg></span></h2>
     <p class="page-desc" id="popis-nss"></p>
   </div>
-  <div class="segment archiv-prepinac" id="prepinac-nss" role="group" aria-label="Co ukázat" hidden></div>
+  <div class="archiv-lista">
+    <div class="segment archiv-prepinac" id="prepinac-nss" role="group" aria-label="Co ukázat" hidden></div>
+    <button type="button" class="ikona-tlacitko filtr-oblasti-btn" data-filtr-oblasti="nss" title="Filtr podle zaměření" aria-label="Filtr podle zaměření" aria-haspopup="true" aria-expanded="false" hidden><svg class="nav-ico" aria-hidden="true"><use href="#icon-filter"></use></svg><span class="filtr-oblasti-pocet" hidden></span></button>
+  </div>
   <div class="card-stav" id="stav-nss" role="status" hidden></div>
   <div class="feed" id="feed-nss"><p class="loading">Načítám...</p></div>
 </section>
@@ -207,7 +217,10 @@
     <h2 class="page-title">Ústavní soud&nbsp;<span class="nadpis-ai" role="img" aria-label="Píše AI" title="Shrnutí na této stránce píše automaticky AI (model Gemini). Před zveřejněním je nekontroluji."><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0l1.6 4.4L14 6 9.6 7.6 8 12 6.4 7.6 2 6l4.4-1.6zM13 10l.8 2.2L16 13l-2.2.8L13 16l-.8-2.2L10 13l2.2-.8z"/></svg></span></h2>
     <p class="page-desc" id="popis-us"></p>
   </div>
-  <div class="segment archiv-prepinac" id="prepinac-us" role="group" aria-label="Co ukázat" hidden></div>
+  <div class="archiv-lista">
+    <div class="segment archiv-prepinac" id="prepinac-us" role="group" aria-label="Co ukázat" hidden></div>
+    <button type="button" class="ikona-tlacitko filtr-oblasti-btn" data-filtr-oblasti="us" title="Filtr podle zaměření" aria-label="Filtr podle zaměření" aria-haspopup="true" aria-expanded="false" hidden><svg class="nav-ico" aria-hidden="true"><use href="#icon-filter"></use></svg><span class="filtr-oblasti-pocet" hidden></span></button>
+  </div>
   <div class="card-stav" id="stav-us" role="status" hidden></div>
   <div class="feed" id="feed-us"><p class="loading">Načítám...</p></div>
 </section>
@@ -217,7 +230,10 @@
     <h2 class="page-title">Soudní dvůr EU&nbsp;<span class="nadpis-ai" role="img" aria-label="Píše AI" title="Shrnutí na této stránce píše automaticky AI (model Gemini). Před zveřejněním je nekontroluji."><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0l1.6 4.4L14 6 9.6 7.6 8 12 6.4 7.6 2 6l4.4-1.6zM13 10l.8 2.2L16 13l-2.2.8L13 16l-.8-2.2L10 13l2.2-.8z"/></svg></span></h2>
     <p class="page-desc" id="popis-sdeu"></p>
   </div>
-  <div class="segment archiv-prepinac" id="prepinac-sdeu" role="group" aria-label="Co ukázat" hidden></div>
+  <div class="archiv-lista">
+    <div class="segment archiv-prepinac" id="prepinac-sdeu" role="group" aria-label="Co ukázat" hidden></div>
+    <button type="button" class="ikona-tlacitko filtr-oblasti-btn" data-filtr-oblasti="sdeu" title="Filtr podle zaměření" aria-label="Filtr podle zaměření" aria-haspopup="true" aria-expanded="false" hidden><svg class="nav-ico" aria-hidden="true"><use href="#icon-filter"></use></svg><span class="filtr-oblasti-pocet" hidden></span></button>
+  </div>
   <div class="card-stav" id="stav-sdeu" role="status" hidden></div>
   <div class="feed" id="feed-sdeu"><p class="loading">Načítám...</p></div>
 </section>
