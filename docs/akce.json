@@ -1,13 +1,13 @@
 {
-  "generated": "2026-11-05T07:39:14+00:00",
+  "generated": "2026-11-06T07:34:46+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 21,
-      "stazeno": "2026-11-05T07:38:46+00:00",
+      "pocet": 20,
+      "stazeno": "2026-11-06T07:34:04+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -17,11 +17,11 @@
       "zkratka": "PF UK",
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
-      "pocet": 6,
-      "stazeno": "2026-11-05T07:38:57+00:00",
+      "pocet": 7,
+      "stazeno": "2026-11-06T07:34:08+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "242d98d604b028cb"
+      "otisk": "bc5320ac0572ba0d"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-11-05T07:39:02+00:00",
+      "stazeno": "2026-11-06T07:34:13+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "01e6e4e207473901"
+      "otisk": "f29ff805f78b5df4"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-11-05T07:39:03+00:00",
+      "stazeno": "2026-11-06T07:34:22+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-11-05T07:39:04+00:00",
+      "stazeno": "2026-11-06T07:34:23+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "45f0e28f589d7dcd"
@@ -1560,29 +1560,50 @@
       "detail_pokusy": 1
     },
     {
-      "id": "53cb164d1051852bd1c0",
-      "poradatel": "EPRAVO",
+      "id": "1d17c2f67e16cb8efb3e",
+      "poradatel": "PFUK",
       "datum": "2026-11-06",
-      "zacatek": "09:00",
-      "konec": "12:00",
-      "nazev": "Velká novela stavebního zákona IV – Změny v povolování záměrů",
-      "misto": "online",
-      "forma": "online",
+      "zacatek": "10:00",
+      "konec": "",
+      "nazev": "Kišiněvský proces a jeho možný dopad na migrační právo (Jens Vedsted-Hansen)",
+      "misto": "místnost č. 117, Právnická fakulta UK",
+      "forma": "prezencne",
       "lektori": [
-        "Mgr. František Korbel, Ph.D.",
-        "JUDr. Jiří Buryan, Ph.D."
+        "Jens Vedsted-Hansen"
       ],
-      "cena": "3 975 Kč s DPH",
-      "anotace": "Online živé vysílání zaměřené na změny v povolování záměrů dle velké novely stavebního zákona.",
-      "url": "https://www.epravo.cz/eshop/velka-novela-stavebniho-zakona-iv-zmeny-v-povolovani-zameru-online-zive-vysilani-6-11-2026-1601.html",
+      "cena": "",
+      "anotace": "Přednáška představí Kišiněvskou deklaraci přijatou Radou Evropy a její možné dopady na ochranu migrantů, žadatelů o azyl a uprchlíků v Evropě. Zaměří se také na to, jak může tento vývoj ovlivnit podobu migračního a azylového práva.",
+      "url": "https://www.prf.cuni.cz/aktuality/kisinevsky-proces-a-jeho-mozny-dopad-na-migracni-pravo-jens-vedsted-hansen",
       "detail_pokusy": 2,
       "z_detailu": [
         "misto"
       ],
       "oblasti": [
-        "stavebni_zp"
+        "socialni_cizinci",
+        "ustavni"
       ],
-      "oblasti_klic": "a8a21c8bd266"
+      "oblasti_klic": "381754d69775"
+    },
+    {
+      "id": "42468bd459e26f313d73",
+      "poradatel": "PFUK",
+      "datum": "2026-11-09",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Týden fakulty",
+      "misto": "Právnická fakulta UK",
+      "forma": "prezencne",
+      "lektori": [],
+      "cena": "",
+      "anotace": "Týden fakulty nabízí studujícím, vyučujícím i dalším členům akademické obce příležitost setkat se jinak než při běžné výuce, diskutovat o aktuálních tématech a věnovat se odborným, vzdělávacím i společenským aktivitám.",
+      "url": "https://www.prf.cuni.cz/aktuality/tyden-fakulty",
+      "datum_do": "2026-11-13",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [],
+      "oblasti_klic": "20d8de531126"
     },
     {
       "id": "07d098081d52fc885a7d",
@@ -1684,7 +1705,7 @@
       "datum": "2026-11-11",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Veřejné zakázky pro mírně pokročilé – 2. díl: Hodnocení nabídek",
+      "nazev": "Veřejné zakázky pro mírně pokročilé – 2. díl: Hodnocení nabídek (nastavení kritérií, provedení hodnocení), vyloučení dodavatelů a vyřizování námitek/návrhů",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -1700,7 +1721,7 @@
       "oblasti": [
         "verejne_zakazky"
       ],
-      "oblasti_klic": "b03cc843f335"
+      "oblasti_klic": "fde7d6fc86dd"
     },
     {
       "id": "2fb52c1636396f8f9649",
@@ -1789,6 +1810,55 @@
       ],
       "oblasti_klic": "f1d7aa8dc04c",
       "detail_pokusy": 2
+    },
+    {
+      "id": "bda891ab325aedbbd481",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-12",
+      "zacatek": "09:00",
+      "konec": "12:00",
+      "nazev": "Praktické aspekty civilního procesu – Jak absolvovat řízení před soudem se ctí a pokud možno úspěšně",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "JUDr. Jaromír Jirsa"
+      ],
+      "cena": "3 975 Kč",
+      "anotace": "Online kurz zaměřený na praktické zvládnutí soudního řízení v civilním procesu.",
+      "url": "https://www.epravo.cz/eshop/prakticke-aspekty-civilniho-procesu-jak-absolvovat-rizeni-pred-soudem-se-cti-a-pokud-mozno-uspesne-online-zive-vysilani-12-11-2026-1616.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "civilni_proces"
+      ],
+      "oblasti_klic": "ccbfae0a7f9b"
+    },
+    {
+      "id": "413bb89c812af1730e14",
+      "poradatel": "CAK",
+      "datum": "2026-11-12",
+      "zacatek": "17:00",
+      "konec": "19:00",
+      "nazev": "Diskusní setkání na téma \"Moc technologických firem, zdaňování zisků z dat a AI na hraně právního státu\"",
+      "misto": "Praha, Palác Dunaj - aula",
+      "forma": "prezencne",
+      "lektori": [
+        "JUDr. Daniel Pospíšil, Ph.D.",
+        "JUDr. Zdeněk Kučera, Ph.D.",
+        "PhDr. Ondřej Lánský, Ph.D."
+      ],
+      "cena": "zdarma",
+      "anotace": "Diskusní setkání o moci technologických firem, zdaňování zisků z dat a AI na hraně právního státu. Akce se zabývá otázkou, zda má demokratický stát ještě šanci zkrotit digitální neofeudalismus.",
+      "url": "https://www.cak.cz/akce/1379",
+      "detail_pokusy": 2,
+      "oblasti": [
+        "it",
+        "dane",
+        "ustavni"
+      ],
+      "oblasti_klic": "e0fe3c34ae14"
     },
     {
       "id": "854dd9f9555a1d631c00",
@@ -2086,6 +2156,37 @@
       "detail_pokusy": 2
     },
     {
+      "id": "9eab06cbc6e8dda14ec4",
+      "poradatel": "PFUK",
+      "datum": "2026-11-25",
+      "zacatek": "09:30",
+      "konec": "",
+      "nazev": "České a slovenské autorské právo mezi národní tradicí a evropskou integrací (1926–2026)",
+      "misto": "místnost č. 38, Právnická fakulta UK",
+      "forma": "prezencne",
+      "lektori": [
+        "JUDr. et Mgr. Petra Žikovská, Ph.D.",
+        "JUDr. et Mgr. Rudolf Leška, Ph.D., LL.M.",
+        "JUDr. Irena Holcová",
+        "doc. JUDr. Renáta Bačárová, Ph.D., LL.M.",
+        "doc. JUDr. Pavel Koukal, Ph.D.",
+        "As. Prof. Dr. Silke von Lewinski",
+        "Prof. Dr. Philippe Jougleux",
+        "Prof. Chien-Chih Lu"
+      ],
+      "cena": "zdarma",
+      "anotace": "Mezinárodní konference je součástí oslav stého výročí přijetí prvního československého autorského zákona a založení československé pobočky ALAI.",
+      "url": "https://www.prf.cuni.cz/aktuality/ceske-a-slovenske-autorske-pravo-mezi-narodni-tradici-a-evropskou-integraci-1926-2026",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "autorske"
+      ],
+      "oblasti_klic": "2f20de72c458"
+    },
+    {
       "id": "3c8c55624cf144b82d56",
       "poradatel": "CAK",
       "datum": "2026-11-26",
@@ -2172,28 +2273,6 @@
       ],
       "oblasti_klic": "dfaea5579c41",
       "detail_pokusy": 2
-    },
-    {
-      "id": "e4561a0d5c44ecdf6f62",
-      "poradatel": "PFUK",
-      "datum": "2026-12-02",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "Workshop: Rovnost a transparentnost v odměňování",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [
-        "doc. JUDr. Jakub Tomšej, Ph.D.",
-        "JUDr. Lucie Přenosilová"
-      ],
-      "cena": "",
-      "anotace": "Workshop nabídne přehled připravované legislativy, jejích praktických dopadů i aktuálních otázek spojených se zásadou stejné odměny za stejnou práci nebo práci stejné hodnoty. Účastníci se seznámí s novými informačními povinnostmi zaměstnavatelů a reportováním rozdílů v odměňování žen a mužů.",
-      "url": "https://www.prf.cuni.cz/aktuality/workshop-rovnost-a-transparentnost-v-odmenovani-0",
-      "detail_pokusy": 2,
-      "oblasti": [
-        "pracovni"
-      ],
-      "oblasti_klic": "cb98b4836f47"
     },
     {
       "id": "652d0acc4c735879e7b9",

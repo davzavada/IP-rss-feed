@@ -1,15 +1,137 @@
 {
-  "generated": "2026-11-05T07:39:14.613185+00:00",
+  "generated": "2026-11-06T07:34:46.854519+00:00",
   "from": "2026-10-01",
   "to": "2026-10-31",
-  "total": 155,
-  "covered": 5,
+  "total": 148,
+  "covered": 15,
   "cekajici": 2,
-  "intro": "Uplynulý měsíc přinesl řadu významných rozhodnutí Soudního dvora EU a Tribunálu v oblasti ochranných známek a autorského práva, včetně klíčových rozsudků k výjimkám či kolektivní správě. Odborná literatura se intenzivně věnovala také regulaci umělé inteligence, aktům o digitálních službách a trzích a aktuálním výzvám v patentovém právu.",
+  "intro": "Uplynulý měsíc přinesl řadu významných impulzů v oblasti autorského práva, ochranných známek, regulace umělé inteligence a digitálních službách. Pozornost se soustředila na problematiku trénování generativní AI, výklad unijních předpisů o digitálních trzích a službách a na rozhodovací praxi soudů ohledně ochranných známek.",
   "blocks": [
     {
+      "title": "Autorské právo a AI",
+      "text": "Odborná literatura a stanoviska institucí se intenzivně zabývají odměňováním autorů za užití jejich děl v generativní umělé inteligenci a navrhují nové modely kolektivní správy a licenčních schémat. Pro praxi to znamená nutnost sledovat vývoj v oblasti zákonných výjimek pro vytěžování textů a dat (TDM) a připravit se na nové formy kompenzací.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "Copyright and Generative AI: Guidance from Economic Incentive Theory for a Nuanced Regime for Author Remuneration",
+          "link": "https://doi.org/10.1007/s40319-026-01784-9"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JIPITEC",
+          "title": "The Concept of Lawful Access and Its Implications for User Freedoms in the EU Copyright Acquis: Opinion of the European Copyright Society",
+          "link": "https://www.jipitec.eu/jipitec/article/view/468"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "GRUR Int",
+          "title": "Position Statement of the Max Planck Institute of 25 June 2026 on the Future Copyright Framework in Times of Generative AI",
+          "link": "https://doi.org/10.1093/grurint/ikag093"
+        }
+      ]
+    },
+    {
+      "title": "Zlé úmysly u známek",
+      "text": "Judikatura Tribunálu potvrdila, že přihlášení ochranné známky krátce po uplynutí ochranné lhůty dřívější známky bez legitimního obchodního důvodu naplňuje znaky přihlášky ve zlé víře. Pro praxi to představuje důležité varování před obcházením povinnosti prokazovat skutečné užívání starších značek.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-541/25 – Qingdao Ecopure Filter v. EUIPO - Waterdrop Microdrink (Waterdrop)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0541"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-650/25 – Vacu Activ Marcin Leśniak v. EUIPO - Lakhomoff a AR Group Roman Tchir (VACUACTIVUS)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TO0650"
+        }
+      ]
+    },
+    {
+      "title": "Akt o digitálních službách",
+      "text": "Analýzy a rozhodnutí se zaměřují na fungování velmi velikých online platforem, moderování obsahu a pravidla pro blokování uživatelů na sociálních sítích. Pro poskytovatele digitálních služeb to znamená zpřísnění požadavků na transparentnost odůvodnění rozhodnutí a řádné doložení uživatelských dat.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JIPITEC",
+          "title": "Social Media Bans and the Digital Services Act: A Critical Analysis of Statement of Reasons and Online Dispute Resolution",
+          "link": "https://www.jipitec.eu/jipitec/article/view/467"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-134/24 – Technius v. Komise",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0134"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-203/24 – Zalando v. Komise",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0203"
+        }
+      ]
+    },
+    {
+      "title": "Ochranné známky a záměna",
+      "text": "Soudní dvůr EU a Tribunál řešily celou řadu sporů o pravděpodobnost záměny obrazových a slovních ochranných známek se shodnými či podobnými prvky. Pro praxi to znamená nutnost pečlivého prověřování starších práv před podáním přihlášky, a to i s ohledem na slabou rozlišovací schopnost některých společných prvků.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-786/25 – Novomatic v. EUIPO - Euro Games Technology (EXTRA STARS)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0786"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-129/25 – Novavax v. EUIPO - Brill International (MATRIX-M)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0129"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-128/25 – Novavax v. EUIPO - Brill International (MATRIX-C)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0128"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-127/25 – Novavax v. EUIPO - Brill International (MATRIX-V)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0127"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-126/25 – Novavax v. EUIPO - Brill International (MATRIX-A)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0126"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-814/25 – Holding Tourisme v. EUIPO - Agora (MAGORA)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0814"
+        }
+      ]
+    },
+    {
       "title": "Financování služeb kolektivní správy",
-      "text": "Soudní dvůr EU rozhodl, že organizace kolektivní správy nesmějí financovat sociální či kulturní služby pro ne-nositele práv z příjmů z výkonu práv před jejich rozdělením, ale pouze z nerozdělitelných částek. Pro praxi to znamená nutnost úpravy přerozdělovacích mechanismů kolektivních správců.",
+      "text": "Soudní dvůr EU rozhodl, že organizace kolektivní správy nemohou financovat sociální či kulturní služby pro ne-nositele práv z příjmů z výkonu práv před jejich rozdělením, ale pouze z nerozdělitelných částek. Pro kolektivní správce to znamená nutnost úpravy vnitřních finančních mechanismů a přerozdělování vybraných odměn.",
       "sources": [
         {
           "src": "sdeu",
@@ -19,59 +141,7 @@
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0840"
         }
       ]
-    },
-    {
-      "title": "Výjimka svobody projevu",
-      "text": "Velký senát SDEU potvrdil, že svoboda projevu třetí osoby může představovat řádný důvod ospravedlňující užití označení shodného nebo podobného známce s reputací. Vnitrostátní soudy tak musí při kolizi práv pečlivě poměřovat zájmy vlastníka známky a veřejný zájem na svobodě projevu.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "“Inter IKEA Systems” – Decision of the Court of Justice of the European Union (Grand Chamber) 8 September 2026 – Case No. C-298/23",
-          "link": "https://doi.org/10.1007/s40319-026-01787-6"
-        }
-      ]
-    },
-    {
-      "title": "Zlá víra při přihlášce známky",
-      "text": "Tribunál EU konstatoval, že přihlášení téměř totožné ochranné známky krátce po uplynutí ochranné lhůty bez legitimního obchodního důvodu představuje přihlášku ve zlé víře. Tento závěr posiluje pozici dřívějších vlastníků proti účelovému obcházení povinnosti prokazovat skutečné užívání známky.",
-      "sources": [
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-541/25 – Qingdao Ecopure Filter v. EUIPO - Waterdrop Microdrink (Waterdrop)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0541"
-        }
-      ]
-    },
-    {
-      "title": "Autorské právo a zpravodajství",
-      "text": "SDEU vymezil, že texty zveřejněné na sociálních sítích mohou požívat autorskoprávní ochrany, pokud jsou duševním výtvorem. Vnitrostátní právo sice může omezit zpravodajskou výjimku na krátké úryvky, nesmí však plně zakazovat jakýkoliv finanční prospěch z jejich užití.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "“Gândul Media Network” – Decision of the Court of Justice of the European Union (Second Chamber) 3 September 2026 – Case No. C-598/24",
-          "link": "https://doi.org/10.1007/s40319-026-01789-4"
-        }
-      ]
-    },
-    {
-      "title": "Znepřístupnění údajů o majitelích",
-      "text": "Nejvyšší soud rozhodl, že evidující osoba má právo na znepřístupnění údajů o skutečných majitelích v příslušné evidenci. Veřejný přístup k těmto údajům totiž představuje neproporcionální zásah do základních práv na ochranu soukromí a osobních údajů.",
-      "sources": [
-        {
-          "src": "nsoud",
-          "label": "NS",
-          "tag": "",
-          "title": "27 Cdo 1749/2025",
-          "link": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/02DB293C6ADFC78BC1258E89004D5A86?openDocument"
-        }
-      ]
     }
   ],
-  "input_hash": "c99a5148eeb16be01702e62f57f06cc3b59e52c99702f746688b3f7cd96e97de"
+  "input_hash": "cc3c201619073b3d7fc7987a0a0f1b26969b055d52c89d504542369538b09795"
 }
