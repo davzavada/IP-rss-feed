@@ -1,8 +1,692 @@
 {
- "generated": "2026-11-05T07:36:16Z",
+ "generated": "2026-11-06T07:31:13Z",
  "soud": "ns",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "ns:FE7A9FC83548249DC1258EA60052A2E1",
+   "spz": "30 Cdo 1193/2026",
+   "ecli": "ECLI:CZ:NS:2026:30.CDO.1193.2026.1",
+   "druh": "rozsudek",
+   "senat": 30,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/FE7A9FC83548249DC1258EA60052A2E1?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/3F0803CA59EAD21DC1258EA600531451/$file/30%20Cdo%201193_2026.pdf?openElement",
+   "heslo": "Podání kárného návrhu nepředstavuje výkon veřejné moci",
+   "shrnuti": "Žalobce se domáhal po České republice – Ministerstvu spravedlnosti náhrady nemajetkové újmy za kárné řízení, kterého byl zproštěn. Nejvyšší soud řešil otázku, zda podání kárného návrhu předsedou soudu naplňuje definiční znak nezákonného rozhodnutí či nesprávného úředního postupu podle zákona o odpovědnosti za škodu způsobenou při výkonu veřejné moci. Dospěl k závěru, že podání kárného návrhu není výkonem veřejné moci ve smyslu tohoto zákona, a proto zproštění kárného obvinění samo o sobě nezakládá odpovědnost státu.",
+   "oblasti": [
+    "skoda",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:FAFA41014B5F4F85C1258EA60052A2B3",
+   "spz": "33 Cdo 2685/2025",
+   "ecli": "ECLI:CZ:NS:2026:33.CDO.2685.2025.1",
+   "druh": "usnesení",
+   "senat": 33,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-29",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/FAFA41014B5F4F85C1258EA60052A2B3?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/6275DD627328EBA2C1258EA6005351B1/$file/33%20Cdo%202685_2025.pdf?openElement",
+   "heslo": "Vztah svědka k účastníku jako součást hodnocení důkazů",
+   "shrnuti": "Dopravní rozvojové středisko ČR se žalobou domáhalo určení vlastnického práva k pozemkům, které převedlo na B – BMW kupní smlouvou, namítajíc existenci vedlejší ústní dohody a neplatnost smlouvy. Nejvyšší soud řešil otázku přípustnosti dovolání ve vztahu k hodnocení důkazů, věrohodnosti svědků a rozsahu vypořádání odvolacích námitek. Dovolání odmítl s tím, že vztah svědka k účastníku je pouze jednou z okolností hodnocených v kontextu ostatních důkazů a odvolací soud se od ustálené praxe neodchýlil.",
+   "oblasti": [
+    "vecna_prava",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:FAEEEE53840566BDC1258EA60052A2F8",
+   "spz": "29 ICdo 41/2025",
+   "ecli": "ECLI:CZ:NS:2026:29.ICDO.41.2025.1",
+   "druh": "rozsudek",
+   "senat": 29,
+   "rejstrik": "ICdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/FAEEEE53840566BDC1258EA60052A2F8?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/CA79A95F1CDEDBAAC1258EA6005308EE/$file/29%20ICdo%2041_2025.pdf?openElement",
+   "heslo": "Úhrada závazku dlužníkem v úpadku a obvyklý obchodní styk",
+   "shrnuti": "Insolvenční správkyně se žalobou domáhala určení neúčinnosti plateb, které dlužník provedl ve prospěch věřitele VH Quality na úhradu dodaného zboží krátce před podáním insolvenčního návrhu. Nejvyšší soud řešil otázku, zda lze platbu na existující dluh považovat za právní jednání učiněné za podmínek obvyklých v obchodním styku ve smyslu § 241 odst. 5 písm. b/ insolvenčního zákona, přestože dlužník v té době nehradil závazky jiným věřitelům. Dovolací soud uzavřel, že samotná existence neuspokojených pohledávek jiných věřitelů nevylučuje aplikaci uvedené výjimky, a zrušil rozhodnutí soudů nižších stupňů.",
+   "oblasti": [
+    "insolvence",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:E61614078DEB4886C1258EA60052A2A4",
+   "spz": "33 Cdo 471/2026",
+   "ecli": "ECLI:CZ:NS:2026:33.CDO.471.2026.1",
+   "druh": "usnesení",
+   "senat": 33,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-20",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/E61614078DEB4886C1258EA60052A2A4?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/87F690DACCEEECBEC1258EA600535E8F/$file/33%20Cdo%20471_2026.pdf?openElement",
+   "heslo": "Zprostředkovatelská provize při odlišné kupní ceně",
+   "shrnuti": "Žalobkyně M & M reality holding se domáhala po žalovaném zaplacení provize ze zprostředkování. Soud řešil otázku, zda zprostředkovateli vzniká nárok na provizi, pokud byla kupní smlouva uzavřena za nižší cenu, než byla uváděna ve zprostředkovatelské smlouvě pro nabídku nemovitosti. Nejvyšší soud dovolání odmítl s tím, že rozhodnutí odvolacího soudu záviselo na skutkových zjištěních ohledně obsahu dohody a neuplatnění způsobilých dovolacích důvodů.",
+   "oblasti": [
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:E04948675FCD8BD6C1258EA60052A380",
+   "spz": "20 Cdo 2439/2026",
+   "ecli": "ECLI:CZ:NS:2026:20.CDO.2439.2026.1",
+   "druh": "usnesení",
+   "senat": 20,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-13",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/E04948675FCD8BD6C1258EA60052A380?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/8FE5DF5839C5A7C6C1258EA60052AB86/$file/20%20Cdo%202439_2026.pdf?openElement",
+   "heslo": "Zastavení exekuce pro zjevnou nespravedlnost",
+   "shrnuti": "I-Xon se soudila s povinným v exekučním řízení o vymožení peněžité pohledávky. Nejvyšší soud řešil otázku přípustnosti dovolání proti usnesení o zamítnutí návrhu na zastavení exekuce z důvodu zjevné nespravedlnosti a dospěl k závěru, že dovolání není přípustné, protože odvolací soud posoudil věc v souladu s ustálenou judikaturou a povinný netvrdil takové mimořádné okolnosti, které by zakládaly zjevnou nespravedlnost exekuce.",
+   "oblasti": [
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:DDAC426BDC1A94BEC1258EA60052A2FD",
+   "spz": "30 Cdo 1527/2026",
+   "ecli": "ECLI:CZ:NS:2026:30.CDO.1527.2026.1",
+   "druh": "usnesení",
+   "senat": 30,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-27",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/DDAC426BDC1A94BEC1258EA60052A2FD?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/E74F41E6196BAFDBC1258EA600532503/$file/30%20Cdo%201527_2026.pdf?openElement",
+   "heslo": "Náhrada platu státního zaměstnance vyžaduje správní řízení",
+   "shrnuti": "Žalobce se domáhal po České republice náhrady škody a nemajetkové újmy v důsledku trestního stíhání. Nejvyšší soud dovolání žalobce odmítl s tím, že nárok na náhradu škody v podobě ušlého platu nelze uplatnit přímo, dokud neproběhlo uplatnění doplacení platu v příslušném řízení ve věcech služby.",
+   "oblasti": [
+    "skoda",
+    "pracovni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:C33100F5E7CC293EC1258EA60052A2BD",
+   "spz": "30 Cdo 2673/2026",
+   "ecli": "ECLI:CZ:NS:2026:30.CDO.2673.2026.1",
+   "druh": "usnesení",
+   "senat": 30,
+   "rejstrik": "Cdo",
+   "datum": "2026-11-02",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/C33100F5E7CC293EC1258EA60052A2BD?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/41E9EAED8439954CC1258EA60053452C/$file/30%20Cdo%202673_2026.pdf?openElement",
+   "heslo": "Dovolání proti zamítnutí doplnění nákladů řízení je nepřípustné",
+   "shrnuti": "Žalobce L. V. se domáhal dovoláním přezkumu usnesení, kterým byl zamítnut jeho návrh na vydání doplňujícího rozsudku o nákladech řízení. Nejvyšší soud řešil otázku přípustnosti dovolání proti rozhodnutí o návrhu na doplnění rozsudku týkajícího se nákladů řízení. Dovolání odmítl s tím, že výluka přípustnosti dovolání se vztahuje i na rozhodnutí o zamítnutí návrhu na doplnění nákladového výroku.",
+   "oblasti": [
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:BE1976FD0C88A741C1258EA60052A2A8",
+   "spz": "33 Cdo 2744/2025",
+   "ecli": "ECLI:CZ:NS:2026:33.CDO.2744.2025.1",
+   "druh": "usnesení",
+   "senat": 33,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-29",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/BE1976FD0C88A741C1258EA60052A2A8?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/B405464F260996FAC1258EA6005353CC/$file/33%20Cdo%202744_2025.pdf?openElement",
+   "heslo": "Zpochybnění hodnocení důkazů nezakládá přípustnost dovolání",
+   "shrnuti": "Žalobce se domáhal po žalovaném zaplacení 150 000 Kč z titulu bezdůvodného obohacení vzniklého z neplatné či zdánlivé smlouvy o dílo. Nejvyšší soud řešil otázku přípustnosti dovolání a dospěl k závěru, že dovolání není přípustné, neboť dovolatel zpochybňoval pouze skutková zjištění a hodnocení důkazů soudy nižších stupňů.",
+   "oblasti": [
+    "civilni_proces",
+    "zavazky"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:B8DEA364F1A8C28CC1258EA60052A29A",
+   "spz": "30 Cdo 2666/2026",
+   "ecli": "ECLI:CZ:NS:2026:30.CDO.2666.2026.1",
+   "druh": "usnesení",
+   "senat": 30,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-29",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/B8DEA364F1A8C28CC1258EA60052A29A?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/67337288CF976951C1258EA6005341F3/$file/30%20Cdo%202666_2026.pdf?openElement",
+   "heslo": "Zastavení řízení pro nesplnění podmínky zastoupení",
+   "shrnuti": "Žalobce se domáhal po České republice – Ministerstvu spravedlnosti zaplacení náhrady škody a nemajetkové újmy. Nejvyšší soud řešil otázku postupu v dovolacím řízení při nesplnění podmínky povinného zastoupení dovolatele a při zneužívání práva na soudní ochranu. Rozhodl tak, že dovolací řízení zastavil, jelikož žalobce nesplnil povinnost být zastoupen advokátem a jeho opakované žádosti o ustanovení zástupce představovaly zneužití práva.",
+   "oblasti": [
+    "civilni_proces",
+    "skoda"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:B3866E05185A3556C1258EA60052A308",
+   "spz": "30 Cdo 1530/2026",
+   "ecli": "ECLI:CZ:NS:2026:30.CDO.1530.2026.1",
+   "druh": "usnesení",
+   "senat": 30,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-27",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/B3866E05185A3556C1258EA60052A308?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/4D2472A13B99162FC1258EA60053283F/$file/30%20Cdo%201530_2026.pdf?openElement",
+   "heslo": "Dovolání vyžaduje řádné vymezení předpokladů přípustnosti",
+   "shrnuti": "Žalobce se domáhal po České republice – Ministerstvu spravedlnosti náhrady škody a nemajetkové újmy za nezákonné trestní stíhání. Nejvyšší soud dovolání žalobce odmítl pro nepřípustnost a vady, neboť v něm nebyly řádně vymezeny předpoklady přípustnosti a uplatněné námitky nesplňovaly zákonné požadavky. Dovolací soud konstatoval, že námitka promlčení nebyla v rozporu s dobrými mravy a otázka příčinné souvislosti nezakládá přípustnost dovolání.",
+   "oblasti": [
+    "skoda",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:AE92ED3B23A5F5D8C1258EA60052A29F",
+   "spz": "30 Cdo 2030/2026",
+   "ecli": "ECLI:CZ:NS:2026:30.CDO.2030.2026.1",
+   "druh": "usnesení",
+   "senat": 30,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-29",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/AE92ED3B23A5F5D8C1258EA60052A29F?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/FEB84E00E924F590C1258EA600533703/$file/30%20Cdo%202030_2026.pdf?openElement",
+   "heslo": "Náhrada škody za nezákonné rozhodnutí a náklady řízení",
+   "shrnuti": "Žalobce se domáhal po České republice – Ministerstvu spravedlnosti náhrady škody spočívající v úroku z prodlení z uhrazené pokuty na základě zrušeného rozhodnutí a nákladů právního zastoupení ve správním a správním soudním řízení. Nejvyšší soud řešil otázku, zda takto vzniklá újma a rozdíl v nákladech zastoupení představují odškodnitelnou škodu podle zákona o odpovědnosti za škodu způsobenou při výkonu veřejné moci. Dovolání žalobce odmítl s tím, že se odvolací soud neodchýlil od ustálené rozhodovací praxe ohledně prokazování ušlého zisku ani výše nákladů vynaložených na nápravu nezákonného rozhodnutí.",
+   "oblasti": [
+    "skoda",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:A9431AEE3365E667C1258EA60052A2C9",
+   "spz": "30 Cdo 2561/2026",
+   "ecli": "ECLI:CZ:NS:2026:30.CDO.2561.2026.1",
+   "druh": "usnesení",
+   "senat": 30,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-26",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/A9431AEE3365E667C1258EA60052A2C9?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/A01831B91AD26333C1258EA600533FEC/$file/30%20Cdo%202561_2026.pdf?openElement",
+   "heslo": "Odmítnutí zjevně vadného opakovaného podání",
+   "shrnuti": "Žalobce se domáhal po České republice – Ministerstvu spravedlnosti zaplacení peněžité sumy. Nejvyšší soud řešil přípustnost dovolání proti usnesení o odmítnutí žaloby pro nesrozumitelnost a absenci náležitostí. Dovolání odmítl jako nepřípustné, neboť závěry soudů nižších stupňů odpovídají ustálené judikatuře.",
+   "oblasti": [
+    "civilni_proces",
+    "skoda"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:9D0845D59D780B49C1258EA60052A303",
+   "spz": "33 Cdo 2610/2026",
+   "ecli": "ECLI:CZ:NS:2026:33.CDO.2610.2026.1",
+   "druh": "usnesení",
+   "senat": 33,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-26",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/9D0845D59D780B49C1258EA60052A303?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/8DBD6254702C97EAC1258EA600534ED3/$file/33%20Cdo%202610_2026.pdf?openElement",
+   "heslo": "Dovolání proti usnesení o osvobození od soudních poplatků",
+   "shrnuti": "Česká republika - Ministerstvo spravedlnosti a povinný vedli exekuční spor, v jehož rámci povinný napadl dovoláním rozhodnutí o osvobození od soudních poplatků. Nejvyšší soud řešil přípustnost takového dovolání a dospěl k závěru, že podle zákona není dovolání proti rozhodnutí o soudních poplatcích přípustné.",
+   "oblasti": [
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:96ABE4CE1FD139DAC1258EA60052A36D",
+   "spz": "20 Cdo 2082/2026",
+   "ecli": "ECLI:CZ:NS:2026:20.CDO.2082.2026.1",
+   "druh": "usnesení",
+   "senat": 20,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-13",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/96ABE4CE1FD139DAC1258EA60052A36D?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/5FFD4068326ABBE3C1258EA700210754/$file/20%20Cdo%202082_2026.pdf?openElement",
+   "heslo": "Zproštění funkce správce závodu v exekuci",
+   "shrnuti": "Oprávněná společnost a povinná společnost se soudily v exekučním řízení o návrhu povinné na zproštění funkce správce závodu. Nejvyšší soud řešil přípustnost dovolání směřujícího proti potvrzujícímu usnesení o zamítnutí tohoto návrhu a dospěl k závěru, že dovolání není přípustné, neboť dovolatelka nevymezila řádně právní otázku ve smyslu § 237 o. s. ř.",
+   "oblasti": [
+    "civilni_proces",
+    "zavazky"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:93D8519D5D661B76C1258EA60052A296",
+   "spz": "30 Cdo 2490/2026",
+   "ecli": "ECLI:CZ:NS:2026:30.CDO.2490.2026.1",
+   "druh": "usnesení",
+   "senat": 30,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-29",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/93D8519D5D661B76C1258EA60052A296?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/7CAB8C2E3E101C38C1258EA600533DD4/$file/30%20Cdo%202490_2026.pdf?openElement",
+   "heslo": "Promlčení náhrady nákladů obhajoby u nezákonného stíhání",
+   "shrnuti": "Žalobkyně se domáhala po České republice - Ministerstvu spravedlnosti náhrady škody za náklady obhajoby v nezákonném trestním stíhání. Nejvyšší soud řešil otázku počátku běhu promlčecí doby a okamžiku vzniku škody a dospěl k závěru, že promlčecí doba začíná běžet dnem vyhlášení zprošťujícího rozsudku v přítomnosti obhájce a nárok na odměnu vzniká splněním příkazu, nikoliv až jeho vyúčtováním.",
+   "oblasti": [
+    "skoda",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:900E37D1729B5A1DC1258EA60052A350",
+   "spz": "25 Cdo 3193/2025",
+   "ecli": "ECLI:CZ:NS:2026:25.CDO.3193.2025.1",
+   "druh": "usnesení",
+   "senat": 25,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/900E37D1729B5A1DC1258EA60052A350?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/F5DFD2325CE22BF1C1258EA60052F5ED/$file/25%20Cdo%203193_2025.pdf?openElement",
+   "heslo": "Odpovědnost provozovatele vodního díla za povodňové škody",
+   "shrnuti": "Žalobkyně se domáhala po žalované Lesy hl. m. Prahy náhrady škody způsobené rozlivem vody z Vodního díla Hostivař během povodně. Nejvyšší soud řešil otázku příčinné souvislosti mezi porušením povinností provozovatele vodního díla a vzniklou škodou a dospěl k závěru, že k zatopení by došlo i při bezchybném postupu, neboť šlo o extrémní povodňovou vlnu, jíž nebylo možné zabránit. Dovolání žalobkyně proto jako nepřípustné odmítl.",
+   "oblasti": [
+    "skoda",
+    "vecna_prava",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:85864B0E78E508F8C1258EA60052A2C6",
+   "spz": "30 Cdo 2785/2026",
+   "ecli": "ECLI:CZ:NS:2026:30.CDO.2785.2026.1",
+   "druh": "usnesení",
+   "senat": 30,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-27",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/85864B0E78E508F8C1258EA60052A2C6?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/79BA72712D4F7A07C1258EA600534724/$file/30%20Cdo%202785_2026.pdf?openElement",
+   "heslo": "Zastavení řízení pro nesplnění povinného zastoupení",
+   "shrnuti": "Žalobce se podal dovolání proti usnesení Městského soudu v Praze, jímž bylo potvrzeno odmítnutí jeho podání a zamítnutí žádosti o ustanovení zástupce v řízení o zaplacení peněžité sumy proti České republice – Ministerstvu spravedlnosti. Nejvyšší soud řešil, zda je nutné vyzývat k odstranění nedostatku povinného zastoupení advokátem, a dospěl k závěru, že pokud si je dovolatel z jiných paralelních řízení této povinnosti vědom a zneužívá svá práva, lze dovolací řízení zastavit i bez předchozí výzvy k odstranění vady.",
+   "oblasti": [
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:8556F2383ED2CE7FC1258EA60052A293",
+   "spz": "33 Cdo 1671/2026",
+   "ecli": "ECLI:CZ:NS:2026:33.CDO.1671.2026.1",
+   "druh": "usnesení",
+   "senat": 33,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-29",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/8556F2383ED2CE7FC1258EA60052A293?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/404F417F987AD869C1258EA600534C49/$file/33%20Cdo%201671_2026.pdf?openElement",
+   "heslo": "Spor o změnu smlouvy spadá pod telekomunikační úřad",
+   "shrnuti": "Žalobce se soudil s O2 Czech Republic o určení neplatnosti změn smluvních podmínek a zaplacení peněžité částky. Nejvyšší soud řešil otázku, zda je k rozhodnutí sporu o určení neplatnosti změny smlouvy o poskytování služeb elektronických komunikací příslušný soud, nebo Český telekomunikační úřad. Dovolací soud uzavřel, že takový spor spadá do pravomoci Českého telekomunikačního úřadu podle zákona o elektronických komunikacích.",
+   "oblasti": [
+    "spravni",
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:718D8CA7DD4562D8C1258EA60052A385",
+   "spz": "20 Cdo 2316/2026",
+   "ecli": "ECLI:CZ:NS:2026:20.CDO.2316.2026.1",
+   "druh": "usnesení",
+   "senat": 20,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-13",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/718D8CA7DD4562D8C1258EA60052A385?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/2D217A179F7DB5F8C1258EA60052A8D3/$file/20%20Cdo%202316_2026.pdf?openElement",
+   "heslo": "Insolvenční řízení nevylučuje posouzení zastavení exekuce",
+   "shrnuti": "Oprávněný D. V. vedl exekuci proti povinnému P. S., který navrhl její zastavení a zpochybnil existenci vymáhaného dluhu. Nejvyšší soud řešil otázku, zda je posouzení návrhu na zastavení exekuce předčasné po zahájení insolvenčního řízení na majetek povinného. Rozhodl, že exekuční soud se musí námitkami povinného věcně zabývat a o návrhu rozhodnout bez ohledu na probíhající insolvenční řízení.",
+   "oblasti": [
+    "civilni_proces",
+    "insolvence"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:6444E2913398CEACC1258EA60052A2E9",
+   "spz": "33 Cdo 471/2025",
+   "ecli": "ECLI:CZ:NS:2026:33.CDO.471.2025.1",
+   "druh": "rozsudek",
+   "senat": 33,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-29",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/6444E2913398CEACC1258EA60052A2E9?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/2DE540FAA1DF5051C1258EA6005355FF/$file/33%20Cdo%20471_2025.pdf?openElement",
+   "heslo": "Smlouva o studiu představuje spotřebitelský vztah",
+   "shrnuti": "Ambis Univerzita se soudila s žalovanou o zaplacení školného za akademický rok. Nejvyšší soud řešil otázku, zda je smlouva o studiu uzavřená mezi soukromou vysokou školou a studentem spotřebitelskou smlouvou, a dospěl k závěru, že jde o spotřebitelský vztah podléhající příslušné ochraně.",
+   "oblasti": [
+    "spotrebitel",
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:4C1E2E40D6C44DF4C1258EA60052A372",
+   "spz": "20 Cdo 1075/2026",
+   "ecli": "ECLI:CZ:NS:2026:20.CDO.1075.2026.1",
+   "druh": "usnesení",
+   "senat": 20,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/4C1E2E40D6C44DF4C1258EA60052A372?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/4B89597765F11DF3C1258EA60052A62F/$file/20%20Cdo%201075_2026.pdf?openElement",
+   "heslo": "Vymezení přípustnosti dovolání a procesní nástupnictví v exekuci",
+   "shrnuti": "V exekučním řízení se povinný domáhal dovoláním zrušení rozhodnutí odvolacího soudu, kterým bylo potvrzeno usnesení o vstupu nové oprávněné do řízení na základě postoupení pohledávky. Nejvyšší soud dovolání odmítl pro nedostatek řádného vymezení přípustnosti a konstatoval, že námitky proti hmotněprávní platnosti postoupení pohledávky lze uplatnit až v řízení o zastavení exekuce.",
+   "oblasti": [
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:4AF73F01524511A3C1258EA60052A2B8",
+   "spz": "30 Cdo 2222/2026",
+   "ecli": "ECLI:CZ:NS:2026:30.CDO.2222.2026.1",
+   "druh": "usnesení",
+   "senat": 30,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-29",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/4AF73F01524511A3C1258EA60052A2B8?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/2006F1CA9704179FC1258EA600533963/$file/30%20Cdo%202222_2026.pdf?openElement",
+   "heslo": "Zasah třetích osob do trestního řízení a přiměřené zadostiučinění",
+   "shrnuti": "Žalobce se domáhal po České republice – Ministerstvu spravedlnosti zaplacení částky 50 000 000 Kč jako přiměřeného zadostiučinění za nemajetkovou újmu způsobenou nezákonným trestním stíháním. Nejvyšší soud řešil přípustnost dovolání a otázku, zda pokusy osob stojících mimo orgány činné v trestním řízení o jeho ovlivnění vedly k intenzivnějšímu prožívání újmy a zda byla tato újma dostatečně kompenzována. Dovolání žalobce odmítl jako nepřípustné, neboť dovolatel zpochybňoval skutková zjištění a hodnocení důkazů, nikoliv správnost právního posouzení věci.",
+   "oblasti": [
+    "skoda",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:419E1BD3EF2126BCC1258EA60052A2D9",
+   "spz": "30 Cdo 1835/2026",
+   "ecli": "ECLI:CZ:NS:2026:30.CDO.1835.2026.1",
+   "druh": "rozsudek",
+   "senat": 30,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-29",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/419E1BD3EF2126BCC1258EA60052A2D9?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/3A2450856F7F137EC1258EA600532B6F/$file/30%20Cdo%201835_2026.pdf?openElement",
+   "heslo": "Protiprávní jednání snižuje náhradu za stíhání",
+   "shrnuti": "Česká republika – Ministerstvo spravedlnosti se odvolalo proti rozsudku přiznávajícímu žalobci zadostiučinění za nezákonné trestní stíhání a výkon vazby. Nejvyšší soud konstatoval, že pokud se poškozený vědomě podílel na protiprávní činnosti související s okolnostmi vedoucími k jeho stíhání, jde o důležitou okolnost pro snížení či odepření náhrady nemajetkové újmy.",
+   "oblasti": [
+    "skoda",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:39865B65A24752B3C1258EA60052A378",
+   "spz": "20 Cdo 2551/2026",
+   "ecli": "ECLI:CZ:NS:2026:20.CDO.2551.2026.1",
+   "druh": "usnesení",
+   "senat": 20,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-20",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/39865B65A24752B3C1258EA60052A378?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/16AA9D715F0D19B0C1258EA60052ADDA/$file/20%20Cdo%202551_2026.pdf?openElement",
+   "heslo": "Materiální vykonatelnost exekučního titulu a určení předmětu exekuce",
+   "shrnuti": "Městská část Praha 19 se soudila s povinným o zastavení exekuce nařízené k vymožení povinnosti odstranit komínové těleso. Nejvyšší soud řešil otázku, zda je exekuční titul dostatečně určitý a materiálně vykonatelný navzdory pozdějšímu přečíslování pozemků a drobným nepřesnostem v popisu. Dospěl k závěru, že exekuční titul je dostatečně určitý, pokud je zřejmé, který předmět má být odstraněn, a námitky povinného zpochybňující skutková zjištění nezakládají přípustnost dovolání.",
+   "oblasti": [
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:39328EF8CB1EBD0AC1258EA60052A2AD",
+   "spz": "30 Cdo 891/2026",
+   "ecli": "ECLI:CZ:NS:2026:30.CDO.891.2026.1",
+   "druh": "usnesení",
+   "senat": 30,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-27",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/39328EF8CB1EBD0AC1258EA60052A2AD?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/56A67B16341CC2B6C1258EA600534937/$file/30%20Cdo%20891_2026.pdf?openElement",
+   "heslo": "Zánik vlastnického práva a vznik škody",
+   "shrnuti": "Žalobkyně se domáhala po České republice – Ministerstvu spravedlnosti náhrady škody způsobené vydáním nezákonného rozhodnutí o zrušení a vypořádání podílového spoluvlastnictví. Nejvyšší soud dovolání žalobkyně odmítl jako nepřípustné, neboť odvolací soud se při posouzení vzniku škody a transformace majetku neodchýlil od ustálené rozhodovací praxe.",
+   "oblasti": [
+    "skoda",
+    "vecna_prava",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:358DED658D76961CC1258EA60052A30C",
+   "spz": "25 Cdo 1133/2025",
+   "ecli": "ECLI:CZ:NS:2026:25.CDO.1133.2025.1",
+   "druh": "rozsudek",
+   "senat": 25,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/358DED658D76961CC1258EA60052A30C?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/BC3DBBAE0053E06CC1258EA60052C163/$file/25%20Cdo%201133_2025.pdf?openElement",
+   "heslo": "Kritika veřejně činné osoby nesmí zkreslovat pravdu",
+   "shrnuti": "Producent divadelních představení se žalobou domáhal ochrany osobnosti a náhrady nemajetkové újmy za nepravdivé a dehonestující výroky, které o něm pronesl člen vlády. Nejvyšší soud dospěl k závěru, že svoboda slova neopravňuje k užití nepravdivých údajů či jejich zkreslení způsobem, který zasahuje do cti a dobré pověsti dotčené osoby, a to ani v rámci politické diskuse.",
+   "oblasti": [
+    "osobnost_media",
+    "skoda",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:30DDFC649BAAF803C1258EA60052A2EF",
+   "spz": "22 Nd 427/2026",
+   "ecli": "ECLI:CZ:NS:2026:22.ND.427.2026.1",
+   "druh": "usnesení",
+   "senat": 22,
+   "rejstrik": "Nd",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/30DDFC649BAAF803C1258EA60052A2EF?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/40C1B176EBB2251EC1258EA60052B06D/$file/22%20Nd%20427_2026.pdf?openElement",
+   "heslo": "Zastavení řízení o delegaci pro zpětvzetí návrhu",
+   "shrnuti": "U Okresního soudu v Jihlavě probíhalo řízení o úpravu poměrů k nezletilým dětem, v němž matka s nezletilými navrhla přikázání věci Obvodnímu soudu pro Prahu 1. Nejvyšší soud zastavil řízení o tomto návrhu, protože jej navrhovatelé vzali v průběhu řízení zpět.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:115C1F59FD79BBE3C1258EA60052A324",
+   "spz": "25 Cdo 2782/2025",
+   "ecli": "ECLI:CZ:NS:2026:25.CDO.2782.2025.1",
+   "druh": "rozsudek",
+   "senat": 25,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/115C1F59FD79BBE3C1258EA60052A324?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/76AE0FB9C57EAD95C1258EA60052ED61/$file/25%20Cdo%202782_2025.pdf?openElement",
+   "heslo": "Nejasně specifikovaná nemajetková újma představuje vadu žaloby",
+   "shrnuti": "Žalobce se domáhal po žalovaném náhrady nemajetkové újmy za fyzické napadení, aniž by v žalobě přesně vymezil a vyčíslil jednotlivé nároky. Nejvyšší soud řešil otázku, zda taková vady žaloby vyžaduje postup dle ustanovení o neúplných tvrzeních nebo odmítnutí pro vady, a uzavřel, že jde o vadu žaloby bránící věcnému projednání, kterou je nutno řešit výzvou k odstranění vades podle § 43 občanského soudního řádu.",
+   "oblasti": [
+    "skoda",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:105A99EC40F85F55C1258EA60052A28F",
+   "spz": "30 Cdo 2368/2026",
+   "ecli": "ECLI:CZ:NS:2026:30.CDO.2368.2026.1",
+   "druh": "usnesení",
+   "senat": 30,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-26",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/105A99EC40F85F55C1258EA60052A28F?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/F97184B49A27FE97C1258EA600533BFC/$file/30%20Cdo%202368_2026.pdf?openElement",
+   "heslo": "Odmítnutí nesrozumitelného podání bez náležitostí",
+   "shrnuti": "Žalobce se domáhal po České republice – Ministerstvu spravedlnosti zaplacení 41 000 000 Kč. Soudy nižších stupňů odmítly jeho podání pro nesrozumitelnost a absenci základních náležitostí. Nejvyšší soud dovolání žalobce odmítl jako nepřípustné, neboť závěr o neprojednatelnosti podání je v souladu s ustálenou judikaturou.",
+   "oblasti": [
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:0C354025F69251DDC1258EA60052A31E",
+   "spz": "25 Cdo 1020/2026",
+   "ecli": "ECLI:CZ:NS:2026:25.CDO.1020.2026.1",
+   "druh": "rozsudek",
+   "senat": 25,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-29",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/0C354025F69251DDC1258EA60052A31E?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/B62331CF82240F3EC1258EA60052B242/$file/25%20Cdo%201020_2026.pdf?openElement",
+   "heslo": "Náhrada nemajetkové újmy za ztížení společenského uplatnění",
+   "shrnuti": "Žalobce se domáhal po žalovaném náhrady nemajetkové újmy na zdraví a ztížení společenského uplatnění v důsledku fyzického napadení. Nejvyšší soud řešil otázku příčinné souvislosti, hodnocení znaleckého posudku a stanovení výše náhrady za ztížení společenského uplatnění. Dovolací soud dospěl k závěru, že odvolací soud zatížil své rozhodnutí vadami při hodnocení příčinné souvislosti a znaleckého posudku a mechanicky převzal výpočet náhrady, aniž by provedl vlastní úvahu podle kritérií přiměřenosti.",
+   "oblasti": [
+    "skoda",
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:00392B25F91CFE62C1258EA60052A2CE",
+   "spz": "33 Cdo 645/2026 - II.",
+   "ecli": "ECLI:CZ:NS:2026:33.CDO.645.2026.3",
+   "druh": "rozsudek",
+   "senat": 33,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/00392B25F91CFE62C1258EA60052A2CE?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/8C38AA2D08F2D10FC1258EA600536124/$file/33%20Cdo%20645_2026.pdf?openElement",
+   "heslo": "Absence soupisu vkladů nezakládá absolutní neplatnost",
+   "shrnuti": "Žalobce se domáhal vydání bezdůvodného obohacení v podobě peněžních prostředků poskytnutých na základě ústně uzavřené smlouvy o společnosti, u níž nebyl vyhotoven písemný soupis vkladů. Soudy nižších stupňů uzavřely, že tato smlouva je absolutně neplatná. Nejvyšší soud dospěl k závěru, že absence soupisu vkladů tvořených peněžními prostředky sama o sobě nezakládá absolutní neplatnost smlouvy o společnosti.",
+   "oblasti": [
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:07A2503D315083CBC1258EA60052A314",
+   "spz": "25 Cdo 2156/2026",
+   "ecli": "ECLI:CZ:NS:2026:25.CDO.2156.2026.1",
+   "druh": "rozsudek",
+   "senat": 25,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-29",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-10-09T12:00:00Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/07A2503D315083CBC1258EA60052A314?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/CA042246549F7380C1258EA60052D3D9/$file/25%20Cdo%202156_2026.pdf?openElement",
+   "heslo": "Odpovědnost advokáta za škodu zahrnuje ověřovací a poučovací povinnost",
+   "shrnuti": "Žalobkyně se domáhala po žalované advokátní kanceláři náhrady škody za promlčený nárok na úrok z prodlení v důsledku pozdního podání žaloby. Nejvyšší soud řešil rozsah ověřovací a poučovací povinnosti advokáta a konstatoval, že advokát nese odpovědnost za nezjištění úplného stavu věci a nepoučení klienta o rozhodném počátku promlčecí doby. Proto Nejvyšší soud zrušil rozhodnutí nižších soudů a vrátil věc k dalšímu řízení.",
+   "oblasti": [
+    "zavazky",
+    "skoda",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:A7B9F5F18D5716ABC1258EA60052A367",
+   "spz": "25 Cdo 2616/2025",
+   "ecli": "ECLI:CZ:NS:2026:25.CDO.2616.2025.1",
+   "druh": "rozsudek",
+   "senat": 25,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-29",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-10-07T12:00:00Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/A7B9F5F18D5716ABC1258EA60052A367?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/DFB09DFC76458996C1258EA60052E3CC/$file/25%20Cdo%202616_2025.pdf?openElement",
+   "heslo": "Neprovedení výslechu znalce a hodnocení posudku",
+   "shrnuti": "Žalobce se domáhal po žalované náhrady škody vzniklé zničením haly při požáru, který údajně vznikl na manipulační ploše užívané žalovanou. Soud řešil otázku příčinné souvislosti mezi porušením povinností žalovanou a vznikem škody a otázku procesního postupu při hodnocení znaleckých posudků a provádění důkazů. Nejvyšší soud dospěl k závěru, že odvolací soud pochybil, pokud neprovedl navržený výslech znalce a řádně se vypořádal se znaleckými posudky, a proto rozsudek zrušil.",
+   "oblasti": [
+    "skoda",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:381EBE8FA6A921C6C1258EA60052A389",
+   "spz": "25 Cdo 3306/2024",
+   "ecli": "ECLI:CZ:NS:2026:25.CDO.3306.2024.1",
+   "druh": "rozsudek",
+   "senat": 25,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-10-07T12:00:00Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/381EBE8FA6A921C6C1258EA60052A389?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/7ED94CFF6DED40FCC1258EA60052F9EB/$file/25%20Cdo%203306_2024.pdf?openElement",
+   "heslo": "Neuplatnění obrany proti rozhodnutí většinových spoluvlastníků",
+   "shrnuti": "Žalobkyně jako menšinová spoluvlastnice se domáhala po většinových spoluvlastnících náhrady škody za ušlý zisk kvůli nepronajmutí nebo nevýhodnému pronájmu bytů. Nejvyšší soud řešil, zda se menšinový spoluvlastník může domáhat náhrady škody, i když nebrojil proti rozhodnutí většiny podle příslušných ustanovení občanského zákoníku. Rozhodl, že nevyužije-li menšinový spoluvlastník zákonné možnosti obrany proti rozhodnutí většiny, nelze jednání spoluvlastníků považovat za protiprávní.",
+   "oblasti": [
+    "vecna_prava",
+    "zavazky",
+    "skoda"
+   ],
+   "procesni": false
+  },
   {
    "id": "ns:E73FEBF72D073488C1258EA50052B9FA",
    "spz": "5 Tdo 31/2026",
@@ -1405,6 +2089,65 @@
    "procesni": true
   },
   {
+   "id": "ns:deska:24cdo2060/2026",
+   "spz": "24 Cdo 2060/2026",
+   "druh": "rozsudek",
+   "senat": 24,
+   "rejstrik": "Cdo",
+   "datum": "2026-11-02",
+   "zverejneno": "2026-11-02",
+   "first_seen": "2026-11-02T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_24_Cdo_2060_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_24_Cdo_2060_2026.pdf",
+   "heslo": "Závazek z darovací smlouvy přechází na dědice nemovitosti",
+   "shrnuti": "Žalobkyně se domáhala povolení vkladu vlastnického práva k nemovitosti podle darovací smlouvy uzavřené se zůstavitelkou, která před podáním vkladu zemřela, přičemž katastrální úřad i odvolací soud vklad zamítly. Nejvyšší soud řešil otázku, jaký význam má skutečnost, že k vkladu za života dárce nedošlo a sporný závazek nebyl zohledněn v pasivech pozůstalosti. Rozhodl, že závazek odevzdat darovanou věc přechází na dědice, který nemovitost nabyl, a předpoklady pro vklad jsou splněny.",
+   "oblasti": [
+    "zavazky",
+    "vecna_prava",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:deska:24cdo2059/2026",
+   "spz": "24 Cdo 2059/2026",
+   "druh": "rozsudek",
+   "senat": 24,
+   "rejstrik": "Cdo",
+   "datum": "2026-11-02",
+   "zverejneno": "2026-11-02",
+   "first_seen": "2026-11-02T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_24_Cdo_2059_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_24_Cdo_2059_2026.pdf",
+   "heslo": "Vklad darování po smrti dárce a omezení dědiců",
+   "shrnuti": "Žalobci se domáhali vkladu vlastnického práva do katastru nemovitostí podle darovací smlouvy uzavřené se zůstavitelkou, která zemřela před podáním návrhu na vklad. Nejvyšší soud řešil otázku, zda pro účely vkladového řízení brání povolení vkladu omezení dědiců v nakládání s majetkem (např. v insolvenci či exekuci), a dospěl k závěru, že rozhodující jsou poměry zůstavitele, nikoli dědiců, kteří pozůstalost spravují.",
+   "oblasti": [
+    "vecna_prava",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:deska:24cdo1767/2026",
+   "spz": "24 Cdo 1767/2026",
+   "druh": "rozsudek",
+   "senat": 24,
+   "rejstrik": "Cdo",
+   "datum": "2026-11-02",
+   "zverejneno": "2026-11-02",
+   "first_seen": "2026-11-02T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_24_Cdo_1767_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_24_Cdo_1767_2026.pdf",
+   "heslo": "Kupní smlouva s utajenou cenou není způsobilou vkladovou listinou",
+   "shrnuti": "Žalobci David Loucký a IvoInvest se domáhali povolení vkladu vlastnického práva k bytové jednotce a nahrazení rozhodnutí katastrálního úřadu, který jejich návrh zamítl kvůli nepředložení úplné dohody o kupní ceně. Nejvyšší soud řešil, zda kupní smlouva odkazující na utajenou cenu v samostatné listině a dodatečně předložená dohoda splňují vkladové podmínky. Dovolání zamítl s tím, že kupní cena je podstatnou náležitostí smlouvy a k listinám doloženým až po podání návrhu nelze přihlížet.",
+   "oblasti": [
+    "vecna_prava",
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
    "id": "ns:6CD6F0222C201B90C1258EA30052A295",
    "spz": "27 Cdo 629/2026",
    "ecli": "ECLI:CZ:NS:2026:27.CDO.629.2026.1",
@@ -1622,6 +2365,25 @@
    "shrnuti": "Žalobkyně se domáhala vypořádání společného jmění manželů, přičemž namítala, že žalovaný neoprávněně vynaložil společné prostředky na návštěvy erotických klubů. Nejvyšší soud řešil otázku, zda takové výdaje představují obstarávání běžných potřeb rodiny. Dospěl k závěru, že útraty v erotických klubech nelze považovat za výdaje ve prospěch rodiny, ale za jednání v rozporu se zákonnou povinností věrnosti, a proto je lze vypořádat jako odkloněné prostředky ze společného jmění.",
    "oblasti": [
     "rodina_dedictvi",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:deska:21cdo2093/2025",
+   "spz": "21 Cdo 2093/2025",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-30",
+   "zverejneno": "2026-10-30",
+   "first_seen": "2026-10-30T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_21_Cdo_2093_2025.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_21_Cdo_2093_2025.pdf",
+   "heslo": "Výklad právního jednání v pracovním právu",
+   "shrnuti": "Žalobkyně se domáhala po žalované zaplacení odměny z dohody o ukončení dohody o provedení práce, avšak soudy obou stupňů její žalobu zamítly pro nesplnění podmínek. Nejvyšší soud řešil otázku výkladu projevu vůle účastníků a shledal, že soudy se nezabývaly společným úmyslem stran, nýbrž pouze jazykovým zněním.",
+   "oblasti": [
+    "pracovni",
     "zavazky"
    ],
    "procesni": false
@@ -3700,27 +4462,6 @@
    "oblasti": [
     "rodina_dedictvi",
     "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:CB7DFCE1662E661EC1258E9C0052BAD0",
-   "spz": "25 Cdo 1852/2025",
-   "ecli": "ECLI:CZ:NS:2026:25.CDO.1852.2025.1",
-   "druh": "rozsudek",
-   "senat": 25,
-   "rejstrik": "Cdo",
-   "datum": "2026-09-22",
-   "zverejneno": "2026-10-26",
-   "first_seen": "2026-10-05T10:03:39Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/CB7DFCE1662E661EC1258E9C0052BAD0?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/D95FABE78687A73DC1258E9D0021AA87/$file/25%20Cdo%201852_2025.pdf?openElement",
-   "heslo": "Výpočet náhrady nákladů na výživu pozůstalého manžela",
-   "shrnuti": "Žalobci se domáhali po Všeobecná fakultní nemocnice v Praze náhrady nákladů na výživu po zemřelém manželu a otci. Nejvyšší soud řešil otázku správnosti výpočtu tohoto nároku podle občanského zákoníku a dospěl k závěru, že odvolací soud pochybil, pokud od společných příjmů mechanicky odečítal náklady na společnou domácnost a nezohlednil celkovou hmotnou a kulturní úroveň rodiny.",
-   "oblasti": [
-    "skoda",
-    "zavazky",
-    "rodina_dedictvi"
    ],
    "procesni": false
   },
@@ -8416,26 +9157,6 @@
    "procesni": true
   },
   {
-   "id": "ns:deska:25cdo2156/2026",
-   "spz": "25 Cdo 2156/2026",
-   "druh": "rozsudek",
-   "senat": 25,
-   "rejstrik": "Cdo",
-   "datum": "2026-10-09",
-   "zverejneno": "2026-10-09",
-   "first_seen": "2026-10-09T12:00:00Z",
-   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_25_Cdo_2156_2026.pdf",
-   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_25_Cdo_2156_2026.pdf",
-   "heslo": "Odpovědnost advokáta za škodu zahrnuje ověřovací a poučovací povinnost",
-   "shrnuti": "Žalobkyně se domáhala po žalované advokátní kanceláři náhrady škody za promlčený nárok na úrok z prodlení v důsledku pozdního podání žaloby. Nejvyšší soud řešil rozsah ověřovací a poučovací povinnosti advokáta a konstatoval, že advokát nese odpovědnost za nezjištění úplného stavu věci a nepoučení klienta o rozhodném počátku promlčecí doby. Proto Nejvyšší soud zrušil rozhodnutí nižších soudů a vrátil věc k dalšímu řízení.",
-   "oblasti": [
-    "zavazky",
-    "skoda",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
    "id": "ns:deska:6tdo797/2026",
    "spz": "6 Tdo 797/2026",
    "druh": "rozsudek",
@@ -9474,45 +10195,6 @@
    "procesni": false
   },
   {
-   "id": "ns:deska:25cdo3306/2024",
-   "spz": "25 Cdo 3306/2024",
-   "druh": "rozsudek",
-   "senat": 25,
-   "rejstrik": "Cdo",
-   "datum": "2026-10-07",
-   "zverejneno": "2026-10-07",
-   "first_seen": "2026-10-07T12:00:00Z",
-   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_25_Cdo_3306_2024.pdf",
-   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_25_Cdo_3306_2024.pdf",
-   "heslo": "Neuplatnění obrany proti rozhodnutí většinových spoluvlastníků",
-   "shrnuti": "Žalobkyně jako menšinová spoluvlastnice se domáhala po většinových spoluvlastnících náhrady škody za ušlý zisk kvůli nepronajmutí nebo nevýhodnému pronájmu bytů. Nejvyšší soud řešil, zda se menšinový spoluvlastník může domáhat náhrady škody, i když nebrojil proti rozhodnutí většiny podle příslušných ustanovení občanského zákoníku. Rozhodl, že nevyužije-li menšinový spoluvlastník zákonné možnosti obrany proti rozhodnutí většiny, nelze jednání spoluvlastníků považovat za protiprávní.",
-   "oblasti": [
-    "vecna_prava",
-    "zavazky",
-    "skoda"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:deska:25cdo2616/2025",
-   "spz": "25 Cdo 2616/2025",
-   "druh": "rozsudek",
-   "senat": 25,
-   "rejstrik": "Cdo",
-   "datum": "2026-10-07",
-   "zverejneno": "2026-10-07",
-   "first_seen": "2026-10-07T12:00:00Z",
-   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_25_Cdo_2616_2025.pdf",
-   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_25_Cdo_2616_2025.pdf",
-   "heslo": "Neprovedení výslechu znalce a hodnocení posudku",
-   "shrnuti": "Žalobce se domáhal po žalované náhrady škody vzniklé zničením haly při požáru, který údajně vznikl na manipulační ploše užívané žalovanou. Soud řešil otázku příčinné souvislosti mezi porušením povinností žalovanou a vznikem škody a otázku procesního postupu při hodnocení znaleckých posudků a provádění důkazů. Nejvyšší soud dospěl k závěru, že odvolací soud pochybil, pokud neprovedl navržený výslech znalce a řádně se vypořádal se znaleckými posudky, a proto rozsudek zrušil.",
-   "oblasti": [
-    "skoda",
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
    "id": "ns:F9000304F1B2B0EEC1258E88004D4362",
    "spz": "5 Tdo 474/2026",
    "ecli": "ECLI:CZ:NS:2026:5.TDO.474.2026.1",
@@ -10221,1140 +10903,6 @@
     "skoda"
    ],
    "procesni": false
-  },
-  {
-   "id": "ns:FFACC33D4A5CC0F2C1258E87004D4438",
-   "spz": "27 Cdo 1694/2025",
-   "ecli": "ECLI:CZ:NS:2026:27.CDO.1694.2025.1",
-   "druh": "usnesení",
-   "senat": 27,
-   "rejstrik": "Cdo",
-   "datum": "2026-09-10",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/FFACC33D4A5CC0F2C1258E87004D4438?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/DAA3FAB2406B96C4C1258E870055B29A/$file/27%20Cdo%201694_2025.pdf?openElement",
-   "heslo": "Zneužití práva při návrhu na procesní nástupnictví",
-   "shrnuti": "Insolvenční správce dlužnice X - TRADING se domáhal zaplacení s příslušenstvím proti LIME Concept, FPD CORPORATION CZ a Tomáši Šupovi. Nejvyšší soud řešil přípustnost dovolání proti rozhodnutí o vstupu nového věřitele do řízení a zabýval se otázkou, zda podání návrhu na procesní nástupnictví představovalo zneužití procesní úpravy. Dovolání odmítl jako nepřípustné, neboť závěry odvolacího soudu o absenci zneužití práva jsou v souladu s ustálenou judikaturou.",
-   "oblasti": [
-    "civilni_proces",
-    "zavazky"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:F8CD833CF13CAFBEC1258E87004D43F3",
-   "spz": "8 Tdo 673/2026",
-   "ecli": "ECLI:CZ:NS:2026:8.TDO.673.2026.1",
-   "druh": "usnesení",
-   "senat": 8,
-   "rejstrik": "Tdo",
-   "datum": "2026-08-26",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/F8CD833CF13CAFBEC1258E87004D43F3?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/FB16993E069C9ECEC1258E87005748C9/$file/8%20Tdo%20673_2026.pdf?openElement",
-   "heslo": "Útok nožem do hrudníku zakládá pokus vraždy",
-   "shrnuti": "Obviněná podala dovolání proti odsuzujícímu rozsudku za pokus vraždy, přičemž namítala nesprávné hodnocení důkazů, porušení zásady in dubio pro reo a absenci úmyslu usmrtit poškozeného. Nejvyšší soud řešil otázku naplnění znaků skutkové podstaty pokusu vraždy a přezkoumatelnosti skutkových zjištění a dospěl k závěru, že dovolání je zjevně neopodstatněné, neboť závěry soudů nižších stupňů o vině a nepřímém úmyslu mají oporu v provedeném dokazování.",
-   "oblasti": [
-    "trestni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:F895B28AB3883A46C1258E87004D44B8",
-   "spz": "23 Cdo 2176/2026",
-   "ecli": "ECLI:CZ:NS:2026:23.CDO.2176.2026.1",
-   "druh": "usnesení",
-   "senat": 23,
-   "rejstrik": "Cdo",
-   "datum": "2026-09-23",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/F895B28AB3883A46C1258E87004D44B8?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/F7714BD5B9350C20C1258E87005570E9/$file/23%20Cdo%202176_2026.pdf?openElement",
-   "heslo": "Zneužití procesního nástupnictví při postoupení pohledávky",
-   "shrnuti": "Společnost SPR se soudila se společností ČEZ Distribuce o zaplacení náhrady škody a navrhla záměnu účastníka za nově vytvořenou společnost PLATELUM. Nejvyšší soud řešil otázku přípustnosti dovolání ohledně zneužití procesní úpravy při vstupu nového účastníka a dospěl k závěru, že dovolání je nepřípustné, neboť dovolatelka zpochybňovala skutková zjištění o bonitě namísto právního posouzení.",
-   "oblasti": [
-    "civilni_proces",
-    "zavazky"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:F8517D6D87DEB979C1258E87004D44F6",
-   "spz": "20 Cdo 2326/2026",
-   "ecli": "ECLI:CZ:NS:2026:20.CDO.2326.2026.1",
-   "druh": "usnesení",
-   "senat": 20,
-   "rejstrik": "Cdo",
-   "datum": "2026-09-23",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/F8517D6D87DEB979C1258E87004D44F6?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/FC86CA5568B88B3FC1258E8700555D1E/$file/20%20Cdo%202326_2026.pdf?openElement",
-   "heslo": "Zastavení dovolacího řízení pro nesplnění zastoupení",
-   "shrnuti": "ČSOB Stavební spořitelna vedla exekuční řízení proti povinné. Nejvyšší soud řešil otázku splnění podmínky povinného zastoupení v dovolacím řízení a rozhodl o zastavení řízení o dovolání povinné, protože ani přes výzvu soudu nesplnila podmínku zastoupení advokátem.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:F0B093FF9B9617F1C1258E87004D4497",
-   "spz": "23 Cdo 687/2026",
-   "ecli": "ECLI:CZ:NS:2026:23.CDO.687.2026.1",
-   "druh": "usnesení",
-   "senat": 23,
-   "rejstrik": "Cdo",
-   "datum": "2026-09-15",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/F0B093FF9B9617F1C1258E87004D4497?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/0D3DA21A357ED2D3C1258E8700559036/$file/23%20Cdo%20687_2026.pdf?openElement",
-   "heslo": "Posouzení hrubého porušení dobrých mravů při daru",
-   "shrnuti": "Žalobce se domáhal určení vlastnického práva k nemovitosti vůči žalované s odůvodněním, že dar odvolal pro hrubé porušení dobrých mravů. Nejvyšší soud řešil přípustnost dovolání a otázku posouzení intenzity jednání obdarovaného a dospěl k závěru, že závěry soudů nižších stupňů nebyly zjevně nepřiměřené, a dovolání proto odmítl.",
-   "oblasti": [
-    "zavazky",
-    "vecna_prava"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:EAC2190B470C38CCC1258E87004D43FB",
-   "spz": "11 Tdo 181/2026",
-   "ecli": "ECLI:CZ:NS:2026:11.TDO.181.2026.1",
-   "druh": "usnesení",
-   "senat": 11,
-   "rejstrik": "Tdo",
-   "datum": "2026-08-27",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/EAC2190B470C38CCC1258E87004D43FB?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/60725DAB9EAC1578C1258E870054F154/$file/11%20Tdo%20181_2026.pdf?openElement",
-   "heslo": "Dovolání proti odsouzení za nedovolenou výrobu omamných látek",
-   "shrnuti": "Obvinění se soudili s obžalobou kvůli odsouzení za pokračující zločin nedovolené výroby a jiného nakládání s omamnými a psychotropními látkami a s jedy ve spolupachatelství. Nejvyšší soud řešil, zda jejich dovolání naplňují uplatněné dovolací důvody ohledně zjevného rozporu skutkových zjištění s provedenými důkazy a nesprávného právního posouzení. Dovolání soud odmítl jako zjevně neopodstatněná, resp. podaná z jiných důvodů, než stanoví zákon.",
-   "oblasti": [
-    "trestni",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:E67F15A3F3930FCDC1258E87004D4425",
-   "spz": "8 Tdo 694/2026",
-   "ecli": "ECLI:CZ:NS:2026:8.TDO.694.2026.1",
-   "druh": "usnesení",
-   "senat": 8,
-   "rejstrik": "Tdo",
-   "datum": "2026-08-25",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/E67F15A3F3930FCDC1258E87004D4425?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/125D9CCE1909D329C1258E8700574F04/$file/8%20Tdo%20694_2026.pdf?openElement",
-   "heslo": "Trest zákazu řízení lze uložit za napadení řidiče",
-   "shrnuti": "Obviněný podal dovolání proti usnesení Krajského soudu v Brně, kterým bylo zamítnuto jeho odvolání proti odsuzujícímu rozsudku za pokus ublížení na zdraví a výtržnictví. Nejvyšší soud řešil otázku, zda lze v případě fyzického napadení jiného řidiče po vynuceném zastavení vozidla uložit trest zákazu činnosti spočívající v zákazu řízení motorových vozidel. Dospěl k závěru, že takový trest je přípustný, neboť čin byl spáchán v přímé souvislosti s řízením vozidla, a dovolání obviněného odmítl.",
-   "oblasti": [
-    "trestni"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:E5BCE7299737DC21C1258E87004D4463",
-   "spz": "29 Nd 361/2026",
-   "ecli": "ECLI:CZ:NS:2026:29.ND.361.2026.1",
-   "druh": "usnesení",
-   "senat": 29,
-   "rejstrik": "Nd",
-   "datum": "2026-09-30",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/E5BCE7299737DC21C1258E87004D4463?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/D46816FEAA1E9B8BC1258E870056D844/$file/29%20Nd%20361_2026.pdf?openElement",
-   "heslo": "Určení místní příslušnosti při chybějících podmínkách",
-   "shrnuti": "V exekučním řízení oprávněný navrhl provedení exekuce proti povinnému, načež exekutor požádal Obvodní soud pro Prahu 5 o pověření. Nejvyšší soud rozhodoval o určení místně příslušného soudu podle § 11 odst. 3 o. s. ř., když podmínky příslušnosti chyběly, a určil k projednání věci Obvodní soud pro Prahu 5 s ohledem na zásadu hospodárnosti řízení a poslední hlášený pobyt povinného.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:E38A0B16683D0B56C1258E87004D44AE",
-   "spz": "20 Cdo 1908/2026",
-   "ecli": "ECLI:CZ:NS:2026:20.CDO.1908.2026.1",
-   "druh": "usnesení",
-   "senat": 20,
-   "rejstrik": "Cdo",
-   "datum": "2026-09-29",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/E38A0B16683D0B56C1258E87004D44AE?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/7DA4891E16944ACEC1258E8700555B30/$file/20%20Cdo%201908_2026.pdf?openElement",
-   "heslo": "Zastavení dovolacího řízení pro nezaplacení poplatku",
-   "shrnuti": "Oprávněná se domáhala přezkumu usnesení o zastavení exekuce. Nejvyšší soud řešil otázku následků nezaplacení soudního poplatku za dovolání a dovolací řízení zastavil, protože poplatek nebyl ve lhůtě uhrazen.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:DA3F00A4A40A0F6DC1258E87004D44BF",
-   "spz": "23 Cdo 1069/2026",
-   "ecli": "ECLI:CZ:NS:2026:23.CDO.1069.2026.1",
-   "druh": "usnesení",
-   "senat": 23,
-   "rejstrik": "Cdo",
-   "datum": "2026-09-16",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/DA3F00A4A40A0F6DC1258E87004D44BF?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/1B98D2225B5C6635C1258E8700556BA8/$file/23%20Cdo%201069_2026.pdf?openElement",
-   "heslo": "Posouzení vzájemné závislosti smluv o dílo",
-   "shrnuti": "Žalobce se domáhal po žalované zaplacení peněžité částky oproti vydání tepelného čerpadla z důvodu odstoupení od dvou na sebe navazujících smluv o dílo. Nejvyšší soud řešil otázku přípustnosti dovolání ohledně posouzení závislých smluv a následné nemožnosti plnění a dospěl k závěru, že dovolání žalované je nepřípustné, neboť napadené rozhodnutí záviselo na správném posouzení vzájemné závislosti smluv podle občanského zákoníku, od něhož se soudy neodchýlily.",
-   "oblasti": [
-    "zavazky",
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:D6FE8D5F67F64D8EC1258E87004D4441",
-   "spz": "21 Nd 330/2026",
-   "ecli": "ECLI:CZ:NS:2026:21.ND.330.2026.1",
-   "druh": "usnesení",
-   "senat": 21,
-   "rejstrik": "Nd",
-   "datum": "2026-09-08",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/D6FE8D5F67F64D8EC1258E87004D4441?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/908B73CF58BBC3E3C1258E8700555F1D/$file/21%20Nd%20330_2026.pdf?openElement",
-   "heslo": "Pochybnosti o nestrannosti soudu neodůvodňují vhodnou delegaci",
-   "shrnuti": "Žalobce ABV flow se v řízení vedeném u Okresního soudu v Kroměříži domáhal po žalované obci Kostelec u Holešova zaplacení částky 1 353 776 Kč s příslušenstvím z důvodu vypořádání po odstoupení od smlouvy o dílo a navrhl přikázání věci Obvodnímu soudu pro Prahu 9. Nejvyšší soud řešil otázku, zda jsou dány důvody pro přikázání věci jinému soudu z důvodu vhodnosti či pro vyloučení soudců. Rozhodl, že tvrzení o podjatosti soudu či běžná vzdálenost sídel účastníků nepředstavují dostatečné důvody pro prolomení příslušnosti zákonného soudu, a proto návrh na přikázání věci zamítl.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:D4F31EC63A230239C1258E87004D44E0",
-   "spz": "30 Cdo 1027/2026",
-   "ecli": "ECLI:CZ:NS:2026:30.CDO.1027.2026.1",
-   "druh": "rozsudek",
-   "senat": 30,
-   "rejstrik": "Cdo",
-   "datum": "2026-08-31",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/D4F31EC63A230239C1258E87004D44E0?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/FC9D49F82BD813E4C1258E870056F086/$file/30%20Cdo%201027_2026.pdf?openElement",
-   "heslo": "Dlouhé zatížení vydražené nemovitosti vadami zakládá nemajetkovou újmu",
-   "shrnuti": "Žalobce se domáhal přiměřeného zadostiučinění za nemajetkovou újmu způsobenou nepřiměřenou délkou rozvrhové fáze exekuce a přetrvávajícím zatížením vydražené nemovitosti právními vadami. Nejvyšší soud řešil otázku, jak posoudit vznik nemajetkové újmy u osoby, která v důsledku nesprávného úředního postupu nemohla nakládat se svým majetkem. Dospěl k závěru, že při posouzení vzniku újmy je rozhodující, zda by se v obdobné situaci každá jiná osoba cítila důvodně úkorně.",
-   "oblasti": [
-    "skoda",
-    "civilni_proces",
-    "vecna_prava"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:D0A01C77E269AEF6C1258E87004D44BB",
-   "spz": "23 Cdo 1421/2026",
-   "ecli": "ECLI:CZ:NS:2026:23.CDO.1421.2026.1",
-   "druh": "usnesení",
-   "senat": 23,
-   "rejstrik": "Cdo",
-   "datum": "2026-09-23",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/D0A01C77E269AEF6C1258E87004D44BB?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/F1608125ED53386FC1258E8700556E6A/$file/23%20Cdo%201421_2026.pdf?openElement",
-   "heslo": "Moderace smluvní pokuty u veřejných zakázek",
-   "shrnuti": "ARRIVA STŘEDNÍ ČECHY a Plzeňský kraj se soudili o zaplacení bezdůvodného obohacení vzniklého čerpáním bankovní záruky na smluvní pokutu ze smluv o veřejných službách. Nejvyšší soud řešil, zda režim zadávání veřejných zakázek brání soudní moderaci smluvní pokuty. Dospěl k závěru, že takový režim moderaci paušálně nevylučuje, nýbrž je pouze jednou z relevantních okolností pro posouzení její přiměřenosti.",
-   "oblasti": [
-    "zavazky",
-    "verejne_zakazky"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:C2D134E180BE9864C1258E87004D44A6",
-   "spz": "28 Cdo 2135/2026",
-   "ecli": "ECLI:CZ:NS:2026:28.CDO.2135.2026.1",
-   "druh": "usnesení",
-   "senat": 28,
-   "rejstrik": "Cdo",
-   "datum": "2026-09-22",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/C2D134E180BE9864C1258E87004D44A6?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/4DBD6BBA78E7D3DEC1258E870056D577/$file/28%20Cdo%202135_2026.pdf?openElement",
-   "heslo": "Výklad smluvní lhůty a povinnost součinnosti",
-   "shrnuti": "Žalobkyně se s žalovaným soudila o zaplacení částky z titulu náhrady škody způsobené údajným porušením povinnosti převzít vozidlo. Nejvyšší soud řešil otázku přípustnosti dovolání ve vztahu k výkladu smluvní lhůty k plnění a k otázce součinnosti věřitele, přičemž dospěl k závěru, že dovolání není přípustné, neboť odvolací soud postupoval v souladu s ustálenou judikaturou a výkladovými pravidly.",
-   "oblasti": [
-    "zavazky",
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:BE8137134A2C8919C1258E87004D4407",
-   "spz": "11 Tcu 111/2026",
-   "ecli": "ECLI:CZ:NS:2026:11.TCU.111.2026.1",
-   "druh": "usnesení",
-   "senat": 11,
-   "rejstrik": "Tcu",
-   "datum": "2026-09-16",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/BE8137134A2C8919C1258E87004D4407?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/3BE5FCD4F581938DC1258E870054EE87/$file/11%20Tcu%20111_2026.pdf?openElement",
-   "heslo": "Uznání odsouzení cizozemským soudem pro drogovou kriminalitu",
-   "shrnuti": "Ministerstvo spravedlnosti podalo návrh na rozhodnutí, zda se na odsouzení občana České republiky španělským soudem hledí jako na odsouzení soudem České republiky. Nejvyšší soud řešil, zda byly splněny zákonné podmínky pro takové uznání v případě cizozemského odsouzení za závažnou drogovou trestnou činnost. Dospěl k závěru, že podmínky splněny jsou, a návrhu zcela vyhověl.",
-   "oblasti": [
-    "trestni",
-    "mps"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:BE45A0EA13E85AFEC1258E87004D4486",
-   "spz": "22 Nd 468/2026",
-   "ecli": "ECLI:CZ:NS:2026:22.ND.468.2026.1",
-   "druh": "usnesení",
-   "senat": 22,
-   "rejstrik": "Nd",
-   "datum": "2026-09-15",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/BE45A0EA13E85AFEC1258E87004D4486?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/A0BD0EB5AFD2A5A8C1258E87005568B2/$file/22%20Nd%20468_2026.pdf?openElement",
-   "heslo": "Určení místní příslušnosti soudu v exekuci",
-   "shrnuti": "Vysoké učení technické v Brně se domáhalo exekuce proti povinné, jejíž pobyt nebyl v České republice zjištěn. Nejvyšší soud řešil, který soud má věc projednat, když chyběly podmínky místní příslušnosti. Rozhodl, že s ohledem na zásadu hospodárnosti řízení věc projedná soud, u něhož byl návrh podán.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:BD4EAB11F9C0FEC2C1258E87004D43D5",
-   "spz": "8 Tvo 16/2026",
-   "ecli": "ECLI:CZ:NS:2026:8.TVO.16.2026.1",
-   "druh": "usnesení",
-   "senat": 8,
-   "rejstrik": "Tvo",
-   "datum": "2026-08-26",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/BD4EAB11F9C0FEC2C1258E87004D43D5?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/2B9FFC124A309068C1258E87005760F6/$file/8%20Tvo%2016_2026.pdf?openElement",
-   "heslo": "Prodloužení lhůty vazby mladistvého",
-   "shrnuti": "Mladistvý se soudil o zrušení usnesení o prodloužení vazby a zamítnutí návrhu na její prodloužení. Nejvyšší soud řešil otázku, zda byly splněny zákonné podmínky pro prodloužení vazby a zda v řízení nedošlo k nedůvodným průtahům. Rozhodl, že stížnost mladistvého je nedůvodná, neboť vazební důvody trvají a prodloužení vazby bylo odůvodněno objektivní složitostí věci.",
-   "oblasti": [
-    "trestni"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:B863DBE006895E27C1258E87004D4494",
-   "spz": "25 Nd 389/2026",
-   "ecli": "ECLI:CZ:NS:2026:25.ND.389.2026.1",
-   "druh": "usnesení",
-   "senat": 25,
-   "rejstrik": "Nd",
-   "datum": "2026-09-02",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/B863DBE006895E27C1258E87004D4494?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/33F4986E1ADC3B1FC1258E870055AC69/$file/25%20Nd%20389_2026.pdf?openElement",
-   "heslo": "Určení místní příslušnosti exekučního soudu",
-   "shrnuti": "V exekuční věci oprávněné Komerční banka proti povinnému řešil Nejvyšší soud otázku místní příslušnosti soudu v situaci, kdy povinný nemá v evidenci zjištěn pobyt na území České republiky. Nejvyšší soud rozhodl, že s přihlédnutím k zásadě rychlosti a hospodárnosti řízení projedná a rozhodne věc Okresní soud v Břeclavi.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:AF9AE26305409617C1258E87004D4455",
-   "spz": "27 ICdo 156/2025",
-   "ecli": "ECLI:CZ:NS:2026:27.ICDO.156.2025.1",
-   "druh": "rozsudek",
-   "senat": 27,
-   "rejstrik": "ICdo",
-   "datum": "2026-08-26",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/AF9AE26305409617C1258E87004D4455?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/9813F72D596BBD39C1258E870055C904/$file/27%20ICdo%20156_2025.pdf?openElement",
-   "heslo": "Použití úpravy doplnění pasiv při úpadku korporace",
-   "shrnuti": "Insolvenční správkyně se žalobou domáhala po žalovaném jako jediném jednateli dlužnice doplnění pasiv do majetkové podstaty podle § 66 odst. 1 písm. b) zákona o obchodních korporacích. Nejvyšší soud řešil otázku intertemporální působnosti této normy na jednání učiněná před 1. 1. 2021 a dospěl k závěru, že její aplikací na dřívější jednání nedochází k nepřípustné pravé retroaktivitě.",
-   "oblasti": [
-    "korporace",
-    "insolvence"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:AEC6FE517A4C2C21C1258E87004D4489",
-   "spz": "22 Nd 425/2026",
-   "ecli": "ECLI:CZ:NS:2026:22.ND.425.2026.1",
-   "druh": "usnesení",
-   "senat": 22,
-   "rejstrik": "Nd",
-   "datum": "2026-09-15",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/AEC6FE517A4C2C21C1258E87004D4489?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/9B665B2CF51E4A4CC1258E8700556662/$file/22%20Nd%20425_2026.pdf?openElement",
-   "heslo": "Určení místně příslušného soudu podle zásady hospodárnosti",
-   "shrnuti": "V exekučním řízení navrženém Česká pošta proti povinnému řešil Nejvyšší soud určení místní příslušnosti, když povinný neměl v České republice hlášený pobyt. Soud rozhodl, že v takovém případě určí místně příslušný soud podle zásady hospodárnosti řízení.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:9DBE5F6844247BFAC1258E87004D448F",
-   "spz": "25 Nd 345/2026",
-   "ecli": "ECLI:CZ:NS:2026:25.ND.345.2026.1",
-   "druh": "usnesení",
-   "senat": 25,
-   "rejstrik": "Nd",
-   "datum": "2026-09-02",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/9DBE5F6844247BFAC1258E87004D448F?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/7B97A3E09F0C0A57C1258E870055AA84/$file/25%20Nd%20345_2026.pdf?openElement",
-   "heslo": "Určení místní příslušnosti soudu v exekuci",
-   "shrnuti": "Společnost innogy Energie se domáhala pověření vedením exekuce proti povinné, jejíž pobyt na území České republiky zanikl a neměla zde trvalý pobyt. Nejvyšší soud řešil, který soud je místně příslušný k projednání věci, pokud chybí standardní podmínky místní příslušnosti, a rozhodl, že s ohledem na zásadu hospodárnosti věc projedná Okresní soud v Kladně.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:961A66730E556616C1258E87004D43DD",
-   "spz": "4 Tdo 802/2026",
-   "ecli": "ECLI:CZ:NS:2026:4.TDO.802.2026.1",
-   "druh": "usnesení",
-   "senat": 4,
-   "rejstrik": "Tdo",
-   "datum": "2026-09-15",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/961A66730E556616C1258E87004D43DD?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/B44853A8A6B3FA06C1258E87005738F7/$file/4%20Tdo%20802_2026.pdf?openElement",
-   "heslo": "Posouzení úmyslu a vyloučení zabití při útoku nožem",
-   "shrnuti": "Dovolatel napadl poškozeného nožem do oblasti hrudníku a způsobil mu vážná zranění,čehož se dopustil v rámci odvolacího řízení překvalifikovaného na pokus zvlášť závažného zločinu vraždy. Nejvyšší soud řešil otázku naplnění znaků pokusu vraždy, nepřímého úmyslu a vyloučení nutné obrany či privilegované skutkové podstaty zabití. Dovolání obviněného odmítl jako zjevně neopodstatněné, protože skutková zjištění měla oporu v provedeném dokazování a závěr o úmyslu usmrtit byl správně odvozen z objektivních okolností útoku.",
-   "oblasti": [
-    "trestni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:7D9A7124BE157F10C1258E8700374A27",
-   "spz": "29 ICdo 145/2024",
-   "ecli": "ECLI:CZ:NS:2026:29.ICDO.145.2024.1",
-   "druh": "rozsudek",
-   "senat": 29,
-   "rejstrik": "ICdo",
-   "datum": "2026-08-31",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/7D9A7124BE157F10C1258E8700374A27?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/4BAB134943EA1CA1C1258E870044D583/$file/29%20ICdo%20145_2024.pdf?openElement",
-   "heslo": "Platba úroků ze zápůjčky jako zvýhodňující úkon",
-   "shrnuti": "Insolvenční správce dlužníka MPM Invest se domáhal určení neúčinnosti plateb na úhradu úroků ze zápůjčky poskytnuté žalované A. V. Nejvyšší soud řešil otázku posouzení obvyklosti obchodního styku, přiměřenosti protiplnění u zápůjčky a splnění poučovací povinnosti k náležité pečlivosti. Dovolací soud dospěl k závěru, že smlouva o zápůjčce je vzájemně ekvivalentní a úhrada úroků představuje plnění za poskytnuté protiplnění, přičemž soudy musí při neprokázání náležité pečlivosti splnit poučovací povinnost.",
-   "oblasti": [
-    "insolvence",
-    "zavazky",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:7C7A2799555EC054C1258E87004D44EA",
-   "spz": "20 Cdo 1907/2026",
-   "ecli": "ECLI:CZ:NS:2026:20.CDO.1907.2026.1",
-   "druh": "usnesení",
-   "senat": 20,
-   "rejstrik": "Cdo",
-   "datum": "2026-09-22",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/7C7A2799555EC054C1258E87004D44EA?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/134ED5ECB692F5F3C1258E87005556F1/$file/20%20Cdo%201907_2026.pdf?openElement",
-   "heslo": "Zúžení společného jmění platí i pro nové dluhy",
-   "shrnuti": "ČSOB Stavební spořitelna se domáhala uspokojení své pohledávky v exekuci z majetku manželky povinného, ačkoliv manželství mělo již dříve zúžené a vypořádané společné jmění. Nejvyšší soud řešil otázku, zda se účinnost dřívějšího zúžení společného jmění manželů vůči třetím osobám posuzuje podle dosavadních předpisů, a dospěl k závěru, že dohoda o zúžení uzavřená do 31. prosince 2013 nepozbývá účinků ani pro dluhy vzniklé za účinnosti nového občanského zákoníku bez ohledu na chybějící zápis v notářském seznamu.",
-   "oblasti": [
-    "civilni_proces",
-    "rodina_dedictvi",
-    "zavazky"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:7145144102B99B06C1258E8700374A71",
-   "spz": "29 ICdo 80/2025",
-   "ecli": "ECLI:CZ:NS:2026:29.ICDO.80.2025.1",
-   "druh": "rozsudek",
-   "senat": 29,
-   "rejstrik": "ICdo",
-   "datum": "2026-08-31",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/7145144102B99B06C1258E8700374A71?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/79995FDE595A65D0C1258E870044E732/$file/29%20ICdo%2080_2025.pdf?openElement",
-   "heslo": "Pokračování v incidenčním sporu po skončení reorganizace",
-   "shrnuti": "Insolvenční správce podal odpůrčí žalobu proti žalované na určení neúčinnosti platby a zaplacení částky do majetkové podstaty dlužníka WCA International. Nejvyšší soud řešil otázku splnění podmínek pro pokračování v incidenčním sporu po skončení insolvenčního řízení v důsledku splnění reorganizačního plánu. Rozhodl, že v takovém sporu lze pokračovat pouze na návrh věřitele, který řádně uplatnil svou pohledávku v insolvenčním řízení před jeho skončením, což v dané věci splněno nebylo, a proto řízení zastavil.",
-   "oblasti": [
-    "insolvence",
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:70DBE30BB51034FFC1258E87004D4415",
-   "spz": "11 Tdo 656/2026",
-   "ecli": "ECLI:CZ:NS:2026:11.TDO.656.2026.1",
-   "druh": "usnesení",
-   "senat": 11,
-   "rejstrik": "Tdo",
-   "datum": "2026-08-26",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/70DBE30BB51034FFC1258E87004D4415?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/C0757E4909BB0452C1258E8700552F47/$file/11%20Tdo%20656_2026.pdf?openElement",
-   "heslo": "Mimořádné zvýšení trestu a přiměřenost sankce za drogové delikty",
-   "shrnuti": "Nejvyšší soud projednal dovolání obviněných podaná proti usnesení Krajského soudu v Ostravě, kterým byly zamítnuty jejich odvolání proti rozsudku Okresního soudu ve Frýdku-Místku o odsouzení za zvlášť závažný zločin nedovolené výroby a jiného nakládání s omamnými a psychotropními látkami. Soud řešil otázku naplnění podmínek pro mimořádné zvýšení trestu a přezkoumatelnost individualizace trestu a dospěl k závěru, že dovolání jednoho obviněného je zjevně neopodstatněné a dovolání druhého bylo podáno z jiného než zákonného důvodu, pročež obě odmítl.",
-   "oblasti": [
-    "trestni"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:6DEBDF39621DB19DC1258E87004D44B1",
-   "spz": "23 Cdo 3123/2025",
-   "ecli": "ECLI:CZ:NS:2026:23.CDO.3123.2025.1",
-   "druh": "usnesení",
-   "senat": 23,
-   "rejstrik": "Cdo",
-   "datum": "2026-09-29",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/6DEBDF39621DB19DC1258E87004D44B1?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/AC2BF5C5856A0A32C1258E8700558CA3/$file/23%20Cdo%203123_2025.pdf?openElement",
-   "heslo": "Uznání závazku novou dohodou nenahrazuje skutková tvrzení",
-   "shrnuti": "Správkyně pozůstalosti se domáhala po žalované zaplacení splátky z dohody o novém závazku, kterou zanikly původní závazky. Nejvyšší soud řešil přípustnost dovolání ohledně vymezení skutkových tvrzení při uznání dluhu a dospěl k závěru, že dovolání je nepřípustné, neboť rozhodnutí odvolacího soudu obstálo i na dalším samostatném právním závěru o uznání dluhu částečným plněním.",
-   "oblasti": [
-    "zavazky",
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:6BA3ADFE73F6E6D2C1258E87004D44F0",
-   "spz": "30 Cdo 1765/2026",
-   "ecli": "ECLI:CZ:NS:2026:30.CDO.1765.2026.1",
-   "druh": "rozsudek",
-   "senat": 30,
-   "rejstrik": "Cdo",
-   "datum": "2026-08-31",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/6BA3ADFE73F6E6D2C1258E87004D44F0?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/E71E8558408EADD9C1258E87005713DA/$file/30%20Cdo%201765_2026.pdf?openElement",
-   "heslo": "Nepatrný význam řízení nevylučuje peněžité zadostiučinění",
-   "shrnuti": "Žalobkyně se domáhala proti České republice zadostiučinění za nemajetkovou újmu způsobenou nepřiměřenou délkou řízení o poskytnutí informace podle zákona o svobodném přístupu k informacím. Nejvyšší soud řešil otázku, zda nepatrný význam řízení pro poškozeného a priori vylučuje přiznání peněžité satisfakce za situace, kdy na délce řízení nesouhlasně a významně se podílely orgány veřejné moci. Dospěl k závěru, že samotný nepatrný význam řízení bez dalšího nevylučuje poskytnutí peněžitého zadostiučinění, je-li prodloužení řízení způsobeno závažnými pochybeními orgánů veřejné moci.",
-   "oblasti": [
-    "skoda",
-    "spravni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:67161723A9B71AEFC1258E87004D445B",
-   "spz": "23 Nd 519/2026",
-   "ecli": "ECLI:CZ:NS:2026:23.ND.519.2026.1",
-   "druh": "usnesení",
-   "senat": 23,
-   "rejstrik": "Nd",
-   "datum": "2026-09-30",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/67161723A9B71AEFC1258E87004D445B?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/BB517E013C510093C1258E8700559410/$file/23%20Nd%20519_2026.pdf?openElement",
-   "heslo": "Určení místního soudu při chybějícím pobytu povinného cizince",
-   "shrnuti": "Komerční pojišťovna podala návrh na nařízení exekuce proti povinnému, jehož pobyt nelze zjistit. Nejvyšší soud řešil určení místně příslušného soudu podle § 11 odst. 3 o. s. ř. a rozhodl, že věc projedná a rozhodne Okresní soud v Mladé Boleslavi.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:5E671BAA4A8B8DC9C1258E87004D43CF",
-   "spz": "4 Tdo 784/2026",
-   "ecli": "ECLI:CZ:NS:2026:4.TDO.784.2026.1",
-   "druh": "usnesení",
-   "senat": 4,
-   "rejstrik": "Tdo",
-   "datum": "2026-09-15",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/5E671BAA4A8B8DC9C1258E87004D43CF?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/06EB4129CFCE012FC1258E8700573591/$file/4%20Tdo%20784_2026.pdf?openElement",
-   "heslo": "Spolupachatelství loupeže při společném vniknutí do bytu",
-   "shrnuti": "Obviněný M. G. se s dalšími osobami soudil kvůli odsouzení za zločin loupeže a přečin porušování domovní svobody. Nejvyšší soud řešil otázku naplnění znaků spolupachatelství a úmyslu u loupeže a dospěl k závěru, že k naplnění skutkové podstaty postačí, pokud jednání pachatelů na sebe navazovalo a společně směřovalo ke zmocnění se cizí věci za užití násilí.",
-   "oblasti": [
-    "trestni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:5DC0E35C495E95B5C1258E87004D44C4",
-   "spz": "30 Cdo 458/2026",
-   "ecli": "ECLI:CZ:NS:2026:30.CDO.458.2026.1",
-   "druh": "rozsudek",
-   "senat": 30,
-   "rejstrik": "Cdo",
-   "datum": "2026-08-31",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/5DC0E35C495E95B5C1258E87004D44C4?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/CC962DFCDBDC6B21C1258E8700572404/$file/30%20Cdo%20458_2026.pdf?openElement",
-   "heslo": "Zohlednění časového odstupu srovnatelných případů při odškodnění",
-   "shrnuti": "Žalobce se domáhal po České republice – Ministerstvu spravedlnosti přiměřeného zadostiučinění za nemajetkovou újmu způsobenou nezákonným trestním stíháním. Nejvyšší soud řešil otázku vlivu změny ekonomických poměrů a časového odstupu u srovnávacích soudních rozhodnutí a dospěl k závěru, že soudy musí přihlížet k tomu, kdy trestní stíhání ve srovnávaných věcech skončilo, a zohlednit případnou inflaci a změny ekonomických poměrů.",
-   "oblasti": [
-    "skoda",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:5AC266C0DFD301A9C1258E87004D4481",
-   "spz": "25 Nd 478/2026",
-   "ecli": "ECLI:CZ:NS:2026:25.ND.478.2026.1",
-   "druh": "usnesení",
-   "senat": 25,
-   "rejstrik": "Nd",
-   "datum": "2026-09-10",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/5AC266C0DFD301A9C1258E87004D4481?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/46BD7ACCC6B878E3C1258E870055AE53/$file/25%20Nd%20478_2026.pdf?openElement",
-   "heslo": "Určení místní příslušnosti exekučního soudu",
-   "shrnuti": "Městská část Praha 13 navrhla pověření exekucí proti povinnému, jehož pobyt na území České republiky nebyl zjištěn a je evidován v evidenci nežádoucích osob. Nejvyšší soud řešil určení místní příslušnosti exekučního soudu podle ustanovení § 11 odst. 3 o. s. ř., když podmínky místní příslušnosti chyběly. Vzhledem k tomu, že majetek povinného se zjišťuje až v průběhu exekuce, Nejvyšší soud určil jako místně příslušný soud, u něhož bylo řízení zahájeno.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:5121FDC0147042FDC1258E87004D4452",
-   "spz": "27 Nd 490/2026",
-   "ecli": "ECLI:CZ:NS:2026:27.ND.490.2026.1",
-   "druh": "usnesení",
-   "senat": 27,
-   "rejstrik": "Nd",
-   "datum": "2026-09-30",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/5121FDC0147042FDC1258E87004D4452?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/2251EE8CA1EDF98BC1258E870055D334/$file/27%20Nd%20490_2026.pdf?openElement",
-   "heslo": "Určení místní příslušnosti pro exekuci",
-   "shrnuti": "Společnost Bohemia Faktoring podala exekuční návrh proti povinnému k vymožení pohledávky. Nejvyšší soud rozhodoval o určení místně příslušného soudu podle § 11 odst. 3 o. s. ř. Vzhledem k zásadě hospodárnosti řízení určil k projednání a rozhodnutí věci Obvodní soud pro Prahu 8, u něhož byla podána žádost o pověření.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:4C0B049AB341440EC1258E87004D4476",
-   "spz": "25 Cdo 1233/2025",
-   "ecli": "ECLI:CZ:NS:2026:25.CDO.1233.2025.1",
-   "druh": "rozsudek",
-   "senat": 25,
-   "rejstrik": "Cdo",
-   "datum": "2026-08-31",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/4C0B049AB341440EC1258E87004D4476?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/A578FFB755B0C59DC1258E87005595FE/$file/25%20Cdo%201233_2025.pdf?openElement",
-   "heslo": "Meze kritiky veřejně činné osoby",
-   "shrnuti": "Žalobce se domáhal omluvy a finančního zadostiučinění za výroky žalovaného pronesené v televizi a na sociálních sítích, kterými ho označil za podrazáka a bezcharakterního člověka. Nejvyšší soud řešil otázku kolize mezi právem na ochranu cti a svobodou projevu u osoby veřejného zájmu a uzavřel, že soudy musí pečlivě zkoumat povahu každého výroku, jeho skutkový základ a přiměřenost formy.",
-   "oblasti": [
-    "osobnost_media"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:4ADB8412A42BD2C2C1258E87004D44CE",
-   "spz": "20 Cdo 1883/2026",
-   "ecli": "ECLI:CZ:NS:2026:20.CDO.1883.2026.1",
-   "druh": "usnesení",
-   "senat": 20,
-   "rejstrik": "Cdo",
-   "datum": "2026-09-14",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/4ADB8412A42BD2C2C1258E87004D44CE?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/D10E1DD053043D89C1258E8700555409/$file/20%20Cdo%201883_2026.pdf?openElement",
-   "heslo": "Nařízení jednání při návrhu na zastavení exekuce",
-   "shrnuti": "Všeobecná zdravotní pojišťovna České republiky a povinná vedly spor o zastavení exekuce. Nejvyšší soud řešil otázku, zda je nutné nařídit jednání při projednávání návrhu na zastavení exekuce, a uzavřel, že jednání není třeba nařizovat, činí-li soud závěr o vykonatelnosti titulu pouze z obsahu spisu.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:47163AAF948F2B28C1258E87004D43E6",
-   "spz": "8 Tdo 722/2026",
-   "ecli": "ECLI:CZ:NS:2026:8.TDO.722.2026.1",
-   "druh": "usnesení",
-   "senat": 8,
-   "rejstrik": "Tdo",
-   "datum": "2026-08-25",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/47163AAF948F2B28C1258E87004D43E6?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/8A9F4D61A5974908C1258E87005753AF/$file/8%20Tdo%20722_2026.pdf?openElement",
-   "heslo": "Dovolání proti odsouzení za sexuální útok",
-   "shrnuti": "Obviněný podal dovolání proti rozsudku Vrchního soudu v Praze, kterým byl uznán vinným zločinem sexuálního útoku a odsouzen k trestu odnětí svobody. Nejvyšší soud řešil otázku, zda skutková zjištění a hodnocení důkazů, zejména výpovědi poškozené podpořené znaleckým posudkem, zakládají dovolací důvody. Dovolání odmítl jako zjevně neopodstatněné, neboť soudy obou stupňů se s obhajobou řádně vypořádaly.",
-   "oblasti": [
-    "trestni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:4098A051CB4A0DE6C1258E87004D449C",
-   "spz": "28 Cdo 2005/2026",
-   "ecli": "ECLI:CZ:NS:2026:28.CDO.2005.2026.1",
-   "druh": "usnesení",
-   "senat": 28,
-   "rejstrik": "Cdo",
-   "datum": "2026-09-15",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/4098A051CB4A0DE6C1258E87004D449C?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/54A88A500C6F2AC2C1258E870056D345/$file/28%20Cdo%202005_2026.pdf?openElement",
-   "heslo": "Přípustnost dovolání v bagatelních věcech",
-   "shrnuti": "Žalobce se domáhal po žalovaném zaplacení peněžitého plnění s příslušenstvím. Nejvyšší soud řešil otázku přípustnosti dovolání proti rozhodnutí o peněžitém plnění nepřevyšujícím 50 000 Kč v posuzovaném rozsahu. Dovolání odmítl, neboť jde o věc, v níž je dovolání podle občanského soudního řádu nepřípustné.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:3EEE5020D4AD3670C1258E87004D444F",
-   "spz": "21 Nd 463/2026",
-   "ecli": "ECLI:CZ:NS:2026:21.ND.463.2026.1",
-   "druh": "usnesení",
-   "senat": 21,
-   "rejstrik": "Nd",
-   "datum": "2026-09-10",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/3EEE5020D4AD3670C1258E87004D444F?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/2E1187FE74421C16C1258E8700556430/$file/21%20Nd%20463_2026.pdf?openElement",
-   "heslo": "Určení místního soudu v exekuci při chybějícím pobytu",
-   "shrnuti": "Dopravní podnik hl. m. Prahy vedl exekuci proti povinné, jejíž pobyt ani majetek v České republice nebylo možné zjistit. Nejvyšší soud řešil, který soud má exekuci projednat a rozhodnout, a podle zásady hospodárnosti určil Obvodní soud pro Prahu 5, u něhož byla žádost podána.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:2CD4CE0D0B1A236DC1258E87004D445F",
-   "spz": "27 Cdo 866/2026",
-   "ecli": "ECLI:CZ:NS:2026:27.CDO.866.2026.1",
-   "druh": "usnesení",
-   "senat": 27,
-   "rejstrik": "Cdo",
-   "datum": "2026-09-29",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/2CD4CE0D0B1A236DC1258E87004D445F?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/4312BE45EAE3075EC1258E870055C6CD/$file/27%20Cdo%20866_2026.pdf?openElement",
-   "heslo": "Důležitý zájem k vyloučení člena orgánu",
-   "shrnuti": "Navrhovatel se domáhal vyloučení Lubomíra Hubala z funkce předsedy představenstva společnosti AGRO Hoštka a vyslovení zákazu výkonu funkce. Nejvyšší soud řešil přípustnost dovolání ohledně výkladu důležitého zájmu na vyloučení člena statutárního orgánu a posouzení porušení péče řádného hospodáře. Dovolání odmítl jako nepřípustné, neboť navrhovatel nedoložil vlastní důležitý zájem na tomto opatření.",
-   "oblasti": [
-    "korporace"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:2C92BB3FEB9631B9C1258E87004D440C",
-   "spz": "11 Tdo 305/2026",
-   "ecli": "ECLI:CZ:NS:2026:11.TDO.305.2026.1",
-   "druh": "usnesení",
-   "senat": 11,
-   "rejstrik": "Tdo",
-   "datum": "2026-08-27",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/2C92BB3FEB9631B9C1258E87004D440C?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/82EC7E2B6F9E9617C1258E870055240A/$file/11%20Tdo%20305_2026.pdf?openElement",
-   "heslo": "Dovolací důvod nezahrnuje nesouhlas s hodnocením důkazů",
-   "shrnuti": "Dva obvinění podali dovolání proti usnesení Vrchního soudu v Olomouci, kterým byla zamítnuta jejich odvolání proti odsuzujícímu rozsudku za přípravu zvlášť závažného zločinu nedovolené výroby a jiného nakládání s omamnými a psychotropními látkami a s jedy. Nejvyšší soud řešil, zda argumentace obviněných směřující proti rozsahu zajištěných surovin a výtěžnosti drogy naplňuje uplatněné dovolací důvody. Dovolání odmítl podle § 265i odst. 1 písm. b) tr. ř., protože námitky směřovaly pouze do hodnocení důkazů a neodpovídaly vymezeným dovolacím důvodům.",
-   "oblasti": [
-    "trestni"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:25A51E500E9DE98EC1258E87004D44A0",
-   "spz": "28 Cdo 1784/2026",
-   "ecli": "ECLI:CZ:NS:2026:28.CDO.1784.2026.1",
-   "druh": "rozsudek",
-   "senat": 28,
-   "rejstrik": "Cdo",
-   "datum": "2026-09-01",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/25A51E500E9DE98EC1258E87004D44A0?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/D55913BFFA514D0BC1258E870055D520/$file/28%20Cdo%201784_2026.pdf?openElement",
-   "heslo": "Počátek promlčecí doby nároku na bezdůvodné obohacení",
-   "shrnuti": "Obec Prštice se po obci Silůvky domáhala vydání bezdůvodného obohacení za bezesmluvní odběr vody. Nejvyšší soud řešil otázku počátku běhu promlčecích dob a dospěl k závěru, že subjektivní promlčecí lhůta se odvíjí od okamžiku, kdy se ochuzený dozvěděl o rozhodných skutkových okolnostech, nikoliv až od právní moci rozhodnutí o uplatněné obraně.",
-   "oblasti": [
-    "zavazky",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:255456CFCBE4ACA7C1258E87004D447C",
-   "spz": "25 Cdo 2952/2025",
-   "ecli": "ECLI:CZ:NS:2026:25.CDO.2952.2025.1",
-   "druh": "rozsudek",
-   "senat": 25,
-   "rejstrik": "Cdo",
-   "datum": "2026-08-31",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/255456CFCBE4ACA7C1258E87004D447C?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/8057BB964AEE0F25C1258E8700559F1E/$file/25%20Cdo%202952_2025.pdf?openElement",
-   "heslo": "Veřejný projev předsedy vlády na sociální síti",
-   "shrnuti": "Žalobce se domáhal ochrany osobnosti a náhrady nemajetkové újmy po žalovaném kvůli výrokům proneseným v televizním pořadu a na sociální síti X. Nejvyšší soud řešil otázku pasivní věcné legitimace u politických vyjádření představitelů státu a dospěl k závěru, že za takové výroky učiněné v rámci působnosti odpovídá stát, nikoliv osobně člen vlády, pokud nešlo o exces.",
-   "oblasti": [
-    "skoda",
-    "osobnost_media",
-    "zavazky"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:243E26D080F2315AC1258E87004D4471",
-   "spz": "23 Cdo 2706/2025",
-   "ecli": "ECLI:CZ:NS:2026:23.CDO.2706.2025.1",
-   "druh": "usnesení",
-   "senat": 23,
-   "rejstrik": "Cdo",
-   "datum": "2026-09-29",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/243E26D080F2315AC1258E87004D4471?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/EA46B8FF5733AC0FC1258E8700558997/$file/23%20Cdo%202706_2025.pdf?openElement",
-   "heslo": "Přezkum důvodů neprovedení důkazů v rozhodčím řízení",
-   "shrnuti": "Společnost Ascorium Most se s touto společností INEX Česká republika soudila o zrušení rozhodčího nálezu, kterým byla zamítnuta její žaloba na zaplacení náhrady škody. Nejvyšší soud řešil přípustnost dovolání a otázku přezkoumatelnosti postupu rozhodců při neprovedení navržených důkazů. Dovolání odmítl, neboť odvolací soud postupoval v souladu s ustálenou judikaturou a napadené rozhodnutí nezáviselo na dovolatelkou předestřených otázkách.",
-   "oblasti": [
-    "civilni_proces",
-    "zavazky",
-    "skoda"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:226B427478AF1D29C1258E87004D442E",
-   "spz": "4 Tdo 814/2026",
-   "ecli": "ECLI:CZ:NS:2026:4.TDO.814.2026.1",
-   "druh": "usnesení",
-   "senat": 4,
-   "rejstrik": "Tdo",
-   "datum": "2026-09-15",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/226B427478AF1D29C1258E87004D442E?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/489CFD650E0FCBE0C1258E8700573FD0/$file/4%20Tdo%20814_2026.pdf?openElement",
-   "heslo": "Zastření původu peněz a nepřímý úmysl",
-   "shrnuti": "Obviněná se domáhala změny právní kvalifikace na nedbalostní trestný čin a namítala absenci volní složky nepřímého úmyslu při výběru peněz z účtu pro neznámé osoby. Nejvyšší soud dovolání odmítl s tím, že obviněná musela mít s ohledem na okolnosti transakcí zřejmé riziko trestního původu peněz a byla s ním smířena.",
-   "oblasti": [
-    "trestni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:20800AD203BFF1C9C1258E87004D443C",
-   "spz": "26 Cdo 2312/2026",
-   "ecli": "ECLI:CZ:NS:2026:26.CDO.2312.2026.1",
-   "druh": "usnesení",
-   "senat": 26,
-   "rejstrik": "Cdo",
-   "datum": "2026-09-23",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/20800AD203BFF1C9C1258E87004D443C?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/99CB50A74244405BC1258E870055B03C/$file/26%20Cdo%202312_2026.pdf?openElement",
-   "heslo": "Náležitosti vymezení přípustnosti dovolání v řízení",
-   "shrnuti": "Insolvenční správce dlužnice Farma Žabovřesky se v žalobě domáhal po společnosti RANDOM DAY zaplacení částky z titulu bezdůvodného obohacení za užívání areálu závodu. Nejvyšší soud řešil otázku řádného vymezení předpokladů přípustnosti dovolání a dospěl k závěru, že dovolání, které neobsahuje konkrétní vymezující údaje podle § 237 občanského soudního řádu a představuje pouze obecnou polemiku, je nutno odmítnout.",
-   "oblasti": [
-    "civilni_proces",
-    "zavazky"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:18039DD95B901D44C1258E87004D43ED",
-   "spz": "8 Tdo 769/2026",
-   "ecli": "ECLI:CZ:NS:2026:8.TDO.769.2026.1",
-   "druh": "usnesení",
-   "senat": 8,
-   "rejstrik": "Tdo",
-   "datum": "2026-09-09",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/18039DD95B901D44C1258E87004D43ED?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/0EFEF333A9EB17A6C1258E8700575932/$file/8%20Tdo%20769_2026.pdf?openElement",
-   "heslo": "Spolupachatelství v podobě pasivní posily u loupeže",
-   "shrnuti": "Obviněná P. G. se s Nejvyšším soudem soudila o dovolání proti usnesení odvolacího soudu, kterým bylo potvrzeno její odsouzení za neoprávněné opatření platebního prostředku a zločin loupeže ve spolupachatelství. Soud řešil otázku, zda pasivní přítomnost a slovní podpora na místě činu naplňují znaky spolupachatelství k loupeži, a dospěl k závěru, že takové jednání spolu s vyvoláním psychické podpory a pobídkou poškozenému k výběru peněz zakládá spolupachatelství.",
-   "oblasti": [
-    "trestni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:1525BF74EDAB87D9C1258E87004D450C",
-   "spz": "30 Cdo 1113/2026",
-   "ecli": "ECLI:CZ:NS:2026:30.CDO.1113.2026.1",
-   "druh": "rozsudek",
-   "senat": 30,
-   "rejstrik": "Cdo",
-   "datum": "2026-08-31",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/1525BF74EDAB87D9C1258E87004D450C?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/4B07BCDEA35B8019C1258E870056FC7D/$file/30%20Cdo%201113_2026.pdf?openElement",
-   "heslo": "Mimořádné zvýšení mimosmluvní odměny advokáta",
-   "shrnuti": "Žalobce se domáhal po České republice náhrady nákladů obhajoby v trestním řízení, včetně jejich mimořádného zvýšení podle advokátního tarifu. Nejvyšší soud řešil otázku posouzení předpokladů pro mimořádné zvýšení odměny a dodržení principu legitimního očekávání. Dospěl k závěru, že odvolací soud pochybil, pokud se nezabýval individuální časovou náročností a odborností jednotlivých úkonů a řádně neodůvodnil odchylku od dřívějšího rozhodnutí v obdobné věci.",
-   "oblasti": [
-    "zavazky",
-    "skoda",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:13299F3A6642497BC1258E87004D44FE",
-   "spz": "30 Cdo 1010/2026",
-   "ecli": "ECLI:CZ:NS:2026:30.CDO.1010.2026.1",
-   "druh": "rozsudek",
-   "senat": 30,
-   "rejstrik": "Cdo",
-   "datum": "2026-08-27",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/13299F3A6642497BC1258E87004D44FE?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/70E2D23007EFD08CC1258E870056DA6D/$file/30%20Cdo%201010_2026.pdf?openElement",
-   "heslo": "Inflace a srovnání v odškodnění nemajetkové újmy",
-   "shrnuti": "Žalobce se domáhal po státu náhrady škody a nemajetkové újmy v souvislosti s nezákonným trestním stíháním, výkonem trestu a délkou řízení. Nejvyšší soud řešil otázku zohlednění inflace u odškodnění za výkon trestu, zohlednění stupňů soudů u délky řízení a přezkoumatelnosti rozhodnutí o zadostiučinění. Dovolací soud shledal rozhodnutí odvolacího soudu nepřezkoumatelným a právně nesprávným, proto jej zrušil a vrátil k dalšímu řízení.",
-   "oblasti": [
-    "skoda",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:122F7E9CA30D2FBEC1258E87004D4466",
-   "spz": "27 Cdo 569/2026",
-   "ecli": "ECLI:CZ:NS:2026:27.CDO.569.2026.1",
-   "druh": "usnesení",
-   "senat": 27,
-   "rejstrik": "Cdo",
-   "datum": "2026-09-29",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/122F7E9CA30D2FBEC1258E87004D4466?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/DD304E051FBC7F7DC1258E870055C407/$file/27%20Cdo%20569_2026.pdf?openElement",
-   "heslo": "Sbor rozhodců asociace jako rozhodčí komise",
-   "shrnuti": "Navrhovatel se domáhal vyslovení neplatnosti rozhodčího nálezu odvolacího senátu sboru rozhodců Fotbalové asociace České republiky. Nejvyšší soud řešil otázku, zda je sbor rozhodců rozhodčí komisí ve smyslu občanského zákoníku, a dospěl k závěru, že odvolací soud tuto otázku posoudil v souladu s dřívějším závazným právním názorem dovolacího soudu.",
-   "oblasti": [
-    "korporace",
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:10D942671F853FB6C1258E87004D4514",
-   "spz": "30 Cdo 1398/2026",
-   "ecli": "ECLI:CZ:NS:2026:30.CDO.1398.2026.1",
-   "druh": "rozsudek",
-   "senat": 30,
-   "rejstrik": "Cdo",
-   "datum": "2026-08-27",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/10D942671F853FB6C1258E87004D4514?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/D1E1309A4212E54CC1258E87005707A6/$file/30%20Cdo%201398_2026.pdf?openElement",
-   "heslo": "Krácení zadostiučinění platí i ve správním řízení",
-   "shrnuti": "Žalobce se domáhal po České republice – Ministerstvu obrany zadostiučinění za nemajetkovou újmu způsobenou nepřiměřenou délkou správního řízení. Nejvyšší soud řešil otázku, zda se základní částka zadostiučinění za první dva roky krátí na polovinu i ve správním řízení, pro které jsou stanoveny zákonné lhůty. Dospěl k závěru, že toto pravidlo platí bez ohledu na existenci zákonných lhůt pro vydání rozhodnutí.",
-   "oblasti": [
-    "skoda",
-    "spravni"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:0D63631DC5A88E14C1258E87004D43DA",
-   "spz": "8 Tvo 17/2026",
-   "ecli": "ECLI:CZ:NS:2026:8.TVO.17.2026.1",
-   "druh": "usnesení",
-   "senat": 8,
-   "rejstrik": "Tvo",
-   "datum": "2026-08-26",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/0D63631DC5A88E14C1258E87004D43DA?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/C9967A7D7EE98B2DC1258E8700576508/$file/8%20Tvo%2017_2026.pdf?openElement",
-   "heslo": "Podmínky prodloužení vazby u mladistvých",
-   "shrnuti": "Mladistvý se soudil proti usnesení o prodloužení vazby v trestním řízení vedeném pro provinění loupeže a porušování domovní svobody. Nejvyšší soud řešil otázku splnění podmínek pro prodloužení vazby a její trvání u mladistvého. Dospěl k závěru, že stížnost není důvodná, neboť vazební důvody nadále trvají a prodloužení vazby bylo odůvodněno složitostí věci a hrozbou zmaření účelu trestního stíhání.",
-   "oblasti": [
-    "trestni"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:0552945A9163C361C1258E87004D4449",
-   "spz": "21 Nd 419/2026",
-   "ecli": "ECLI:CZ:NS:2026:21.ND.419.2026.1",
-   "druh": "usnesení",
-   "senat": 21,
-   "rejstrik": "Nd",
-   "datum": "2026-09-10",
-   "zverejneno": "2026-10-05",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/0552945A9163C361C1258E87004D4449?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/A8559EFC67D001B1C1258E8700556203/$file/21%20Nd%20419_2026.pdf?openElement",
-   "heslo": "Určení místně příslušného soudu v exekuci při neznámém pobytu",
-   "shrnuti": "Společnost Vodafone Czech Republic podala exekuční návrh proti povinnému, u nějž nebylo možné spolehlivě zjistit místo pobytu ani majetek na území České republiky. Nejvyšší soud řešil otázku určení místně příslušného soudu podle ustanovení § 11 odst. 3 občanského soudního řádu za situace, kdy podmínky místní příslušnosti chybějí. Rozhodl, že věc projedná a rozhodne Okresní soud v Hodoníně.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:C5763D0B65AFAE72C1258E8700374A39",
-   "spz": "27 Cdo 1678/2025",
-   "ecli": "ECLI:CZ:NS:2026:27.CDO.1678.2025.1",
-   "druh": "rozsudek",
-   "senat": 27,
-   "rejstrik": "Cdo",
-   "datum": "2026-08-31",
-   "zverejneno": "2026-10-03",
-   "first_seen": "2026-10-06T04:50:58Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/C5763D0B65AFAE72C1258E8700374A39?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/87840A2C1C577783C1258E870044BF24/$file/27%20Cdo%201678_2025.pdf?openElement",
-   "heslo": "Velikostní přirážka při stanovení přiměřeného protiplnění",
-   "shrnuti": "Žalobci se domáhali přezkoumání přiměřenosti protiplnění za akcie po nuceném přechodu vlastnického práva na hlavního akcionáře DRENCAN LIMITED. Nejvyšší soud řešil otázku přípustnosti aplikace velikostní přirážky v rámci diskontní míry a dospěl k závěru, že její použití je při ocenění podniku výnosovou metodou přípustné, pokud je řádně odůvodněno. Dovolání žalobců proto zamítl.",
-   "oblasti": [
-    "korporace",
-    "zavazky",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:B1FCAE110CA82EFBC1258E8700374A8F",
-   "spz": "20 Nd 416/2026",
-   "ecli": "ECLI:CZ:NS:2026:20.ND.416.2026.1",
-   "druh": "usnesení",
-   "senat": 20,
-   "rejstrik": "Nd",
-   "datum": "2026-09-15",
-   "zverejneno": "2026-10-02",
-   "first_seen": "2026-10-05T10:03:39Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/B1FCAE110CA82EFBC1258E8700374A8F?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/FF935DDB2EE9BD1BC1258E8700448CB9/$file/20%20Nd%20416_2026.pdf?openElement",
-   "heslo": "Určení místně příslušného exekučního soudu",
-   "shrnuti": "Společnost ČEZ Distribuce podala exekuční návrh proti povinnému, u něhož nebylo možné zjistit trvalý pobyt ani majetek v České republice. Nejvyšší soud řešil, který soud má věc projednat a rozhodnout, když chybějí podmínky místní příslušnosti. Podle zásady hospodárnosti určil k projednání věci Okresní soud v Mladé Boleslavi.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:9DCA3C8EE3F77833C1258E8700374A8A",
-   "spz": "33 Nd 413/2026",
-   "ecli": "ECLI:CZ:NS:2026:33.ND.413.2026.1",
-   "druh": "usnesení",
-   "senat": 33,
-   "rejstrik": "Nd",
-   "datum": "2026-09-16",
-   "zverejneno": "2026-10-02",
-   "first_seen": "2026-10-05T10:03:39Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/9DCA3C8EE3F77833C1258E8700374A8A?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/8E9DCFD0D11EBC69C1258E870044F5BC/$file/33%20Nd%20413_2026.pdf?openElement",
-   "heslo": "Určení místní příslušnosti při neznámém pobytu",
-   "shrnuti": "Fakultní nemocnice Motol a Homolka podala návrh na nařízení exekuce na majetek povinného. Nejvyšší soud řešil určení místně příslušného soudu podle § 11 odst. 3 o. s. ř. vzhledem k tomu, že pobyt ani majetek povinného nebyly zjištěny. Rozhodl, že věc projedná a rozhodne Obvodní soud pro Prahu 5.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:945236FD6E94DAF8C1258E8700374A76",
-   "spz": "3 Tdo 687/2026",
-   "ecli": "ECLI:CZ:NS:2026:3.TDO.687.2026.1",
-   "druh": "usnesení",
-   "senat": 3,
-   "rejstrik": "Tdo",
-   "datum": "2026-08-12",
-   "zverejneno": "2026-10-02",
-   "first_seen": "2026-10-05T10:03:39Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/945236FD6E94DAF8C1258E8700374A76?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/A75C66A72F036727C1258E870044ED13/$file/3%20Tdo%20687_2026.pdf?openElement",
-   "heslo": "Zánik trestnosti pokusu a pokračující trestný čin",
-   "shrnuti": "Obviněný podal dovolání proti odsuzujícímu rozsudku za znásilnění a pokus znásilnění, přičemž namítal nesprávné posouzení své příčetnosti a porušení zákazu reformace in peius. Nejvyšší soud konstatoval, že námitky směřující proti hodnocení důkazů a závěrům o příčetnosti nenaplňují uplatněné dovolací důvody, a dovolání odmítl.",
-   "oblasti": [
-    "trestni"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:1291ACEFC1B839FDC1258E8700374A93",
-   "spz": "33 Nd 415/2026",
-   "ecli": "ECLI:CZ:NS:2026:33.ND.415.2026.1",
-   "druh": "usnesení",
-   "senat": 33,
-   "rejstrik": "Nd",
-   "datum": "2026-09-16",
-   "zverejneno": "2026-10-02",
-   "first_seen": "2026-10-05T10:03:39Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/1291ACEFC1B839FDC1258E8700374A93?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/8BDFF62A50B0C8C7C1258E870044F7BE/$file/33%20Nd%20415_2026.pdf?openElement",
-   "heslo": "Určení místní příslušnosti Nejvyšším soudem v exekuci",
-   "shrnuti": "Společnost Bohemia Faktoring podala návrh na nařízení exekuce proti povinnému, u něhož nebyly zjištěny podmínky pro určení místní příslušnosti podle trvalého pobytu. Nejvyšší soud řešil, který soud má věc projednat a rozhodnout, když chybějí údaje o pobytu povinného a majetek vyjde najevo až v průběhu exekuce. Vzhledem k zásadě hospodárnosti určil k projednání věci Okresní soud v Mladé Boleslavi, u něhož bylo řízení zahájeno.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
-  },
-  {
-   "id": "ns:0847BFE2C58D3702C1258E8700374A9A",
-   "spz": "33 Nd 456/2026",
-   "ecli": "ECLI:CZ:NS:2026:33.ND.456.2026.1",
-   "druh": "usnesení",
-   "senat": 33,
-   "rejstrik": "Nd",
-   "datum": "2026-09-22",
-   "zverejneno": "2026-10-02",
-   "first_seen": "2026-10-05T10:03:39Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/0847BFE2C58D3702C1258E8700374A9A?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/16B871B2902DA851C1258E870044F9EA/$file/33%20Nd%20456_2026.pdf?openElement",
-   "heslo": "Určení místního soudu pro exekuci",
-   "shrnuti": "Společnost Vodafone Czech Republic podala exekuční návrh proti povinnému u Obvodního soudu pro Prahu 8, který následně vyslovil svou místní nepříslušnost a věc předložil Nejvyššímu soudu k určení příslušnosti. Nejvyšší soud řešil otázku postupu při určení místně příslušného soudu v exekučním řízení, kdy nelze zjistit pobyt povinného cizince. Rozhodl, že s ohledem na hospodárnost řízení věc projedná a rozhodne Obvodní soud pro Prahu 8, u něhož byla žádost podána.",
-   "oblasti": [
-    "civilni_proces"
-   ],
-   "procesni": true
   }
  ]
 }

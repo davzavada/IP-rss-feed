@@ -1,8 +1,497 @@
 {
- "generated": "2026-11-05T07:36:16Z",
+ "generated": "2026-11-06T07:31:13Z",
  "soud": "sdeu",
  "okno_dni": 31,
  "polozky": [
+  {
+   "id": "sdeu:62025CJ0530",
+   "spz": "C-530/25",
+   "ecli": "ECLI:EU:C:2026:935",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Khan v. Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0530",
+   "heslo": "Zápis podnikatele na sankční seznam Unie",
+   "shrnuti": "Soudní dvůr zamítl kasační opravný prostředek proti rozsudku Tribunálu, kterým byla potvrzena platnost omezujících opatření vůči přednímu ruskému podnikateli. Soudní dvůr potvrdil, že Rada Evropské unie neporušila povinnost pravidelného přezkumu ani zásadu proporcionality a že výjem pojmu přední podnikatel zůstává ve vztahu k novému znění kritérií zachován.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0495",
+   "spz": "C-495/25",
+   "ecli": "ECLI:EU:C:2026:934",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Syndicat professionnel du chanvre",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0495",
+   "heslo": "Nezákonná nová potravina nemůže získat ekologickou certifikaci",
+   "shrnuti": "Soudní dvůr EU posuzoval, zda lze kanabidiol (CBD) kvalifikovaný jako nové potraviny, které nemají povolení k uvádění na trh, certifikovat jako produkt ekologického zemědělství. Rozhodl, že nařízení o ekologické produkci brání tomu, aby látka považovaná za novou potravinu bez příslušného povolení získala ekologickou certifikaci jako zpracovaný zemědělský produkt určený k použití jako potravina.",
+   "oblasti": [
+    "spravni",
+    "spotrebitel"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0435",
+   "spz": "C-435/25",
+   "ecli": "ECLI:EU:C:2026:947",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Gut gekauft Reformhäuser",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0435",
+   "heslo": "Povinnost náležité péče distributora kosmetických přípravků při reklamě",
+   "shrnuti": "Soudní dvůr EU posuzoval rozsah povinnosti náležité péče distributora kosmetických přípravků, který v reklamu přejímá tvrzení výrobce beze změny. Rozhodl, že distributor je povinen ověřit pravdivost takových tvrzení pouze tehdy, pokud disponuje informacemi odhalujícími jejich zjevně zavádějící povahu. V takovém případě se na něj uplatní také pravidla o nekalých obchodních praktikách.",
+   "oblasti": [
+    "spotrebitel",
+    "spravni",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0395",
+   "spz": "C-395/25",
+   "ecli": "ECLI:EU:C:2026:945",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Orkla Care",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0395",
+   "heslo": "Podobnost obalu nebezpečné směsi s potravinami",
+   "shrnuti": "Soudní dvůr EU rozhodoval o výkladu pravidel pro balení nebezpečných látek a směsí ve vztahu k obalům připomínajícím potraviny. Konstatoval, že posouzení podobnosti se provádí na základě celkového vzhledu obalu s ohledem na vnímání všech spotřebitelů včetně dětí a zranitelných osob, přičemž stačí nezanedbatelné riziko záměny bez nutnosti prokazovat dřívější konkrétní případy. Agentura Kemikalieinspektionen a společnost Orkla Care tak musí při hodnocení obalů zohlednit specifické podmínky vnitrostátního trhu a celkový dojem výrobku.",
+   "oblasti": [
+    "spravni",
+    "spotrebitel"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0344",
+   "spz": "C-344/25",
+   "ecli": "ECLI:EU:C:2026:939",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Eurovo",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0344",
+   "heslo": "Místo uvedení výrobku na trh zahrnuje prodej",
+   "shrnuti": "Soudní dvůr EU rozhodoval o výkladu pojmu uvedení na trh ve smyslu nařízení Řím II o právu rozhodném pro mimosmluvní závazkové vztahy ze škody způsobené výrobkem. Uvedl, že místem uvedení výrobku na trh není pouze sídlo výrobce, ale i místo pořízení od obchodníka či předání dopravcem, a to i v případě, že se jedná o výrobek tvořící součást technického zařízení.",
+   "oblasti": [
+    "mps",
+    "zavazky",
+    "skoda"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0339",
+   "spz": "C-339/25",
+   "ecli": "ECLI:EU:C:2026:929",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Iulicris Recycling",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0339",
+   "heslo": "Platební instituce mohou nabízet měnové futures",
+   "shrnuti": "Soudní dvůr EU řešil otázku, zda platební instituce oprávněné k poskytování doplňkových směnárenských služeb mohou nabízet měnové futures jako úzce související doplňkové služby ve smyslu směrnice o platebních službách. Rozhodl, že platební instituce jsou k tomu oprávněny, avšak pokud takové služby představují investiční služby ve smyslu směrnice o trzích finančních nástrojů, musí splňovat příslušné podmínky příležitostného poskytování stanovené touto směrnicí a prováděcími předpisy.",
+   "oblasti": [
+    "finance",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0238",
+   "spz": "C-238/25",
+   "ecli": "ECLI:EU:C:2026:928",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Bizerba",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0238",
+   "heslo": "Zaznamenávající váha je neautomatickou váhou bez zobrazení",
+   "shrnuti": "Soudní dvůr EU řešil, zda přístroj pro určování hmotnosti, který výsledky vážení pouze zaznamenává, ale netiskne ani viditelně nezobrazuje, představuje váhy s neautomatickou činností podle směrnice 2014/31. Rozhodl, že takový přístroj je neautomatickou váhou a může splňovat základní požadavky, avšak s výjimkou dodatečných požadavků pro váhy určené k přímému prodeji veřejnosti s horní mezí váživosti do 100 kg, které vyžadují, aby váha výsledky přímo zobrazovala.",
+   "oblasti": [
+    "spravni",
+    "spotrebitel"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0237",
+   "spz": "C-237/25",
+   "ecli": "ECLI:EU:C:2026:927",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Mettler-Toledo",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0237",
+   "heslo": "Nápisy na váze vyžadují fyzické umístění",
+   "shrnuti": "Soudní dvůr EU rozhodl, že informace o horní mezi váživosti, dolní mezi váživosti a ověřovacím dílku se u vah s neautomatickou činností nemohou zobrazovat výhradně v digitální podobě a střídavě během provozu. Tyto údaje musí být na váze fyzicky umístěny. Zajišťuje se tak možnost kontroly metrologických vlastností váhy i mimo její provozní stav bez elektrického napájení.",
+   "oblasti": [
+    "spravni",
+    "spotrebitel"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0205",
+   "spz": "C-205/25",
+   "ecli": "ECLI:EU:C:2026:933",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Bayerisches Landesamt für Datenschutzaufsicht",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0205",
+   "heslo": "Dozorový úřad je správcem údajů ze stížnosti",
+   "shrnuti": "Soudní dvůr EU rozhodl, že dozorový úřad vyřizující stížnost podle nařízení 2016/679 (GDPR) je ve vztahu ke stěžovateli správcem osobních údajů a je povinen mu poskytnout přístup k těmto údajům. Vnitrostátní právní úprava, která paušálně vylučuje právo na přístup ke spisu dozorového úřadu, je v rozporu s unijním právem. Toto omezení nelze odůvodnit zájmem na řádném fungování úřadu ani ochranou důvěrnosti bez provedení řádného zvážení zájmů.",
+   "oblasti": [
+    "gdpr",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0121",
+   "spz": "C-121/25",
+   "ecli": "ECLI:EU:C:2026:932",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Evonik Operations v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0121",
+   "heslo": "Kasační opravný prostředek proti harmonizované klasifikaci chemických látek",
+   "shrnuti": "Soudní dvůr EU řešil kasační opravný prostředek podaný proti rozsudku Tribunálu, kterým byla zamítnuta žaloba na neplatnost nařízení v přenesené pravomoci týkajícího se harmonizované klasifikace a označování látky silanamin. Soudní dvůr neshledal uplatněné kasační důvody důvodnými a kasační opravný prostředek v plném rozsahu zamítl. Potvrdil tak závěry Tribunálu ohledně legality postupu a věcného posouzení podmínek klasifikace dle nařízení CLP.",
+   "oblasti": [
+    "spravni",
+    "stavebni_zp"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0118",
+   "spz": "C-118/25",
+   "ecli": "ECLI:EU:C:2026:943",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Nord Stream 2 v. Parlament a Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0118",
+   "heslo": "Změna pravidel pro plynovody ze třetích zemí",
+   "shrnuti": "Soudní dvůr EU řešil kasační opravný prostředek proti rozsudku Tribunálu, kterým byla zamítnuta žaloba na neplatnost směrnice (EU) 2019/692, kterou se mění směrnice 2009/73/ES o společných pravidlech pro vnitřní trh se zemním plynem. Soudní dvůr shledal kasační opravný prostředek nedůvodným a v celém rozsahu jej zamítl.",
+   "oblasti": [
+    "spravni",
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0654",
+   "spz": "C-654/25",
+   "ecli": "ECLI:EU:C:2026:948",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Undelam",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0654",
+   "heslo": "Dynamická IP adresa a náhrada újmy podle GDPR",
+   "shrnuti": "Generální advokát navrhuje, že dynamická IP adresa automaticky předaná třetímu subjektu představuje osobní údaj, pokud má tento subjekt k dispozici prostředky k identifikaci. Dále uvádí, že existenci nehmotné újmy nelze uznat, pokud subjekt údajů porušení GDPR vyvolal vědomě a opakovaně za účelem získání finanční náhrady. Žalobce a žalovaný v původním řízení figurovali jako strany sporu.",
+   "oblasti": [
+    "gdpr",
+    "skoda",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0606",
+   "spz": "C-606/25",
+   "ecli": "ECLI:EU:C:2026:951",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "CGIL del Trentino",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0606",
+   "heslo": "Věková hranice pro státní zástupce odporuje směrnici",
+   "shrnuti": "Generální advokát navrhuje, aby Soudní dvůr EU rozhodnul, že směrnice 2000/78 o rovném zacházení v zaměstnání brání vnitrostátní úpravě stanovící věkovou hranici 35 let pro přístup k výběrovému řízení na pozici procuratore dello Stato. Takové omezení není objektivně odůvodněno požadavky na odbornou přípravu a je nekonzistentní s ohledem na kariérní postup a absenci věkového limitu pro jiné pozice v rámci Avvocatura dello Stato.",
+   "oblasti": [
+    "pracovni",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0546",
+   "spz": "C-546/25",
+   "ecli": "ECLI:EU:C:2026:944",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Beteiligungsgesellschaft",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0546",
+   "heslo": "Metoda zápočtu daně vyžaduje možnost převodu",
+   "shrnuti": "Generální advokát navrhuje, že článek 4 odst. 1 druhá odrážka směrnice 90/435 brání vnitrostátní úpravě, která neumožňuje převést zápočet daně zaplacené dceřinou společností do pozdějších zdaňovacích období, ačkoliv rozdělené zisky snížily převoditelné ztráty mateřské společnosti a vedly k pozdější daňové zátěži. Jelikož tato povinnost je dostatečně přesná a bezpodmínečná, může se jí mateřská společnost v případě nesprávného provedení směrnice přímo dovolávat.",
+   "oblasti": [
+    "dane",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0544",
+   "spz": "C-544/25",
+   "ecli": "ECLI:EU:C:2026:950",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "ACC Business Development",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0544",
+   "heslo": "Povolení zaměstnávání cizinců agenturou práce",
+   "shrnuti": "Generální advokát navrhuje, aby Soudní dvůr rozhodl, že směrnice 2008/104 o agenturním zaměstnávání nebrání vnitrostátní úpravě, podle které může žádost o pracovní povolení pro státní příslušníka třetí země podat pouze zaměstnavatel, který sám vykonává činnost, pro niž je povolení žádáno. Podmínky pro vydání pracovního povolení cizincům nespadají do působnosti uvedené směrnice. Případné omezení agenturního zaměstnávání vyplývající z této úpravy je však odůvodněno naléhavými důvody obecného zájmu, jako je ochrana pracovníků a boj proti nelegální práci.",
+   "oblasti": [
+    "pracovni",
+    "socialni_cizinci",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0533",
+   "spz": "C-533/25",
+   "ecli": "ECLI:EU:C:2026:942",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "F Corporation",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0533",
+   "heslo": "Konečná srážková daň z dividend a třetí země",
+   "shrnuti": "Generální advokátka navrhuje, že právní úprava členského státu ukládající konečnou srážkovou daň z dividend vyplácených do třetí země spadá pod volný pohyb kapitálu a představuje jeho omezení. Takové omezení však může být odůvodněno doložkou o zachování původního stavu podle článku 64 SFEU, pokud existovalo již k 31. prosinci 1993. Nelze je však odůvodnit snahou zabránit dvojímu daňovému zvýhodnění či nutností zachovat rozdělení zdaňovacích pravomocí.",
+   "oblasti": [
+    "dane",
+    "mps"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0424",
+   "spz": "C-424/25",
+   "ecli": "ECLI:EU:C:2026:946",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Overgaard Gods",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0424",
+   "heslo": "Navrácení státní podpory z povolených objemů",
+   "shrnuti": "Generální advokát navrhuje, že zásada proporcionality nebrání tomu, aby byla částka protiprávní státní podpory formou daňového zvýhodnění vypočtena pro účely navrácení na základě povoleného, a nikoli skutečně využitého objemu. Podle názoru generálního advokáta tato metoda odráží získanou výhodu a vnitrostátní orgány se od ní nemohou odchýlit. Nízká skutečná spotřeba příjemce na tom nic nemění.",
+   "oblasti": [
+    "soutez",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0298",
+   "spz": "C-298/25",
+   "ecli": "ECLI:EU:C:2026:940",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Ofsets",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0298",
+   "heslo": "Žaloba pro přerušení obchodních vztahů spadá pod Římskou úmluvu",
+   "shrnuti": "Generální advokát navrhuje určit právo rozhodné pro žalobu na náhradu škody z důvodu náhlého přerušení zavedených obchodních vztahů podle Římské úmluvy o právu rozhodném pro smluvní závazkové vztahy. Uvádí, že povinnost dodržet výpovědní dobu při ukončení obchodních vztahů úzce souvisí se smluvním vztahem stran, a proto má taková žaloba smluvní, nikoliv mimosmluvní povahu.",
+   "oblasti": [
+    "zavazky",
+    "mps",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0059",
+   "spz": "C-59/25",
+   "ecli": "ECLI:EU:C:2026:949",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Zhejiang Sunflower Great Health a Sunowe Solar v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0059",
+   "heslo": "Zjištění porušení cenového závazku po jeho zrušení",
+   "shrnuti": "Generální advokát navrhuje, aby Soudní dvůr zamítl kasační stížnost jako zčásti nepřípustnou a zčásti nedůvodnou. Dovozuje, že Evropská komise je oprávněna vyšetřovat porušení cenového závazku a invalidovat faktury i po zrušení závazku či uplynutí platnosti antidumpingových opatření, pokud k porušení došlo v době, kdy závazek platil.",
+   "oblasti": [
+    "soutez",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CJ0881",
+   "spz": "C-881/24",
+   "ecli": "ECLI:EU:C:2026:938",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "SC v. Eulex Kosovo",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0881",
+   "heslo": "Subjektivní nestrannost vyžaduje průkaz podjatosti",
+   "shrnuti": "Soudní dvůr EU řešil otázku, zda byla porušena subjektivní nestrannost členky výběrové komise při vnitřním výběrovém řízení mezinárodní mise. Dospěl k závěru, že samotná existence dřívějších sporů či pochybností nestačí, pokud stěžovatelka neprokázala objektivními důkazy existenci podjatosti nebo osobní zaujatosti.",
+   "oblasti": [
+    "spravni",
+    "pracovni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CJ0716",
+   "spz": "C-716/24",
+   "ecli": "ECLI:EU:C:2026:937",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Ponner",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0716",
+   "heslo": "Insolvence ve třetí zemi nevylučuje obstavení účtů",
+   "shrnuti": "Soudní dvůr EU rozhodl, že čl. 2 odst. 2 písm. c) nařízení č. 655/2014 nevylučuje vydání evropského příkazu k obstavení účtů ani žádost o informace o účtech v případě, že bylo na dlužníka zahájeno insolvenční řízení ve třetí zemi, pokud vnitrostátní právo takové řízení uznává. Dále potvrdil, že pro řádné odůvodnění žádosti o získání informací o účtech lze zohlednit i okolnosti prokazující silné hospodářské vazby mezi dlužníkem a dotčeným členským státem.",
+   "oblasti": [
+    "mps",
+    "civilni_proces",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CJ0505",
+   "spz": "C-505/24",
+   "ecli": "ECLI:EU:C:2026:931",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Condor Flugdienst v. Ryanair",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0505",
+   "heslo": "Sdílení nákladů u státní podpory na restrukturalizaci",
+   "shrnuti": "Soudní dvůr řešil, zda se požadavek na rovnoměrné sdílení nákladů a přiměřený podíl státu na budoucích kapitálových ziscích podle pokynů pro státní podporu na záchranu a restrukturalizaci vztahuje i na opatření spočívající v odepsání dluhů. Rozhodl, že tento požadavkový rámec dopadá na jakoukoli podporu posilující kapitálové postavení, avšak povinnost zajistit státu podíl na ziscích se uplatní jen tehdy, pokud po započtení ztrát stávajícími investory v podniku nějaký vlastní kapitál zbývá. Vzhledem k tomu, že v posuzovaném případě stávající investoři o své podíly přišli, Evropská komise již nemusela tuto podmínku dále zkoumat, a napadený rozsudek Tribunálu byl proto zrušen.",
+   "oblasti": [
+    "spravni",
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CJ0468",
+   "spz": "C-468/24",
+   "ecli": "ECLI:EU:C:2026:936",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Netz Niederösterreich () a compteurs intelligents)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0468",
+   "heslo": "Instalace inteligentního elektroměru a síť elektronických komunikací",
+   "shrnuti": "Soudní dvůr EU rozhodoval o předběžných otázkách týkajících se výkladu unijních předpisů v oblasti vnitřního trhu s elektřinou a ochrany údajů v souvislosti s odmítnutím instalace inteligentního elektroměru koncovým zákazníkem. Uvedl, že provozovatel soustavy není povinen vyhovět přání zákazníka nemít inteligentní elektroměr a poskytnout mu běžný elektroměr. Dále konstatoval, že pravidla o ochraně v koncových zařízeních podle směrnice o soukromí a elektronických komunikacích se nevztahují na elektrizační soustavu přenášející osobní údaje.",
+   "oblasti": [
+    "spravni",
+    "gdpr",
+    "spotrebitel"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CJ0266",
+   "spz": "C-266/24",
+   "ecli": "ECLI:EU:C:2026:930",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "Komise v. Ryanair (Aide d’État Covid-19 - KLM)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0266",
+   "heslo": "Přezkum státní podpory a pojetí podniku",
+   "shrnuti": "Soudní dvůr řešil kasační opravné prostředky proti rozsudku Tribunálu, kterým bylo zrušeno rozhodnutí Evropské komise o státní podpoře pro společnost v kontextu skupiny společností. Soudní dvůr shledal, že Tribunál nesprávně nahradil posouzení Komise svým vlastním hodnocením a neprokázal zjevně nesprávné posouzení ze strany Komise, a proto rozsudek Tribunálu zrušil a vrátil mu věc k dalšímu řízení.",
+   "oblasti": [
+    "soutez",
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CJ0074",
+   "spz": "C-74/24",
+   "ecli": "ECLI:EU:C:2026:941",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-06T07:31:13Z",
+   "nazev": "PNB Banka v. SRB",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0074",
+   "heslo": "Výbor pro řešení krizí vydává rozhodnutí",
+   "shrnuti": "Jednotný výbor pro řešení krizí je oprávněn vydat závazné rozhodnutí o nepřijetí řešení ve vztahu k úvěrové instituci, pokud nejsou splněny podmínky pro zahájení postupu řešení krize. Soudní dvůr potvrdil závěry Tribunálu, že taková pravomoc vyplývá přímo z příslušných unijních předpisů upravujících jednotný mechanismus pro řešení krizí.",
+   "oblasti": [
+    "finance",
+    "korporace",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
   {
    "id": "sdeu:62025TJ0753",
    "spz": "T-753/25",
