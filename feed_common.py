@@ -622,7 +622,7 @@ def _zkus_model(model, telo_fn, timeout):
             if not kandidati:
                 duvod = (data.get("promptFeedback") or {}).get("blockReason", "bez odpovědi")
                 print(f"    AI {model}: zablokováno ({duvod}), zkusím další model")
-                return "", "dalsi"
+                return "", "blokace"
             cand = kandidati[0]
             text = "".join(p.get("text", "") for p in (cand.get("content") or {}).get("parts", [])
                            if not p.get("thought")).strip()
@@ -732,9 +732,12 @@ def ai_volani(parts, system=None, schema=None, max_tokens=8192, timeout=GEMINI_T
         return "", ""
     # Za přetížení (pokus se rozhodnutí nepočítá) se bere, když aspoň jeden
     # model selhal jen dočasně – ten ho příště může vzít, i když ho jiný
-    # zablokoval (PROHIBITED_CONTENT u trestních věcí) nebo nevzal pro délku.
-    # Když nevyšel žádný model, jsou všechny v pauze nebo vyřazené.
-    pretizeni, zkouseno = False, False
+    # nevzal pro délku. Když nevyšel žádný model, jsou všechny v pauze nebo
+    # vyřazené. Zablokování obsahu (PROHIBITED_CONTENT u trestních věcí) se
+    # ale počítá vždy: záložní model takové rozhodnutí často nevezme nikdy
+    # (dlouhý text přes jeho minutový limit) a bez počítání by čekalo
+    # „ve frontě" donekonečna. Šest pokusů mu nechá šest dní na záložní model.
+    pretizeni, zkouseno, blokace = False, False, False
     for kolo in range(2):
         for model in gemini_modely():
             if _stav(model)["vyrazen"] or _v_pauze(model):
@@ -749,6 +752,8 @@ def ai_volani(parts, system=None, schema=None, max_tokens=8192, timeout=GEMINI_T
                 return "", ""
             if vysledek == "pretizeni":
                 pretizeni = True
+            if vysledek == "blokace":
+                blokace = True
         pretizeni = pretizeni or not zkouseno
         # Když zbylé modely jen čekají na konec pauzy, počká se na první z nich
         # a zkusí se to ještě jednou.
@@ -758,7 +763,7 @@ def ai_volani(parts, system=None, schema=None, max_tokens=8192, timeout=GEMINI_T
         cekej = min(pauzy) - time.monotonic()
         print(f"    AI: všechny modely mají pauzu, čekám {cekej / 60:.0f} min")
         time.sleep(cekej)
-    _posledni_pretizeni = pretizeni
+    _posledni_pretizeni = pretizeni and not blokace
     print("    AI: žádný model nedal odpověď, zkusím příště")
     return "", ""
 
