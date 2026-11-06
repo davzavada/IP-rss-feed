@@ -474,18 +474,72 @@ function podleData(a, b) {
 // jen váš výběr, nebo všechno.
 const archivVse = {};             // klíč zdroje -> true, když je zapnuté „Vše"
 
+// Můj výběr má jen přihlášený. Nepřihlášenému je přepínač zašedlý a vidí
+// všechno – zúžit si to může filtrem podle zaměření (ikonka vedle).
+function maVyber() {
+  return !!prihlaseny;
+}
+
+function vseVidet(key) {
+  if (!maVyber()) return true;
+  return key === "today" ? novinkyVse : !!archivVse[key];
+}
+
+function titulNedostupnehoVyberu() {
+  return clerkStav === "nedostupny"
+    ? "Přihlášení teď není k dispozici, vlastní výběr nejde nastavit."
+    : "Vlastní výběr si nastavíte po přihlášení.";
+}
+
+// Filtr podle zaměření (oblasti) nad „Vše" – platí pro judikaturu na všech
+// stránkách soudů i v Novinkách, časopisů se netýká. Jen do zavření stránky.
+const KARTY_S_FILTREM = ["nsoud", "nss", "us", "sdeu", "today"];
+let filtrOblasti = [];            // id oblastí; prázdné = bez filtru
+
+function bereFiltrOblasti(item) {
+  if (!filtrOblasti.length || item._src === "journals") return true;
+  return (item.oblasti || []).some(o => filtrOblasti.indexOf(ALIAS_OBLASTI[o] || o) >= 0);
+}
+
+// Ikonka filtru je vidět jen u „Vše"; s aktivním filtrem nese počet oblastí.
+function vykresliFiltrOblastiBtn(key, viditelne) {
+  const b = document.querySelector('button[data-filtr-oblasti="' + key + '"]');
+  if (!b) return;
+  b.hidden = !viditelne || !OBLASTI_SEZNAM.length;
+  b.classList.toggle("aktivni", filtrOblasti.length > 0);
+  const n = b.querySelector(".filtr-oblasti-pocet");
+  if (n) {
+    n.textContent = filtrOblasti.length || "";
+    n.hidden = !filtrOblasti.length;
+  }
+  b.title = filtrOblasti.length
+    ? "Filtr podle zaměření: " + filtrOblasti.map(o => OBLASTI[o]).filter(Boolean).join(", ")
+    : "Filtr podle zaměření";
+}
+
+function prazdnyFiltrHtml() {
+  return '<p class="feed-empty feed-empty-box">Ve vybraném zaměření tu nic není. ' +
+    '<button type="button" class="odkaz-tlacitko" data-filtr-zrusit="1">Zrušit filtr.</button></p>';
+}
+
 function renderArchiv(f, vsechny) {
   const container = document.getElementById(f.containerId);
   const mine = f.filtr ? vsechny.filter(f.filtr) : vsechny;
-  const vse = !!archivVse[f.key];
+  const vse = vseVidet(f.key);
+  const sFiltrem = KARTY_S_FILTREM.indexOf(f.key) >= 0;
+  const vsechnyF = sFiltrem ? vsechny.filter(bereFiltrOblasti) : vsechny;
   const prepinac = document.getElementById("prepinac-" + f.key);
   if (prepinac) {
     prepinac.hidden = false;
-    prepinac.innerHTML = [["", "Můj výběr", mine.length], ["1", "Vše", vsechny.length]].map(([k, label, n]) =>
-      '<button type="button" data-archiv="' + f.key + '" data-vse="' + k + '" aria-pressed="' + (!!k === vse) +
-      '"><span>' + label + '</span><span class="segment-pocet">' + n + "</span></button>").join("");
+    const bezVyberu = !maVyber();
+    prepinac.innerHTML = [["", "Můj výběr", bezVyberu ? "" : mine.length], ["1", "Vše", vsechnyF.length]].map(([k, label, n]) =>
+      '<button type="button" data-archiv="' + f.key + '" data-vse="' + k + '" aria-pressed="' + (!!k === vse) + '"' +
+      (!k && bezVyberu ? ' disabled title="' + esc(titulNedostupnehoVyberu()) + '"' : "") +
+      '><span>' + label + "</span>" + (n === "" ? "" : '<span class="segment-pocet">' + n + "</span>") +
+      "</button>").join("");
   }
-  const items = (vse ? vsechny : mine).slice().sort(podleData);
+  if (sFiltrem) vykresliFiltrOblastiBtn(f.key, vse);
+  const items = (vse ? vsechnyF : mine).slice().sort(podleData);
   if (items.length) {
     container.innerHTML = poMesicich(items, f.oknoOd).map((g, i) =>
       '<section class="zdroj" aria-label="' + esc(MESICE_NAZVY[+g.klic.slice(5) - 1] + " " + g.klic.slice(0, 4)) + '">' +
@@ -493,6 +547,8 @@ function renderArchiv(f, vsechny) {
       (g.items.length ? g.items.map(polozkaHtml).join("")
         : '<p class="feed-empty mesic-prazdny">' + (i === 0 ? "Tento měsíc zatím nic." : "V tomto měsíci nic.") + "</p>") +
       "</section>").join("") + aiPoznamkaHtml(items);
+  } else if (vse && vsechny.length) {
+    container.innerHTML = prazdnyFiltrHtml();
   } else if (!vse && vsechny.length) {
     container.innerHTML = '<p class="feed-empty feed-empty-box">Za sledované období tu podle vašeho výběru nic není. ' +
       '<button type="button" class="odkaz-tlacitko" data-archiv="' + f.key + '" data-vse="1">Přepněte na Vše.</button></p>';
@@ -550,9 +606,11 @@ function renderToday() {
       if (!filtr || filtr(item)) mine.push(item);
     });
   });
-  const polozky = novinkyVse ? vsechny : mine;
-  if (pocet) pocet.textContent = mine.length || "";
+  const vse = vseVidet("today");
+  const polozky = vse ? vsechny.filter(bereFiltrOblasti) : mine;
+  if (pocet) pocet.textContent = (maVyber() ? mine.length : vsechny.length) || "";
   vykresliRozsahNovinek(vsechny.length > 0);
+  vykresliFiltrOblastiBtn("today", vse && vsechny.length > 0);
   if (prepinac) {
     prepinac.hidden = polozky.length === 0;
     prepinac.innerHTML = FILTRY_NOVINEK.map(f =>
@@ -560,7 +618,7 @@ function renderToday() {
       f.label + '</span><span class="segment-pocet">' + polozky.filter(f.bere).length + "</span></button>").join("");
   }
   if (polozky.length === 0) {
-    container.innerHTML = vsechny.length
+    container.innerHTML = vse && vsechny.length ? prazdnyFiltrHtml() : vsechny.length
       ? '<p class="feed-empty feed-empty-box">Podle vašeho výběru poslední sběr nic nového nepřinesl. ' +
         '<button type="button" class="odkaz-tlacitko" data-novinky-vse="1">Přepněte na Vše.</button></p>'
       : '<p class="feed-empty">Poslední sběr nic nového nepřinesl. ' +
@@ -621,8 +679,11 @@ function vykresliRozsahNovinek(jeCo) {
   if (!obal || !el) return;
   obal.hidden = !jeCo || !vyber;
   if (obal.hidden) return;
+  const vse = vseVidet("today");
+  const bezVyberu = !maVyber();
   el.innerHTML = [["", "Můj výběr"], ["1", "Vše"]].map(([k, label]) =>
-    '<button type="button" data-novinky-vse="' + k + '" aria-pressed="' + (!!k === novinkyVse) + '">' +
+    '<button type="button" data-novinky-vse="' + k + '" aria-pressed="' + (!!k === vse) + '"' +
+    (!k && bezVyberu ? ' disabled title="' + esc(titulNedostupnehoVyberu()) + '"' : "") + ">" +
     esc(label) + "</button>").join("");
   if (upravit) upravit.hidden = clerkStav === "nedostupny";
 }
@@ -694,10 +755,110 @@ const KARTY_S_VYBEREM = ["nsoud", "nss", "us", "sdeu", "today"];
 
 function pripojVychozi(el, key) {
   if (!el || clerkStav !== "pripraven" || prihlaseny || KARTY_S_VYBEREM.indexOf(key) < 0) return;
-  if (key === "today" && novinkyVse) return;   // Vše výběr nebere v potaz
-  el.insertAdjacentHTML("beforeend", '<p class="vychozi-pozn">Ve výchozím nastavení se ukazují jen ' +
-    "rozhodnutí z oblasti IP a IT" + (key === "nsoud" ? " a všechna rozhodnutí senátu 23 Cdo" : "") +
-    '. Chcete-li vlastní výběr, <a href="#nastaveni">přihlaste se</a> a nastavte si ho.</p>');
+  el.insertAdjacentHTML("beforeend", '<p class="vychozi-pozn">Ukazují se všechna rozhodnutí, zúžit je můžete ' +
+    'filtrem podle zaměření. Chcete-li vlastní výběr, který si stránka zapamatuje, ' +
+    '<a href="#nastaveni">přihlaste se</a> a nastavte si ho.</p>');
+}
+
+/* ========== Filtr podle zaměření (bublina u ikonky) ========== */
+let filtrPopKey = null;           // u které ikonky je bublina otevřená
+
+function filtrPopHtml() {
+  return '<div class="filtr-pop-hlava"><span class="filtr-pop-nazev">Zaměření</span>' +
+    (filtrOblasti.length ? '<button type="button" class="odkaz-tlacitko" data-filtr-zrusit="1">Zrušit filtr</button>' : "") +
+    '</div><div class="filtr-pop-volby">' +
+    OBLASTI_SEZNAM.map(o => volbaHtml({ "data-filtr-oblast": o.id }, filtrOblasti.indexOf(o.id) >= 0,
+      '<span class="volba-nazev">' + esc(o.nazev) + "</span>")).join("") + "</div>";
+}
+
+function zavriFiltrPop(vratitFokus) {
+  const pop = document.getElementById("filtr-pop");
+  if (pop) pop.hidden = true;
+  const b = filtrPopKey && document.querySelector('button[data-filtr-oblasti="' + filtrPopKey + '"]');
+  if (b) {
+    b.setAttribute("aria-expanded", "false");
+    if (vratitFokus) b.focus();
+  }
+  filtrPopKey = null;
+}
+
+function umistiFiltrPop(b) {
+  const pop = document.getElementById("filtr-pop");
+  const r = b.getBoundingClientRect();
+  const sirka = pop.offsetWidth;
+  const vlevo = Math.max(16, Math.min(r.left, document.documentElement.clientWidth - sirka - 16));
+  pop.style.left = (vlevo + window.scrollX) + "px";
+  pop.style.top = (r.bottom + 6 + window.scrollY) + "px";
+}
+
+function otevriFiltrPop(b) {
+  let pop = document.getElementById("filtr-pop");
+  if (!pop) {
+    pop = document.createElement("div");
+    pop.id = "filtr-pop";
+    pop.className = "filtr-pop";
+    pop.setAttribute("role", "group");
+    pop.setAttribute("aria-label", "Filtr podle zaměření");
+    document.body.appendChild(pop);
+  }
+  filtrPopKey = b.dataset.filtrOblasti;
+  b.setAttribute("aria-expanded", "true");
+  pop.innerHTML = filtrPopHtml();
+  pop.hidden = false;
+  umistiFiltrPop(b);
+  const prvni = pop.querySelector("button");
+  if (prvni) prvni.focus();
+}
+
+// Po změně filtru se překreslí všechny seznamy (filtr je společný) a bublina
+// zůstane otevřená u své ikonky.
+function zmenFiltrOblasti(novy) {
+  filtrOblasti = novy;
+  const key = filtrPopKey;
+  vykresliZdroje();
+  const pop = document.getElementById("filtr-pop");
+  const b = key && document.querySelector('button[data-filtr-oblasti="' + key + '"]');
+  if (pop && !pop.hidden && b && !b.hidden) {
+    b.setAttribute("aria-expanded", "true");
+    const fokus = document.activeElement && document.activeElement.dataset
+      ? document.activeElement.dataset.filtrOblast : null;
+    pop.innerHTML = filtrPopHtml();
+    umistiFiltrPop(b);
+    const znovu = fokus && pop.querySelector('[data-filtr-oblast="' + fokus + '"]');
+    (znovu || pop.querySelector("button") || b).focus();
+  } else if (pop && !pop.hidden) {
+    zavriFiltrPop(false);
+  }
+}
+
+function initFiltrOblasti() {
+  document.addEventListener("click", e => {
+    const ikona = e.target.closest("button[data-filtr-oblasti]");
+    if (ikona) {
+      const otevreno = filtrPopKey === ikona.dataset.filtrOblasti;
+      zavriFiltrPop(false);
+      if (!otevreno) otevriFiltrPop(ikona);
+      return;
+    }
+    const volba = e.target.closest("button[data-filtr-oblast]");
+    if (volba) {
+      const id = volba.dataset.filtrOblast;
+      zmenFiltrOblasti(filtrOblasti.indexOf(id) >= 0
+        ? filtrOblasti.filter(o => o !== id)
+        : OBLASTI_SEZNAM.map(o => o.id).filter(o => o === id || filtrOblasti.indexOf(o) >= 0));
+      return;
+    }
+    if (e.target.closest("button[data-filtr-zrusit]")) {
+      zmenFiltrOblasti([]);
+      return;
+    }
+    if (filtrPopKey && !e.target.closest("#filtr-pop")) zavriFiltrPop(false);
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && filtrPopKey) zavriFiltrPop(true);
+  });
+  window.addEventListener("resize", () => { if (filtrPopKey) zavriFiltrPop(false); });
+  window.addEventListener("hashchange", () => { if (filtrPopKey) zavriFiltrPop(false); });
 }
 
 /* ========== Měsíc v IP a IT (digest.json) ========== */
@@ -2135,6 +2296,7 @@ const CLERK_CEKANI_MS = 3000;
 function clerkNedostupny(e) {
   console.warn("Přihlášení není k dispozici:", e);
   clerkStav = "nedostupny";
+  vykresliZdroje();               // zašedlý Můj výběr dostane jiný popisek
   vykresliUcet();
   vykresliNastaveni();
   // Bez Clerku zmizí ikonka Upravit výběr vedle přepínače Novinek.
@@ -2962,6 +3124,7 @@ function initApp() {
   initNav();
   initNovinkyFiltr();
   initArchivPrepinac();
+  initFiltrOblasti();
   initNastaveni();
 
   // Vykreslíme až všechny feedy dorazí (stahují se paralelně, jsou ze

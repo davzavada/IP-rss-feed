@@ -261,6 +261,34 @@ html:not(.smi-kalendar) [data-jen="kalendar"] { display: none !important; }
 .segment button:hover { color: var(--foreground); }
 .segment button[aria-pressed="true"] { background: var(--raised); color: var(--foreground); box-shadow: var(--shadow-raised); }
 .segment-pocet { color: var(--faint); font-variant-numeric: tabular-nums; }
+.segment button:disabled { cursor: not-allowed; opacity: 0.45; }
+.segment button:disabled:hover { color: var(--muted-foreground); }
+
+/* Nad seznamem zdroje: přepínač Můj výběr / Vše a vedle ikonka filtru
+   podle zaměření (jen u „Vše"). */
+.archiv-lista { display: flex; align-items: center; gap: 6px; }
+.archiv-lista:not(:has(> :not([hidden]))) { display: none; }
+.filtr-oblasti-btn { position: relative; }
+.filtr-oblasti-btn.aktivni, .filtr-oblasti-btn[aria-expanded="true"] { background: var(--accent); color: var(--foreground); }
+.filtr-oblasti-btn.aktivni { color: var(--link); }
+.filtr-oblasti-pocet {
+  position: absolute; top: -3px; right: -3px; min-width: 15px; height: 15px; padding: 0 3px;
+  border-radius: 999px; background: var(--link); color: #fff;
+  font-size: 10px; font-weight: 600; line-height: 15px; text-align: center; font-variant-numeric: tabular-nums;
+}
+.filtr-oblasti-pocet[hidden] { display: none; }
+.filtr-pop {
+  position: absolute; z-index: 30; width: min(320px, calc(100vw - 32px));
+  max-height: min(70vh, 520px); overflow-y: auto;
+  background: var(--card); color: var(--foreground); border-radius: 12px;
+  box-shadow: var(--shadow-pop); padding: 12px 16px 10px;
+}
+.filtr-pop[hidden] { display: none; }
+.filtr-pop-hlava { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+.filtr-pop-nazev { font-size: 13px; font-weight: 600; color: var(--muted-foreground); }
+.filtr-pop-hlava .odkaz-tlacitko { font-size: 13px; }
+.filtr-pop-volby { display: flex; flex-direction: column; }
+.filtr-pop .volba { padding-block: 7px; }
 
 /* ===== Položky (novinky i archiv zdrojů) =====
    Pořadí čtení: značka → heslo jako titulek → shrnutí → oblasti. Datum
@@ -852,7 +880,9 @@ html.is-loading body { visibility: hidden; }
      začínají hned (výběr je v nabídce účtu). */
   #novinky-lista { display: none; }
   /* Přepínač Můj výběr / Vše přes celou šířku, dost velký na prst. */
-  .archiv-prepinac { align-self: stretch; border-radius: 10px; }
+  .archiv-lista { align-self: stretch; }
+  .archiv-prepinac { align-self: stretch; flex: 1; border-radius: 10px; }
+  .archiv-lista .ikona-tlacitko { width: 40px; height: 40px; }
   .archiv-prepinac button { flex: 1; justify-content: center; align-items: center; min-height: 36px; font-size: 14px; border-radius: 8px; }
   .feed-empty-box { padding: 12px 14px; }
   .digest-meta { display: none; }
