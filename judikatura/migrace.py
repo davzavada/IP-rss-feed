@@ -228,7 +228,7 @@ def main():
             zmenene += 1
     sklad.uloz()
     print(f"Do archivu přidáno {nove} záznamů, upraveno {zmenene}")
-    if sklad.exportuj(model.ted(), model.OKNA_DNI["ns"]):
+    if sklad.exportuj(model.ted()):
         print("Okno pro web aktualizováno")
 
 

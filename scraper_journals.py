@@ -2,9 +2,9 @@
 """Právní časopisy: nová čísla a články -> docs/data/casopisy.json.
 
 Každý časopis má v registru CASOPISY stálé id (ukládá se ve výběru
-uživatele) a zkratku, pod kterou se ukazuje. Výstup je okno za měsíc
-(OKNO_DNI) podle prvního výskytu (journals_seen.json): co zdroj dnes vrátil,
-a z archivu to, co už nevypisuje, ale v okně pořád je. Zapisuje se jen tehdy,
+uživatele) a zkratku, pod kterou se ukazuje. Výstup je okno za tento
+a celý předchozí měsíc (okno_od) podle prvního výskytu (journals_seen.json):
+co zdroj dnes vrátil, a z archivu to, co už nevypisuje, ale v okně pořád je. Zapisuje se jen tehdy,
 když se obsah opravdu změní.
 """
 
@@ -27,13 +27,14 @@ from feed_common import (
     JOURNAL_ARTICLE_PROMPT,
     JOURNAL_DECISION_PROMPT,
     JOURNAL_ISSUE_PROMPT,
-    OKNO_DNI,
     USER_AGENT,
     filter_by_first_seen,
     gemini_enabled,
     gemini_summarize_pdf,
     gemini_summarize_text,
     load_json,
+    okno_od,
+    okno_od_den,
     prune_meta_file,
     save_json,
     summarize_with_cache,
@@ -46,9 +47,6 @@ STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "journals_
 ARCHIV_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "casopisy")
 # Cache AI shrnutí podle guid ({guid: {"summary": ..., "tag": ...}}).
 META_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "journals_meta.json")
-
-# Okno: měsíc podle prvního výskytu, stejně jako u soudů.
-WINDOW_DAYS = OKNO_DNI
 
 # Registr časopisů. `id` je stálé (ukládá se ve výběru uživatele), `zkratka`
 # je štítek na webu a zároveň prefix titulku položky ([IIC] …) ze scraperů.
@@ -698,15 +696,14 @@ def fetch_ojs_rss(feed_url, label, journal_name):
 # i abstrakty. Novinky bereme podle data vzniku DOI (≈ online publikace).
 
 CROSSREF_API = "https://api.crossref.org/journals/{issn}/works"
-CROSSREF_LOOKBACK_DAYS = OKNO_DNI  # jak daleko zpět se ptáme (okno webu)
 # Ptáme se dvakrát, protože ani jedno datum samo o sobě nestačí:
 #   from-created-date  – kdy vznikl DOI záznam. Chytí i staršího „novinku“,
 #                        kterou vydavatel deponoval teprve teď.
 #   from-pub-date      – kdy článek vyšel. Chytí čísla, jejichž DOI vydavatel
 #                        deponoval dopředu (ahead of print) – tak vypadlo
 #                        srpnové číslo QMJIP, deponované o měsíce dřív.
-# Výsledky se slučují podle DOI, okno zůstává u obou měsíc, takže se
-# nevyhrne archiv.
+# Obojí se ptá od začátku okna webu (okno_od), výsledky se slučují podle
+# DOI, takže se nevyhrne archiv.
 CROSSREF_FILTRY = ("from-created-date", "from-pub-date")
 # Crossref etiketa: identifikuj se v User-Agent
 CROSSREF_UA = "pravni-rss-feed/1.0 (+https://owl.davidzavada.cz)"
@@ -782,8 +779,7 @@ def _crossref_datum(w):
 
 def fetch_crossref_journal(issn, label, journal_name):
     """Vrátí nedávné články časopisu z Crossref."""
-    since = (datetime.now(timezone.utc)
-             - timedelta(days=CROSSREF_LOOKBACK_DAYS)).strftime("%Y-%m-%d")
+    since = okno_od_den(okno_od())
     works, videne, chyby = [], set(), []
     for filtr in CROSSREF_FILTRY:
         try:
@@ -1523,7 +1519,8 @@ def zapis_json(all_items, cesta=None, nyni=None, navic=()):
     if navic:
         polozky += list(navic)
         polozky.sort(key=lambda z: z.get("datum", ""), reverse=True)
-    obsah = {"okno_dni": WINDOW_DAYS, "casopisy": CASOPISY, "polozky": polozky}
+    nyni = nyni or datetime.now(timezone.utc)
+    obsah = {"okno_od": okno_od_den(okno_od(nyni)), "casopisy": CASOPISY, "polozky": polozky}
     if os.path.exists(cesta):
         try:
             with open(cesta, encoding="utf-8") as f:
@@ -1533,7 +1530,7 @@ def zapis_json(all_items, cesta=None, nyni=None, navic=()):
                 return False
         except (ValueError, OSError):
             pass
-    data = {"generated": _iso(nyni or datetime.now(timezone.utc)), **obsah}
+    data = {"generated": _iso(nyni), **obsah}
     os.makedirs(os.path.dirname(cesta), exist_ok=True)
     tmp = cesta + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:
@@ -1593,9 +1590,10 @@ def _mesice(od, do):
 def z_archivu(vynechat, seen, meta, nyni=None, adresar=None):
     """Záznamy z archivu, které patří do okna, i když je zdroj dnes nevrátil.
 
-    Okno drží položku měsíc od prvního výskytu, ale weby čísel (Právník,
-    Jurisprudence, TLQ, ÚPV) i feed aktuálního čísla OUP vypisují jen poslední
-    číslo a Crossref se ptá jen měsíc zpět podle data vydání. Bez archivu by
+    Okno drží položku tento a celý předchozí měsíc od prvního výskytu, ale
+    weby čísel (Právník, Jurisprudence, TLQ, ÚPV) i feed aktuálního čísla OUP
+    vypisují jen poslední číslo a Crossref se ptá jen od začátku okna podle
+    data vydání. Bez archivu by
     předchozí číslo zmizelo z webu v den, kdy vyjde nové, a výpadek zdroje by
     okno vyprázdnil. Bere se jen to, co je pořád ve stavu prvního výskytu
     s prvním výskytem v okně (vyřazené položky a starý tvar guid se nevrátí).
@@ -1606,7 +1604,7 @@ def z_archivu(vynechat, seen, meta, nyni=None, adresar=None):
     """
     adresar = adresar or ARCHIV_DIR
     nyni = nyni or datetime.now(timezone.utc)
-    cutoff = nyni - timedelta(days=WINDOW_DAYS)
+    cutoff = okno_od(nyni)
     ai = gemini_enabled()
     out = {}
     for mesic in _mesice(cutoff, nyni):
@@ -1768,13 +1766,13 @@ def main():
         all_items.extend(_zdroj(label, scrape, selhane))
     pocet_zdroju = 4 + len(OJS_SOURCES) + len(CROSSREF_JOURNALS) + len(zdroje_rss)
 
-    # Ponecháme jen položky s prvním výskytem do WINDOW_DAYS zpět (u všech
-    # zdrojů). První výskyt sledujeme sami, aby se staré články s přepsaným
-    # datem nevracely. Stav se neprořezává: zdroje vypisují i rok staré
+    # Ponecháme jen položky s prvním výskytem v okně (tento a celý předchozí
+    # měsíc, u všech zdrojů). První výskyt sledujeme sami, aby se staré články
+    # s přepsaným datem nevracely. Stav se neprořezává: zdroje vypisují i rok staré
     # články a po vypadnutí ze stavu by se vrátily jako nové.
     # Nový časopis nesmí první běh vysypat celý feed do Novinek (viz náběh).
     all_items = filter_by_first_seen(
-        all_items, lambda i: i["guid"], STATE_FILE, days=WINDOW_DAYS, prune_days=None,
+        all_items, lambda i: i["guid"], STATE_FILE, prune_days=None,
         first_seen_of=nabeh_first_seen(load_json(STATE_FILE)),
     )
 
@@ -1795,7 +1793,7 @@ def main():
     prune_meta_file(META_FILE, STATE_FILE)
 
     # Co zdroj dnes nevypsal (předchozí číslo, výpadek), ale v okně pořád
-    # je, se vezme z archivu – okno drží položku měsíc od prvního výskytu.
+    # je, se vezme z archivu – okno drží položku do konce příštího měsíce.
     doplnene = z_archivu({it["guid"] for it in all_items}, load_json(STATE_FILE),
                          load_json(META_FILE))
     if doplnene:

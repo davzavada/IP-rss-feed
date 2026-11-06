@@ -31,7 +31,7 @@ from datetime import timedelta
 import requests
 from bs4 import BeautifulSoup
 
-from feed_common import OKNO_DNI, USER_AGENT
+from feed_common import USER_AGENT
 from judikatura import model
 from judikatura.soudy import ipcuria
 from judikatura.soudy.web import radky_html
@@ -56,7 +56,6 @@ OTAZKA_RE = re.compile(r"předběžn\w* otáz|preliminary ruling", re.I)
 SOUDY = {"C": "Soudní dvůr", "T": "Tribunál"}
 TEXT_JAZYKY = ("ces", "eng", "fra")
 MIN_TEXT = 500
-IPCURIA_DNI = OKNO_DNI  # z ipcuria jen otázky podané za poslední měsíc (okno SDEU)
 # U předběžné otázky z ipcuria: žádost, pak oznámení o ní (dokumenty InfoCurie).
 DOKUMENTY_OTAZKY = ("DDP", "DDP_COMM")
 HLAVICKY = {"User-Agent": USER_AGENT}
@@ -289,7 +288,9 @@ class SDEU:
         try:
             r = self._s().get(ipcuria.SEZNAM, headers=HLAVICKY, timeout=60)
             r.raise_for_status()
-            rane = zaznamy_ipcurie(ipcuria.parse_seznam(r.text), do - timedelta(days=IPCURIA_DNI))
+            # Jen otázky podané v okně webu: tento a celý předchozí měsíc.
+            od_okna = (do.replace(day=1) - timedelta(days=1)).replace(day=1)
+            rane = zaznamy_ipcurie(ipcuria.parse_seznam(r.text), od_okna)
         except Exception as e:   # doplňkový zdroj – bez něj se jede dál
             print(f"    [sdeu] ipcuria.eu nedostupná ({type(e).__name__})")
             self.varovani.append(f"ipcuria.eu nedostupná ({type(e).__name__})")

@@ -381,45 +381,83 @@ const FEEDS = [
 // Stránka zdroje v navigaci (časopisy mají stránku #casopisy).
 const STRANKA_ZDROJE = { journals: "casopisy" };
 
-// Okno zdroje slovy: 28 až 31 dní je měsíc (okno všech zdrojů), celé
-// týdny od tří výš jako týdny, jinak ve dnech.
-function oknoText(dni) {
-  if (dni >= 28 && dni <= 31) return "měsíc";
-  return dni >= 21 && dni % 7 === 0 ? tvar(dni / 7, "týden", "týdny", "týdnů") : tvar(dni, "den", "dny", "dní");
-}
+// Okno všech zdrojů je tento a celý minulý měsíc (okno_od v JSON = 1. den
+// minulého měsíce). Do věty za „za".
+const OKNO_ZA = "tento a minulý měsíc";
 
-// Okno do věty za „za": „poslední měsíc", „poslední 3 týdny", „posledních 14 dní".
-function oknoZa(dni) {
-  const okno = oknoText(dni);
-  return (/^(měsíc|1 |[234] )/.test(okno) ? "poslední " : "posledních ") + okno;
-}
-
-// V boční navigaci u každého zdroje nenápadně vpravo, za jak dlouhou dobu
-// ukazuje novinky (okno dat, okno_dni v JSON – u všech zdrojů měsíc).
-// Stejné okno patří i do popisu pod nadpisem stránky zdroje.
+// Pod nadpisem stránky zdroje, odkud okno začíná („od 1. 10. 2026").
+// Období je v navigaci jen jednou, v nadpisu skupiny („Archiv
+// · tento a minulý měsíc"), a je v index.html napevno.
 function ukazOkna() {
   FEEDS.forEach(f => {
-    if (!f.oknoDni) return;
-    const za = oknoZa(f.oknoDni);
     const popis = document.getElementById("popis-" + f.key);
-    if (popis) {
-      popis.textContent = f.key === "journals"
-        ? "Nová čísla a články za " + za + "."
-        : "Rozhodnutí zveřejněná za " + za + ", nejnovější nahoře.";
-    }
+    if (!popis || !f.oknoOd) return;
+    const od = " za " + OKNO_ZA + " (od " + czDate(f.oknoOd) + ")";
+    popis.textContent = f.key === "journals"
+      ? "Nová čísla a články" + od + ", po měsících."
+      : "Rozhodnutí zveřejněná" + od + ", po měsících, nejnovější nahoře.";
   });
-  // Období je v navigaci jen jednou, v nadpisu skupiny („Archiv podle
-  // zdroje · poslední měsíc"); u jednotlivých zdrojů už není.
-  const okna = bezDuplicit(FEEDS.filter(f => f.oknoDni).map(f => oknoZa(f.oknoDni)));
-  const nadpis = document.getElementById("nav-archiv");
-  if (nadpis && okna.length === 1) nadpis.textContent = "Archiv podle zdroje · " + okna[0];
+}
+
+// Názvy měsíců do oddělovačů na stránce zdroje.
+const MESICE_NAZVY = ["Leden", "Únor", "Březen", "Duben", "Květen", "Červen", "Červenec",
+                      "Srpen", "Září", "Říjen", "Listopad", "Prosinec"];
+
+// „2026-10" z data položky; "" když datum nejde přečíst. Holé datum se
+// bere, jak je (bez posunu přes UTC), časová značka podle místního času.
+function mesicKlic(value) {
+  const s = String(value || "");
+  const m = /^(\d{4})-(\d{2})(-\d{2})?$/.exec(s);
+  if (m) return m[1] + "-" + m[2];
+  const d = new Date(s);
+  return isNaN(d) ? "" : d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0");
+}
+
+// Měsíce okna od nejnovějšího: od dnešního měsíce zpět po měsíc okno_od
+// (bez okno_od jen dnešní měsíc a minulý).
+function mesiceOkna(oknoOd) {
+  const dnes = new Date();
+  let r = dnes.getFullYear(), m = dnes.getMonth() + 1;
+  const konec = /^\d{4}-\d{2}/.test(oknoOd || "") ? oknoOd.slice(0, 7) : null;
+  const out = [];
+  for (;;) {
+    const klic = r + "-" + String(m).padStart(2, "0");
+    out.push(klic);
+    if (konec ? klic <= konec : out.length >= 2) break;
+    if (out.length >= 12) break;            // pojistka proti nesmyslnému okno_od
+    m -= 1;
+    if (m === 0) { m = 12; r -= 1; }
+  }
+  return out;
+}
+
+// Položky (už seřazené od nejnovější) rozdělené po měsících okna. Co
+// má datum starší než okno (vyšlo dřív, ve feedu přibylo až v okně) nebo
+// nečitelné, patří do nejstaršího měsíce; datum dopředu do dnešního.
+function poMesicich(items, oknoOd) {
+  const mesice = mesiceOkna(oknoOd);
+  const skupiny = mesice.map(klic => ({ klic: klic, items: [] }));
+  items.forEach(i => {
+    const k = mesicKlic(i.datum);
+    let idx = mesice.indexOf(k);
+    if (idx < 0) idx = k && k > mesice[0] ? 0 : mesice.length - 1;
+    skupiny[idx].items.push(i);
+  });
+  return skupiny;
+}
+
+function mesicHlavaHtml(skupina, prvni) {
+  const [r, m] = skupina.klic.split("-");
+  return '<div class="zdroj-hlava mesic-hlava"><span class="zdroj-nazev">' + MESICE_NAZVY[+m - 1] + " " + r +
+    (prvni ? '<span class="mesic-zatim"> · zatím</span>' : "") + '</span><span class="zdroj-pocet">' +
+    skupina.items.length + "</span></div>";
 }
 
 // Položky zdroje jako objekty; u zdroje si poznamená, kdy byl aktualizován.
 function nactiZdroj(f) {
   return fetchJson(f.json).then(d => {
     f.aktualizovano = d.generated || "";
-    f.oknoDni = d.okno_dni || 0;
+    f.oknoOd = d.okno_od || "";
     if (Array.isArray(d.casopisy)) nastavCasopisy(d.casopisy);
     return (d.polozky || []).map(r => pripravPolozku((f.prevod || zJson)(r), f.key));
   });
@@ -431,8 +469,9 @@ function podleData(a, b) {
   return t(b) - t(a);
 }
 
-// Stránka zdroje je jeden souvislý seznam za celé okno, nejnovější nahoře.
-// Přepínač nad ním ukazuje buď jen váš výběr, nebo všechno.
+// Stránka zdroje je seznam za celé okno (tento a celý minulý měsíc),
+// nejnovější nahoře, rozdělený po měsících. Přepínač nad ním ukazuje buď
+// jen váš výběr, nebo všechno.
 const archivVse = {};             // klíč zdroje -> true, když je zapnuté „Vše"
 
 function renderArchiv(f, vsechny) {
@@ -448,8 +487,12 @@ function renderArchiv(f, vsechny) {
   }
   const items = (vse ? vsechny : mine).slice().sort(podleData);
   if (items.length) {
-    container.innerHTML = '<div class="zdroj">' + items.map(polozkaHtml).join("") + "</div>" +
-      aiPoznamkaHtml(items);
+    container.innerHTML = poMesicich(items, f.oknoOd).map((g, i) =>
+      '<section class="zdroj" aria-label="' + esc(MESICE_NAZVY[+g.klic.slice(5) - 1] + " " + g.klic.slice(0, 4)) + '">' +
+      mesicHlavaHtml(g, i === 0) +
+      (g.items.length ? g.items.map(polozkaHtml).join("")
+        : '<p class="feed-empty mesic-prazdny">' + (i === 0 ? "Tento měsíc zatím nic." : "V tomto měsíci nic.") + "</p>") +
+      "</section>").join("") + aiPoznamkaHtml(items);
   } else if (!vse && vsechny.length) {
     container.innerHTML = '<p class="feed-empty feed-empty-box">Za sledované období tu podle vašeho výběru nic není. ' +
       '<button type="button" class="odkaz-tlacitko" data-archiv="' + f.key + '" data-vse="1">Přepněte na Vše.</button></p>';
@@ -592,14 +635,14 @@ let zdrojeVysledky = null;
 // ještě nemá shrnutí. Rozhodnutí bez oblasti se do výběru podle oblastí
 // dostanou až po AI, tak ať je jasné, že ještě přibudou. (U NSS a ÚS má
 // většina oblast už podle údajů soudu.)
-function stavShrnutiText(polozky, oknoDni) {
+function stavShrnutiText(polozky) {
   const cekajici = polozky.filter(i => i.stav === "pripravuje");
   const bezOblasti = cekajici.filter(i => !(i.oblasti || []).length).length;
   const bezTextu = polozky.filter(i => i.stav === "ceka_na_text").length;
   const casti = [];
   if (cekajici.length) {
     casti.push("AI ještě zpracovává " + cekajici.length + " z " + polozky.length + " rozhodnutí" +
-      (oknoDni ? " za " + oknoZa(oknoDni) : "") + ". Shrnutí a oblasti doplní " +
+      " za " + OKNO_ZA + ". Shrnutí a oblasti doplní " +
       "při nočním sběru (ve 2:00)" +
       (bezOblasti === cekajici.length
         ? ", do výběru podle oblastí se tato rozhodnutí dostanou až potom."
@@ -619,7 +662,7 @@ function vykresliStavShrnuti() {
     const el = f.stavId && document.getElementById(f.stavId);
     if (!el) return;
     const r = zdrojeVysledky[idx];
-    const text = r.status === "fulfilled" ? stavShrnutiText(r.value, f.oknoDni) : "";
+    const text = r.status === "fulfilled" ? stavShrnutiText(r.value) : "";
     el.innerHTML = text ? '<svg class="nav-ico" aria-hidden="true"><use href="#icon-info"></use></svg>' +
       "<span>" + esc(text) + "</span>" : "";
     el.hidden = !text;
@@ -2404,7 +2447,7 @@ function souhrnSenatu(v) {
 // Časopisy: vybraný se ukazuje (ukládá se, které jsou skryté).
 function casopisyHtml(v, casopisy) {
   const vybrane = casopisy.filter(c => v.skryte_casopisy.indexOf(c.id) < 0).length;
-  return '<p class="vyber-uvod">Nová čísla a články za poslední měsíc z vybraných časopisů.</p>' +
+  return '<p class="vyber-uvod">Nová čísla a články za tento a minulý měsíc z vybraných časopisů.</p>' +
     skupinaHtml("Časopisy", vybrane + " z " + casopisy.length,
       vseHtml({ "data-vse": "casopisy" }, vybrane === casopisy.length),
       '<div class="volby">' + casopisy.map(c => volbaHtml({ "data-casopis": c.id },

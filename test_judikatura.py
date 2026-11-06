@@ -364,11 +364,30 @@ fc.ai_volani = falesna_ai("")
 check("přepis hesel bez odpovědi = None", analyza.prepis_hesla_davku(stare) is None)
 
 
+# Okno webu: tento a celý předchozí měsíc podle pražského času.
+check("okno od 1. dne předchozího měsíce (6. 11. → 1. 10. 0:00 Praha)",
+      fc.okno_od(dt("2026-11-06T10:00:00Z")) == dt("2026-09-30T22:00:00Z")
+      and fc.okno_od_den(fc.okno_od(dt("2026-11-06T10:00:00Z"))) == "2026-10-01")
+check("okno v lednu sahá do prosince minulého roku",
+      fc.okno_od_den(fc.okno_od(dt("2027-01-15T10:00:00Z"))) == "2026-12-01")
+check("okno se posune podle pražské půlnoci, ne UTC",
+      fc.okno_od_den(fc.okno_od(dt("2026-11-30T23:30:00Z"))) == "2026-11-01"
+      and fc.okno_od_den(fc.okno_od(dt("2026-11-30T22:30:00Z"))) == "2026-10-01")
+sk3 = Sklad("ns", data_dir=tempfile.mkdtemp(), web_dir=tempfile.mkdtemp())
+for id_, prvni in (("ns:srpen", "2026-08-01T08:00:00Z"), ("ns:cervenec", "2026-07-31T20:00:00Z"),
+                   ("ns:zari", "2026-09-20T08:00:00Z")):
+    sk3.zaznamy[id_] = {"id": id_, "first_seen": prvni}
+check("v okně je celý předchozí měsíc a nic staršího",
+      sorted(z["id"] for z in sk3.v_okne(NYNI)) == ["ns:srpen", "ns:zari"])
+check("okno pro web nese začátek okna",
+      sk3.exportuj(NYNI) and json.load(open(sk3.web, encoding="utf-8"))["okno_od"] == "2026-08-01")
+
+
 class FalesnySklad:
     def __init__(self, zaznamy):
         self.zaznamy, self.zmenene, self.ulozeno = zaznamy, [], 0
 
-    def v_okne(self, nyni, dni):
+    def v_okne(self, nyni, dni=None):
         return self.zaznamy
 
     def zmeneno(self, z):
@@ -446,7 +465,7 @@ for z in (
     zaznam("ns:vzdane", "2026-09-23T10:00:00Z", senat=30,
            stav={"pokusy": fronta.MAX_POKUSU, "dalsi_pokus": None, "duvod": "ai-selhani"}),
     zaznam("ns:nahrazene", "2026-09-23T10:00:00Z", senat=23, nahrazeno="ns:23"),
-    zaznam("ns:mimo-okno", "2026-08-01T10:00:00Z", senat=23),
+    zaznam("ns:mimo-okno", "2026-07-31T10:00:00Z", senat=23),
 ):
     ns_sklad.pridej(z)
 for z in (zaznam("nss:1", "2026-09-22T10:00:00Z", soud="nss", spz="", oblasti_meta=["dane"]),
@@ -583,7 +602,7 @@ check("u shrnutí je model, verze promptu a zdroj textu",
       and arch["ns:1"]["ai"]["zdroj"] == "html")
 with open(os.path.join(BW, "ns.json"), encoding="utf-8") as f:
     okno = json.load(f)
-check("okno pro web se zapíše", len(okno["polozky"]) == 3 and okno["okno_dni"] == model.OKNA_DNI["ns"] == fc.OKNO_DNI)
+check("okno pro web se zapíše", len(okno["polozky"]) == 3 and okno["okno_od"] == "2026-08-01")
 with open(STAV, encoding="utf-8") as f:
     stav = json.load(f)
 check("zdraví soudu ve stav.json", stav["soudy"]["ns"]["nove"] == 3 and stav["soudy"]["ns"]["chyba"] is None,
@@ -1786,7 +1805,7 @@ cn = model.novy_zaznam("sdeu", "sdeu:62026CN0595", spz="C-595/26", druh="předb�
                        datum="2026-06-02", zverejneno="2026-09-21")
 nove = orchestr.zapis_nalezene(sk, [cn], PODZIM, False)
 sk.uloz()
-sk.exportuj(PODZIM, model.OKNA_DNI["sdeu"])
+sk.exportuj(PODZIM)
 arch = Sklad("sdeu", data_dir=SD, web_dir=SW)
 arch.nacti(PODZIM)
 ipc = arch.dohledej("sdeu:ipc:C-595/26")
@@ -1794,7 +1813,7 @@ cn = arch.dohledej("sdeu:62026CN0595")
 check("oznámení převezme ranou otázku i po víc než třech měsících (měsíc se dohledá podle indexu)",
       nenacteno and len(nove) == 1 and ipc["nahrazeno"] == "sdeu:62026CN0595"
       and cn["ai"] == HOTOVE_AI and cn["first_seen"] == "2026-06-12T08:00:00Z"
-      and not arch.v_okne(PODZIM, model.OKNA_DNI["sdeu"])
+      and not arch.v_okne(PODZIM)
       and kontrola.zkontroluj(("sdeu",), SD, SW) == ([], []), str(ipc) + str(cn))
 
 # --- mapy ---
@@ -1869,7 +1888,7 @@ check("běh: znovu zpřístupněné staré rozhodnutí je v archivu, ale ne na w
 ip = next(p for p in okno_nss["polozky"] if p["id"] == f"nss:{IP_ID}")
 check("běh: okna pro web se shrnutím, první výskyt podle zpřístupnění",
       ip["shrnuti"] == SHRNUTI and ip["first_seen"] == "2026-09-21T12:00:00Z"
-      and okno_us["okno_dni"] == model.OKNA_DNI["us"] and all(p["shrnuti"] for p in okno_us["polozky"])
+      and okno_us["okno_od"] == "2026-08-01" and all(p["shrnuti"] for p in okno_us["polozky"])
       and any(p.get("nazev", "").startswith("Obnovené řízení") for p in okno_us["polozky"]), str(ip))
 prvni_dotaz = volani[0]["parts"][0]["text"]
 check("běh: fronta vzala spor s ÚPV jako první (výchozí výběr podle úředních údajů)",

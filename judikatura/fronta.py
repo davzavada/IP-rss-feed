@@ -51,7 +51,7 @@ def sestav(sklady, nyni, tax):
     """Seřazená fronta přes všechny soudy (střídavě)."""
     podle_soudu = []
     for soud, sklad in sklady.items():
-        kandidati = [z for z in sklad.v_okne(nyni, model.OKNA_DNI[soud]) if potrebuje_ai(z, nyni)]
+        kandidati = [z for z in sklad.v_okne(nyni) if potrebuje_ai(z, nyni)]
         kandidati.sort(key=lambda z: (trida(z, tax),
                                       _zaporne(z.get("zverejneno") or z.get("first_seen") or "")))
         podle_soudu.append(kandidati)

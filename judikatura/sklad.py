@@ -205,8 +205,14 @@ class Sklad:
 
     # --- okno pro web ---
 
-    def v_okne(self, nyni, okno_dni):
-        hranice = nyni - timedelta(days=okno_dni)
+    @staticmethod
+    def hranice_okna(nyni, okno_dni=None):
+        """Začátek okna: tento a celý předchozí měsíc (fc.okno_od), nebo
+        `okno_dni` dní zpět, když je zadané (testy)."""
+        return fc.okno_od(nyni) if okno_dni is None else nyni - timedelta(days=okno_dni)
+
+    def v_okne(self, nyni, okno_dni=None):
+        hranice = self.hranice_okna(nyni, okno_dni)
         out = []
         for z in self.zaznamy.values():
             prvni = model.z_iso(z.get("first_seen"))
@@ -216,11 +222,14 @@ class Sklad:
                                 z.get("first_seen") or "", z["id"]), reverse=True)
         return out
 
-    def exportuj(self, nyni, okno_dni):
+    def exportuj(self, nyni, okno_dni=None):
         """Zapíše okno pro web. Jen když se obsah opravdu změnil – jinak by
         každý běh měnil čas a spouštěl commit i deploy. Vrací True při zápisu."""
         polozky = [slim(z) for z in self.v_okne(nyni, okno_dni)]
-        obsah = {"soud": self.soud, "okno_dni": okno_dni, "polozky": polozky}
+        # okno_od: pražské datum začátku okna – web podle něj píše období
+        # a dělí seznam po měsících. Mění se jednou za měsíc, ne každý běh.
+        obsah = {"soud": self.soud, "okno_od": fc.okno_od_den(self.hranice_okna(nyni, okno_dni)),
+                 "polozky": polozky}
         if os.path.exists(self.web):
             try:
                 with open(self.web, encoding="utf-8") as f:

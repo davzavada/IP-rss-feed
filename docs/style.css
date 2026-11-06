@@ -272,6 +272,9 @@ html:not(.smi-kalendar) [data-jen="kalendar"] { display: none !important; }
 }
 .zdroj-nazev { font-size: 14px; font-weight: 600; }
 .zdroj-pocet { font-size: 13px; color: var(--muted-foreground); }
+/* Oddělovač měsíce na stránce zdroje (tento a minulý měsíc). */
+.mesic-zatim { font-weight: 400; color: var(--muted-foreground); }
+.mesic-prazdny { padding: 14px 0; }
 .ico-nsoud { color: var(--badge-indigo-fg); }
 .ico-nss { color: var(--badge-teal-fg); }
 .ico-us { color: var(--badge-rose-fg); }
