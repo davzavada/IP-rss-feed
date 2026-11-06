@@ -12,10 +12,9 @@ DIGEST_PROMPT). Přehled je jeden pro všechny, na výběru uživatele nezávis�
 
 Do měsíce položka patří podle toho, kdy ve feedu přibyla (first_seen,
 pražský čas), ne podle data vydání: článek může vyjít se zpožděním a přesto
-je novinka. Okna zdrojů mají 31 dní (OKNO_DNI), takže 1. dne v měsíci je
-v nich celý předchozí měsíc. Přehled vychází 1. dne v měsíci; když se ten
-den běh zpozdí o víc než pár hodin, můžou z okna vypadnout položky, které
-přibyly hned na začátku předchozího měsíce.
+je novinka. Okna zdrojů drží tento a celý předchozí měsíc (feed_common.okno_od),
+takže uplynulý měsíc je v nich celý po celý další měsíc – zpožděný běh
+1. dne v měsíci o nic nepřijde.
 
 Výstup je docs/digest.json, který si vykresluje index.html. Čísla položek,
 kterými se model odkazuje na zdroje, se překládají zpět na názvy a odkazy.

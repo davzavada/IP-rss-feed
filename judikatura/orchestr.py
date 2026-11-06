@@ -213,7 +213,7 @@ def prepis_hesel(sklady, nyni, max_davek=HESLA_MAX_DAVEK, rozpocet=None):
     Vrací počet přepsaných hesel."""
     kandidati = []
     for soud, sklad in sklady.items():
-        for z in sklad.v_okne(nyni, model.OKNA_DNI[soud]):
+        for z in sklad.v_okne(nyni):
             ai = z.get("ai") or {}
             if (ai.get("shrnuti") and not z.get("nahrazeno") and not ai.get("heslo_rucne")
                     and int(ai.get("hv") or 0) < analyza.HESLO_VERZE):
@@ -319,7 +319,7 @@ def _vypadek(soud, zdravi, souhrn, chyba, predtim, nyni):
 def _ulozit_a_exportovat(sklady, nyni):
     for soud, sklad in sklady.items():
         sklad.uloz()
-        if sklad.exportuj(nyni, model.OKNA_DNI[soud]):
+        if sklad.exportuj(nyni):
             print(f"[{soud}] okno pro web aktualizováno")
 
 

@@ -4,7 +4,8 @@ volitelné AI shrnutí přes Gemini API.
 
 Sledování prvního výskytu: každý feed si drží JSON {guid: ISO datum prvního
 výskytu}. Podle něj:
-  - ponecháme jen položky s prvním výskytem do `days` dní zpět (OKNO_DNI),
+  - ponecháme jen položky s prvním výskytem v okně webu (okno_od: tento
+    a celý předchozí měsíc),
   - označíme položky, které přibyly v posledních 24 hodinách
     (item["is_new"] = True).
 
@@ -25,6 +26,7 @@ import re
 import threading
 import time
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 
 import requests
 
@@ -36,7 +38,7 @@ USER_AGENT = (
 )
 
 # Jak dlouho držet záznam o prvním výskytu (když se stav prořezává). Musí být
-# delší než okno webu (OKNO_DNI), jinak by se položka po vypadnutí ze stavu
+# delší než okno webu (okno_od, nejvýš 62 dní), jinak by se položka po vypadnutí ze stavu
 # označila podruhé jako nová. Cache shrnutí se prořezává po stejné době.
 SEEN_PRUNE_DAYS = 120
 
@@ -45,10 +47,24 @@ SEEN_PRUNE_DAYS = 120
 # nalezené před půlnocí přišly o příznak dřív, než si je ráno někdo přečte.
 NEW_WINDOW = timedelta(hours=24)
 
-# Okno webu u všech zdrojů (soudy i časopisy): měsíc podle prvního výskytu.
-# 31 dní, aby první den měsíce bylo v okně celý předchozí měsíc – z toho
-# bude vycházet měsíční shrnutí.
-OKNO_DNI = 31
+PRAHA = ZoneInfo("Europe/Prague")
+
+
+def okno_od(now=None):
+    """Začátek okna webu u všech zdrojů (soudy i časopisy) podle prvního
+    výskytu: 1. den předchozího měsíce 0:00 v Praze (jako datetime v UTC).
+
+    V okně je tak vždy tento měsíc až do dneška a celý předchozí měsíc
+    (6. 11. → od 1. 10.). Stránka zdroje je po měsících rozdělí, měsíční
+    přehled 1. dne v měsíci má v okně celý uplynulý měsíc."""
+    mistni = (now or datetime.now(timezone.utc)).astimezone(PRAHA)
+    rok, mesic = (mistni.year, mistni.month - 1) if mistni.month > 1 else (mistni.year - 1, 12)
+    return datetime(rok, mesic, 1, tzinfo=PRAHA).astimezone(timezone.utc)
+
+
+def okno_od_den(od):
+    """Začátek okna jako pražské datum ('2026-10-01') – do JSONu pro web."""
+    return od.astimezone(PRAHA).date().isoformat()
 
 
 def is_new(first_seen, now=None):
@@ -70,9 +86,10 @@ def save_seen(state_file, seen, prune_days=SEEN_PRUNE_DAYS):
         json.dump(pruned, f, ensure_ascii=False, indent=2)
 
 
-def filter_by_first_seen(items, guid_of, state_file, days=OKNO_DNI,
+def filter_by_first_seen(items, guid_of, state_file, days=None,
                          prune_days=SEEN_PRUNE_DAYS, first_seen_of=None):
-    """Ponechá jen položky s prvním výskytem do `days` dní zpět.
+    """Ponechá jen položky s prvním výskytem v okně webu (okno_od), nebo
+    do `days` dní zpět, když je `days` zadané.
 
     Každé ponechané položce nastaví item["is_new"] = True, pokud přibyla
     v posledních 24 hodinách. Stav prvního výskytu zároveň uloží.
@@ -86,7 +103,7 @@ def filter_by_first_seen(items, guid_of, state_file, days=OKNO_DNI,
     """
     seen = load_json(state_file)
     now = datetime.now(timezone.utc)
-    cutoff = now - timedelta(days=days)
+    cutoff = okno_od(now) if days is None else now - timedelta(days=days)
 
     kept = []
     for item in items:
