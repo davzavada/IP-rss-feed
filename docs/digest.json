@@ -1,15 +1,15 @@
 {
-  "generated": "2026-11-06T07:34:46.854519+00:00",
+  "generated": "2026-11-07T06:46:54.473828+00:00",
   "from": "2026-10-01",
   "to": "2026-10-31",
-  "total": 148,
-  "covered": 15,
-  "cekajici": 2,
-  "intro": "Uplynulý měsíc přinesl řadu významných impulzů v oblasti autorského práva, ochranných známek, regulace umělé inteligence a digitálních službách. Pozornost se soustředila na problematiku trénování generativní AI, výklad unijních předpisů o digitálních trzích a službách a na rozhodovací praxi soudů ohledně ochranných známek.",
+  "total": 159,
+  "covered": 14,
+  "cekajici": 1,
+  "intro": "Uplynulý měsíc přinesl řadu významných rozhodnutí i odborných analýz v oblasti duševního vlastnictví a IT, v nichž dominovaly otázky právních dopadů generativní umělé inteligence, regulace digitálních platforem a unijní judikatura k ochranným známkám. Pozornost byla upřena také na nové povinnosti podle Aktu o digitálních službách, ochranu osobních údajů v online prostředí a rozhodovací praxi v oblasti autorského práva.",
   "blocks": [
     {
       "title": "Autorské právo a AI",
-      "text": "Odborná literatura a stanoviska institucí se intenzivně zabývají odměňováním autorů za užití jejich děl v generativní umělé inteligenci a navrhují nové modely kolektivní správy a licenčních schémat. Pro praxi to znamená nutnost sledovat vývoj v oblasti zákonných výjimek pro vytěžování textů a dat (TDM) a připravit se na nové formy kompenzací.",
+      "text": "Odborná literatura a stanoviska Max Planck Institutu se intenzivně zabývají nastavením spravedlivých odměn pro autory a licenčními modely pro trénování generativní umělé inteligence. Zkoumají se zde dopady web-scrapingu na chráněná díla a navrhují se systémy povinné kolektivní správy či zákonné výjimky s právem na kompenzaci. Pro praxi to znamená nutnost sledovat blížící se legislativní a smluvní posuny v licenční praxi.",
       "sources": [
         {
           "src": "journals",
@@ -21,49 +21,29 @@
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "JIPITEC",
-          "title": "The Concept of Lawful Access and Its Implications for User Freedoms in the EU Copyright Acquis: Opinion of the European Copyright Society",
-          "link": "https://www.jipitec.eu/jipitec/article/view/468"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
           "tag": "GRUR Int",
           "title": "Position Statement of the Max Planck Institute of 25 June 2026 on the Future Copyright Framework in Times of Generative AI",
           "link": "https://doi.org/10.1093/grurint/ikag093"
-        }
-      ]
-    },
-    {
-      "title": "Zlé úmysly u známek",
-      "text": "Judikatura Tribunálu potvrdila, že přihlášení ochranné známky krátce po uplynutí ochranné lhůty dřívější známky bez legitimního obchodního důvodu naplňuje znaky přihlášky ve zlé víře. Pro praxi to představuje důležité varování před obcházením povinnosti prokazovat skutečné užívání starších značek.",
-      "sources": [
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-541/25 – Qingdao Ecopure Filter v. EUIPO - Waterdrop Microdrink (Waterdrop)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0541"
         },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-650/25 – Vacu Activ Marcin Leśniak v. EUIPO - Lakhomoff a AR Group Roman Tchir (VACUACTIVUS)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TO0650"
-        }
-      ]
-    },
-    {
-      "title": "Akt o digitálních službách",
-      "text": "Analýzy a rozhodnutí se zaměřují na fungování velmi velikých online platforem, moderování obsahu a pravidla pro blokování uživatelů na sociálních sítích. Pro poskytovatele digitálních služeb to znamená zpřísnění požadavků na transparentnost odůvodnění rozhodnutí a řádné doložení uživatelských dat.",
-      "sources": [
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "JIPITEC",
-          "title": "Social Media Bans and the Digital Services Act: A Critical Analysis of Statement of Reasons and Online Dispute Resolution",
-          "link": "https://www.jipitec.eu/jipitec/article/view/467"
+          "tag": "QMJIP",
+          "title": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
+          "link": "https://doi.org/10.4337/qmjip.2026.03.01"
+        }
+      ]
+    },
+    {
+      "title": "Regulace digitálních služeb",
+      "text": "Soudní dvůr EU a Tribunál se v nově publikovaných rozhodnutích věnovaly plnění povinností velkých online platforem a strážců přístupu podle Aktu o digitálních službách (DSA). Řešilo se například ověřování počtu aktivních příjemců pro účely dohledových poplatků či odmítnutí přístupu k dokumentům z důvodu ochrany obchodních zájmů. Pro provozovatele portálů to potvrzuje přísný přístup unijních orgánů k transparentnosti a dodržování regulačních standardů.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "C-627/24 – Bytedance v. Komise",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CC0627"
         },
         {
           "src": "sdeu",
@@ -82,8 +62,8 @@
       ]
     },
     {
-      "title": "Ochranné známky a záměna",
-      "text": "Soudní dvůr EU a Tribunál řešily celou řadu sporů o pravděpodobnost záměny obrazových a slovních ochranných známek se shodnými či podobnými prvky. Pro praxi to znamená nutnost pečlivého prověřování starších práv před podáním přihlášky, a to i s ohledem na slabou rozlišovací schopnost některých společných prvků.",
+      "title": "Judikatura k ochranným známkám",
+      "text": "Tribunál EU vydal celou řadu rozhodnutí týkajících se pravděpodobnosti záměny ochranných známek, posuzování rozlišovací způsobilosti a přihlášek ve zlé víře. Pozornost byla věnována shodným slovním prvkům ve farmaceutických a komerčních třídách či snahám obejít povinnost prokazovat užívání dřívějších známek. Pro praxi přinášejí tato rozhodnutí vodítka pro strategické podávání přihlášek a obranu proti zneužití značek.",
       "sources": [
         {
           "src": "sdeu",
@@ -91,6 +71,13 @@
           "tag": "",
           "title": "T-786/25 – Novomatic v. EUIPO - Euro Games Technology (EXTRA STARS)",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0786"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "T-541/25 – Qingdao Ecopure Filter v. EUIPO - Waterdrop Microdrink (Waterdrop)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0541"
         },
         {
           "src": "sdeu",
@@ -119,29 +106,29 @@
           "tag": "",
           "title": "T-126/25 – Novavax v. EUIPO - Brill International (MATRIX-A)",
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0126"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-814/25 – Holding Tourisme v. EUIPO - Agora (MAGORA)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0814"
         }
       ]
     },
     {
-      "title": "Financování služeb kolektivní správy",
-      "text": "Soudní dvůr EU rozhodl, že organizace kolektivní správy nemohou financovat sociální či kulturní služby pro ne-nositele práv z příjmů z výkonu práv před jejich rozdělením, ale pouze z nerozdělitelných částek. Pro kolektivní správce to znamená nutnost úpravy vnitřních finančních mechanismů a přerozdělování vybraných odměn.",
+      "title": "Ochrana osobních údajů",
+      "text": "Judikatura a stanoviska generálních advokátů se zaměřily na meze automatizovaného profilování bonity a právo na přístup k údajům u specifických orgánů, jako jsou finanční zpravodajské jednotky. Generální advokát navrhl, že odmítnutí platebních metod na základě automatizovaného profilování spadá pod zákaz dle GDPR, pokud brání uzavření smlouvy. Správci údajů tak musí přehodnotit procesy automatizovaného rozhodování a posílit záruky pro subjekty údajů.",
       "sources": [
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "C-840/24 – VG Wort (Bénéficiaire des services fournis par une société de gestion collective) ",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0840"
+          "title": "C-568/25 – Universal Versand",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0568"
+        },
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "C-222/25 – Rahapesu Andmebüroo",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0222"
         }
       ]
     }
   ],
-  "input_hash": "cc3c201619073b3d7fc7987a0a0f1b26969b055d52c89d504542369538b09795"
+  "input_hash": "9c0e7bca87072ed1dbbbd4f23eba61f1d3c1ffbc4f33879f3edd8f1e465f1380"
 }

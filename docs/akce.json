@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06T07:34:46+00:00",
+  "generated": "2026-11-07T06:46:54+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 20,
-      "stazeno": "2026-11-06T07:34:04+00:00",
+      "stazeno": "2026-11-07T06:46:37+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,10 +18,10 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 7,
-      "stazeno": "2026-11-06T07:34:08+00:00",
+      "stazeno": "2026-11-07T06:46:41+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "bc5320ac0572ba0d"
+      "otisk": "3b3f2ec91e054367"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-11-06T07:34:13+00:00",
+      "stazeno": "2026-11-07T06:46:46+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "f29ff805f78b5df4"
+      "otisk": "94757f5879ff5755"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-11-06T07:34:22+00:00",
+      "stazeno": "2026-11-07T06:46:47+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-11-06T07:34:23+00:00",
+      "stazeno": "2026-11-07T06:46:48+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "45f0e28f589d7dcd"
@@ -2273,6 +2273,28 @@
       ],
       "oblasti_klic": "dfaea5579c41",
       "detail_pokusy": 2
+    },
+    {
+      "id": "e4561a0d5c44ecdf6f62",
+      "poradatel": "PFUK",
+      "datum": "2026-12-02",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Workshop: Rovnost a transparentnost v odměňování",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [
+        "doc. JUDr. Jakub Tomšej, Ph.D.",
+        "JUDr. Lucie Přenosilová"
+      ],
+      "cena": "",
+      "anotace": "Workshop nabídne přehled připravované evropské směrnice o transparentnosti odměňování, jejích praktických dopadů i aktuálních otázek spojených se zásadou stejné odměny. Účastníci se seznámí s novými povinnostmi zaměstnavatelů a reportováním rozdílů v odměňování.",
+      "url": "https://www.prf.cuni.cz/aktuality/workshop-rovnost-a-transparentnost-v-odmenovani-0",
+      "detail_pokusy": 2,
+      "oblasti": [
+        "pracovni"
+      ],
+      "oblasti_klic": "d9f7e88b60b9"
     },
     {
       "id": "652d0acc4c735879e7b9",
