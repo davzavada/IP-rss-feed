@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-07T06:44:25Z",
+ "generated": "2026-11-08T06:51:09Z",
  "soud": "ns",
  "okno_od": "2026-10-01",
  "polozky": [
@@ -132,7 +132,7 @@
    "first_seen": "2026-11-07T06:44:25Z",
    "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/297B0EC65BFA6936C1258EA7005273E5?openDocument",
    "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/BCF3EB5FC104271FC1258EA700528F0A/$file/21%20Nd%20513_2026.pdf?openElement",
-   "heslo": "Určení místní příslušnosti soudu v exekuci při absenci trvalého pobytu",
+   "heslo": "Místní příslušnost soudu při nezjištěném pobytu",
    "shrnuti": "Všeobecná fakultní nemocnice v Praze podala exekuční návrh na majetek povinného, u něhož nebylo možné zjistit trvalý pobyt ani majetek v České republice. Nejvyšší soud řešil určení místně příslušného soudu podle § 11 odst. 3 o. s. ř., když chyběly podmínky místní příslušnosti. Rozhodl, že věc projedná a rozhodne Obvodní soud pro Prahu 5 s ohledem na hospodárnost řízení.",
    "oblasti": [
     "civilni_proces"
@@ -1868,6 +1868,44 @@
     "civilni_proces"
    ],
    "procesni": false
+  },
+  {
+   "id": "ns:deska:33cdo2092/2026",
+   "spz": "33 Cdo 2092/2026",
+   "druh": "rozsudek",
+   "senat": 33,
+   "rejstrik": "Cdo",
+   "datum": "2026-11-03",
+   "zverejneno": "2026-11-03",
+   "first_seen": "2026-11-03T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_33_Cdo_2092_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_33_Cdo_2092_2026.pdf",
+   "heslo": "Fikce uznání nároku vyžaduje pasivitu žalovaného",
+   "shrnuti": "Žalobce se domáhal zaplacení kupní ceny za investiční zlato proti žalované Att Investments CZ. Soudy nižších stupňů vydaly rozsudek pro uznání s odkazem na fikci uznání nároku, neboť vyjádření žalované v odporu proti platebnímu rozkazu považovaly za nedostatečné. Nejvyšší soud dospěl k závěru, že žalovaná projevila nesouhlas se žalobou i obranu a nebyla procesně pasivní, proto podmínky pro fikce uznání a vydání rozsudku pro uznání nebyly splněny.",
+   "oblasti": [
+    "civilni_proces",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:deska:24cdo2523/2026",
+   "spz": "24 Cdo 2523/2026",
+   "druh": "rozsudek",
+   "senat": 24,
+   "rejstrik": "Cdo",
+   "datum": "2026-11-03",
+   "zverejneno": "2026-11-03",
+   "first_seen": "2026-11-03T12:00:00Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_24_Cdo_2523_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_24_Cdo_2523_2026.pdf",
+   "heslo": "Doba dalšího držení ve zdravotnickém zařízení vyžaduje řádné odůvodnění",
+   "shrnuti": "Miroslav Šenkýř se soudil o přípustnost dalšího držení v Psychiatrické nemocnici Jihlava. Nejvyšší soud řešil otázku posouzení bezprostředního ohrožení, subsidiarity a stanovení přiměřené doby trvání detence. Rozhodl, že maximální roční dobu nelze stanovit poukazem na možnost dřívějšího propuštění zdravotnickým zařízením a soud musí dobu určit individuálně s ohledem na proporcionalitu.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
   },
   {
    "id": "ns:3B1AF1154DF0E1A9C1258EA40052B9FC",
