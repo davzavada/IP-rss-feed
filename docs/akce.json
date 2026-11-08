@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-07T06:46:54+00:00",
+  "generated": "2026-11-08T06:53:30+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 20,
-      "stazeno": "2026-11-07T06:46:37+00:00",
+      "stazeno": "2026-11-08T06:53:12+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,7 +18,7 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 7,
-      "stazeno": "2026-11-07T06:46:41+00:00",
+      "stazeno": "2026-11-08T06:53:13+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "3b3f2ec91e054367"
@@ -39,11 +39,11 @@
       "zkratka": "epravo",
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
-      "pocet": 6,
-      "stazeno": "2026-11-07T06:46:46+00:00",
+      "pocet": 7,
+      "stazeno": "2026-11-08T06:53:18+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "94757f5879ff5755"
+      "otisk": "0f3b8c57243e9b9a"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-11-07T06:46:47+00:00",
+      "stazeno": "2026-11-08T06:53:19+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-11-07T06:46:48+00:00",
+      "stazeno": "2026-11-08T06:53:20+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "45f0e28f589d7dcd"
@@ -1410,7 +1410,13 @@
         "rodina_dedictvi",
         "ustavni"
       ],
-      "oblasti_klic": "66411bf1d0da"
+      "oblasti_klic": "66411bf1d0da",
+      "take_u": [
+        {
+          "poradatel": "EPRAVO",
+          "url": "https://www.epravo.cz/top/aktualne/vybrane-otazky-spolecneho-jmeni-manzelu-v-aktualni-rozhodovaci-praxi-nejvyssiho-soudu-cr-a-ustavniho-soudu-cr-121773.html"
+        }
+      ]
     },
     {
       "id": "d999e57cb77f9ed40a01",
@@ -1825,7 +1831,7 @@
       ],
       "cena": "3 975 Kč",
       "anotace": "Online kurz zaměřený na praktické zvládnutí soudního řízení v civilním procesu.",
-      "url": "https://www.epravo.cz/eshop/prakticke-aspekty-civilniho-procesu-jak-absolvovat-rizeni-pred-soudem-se-cti-a-pokud-mozno-uspesne-online-zive-vysilani-12-11-2026-1616.html",
+      "url": "https://www.epravo.cz/eshop/prakticke-aspekty-civilni-procesu-jak-absolvovat-rizeni-pred-soudem-se-cti-a-pokud-mozno-uspesne-online-zive-vysilani-12-11-2026-1616.html",
       "detail_pokusy": 2,
       "z_detailu": [
         "misto"
@@ -1859,6 +1865,35 @@
         "ustavni"
       ],
       "oblasti_klic": "e0fe3c34ae14"
+    },
+    {
+      "id": "56d17cde12aecbbaeddc",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-12",
+      "zacatek": "17:00",
+      "konec": "19:00",
+      "nazev": "Diskuzní čtvrtek nad trestním právem",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "JUDr. Bc. Jiří Říha, Ph.D.",
+        "Plk. Mgr. Michal Hodboď",
+        "Bc. Roman Budský, MBA",
+        "PhDr. Mgr. Michal Walter",
+        "Mgr. Pavel Dubský",
+        "PhDr. Pavel Řezáč, Ph.D., MBA"
+      ],
+      "cena": "zdarma",
+      "anotace": "Online živé vysílání diskuzního čtvrtku nad aktuálními tématy z trestního práva.",
+      "url": "https://www.epravo.cz/top/aktualne/pozvanka-zdarma-diskuzni-ctvrtek-nad-trestnim-pravem-online-zive-vysilani-12112026-121764.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "trestni"
+      ],
+      "oblasti_klic": "c17165fdffbb"
     },
     {
       "id": "854dd9f9555a1d631c00",
@@ -2531,6 +2566,22 @@
       "detail_pokusy": 2
     }
   ],
-  "duplikaty": [],
+  "duplikaty": [
+    {
+      "id": "a5f115cdc51b009e2efa",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-03",
+      "zacatek": "09:30",
+      "konec": "14:30",
+      "nazev": "Vybrané otázky společného jmění manželů v aktuální rozhodovací praxi Nejvyššího soudu ČR a Ústavního soudu ČR",
+      "misto": "",
+      "forma": "",
+      "lektori": [],
+      "cena": "",
+      "anotace": "Vzdělávací akce pořádaná Jednotou českých právníků zaměřená na vybrané otázky společného jmění manželů.",
+      "url": "https://www.epravo.cz/top/aktualne/vybrane-otazky-spolecneho-jmeni-manzelu-v-aktualni-rozhodovaci-praxi-nejvyssiho-soudu-cr-a-ustavniho-soudu-cr-121773.html",
+      "stejna_jako": "9a22045dc60281f66a17"
+    }
+  ],
   "ics": "https://owl.davidzavada.cz/akce.ics"
 }

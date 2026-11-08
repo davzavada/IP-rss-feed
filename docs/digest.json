@@ -1,15 +1,28 @@
 {
-  "generated": "2026-11-07T06:46:54.473828+00:00",
+  "generated": "2026-11-08T06:53:30.305625+00:00",
   "from": "2026-10-01",
   "to": "2026-10-31",
-  "total": 159,
-  "covered": 14,
-  "cekajici": 1,
-  "intro": "Uplynulý měsíc přinesl řadu významných rozhodnutí i odborných analýz v oblasti duševního vlastnictví a IT, v nichž dominovaly otázky právních dopadů generativní umělé inteligence, regulace digitálních platforem a unijní judikatura k ochranným známkám. Pozornost byla upřena také na nové povinnosti podle Aktu o digitálních službách, ochranu osobních údajů v online prostředí a rozhodovací praxi v oblasti autorského práva.",
+  "total": 172,
+  "covered": 8,
+  "cekajici": 2,
+  "intro": "Uplynulý měsíc přinesl řadu významných rozhodnutí Soudního dvora EU, českých soudů a odborných analýz se zaměřením na ochranu duševního vlastnictví, umělou inteligenci a regulaci digitálních služeb. Pozornost byla upřena zejména na autorskoprávní otázky spojené s generativní AI, podmínky kolektivní správy, ochranu ochranných známek a interpretaci unijních předpisů včetně Aktu o digitálních službách.",
   "blocks": [
     {
+      "title": "Financování kolektivní správy",
+      "text": "Soudní dvůr EU rozhodl, že organizace kolektivní správy nemohou financovat sociální či kulturní služby pro ne-nositele práv srážkami z příjmů z výkonu práv před jejich rozdělením, ale pouze z nerozdělitelných částek. Toto rozhodnutí zpřísňuje pravidla nakládání s vybranými odměnami, což může vyžadovat úpravu vnitřních finančních mechanismů kolektivních správců.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "C-840/24 – VG Wort (Bénéficiaire des services fournis par une société de gestion collective) ",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0840"
+        }
+      ]
+    },
+    {
       "title": "Autorské právo a AI",
-      "text": "Odborná literatura a stanoviska Max Planck Institutu se intenzivně zabývají nastavením spravedlivých odměn pro autory a licenčními modely pro trénování generativní umělé inteligence. Zkoumají se zde dopady web-scrapingu na chráněná díla a navrhují se systémy povinné kolektivní správy či zákonné výjimky s právem na kompenzaci. Pro praxi to znamená nutnost sledovat blížící se legislativní a smluvní posuny v licenční praxi.",
+      "text": "Odborné studie a stanoviska Max Planck Institutu se v uplynulém měsíci intenzivně zabývaly odměňováním autorů za využití jejich děl v generativní umělé inteligenci. Pro praxi to znamená nutnost sledovat vývoj nových licenčních schémat, kolektivní správy a právních rámců pro trénink AI modelů.",
       "sources": [
         {
           "src": "journals",
@@ -35,15 +48,28 @@
       ]
     },
     {
-      "title": "Regulace digitálních služeb",
-      "text": "Soudní dvůr EU a Tribunál se v nově publikovaných rozhodnutích věnovaly plnění povinností velkých online platforem a strážců přístupu podle Aktu o digitálních službách (DSA). Řešilo se například ověřování počtu aktivních příjemců pro účely dohledových poplatků či odmítnutí přístupu k dokumentům z důvodu ochrany obchodních zájmů. Pro provozovatele portálů to potvrzuje přísný přístup unijních orgánů k transparentnosti a dodržování regulačních standardů.",
+      "title": "Ochranné známky a zlá víra",
+      "text": "Tribunál EU potvrdil, že podání přihlášky ochranné známky krátce po uplynutí ochranné lhůty dřívější známky bez legitimního obchodního důvodu naplňuje znaky přihlášky ve zlé víře. Tento závěrem posiluje ochranu proti účelovému obcházení povinnosti prokazovat skutečné užívání starších značek.",
       "sources": [
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "C-627/24 – Bytedance v. Komise",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CC0627"
+          "title": "T-541/25 – Qingdao Ecopure Filter v. EUIPO - Waterdrop Microdrink (Waterdrop)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0541"
+        }
+      ]
+    },
+    {
+      "title": "Akt o digitálních službách",
+      "text": "Judikatura a odborná literatura rozebraly aplikaci Aktu o digitálních službách (DSA) na specifické online služby, moderování obsahu a ochranu obchodních zájmů. Pro poskytovatelé digitálních služeb a platformy to znamená nutnost přísného dodržování unijních pravidel transparentnosti a mimosoudního řešení sporů.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JIPITEC",
+          "title": "Social Media Bans and the Digital Services Act: A Critical Analysis of Statement of Reasons and Online Dispute Resolution",
+          "link": "https://www.jipitec.eu/jipitec/article/view/467"
         },
         {
           "src": "sdeu",
@@ -60,75 +86,7 @@
           "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0203"
         }
       ]
-    },
-    {
-      "title": "Judikatura k ochranným známkám",
-      "text": "Tribunál EU vydal celou řadu rozhodnutí týkajících se pravděpodobnosti záměny ochranných známek, posuzování rozlišovací způsobilosti a přihlášek ve zlé víře. Pozornost byla věnována shodným slovním prvkům ve farmaceutických a komerčních třídách či snahám obejít povinnost prokazovat užívání dřívějších známek. Pro praxi přinášejí tato rozhodnutí vodítka pro strategické podávání přihlášek a obranu proti zneužití značek.",
-      "sources": [
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-786/25 – Novomatic v. EUIPO - Euro Games Technology (EXTRA STARS)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0786"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-541/25 – Qingdao Ecopure Filter v. EUIPO - Waterdrop Microdrink (Waterdrop)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0541"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-129/25 – Novavax v. EUIPO - Brill International (MATRIX-M)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0129"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-128/25 – Novavax v. EUIPO - Brill International (MATRIX-C)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0128"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-127/25 – Novavax v. EUIPO - Brill International (MATRIX-V)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0127"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-126/25 – Novavax v. EUIPO - Brill International (MATRIX-A)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0126"
-        }
-      ]
-    },
-    {
-      "title": "Ochrana osobních údajů",
-      "text": "Judikatura a stanoviska generálních advokátů se zaměřily na meze automatizovaného profilování bonity a právo na přístup k údajům u specifických orgánů, jako jsou finanční zpravodajské jednotky. Generální advokát navrhl, že odmítnutí platebních metod na základě automatizovaného profilování spadá pod zákaz dle GDPR, pokud brání uzavření smlouvy. Správci údajů tak musí přehodnotit procesy automatizovaného rozhodování a posílit záruky pro subjekty údajů.",
-      "sources": [
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "C-568/25 – Universal Versand",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0568"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "C-222/25 – Rahapesu Andmebüroo",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0222"
-        }
-      ]
     }
   ],
-  "input_hash": "9c0e7bca87072ed1dbbbd4f23eba61f1d3c1ffbc4f33879f3edd8f1e465f1380"
+  "input_hash": "084a0d8bda7fd2f347298f31f27c55b80c6f997bfeb17d6b737eaf1e479477ee"
 }
