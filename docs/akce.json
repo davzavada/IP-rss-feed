@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-08T06:53:30+00:00",
+  "generated": "2026-11-09T07:33:23+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 20,
-      "stazeno": "2026-11-08T06:53:12+00:00",
+      "stazeno": "2026-11-09T07:33:02+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,10 +18,10 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 7,
-      "stazeno": "2026-11-08T06:53:13+00:00",
+      "stazeno": "2026-11-09T07:33:06+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "3b3f2ec91e054367"
+      "otisk": "d30a564d7befcd7f"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
@@ -39,11 +39,11 @@
       "zkratka": "epravo",
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
-      "pocet": 7,
-      "stazeno": "2026-11-08T06:53:18+00:00",
+      "pocet": 6,
+      "stazeno": "2026-11-09T07:33:12+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "0f3b8c57243e9b9a"
+      "otisk": "479936e8d83c6861"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-11-08T06:53:19+00:00",
+      "stazeno": "2026-11-09T07:33:17+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-11-08T06:53:20+00:00",
+      "stazeno": "2026-11-09T07:33:17+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "45f0e28f589d7dcd"
@@ -1591,27 +1591,6 @@
       "oblasti_klic": "381754d69775"
     },
     {
-      "id": "42468bd459e26f313d73",
-      "poradatel": "PFUK",
-      "datum": "2026-11-09",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "Týden fakulty",
-      "misto": "Právnická fakulta UK",
-      "forma": "prezencne",
-      "lektori": [],
-      "cena": "",
-      "anotace": "Týden fakulty nabízí studujícím, vyučujícím i dalším členům akademické obce příležitost setkat se jinak než při běžné výuce, diskutovat o aktuálních tématech a věnovat se odborným, vzdělávacím i společenským aktivitám.",
-      "url": "https://www.prf.cuni.cz/aktuality/tyden-fakulty",
-      "datum_do": "2026-11-13",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [],
-      "oblasti_klic": "20d8de531126"
-    },
-    {
       "id": "07d098081d52fc885a7d",
       "poradatel": "CAK",
       "datum": "2026-11-10",
@@ -1737,7 +1716,7 @@
       "konec": "15:00",
       "nazev": "Jak propagovat svoje projekty a služby prakticky s AI",
       "misto": "Celetná 13, Praha 1",
-      "forma": "prezencne",
+      "forma": "online",
       "lektori": [],
       "cena": "",
       "anotace": "Praktický workshop zaměřený na využití umělé inteligence při tvorbě obsahu, marketingové komunikace a plánování propagace. Ukážeme si práci s ChatGPT, Canvou a tvorbu 30denního obsahového plánu.",
@@ -1831,7 +1810,7 @@
       ],
       "cena": "3 975 Kč",
       "anotace": "Online kurz zaměřený na praktické zvládnutí soudního řízení v civilním procesu.",
-      "url": "https://www.epravo.cz/eshop/prakticke-aspekty-civilni-procesu-jak-absolvovat-rizeni-pred-soudem-se-cti-a-pokud-mozno-uspesne-online-zive-vysilani-12-11-2026-1616.html",
+      "url": "https://www.epravo.cz/eshop/prakticke-aspekty-civilniho-procesu-jak-absolvovat-rizeni-pred-soudem-se-cti-a-pokud-mozno-uspesne-online-zive-vysilani-12-11-2026-1616.html",
       "detail_pokusy": 2,
       "z_detailu": [
         "misto"
@@ -1865,35 +1844,6 @@
         "ustavni"
       ],
       "oblasti_klic": "e0fe3c34ae14"
-    },
-    {
-      "id": "56d17cde12aecbbaeddc",
-      "poradatel": "EPRAVO",
-      "datum": "2026-11-12",
-      "zacatek": "17:00",
-      "konec": "19:00",
-      "nazev": "Diskuzní čtvrtek nad trestním právem",
-      "misto": "online",
-      "forma": "online",
-      "lektori": [
-        "JUDr. Bc. Jiří Říha, Ph.D.",
-        "Plk. Mgr. Michal Hodboď",
-        "Bc. Roman Budský, MBA",
-        "PhDr. Mgr. Michal Walter",
-        "Mgr. Pavel Dubský",
-        "PhDr. Pavel Řezáč, Ph.D., MBA"
-      ],
-      "cena": "zdarma",
-      "anotace": "Online živé vysílání diskuzního čtvrtku nad aktuálními tématy z trestního práva.",
-      "url": "https://www.epravo.cz/top/aktualne/pozvanka-zdarma-diskuzni-ctvrtek-nad-trestnim-pravem-online-zive-vysilani-12112026-121764.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "trestni"
-      ],
-      "oblasti_klic": "c17165fdffbb"
     },
     {
       "id": "854dd9f9555a1d631c00",
@@ -2330,6 +2280,27 @@
         "pracovni"
       ],
       "oblasti_klic": "d9f7e88b60b9"
+    },
+    {
+      "id": "904dce31b26cf1160eda",
+      "poradatel": "PFUK",
+      "datum": "2026-12-03",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Zdeněk Kučera | AI v české právní praxi",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [
+        "Zdeněk Kučera"
+      ],
+      "cena": "",
+      "anotace": "Přednáška ukáže, co umělá inteligence v právní práci skutečně zvládá, ať už v advokacii, v korporacích, nebo ve veřejném sektoru. Součástí bude ukázka use cases, které si v právní praxi může vyzkoušet každý.",
+      "url": "https://www.prf.cuni.cz/aktuality/zdenek-kucera-ai-v-ceske-pravni-praxi",
+      "detail_pokusy": 2,
+      "oblasti": [
+        "it"
+      ],
+      "oblasti_klic": "169b1e8a81ef"
     },
     {
       "id": "652d0acc4c735879e7b9",
