@@ -1,8 +1,205 @@
 {
- "generated": "2026-11-07T06:44:25Z",
+ "generated": "2026-11-09T07:29:59Z",
  "soud": "sdeu",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "sdeu:62026CN0871",
+   "spz": "C-871/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-08-03",
+   "zverejneno": "2026-11-09",
+   "first_seen": "2026-11-09T07:29:59Z",
+   "nazev": "Consorzio Sostanze Chimiche Fertilizzanti a další",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0871",
+   "heslo": "Předběžná otázka ke státním podporám v zemědělství",
+   "shrnuti": "Italský soud se ptá Soudního dvora EU, zda vnitrostátní úprava ukládající povinný příspěvek výrobcům a dovozcům určitých výrobků do veřejného fondu představuje státní podporu ve smyslu článků 107 a 108 SFEU, zda jde o novou podporu podléhající oznamovací povinnosti a zda takový systém nepředstavuje clo zakázané článkem 30 SFEU.",
+   "oblasti": [
+    "spravni",
+    "soutez"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0855",
+   "spz": "C-855/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-30",
+   "zverejneno": "2026-11-09",
+   "first_seen": "2026-11-09T07:29:59Z",
+   "nazev": "Lesoochranárske zoskupenie II",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0855",
+   "heslo": "Žaloba v ochraně životního prostředí a účast v řízení",
+   "shrnuti": "Slovenský Nejvyšší správní soud se ptá Soudního dvora EU, zda unijní právo a Aarhuská úmluva brání vnitrostátní úpravě, která podmiňuje podání správní žaloby účastí v předchozím správním řízení, přičemž tato účast je v některých případech vyloučena, a zda brání přísným propadným lhůtám pro podání žaloby.",
+   "oblasti": [
+    "stavebni_zp",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0835",
+   "spz": "C-835/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-29",
+   "zverejneno": "2026-11-09",
+   "first_seen": "2026-11-09T07:29:59Z",
+   "nazev": "Vluchtelingenwerk Vlaanderen",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0835",
+   "heslo": "Zdravotní prohlídka k navrácení cizince",
+   "shrnuti": "Belgický ústavní soud se Soudního dvora EU dotazuje, zda směrnice o navracení neoprávněně pobývajících státních příslušníků třetích zemí a Listina základních práv EU brání vnitrostátní úpravě umožňující podrobit cizince, případně s použitím donucení, povinné zdravotní prohlídce za účelem navrácení, pokud ji požaduje cílová země, země tranzitu nebo dopravce v případě ohrožení veřejného zdraví.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0834",
+   "spz": "C-834/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-28",
+   "zverejneno": "2026-11-09",
+   "first_seen": "2026-11-09T07:29:59Z",
+   "nazev": "Costa VOC Impex",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0834",
+   "heslo": "Zachování investice a přemístění činnosti v dotacích",
+   "shrnuti": "Rumunský soud Curtea de Apel Oradea se Soudního dvora EU dotazuje na výklad pravidel týkajících se zachování investice a přemístění výrobní činnosti mimo programovou oblast podle nařízení č. 1303/2013 a č. 651/2014 v souvislosti s čerpáním evropských fondů. Ptá se, zda požadavek na zachování investice znamená skutečný výkon činnosti pomocí pořízených zařízení, jak posuzovat přemístění činnosti mimo oblast a zda lze v případě porušení podmínek požadovat vrácení celé finanční podpory, či pouze její poměrné části.",
+   "oblasti": [
+    "spravni",
+    "verejne_zakazky"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0801",
+   "spz": "C-801/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-17",
+   "zverejneno": "2026-11-09",
+   "first_seen": "2026-11-09T07:29:59Z",
+   "nazev": "Jurcki",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0801",
+   "heslo": "Doba uložení osobních údajů ze zpoplatněné dálnice",
+   "shrnuti": "Polský správní soud v Lodži se v řízení mezi žalobcem a ředitelstvím daňové správy ptá Soudního dvora EU na slučitelnost dalšího uchovávání a využívání údajů o průjezdu vozidel po zpoplatněných dálnicích pro účely promlčení dodatečného poplatku s nařízením GDPR. Dále se dotazuje na význam původního technického zdroje údajů a na povinnost soudu nepřihlížet k takto uchovávaným údajům v řízení o uložení poplatku.",
+   "oblasti": [
+    "gdpr",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0731",
+   "spz": "C-731/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-07-03",
+   "zverejneno": "2026-11-09",
+   "first_seen": "2026-11-09T07:29:59Z",
+   "nazev": "Landkreis Fulda",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0731",
+   "heslo": "Pobyt ve třetí zemi a dočasná ochrana",
+   "shrnuti": "Německý soud Hessischer Verwaltungsgerichtshof se v rámci předběžné otázky ptá Soudního dvora EU, zda ukrajinští státní příslušníci ztrácejí nárok na dočasnou ochranu podle prováděcího rozhodnutí 2022/382, pokud po vypuknutí konfliktu pobývali delší dobu ve třetí zemi (Gruzii), kde si sami zajišťovali obživu. Dále se táže, zda lze v takovém případě vydat rozhodnutí o navrácení na Ukrajinu ve smyslu návratové směrnice 2008/115.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0698",
+   "spz": "C-698/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-06-26",
+   "zverejneno": "2026-11-09",
+   "first_seen": "2026-11-09T07:29:59Z",
+   "nazev": "Kommunikationsbehörde Austria",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0698",
+   "heslo": "Výklad zákazu označení umístění produktu v audiovizuálních službách",
+   "shrnuti": "Rakouský správní soud se Soudního dvora EU dotazuje, zda směrnice o audiovizuálních mediálních službách zakazuje používat označení upozorňující na umístění produktu v pořadech, kde k umístění produktu nedošlo, a to případně i ve zpravodajských a publicistických pořadech.",
+   "oblasti": [
+    "spravni",
+    "osobnost_media"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0629",
+   "spz": "C-629/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-06-10",
+   "zverejneno": "2026-11-09",
+   "first_seen": "2026-11-09T07:29:59Z",
+   "nazev": "Wobień",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0629",
+   "heslo": "Běh promlčecí lhůty a neplatné spotřebitelské smlouvy",
+   "shrnuti": "Polský soud Sąd Okręgowy w Krakowie se ptá Soudního dvora EU, zda právo Unie a zásada efektivity brání vnitrostátnímu výkladu, podle něhož promlčecí lhůta nároku spotřebitele na vrácení plnění z neplatné smlouvy začíná běžet od úplného splnění smlouvy, popřípadě od okamžiku, kdy se spotřebitel mohl o zneužívajících ujednáních dozvědět z médií, anebo zda naopak vyžaduje, aby lhůta začala běžet až dnem, kdy se spotřebitel o vadě výslovně dozvěděl.",
+   "oblasti": [
+    "spotrebitel",
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0613",
+   "spz": "C-613/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-06-05",
+   "zverejneno": "2026-11-09",
+   "first_seen": "2026-11-09T07:29:59Z",
+   "nazev": "Elektro Celje a další",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0613",
+   "heslo": "Předběžná otázka k výkladu pravidel vnitřního trhu s elektřinou",
+   "shrnuti": "Slovinský správní soud se v řízení mezi společnostmi Elektro Celje, Elektro Gorenjska, Elektro Ljubljana, Elektro Maribor a Elektro Primorská a Agencijou za energijo dotazuje na slučitelnost vnitrostátní úpravy regulace tarifů a návratnosti provozovatelů elektrizačních soustav se směrnicí (EU) 2019/944 a nařízením (EU) 2019/943. Jde o to, zda unijní právo brání snížení tarifních položek na nulu a snížení míry návratnosti.",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0585",
+   "spz": "C-585/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-06-02",
+   "zverejneno": "2026-11-09",
+   "first_seen": "2026-11-09T07:29:59Z",
+   "nazev": "Trezor Company",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0585",
+   "heslo": "Právní základ pro předání údajů zpracovateli",
+   "shrnuti": "Rakouský Nejvyšší soud se v řízení mezi SV a Trezor Company obrátil na Soudní dvůr EU s předběžnými otázkami týkajícími se výkladu článku 6 odst. 1 GDPR. Ptá se, zda předání osobních údajů zpracovateli vyžaduje samostatný právní základ, a případně zda informovaný souhlas se zasíláním informačního bulletinu vyžaduje, aby subjekt údajů předem věděl o zapojení zpracovatele ve třetí zemi.",
+   "oblasti": [
+    "gdpr"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CN0451",
+   "spz": "C-451/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-05-06",
+   "zverejneno": "2026-11-09",
+   "first_seen": "2026-11-09T07:29:59Z",
+   "nazev": "Gazečić",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CN0451",
+   "heslo": "Pravomoc Soudního dvora k ochraně oznamovatelů",
+   "shrnuti": "Chorvatský Vrhovni sud Republike Hrvatske se v řízení ve věci Partnerstvo za društveni razvoj a další v. Evropská unie táže Soudního dvora EU, zda do jeho pravomoci spadá projednání žalobních návrhů na náhradu újmy, určení odvetných opatření, zákaz dalšího jednání a nařízení předběžného opatření na ochranu oznamovatelů ve smyslu směrnice (EU) 2019/1937.",
+   "oblasti": [
+    "spravni",
+    "skoda"
+   ],
+   "procesni": true
+  },
   {
    "id": "sdeu:62025CJ0530",
    "spz": "C-530/25",

@@ -1,12 +1,5 @@
 {
  "ai": {
-  "2026-10-24": {
-   "gemini-flash-lite-latest": {
-    "volani": 5,
-    "vstup": 46364,
-    "vystup": 943
-   }
-  },
   "2026-10-25": {
    "gemini-flash-lite-latest": {
     "volani": 4,
@@ -102,33 +95,40 @@
     "vstup": 23680,
     "vystup": 455
    }
+  },
+  "2026-11-08": {
+   "gemini-flash-lite-latest": {
+    "volani": 12,
+    "vstup": 35689,
+    "vystup": 2246
+   }
   }
  },
- "aktualizovano": "2026-11-08T06:51:09Z",
+ "aktualizovano": "2026-11-09T07:29:59Z",
  "soudy": {
   "ns": {
    "chyba": null,
-   "nalezeno": 153,
-   "nove": 2,
-   "objev": "2026-11-08T06:51:09Z"
+   "nalezeno": 132,
+   "nove": 0,
+   "objev": "2026-11-09T07:29:59Z"
   },
   "nss": {
    "chyba": null,
-   "nalezeno": 252,
+   "nalezeno": 200,
    "nove": 0,
-   "objev": "2026-11-08T06:51:09Z"
+   "objev": "2026-11-09T07:29:59Z"
   },
   "sdeu": {
    "chyba": null,
-   "nalezeno": 57,
-   "nove": 0,
-   "objev": "2026-11-08T06:51:09Z"
+   "nalezeno": 68,
+   "nove": 11,
+   "objev": "2026-11-09T07:29:59Z"
   },
   "us": {
    "chyba": null,
    "nalezeno": 112,
    "nove": 0,
-   "objev": "2026-11-08T06:51:09Z"
+   "objev": "2026-11-09T07:29:59Z"
   }
  }
 }
