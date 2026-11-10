@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T07:33:23+00:00",
+  "generated": "2026-11-10T07:57:52+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 20,
-      "stazeno": "2026-11-09T07:33:02+00:00",
+      "stazeno": "2026-11-10T07:57:24+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,10 +18,10 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 7,
-      "stazeno": "2026-11-09T07:33:06+00:00",
+      "stazeno": "2026-11-10T07:57:28+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "d30a564d7befcd7f"
+      "otisk": "7274731146a7ffc9"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-11-09T07:33:12+00:00",
+      "stazeno": "2026-11-10T07:57:33+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "479936e8d83c6861"
+      "otisk": "97bc0ddd22565daf"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-11-09T07:33:17+00:00",
+      "stazeno": "2026-11-10T07:57:34+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -62,10 +62,10 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-11-09T07:33:17+00:00",
+      "stazeno": "2026-11-10T07:57:39+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "45f0e28f589d7dcd"
+      "otisk": "c6f425e1a83fdab1"
     }
   },
   "formy": {
@@ -74,28 +74,6 @@
     "hybridne": "Hybridně"
   },
   "akce": [
-    {
-      "id": "b07ba5dc0b19453a4596",
-      "poradatel": "PFUK",
-      "datum": "2026-09-25",
-      "zacatek": "19:00",
-      "konec": "20:10",
-      "nazev": "Dezinformace a boj s nimi z pohledu mezinárodního práva",
-      "misto": "Velká geologická posluchárna, Přírodovědecká fakulta UK, Albertov 6, Praha 2",
-      "forma": "online",
-      "lektori": [
-        "Milan Lipovský"
-      ],
-      "cena": "",
-      "anotace": "Jak se mezinárodní právo vypořádává s dezinformacemi a je připraveno reagovat na stále sofistikovanější dezinformační kampaně? Na tyto otázky se zaměří přednáška.",
-      "url": "https://www.prf.cuni.cz/aktuality/dezinformace-a-boj-s-nimi-z-pohledu-mezinarodniho-prava-milan-lipovsky",
-      "oblasti": [
-        "mps",
-        "osobnost_media"
-      ],
-      "oblasti_klic": "d8e54ca76a7d",
-      "detail_pokusy": 1
-    },
     {
       "id": "26b349de8c038e714b32",
       "poradatel": "JCP",
@@ -1633,58 +1611,6 @@
       "detail_pokusy": 2
     },
     {
-      "id": "9595043d4c7dffdb9b52",
-      "poradatel": "EPRAVO",
-      "datum": "2026-11-10",
-      "zacatek": "10:00",
-      "konec": "12:00",
-      "nazev": "Vyhráli jste volby. Jak neprohrát u soudu? Co by měl každý zastupitel vědět, než poprvé zvedne ruku",
-      "misto": "online",
-      "forma": "online",
-      "lektori": [
-        "JUDr. Petr Toman, LL.M.",
-        "Radek Voňavka"
-      ],
-      "cena": "2 975 Kč",
-      "anotace": "Online kurz pro zastupitele o tom, co by měli vědět, aby se vyhnuli soudním sporům.",
-      "url": "https://www.epravo.cz/eshop/vyhrali-jste-volby-jak-neprohrat-u-soudu-co-by-mel-kazdy-zastupitel-vedet-nez-poprve-zvedne-ruku-online-zive-vysilani-10-11-2026-1645.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "spravni",
-        "ustavni"
-      ],
-      "oblasti_klic": "9e1fd64f9dd6"
-    },
-    {
-      "id": "170e199f4bca57c1dda8",
-      "poradatel": "EPRAVO",
-      "datum": "2026-11-10",
-      "zacatek": "13:00",
-      "konec": "16:00",
-      "nazev": "Jak získat pracovníky z Asie: Filipíny, Indonésie a Mongolsko krok za krokem",
-      "misto": "online",
-      "forma": "online",
-      "lektori": [
-        "Mgr. Petra Silovská",
-        "Tomáš Zelený"
-      ],
-      "cena": "3 975 Kč",
-      "anotace": "Online živé vysílání o procesu získávání pracovníků z vybraných asijských zemí.",
-      "url": "https://www.epravo.cz/eshop/jak-ziskat-pracovniky-z-asie-filipiny-indonesie-a-mongolsko-krok-za-krokem-online-zive-vysilani-10-11-2026-1640.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "pracovni",
-        "socialni_cizinci"
-      ],
-      "oblasti_klic": "44c9ec8e088a"
-    },
-    {
       "id": "3daca2d5b26e2e58ef6c",
       "poradatel": "EPRAVO",
       "datum": "2026-11-11",
@@ -1716,7 +1642,7 @@
       "konec": "15:00",
       "nazev": "Jak propagovat svoje projekty a služby prakticky s AI",
       "misto": "Celetná 13, Praha 1",
-      "forma": "online",
+      "forma": "prezencne",
       "lektori": [],
       "cena": "",
       "anotace": "Praktický workshop zaměřený na využití umělé inteligence při tvorbě obsahu, marketingové komunikace a plánování propagace. Ukážeme si práci s ChatGPT, Canvou a tvorbu 30denního obsahového plánu.",
@@ -1876,6 +1802,32 @@
       "oblasti_klic": "6466ea0d9ce4"
     },
     {
+      "id": "ba0d056bd34eb48d694a",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-13",
+      "zacatek": "09:00",
+      "konec": "12:00",
+      "nazev": "AI pod kontrolou: praktický průvodce zaváděním AI ve firmách",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "JUDr. Tomáš Lupač",
+        "JUDr. Dalibor Kovář"
+      ],
+      "cena": "3 975 Kč",
+      "anotace": "Seminář poskytující praktický návod pro bezpečné zavádění umělé inteligence v podnikové praxi.",
+      "url": "https://www.epravo.cz/eshop/ai-pod-kontrolou-prakticky-pruvodce-zavadenim-ai-ve-firmach-online-zive-vysilani-13-11-2026-1604.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "it",
+        "korporace"
+      ],
+      "oblasti_klic": "6bd09b6c85fe"
+    },
+    {
       "id": "87b634e4ed40b4d9824c",
       "poradatel": "PFUK",
       "datum": "2026-11-13",
@@ -1964,6 +1916,31 @@
         "stavebni_zp"
       ],
       "oblasti_klic": "9bb23f7bc2d5"
+    },
+    {
+      "id": "102c4dc9f57d0a8cde47",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-18",
+      "zacatek": "13:00",
+      "konec": "16:00",
+      "nazev": "AI v due diligence a nemovitostních transakcích",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "Mgr. Miroslav Chochola, LL.M., MBA"
+      ],
+      "cena": "3 975 Kč",
+      "anotace": "Odborný online kurz zaměřený na využití umělé inteligence v oblasti due diligence a při transakcích s nemovitostmi.",
+      "url": "https://www.epravo.cz/eshop/ai-v-due-diligence-a-nemovitostnich-transakcich-online-zive-vysilani-18-11-2026-1578.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "it",
+        "vecna_prava"
+      ],
+      "oblasti_klic": "5b5cad726b45"
     },
     {
       "id": "2265fad160f5006426f5",
@@ -2172,6 +2149,28 @@
       "oblasti_klic": "2f20de72c458"
     },
     {
+      "id": "1a813a85d9436d1d08cf",
+      "poradatel": "PFUK",
+      "datum": "2026-11-26",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "PRIAC DAY 26. 11. 2026 (5. ročník)",
+      "misto": "nám. Curieových 901/7, Praha 1",
+      "forma": "prezencne",
+      "lektori": [],
+      "cena": "",
+      "anotace": "Pátý ročník konference PRIAC Day propojuje odborníky, studenty i zájemce o aktuální témata z oblasti práva a řešení sporů.",
+      "url": "https://www.prf.cuni.cz/aktuality/priac-day-26-11-2026-5-rocnik",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "civilni_proces"
+      ],
+      "oblasti_klic": "5441bb9947cb"
+    },
+    {
       "id": "3c8c55624cf144b82d56",
       "poradatel": "CAK",
       "datum": "2026-11-26",
@@ -2280,27 +2279,6 @@
         "pracovni"
       ],
       "oblasti_klic": "d9f7e88b60b9"
-    },
-    {
-      "id": "904dce31b26cf1160eda",
-      "poradatel": "PFUK",
-      "datum": "2026-12-03",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "Zdeněk Kučera | AI v české právní praxi",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [
-        "Zdeněk Kučera"
-      ],
-      "cena": "",
-      "anotace": "Přednáška ukáže, co umělá inteligence v právní práci skutečně zvládá, ať už v advokacii, v korporacích, nebo ve veřejném sektoru. Součástí bude ukázka use cases, které si v právní praxi může vyzkoušet každý.",
-      "url": "https://www.prf.cuni.cz/aktuality/zdenek-kucera-ai-v-ceske-pravni-praxi",
-      "detail_pokusy": 2,
-      "oblasti": [
-        "it"
-      ],
-      "oblasti_klic": "169b1e8a81ef"
     },
     {
       "id": "652d0acc4c735879e7b9",

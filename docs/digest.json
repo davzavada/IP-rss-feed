@@ -1,89 +1,15 @@
 {
-  "generated": "2026-11-09T07:33:23.627326+00:00",
+  "generated": "2026-11-10T07:57:52.744502+00:00",
   "from": "2026-10-01",
   "to": "2026-10-31",
   "total": 172,
-  "covered": 10,
+  "covered": 6,
   "cekajici": 2,
-  "intro": "Uplynulý měsíc přinesl řadu významných rozhodnutí soudů EU a českých soudů i odborných analýz, které se zaměřily na aktuální výzvy v oblasti duševního vlastnictví a IT. Do centra pozornosti se dostala zejména regulace generativní umělé inteligence, ochrana autorských práv v digitálním prostředí, pravidla pro poskytovatele digitálních služeb a posuzování ochranných známek.",
+  "intro": "Uplynulý měsíc přinesl řadu významných rozhodnutí Soudního dvora EU, českých soudů a odborných analýz se zaměřením na ochranu duševního vlastnictví, regulaci platforem a umělou inteligenci. Klíčová témata se týkala podmínek kolektivní správy práv, posuzování nebezpečí záměny ochranných známek a povinností digitálních platforem či vývoje v oblasti AI.",
   "blocks": [
     {
-      "title": "Autorské právo a AI",
-      "text": "Odborná literatura a stanoviska Max Planck Institutu se intenzivně zabývají odměňováním autorů za trénink generativní AI a navrhují zavedení zákonných licenčních schémat spojených s právem na spravedlivou odměnu. Pro praxi to znamená nutnost přípravy na nové kolektivní modely vypořádání práv při využití děl v trénovacích datech modelů umělé inteligence.",
-      "sources": [
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IIC",
-          "title": "Copyright and Generative AI: Guidance from Economic Incentive Theory for a Nuanced Regime for Author Remuneration",
-          "link": "https://doi.org/10.1007/s40319-026-01784-9"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "GRUR Int",
-          "title": "Position Statement of the Max Planck Institute of 25 June 2026 on the Future Copyright Framework in Times of Generative AI",
-          "link": "https://doi.org/10.1093/grurint/ikag093"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "QMJIP",
-          "title": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
-          "link": "https://doi.org/10.4337/qmjip.2026.03.01"
-        }
-      ]
-    },
-    {
-      "title": "Ochranné známky a zlá víra",
-      "text": "Tribunál SDEU v několika rozhodnutích potvrdil, že podání přihlášky ochranné známky krátce po uplynutí ochranné lhůty dřívější známky bez legitimního obchodního důvodu naplňuje znaky přihlášky ve zlé víře. Pro praxi to představuje jasné varování před zneužíváním formálních procesních kroků k obcházení povinnosti prokázat skutečné užívání starších značek.",
-      "sources": [
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-541/25 – Qingdao Ecopure Filter v. EUIPO - Waterdrop Microdrink (Waterdrop)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0541"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-650/25 – Vacu Activ Marcin Leśniak v. EUIPO - Lakhomoff a AR Group Roman Tchir (VACUACTIVUS)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TO0650"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-564/25 – Reinwald a HK Evolution v. EUIPO - International Nutrition Research Center (MAP)",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0564"
-        }
-      ]
-    },
-    {
-      "title": "Regulace digitálních služeb",
-      "text": "Soudní dvůr EU a Tribunál řešily aplikaci Aktu o digitálních službách (DSA) na platformy a přístup k dokumentům o výpočtu aktivních uživatelů. Judikatura potvrzuje oprávněnost Komise opírat se o spolehlivé údaje třetích stran a chrání obchodní tajemství platforem při dohledu.",
-      "sources": [
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-134/24 – Technius v. Komise",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0134"
-        },
-        {
-          "src": "sdeu",
-          "label": "SDEU",
-          "tag": "",
-          "title": "T-203/24 – Zalando v. Komise",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0203"
-        }
-      ]
-    },
-    {
-      "title": "Kolektivní správa práv",
-      "text": "Soudní dvůr EU rozhodl, že organizace kolektivní správy nemohou financovat sociální a kulturní služby pro ne-nositele práv z běžně vybraných příjmů před jejich rozdělením, ale pouze z nerozdělitelných částek. Tento závěr mění finanční modely fungování kolektivních správců a vyžaduje úpravu jejich vnitřních předpisů.",
+      "title": "Financování kolektivní správy",
+      "text": "Soudní dvůr EU rozhodl, že organizace kolektivní správy nesmí financovat sociální či kulturní služby pro ne-nositele práv ze srážek z vybraných příjmů před jejich rozdělením. Takové financování je přípustné pouze z nerozdělitelných částek, což posiluje ochranu vlastníků práv.",
       "sources": [
         {
           "src": "sdeu",
@@ -95,18 +21,64 @@
       ]
     },
     {
-      "title": "Ochrana osobních údajů v AI",
-      "text": "Generální advokát SDEU ve věci Universal Versand konstatoval, že automatizované profilování platební schopnosti pro účely uzavření smlouvy spadá pod zákaz dle GDPR. Pro praxi poskytovatelů finančních a online služeb to znamená přísnější posuzování přípustnosti plně automatizovaných schvalovacích procesů.",
+      "title": "Selektivní distribuce kosmetiky",
+      "text": "Nejvyšší soud potvrdil, že podmínky selektivního distribučního systému luxusní kosmetiky vylučující prodejce s porušením ochranných známek v minulosti nepředstavují zakázané omezení hospodářské soutěže. Toto rozhodnutí poskytuje značkám větší jistotu při ochraně jejich distribučních sítí a reputace.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IIC",
+          "title": "“Chanel” – Decision of the Supreme Court of the Czech Republic (Nejvyšší soud) 30 April 2025 – Case No. 23 Cdo 1504/2024",
+          "link": "https://doi.org/10.1007/s40319-026-01792-9"
+        }
+      ]
+    },
+    {
+      "title": "Zlá víra při přihlášce",
+      "text": "Tribunál EU potvrdil, že přihlášení téměř totožné ochranné známky krátce po uplynutí ochranné lhůty dřívější známky bez legitimního obchodního důvodu naplňuje znaky přihlášky ve zlé víře. Cílem takového jednání je zpravidla obejít povinnost prokazovat skutečné užívání, což soudy nekompromisně postihují.",
       "sources": [
         {
           "src": "sdeu",
           "label": "SDEU",
           "tag": "",
-          "title": "C-568/25 – Universal Versand",
-          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0568"
+          "title": "T-541/25 – Qingdao Ecopure Filter v. EUIPO - Waterdrop Microdrink (Waterdrop)",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0541"
+        }
+      ]
+    },
+    {
+      "title": "Odpovědnost za zpracování údajů",
+      "text": "Nejvyšší správní soud dovodil, že sdělení o nevyhovění žádosti o výmaz osobních údajů policií je rozhodnutím, nikoliv pouhým faktickým úkonem. Proti takovému postupu je tak nutno brojit žalobou proti rozhodnutí, nikoliv zásahovou žalobou.",
+      "sources": [
+        {
+          "src": "nss",
+          "label": "NSS",
+          "tag": "",
+          "title": "22 As 168/2026-30",
+          "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786472"
+        }
+      ]
+    },
+    {
+      "title": "Autorské právo a platformy",
+      "text": "Odborné studie a judikatura se zaměřily na rostoucí tlak na digitální platformy v souvislosti s Aktem o digitálních službách (DSA) a autorskými právy. Důraz je klladen na dodržování transparentnosti při moderování obsahu a na ochranu nezletilých tvůrců čelících smluvní asymetrii.",
+      "sources": [
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "JIPITEC",
+          "title": "Social Media Bans and the Digital Services Act: A Critical Analysis of Statement of Reasons and Online Dispute Resolution",
+          "link": "https://www.jipitec.eu/jipitec/article/view/467"
+        },
+        {
+          "src": "journals",
+          "label": "Časopis",
+          "tag": "IJLIT",
+          "title": "The Liability Paradox: copyright ownership, contractual incapacity, and platform exploitation of minor creators under the DSM Directive and DSA",
+          "link": "https://doi.org/10.1093/ijlit/eaag016"
         }
       ]
     }
   ],
-  "input_hash": "988a9f4c7cfe751a0c8c0a1932d988f0e327b43ebe435e80fa73765aa6996414"
+  "input_hash": "6a7863a5a45a902570a394e99cfdf59c800812418e2845964a15b7216cc22684"
 }
