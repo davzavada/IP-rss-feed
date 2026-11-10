@@ -1,8 +1,178 @@
 {
- "generated": "2026-11-07T06:44:25Z",
+ "generated": "2026-11-10T07:55:06Z",
  "soud": "nss",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "nss:787262",
+   "spz": "Vol 12/2026-22",
+   "ecli": "ECLI:CZ:NSS:2026:Vol.12.2026.22",
+   "druh": "usnesení",
+   "datum": "2026-11-09",
+   "zverejneno": "2026-11-10",
+   "first_seen": "2026-11-10T07:55:06Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787262",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787262",
+   "soudce": "Vojtěch Šimíček",
+   "heslo": "Aktivní legitimace k návrhu na neplatnost volby kandidáta",
+   "shrnuti": "Navrhovatel se u Nejvyššího správního soudu domáhal vyslovení neplatnosti volby senátora, aniž by byl osobou k tomu aktivně legitimovanou. Soud řešil otázku, zda může návrh podat kandidát sám za sebe nebo volič mimo příslušný volební obvod, a dospěl k závěru, že nikoliv, neboť aktivní legitimace svědčí jen registrovaným volebním stranám a voličům zapsaným v daném volebním obvodu.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:769322",
+   "spz": "12 Ksz 3/2023-191",
+   "ecli": "ECLI:CZ:NSS:2026:12.Ksz.3.2023.191",
+   "druh": "rozhodnutí",
+   "senat": 12,
+   "rejstrik": "Ksz",
+   "datum": "2026-01-22",
+   "zverejneno": "2026-11-10",
+   "first_seen": "2026-11-10T07:55:06Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/769322",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/769322",
+   "soudce": "Petr Mikeš",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
+  },
+  {
+   "id": "nss:769298",
+   "spz": "12 Ksz 6/2024-54",
+   "ecli": "ECLI:CZ:NSS:2026:12.Ksz.6.2024.54",
+   "druh": "rozhodnutí",
+   "senat": 12,
+   "rejstrik": "Ksz",
+   "datum": "2026-01-22",
+   "zverejneno": "2026-11-10",
+   "first_seen": "2026-11-10T07:55:06Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/769298",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/769298",
+   "soudce": "Petr Mikeš",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
+  },
+  {
+   "id": "nss:747929",
+   "spz": "12 Ksz 7/2024-185",
+   "ecli": "ECLI:CZ:NSS:2025:12.Ksz.7.2024.185",
+   "druh": "rozhodnutí",
+   "senat": 12,
+   "rejstrik": "Ksz",
+   "datum": "2025-12-11",
+   "zverejneno": "2026-11-10",
+   "first_seen": "2026-11-10T07:55:06Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/747929",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/747929",
+   "soudce": "Ondřej Mrákota",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
+  },
+  {
+   "id": "nss:787259",
+   "spz": "22 Afs 171/2026-75",
+   "ecli": "ECLI:CZ:NSS:2026:22.Afs.171.2026.75",
+   "druh": "rozsudek",
+   "senat": 22,
+   "rejstrik": "Afs",
+   "datum": "2026-11-09",
+   "zverejneno": "2026-11-09",
+   "first_seen": "2026-11-10T07:55:06Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787259",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787259",
+   "soudce": "Tomáš Foltas",
+   "heslo": "Zastoupení realitní kanceláře a povinnosti dle AML zákona",
+   "shrnuti": "Společnost Molík reality se soudila s Ministerstvem financí o přezkum rozhodnutí, kterým jí byla uložena pokuta za přestupky podle AML zákona. Nejvyšší správní soud posuzoval otázku včasnosti identifikace klientů, rozsahu kontroly a posouzení likvidační povahy sankce. Dospěl k závěru, že kasační stížnost není důvodná, neboť správní orgány i městský soud postupovaly správně.",
+   "oblasti": [
+    "finance",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787257",
+   "spz": "6 Azs 181/2026-24",
+   "ecli": "ECLI:CZ:NSS:2026:6.Azs.181.2026.24",
+   "druh": "rozsudek",
+   "senat": 6,
+   "rejstrik": "Azs",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-09",
+   "first_seen": "2026-11-10T07:55:06Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787257",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787257",
+   "soudce": "Filip Dienstbier",
+   "heslo": "Pozdní podání přiznání vylučuje zvláštní dlouhodobý pobyt",
+   "shrnuti": "Žalobci se domáhali určení nezákonnosti postupu Ministerstva vnitra, které je nevyznačilo do seznamu zájemců o zvláštní dlouhodobý pobyt podle zákona o opatřeních v souvislosti s ozbrojeným konfliktem na Ukrajině (tzv. lex Ukrajina). Nejvyšší správní soud řešil otázku, zda lze pro splnění příjmových podmínek zohlednit daňové přiznání podané po stanoveném termínu, a dospěl k závěru, že zákon takový postup neumožňuje.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787256",
+   "spz": "6 Azs 164/2026-22",
+   "ecli": "ECLI:CZ:NSS:2026:6.Azs.164.2026.22",
+   "druh": "rozsudek",
+   "senat": 6,
+   "rejstrik": "Azs",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-09",
+   "first_seen": "2026-11-10T07:55:06Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787256",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787256",
+   "soudce": "Štěpán Výborný",
+   "heslo": "Přezkum rozhodnutí o azylu vyžaduje vyhodnocení nových zpráv",
+   "shrnuti": "Ministerstvo vnitra zamítlo žádost nezletilé žalobkyně o mezinárodní ochranu odvíjející se od situace její matky prchající před domácím násilím v Gruzii. Městský soud zrušil rozhodnutí a doplnil dokazování o zprávy o zemi původu, nicméně Nejvyšší správní soud jeho rozsudek zrušil pro nepřezkoumatelnost, neboť soud řádně nevyhodnotil provedené důkazy a dospěl k vnitřně rozporným závěrům ohledně závazného právního názoru.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787255",
+   "spz": "6 Afs 144/2026-32",
+   "ecli": "ECLI:CZ:NSS:2026:6.Afs.144.2026.32",
+   "druh": "rozsudek",
+   "senat": 6,
+   "rejstrik": "Afs",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-09",
+   "first_seen": "2026-11-10T07:55:06Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787255",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787255",
+   "soudce": "Veronika Juřičková",
+   "heslo": "Nesplnění podmínek dotační politiky nepředstavuje správní trest",
+   "shrnuti": "VÝROBA KRMIV se soudila s Ministerstvem zemědělství kvůli nepřiznání dotace na chov prasat pro rok 2024, jelikož porušila zákon na ochranu zvířat proti týrání. Soud řešil otázku, zda se na řízení o žádosti o dotaci uplatní zásada použití pozdější příznivější právní úpravy podle čl. 40 odst. 6 Listiny a zda je neposkytnutí dotace sankcí. Nejvyšší správní soud dospěl k závěru, že neposkytnutí dotace pro nesplnění dotačních podmínek není trestem, a proto se tato zásada nepoužije.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
   {
    "id": "nss:787189",
    "spz": "1 Afs 54/2026-48",
