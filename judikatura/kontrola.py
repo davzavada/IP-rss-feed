@@ -134,6 +134,7 @@ def zkontroluj(soudy=model.SOUDY, data_dir=DATA_DIR, web_dir=WEB_DIR, tax=None):
         for id_ in index.keys() - zaznamy.keys():
             varovani.append(f"{soud}: {id_} je v indexu, ale v archivu ne")
         _okno(os.path.join(web_dir, f"{soud}.json"), soud, zaznamy, tax, chyby, varovani)
+        _okno(os.path.join(web_dir, f"{soud}-starsi.json"), soud, zaznamy, tax, chyby, varovani)
     return chyby, varovani
 
 

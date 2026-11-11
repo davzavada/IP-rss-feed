@@ -62,6 +62,14 @@ def okno_od(now=None):
     return datetime(rok, mesic, 1, tzinfo=PRAHA).astimezone(timezone.utc)
 
 
+def okno_starsi_od(now=None):
+    """Začátek měsíce před oknem webu (6. 11. → 1. 9.). Ten měsíc web
+    neukazuje hned, čtenář si ho může na stránce zdroje rozbalit."""
+    od = okno_od(now).astimezone(PRAHA)
+    rok, mesic = (od.year, od.month - 1) if od.month > 1 else (od.year - 1, 12)
+    return datetime(rok, mesic, 1, tzinfo=PRAHA).astimezone(timezone.utc)
+
+
 def okno_od_den(od):
     """Začátek okna jako pražské datum ('2026-10-01') – do JSONu pro web."""
     return od.astimezone(PRAHA).date().isoformat()

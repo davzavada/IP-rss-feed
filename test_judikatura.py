@@ -88,8 +88,13 @@ NYNI = dt("2026-09-24T05:00:00Z")
 check("zveřejněné dnes je nové", model.prvni_vyskyt("2026-09-24", NYNI, False) == NYNI)
 check("zveřejněné předevčírem je taky nové (běhy chodí řídce)",
       model.prvni_vyskyt("2026-09-22", NYNI, False) == NYNI)
-check("objevené po víc než třech dnech dostane datum zveřejnění",
-      model.prvni_vyskyt("2026-09-10", NYNI, False) == dt("2026-09-10T12:00:00Z"))
+check("lomítko navíc za značkou z desky nemění klíč",
+      model.normalizuj_spz("30 Cdo 239 / 2026/") == "30 Cdo 239/2026"
+      and model.spz_klic("30 Cdo 239/2026/") == model.spz_klic("30 Cdo 239/2026"))
+check("objevené do dvou týdnů od zveřejnění je pořád novinka (výpadek soudu, vynechané běhy)",
+      model.prvni_vyskyt("2026-09-16", NYNI, False) == NYNI)
+check("objevené po víc než dvou týdnech dostane datum zveřejnění",
+      model.prvni_vyskyt("2026-09-05", NYNI, False) == dt("2026-09-05T12:00:00Z"))
 check("při náběhu se bere datum zveřejnění",
       model.prvni_vyskyt("2026-09-23", NYNI, True) == dt("2026-09-23T12:00:00Z"))
 check("první výskyt nikdy není v budoucnosti",
@@ -381,6 +386,9 @@ check("v okně je celý předchozí měsíc a nic staršího",
       sorted(z["id"] for z in sk3.v_okne(NYNI)) == ["ns:srpen", "ns:zari"])
 check("okno pro web nese začátek okna",
       sk3.exportuj(NYNI) and json.load(open(sk3.web, encoding="utf-8"))["okno_od"] == "2026-08-01")
+check("měsíc před oknem má vlastní soubor (rozbalení staršího měsíce na webu)",
+      json.load(open(sk3.web_starsi, encoding="utf-8"))["okno_od"] == "2026-07-01"
+      and fc.okno_starsi_od(dt("2027-01-05T10:00:00Z")) == dt("2026-10-31T23:00:00Z"))
 
 
 class FalesnySklad:
@@ -623,15 +631,15 @@ check("další běhy hledají deset dní zpět", a.objev_od[-1] == (DRUHY_DEN - 
 check("známá rozhodnutí se nezdvojí, nová přibudou", souhrn["ns"]["nove"] == 2 and len(arch) == 5, str(souhrn))
 check("detail se stahuje jen u nových", sorted(a.doplneno) == ["ns:4", "ns:5", "ns:6"], str(a.doplneno))
 check("bez detailu (a data zveřejnění) záznam počká na další běh", "ns:6" not in arch)
-check("dnešní je nové, pozdě objevené staré ne",
-      arch["ns:4"]["first_seen"] == model.iso(DRUHY_DEN) and arch["ns:5"]["first_seen"] == "2026-09-15T12:00:00Z")
+check("dnešní je nové a pozdě objevené (deset dní po zveřejnění) taky",
+      arch["ns:4"]["first_seen"] == model.iso(DRUHY_DEN) and arch["ns:5"]["first_seen"] == model.iso(DRUHY_DEN))
 check("známému se doplní PDF, shrnutí zůstane",
       arch["ns:1"]["pdf"].endswith("1.pdf") and arch["ns:1"]["ai"]["shrnuti"] == SHRNUTI)
 check("AI jen pro nová", souhrn["ai"] == 2 and len(volani) == 2, str(souhrn))
 a.bez_detailu = set()
 beh({"ns": a}, DRUHY_DEN + timedelta(hours=2))
-check("příští běh ho přidá se správným prvním výskytem",
-      archiv()["ns:6"]["first_seen"] == "2026-09-16T12:00:00Z")
+check("příští běh ho přidá jako novinku toho běhu",
+      archiv()["ns:6"]["first_seen"] == model.iso(DRUHY_DEN + timedelta(hours=2)))
 a.zaznamy = [z for z in a.zaznamy if z["id"] != "ns:6"]
 
 # Úřední deska: rozsudek je vyhlášený dřív, než ho zveřejní databáze.

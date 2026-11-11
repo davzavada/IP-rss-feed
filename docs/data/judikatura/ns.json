@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-11T07:24:15Z",
+ "generated": "2026-11-11T19:18:52Z",
  "soud": "ns",
  "okno_od": "2026-10-01",
  "polozky": [
@@ -6422,26 +6422,6 @@
    "procesni": false
   },
   {
-   "id": "ns:5EE5C11DEB7A0EDAC1258E97004D25F7",
-   "spz": "30 Cdo 239/2026",
-   "ecli": "ECLI:CZ:NS:2026:30.CDO.239.2026.1",
-   "druh": "rozsudek",
-   "senat": 30,
-   "rejstrik": "Cdo",
-   "datum": "2026-09-24",
-   "zverejneno": "2026-10-21",
-   "first_seen": "2026-10-22T03:16:17Z",
-   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/5EE5C11DEB7A0EDAC1258E97004D25F7?openDocument",
-   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/87B20FCCCBD018E6C1258E97004D3C9D/$file/30%20Cdo%20239_2026.pdf?openElement",
-   "heslo": "Složitost řízení při určení přiměřeného zadostiučinění",
-   "shrnuti": "Žalobce se domáhal přiměřeného zadostiučinění za nemajetkovou újmu způsobenou nepřiměřenou délkou soudního řízení. Nejvyšší soud řešil otázku posouzení kritéria složitosti řízení a dospěl k závěru, že odvolací soud zatížil své rozhodnutí vadou, pokud opomněl toto zákonné kritérium při stanovení výše zadostiučinění hodnotit.",
-   "oblasti": [
-    "skoda",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
    "id": "ns:5D5BE434FD13B2A9C1258E97004D25BF",
    "spz": "7 Tdo 896/2026",
    "ecli": "ECLI:CZ:NS:2026:7.TDO.896.2026.1",
@@ -6598,6 +6578,26 @@
     "finance",
     "zavazky",
     "skoda"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:5EE5C11DEB7A0EDAC1258E97004D25F7",
+   "spz": "30 Cdo 239/2026",
+   "ecli": "ECLI:CZ:NS:2026:30.CDO.239.2026.1",
+   "druh": "rozsudek",
+   "senat": 30,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-24",
+   "zverejneno": "2026-10-21",
+   "first_seen": "2026-10-03T03:46:48Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/5EE5C11DEB7A0EDAC1258E97004D25F7?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/87B20FCCCBD018E6C1258E97004D3C9D/$file/30%20Cdo%20239_2026.pdf?openElement",
+   "heslo": "Složitost řízení při určení přiměřeného zadostiučinění",
+   "shrnuti": "Žalobce se domáhal přiměřeného zadostiučinění za nemajetkovou újmu způsobenou nepřiměřenou délkou soudního řízení. Nejvyšší soud řešil otázku posouzení kritéria složitosti řízení a dospěl k závěru, že odvolací soud zatížil své rozhodnutí vadou, pokud opomněl toto zákonné kritérium při stanovení výše zadostiučinění hodnotit.",
+   "oblasti": [
+    "skoda",
+    "civilni_proces"
    ],
    "procesni": false
   },
@@ -12869,25 +12869,6 @@
     "civilni_proces"
    ],
    "procesni": true
-  },
-  {
-   "id": "ns:deska:30cdo239/2026/",
-   "spz": "30 Cdo 239/2026/",
-   "druh": "rozsudek",
-   "senat": 30,
-   "rejstrik": "Cdo",
-   "datum": "2026-10-02",
-   "zverejneno": "2026-10-02",
-   "first_seen": "2026-10-03T03:46:48Z",
-   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_30_Cdo_239_2026.pdf",
-   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_30_Cdo_239_2026.pdf",
-   "heslo": "Složitost řízení při určení přiměřeného zadostiučinění",
-   "shrnuti": "Žalobce se domáhá přiměřeného zadostiučinění za nemajetkovou újmu způsobenou nepřiměřenou délkou řízení proti České republice – Ministerstvu spravedlnosti. Nejvyšší soud řešil otázku, zda se odvolací soud řádně vypořádal s kritériem složitosti řízení při stanovení výše zadostiučinění. Rozhodl, že napadené rozhodnutí je neúplné a nesprávné, protože odvolací soud toto kritérimum opomněl hodnotit.",
-   "oblasti": [
-    "skoda",
-    "civilni_proces"
-   ],
-   "procesni": false
   },
   {
    "id": "ns:FE522F94F5DFBB0FC1258E8700374A7F",

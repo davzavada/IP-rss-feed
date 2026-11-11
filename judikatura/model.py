@@ -64,9 +64,12 @@ def normalizuj_spz(spz):
     """Zobrazovací tvar: „23 Cdo 418 / 2026" -> „23 Cdo 418/2026".
 
     Úřední deska NS píše kolem lomítka mezery, databáze ne; dřív se kvůli
-    tomu stejné rozhodnutí vedlo dvakrát."""
+    tomu stejné rozhodnutí vedlo dvakrát. Lomítko navíc na konci se zahodí."""
     s = re.sub(r"\s+", " ", str(spz or "")).strip()
     s = re.sub(r"\s*/\s*", "/", s)
+    # Deska občas za značkou nechá lomítko („30 Cdo 239/2026/") – značka by
+    # pak měla jiný klíč než v databázi a rozhodnutí by bylo na webu dvakrát.
+    s = s.rstrip("/ ")
     return re.sub(r"\s*-\s*([IVX]+\.?)$", r" - \1", s)
 
 
@@ -149,13 +152,21 @@ def sloucit(stary, novy):
     return zmena
 
 
+# Po kolika dnech od zveřejnění už nově objevené rozhodnutí není novinka.
+# Soudy se prohledávají deset dní zpět; co se v tom okně najde později (soud
+# pár dní nešel, běh vypadl, detail se odložil), má se v Novinkách ukázat.
+STARE_NOVINKY_DNI = 14
+
+
 def prvni_vyskyt(zverejneno, nyni, bootstrap):
     """Kdy záznam „poprvé přibyl".
 
-    Běžně teď. Když ale objevíme rozhodnutí zveřejněné před víc než třemi dny
-    (náběh, vynechané běhy, NSS znovu vystaví starý dokument), bereme datum
-    zveřejnění – jinak by se staré věci tvářily jako novinky."""
+    Běžně teď – i když soud rozhodnutí zveřejnil před pár dny a sběr ho našel
+    až dnes (výpadek webu soudu, vynechaný běh); jinak by zapadlo do měsíčního
+    seznamu, aniž by kdy bylo v Novinkách. Datum zveřejnění se bere při náběhu
+    a u starého rozhodnutí (NSS znovu vystaví starý dokument) – ta by se
+    jinak tvářila jako novinky."""
     dt = poledne(zverejneno)
-    if dt and (bootstrap or dt < nyni - timedelta(days=3)):
+    if dt and (bootstrap or dt < nyni - timedelta(days=STARE_NOVINKY_DNI)):
         return min(dt, nyni)
     return nyni

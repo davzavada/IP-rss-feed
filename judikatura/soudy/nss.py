@@ -47,7 +47,10 @@ POLE_ZPRISTUPNENI = "aktualizovano"   # technický název pole „Datum zpříst
 MAX_STRAN = 150      # pojistka: 40 + 150 × 20 řádků je víc, než NSS vydá za měsíc
 MIN_TEXT = 500       # usnesení o nepřijatelnosti bývají krátká, ale ne tolik
 ZNAK_TEXTU = "správní soud"   # text rozhodnutí, ne chybová stránka (malými písmeny)
-STARE_DNI = 365      # starší rozhodnutí zpřístupněné znovu není novinka
+# Rozhodnutí zpřístupněné déle než tolik dní po vydání není novinka: NSS
+# běžně zveřejňuje do dvou týdnů, pozdější zpřístupnění bývá znovuvystavení
+# staršího dokumentu (hromadně třeba kárná rozhodnutí z minulých let).
+STARE_DNI = 90
 
 # Senáty NSS ve výběru „Soud (senát)". Ostatní položky jsou krajské soudy
 # (i jejich pobočky) a kárné soudy obecného soudnictví.

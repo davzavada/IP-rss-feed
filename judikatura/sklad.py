@@ -103,6 +103,8 @@ class Sklad:
         self.soud = soud
         self.dir = os.path.join(data_dir, soud)
         self.web = os.path.join(web_dir, f"{soud}.json")
+        # Měsíc před oknem – web ho stahuje, až když si ho čtenář rozbalí.
+        self.web_starsi = os.path.join(web_dir, f"{soud}-starsi.json")
         self.index = {}        # id -> měsíc (celá historie)
         self.zaznamy = {}      # id -> záznam (načtené měsíce)
         self._mesic = {}       # id -> měsíc souboru, kde záznam leží
@@ -222,9 +224,43 @@ class Sklad:
                                 z.get("first_seen") or "", z["id"]), reverse=True)
         return out
 
+    def starsi(self, nyni):
+        """Záznamy s prvním výskytem v měsíci před oknem, nejnovější nahoře."""
+        od, do = fc.okno_starsi_od(nyni), fc.okno_od(nyni)
+        self._nacti_mesic(model.mesic(od))
+        self._nacti_mesic(model.mesic(do - timedelta(seconds=1)))
+        out = []
+        for z in self.zaznamy.values():
+            prvni = model.z_iso(z.get("first_seen"))
+            if prvni and od <= prvni < do and not z.get("nahrazeno"):
+                out.append(z)
+        out.sort(key=lambda z: (z.get("zverejneno") or z.get("first_seen") or "",
+                                z.get("first_seen") or "", z["id"]), reverse=True)
+        return out
+
+    def exportuj_starsi(self, nyni):
+        """Zapíše měsíc před oknem ({soud}-starsi.json), když se změnil."""
+        obsah = {"soud": self.soud, "okno_od": fc.okno_od_den(fc.okno_starsi_od(nyni)),
+                 "polozky": [slim(z) for z in self.starsi(nyni)]}
+        if os.path.exists(self.web_starsi):
+            try:
+                with open(self.web_starsi, encoding="utf-8") as f:
+                    stary = json.load(f)
+                stary.pop("generated", None)
+                if stary == obsah:
+                    return False
+            except (ValueError, OSError):
+                pass
+        data = {"generated": model.iso(nyni), **obsah}
+        zapis_atomicky(self.web_starsi, json.dumps(data, ensure_ascii=False, indent=1) + "\n")
+        return True
+
     def exportuj(self, nyni, okno_dni=None):
         """Zapíše okno pro web. Jen když se obsah opravdu změnil – jinak by
-        každý běh měnil čas a spouštěl commit i deploy. Vrací True při zápisu."""
+        každý běh měnil čas a spouštěl commit i deploy. Vrací True při zápisu.
+        S běžným oknem (bez `okno_dni`) zapíše i měsíc před ním."""
+        if okno_dni is None:
+            self.exportuj_starsi(nyni)
         polozky = [slim(z) for z in self.v_okne(nyni, okno_dni)]
         # okno_od: pražské datum začátku okna – web podle něj píše období
         # a dělí seznam po měsících. Mění se jednou za měsíc, ne každý běh.

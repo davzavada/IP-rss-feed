@@ -1878,11 +1878,19 @@ def main():
     #    přehledů a archivem najednou, s keší rozhodnutí z minulých běhů.
     print("Klasifikace fyzických osob…")
     kes = nacti_osoby_kes()
+    s_ucastniky = {id(it) for p in prehledy for it in p[2] if it.get("ucastnici")}
     redact_osoby([it for p in prehledy for it in p[2] if it.get("ip")],
                  output["jednani"], kes)
     uloz_osoby_kes(kes)
 
     for court, cfg, items, period, zdroj, stav, otisk in prehledy:
+        # Když AI u některého jména nerozhodla, jednání se uložilo bez
+        # účastníků. Otisk přehledu se pak neukládá – jinak by další běh
+        # dokument přeskočil jako nezměněný a jména by se už nedoplnila.
+        if otisk and any(id(it) in s_ucastniky and not it.get("ucastnici") for it in items):
+            print(f"  [{court}] některá jednání jsou bez účastníků (AI nerozhodla) "
+                  f"– přehled se příště přečte znovu")
+            otisk = None
         merge_output(output, court, items, period, zdroj, cfg,
                      mazat=stav == PREHLED_OK, redigovat=False, otisk=otisk)
 
