@@ -91,9 +91,9 @@
   },
   "2026-11-10": {
    "gemini-flash-lite-latest": {
-    "volani": 83,
-    "vstup": 447836,
-    "vystup": 15977
+    "volani": 102,
+    "vstup": 622088,
+    "vystup": 19863
    },
    "gemma-4-31b-it": {
     "volani": 1,
@@ -102,34 +102,34 @@
    }
   }
  },
- "aktualizovano": "2026-11-10T07:55:06Z",
+ "aktualizovano": "2026-11-11T07:24:15Z",
  "soudy": {
   "ns": {
    "chyba": null,
-   "nalezeno": 144,
-   "nove": 19,
-   "objev": "2026-11-10T07:55:06Z"
+   "nalezeno": 150,
+   "nove": 11,
+   "objev": "2026-11-11T07:24:15Z"
   },
   "nss": {
    "chyba": null,
-   "nalezeno": 334,
-   "nove": 156,
-   "objev": "2026-11-10T07:55:06Z",
+   "nalezeno": 347,
+   "nove": 6,
+   "objev": "2026-11-11T07:24:15Z",
    "varovani": [
-    "načteno jen 3040 z 18131 výsledků"
+    "načteno jen 3040 z 18185 výsledků"
    ]
   },
   "sdeu": {
    "chyba": null,
-   "nalezeno": 68,
-   "nove": 0,
-   "objev": "2026-11-10T07:55:06Z"
+   "nalezeno": 69,
+   "nove": 1,
+   "objev": "2026-11-11T07:24:15Z"
   },
   "us": {
    "chyba": null,
    "nalezeno": 174,
-   "nove": 62,
-   "objev": "2026-11-10T07:55:06Z"
+   "nove": 0,
+   "objev": "2026-11-11T07:24:15Z"
   }
  }
 }

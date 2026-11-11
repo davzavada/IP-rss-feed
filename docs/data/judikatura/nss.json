@@ -1,8 +1,129 @@
 {
- "generated": "2026-11-10T07:55:06Z",
+ "generated": "2026-11-11T07:24:15Z",
  "soud": "nss",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "nss:787298",
+   "spz": "21 Afs 43/2026-43",
+   "ecli": "ECLI:CZ:NSS:2026:21.Afs.43.2026.43",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "Afs",
+   "datum": "2026-11-10",
+   "zverejneno": "2026-11-10",
+   "first_seen": "2026-11-11T07:24:15Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787298",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787298",
+   "soudce": "Faisal Husseini",
+   "heslo": "Změna zdanění nájmu nemovitosti a úprava odpočtu",
+   "shrnuti": "Žalobkyně se u správních soudů domáhala zrušení rozhodnutí Odvolacího finančního ředitelství, kterým jí byla v rámci roční úpravy u dlouhodobého majetku upravena výše odpočtu DPH. Nejvyšší správní soud řešil otázku, zda změna § 56a odst. 3 zákona o DPH s účinností od 1. 1. 2021 vylučující zdanění nájmu bytů zakládá nepřípustnou retroaktivitu ve vztahu k dříve uzavřeným nájemním smlouvám a dříve uplatněnému odpočtu. Soud dospěl k závěru, že nová právní úprava dopadá na plnění uskutečněná po 1. 1. 2021 a povinnost provést roční úpravu odpočtu nepředstavuje nepřípustnou retroaktivitu.",
+   "oblasti": [
+    "dane",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787297",
+   "spz": "Nao 162/2026-13",
+   "ecli": "ECLI:CZ:NSS:2026:Nao.162.2026.13",
+   "druh": "usnesení",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-10",
+   "first_seen": "2026-11-11T07:24:15Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787297",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787297",
+   "soudce": "Filip Dienstbier",
+   "heslo": "Námitka podjatosti soudců pro dřívější kolegiální vztahy",
+   "shrnuti": "Žalobce podal námitku podjatosti proti soudcům Městského soudu v Praze v řízení vedeném proti Česká advokátní komora. Nejvyšší správní soud řešil, zda dřívější působení u téhož soudu a společenské kontakty před desítkami let zakládají pochybnosti o nepodjatosti soudců. Soud dospěl k závěru, že tyto skutečnosti nedosahují takové intenzity, aby vzbuzovaly objektivní pochybnosti o nepodjatosti, a proto soudce nevyloučil.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:787270",
+   "spz": "6 Azs 191/2026-26",
+   "ecli": "ECLI:CZ:NSS:2026:6.Azs.191.2026.26",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "Azs",
+   "datum": "2026-11-04",
+   "zverejneno": "2026-11-10",
+   "first_seen": "2026-11-11T07:24:15Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787270",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787270",
+   "soudce": "Štěpán Výborný",
+   "heslo": "Kasační stížnost musí směřovat proti důvodům odmítnutí žaloby",
+   "shrnuti": "Stěžovatel podal kasační stížnost proti usnesení Krajského soudu v Brně, kterým byla jeho žaloba odmítnuta pro absenci žalobních bodů. Nejvyšší správní soud řešil otázku přípustnosti kasační stížnosti, jejíž argumentace se zcela míjí s důvody napadeného rozhodnutí krajského soudu. Dospěl k závěru, že taková kasační stížnost je nepřípustná, a proto ji odmítl.",
+   "oblasti": [
+    "socialni_cizinci",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:787269",
+   "spz": "22 As 139/2026-45",
+   "ecli": "ECLI:CZ:NSS:2026:22.As.139.2026.45",
+   "druh": "usnesení",
+   "senat": 22,
+   "rejstrik": "As",
+   "datum": "2026-10-15",
+   "zverejneno": "2026-11-10",
+   "first_seen": "2026-11-11T07:24:15Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787269",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787269",
+   "soudce": "Jan Kratochvíl",
+   "heslo": "Výpočet odhadované hodnoty sektorové zakázky",
+   "shrnuti": "Severočeská vodárenská společnost se soudila s Úřadem pro ochranu hospodářské soutěže ohledně určení okamžiku pro výpočet odhadované hodnoty veřejné zakázky. Nejvyšší správní soud řešil otázku, zda vnitrostátní úprava vázající tento okamžik u neformalizovaných postupů na uzavření smlouvy je v souladu se směrnicí 2014/25/EU. Protože nebyla tato otázka dosud judikována, přerušil soud řízení a předložil věc Soudnímu dvoru Evropské unie k rozhodnutí o předběžné otázce.",
+   "oblasti": [
+    "verejne_zakazky",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:787264",
+   "spz": "6 As 172/2026-33",
+   "ecli": "ECLI:CZ:NSS:2026:6.As.172.2026.33",
+   "druh": "usnesení",
+   "senat": 6,
+   "rejstrik": "As",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-10",
+   "first_seen": "2026-11-11T07:24:15Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787264",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787264",
+   "soudce": "Filip Dienstbier",
+   "heslo": "Nezaplacení soudního poplatku vede k zastavení řízení",
+   "shrnuti": "Žalobce se kasační stížností domáhal zrušení usnesení krajského soudu ve sporu s Vězeňskou službou České republiky - Věznice Pardubice. Nejvyšší správní soud řešil otázku následků nezaplacení soudního poplatku v náhradní lhůtě po zamítnutí žádosti o osvobození. Protože stěžovatel poplatek ve stanovené lhůtě neuhradil, soud řízení o kasační stížnosti zastavil.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:787263",
+   "spz": "Vol 13/2026-7",
+   "ecli": "ECLI:CZ:NSS:2026:Vol.13.2026.7",
+   "druh": "usnesení",
+   "datum": "2026-11-09",
+   "zverejneno": "2026-11-10",
+   "first_seen": "2026-11-11T07:24:15Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787263",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787263",
+   "soudce": "Ivo Pospíšil",
+   "heslo": "Aktivní legitimace k návrhu na neplatnost volby senátora",
+   "shrnuti": "Navrhovatel podal k Nejvyššímu správnímu soudu návrh na neplatnost volby kandidáta ve volbách do Senátu. Soud řešil otázku aktivní legitimace navrhovatele k podání takového návrhu. Soud dospěl k závěru, že navrhovatel není k podání návrhu legitimován, protože má trvalý pobyt v jiném volebním obvodu, a návrh proto odmítl.",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": true
+  },
   {
    "id": "nss:787262",
    "spz": "Vol 12/2026-22",

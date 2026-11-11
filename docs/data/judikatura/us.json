@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-10T07:55:06Z",
+ "generated": "2026-11-11T07:24:15Z",
  "soud": "us",
  "okno_od": "2026-10-01",
  "polozky": [
@@ -70,12 +70,13 @@
    "first_seen": "2026-11-10T07:55:06Z",
    "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2817-26_1",
    "soudce": "Josef Baxa",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": true,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "heslo": "Odmítnutí ústavní stížnosti pro absenci zastoupení",
+   "shrnuti": "Stěžovatelka napadala rozhodnutí obecných soudů a Nejvyššího soudu ústavní stížností, aniž byla zastoupena advokátem. Ústavní soud stížnost odmítl pro neodstraněné vady, neboť stěžovatelka byla s povinností právního zastoupení opakovaně obeznámena z dřívějších řízení, a další poučování by tak bylo neúčelné.",
+   "oblasti": [
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": true
   },
   {
    "id": "us:4-2787-26_1",

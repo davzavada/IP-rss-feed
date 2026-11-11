@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-09T07:29:59Z",
+ "generated": "2026-11-11T07:24:15Z",
  "soud": "sdeu",
  "okno_od": "2026-10-01",
  "polozky": [
@@ -1046,6 +1046,25 @@
    "shrnuti": "Tribunál řešil přípustnost žaloby na neplatnost podané společností Flughafen Dortmund proti rozhodnutí Komise, kterým byla odmítnuta její stížnost na státní podporu. Soud rozhodl, že napadené rozhodnutí bylo pouze potvrzujícím aktem dřívějšího konečného rozhodnutí, které nebylo včas napadeno, a proto je žaloba nepřípustná.",
    "oblasti": [
     "soutez",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62026CO0649",
+   "spz": "C-649/26",
+   "ecli": "ECLI:EU:C:2026:923",
+   "druh": "usnesení",
+   "rejstrik": "C",
+   "datum": "2026-11-03",
+   "zverejneno": "2026-11-03",
+   "first_seen": "2026-11-03T12:00:00Z",
+   "nazev": "Laboratorios ACPG v. EUIPO",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CO0649",
+   "heslo": "Nepřijetí pourvoi vyžaduje prokázání významu otázky",
+   "shrnuti": "Soudní dvůr odmítl přijmout pourvoi směřující proti rozhodnutí Tribunálu ve věci ochranné známky Evropské unie. Navrhovatelka podle názoru soudu nedostatečně prokázala, že by její kasační opravný prostředek nastoloval otázku významnou pro jednotu, soudržnost nebo rozvoj práva Unie. Pourvoi proto nebyl v souladu s příslušnými procesními předpisy připuštěn k věcnému přezkumu.",
+   "oblasti": [
+    "prumyslova_prava",
     "civilni_proces"
    ],
    "procesni": true
