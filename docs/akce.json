@@ -1,13 +1,13 @@
 {
-  "generated": "2026-11-10T07:57:52+00:00",
+  "generated": "2026-11-11T07:25:52+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 20,
-      "stazeno": "2026-11-10T07:57:24+00:00",
+      "pocet": 18,
+      "stazeno": "2026-11-11T07:25:21+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,10 +18,10 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 7,
-      "stazeno": "2026-11-10T07:57:28+00:00",
+      "stazeno": "2026-11-11T07:25:28+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "7274731146a7ffc9"
+      "otisk": "adb9cab98b19a4ce"
     },
     "JCP": {
       "nazev": "Jednota českých právníků",
@@ -40,10 +40,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-11-10T07:57:33+00:00",
+      "stazeno": "2026-11-11T07:25:33+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "97bc0ddd22565daf"
+      "otisk": "4c03a6e43f14e7ac"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +51,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-11-10T07:57:34+00:00",
+      "stazeno": "2026-11-11T07:25:34+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -62,7 +62,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-11-10T07:57:39+00:00",
+      "stazeno": "2026-11-11T07:25:34+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "c6f425e1a83fdab1"
@@ -74,24 +74,6 @@
     "hybridne": "Hybridně"
   },
   "akce": [
-    {
-      "id": "26b349de8c038e714b32",
-      "poradatel": "JCP",
-      "datum": "2026-09-26",
-      "zacatek": "16:00",
-      "konec": "",
-      "nazev": "Popravy a popraviště, a popravní nástroje z pohledu právní archeologie",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [
-        "doc. JUDr. Vilém Knoll, Ph.D."
-      ],
-      "cena": "zdarma",
-      "anotace": "Přednáška přibližuje popravy, popraviště a popravní nástroje z pohledu právní archeologie.",
-      "url": "https://jednotaceskychpravniku.cz/prednasky/popravy-a-popraviste-a-popravni-nastroje-z-pohledu-pravni-archeologie/",
-      "oblasti": [],
-      "oblasti_klic": "d632027f3d72"
-    },
     {
       "id": "4673209472a87cbe6b1c",
       "poradatel": "PFUK",
@@ -1611,30 +1593,6 @@
       "detail_pokusy": 2
     },
     {
-      "id": "3daca2d5b26e2e58ef6c",
-      "poradatel": "EPRAVO",
-      "datum": "2026-11-11",
-      "zacatek": "09:00",
-      "konec": "12:00",
-      "nazev": "Veřejné zakázky pro mírně pokročilé – 2. díl: Hodnocení nabídek (nastavení kritérií, provedení hodnocení), vyloučení dodavatelů a vyřizování námitek/návrhů",
-      "misto": "online",
-      "forma": "online",
-      "lektori": [
-        "JUDr. Jiří Harnach"
-      ],
-      "cena": "3 975 Kč",
-      "anotace": "Druhý díl semináře o veřejných zakázkách zaměřený na hodnocení nabídek a vyřizování námitek.",
-      "url": "https://www.epravo.cz/eshop/verejne-zakazky-pro-mirne-pokrocile-2-dil-hodnoceni-nabidek-nastaveni-kriterii-provedeni-hodnoceni-vylouceni-dodavatelu-a-vyrizovani-namitek-navrhu-online-zive-vysilani-11-11-2026-1615.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "verejne_zakazky"
-      ],
-      "oblasti_klic": "fde7d6fc86dd"
-    },
-    {
       "id": "2fb52c1636396f8f9649",
       "poradatel": "PFUK",
       "datum": "2026-11-11",
@@ -1653,31 +1611,6 @@
       ],
       "oblasti": [],
       "oblasti_klic": "ca4c2228794f"
-    },
-    {
-      "id": "456e9256978c8952890d",
-      "poradatel": "EPRAVO",
-      "datum": "2026-11-11",
-      "zacatek": "13:00",
-      "konec": "16:00",
-      "nazev": "AI v litigaci: od analýzy spisu k návrhu podání",
-      "misto": "online",
-      "forma": "online",
-      "lektori": [
-        "Mgr. Miroslav Chochola, LL.M., MBA"
-      ],
-      "cena": "3 975 Kč",
-      "anotace": "Seminář o využití umele inteligence v litigaci od analýzy spisu až po návrh podání.",
-      "url": "https://www.epravo.cz/eshop/ai-v-litigaci-od-analyzy-spisu-k-navrhu-podani-online-zive-vysilani-11-11-2026-1581.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "it",
-        "civilni_proces"
-      ],
-      "oblasti_klic": "1f904aa3c800"
     },
     {
       "id": "f7ed884e530b86616090",
@@ -1800,32 +1733,6 @@
         "trestni"
       ],
       "oblasti_klic": "6466ea0d9ce4"
-    },
-    {
-      "id": "ba0d056bd34eb48d694a",
-      "poradatel": "EPRAVO",
-      "datum": "2026-11-13",
-      "zacatek": "09:00",
-      "konec": "12:00",
-      "nazev": "AI pod kontrolou: praktický průvodce zaváděním AI ve firmách",
-      "misto": "online",
-      "forma": "online",
-      "lektori": [
-        "JUDr. Tomáš Lupač",
-        "JUDr. Dalibor Kovář"
-      ],
-      "cena": "3 975 Kč",
-      "anotace": "Seminář poskytující praktický návod pro bezpečné zavádění umělé inteligence v podnikové praxi.",
-      "url": "https://www.epravo.cz/eshop/ai-pod-kontrolou-prakticky-pruvodce-zavadenim-ai-ve-firmach-online-zive-vysilani-13-11-2026-1604.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "it",
-        "korporace"
-      ],
-      "oblasti_klic": "6bd09b6c85fe"
     },
     {
       "id": "87b634e4ed40b4d9824c",
@@ -2005,6 +1912,79 @@
         "prumyslova_prava"
       ],
       "oblasti_klic": "2f26f9bafd37"
+    },
+    {
+      "id": "4bc541ffd1f229994f4a",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-19",
+      "zacatek": "10:00",
+      "konec": "12:00",
+      "nazev": "Jak se bránit, když vám platforma zablokuje účet?",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "JUDr. Jakub Klodwig, Ph.D."
+      ],
+      "cena": "2 975 Kč s DPH",
+      "anotace": "Online živé vysílání věnované právní obraně v situacích, kdy online platforma zablokuje uživatelský účet.",
+      "url": "https://www.epravo.cz/eshop/jak-se-branit-kdyz-vam-platforma-zablokuje-ucet-online-zive-vysilani-19-11-2026-1636.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "it",
+        "spotrebitel"
+      ],
+      "oblasti_klic": "da9f2c745d28"
+    },
+    {
+      "id": "b87c93c166de206ac302",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-19",
+      "zacatek": "13:00",
+      "konec": "16:00",
+      "nazev": "AI pro vedení kanceláří: strategie, pravidla, návratnost",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "Mgr. Miroslav Chochola, LL.M., MBA"
+      ],
+      "cena": "3 975 Kč",
+      "anotace": "Seminář zaměřený na strategické využití umělé inteligence pro vedení právních a jiných kanceláří.",
+      "url": "https://www.epravo.cz/eshop/ai-pro-vedeni-kancelari-strategie-pravidla-navratnost-online-zive-vysilani-19-11-2026-1582.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [],
+      "oblasti_klic": "09e2f2a42bfb"
+    },
+    {
+      "id": "ce3457178c0dd0262f62",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-20",
+      "zacatek": "09:00",
+      "konec": "12:00",
+      "nazev": "Veřejnoprávní plánovací smlouvy dle nového stavebního zákona",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "JUDr. Tomáš Kalenský",
+        "JUDr. Tereza Žůrková"
+      ],
+      "cena": "3 975 Kč",
+      "anotace": "Online živé vysílání o veřejnoprávních plánovacích smlouvách podle nového stavebního zákona.",
+      "url": "https://www.epravo.cz/eshop/verejnopravni-planovaci-smlouvy-dle-noveho-stavebniho-zakona-online-zive-vysilani-20-11-2026-1461.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "stavebni_zp",
+        "zavazky"
+      ],
+      "oblasti_klic": "ea22e7be5554"
     },
     {
       "id": "6770faa1e10d86fc6b0c",
@@ -2238,6 +2218,30 @@
       "oblasti_klic": "e1e96803995b"
     },
     {
+      "id": "fbab3c69ab6dc797660b",
+      "poradatel": "PFUK",
+      "datum": "2026-11-30",
+      "zacatek": "18:00",
+      "konec": "",
+      "nazev": "Přednáška s diskuzí na téma: Střet etiky a obchodních zájmů v transakční praxi",
+      "misto": "místnost č. 303",
+      "forma": "prezencne",
+      "lektori": [
+        "Mgr. Tomáš Doležil, PhD., LLM. Eur"
+      ],
+      "cena": "zdarma",
+      "anotace": "Přednáška s diskuzí zaměřená na střet etiky a obchodních zájmů v transakční praxi pod vedením zkušeného odborníka na korporátní právo a fúze a akvizice.",
+      "url": "https://www.prf.cuni.cz/aktuality/prednaska-s-diskuzi-na-tema-stret-etiky-a-obchodnich-zajmu-v-transakcni-praxi",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "korporace"
+      ],
+      "oblasti_klic": "cac542f15204"
+    },
+    {
       "id": "2daad3d85271fbc45d34",
       "poradatel": "CAK",
       "datum": "2026-12-01",
@@ -2257,28 +2261,6 @@
       ],
       "oblasti_klic": "dfaea5579c41",
       "detail_pokusy": 2
-    },
-    {
-      "id": "e4561a0d5c44ecdf6f62",
-      "poradatel": "PFUK",
-      "datum": "2026-12-02",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "Workshop: Rovnost a transparentnost v odměňování",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [
-        "doc. JUDr. Jakub Tomšej, Ph.D.",
-        "JUDr. Lucie Přenosilová"
-      ],
-      "cena": "",
-      "anotace": "Workshop nabídne přehled připravované evropské směrnice o transparentnosti odměňování, jejích praktických dopadů i aktuálních otázek spojených se zásadou stejné odměny. Účastníci se seznámí s novými povinnostmi zaměstnavatelů a reportováním rozdílů v odměňování.",
-      "url": "https://www.prf.cuni.cz/aktuality/workshop-rovnost-a-transparentnost-v-odmenovani-0",
-      "detail_pokusy": 2,
-      "oblasti": [
-        "pracovni"
-      ],
-      "oblasti_klic": "d9f7e88b60b9"
     },
     {
       "id": "652d0acc4c735879e7b9",

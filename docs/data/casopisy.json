@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-10T07:57:19Z",
+ "generated": "2026-11-11T07:25:16Z",
  "okno_od": "2026-10-01",
  "casopisy": [
   {
@@ -219,6 +219,39 @@
    "first_seen": "2026-11-10T07:56:27Z",
    "poznamka": "Shrnutí zatím není k dispozici.",
    "popis": "ERTA exclusivity and unity in the international representation of the European Union: Commission v Hungary (Cannabis) - Case C-271/23 Commission v Hungary EU:C:2026:45, Judgment of the Court of Justice (Grand Chamber) of 27 January 2026\nCommon Market Law Review"
+  },
+  {
+   "id": "GRUR Int-10.1093/grurint/ikag110",
+   "casopis": "grur-int",
+   "nazev": "Is AI the End of the DMA As We Know It?",
+   "url": "https://doi.org/10.1093/grurint/ikag110",
+   "autori": "Giuseppe Colangelo",
+   "heslo": "Umělá inteligence a DMA",
+   "shrnuti": "Článek se zabývá dopadem nástupu umělé inteligence na Akt o digitálních trzích (DMA), který byl vytvořen bez ohledu na technologické změny spojené s AI. Autor upozorňuje, že AI může vést ke vzniku nových digitálních strážců a zpochybnit tak dosavadní regulační rámec postavený na modelu Big Tech. Závěrem autor tvrdí, že rozvoj AI vyžaduje zásadní přehodnocení architektury DMA a vytvoření nového rámce hospodářské soutěže, nikoliv pouze dílčí úpravy legislativy.",
+   "datum": "2026-11-10",
+   "first_seen": "2026-11-11T07:24:59Z"
+  },
+  {
+   "id": "GRUR Int-10.1093/grurint/ikag107",
+   "casopis": "grur-int",
+   "nazev": "The UPC and the USPC: Is the UPC’s Review of Decisions on Unitary Supplementary Protection Certificates Compatible with EU Law?",
+   "url": "https://doi.org/10.1093/grurint/ikag107",
+   "autori": "Peter Blok",
+   "heslo": "Jednotné doplňkové ochranné osvědčení",
+   "shrnuti": "Článek se zabývá otázkou, zda je svěření přezkumu rozhodnutí o jednotných doplňkových ochranných osvědčeních Jednotnému patentovému soudu (UPC) a Evropské patentové organizaci (EPO) slučitelné s právem EU. Autor analyzuje pochybnosti ohledně zapojení těchto institucí do implementace práva EU. Dospívá k závěru, že tato spolupráce není s právem EU v rozporu, pokud budou splněny určité podmínky.",
+   "datum": "2026-11-10",
+   "first_seen": "2026-11-11T07:24:59Z"
+  },
+  {
+   "id": "IIC-10.1007/s40319-026-01785-8",
+   "casopis": "iic",
+   "nazev": "Automated Journalism: A New Technological Context for the European Press Publishers’ Right?",
+   "url": "https://doi.org/10.1007/s40319-026-01785-8",
+   "autori": "Samuel Walsh",
+   "heslo": "Práva vydavatelů a umělá inteligence",
+   "shrnuti": "Článek zkoumá, zda lze evropské právo vydavatelů tiskovin zavedené směrnicí o jednotném digitálním trhu aplikovat na žurnalistiku vytvářenou pomocí umělé inteligence. Analýza ustanovení směrnice ukazuje, že rozhodující hranicí není lidské autorství, nýbrž celková kompozice publikace. Publikace tvořené převážně AI stojí mimo ochranu, avšak tvoří-li prvky AI menšinovou část, na ochranu dosáhnou, díky čemuž je toto právo méně antropocentricky omezené než tradiční autorské právo.",
+   "datum": "2026-11-10",
+   "first_seen": "2026-11-11T07:24:59Z"
   },
   {
    "id": "GRUR Int-10.1093/grurint/ikag106",
@@ -707,17 +740,6 @@
    "popis": "Use of the Same Motif in an AI-Generated Image Does Not Infringe Copyright\nGRUR International"
   },
   {
-   "id": "GRUR Int-10.1093/grurint/ikag100",
-   "casopis": "grur-int",
-   "nazev": "Who Can Keep a Secret? Mapping Trust and Trustworthiness in the UPC’s Transparency and Confidentiality Decisions",
-   "url": "https://doi.org/10.1093/grurint/ikag100",
-   "autori": "Daanish Naithani, Esther van Zimmeren",
-   "heslo": "Důvěra a transparentnost u UPC",
-   "shrnuti": "Článek zkoumá, jak Jednotný patentový soud (UPC) vyvažuje transparentnost a ochranu důvěrných informací ve své rozhodovací praxi. Na základě konceptů důvěry a analýzy judikatury ukazuje, že kultura soudu je v principu otevřená, avšak v praxi podmíněná. V závěru nabízí interpretační rámec pro budoucí rozhodování soudu.",
-   "datum": "2026-10-23",
-   "first_seen": "2026-10-24T04:20:13Z"
-  },
-  {
    "id": "GRUR Int-10.1093/grurint/ikag102",
    "casopis": "grur-int",
    "nazev": "When Gatekeeper Status Travels",
@@ -727,6 +749,17 @@
    "first_seen": "2026-10-24T04:20:13Z",
    "poznamka": "Shrnutí zatím není k dispozici.",
    "popis": "When Gatekeeper Status Travels\nAutor: Heiko Richter\nGRUR International"
+  },
+  {
+   "id": "GRUR Int-10.1093/grurint/ikag100",
+   "casopis": "grur-int",
+   "nazev": "Who Can Keep a Secret? Mapping Trust and Trustworthiness in the UPC’s Transparency and Confidentiality Decisions",
+   "url": "https://doi.org/10.1093/grurint/ikag100",
+   "autori": "Daanish Naithani, Esther van Zimmeren",
+   "heslo": "Důvěra a transparentnost u UPC",
+   "shrnuti": "Článek zkoumá, jak Jednotný patentový soud (UPC) vyvažuje transparentnost a ochranu důvěrných informací ve své rozhodovací praxi. Na základě konceptů důvěry a analýzy judikatury ukazuje, že kultura soudu je v principu otevřená, avšak v praxi podmíněná. V závěru nabízí interpretační rámec pro budoucí rozhodování soudu.",
+   "datum": "2026-10-23",
+   "first_seen": "2026-10-24T04:20:13Z"
   },
   {
    "id": "GRUR Int-10.1093/grurint/ikag098",
@@ -1054,13 +1087,13 @@
    "first_seen": "2026-10-07T05:39:14Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.03",
+   "id": "QMJIP-10.4337/qmjip.2026.03.01",
    "casopis": "qmjip",
-   "nazev": "Exploring the boundaries of pre-infringement copyright review obligations for Chinese online platforms: a comparative study of the Chinese, UK and US systems",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.03",
-   "autori": "Mengna Liang",
-   "heslo": "autorské právo platforem",
-   "shrnuti": "Článek zkoumá povinnost čínských online platforem předcházet porušování autorských práv a porovnává přístupy v Číně, Spojeném království a USA. S ohledem na nedostatečnost tradičního institutu bezpečného přístavu navrhuje pro Čínu povinný model filtrace inspirovaný právem EU. V závěru představuje hodnotící rámec kombinující formální a materiální požadavky, podle něhož mají platformy vynakládat přiměřené úsilí.",
+   "nazev": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.01",
+   "autori": "Martin Senftleben",
+   "heslo": "AI a autorské právo",
+   "shrnuti": "Článek se zabývá otázkou spravedlivé odměny pro tvůrce za použití jejich děl při vývoji generativní AI. Porovnává současný trend individuálního licencování s výhodami kolektivních přístupů zohledňujících výstupy AI. Nakonec hodnotí různé regulační možnosti s ohledem na nutnost spravedlivé odměny a zároveň širokého přístupu k trénovacím datům.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -1076,28 +1109,6 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.01",
-   "casopis": "qmjip",
-   "nazev": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.01",
-   "autori": "Martin Senftleben",
-   "heslo": "AI a autorské právo",
-   "shrnuti": "Článek se zabývá otázkou spravedlivé odměny pro tvůrce za použití jejich děl při vývoji generativní AI. Porovnává současný trend individuálního licencování s výhodami kolektivních přístupů zohledňujících výstupy AI. Nakonec hodnotí různé regulační možnosti s ohledem na nutnost spravedlivé odměny a zároveň širokého přístupu k trénovacím datům.",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
-  },
-  {
-   "id": "QMJIP-10.4337/qmjip.2026.03.04",
-   "casopis": "qmjip",
-   "nazev": "The demise of IPRs through the rise of BBNJ: the small matter of patent disclosure of origin requirements",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.04",
-   "autori": "Tanya Wagenaar",
-   "heslo": "BBNJ a patentová práva",
-   "shrnuti": "Článek se zabývá vlivem nové dohody BBNJ na práva duševního vlastnictví a požadavky na disclosure of origin (DOR) při biotechnologickém využití mořských genetických zdrojů. Ačkoli byly odkazy na duševní vlastnictví z konečného znění dohody postupně odstraněny, nedávno přijatá smlouva WIPO zavádí mezinárodní požadavky DOR. Tyto nové předpisy by mohly ideálně doplnit mechanismy dohody BBNJ a podpořit spravedlivé sdílení přínosů mezi státy.",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
-  },
-  {
    "id": "QMJIP-10.4337/qmjip.2026.03.02",
    "casopis": "qmjip",
    "nazev": "Warhol v Goldsmith and the shrinking canvas of fair use: a comparative critique of artistic expression in US and UK copyright law",
@@ -1109,13 +1120,13 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.06",
+   "id": "QMJIP-10.4337/qmjip.2026.03.03",
    "casopis": "qmjip",
-   "nazev": "New pharmaceutical product and patent term extension in China",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.06",
-   "autori": "Weiwei Han",
-   "heslo": "prodloužení patentu v Číně",
-   "shrnuti": "Článek se zabývá systémem prodloužení platnosti patentů na léčiva v Číně v kontextu nedávných legislativních změn z roku 2024. Analýzou prováděcích předpisů a pokynů pro zkoumání patentů přibližuje aktuální vývoj a poskytuje klíčové poznatky pro domácí i zahraniční subjektu usilující o maximalizaci přínosů tohoto systému.",
+   "nazev": "Exploring the boundaries of pre-infringement copyright review obligations for Chinese online platforms: a comparative study of the Chinese, UK and US systems",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.03",
+   "autori": "Mengna Liang",
+   "heslo": "autorské právo platforem",
+   "shrnuti": "Článek zkoumá povinnost čínských online platforem předcházet porušování autorských práv a porovnává přístupy v Číně, Spojeném království a USA. S ohledem na nedostatečnost tradičního institutu bezpečného přístavu navrhuje pro Čínu povinný model filtrace inspirovaný právem EU. V závěru představuje hodnotící rámec kombinující formální a materiální požadavky, podle něhož mají platformy vynakládat přiměřené úsilí.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -1129,6 +1140,28 @@
    "first_seen": "2026-10-10T05:34:45Z",
    "poznamka": "Shrnutí zatím není k dispozici.",
    "popis": "Seeing intellectual property in colour\nAutor: Johanna Gibson\nQueen Mary Journal of Intellectual Property"
+  },
+  {
+   "id": "QMJIP-10.4337/qmjip.2026.03.04",
+   "casopis": "qmjip",
+   "nazev": "The demise of IPRs through the rise of BBNJ: the small matter of patent disclosure of origin requirements",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.04",
+   "autori": "Tanya Wagenaar",
+   "heslo": "BBNJ a patentová práva",
+   "shrnuti": "Článek se zabývá vlivem nové dohody BBNJ na práva duševního vlastnictví a požadavky na disclosure of origin (DOR) při biotechnologickém využití mořských genetických zdrojů. Ačkoli byly odkazy na duševní vlastnictví z konečného znění dohody postupně odstraněny, nedávno přijatá smlouva WIPO zavádí mezinárodní požadavky DOR. Tyto nové předpisy by mohly ideálně doplnit mechanismy dohody BBNJ a podpořit spravedlivé sdílení přínosů mezi státy.",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z"
+  },
+  {
+   "id": "QMJIP-10.4337/qmjip.2026.03.06",
+   "casopis": "qmjip",
+   "nazev": "New pharmaceutical product and patent term extension in China",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.06",
+   "autori": "Weiwei Han",
+   "heslo": "prodloužení patentu v Číně",
+   "shrnuti": "Článek se zabývá systémem prodloužení platnosti patentů na léčiva v Číně v kontextu nedávných legislativních změn z roku 2024. Analýzou prováděcích předpisů a pokynů pro zkoumání patentů přibližuje aktuální vývoj a poskytuje klíčové poznatky pro domácí i zahraniční subjektu usilující o maximalizaci přínosů tohoto systému.",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z"
   },
   {
    "id": "MUJLT-https://journals.muni.cz/mujlt/article/view/42629",

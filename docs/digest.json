@@ -1,15 +1,15 @@
 {
-  "generated": "2026-11-10T07:57:52.744502+00:00",
+  "generated": "2026-11-11T07:25:52.733787+00:00",
   "from": "2026-10-01",
   "to": "2026-10-31",
   "total": 172,
-  "covered": 6,
+  "covered": 5,
   "cekajici": 2,
-  "intro": "Uplynulý měsíc přinesl řadu významných rozhodnutí Soudního dvora EU, českých soudů a odborných analýz se zaměřením na ochranu duševního vlastnictví, regulaci platforem a umělou inteligenci. Klíčová témata se týkala podmínek kolektivní správy práv, posuzování nebezpečí záměny ochranných známek a povinností digitálních platforem či vývoje v oblasti AI.",
+  "intro": "Uplynulý měsíc přinesl řadu významných rozhodnutí Soudního dvora EU a Tribunálu v oblasti ochranných známek, autorského práva i platforem, doplněnou o podstatnou judikaturu českých soudů a odborné debaty o regulaci umělé inteligence. Pozornost se soustředila na financování kolektivní správy, ochranu soukromí v digitálním prostředí a interpretaci unijních předpisů včetně Aktu o digitálních službách.",
   "blocks": [
     {
       "title": "Financování kolektivní správy",
-      "text": "Soudní dvůr EU rozhodl, že organizace kolektivní správy nesmí financovat sociální či kulturní služby pro ne-nositele práv ze srážek z vybraných příjmů před jejich rozdělením. Takové financování je přípustné pouze z nerozdělitelných částek, což posiluje ochranu vlastníků práv.",
+      "text": "Soudní dvůr EU rozhodl, že organizace kolektivní správy nesmějí financovat sociální či kulturní služby pro osoby bez autorských práv ze srážek z příjmů z výkonu práv před jejich rozdělením. Takové financování je přípustné pouze z nerozdělitelných částek, což posiluje ochranu skutečných nositelů práv. Pro praxi to znamená nutnost úpravy interních finančních mechanismů kolektivních správců.",
       "sources": [
         {
           "src": "sdeu",
@@ -21,21 +21,34 @@
       ]
     },
     {
-      "title": "Selektivní distribuce kosmetiky",
-      "text": "Nejvyšší soud potvrdil, že podmínky selektivního distribučního systému luxusní kosmetiky vylučující prodejce s porušením ochranných známek v minulosti nepředstavují zakázané omezení hospodářské soutěže. Toto rozhodnutí poskytuje značkám větší jistotu při ochraně jejich distribučních sítí a reputace.",
+      "title": "Výjimka pro svobodu projevu",
+      "text": "Velký senát SDEU potvrdil, že svoboda projevu třetí osoby může představovat řádný důvod ospravedlňující užití označení shodného nebo podobného známce s reputací. Vnitrostátní soudy musí při střetu exkluzivních práv a svobody projevu pečlivě poměřovat všechny okolnosti případu včetně kontextu veřejného zájmu. Toto rozhodnutí poskytuje silnější argumentační základ pro kritické či parodické užití známkových chráněných symbolů.",
       "sources": [
         {
           "src": "journals",
           "label": "Časopis",
           "tag": "IIC",
-          "title": "“Chanel” – Decision of the Supreme Court of the Czech Republic (Nejvyšší soud) 30 April 2025 – Case No. 23 Cdo 1504/2024",
-          "link": "https://doi.org/10.1007/s40319-026-01792-9"
+          "title": "“Inter IKEA Systems” – Decision of the Court of Justice of the European Union (Grand Chamber) 8 September 2026 – Case No. C-298/23",
+          "link": "https://doi.org/10.1007/s40319-026-01787-6"
         }
       ]
     },
     {
-      "title": "Zlá víra při přihlášce",
-      "text": "Tribunál EU potvrdil, že přihlášení téměř totožné ochranné známky krátce po uplynutí ochranné lhůty dřívější známky bez legitimního obchodního důvodu naplňuje znaky přihlášky ve zlé víře. Cílem takového jednání je zpravidla obejít povinnost prokazovat skutečné užívání, což soudy nekompromisně postihují.",
+      "title": "Automatizované profilování spotřebitelů",
+      "text": "Generální advokát SDEU navrhl, že odmítnutí platebních metod na základě automatizovaného profilování bonity spadá pod zákaz dle GDPR, pokud může zabránit uzavření smlouvy. Správce údajů nese důkazní břemeno a musí proázat přímou věcnou nezbytnost takového postupu, kterou nelze nahradit šetrnější alternativou. Pro praxi to znamená přísnější nároky na automatizované schvalovací procesy v e-commerce.",
+      "sources": [
+        {
+          "src": "sdeu",
+          "label": "SDEU",
+          "tag": "",
+          "title": "C-568/25 – Universal Versand",
+          "link": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0568"
+        }
+      ]
+    },
+    {
+      "title": "Ochranné známky ve zlé víře",
+      "text": "Tribunál SDEU potvrdil, že přihlášení téměř totožné ochranné známky krátce po uplynutí ochranné lhůty pro dřívější známku bez legitimního obchodního důvodu naplňuje znaky přihlášky ve zlé víře. Cílem takového jednání je obvykle obcházení povinnosti prokázat skutečné užívání starší známky. Tento závěr efektivně chrání držitele dřívějších práv před zneužitím systémů průmyslového vlastnictví.",
       "sources": [
         {
           "src": "sdeu",
@@ -47,38 +60,18 @@
       ]
     },
     {
-      "title": "Odpovědnost za zpracování údajů",
-      "text": "Nejvyšší správní soud dovodil, že sdělení o nevyhovění žádosti o výmaz osobních údajů policií je rozhodnutím, nikoliv pouhým faktickým úkonem. Proti takovému postupu je tak nutno brojit žalobou proti rozhodnutí, nikoliv zásahovou žalobou.",
-      "sources": [
-        {
-          "src": "nss",
-          "label": "NSS",
-          "tag": "",
-          "title": "22 As 168/2026-30",
-          "link": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/786472"
-        }
-      ]
-    },
-    {
-      "title": "Autorské právo a platformy",
-      "text": "Odborné studie a judikatura se zaměřily na rostoucí tlak na digitální platformy v souvislosti s Aktem o digitálních službách (DSA) a autorskými právy. Důraz je klladen na dodržování transparentnosti při moderování obsahu a na ochranu nezletilých tvůrců čelících smluvní asymetrii.",
+      "title": "Selektivní distribuce kosmetiky",
+      "text": "Nejvyšší soud rozhodl, že podmínky selektivního distribučního systému luxusní kosmetiky vylučující prodejce porušující v minulosti ochranné známky nepředstavují zakázané omezení hospodářské soutěže. Závěr potvrzuje legálnost přísnějších kritérií pro ochranu distribučních sítí prémiových značek. Pro praxi to znamená větší jistotu při nastavování smluvních podmínek prodeje luxusního zboží.",
       "sources": [
         {
           "src": "journals",
           "label": "Časopis",
-          "tag": "JIPITEC",
-          "title": "Social Media Bans and the Digital Services Act: A Critical Analysis of Statement of Reasons and Online Dispute Resolution",
-          "link": "https://www.jipitec.eu/jipitec/article/view/467"
-        },
-        {
-          "src": "journals",
-          "label": "Časopis",
-          "tag": "IJLIT",
-          "title": "The Liability Paradox: copyright ownership, contractual incapacity, and platform exploitation of minor creators under the DSM Directive and DSA",
-          "link": "https://doi.org/10.1093/ijlit/eaag016"
+          "tag": "IIC",
+          "title": "“Chanel” – Decision of the Supreme Court of the Czech Republic (Nejvyšší soud) 30 April 2025 – Case No. 23 Cdo 1504/2024",
+          "link": "https://doi.org/10.1007/s40319-026-01792-9"
         }
       ]
     }
   ],
-  "input_hash": "6a7863a5a45a902570a394e99cfdf59c800812418e2845964a15b7216cc22684"
+  "input_hash": "9be15783fc56e0e6522f2bc3339a4cd0c3ccdcb266f6b84f9e586b2d5cbc77d0"
 }
