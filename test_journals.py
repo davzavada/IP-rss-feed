@@ -712,7 +712,7 @@ s.requests.get = _puvodni_get
 check("feed vydavatele i OJS bez anotace: ai_text prázdný",
       oprava["ai_text"] == "" and recenze["ai_text"] == "", f"{oprava['ai_text']!r} {recenze['ai_text']!r}")
 check("poznámka mluví jen za nás, ne za zdroj",
-      "zdroj" not in s.BEZ_PODKLADU_NOTE.lower() and "Shrnutí zatím není" in s.BEZ_PODKLADU_NOTE)
+      "zdroj" not in s.BEZ_PODKLADU_NOTE.lower() and "Shrnutí není" in s.BEZ_PODKLADU_NOTE)
 
 # Výpadek Crossrefu není „žádné nové články" – main() ho musí vidět.
 def _crossref_dole(*a, **k):
@@ -752,6 +752,7 @@ s.STATE_FILE = os.path.join(beh_dir, "seen.json")
 s.META_FILE = os.path.join(beh_dir, "meta.json")
 s.ARCHIV_DIR = os.path.join(beh_dir, "archiv")
 s.OUTPUT = os.path.join(beh_dir, "casopisy.json")
+s.OUTPUT_STARSI = os.path.join(beh_dir, "casopisy-starsi.json")
 s.ZAVEDENI = {}
 
 
@@ -768,7 +769,9 @@ stare = [pravnik(8, n) for n in (1, 2, 3)]
 for it in stare:
     it["first_seen"] = it["pub_date"] = pred_10
     it.pop("pub_date_odhad")
-stare_mimo = dict(pravnik(7, 1), first_seen=ted - timedelta(days=40), pub_date=ted - timedelta(days=40))
+# 70 dní zpět je mimo okno v kterýkoli den měsíce (okno je tento a celý minulý
+# měsíc, tedy až 61 dní).
+stare_mimo = dict(pravnik(7, 1), first_seen=ted - timedelta(days=70), pub_date=ted - timedelta(days=70))
 vyrazena = dict(pravnik(8, 9), first_seen=pred_10, pub_date=pred_10)   # ve stavu není
 s.archivuj(stare + [stare_mimo, vyrazena], s.ARCHIV_DIR)
 with open(s.STATE_FILE, "w", encoding="utf-8") as f:
@@ -836,6 +839,11 @@ okno = okno_ids()
 check("okno drží i předchozí číslo, které zdroj už nevypisuje",
       {"Pravnik-2026-2026-8-1", "Pravnik-2026-2026-8-2", "Pravnik-2026-2026-8-3",
        "Pravnik-2026-2026-9-4", "Pravnik-2026-2026-9-5"} <= set(okno), str(sorted(okno)))
+with open(s.OUTPUT_STARSI, encoding="utf-8") as f:
+    starsi_json = json.load(f)
+check("měsíc před oknem jde do zvláštního souboru a nemíchá se s oknem",
+      starsi_json["okno_od"] == s.okno_od_den(s.okno_starsi_od(ted))
+      and not {z["id"] for z in starsi_json["polozky"]} & set(okno), str(starsi_json)[:300])
 check("z archivu jen to, co je ve stavu a v okně",
       "Pravnik-2026-2026-7-1" not in okno and "Pravnik-2026-2026-8-9" not in okno, str(sorted(okno)))
 check("doplněný záznam má shrnutí z cache, zahozené shrnutí zmizí",
@@ -891,6 +899,26 @@ fs = s.nabeh_first_seen({"IJLIT-10.1/x": "2026-09-26T04:00:00+00:00", "IIC-1": "
 check("náběh podle data zavedení platí i pro druhý běh (feed napoprvé nevyšel)",
       fs({"title": "[IJLIT] A", "pub_date": nyni - timedelta(days=30)}, nyni) == nyni - timedelta(days=15)
       and fs({"title": "[IIC] A", "pub_date": nyni - timedelta(days=30)}, nyni) is None)
+check("guid Kluweru je kód článku z DOI i z adresy (feed a Crossref se shodnou)",
+      s.guid_klic("10.54648/cola2026087") == "COLA2026087" == s._stabilni_klic(
+          "https://kluwerlawonline.com/journalarticle/Common+Market+Law+Review/63.5/COLA2026087")
+      and s.guid_klic("10.1093/jiplp/jpag083") == "10.1093/jiplp/jpag083")
+check("feed a Crossref se spojí podle guid, položka z feedu má přednost",
+      [i["z"] for i in s.spoj_podle_guid(
+          [{"guid": "JIPLP-10.1093/jiplp/JPAG001", "z": "feed"}],
+          [{"guid": "JIPLP-10.1093/jiplp/jpag001", "z": "cr"}, {"guid": "JIPLP-10.1093/jiplp/jpag002", "z": "cr2"}])]
+      == ["feed", "cr2"])
+davno, cerstve = nyni - timedelta(days=90), nyni - timedelta(days=5)
+vlna = [{"guid": f"JWIP-{n}", "title": "[JWIP] A", "pub_date": davno} for n in range(5)] + \
+       [{"guid": "JWIP-n", "title": "[JWIP] N", "pub_date": cerstve},
+        {"guid": "IIC-9", "title": "[IIC] Starší číslo", "pub_date": davno},
+        {"guid": "IIC-1", "title": "[IIC] Známý", "pub_date": davno}]
+hs = s.hromadne_stare(vlna, {"IIC-1": "x"}, nyni)
+check("hromadně vrácené staré články nejsou novinky, jednotlivý starší a čerstvý ano",
+      hs == {f"JWIP-{n}" for n in range(5)})
+fs = s.nabeh_first_seen({"IIC-1": "x", "JWIP-0": "x"}, nyni + timedelta(days=30), stare=hs)
+check("hromadně staré dostanou posunutý první výskyt i mimo náběh",
+      fs(vlna[1], nyni) == nyni - timedelta(days=s.NABEH_POSUN_DNI) and fs(vlna[5], nyni) is None)
 fs = s.nabeh_first_seen({"IJLIT-10.1/x": "2026-09-26T04:00:00+00:00", "IIC-1": "x"},
                         nyni + timedelta(days=s.NABEH_DNI))
 check("po náběhu se jede postaru",

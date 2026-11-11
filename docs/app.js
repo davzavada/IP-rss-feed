@@ -26,7 +26,7 @@ function safeHref(url) {
 
 // Novinky na úvodní stránce = úlovek posledního nočního sběru. Nepočítá se
 // od hodin prohlížeče („24 h od teď“): sběr GitHub spouští o hodiny později
-// než ve 2:00 a na web se dostane až po commitu na konci běhu, takže by
+// než v plánovaný čas a na web se dostane až po commitu na konci běhu, takže by
 // včerejší úlovek ráno zmizel dřív, než přijde dnešní. Počítá se proto od
 // nejnovějšího prvního výskytu ve všech zdrojích (first_seen = začátek běhu,
 // který položku našel): nové je, co přibylo nejvýš NOVE_OKNO_MS před ním –
@@ -362,19 +362,19 @@ function vidiCasopis(item) {
 // a `ikona` jsou do nadpisu skupiny v Novinkách.
 const FEEDS = [
   { key: "nsoud",    label: "NS",      nazev: "Nejvyšší soud", ikona: "icon-court",
-    json: "data/judikatura/ns.json",
+    json: "data/judikatura/ns.json", starsi: "data/judikatura/ns-starsi.json",
     containerId: "feed-nsoud", filtr: vidiNS, stavId: "stav-nsoud" },
   { key: "nss",      label: "NSS",     nazev: "Nejvyšší správní soud", ikona: "icon-scale",
-    json: "data/judikatura/nss.json",
+    json: "data/judikatura/nss.json", starsi: "data/judikatura/nss-starsi.json",
     containerId: "feed-nss", filtr: vidiPodleOblasti("nss"), stavId: "stav-nss" },
   { key: "us",       label: "ÚS",      nazev: "Ústavní soud", ikona: "icon-shield",
-    json: "data/judikatura/us.json",
+    json: "data/judikatura/us.json", starsi: "data/judikatura/us-starsi.json",
     containerId: "feed-us", filtr: vidiPodleOblasti("us"), stavId: "stav-us" },
   { key: "sdeu",     label: "SDEU",    nazev: "Soudní dvůr EU", ikona: "icon-eu",
-    json: "data/judikatura/sdeu.json",
+    json: "data/judikatura/sdeu.json", starsi: "data/judikatura/sdeu-starsi.json",
     containerId: "feed-sdeu", filtr: vidiPodleOblasti("sdeu"), stavId: "stav-sdeu" },
   { key: "journals", label: "Časopis", nazev: "Právní časopisy", ikona: "icon-book",
-    json: "data/casopisy.json", prevod: zCasopisu,
+    json: "data/casopisy.json", prevod: zCasopisu, starsi: "data/casopisy-starsi.json",
     containerId: "feed-journals", filtr: vidiCasopis }
 ];
 
@@ -434,13 +434,16 @@ function mesiceOkna(oknoOd) {
 // Položky (už seřazené od nejnovější) rozdělené po měsících okna. Co
 // má datum starší než okno (vyšlo dřív, ve feedu přibylo až v okně) nebo
 // nečitelné, patří do nejstaršího měsíce; datum dopředu do dnešního.
-function poMesicich(items, oknoOd) {
+// S rozbaleným starším měsícem (`hlavniOd` = začátek běžného okna) zůstávají
+// takové položky okna v jeho nejstarším měsíci, ať se rozbalením nepřesunou.
+function poMesicich(items, oknoOd, hlavniOd) {
   const mesice = mesiceOkna(oknoOd);
   const skupiny = mesice.map(klic => ({ klic: klic, items: [] }));
+  const hlavni = hlavniOd ? mesice.indexOf(String(hlavniOd).slice(0, 7)) : -1;
   items.forEach(i => {
     const k = mesicKlic(i.datum);
     let idx = mesice.indexOf(k);
-    if (idx < 0) idx = k && k > mesice[0] ? 0 : mesice.length - 1;
+    if (idx < 0) idx = k && k > mesice[0] ? 0 : (!i._starsi && hlavni >= 0 ? hlavni : mesice.length - 1);
     skupiny[idx].items.push(i);
   });
   return skupiny;
@@ -522,8 +525,46 @@ function prazdnyFiltrHtml() {
     '<button type="button" class="odkaz-tlacitko" data-filtr-zrusit="1">Zrušit filtr.</button></p>';
 }
 
+// Měsíc před oknem (…-starsi.json) se stahuje, až když si ho čtenář pod
+// seznamem rozbalí. Položky se drží u zdroje zvlášť – do Novinek ani do
+// počtu čekajících na AI nepatří – a seznam je ukáže jako další měsíc.
+function starsiTlacitkoHtml(f) {
+  if (!f.starsi || f.starsiPolozky) return "";
+  if (f.starsiStav === "chyba") {
+    return '<p class="feed-empty starsi-lista">Starší měsíc se nepodařilo načíst. ' +
+      '<button type="button" class="odkaz-tlacitko" data-starsi="' + f.key + '">Zkusit znovu.</button></p>';
+  }
+  const nacita = f.starsiStav === "nacitam";
+  return '<p class="feed-empty starsi-lista"><button type="button" class="odkaz-tlacitko" data-starsi="' + f.key + '"' +
+    (nacita ? " disabled" : "") + ">" + (nacita ? "Načítám…" : "Ukázat i předchozí měsíc") + "</button></p>";
+}
+
+function prekresliArchiv(f) {
+  const r = zdrojeVysledky && zdrojeVysledky[FEEDS.indexOf(f)];
+  if (!r || r.status !== "fulfilled") return;
+  renderArchiv(f, r.value);
+  pripojVychozi(document.getElementById(f.containerId), f.key);
+}
+
+function nactiStarsi(f) {
+  if (!f.starsi || f.starsiPolozky || f.starsiStav === "nacitam") return;
+  f.starsiStav = "nacitam";
+  prekresliArchiv(f);
+  fetchJson(f.starsi).then(d => {
+    f.starsiPolozky = (d.polozky || []).map(r => pripravPolozku((f.prevod || zJson)(r), f.key));
+    f.starsiPolozky.forEach(i => { i._starsi = true; });
+    f.starsiOd = d.okno_od || "";
+    f.starsiStav = "";
+  }, e => {
+    console.warn("Starší měsíc " + f.key + ":", e);
+    f.starsiStav = "chyba";
+  }).then(() => prekresliArchiv(f));
+}
+
 function renderArchiv(f, vsechny) {
   const container = document.getElementById(f.containerId);
+  if (f.starsiPolozky) vsechny = vsechny.concat(f.starsiPolozky);
+  const oknoOd = f.starsiPolozky && f.starsiOd ? f.starsiOd : f.oknoOd;
   const mine = f.filtr ? vsechny.filter(f.filtr) : vsechny;
   const vse = vseVidet(f.key);
   const sFiltrem = KARTY_S_FILTREM.indexOf(f.key) >= 0;
@@ -541,7 +582,7 @@ function renderArchiv(f, vsechny) {
   if (sFiltrem) vykresliFiltrOblastiBtn(f.key, vse);
   const items = (vse ? vsechnyF : mine).slice().sort(podleData);
   if (items.length) {
-    container.innerHTML = poMesicich(items, f.oknoOd).map((g, i) =>
+    container.innerHTML = poMesicich(items, oknoOd, f.oknoOd).map((g, i) =>
       '<section class="zdroj" aria-label="' + esc(MESICE_NAZVY[+g.klic.slice(5) - 1] + " " + g.klic.slice(0, 4)) + '">' +
       mesicHlavaHtml(g, i === 0) +
       (g.items.length ? g.items.map(polozkaHtml).join("")
@@ -555,10 +596,17 @@ function renderArchiv(f, vsechny) {
   } else {
     container.innerHTML = '<p class="feed-empty feed-empty-box">Za sledované období tu nic není.</p>';
   }
+  container.insertAdjacentHTML("beforeend", starsiTlacitkoHtml(f));
 }
 
 function initArchivPrepinac() {
   document.addEventListener("click", e => {
+    const starsi = e.target.closest("button[data-starsi]");
+    if (starsi) {
+      const zdroj = FEEDS.find(f => f.key === starsi.dataset.starsi);
+      if (zdroj) nactiStarsi(zdroj);
+      return;
+    }
     const b = e.target.closest("button[data-archiv]");
     if (!b || !zdrojeVysledky) return;
     const key = b.dataset.archiv;
@@ -622,7 +670,7 @@ function renderToday() {
       ? '<p class="feed-empty feed-empty-box">Podle vašeho výběru poslední sběr nic nového nepřinesl. ' +
         '<button type="button" class="odkaz-tlacitko" data-novinky-vse="1">Přepněte na Vše.</button></p>'
       : '<p class="feed-empty">Poslední sběr nic nového nepřinesl. ' +
-        "Sběr se spouští jednou denně ve 2:00 v noci, GitHub ho často pustí až ráno.</p>";
+        "Sběr běží jednou denně brzy ráno.</p>";
     return;
   }
   const filtr = FILTRY_NOVINEK.find(f => f.k === novinkyFiltr) || FILTRY_NOVINEK[0];
@@ -704,7 +752,7 @@ function stavShrnutiText(polozky) {
   if (cekajici.length) {
     casti.push("AI ještě zpracovává " + cekajici.length + " z " + polozky.length + " rozhodnutí" +
       " za " + OKNO_ZA + ". Shrnutí a oblasti doplní " +
-      "při nočním sběru (ve 2:00)" +
+      "při nočním sběru" +
       (bezOblasti === cekajici.length
         ? ", do výběru podle oblastí se tato rozhodnutí dostanou až potom."
         : bezOblasti

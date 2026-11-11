@@ -27,7 +27,8 @@ zkratku vypíná a přehled napíše načisto.
 DIGEST_AUTO=1 je režim pro denní spouštění: přehled se napíše, jen když
 uložený je za jiné období než uplynulý měsíc (tedy 1. dne v měsíci), když
 minulý pokus selhal (`selhalo`), nebo když v něm chyběla rozhodnutí, která
-teprve čekala na AI rozbor (`cekajici`), a vstup se od té doby změnil.
+teprve čekala na AI rozbor (`cekajici`), a mezitím jich ubylo – to ale jen
+první týden v měsíci, pak už přehled zůstane, jak je.
 Výpadek AI 1. dne v měsíci se tak spraví hned další den.
 
 Když AI přehled nenapíše ani napodruhé, skončí digest.py kódem 1 (workflow
@@ -344,8 +345,15 @@ def obdobi_data(now):
             (do.astimezone(PRAHA) - timedelta(days=1)).date().isoformat())
 
 
-def proc_generovat(previous, ihash, now):
-    """Režim DIGEST_AUTO: důvod, proč přehled napsat znovu, nebo None."""
+# Do kolikátého dne v měsíci se přehled ještě doplňuje o rozhodnutí, která
+# 1. dne čekala na AI. Pak už zůstane, jak je.
+DOPLNENI_DNI = 7
+
+
+def proc_generovat(previous, ihash, now, cekajici=None):
+    """Režim DIGEST_AUTO: důvod, proč přehled napsat znovu, nebo None.
+
+    `cekajici` = kolik rozhodnutí čeká na AI teď (None = neznámo)."""
     try:
         datetime.fromisoformat(previous["generated"])
     except (KeyError, TypeError, ValueError):
@@ -357,7 +365,14 @@ def proc_generovat(previous, ihash, now):
     if (previous.get("from"), previous.get("to")) != obdobi_data(now):
         return "přehled je za jiné období než uplynulý měsíc"
     if previous.get("cekajici") and previous.get("input_hash") != ihash:
-        return "rozhodnutí, která v přehledu chyběla, mezitím mohla projít AI"
+        # Jen když čekajících opravdu ubylo a jen první týden v měsíci – vstup
+        # se jinak mění skoro denně (opakovaná shrnutí článků) a přehled by se
+        # každý den přepsal jinými tématy, i když rozhodnutí čekají dál.
+        if cekajici is not None and cekajici >= previous["cekajici"]:
+            return None
+        if now.astimezone(PRAHA).day > DOPLNENI_DNI:
+            return None
+        return "rozhodnutí, která v přehledu chyběla, mezitím prošla AI"
     return None
 
 
@@ -387,7 +402,7 @@ def main():
 
     auto = os.environ.get("DIGEST_AUTO", "").strip().lower() in ("1", "true", "yes")
     if auto and not force_regenerate():
-        duvod = proc_generovat(previous, ihash, now)
+        duvod = proc_generovat(previous, ihash, now, cekajici)
         if not duvod:
             print("Přehled je aktuální – ponechávám ho")
             return

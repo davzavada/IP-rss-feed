@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Kalendář akcí – vzdělávací akce pořadatelů z akce_config.json.
 
-Semináře, webináře a konference ČAK, PF UK, Jednoty českých právníků,
+Semináře, webináře a konference ČAK, PF UK,
 epravo.cz, ALAI a ÚPV v jednom kalendáři. Výstup jde do
 docs/akce.json (čte ho Kalendář akcí na webu) a docs/akce.ics (odběr
 v kalendáři).
@@ -917,7 +917,8 @@ def sloucit(stare, org, nove, cesta, dnes, stranky=()):
 
     - Proběhlé akce zůstávají do PROSLE_DNI (výpisy je obvykle stáhnou).
     - Budoucí akce, která z výpisu zmizela, pořadatel zrušil nebo stáhl –
-      vypadne. Kromě případu, kdy výpis nevrátil žádnou budoucí akci nebo
+      vypadne. Dnešní akce zůstává: pořadatelé ji z výpisu stahují už ráno
+      v den konání a z kalendáře by zmizela dřív, než proběhne. Kromě případu, kdy výpis nevrátil žádnou budoucí akci nebo
       ho četla AI a vrátila výrazně míň akcí než minule (podezrele_malo):
       to je spíš výpadek čtení, tak se staré nechají.
     - Stará a nová verze se párují podle id, a když se id liší (pořadatel
@@ -946,7 +947,7 @@ def sloucit(stare, org, nove, cesta, dnes, stranky=()):
 
     vysledek = {}
     for a in moje:
-        if a.get("datum", "") < dnes_iso or podezrele:
+        if a.get("datum", "") <= dnes_iso or podezrele:
             vysledek[a["id"]] = a
     for a in nove:
         b = podle_id.get(a["id"])

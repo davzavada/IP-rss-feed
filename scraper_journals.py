@@ -35,6 +35,7 @@ from feed_common import (
     load_json,
     okno_od,
     okno_od_den,
+    okno_starsi_od,
     prune_meta_file,
     save_json,
     summarize_with_cache,
@@ -829,7 +830,7 @@ def fetch_crossref_journal(issn, label, journal_name):
             "authors": authors,
             "link": f"https://doi.org/{doi}",
             "description": popis_polozky(title, authors, journal_name, zkratit(abstract)),
-            "guid": f"{label}-{doi}",
+            "guid": f"{label}-{guid_klic(doi)}",
             "pub_date": pub_date,
             "ai_source": "article",  # shrnutí se dělá z názvu a abstraktu
             # Bez abstraktu nic – shrnutí ze samotného názvu je vymyšlené
@@ -930,6 +931,18 @@ ISSN_PATICKA_RE = re.compile(r"\s*Volume\s+\d+\s+(?:Online\s+)?ISSN\s+[\dXx-]+\s
 # Kód článku Kluweru na konci adresy (COLA2026072) – zůstává stejný, i když
 # článek přejde z „[pre-publication]“ do čísla a adresa se změní.
 KLUWER_KOD_RE = re.compile(r"kluwerlawonline\.com/.*/([A-Z]+\d{6,})$", re.IGNORECASE)
+
+
+# DOI Kluweru nese tentýž kód článku (10.54648/cola2026087). Feed Kluweru DOI
+# neuvádí a Crossref zase nezná adresu – guid se proto v obou cestách skládá
+# z kódu, jinak by článek po přepnutí zdroje přibyl podruhé jako nový.
+KLUWER_DOI_RE = re.compile(r"^10\.54648/([a-z]+\d{6,})$", re.IGNORECASE)
+
+
+def guid_klic(doi):
+    """Část guid za zkratkou časopisu: DOI, u Kluweru kód článku."""
+    m = KLUWER_DOI_RE.match((doi or "").strip())
+    return m.group(1).upper() if m else doi
 
 
 def _stabilni_klic(link):
@@ -1179,7 +1192,7 @@ def fetch_publisher_rss(feed_url, label, journal_name, referer=""):
             "description": popis_polozky(title, authors, *popis_casti[1:]),
             # Stejný tvar guid jako u Crossref, ať se článek po přepnutí zdroje
             # neoznačí podruhé jako nový.
-            "guid": f"{label}-{z['doi'] or z['klic']}",
+            "guid": f"{label}-{guid_klic(z['doi']) or z['klic']}",
             "pub_date": z["pub_date"],
             "pub_date_odhad": z["odhad"],
             "ai_source": "article",
@@ -1306,11 +1319,34 @@ def scrape_jwip():
         JWIP_ISSN, JWIP_LABEL, JWIP_NAME, "Wiley")
 
 
+def spoj_podle_guid(prvni, druhe):
+    """`prvni` a k nim položky z `druhe`, které v `prvni` nejsou (podle guid
+    bez ohledu na velikost písmen – DOI ji mezi zdroji mění)."""
+    mam = {i["guid"].lower() for i in prvni}
+    return prvni + [i for i in druhe if i["guid"].lower() not in mam]
+
+
 def scrape_jiplp():
-    """Články JIPLP – přednostně z feedu aktuálního čísla OUP."""
-    return _rss_nebo_crossref(
-        JIPLP_FEED, "https://academic.oup.com/jiplp",
-        JIPLP_ISSN, JIPLP_LABEL, JIPLP_NAME, "OUP")
+    """Články JIPLP – feed aktuálního čísla OUP a k němu Crossref.
+
+    Feed vypisuje jen sestavené číslo; články zveřejněné předem online
+    (advance articles) v něm nejsou a přibyly by až za měsíce s číslem.
+    Crossref je zná hned, proto se oba zdroje spojují (guid je v obou z DOI,
+    položka z feedu má přednost – nese anotaci)."""
+    try:
+        z_feedu = fetch_publisher_rss(JIPLP_FEED, JIPLP_LABEL, JIPLP_NAME,
+                                      "https://academic.oup.com/jiplp")
+    except Exception as e:
+        print(f"    [diag] {JIPLP_LABEL}: RSS OUP – feed nedostupný ({e}), beru jen Crossref")
+        return fetch_crossref_journal(JIPLP_ISSN, JIPLP_LABEL, JIPLP_NAME)
+    try:
+        z_crossrefu = fetch_crossref_journal(JIPLP_ISSN, JIPLP_LABEL, JIPLP_NAME)
+    except Exception as e:
+        print(f"    [diag] {JIPLP_LABEL}: Crossref nedostupný ({e}), beru jen feed")
+        z_crossrefu = []
+    if not z_feedu and not z_crossrefu:
+        print(f"    [diag] {JIPLP_LABEL}: feed bez článků a Crossref taky nic")
+    return spoj_podle_guid(z_feedu, z_crossrefu)
 
 
 # --- AI shrnutí ---
@@ -1331,7 +1367,7 @@ MIN_TEXT_PRO_AI = 600      # kratší stránka není článek, ale rozcestník
 # vydavatele nepustila, položka (zpráva ze semináře) anotaci nemá, nebo AI
 # selhala. Mluví jen za nás, ne za zdroj (ten text mít může), a důvod
 # neuvádí, protože ho u každé položky neznáme.
-BEZ_PODKLADU_NOTE = "Shrnutí zatím není k dispozici."
+BEZ_PODKLADU_NOTE = "Shrnutí není k dispozici."
 # Položky, které obsah z principu mít nebudou: Monitoring judikatury
 # Jurisprudence (jen pro předplatitele), zprávy z akcí v Právníku (bez
 # anotace). Zjistí se jednou, uloží do cache (bez_obsahu) a stránka se pak
@@ -1539,6 +1575,52 @@ def zapis_json(all_items, cesta=None, nyni=None, navic=()):
     return True
 
 
+OUTPUT_STARSI = os.path.join(os.path.dirname(OUTPUT), "casopisy-starsi.json")
+
+
+def zapis_starsi(seen, cesta=None, nyni=None, adresar=None):
+    """Zapíše měsíc před oknem (casopisy-starsi.json) z archivu – web ho
+    stahuje, až když si ho čtenář rozbalí. Jen když se obsah změnil."""
+    cesta = cesta or OUTPUT_STARSI
+    adresar = adresar or ARCHIV_DIR
+    nyni = nyni or datetime.now(timezone.utc)
+    od, do = okno_starsi_od(nyni), okno_od(nyni)
+    polozky = {}
+    for mesic in _mesice(od, do):
+        soubor = os.path.join(adresar, mesic + ".jsonl")
+        if not os.path.exists(soubor):
+            continue
+        with open(soubor, encoding="utf-8") as f:
+            for radek in f:
+                if not radek.strip():
+                    continue
+                z = json.loads(radek)
+                try:
+                    prvni = datetime.fromisoformat(seen.get(z.get("id")) or "")
+                except (TypeError, ValueError):
+                    continue
+                if od <= prvni < do:
+                    z["first_seen"] = _iso(prvni)
+                    polozky[z["id"]] = z
+    obsah = {"okno_od": okno_od_den(od),
+             "polozky": sorted(polozky.values(), key=lambda z: z.get("datum", ""), reverse=True)}
+    if os.path.exists(cesta):
+        try:
+            with open(cesta, encoding="utf-8") as f:
+                stary = json.load(f)
+            stary.pop("generated", None)
+            if stary == obsah:
+                return False
+        except (ValueError, OSError):
+            pass
+    os.makedirs(os.path.dirname(cesta), exist_ok=True)
+    tmp = cesta + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        f.write(json.dumps({"generated": _iso(nyni), **obsah}, ensure_ascii=False, indent=1) + "\n")
+    os.replace(tmp, cesta)
+    return True
+
+
 def archivuj(all_items, adresar=None, zaznamy=()):
     """Zanese položky okna do archivu data/casopisy/RRRR-MM.jsonl (měsíc
     prvního výskytu). Existující záznam se přepíše novějším – i shrnutí, které
@@ -1680,9 +1762,38 @@ def guid_prefix(zkratka):
     return GUID_PREFIX.get(zkratka, f"{zkratka}-")
 
 
-def nabeh_first_seen(seen, nyni=None):
+# Hromadný návrat starých článků: když zdroj po výpadku nebo přepnutí (feed
+# -> Crossref) najednou vydá víc neznámých článků a většina má skutečné datum
+# vydání starší než HROMADNE_STARE_DNI, nejsou to novinky – dostanou první
+# výskyt posunutý zpět jako při náběhu. Jednotlivý starší článek (číslo se
+# starším datem) novinkou zůstává.
+HROMADNE_MIN = 5
+HROMADNE_STARE_DNI = 60
+
+
+def hromadne_stare(items, seen, nyni=None):
+    """Guid neznámých článků, které se vrátily hromadně a jsou staré."""
+    nyni = nyni or datetime.now(timezone.utc)
+    hranice = nyni - timedelta(days=HROMADNE_STARE_DNI)
+    podle_casopisu = {}
+    for it in items:
+        if it.get("guid") and it["guid"] not in seen:
+            podle_casopisu.setdefault(_zkratka(it), []).append(it)
+    out = set()
+    for zkratka, nezname in podle_casopisu.items():
+        stare = [it for it in nezname if not it.get("pub_date_odhad")
+                 and it.get("pub_date") and it["pub_date"] < hranice]
+        if len(nezname) >= HROMADNE_MIN and len(stare) * 2 > len(nezname):
+            print(f"  {zkratka}: {len(stare)} z {len(nezname)} nových článků vyšlo před víc než "
+                  f"{HROMADNE_STARE_DNI} dny – nepočítám je jako novinky")
+            out.update(it["guid"] for it in stare)
+    return out
+
+
+def nabeh_first_seen(seen, nyni=None, stare=()):
     """Funkce (položka, teď) -> první výskyt pro filter_by_first_seen, nebo
-    None (= teď) mimo náběh. Rozhoduje se podle stavu před tímto během."""
+    None (= teď) mimo náběh. Rozhoduje se podle stavu před tímto během.
+    `stare` = guid z hromadne_stare(), ty dostanou posunutý výskyt vždy."""
     nyni = nyni or datetime.now(timezone.utc)
     nabeh = set()
     for zkratka in CASOPIS_PODLE_ZKRATKY:
@@ -1699,6 +1810,8 @@ def nabeh_first_seen(seen, nyni=None):
         print(f"  Náběh (starší obsah se nepočítá jako novinka): {', '.join(sorted(nabeh))}")
 
     def first_seen_of(it, ted):
+        if it.get("guid") in stare:
+            return ted - timedelta(days=NABEH_POSUN_DNI)
         if _zkratka(it) not in nabeh:
             return None
         if (not it.get("pub_date_odhad") and it.get("pub_date")
@@ -1771,9 +1884,10 @@ def main():
     # s přepsaným datem nevracely. Stav se neprořezává: zdroje vypisují i rok staré
     # články a po vypadnutí ze stavu by se vrátily jako nové.
     # Nový časopis nesmí první běh vysypat celý feed do Novinek (viz náběh).
+    stav = load_json(STATE_FILE)
     all_items = filter_by_first_seen(
         all_items, lambda i: i["guid"], STATE_FILE, prune_days=None,
-        first_seen_of=nabeh_first_seen(load_json(STATE_FILE)),
+        first_seen_of=nabeh_first_seen(stav, stare=hromadne_stare(all_items, stav)),
     )
 
     # Zdroje, které datum vydání neuvádějí (weby českých časopisů), dostanou
@@ -1810,6 +1924,7 @@ def main():
         print(f"::error::Časopisy: nevyšlo nic, selhalo {len(selhane)} zdrojů – okno nepřepisuji")
         sys.exit(1)
 
+    zapis_starsi(load_json(STATE_FILE))
     if zapis_json(all_items, navic=doplnene):
         print(f"Časopisy zapsány do {OUTPUT}")
     else:

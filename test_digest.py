@@ -213,6 +213,11 @@ check("minulý pokus selhal → znovu",
 check("chyběla čekající rozhodnutí a vstup se změnil → znovu; beze změny ne",
       digest.proc_generovat(dict(zari, cekajici=3), "jiny", prvniho + timedelta(days=1)) is not None
       and digest.proc_generovat(dict(zari, cekajici=3), "h", prvniho + timedelta(days=1)) is None)
+check("čekající rozhodnutí dál čekají: přehled se nepřepisuje, i když se vstup změnil",
+      digest.proc_generovat(dict(zari, cekajici=3), "jiny", prvniho + timedelta(days=1), 3) is None
+      and digest.proc_generovat(dict(zari, cekajici=3), "jiny", prvniho + timedelta(days=1), 1) is not None)
+check("po prvním týdnu v měsíci už se přehled nedoplňuje",
+      digest.proc_generovat(dict(zari, cekajici=3), "jiny", prvniho + timedelta(days=9), 0) is None)
 
 ok = sum(1 for _, c, _ in results if c)
 print(f"\n{ok}/{len(results)} testů prošlo")

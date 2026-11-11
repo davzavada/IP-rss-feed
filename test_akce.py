@@ -601,8 +601,8 @@ s.gemini_enabled, s.gemini_generate_raw = puvodni_enabled, puvodni_raw
 # --- Skutečný config ----------------------------------------------------------
 print("Config")
 real = s.load_json(s.CONFIG_FILE)
-check("šest pořadatelů v pořadí štítků",
-      list(real["poradatele"]) == ["CAK", "PFUK", "JCP", "EPRAVO", "ALAI", "UPV"])
+check("pět pořadatelů v pořadí štítků",
+      list(real["poradatele"]) == ["CAK", "PFUK", "EPRAVO", "ALAI", "UPV"])
 for org, cfg in real["poradatele"].items():
     check(f"{org}: úplný záznam",
           all(cfg.get(k) for k in ("nazev", "zkratka", "barva", "stranky", "hosty"))

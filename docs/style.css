@@ -226,6 +226,7 @@ html:not(.smi-kalendar) [data-jen="kalendar"] { display: none !important; }
 .loading, .feed-empty { color: var(--muted-foreground); font-size: 14px; margin: 0; }
 .feed-empty a { white-space: nowrap; }
 .feed-empty-box { padding: 14px 16px; border-radius: 8px; background: var(--muted); color: var(--fg-3); }
+.starsi-lista { margin-top: 20px; text-align: center; }
 /* Tlačítko, které vypadá jako odkaz („Přepněte na Vše."). */
 .odkaz-tlacitko {
   border: 0; background: none; padding: 0; cursor: pointer; color: var(--link); white-space: nowrap;
