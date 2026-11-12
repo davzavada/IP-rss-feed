@@ -1,8 +1,251 @@
 {
- "generated": "2026-11-11T07:24:15Z",
+ "generated": "2026-11-12T07:22:57Z",
  "soud": "sdeu",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "sdeu:62026TJ0016",
+   "spz": "T-16/26",
+   "ecli": "ECLI:EU:T:2026:740",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "nazev": "Riedl v. EUIPO (Aromapressur)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026TJ0016",
+   "heslo": "Slovo spojující aromaterapie a akupresuru postrádá rozlišovací způsobilost",
+   "shrnuti": "Tribunál posuzoval, zda slovní označení Aromapressur pro služby v oblasti vzdělávání a zdravotní péče disponuje rozlišovací způsobilostí podle nařízení o ochranné známce Evropské unie. Dospěl k závěru, že německy mluvící veřejnost vnímá toto označení jako přímý a konkrétní odkaz na terapii kombinující aromaterapii a akupresuru, a nikoli jako označení obchodního původu. Žalobu proto zamítl.",
+   "oblasti": [
+    "prumyslova_prava"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0877",
+   "spz": "T-877/25",
+   "ecli": "ECLI:EU:T:2026:739",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "nazev": "FC06 v. EUIPO - Standard International Management (The Standard)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0877",
+   "heslo": "Dějová varianta ochranné známky nepředstavuje zlou víru",
+   "shrnuti": "Tribunál řešil otázku, zda podání přihlášky ochranné známky představující barevnou variantu dřívější známky představuje jednání ve zlé víře s cílem vyhnout se důsledkům případné déčece. Soud konstatoval, že takový postup představuje normální obchodní praktiku a žalobce neprokázal existenci zlé víry.",
+   "oblasti": [
+    "prumyslova_prava"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0874",
+   "spz": "T-874/25",
+   "ecli": "ECLI:EU:T:2026:742",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "nazev": "Gall-Pharma v. EUIPO - Wörwag Pharma (Magnerot)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0874",
+   "heslo": "Výklad pojmu ochranné známky",
+   "shrnuti": "Tribunal řešil otázku správného výkladu rozsahu ochrany mezinárodního zápisu ochranné známky obsahujícího francouzský termín hygiène a zda jej lze vykládat jako odpovídající německému výrazu pro zdravotní péči. Soud dospěl k závěru, že úřad pochybil při výkladu a zaměněném použití definic z francouzského slovníku, čímž nepatřičně rozšířil ochranu, a proto napadené rozhodnutí zrušil.",
+   "oblasti": [
+    "prumyslova_prava"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0701",
+   "spz": "T-701/25",
+   "ecli": "ECLI:EU:T:2026:743",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "nazev": "Fischölimporteur",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0701",
+   "heslo": "Sazební zařazení reesterifikovaných rybích olejů",
+   "shrnuti": "Soudní dvůr EU (Tribunál) řešil, zda číslo 1516 kombinované nomenklatury zahrnuje výrobky z koncentrovaných omega-3 mastných kyselin ze surového rybího oleje s obsahem reesterifikovaných triglyceridů mezi 60,5 a 83,7 %. Rozhodl, že toto číslo se na takové výrobky nevztahuje, protože jejich obsah triglyceridů nedosahuje úrovně srovnatelné s přírodními tuky a oleji.",
+   "oblasti": [
+    "dane",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0583",
+   "spz": "T-583/25",
+   "ecli": "ECLI:EU:T:2026:747",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "nazev": "Pumpyanskiy v. Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0583",
+   "heslo": "Přijetí aktu po žalobě na nečinnost",
+   "shrnuti": "Tribunal rozhodoval o žalobě na nečinnost podané stěžovatelem proti Rady Evropské unie pro údajnou nečinnost při výkonu rozsudku soudu a o související žádosti na náhradu nemajetkové újmy. Tribunal konstatoval, že vzhledem k tomu, že Rady během řízení přijala nové akty a zaujala stanovisko, odpadl předmět řízení o nečinnosti, a současně zamítl nárok na náhradu škody.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0418",
+   "spz": "T-418/25",
+   "ecli": "ECLI:EU:T:2026:746",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "nazev": "KF v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0418",
+   "heslo": "Odmítnutí náhrady zdravotní péče vyžaduje odůvodnění",
+   "shrnuti": "Soudní dvůr EU (Tribunál) řešil otázku, zda rozhodnutí o odmítnutí náhrady výdajů na lékařské ošetření v rámci společného systému zdravotního pojištění úředníků EU trpí vadou chybějícího odůvodnění, pokud dotčená osoba neobdržela zprávu pověřeného lékaře. Tribunál konstatoval, že napadené rozhodnutí není právně dostačujícím způsobem odůvodněno, neboť žalobci nebyla včas sdělena zpráva pověřeného lékaře ani její přesný obsah, a proto rozhodnutí zrušil.",
+   "oblasti": [
+    "pracovni",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0399",
+   "spz": "T-399/25",
+   "ecli": "ECLI:EU:T:2026:745",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "nazev": "KF v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0399",
+   "heslo": "Rozhodnutí o zamítnutí proplacení nákladů vyžaduje řádné odůvodnění",
+   "shrnuti": "Tribunál přezkoumával žalobu bývalého úředníka na zrušení rozhodnutí o odmítnutí proplacení výdajů za chirurgický zákrok kvůli chybějícímu předchozímu souhlasu. Soud dospěl k závěru, že napadené rozhodnutí neobsahuje dostatečné vysvětlení právního základu a důvodů pro požadování předchozího souhlasu. Evropská komise proto porušila povinnost uvést odůvodnění, a Tribunál rozhodnutí zrušil.",
+   "oblasti": [
+    "spravni",
+    "pracovni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0193",
+   "spz": "T-193/25",
+   "ecli": "ECLI:EU:T:2026:751",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "nazev": "IH a další v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0193",
+   "heslo": "Nárok na paušál cestovních výdajů zaniká uplynutím lhůty",
+   "shrnuti": "Žadatelé se domáhali zrušení rozhodnutí o výpočtu ročních cestovních výdajů a zpětného proplacení nároků za předchozí roky na základě rozsudku Soudního dvora. Tribunál konstatoval, že napadená rozhodnutí vycházející z dřívějších výplatních lístků jsou již pravomocná, neboť nebyla včas napadena, a žalobu v celém rozsahu zamítl.",
+   "oblasti": [
+    "pracovni",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0175",
+   "spz": "T-175/25",
+   "ecli": "ECLI:EU:T:2026:750",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "nazev": "IC v. Parlament a Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0175",
+   "heslo": "Zrušení diskriminačního pravidla nezakládá povinnost zpětných doplatků",
+   "shrnuti": "Tribunál řešil, zda zrušení pravidla pro výpočet cestovních výdajů agentů unijních institucí pro osoby s původem mimo EU znamená povinnost zpětně přepočítat a doplatit tyto výdaje za dřívější roky. Rozhodl, že instituce nemají povinnost provést zpětnou korekci za období, kdy rozhodnutí nenapadli včas, a že takový postup neporušuje zásadu rovného zacházení ani povinnost péče.",
+   "oblasti": [
+    "pracovni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0152",
+   "spz": "T-152/25",
+   "ecli": "ECLI:EU:T:2026:749",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "nazev": "IA v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0152",
+   "heslo": "Paušální náhrada výdajů na cestu a zpětná účinnost",
+   "shrnuti": "Žalobce požadoval zrušení rozhodnutí Komise Evropské unie v části, v níž mu nebyla přiznána zpětná korekce paušální náhrady cestovních výdajů za předchozí roky na základě místa původu mimo Unii po rozsudku Soudního dvora. Tribunál žalobu zamítl s tím, že opožděně napadená starší rozhodnutí nelze retroaktivně měnit a že instituce neporušila zásadu rovného zacházení ani povinnost péče.",
+   "oblasti": [
+    "spravni",
+    "pracovni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0136",
+   "spz": "T-136/25",
+   "ecli": "ECLI:EU:T:2026:748",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "nazev": "HV v. EHSV",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0136",
+   "heslo": "Zrušení diskriminačního pravidla nezakládá právo na retroaktivní náhradu",
+   "shrnuti": "Tribunál řešil, zda úřednice má nárok na zpětné přepočítání a dorovnání ročních cestovních výdajů za minulé roky (2014 až 2023) na základě místa původu mimo EU poté, co Soudní dvůr v jiné věci shledal příslušné ustanovení statutu diskriminačním a neplatným. Tribunál rozhodl, že instituce nebyla povinna provést retroaktivní nápravu vůči úřednici, která včas napadla své dřívější výplatní pásky, a žalobu v celém rozsahu zamítl.",
+   "oblasti": [
+    "pracovni",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TJ0132",
+   "spz": "T-132/25",
+   "ecli": "ECLI:EU:T:2026:741",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "nazev": "Nouwen v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0132",
+   "heslo": "Neoprávněné omezení žádosti o přístup k dokumentům",
+   "shrnuti": "Tribunál řešil žalobu na anulační rozhodnutí Evropské komise, kterou byla omezena žádost o přístup k dokumentům týkajícím se reformy kodexu chování v oblasti zdanění podniků a zamítnut přístup k některým acronymům členských států. Soud konstatoval, že Komise neprokázala platný souhlas s omezením žádosti ani řádně neodůvodnila nemožnost jiné alternativy, a proto rozhodnutí částečně zrušil. Současně potvrdil, že ochrana ekonomické politiky může odůvodnit utajení identifikačních zkratek států u citlivých jednání.",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024TJ0523",
+   "spz": "T-523/24",
+   "ecli": "ECLI:EU:T:2026:744",
+   "druh": "rozsudek",
+   "rejstrik": "T",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "nazev": "Kerry a Kerry Ingredients (UK) v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TJ0523",
+   "heslo": "Neobnovení povolení aromat kouře kvůli genotoxicitě",
+   "shrnuti": "Tribunál řešit žalobu na neobnovení povolení primárních produktů dýmového arSma a zamítl ji. Soud potvrdil, že Evropská komise a Evropský úřad pro bezpečnost potravin nepochybily, když dospěly k závěru, že přítomnost složek s prokázanou genotoxicitou v ivo nad prahem toxikologického znepokojení (TTC) představuje riziko pro lidské zdraví.",
+   "oblasti": [
+    "spravni",
+    "spotrebitel"
+   ],
+   "procesni": false
+  },
   {
    "id": "sdeu:62026CN0871",
    "spz": "C-871/26",
@@ -197,6 +440,25 @@
    "oblasti": [
     "spravni",
     "skoda"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62022CO0256",
+   "spz": "C-256/22",
+   "ecli": "ECLI:EU:C:2026:952",
+   "druh": "usnesení",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-05",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "nazev": "Pilatus Bank v. ECB",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62022CO0256",
+   "heslo": "Určení výše nákladů řízení a úroků z prodlení",
+   "shrnuti": "Soudní dvůr rozhodoval o návrhu na určení výše nákladů řízení, které vynaložila Evropská centrální banka v souvislosti s řízením před Tribunálem a Soudním dvorem. Soud stanovil celkovou výši nahraditelných nákladů na 1 037,66 EUR a přiznal k nim úrok z prodlení.",
+   "oblasti": [
+    "civilni_proces",
+    "finance"
    ],
    "procesni": true
   },

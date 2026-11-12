@@ -1,8 +1,419 @@
 {
- "generated": "2026-11-11T07:24:15Z",
+ "generated": "2026-11-12T07:22:57Z",
  "soud": "nss",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "nss:787335",
+   "spz": "5 As 205/2026-35",
+   "ecli": "ECLI:CZ:NSS:2026:5.As.205.2026.35",
+   "druh": "usnesení",
+   "senat": 5,
+   "rejstrik": "As",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787335",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787335",
+   "soudce": "Lenka Matyášová",
+   "heslo": "Odkladný účinek kasační stížnosti proti přikázání rozhodnout o žádosti",
+   "shrnuti": "Žalobce se domáhal po Ministerstvu spravedlnosti poskytnutí informací podle informačního zákona, avšak žalovaný odmítl nahlížet do spisu a nevydal rozhodnutí; Městský soud v Praze shledal žalobu na nečinnost důvodnou a uložil žalovanému o žádosti rozhodnout. Nejvyšší správní soud zamítl návrh žalovaného na přiznání odkladného účinku kasační stížnosti, neboť rozsudek neukládá informaci přímo poskytnout, ale pouze o ní znovu rozhodnout, a nevratný stav tak bezprostředně nehrozí.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:787334",
+   "spz": "1 Azs 115/2026-45",
+   "ecli": "ECLI:CZ:NSS:2026:1.Azs.115.2026.45",
+   "druh": "usnesení",
+   "senat": 1,
+   "rejstrik": "Azs",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787334",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787334",
+   "soudce": "Sylva Šiškeová",
+   "heslo": "Závažné onemocnění nezakládá samo o sobě doplňkovou ochranu",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku krajského soudu, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Nejvyšší správní soud řešil otázku, zda závažné onemocnění a riziko zhoršení zdravotního stavu v důsledku nedostupnosti péče v zemi původu zakládají nárok na doplňkovou ochranu. Soud dospěl k závěru, že samostatný zdravotní důvod takový nárok nezakládá, a kasační stížnost odmítl pro nepřijatelnost.",
+   "oblasti": [
+    "socialni_cizinci",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:787333",
+   "spz": "1 Azs 125/2026-38",
+   "ecli": "ECLI:CZ:NSS:2026:1.Azs.125.2026.38",
+   "druh": "usnesení",
+   "senat": 1,
+   "rejstrik": "Azs",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787333",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787333",
+   "soudce": "Ivo Pospíšil",
+   "heslo": "Dovolená advokáta neodůvodňuje prodloužení lhůty",
+   "shrnuti": "Žalobkyně se u Městského soudu v Praze domáhala přezkumu rozhodnutí Policie České republiky, Ředitelství služby cizinecké policie. Nejvyšší správní soud řešil otázku, zda je žádost o prodloužení lhůty z důvodu dovolené dostatečně omluvená pro neodstranění vad žaloby, a dospěl k závěru, že pokud zástupce čerpání dovolené blíže nespecifikoval a nedoložil, soud žalobu správně odmítl.",
+   "oblasti": [
+    "socialni_cizinci",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:787332",
+   "spz": "1 As 106/2026-166",
+   "ecli": "ECLI:CZ:NSS:2026:1.As.106.2026.166",
+   "druh": "usnesení",
+   "senat": 1,
+   "rejstrik": "As",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787332",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787332",
+   "soudce": "Ivo Pospíšil",
+   "heslo": "Odkladný účinek kasační stížnosti vyžaduje konkrétně tvrzenou újmu",
+   "shrnuti": "Žalobci napadli rozhodnutí žalovaného o stavebním záměru, přičemž jejich žaloby i následné kasační stížnosti byly spojeny s návrhem na přiznání odkladného účinku. Nejvyšší správní soud řešil otázku splnění podmínek pro přiznání odkladného účinku kasační stížnosti ve smyslu § 73 odst. 2 s. ř. s. Návrhům nevyhověl, neboť stěžovatelé neprokázali vznik nepoměrně větší újmy, přičemž jejich tvrzení zůstala obecná a nepřevážila nad zájmy stavebníka na pokračování výstavby.",
+   "oblasti": [
+    "stavebni_zp",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:787331",
+   "spz": "1 Azs 128/2026-21",
+   "ecli": "ECLI:CZ:NSS:2026:1.Azs.128.2026.21",
+   "druh": "usnesení",
+   "senat": 1,
+   "rejstrik": "Azs",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787331",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787331",
+   "soudce": "Sylva Šiškeová",
+   "heslo": "Odkladný účinek kasační stížnosti kvůli nařízení o nepřijatelnosti pobytů",
+   "shrnuti": "Žalobkyně se u Nejvyššího správního soudu domáhala přiznání odkladného účinku kasační stížnosti proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Soud řešil otázku, zda obava z nemožnosti návratu do ČR s ohledem na omezení pro občany Ruské federace představuje újmu odůvodňující odkladný účinek. Soud dospěl k závěru, že toto riziko zakládá hrozbu nepoměrně větší újmy, a proto kasační stížnosti odkladný účinek přiznal.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787328",
+   "spz": "Konf 5/2026-9",
+   "ecli": "ECLI:CZ:NSS:2026:Konf.5.2026.9",
+   "druh": "usnesení",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787328",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787328",
+   "soudce": "Jitka Zavřelová",
+   "heslo": "Určovací žaloba o podporu OZE spadá do soudní pravomoci",
+   "shrnuti": "Žalobce se domáhal určení práva na podporu elektřiny z obnovitelných zdrojů a povinnosti žalovaného ji hradit. Energetický regulační úřad odložil návrh pro nedostatek pravomoci, neboť od 1. ledna 2022 rozhoduje pouze o sporech o nesplnění povinnosti úhrady podpory formou žalob na plnění. Zvláštní senát určil, že k projednání určovací žaloby je příslušný obecný soud.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787325",
+   "spz": "10 Afs 146/2026-45",
+   "ecli": "ECLI:CZ:NSS:2026:10.Afs.146.2026.45",
+   "druh": "rozsudek",
+   "senat": 10,
+   "rejstrik": "Afs",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787325",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787325",
+   "soudce": "Vojtěch Šimíček",
+   "heslo": "Rozhodnutí o odnětí dotace pro nepřezkoumatelnost",
+   "shrnuti": "Ministerstvo průmyslu a obchodu podalo kasační stížnost proti rozsudku Městského soudu v Praze, kterým bylo zrušeno rozhodnutí o odnětí dotace společnosti SPUR. Nejvyšší správní soud řešil otázku přezkoumatelnosti rozhodnutí o odnětí dotace a dospěl k závěru, že napadená správní rozhodnutí trpí nepřezkoumatelností pro absenci analýzy hospodářských vztahů a slaďování jednání. Kasační stížnost proto zamítl.",
+   "oblasti": [
+    "spravni",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787323",
+   "spz": "Na 163/2026-13",
+   "ecli": "ECLI:CZ:NSS:2026:Na.163.2026.13",
+   "druh": "usnesení",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787323",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787323",
+   "soudce": "Veronika Juřičková",
+   "heslo": "Zjevně neúspěšná kasační stížnost vylučuje ustanovení zástupce",
+   "shrnuti": "Žalobkyně se u Nejvyššího správního soudu domáhala ustanovení zástupce pro podání kasační stížnosti proti usnesení Krajského soudu v Ústí nad Labem, kterým byla její žaloba proti rozhodnutí České správy sociálního zabezpečení odmítnuta pro opožděnost. Soud řešil otázku, zda lze ustanovit zástupci k podání kasační stížnosti proti opožděně podané žalobě. Dospěl k závěru, že taková kasační stížnost by byla zjevně neúspěšným návrhem, a proto návrh na ustanovení zástupce zamítl.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:787322",
+   "spz": "22 As 129/2026-28",
+   "ecli": "ECLI:CZ:NSS:2026:22.As.129.2026.28",
+   "druh": "usnesení",
+   "senat": 22,
+   "rejstrik": "As",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787322",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787322",
+   "soudce": "Tomáš Foltas",
+   "heslo": "Odmítnutí kasační stížnosti pro neodstranění nedostatku zastoupení",
+   "shrnuti": "Žalobce se domáhal přezkumu rozhodnutí krajského soudu podanou kasační stížností, aniž doložil povinné právnické zastoupení. Nejvyšší správní soud řešil otázku následků neodstranění tohoto nedostatku podmínek řízení na výzvu soudu. Jelikož stěžovatel neodstranil vadu ani přes výzvu, soud kasační stížnost odmítl.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:787317",
+   "spz": "Vol 7/2026-40",
+   "ecli": "ECLI:CZ:NSS:2026:Vol.7.2026.40",
+   "druh": "usnesení",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787317",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787317",
+   "soudce": "Michaela Bejčková",
+   "heslo": "Seznam voličů v zahraničí a hlasování",
+   "shrnuti": "Navrhovatel se domáhal neplatnosti hlasování ve volbách do Senátu poté, co mu okrsková volební komise odmítla umožnit hlasování ve druhém kole kvůli jeho zápisu ve zvláštním seznamu voličů u zastupitelského úřadu. Nejvyšší správní soud řešil otázku aktivní legitimace navrhovatele a dopadu zápisu v zahraničí na volby do Senátu. Dospěl k závěru, že navrhovatel nebyl oprávněnou osobou k podání návrhu a komise postupovala správně, když mu bez příslušného voličského průkazu či vyškrtnutí z cizozemského seznamu neumožnila hlasovat.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:787316",
+   "spz": "22 As 113/2026-52",
+   "ecli": "ECLI:CZ:NSS:2026:22.As.113.2026.52",
+   "druh": "rozsudek",
+   "senat": 22,
+   "rejstrik": "As",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787316",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787316",
+   "soudce": "Tomáš Foltas",
+   "heslo": "Nepřezkoumatelnost rozhodnutí o nesplnění podmínky aktivního zemědělce",
+   "shrnuti": "Žalobce se domáhal přezkoumání rozhodnutí Ministerstva zemědělství, kterým byla zamítnuta jeho žádost o přímé platby pro nesplnění podmínky aktivního zemědělce. Nejvyšší správní soud řešil otázku přezkoumatelnosti závěrů správních orgánů o stanovení výše celkových příjmů žadatele v paušálním režimu. Dospěl k závěru, že rozhodnutí správního orgánu je nepřezkoumatelné pro nedostatek důvodů ohledně právního základu pro stanovení celkových příjmů částkou 1 000 000 Kč.",
+   "oblasti": [
+    "spravni",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787315",
+   "spz": "Vol 10/2026-55",
+   "ecli": "ECLI:CZ:NSS:2026:Vol.10.2026.55",
+   "druh": "usnesení",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787315",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787315",
+   "soudce": "Pavel Molek",
+   "heslo": "Limit výdajů na senátní kampaň",
+   "shrnuti": "Navrhovatel se domáhal neplatnosti volby senátora pro podezření z obcházení pravidel financování a překročení výdajových limitů na volební kampaň. Nejvyšší správní soud řešil otázku, zda mohlo dojít k nejasnostem ohledně financování kampaně a k překročení zákonných limitů. Dospěl k závěru, že finanční limit výdajů na senátní kampaň se stanoví pro volební stranu jako celek, nikoli pro každého kandidáta zvlášť, a proto návrh zamítl.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787314",
+   "spz": "22 As 122/2026-16",
+   "ecli": "ECLI:CZ:NSS:2026:22.As.122.2026.16",
+   "druh": "rozsudek",
+   "senat": 22,
+   "rejstrik": "As",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787314",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787314",
+   "soudce": "Tomáš Foltas",
+   "heslo": "Lhůta pro žalobu proti stavebnímu rozhodnutí",
+   "shrnuti": "Společnost RD NEMO podala kasační stížnost proti usnesení Krajského soudu v Plzni, který odmítl její žalobu proti rozhodnutí Krajského úřadu Plzeňského kraje jako opožděnou. Nejvyšší správní soud řešil otázku, zda se jednoměsíční lhůta pro podání žaloby podle stavebního zákona uplatní i na rozhodnutí obsahující vedle stavebního výroku také výroky podle zákona o ochraně přírody a krajiny. Soud dospěl k závěru, že zkrácená lhůta platí pro veškerá rozhodnutí stavebního úřadu bez ohledu na to, zda obsahují i složkové výroky.",
+   "oblasti": [
+    "stavebni_zp",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787313",
+   "spz": "2 Azs 158/2026-23",
+   "ecli": "ECLI:CZ:NSS:2026:2.Azs.158.2026.23",
+   "druh": "usnesení",
+   "senat": 2,
+   "rejstrik": "Azs",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787313",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787313",
+   "soudce": "Eva Šonková",
+   "heslo": "Nespolehlivost cizince vylučuje zvláštní opatření",
+   "shrnuti": "Žalobce se domáhal přezkumu rozhodnutí o svém zajištění za účelem správního vyhoštění, které Městský soud v Praze zamítl. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti ve vztahu k posouzení zvláštních opatření namísto zajištění cizince a dospěl k závěru, že stěžovatelova kasační stížnost je nepřijatelná, protože městský soud rozhodl v souladu s ustálenou judikaturou a důvodně shledal obavu z maření vyhoštění.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787312",
+   "spz": "22 As 141/2026-24",
+   "ecli": "ECLI:CZ:NSS:2026:22.As.141.2026.24",
+   "druh": "usnesení",
+   "senat": 22,
+   "rejstrik": "As",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787312",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787312",
+   "soudce": "Tomáš Foltas",
+   "heslo": "Úřední záznam sám o sobě neprokazuje totožnost řidiče",
+   "shrnuti": "Ministerstvo dopravy podalo kasační stížnost proti rozsudku Městského soudu v Praze, kterým bylo zrušeno rozhodnutí o přestupku žalobkyně v dopravě. Nejvyšší správní soud řešil otázku, zda úřední záznam o podaném vysvětlení postačuje k prokázání totožnosti řidiče, a dospěl k závěru, že sám o sobě nestačí bez dalších důkazů.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:787311",
+   "spz": "22 Ads 48/2026-63",
+   "ecli": "ECLI:CZ:NSS:2026:22.Ads.48.2026.63",
+   "druh": "rozsudek",
+   "senat": 22,
+   "rejstrik": "Ads",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787311",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787311",
+   "soudce": "Tomáš Foltas",
+   "heslo": "Výkon opatrovnictví nezakládá automaticky společné hospodaření",
+   "shrnuti": "Žalobce se soudil s Ministerstvem práce a sociálních věcí o příspěvek na živobytí, který mu nebyl přiznán z důvodu závěru o existenci společné domácnosti s jeho opatrovnicí. Nejvyšší správní soud řešil otázku, zda lze výkon opatrovnické funkce a související mezilidskou podporu bez dalšího považovat za důkaz společného hospodaření. Soud dospěl k závěru, že samotný opatrovnický vztah společné hospodaření nezakládá a napadená rozhodnutí jsou nepřezkoumatelná.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787310",
+   "spz": "Vol 16/2026-72",
+   "ecli": "ECLI:CZ:NSS:2026:Vol.16.2026.72",
+   "druh": "usnesení",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787310",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787310",
+   "soudce": "Petr Mikeš",
+   "heslo": "V řízení o neplatnosti volby nelze přezkoumávat registraci kandidátů",
+   "shrnuti": "Navrhovatel se u Nejvyššího správního soudu domáhal vyslovení neplatnosti volby senátora kvůli údajným vadám v registračním řízení kandidátní listiny. Soud návrh zamítl s odůvodněním, že na základě zásady souslednosti volebních fází nelze v řízení o neplatnosti volby zpochybňovat již uzavřenou fázi registrace kandidátů, k níž navíc navrhovatel nebyl aktivně legitimován.",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787309",
+   "spz": "10 Azs 199/2026-14",
+   "ecli": "ECLI:CZ:NSS:2026:10.Azs.199.2026.14",
+   "druh": "usnesení",
+   "senat": 10,
+   "rejstrik": "Azs",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787309",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787309",
+   "soudce": "Vojtěch Šimíček",
+   "heslo": "Zastavení řízení o kasační stížnosti pro nezaplacení poplatku",
+   "shrnuti": "Žalobce se kasační stížností domáhal zrušení rozsudku Městského soudu v Praze ve věci pobytu cizinců. Nejvyšší správní soud řešil otázku splnění procesních podmínek řízení po podání blanketní kasační stížnosti. Protože stěžovatel ve stanovené lhůtě nezaplatil soudní poplatek, soud řízení zastavil.",
+   "oblasti": [
+    "socialni_cizinci",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:787308",
+   "spz": "22 Ads 47/2026-68",
+   "ecli": "ECLI:CZ:NSS:2026:22.Ads.47.2026.68",
+   "druh": "rozsudek",
+   "senat": 22,
+   "rejstrik": "Ads",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787308",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787308",
+   "soudce": "Jitka Zavřelová",
+   "heslo": "Výkon opatrovnictví nezakládá automaticky společné hospodaření",
+   "shrnuti": "Žalobce zastoupený opatrovnicí podal kasační stížnost proti rozsudku Městského soudu v Praze, který zamítl jeho žalobu proti rozhodnutím Ministerstva práce a sociálních věcí o zamítnutí žádostí o doplatek na bydlení. Nejvyšší správní soud řešil otázku, zda lze výkon opatrovnické funkce ztotožnit se společným hospodařením a zda jsou rozhodnutí správních orgánů přezkoumatelná. Soud dospěl k závěru, že samotný opatrovnický vztah nezakládá společné hospodaření a že napadená rozhodnutí trpí vnitřní rozporností a nepřezkoumatelností.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787307",
+   "spz": "4 Azs 163/2026-29",
+   "ecli": "ECLI:CZ:NSS:2026:4.Azs.163.2026.29",
+   "druh": "usnesení",
+   "senat": 4,
+   "rejstrik": "Azs",
+   "datum": "2026-10-27",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-12T07:22:57Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787307",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787307",
+   "soudce": "Tomáš Kocourek",
+   "heslo": "Hrozba ze strany věřitelů a dostupnost ochrany ve Vietnamu",
+   "shrnuti": "Žalobce se kasační stížností domáhal zrušení rozsudku krajského soudu, který zamítl jeho žalobu proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Nejvyšší správní soud řešil, zda obavy před vymáháním dluhů soukromými věřiteli v zemi původu zakládají nárok na doplňkovou ochranu a zda státní orgány poskytují účinnou ochranu. Soud dospěl k závěru, že stěžovatel neprokázal existenci reálného nebezpečí vážné újmy ani nedostupnost státní ochrany ve Vietnamu.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni"
+   ],
+   "procesni": false
+  },
   {
    "id": "nss:787298",
    "spz": "21 Afs 43/2026-43",
