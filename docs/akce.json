@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-11T07:25:52+00:00",
+  "generated": "2026-11-12T07:07:17+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 18,
-      "stazeno": "2026-11-11T07:25:21+00:00",
+      "stazeno": "2026-11-12T07:06:54+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -17,33 +17,22 @@
       "zkratka": "PF UK",
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
-      "pocet": 7,
-      "stazeno": "2026-11-11T07:25:28+00:00",
+      "pocet": 6,
+      "stazeno": "2026-11-12T07:07:04+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "adb9cab98b19a4ce"
-    },
-    "JCP": {
-      "nazev": "Jednota českých právníků",
-      "zkratka": "JČP",
-      "barva": "#1d4ed8",
-      "url": "https://jednotaceskychpravniku.cz/vzdelavaci-akce/",
-      "pocet": 3,
-      "stazeno": "2026-10-14T04:38:28+00:00",
-      "cesta": "ai",
-      "chyba": "403 Client Error: Forbidden for url: https://jednotaceskychpravniku.cz/vzdelavaci-akce/",
-      "otisk": "af44eceb0fc539df"
+      "otisk": "2d3f77a4fb7a4632"
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
       "zkratka": "epravo",
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
-      "pocet": 6,
-      "stazeno": "2026-11-11T07:25:33+00:00",
+      "pocet": 7,
+      "stazeno": "2026-11-12T07:07:09+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "4c03a6e43f14e7ac"
+      "otisk": "4f31043a9520c301"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -51,7 +40,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-11-11T07:25:34+00:00",
+      "stazeno": "2026-11-12T07:07:10+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -62,7 +51,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-11-11T07:25:34+00:00",
+      "stazeno": "2026-11-12T07:07:11+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "c6f425e1a83fdab1"
@@ -291,29 +280,6 @@
       "detail_pokusy": 1
     },
     {
-      "id": "70aca52465c761aadac3",
-      "poradatel": "JCP",
-      "datum": "2026-10-05",
-      "zacatek": "16:00",
-      "konec": "18:00",
-      "nazev": "Popravy a popraviště, a popravní nástroje z pohledu právní archeologie",
-      "misto": "Právnická fakulta UK v Praze, přízemí dv. č. 38",
-      "forma": "prezencne",
-      "lektori": [
-        "doc. JUDr. Vilém Knoll, Ph.D."
-      ],
-      "cena": "zdarma",
-      "anotace": "Přednáška o popravách, popravištích a popravních nástrojích z pohledu právní archeologie.",
-      "url": "https://jednotaceskychpravniku.cz/prednasky/popravy-a-popraviste-a-popravni-nastroje-z-pohledu-pravni-archeologie/",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "forma",
-        "misto"
-      ],
-      "oblasti": [],
-      "oblasti_klic": "344e8e4c6ac7"
-    },
-    {
       "id": "e38a829b465f1b99a1fd",
       "poradatel": "PFUK",
       "datum": "2026-10-05",
@@ -403,30 +369,6 @@
         "autorske"
       ],
       "oblasti_klic": "fa65e82ec59a"
-    },
-    {
-      "id": "c7a1dd6e8b4c7b028b82",
-      "poradatel": "JCP",
-      "datum": "2026-10-06",
-      "zacatek": "16:00",
-      "konec": "18:00",
-      "nazev": "Popravy a popraviště, a popravní nástroje z pohledu právní archeologie",
-      "misto": "Právnická fakulta UK v Praze, přízemí dv. č. 38",
-      "forma": "prezencne",
-      "lektori": [
-        "doc. JUDr. Vilém Knoll, Ph.D."
-      ],
-      "cena": "zdarma",
-      "anotace": "Přednáška o popravách, popravištích a popravních nástrojích z pohledu právní archeologie.",
-      "url": "https://jednotaceskychpravniku.cz/prednasky/popravy-a-popraviste-a-popravni-nastroje-z-pohledu-pravni-archeologie/",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "trestni"
-      ],
-      "oblasti_klic": "344e8e4c6ac7"
     },
     {
       "id": "feaf5b4f18256d445ba2",
@@ -541,24 +483,6 @@
         "finance"
       ],
       "oblasti_klic": "e9ea62498dc9"
-    },
-    {
-      "id": "0ae848ce6557b5845ce4",
-      "poradatel": "JCP",
-      "datum": "2026-10-08",
-      "zacatek": "16:00",
-      "konec": "",
-      "nazev": "Popravy a popraviště, a popravní nástroje z pohledu právní archeologie",
-      "misto": "",
-      "forma": "online",
-      "lektori": [
-        "doc. JUDr. Vilém Knoll, Ph.D."
-      ],
-      "cena": "zdarma",
-      "anotace": "Přednáška z pohledu právní archeologie zaměřená na popravy, popraviště a popravní nástroje.",
-      "url": "https://jednotaceskychpravniku.cz/prednasky/popravy-a-popraviste-a-popravni-nastroje-z-pohledu-pravni-archeologie/",
-      "oblasti": [],
-      "oblasti_klic": "25c40bee33f1"
     },
     {
       "id": "bd6823b2cca4f36bd031",
@@ -695,26 +619,6 @@
         "it"
       ],
       "oblasti_klic": "4e7307740760"
-    },
-    {
-      "id": "910d12f8f28cdfed6ef4",
-      "poradatel": "JCP",
-      "datum": "2026-10-14",
-      "zacatek": "10:00",
-      "konec": "14:30",
-      "nazev": "Umělá inteligence a její využití v praxi právníků",
-      "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
-      "forma": "prezencne",
-      "lektori": [
-        "JUDr. Tomáš Fabík, advokát"
-      ],
-      "cena": "1200 Kč",
-      "anotace": "Umělá inteligence se stala běžnou součástí praxe, školení se zaměřuje na její využití pro právníky.",
-      "url": "https://jednotaceskychpravniku.cz/prednasky/umela-inteligence-a-jeji-vyuziti-v-praxi-pravniku/",
-      "oblasti": [
-        "it"
-      ],
-      "oblasti_klic": "7a3c4a224320"
     },
     {
       "id": "f5e482b4a0eacb1f6076",
@@ -929,24 +833,6 @@
         "prumyslova_prava"
       ],
       "oblasti_klic": "e3890266b80a"
-    },
-    {
-      "id": "2b2f621a6adadae257eb",
-      "poradatel": "JCP",
-      "datum": "2026-10-20",
-      "zacatek": "16:00",
-      "konec": "",
-      "nazev": "Pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Antonína Suma",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [
-        "prof. JUDr. Jan Kuklík, DrSc., vedoucí katedry právních dějin PF UK"
-      ],
-      "cena": "zdarma",
-      "anotace": "Přednáška mapuje pohnuté osudy osobního tajemníka Jana Masaryka JUDr. Antonína Suma.",
-      "url": "https://jednotaceskychpravniku.cz/prednasky/pohnute-osudy-osobniho-tajemnika-jana-masaryka-judr-antonina-suma/",
-      "oblasti": [],
-      "oblasti_klic": "e20df259cbad"
     },
     {
       "id": "7b39a990296e7af75e72",
@@ -1352,31 +1238,23 @@
       "detail_pokusy": 1
     },
     {
-      "id": "9a22045dc60281f66a17",
-      "poradatel": "JCP",
+      "id": "a5f115cdc51b009e2efa",
+      "poradatel": "EPRAVO",
       "datum": "2026-11-03",
       "zacatek": "09:30",
       "konec": "14:30",
       "nazev": "Vybrané otázky společného jmění manželů v aktuální rozhodovací praxi Nejvyššího soudu ČR a Ústavního soudu ČR",
-      "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
-      "forma": "prezencne",
-      "lektori": [
-        "Mgr. Michal Králík, Ph.D., soudce NS ČR"
-      ],
-      "cena": "1200 Kč",
-      "anotace": "Seminář bude zaměřen na vybrané...",
-      "url": "https://jednotaceskychpravniku.cz/prednasky/vybrane-otazky-spolecneho-jmeni-manzelu-v-aktualni-rozhodovaci-praxi-nejvyssiho-soudu-cr-a-ustavniho-soudu-cr/",
+      "misto": "",
+      "forma": "",
+      "lektori": [],
+      "cena": "",
+      "anotace": "Vzdělávací akce pořádaná Jednotou českých právníků zaměřená na vybrané otázky společného jmění manželů.",
+      "url": "https://www.epravo.cz/top/aktualne/vybrane-otazky-spolecneho-jmeni-manzelu-v-aktualni-rozhodovaci-praxi-nejvyssiho-soudu-cr-a-ustavniho-soudu-cr-121773.html",
       "oblasti": [
         "rodina_dedictvi",
         "ustavni"
       ],
-      "oblasti_klic": "66411bf1d0da",
-      "take_u": [
-        {
-          "poradatel": "EPRAVO",
-          "url": "https://www.epravo.cz/top/aktualne/vybrane-otazky-spolecneho-jmeni-manzelu-v-aktualni-rozhodovaci-praxi-nejvyssiho-soudu-cr-a-ustavniho-soudu-cr-121773.html"
-        }
-      ]
+      "oblasti_klic": "63041bad0cef"
     },
     {
       "id": "d999e57cb77f9ed40a01",
@@ -1871,27 +1749,6 @@
       "detail_pokusy": 2
     },
     {
-      "id": "cbe8fc9d7960cf134fc0",
-      "poradatel": "JCP",
-      "datum": "2026-11-19",
-      "zacatek": "09:00",
-      "konec": "14:00",
-      "nazev": "Autorské právo a umělá inteligence",
-      "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
-      "forma": "prezencne",
-      "lektori": [
-        "JUDr. Irena Holcová, advokátka"
-      ],
-      "cena": "1200 Kč",
-      "anotace": "Seminář se zabývá průnikem autorského práva a umělé inteligence.",
-      "url": "https://jednotaceskychpravniku.cz/prednasky/autorske-pravo-a-umela-inteligence/",
-      "oblasti": [
-        "autorske",
-        "it"
-      ],
-      "oblasti_klic": "8b3f3843c355"
-    },
-    {
       "id": "d35e09047bf85194b2a8",
       "poradatel": "UPV",
       "datum": "2026-11-19",
@@ -2006,6 +1863,40 @@
       "detail_pokusy": 2
     },
     {
+      "id": "a7dcd46ae2ecf2458416",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-23",
+      "zacatek": "09:00",
+      "konec": "16:00",
+      "nazev": "Právo & Praxe 2026",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "JUDr. Monika Novotná",
+        "JUDr. Jaroslav Drahovzal",
+        "Mgr. Václav Mánek",
+        "JUDr. Lukáš Duffek",
+        "Marcela Hampelová",
+        "JUDr. Lukáš Žáček",
+        "Mgr. Miroslav Chochola, LL.M., MBA",
+        "Mgr. Václav Vlk"
+      ],
+      "cena": "4 975 Kč s DPH",
+      "anotace": "Online konference k aktuálním tématům soukromého práva.",
+      "url": "https://www.epravo.cz/eshop/pravo-praxe-2026-online-zive-vysilani-23-26-11-2026-1657.html",
+      "datum_do": "2026-11-26",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "zavazky",
+        "vecna_prava",
+        "korporace"
+      ],
+      "oblasti_klic": "650d060b0de4"
+    },
+    {
       "id": "1c3e544eeb40fd8a2f65",
       "poradatel": "UPV",
       "datum": "2026-11-24",
@@ -2026,31 +1917,6 @@
         "prumyslova_prava"
       ],
       "oblasti_klic": "bca0fc74305a"
-    },
-    {
-      "id": "7a2f5a435eb2facb90cf",
-      "poradatel": "JCP",
-      "datum": "2026-11-24",
-      "zacatek": "16:00",
-      "konec": "18:00",
-      "nazev": "Od NIS2 k Cyber Resilience Act: proměna kybernetické bezpečnosti v právní disciplínu",
-      "misto": "Právnická fakulta UK, přízemí dv. č. 38",
-      "forma": "prezencne",
-      "lektori": [
-        "Mgr. Ondřej Běhal, podnikový právník"
-      ],
-      "cena": "",
-      "anotace": "Přednáška bude praktický pohled interního právníka, působícího v energetickém sektoru, na téma kybernetické bezpečnosti...",
-      "url": "https://jednotaceskychpravniku.cz/prednasky/od-nis2-k-cyber-resilience-act-promena-kyberneticke-bezpecnosti-v-pravni-disciplinu/",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "it",
-        "spravni"
-      ],
-      "oblasti_klic": "5e8aa7942f18"
     },
     {
       "id": "b1bd7d54280e546a9399",
@@ -2368,26 +2234,6 @@
       "detail_pokusy": 2
     },
     {
-      "id": "3aaaaca2e25abadf2d35",
-      "poradatel": "JCP",
-      "datum": "2026-12-10",
-      "zacatek": "09:00",
-      "konec": "14:00",
-      "nazev": "Soudní přezkum rozhodnutí orgánů s.r.o. a a.s. (včetně neplatnosti usnesení valné hromady)",
-      "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
-      "forma": "prezencne",
-      "lektori": [
-        "JUDr. Josef Holejšovský, Ph.D., soudce Vrchního soudu v Praze"
-      ],
-      "cena": "1200 Kč",
-      "anotace": "Odborná přednáška zaměřená na soudní přezkum rozhodnutí orgánů společností s ručením omezeným a akciových společností.",
-      "url": "https://jednotaceskychpravniku.cz/prednasky/soudni-prezkum-rozhodnuti-organu-s-r-o-a-a-s-vcetne-neplatnosti-usneseni-valne-hromady/",
-      "oblasti": [
-        "korporace"
-      ],
-      "oblasti_klic": "5ee3cb7f3d4e"
-    },
-    {
       "id": "6c0cb9e845731b7ab848",
       "poradatel": "CAK",
       "datum": "2026-12-15",
@@ -2497,22 +2343,6 @@
       "detail_pokusy": 2
     }
   ],
-  "duplikaty": [
-    {
-      "id": "a5f115cdc51b009e2efa",
-      "poradatel": "EPRAVO",
-      "datum": "2026-11-03",
-      "zacatek": "09:30",
-      "konec": "14:30",
-      "nazev": "Vybrané otázky společného jmění manželů v aktuální rozhodovací praxi Nejvyššího soudu ČR a Ústavního soudu ČR",
-      "misto": "",
-      "forma": "",
-      "lektori": [],
-      "cena": "",
-      "anotace": "Vzdělávací akce pořádaná Jednotou českých právníků zaměřená na vybrané otázky společného jmění manželů.",
-      "url": "https://www.epravo.cz/top/aktualne/vybrane-otazky-spolecneho-jmeni-manzelu-v-aktualni-rozhodovaci-praxi-nejvyssiho-soudu-cr-a-ustavniho-soudu-cr-121773.html",
-      "stejna_jako": "9a22045dc60281f66a17"
-    }
-  ],
+  "duplikaty": [],
   "ics": "https://owl.davidzavada.cz/akce.ics"
 }
