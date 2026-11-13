@@ -1,8 +1,456 @@
 {
- "generated": "2026-11-12T07:22:57Z",
+ "generated": "2026-11-13T06:55:24Z",
  "soud": "sdeu",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "sdeu:ipc:C-1185/26",
+   "spz": "C-1185/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-11-05",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "KSV1870 Information",
+   "url": "https://curia.europa.eu/juris/liste.jsf?num=C-1185/26&language=cs",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "prumyslova_prava",
+    "autorske",
+    "gdpr"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Podáno 5. 11. 2026. Položené otázky zatím nejsou zveřejněné."
+  },
+  {
+   "id": "sdeu:62025CJ0557",
+   "spz": "C-557/25",
+   "ecli": "ECLI:EU:C:2026:983",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "EO v. Parlament",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0557",
+   "heslo": "Ztráta důvěry umožňuje ukončení smlouvy zaměstnance",
+   "shrnuti": "Soudní dvůr EU řešil otázku, zda lze ukončit smlouvu dočasného zaměstnance EU na dobu neurčitou z důvodu ztráty důvěry podle pracovního řádu, probíhají-li zároveň disciplinární řízení. Soudní dvůr potvrdil, že oprávnění ukončit smlouvu výpovědí z důvodu ztráty důvěry není podmíněno vedením disciplinárního řízení ani předchozím zjištěním porušení povinností podle služebního řádu.",
+   "oblasti": [
+    "pracovni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0476",
+   "spz": "C-476/25",
+   "ecli": "ECLI:EU:C:2026:982",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Seruel",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0476",
+   "heslo": "Správci úvěru a promlčení pohledávky spotřebitele",
+   "shrnuti": "Soudní dvůr EU posuzoval, zda článek 10 odst. 1 směrnice 2021/2167 o správcích úvěru a obchodnících s úvěry brání tomu, aby vnitrostátní soud zkoumal promlčení pohledávky vůči spotřebiteli i bez návrhu. Rozhodl, že toto ustanovení neupravuje otázku, zda může vnitrostátní soud zkoumat promlčení pohledávky bez návrhu, a ponechává tak tuto otázku na vnitrostátním právu za dodržení zásad rovnocennosti a efektivity.",
+   "oblasti": [
+    "spotrebitel",
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0268",
+   "spz": "C-268/25",
+   "ecli": "ECLI:EU:C:2026:977",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "ETS a další",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0268",
+   "heslo": "Dlužné daně člena skupiny a vyloučení z veřejné zakázky",
+   "shrnuti": "Soudní dvůr EU řešil otázku, zda unijní právo brání vnitrostátní úpravě, která neumožňuje skupině dodavatelů dodatečně vyloučit nebo nahradit člena majícího daňové nedoplatky po lhůtě pro podání nabídek. Rozhodl, že povinné vyloučení uchazeče pro daňové nedoplatky platí, i když je dluh zaplacen až po lhůtě, avšak vnitrostátní úpravat nesmí bránit skupině bez náhrady vyloučit nebo nahradit dotčeného člena, pokud to umožňují okolnosti a zásada proporcionality.",
+   "oblasti": [
+    "verejne_zakazky",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0254",
+   "spz": "C-254/25",
+   "ecli": "ECLI:EU:C:2026:979",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Wojewoda Śląski",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0254",
+   "heslo": "Pozastavení lhůt a vyloučení žaloby pro nečinnost",
+   "shrnuti": "Soudní dvůr EU rozhodoval o tom, zda unijní právo brání vnitrostátní úpravě, která plošně a opakovaně pozastavuje běh lhůt pro vyřízení žádostí o povolení k pobytu státních příslušníků třetích zemí a vylučuje možnost podat žalobu pro nečinnost. Dospěl k závěru, že směrnice o podmínkách vstupu a pobytu za účelem studia ve spojení s právem na účinnou právní ochranu takové vnitrostátní opatření zakazuje, ledaže by bylo odůvodněno existencí vyšší moci a trvalo pouze po dobu nezbytně nutnou k překonání obtíží. V projednávané věci je na vnitrostátním soudu, aby ověřil, zda Polská republika splnila podmínky pro uplatnění vyšší moci a jednala s řádnou péčí.",
+   "oblasti": [
+    "spravni",
+    "socialni_cizinci",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0230",
+   "spz": "C-230/25",
+   "ecli": "ECLI:EU:C:2026:976",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Mihaylov",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0230",
+   "heslo": "Náhrada nákladů právní pomoci osobě ve vazbě",
+   "shrnuti": "Soudní dvůr EU rozhodoval o předběžných otázkách týkajících se nezávislosti soudu, který je současně žalovaným v občanskoprávním řízení zahájeném obviněným, práva být přítomen při trestním řízení a podmínek pro úhradu nákladů právní pomoci. Konstatoval, že nestrannost soudu není dotčena pouhým postavením žalovaného, pokud vnitrostátní opatření rozptýlí pochybnosti, a že řízení v nepřítomnosti je přípustné, pokud se obviněný vyhýbá zadržení v jiném řízení. Soudní dvůr rovněž dovodil, že právní úprava nesmí ukládat obviněnému ve vazbě povinnost uhradit náklady právní pomoci bez ověření jeho majetkových poměrů.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0164",
+   "spz": "C-164/25",
+   "ecli": "ECLI:EU:C:2026:978",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Telekom Slovenije",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0164",
+   "heslo": "Zásada efektivity brání zastavení řízení před orgánem",
+   "shrnuti": "Soudní dvůr EU rozhodl, že unijní právo nebrání vnitrostátní úpravě umožňující provozovateli sítě zvolit si mezi řešením sporu o přístup k infrastruktuře před specializovaným orgánem a před soudem. Avšak zásada efektivity brání takovému vnitrostátnímu pravidlu, které automaticky ukládá zastavení řízení před tímto orgánem, jestliže některá ze stran zahájí řízení se stejným předmětem u soudu.",
+   "oblasti": [
+    "spravni",
+    "it",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0061",
+   "spz": "C-61/25",
+   "ecli": "ECLI:EU:C:2026:981",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Komise v. Španělsko (Contrôles de conditionnalité en Castille-et-León)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0061",
+   "heslo": "Absence vnitrostátních opatření nevylučuje povinné kontroly",
+   "shrnuti": "Soudní dvůr řešil, zda členský stát může odůvodnit neprovedení kontrol podmíněnosti týkajících se ochrany přírodních stanovišť tím, že pro danou oblast nevymezil konkrétní ochranná opatření. Soudní dvůr rozhodl, že absence vnitrostátních ustanovení nezbavuje členský stát povinnosti provádět kontroly požadované unijním právem. V důsledku toho Soudní dvůr zrušil napadený rozsudek Tribunálu a zamítl příslušnou část žaloby.",
+   "oblasti": [
+    "spravni",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0007",
+   "spz": "C-7/25",
+   "ecli": "ECLI:EU:C:2026:972",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Ramodi",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0007",
+   "heslo": "Posouzení žádosti o mezinárodní ochranu a soudní přezkum",
+   "shrnuti": "Soudní dvůr EU rozhodoval o výkladu pravidel pro posuzování žádostí o mezinárodní ochranu a rozsahu soudního přezkumu. Uvedl, že příslušný orgán musí se žadatelem spolupracovat a zohlednit všechny důkazy, přičemž doložená prohlášení se považují za věrohodná. Vnitrostátní soud prvního stupně je povinen provést úplné a ex nunc posouzení a v případě spojeného rozhodnutí o navrácení musí i bez návrhu ověřit dodržení zásady nenavracení.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0626",
+   "spz": "C-626/25",
+   "ecli": "ECLI:EU:C:2026:973",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Landsbanki Luxembourg",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0626",
+   "heslo": "Přihlášení pohledávky v insolvenci nezakládá příslušnost",
+   "shrnuti": "Generální advokát navrhuje, že přihlášení pohledávky v insolvenčním řízení samo o sobě nezakládá příslušnost pro vzájemnou žalobu proti věci, a námitka litispendence může být považována za námitku nepříslušnosti, pokud včas vyjadřuje úmysl zpochybnit příslušnost. Pokud soud původu neučinil skutková zjištění o spotřebitelském statusu, soud dožádaného státu může v omezeném rozsahu přezkoumat dodržení pravidel ochrany spotřebitele.",
+   "oblasti": [
+    "mps",
+    "civilni_proces",
+    "spotrebitel"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0601",
+   "spz": "C-601/25",
+   "ecli": "ECLI:EU:C:2026:974",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Stowarzyszenie Artystów Wykonawców SAWP",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0601",
+   "heslo": "Právo na informace organizace kolektivní správy",
+   "shrnuti": "Generální advokát navrhuje, že článek 8 odst. 1 směrnice 2004/48 brání vnitrostátní úpravě, která by organizaci kolektivní správy umožňovala požadovat po uživateli informace o porušení práv duševního vlastnictví zcela mimo souvislost s řízením o takovém porušení. Dále uvádí, že podle článku 17 směrnice 2014/26 musí taková organizace při žádosti o informace k výběru odměn prokázat, že zastupuje příslušné nositele práv a že požadované údaje jsou nezbytné pro výběr a rozdělení příjmů.",
+   "oblasti": [
+    "autorske",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0539",
+   "spz": "C-539/25",
+   "ecli": "ECLI:EU:C:2026:975",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Aquind v. ACER",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0539",
+   "heslo": "Vnitrostátní právní omezení nezakládají investiční riziko",
+   "shrnuti": "Generální advokát navrhuje zamítnout kasační opravný prostředek společnosti Aquind jako zčásti nepřípustný a zčásti neopodstatněný. Podle jeho názoru Tribunál nepochybil, když konstatoval, že omezení vyplývající z vnitrostátních právních předpisů nepředstavují riziko spojené s investicí ve smyslu nařízení č. 714/2009. Mechanismus výjimky nelze používat k obcházení překážek stanovených národním právem.",
+   "oblasti": [
+    "spravni",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0362",
+   "spz": "C-362/25",
+   "ecli": "ECLI:EU:C:2026:970",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Kargins v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0362",
+   "heslo": "Zásah Komise do vnitrostátního řízení o podpoře",
+   "shrnuti": "Generální advokátka navrhuje zamítnout kasační opravný prostředek v napadených částech. Dospěla k závěru, že Komise jedná z vlastního podnětu i v případě, že je na vnitrostátní řízení upozorněna třetím subjektem. Dále uvedla, že připomínky Komise mohou vedle právních otázek pokrývat i skutkové okolnosti.",
+   "oblasti": [
+    "soutez",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CJ0897",
+   "spz": "C-897/24",
+   "ecli": "ECLI:EU:C:2026:980",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Rada v. Plahotniuc",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0897",
+   "heslo": "Rada musí ověřit procesní záruky před sankcemi",
+   "shrnuti": "Soudní dvůr posuzoval kasační opravný prostředek Rady proti rozsudku Tribunálu, kterým byla zrušena omezující opatření vůči stěžovateli přijatá na základě rozhodnutí moldavských orgánů. Soudní dvůr potvrdil, že při uložení sankcí opírajících se o probíhající trestní řízení v třetím státě je Rada povinna předem ověřit dodržení práva na obhajobu a práva na účinnou soudní ochranu a tuto skutečnost řádně odůvodnit. Protože Rada tuto povinnost nesplnila, kasační opravný prostředek byl zamítnut.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CJ0579",
+   "spz": "C-579/24",
+   "ecli": "ECLI:EU:C:2026:971",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Austro-Mechana a AKM",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0579",
+   "heslo": "Svolení poskytovatele platformy kryje i rozmnožování",
+   "shrnuti": "Soudní dvůr EU rozhodl, že poskytovatelé služeb pro sdílení obsahu on-line provádějí při uchovávání děl nahraných uživateli úkon rozmnožování, avšak nemusí pro něj získat samostatné svolení odlišné od svolení ke sdělení veřejnosti. Rovněž takoví uživatelé nepatří k osobám, které by musely pro tyto technicky nezbytné rozmnoženiny získávat vlastní povolení. Na tyto úkony se totiž vztahuje licenční svolení, které je poskytovatel povinen zajistit podle unijních předpisů.",
+   "oblasti": [
+    "autorske",
+    "it"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CC0826",
+   "spz": "C-826/24",
+   "ecli": "ECLI:EU:C:2026:969",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Komise v. Google a Alphabet (Google AdSense)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CC0826",
+   "heslo": "Posouzení doby trvání u zneužití dominantního postavení",
+   "shrnuti": "Evropská komise podala kasační opravný prostředek proti rozsudku Tribunálu, kterým bylo zrušeno rozhodnutí o pokutě pro společnost Google za zneužití dominantního postavení na trhu se zprostředkováním internetové reklamy. Generální advokátka navrhuje rozsudek Tribunálu zrušit a věc mu vrátit k novému projednání, protože se Tribunál dopustil nesprávného právního posouzení při vyhodnocení doby trvání smluvních závazků a jejích důsledků pro existenci účinků vyloučení z trhu.",
+   "oblasti": [
+    "soutez",
+    "it",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62023CJ0771",
+   "spz": "C-771/23",
+   "ecli": "ECLI:EU:C:2026:968",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Polsko v. Parlament a Rada (Efficacité énergétique)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62023CJ0771",
+   "heslo": "Energetická účinnost: právní základ a proporcionalita",
+   "shrnuti": "Polsko podalo žalobu na neplatnost směrnice o energetické účinnosti a tvrdilo, že měla být přijata na základě článku 192 SFEU vyžadujícího jednomyslnost v Radě namísto článku 194 SFEU. Soudní dvůr EU žalobu v plném rozsahu zamítl s tím, že primárním cílem a obsahem směrnice je podpora energetické účinnosti a úspor energie podle energetické politiky Unie, a nikoliv významné ovlivnění skladby zdrojů energie členských států. Soud rovněž potvrdil, že napadená směrnice neporušuje zásadu proporcionality ani povinnost řádného posouzení dopadů.",
+   "oblasti": [
+    "spravni",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62023CJ0512",
+   "spz": "C-512/23",
+   "ecli": "ECLI:EU:C:2026:967",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Polsko v. Parlament a Rada (Mécanisme d’ajustement carbone aux frontières)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62023CJ0512",
+   "heslo": "Mechanismus uhlíkového vyrovnání spadá pod životní prostředí",
+   "shrnuti": "Soudní dvůr EU řešil žalobu na neplatnost nařízení (EU) 2023/956, kterým se zavádí mechanismus uhlíkového vyrovnání na hranicích (CBAM), podanou Polskou republikou. Žalobce namítal, že nařízení mělo být přijato na základě čl. 192 odst. 2 prvního pododstavce písm. a) SFEU jako předpis především fiskální povahy vyžadující jednysměnný souhlas Rady. Soudní dvůr žalobu zamítl s odůvodněním, že hlavním a převládajícím cílem napadeného nařízení je ochrana životního prostředí a boj proti změně klimatu, přičemž generování příjmů je pouze druhotným důsledkem; správně tak bylo přijato řádným legislativním postupem.",
+   "oblasti": [
+    "spravni",
+    "zavazky",
+    "dane"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62023CJ0505",
+   "spz": "C-505/23",
+   "ecli": "ECLI:EU:C:2026:966",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Polsko v. Parlament a Rada () a le transport routier)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62023CJ0505",
+   "heslo": "Příslušnost směrnice o obchodování s povolenkami na emise",
+   "shrnuti": "Soudní dvůr řešil žalobu na neplatnost směrnice (EU) 2023/959, kterou se mění směrnice o systému pro obchodování s povolenkami na emise skleníkových plynů (EU ETS), podanou Polskou republikou. Soudní dvůr dospěl k závěru, že napadená směrnice byla správně přijata na základě článku 192 odst. 1 SFEU jako opatření v oblasti životního prostředí, neboť nespadá pod zvláštní legislativní postup vyžadující jednomyslnost pro daňové předpisy či opatření významně ovlivňující energetický mix, a žalobu v plném rozsahu zamítl.",
+   "oblasti": [
+    "spravni",
+    "zavazky",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62023CJ0451",
+   "spz": "C-451/23",
+   "ecli": "ECLI:EU:C:2026:965",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Polsko v. Parlament a Rada (Objectifs fixés aux secteurs couverts par le règlement RRE)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62023CJ0451",
+   "heslo": "Příslušnost nařízení o snížení emisí k životnímu prostředí",
+   "shrnuti": "Soudní dvůr EU řešil žalobu na neplatnost nařízení (EU) 2023/857, kterým se mění nařízení (EU) 2018/842 o závazném každoročním snižování emisí skleníkových plynů členskými státy v období 2021–2030. Žalobce namítal nesprávný právní základ, porušení energetické solidarity, proporcionality a loajální spolupráce. Soudní dvůr žalobu v plném rozsahu zamítl s tím, že nařízení správně spadá pod oblast životního prostředí.",
+   "oblasti": [
+    "spravni",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62023CJ0445",
+   "spz": "C-445/23",
+   "ecli": "ECLI:EU:C:2026:964",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Polsko v. Parlament a Rada (Prorogation de la réserve de stabilité du marché)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62023CJ0445",
+   "heslo": "Změna rezervy tržní stability vyžaduje čl. 192 SFEU",
+   "shrnuti": "Polská republika podala žalobu na neplatnost rozhodnutí, kterým se mění pravidla pro rezervu tržní stability v systému EU pro obchodování s emisemi skleníkových plynů do roku 2030. Soudní dvůr žalobu v plném rozsahu zamítl a potvrdil, že napadené rozhodnutí bylo správně přijato na základě čl. 192 odst. 1 SFEU týkajícího se životního prostředí, neboť jeho hlavním cílem je ochrana životního prostředí a náprava tržní nerovnováhy, nikoliv primární zásah do energetické skladby států.",
+   "oblasti": [
+    "spravni",
+    "zavazky",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62023CJ0444",
+   "spz": "C-444/23",
+   "ecli": "ECLI:EU:C:2026:963",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Polsko v. Parlament a Rada (Renforcement des normes de performance des véhicules)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62023CJ0444",
+   "heslo": "Předpis o výkonnostních normách emisí CO2 pro vozidla",
+   "shrnuti": "Soudní dvůr řešil žalobu na neplatnost nařízení (EU) 2023/851, kterým se zpřísňují výkonnostní normy pro emise CO2 pro nové osobní automobily a lehká užitková vozidla, a žalobu v plném rozsahu zamítl. Soud konstatoval, že napadené nařízení mělo být správně přijato na základě čl. 192 odst. 1 SFEU, nikoli odst. 2 prvního pododstavce písm. c), a že unijní normotvůrce neporušil zásadu proporcionality ani nepochybil při posouzení dopadů.",
+   "oblasti": [
+    "spravni",
+    "zavazky",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62023CJ0442",
+   "spz": "C-442/23",
+   "ecli": "ECLI:EU:C:2026:962",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-13T06:55:24Z",
+   "nazev": "Polsko v. Parlament a Rada (Objectifs du secteur UTCATF)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62023CJ0442",
+   "heslo": "Předmět a platnost nařízení o LULUCF",
+   "shrnuti": "Soudní dvůr zamítl žalobu na neplatnost nařízení (EU) 2023/839, kterým se mění pravidla pro odvětví využívání půdy, změn ve využívání půdy a lesnictví (LULUCF). Konstatoval, že unijní normotvůrce zvolil správný právní základ podle čl. 192 odst. 1 SFEU a neporušil zásadu svěřených pravomocí, proporcionality ani povinnost řádného posouzení dopadů.",
+   "oblasti": [
+    "spravni",
+    "zavazky"
+   ],
+   "procesni": false
+  },
   {
    "id": "sdeu:62026TJ0016",
    "spz": "T-16/26",
