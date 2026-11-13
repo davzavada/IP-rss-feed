@@ -1,13 +1,13 @@
 {
-  "generated": "2026-11-12T07:07:17+00:00",
+  "generated": "2026-11-13T06:37:38+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 18,
-      "stazeno": "2026-11-12T07:06:54+00:00",
+      "pocet": 15,
+      "stazeno": "2026-11-13T06:37:22+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,21 +18,21 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 6,
-      "stazeno": "2026-11-12T07:07:04+00:00",
+      "stazeno": "2026-11-13T06:37:26+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "2d3f77a4fb7a4632"
+      "otisk": "68fb3018b87dd2cd"
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
       "zkratka": "epravo",
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
-      "pocet": 7,
-      "stazeno": "2026-11-12T07:07:09+00:00",
+      "pocet": 6,
+      "stazeno": "2026-11-13T06:37:31+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "4f31043a9520c301"
+      "otisk": "4e10baebb94cdf84"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -40,7 +40,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-11-12T07:07:10+00:00",
+      "stazeno": "2026-11-13T06:37:32+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -51,7 +51,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-11-12T07:07:11+00:00",
+      "stazeno": "2026-11-13T06:37:33+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "c6f425e1a83fdab1"
@@ -1680,7 +1680,7 @@
       "datum": "2026-11-18",
       "zacatek": "09:00",
       "konec": "16:30",
-      "nazev": "Juridikum PF UK pořádá seminář Nový stavební zákon v kostce",
+      "nazev": "Nový stavební zákon v kostce",
       "misto": "Právnická fakulta Univerzity Karlovy",
       "forma": "hybridne",
       "lektori": [
@@ -1698,9 +1698,10 @@
         "misto"
       ],
       "oblasti": [
-        "stavebni_zp"
+        "stavebni_zp",
+        "spravni"
       ],
-      "oblasti_klic": "9bb23f7bc2d5"
+      "oblasti_klic": "75ebfd819b56"
     },
     {
       "id": "102c4dc9f57d0a8cde47",
@@ -2127,6 +2128,28 @@
       ],
       "oblasti_klic": "dfaea5579c41",
       "detail_pokusy": 2
+    },
+    {
+      "id": "e4561a0d5c44ecdf6f62",
+      "poradatel": "PFUK",
+      "datum": "2026-12-02",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Workshop: Rovnost a transparentnost v odměňování",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [
+        "doc. JUDr. Jakub Tomšej, Ph.D.",
+        "JUDr. Lucie Přenosilová"
+      ],
+      "cena": "",
+      "anotace": "Workshop na téma rovnosti a transparentnosti v odměňování.",
+      "url": "https://www.prf.cuni.cz/aktuality/workshop-rovnost-a-transparentnost-v-odmenovani-0",
+      "detail_pokusy": 2,
+      "oblasti": [
+        "pracovni"
+      ],
+      "oblasti_klic": "9b6808c14c80"
     },
     {
       "id": "652d0acc4c735879e7b9",
