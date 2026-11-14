@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13T06:55:24Z",
+ "generated": "2026-11-14T06:41:20Z",
  "soud": "sdeu",
  "okno_od": "2026-10-01",
  "polozky": [
@@ -450,6 +450,63 @@
     "zavazky"
    ],
    "procesni": false
+  },
+  {
+   "id": "sdeu:62025TO0634",
+   "spz": "T-634/25",
+   "ecli": "ECLI:EU:T:2026:754",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-14T06:41:20Z",
+   "nazev": "GzSdW v. Parlament a další",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TO0634",
+   "heslo": "Žaloba na neplatnost aktu směřující proti Komisi je nepřípustná",
+   "shrnuti": "Tribunal rozhodoval o žalobě na neplatnost směřující mimo jiné proti Evropské komisi ohledně směrnice týkající se statusu ochrany vlků. Soud konstatoval, že Komise nebyla autorkou napadeného aktu přijatého v řádném legislativním procesu, neboť disponovala pouze právem legislativní iniciativy. Proto Tribunal odmítl žalobu jako nepřípustnou v části, v níž byla směřována proti Evropské komisi.",
+   "oblasti": [
+    "spravni",
+    "stavebni_zp",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62025TO0560",
+   "spz": "T-560/25",
+   "ecli": "ECLI:EU:T:2026:756",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-14T06:41:20Z",
+   "nazev": "KF v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TO0560",
+   "heslo": "Podmínka provedení akupunktury lékařem při proplacení nákladů",
+   "shrnuti": "Tribunál řešil, zda je pro úhradu nákladů na akupunkturu z pojištění v rámci společného systému úhrady rizik onemocnění pro zaměstnance unie nutné, aby léčbu prováděl lékař. Soud potvrdil, že podmínka provedení akupunktury lékařem nebo v nemocničním prostředí je v souladu s právními předpisy a žalobu zamítl jako zjevně neopodstatněnou.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025TO0505(01)",
+   "spz": "T-505/25",
+   "ecli": "ECLI:EU:T:2026:755",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-14T06:41:20Z",
+   "nazev": "Sammut v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TO0505(01)",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [],
+   "procesni": false,
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
   },
   {
    "id": "sdeu:62026TJ0016",
