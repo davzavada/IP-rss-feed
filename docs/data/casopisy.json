@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13T06:37:17Z",
+ "generated": "2026-11-14T06:15:36Z",
  "okno_od": "2026-10-01",
  "casopisy": [
   {
@@ -112,6 +112,27 @@
   }
  ],
  "polozky": [
+  {
+   "id": "GRUR Int-10.1093/grurint/ikag116",
+   "casopis": "grur-int",
+   "nazev": "Correction to: Who Can Keep a Secret? Mapping Trust and Trustworthiness in the UPC’s Transparency and Confidentiality Decisions",
+   "url": "https://doi.org/10.1093/grurint/ikag116",
+   "datum": "2026-11-13",
+   "first_seen": "2026-11-14T06:15:23Z",
+   "poznamka": "Shrnutí není k dispozici.",
+   "popis": "Correction to: Who Can Keep a Secret? Mapping Trust and Trustworthiness in the UPC’s Transparency and Confidentiality Decisions\nGRUR International"
+  },
+  {
+   "id": "JWIP-10.1111/jwip.70046",
+   "casopis": "jwip",
+   "nazev": "Optimising the use of unaffordability as a ground for compulsory licensing in African patent systems",
+   "url": "https://doi.org/10.1111/jwip.70046",
+   "autori": "Isaac Kundakogo Kunko",
+   "heslo": "Nucené patentové licence",
+   "shrnuti": "Článek se zabývá optimalizací využití cenové nedostupnosti jako důvodu pro udílení nucených licencí v patentových systémech v Africe. Zkoumá možnosti, jak tento právní mechanismus efektivněji uplatnit v praxi.",
+   "datum": "2026-11-12",
+   "first_seen": "2026-11-14T06:15:23Z"
+  },
   {
    "id": "Pravnik-2026-2026-11-4072",
    "casopis": "pravnik",
@@ -1164,13 +1185,13 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.06",
+   "id": "QMJIP-10.4337/qmjip.2026.03.04",
    "casopis": "qmjip",
-   "nazev": "New pharmaceutical product and patent term extension in China",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.06",
-   "autori": "Weiwei Han",
-   "heslo": "prodloužení patentu v Číně",
-   "shrnuti": "Článek se zabývá systémem prodloužení platnosti patentů na léčiva v Číně v kontextu nedávných legislativních změn z roku 2024. Analýzou prováděcích předpisů a pokynů pro zkoumání patentů přibližuje aktuální vývoj a poskytuje klíčové poznatky pro domácí i zahraniční subjektu usilující o maximalizaci přínosů tohoto systému.",
+   "nazev": "The demise of IPRs through the rise of BBNJ: the small matter of patent disclosure of origin requirements",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.04",
+   "autori": "Tanya Wagenaar",
+   "heslo": "BBNJ a patentová práva",
+   "shrnuti": "Článek se zabývá vlivem nové dohody BBNJ na práva duševního vlastnictví a požadavky na disclosure of origin (DOR) při biotechnologickém využití mořských genetických zdrojů. Ačkoli byly odkazy na duševní vlastnictví z konečného znění dohody postupně odstraněny, nedávno přijatá smlouva WIPO zavádí mezinárodní požadavky DOR. Tyto nové předpisy by mohly ideálně doplnit mechanismy dohody BBNJ a podpořit spravedlivé sdílení přínosů mezi státy.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -1182,17 +1203,6 @@
    "autori": "Mengna Liang",
    "heslo": "autorské právo platforem",
    "shrnuti": "Článek zkoumá povinnost čínských online platforem předcházet porušování autorských práv a porovnává přístupy v Číně, Spojeném království a USA. S ohledem na nedostatečnost tradičního institutu bezpečného přístavu navrhuje pro Čínu povinný model filtrace inspirovaný právem EU. V závěru představuje hodnotící rámec kombinující formální a materiální požadavky, podle něhož mají platformy vynakládat přiměřené úsilí.",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
-  },
-  {
-   "id": "QMJIP-10.4337/qmjip.2026.03.04",
-   "casopis": "qmjip",
-   "nazev": "The demise of IPRs through the rise of BBNJ: the small matter of patent disclosure of origin requirements",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.04",
-   "autori": "Tanya Wagenaar",
-   "heslo": "BBNJ a patentová práva",
-   "shrnuti": "Článek se zabývá vlivem nové dohody BBNJ na práva duševního vlastnictví a požadavky na disclosure of origin (DOR) při biotechnologickém využití mořských genetických zdrojů. Ačkoli byly odkazy na duševní vlastnictví z konečného znění dohody postupně odstraněny, nedávno přijatá smlouva WIPO zavádí mezinárodní požadavky DOR. Tyto nové předpisy by mohly ideálně doplnit mechanismy dohody BBNJ a podpořit spravedlivé sdílení přínosů mezi státy.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -1215,6 +1225,17 @@
    "autori": "W Oshada Rodrigo",
    "heslo": "Transformativní užití autorského práva",
    "shrnuti": "Článek srovnává americkou doktrínu fair use a britské výjimky z autorského práva v kontextu nedávného rozhodnutí ve věci Warhol v. Goldsmith a dalších případů. Autor kritizuje zpřísňování pravidel a nadřazování tržní substituce, což omezuje svobodu tvorby, remixovou kulturu i uměleckou inovaci. Jako řešení, které lépe reflektuje současné digitální formy umění, navrhuje nový čtyřkrokový test založený na expresivním pluralismu.",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z"
+  },
+  {
+   "id": "QMJIP-10.4337/qmjip.2026.03.06",
+   "casopis": "qmjip",
+   "nazev": "New pharmaceutical product and patent term extension in China",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.06",
+   "autori": "Weiwei Han",
+   "heslo": "prodloužení patentu v Číně",
+   "shrnuti": "Článek se zabývá systémem prodloužení platnosti patentů na léčiva v Číně v kontextu nedávných legislativních změn z roku 2024. Analýzou prováděcích předpisů a pokynů pro zkoumání patentů přibližuje aktuální vývoj a poskytuje klíčové poznatky pro domácí i zahraniční subjektu usilující o maximalizaci přínosů tohoto systému.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },

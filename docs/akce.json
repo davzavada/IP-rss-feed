@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-13T06:37:38+00:00",
+  "generated": "2026-11-14T06:16:21+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 15,
-      "stazeno": "2026-11-13T06:37:22+00:00",
+      "stazeno": "2026-11-14T06:16:02+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,10 +18,10 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 6,
-      "stazeno": "2026-11-13T06:37:26+00:00",
+      "stazeno": "2026-11-14T06:16:07+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "68fb3018b87dd2cd"
+      "otisk": "fea861d6569097fc"
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
@@ -29,10 +29,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-11-13T06:37:31+00:00",
+      "stazeno": "2026-11-14T06:16:13+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "4e10baebb94cdf84"
+      "otisk": "4a2cff4717d4515f"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -40,7 +40,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-11-13T06:37:32+00:00",
+      "stazeno": "2026-11-14T06:16:14+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -51,7 +51,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-11-13T06:37:33+00:00",
+      "stazeno": "2026-11-14T06:16:15+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "c6f425e1a83fdab1"
@@ -2150,6 +2150,27 @@
         "pracovni"
       ],
       "oblasti_klic": "9b6808c14c80"
+    },
+    {
+      "id": "904dce31b26cf1160eda",
+      "poradatel": "PFUK",
+      "datum": "2026-12-03",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Zdeněk Kučera | AI v české právní praxi",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [
+        "Zdeněk Kučera"
+      ],
+      "cena": "",
+      "anotace": "Odborná akce zaměřená na využití umele inteligence v české právní praxi.",
+      "url": "https://www.prf.cuni.cz/aktuality/zdenek-kucera-ai-v-ceske-pravni-praxi",
+      "detail_pokusy": 2,
+      "oblasti": [
+        "it"
+      ],
+      "oblasti_klic": "fa3a7e3a1057"
     },
     {
       "id": "652d0acc4c735879e7b9",
