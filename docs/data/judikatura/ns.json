@@ -1,8 +1,141 @@
 {
- "generated": "2026-11-14T06:41:20Z",
+ "generated": "2026-11-15T06:46:11Z",
  "soud": "ns",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "ns:CB043785EA1B274DC1258EAF0052BFA6",
+   "spz": "26 Cdo 2510/2026",
+   "ecli": "ECLI:CZ:NS:2026:26.CDO.2510.2026.1",
+   "druh": "usnesení",
+   "senat": 26,
+   "rejstrik": "Cdo",
+   "datum": "2026-11-10",
+   "zverejneno": "2026-11-14",
+   "first_seen": "2026-11-15T06:46:11Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/CB043785EA1B274DC1258EAF0052BFA6?openDocument",
+   "heslo": "Hodnocení přípustnosti dovolání u samostatných nároků",
+   "shrnuti": "Společenství vlastníků domu XY a žalovaná se soudili o zaplacení peněžitých nároků a vzájemný nárok. Nejvyšší soud řešil, zda je dovolání přípustné proti rozhodnutí o dílčích nárocích nepřevyšujících zákonný limit. Rozhodl, že pokud se nároky opírají o odlišný skutkový základ, hodnotový limit se posuzuje pro každý nárok zvlášť a dovolání je nepřípustné.",
+   "oblasti": [
+    "civilni_proces",
+    "vecna_prava"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:C07B94A9DA4C1C2AC1258EAF0052BF90",
+   "spz": "26 Cdo 2129/2026",
+   "ecli": "ECLI:CZ:NS:2026:26.CDO.2129.2026.1",
+   "druh": "usnesení",
+   "senat": 26,
+   "rejstrik": "Cdo",
+   "datum": "2026-11-04",
+   "zverejneno": "2026-11-14",
+   "first_seen": "2026-11-15T06:46:11Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/C07B94A9DA4C1C2AC1258EAF0052BF90?openDocument",
+   "heslo": "Důležitý důvod pro přezkum usnesení SVJ",
+   "shrnuti": "Navrhovatelka se domáhala určení neplatnosti usnesení shromáždění společenství vlastníků, kterým byla schválena cenová nabídka projektových prací a inženýrských činností k opravě střešního pláště. Nejvyšší soud řešil otázku, zda je schválení takové nabídky způsobilé zasáhnout do právního postavení vlastníků jednotek. Dovolací soud uzavřel, že schválení nabídky projektových prací samo o sobě nezakládá důležitý důvod pro přezkum usnesení shromáždění podle občanského zákoníku, a proto dovolání odmítl.",
+   "oblasti": [
+    "vecna_prava",
+    "korporace"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:B7494153A61485D3C1258EAF0052BF94",
+   "spz": "26 Cdo 2259/2026",
+   "ecli": "ECLI:CZ:NS:2026:26.CDO.2259.2026.1",
+   "druh": "usnesení",
+   "senat": 26,
+   "rejstrik": "Cdo",
+   "datum": "2026-11-10",
+   "zverejneno": "2026-11-14",
+   "first_seen": "2026-11-15T06:46:11Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/B7494153A61485D3C1258EAF0052BF94?openDocument",
+   "heslo": "Vyklizení nemovitosti jako výkon práva a dobré mravy",
+   "shrnuti": "Žalobci se domáhali po žalovaných vyklizení nemovitostí, přičemž soudy prvního a druhého stupně jejich žalobě vyhověly a dovolací soud dovolání žalovaných odmítl. Nejvyšší soud řešil otázku, zda výkon vlastnického práva žalobců nebyl v rozporu s dobrými mravy. Dospěl k závěru, že odvolací soud správně zohlednil veškeré okolnosti případu a shledal, že odepření ochrany vlastnického práva je až krajní možností, která v daném případě nebyla naplněna.",
+   "oblasti": [
+    "vecna_prava",
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:9CE579AF5EBBFBE2C1258EAF0052BF9D",
+   "spz": "26 Cdo 1206/2026 - II.",
+   "ecli": "ECLI:CZ:NS:2026:26.CDO.1206.2026.3",
+   "druh": "usnesení",
+   "senat": 26,
+   "rejstrik": "Cdo",
+   "datum": "2026-11-03",
+   "zverejneno": "2026-11-14",
+   "first_seen": "2026-11-15T06:46:11Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/9CE579AF5EBBFBE2C1258EAF0052BF9D?openDocument",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [],
+   "procesni": false,
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
+  },
+  {
+   "id": "ns:29577B85F79A4D69C1258EAF0052BFA2",
+   "spz": "24 Cdo 1936/2026",
+   "ecli": "ECLI:CZ:NS:2026:24.CDO.1936.2026.1",
+   "druh": "usnesení",
+   "senat": 24,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-11-14",
+   "first_seen": "2026-11-15T06:46:11Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/29577B85F79A4D69C1258EAF0052BFA2?openDocument",
+   "heslo": "Nepřípustnost dovolání ve věcech péče a výživy nezletilých",
+   "shrnuti": "Otec podal dovolání proti rozhodnutí odvolacího soudu o změně úpravy péče, styku s nezletilým dítětem a vyúčtování výživného. Nejvyšší soud řešil, zda je dovolání v těchto statusových věcech přípustné. Dovolání odmítl jako nepřípustné podle § 30 odst. 1 zákona o zvláštních řízeních soudních.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:1C14F4F1C5D9351AC1258EAF0052BF98",
+   "spz": "26 Cdo 2369/2026",
+   "ecli": "ECLI:CZ:NS:2026:26.CDO.2369.2026.1",
+   "druh": "usnesení",
+   "senat": 26,
+   "rejstrik": "Cdo",
+   "datum": "2026-11-10",
+   "zverejneno": "2026-11-14",
+   "first_seen": "2026-11-15T06:46:11Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/1C14F4F1C5D9351AC1258EAF0052BF98?openDocument",
+   "heslo": "Zpětvzetí žaloby při přerušeném řízení",
+   "shrnuti": "Žalobci se v řízení o vyklizení nemovitosti domáhali ochrany svých práv proti žalované a v průběhu odvolacího řízení vzali žalobu zpět. Nejvyšší soud řešil otázku, zda odvolací soud může v odvolacím řízení proti usnesení o přerušení řízení postupem podle § 222a odst. 1 o. s. ř. zrušit rozhodnutí a zastavit řízení. Dospěl k závěru, že tak učinit nemůže, neboť přezkoumávané rozhodnutí o přerušení řízení nemá povahu rozhodnutí o věci samé.",
+   "oblasti": [
+    "civilni_proces",
+    "vecna_prava"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:1ACBA65C0F39EE75C1258EAF0052BFA9",
+   "spz": "26 Cdo 2386/2026",
+   "ecli": "ECLI:CZ:NS:2026:26.CDO.2386.2026.1",
+   "druh": "usnesení",
+   "senat": 26,
+   "rejstrik": "Cdo",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-14",
+   "first_seen": "2026-11-15T06:46:11Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/1ACBA65C0F39EE75C1258EAF0052BFA9?openDocument",
+   "heslo": "Vady řízení nezakládají přípustnost dovolání",
+   "shrnuti": "Žalobce se domáhal přezkumu oprávněnosti výpovědi z nájmu bytu vůči žalované BTF Projekt. Nejvyšší soud řešil, zda námitky ohledně procesních vad a odnětí možnosti jednat před soudem mohou založit přípustnost dovolání. Rozhodl, že vady řízení a zmatečnostní vady nejsou způsobilým dovolacím důvodem pro založení přípustnosti podle § 237 o. s. ř., a dovolání odmítl.",
+   "oblasti": [
+    "civilni_proces",
+    "vecna_prava"
+   ],
+   "procesni": true
+  },
   {
    "id": "ns:EFC1D8C2501E1550C1258EAE0052B189",
    "spz": "33 Cdo 2575/2025",
