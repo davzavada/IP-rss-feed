@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-14T06:16:21+00:00",
+  "generated": "2026-11-15T06:23:10+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 15,
-      "stazeno": "2026-11-14T06:16:02+00:00",
+      "stazeno": "2026-11-15T06:23:02+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,7 +18,7 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 6,
-      "stazeno": "2026-11-14T06:16:07+00:00",
+      "stazeno": "2026-11-15T06:23:04+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "fea861d6569097fc"
@@ -29,10 +29,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-11-14T06:16:13+00:00",
+      "stazeno": "2026-11-15T06:23:08+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "4a2cff4717d4515f"
+      "otisk": "a9173365e1902300"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -40,7 +40,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-11-14T06:16:14+00:00",
+      "stazeno": "2026-11-15T06:23:09+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -51,7 +51,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-11-14T06:16:15+00:00",
+      "stazeno": "2026-11-15T06:23:10+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "c6f425e1a83fdab1"
@@ -63,33 +63,6 @@
     "hybridne": "Hybridně"
   },
   "akce": [
-    {
-      "id": "4673209472a87cbe6b1c",
-      "poradatel": "PFUK",
-      "datum": "2026-09-30",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "Debata o problémech sociálních sítí a jejich řešeních",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [
-        "Věra Jourová",
-        "Monika Hanych",
-        "Josef Holý",
-        "Bob Kartous",
-        "Lukáš Mikulecký",
-        "František Tichý"
-      ],
-      "cena": "zdarma",
-      "anotace": "Debata věnovaná aktuálním problémům sociálních sítí a možnostem jejich řešení.",
-      "url": "https://www.prf.cuni.cz/aktuality/debata-o-problemech-socialnich-siti-a-jejich-resenich",
-      "detail_pokusy": 2,
-      "oblasti": [
-        "osobnost_media",
-        "it"
-      ],
-      "oblasti_klic": "da1ad48d6c59"
-    },
     {
       "id": "fa6e622fde8295b44159",
       "poradatel": "PFUK",
@@ -110,27 +83,6 @@
       ],
       "oblasti_klic": "8c8955a31da2",
       "detail_pokusy": 2
-    },
-    {
-      "id": "91102010e8a932edcd76",
-      "poradatel": "CAK",
-      "datum": "2026-09-30",
-      "zacatek": "10:00",
-      "konec": "14:00",
-      "nazev": "Advokátní tarif a jiné způsoby odměňování - aplikace v advokátní praxi a judikatura",
-      "misto": "Brno, hybridní forma (prezenčně v Kleinově paláci / online v aplikaci Cisco Webex)",
-      "forma": "hybridne",
-      "lektori": [
-        "JUDr. Kateřina Koberová"
-      ],
-      "cena": "zdarma",
-      "anotace": "Seminář o advokátním tarifu a jiných způsobech odměňování, jejich aplikaci v advokátní praxi a související judikatuře.",
-      "url": "https://www.cak.cz/akce/1191",
-      "oblasti": [
-        "civilni_proces"
-      ],
-      "oblasti_klic": "402b93b91209",
-      "detail_pokusy": 1
     },
     {
       "id": "4cde32af8986db2ec746",
