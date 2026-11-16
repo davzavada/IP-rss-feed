@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-15T06:46:11Z",
+ "generated": "2026-11-16T06:45:09Z",
  "soud": "ns",
  "okno_od": "2026-10-01",
  "polozky": [
@@ -14,6 +14,7 @@
    "zverejneno": "2026-11-14",
    "first_seen": "2026-11-15T06:46:11Z",
    "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/CB043785EA1B274DC1258EAF0052BFA6?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/756E6974BC642AEEC1258EB0005294F8/$file/26%20Cdo%202510_2026.pdf?openElement",
    "heslo": "Hodnocení přípustnosti dovolání u samostatných nároků",
    "shrnuti": "Společenství vlastníků domu XY a žalovaná se soudili o zaplacení peněžitých nároků a vzájemný nárok. Nejvyšší soud řešil, zda je dovolání přípustné proti rozhodnutí o dílčích nárocích nepřevyšujících zákonný limit. Rozhodl, že pokud se nároky opírají o odlišný skutkový základ, hodnotový limit se posuzuje pro každý nárok zvlášť a dovolání je nepřípustné.",
    "oblasti": [
@@ -72,12 +73,13 @@
    "zverejneno": "2026-11-14",
    "first_seen": "2026-11-15T06:46:11Z",
    "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/9CE579AF5EBBFBE2C1258EAF0052BF9D?openDocument",
-   "heslo": "",
-   "shrnuti": "",
-   "oblasti": [],
-   "procesni": false,
-   "stav_shrnuti": "ceka_na_text",
-   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/31A6C02AFF644090C1258EB000318216/$file/26%20Cdo%201206_2026.pdf?openElement",
+   "heslo": "Oprava zjevné nesprávnosti v nákladech řízení",
+   "shrnuti": "Žalobce se domáhal určení neexistence nájemního vztahu ohledně honitby proti Honebnímu společenstvu Profesora Reiského Vilémov - Klášter a společnosti Vilémov Castle. Nejvyšší soud řešil opravu zjevné nesprávnosti v usnesení o nákladech dovolacího řízení. Soud opravil výrok tak, že nepřiznal náhradu DPH k nákladům zastoupení, protože opatrovnice žalovaného není plátkyní DPH.",
+   "oblasti": [
+    "civilni_proces"
+   ],
+   "procesni": true
   },
   {
    "id": "ns:29577B85F79A4D69C1258EAF0052BFA2",
@@ -109,6 +111,7 @@
    "zverejneno": "2026-11-14",
    "first_seen": "2026-11-15T06:46:11Z",
    "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/1C14F4F1C5D9351AC1258EAF0052BF98?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/8D2AA2099A61358DC1258EB000528EDC/$file/26%20Cdo%202369_2026.pdf?openElement",
    "heslo": "Zpětvzetí žaloby při přerušeném řízení",
    "shrnuti": "Žalobci se v řízení o vyklizení nemovitosti domáhali ochrany svých práv proti žalované a v průběhu odvolacího řízení vzali žalobu zpět. Nejvyšší soud řešil otázku, zda odvolací soud může v odvolacím řízení proti usnesení o přerušení řízení postupem podle § 222a odst. 1 o. s. ř. zrušit rozhodnutí a zastavit řízení. Dospěl k závěru, že tak učinit nemůže, neboť přezkoumávané rozhodnutí o přerušení řízení nemá povahu rozhodnutí o věci samé.",
    "oblasti": [
@@ -128,6 +131,7 @@
    "zverejneno": "2026-11-14",
    "first_seen": "2026-11-15T06:46:11Z",
    "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/1ACBA65C0F39EE75C1258EAF0052BFA9?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/C79BE7E480D595C7C1258EB0005291C2/$file/26%20Cdo%202386_2026.pdf?openElement",
    "heslo": "Vady řízení nezakládají přípustnost dovolání",
    "shrnuti": "Žalobce se domáhal přezkumu oprávněnosti výpovědi z nájmu bytu vůči žalované BTF Projekt. Nejvyšší soud řešil, zda námitky ohledně procesních vad a odnětí možnosti jednat před soudem mohou založit přípustnost dovolání. Rozhodl, že vady řízení a zmatečnostní vady nejsou způsobilým dovolacím důvodem pro založení přípustnosti podle § 237 o. s. ř., a dovolání odmítl.",
    "oblasti": [
