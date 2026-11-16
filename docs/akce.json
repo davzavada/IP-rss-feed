@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-15T06:23:10+00:00",
+  "generated": "2026-11-16T06:22:16+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 15,
-      "stazeno": "2026-11-15T06:23:02+00:00",
+      "stazeno": "2026-11-16T06:22:04+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,7 +18,7 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 6,
-      "stazeno": "2026-11-15T06:23:04+00:00",
+      "stazeno": "2026-11-16T06:22:05+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "fea861d6569097fc"
@@ -29,10 +29,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-11-15T06:23:08+00:00",
+      "stazeno": "2026-11-16T06:22:10+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "a9173365e1902300"
+      "otisk": "b8ada2a6ba465bf8"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -40,7 +40,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-11-15T06:23:09+00:00",
+      "stazeno": "2026-11-16T06:22:16+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -51,7 +51,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-11-15T06:23:10+00:00",
+      "stazeno": "2026-11-16T06:22:16+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "c6f425e1a83fdab1"
@@ -83,88 +83,6 @@
       ],
       "oblasti_klic": "8c8955a31da2",
       "detail_pokusy": 2
-    },
-    {
-      "id": "4cde32af8986db2ec746",
-      "poradatel": "CAK",
-      "datum": "2026-10-01",
-      "zacatek": "09:00",
-      "konec": "16:00",
-      "nazev": "Rozvodová novela a věci péče soudu o nezletilé",
-      "misto": "Brno, hybridní forma (prezenčně v Kleinově paláci / online v aplikaci Cisco Webex)",
-      "forma": "hybridne",
-      "lektori": [
-        "JUDr. Jaromír Jirsa"
-      ],
-      "cena": "1.050,- Kč včetně DPH",
-      "anotace": "Seminář zaměřený na rozvodovou novelu a věci péče soudu o nezletilé.",
-      "url": "https://www.cak.cz/akce/1174",
-      "oblasti": [
-        "rodina_dedictvi"
-      ],
-      "oblasti_klic": "f6a367615b95",
-      "detail_pokusy": 1
-    },
-    {
-      "id": "93973b841bf8a134fa0c",
-      "poradatel": "CAK",
-      "datum": "2026-10-01",
-      "zacatek": "09:00",
-      "konec": "16:00",
-      "nazev": "Společné jmění manželů 2026 aktuálně - část 3.",
-      "misto": "Praha 1, Národní 10, palác Dunaj",
-      "forma": "prezencne",
-      "lektori": [
-        "Mgr. Michal Králík, Ph.D."
-      ],
-      "cena": "1.100,- Kč",
-      "anotace": "Seminář zaměřený na aktuální otázky společného jmění manželů.",
-      "url": "https://www.cak.cz/akce/1167",
-      "oblasti": [
-        "rodina_dedictvi"
-      ],
-      "oblasti_klic": "b3fdacc57df4",
-      "detail_pokusy": 1
-    },
-    {
-      "id": "cae8aba7ce3fabead818",
-      "poradatel": "UPV",
-      "datum": "2026-10-01",
-      "zacatek": "09:00",
-      "konec": "10:00",
-      "nazev": "Databáze Espacenet",
-      "misto": "online",
-      "forma": "online",
-      "lektori": [],
-      "cena": "zdarma",
-      "anotace": "Vzdělávací akce zaměřená na práci s databází Espacenet.",
-      "url": "https://upv.gov.cz/files/uploads/seminare2026/0110_dtb_espacenet.pdf",
-      "detail_pokusy": 2,
-      "oblasti": [
-        "prumyslova_prava"
-      ],
-      "oblasti_klic": "dd66cffc6a9f"
-    },
-    {
-      "id": "f4ff8b91a21e227037c8",
-      "poradatel": "CAK",
-      "datum": "2026-10-01",
-      "zacatek": "10:00",
-      "konec": "14:00",
-      "nazev": "Povinnosti advokátů podle AML předpisů",
-      "misto": "Ostrava, Clarion Congress Hotel",
-      "forma": "prezencne",
-      "lektori": [
-        "Mgr. Illia Antonov"
-      ],
-      "cena": "zdarma",
-      "anotace": "Seminář pro advokáty zaměřený na povinnosti podle AML předpisů, vedení AML spisů v praxi a aktuální tématiku.",
-      "url": "https://www.cak.cz/akce/1319",
-      "oblasti": [
-        "finance"
-      ],
-      "oblasti_klic": "996033cec175",
-      "detail_pokusy": 1
     },
     {
       "id": "325dab32d43b405e73b3",
