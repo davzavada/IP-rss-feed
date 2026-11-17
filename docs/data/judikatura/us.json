@@ -1,8 +1,68 @@
 {
- "generated": "2026-11-14T06:41:20Z",
+ "generated": "2026-11-17T08:05:21Z",
  "soud": "us",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "us:3-635-26_3",
+   "spz": "III. ÚS 635/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.635.26.3",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-29",
+   "zverejneno": "2026-11-16",
+   "first_seen": "2026-11-17T08:05:21Z",
+   "nazev": "Nestanovení výživného pro dítě zpětně",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-635-26_3",
+   "soudce": "Daniela Zemanová",
+   "heslo": "Nestanovení výživného za dobu řízení vyžaduje odůvodnění",
+   "shrnuti": "Ústavní soud vyhověl ústavní stížnosti matky a zrušil rozhodnutí obecných soudů v části, v níž otci nebylo stanoveno výživné pro nezletilého za dobu trvání opatrovnického řízení. Soudy totiž tento závěr řádně neodůvodnily a nezabývaly se tím, zda dříve hrazené částky dosahovaly výše odpovídající odůvodněným potřebám dítěte. Ústavní stížnost otce směřující proti úpravě styku Ústavní soud odmítl jako zjevně neopodstatněnou.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-2706-26_1",
+   "spz": "III. ÚS 2706/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.2706.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-11-04",
+   "zverejneno": "2026-11-16",
+   "first_seen": "2026-11-17T08:05:21Z",
+   "nazev": "Odmítnutí státního zastupitelství konat v trestním řízení v důsledku chybně posouzené místní působnosti trestního zákoníku",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-2706-26_1",
+   "soudce": "Veronika Křesťanová",
+   "heslo": "Místní působnost trestního zákoníku při formálním sídle společnosti",
+   "shrnuti": "Stěžovatel napadal postup a vyrozumění státního zastupitelství, která odmítla prověřit jeho trestní oznámení o kybernetickém podvodu s odůvodněním, že tuzemské orgány nemají místní působnost, protože dotčená právnická osoba má v České republice pouze formální sídlo. Ústavní soud shledal porušení práva na přístup k orgánu veřejné moci podle čl. 36 odst. 1 Listiny, protože státní zastupitelství chybně interpretovala § 8 odst. 2 trestního zákoníku a opomněla, že formální sídlo nevylučuje aplikaci tohoto ustanovení a že závěr o absenci prospěchu společnosti byl pouhou nepodloženou domněnkou.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:2-2613-26_1",
+   "spz": "II. ÚS 2613/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2613.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-27",
+   "zverejneno": "2026-11-16",
+   "first_seen": "2026-11-17T08:05:21Z",
+   "nazev": "Lhůta pro uplatnění nároků na odměnu a náhrady ustanoveného obhájce",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2613-26_1",
+   "soudce": "Pavel Šámal",
+   "heslo": "Počátek lhůty k uplatnění odměny ustanoveného obhájce",
+   "shrnuti": "Stěžovatel napadal usnesení soudů, jimiž byl zamítnut jeho návrh na přiznání odměny a náhrady výdajů ustanoveného obhájce pro zmeškání jednoroční lhůty. Ústavní soud shledal porušení práva na ochranu majetku a principů právní jistoty, neboť obecné soudy dovodily počátek subjektivní lhůty volnou úvahou a odnesly jej k internímu úkonu soudu, aniž by prokazatelně zjistily, kdy se obhájce o skončení povinnosti obhajovat skutečně dozvěděl.",
+   "oblasti": [
+    "civilni_proces",
+    "skoda",
+    "ustavni"
+   ],
+   "procesni": false
+  },
   {
    "id": "us:4-2988-26_1",
    "spz": "IV. ÚS 2988/26",

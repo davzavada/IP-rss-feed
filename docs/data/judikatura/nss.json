@@ -1,8 +1,89 @@
 {
- "generated": "2026-11-15T06:46:11Z",
+ "generated": "2026-11-17T08:05:21Z",
  "soud": "nss",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "nss:787462",
+   "spz": "4 As 140/2026-66",
+   "ecli": "ECLI:CZ:NSS:2026:4.As.140.2026.66",
+   "druh": "usnesení",
+   "senat": 4,
+   "rejstrik": "As",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-16",
+   "first_seen": "2026-11-17T08:05:21Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787462",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787462",
+   "soudce": "Aleš Roztočil",
+   "heslo": "Chybějící odůvodnění rozhodnutí nelze nahradit v soudu",
+   "shrnuti": "Ministerstvo dopravy podalo kasační stížnost proti rozsudku Krajského soudu v Brně, kterým bylo zrušeno rozhodnutí ministerstva o přestupku kontrolního technika. Nejvyšší správní soud řešil otázku přípustnosti doplňování chybějících důvodů správního rozhodnutí až v soudním řízení a povinnosti vypořádat se s odvolacími námitkami ohledně odlišné rozhodovací praxe. Soud dospěl k závěru, že nedostatky odůvodnění nelze v soudním řízení zhojit a kasační stížnost odmítl pro nepřijatelnost.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787461",
+   "spz": "Aprk 7/2026-124",
+   "ecli": "ECLI:CZ:NSS:2026:Aprk.7.2026.124",
+   "druh": "usnesení",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-16",
+   "first_seen": "2026-11-17T08:05:21Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787461",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787461",
+   "soudce": "Lenka Matyášová",
+   "heslo": "Čekání na rozhodnutí v nepřetržité řadě věcí",
+   "shrnuti": "Žalobce se u Nejvyššího správního soudu domáhal určení lhůty k provedení procesního úkonu u Krajského soudu v Ústí nad Labem kvůli údajným průtahům v řízení o starobním důchodu. Soud konstatoval, že ačkoliv je délka řízení na hranici přiměřenosti, krajský soud se nedopustil bezdůvodných průtahů a návrh zamítl.",
+   "oblasti": [
+    "civilni_proces",
+    "socialni_cizinci"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:787460",
+   "spz": "4 Afs 250/2024-95",
+   "ecli": "ECLI:CZ:NSS:2026:4.Afs.250.2024.95",
+   "druh": "rozsudek",
+   "senat": 4,
+   "rejstrik": "Afs",
+   "datum": "2026-11-16",
+   "zverejneno": "2026-11-16",
+   "first_seen": "2026-11-17T08:05:21Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787460",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787460",
+   "soudce": "Tomáš Herc",
+   "heslo": "Úroky z dluhopisů jako daňový náklad",
+   "shrnuti": "Odvolací finanční ředitelství podalo kasační stížnost proti rozsudku Městského soudu v Praze, kterým bylo zrušeno rozhodnutí o doměření daně z příjmů právnických osob. Nejvyšší správní soud řešil otázku, zda uplatnění úroků z korunových dluhopisů upsaných akcionáři jako daňově uznatelných nákladů představovalo zneužití práva. Dospěl k závěru, že financování výplaty dividend prostřednictvím dluhopisů mělo ekonomický smysl a finanční orgány neprokázaly, že by primárním účelem transakce bylo získání neoprávněné daňové výhody.",
+   "oblasti": [
+    "zavazky",
+    "dane",
+    "korporace"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787459",
+   "spz": "Nao 165/2026-53",
+   "ecli": "ECLI:CZ:NSS:2026:Nao.165.2026.53",
+   "druh": "usnesení",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-16",
+   "first_seen": "2026-11-17T08:05:21Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787459",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787459",
+   "soudce": "David Hipšr",
+   "heslo": "Pouhá shoda jmen nezakládá podjatost soudce",
+   "shrnuti": "Osoby zúčastněné na řízení namítly podjatost soudce Nejvyššího správního soudu Michala Bobka s odkazem na jeho údajný příbuzenský vztah se zástupcem žalobce, advokátem Tomášem Bobkem. Nejvyšší správní soud řešil, zda pouhá domněnka o příbuzenství založená na shodě jmen představuje důvod pro vyloučení soudce z projednávání věci. Soud dospěl k závěru, že námitka je pouhou spekulací a neprokázanou domněnkou, a proto soudce vyloučen není.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
+  },
   {
    "id": "nss:787458",
    "spz": "2 As 136/2026-29",
@@ -1417,14 +1498,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/769322",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/769322",
    "soudce": "Petr Mikeš",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Vzdání se funkce státního zástupce zastavuje kárné řízení",
+   "shrnuti": "Obvodní státní zástupce pro Prahu 4 navrhl zahájení řízení o kárné odpovědnosti státní zástupkyně pro dlouhodobé průtahy v řízení a nečinnost. Nejvyšší správní soud řešil otázku, zda je nutné kárné řízení zastavit, pokud se kárně obviněná vzdala své funkce. Soud dospěl k závěru, že v důsledku doručení oznámení o vzdání se funkce ministryni spravedlnosti jsou splněny zákonné podmínky pro zastavení kárného řízení.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "ceka_na_text",
-   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
+   "procesni": true
   },
   {
    "id": "nss:769298",
@@ -1439,14 +1519,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/769298",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/769298",
    "soudce": "Petr Mikeš",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Vzdání se funkce státního zástupce zastaví kárné řízení",
+   "shrnuti": "Obvodní státní zástupce pro Prahu 4 navrhl zahájení řízení o kárné odpovědnosti státní zástupkyně pro průtahy v řízení, načež kárně obviněná doručila ministryni spravedlnosti oznámení o vzdání se funkce. Nejvyšší správní soud řešil otázku, zda je nutné v takovém případě kárné řízení zastavit. Soud rozhodl, že podle zákona o řízení ve věcech soudců, státních zástupců a soudních exekutorů se kárné řízení při vzdání se funkce zastavuje.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "pracovni"
    ],
-   "procesni": false,
-   "stav_shrnuti": "ceka_na_text",
-   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
+   "procesni": true
   },
   {
    "id": "nss:747929",
@@ -1461,14 +1540,13 @@
    "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/747929",
    "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/747929",
    "soudce": "Ondřej Mrákota",
-   "heslo": "",
-   "shrnuti": "",
+   "heslo": "Zastavení řízení o nezpůsobilosti státního zástupce",
+   "shrnuti": "Městská státní zástupkyně v Praze podala návrh na zjištění nezpůsobilosti státní zástupkyně vykonávat funkci. Soud řešil otázku, zda je nutné řízení zastavit v případě, že se dotčená státní zástupkyně vzdala své funkce. Vzhledem k tomu, že vzdání se funkce bylo doručeno ministryni spravedlnosti, soud řízení zastavil.",
    "oblasti": [
-    "spravni"
+    "spravni",
+    "civilni_proces"
    ],
-   "procesni": false,
-   "stav_shrnuti": "ceka_na_text",
-   "poznamka": "Čeká na zveřejnění textu rozhodnutí."
+   "procesni": true
   },
   {
    "id": "nss:787259",

@@ -1,8 +1,171 @@
 {
- "generated": "2026-11-16T06:45:09Z",
+ "generated": "2026-11-17T08:05:21Z",
  "soud": "ns",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "ns:FFA568419C9CEED1C1258EB10052A7F1",
+   "spz": "29 ICdo 185/2026",
+   "ecli": "ECLI:CZ:NS:2026:29.ICDO.185.2026.1",
+   "druh": "usnesení",
+   "senat": 29,
+   "rejstrik": "ICdo",
+   "datum": "2026-10-29",
+   "zverejneno": "2026-11-16",
+   "first_seen": "2026-11-17T08:05:21Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/FFA568419C9CEED1C1258EB10052A7F1?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/75A971C3FC7380D5C1258EB200211444/$file/29%20ICdo%20185_2026.pdf?openElement",
+   "heslo": "Dovolání proti usnesení o odpůrčí žalobě",
+   "shrnuti": "Insolvenční správce Insolvency Project se soudil s žalovaným o neúčinnost plateb provedených dlužníkem M. H. a vrácení částky do majetkové podstaty. Nejvyšší soud řešil přípustnost dovolání žalovaného a dospěl k závěru, že dovolání je nepřípustné, protože vznesené otázky nezpochybňují všechny samostatné důvody rozhodnutí odvolacího soudu. Dovolání bylo proto odmítnuto.",
+   "oblasti": [
+    "insolvence",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:D24373F08638FC92C1258EB10052A801",
+   "spz": "29 NSCR 113/2026",
+   "ecli": "ECLI:CZ:NS:2026:29.NSCR.113.2026.1",
+   "druh": "usnesení",
+   "senat": 29,
+   "rejstrik": "NSCR",
+   "datum": "2026-10-27",
+   "zverejneno": "2026-11-16",
+   "first_seen": "2026-11-17T08:05:21Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/D24373F08638FC92C1258EB10052A801?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/B9BAC225793F0A02C1258EB200211A80/$file/29%20NSCR%20113_2026.pdf?openElement",
+   "heslo": "Delegace věci z důvodu vhodnosti",
+   "shrnuti": "Dlužnice se v insolvenčním řízení domáhala přikázání věci jinému soudu z důvodu, že se zdržuje v obvodu jiného soudu a cestování do Prahy je pro ni zatěžující. Nejvyšší soud řešil, zda jsou splněny podmínky pro delegaci věci z důvodu vhodnosti podle § 12 odst. 2 o. s. ř. Dospěl k závěru, že podmínky splněny nejsou, neboť jde o výjimku z ústavní zásady zákonného soudu, kterou je nutno vykládat restriktivně a z podání dlužnice nevyplývaly významné důvody pro takový průlom.",
+   "oblasti": [
+    "insolvence",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:C773F74016D50C15C1258EB10052A7FA",
+   "spz": "29 ICdo 200/2026",
+   "ecli": "ECLI:CZ:NS:2026:29.ICDO.200.2026.1",
+   "druh": "usnesení",
+   "senat": 29,
+   "rejstrik": "ICdo",
+   "datum": "2026-10-30",
+   "zverejneno": "2026-11-16",
+   "first_seen": "2026-11-17T08:05:21Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/C773F74016D50C15C1258EB10052A7FA?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/2E4CED4B9657517CC1258EB200211737/$file/29%20ICdo%20200_2026.pdf?openElement",
+   "heslo": "Přerušení incidenčního sporu při popření pohledávky věřitele",
+   "shrnuti": "Žalobce se domáhal určení, že žalovaný nemá v insolvenčním řízení určité pohledávky. Nejvyšší soud řešil otázku, zda je důvodem pro přerušení incidenčního sporu to, že výsledek jiného incidenčního sporu může ovlivnit aktivní legitimaci žalobce. Rozhodl, že taková situace není důvodem pro přerušení řízení, protože insolvenční zákon pro případnou ztrátu postavení přihlášeného věřitele upravuje specifický procesní mechanismus.",
+   "oblasti": [
+    "insolvence",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:B26EF5116815F311C1258EB10052A7F6",
+   "spz": "29 ICdo 123/2024 - II.",
+   "ecli": "ECLI:CZ:NS:2026:29.ICDO.123.2024.3",
+   "druh": "rozsudek",
+   "senat": 29,
+   "rejstrik": "ICdo",
+   "datum": "2026-10-06",
+   "zverejneno": "2026-11-16",
+   "first_seen": "2026-11-17T08:05:21Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/B26EF5116815F311C1258EB10052A7F6?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/919E7A48CB037C18C1258EB200210734/$file/29%20ICdo%20123_2024.pdf?openElement",
+   "heslo": "Neplatná licenční smlouva a bezdůvodné obohacení v incidenčním sporu",
+   "shrnuti": "Insolvenční správce dlužníka M. M. se žalobou domáhal vůči insolvenčnímu správci dlužníka YES CHIPS určení pravosti pohledávky z licenční smlouvy. Nejvyšší soud řešil otázku, zda lze přihlášený nárok z neplatné licenční smlouvy posoudit jako bezdůvodné obohacení, i když přihláška výslovně netvrdila reálné využívání licence. Rozhodl, že uvedení odkazu na poskytnutou licenci a fakturu v přihlášce nevylučuje pozdější upřesnění skutkových tvrzení a posouzení nároku z titulu bezdůvodného obohacení.",
+   "oblasti": [
+    "insolvence",
+    "zavazky",
+    "autorske"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:7658FF781319F05FC1258EB10052A810",
+   "spz": "29 ICdo 143/2026",
+   "ecli": "ECLI:CZ:NS:2026:29.ICDO.143.2026.1",
+   "druh": "usnesení",
+   "senat": 29,
+   "rejstrik": "ICdo",
+   "datum": "2026-10-29",
+   "zverejneno": "2026-11-16",
+   "first_seen": "2026-11-17T08:05:21Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/7658FF781319F05FC1258EB10052A810?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/DE213F6C21BFEBCAC1258EB200211175/$file/29%20ICdo%20143_2026.pdf?openElement",
+   "heslo": "Započtení pohledávky nezakládá právo na vzájemné plnění",
+   "shrnuti": "Žalobce se domáhal určení pravosti a výše pohledávky vůči dlužníkovi zastoupenému insolvenčním správcem JUDr. Lukášem Holým z titulu plnění z neúčinného právního jednání. Nejvyšší soud řešil otázku, zda započtení pohledávky představuje vzájemné plnění zakládající právo na vrácení plnění po vyslovení neúčinnosti, a dospěl k závěru, že započtení není plněním, nýbrž jiným způsobem zániku závazku, a proto nevzniká pohledávka na vrácení plnění.",
+   "oblasti": [
+    "insolvence",
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:60DA379D8EE81C96C1258EB10052A80A",
+   "spz": "30 Cdo 1115/2026",
+   "ecli": "ECLI:CZ:NS:2026:30.CDO.1115.2026.1",
+   "druh": "usnesení",
+   "senat": 30,
+   "rejstrik": "Cdo",
+   "datum": "2026-11-10",
+   "zverejneno": "2026-11-16",
+   "first_seen": "2026-11-17T08:05:21Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/60DA379D8EE81C96C1258EB10052A80A?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/8BA71FC73259EE38C1258EB200211F08/$file/30%20Cdo%201115_2026.pdf?openElement",
+   "heslo": "Nezákonné rozhodnutí o přestupku a náhrada škody",
+   "shrnuti": "Palírna U Zeleného stromu se soudila s Českou republikou – Radou pro rozhlasové a televizní vysílání o náhradu škody a nákladů v souvislosti s nezákonným rozhodnutím o přestupku týkajícím se reklamy. Nejvyšší soud řešil přípustnost dovolání ohledně posouzení příčinné souvislosti, odkladného účinku správní žaloby a aplikace ustanovení o spoluzavinění. Dovolání odmítl jako nepřípustné, neboť napadené rozhodnutí spočívá na správných skutkových závěrech a neodchyluje se od ustálené judikatury.",
+   "oblasti": [
+    "skoda",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:5171983E8F98C2FCC1258EB10052A816",
+   "spz": "30 Cdo 2272/2026",
+   "ecli": "ECLI:CZ:NS:2026:30.CDO.2272.2026.1",
+   "druh": "usnesení",
+   "senat": 30,
+   "rejstrik": "Cdo",
+   "datum": "2026-11-03",
+   "zverejneno": "2026-11-16",
+   "first_seen": "2026-11-17T08:05:21Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/5171983E8F98C2FCC1258EB10052A816?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/B14203BA3C8884FDC1258EB20021229D/$file/30%20Cdo%202272_2026.pdf?openElement",
+   "heslo": "Správa zajištěných peněz v trestním řízení nezahrnuje povinnost investování",
+   "shrnuti": "Žalobce se domáhal po České republice náhrady škody formou ušlého zisku kvůli tomu, že orgány činné v trestním řízení za dobu zajištění jeho peněz a cizích měn neprováděly investice k jejich rozmnožení. Nejvyšší soud dovolání žalobce odmítl s tím, že uložení zajištěné hotovosti k ochraně před ztrátou nezakládá povinnost státu peněžní prostředky investovat či úročit, a proto nejde o nesprávný úřední postup.",
+   "oblasti": [
+    "skoda",
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:094EF791BE7CCE24C1258EB10052A805",
+   "spz": "29 NSCR 84/2026",
+   "ecli": "ECLI:CZ:NS:2026:29.NSCR.84.2026.1",
+   "druh": "usnesení",
+   "senat": 29,
+   "rejstrik": "NSCR",
+   "datum": "2026-10-27",
+   "zverejneno": "2026-11-16",
+   "first_seen": "2026-11-17T08:05:21Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/094EF791BE7CCE24C1258EB10052A805?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/35B2BA6607329ED1C1258EB200211C95/$file/29%20NSCR%2084_2026.pdf?openElement",
+   "heslo": "Zamítnutí oddlužení pro nepoctivý záměr při převodu majetku",
+   "shrnuti": "Dlužnice se domáhala přezkumu rozhodnutí o zamítnutí návrhu na povolení oddlužení a prohlášení konkursu na její majetek. Nejvyšší soud řešil přípustnost dovolání ohledně posouzení nepoctivého záměru dlužníka a postupu soudu bez nařízení jednání. Dovolání dlužnice odmítl jako nepřípustné, neboť napadené rozhodnutí je v souladu s ustálenou judikaturou.",
+   "oblasti": [
+    "insolvence",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
   {
    "id": "ns:CB043785EA1B274DC1258EAF0052BFA6",
    "spz": "26 Cdo 2510/2026",
