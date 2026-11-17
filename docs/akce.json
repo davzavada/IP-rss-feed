@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-16T06:22:16+00:00",
+  "generated": "2026-11-17T07:52:28+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 15,
-      "stazeno": "2026-11-16T06:22:04+00:00",
+      "stazeno": "2026-11-17T07:51:12+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,10 +18,10 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 6,
-      "stazeno": "2026-11-16T06:22:05+00:00",
+      "stazeno": "2026-11-17T07:51:17+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "fea861d6569097fc"
+      "otisk": "2d1f64548e2c974a"
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
@@ -29,10 +29,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 6,
-      "stazeno": "2026-11-16T06:22:10+00:00",
+      "stazeno": "2026-11-17T07:51:21+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "b8ada2a6ba465bf8"
+      "otisk": "2f0c78065e146f81"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -42,7 +42,7 @@
       "pocet": 1,
       "stazeno": "2026-11-16T06:22:16+00:00",
       "cesta": "ai",
-      "chyba": null,
+      "chyba": "HTTPSConnectionPool(host='www.alai.cz', port=443): Max retries exceeded with url: /index.php?up (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.alai.cz', port=443) at 0x712ede89ef60>, 'Connection to www.alai.cz timed out. (connect timeout=60)'))",
       "otisk": "bcaac79500eef517"
     },
     "UPV": {
@@ -51,7 +51,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-11-16T06:22:16+00:00",
+      "stazeno": "2026-11-17T07:52:22+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "c6f425e1a83fdab1"
@@ -63,55 +63,6 @@
     "hybridne": "Hybridně"
   },
   "akce": [
-    {
-      "id": "fa6e622fde8295b44159",
-      "poradatel": "PFUK",
-      "datum": "2026-09-30",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "Odborná konference Pracovní právo 2026 s podtitulem „Pracovní právo a právo sociálního zabezpečení na rozcestí?“",
-      "misto": "Konferenční centrum AV ČR na Zámku Třešť",
-      "forma": "prezencne",
-      "lektori": [],
-      "cena": "",
-      "anotace": "Odborná konference zaměřená na pracovní právo a právo sociálního zabezpečení.",
-      "url": "https://www.prf.cuni.cz/aktuality/odborna-konference-pracovni-pravo-2026-s-podtitulem-pracovni-pravo-a-pravo-socialniho",
-      "datum_do": "2026-10-02",
-      "oblasti": [
-        "pracovni",
-        "socialni_cizinci"
-      ],
-      "oblasti_klic": "8c8955a31da2",
-      "detail_pokusy": 2
-    },
-    {
-      "id": "325dab32d43b405e73b3",
-      "poradatel": "PFUK",
-      "datum": "2026-10-02",
-      "zacatek": "09:00",
-      "konec": "17:00",
-      "nazev": "Konference: Daňové právo 2026 (2. 10.)",
-      "misto": "Univerzita Karlova, Právnická fakulta, místnost 120",
-      "forma": "prezencne",
-      "lektori": [
-        "Mgr. Karel Šimek",
-        "prof. JUDr. Ing. Michal Radvan, Ph.D.",
-        "JUDr. Lucie Fuksová",
-        "Mgr. et Mgr. Jan Oliva, LL.M.",
-        "Mgr. Václav Čepelák",
-        "Mgr. Tomáš Rozehnal, Ph.D.",
-        "JUDr. Ing. Jiří Kappel, Ph.D.",
-        "Mgr. Ing. Lenka Bursíková"
-      ],
-      "cena": "3 025 Kč s DPH",
-      "anotace": "Odborná konference na téma daňového práva.",
-      "url": "https://www.prf.cuni.cz/aktuality/konference-danove-pravo-2026-2-10",
-      "oblasti": [
-        "dane"
-      ],
-      "oblasti_klic": "72b1dfc27882",
-      "detail_pokusy": 2
-    },
     {
       "id": "039b5d44deab687e5b18",
       "poradatel": "PFUK",
@@ -1604,7 +1555,7 @@
       "datum": "2026-11-19",
       "zacatek": "09:00",
       "konec": "16:00",
-      "nazev": "Aktuální otázky trestní odpovědnosti právnických osob a řízení proti nim",
+      "nazev": "POZOR - zrušení semináře: Aktuální otázky trestní odpovědnosti právnických osob a řízení proti nim",
       "misto": "Praha 1, Národní 10, palác Dunaj",
       "forma": "prezencne",
       "lektori": [
@@ -1614,9 +1565,10 @@
       "anotace": "Seminář je primárně věnován změnám zákona o trestní odpovědnosti právnických osob a řízení proti nim v souvislosti s novelami a změnami trestního zákoníku a řádu. Vychází z aktuální soudní judikatury, praxe a odborné literatury.",
       "url": "https://www.cak.cz/akce/1243",
       "oblasti": [
-        "trestni"
+        "trestni",
+        "korporace"
       ],
-      "oblasti_klic": "1fce3b96f128",
+      "oblasti_klic": "6ff066622900",
       "detail_pokusy": 2
     },
     {
@@ -1955,6 +1907,27 @@
       "oblasti_klic": "e1e96803995b"
     },
     {
+      "id": "72d532318781facb104a",
+      "poradatel": "PFUK",
+      "datum": "2026-11-27",
+      "zacatek": "09:00",
+      "konec": "11:00",
+      "nazev": "Aktuální perspektivy umělé inteligence v ČR",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [
+        "Lukáš Kačena"
+      ],
+      "cena": "",
+      "anotace": "Odborná akce věnovaná aktuálním perspektivám umělé inteligence v České republice.",
+      "url": "https://www.prf.cuni.cz/aktuality/aktualni-perspektivy-umele-inteligence-v-cr",
+      "detail_pokusy": 2,
+      "oblasti": [
+        "it"
+      ],
+      "oblasti_klic": "ab79ae2e9d43"
+    },
+    {
       "id": "fbab3c69ab6dc797660b",
       "poradatel": "PFUK",
       "datum": "2026-11-30",
@@ -1968,7 +1941,7 @@
       ],
       "cena": "zdarma",
       "anotace": "Přednáška s diskuzí zaměřená na střet etiky a obchodních zájmů v transakční praxi pod vedením zkušeného odborníka na korporátní právo a fúze a akvizice.",
-      "url": "https://www.prf.cuni.cz/aktuality/prednaska-s-diskuzi-na-tema-stret-etiky-a-obchodnich-zajmu-v-transakcni-praxi",
+      "url": "https://www.prf.cuni.cz/aktuality/prednaska-s-diskuzi-s-diskuzi-na-tema-stret-etiky-a-obchodnich-zajmu-v-transakcni-praxi",
       "detail_pokusy": 2,
       "z_detailu": [
         "misto"
@@ -2020,27 +1993,6 @@
         "pracovni"
       ],
       "oblasti_klic": "9b6808c14c80"
-    },
-    {
-      "id": "904dce31b26cf1160eda",
-      "poradatel": "PFUK",
-      "datum": "2026-12-03",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "Zdeněk Kučera | AI v české právní praxi",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [
-        "Zdeněk Kučera"
-      ],
-      "cena": "",
-      "anotace": "Odborná akce zaměřená na využití umele inteligence v české právní praxi.",
-      "url": "https://www.prf.cuni.cz/aktuality/zdenek-kucera-ai-v-ceske-pravni-praxi",
-      "detail_pokusy": 2,
-      "oblasti": [
-        "it"
-      ],
-      "oblasti_klic": "fa3a7e3a1057"
     },
     {
       "id": "652d0acc4c735879e7b9",
