@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17T07:52:28+00:00",
+  "generated": "2026-11-18T07:21:38+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 15,
-      "stazeno": "2026-11-17T07:51:12+00:00",
+      "stazeno": "2026-11-18T07:21:25+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,7 +18,7 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 6,
-      "stazeno": "2026-11-17T07:51:17+00:00",
+      "stazeno": "2026-11-18T07:21:27+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "2d1f64548e2c974a"
@@ -28,11 +28,11 @@
       "zkratka": "epravo",
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
-      "pocet": 6,
-      "stazeno": "2026-11-17T07:51:21+00:00",
+      "pocet": 7,
+      "stazeno": "2026-11-18T07:21:31+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "2f0c78065e146f81"
+      "otisk": "7c8d3fc8d3602055"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -40,9 +40,9 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-11-16T06:22:16+00:00",
+      "stazeno": "2026-11-18T07:21:32+00:00",
       "cesta": "ai",
-      "chyba": "HTTPSConnectionPool(host='www.alai.cz', port=443): Max retries exceeded with url: /index.php?up (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.alai.cz', port=443) at 0x712ede89ef60>, 'Connection to www.alai.cz timed out. (connect timeout=60)'))",
+      "chyba": null,
       "otisk": "bcaac79500eef517"
     },
     "UPV": {
@@ -51,7 +51,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-11-17T07:52:22+00:00",
+      "stazeno": "2026-11-18T07:21:32+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "c6f425e1a83fdab1"
@@ -1655,7 +1655,7 @@
       ],
       "cena": "3 975 Kč",
       "anotace": "Online živé vysílání o veřejnoprávních plánovacích smlouvách podle nového stavebního zákona.",
-      "url": "https://www.epravo.cz/eshop/verejnopravni-planovaci-smlouvy-dle-noveho-stavebniho-zakona-online-zive-vysilani-20-11-2026-1461.html",
+      "url": "https://www.epravo.cz/eshop/verejnopravni-planovaci-smlouvy-dle-noveho-stavebni-zakona-online-zive-vysilani-20-11-2026-1461.html",
       "detail_pokusy": 2,
       "z_detailu": [
         "misto"
@@ -1905,6 +1905,33 @@
         "trestni"
       ],
       "oblasti_klic": "e1e96803995b"
+    },
+    {
+      "id": "f1c75c95bf8c2c6549d4",
+      "poradatel": "EPRAVO",
+      "datum": "2026-11-27",
+      "zacatek": "09:00",
+      "konec": "12:00",
+      "nazev": "Novinky v soutěžním právu",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "Mgr. Robert Neruda, Ph.D.",
+        "Mgr. Lenka Štiková Gachová",
+        "Mgr. Dita Krumlová",
+        "Mgr. Robert Nersesjan"
+      ],
+      "cena": "3 975 Kč",
+      "anotace": "Online seminář přinášející přehled novinek v oblasti soutěžního práva.",
+      "url": "https://www.epravo.cz/eshop/novinky-v-souteznim-pravu-online-zive-vysilani-27-11-2026-1605.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "soutez"
+      ],
+      "oblasti_klic": "037038997d48"
     },
     {
       "id": "72d532318781facb104a",

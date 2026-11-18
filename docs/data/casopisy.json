@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17T07:51:06Z",
+ "generated": "2026-11-18T07:21:21Z",
  "okno_od": "2026-10-01",
  "casopisy": [
   {
@@ -112,6 +112,26 @@
   }
  ],
  "polozky": [
+  {
+   "id": "CMLRev-COLA2026092",
+   "casopis": "cmlr",
+   "nazev": "Recalibrating Regulation 1/2003: How to Restore Proportionality in EU Remedy Design",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.5%20[pre-publication]/COLA2026092",
+   "heslo": "Antitrustová nápravná opatření",
+   "shrnuti": "Článek poukazuje na neschopnost nařízení 1/2003 a stávajících pravidel EU účinně obnovit hospodářskou soutěž po zásahech proti digitálním monopolům. Porovnává situaci s USA a analyzuje možné způsoby nápravy, přičemž jako nejvhodnější řešení vidí revizi zmíněného nařízení. Ta by Evropské komisi umožnila ukládat restitutivní opatření k dosažení proporcionality a efektivity vymáhání práva.",
+   "datum": "2026-11-18",
+   "first_seen": "2026-11-18T07:21:15Z"
+  },
+  {
+   "id": "CMLRev-COLA2026091",
+   "casopis": "cmlr",
+   "nazev": "The Constitutional Limits of EU Asset Recovery: Non-Conviction Based Confiscation under Directive (EU) 2024/1260 and the Charter of Fundamental Rights",
+   "url": "https://kluwerlawonline.com/JournalArticle/Common+Market+Law+Review/63.6%20[pre-publication]/COLA2026091",
+   "heslo": "Konfiskace majetku EU",
+   "shrnuti": "Článek se zabývá ústavními limity směrnice (EU) 2024/1260 o konfiskaci majetku bez odsouzení a analýzou jejího vztahu k Listině základních práv EU a judikatuře ESLP. Autor argumentuje, že legitimita směrnice závisí na autonomním standardu Listiny fungujícím jako „konstituční štít“ a na správném rozdělení korektivní odpovědnosti mezi unijními a vnitrostátními aktéry. Závěrem konstatuje, že směrnice není protiprávní.",
+   "datum": "2026-11-18",
+   "first_seen": "2026-11-18T07:21:15Z"
+  },
   {
    "id": "GRUR Int-10.1093/grurint/ikag116",
    "casopis": "grur-int",
@@ -761,17 +781,6 @@
    "popis": "Use of the Same Motif in an AI-Generated Image Does Not Infringe Copyright\nGRUR International"
   },
   {
-   "id": "GRUR Int-10.1093/grurint/ikag100",
-   "casopis": "grur-int",
-   "nazev": "Who Can Keep a Secret? Mapping Trust and Trustworthiness in the UPC’s Transparency and Confidentiality Decisions",
-   "url": "https://doi.org/10.1093/grurint/ikag100",
-   "autori": "Daanish Naithani, Esther van Zimmeren",
-   "heslo": "Důvěra a transparentnost u UPC",
-   "shrnuti": "Článek zkoumá, jak Jednotný patentový soud (UPC) vyvažuje transparentnost a ochranu důvěrných informací ve své rozhodovací praxi. Na základě konceptů důvěry a analýzy judikatury ukazuje, že kultura soudu je v principu otevřená, avšak v praxi podmíněná. V závěru nabízí interpretační rámec pro budoucí rozhodování soudu.",
-   "datum": "2026-10-23",
-   "first_seen": "2026-10-24T04:20:13Z"
-  },
-  {
    "id": "GRUR Int-10.1093/grurint/ikag102",
    "casopis": "grur-int",
    "nazev": "When Gatekeeper Status Travels",
@@ -781,6 +790,17 @@
    "first_seen": "2026-10-24T04:20:13Z",
    "poznamka": "Shrnutí není k dispozici.",
    "popis": "When Gatekeeper Status Travels\nAutor: Heiko Richter\nGRUR International"
+  },
+  {
+   "id": "GRUR Int-10.1093/grurint/ikag100",
+   "casopis": "grur-int",
+   "nazev": "Who Can Keep a Secret? Mapping Trust and Trustworthiness in the UPC’s Transparency and Confidentiality Decisions",
+   "url": "https://doi.org/10.1093/grurint/ikag100",
+   "autori": "Daanish Naithani, Esther van Zimmeren",
+   "heslo": "Důvěra a transparentnost u UPC",
+   "shrnuti": "Článek zkoumá, jak Jednotný patentový soud (UPC) vyvažuje transparentnost a ochranu důvěrných informací ve své rozhodovací praxi. Na základě konceptů důvěry a analýzy judikatury ukazuje, že kultura soudu je v principu otevřená, avšak v praxi podmíněná. V závěru nabízí interpretační rámec pro budoucí rozhodování soudu.",
+   "datum": "2026-10-23",
+   "first_seen": "2026-10-24T04:20:13Z"
   },
   {
    "id": "GRUR Int-10.1093/grurint/ikag098",
@@ -1163,13 +1183,13 @@
    "first_seen": "2026-10-07T05:39:14Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.05",
+   "id": "QMJIP-10.4337/qmjip.2026.03.01",
    "casopis": "qmjip",
-   "nazev": "Thinking about originality: creativity in legal research",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.05",
-   "autori": "Chris Dent",
-   "heslo": "Originalita právního výzkumu",
-   "shrnuti": "Článek zkoumá kreativitu v akademickém právním výzkumu se zohledněním vlivu umelecké inteligence a poznatků z psychologie. Srovnává doktrinální a socio-právní výzkum s různými pojetími kreativity a dokazuje, že právní výzkum je ve své podstatě kreativní. Závěrem propojuje toto zjištění s konceptem autority a testem originality v současném autorském právu.",
+   "nazev": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.01",
+   "autori": "Martin Senftleben",
+   "heslo": "AI a autorské právo",
+   "shrnuti": "Článek se zabývá otázkou spravedlivé odměny pro tvůrce za použití jejich děl při vývoji generativní AI. Porovnává současný trend individuálního licencování s výhodami kolektivních přístupů zohledňujících výstupy AI. Nakonec hodnotí různé regulační možnosti s ohledem na nutnost spravedlivé odměny a zároveň širokého přístupu k trénovacím datům.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -1185,13 +1205,24 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.02",
+   "id": "QMJIP-10.4337/qmjip.2026.03.00",
    "casopis": "qmjip",
-   "nazev": "Warhol v Goldsmith and the shrinking canvas of fair use: a comparative critique of artistic expression in US and UK copyright law",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.02",
-   "autori": "W Oshada Rodrigo",
-   "heslo": "Transformativní užití autorského práva",
-   "shrnuti": "Článek srovnává americkou doktrínu fair use a britské výjimky z autorského práva v kontextu nedávného rozhodnutí ve věci Warhol v. Goldsmith a dalších případů. Autor kritizuje zpřísňování pravidel a nadřazování tržní substituce, což omezuje svobodu tvorby, remixovou kulturu i uměleckou inovaci. Jako řešení, které lépe reflektuje současné digitální formy umění, navrhuje nový čtyřkrokový test založený na expresivním pluralismu.",
+   "nazev": "Seeing intellectual property in colour",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.00",
+   "autori": "Johanna Gibson",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z",
+   "poznamka": "Shrnutí není k dispozici.",
+   "popis": "Seeing intellectual property in colour\nAutor: Johanna Gibson\nQueen Mary Journal of Intellectual Property"
+  },
+  {
+   "id": "QMJIP-10.4337/qmjip.2026.03.05",
+   "casopis": "qmjip",
+   "nazev": "Thinking about originality: creativity in legal research",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.05",
+   "autori": "Chris Dent",
+   "heslo": "Originalita právního výzkumu",
+   "shrnuti": "Článek zkoumá kreativitu v akademickém právním výzkumu se zohledněním vlivu umelecké inteligence a poznatků z psychologie. Srovnává doktrinální a socio-právní výzkum s různými pojetími kreativity a dokazuje, že právní výzkum je ve své podstatě kreativní. Závěrem propojuje toto zjištění s konceptem autority a testem originality v současném autorském právu.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -1207,15 +1238,15 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.00",
+   "id": "QMJIP-10.4337/qmjip.2026.03.02",
    "casopis": "qmjip",
-   "nazev": "Seeing intellectual property in colour",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.00",
-   "autori": "Johanna Gibson",
+   "nazev": "Warhol v Goldsmith and the shrinking canvas of fair use: a comparative critique of artistic expression in US and UK copyright law",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.02",
+   "autori": "W Oshada Rodrigo",
+   "heslo": "Transformativní užití autorského práva",
+   "shrnuti": "Článek srovnává americkou doktrínu fair use a britské výjimky z autorského práva v kontextu nedávného rozhodnutí ve věci Warhol v. Goldsmith a dalších případů. Autor kritizuje zpřísňování pravidel a nadřazování tržní substituce, což omezuje svobodu tvorby, remixovou kulturu i uměleckou inovaci. Jako řešení, které lépe reflektuje současné digitální formy umění, navrhuje nový čtyřkrokový test založený na expresivním pluralismu.",
    "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z",
-   "poznamka": "Shrnutí není k dispozici.",
-   "popis": "Seeing intellectual property in colour\nAutor: Johanna Gibson\nQueen Mary Journal of Intellectual Property"
+   "first_seen": "2026-10-10T05:34:45Z"
   },
   {
    "id": "QMJIP-10.4337/qmjip.2026.03.06",
@@ -1225,17 +1256,6 @@
    "autori": "Weiwei Han",
    "heslo": "prodloužení patentu v Číně",
    "shrnuti": "Článek se zabývá systémem prodloužení platnosti patentů na léčiva v Číně v kontextu nedávných legislativních změn z roku 2024. Analýzou prováděcích předpisů a pokynů pro zkoumání patentů přibližuje aktuální vývoj a poskytuje klíčové poznatky pro domácí i zahraniční subjektu usilující o maximalizaci přínosů tohoto systému.",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
-  },
-  {
-   "id": "QMJIP-10.4337/qmjip.2026.03.01",
-   "casopis": "qmjip",
-   "nazev": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.01",
-   "autori": "Martin Senftleben",
-   "heslo": "AI a autorské právo",
-   "shrnuti": "Článek se zabývá otázkou spravedlivé odměny pro tvůrce za použití jejich děl při vývoji generativní AI. Porovnává současný trend individuálního licencování s výhodami kolektivních přístupů zohledňujících výstupy AI. Nakonec hodnotí různé regulační možnosti s ohledem na nutnost spravedlivé odměny a zároveň širokého přístupu k trénovacím datům.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
