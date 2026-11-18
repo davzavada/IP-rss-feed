@@ -1,8 +1,67 @@
 {
- "generated": "2026-11-17T08:05:21Z",
+ "generated": "2026-11-18T07:41:16Z",
  "soud": "sdeu",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "sdeu:ipc:C-1190/26",
+   "spz": "C-1190/26",
+   "druh": "předběžná otázka",
+   "rejstrik": "C",
+   "datum": "2026-11-09",
+   "first_seen": "2026-11-18T07:41:16Z",
+   "nazev": "Vodronjak",
+   "url": "https://curia.europa.eu/juris/liste.jsf?num=C-1190/26&language=cs",
+   "heslo": "",
+   "shrnuti": "",
+   "oblasti": [
+    "prumyslova_prava",
+    "autorske",
+    "gdpr"
+   ],
+   "procesni": false,
+   "stav_shrnuti": "ceka_na_text",
+   "poznamka": "Podáno 9. 11. 2026. Položené otázky zatím nejsou zveřejněné."
+  },
+  {
+   "id": "sdeu:62025CJ0241",
+   "spz": "C-241/25",
+   "ecli": "ECLI:EU:C:2026:985",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-17",
+   "zverejneno": "2026-11-17",
+   "first_seen": "2026-11-18T07:41:16Z",
+   "nazev": "Société générale (Remboursement de la retenue à la source) ",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0241",
+   "heslo": "Zdanění dividend nerezidenta a přepočet ztráty",
+   "shrnuti": "Soudní dvůr EU řešil, zda článek 63 SFEU brání praxi daňové správy členského státu, která po ztrátové společnosti-nerezidentu požaduje pro vrácení srážkové daně z dividend systematický přepočet hospodářského výsledku podle vnitrostátních pravidel. Rozhodl, že tato praxe představuje nepřiměřené omezení volného pohybu kapitálu. Členský stát nemůže požadovat, aby společnost prokazovala ztrátu přepočtem podle svých pravidel, a to ani v případě konsolidovaného zdanění.",
+   "oblasti": [
+    "dane",
+    "mps"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62023CJ0698",
+   "spz": "C-698/23",
+   "ecli": "ECLI:EU:C:2026:984",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-17",
+   "zverejneno": "2026-11-17",
+   "first_seen": "2026-11-18T07:41:16Z",
+   "nazev": "Evropský inspektor ochrany údajů v. Parlament a Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62023CJ0698",
+   "heslo": "Zásada institucionální rovnováhy nezakládá právo EIOÚ podat žalobu",
+   "shrnuti": "Evropský inspektor ochrany údajů podal kasační opravný prostředek proti usnesení Tribunálu, kterým byla odmítnuta jeho žaloba na neplatnost přechodných ustanovení nařízení o Europolu. Soudní dvůr kasační opravný prostředek zamítl a potvrdil, že EIOÚ se nemůže dovolávat zásady institucionální rovnováhy pro obejití podmínek aktivní legitimace podle článku 263 čtvrtého pododstavce SFEU.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni",
+    "gdpr"
+   ],
+   "procesni": true
+  },
   {
    "id": "sdeu:62026TO0363(01)",
    "spz": "T-363/26",

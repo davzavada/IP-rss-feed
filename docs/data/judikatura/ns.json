@@ -1,8 +1,28 @@
 {
- "generated": "2026-11-17T08:05:21Z",
+ "generated": "2026-11-18T07:41:16Z",
  "soud": "ns",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "ns:8221A0D75FEA1D3AC1258EB20052BF68",
+   "spz": "24 Cdo 2600/2026",
+   "ecli": "ECLI:CZ:NS:2026:24.CDO.2600.2026.1",
+   "druh": "usnesení",
+   "senat": 24,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-11-17",
+   "first_seen": "2026-11-18T07:41:16Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/8221A0D75FEA1D3AC1258EB20052BF68?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/55111A62397CDE77C1258EB300210740/$file/24%20Cdo%202600_2026.pdf?openElement",
+   "heslo": "Započtení dlužného výživného do pozůstalosti a pravomocný titul",
+   "shrnuti": "Účastnice pozůstalostního řízení se domáhaly vyloučení pohledávky na dlužné výživné z aktiv pozůstalosti s argumentem, že vyživovací povinnost za života zůstavitele zanikla. Nejvyšší soud řešil otázku, zda lze v pozůstalostním řízení zpochybnit pohledávku přiznanou pravomocným rozsudkem námitkou zániku vyživovací povinnosti. Dovolací soud uzavřel, že pravomocný a vykonatelný exekuční titul je pro pozůstalostní soud závazný a nelze jej v tomto řízení věcně přezkoumávat.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
   {
    "id": "ns:FFA568419C9CEED1C1258EB10052A7F1",
    "spz": "29 ICdo 185/2026",
@@ -858,8 +878,8 @@
    "shrnuti": "",
    "oblasti": [],
    "procesni": false,
-   "stav_shrnuti": "pripravuje",
-   "poznamka": "Shrnutí se připravuje."
+   "stav_shrnuti": "nepodarilo",
+   "poznamka": "Shrnutí se nepodařilo připravit."
   },
   {
    "id": "ns:6B003BDF2F9D71F2C1258EAD00529A6C",
