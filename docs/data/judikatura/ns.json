@@ -1,8 +1,541 @@
 {
- "generated": "2026-11-18T07:41:16Z",
+ "generated": "2026-11-19T07:37:23Z",
  "soud": "ns",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "ns:ECF7BFE5454E6D7FC1258EB30052A8AD",
+   "spz": "8 Tdo 741/2026",
+   "ecli": "ECLI:CZ:NS:2026:8.TDO.741.2026.1",
+   "druh": "usnesení",
+   "senat": 8,
+   "rejstrik": "Tdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/ECF7BFE5454E6D7FC1258EB30052A8AD?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/09E8BF622F244052C1258EB300531D86/$file/8%20Tdo%20741_2026.pdf?openElement",
+   "heslo": "Přijetí prohlášení viny nevylučuje přezkum náhrady škody",
+   "shrnuti": "Obviněný podal dovolání proti usnesení Krajského soudu v Hradci Králové – pobočky v Pardubicích, kterým bylo zamítnuto jeho odvolání proti odsuzujícímu rozsudku za zločin podvodu a proti výroku o náhradě škody. Nejvyšší soud řešil otázku, zda prohlášení viny brání přezkumu adhezního nároku, a dospěl k závěru, že přestože prohlášení viny stabilizuje skutkový základ včetně výše škody jako znaku trestného činu, soudy musí samostatně posoudit splnění hmotněprávních předpokladů soukromoprávní odpovědnosti. Protože soudy pochybení nenapravily, Nejvyšší soud částečně zrušil napadená rozhodnutí a poškozenou Českou republiku, zastoupenou Úřadem práce České republiky, odkázal s nárokem na náhradu škody na řízení ve věcech občanskoprávních.",
+   "oblasti": [
+    "trestni",
+    "skoda",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:EB5CAF8F79BEA774C1258EB30052A8ED",
+   "spz": "5 Tdo 848/2026",
+   "ecli": "ECLI:CZ:NS:2026:5.TDO.848.2026.1",
+   "druh": "usnesení",
+   "senat": 5,
+   "rejstrik": "Tdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/EB5CAF8F79BEA774C1258EB30052A8ED?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/43A3EAD88433F0D1C1258EB300531203/$file/5%20Tdo%20848_2026.pdf?openElement",
+   "heslo": "Porušení povinnosti v insolvenčním řízení a nebezpečné vyhrožování",
+   "shrnuti": "Obvinění J. W. a J. D. podali dovolání proti odsuzujícímu rozsudku za přečin porušení povinnosti v insolvenčním řízení a nebezpečné vyhrožování, kterého se dopustili mařením dražeb a zasíláním výhružných e-mailů. Nejvyšší soud řešil otázku naplnění znaků skutkové podstaty a aplikace zásady subsidiarity trestní represe a dospěl k závěru, že dovolání jsou zjevně neopodstatněná, proto je odmítl.",
+   "oblasti": [
+    "insolvence",
+    "trestni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:E16F206899B32FC0C1258EB30052A911",
+   "spz": "26 Cdo 2469/2026",
+   "ecli": "ECLI:CZ:NS:2026:26.CDO.2469.2026.1",
+   "druh": "usnesení",
+   "senat": 26,
+   "rejstrik": "Cdo",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/E16F206899B32FC0C1258EB30052A911?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/43EDD84B3C1DCE8CC1258EB30052E796/$file/26%20Cdo%202469_2026.pdf?openElement",
+   "heslo": "Potvrzení evidenčního listu nezakládá dohodu o nájemném",
+   "shrnuti": "Statutární město Brno - městská část Brno-Vinohrady se žalobou domáhalo určení výše nájemného za byt proti nájemcům. Nejvyšší soud řešil otázku, zda podpis evidenčních listů a rozpisů úhrad představuje dohodu o výši nájemného. Dovolací soud uzavřel, že samotné potvrzení evidenčního listu či placení uvedeného nájemného nezakládá dohodu smluvních stran o výši nájemného, pokud šlo o jednostranné úkony a nájemné bylo původně regulováno předpisem.",
+   "oblasti": [
+    "zavazky",
+    "vecna_prava"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:8D90738DDDDE2F5CC1258EB30052A908",
+   "spz": "25 Cdo 2425/2026",
+   "ecli": "ECLI:CZ:NS:2026:25.CDO.2425.2026.1",
+   "druh": "usnesení",
+   "senat": 25,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-27",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/8D90738DDDDE2F5CC1258EB30052A908?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/092AB88E88945B62C1258EB30052E52E/$file/25%20Cdo%202425_2026.pdf?openElement",
+   "heslo": "Jednorázové sousedské sdělení nepředstavuje zásah do osobnosti",
+   "shrnuti": "Žalobce se domáhal po žalovaném náhrady nemajetkové újmy za údajné opakované útoky a zásahy do osobnostních práv v rámci sousedských vztahů. Nejvyšší soud řešil otázku, zda je soukromý písemný vzkaz vhozený do schránky objektivně způsobilý zasáhnout do cti a vážnosti člověka. Dovolací soud uzavřel, že ojedinělé sdělení tohoto typu nedosahuje potřebné intenzity a nepředstavuje neoprávněný zásah do osobnostních práv.",
+   "oblasti": [
+    "osobnost_media",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:8689988BF3698B4DC1258EB30052A860",
+   "spz": "11 Tcu 128/2026",
+   "ecli": "ECLI:CZ:NS:2026:11.TCU.128.2026.1",
+   "druh": "usnesení",
+   "senat": 11,
+   "rejstrik": "Tcu",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/8689988BF3698B4DC1258EB30052A860?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/F490A3043348CE71C1258EB40021073B/$file/11%20Tcu%20128_2026.pdf?openElement",
+   "heslo": "Uznání cizozemského odsouzení za nedovolené překročení státní hranice",
+   "shrnuti": "Ministerstvo spravedlnosti navrhlo, aby se na odsouzení občana České republiky německým soudem za převaděčství hledí jako na odsouzení soudem České republiky. Nejvyšší soud posuzoval, zda jsou splněny formální a materiální podmínky oboustranné trestnosti a závažnosti činu. Dospěl k závěru, že podmínky splněny jsou, a návrhu zcela vyhověl.",
+   "oblasti": [
+    "trestni",
+    "socialni_cizinci"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:842465C295EC6586C1258EB30052A8E7",
+   "spz": "11 Tvo 21/2026",
+   "ecli": "ECLI:CZ:NS:2026:11.TVO.21.2026.1",
+   "druh": "usnesení",
+   "senat": 11,
+   "rejstrik": "Tvo",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/842465C295EC6586C1258EB30052A8E7?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/882F139971FE278EC1258EB30052D17A/$file/11%20Tvo%2021_2026.pdf?openElement",
+   "heslo": "Pořádkové opatření při organickém poškození mozku",
+   "shrnuti": "Obžalovaný podal stížnost proti usnesení Vrchního soudu v Olomouci, kterým byl přenechán řediteli věznice k uložení pořádkového opatření nebo kázeňskému potrestání kvůli vulgárním výrokům vůči předsedkyni senátu. Nejvyšší soud řešil, zda lze pořádkové opatření uložit osobě, jejíž vulgární chování je s vysokou pravděpodobností determinováno organickým poškozením mozku. Rozhodl, že v takovém případě postrádá sankce výchovný účel a je neúčinná, proto napadené usnesení zrušil.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:81AE395B971C0BDDC1258EB30052A841",
+   "spz": "11 Tcu 116/2026",
+   "ecli": "ECLI:CZ:NS:2026:11.TCU.116.2026.1",
+   "druh": "usnesení",
+   "senat": 11,
+   "rejstrik": "Tcu",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/81AE395B971C0BDDC1258EB30052A841?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/610FF0FE92DFD497C1258EB30052CA78/$file/11%20Tcu%20116_2026.pdf?openElement",
+   "heslo": "Uznání cizozemského odsouzení občana České republiky",
+   "shrnuti": "Ministerstvo spravedlnosti podalo návrh na rozhodnutí podle § 4a odst. 3 zákona o rejstříku trestů ve věci odsouzení občana České republiky německým soudem. Nejvyšší soud řešil, zda jsou splněny zákonné podmínky oboustranné trestnosti a materiální závažnosti pro uznání takového odsouzení. Dospěl k závěru, že podmínky splněny jsou, a proto navržené tuzemské odsouzení vyslovil.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:80FDE14C18C803A3C1258EB30052A855",
+   "spz": "4 Tdo 884/2026",
+   "ecli": "ECLI:CZ:NS:2026:4.TDO.884.2026.1",
+   "druh": "usnesení",
+   "senat": 4,
+   "rejstrik": "Tdo",
+   "datum": "2026-10-20",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/80FDE14C18C803A3C1258EB30052A855?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/BE5EE803B64D1C64C1258EB30052F5EA/$file/4%20Tdo%20884_2026.pdf?openElement",
+   "heslo": "Vícečinný souběh trestných činů znásilnění a sexuálního útoku",
+   "shrnuti": "Obviněný podal dovolání proti odsuzujícímu rozsudku za sexuální trestné činy spáchané na nezletilých poškozených, v němž namítal porušení procesních předpisů, neprovedení důkazů a nesprávné právní posouzení. Nejvyšší soud konstatoval, že soudy nižších stupňů nepochybily při hodnocení důkazů a že jednání spočívající v různých formách sexuálního chování vůči poškozené naplňuje znaky vícečinného souběhu zločinu znásilnění a zločinu sexuálního útoku. Dovolání proto jako zjevně neopodstatněné odmítl.",
+   "oblasti": [
+    "trestni",
+    "rodina_dedictvi"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:7FEE9EA96BC9FEACC1258EB30052A8F5",
+   "spz": "5 Tdo 487/2026",
+   "ecli": "ECLI:CZ:NS:2026:5.TDO.487.2026.1",
+   "druh": "usnesení",
+   "senat": 5,
+   "rejstrik": "Tdo",
+   "datum": "2026-07-29",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/7FEE9EA96BC9FEACC1258EB30052A8F5?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/2222D0E225E171C7C1258EB3005300C3/$file/5%20Tdo%20487_2026.pdf?openElement",
+   "heslo": "Porušení povinnosti v insolvenčním řízení a subsidiarity trestní represe",
+   "shrnuti": "Obviněný se sice soudil v trestním řízení o přečin porušení povinnosti v insolvenčním řízení kvůli tomu, že insolvenčnímu správci nepředložil originály smluv k prokázání svých pohledávek, což vedlo k neúspěchu v civilním sporu a vzniku nákladů na úkor majetkové podstaty. Nejvyšší soud řešil otázku naplnění znaků skutkové podstaty tohoto trestného činu a použití zásady subsidiarity trestní represe. Dospěl k závěru, že trestní odpovědnost obviněného v daném případě nebyla namístě, neboť pochybení zatížení majetkové podstaty vyplynulo z nesprávných postupů samotného insolvenčního správce a civilního soudu.",
+   "oblasti": [
+    "insolvence",
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:7B7A6CDF623BC859C1258EB30052A8FE",
+   "spz": "5 Tdo 810/2026",
+   "ecli": "ECLI:CZ:NS:2026:5.TDO.810.2026.1",
+   "druh": "usnesení",
+   "senat": 5,
+   "rejstrik": "Tdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/7B7A6CDF623BC859C1258EB30052A8FE?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/C4A2D850D4D5FE7AC1258EB300530B01/$file/5%20Tdo%20810_2026.pdf?openElement",
+   "heslo": "Zavinění u porušení správy majetku a poškození věřitele",
+   "shrnuti": "Obviněný Petr Musil se s nejvyšším státním zástupcem soudil ohledně dovolání proti odsouzení za přečin porušení povinnosti při správě cizího majetku a poškození věřitele. Nejvyšší soud řešil otázku, zda dovolací námitky ohledně chybějícího úmyslu a hodnocení důkazů naplňují uplatněný dovolací důvod. Dovolání odmítl, protože uplatněné námitky směřovaly pouze proti skutkovým zjištěním.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:74DE961D46527AD6C1258EB30052A8DD",
+   "spz": "3 Tdo 583/2026",
+   "ecli": "ECLI:CZ:NS:2026:3.TDO.583.2026.1",
+   "druh": "usnesení",
+   "senat": 3,
+   "rejstrik": "Tdo",
+   "datum": "2026-10-13",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/74DE961D46527AD6C1258EB30052A8DD?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/1D0C5925481B939CC1258EB30052EB25/$file/3%20Tdo%20583_2026.pdf?openElement",
+   "heslo": "Zatajení závazků při převodu podílu jako podvod",
+   "shrnuti": "Obviněný podal dovolání proti usnesení odvolacího soudu, kterým bylo potvrzeno jeho odsouzení za zvlášť závažný zločin podvodu podle § 209 odst. 1, odst. 5 písm. a) tr. zákoníku spáchaný tím, že při prodeji obchodního podílu zamlčel existenci významných směnečných závazků společnosti. Nejvyšší soud posuzoval otázku naplnění znaků trestného činu podvodu a způsobení škody a dospěl k závěru, že dovolání obviněného je zjevně neopodstatněné, protože zatajením podstatných skutečností o závazcích uvedl nabyvatele v omyl a způsobil mu škodu.",
+   "oblasti": [
+    "trestni",
+    "zavazky",
+    "korporace"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:72C500868C30751AC1258EB30052A8C1",
+   "spz": "11 Tdo 796/2026",
+   "ecli": "ECLI:CZ:NS:2026:11.TDO.796.2026.1",
+   "druh": "usnesení",
+   "senat": 11,
+   "rejstrik": "Tdo",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/72C500868C30751AC1258EB30052A8C1?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/FB7F3B5DB925A8F9C1258EB400210A3A/$file/11%20Tdo%20796_2026.pdf?openElement",
+   "heslo": "Ohledání místa po nálezu věcí hasiči",
+   "shrnuti": "Obviněný podal dovolání proti odsuzujícímu rozsudku za drogovou trestnou činnost, přičemž namítal nelegálnost zajištění důkazů v objektu kotelny, které mělo podle něj odpovídat prohlídce jiných prostor bez splnění zákonných podmínek. Nejvyšší soud konstatoval, že pokud věci objevili hasiči při výkonu požární kontroly a policie následně provedla pouze ohledání místa a zajištění již vydaných věcí, nešlo o prohlídku jiných prostor ve smyslu trestního řádu a důkazy jsou procesně přípustné.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:7098341729AA484EC1258EB30052A8A8",
+   "spz": "11 Tcu 115/2026",
+   "ecli": "ECLI:CZ:NS:2026:11.TCU.115.2026.1",
+   "druh": "usnesení",
+   "senat": 11,
+   "rejstrik": "Tcu",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/7098341729AA484EC1258EB30052A8A8?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/75196791214F3F4CC1258EB30052C81F/$file/11%20Tcu%20115_2026.pdf?openElement",
+   "heslo": "Uznání cizozemského odsouzení občana České republiky",
+   "shrnuti": "Ministerstvo spravedlnosti navrhlo, aby se na odsouzení občana České republiky německým soudem hledělo jako na odsouzení soudem České republiky. Nejvyšší soud konstatoval, že byly splněny všechny zákonné formální i materiální podmínky, neboť skutek je trestný i podle českého práva a uložení nepodmíněného trestu odnětí svobody odůvodňuje závažnost činu. Návrhu ministerstva bylo zcela vyhověno.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:5D49A18E59C22A57C1258EB30052A844",
+   "spz": "8 Tdo 846/2026",
+   "ecli": "ECLI:CZ:NS:2026:8.TDO.846.2026.1",
+   "druh": "usnesení",
+   "senat": 8,
+   "rejstrik": "Tdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/5D49A18E59C22A57C1258EB30052A844?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/49DE4D7F7B5BCF4BC1258EB3005345B9/$file/8%20Tdo%20846_2026.pdf?openElement",
+   "heslo": "Extrémní rozpor v důkazech a dovolání",
+   "shrnuti": "Obviněný se podaným dovoláním domáhal zrušení rozhodnutí soudů nižších stupňů v trestní věci ohledně spáchání zločinu těžkého ublížení na zdraví a přečinu výtržnictví. Nejvyšší soud řešil otázku, zda hodnocení důkazů a zjištěný skutkový stav netrpí extrémním rozporem a zda byly splněny podmínky pro aplikaci zásady in dubio pro reo. Dovolání odmítl jako zjevně neopodstatněné, neboť soudy nižšího stupně provedly řádné dokazování a své závěry logicky odůvodnily.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:544F070F49B027AFC1258EB30052A830",
+   "spz": "11 Tcu 122/2026",
+   "ecli": "ECLI:CZ:NS:2026:11.TCU.122.2026.1",
+   "druh": "usnesení",
+   "senat": 11,
+   "rejstrik": "Tcu",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/544F070F49B027AFC1258EB30052A830?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/AF4B7F2ADB474D0EC1258EB30052CCDB/$file/11%20Tcu%20122_2026.pdf?openElement",
+   "heslo": "Uznání cizozemského odsouzení občana České republiky",
+   "shrnuti": "Ministerstvo spravedlnosti navrhlo, aby se na odsouzení občana České republiky německým soudem hledívalo jako na odsouzení soudem České republiky. Nejvyšší soud návrh posoudil a shledal splnění všech zákonných podmínek včetně oboustranné trestnosti a materiální závažnosti činu. Proto návrhu zcela vyhověl a rozhodl, že se na toto cizozemské odsouzení hledí jako na odsouzení soudem České republiky.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:4E1F86BDFE30EF0EC1258EB30052A8C9",
+   "spz": "11 Tvo 22/2026",
+   "ecli": "ECLI:CZ:NS:2026:11.TVO.22.2026.1",
+   "druh": "usnesení",
+   "senat": 11,
+   "rejstrik": "Tvo",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/4E1F86BDFE30EF0EC1258EB30052A8C9?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/9477CB2404D5441BC1258EB30052D442/$file/11%20Tvo%2022_2026.pdf?openElement",
+   "heslo": "Podjatost soudce nelze dovozovat z procesního postupu",
+   "shrnuti": "Obžalovaný podal stížnost proti usnesení vrchního soudu, kterým bylo rozhodnuto, že předsedkyně senátu není vyloučena z projednávání jeho věci. Nejvyšší soud řešil otázku, zda namítané skutečnosti, jako je postup při ustanovení obhájce či ukládání pořádkových opatření, zakládají důvodnou pochybnost o nestrannosti soudkyně. Dospěl k závěru, že tyto okolnosti nepodjatost nezakládají, a stížnost obžalovaného zamítl.",
+   "oblasti": [
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:4DE84156EE430508C1258EB30052A8CF",
+   "spz": "11 Tcu 108/2026",
+   "ecli": "ECLI:CZ:NS:2026:11.TCU.108.2026.1",
+   "druh": "usnesení",
+   "senat": 11,
+   "rejstrik": "Tcu",
+   "datum": "2026-09-16",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/4DE84156EE430508C1258EB30052A8CF?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/53B84141A869B54AC1258EB30052BDEB/$file/11%20Tcu%20108_2026.pdf?openElement",
+   "heslo": "Vydání do ciziny vyžaduje popis všech skutků ve výroku",
+   "shrnuti": "Ministr spravedlnosti podal návrh na přezkoumání rozhodnutí o přípustnosti vydání P. C. do Moldavské republiky k výkonu souhrnného trestu odnětí svobody. Nejvyšší soud řešil otázku, zda soudy prvního a druhého stupně pochybily, pokud ve výroku opomněly uvést popis všech skutků, za které byl trestaný odsouzen, a dospěl k závěru, že napadená usnesení zrušuje, protože je nutné posoudit podmínky vydání pro každý skutek samostatně a řádně je vymezit ve výroku rozhodnutí.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:471616CF6B412479C1258EB30052A867",
+   "spz": "8 Tdo 859/2026",
+   "ecli": "ECLI:CZ:NS:2026:8.TDO.859.2026.1",
+   "druh": "usnesení",
+   "senat": 8,
+   "rejstrik": "Tdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/471616CF6B412479C1258EB30052A867?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/CF456749FA55BAD2C1258EB300534A6C/$file/8%20Tdo%20859_2026.pdf?openElement",
+   "heslo": "Zkrácení daně nepodáním přiznání a trest zákazu činnosti",
+   "shrnuti": "Obviněný se dovoláním domáhal zrušení odsuzujícího usnesení pro přečin zkrácení daně, poplatku a podobné povinné platby, namítaje absenci zatajení skutečností a nesprávnou právní kvalifikaci či nepřiměřenost trestu. Nejvyšší soud konstatoval, že k dokonání trestného činu došlo úmyslným nepodáním daňového přiznání a zatajením rozhodných skutečností bez ohledu na dodatečné doměření daně, a dovolání odmítl jako zjevně neopodstatněné.",
+   "oblasti": [
+    "trestni",
+    "dane"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:4383F7A37036F8FCC1258EB30052A827",
+   "spz": "8 Tdo 886/2026",
+   "ecli": "ECLI:CZ:NS:2026:8.TDO.886.2026.1",
+   "druh": "usnesení",
+   "senat": 8,
+   "rejstrik": "Tdo",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/4383F7A37036F8FCC1258EB30052A827?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/958206260D11DCBAC1258EB3005355F9/$file/8%20Tdo%20886_2026.pdf?openElement",
+   "heslo": "Znásilnění se zbraní proti seznatelné vůli",
+   "shrnuti": "Obviněný podal dovolání proti usnesení odvolacího soudu, kterým bylo potvrzeno jeho odsouzení za zločin znásilnění spáchaný se zbraní. Nejvyšší soud řešil otázku naplnění znaků skutkové podstaty znásilnění proti seznatelné vůli a použití zbraně. Dovolání odmítl jako zjevně neopodstatněné, neboť soudy správně vyhodnotily provedené důkazy i právní kvalifikaci skutku.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:373492D05B173F87C1258EB30052A8B6",
+   "spz": "8 Tdo 882/2026",
+   "ecli": "ECLI:CZ:NS:2026:8.TDO.882.2026.1",
+   "druh": "usnesení",
+   "senat": 8,
+   "rejstrik": "Tdo",
+   "datum": "2026-10-27",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/373492D05B173F87C1258EB30052A8B6?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/722152361C183C6BC1258EB30053509A/$file/8%20Tdo%20882_2026.pdf?openElement",
+   "heslo": "Hodnocení důkazů a totožnost skutku v trestním řízení",
+   "shrnuti": "Obviněný podal dovolání proti usnesení odvolacího soudu, kterým bylo zamitnuto jeho odvolání proti odsuzujícímu rozsudku za přečin nebezpečného vyhrožování. Nejvyšší soud se zabýval otázkou hodnocení důkazů a dodržení totožnosti skutku při upřesnění místa činu. Dovolání odmítl jako zjevně neopodstatněné, neboť soudy nižších stupňů řádně objasnily skutkový stav a nedopustily se extrémního nesouladu.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:35CD0F271C74FC1AC1258EB30052A84A",
+   "spz": "8 Tdo 793/2026",
+   "ecli": "ECLI:CZ:NS:2026:8.TDO.793.2026.1",
+   "druh": "usnesení",
+   "senat": 8,
+   "rejstrik": "Tdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/35CD0F271C74FC1AC1258EB30052A84A?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/2728664DC750B057C1258EB3005327CF/$file/8%20Tdo%20793_2026.pdf?openElement",
+   "heslo": "Šíření nepravdivých údajů v interních podáních naplňuje pomluvu",
+   "shrnuti": "Obviněný podal dovolání proti usnesení Městského soudu v Praze, kterým bylo zamítnuto jeho odvolání proti odsuzujícímu rozsudku za přečin pomluvy. Nejvyšší soud řešil otázku naplnění znaků skutkové podstaty pomluvy, procesní použitelnosti důkazů a subsidiarity trestní represe při šíření nepravdivých informací formou stížností a podnětů. Dovolání odmítl jako zjevně neopodstatněné, neboť skutková zjištění měla oporu v důkazech a jednání obviněného vykazovalo potřebnou společenskou škodlivost.",
+   "oblasti": [
+    "trestni",
+    "osobnost_media"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:27199DE30490CABBC1258EB30052A8BB",
+   "spz": "11 Tvo 20/2026",
+   "ecli": "ECLI:CZ:NS:2026:11.TVO.20.2026.1",
+   "druh": "usnesení",
+   "senat": 11,
+   "rejstrik": "Tvo",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/27199DE30490CABBC1258EB30052A8BB?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/E069AED1BF8AD23CC1258EB4002127E7/$file/11%20Tvo%2020_2026.pdf?openElement",
+   "heslo": "Hodnocení věrohodnosti svědka nezakládá podjatost soudce",
+   "shrnuti": "Obžalovaný podal stížnost proti usnesení Vrchního soudu v Olomouci, kterým bylo rozhodnuto, že dva soudci tohoto soudu nejsou vyloučeni z projednávání jeho věci. Nejvyšší soud řešil otázku, zda dřívější hodnocení výpovědi osoby jako nevěrohodné v jiné věci způsobuje podjatost soudce. Dospěl k závěru, že pouhá předchozí rozhodovací činnost a hodnocení důkazů nezakládají pochybnosti o nestrannosti soudce, a stížnost zamítl.",
+   "oblasti": [
+    "civilni_proces",
+    "trestni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:1A2444B865520129C1258EB30052A90C",
+   "spz": "25 Cdo 1260/2026",
+   "ecli": "ECLI:CZ:NS:2026:25.CDO.1260.2026.1",
+   "druh": "usnesení",
+   "senat": 25,
+   "rejstrik": "Cdo",
+   "datum": "2026-09-30",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/1A2444B865520129C1258EB30052A90C?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/39BB6F4F8FC89E4BC1258EB30052E329/$file/25%20Cdo%201260_2026.pdf?openElement",
+   "heslo": "Zastavení dovolacího řízení pro absenci zastoupení",
+   "shrnuti": "Fyzická osoba podala dovolání proti usnesení o odmítnutí žaloby na náhradu škody proti Všeobecné zdravotní pojišťovně České republiky, aniž byla zastoupena advokátem nebo měla právnické vzdělání. Nejvyšší soud řešil, zda lze dovolací řízení zastavit bez předchozí výzvy k odstranění nedostatku této podmínky. Soud rozhodl, že při zjevném a dlouhodobém zneužívání práva na soudní ochranu není nutné účastníka k odstranění nedostatku povinného zastoupení znovu vyzývat a dovolací řízení zastavil.",
+   "oblasti": [
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:1575B771212BC3A8C1258EB30052A835",
+   "spz": "11 Tcu 124/2026",
+   "ecli": "ECLI:CZ:NS:2026:11.TCU.124.2026.1",
+   "druh": "usnesení",
+   "senat": 11,
+   "rejstrik": "Tcu",
+   "datum": "2026-10-14",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/1575B771212BC3A8C1258EB30052A835?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/BF724129383D4E36C1258EB30052CF0C/$file/11%20Tcu%20124_2026.pdf?openElement",
+   "heslo": "Uznání cizozemského odsouzení občana České republiky",
+   "shrnuti": "Ministerstvo spravedlnosti navrhlo, aby se na odsouzení občana České republiky německými soudy pro trestný čin převádění cizinců hledělo jako na odsouzení soudem České republiky. Nejvyšší soud řešil, zda jsou splněny formální a materiální podmínky pro toto uznání. Dospěl k závěru, že podmínky oboustranné trestnosti i závažnosti činu jsou naplněny, a proto návrhu zcela vyhověl.",
+   "oblasti": [
+    "mps",
+    "trestni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:101CA19AEB5939A9C1258EB30052A839",
+   "spz": "11 Tdo 829/2026",
+   "ecli": "ECLI:CZ:NS:2026:11.TDO.829.2026.1",
+   "druh": "usnesení",
+   "senat": 11,
+   "rejstrik": "Tdo",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/101CA19AEB5939A9C1258EB30052A839?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/348B484E2BA7758DC1258EB4002110D7/$file/11%20Tdo%20829_2026.pdf?openElement",
+   "heslo": "Orientační dechová zkouška postačuje k prokázání ohrožení pod vlivem",
+   "shrnuti": "Obviněný podal dovolání proti odsuzujícímu rozsudku za přečin ohrožení pod vlivem návykové látky, přičemž namítal neprovedení krevní zkoušky a zpochybňoval výsledky dechových zkoušek. Nejvyšší soud řešil otázku, zda je nutné provádět lékařské vyšetření odběrem krve, pokud byla provedena spolehlivá dechová zkouška. Dovolací soud uzavřel, že splňuje-li dechová zkouška zákonné podmínky, další krevní test není nutný a dovolání odmítl.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:0A065A234FE709B1C1258EB30052A897",
+   "spz": "11 Tdo 854/2026",
+   "ecli": "ECLI:CZ:NS:2026:11.TDO.854.2026.1",
+   "druh": "usnesení",
+   "senat": 11,
+   "rejstrik": "Tdo",
+   "datum": "2026-10-07",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/0A065A234FE709B1C1258EB30052A897?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/403E238CF55622F1C1258EB4002119E4/$file/11%20Tdo%20854_2026.pdf?openElement",
+   "heslo": "Drogový delikt lze posoudit jako trvající skutek",
+   "shrnuti": "Obviněná podala dovolání proti usnesení Vrchního soudu v Praze, kterým bylo zamítnuto její odvolání proti odsuzujícímu rozsudku za zvlášť závažný zločin nedovolené výroby a jiného nakládání s omamnými a psychotropními látkami a s jedy. Nejvyšší soud řešil otázku určitosti popisu skutku a naplnění znaků trestného činu u trvající trestné činnosti. Dovolání odmítl jako zjevně neopodstatněné, neboť skutek byl vymezen dostatečně určitě a závěry soudů měly oporu v provedených důkazech.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:B3496B67BCE1A213C1258EB30052A917",
+   "spz": "25 Cdo 1143/2026",
+   "ecli": "ECLI:CZ:NS:2026:25.CDO.1143.2026.1",
+   "druh": "rozsudek",
+   "senat": 25,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-13",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-10-23T12:00:00Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/B3496B67BCE1A213C1258EB30052A917?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/BB11C1C20330C696C1258EB30052D93B/$file/25%20Cdo%201143_2026.pdf?openElement",
+   "heslo": "Porušení povinnosti poškozeného vylučuje úplnou liberaci provozu",
+   "shrnuti": "Družka zemřelého poškozeného se domáhala po žalované společnosti náhrada nemajetkové újmy za úmrtí druha, který zemřel v důsledku poleptání fenolem při jeho stáčení v průmyslovém areálu. Nejvyšší soud řešil otázku, zda porušení povinnosti poškozeného použít ochranné pomůcky vede k úplnému zproštění odpovědnosti (stoprocentní liberaci) provozovatele zvláště nebezpečného závodu. Dospěl k závěru, že takové pochybení poškozeného ovlivnilo pouze rozsah následků, nikoli samotný vznik škodní události, a zakládá tak pouze spoluzavinění (částečnou liberaci), nikoliv zproštění odpovědnosti v plném rozsahu.",
+   "oblasti": [
+    "skoda",
+    "zavazky"
+   ],
+   "procesni": false
+  },
   {
    "id": "ns:8221A0D75FEA1D3AC1258EB20052BF68",
    "spz": "24 Cdo 2600/2026",
@@ -7618,25 +8151,6 @@
     "vecna_prava"
    ],
    "procesni": true
-  },
-  {
-   "id": "ns:deska:25cdo1143/2026",
-   "spz": "25 Cdo 1143/2026",
-   "druh": "rozsudek",
-   "senat": 25,
-   "rejstrik": "Cdo",
-   "datum": "2026-10-23",
-   "zverejneno": "2026-10-23",
-   "first_seen": "2026-10-23T12:00:00Z",
-   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_25_Cdo_1143_2026.pdf",
-   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_25_Cdo_1143_2026.pdf",
-   "heslo": "Porušení povinnosti poškozeného vylučuje úplnou liberaci provozu",
-   "shrnuti": "Družka zemřelého poškozeného se domáhala po žalované společnosti náhrada nemajetkové újmy za úmrtí druha, který zemřel v důsledku poleptání fenolem při jeho stáčení v průmyslovém areálu. Nejvyšší soud řešil otázku, zda porušení povinnosti poškozeného použít ochranné pomůcky vede k úplnému zproštění odpovědnosti (stoprocentní liberaci) provozovatele zvláště nebezpečného závodu. Dospěl k závěru, že takové pochybení poškozeného ovlivnilo pouze rozsah následků, nikoli samotný vznik škodní události, a zakládá tak pouze spoluzavinění (částečnou liberaci), nikoliv zproštění odpovědnosti v plném rozsahu.",
-   "oblasti": [
-    "skoda",
-    "zavazky"
-   ],
-   "procesni": false
   },
   {
    "id": "ns:DDF48B3EAD5795A6C1258E99004D54B4",

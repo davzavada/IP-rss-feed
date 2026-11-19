@@ -1,12 +1,5 @@
 {
  "ai": {
-  "2026-11-03": {
-   "gemini-flash-lite-latest": {
-    "volani": 68,
-    "vstup": 552595,
-    "vystup": 13186
-   }
-  },
   "2026-11-04": {
    "gemini-flash-lite-latest": {
     "volani": 77,
@@ -105,36 +98,43 @@
     "vstup": 265190,
     "vystup": 7505
    }
+  },
+  "2026-11-18": {
+   "gemini-flash-lite-latest": {
+    "volani": 58,
+    "vstup": 836307,
+    "vystup": 12139
+   }
   }
  },
- "aktualizovano": "2026-11-18T07:41:16Z",
+ "aktualizovano": "2026-11-19T07:37:23Z",
  "soudy": {
   "ns": {
    "chyba": null,
-   "nalezeno": 120,
-   "nove": 1,
-   "objev": "2026-11-18T07:41:16Z"
+   "nalezeno": 147,
+   "nove": 27,
+   "objev": "2026-11-19T07:37:23Z"
   },
   "nss": {
    "chyba": null,
-   "nalezeno": 333,
-   "nove": 0,
-   "objev": "2026-11-18T07:41:16Z",
+   "nalezeno": 361,
+   "nove": 12,
+   "objev": "2026-11-19T07:37:23Z",
    "varovani": [
-    "načteno jen 3040 z 18098 výsledků"
+    "načteno jen 3040 z 18240 výsledků"
    ]
   },
   "sdeu": {
    "chyba": null,
-   "nalezeno": 74,
-   "nove": 3,
-   "objev": "2026-11-18T07:41:16Z"
+   "nalezeno": 80,
+   "nove": 17,
+   "objev": "2026-11-19T07:37:23Z"
   },
   "us": {
    "chyba": null,
-   "nalezeno": 136,
-   "nove": 0,
-   "objev": "2026-11-18T07:41:16Z"
+   "nalezeno": 139,
+   "nove": 3,
+   "objev": "2026-11-19T07:37:23Z"
   }
  }
 }

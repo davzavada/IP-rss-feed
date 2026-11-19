@@ -1,8 +1,70 @@
 {
- "generated": "2026-11-17T08:05:21Z",
+ "generated": "2026-11-19T07:37:23Z",
  "soud": "us",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "us:Pl-33-25_1",
+   "spz": "Pl. ÚS 33/25",
+   "ecli": "ECLI:CZ:US:2026:Pl.US.33.25.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-11-04",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "nazev": "Obecně závazná vyhláška obce Čelechovice na Hané o místním poplatku za zhodnocení stavebního pozemku",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=Pl-33-25_1",
+   "soudce": "Josef Baxa",
+   "heslo": "Místní poplatek za zhodnocení pozemku nelze vázat na připojení",
+   "shrnuti": "Ministerstvo vnitra navrhlo zrušení obecně závazné vyhlášky obce Čelechovice na Hané o místním poplatku za zhodnocení stavebního pozemku. Ústavní soud návrhu vyhověl a vyhlášku zrušil, protože obec odsunutím splatnosti poplatku na okamžik připojení k infrastruktuře zneužila svou pravomoc a v rozporu se zákonem zavedla poplatek za budoucí připojení. Taková úprava odporuje zákonu o vodovodech a kanalizacích a pravidlům pro ukládání místních poplatků.",
+   "oblasti": [
+    "zavazky",
+    "spravni",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-2563-26_1",
+   "spz": "III. ÚS 2563/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.2563.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-29",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "nazev": "Nepřípustnost kasační námitky ve zjevném rozporu s textem stížnosti",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-2563-26_1",
+   "soudce": "Veronika Křesťanová",
+   "heslo": "Kasační námitka ve zjevném rozporu s žalobou",
+   "shrnuti": "Mateřská škola a Základní škola ŠKOLAMYŠL napadla rozhodnutí správních soudů týkající se dotací. Ústavní soud vyhověl ústavní stížnosti a zrušil rozsudek Nejvyššího správního soudu, protože tento soud pochybil, když kasační námitku ohledně proporcionality sankce vyhodnotil jako nepřípustnou pro neuvedení v žalobě, ačkoliv to bylo v zjevném rozporu s textem žaloby, čímž porušil právo stěžovatelky na přístup k soudu. Ve zbývajícím rozsahu byla ústavní stížnost odmítnuta.",
+   "oblasti": [
+    "spravni",
+    "ustavni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:2-2492-26_1",
+   "spz": "II. ÚS 2492/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2492.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-29",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "nazev": "Nevypořádaní námitky proti zajištění části peněžních prostředků",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2492-26_1",
+   "soudce": "Veronika Křesťanová",
+   "heslo": "Zajištění peněžních prostředků vyžaduje vypořádání námitek",
+   "shrnuti": "Stěžovatel napadal zajištění peněžních prostředků na svých účtech policejním orgánem, přičemž namítal, že část finančních prostředků získal ještě před rozhodným obdobím prověřované trestné činnosti jiné korporace. Městský soud v Praze tuto stěžejní námitku zcela ignoroval a nijak se s ní nevypořádal. Ústavní soud proto shledal porušení práva stěžovatele na soudní ochranu dle čl. 36 odst. 1 Listiny a napadené usnesení městského soudu zrušil.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
   {
    "id": "us:3-635-26_3",
    "spz": "III. ÚS 635/26",
@@ -12,7 +74,7 @@
    "datum": "2026-10-29",
    "zverejneno": "2026-11-16",
    "first_seen": "2026-11-17T08:05:21Z",
-   "nazev": "Nestanovení výživného pro dítě zpětně",
+   "nazev": "Nestanovení výživného pro dítě od počátku opatrovnického řízení",
    "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-635-26_3",
    "soudce": "Daniela Zemanová",
    "heslo": "Nestanovení výživného za dobu řízení vyžaduje odůvodnění",

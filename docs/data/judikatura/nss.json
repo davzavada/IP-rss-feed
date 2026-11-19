@@ -1,8 +1,239 @@
 {
- "generated": "2026-11-17T08:05:21Z",
+ "generated": "2026-11-19T07:37:23Z",
  "soud": "nss",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "nss:787559",
+   "spz": "Vol 11/2026-67",
+   "ecli": "ECLI:CZ:NSS:2026:Vol.11.2026.67",
+   "druh": "usnesení",
+   "datum": "2026-11-18",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787559",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787559",
+   "soudce": "Milan Podhrázký",
+   "heslo": "Neplatnost hlasování kvůli vadné volební dokumentaci",
+   "shrnuti": "Navrhovatel se domáhal vyslovení neplatnosti hlasování ve volbách do Senátu kvůli těsnému výsledku a řadě nesrovnalostí. Nejvyšší správní soud řešil, zda zjištěné vady ve volební dokumentaci a nezapočtení některých hlasů hrubě ovlivnily výsledek hlasování. Soud dospěl k závěru, že vady a nepořádek v dokumentaci znemožnily spolehlivě zjistit skutečnou vůli voličů, a proto vyslovil neplatnost hlasování v celém obvodu.",
+   "oblasti": [
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787531",
+   "spz": "22 As 175/2026-43",
+   "ecli": "ECLI:CZ:NSS:2026:22.As.175.2026.43",
+   "druh": "rozsudek",
+   "senat": 22,
+   "rejstrik": "As",
+   "datum": "2026-11-18",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787531",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787531",
+   "soudce": "Tomáš Foltas",
+   "heslo": "Posouzení povahy komunikace jako předběžná otázka v přestupku",
+   "shrnuti": "Krajský úřad Olomouckého kraje podal kasační stížnost proti rozsudku Krajského soudu v Ostravě – pobočka v Olomouci, kterým bylo zrušeno rozhodnutí o přestupku žalobce. Nejvyšší správní soud řešil, zda správní orgány musí pro účely přestupkového řízení prokazovat všechny podmínky veřejné přístupnosti účelové komunikace včetně souhlasu vlastníka. Soud dospěl k závěru, že postačí posoudit základní pojmové znaky účelové komunikace, avšak rozsudek krajského soudu potvrdil pro nedostatečné vypořádání odvolacích námitek žalobce.",
+   "oblasti": [
+    "spravni",
+    "stavebni_zp"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787526",
+   "spz": "4 As 33/2026-40",
+   "ecli": "ECLI:CZ:NSS:2026:4.As.33.2026.40",
+   "druh": "rozsudek",
+   "senat": 4,
+   "rejstrik": "As",
+   "datum": "2026-11-18",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787526",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787526",
+   "soudce": "Tomáš Kocourek",
+   "heslo": "Lhůta pro zásahovou žalobu proti zkoušce",
+   "shrnuti": "Žalobce se žalobou domáhal ochrany před nezákonným zásahem spočívajícím v hodnocení u zkoušky insolvenčního správce, v odmítnutí námitky podjatosti a požadoval náhradu újmy. Nejvyšší správní soud posuzoval včasnost žaloby a dospěl k závěru, že subjektivní lhůta k podání zásahové žaloby proti hodnocení zkoušky počíná běžet dnem oznámení výsledku, přičemž pozdější doručení protokolu její běh nemění. Ve vztahu k odmítnutí námitky podjatosti však byla žaloba podána včas a soud v této části věc vrátil k dalšímu řízení.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787515",
+   "spz": "22 As 126/2026-48",
+   "ecli": "ECLI:CZ:NSS:2026:22.As.126.2026.48",
+   "druh": "rozsudek",
+   "senat": 22,
+   "rejstrik": "As",
+   "datum": "2026-11-18",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787515",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787515",
+   "soudce": "Jan Kratochvíl",
+   "heslo": "Podmínka veřejně přístupného napojení v územním plánu",
+   "shrnuti": "Navrhovatelé se u Nejvyššího správního soudu domáhali zrušení částí územního plánu vydaného statutárním městem Brno, neboť měli za to, že nepřiměřeně zasahují do jejich vlastnických práv. Soud řešil otázku přiměřenosti územní rezervy a zákonnosti pravidla podmiňujícího zástavbu přímým veřejně přístupným dopravním napojením. Soud dospěl k závěru, že územní rezerva neobstojí pro svou dlouhodobost a pravidlo o veřejně přístupném napojení postrádá řádné odůvodnění.",
+   "oblasti": [
+    "stavebni_zp",
+    "vecna_prava",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787514",
+   "spz": "9 Azs 155/2026-33",
+   "ecli": "ECLI:CZ:NSS:2026:9.Azs.155.2026.33",
+   "druh": "usnesení",
+   "senat": 9,
+   "rejstrik": "Azs",
+   "datum": "2026-11-18",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787514",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787514",
+   "soudce": "Radan Malík",
+   "heslo": "Přiznání odkladného účinku kasační stížnosti proti zajištění cizince",
+   "shrnuti": "Žalobce podal kasační stížnost proti rozsudku krajského soudu, kterým byla zamítnuta jeho žaloba proti rozhodnutí o zajištění, a navrhl přiznání odkladného účinku a ustanovení zástupce. Nejvyšší správní soud rozhodl, že zajištění cizince působí újmu, která je s ním neoddělitelně spojena, a přiznání odkladného účinku by vedlo k zániku zajištění a zmaření jeho účelu. Proto kasační stížnosti odkladný účinek nepřiznal.",
+   "oblasti": [
+    "socialni_cizinci",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:787513",
+   "spz": "9 As 58/2026-32",
+   "ecli": "ECLI:CZ:NSS:2026:9.As.58.2026.32",
+   "druh": "rozsudek",
+   "senat": 9,
+   "rejstrik": "As",
+   "datum": "2026-11-18",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787513",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787513",
+   "soudce": "Tomáš Herc",
+   "heslo": "Zahájení řízení o nápravě není nezákonným zásahem",
+   "shrnuti": "Ridera Bohemia podala žalobu na ochranu před nezákonným zásahem proti České inspekci životního prostředí kvůli zahájení řízení o opatření k nápravě a odběru vzorků. Nejvyšší správní soud řešil, zda je taková zásahová žaloba přípustná proti procesním úkonům správního orgánu. Rozhodl, že zahájení a vedení správního řízení ani odběr vzorků nejsou zásahem podle soudního řádu správního, neboť jde o přezkoumatelné úkony v rámci řízení směřujícího k vydání rozhodnutí.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "nss:787512",
+   "spz": "9 As 48/2026-70",
+   "ecli": "ECLI:CZ:NSS:2026:9.As.48.2026.70",
+   "druh": "rozsudek",
+   "senat": 9,
+   "rejstrik": "As",
+   "datum": "2026-11-18",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787512",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787512",
+   "soudce": "Radan Malík",
+   "heslo": "Oprava chyby v katastru vyžaduje posouzení důkazů",
+   "shrnuti": "Žalobkyně se sice domáhala zrušení rozhodnutí o opravě chyby v katastrálním operátu, správní orgány však pochybily tím, že opomněly provést navržené důkazy a nezdůvodnily to. Nejvyšší správní soud proto zrušil rozsudek krajského soudu i rozhodnutí správního orgánu a vrátil věc k dalšímu řízení.",
+   "oblasti": [
+    "vecna_prava",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787477",
+   "spz": "3 Afs 42/2026-47",
+   "ecli": "ECLI:CZ:NSS:2026:3.Afs.42.2026.47",
+   "druh": "rozsudek",
+   "senat": 3,
+   "rejstrik": "Afs",
+   "datum": "2026-11-16",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787477",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787477",
+   "soudce": "Radim Kadlčák",
+   "heslo": "Vázanost správce daně trestním rozsudkem po prohlášení viny",
+   "shrnuti": "Společnost M GRUPPE se soudila s Odvolacím finančním ředitelstvím o doměření daně z přidané hodnoty na základě pravomocného trestního rozsudku. Nejvyšší správní soud řešil otázku, zda správce daně může doměřit daň výlučně z odsuzujícího trestního rozsudku vydaného po prohlášení viny, aniž by prováděl vlastní dokazování. Soud dospěl k závěru, že skutková věta takového rozsudku je pro daňové orgány závazná a představuje dostatečný podklad pro stanovení daně.",
+   "oblasti": [
+    "dane",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787468",
+   "spz": "4 Azs 146/2026-40",
+   "ecli": "ECLI:CZ:NSS:2026:4.Azs.146.2026.40",
+   "druh": "usnesení",
+   "senat": 4,
+   "rejstrik": "Azs",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787468",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787468",
+   "soudce": "Aleš Roztočil",
+   "heslo": "Zrušení termínu k biometrickým údajům je zásahem",
+   "shrnuti": "Žalobce se soudil s Ministerstvem vnitra ohledně právní povahy vyrozumění o zrušení termínu pro pořízení biometrických údajů pro zvláštní dlouhodobý pobyt podle lex Ukrajina. Nejvyšší správní soud řešil otázku, zda je takové vyrozumění rozhodnutím ve smyslu správního řádu, či zda jde o faktický úkon. Soud rozhodl, že zrušení termínu je faktickým úkonem a potenciálním nezákonným zásahem, proti němuž je přípustná zásahová žaloba, nikoli žaloba proti rozhodnutí.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787467",
+   "spz": "4 Azs 161/2026-58",
+   "ecli": "ECLI:CZ:NSS:2026:4.Azs.161.2026.58",
+   "druh": "usnesení",
+   "senat": 4,
+   "rejstrik": "Azs",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787467",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787467",
+   "soudce": "Jiří Palla",
+   "heslo": "Kumulace okolností bez intenzivního politického postoje nezakládá azyl",
+   "shrnuti": "Žalobce se kasační stížností domáhal zrušení rozsudku krajského soudu, kterým byla zamítnuta jeho žaloba proti rozhodnutí Ministerstva vnitra o neudělení mezinárodní ochrany. Nejvyšší správní soud řešil otázku přijatelnosti kasační stížnosti a posouzení hrozby pronásledování v zemi původu s ohledem na dřívější aktivity a obavy z odmítnutí vojenské služby. Dospěl k závěru, že kasační stížnost je nepřijatelná, protože tvrzené skutečnosti ani v jejich souhrnu nedosahují intenzity odůvodňující obavu z pronásledování.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "nss:787463",
+   "spz": "21 Azs 5/2026-68",
+   "ecli": "ECLI:CZ:NSS:2026:21.Azs.5.2026.68",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "Azs",
+   "datum": "2026-11-16",
+   "zverejneno": "2026-11-18",
+   "first_seen": "2026-11-19T07:37:23Z",
+   "url": "https://vyhledavac.nssoud.cz/DokumentOriginal/Html/787463",
+   "pdf": "https://vyhledavac.nssoud.cz/DokumentOriginal/Index/787463",
+   "soudce": "Radovan Havelec",
+   "heslo": "Posouzení zranitelnosti při zajištění cizince je povinné",
+   "shrnuti": "Stěžovatelka podala kasační stížnost proti rozsudku Městského soudu v Praze, kterým byla zamítnuta její žaloba proti rozhodnutí o zajištění za účelem správního vyhoštění. Nejvyšší správní soud řešil otázku, zda je správní orgán v řízení o zajištění cizince povinen výslovně posoudit jeho zranitelnost a zda může soud v rámci přezkumu nahradit absenci takové úvahy vlastními závěry. Soud dospěl k závěru, že správní orgán musí zranitelnost výslovně posoudit a soud ji nemůže dodatečně nahradit vlastní úvahou, pročež rozsudek i rozhodnutí správního orgánu zrušil.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
   {
    "id": "nss:787462",
    "spz": "4 As 140/2026-66",
