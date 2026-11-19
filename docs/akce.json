@@ -1,13 +1,13 @@
 {
-  "generated": "2026-11-18T07:21:38+00:00",
+  "generated": "2026-11-19T07:25:48+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 15,
-      "stazeno": "2026-11-18T07:21:25+00:00",
+      "pocet": 16,
+      "stazeno": "2026-11-19T07:25:12+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -17,11 +17,11 @@
       "zkratka": "PF UK",
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
-      "pocet": 6,
-      "stazeno": "2026-11-18T07:21:27+00:00",
+      "pocet": 5,
+      "stazeno": "2026-11-19T07:25:21+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "2d1f64548e2c974a"
+      "otisk": "6e13cb2ac6f0dd40"
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
@@ -29,10 +29,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 7,
-      "stazeno": "2026-11-18T07:21:31+00:00",
+      "stazeno": "2026-11-19T07:25:28+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "7c8d3fc8d3602055"
+      "otisk": "98dc716f619d1417"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -40,7 +40,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-11-18T07:21:32+00:00",
+      "stazeno": "2026-11-19T07:25:29+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -51,7 +51,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 4,
-      "stazeno": "2026-11-18T07:21:32+00:00",
+      "stazeno": "2026-11-19T07:25:30+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "c6f425e1a83fdab1"
@@ -1655,7 +1655,7 @@
       ],
       "cena": "3 975 Kč",
       "anotace": "Online živé vysílání o veřejnoprávních plánovacích smlouvách podle nového stavebního zákona.",
-      "url": "https://www.epravo.cz/eshop/verejnopravni-planovaci-smlouvy-dle-noveho-stavebni-zakona-online-zive-vysilani-20-11-2026-1461.html",
+      "url": "https://www.epravo.cz/eshop/verejnopravni-planovaci-smlouvy-dle-noveho-stavebniho-zakona-online-zive-vysilani-20-11-2026-1461.html",
       "detail_pokusy": 2,
       "z_detailu": [
         "misto"
@@ -1968,7 +1968,7 @@
       ],
       "cena": "zdarma",
       "anotace": "Přednáška s diskuzí zaměřená na střet etiky a obchodních zájmů v transakční praxi pod vedením zkušeného odborníka na korporátní právo a fúze a akvizice.",
-      "url": "https://www.prf.cuni.cz/aktuality/prednaska-s-diskuzi-s-diskuzi-na-tema-stret-etiky-a-obchodnich-zajmu-v-transakcni-praxi",
+      "url": "https://www.prf.cuni.cz/aktuality/prednaska-s-diskuzi-na-tema-stret-etiky-a-obchodnich-zajmu-v-transakcni-praxi",
       "detail_pokusy": 2,
       "z_detailu": [
         "misto"
@@ -2083,6 +2083,78 @@
         "prumyslova_prava"
       ],
       "oblasti_klic": "01b02ced921c"
+    },
+    {
+      "id": "db050ddb00beeb120dab",
+      "poradatel": "EPRAVO",
+      "datum": "2026-12-08",
+      "zacatek": "09:00",
+      "konec": "12:00",
+      "nazev": "Názor nezletilého dítěte v opatrovnickém řízení před soudem",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "Mgr. Ladislav Kozel"
+      ],
+      "cena": "3 975 Kč",
+      "anotace": "Odborný online seminář věnovaný zjišťování názoru nezletilého dítěte v opatrovnickém řízení před soudem.",
+      "url": "https://www.epravo.cz/eshop/nazor-nezletileho-ditete-v-opatrovnickem-rizeni-pred-soudem-online-zive-vysilani-8-12-2026-1595.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "rodina_dedictvi"
+      ],
+      "oblasti_klic": "2bddc0c4631b"
+    },
+    {
+      "id": "dab792773f90dc6edd6b",
+      "poradatel": "EPRAVO",
+      "datum": "2026-12-08",
+      "zacatek": "13:00",
+      "konec": "16:00",
+      "nazev": "Když léčba neproběhne podle očekávání: Odpovědnost a náhrada újmy z pohledu lékaře a pacienta",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "Mgr. Vladislava Křivová, LL.M.",
+        "Mgr. Radek Novotný"
+      ],
+      "cena": "3 975 Kč",
+      "anotace": "Seminář zaměřený na odpovědnost a náhradu újmy v medicínském právu z pohledu lékaře i pacienta.",
+      "url": "https://www.epravo.cz/eshop/kdyz-lecba-neprobehne-podle-ocekavani-odpovednost-a-nahrada-ujmy-z-pohledu-lekare-a-pacienta-online-zive-vysilani-8-12-2026-1635.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "skoda",
+        "spravni"
+      ],
+      "oblasti_klic": "038ac821bbff"
+    },
+    {
+      "id": "a18cbd4e4cdd2c25cf57",
+      "poradatel": "CAK",
+      "datum": "2026-12-09",
+      "zacatek": "10:00",
+      "konec": "14:00",
+      "nazev": "Advokátní tarif a jiné způsoby odměňování - aplikace v advokátní praxi, judikatura, Kontrolní rada, kárné řízení",
+      "misto": "Olomouc, Hotel Flora",
+      "forma": "prezencne",
+      "lektori": [
+        "JUDr. Kateřina Koberová",
+        "JUDr. Jiří Janeba"
+      ],
+      "cena": "zdarma",
+      "anotace": "Seminář pro advokáty se zaměřuje na právní rámec odměňování advokátů, aplikaci novely advokátního tarifu, smlouvy o poskytování právních služeb, judikaturu a kárnou praxi v této oblasti.",
+      "url": "https://www.cak.cz/akce/1388",
+      "detail_pokusy": 2,
+      "oblasti": [
+        "civilni_proces"
+      ],
+      "oblasti_klic": "b646c01f3cfc"
     },
     {
       "id": "b5bd3ab762c24dba84ff",

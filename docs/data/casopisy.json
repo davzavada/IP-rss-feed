@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-18T07:21:21Z",
+ "generated": "2026-11-19T07:25:04Z",
  "okno_od": "2026-10-01",
  "casopisy": [
   {
@@ -131,6 +131,16 @@
    "shrnuti": "Článek se zabývá ústavními limity směrnice (EU) 2024/1260 o konfiskaci majetku bez odsouzení a analýzou jejího vztahu k Listině základních práv EU a judikatuře ESLP. Autor argumentuje, že legitimita směrnice závisí na autonomním standardu Listiny fungujícím jako „konstituční štít“ a na správném rozdělení korektivní odpovědnosti mezi unijními a vnitrostátními aktéry. Závěrem konstatuje, že směrnice není protiprávní.",
    "datum": "2026-11-18",
    "first_seen": "2026-11-18T07:21:15Z"
+  },
+  {
+   "id": "IIC-10.1007/s40319-026-01802-w",
+   "casopis": "iic",
+   "nazev": "“VG Wort” – Decision of the Court of Justice of the European Union (Fifth Chamber) 22 October 2026 – Case No. C-840/24",
+   "url": "https://doi.org/10.1007/s40319-026-01802-w",
+   "heslo": "Kolektivní správa",
+   "shrnuti": "Soudní dvůr Evropské unie rozhodl dne 22. října 2026 ve věci C-840/24 o výkladu směrnice 2014/26/EU týkající se kolektivního správce VG Wort. Zabýval se otázkou, zda a za jakých podmínek lze příjmy z autorských práv použít k financování sociálních, kulturních či vzdělávacích služeb pro osoby, které nejsou nositeli práv. Rozhodl, že financování takových služeb z příjmů z práv pro osoby bez autorských práv je nepřípustné, pokud je prováděno formou srážek z těchto příjmů, avšak je přípustné, je-li hrazeno z nerozdělitelných částek.",
+   "datum": "2026-11-18",
+   "first_seen": "2026-11-19T07:24:59Z"
   },
   {
    "id": "GRUR Int-10.1093/grurint/ikag116",
@@ -781,17 +791,6 @@
    "popis": "Use of the Same Motif in an AI-Generated Image Does Not Infringe Copyright\nGRUR International"
   },
   {
-   "id": "GRUR Int-10.1093/grurint/ikag102",
-   "casopis": "grur-int",
-   "nazev": "When Gatekeeper Status Travels",
-   "url": "https://doi.org/10.1093/grurint/ikag102",
-   "autori": "Heiko Richter",
-   "datum": "2026-10-23",
-   "first_seen": "2026-10-24T04:20:13Z",
-   "poznamka": "Shrnutí není k dispozici.",
-   "popis": "When Gatekeeper Status Travels\nAutor: Heiko Richter\nGRUR International"
-  },
-  {
    "id": "GRUR Int-10.1093/grurint/ikag100",
    "casopis": "grur-int",
    "nazev": "Who Can Keep a Secret? Mapping Trust and Trustworthiness in the UPC’s Transparency and Confidentiality Decisions",
@@ -801,6 +800,17 @@
    "shrnuti": "Článek zkoumá, jak Jednotný patentový soud (UPC) vyvažuje transparentnost a ochranu důvěrných informací ve své rozhodovací praxi. Na základě konceptů důvěry a analýzy judikatury ukazuje, že kultura soudu je v principu otevřená, avšak v praxi podmíněná. V závěru nabízí interpretační rámec pro budoucí rozhodování soudu.",
    "datum": "2026-10-23",
    "first_seen": "2026-10-24T04:20:13Z"
+  },
+  {
+   "id": "GRUR Int-10.1093/grurint/ikag102",
+   "casopis": "grur-int",
+   "nazev": "When Gatekeeper Status Travels",
+   "url": "https://doi.org/10.1093/grurint/ikag102",
+   "autori": "Heiko Richter",
+   "datum": "2026-10-23",
+   "first_seen": "2026-10-24T04:20:13Z",
+   "poznamka": "Shrnutí není k dispozici.",
+   "popis": "When Gatekeeper Status Travels\nAutor: Heiko Richter\nGRUR International"
   },
   {
    "id": "GRUR Int-10.1093/grurint/ikag098",
@@ -1183,39 +1193,6 @@
    "first_seen": "2026-10-07T05:39:14Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.01",
-   "casopis": "qmjip",
-   "nazev": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.01",
-   "autori": "Martin Senftleben",
-   "heslo": "AI a autorské právo",
-   "shrnuti": "Článek se zabývá otázkou spravedlivé odměny pro tvůrce za použití jejich děl při vývoji generativní AI. Porovnává současný trend individuálního licencování s výhodami kolektivních přístupů zohledňujících výstupy AI. Nakonec hodnotí různé regulační možnosti s ohledem na nutnost spravedlivé odměny a zároveň širokého přístupu k trénovacím datům.",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
-  },
-  {
-   "id": "QMJIP-10.4337/qmjip.2026.03.03",
-   "casopis": "qmjip",
-   "nazev": "Exploring the boundaries of pre-infringement copyright review obligations for Chinese online platforms: a comparative study of the Chinese, UK and US systems",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.03",
-   "autori": "Mengna Liang",
-   "heslo": "autorské právo platforem",
-   "shrnuti": "Článek zkoumá povinnost čínských online platforem předcházet porušování autorských práv a porovnává přístupy v Číně, Spojeném království a USA. S ohledem na nedostatečnost tradičního institutu bezpečného přístavu navrhuje pro Čínu povinný model filtrace inspirovaný právem EU. V závěru představuje hodnotící rámec kombinující formální a materiální požadavky, podle něhož mají platformy vynakládat přiměřené úsilí.",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
-  },
-  {
-   "id": "QMJIP-10.4337/qmjip.2026.03.00",
-   "casopis": "qmjip",
-   "nazev": "Seeing intellectual property in colour",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.00",
-   "autori": "Johanna Gibson",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z",
-   "poznamka": "Shrnutí není k dispozici.",
-   "popis": "Seeing intellectual property in colour\nAutor: Johanna Gibson\nQueen Mary Journal of Intellectual Property"
-  },
-  {
    "id": "QMJIP-10.4337/qmjip.2026.03.05",
    "casopis": "qmjip",
    "nazev": "Thinking about originality: creativity in legal research",
@@ -1223,6 +1200,17 @@
    "autori": "Chris Dent",
    "heslo": "Originalita právního výzkumu",
    "shrnuti": "Článek zkoumá kreativitu v akademickém právním výzkumu se zohledněním vlivu umelecké inteligence a poznatků z psychologie. Srovnává doktrinální a socio-právní výzkum s různými pojetími kreativity a dokazuje, že právní výzkum je ve své podstatě kreativní. Závěrem propojuje toto zjištění s konceptem autority a testem originality v současném autorském právu.",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z"
+  },
+  {
+   "id": "QMJIP-10.4337/qmjip.2026.03.01",
+   "casopis": "qmjip",
+   "nazev": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.01",
+   "autori": "Martin Senftleben",
+   "heslo": "AI a autorské právo",
+   "shrnuti": "Článek se zabývá otázkou spravedlivé odměny pro tvůrce za použití jejich děl při vývoji generativní AI. Porovnává současný trend individuálního licencování s výhodami kolektivních přístupů zohledňujících výstupy AI. Nakonec hodnotí různé regulační možnosti s ohledem na nutnost spravedlivé odměny a zároveň širokého přístupu k trénovacím datům.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -1238,13 +1226,13 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.02",
+   "id": "QMJIP-10.4337/qmjip.2026.03.03",
    "casopis": "qmjip",
-   "nazev": "Warhol v Goldsmith and the shrinking canvas of fair use: a comparative critique of artistic expression in US and UK copyright law",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.02",
-   "autori": "W Oshada Rodrigo",
-   "heslo": "Transformativní užití autorského práva",
-   "shrnuti": "Článek srovnává americkou doktrínu fair use a britské výjimky z autorského práva v kontextu nedávného rozhodnutí ve věci Warhol v. Goldsmith a dalších případů. Autor kritizuje zpřísňování pravidel a nadřazování tržní substituce, což omezuje svobodu tvorby, remixovou kulturu i uměleckou inovaci. Jako řešení, které lépe reflektuje současné digitální formy umění, navrhuje nový čtyřkrokový test založený na expresivním pluralismu.",
+   "nazev": "Exploring the boundaries of pre-infringement copyright review obligations for Chinese online platforms: a comparative study of the Chinese, UK and US systems",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.03",
+   "autori": "Mengna Liang",
+   "heslo": "autorské právo platforem",
+   "shrnuti": "Článek zkoumá povinnost čínských online platforem předcházet porušování autorských práv a porovnává přístupy v Číně, Spojeném království a USA. S ohledem na nedostatečnost tradičního institutu bezpečného přístavu navrhuje pro Čínu povinný model filtrace inspirovaný právem EU. V závěru představuje hodnotící rámec kombinující formální a materiální požadavky, podle něhož mají platformy vynakládat přiměřené úsilí.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -1258,6 +1246,28 @@
    "shrnuti": "Článek se zabývá systémem prodloužení platnosti patentů na léčiva v Číně v kontextu nedávných legislativních změn z roku 2024. Analýzou prováděcích předpisů a pokynů pro zkoumání patentů přibližuje aktuální vývoj a poskytuje klíčové poznatky pro domácí i zahraniční subjektu usilující o maximalizaci přínosů tohoto systému.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
+  },
+  {
+   "id": "QMJIP-10.4337/qmjip.2026.03.02",
+   "casopis": "qmjip",
+   "nazev": "Warhol v Goldsmith and the shrinking canvas of fair use: a comparative critique of artistic expression in US and UK copyright law",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.02",
+   "autori": "W Oshada Rodrigo",
+   "heslo": "Transformativní užití autorského práva",
+   "shrnuti": "Článek srovnává americkou doktrínu fair use a britské výjimky z autorského práva v kontextu nedávného rozhodnutí ve věci Warhol v. Goldsmith a dalších případů. Autor kritizuje zpřísňování pravidel a nadřazování tržní substituce, což omezuje svobodu tvorby, remixovou kulturu i uměleckou inovaci. Jako řešení, které lépe reflektuje současné digitální formy umění, navrhuje nový čtyřkrokový test založený na expresivním pluralismu.",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z"
+  },
+  {
+   "id": "QMJIP-10.4337/qmjip.2026.03.00",
+   "casopis": "qmjip",
+   "nazev": "Seeing intellectual property in colour",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.00",
+   "autori": "Johanna Gibson",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z",
+   "poznamka": "Shrnutí není k dispozici.",
+   "popis": "Seeing intellectual property in colour\nAutor: Johanna Gibson\nQueen Mary Journal of Intellectual Property"
   },
   {
    "id": "MUJLT-https://journals.muni.cz/mujlt/article/view/42629",
