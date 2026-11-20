@@ -1,8 +1,132 @@
 {
- "generated": "2026-11-19T07:37:23Z",
+ "generated": "2026-11-20T07:28:29Z",
  "soud": "us",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "us:4-2821-26_1",
+   "spz": "IV. ÚS 2821/26",
+   "ecli": "ECLI:CZ:US:2026:4.US.2821.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-11-04",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Lhůta pro doplnění stížnosti proti rozhodnutí o zahájení trestního stíhání",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2821-26_1",
+   "soudce": "Zdeněk Kühn",
+   "heslo": "Lhůta pro doplnění stížnosti proti zahájení stíhání",
+   "shrnuti": "Stěžovatel napadal usnesení Krajského státního zastupitelství v Ostravě - pobočky v Olomouci o zamítnutí stížnosti proti zahájení trestního stíhání. Ústavní soud shledal porušení práva na soudní ochranu a práva na obhajobu, protože státní zástupce rozhodl před uplynutím lhůty vyhrazené stěžovatelem k doplnění stížnosti, aniž by jej upozornil na její nepřiměřenost nebo odůvodnil nutnost rychlého postupu.",
+   "oblasti": [
+    "trestni",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:4-2519-25_2",
+   "spz": "IV. ÚS 2519/25",
+   "ecli": "ECLI:CZ:US:2026:4.US.2519.25.2",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-11-04",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Ochrana nezletilých obětí trestné činnosti při střetu adhezního a insolvenčního řízení",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=4-2519-25_2",
+   "soudce": "Lucie Dolanská Bányaiová",
+   "heslo": "Náhrada škody v adhezním řízení při úpadku pachatele",
+   "shrnuti": "Stěžovatelky napadly rozhodnutí o odkázání jejich nároku na náhradu škody na občanskoprávní řízení v situaci, kdy jejich matka procházela insolvenčním řízením. Ústavní soud shledal porušení práva na soudní ochranu, neboť striktní aplikace insolvenčních omezení na zvlášť zranitelné oběti z řad nezletilých dětí představuje v extrémních specifikách případu odepření spravedlnosti.",
+   "oblasti": [
+    "civilni_proces",
+    "skoda",
+    "insolvence"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-581-26_1",
+   "spz": "III. ÚS 581/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.581.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-29",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Nerespektování nosných důvodů rozhodovací praxe Ústavního soudu při určení náhrady nákladů řízení",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-581-26_1",
+   "soudce": "Milan Hulmák",
+   "heslo": "Nerespektování judikatury porušuje právo na ochranu",
+   "shrnuti": "Stěžovatel napadal rozhodnutí obecných soudů o výši odškodnění nemajetkové újmy za nezákonnou vazbu a o náhradě nákladů řízení. Ústavní soud shledal porušení práva na soudní ochranu a na ochranu majetku tím, že městský soud vědomě nerespektoval nosné důvody a závaznou judikaturu Ústavního soudu týkající se stanovení tarifní hodnoty pro náklady řízení o náhradě nemajetkové újmy na zdraví podle advokátního tarifu. Ve zbývající části byla ústavní stížnost odmítnuta.",
+   "oblasti": [
+    "civilni_proces",
+    "skoda",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-2309-25_1",
+   "spz": "III. ÚS 2309/25",
+   "ecli": "ECLI:CZ:US:2026:3.US.2309.25.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-29",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Počátek subjektivní promlčecí lhůty k uplatnění práva na náhradu nemajetkové újmy způsobené trestním stíháním",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-2309-25_1",
+   "soudce": "Milan Hulmák",
+   "heslo": "Počátek promlčecí lhůty při neodůvodněném zprošťujícím rozsudku",
+   "shrnuti": "Stěžovatel napadal zamítnutí žaloby na náhradu nemajetkové újmy za nezákonné trestní stíhání pro promlčení. Ústavní soud shledal porušení práva na náhradu škody způsobené nezákonným rozhodnutím podle čl. 36 odst. 3 Listiny, neboť pokud odvolací soud při ústním vyhlášení zprošťujícího rozsudku vůbec neuvedl odůvodnění, šestiměsíční subjektivní promlčecí lhůta začíná běžet až dnem doručení písemného vyhotovení rozhodnutí. Návrh na zrušení § 32 odst. 3 zákona o odpovědnosti státu Ústavní soud odmítl jako zjevně neopodstatněný.",
+   "oblasti": [
+    "skoda",
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:3-1508-26_1",
+   "spz": "III. ÚS 1508/26",
+   "ecli": "ECLI:CZ:US:2026:3.US.1508.26.1",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-11-05",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Nesprávné odmítnutí dovolání pro nenapadení všech samostatných důvodů v rozhodnutí odvolacího soudu",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=3-1508-26_1",
+   "soudce": "Milan Hulmák",
+   "heslo": "Odmítnutí dovolání pro jediný důvod porušuje právo",
+   "shrnuti": "Stěžovatelka napadla usnesení Nejvyššího soudu, kterým bylo její dovolání odmítnuto pro nepřípustnost z důvodu, že nenapadla oba nosné důvody rozhodnutí odvolacího soudu. Ústavní soud shledal porušení práva na soudní ochranu podle čl. 36 odst. 1 Listiny, neboť závěr o bezdůvodném obohacení v rozhodnutí odvolacího soudu byl pouze lakonickou podpůrnou úvahou, nikoliv samostatným nosným důvodem pokrývajícím celý nárok. Proto Ústavní soud napadené usnesení Nejvyššího soudu zrušil a ve zbývající části ústavní stížnost odmítl jako nepřípustnou.",
+   "oblasti": [
+    "civilni_proces",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "us:2-2343-26_2",
+   "spz": "II. ÚS 2343/26",
+   "ecli": "ECLI:CZ:US:2026:2.US.2343.26.2",
+   "druh": "nález",
+   "rejstrik": "ÚS",
+   "datum": "2026-10-27",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Úprava styku matky s nezletilým dítětem",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=2-2343-26_2",
+   "soudce": "Pavel Šámal",
+   "heslo": "Neupravení styku s dítětem porušuje právo rodiče",
+   "shrnuti": "Stěžovatelka napadala rozhodnutí o svěření jejího nezletilého syna do péče prarodičů a absenci úpravy jejího styku s ním. Ústavní soud částečně vyhověl ústavní stížnosti a zrušil napadená rozhodnutí v rozsahu, ve kterém nebyl upraven styk matky s nezletilým, neboť obecné soudy pochybily, když navzdory zlepšujícímu se vztahu a doporučením odborníků nestanovily žádný harmonogram asistovaných styků. Ve zbytku byla ústavní stížnost odmítnuta jako zjevně neopodstatněná, protože závěry soudů o nevhodných výchovných metodách matky a nejlepším zájmu dítěte byly řádně odůvodněny.",
+   "oblasti": [
+    "rodina_dedictvi",
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": false
+  },
   {
    "id": "us:Pl-33-25_1",
    "spz": "Pl. ÚS 33/25",

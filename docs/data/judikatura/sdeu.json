@@ -1,8 +1,378 @@
 {
- "generated": "2026-11-19T07:37:23Z",
+ "generated": "2026-11-20T07:28:29Z",
  "soud": "sdeu",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "sdeu:62025CJ0543",
+   "spz": "C-543/25",
+   "ecli": "ECLI:EU:C:2026:1006",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-19",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "C-543 v. 25, Commission / Hongrie (Organisme de contrôle ferroviaire)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0543",
+   "heslo": "Nezávislost národního kontrolního orgánu železničního sektoru",
+   "shrnuti": "Soudní dvůr EU řešil, zda stát porušil povinnosti podle směrnice 2012/34, když jeho národní kontrolní orgán pro železniční sektor nebyl samostatným úřadem nezávislým na veřejných subjektech, ale součástí ministerstva dopravy. Soud rozhodl, že takové začlenění do ministerstva a nedostatek formální organizační a strukturální oddělení porušuje požadavky na nezávislost a autonomii kontrolního orgánu podle čl. 55 odst. 1 této směrnice.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0528",
+   "spz": "C-528/25",
+   "ecli": "ECLI:EU:C:2026:1004",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-19",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Firmenauskunft PUR",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0528",
+   "heslo": "Ochrana před voláním se týká podnikatelů",
+   "shrnuti": "Soudní dvůr EU rozhodl, že ochrana před nevyžádanými sděleními pro účely přímého marketingu podle směrnice 2002/58 se vztahuje i na fyzické osoby jednající pro obchodní účely. Brání tomu, aby byla taková sdělení prováděna bez předchozího souhlasu nebo přes nesouhlas. Toto právo však nevyžaduje, aby členské státy zajišťovaly neplatnost smlouvy uzavřené v důsledku takového hovoru nebo náhradu škody z ní.",
+   "oblasti": [
+    "spravni",
+    "gdpr",
+    "spotrebitel"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0354",
+   "spz": "C-354/25",
+   "ecli": "ECLI:EU:C:2026:990",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-19",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Waisrinter",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0354",
+   "heslo": "Označování paralelně dovážených humánních léčivých přípravků",
+   "shrnuti": "Soudní dvůr EU rozhodl, že požadavky na označování podle směrnice 2001/83 se vztahují i na humánní léčivé přípravky, které jsou předmětem paralelního dovozu. Ustanovení čl. 63 odst. 3 první věty této směrnice umožňuje upustit od určitých požadavků na označení, pokud pacient nemůže přípravek užívat sám a jeho podání vyžaduje zásah zdravotnického pracovníku, bez ohledu na to, zda jde o přípravek na lékařský předpis. Toto ustanovení má přímý účinek a opravňuje příslušné vnitrostátní orgány rozhodovat o žádostech o upuštění od povinností značení.",
+   "oblasti": [
+    "spravni",
+    "spotrebitel",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0332",
+   "spz": "C-332/25",
+   "ecli": "ECLI:EU:C:2026:1000",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-19",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Friends of the Irish Environment (Food Vision 2030) ",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0332",
+   "heslo": "Strategická politika bez závazných účinků není plánem či projektem",
+   "shrnuti": "Soudní dvůr EU posuzoval, zda nezávazný strategický dokument v zemědělsko-potravinářské oblasti představuje plán nebo projekt podléhající posouzení podle směrnice o stanovištích. Rozhodl, že pod pojem plán nebo projekt nespadá dokument, který nemá závazné právní účinky, nepovoluje ani neomezuje žádnou činnost, nestanoví přesný rámec pro pozdější rozhodnutí a neumožňuje určit důsledky pro chráněné lokality. Konkrétnější plány či projekty vycházející z takové strategie však musí příslušnému posouzení podléhat.",
+   "oblasti": [
+    "stavebni_zp",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0312",
+   "spz": "C-312/25",
+   "ecli": "ECLI:EU:C:2026:997",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-19",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "EN v. Cour de justice de l’Union européenne",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0312",
+   "heslo": "Výplatní páska nepředstavuje akt zasahující do práv",
+   "shrnuti": "Soudní dvůr řešil, zda výplatní páska úředníka Evropské unie představuje akt nepříznivě zasahující do právního postavení, pokud se v důsledku změny obecných prováděcích předpisů rozšířily výkony hrazené ze společného systému zdravotního pojištění, aniž se však změnila výše samotného příspěvku. Dospěl k závěru, že taková výplatní páska právní postavení úředníka nemění, a proto není napadnutelným aktem. Kasační opravný prostředek byl proto zamítnut.",
+   "oblasti": [
+    "pracovni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0274",
+   "spz": "C-274/25",
+   "ecli": "ECLI:EU:C:2026:989",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-19",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Alternative Payments",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0274",
+   "heslo": "Poskytovatel platebních služeb příjemce poskytuje inkasní službu",
+   "shrnuti": "Soudní dvůr EU se zabýval tím, zda poskytovatel platebních služeb příjemce, který předává příkazy k inkasu a inkasuje prostředky na účty s omezenou funkčností, aniž sám provádí odepsání z účtu plátce, poskytuje inkasní službu. Rozhodl, že v kontextu provádění inkasa jsou za poskytovatele inkasních služeb považováni jak poskytovatel platebních služeb plátce, tak poskytovatel platebních služeb příjemce. Skutečnost, že poskytovatel příjemce nepodává přímý příkaz k odepsání z účtu plátce a využívá účty s omezenou funkčností, na této kvalifikaci ničeho nemění.",
+   "oblasti": [
+    "finance",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0239",
+   "spz": "C-239/25",
+   "ecli": "ECLI:EU:C:2026:995",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-19",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Fincontinuo",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0239",
+   "heslo": "Předčasné splacení úvěru a snížení nákladů",
+   "shrnuti": "Soudní dvůr EU rozhodl, že právo spotřebitele na snížení celkových nákladů úvěru při předčasném splacení se nemusí vztahovat na poplatky nezávislé na době trvání smlouvy, pokud vnitrostátní právo ukládá věřiteli jasné předsmluvní informační povinnosti. Rovněž se toto snížení nevztahuje na poplatky za plnění třetích osob či daňové náklady odváděné do státní pokladny, pokud je neukládá sám věřitel.",
+   "oblasti": [
+    "spotrebitel",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0029",
+   "spz": "C-29/25",
+   "ecli": "ECLI:EU:C:2026:994",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-19",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Kooperativa",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0029",
+   "heslo": "Regresní nárok pojistitele nespadá pod unijní právo",
+   "shrnuti": "Soudní dvůr řešil, zda směrnice o pojištění občanskoprávní odpovědnosti z provozu motorových vozidel brání vnitrostátní úpravě, která soudu neumožňuje snížit částku požadovanou pojistitelem v rámci regresního nároku vůči pojištěnému. Rozhodl, že tato otázka a způsob výkonu regresního nároku nespadají do působnosti unijního práva. Soudní dvůr proto nemá pravomoc předběžnou otázku zodpovědět.",
+   "oblasti": [
+    "finance",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62025CC0853",
+   "spz": "C-853/25",
+   "ecli": "ECLI:EU:C:2026:1003",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-19",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Najvyšší súd",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0853",
+   "heslo": "Dovolání v trestním řízení a použití příznivějšího trestního zákona",
+   "shrnuti": "Generální advokát navrhuje, aby Soudní dvůr EU odpověděl, že zásada zpětného použití příznivějšího trestního zákona (lex mitior) podle článku 49 odst. 1 Listiny základních práv EU se uplatní i v rámci dovolání v trestním řízení, pokud je toto dovolání řádným opravným prostředkem dostupným účastníkům. Přestože má slovenské dovolání tříletou lhůtu a je vnitrostátně označováno za mimořádný opravný prostředek, představuje součást běžného průběhu řízení, a soud rozhodující o dovolání je tak povinen zohlednit mírnější trestní úpravu účinnou po původním odsouzení.",
+   "oblasti": [
+    "trestni",
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0643",
+   "spz": "C-643/25",
+   "ecli": "ECLI:EU:C:2026:1001",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-19",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Verbraucherzentrale Bundesverband (Service numérique « gratuit ») ",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0643",
+   "heslo": "Zpřístupnění osobních údajů jako náklad za bezplatnou službu",
+   "shrnuti": "Generální advokátka navrhuje, že pojem náklady ve smyslu směrnice o nekalých obchodních praktikách zahrnuje také poskytnutí osobních údajů a udělení souhlasu s jejich komerčním využitím. Služba financovaná takovým způsobem proto nesmí být spotřebitelům prezentována jako bezplatná. Tento výklad odpovídá širšímu kontextu unijního práva na ochranu spotřebitelů a digitálního trhu.",
+   "oblasti": [
+    "spotrebitel",
+    "gdpr",
+    "it"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0592",
+   "spz": "C-592/25",
+   "ecli": "ECLI:EU:C:2026:1002",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-19",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Aroma Obst",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0592",
+   "heslo": "Kupující v potravinovém řetězci a splatnost cen",
+   "shrnuti": "Generální advokát navrhuje, že distributor zemědělských produktů je kupujícím ve smyslu směrnice 2019/633, pokud po převzetí produktů sám rozhoduje o jejich prodeji a dluží dodavateli jejich cenu, přičemž formální označení smlouvy jako komisionářské nebo výhrada vlastnictví na tom nic nemění. Pokud je splatná částka stanovena na základě údajů či úkonů, které provádí pouze kupující (např. třídění nebo prodejní cena), začíná šedesátidenní lhůta splatnosti běžet dnem dodání nebo uplynutím dohodnuté dodací lhůty. Tyto závěry platí bez ohledu na to, že cena je závislá na konečném prodeji nebo že dodavatel nese cenové riziko.",
+   "oblasti": [
+    "spotrebitel",
+    "zavazky",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0415",
+   "spz": "C-415/25",
+   "ecli": "ECLI:EU:C:2026:998",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-19",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "De Nederlandsche Bank a další",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0415",
+   "heslo": "Registrace poskytovatelů kryptoaktiv může vyžadovat údaje o integritě",
+   "shrnuti": "Generální advokát navrhuje, aby Soudní dvůr rozhodl, že článek 47 směrnice 2015/849 nebrání vnitrostátní právní úpravě, která v rámci registrace poskytovatelů služeb souvisejících s kryptoaktivy vyžaduje předložení údajů o organizaci podniku a jeho řádném řízení z hlediska integrity. Důvody spočívají v tom, že členské státy mohou v rámci minimální harmonizace stanovit takové požadavky k zajištění účinného předcházení praní peněz a financování terorismu a orgán dohledu může registraci odmítnout, pokud není přesvědčen o úplnosti a správnosti poskytnutých informací.",
+   "oblasti": [
+    "finance",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0236",
+   "spz": "C-236/25",
+   "ecli": "ECLI:EU:C:2026:1007",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-19",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Komise v. AH (Indemnité de dépaysement d’un agent contractuel)",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0236",
+   "heslo": "Příspěvek za práci v zahraničí při navazujících smlouvách",
+   "shrnuti": "Generální advokátka navrhuje, aby Soudní dvůr zamítl kasační opravný prostředek Evropské komise. Dospěla k závěru, že Tribunál nepochybil, pokud dovodil, že při nepřetržitém navazování pracovních smluv smluvního zaměstnance s orgány Unie nezakládá změna zaměstnavatele nový nástup do služebního poměru pro účely výpočtu referenčního období pro přiznání příspěvku za práci v zahraničí. S ohledem na účel tohoto příspěvku a kontinuitu služby u Unie má zaměstnanec nadále nárok na jeho vyplácení.",
+   "oblasti": [
+    "pracovni",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0194",
+   "spz": "C-194/25",
+   "ecli": "ECLI:EU:C:2026:999",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-19",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Leovegas Gaming",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0194",
+   "heslo": "Zákaz reklamy na hazardní hry jako technický předpis",
+   "shrnuti": "Generální advokát navrhuje, aby Soudní dvůr rozhodl, že vnitrostátní právní úprava zakazující reklamu na hazardní hry bez ohledu na médium představuje technický předpis podle směrnice (EU) 2015/1535, jehož návrh měl být oznámen Komisi. Nedodržení této oznamovací povinnosti vede k nepoužitelnosti předpisu vůči jednotlivcům v rozsahu, v němž se týká služeb informační společnosti. Úplný zákaz takové reklamy přitom zásadně není v rozporu se svobodou usazování podle článku 49 SFEU, pokud je přiměřený sledovanému cíli ochrany veřejného zdraví.",
+   "oblasti": [
+    "spravni",
+    "spotrebitel",
+    "mps"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CJ0906",
+   "spz": "C-906/24",
+   "ecli": "ECLI:EU:C:2026:993",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-19",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Sirto",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0906",
+   "heslo": "Vyhoštění migrujícího pracovníka a právo pobytu rodiny",
+   "shrnuti": "Soudní dvůr EU rozhodl, že děti migrujícího pracovníka plnící školní docházku v hostitelském státě a rodič, který o ně pečuje, mají samostatné právo pobytu podle nařízení č. 492/2011, které nezaniká pouhým rozhodnutím o vyhoštění pracovníka z důvodů veřejného pořádku. Toto právo se vztahuje i na mladší sourozence, kteří dosud školní docházku neplní. Při rozhodování o vyhoštění a posuzování jeho přiměřenosti musí úřady a soudy zohlednit rodinné poměry, přání rodiny nadále pobývat v hostitelském státě a nejvlastnější zájem dětí.",
+   "oblasti": [
+    "socialni_cizinci",
+    "spravni",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CJ0683",
+   "spz": "C-683/24",
+   "ecli": "ECLI:EU:C:2026:992",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-19",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Spielerschutz Sigma",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0683",
+   "heslo": "Výklad unijního práva a nepřípustnost předběžné otázky",
+   "shrnuti": "Soudní dvůr EU řešil žádost o rozhodnutí o předběžné otázce týkající se výkladu nařízení č. 1215/2012 v rámci sporu o náhradu škody proti autorovi právního posudku. Soudní dvůr shledal žádost nepřípustnou, protože výklad unijního práva nebyl objektivně nezbytný pro vyřešení sporu v původním řízení. Posouzení obhajitelnosti odborného posudku vnitrostátním právem nezávisí na meritorním přezkumu slučitelnosti cizích právních předpisů s unijním právem v řízení o předběžné otázce.",
+   "oblasti": [
+    "civilni_proces",
+    "spravni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62024CJ0098",
+   "spz": "C-98/24",
+   "ecli": "ECLI:EU:C:2026:991",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-19",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Koda",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0098",
+   "heslo": "Notář jako soudní komisař není soudem",
+   "shrnuti": "Soudní dvůr EU posuzoval, zda český notář jednající v řízení o pozůstalosti jako soudní komisař naplňuje kritéria nezávislosti pro to, aby mohl být považován za „soud“ ve smyslu článku 267 SFEU. Dospěl k závěru, že vnitrostátní úprava nezaručuje dostatečnou ochranu před vnějšími vlivy a neobsahuje přísná kritéria pro odvolání či vyloučení srovnatelná se soudci. Proto notář v tomto postavení není oprávněn předložit Soudnímu dvoru žádost o rozhodnutí o předběžné otázce.",
+   "oblasti": [
+    "civilni_proces",
+    "rodina_dedictvi"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62024CC0890",
+   "spz": "C-890/24",
+   "ecli": "ECLI:EU:C:2026:1005",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-19",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "European Food a další v. Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CC0890",
+   "heslo": "Náhrada škody z investiční dohody představuje státní podporu",
+   "shrnuti": "Generální advokát navrhuje, aby Soudní dvůr zrušil napadený rozsudek Tribunálu a článek 1 rozhodnutí Komise. Dospěl k závěru, že Tribunál se dopustil nesprávného právního posouzení při aplikaci kritéria hospodářského zvýhodnění podle článku 107 SFEU. Vyplacení náhrady škody na základě rozhodčího nálezu nelze bez dalšího kvalifikovat jako státní podporu bez řádného zkoumání povahy a vzniku škody.",
+   "oblasti": [
+    "skoda",
+    "zavazky",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CC0663",
+   "spz": "C-663/24",
+   "ecli": "ECLI:EU:C:2026:996",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-19",
+   "zverejneno": "2026-11-19",
+   "first_seen": "2026-11-20T07:28:29Z",
+   "nazev": "Streamz a další",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CC0663",
+   "heslo": "Nezcizitelné právo na odměnu autorské dílo",
+   "shrnuti": "Soudní dvůr EU posuzoval kompatibilitu belgické právní úpravy upravující povinná práva na odměnu pro autory a výkonné umělce při online užití jejich děl. Generální advokát navrhl, že právo na odměnu lze zavést, avšak nesmí bránit multiterritoriálním licencím ani porušovat zásadu nediskriminace a svobodu poskytování služeb. Úprava rovněž představuje technický předpis podléhající notifikaci.",
+   "oblasti": [
+    "autorske",
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
   {
    "id": "sdeu:ipc:C-1190/26",
    "spz": "C-1190/26",
