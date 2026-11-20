@@ -1,13 +1,13 @@
 {
-  "generated": "2026-11-19T07:25:48+00:00",
+  "generated": "2026-11-20T07:08:17+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 16,
-      "stazeno": "2026-11-19T07:25:12+00:00",
+      "pocet": 15,
+      "stazeno": "2026-11-20T07:07:54+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -17,22 +17,22 @@
       "zkratka": "PF UK",
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
-      "pocet": 5,
-      "stazeno": "2026-11-19T07:25:21+00:00",
+      "pocet": 6,
+      "stazeno": "2026-11-20T07:07:58+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "6e13cb2ac6f0dd40"
+      "otisk": "2bea77f3116e58da"
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
       "zkratka": "epravo",
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
-      "pocet": 7,
-      "stazeno": "2026-11-19T07:25:28+00:00",
+      "pocet": 6,
+      "stazeno": "2026-11-20T07:08:02+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "98dc716f619d1417"
+      "otisk": "1f0efd5c5605fc33"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -40,7 +40,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-11-19T07:25:29+00:00",
+      "stazeno": "2026-11-20T07:08:03+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -50,8 +50,8 @@
       "zkratka": "ÚPV",
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
-      "pocet": 4,
-      "stazeno": "2026-11-19T07:25:30+00:00",
+      "pocet": 3,
+      "stazeno": "2026-11-20T07:08:04+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "c6f425e1a83fdab1"
@@ -63,23 +63,6 @@
     "hybridne": "Hybridně"
   },
   "akce": [
-    {
-      "id": "039b5d44deab687e5b18",
-      "poradatel": "PFUK",
-      "datum": "2026-10-05",
-      "zacatek": "08:30",
-      "konec": "",
-      "nazev": "Snídaně v bazénu",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [],
-      "cena": "zdarma",
-      "anotace": "Neformální setkání studentů a vyučujících u příležitosti začátku nového semestru spojené se snídaní zdarma.",
-      "url": "https://www.prf.cuni.cz/aktuality/snidane-v-bazenu",
-      "detail_pokusy": 2,
-      "oblasti": [],
-      "oblasti_klic": "70ada781a4b0"
-    },
     {
       "id": "364a39e68b03338f4de0",
       "poradatel": "CAK",
@@ -99,27 +82,6 @@
       "oblasti": [],
       "oblasti_klic": "4fad9e9afb8b",
       "detail_pokusy": 1
-    },
-    {
-      "id": "e38a829b465f1b99a1fd",
-      "poradatel": "PFUK",
-      "datum": "2026-10-05",
-      "zacatek": "18:00",
-      "konec": "19:30",
-      "nazev": "Public Lecture “Living in Truth and the Law: Belarus Case”",
-      "misto": "Faculty of Law, Charles University, nám. Curieových 7, Praha 1 — Staré Město",
-      "forma": "prezencne",
-      "lektori": [
-        "Maksim Znak"
-      ],
-      "cena": "zdarma",
-      "anotace": "Veřejná přednáška na téma práva a situace v Bělorusku.",
-      "url": "https://www.prf.cuni.cz/aktuality/public-lecture-living-truth-and-law-belarus-case",
-      "oblasti": [
-        "ustavni"
-      ],
-      "oblasti_klic": "03aa383ab534",
-      "detail_pokusy": 2
     },
     {
       "id": "dfb4750a0f8faf8db756",
@@ -1691,7 +1653,7 @@
       "datum": "2026-11-23",
       "zacatek": "09:00",
       "konec": "16:00",
-      "nazev": "Právo & Praxe 2026",
+      "nazev": "Právo & Praxe 2026 (online – živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -1713,11 +1675,9 @@
         "misto"
       ],
       "oblasti": [
-        "zavazky",
-        "vecna_prava",
-        "korporace"
+        "zavazky"
       ],
-      "oblasti_klic": "650d060b0de4"
+      "oblasti_klic": "95679584514b"
     },
     {
       "id": "1c3e544eeb40fd8a2f65",
@@ -1740,6 +1700,32 @@
         "prumyslova_prava"
       ],
       "oblasti_klic": "bca0fc74305a"
+    },
+    {
+      "id": "8982d94db20b3869d5b9",
+      "poradatel": "PFUK",
+      "datum": "2026-11-24",
+      "zacatek": "16:00",
+      "konec": "18:00",
+      "nazev": "Přednáška: Od NIS2 k Cyber Resilience Act: proměna kybernetické bezpečnosti v právní disciplínu",
+      "misto": "Právnická fakulta Univerzity Karlovy, náměstí Curieových 901/7, Staré Město, 110 00 Praha1, přízemí, dv. č. 38",
+      "forma": "hybridne",
+      "lektori": [
+        "JUDr. Ondřej Běhal"
+      ],
+      "cena": "bezplatná",
+      "anotace": "Odborná přednáška zaměřená na proměnu kybernetické bezpečnosti v právní disciplínu v souvislosti s předpisy NIS2 a Cyber Resilience Act.",
+      "url": "https://www.prf.cuni.cz/aktuality/prednaska-od-nis2-k-cyber-resilience-act-promena-kyberneticke-bezpecnosti-v-pravni",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "forma",
+        "misto"
+      ],
+      "oblasti": [
+        "it",
+        "spravni"
+      ],
+      "oblasti_klic": "a2c56ef0e5ef"
     },
     {
       "id": "b1bd7d54280e546a9399",
@@ -1885,6 +1871,35 @@
       "oblasti_klic": "efbdf6f75139"
     },
     {
+      "id": "40d07416389dc398cf6c",
+      "poradatel": "PFUK",
+      "datum": "2026-11-26",
+      "zacatek": "10:00",
+      "konec": "16:00",
+      "nazev": "Jak na úspěšný projekt GA ČR",
+      "misto": "Právnická fakulta UK (místnost č. 412 a č. 243)",
+      "forma": "prezencne",
+      "lektori": [
+        "Ing. Daniela Bednáriková",
+        "Mgr. Ludmila Bobysudová",
+        "doc. JUDr. Kateřina Eichlerová, Ph.D.",
+        "doc. JUDr. Jakub Drápal, M.Phil., Ph.D.",
+        "Mgr. Michal Šoltés, M.A., Ph.D.",
+        "JUDr. Jan Komárek, D.Phil., LL.M.",
+        "Mgr. Štěpánka Gray Marková",
+        "doc. JUDr. Pavel Ondřejek, Ph.D."
+      ],
+      "cena": "zdarma",
+      "anotace": "Seminář zaměřený na přípravu a podávání úspěšných grantových projektů v rámci Grantové agentury ČR.",
+      "url": "https://www.prf.cuni.cz/aktuality/jak-na-uspesny-projekt-ga-cr",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [],
+      "oblasti_klic": "15b814b82045"
+    },
+    {
       "id": "b5bd2f9cec9733032c90",
       "poradatel": "CAK",
       "datum": "2026-11-27",
@@ -1912,7 +1927,7 @@
       "datum": "2026-11-27",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Novinky v soutěžním právu",
+      "nazev": "Novinky v soutěžním právu (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -1931,7 +1946,7 @@
       "oblasti": [
         "soutez"
       ],
-      "oblasti_klic": "037038997d48"
+      "oblasti_klic": "5acf8e6c51df"
     },
     {
       "id": "72d532318781facb104a",
@@ -1998,28 +2013,6 @@
       ],
       "oblasti_klic": "dfaea5579c41",
       "detail_pokusy": 2
-    },
-    {
-      "id": "e4561a0d5c44ecdf6f62",
-      "poradatel": "PFUK",
-      "datum": "2026-12-02",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "Workshop: Rovnost a transparentnost v odměňování",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [
-        "doc. JUDr. Jakub Tomšej, Ph.D.",
-        "JUDr. Lucie Přenosilová"
-      ],
-      "cena": "",
-      "anotace": "Workshop na téma rovnosti a transparentnosti v odměňování.",
-      "url": "https://www.prf.cuni.cz/aktuality/workshop-rovnost-a-transparentnost-v-odmenovani-0",
-      "detail_pokusy": 2,
-      "oblasti": [
-        "pracovni"
-      ],
-      "oblasti_klic": "9b6808c14c80"
     },
     {
       "id": "652d0acc4c735879e7b9",
@@ -2090,7 +2083,7 @@
       "datum": "2026-12-08",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Názor nezletilého dítěte v opatrovnickém řízení před soudem",
+      "nazev": "Názor nezletilého dítěte v opatrovnickém řízení před soudem (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -2106,7 +2099,7 @@
       "oblasti": [
         "rodina_dedictvi"
       ],
-      "oblasti_klic": "2bddc0c4631b"
+      "oblasti_klic": "7988f2d8ae84"
     },
     {
       "id": "dab792773f90dc6edd6b",
@@ -2114,7 +2107,7 @@
       "datum": "2026-12-08",
       "zacatek": "13:00",
       "konec": "16:00",
-      "nazev": "Když léčba neproběhne podle očekávání: Odpovědnost a náhrada újmy z pohledu lékaře a pacienta",
+      "nazev": "Když léčba neproběhne podle očekávání: Odpovědnost a náhrada újmy z pohledu lékaře a pacienta (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -2129,10 +2122,34 @@
         "misto"
       ],
       "oblasti": [
-        "skoda",
-        "spravni"
+        "skoda"
       ],
-      "oblasti_klic": "038ac821bbff"
+      "oblasti_klic": "6364b02319b6"
+    },
+    {
+      "id": "f98c379c0020df0ab6c1",
+      "poradatel": "EPRAVO",
+      "datum": "2026-12-09",
+      "zacatek": "09:00",
+      "konec": "12:00",
+      "nazev": "Dětský certifikát v praxi: povinnosti zaměstnavatelů, dopady na odsouzené a možnosti právní obrany (online - živé vysílání)",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "JUDr. Petr Toman, LL.M."
+      ],
+      "cena": "3 975 Kč",
+      "anotace": "Odborný online seminář k tématu dětského certifikátu v praxi, povinnostem zaměstnavatelů a právní obraně.",
+      "url": "https://www.epravo.cz/eshop/detsky-certifikat-v-praxi-povinnosti-zamestnavatelu-dopady-na-odsouzene-a-moznosti-pravni-obrany-online-zive-vysilani-9-12-2026-1644.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "pracovni",
+        "trestni"
+      ],
+      "oblasti_klic": "2229ac223ff1"
     },
     {
       "id": "a18cbd4e4cdd2c25cf57",
