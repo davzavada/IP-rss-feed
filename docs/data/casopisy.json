@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-20T07:07:48Z",
+ "generated": "2026-11-21T07:00:16Z",
  "okno_od": "2026-10-01",
  "casopisy": [
   {
@@ -112,6 +112,50 @@
   }
  ],
  "polozky": [
+  {
+   "id": "JIPLP-10.1093/jiplp/jpag097",
+   "casopis": "jiplp",
+   "nazev": "The boundaries of copyright law in regulating AI-generated content: lessons from the UK",
+   "url": "https://doi.org/10.1093/jiplp/jpag097",
+   "autori": "Ying Ye",
+   "heslo": "AI a autorské právo",
+   "shrnuti": "Článek zkoumá britskou právní úpravu autorsství počítačově generovaných děl ve světle rozvoje generativní umělé inteligence. Autor argumentuje, že díla s dostatečným lidským tvůrčím vkladem spadají pod standardní ochranu originality, zatímco zvláštní režim pro díla bez lidského autora by měl být přehodnocen. Závěrem doporučuje, aby soudy přednostně aplikovaly obecné principy autorského práva a zkoumaly společenský a ekonomický účel takové ochrany.",
+   "datum": "2026-11-20",
+   "first_seen": "2026-11-21T07:00:06Z"
+  },
+  {
+   "id": "JIPLP-10.1093/jiplp/jpag100",
+   "casopis": "jiplp",
+   "nazev": "From global design practice to global design law",
+   "url": "https://doi.org/10.1093/jiplp/jpag100",
+   "autori": "Danny Friedmann",
+   "datum": "2026-11-20",
+   "first_seen": "2026-11-21T07:00:06Z",
+   "poznamka": "Shrnutí není k dispozici.",
+   "popis": "From global design practice to global design law\nAutor: Danny Friedmann\nJournal of Intellectual Property Law & Practice"
+  },
+  {
+   "id": "JIPLP-10.1093/jiplp/jpag096",
+   "casopis": "jiplp",
+   "nazev": "Illusion of choice or conflict? An empirical study of foreign-related copyright infringement litigation in China",
+   "url": "https://doi.org/10.1093/jiplp/jpag096",
+   "autori": "Yutong HOU",
+   "heslo": "Mezinárodní autorské právo",
+   "shrnuti": "Článek zkoumá aplikaci kolizních norem v přeshraničních sporech o porušení autorských práv v Číně prostřednictvím empirické analýzy 2198 soudních rozhodnutí. Zjišťuje, že ve všech zkoumaných případech bylo aplikováno čínské právo, avšak nikoliv kvůli preferenci domácího práva, nýbrž z důvodu absence skutečných kolizních konfliktů. Studie poukazuje na nejednotnost soudního výkladu pravidla *lex loci protectionis* a zdůrazňuje potřebu zvýšení právní jistoty.",
+   "datum": "2026-11-20",
+   "first_seen": "2026-11-21T07:00:06Z"
+  },
+  {
+   "id": "JIPLP-10.1093/jiplp/jpag099",
+   "casopis": "jiplp",
+   "nazev": "Assessing the scope of trade secrets definition under the UK common law and statute: a case for greater clarity?",
+   "url": "https://doi.org/10.1093/jiplp/jpag099",
+   "autori": "Suzana Nashkova",
+   "heslo": "Definice obchodního tajemství",
+   "shrnuti": "Článek zkoumá vývoj a adekvátnost definice obchodního tajemství ve Velké Británii, která přechází od britského zvykového práva (common law) k zákonné úpravě z roku 2018. Analýza hodnotí, zda současný právní rámec poskytuje dostatečnou jistotu a jasnost pro identifikaci obchodního tajemství, a navrhuje případné cesty k dosažení větší právní jistoty zejména v přeshraničních transakcích.",
+   "datum": "2026-11-20",
+   "first_seen": "2026-11-21T07:00:06Z"
+  },
   {
    "id": "CMLRev-COLA2026092",
    "casopis": "cmlr",
@@ -1193,39 +1237,6 @@
    "first_seen": "2026-10-07T05:39:14Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.01",
-   "casopis": "qmjip",
-   "nazev": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.01",
-   "autori": "Martin Senftleben",
-   "heslo": "AI a autorské právo",
-   "shrnuti": "Článek se zabývá otázkou spravedlivé odměny pro tvůrce za použití jejich děl při vývoji generativní AI. Porovnává současný trend individuálního licencování s výhodami kolektivních přístupů zohledňujících výstupy AI. Nakonec hodnotí různé regulační možnosti s ohledem na nutnost spravedlivé odměny a zároveň širokého přístupu k trénovacím datům.",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
-  },
-  {
-   "id": "QMJIP-10.4337/qmjip.2026.03.06",
-   "casopis": "qmjip",
-   "nazev": "New pharmaceutical product and patent term extension in China",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.06",
-   "autori": "Weiwei Han",
-   "heslo": "prodloužení patentu v Číně",
-   "shrnuti": "Článek se zabývá systémem prodloužení platnosti patentů na léčiva v Číně v kontextu nedávných legislativních změn z roku 2024. Analýzou prováděcích předpisů a pokynů pro zkoumání patentů přibližuje aktuální vývoj a poskytuje klíčové poznatky pro domácí i zahraniční subjektu usilující o maximalizaci přínosů tohoto systému.",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
-  },
-  {
-   "id": "QMJIP-10.4337/qmjip.2026.03.04",
-   "casopis": "qmjip",
-   "nazev": "The demise of IPRs through the rise of BBNJ: the small matter of patent disclosure of origin requirements",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.04",
-   "autori": "Tanya Wagenaar",
-   "heslo": "BBNJ a patentová práva",
-   "shrnuti": "Článek se zabývá vlivem nové dohody BBNJ na práva duševního vlastnictví a požadavky na disclosure of origin (DOR) při biotechnologickém využití mořských genetických zdrojů. Ačkoli byly odkazy na duševní vlastnictví z konečného znění dohody postupně odstraněny, nedávno přijatá smlouva WIPO zavádí mezinárodní požadavky DOR. Tyto nové předpisy by mohly ideálně doplnit mechanismy dohody BBNJ a podpořit spravedlivé sdílení přínosů mezi státy.",
-   "datum": "2026-10-01",
-   "first_seen": "2026-10-10T05:34:45Z"
-  },
-  {
    "id": "QMJIP-10.4337/qmjip.2026.03.05",
    "casopis": "qmjip",
    "nazev": "Thinking about originality: creativity in legal research",
@@ -1237,13 +1248,13 @@
    "first_seen": "2026-10-10T05:34:45Z"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.03",
+   "id": "QMJIP-10.4337/qmjip.2026.03.02",
    "casopis": "qmjip",
-   "nazev": "Exploring the boundaries of pre-infringement copyright review obligations for Chinese online platforms: a comparative study of the Chinese, UK and US systems",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.03",
-   "autori": "Mengna Liang",
-   "heslo": "autorské právo platforem",
-   "shrnuti": "Článek zkoumá povinnost čínských online platforem předcházet porušování autorských práv a porovnává přístupy v Číně, Spojeném království a USA. S ohledem na nedostatečnost tradičního institutu bezpečného přístavu navrhuje pro Čínu povinný model filtrace inspirovaný právem EU. V závěru představuje hodnotící rámec kombinující formální a materiální požadavky, podle něhož mají platformy vynakládat přiměřené úsilí.",
+   "nazev": "Warhol v Goldsmith and the shrinking canvas of fair use: a comparative critique of artistic expression in US and UK copyright law",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.02",
+   "autori": "W Oshada Rodrigo",
+   "heslo": "Transformativní užití autorského práva",
+   "shrnuti": "Článek srovnává americkou doktrínu fair use a britské výjimky z autorského práva v kontextu nedávného rozhodnutí ve věci Warhol v. Goldsmith a dalších případů. Autor kritizuje zpřísňování pravidel a nadřazování tržní substituce, což omezuje svobodu tvorby, remixovou kulturu i uměleckou inovaci. Jako řešení, které lépe reflektuje současné digitální formy umění, navrhuje nový čtyřkrokový test založený na expresivním pluralismu.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },
@@ -1259,13 +1270,46 @@
    "popis": "Seeing intellectual property in colour\nAutor: Johanna Gibson\nQueen Mary Journal of Intellectual Property"
   },
   {
-   "id": "QMJIP-10.4337/qmjip.2026.03.02",
+   "id": "QMJIP-10.4337/qmjip.2026.03.03",
    "casopis": "qmjip",
-   "nazev": "Warhol v Goldsmith and the shrinking canvas of fair use: a comparative critique of artistic expression in US and UK copyright law",
-   "url": "https://doi.org/10.4337/qmjip.2026.03.02",
-   "autori": "W Oshada Rodrigo",
-   "heslo": "Transformativní užití autorského práva",
-   "shrnuti": "Článek srovnává americkou doktrínu fair use a britské výjimky z autorského práva v kontextu nedávného rozhodnutí ve věci Warhol v. Goldsmith a dalších případů. Autor kritizuje zpřísňování pravidel a nadřazování tržní substituce, což omezuje svobodu tvorby, remixovou kulturu i uměleckou inovaci. Jako řešení, které lépe reflektuje současné digitální formy umění, navrhuje nový čtyřkrokový test založený na expresivním pluralismu.",
+   "nazev": "Exploring the boundaries of pre-infringement copyright review obligations for Chinese online platforms: a comparative study of the Chinese, UK and US systems",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.03",
+   "autori": "Mengna Liang",
+   "heslo": "autorské právo platforem",
+   "shrnuti": "Článek zkoumá povinnost čínských online platforem předcházet porušování autorských práv a porovnává přístupy v Číně, Spojeném království a USA. S ohledem na nedostatečnost tradičního institutu bezpečného přístavu navrhuje pro Čínu povinný model filtrace inspirovaný právem EU. V závěru představuje hodnotící rámec kombinující formální a materiální požadavky, podle něhož mají platformy vynakládat přiměřené úsilí.",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z"
+  },
+  {
+   "id": "QMJIP-10.4337/qmjip.2026.03.04",
+   "casopis": "qmjip",
+   "nazev": "The demise of IPRs through the rise of BBNJ: the small matter of patent disclosure of origin requirements",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.04",
+   "autori": "Tanya Wagenaar",
+   "heslo": "BBNJ a patentová práva",
+   "shrnuti": "Článek se zabývá vlivem nové dohody BBNJ na práva duševního vlastnictví a požadavky na disclosure of origin (DOR) při biotechnologickém využití mořských genetických zdrojů. Ačkoli byly odkazy na duševní vlastnictví z konečného znění dohody postupně odstraněny, nedávno přijatá smlouva WIPO zavádí mezinárodní požadavky DOR. Tyto nové předpisy by mohly ideálně doplnit mechanismy dohody BBNJ a podpořit spravedlivé sdílení přínosů mezi státy.",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z"
+  },
+  {
+   "id": "QMJIP-10.4337/qmjip.2026.03.06",
+   "casopis": "qmjip",
+   "nazev": "New pharmaceutical product and patent term extension in China",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.06",
+   "autori": "Weiwei Han",
+   "heslo": "prodloužení patentu v Číně",
+   "shrnuti": "Článek se zabývá systémem prodloužení platnosti patentů na léčiva v Číně v kontextu nedávných legislativních změn z roku 2024. Analýzou prováděcích předpisů a pokynů pro zkoumání patentů přibližuje aktuální vývoj a poskytuje klíčové poznatky pro domácí i zahraniční subjektu usilující o maximalizaci přínosů tohoto systému.",
+   "datum": "2026-10-01",
+   "first_seen": "2026-10-10T05:34:45Z"
+  },
+  {
+   "id": "QMJIP-10.4337/qmjip.2026.03.01",
+   "casopis": "qmjip",
+   "nazev": "The Herchel Smith Intellectual Property Lecture 2025 – Reconciling AI innovation with copyright values: why reliance on individual licences is not enough",
+   "url": "https://doi.org/10.4337/qmjip.2026.03.01",
+   "autori": "Martin Senftleben",
+   "heslo": "AI a autorské právo",
+   "shrnuti": "Článek se zabývá otázkou spravedlivé odměny pro tvůrce za použití jejich děl při vývoji generativní AI. Porovnává současný trend individuálního licencování s výhodami kolektivních přístupů zohledňujících výstupy AI. Nakonec hodnotí různé regulační možnosti s ohledem na nutnost spravedlivé odměny a zároveň širokého přístupu k trénovacím datům.",
    "datum": "2026-10-01",
    "first_seen": "2026-10-10T05:34:45Z"
   },

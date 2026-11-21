@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-20T07:08:17+00:00",
+  "generated": "2026-11-21T07:00:46+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 15,
-      "stazeno": "2026-11-20T07:07:54+00:00",
+      "stazeno": "2026-11-21T07:00:23+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,7 +18,7 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 6,
-      "stazeno": "2026-11-20T07:07:58+00:00",
+      "stazeno": "2026-11-21T07:00:25+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "2bea77f3116e58da"
@@ -28,11 +28,11 @@
       "zkratka": "epravo",
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
-      "pocet": 6,
-      "stazeno": "2026-11-20T07:08:02+00:00",
+      "pocet": 5,
+      "stazeno": "2026-11-21T07:00:36+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "1f0efd5c5605fc33"
+      "otisk": "e6cec01f43ddba07"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -40,7 +40,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-11-20T07:08:03+00:00",
+      "stazeno": "2026-11-21T07:00:38+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "bcaac79500eef517"
@@ -51,7 +51,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 3,
-      "stazeno": "2026-11-20T07:08:04+00:00",
+      "stazeno": "2026-11-21T07:00:39+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "c6f425e1a83fdab1"
@@ -82,76 +82,6 @@
       "oblasti": [],
       "oblasti_klic": "4fad9e9afb8b",
       "detail_pokusy": 1
-    },
-    {
-      "id": "dfb4750a0f8faf8db756",
-      "poradatel": "EPRAVO",
-      "datum": "2026-10-06",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "Konference: Problematické instituty zákona o zadávání veřejných zakázek v roce 2026",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [
-        "Petr Mlsna",
-        "Markéta Dlouhá",
-        "Mojmír Florian",
-        "David Raus",
-        "Eva Marečková"
-      ],
-      "cena": "",
-      "anotace": "Konference se zabývá limity zásady přiměřenosti a dopadem aktuální rozhodovací praxe Soudního dvora EU na možnost účasti dodavatelů ze třetích zemí v zadávacích řízeních.",
-      "url": "https://www.epravo.cz/top/aktualne/konference-problematicke-instituty-zakona-o-zadavani-verejnych-zakazek-v-roce-2026-121531.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "forma"
-      ],
-      "oblasti": [
-        "verejne_zakazky"
-      ],
-      "oblasti_klic": "6917c8d07579"
-    },
-    {
-      "id": "5e8cfca396cb86801971",
-      "poradatel": "CAK",
-      "datum": "2026-10-06",
-      "zacatek": "09:00",
-      "konec": "16:00",
-      "nazev": "Významná judikatura Nejvyššího soudu České republiky a Ústavního soudu v oblasti věcných práv v letech 2025 a 2026",
-      "misto": "Brno, ONLINE SEMINÁŘ",
-      "forma": "online",
-      "lektori": [
-        "Mgr. Michal Králík, Ph.D."
-      ],
-      "cena": "900,- Kč",
-      "anotace": "Seminář představuje souhrnnou rozhodovací praxi Nejvyššího soudu a Ústavního soudu v oblasti věcných práv z let 2025 a 2026. Účastníci získají komplexní přehled o významné aktuální judikatuře včetně společného jmění manželů.",
-      "url": "https://www.cak.cz/akce/1327",
-      "detail_pokusy": 1,
-      "oblasti": [
-        "vecna_prava",
-        "rodina_dedictvi"
-      ],
-      "oblasti_klic": "9928c7e30856"
-    },
-    {
-      "id": "89b461d4d068dde91957",
-      "poradatel": "UPV",
-      "datum": "2026-10-06",
-      "zacatek": "09:15",
-      "konec": "11:00",
-      "nazev": "Važte si svých inovací! Ochraňte si je!",
-      "misto": "online",
-      "forma": "online",
-      "lektori": [],
-      "cena": "zdarma",
-      "anotace": "Seminář zaměřený na význam a možnosti ochrany inovací.",
-      "url": "https://upv.gov.cz/files/uploads/seminare2026/0610_tydeninovaci.pdf",
-      "detail_pokusy": 2,
-      "oblasti": [
-        "prumyslova_prava",
-        "autorske"
-      ],
-      "oblasti_klic": "fa65e82ec59a"
     },
     {
       "id": "feaf5b4f18256d445ba2",
@@ -1927,7 +1857,7 @@
       "datum": "2026-11-27",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Novinky v soutěžním právu (online - živé vysílání)",
+      "nazev": "Novinky v soutěžním právu",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -1946,7 +1876,7 @@
       "oblasti": [
         "soutez"
       ],
-      "oblasti_klic": "5acf8e6c51df"
+      "oblasti_klic": "037038997d48"
     },
     {
       "id": "72d532318781facb104a",
@@ -2078,12 +2008,39 @@
       "oblasti_klic": "01b02ced921c"
     },
     {
+      "id": "3474a6006e3b003291ce",
+      "poradatel": "CAK",
+      "datum": "2026-12-04",
+      "zacatek": "09:00",
+      "konec": "12:30",
+      "nazev": "Kolokvium Jak se filozofie důkazního práva projevuje (nejen) u vrcholných soudů?",
+      "misto": "Právnická fakulta, místnost č. 120, Nám. Curieových 901/7. Praha 1. FB událost je k nalezení zde: https://fb.me/e/5iCbhl9o6.",
+      "forma": "prezencne",
+      "lektori": [
+        "dr. Viktor Gazda",
+        "doc. Pavel Ondřejek",
+        "prof. Pavel Holländer",
+        "dr. Veronika Křesťanová",
+        "dr. Jaromír Jirsa",
+        "dr. Dita Řepková",
+        "prof. Zdeněk Kühn"
+      ],
+      "cena": "",
+      "anotace": "Kolokvium se věnuje otázkám pravdy, pravděpodobnosti a spravedlnosti v soudním rozhodování na základě monografie Filozofie důkazního práva. Akce propojuje teoretické pohledy s praxí vrcholných soudů.",
+      "url": "https://www.cak.cz/akce/1389",
+      "detail_pokusy": 2,
+      "oblasti": [
+        "civilni_proces"
+      ],
+      "oblasti_klic": "66e868ad2008"
+    },
+    {
       "id": "db050ddb00beeb120dab",
       "poradatel": "EPRAVO",
       "datum": "2026-12-08",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Názor nezletilého dítěte v opatrovnickém řízení před soudem (online - živé vysílání)",
+      "nazev": "Názor nezletilého dítěte v opatrovnickém řízení před soudem",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -2099,7 +2056,7 @@
       "oblasti": [
         "rodina_dedictvi"
       ],
-      "oblasti_klic": "7988f2d8ae84"
+      "oblasti_klic": "2bddc0c4631b"
     },
     {
       "id": "dab792773f90dc6edd6b",
@@ -2107,7 +2064,7 @@
       "datum": "2026-12-08",
       "zacatek": "13:00",
       "konec": "16:00",
-      "nazev": "Když léčba neproběhne podle očekávání: Odpovědnost a náhrada újmy z pohledu lékaře a pacienta (online - živé vysílání)",
+      "nazev": "Když léčba neproběhne podle očekávání: Odpovědnost a náhrada újmy z pohledu lékaře a pacienta",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -2122,9 +2079,10 @@
         "misto"
       ],
       "oblasti": [
-        "skoda"
+        "skoda",
+        "spravni"
       ],
-      "oblasti_klic": "6364b02319b6"
+      "oblasti_klic": "038ac821bbff"
     },
     {
       "id": "f98c379c0020df0ab6c1",
@@ -2132,7 +2090,7 @@
       "datum": "2026-12-09",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Dětský certifikát v praxi: povinnosti zaměstnavatelů, dopady na odsouzené a možnosti právní obrany (online - živé vysílání)",
+      "nazev": "Dětský certifikát v praxi: povinnosti zaměstnavatelů, dopady na odsouzené a možnosti právní obrany",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -2149,7 +2107,7 @@
         "pracovni",
         "trestni"
       ],
-      "oblasti_klic": "2229ac223ff1"
+      "oblasti_klic": "b73a8c9fc9b2"
     },
     {
       "id": "a18cbd4e4cdd2c25cf57",
