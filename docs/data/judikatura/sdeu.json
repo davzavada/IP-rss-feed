@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-20T07:28:29Z",
+ "generated": "2026-11-21T07:23:10Z",
  "soud": "sdeu",
  "okno_od": "2026-10-01",
  "polozky": [
@@ -1062,6 +1062,25 @@
    "poznamka": "Podáno 5. 11. 2026. Položené otázky zatím nejsou zveřejněné."
   },
   {
+   "id": "sdeu:62025TO0620",
+   "spz": "T-620/25",
+   "ecli": "ECLI:EU:T:2026:760",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-21T07:23:10Z",
+   "nazev": "LJ a další v. Eulex Kosovo",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TO0620",
+   "heslo": "Zrušení smlouvy pracovníka mise EU z provozních důvodů",
+   "shrnuti": "Tribunál řešil žalobu bývalých zaměstnanců mise Eulex Kosovo na neplatnost skončení pracovních poměrů a na náhradu škody. Rozhodl, že výpovědi z důvodu reorganizace a snížení počtu míst byly dány v souladu se smlouvami a že žalobci neprokázali své tvrzení o porušení povinností či o odvetných opatřeních za whistleblowing. Žalobu proto v celém rozsahu zamítl jako zjevně neopodstatněnou.",
+   "oblasti": [
+    "pracovni",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
    "id": "sdeu:62025CJ0557",
    "spz": "C-557/25",
    "ecli": "ECLI:EU:C:2026:983",
@@ -1488,6 +1507,44 @@
     "zavazky"
    ],
    "procesni": false
+  },
+  {
+   "id": "sdeu:62025TO0563",
+   "spz": "T-563/25",
+   "ecli": "ECLI:EU:T:2026:757",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-21T07:23:10Z",
+   "nazev": "Green Impact a další v. Parlament a další",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TO0563",
+   "heslo": "Návrh na zrušení směrnice nelze směřovat proti Komisi",
+   "shrnuti": "Tribunál řešil přípustnost žaloby na zrušení směrnice a přípravných aktů směřované proti Evropské komisi. Rozhodl, že žaloba na zrušení aktu přijatého řádným legislativním postupem musí směřovat proti autorům aktu, tedy Parlamentu a Radě, a nikoliv proti Komisi, jejíž legislativní návrh je pouze přípravným aktem.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "sdeu:62024TO0634",
+   "spz": "T-634/24",
+   "ecli": "ECLI:EU:T:2026:761",
+   "druh": "usnesení",
+   "rejstrik": "T",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-11",
+   "first_seen": "2026-11-21T07:23:10Z",
+   "nazev": "Green Impact a další v. Rada a Komise",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024TO0634",
+   "heslo": "Spolky nemají přímou žalobní legitimaci",
+   "shrnuti": "Tribunál řešil přípustnost žaloby podané spolky na ochranu zvířat a životního prostředí proti rozhodnutí Rady o změně statutu ochrany vlka v Bernské úmluvě. Rozhodl, že žaloba je nepřípustná, protože napadené aktové výstupy nezasahují přímo do právní sféry žalobců.",
+   "oblasti": [
+    "stavebni_zp",
+    "spravni"
+   ],
+   "procesni": true
   },
   {
    "id": "sdeu:62025TO0634",
