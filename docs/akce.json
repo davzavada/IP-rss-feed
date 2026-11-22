@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-21T07:00:46+00:00",
+  "generated": "2026-11-22T06:42:02+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 15,
-      "stazeno": "2026-11-21T07:00:23+00:00",
+      "stazeno": "2026-11-22T06:40:28+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -17,11 +17,11 @@
       "zkratka": "PF UK",
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
-      "pocet": 6,
-      "stazeno": "2026-11-21T07:00:25+00:00",
+      "pocet": 7,
+      "stazeno": "2026-11-22T06:40:35+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "2bea77f3116e58da"
+      "otisk": "c22cca909c1f00ae"
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
@@ -29,10 +29,10 @@
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
       "pocet": 5,
-      "stazeno": "2026-11-21T07:00:36+00:00",
+      "stazeno": "2026-11-22T06:40:46+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "e6cec01f43ddba07"
+      "otisk": "f100b4b159b6c697"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -42,7 +42,7 @@
       "pocet": 1,
       "stazeno": "2026-11-21T07:00:38+00:00",
       "cesta": "ai",
-      "chyba": null,
+      "chyba": "HTTPSConnectionPool(host='www.alai.cz', port=443): Max retries exceeded with url: /index.php?up (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.alai.cz', port=443) at 0x7fc1ffcc70b0>, 'Connection to www.alai.cz timed out. (connect timeout=60)'))",
       "otisk": "bcaac79500eef517"
     },
     "UPV": {
@@ -51,7 +51,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 3,
-      "stazeno": "2026-11-21T07:00:39+00:00",
+      "stazeno": "2026-11-22T06:41:48+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "c6f425e1a83fdab1"
@@ -81,25 +81,6 @@
       "datum_do": "2026-12-14",
       "oblasti": [],
       "oblasti_klic": "4fad9e9afb8b",
-      "detail_pokusy": 1
-    },
-    {
-      "id": "feaf5b4f18256d445ba2",
-      "poradatel": "CAK",
-      "datum": "2026-10-07",
-      "zacatek": "09:00",
-      "konec": "16:00",
-      "nazev": "Mediace - nástroj pro mimosoudní řešení sporů",
-      "misto": "Praha 1, Národní 10, palác Dunaj",
-      "forma": "prezencne",
-      "lektori": [
-        "JUDr. Hana Lenghartová"
-      ],
-      "cena": "1.100,- Kč včetně DPH",
-      "anotace": "Seminář zaměřený na mediaci jako nástroj pro mimosoudní řešení sporů.",
-      "url": "https://www.cak.cz/akce/1168",
-      "oblasti": [],
-      "oblasti_klic": "9a771b258ffc",
       "detail_pokusy": 1
     },
     {
@@ -1857,7 +1838,7 @@
       "datum": "2026-11-27",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Novinky v soutěžním právu",
+      "nazev": "Novinky v soutěžním právu (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -1876,7 +1857,7 @@
       "oblasti": [
         "soutez"
       ],
-      "oblasti_klic": "037038997d48"
+      "oblasti_klic": "5acf8e6c51df"
     },
     {
       "id": "72d532318781facb104a",
@@ -1943,6 +1924,28 @@
       ],
       "oblasti_klic": "dfaea5579c41",
       "detail_pokusy": 2
+    },
+    {
+      "id": "e4561a0d5c44ecdf6f62",
+      "poradatel": "PFUK",
+      "datum": "2026-12-02",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Workshop: Rovnost a transparentnost v odměňování",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [
+        "doc. JUDr. Jakub Tomšej, Ph.D.",
+        "JUDr. Lucie Přenosilová"
+      ],
+      "cena": "",
+      "anotace": "Workshop nabídne přehled připravované legislativy týkající se evropské směrnice o transparentnosti odměňování, jejích praktických dopadů i aktuálních otázek spojených se zásadou stejné odměny za stejnou práci. Účastníci se seznámí s novými informačními povinnostmi zaměstnavatelů a reportováním rozdílů v odměňování.",
+      "url": "https://www.prf.cuni.cz/aktuality/workshop-rovnost-a-transparentnost-v-odmenovani-0",
+      "detail_pokusy": 2,
+      "oblasti": [
+        "pracovni"
+      ],
+      "oblasti_klic": "8dcbdb108604"
     },
     {
       "id": "652d0acc4c735879e7b9",
@@ -2040,7 +2043,7 @@
       "datum": "2026-12-08",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Názor nezletilého dítěte v opatrovnickém řízení před soudem",
+      "nazev": "Názor nezletilého dítěte v opatrovnickém řízení před soudem (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -2056,7 +2059,7 @@
       "oblasti": [
         "rodina_dedictvi"
       ],
-      "oblasti_klic": "2bddc0c4631b"
+      "oblasti_klic": "7988f2d8ae84"
     },
     {
       "id": "dab792773f90dc6edd6b",
@@ -2064,7 +2067,7 @@
       "datum": "2026-12-08",
       "zacatek": "13:00",
       "konec": "16:00",
-      "nazev": "Když léčba neproběhne podle očekávání: Odpovědnost a náhrada újmy z pohledu lékaře a pacienta",
+      "nazev": "Když léčba neproběhne podle očekávání: Odpovědnost a náhrada újmy z pohledu lékaře a pacienta (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -2079,10 +2082,9 @@
         "misto"
       ],
       "oblasti": [
-        "skoda",
-        "spravni"
+        "skoda"
       ],
-      "oblasti_klic": "038ac821bbff"
+      "oblasti_klic": "6364b02319b6"
     },
     {
       "id": "f98c379c0020df0ab6c1",
@@ -2090,7 +2092,7 @@
       "datum": "2026-12-09",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Dětský certifikát v praxi: povinnosti zaměstnavatelů, dopady na odsouzené a možnosti právní obrany",
+      "nazev": "Dětský certifikát v praxi: povinnosti zaměstnavatelů, dopady na odsouzené a možnosti právní obrany (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -2107,7 +2109,7 @@
         "pracovni",
         "trestni"
       ],
-      "oblasti_klic": "b73a8c9fc9b2"
+      "oblasti_klic": "2229ac223ff1"
     },
     {
       "id": "a18cbd4e4cdd2c25cf57",
