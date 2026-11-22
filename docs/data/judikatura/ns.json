@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-21T07:23:10Z",
+ "generated": "2026-11-22T07:03:42Z",
  "soud": "ns",
  "okno_od": "2026-10-01",
  "polozky": [
@@ -1834,6 +1834,65 @@
    "oblasti": [
     "rodina_dedictvi",
     "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:deska:29icdo34/2026",
+   "spz": "29 ICdo 34/2026",
+   "druh": "rozsudek",
+   "senat": 29,
+   "rejstrik": "ICdo",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-22T07:03:42Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_29_ICdo_34_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_29_ICdo_34_2026.pdf",
+   "heslo": "Platba z účtu ovládané společnosti jako právní jednání dlužníka",
+   "shrnuti": "Insolvenční správce Insolvency Project se domáhal odpůrčí žalobou vůči Miroslavě Opavové určení neúčinnosti plateb provedených z účtu společnosti H, jejímž jediným společníkem a jednatelem byl dlužník. Nejvyšší soud řešil otázku, zda plnění z účtu obchodní společnosti ovládané dlužníkem lze považovat za právní jednání dlužníka pro účely odpůrčí žaloby. Dospěl k závěru, že odvolací soud pochybil, pokud nezohlednil povahu vztahu mezi dlužníkem a jím ovládanou společností, jejímž prostřednictvím dlužník mohl plnit svůj dluh.",
+   "oblasti": [
+    "insolvence",
+    "zavazky",
+    "korporace"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:deska:29icdo110/2026",
+   "spz": "29 ICdo 110/2026",
+   "druh": "rozsudek",
+   "senat": 29,
+   "rejstrik": "ICdo",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-22T07:03:42Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_29_ICdo_110_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_29_ICdo_110_2026.pdf",
+   "heslo": "Plnění z účtu ovládané společnosti jako právní jednání dlužníka",
+   "shrnuti": "Insolvenční správce podal odpůrčí žalobu proti věřiteli dlužníka ohledně plateb provedených z účtu společnosti, jejímž jediným společníkem a jednatelem byl dlužník. Nejvyšší soud řešil otázku, zda takové platby představují právní jednání dlužníka pro účely odpůrčí žaloby, a dospěl k závěru, že odvolací soud pochybil, pokud bez zjištění povahy právního vztahu mezi dlužníkem a jím ovládanou společností předem vyloučil přičitatelnost takového jednání dlužníku.",
+   "oblasti": [
+    "insolvence",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:deska:29icdo103/2026",
+   "spz": "29 ICdo 103/2026",
+   "druh": "rozsudek",
+   "senat": 29,
+   "rejstrik": "ICdo",
+   "datum": "2026-11-12",
+   "zverejneno": "2026-11-12",
+   "first_seen": "2026-11-22T07:03:42Z",
+   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_29_ICdo_103_2026.pdf",
+   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_29_ICdo_103_2026.pdf",
+   "heslo": "Platba z účtu ovládané společnosti může být jednáním dlužníka",
+   "shrnuti": "Insolvenční správce se odpůrčí žalobou domáhal určení neúčinnosti platby uskutečněné z účtu společnosti ovládané dlužníkem ve prospěch věřitelky. Odvolací soud žalobu zamítl s tím, že nešlo o právní jednání dlužníka. Nejvyšší soud rozhodnutí odvolacího soudu zrušil a uvedl, že je nutno zkoumat povahu vztahu mezi dlužníkem a jím ovládanou společností, neboť taková platba může představovat plnění dlužníka prostřednictvím jiné osoby.",
+   "oblasti": [
+    "insolvence",
+    "korporace",
+    "zavazky"
    ],
    "procesni": false
   },
