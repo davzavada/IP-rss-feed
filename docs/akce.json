@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-22T06:42:02+00:00",
+  "generated": "2026-11-23T07:29:54+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 15,
-      "stazeno": "2026-11-22T06:40:28+00:00",
+      "stazeno": "2026-11-23T07:29:41+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,7 +18,7 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 7,
-      "stazeno": "2026-11-22T06:40:35+00:00",
+      "stazeno": "2026-11-23T07:29:43+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "c22cca909c1f00ae"
@@ -28,11 +28,11 @@
       "zkratka": "epravo",
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
-      "pocet": 5,
-      "stazeno": "2026-11-22T06:40:46+00:00",
+      "pocet": 6,
+      "stazeno": "2026-11-23T07:29:47+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "f100b4b159b6c697"
+      "otisk": "48a98c0678848b36"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -40,9 +40,9 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 1,
-      "stazeno": "2026-11-21T07:00:38+00:00",
+      "stazeno": "2026-11-23T07:29:48+00:00",
       "cesta": "ai",
-      "chyba": "HTTPSConnectionPool(host='www.alai.cz', port=443): Max retries exceeded with url: /index.php?up (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.alai.cz', port=443) at 0x7fc1ffcc70b0>, 'Connection to www.alai.cz timed out. (connect timeout=60)'))",
+      "chyba": null,
       "otisk": "bcaac79500eef517"
     },
     "UPV": {
@@ -51,7 +51,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 3,
-      "stazeno": "2026-11-22T06:41:48+00:00",
+      "stazeno": "2026-11-23T07:29:48+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "c6f425e1a83fdab1"
@@ -84,28 +84,6 @@
       "detail_pokusy": 1
     },
     {
-      "id": "3a7f1af64a864eca2896",
-      "poradatel": "PFUK",
-      "datum": "2026-10-08",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "AI & Law",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [
-        "Tomáš Koref",
-        "Tomáš Knap"
-      ],
-      "cena": "",
-      "anotace": "Jak porozumět prolínání práva s AI a stát se součástí nového oboru. Uvede do interdisciplinárního odvětví AI & Law a představí klíčové právní, etické i technologické výzvy tohoto rostoucího oboru.",
-      "url": "https://www.prf.cuni.cz/aktuality/ai-law",
-      "detail_pokusy": 2,
-      "oblasti": [
-        "it"
-      ],
-      "oblasti_klic": "86d9f96119ac"
-    },
-    {
       "id": "0bcd64be40267356297b",
       "poradatel": "PFUK",
       "datum": "2026-10-08",
@@ -127,56 +105,6 @@
       "z_detailu": [
         "misto"
       ]
-    },
-    {
-      "id": "5349f79eda390145c9eb",
-      "poradatel": "CAK",
-      "datum": "2026-10-08",
-      "zacatek": "09:00",
-      "konec": "16:00",
-      "nazev": "Nájem bytu a domu a prostor za účelem podnikání dle OZ",
-      "misto": "Praha, ONLINE SEMINÁŘ",
-      "forma": "online",
-      "lektori": [
-        "JUDr. Pavlína Brzobohatá"
-      ],
-      "cena": "1.100,- Kč",
-      "anotace": "Seminář přináší podrobný výklad zákona o nájmu bytu a prostor za účelem podnikání z pohledu judikatury Nejvyššího soudu. Cílem je zprostředkovat poznatky a upozornit na výkladové nejasnosti v praxi.",
-      "url": "https://www.cak.cz/akce/1169",
-      "detail_pokusy": 1,
-      "oblasti": [
-        "zavazky"
-      ],
-      "oblasti_klic": "06e2b7244824"
-    },
-    {
-      "id": "740b2f109edca52eeaf2",
-      "poradatel": "EPRAVO",
-      "datum": "2026-10-08",
-      "zacatek": "09:30",
-      "konec": "12:00",
-      "nazev": "Jak zapojit investora do developerského projektu a neztratit kontrolu",
-      "misto": "Pobřežní 394/12, Praha 8 – Karlín",
-      "forma": "prezencne",
-      "lektori": [
-        "Pavel Kropáček",
-        "Patrik Novák",
-        "Petr Sefzig",
-        "Radim Boháč"
-      ],
-      "cena": "3 900 Kč bez DPH",
-      "anotace": "Advokátní kancelář Eversheds Sutherland vás zve na druhý ze tří seminářů série Developerský podzim 2026 zaměřený na fázi financování a vstupu investora.",
-      "url": "https://www.epravo.cz/top/aktualne/pozvanka-jak-zapojit-investora-do-developerskeho-projektu-a-neztratit-kontrolu-121732.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "korporace",
-        "vecna_prava",
-        "finance"
-      ],
-      "oblasti_klic": "e9ea62498dc9"
     },
     {
       "id": "bd6823b2cca4f36bd031",
@@ -1838,7 +1766,7 @@
       "datum": "2026-11-27",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Novinky v soutěžním právu (online - živé vysílání)",
+      "nazev": "Novinky v soutěžním právu",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -1857,7 +1785,7 @@
       "oblasti": [
         "soutez"
       ],
-      "oblasti_klic": "5acf8e6c51df"
+      "oblasti_klic": "037038997d48"
     },
     {
       "id": "72d532318781facb104a",
@@ -2043,7 +1971,7 @@
       "datum": "2026-12-08",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Názor nezletilého dítěte v opatrovnickém řízení před soudem (online - živé vysílání)",
+      "nazev": "Názor nezletilého dítěte v opatrovnickém řízení před soudem",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -2057,9 +1985,10 @@
         "misto"
       ],
       "oblasti": [
-        "rodina_dedictvi"
+        "rodina_dedictvi",
+        "civilni_proces"
       ],
-      "oblasti_klic": "7988f2d8ae84"
+      "oblasti_klic": "2bddc0c4631b"
     },
     {
       "id": "dab792773f90dc6edd6b",
@@ -2067,7 +1996,7 @@
       "datum": "2026-12-08",
       "zacatek": "13:00",
       "konec": "16:00",
-      "nazev": "Když léčba neproběhne podle očekávání: Odpovědnost a náhrada újmy z pohledu lékaře a pacienta (online - živé vysílání)",
+      "nazev": "Když léčba neproběhne podle očekávání: Odpovědnost a náhrada újmy z pohledu lékaře a pacienta",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -2084,7 +2013,7 @@
       "oblasti": [
         "skoda"
       ],
-      "oblasti_klic": "6364b02319b6"
+      "oblasti_klic": "038ac821bbff"
     },
     {
       "id": "f98c379c0020df0ab6c1",
@@ -2092,7 +2021,7 @@
       "datum": "2026-12-09",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Dětský certifikát v praxi: povinnosti zaměstnavatelů, dopady na odsouzené a možnosti právní obrany (online - živé vysílání)",
+      "nazev": "Dětský certifikát v praxi: povinnosti zaměstnavatelů, dopady na odsouzené a možnosti právní obrany",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -2109,7 +2038,7 @@
         "pracovni",
         "trestni"
       ],
-      "oblasti_klic": "2229ac223ff1"
+      "oblasti_klic": "b73a8c9fc9b2"
     },
     {
       "id": "a18cbd4e4cdd2c25cf57",
@@ -2132,6 +2061,28 @@
         "civilni_proces"
       ],
       "oblasti_klic": "b646c01f3cfc"
+    },
+    {
+      "id": "6f0b2fff3d5a84866500",
+      "poradatel": "EPRAVO",
+      "datum": "2026-12-09",
+      "zacatek": "13:00",
+      "konec": "16:00",
+      "nazev": "AI-bezpečné právní psaní 2.0",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "Mgr. Miroslav Chochola, LL.M., MBA"
+      ],
+      "cena": "3 975 Kč",
+      "anotace": "Kurz zaměřený na AI-bezpečné právní psaní.",
+      "url": "https://www.epravo.cz/eshop/ai-bezpecne-pravni-psani-2-0-online-zive-vysilani-9-12-2026-1428.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [],
+      "oblasti_klic": "99ca123fb5e0"
     },
     {
       "id": "b5bd3ab762c24dba84ff",
