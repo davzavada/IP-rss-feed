@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-23T07:29:54+00:00",
+  "generated": "2026-11-24T09:50:25+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
@@ -7,7 +7,7 @@
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
       "pocet": 15,
-      "stazeno": "2026-11-23T07:29:41+00:00",
+      "stazeno": "2026-11-24T09:49:05+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -18,21 +18,21 @@
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
       "pocet": 7,
-      "stazeno": "2026-11-23T07:29:43+00:00",
+      "stazeno": "2026-11-24T09:49:10+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "c22cca909c1f00ae"
+      "otisk": "bb7c3380c3dd1413"
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
       "zkratka": "epravo",
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
-      "pocet": 6,
-      "stazeno": "2026-11-23T07:29:47+00:00",
+      "pocet": 5,
+      "stazeno": "2026-11-24T09:49:14+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "48a98c0678848b36"
+      "otisk": "8984570dcf95d779"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -42,7 +42,7 @@
       "pocet": 1,
       "stazeno": "2026-11-23T07:29:48+00:00",
       "cesta": "ai",
-      "chyba": null,
+      "chyba": "HTTPSConnectionPool(host='www.alai.cz', port=443): Max retries exceeded with url: /index.php?up (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.alai.cz', port=443) at 0x72daac941b20>, 'Connection to www.alai.cz timed out. (connect timeout=60)'))",
       "otisk": "bcaac79500eef517"
     },
     "UPV": {
@@ -51,10 +51,10 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 3,
-      "stazeno": "2026-11-23T07:29:48+00:00",
+      "stazeno": "2026-11-24T09:50:17+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "c6f425e1a83fdab1"
+      "otisk": "5e13f3bd5e337187"
     }
   },
   "formy": {
@@ -82,29 +82,6 @@
       "oblasti": [],
       "oblasti_klic": "4fad9e9afb8b",
       "detail_pokusy": 1
-    },
-    {
-      "id": "0bcd64be40267356297b",
-      "poradatel": "PFUK",
-      "datum": "2026-10-08",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "Judikatura (správních soudů) jako pramen správního práva. Směrem k systému common law?",
-      "misto": "Právnická fakulta Univerzity Karlovy, místnost č. 38",
-      "forma": "prezencne",
-      "lektori": [],
-      "cena": "",
-      "anotace": "Odborná akce zaměřená na judikaturu správních soudů jako pramen správního práva.",
-      "url": "https://www.prf.cuni.cz/aktuality/judikatura-spravnich-soudu-jako-pramen-spravniho-prava-smerem-k-systemu-common-law",
-      "datum_do": "2026-10-09",
-      "detail_pokusy": 2,
-      "oblasti": [
-        "spravni"
-      ],
-      "oblasti_klic": "60412bcee548",
-      "z_detailu": [
-        "misto"
-      ]
     },
     {
       "id": "bd6823b2cca4f36bd031",
@@ -1766,7 +1743,7 @@
       "datum": "2026-11-27",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Novinky v soutěžním právu",
+      "nazev": "Novinky v soutěžním právu (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -1785,7 +1762,7 @@
       "oblasti": [
         "soutez"
       ],
-      "oblasti_klic": "037038997d48"
+      "oblasti_klic": "5acf8e6c51df"
     },
     {
       "id": "72d532318781facb104a",
@@ -1833,6 +1810,28 @@
       "oblasti_klic": "cac542f15204"
     },
     {
+      "id": "10613e13fc4004479761",
+      "poradatel": "PFUK",
+      "datum": "2026-12-01",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Obstojí (právní) základy EU Inc.? Limity kompetencí a pravomocí EU na cestě za 28. režimem korporátního práva",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [
+        "Klára Tichá"
+      ],
+      "cena": "",
+      "anotace": "Setkání se zaměřuje na právní základ návrhu nařízení o EU Inc., jeho možné limity a otázku, zda zvolená konstrukce obstojí ve světle dosavadní praxe a námitek stakeholderů. Diskutovány budou dopady volby právního základu na budoucí fungování EU Inc. a pravděpodobnost obstání před SDEU.",
+      "url": "https://www.prf.cuni.cz/aktuality/obstoji-pravni-zaklady-eu-inc-limity-kompetenci-a-pravomoci-eu-na-ceste-za-28-rezimem",
+      "detail_pokusy": 2,
+      "oblasti": [
+        "korporace",
+        "spravni"
+      ],
+      "oblasti_klic": "df90a181a67c"
+    },
+    {
       "id": "2daad3d85271fbc45d34",
       "poradatel": "CAK",
       "datum": "2026-12-01",
@@ -1852,28 +1851,6 @@
       ],
       "oblasti_klic": "dfaea5579c41",
       "detail_pokusy": 2
-    },
-    {
-      "id": "e4561a0d5c44ecdf6f62",
-      "poradatel": "PFUK",
-      "datum": "2026-12-02",
-      "zacatek": "",
-      "konec": "",
-      "nazev": "Workshop: Rovnost a transparentnost v odměňování",
-      "misto": "",
-      "forma": "prezencne",
-      "lektori": [
-        "doc. JUDr. Jakub Tomšej, Ph.D.",
-        "JUDr. Lucie Přenosilová"
-      ],
-      "cena": "",
-      "anotace": "Workshop nabídne přehled připravované legislativy týkající se evropské směrnice o transparentnosti odměňování, jejích praktických dopadů i aktuálních otázek spojených se zásadou stejné odměny za stejnou práci. Účastníci se seznámí s novými informačními povinnostmi zaměstnavatelů a reportováním rozdílů v odměňování.",
-      "url": "https://www.prf.cuni.cz/aktuality/workshop-rovnost-a-transparentnost-v-odmenovani-0",
-      "detail_pokusy": 2,
-      "oblasti": [
-        "pracovni"
-      ],
-      "oblasti_klic": "8dcbdb108604"
     },
     {
       "id": "652d0acc4c735879e7b9",
@@ -1971,7 +1948,7 @@
       "datum": "2026-12-08",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Názor nezletilého dítěte v opatrovnickém řízení před soudem",
+      "nazev": "Názor nezletilého dítěte v opatrovnickém řízení před soudem (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -1985,10 +1962,9 @@
         "misto"
       ],
       "oblasti": [
-        "rodina_dedictvi",
-        "civilni_proces"
+        "rodina_dedictvi"
       ],
-      "oblasti_klic": "2bddc0c4631b"
+      "oblasti_klic": "7988f2d8ae84"
     },
     {
       "id": "dab792773f90dc6edd6b",
@@ -1996,7 +1972,7 @@
       "datum": "2026-12-08",
       "zacatek": "13:00",
       "konec": "16:00",
-      "nazev": "Když léčba neproběhne podle očekávání: Odpovědnost a náhrada újmy z pohledu lékaře a pacienta",
+      "nazev": "Když léčba neproběhne podle očekávání: Odpovědnost a náhrada újmy z pohledu lékaře a pacienta (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -2013,7 +1989,7 @@
       "oblasti": [
         "skoda"
       ],
-      "oblasti_klic": "038ac821bbff"
+      "oblasti_klic": "6364b02319b6"
     },
     {
       "id": "f98c379c0020df0ab6c1",
@@ -2021,7 +1997,7 @@
       "datum": "2026-12-09",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Dětský certifikát v praxi: povinnosti zaměstnavatelů, dopady na odsouzené a možnosti právní obrany",
+      "nazev": "Dětský certifikát v praxi: povinnosti zaměstnavatelů, dopady na odsouzené a možnosti právní obrany (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -2038,7 +2014,7 @@
         "pracovni",
         "trestni"
       ],
-      "oblasti_klic": "b73a8c9fc9b2"
+      "oblasti_klic": "2229ac223ff1"
     },
     {
       "id": "a18cbd4e4cdd2c25cf57",
@@ -2068,7 +2044,7 @@
       "datum": "2026-12-09",
       "zacatek": "13:00",
       "konec": "16:00",
-      "nazev": "AI-bezpečné právní psaní 2.0",
+      "nazev": "AI-bezpečné právní psaní 2.0 (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -2082,7 +2058,7 @@
         "misto"
       ],
       "oblasti": [],
-      "oblasti_klic": "99ca123fb5e0"
+      "oblasti_klic": "03cfb7739c52"
     },
     {
       "id": "b5bd3ab762c24dba84ff",
