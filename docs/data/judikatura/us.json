@@ -1,8 +1,29 @@
 {
- "generated": "2026-11-24T10:03:37Z",
+ "generated": "2026-11-25T08:48:33Z",
  "soud": "us",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "us:St-63-26_1",
+   "spz": "Pl. ÚS-st. 63/26",
+   "ecli": "ECLI:CZ:US:2026:Pl.US-st.63.26.1",
+   "druh": "stanovisko pléna",
+   "rejstrik": "ÚS",
+   "datum": "2026-11-11",
+   "zverejneno": "2026-11-24",
+   "first_seen": "2026-11-25T08:48:33Z",
+   "nazev": "Nepřípustné snížení náhrady úmyslně způsobené nemajetkové újmy",
+   "url": "https://nalus.usoud.cz/Search/GetText.aspx?sz=St-63-26_1",
+   "soudce": "Kateřina Ronovská",
+   "heslo": "Snížení náhrady úmyslně způsobené nemajetkové újmy je nepřípustné",
+   "shrnuti": "Ústavní soud v plénu přijal stanovisko, podle kterého je porušením práva na soudní ochranu, pokud obecné soudy snižují náhradu nemajetkové újmy způsobené úmyslně trestným činem z důvodu likvidačních dopadů do majetkové sféry škůdce. Takový postup představuje nepřípustné dotváření práva v rozporu se zákazem moderace u úmyslně způsobené újmy. Tímto stanoviskem plénum překonalo dřívější odlišnou rozhodovací praxi.",
+   "oblasti": [
+    "skoda",
+    "zavazky",
+    "ustavni"
+   ],
+   "procesni": false
+  },
   {
    "id": "us:4-3077-26_1",
    "spz": "IV. ÚS 3077/26",

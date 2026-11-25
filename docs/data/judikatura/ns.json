@@ -1,8 +1,240 @@
 {
- "generated": "2026-11-24T10:03:37Z",
+ "generated": "2026-11-25T08:48:33Z",
  "soud": "ns",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "ns:EBF8295204DCC9D8C1258EB90052BFAA",
+   "spz": "3 Tdo 820/2026",
+   "ecli": "ECLI:CZ:NS:2026:3.TDO.820.2026.1",
+   "druh": "usnesení",
+   "senat": 3,
+   "rejstrik": "Tdo",
+   "datum": "2026-10-13",
+   "zverejneno": "2026-11-24",
+   "first_seen": "2026-11-25T08:48:33Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/EBF8295204DCC9D8C1258EB90052BFAA?openDocument",
+   "heslo": "Námitky proti hodnocení důkazů nezakládají dovolací důvod",
+   "shrnuti": "Obviněný podal dovolání proti usnesení Krajského soudu v Brně, kterým bylo zamítnuto jeho odvolání proti odsuzujícímu rozsudku za přečin ohrožení pod vlivem návykové látky. Nejvyšší soud řešil, zda jeho námitky ohledně neprovedených videozáznamů a hodnocení důkazů naplňují uplatněné dovolací důvody. Dovolání odmítl, protože uplatněné námitky směřovaly pouze proti skutkovým zjištěním a nenaplňovaly zákonné důvody pro dovolání.",
+   "oblasti": [
+    "trestni"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:97A9F0FD4D1E1591C1258EB90052BFD1",
+   "spz": "21 Cdo 2840/2025 - II.",
+   "ecli": "ECLI:CZ:NS:2026:21.CDO.2840.2025.3",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-27",
+   "zverejneno": "2026-11-24",
+   "first_seen": "2026-11-25T08:48:33Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/97A9F0FD4D1E1591C1258EB90052BFD1?openDocument",
+   "heslo": "Nabídková povinnost se nevztahuje na místa na fakultách",
+   "shrnuti": "Žalobce se domáhal určení neplatnosti výpovědi z pracovního poměru, kterou obdržel od žalované Západočeské univerzity v Plzni poté, co se vzdal funkce děkana. Nejvyšší soud řešil otázku rozsahu nabídkové povinnosti a dospěl k závěru, že vysoká škola není povinna nabízet volná pracovní místa na úrovni jednotlivých fakult s ohledem na jejich autonomii v pracovněprávních vztazích.",
+   "oblasti": [
+    "pracovni",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:9252C42B76C19246C1258EB90052BFAF",
+   "spz": "3 Tdo 746/2026",
+   "ecli": "ECLI:CZ:NS:2026:3.TDO.746.2026.1",
+   "druh": "usnesení",
+   "senat": 3,
+   "rejstrik": "Tdo",
+   "datum": "2026-10-13",
+   "zverejneno": "2026-11-24",
+   "first_seen": "2026-11-25T08:48:33Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/9252C42B76C19246C1258EB90052BFAF?openDocument",
+   "heslo": "Nezákonné prohlášení viny nevytváří překážku přísnější kvalifikace",
+   "shrnuti": "Obviněný podal dovolání proti odsuzujícímu rozsudku za týrání a vydírání, v němž namítal porušení účinků prohlášení viny a neprokázání těžké újmy na zdraví. Nejvyšší soud konstatoval, že prohlášení viny učiněné v rozporu se zákonnými předpoklady nezakládá překážku pro posouzení skutku podle přísnější právní kvalifikace a dovolání odmítl.",
+   "oblasti": [
+    "trestni",
+    "skoda"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:5F9DD1A9402179D9C1258EB90052BFC9",
+   "spz": "27 Cdo 2179/2026",
+   "ecli": "ECLI:CZ:NS:2026:27.CDO.2179.2026.1",
+   "druh": "usnesení",
+   "senat": 27,
+   "rejstrik": "Cdo",
+   "datum": "2026-11-18",
+   "zverejneno": "2026-11-24",
+   "first_seen": "2026-11-25T08:48:33Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/5F9DD1A9402179D9C1258EB90052BFC9?openDocument",
+   "heslo": "Zastavení řízení o dovolání pro nezaplacení poplatku",
+   "shrnuti": "Společenství vlastníků jednotek pro dům č. p. XY a povinný se soudili v exekuční věci. Nejvyšší soud řešil otázku zastavení dovolacího řízení pro nezaplacení soudního poplatku a pro nedostatek funkční příslušnosti ohledně napadení rozhodnutí soudu prvního stupně, přičemž řízení v obou ohledech zastavil.",
+   "oblasti": [
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:47719DC5307FDF29C1258EB90052BFD7",
+   "spz": "21 Cdo 2323/2026",
+   "ecli": "ECLI:CZ:NS:2026:21.CDO.2323.2026.1",
+   "druh": "usnesení",
+   "senat": 21,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-29",
+   "zverejneno": "2026-11-24",
+   "first_seen": "2026-11-25T08:48:33Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/47719DC5307FDF29C1258EB90052BFD7?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/106835498B1AE7D0C1258EBA0021203D/$file/21%20Cdo%202323_2026.pdf?openElement",
+   "heslo": "Moderace smluvní pokuty nepatří do nařízení zástavy",
+   "shrnuti": "Zástavní věřitelé se domáhali nařízení soudního prodeje zástavy proti zástavním dlužníkům k uspokojení pohledávek ze smluv o úvěru včetně smluvních pokut. Nejvyšší soud řešil otázku, zda v řízení o nařízení soudního prodeje zástavy může soud moderovat smluvní pokutu, a dospěl k závěru, že otázka moderace vyžaduje rozsáhlé dokazování, které je odsunuto až do druhé fáze řízení neboli exekučního řízení.",
+   "oblasti": [
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:29167D058C91B19EC1258EB90052BFC4",
+   "spz": "27 Cdo 1431/2026",
+   "ecli": "ECLI:CZ:NS:2026:27.CDO.1431.2026.1",
+   "druh": "usnesení",
+   "senat": 27,
+   "rejstrik": "Cdo",
+   "datum": "2026-11-18",
+   "zverejneno": "2026-11-24",
+   "first_seen": "2026-11-25T08:48:33Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/29167D058C91B19EC1258EB90052BFC4?openDocument",
+   "heslo": "Výklad právního jednání a vůle stran",
+   "shrnuti": "Žalobkyně Arlette Wipplinger se žalovaného Mgr. Pavla Novotného domáhala zaplacení 1 000 000 Kč s příslušenstvím. Nejvyšší soud řešil přípustnost dovolání ohledně výkladu právního jednání a aplikace právního režimu, přičemž dospěl k závěru, že dovolání je nepřípustné, neboť napadený rozsudek na namítaných otázkách nezávisí a odvolací soud postupoval v souladu s ustálenou judikaturou.",
+   "oblasti": [
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:23A68119163A12A8C1258EB90052BFB8",
+   "spz": "21 Cdo 2027/2026",
+   "ecli": "ECLI:CZ:NS:2026:21.CDO.2027.2026.1",
+   "druh": "usnesení",
+   "senat": 21,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-23",
+   "zverejneno": "2026-11-24",
+   "first_seen": "2026-11-25T08:48:33Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/23A68119163A12A8C1258EB90052BFB8?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/20A43C691F6FF58AC1258EBA002113CE/$file/21%20Cdo%202027_2026.pdf?openElement",
+   "heslo": "Nepřípustnost dovolání proti nákladům řízení",
+   "shrnuti": "Žalobce se domáhal zaplacení peněžité sumy po Institutu klinické a experimentální medicíny, přičemž řízení bylo zastaveno pro překážku litispendence a žalobci byla uložena povinnost nahradit náklady řízení. Nejvyšší soud řešil přípustnost dovolání proti výrokům o nákladech řízení a dospěl k závěru, že takové dovolání je objektivně nepřípustné.",
+   "oblasti": [
+    "civilni_proces"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:1B4F8117C0828D24C1258EB90052BFCE",
+   "spz": "27 Cdo 591/2026",
+   "ecli": "ECLI:CZ:NS:2026:27.CDO.591.2026.1",
+   "druh": "usnesení",
+   "senat": 27,
+   "rejstrik": "Cdo",
+   "datum": "2026-11-18",
+   "zverejneno": "2026-11-24",
+   "first_seen": "2026-11-25T08:48:33Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/1B4F8117C0828D24C1258EB90052BFCE?openDocument",
+   "heslo": "Ztráta způsobilosti účastníka řízení zánikem společnosti",
+   "shrnuti": "Navrhovatelka se domáhala zápisu výmazu obchodní společnosti z obchodního rejstříku. Nejvyšší soud řešil otázkou nedostatku podmínky řízení způsobenou zánikem právní osobnosti navrhovatelky během dovolacího řízení. Vzhledem k tomu, že navrhovatelka ztratila způsobilost být účastníkem řízení a neměla právního nástupce, dovolací řízení zastavil.",
+   "oblasti": [
+    "civilni_proces",
+    "korporace"
+   ],
+   "procesni": true
+  },
+  {
+   "id": "ns:EF5595E704114AC5C1258EB90052BF92",
+   "spz": "22 Cdo 1950/2026",
+   "ecli": "ECLI:CZ:NS:2026:22.CDO.1950.2026.1",
+   "druh": "rozsudek",
+   "senat": 22,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-27",
+   "zverejneno": "2026-11-24",
+   "first_seen": "2026-11-14T06:41:20Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/EF5595E704114AC5C1258EB90052BF92?openDocument",
+   "heslo": "Obec není povinna odstranit černou skládku",
+   "shrnuti": "Žalobce se domáhal na hlavním městě Praha odstranění komunálního odpadu uloženého na jeho pozemcích. Nejvyšší soud rozhodl, že obec není pasivně legitimizována k odstranění skládky, protože nebyla jejím původcem ani vlastníkem odpadu, neboť se nejednalo o odpad uložený na místě určeném obcí.",
+   "oblasti": [
+    "zavazky",
+    "vecna_prava",
+    "skoda"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:7B34935028A8565EC1258EB90052BFBB",
+   "spz": "24 Cdo 1767/2026",
+   "ecli": "ECLI:CZ:NS:2026:24.CDO.1767.2026.1",
+   "druh": "rozsudek",
+   "senat": 24,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-11-24",
+   "first_seen": "2026-11-02T12:00:00Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/7B34935028A8565EC1258EB90052BFBB?openDocument",
+   "heslo": "Kupní smlouva s utajenou cenou není způsobilou vkladovou listinou",
+   "shrnuti": "Žalobci David Loucký a IvoInvest se domáhali povolení vkladu vlastnického práva k bytové jednotce a nahrazení rozhodnutí katastrálního úřadu, který jejich návrh zamítl kvůli nepředložení úplné dohody o kupní ceně. Nejvyšší soud řešil, zda kupní smlouva odkazující na utajenou cenu v samostatné listině a dodatečně předložená dohoda splňují vkladové podmínky. Dovolání zamítl s tím, že kupní cena je podstatnou náležitostí smlouvy a k listinám doloženým až po podání návrhu nelze přihlížet.",
+   "oblasti": [
+    "vecna_prava",
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:551FC1E0C9A6A994C1258EB90052BFE4",
+   "spz": "21 Cdo 2093/2025",
+   "ecli": "ECLI:CZ:NS:2026:21.CDO.2093.2025.1",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-23",
+   "zverejneno": "2026-11-24",
+   "first_seen": "2026-10-30T12:00:00Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/551FC1E0C9A6A994C1258EB90052BFE4?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/C5B9C2986ABB3CF1C1258EBA002115BC/$file/21%20Cdo%202093_2025.pdf?openElement",
+   "heslo": "Výklad právního jednání v pracovním právu",
+   "shrnuti": "Žalobkyně se domáhala po žalované zaplacení odměny z dohody o ukončení dohody o provedení práce, avšak soudy obou stupňů její žalobu zamítly pro nesplnění podmínek. Nejvyšší soud řešil otázku výkladu projevu vůle účastníků a shledal, že soudy se nezabývaly společným úmyslem stran, nýbrž pouze jazykovým zněním.",
+   "oblasti": [
+    "pracovni",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "ns:BF091F8FC8E68A24C1258EB90052BFDD",
+   "spz": "21 Cdo 1001/2026",
+   "ecli": "ECLI:CZ:NS:2026:21.CDO.1001.2026.1",
+   "druh": "rozsudek",
+   "senat": 21,
+   "rejstrik": "Cdo",
+   "datum": "2026-10-21",
+   "zverejneno": "2026-11-24",
+   "first_seen": "2026-10-29T12:00:00Z",
+   "url": "https://rozhodnuti.nsoud.cz/Judikatura/judikatura_ns.nsf/WebSearch/BF091F8FC8E68A24C1258EB90052BFDD?openDocument",
+   "pdf": "https://rozhodnuti.nsoud.cz/Judikatura/att.nsf/at/374D4A3FD2E1224EC1258EBA00210755/$file/21%20Cdo%201001_2026.pdf?openElement",
+   "heslo": "Způsob vedení účetnictví nemění povahu uplatněného nároku",
+   "shrnuti": "Žalobce VANAK se domáhal po žalovaném zaplacení částky 487 000 Kč z titulu náhrady škody za nevyúčtované výběry z firemního účtu platební kartou. Nejvyšší soud řešil otázku, zda způsob vedení účetnictví nebo právní kvalifikace uvedená žalobcem brání posouzení nároku z jiného právního důvodu, například jako bezdůvodného obohacení. Rozhodl, že soud je vázán pouze skutkovým vymezením žaloby, nikoliv právním názorem účastníků či způsobem zaúčtování pohledávky, a je povinen posoudit nárok podle odpovídajících hmotněprávních norem.",
+   "oblasti": [
+    "zavazky",
+    "korporace",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
   {
    "id": "ns:ED029AAF9CA1335DC1258EB80052A822",
    "spz": "5 Tdo 833/2026",
@@ -5081,26 +5313,6 @@
    "procesni": false
   },
   {
-   "id": "ns:deska:22cdo1950/2026",
-   "spz": "22 Cdo 1950/2026",
-   "druh": "rozsudek",
-   "senat": 22,
-   "rejstrik": "Cdo",
-   "datum": "2026-11-04",
-   "zverejneno": "2026-11-04",
-   "first_seen": "2026-11-14T06:41:20Z",
-   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_22_Cdo_1950_2026.pdf",
-   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_22_Cdo_1950_2026.pdf",
-   "heslo": "Obec není povinna odstranit černou skládku",
-   "shrnuti": "Žalobce se domáhal na hlavním městě Praha odstranění komunálního odpadu uloženého na jeho pozemcích. Nejvyšší soud rozhodl, že obec není pasivně legitimizována k odstranění skládky, protože nebyla jejím původcem ani vlastníkem odpadu, neboť se nejednalo o odpad uložený na místě určeném obcí.",
-   "oblasti": [
-    "zavazky",
-    "vecna_prava",
-    "skoda"
-   ],
-   "procesni": false
-  },
-  {
    "id": "ns:deska:22cdo2318/2026",
    "spz": "22 Cdo 2318/2026",
    "druh": "rozsudek",
@@ -6656,26 +6868,6 @@
    "procesni": false
   },
   {
-   "id": "ns:deska:24cdo1767/2026",
-   "spz": "24 Cdo 1767/2026",
-   "druh": "rozsudek",
-   "senat": 24,
-   "rejstrik": "Cdo",
-   "datum": "2026-11-02",
-   "zverejneno": "2026-11-02",
-   "first_seen": "2026-11-02T12:00:00Z",
-   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_24_Cdo_1767_2026.pdf",
-   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_24_Cdo_1767_2026.pdf",
-   "heslo": "Kupní smlouva s utajenou cenou není způsobilou vkladovou listinou",
-   "shrnuti": "Žalobci David Loucký a IvoInvest se domáhali povolení vkladu vlastnického práva k bytové jednotce a nahrazení rozhodnutí katastrálního úřadu, který jejich návrh zamítl kvůli nepředložení úplné dohody o kupní ceně. Nejvyšší soud řešil, zda kupní smlouva odkazující na utajenou cenu v samostatné listině a dodatečně předložená dohoda splňují vkladové podmínky. Dovolání zamítl s tím, že kupní cena je podstatnou náležitostí smlouvy a k listinám doloženým až po podání návrhu nelze přihlížet.",
-   "oblasti": [
-    "vecna_prava",
-    "zavazky",
-    "civilni_proces"
-   ],
-   "procesni": false
-  },
-  {
    "id": "ns:6CD6F0222C201B90C1258EA30052A295",
    "spz": "27 Cdo 629/2026",
    "ecli": "ECLI:CZ:NS:2026:27.CDO.629.2026.1",
@@ -6893,25 +7085,6 @@
    "shrnuti": "Žalobkyně se domáhala vypořádání společného jmění manželů, přičemž namítala, že žalovaný neoprávněně vynaložil společné prostředky na návštěvy erotických klubů. Nejvyšší soud řešil otázku, zda takové výdaje představují obstarávání běžných potřeb rodiny. Dospěl k závěru, že útraty v erotických klubech nelze považovat za výdaje ve prospěch rodiny, ale za jednání v rozporu se zákonnou povinností věrnosti, a proto je lze vypořádat jako odkloněné prostředky ze společného jmění.",
    "oblasti": [
     "rodina_dedictvi",
-    "zavazky"
-   ],
-   "procesni": false
-  },
-  {
-   "id": "ns:deska:21cdo2093/2025",
-   "spz": "21 Cdo 2093/2025",
-   "druh": "rozsudek",
-   "senat": 21,
-   "rejstrik": "Cdo",
-   "datum": "2026-10-30",
-   "zverejneno": "2026-10-30",
-   "first_seen": "2026-10-30T12:00:00Z",
-   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_21_Cdo_2093_2025.pdf",
-   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_21_Cdo_2093_2025.pdf",
-   "heslo": "Výklad právního jednání v pracovním právu",
-   "shrnuti": "Žalobkyně se domáhala po žalované zaplacení odměny z dohody o ukončení dohody o provedení práce, avšak soudy obou stupňů její žalobu zamítly pro nesplnění podmínek. Nejvyšší soud řešil otázku výkladu projevu vůle účastníků a shledal, že soudy se nezabývaly společným úmyslem stran, nýbrž pouze jazykovým zněním.",
-   "oblasti": [
-    "pracovni",
     "zavazky"
    ],
    "procesni": false
@@ -7270,26 +7443,6 @@
     "civilni_proces"
    ],
    "procesni": true
-  },
-  {
-   "id": "ns:deska:21cdo1001/2026",
-   "spz": "21 Cdo 1001/2026",
-   "druh": "rozsudek",
-   "senat": 21,
-   "rejstrik": "Cdo",
-   "datum": "2026-10-29",
-   "zverejneno": "2026-10-29",
-   "first_seen": "2026-10-29T12:00:00Z",
-   "url": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_21_Cdo_1001_2026.pdf",
-   "pdf": "https://www.nsoud.cz/fileadmin/user_upload/Uredni_deska/UD_-_civilni/Vyhlas._zneni_rozsudku_21_Cdo_1001_2026.pdf",
-   "heslo": "Způsob vedení účetnictví nemění povahu uplatněného nároku",
-   "shrnuti": "Žalobce VANAK se domáhal po žalovaném zaplacení částky 487 000 Kč z titulu náhrady škody za nevyúčtované výběry z firemního účtu platební kartou. Nejvyšší soud řešil otázku, zda způsob vedení účetnictví nebo právní kvalifikace uvedená žalobcem brání posouzení nároku z jiného právního důvodu, například jako bezdůvodného obohacení. Rozhodl, že soud je vázán pouze skutkovým vymezením žaloby, nikoliv právním názorem účastníků či způsobem zaúčtování pohledávky, a je povinen posoudit nárok podle odpovídajících hmotněprávních norem.",
-   "oblasti": [
-    "zavazky",
-    "korporace",
-    "civilni_proces"
-   ],
-   "procesni": false
   },
   {
    "id": "ns:FD22029375BED3E2C1258E9E0052B994",
