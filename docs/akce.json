@@ -1,13 +1,13 @@
 {
-  "generated": "2026-11-25T08:26:15+00:00",
+  "generated": "2026-11-26T08:15:51+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 15,
-      "stazeno": "2026-11-25T08:25:50+00:00",
+      "pocet": 14,
+      "stazeno": "2026-11-26T08:15:11+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -17,33 +17,33 @@
       "zkratka": "PF UK",
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
-      "pocet": 7,
-      "stazeno": "2026-11-25T08:25:59+00:00",
+      "pocet": 8,
+      "stazeno": "2026-11-26T08:15:21+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "1304efd0f5987659"
+      "otisk": "fbe0a03c034651fa"
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
       "zkratka": "epravo",
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
-      "pocet": 5,
-      "stazeno": "2026-11-25T08:26:03+00:00",
+      "pocet": 6,
+      "stazeno": "2026-11-26T08:15:26+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "8516b1bfd12c2ae7"
+      "otisk": "374fe9166a94f02d"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
       "zkratka": "ALAI",
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
-      "pocet": 1,
-      "stazeno": "2026-11-25T08:26:05+00:00",
+      "pocet": 0,
+      "stazeno": "2026-11-26T08:15:28+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "bcaac79500eef517"
+      "otisk": "d1679be9822a0030"
     },
     "UPV": {
       "nazev": "Úřad průmyslového vlastnictví",
@@ -51,7 +51,7 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 2,
-      "stazeno": "2026-11-25T08:26:05+00:00",
+      "stazeno": "2026-11-26T08:15:29+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "5e13f3bd5e337187"
@@ -1875,6 +1875,54 @@
       "oblasti_klic": "2bad7dfd0658"
     },
     {
+      "id": "f02126df8edef14ee667",
+      "poradatel": "PFUK",
+      "datum": "2026-12-03",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "AI v české právní praxi",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [
+        "Zdeněk Kučera"
+      ],
+      "cena": "",
+      "anotace": "Přednáška ukáže, co umělá inteligence v právní práci skutečně zvládá, ať už v advokacii, v korporacích, nebo ve veřejném sektoru. Součástí bude ukázka use cases, které si v právní praxi může vyzkoušet každý.",
+      "url": "https://www.prf.cuni.cz/aktuality/ai-v-ceske-pravni-praxi",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "forma"
+      ],
+      "oblasti": [
+        "it"
+      ],
+      "oblasti_klic": "b3305a6c115a"
+    },
+    {
+      "id": "904dce31b26cf1160eda",
+      "poradatel": "PFUK",
+      "datum": "2026-12-03",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Zdeněk Kučera | AI v české právní praxi",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [
+        "Zdeněk Kučera"
+      ],
+      "cena": "",
+      "anotace": "Přednáška ukáže, co umělá inteligence v právní práci skutečně zvládá, ať už v advokacii, v korporacích, nebo ve veřejném sektoru. Součástí bude ukázka use cases, které si v právní praxi může vyzkoušet každý.",
+      "url": "https://www.prf.cuni.cz/aktuality/zdenek-kucera-ai-v-ceske-pravni-praxi",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "forma"
+      ],
+      "oblasti": [
+        "it"
+      ],
+      "oblasti_klic": "169b1e8a81ef"
+    },
+    {
       "id": "652d0acc4c735879e7b9",
       "poradatel": "CAK",
       "datum": "2026-12-03",
@@ -2016,7 +2064,7 @@
       "oblasti_klic": "038ac821bbff"
     },
     {
-      "id": "f98c379c0020df0ab6c1",
+      "id": "016dba1689fdec2ac883",
       "poradatel": "EPRAVO",
       "datum": "2026-12-09",
       "zacatek": "09:00",
@@ -2028,8 +2076,8 @@
         "JUDr. Petr Toman, LL.M."
       ],
       "cena": "3 975 Kč",
-      "anotace": "Odborný online seminář k tématu dětského certifikátu v praxi, povinnostem zaměstnavatelů a právní obraně.",
-      "url": "https://www.epravo.cz/eshop/detsky-certifikat-v-praxi-povinnosti-zamestnavatelu-dopady-na-odsouzene-a-moznosti-pravni-obrany-online-zive-vysilani-9-12-2026-1644.html",
+      "anotace": "Online živé vysílání věnované dětskému certifikátu v praxi a s ním spojeným povinnostem.",
+      "url": "https://www.epravo.cz/eshop/detsky-certifikat-v-praxi-povinnosti-zamestnavatelu-dopady-na-odsouzene-a-moznosti-pravni-obrana-online-zive-vysilani-9-12-2026-1644.html",
       "detail_pokusy": 2,
       "z_detailu": [
         "misto"
@@ -2038,7 +2086,7 @@
         "pracovni",
         "trestni"
       ],
-      "oblasti_klic": "b73a8c9fc9b2"
+      "oblasti_klic": "ce3be79cde79"
     },
     {
       "id": "a18cbd4e4cdd2c25cf57",
@@ -2127,6 +2175,32 @@
       ],
       "oblasti_klic": "17a4b80e90ec",
       "detail_pokusy": 2
+    },
+    {
+      "id": "296c26301a4b2ea29031",
+      "poradatel": "EPRAVO",
+      "datum": "2026-12-10",
+      "zacatek": "09:00",
+      "konec": "14:00",
+      "nazev": "Soudní přezkum rozhodnutí orgánů s.r.o. a a.s. (včetně neplatnosti usnesení valné hromady)",
+      "misto": "Justiční akademie, Hybernská 1006/18, Nové Město, 110 00 Praha 1",
+      "forma": "hybridne",
+      "lektori": [
+        "JUDr. Josef Holejšovský"
+      ],
+      "cena": "",
+      "anotace": "Vzdělávací akce pořádaná Jednotou českých právníků zaměřená na soudní přezkum rozhodnutí orgánů s.r.o. a a.s.",
+      "url": "https://www.epravo.cz/top/aktualne/soudni-prezkum-rozhodnuti-organu-sro-a-as-vcetne-neplatnosti-usneseni-valne-hromady-121968.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "forma",
+        "misto"
+      ],
+      "oblasti": [
+        "korporace",
+        "civilni_proces"
+      ],
+      "oblasti_klic": "b2bc74b7bb61"
     },
     {
       "id": "6c0cb9e845731b7ab848",
