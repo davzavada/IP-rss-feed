@@ -1,13 +1,13 @@
 {
-  "generated": "2026-11-26T08:15:51+00:00",
+  "generated": "2026-11-27T08:21:20+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 14,
-      "stazeno": "2026-11-26T08:15:11+00:00",
+      "pocet": 13,
+      "stazeno": "2026-11-27T08:20:42+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -17,22 +17,22 @@
       "zkratka": "PF UK",
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
-      "pocet": 8,
-      "stazeno": "2026-11-26T08:15:21+00:00",
+      "pocet": 10,
+      "stazeno": "2026-11-27T08:20:48+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "fbe0a03c034651fa"
+      "otisk": "8f9bc05f4159084c"
     },
     "EPRAVO": {
       "nazev": "epravo.cz",
       "zkratka": "epravo",
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
-      "pocet": 6,
-      "stazeno": "2026-11-26T08:15:26+00:00",
+      "pocet": 7,
+      "stazeno": "2026-11-27T08:20:52+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "374fe9166a94f02d"
+      "otisk": "061c412a9396a59e"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -40,7 +40,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 0,
-      "stazeno": "2026-11-26T08:15:28+00:00",
+      "stazeno": "2026-11-27T08:20:53+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "d1679be9822a0030"
@@ -50,8 +50,8 @@
       "zkratka": "ÚPV",
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
-      "pocet": 2,
-      "stazeno": "2026-11-26T08:15:29+00:00",
+      "pocet": 1,
+      "stazeno": "2026-11-27T08:20:54+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "5e13f3bd5e337187"
@@ -82,80 +82,6 @@
       "oblasti": [],
       "oblasti_klic": "4fad9e9afb8b",
       "detail_pokusy": 1
-    },
-    {
-      "id": "bd6823b2cca4f36bd031",
-      "poradatel": "EPRAVO",
-      "datum": "2026-10-12",
-      "zacatek": "09:30",
-      "konec": "12:00",
-      "nazev": "Jak zapojit investora do developerského projektu a neztratit kontrolu",
-      "misto": "Pobřežní 394/12, Praha 8 – Karlín",
-      "forma": "prezencne",
-      "lektori": [
-        "Pavel Kropáček",
-        "Patrik Novák",
-        "Petr Sefzig",
-        "Radim Boháč"
-      ],
-      "cena": "3 900 Kč bez DPH",
-      "anotace": "Druhý ze tří seminářů série Developerský podzim 2026 se zaměřuje na fázi financování a vstup investora do developerského projektu.",
-      "url": "https://www.epravo.cz/top/aktualne/pozvanka-jak-zapojit-investora-do-developerskeho-projektu-a-neztratit-kontrolu-121732.html",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "zavazky",
-        "korporace",
-        "vecna_prava"
-      ],
-      "oblasti_klic": "b7f3bbfde556"
-    },
-    {
-      "id": "2c194d1bc534e86fd602",
-      "poradatel": "UPV",
-      "datum": "2026-10-12",
-      "zacatek": "09:30",
-      "konec": "12:30",
-      "nazev": "Ochrana designu",
-      "misto": "online",
-      "forma": "online",
-      "lektori": [],
-      "cena": "zdarma",
-      "anotace": "Vzdělávací seminář věnovaný problematice ochrany designu.",
-      "url": "https://upv.gov.cz/files/uploads/seminare2026/1210_ochrana_designu.pdf",
-      "detail_pokusy": 2,
-      "oblasti": [
-        "prumyslova_prava"
-      ],
-      "oblasti_klic": "71e25d896677"
-    },
-    {
-      "id": "7bec9b3658dca9714f8e",
-      "poradatel": "PFUK",
-      "datum": "2026-10-12",
-      "zacatek": "12:00",
-      "konec": "14:00",
-      "nazev": "Tax Solidarity within the European Union and its Dark Side",
-      "misto": "učebně č. 38 Právnické fakulty Univerzity Karlovy",
-      "forma": "prezencne",
-      "lektori": [
-        "Pietro Selicato",
-        "Giuseppe Marino"
-      ],
-      "cena": "",
-      "anotace": "Workshop se zabývá daňovou solidaritou v Evropské unii, jejími právními základy a politickými tenzemi v souvislosti s národní fiskální autonomií a demokratickým zastoupením.",
-      "url": "https://www.prf.cuni.cz/aktuality/tax-solidarity-within-european-union-and-its-dark-side",
-      "detail_pokusy": 2,
-      "z_detailu": [
-        "misto"
-      ],
-      "oblasti": [
-        "dane",
-        "spravni"
-      ],
-      "oblasti_klic": "07ff3d90b27e"
     },
     {
       "id": "7a296fe46ab105ed4e99",
@@ -1923,6 +1849,25 @@
       "oblasti_klic": "169b1e8a81ef"
     },
     {
+      "id": "fd50ebc025fee153bbd1",
+      "poradatel": "PFUK",
+      "datum": "2026-12-03",
+      "zacatek": "",
+      "konec": "",
+      "nazev": "Zkoušky a zápočty očima učitelů i studentů: kdy jsou férové a smysluplné?",
+      "misto": "",
+      "forma": "prezencne",
+      "lektori": [
+        "Klára Tichá"
+      ],
+      "cena": "",
+      "anotace": "Diskuse o podobě zkoušek a zápočtů z pohledu pedagogů i studentů.",
+      "url": "https://www.prf.cuni.cz/aktuality/zkousky-a-zapocty-ocima-ucitelu-i-studentu-kdy-jsou-ferove-a-smysluplne",
+      "detail_pokusy": 2,
+      "oblasti": [],
+      "oblasti_klic": "06113549a35e"
+    },
+    {
       "id": "652d0acc4c735879e7b9",
       "poradatel": "CAK",
       "datum": "2026-12-03",
@@ -2013,12 +1958,72 @@
       "oblasti_klic": "66e868ad2008"
     },
     {
+      "id": "721850eedd34d2690763",
+      "poradatel": "PFUK",
+      "datum": "2026-12-04",
+      "zacatek": "09:00",
+      "konec": "12:30",
+      "nazev": "Jak se filozofie důkazního práva projevuje (nejen) u vrcholných soudů?",
+      "misto": "Právnická fakulta, místnost číslo 120, náměstí Curieových 901/7, Staré Město, 110 00 Praha 1",
+      "forma": "hybridne",
+      "lektori": [
+        "dr. Viktor Gazda",
+        "doc. Pavel Ondřejek",
+        "prof. Pavel Holländer",
+        "dr. Veronika Křesťanová",
+        "dr. Jaromír Jirsa",
+        "dr. Dita Řepková",
+        "prof. Zdeněk Kühn"
+      ],
+      "cena": "zdarma",
+      "anotace": "Přednáška zaměřená na projevy filozofie důkazního práva v rozhodovací praxi soudů.",
+      "url": "https://www.prf.cuni.cz/aktuality/jak-se-filozofie-dukazniho-prava-projevuje-nejen-u-vrcholnych-soudu",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "forma",
+        "misto"
+      ],
+      "oblasti": [
+        "civilni_proces"
+      ],
+      "oblasti_klic": "7e362b3479e7"
+    },
+    {
+      "id": "315387c1819349c0d755",
+      "poradatel": "PFUK",
+      "datum": "2026-12-04",
+      "zacatek": "09:00",
+      "konec": "",
+      "nazev": "Workshop: Political Parties and Constitutional Courts – Theory and Practice",
+      "misto": "místnost č. 220, Právnická fakulta UK",
+      "forma": "prezencne",
+      "lektori": [
+        "Monika Florczak-Wator",
+        "Jan Malíř",
+        "Max Steuer",
+        "Jana Ondřejková",
+        "Jan Chmel",
+        "Andrea Procházková"
+      ],
+      "cena": "",
+      "anotace": "Workshop zaměřený na teoretické i praktické aspekty vztahu politických stran a ústavních soudů.",
+      "url": "https://www.prf.cuni.cz/aktuality/workshop-political-parties-and-constitutional-courts-theory-and-practice",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "ustavni"
+      ],
+      "oblasti_klic": "49b42453ead7"
+    },
+    {
       "id": "db050ddb00beeb120dab",
       "poradatel": "EPRAVO",
       "datum": "2026-12-08",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Názor nezletilého dítěte v opatrovnickém řízení před soudem",
+      "nazev": "Názor nezletilého dítěte v opatrovnickém řízení před soudem (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -2032,10 +2037,9 @@
         "misto"
       ],
       "oblasti": [
-        "rodina_dedictvi",
-        "civilni_proces"
+        "rodina_dedictvi"
       ],
-      "oblasti_klic": "2bddc0c4631b"
+      "oblasti_klic": "7988f2d8ae84"
     },
     {
       "id": "dab792773f90dc6edd6b",
@@ -2043,7 +2047,7 @@
       "datum": "2026-12-08",
       "zacatek": "13:00",
       "konec": "16:00",
-      "nazev": "Když léčba neproběhne podle očekávání: Odpovědnost a náhrada újmy z pohledu lékaře a pacienta",
+      "nazev": "Když léčba neproběhne podle očekávání: Odpovědnost a náhrada újmy z pohledu lékaře a pacienta (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -2058,26 +2062,49 @@
         "misto"
       ],
       "oblasti": [
-        "skoda",
-        "spravni"
+        "skoda"
       ],
-      "oblasti_klic": "038ac821bbff"
+      "oblasti_klic": "6364b02319b6"
     },
     {
-      "id": "016dba1689fdec2ac883",
+      "id": "e863c66b0c7bd79577ba",
+      "poradatel": "PFUK",
+      "datum": "2026-12-08",
+      "zacatek": "16:00",
+      "konec": "17:30",
+      "nazev": "Advancing towards a New Treaty on Crimes against Humanity: přednáška profesorky Leily Sadat",
+      "misto": "místnost č. 117, Právnická fakulta UK, nám. Curieových 7, Praha",
+      "forma": "prezencne",
+      "lektori": [
+        "Leila Sadat"
+      ],
+      "cena": "",
+      "anotace": "Přednáška profesorky Leily Sadat o snahách směřujících k nové smlouvě o zločinech proti lidskosti.",
+      "url": "https://www.prf.cuni.cz/aktuality/advancing-towards-a-new-treaty-crimes-against-humanity-prednaska-profesorky-leily-sadat",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "trestni"
+      ],
+      "oblasti_klic": "0dd644bd40be"
+    },
+    {
+      "id": "f98c379c0020df0ab6c1",
       "poradatel": "EPRAVO",
       "datum": "2026-12-09",
       "zacatek": "09:00",
       "konec": "12:00",
-      "nazev": "Dětský certifikát v praxi: povinnosti zaměstnavatelů, dopady na odsouzené a možnosti právní obrany",
+      "nazev": "Dětský certifikát v praxi: povinnosti zaměstnavatelů, dopady na odsouzené a možnosti právní obrany (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
         "JUDr. Petr Toman, LL.M."
       ],
       "cena": "3 975 Kč",
-      "anotace": "Online živé vysílání věnované dětskému certifikátu v praxi a s ním spojeným povinnostem.",
-      "url": "https://www.epravo.cz/eshop/detsky-certifikat-v-praxi-povinnosti-zamestnavatelu-dopady-na-odsouzene-a-moznosti-pravni-obrana-online-zive-vysilani-9-12-2026-1644.html",
+      "anotace": "Webinář o dětském certifikátu v praxi, povinnostech zaměstnavatelů a dopadech na odsouzené.",
+      "url": "https://www.epravo.cz/eshop/detsky-certifikat-v-praxi-povinnosti-zamestnavatelu-dopady-na-odsouzene-a-moznosti-pravni-obrany-online-zive-vysilani-9-12-2026-1644.html",
       "detail_pokusy": 2,
       "z_detailu": [
         "misto"
@@ -2086,7 +2113,7 @@
         "pracovni",
         "trestni"
       ],
-      "oblasti_klic": "ce3be79cde79"
+      "oblasti_klic": "3fc89b2d4f63"
     },
     {
       "id": "a18cbd4e4cdd2c25cf57",
@@ -2116,7 +2143,7 @@
       "datum": "2026-12-09",
       "zacatek": "13:00",
       "konec": "16:00",
-      "nazev": "AI-bezpečné právní psaní 2.0",
+      "nazev": "AI-bezpečné právní psaní 2.0 (online - živé vysílání)",
       "misto": "online",
       "forma": "online",
       "lektori": [
@@ -2132,7 +2159,7 @@
       "oblasti": [
         "it"
       ],
-      "oblasti_klic": "99ca123fb5e0"
+      "oblasti_klic": "03cfb7739c52"
     },
     {
       "id": "b5bd3ab762c24dba84ff",
@@ -2201,6 +2228,31 @@
         "civilni_proces"
       ],
       "oblasti_klic": "b2bc74b7bb61"
+    },
+    {
+      "id": "94508dbd0170c87a01e6",
+      "poradatel": "EPRAVO",
+      "datum": "2026-12-10",
+      "zacatek": "13:00",
+      "konec": "16:00",
+      "nazev": "AI v pracovním právu: agenda HR a právního oddělení rychleji (online - živé vysílání)",
+      "misto": "online",
+      "forma": "online",
+      "lektori": [
+        "Mgr. Miroslav Chochola, LL.M., MBA"
+      ],
+      "cena": "3 975 Kč",
+      "anotace": "Online kurz o využití umělé inteligence v pracovním právu pro HR a právní oddělení.",
+      "url": "https://www.epravo.cz/eshop/ai-v-pracovnim-pravu-agenda-hr-a-pravniho-oddeleni-rychleji-online-zive-vysilani-10-12-2026-1577.html",
+      "detail_pokusy": 2,
+      "z_detailu": [
+        "misto"
+      ],
+      "oblasti": [
+        "it",
+        "pracovni"
+      ],
+      "oblasti_klic": "dbec8e6e3e50"
     },
     {
       "id": "6c0cb9e845731b7ab848",
