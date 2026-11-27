@@ -1,8 +1,205 @@
 {
- "generated": "2026-11-26T08:34:34Z",
+ "generated": "2026-11-27T08:46:02Z",
  "soud": "sdeu",
  "okno_od": "2026-10-01",
  "polozky": [
+  {
+   "id": "sdeu:62026CJ0167",
+   "spz": "C-167/26",
+   "ecli": "ECLI:EU:C:2026:1027",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-26",
+   "zverejneno": "2026-11-26",
+   "first_seen": "2026-11-27T08:46:02Z",
+   "nazev": "Dyrektor Krajowej Informacji Skarbowej",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62026CJ0167",
+   "heslo": "Odpočet DPH vyžaduje fakturu v příslušném období",
+   "shrnuti": "Soudní dvůr EU přezkoumal rozsudek Tribunálu a rozhodl, že unijní právo nebrání vnitrostátní úpravě, podle které osoba povinná k dani nemůže uplatnit nárok na odpočet DPH za období vzniku nároku, pokud obdržela fakturu až v následujícím období, a to přesto, že ji měla k dispozici před podáním daňového přiznání. Zrušil tak předchozí závěr Tribunálu a stanovil, že uplatnění odpočtu je vázáno na období obdržení faktury.",
+   "oblasti": [
+    "dane",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0680",
+   "spz": "C-680/25",
+   "ecli": "ECLI:EU:C:2026:1033",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-26",
+   "zverejneno": "2026-11-26",
+   "first_seen": "2026-11-27T08:46:02Z",
+   "nazev": "Tribunalul Suceava a Înalta Curte de Casaţie şi Justiţie",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0680",
+   "heslo": "Příplatek za odpracovaná léta asistentů soudce",
+   "shrnuti": "Soudní dvůr EU rozhodl, že ustanovení 4 rámcové dohody o pracovních poměrech na dobu určitou nebrání vnitrostátní úpravě, podle které mají asistenti soudce zaměstnaní na dobu určitou nárok na příplatek vázaný na odpracované roky omezený na pět let, zatímco jiní pracovníci justice na dobu neurčitou toto omezení nemají, pokud se tito zaměstnanci nenacházejí ve srovnatelné situaci. Jelikož povaha práce asistentů soudce neodpovídá práci ostatních členů justičního personálu, zákaz diskriminace se zde neuplatní.",
+   "oblasti": [
+    "pracovni",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0607",
+   "spz": "C-607/25",
+   "ecli": "ECLI:EU:C:2026:1035",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-26",
+   "zverejneno": "2026-11-26",
+   "first_seen": "2026-11-27T08:46:02Z",
+   "nazev": "Koź",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0607",
+   "heslo": "Pohyblivá úroková sazba bez horní hranice",
+   "shrnuti": "Soudní dvůr EU rozhodl, že ujednání o pohyblivé úrokové sazbě hypotečního úvěru navázané na referenční hodnotu, které neobsahuje pevnou horní hranici, samo o sobě není zneužívající, pokud je omezuje zákonná maximální sazba a úvěr může kolísat oběma směry. Vnitrostátní soud však musí posoudit celkové okolnosti, zejména zda banka splnila informační povinnosti a řádně spotřebitele upozornila na rizika.",
+   "oblasti": [
+    "spotrebitel",
+    "zavazky",
+    "finance"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0535",
+   "spz": "C-535/25",
+   "ecli": "ECLI:EU:C:2026:1028",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-26",
+   "zverejneno": "2026-11-26",
+   "first_seen": "2026-11-27T08:46:02Z",
+   "nazev": "Amazon Italia Logistica",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0535",
+   "heslo": "Poskytování poštovních služeb platformou elektronického obchodu",
+   "shrnuti": "Soudní dvůr řešil, zda společnosti zprostředkovávající prodej a dodávání zboží třetích stran prostřednictvím e-shopu spadají pod pojem poskytovatel poštovních služeb ve smyslu směrnice 97/67. Rozhodl, že unijní právo nebrání vnitrostátní úpravě podřizující tyto činnosti režimu všeobecného oprávnění, pokud tyto entity zajišťují třídění, organizaci dodání prostřednictvím kurýrů pod svým vlivem, či správu výdejních boxů. Tyto činnosti představují poštovní služby navzdory tomu, že řetězec nezačíná klasickým výběrem od odesílatele.",
+   "oblasti": [
+    "spravni",
+    "it"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0515",
+   "spz": "C-515/25",
+   "ecli": "ECLI:EU:C:2026:1030",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-26",
+   "zverejneno": "2026-11-26",
+   "first_seen": "2026-11-27T08:46:02Z",
+   "nazev": "Mekanova",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0515",
+   "heslo": "Pobočka nepodílející se na smlouvě nezakládá příslušnost",
+   "shrnuti": "Soudní dvůr EU rozhodl, že pravidla příslušnosti podle nařízení č. 1215/2012 mají kogentní povahu, ale nebrání vnitrostátní úpravě platebního rozkazu vyžadující bydliště dlužníka v obvodu soudu pod hrozbou zrušení příkazu. Pojmy pobočka, zastoupení nebo jiná provozovna jsou autonomními pojmy unijního práva a určují současně mezinárodní i místní příslušnost. Soud členského státu však není příslušný k rozhodování o žalobě proti letecké společnosti podle čl. 7 bodu 5 nařízení, pokud se pobočka nepodílela na právním vztahu mezi společností a cestujícím.",
+   "oblasti": [
+    "civilni_proces",
+    "mps",
+    "spotrebitel"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CJ0325",
+   "spz": "C-325/25",
+   "ecli": "ECLI:EU:C:2026:1026",
+   "druh": "rozsudek",
+   "rejstrik": "C",
+   "datum": "2026-11-26",
+   "zverejneno": "2026-11-26",
+   "first_seen": "2026-11-27T08:46:02Z",
+   "nazev": "Eneco Wind Belgium",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CJ0325",
+   "heslo": "Přednost projektů obnovitelných zdrojů při vyvažování zájmů",
+   "shrnuti": "Soudní dvůr EU rozhodoval o výkladu pravidel pro urychlení zavádění energie z obnovitelných zdrojů podle nařízení 2022/2577. Uvedl, že povinnost upřednostnit tyto projekty jako projekty převažujícího veřejného zájmu se uplatní nejen v oblasti životního prostředí, ale i při střetu s jinými zájmy, jako je ochrana krajiny. Dále stanovil, že tato přednost je principiální, nikoli absolutní, a příslušné orgány se od ní mohou na základě konkrétního odůvodnění odchýlit.",
+   "oblasti": [
+    "stavebni_zp",
+    "spravni",
+    "zavazky"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0757",
+   "spz": "C-757/25",
+   "ecli": "ECLI:EU:C:2026:1034",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-26",
+   "zverejneno": "2026-11-26",
+   "first_seen": "2026-11-27T08:46:02Z",
+   "nazev": "Fidelidade II",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0757",
+   "heslo": "Právo na odkoupení menšinového podílu po nabídce převzetí",
+   "shrnuti": "Generální advokát navrhuje, aby Soudní dvůr EU odpověděl, že čl. 16 odst. 2 směrnice 2004/25/ES se vztahuje i na držitele zbývajících cenných papírů, kteří je nabyli po uplynutí lhůty pro přijetí nabídky převzetí. Podle jeho názoru znění, systematika a cíl ochrany menšinových akcionářů nekladou časová omezení na okamžik nabytí těchto akcií, pokud je právo uplatněno v zákonné lhůtě.",
+   "oblasti": [
+    "korporace",
+    "zavazky",
+    "civilni_proces"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62025CC0309",
+   "spz": "C-309/25",
+   "ecli": "ECLI:EU:C:2026:1032",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-26",
+   "zverejneno": "2026-11-26",
+   "first_seen": "2026-11-27T08:46:02Z",
+   "nazev": "Enefit Green a Utilitas Wind",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025CC0309",
+   "heslo": "Zásada soukromého subjektu při přímém přidělení pozemků",
+   "shrnuti": "Generální advokát navrhl, že zásada soukromého hospodářského subjektu je použitelná na vnitrostátní úpravu, která umožňuje státnímu podniku přednostní výběr lesních pozemků pro větrné parky a získání práv stavby za cenu určenou znalcem namísto dražby. Taková úprava poskytuje podniku hospodářskou výhodu, a může tak představovat státní podporu ve smyslu čl. 107 odst. 1 SFEU. Předkládající soud musí posoudit, zda byla práva udělena za tržních podmínek.",
+   "oblasti": [
+    "soutez",
+    "vecna_prava",
+    "spravni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CC0866",
+   "spz": "C-866/24",
+   "ecli": "ECLI:EU:C:2026:1031",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-26",
+   "zverejneno": "2026-11-26",
+   "first_seen": "2026-11-27T08:46:02Z",
+   "nazev": "Ordre des avocats à la cour de Paris a Couturier v. Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CC0866",
+   "heslo": "Zákaz právního poradenství Rusku a Listina",
+   "shrnuti": "Generální advokátka navrhuje, aby Soudní dvůr zamítl kasační opravný prostředek proti rozsudku Tribunálu, kterým byla potvrzena platnost omezujících opatření zakazujících poskytovat právní poradenské služby ruské vládě a subjektům. Uvádí, že advokáti nejsou nositeli základního práva na právní poradenství podle článku 47 Listiny základních práv Evropské unie, neboť toto právo svědčí pouze klientům. Z toho důvodu navrhuje odmítnutí či zamětnutí argumentů navrhovatelů týkajících se porušení tohoto ustanovení a zásad právního státu.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": false
+  },
+  {
+   "id": "sdeu:62024CC0865",
+   "spz": "C-865/24",
+   "ecli": "ECLI:EU:C:2026:1029",
+   "druh": "stanovisko GA",
+   "rejstrik": "C",
+   "datum": "2026-11-26",
+   "zverejneno": "2026-11-26",
+   "first_seen": "2026-11-27T08:46:02Z",
+   "nazev": "Ordre néerlandais des avocats du barreau de Bruxelles a další v. Rada",
+   "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CC0865",
+   "heslo": "Zákaz právního poradenství subjektům v Rusku",
+   "shrnuti": "Generální advokátka navrhuje, aby Soudní dvůr zamítl kasační opravný prostředek směřující proti rozsudku Tribunálu, kterým byla potvrzena platnost omezujících opatření Evropské unie vůči Rusku zakazujících poskytování právních poradenských služeb ruské vládě a subjektům usazeným v Rusku. Uvádí, že toto omezení neporušuje články 7 a 47 Listiny základních práv Evropské unie ani zásadu právní jistoty či nezávislost advokátů, neboť právo na poradenství od advokáta v unijním právu primárně slouží k zajištění práva na obhajobu a přístupu k soudu.",
+   "oblasti": [
+    "spravni",
+    "civilni_proces",
+    "ustavni"
+   ],
+   "procesni": false
+  },
   {
    "id": "sdeu:62025TJ0849",
    "spz": "T-849/25",
