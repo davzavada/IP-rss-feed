@@ -1,13 +1,13 @@
 {
-  "generated": "2026-11-27T08:21:20+00:00",
+  "generated": "2026-11-28T07:41:27+00:00",
   "poradatele": {
     "CAK": {
       "nazev": "Česká advokátní komora",
       "zkratka": "ČAK",
       "barva": "#b42318",
       "url": "https://www.cak.cz/vzdelavaci-akce-cak-5",
-      "pocet": 13,
-      "stazeno": "2026-11-27T08:20:42+00:00",
+      "pocet": 12,
+      "stazeno": "2026-11-28T07:41:19+00:00",
       "cesta": "parser",
       "chyba": null,
       "otisk": null
@@ -17,8 +17,8 @@
       "zkratka": "PF UK",
       "barva": "#6d28d9",
       "url": "https://www.prf.cuni.cz/events",
-      "pocet": 10,
-      "stazeno": "2026-11-27T08:20:48+00:00",
+      "pocet": 9,
+      "stazeno": "2026-11-28T07:41:20+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "8f9bc05f4159084c"
@@ -28,11 +28,11 @@
       "zkratka": "epravo",
       "barva": "#15803d",
       "url": "https://www.epravo.cz/top/aktualne/vzdelavaci_akce/",
-      "pocet": 7,
-      "stazeno": "2026-11-27T08:20:52+00:00",
+      "pocet": 6,
+      "stazeno": "2026-11-28T07:41:25+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "061c412a9396a59e"
+      "otisk": "7316454c3487858c"
     },
     "ALAI": {
       "nazev": "ALAI Česká republika",
@@ -40,7 +40,7 @@
       "barva": "#be185d",
       "url": "https://www.alai.cz/index.php?up",
       "pocet": 0,
-      "stazeno": "2026-11-27T08:20:53+00:00",
+      "stazeno": "2026-11-28T07:41:26+00:00",
       "cesta": "ai",
       "chyba": null,
       "otisk": "d1679be9822a0030"
@@ -51,10 +51,10 @@
       "barva": "#0e7490",
       "url": "https://upv.gov.cz/vzdelavani/kurzy-a-seminare",
       "pocet": 1,
-      "stazeno": "2026-11-27T08:20:54+00:00",
+      "stazeno": "2026-11-28T07:41:27+00:00",
       "cesta": "ai",
       "chyba": null,
-      "otisk": "5e13f3bd5e337187"
+      "otisk": "53a07eddbd738ac0"
     }
   },
   "formy": {
